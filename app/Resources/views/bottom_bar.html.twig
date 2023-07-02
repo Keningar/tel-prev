@@ -1,0 +1,57 @@
+<div name="bottombarColor" id="submenu_modulo_{{app.session.get('modulo_activo') | lower}}">
+   <div style="float: right;">
+        <div class="search-login">
+        <script>
+            var prefijoEmpresaTwig = '{{ app.session.get('prefijoEmpresa') }}';
+            var prefijoEmpresaTW   = prefijoEmpresaTwig.trim();
+            var boolPermisoTwig    = {{ is_granted('ROLE_497-8977') ? 'true' : 'false' }}
+        </script>
+            {% if app.session.get('prefijoEmpresa')=="MD" %}
+                {% if is_granted('ROLE_497-8977') %}
+                    <a href="javascript:showBusquedaAvanzada()">
+                        <img title="Busqueda Avanzada" height="18" src="{{ asset('public/images/images_crud/zoom.png')}}" />
+                    </a>
+                {% endif %}
+                
+                {% if is_granted('ROLE_497-8997') %}
+                    <div id="formSearchLogin" name="formSearchLogin" action="/search" method="POST">
+                        <input id='searchLogin' name='searchLogin' type="text" placeholder="Buscar Login" />
+                            <script>
+                                Ext.create('Ext.util.KeyNav', Ext.get('searchLogin'), {
+                                    enter: function(e){
+                                        if (!(Ext.get('searchLogin').getValue() == '' && !boolPermisoTwig )) {
+                                            showBusquedaAvanzada(Ext.get('searchLogin').getValue());
+                                        }
+                                    },
+                                    scope: this
+                                });
+                            </script>    
+                    </div>
+                {% endif %}
+                {% else  %}
+                
+                    <a href="javascript:showBusquedaAvanzada()">
+                        <img title="Busqueda Avanzada"  alt="imagen" height="18" src="{{ asset('public/images/images_crud/zoom.png')}}" />
+                    </a>
+                    
+                    <div id="formSearchLogin" name="formSearchLogin" action="/search" method="POST">
+                        <input id='searchLogin' name='searchLogin' type="text" placeholder="Buscar Login" />
+                            <script>
+                                Ext.create('Ext.util.KeyNav', Ext.get('searchLogin'), {
+                                    enter: function(e){
+                                        showBusquedaAvanzada(Ext.get('searchLogin').getValue());
+                                    },
+                                    scope: this
+                                });
+                            </script>    
+                    </div>
+            
+            {% endif %}
+        </div>
+   </div>
+</div>
+{% if rolesPermitidos is defined %}
+  {% for rol in rolesPermitidos %}
+  <input type="hidden" name="{{ rol }}" id="{{ rol }}" value="1" />
+  {% endfor %}
+{% endif %}

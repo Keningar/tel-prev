@@ -1,0 +1,120 @@
+{% if app.session.get('cliente') != null %}
+    {% set cliente = app.session.get('cliente') %}
+    <div id="info-cliente" >
+        <input type="hidden" id="muestraSession" name="muestraSession" value=1 />
+        <div >
+            <div id="title-info-cliente">
+                <img id="img-cliente" style="cursor:pointer;float:left" width="31" height="36.5" title="Mostrar Info Cliente" alt="clients.png" src="{{ asset('public/images/clients.png') }}" />
+                <h1 style="display:none">
+					<input type="hidden" id="global_cliente_id" name="global_cliente_id" value="{{ cliente.id }}" />
+					<input type="hidden" id="global_cliente_id" name="global_cliente_id" value="{% if cliente.razon_social is not null  %}{{ cliente.razon_social }}{%else%}{{ cliente.nombres }} {{ cliente.apellidos }}{%endif%}" />
+					
+                    {% if cliente.razon_social is not null  %}
+                        {{ cliente.razon_social }}  
+                    {%else%}
+                        {{ cliente.nombres }} {{ cliente.apellidos }}
+                    {%endif%}
+                </h1>
+            </div>
+            <div id="content-info-cliente" style="display:none">
+                <center><label>Datos del Cliente</label></center>
+                <br>
+                <table class="record_properties" width="100%" style="width: 100%">
+                    <tbody>
+                        <tr>
+                            <td width="40%" style="font-weight: bold;">Empresa:</td>
+                            <td width="60%">{{ cliente.nombre_empresa | default('sin datos') }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Oficina:</td>
+                            <td>{{ cliente.nombre_oficina | default('sin datos') }}</td>
+                        </tr>
+                        {% if app.session.get('clienteContacto') != null %}
+                            {% set clienteContacto = app.session.get('clienteContacto') %}
+                        <tr>
+                            <td style="font-weight: bold;">Celular:</td>
+                            <td>{{ clienteContacto.valor | default('sin datos') }}</td>
+                        </tr>
+                        {% endif %}
+						
+                        {% if app.session.get('clienteContactos') != null %}
+                            {% set clienteContactos = app.session.get('clienteContactos') %}
+							{% for contacto in clienteContactos %}
+								<tr>
+									<td style="font-weight: bold;">{{ contacto.formaContacto | default('sin datos') }}:</td>
+									<td>{{ contacto.valor | default('sin datos') }}</td>
+								</tr>
+							{% endfor %}
+                        {% endif %}
+                    </tbody>
+                </table>
+                {% if app.session.get('ptoCliente') != null %}
+                    {% set ptoCliente = app.session.get('ptoCliente') %}
+					<input type="hidden" id="global_pto_cliente_id" name="global_pto_cliente_id" value="{{ ptoCliente.id }}" />
+					<input type="hidden" id="global_pto_cliente_login" name="global_pto_cliente_login" value="{{ ptoCliente.login }}" />
+					
+                    <br>
+                    <center><label>Datos del Punto</label></center>
+                    <br>
+                    <table width="100%" style="width: 100%" class="record_properties">
+                    <tbody>
+                        <tr>
+                            <td width="40%" style="font-weight: bold;">Login:</td>
+                            <td width="60%"><a class="button-crud" href="{{ path('infopunto_show',{'id':ptoCliente.id , 'rol' : 'Cliente' }) }}">{{ ptoCliente.login }}</a></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">&nbsp;</td>
+                            <td>&nbsp;</td>
+
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Descripcion:</td>
+                            <td>{{ ptoCliente.descripcion }}</td>
+
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Direccion:</td>
+                            <td>{{ ptoCliente.direccion }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Tipo Negocio:</td>
+                            <td>{{ ptoCliente.tipo_negocio }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Punto Cobertura:</td>
+                            <td>{{ ptoCliente.cobertura }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Tipo Ubicaci&oacute;n:</td>
+                            <td>{{ ptoCliente.tipo_ubicacion }}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold;">Estado:</td>
+                            <td>{{ ptoCliente.estado }}</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#img-cliente").click(function(){
+            if($("#muestraSession").val() == 1){
+                 $("#title-info-cliente").attr("class","titulo-content");
+                $("#title-info-cliente h1").removeAttr("style");
+                $("#title-info-cliente").css("margin", "15px 15px 0");
+                $("#content-info-cliente").removeAttr("style");
+                $("#info-cliente").animate({ width: "25em" , height: "37em" });
+                $("#muestraSession").val(0);
+	    }else{
+                $("#title-info-cliente h1").attr( "style" , "display:none" );
+                $("#title-info-cliente").removeAttr( "class");
+                $("#title-info-cliente").css("margin", "15px 9px 0");
+                $("#content-info-cliente").attr( "style" , "display:none" );
+                $("#info-cliente").animate({ width: "4em" , height: "5em"});
+                $("#muestraSession").val(1);
+	    }
+        });
+    </script>
+{% endif %}

@@ -1,0 +1,173 @@
+<div id="topLeftBar">
+    {{ app.session.get('html_modulos')|raw }}
+</div>
+<div id="topRightBar">
+    <div id="info_usuario">
+        <nav>
+            <ul>
+                <li class="parentOtro">
+                    <span class="item_info_usuario">   
+                        <script>
+                            valorCombo = '';
+                        </script>
+                        
+                        {% set arrayEmpresas                = app.session.get('arrayEmpresas') %}
+                        {% set valorOficina                 = app.session.get('oficina') %}
+                        {% set tareasAbiertas               = app.session.get('numeroTareasAbiertas') %}
+                        {% set tareasAbiertasDepartamento   = app.session.get('numeroTareasAbiertasDepartamento') %}
+                        {% set tareasAbiertasMovil          = app.session.get('numeroTareasAbiertasMovil') %}
+                        {% set empresaId                    = app.session.get('idEmpresa') %}
+                        {% set empresaEscogida              = app.session.get('idEmpresa') ~ '@@' ~
+                                                              app.session.get('empresa') ~ '@@' ~
+                                                              app.session.get('idOficina') ~ '@@' ~ 
+                                                              app.session.get('oficina') ~ '@@' ~
+                                                              app.session.get('idDepartamento') ~ '@@' ~ 
+                                                              app.session.get('departamento') ~ '@@' ~ 
+                                                              app.session.get('idPersonaEmpresaRol')  ~ '@@' ~
+                                                              app.session.get('prefijoEmpresa') ~ '@@' ~
+                                                              app.session.get('intIdPais')  ~ '@@' ~
+                                                              app.session.get('strNombrePais')  ~ '@@' ~
+                                                              app.session.get('intIdRegion')  ~ '@@' ~
+                                                              app.session.get('strNombreRegion')  ~ '@@' ~
+                                                              app.session.get('intIdCanton')  ~ '@@' ~
+                                                              app.session.get('strNombreCanton')  ~ '@@' ~
+                                                              app.session.get('intIdProvincia')  ~ '@@' ~
+                                                              app.session.get('strNombreProvincia')  ~ '@@' ~
+                                                              app.session.get('strFacturaElectronico') ~ '@@' ~
+                                                              app.session.get('strNombreEmpresa') %}	
+			
+                        {% if arrayEmpresas|length == 1 %}
+                            {% set value1 = "" %}
+                            <select id="globalEmpresaEscogida" name="globalEmpresaEscogida" style="cursor:pointer;">
+                                {% for keyEmpresas,valueEmpresas in arrayEmpresas %}
+                                    {% set empresaRecord  = "" %}
+                                    {% set contador  = 0 %}
+                                    {% for value in valueEmpresas %}
+                                        {% if contador == 0 %}
+                                            {% set empresaRecord  = value %}
+                                        {% else %}
+                                            {% set empresaRecord  = empresaRecord ~ '@@' ~ value %}
+                                        {% endif %}
+                                        {% set contador = contador + 1 %}
+                                    {% endfor %}
+                                    <option value='{{ empresaRecord }}' selected>
+                                        {{ valueEmpresas.nombreEmpresa}}
+                                    </option>
+                                {% endfor %} 
+                            </select>
+                        {% elseif arrayEmpresas|length > 1 %}
+                            <select id="globalEmpresaEscogida" name="globalEmpresaEscogida"
+                                    style="cursor:pointer;" onchange="comboEmpresaLogeada(this.value);">
+                                <option value='0' >-- Seleccione --</option>								
+                                {% for valueEmpresas in arrayEmpresas %}
+                                    {% set empresaRecord  = "" %}
+                                    {% set contador  = 0 %}
+                                    {% for value in valueEmpresas %}
+                                        {% if contador == 0 %}
+                                            {% set empresaRecord  = value %}
+                                        {% else %}
+                                            {% set empresaRecord  = empresaRecord ~ '@@' ~ value %}
+                                        {% endif %}
+                                        {% set contador = contador + 1 %}
+                                    {% endfor %}
+		                        <option value='{{ empresaRecord }}' {% if empresaEscogida == empresaRecord %}selected{% endif %}>
+                                            {{ valueEmpresas.nombreEmpresa}}
+                                        </option>
+                                {% endfor %} 
+                            </select>
+                        {% endif%}
+                    </span>
+                </li>
+                {% if is_granted('ROLE_421-6137') %}
+                    <li class="parentOtro indicador_tareas blink" id="li_global_tareas_abiertas_movil" style="min-width: 15px !important;">
+                        <a href="{{ path('infocaso_getCasosMovil') }}" title="Casos Pendientes creadas desde el móvil">
+                            <i class="fa fa-mobile-phone"></i>
+                            <span class="rounded count label label-info" id="spanCasosMoviles">{{ tareasAbiertasMovil }}</span>
+                        </a>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_78-8517') and empresaId == "10" %}
+                    <li class="parentOtro indicador_tareas" id="li_global_casos_extranet_sintareas" style="min-width: 15px !important;">
+                        <a href="javascript:getCasosExtranet('1');" title="Casos de Extranet TN sin tareas">
+                            <em class="fa fa-globe"></em>
+                            <span class="rounded count label label-primary" id="spanCasosExtranetSinTareas">0</span>
+                        </a>
+                    </li>
+                    <li class="parentOtro indicador_tareas" id="li_global_casos_extranet_contareas" style="min-width: 15px !important;">
+                        <a href="javascript:getCasosExtranet('2');" title="Casos de Extranet TN con tareas">
+                            <span class="rounded count label label-success" id="spanCasosExtranetConTareas">0</span>
+                        </a>
+                    </li>
+                {% endif %}
+               <li class="parentOtro indicador_tareas blink" id="li_global_tareas_abiertas_dep" style="min-width: 15px !important;">
+                    <a href="{{ path('tareasDepartamentales') }}" title="Tareas Pendientes por Departamento-Click para Actualizar">
+                        <i class="fa fa-users"></i>
+                        <span class="rounded count label label-warning" id="spanTareasDepartamento">{{ tareasAbiertasDepartamento }}</span>
+                    </a>
+                </li>
+                <li class="parentOtro" id="li_global_nombre_oficina" style="min-width: 0px !important;">
+                    <span class="item_info_usuario" id="global_nombre_oficina">
+                        {{ valorOficina }}
+                    </span>
+                </li>
+                    <li class="parentOtro indicador_tareas blink" id="li_global_tareas_abiertas" style="min-width: 15px !important;">
+                    <a href="{{ path('tareas') }}" title="Tareas Pendientes-Click para Actualizar">
+                    <i class="fa fa-user"></i>
+                    <span class="rounded count label label-danger" id="spanTareasPersonales">{{ tareasAbiertas }}</span>
+                    </a>
+                </li>
+                <li class="parentOtro">
+                    <span class="item_info_usuario">
+                        {{ app.session.get('empleado') ? app.session.get('empleado') : 'Anonymous' }}
+                    </span>
+                    
+                    <input type="hidden" id="global_nombre_empleado" name="global_nombre_empleado"
+                           value="{{ app.session.get('empleado') ? app.session.get('empleado') : 'Anonymous' }}" />
+                    
+                    <input type="hidden" id="global_id_empleado" name="global_id_empleado"
+                           value="{{ app.session.get('id_empleado') ? app.session.get('id_empleado') : '' }}" />
+                </li>
+                <li style="cursor:pointer">
+                    <a href="/app.php/ayuda">
+                        <img src="{{ asset('public/images/ayuda.png')}}" width="20" height="20"
+                            title="Ayuda" alt="Ayuda" />
+                    </a>
+                </li>
+                
+                {% if is_granted('ROLE_220-1026') %}
+                    <li style="cursor:pointer">
+                        <img onClick='verErrorLog()' src="{{ asset('public/images/logs.png')}}" width="20" 
+                             height="20" title="Ver logs del Apache" alt="Ver logs del Apache" />
+                    </li>
+                {% endif %}
+                <li style="cursor:pointer">
+                    <img onClick="salirSistema('{{ path('_security_logout') }}')" src="{{ asset('public/images/power.png')}}"
+                         width="20" height="20" title="Salir Sistema" alt="Salir Sistema"/>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+{% block javascripts_footer%}
+<script >
+    /* MODULO PERO POR SESION */
+    var modulo = '{{ app.session.get('modulo_activo')|lower }}';
+    let minutosConsultaCasosExtranet = '{{ app.session.get('minutosConsultaCasosExtranet') }}';
+    /* MODULO PERO POR RUTA ACTUAL .... */
+    /*var pathOriginal = window.location.pathname;
+    var pathNo = "/telconet/web/app_dev.php/";
+    var ArrPathQueda = pathOriginal.split(pathNo);
+    var pathQueda = ArrPathQueda[1];
+    var ArrPathParte = pathQueda.split("/");
+    alert(ArrPathParte);
+
+    if(ArrPathParte.length > 0)
+    {  
+        var modulo = ArrPathParte[0];
+    }*/
+
+    var nombre_modulo = '#item_modulo_'+modulo;
+    $(nombre_modulo).addClass('active');
+</script>
+{% endblock javascripts_footer%}

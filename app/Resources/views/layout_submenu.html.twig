@@ -1,0 +1,75 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/layout.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block menu_header_izquierdo %}
+<div id="menu_modulos">
+    <ul>
+        {% for item in app.session.get('modulos') %}
+                <li id="item_modulo_{{ item.descripcionModulo | lower }}" {% if app.session.get('modulo_activo') | lower == item.descripcionModulo | lower %}class="active"{% endif %} ><a href="{{ '/sit_telcos/web/app_dev.php/'~item.descripcionModulo | lower }}"><span class="item_menu_modulo">{{ item.descripcionModulo }}</span></a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+{% block menu_header_derecho %}
+<div id="info_usuario">
+    <ul>
+        <li><span class="item_info_usuario">{{app.session.get('empresa')}}</span></li>
+        <li><span class="item_info_usuario">Telconet-Gye </span></li>
+        <li><span class="item_info_usuario">{{ app.user ? app.user.username : 'Anonymous' }}</span></li>
+        <a style="float:right;padding-top:4px" href="{{ path('logout') }}"><img src="{{ asset('public/images/power.png')}}" width="20" height="20" alt="Salir" title="Salir"/></a>
+    </ul>
+</div>
+{% endblock %}
+                            
+{% block logo %}                                  
+<div id="logo_modulo">
+    <img src="{{ asset('public/images/'~ app.session.get('imagen_modulo_activo') ~ '')}}" width="50" height="51" title="Modulo {{app.session.get('modulo_activo')}}"/>
+</div>
+<div id="logo_sit">	
+    <!--<label style="font-family:Broadway;color:#4067DC;font-size:1.75em">T</label>
+    <label style="font-family:Broadway;color:#E21932;font-size:1.75em">E</label>
+    <label style="font-family:Broadway;color:#FEBB20;font-size:1.75em">L</label>
+    <label style="font-family:Broadway;color:#4067DC;font-size:1.75em">C</label>
+    <label style="font-family:Broadway;color:#029010;font-size:1.75em">O</label>
+    <label style="font-family:Broadway;color:#E21932;font-size:1.75em">S</label>
+    <label style="font-family:Broadway;color:black;font-size:1.75em">+</label>-->
+    <img src="{{ asset('public/images/logo.png')}}" width="103" height="40" />
+    <p id="nombre_modulo">{{app.session.get('modulo_activo')}}</p>
+</div>
+{% endblock %}
+    
+{% block menu_principal %}  
+<div id="search_login">
+		<img src="{{ asset('public/images/search.png') }}" />
+		<input type="text" placeholder="Buscar login" label="Buscar login" name="login" maxlength="100" autocomplete="off" id="login" />
+</div>
+<div id="menu_modulo">
+    <ul>
+        {% for item in app.session.get('menu_modulo') %}
+                <li class="rounded-corners {% if item.descripcionOpcion | lower == app.session.get('menu_modulo_activo') | lower %} active {% endif %}" ><a href="{{ '/sit_telcos/web/app_dev.php/' ~ app.session.get('modulo_activo') | lower ~ '/'~ item.descripcionOpcion | lower }}"><img class="img_menu" src="{{ asset('public/images/'~ item.imagen ~ '')}}" alt="{{item.imagen}}" width="35" height="36.5"/><p class="alignright">{{ item.descripcionOpcion }}</p></a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+    
+{% block submenu_principal %}                        
+<div id="submenu_modulo_{{app.session.get('modulo_activo') | lower}}">
+        <ul>
+                {% for item in app.session.get('submenu_modulo') %}
+                        <li {% if app.session.get('modulo_activo') | lower == item.descripcionOpcion | lower %}class="active"{% endif %} ><a href="{{ path(item.href) }}"><span class="item_submenu_modulo">{{ item.descripcionOpcion }}</span></a></li>
+                {% endfor %}
+        </ul>
+</div>
+{% endblock %}
+    
+{% block footer %}                              
+<center>
+    <p>2011 - SIT Sistema Integrado de Telconet - Todos los Derechos Reservados</p>
+    <p>Telconet S.A. </p>
+</center>
+
+{% endblock %}

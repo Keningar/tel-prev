@@ -1,0 +1,43 @@
+{{ app.session.get('html_submodulos')|raw }}
+
+{% block javascripts_footer%}
+<script >
+    /* MODULO PERO POR SESION */
+    var modulo = '{{ app.session.get('modulo_activo')|lower }}';
+    var submodulo = '{{ app.session.get('menu_modulo_activo')|lower }}';
+
+    /* MODULO PERO POR RUTA ACTUAL .... */
+    /*var pathOriginal = window.location.pathname;
+    var pathNo = "/telconet/web/app_dev.php/";
+    var ArrPathQueda = pathOriginal.split(pathNo);
+    var pathQueda = ArrPathQueda[1];
+    var ArrPathParte = pathQueda.split("/");
+    alert(ArrPathParte);
+
+    if(ArrPathParte.length > 0)
+    {  
+        var modulo = ArrPathParte[0];
+
+        if(ArrPathParte.length > 1)
+        {
+            if(ArrPathParte[1]!="busquedaAvanzada")
+            { 
+                submodulo = ArrPathParte[1];
+            }
+            else
+            { 
+                submodulo = ArrPathParte[0];
+            }
+        }
+    }*/
+
+    var nombre_modulo = '#menu_modulo_'+modulo;
+    $(nombre_modulo).css('display','inline');
+
+    var nombre_submodulo = '#item_submodulo_'+submodulo;
+
+    $(nombre_submodulo).addClass('active');
+    $(nombre_submodulo).addClass('active');
+    $(nombre_submodulo).addClass('active');
+</script>
+{% endblock javascripts_footer%}

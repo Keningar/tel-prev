@@ -1,0 +1,1481 @@
+{% if app.session.get('cliente') != null %}
+	{% set cliente = app.session.get('cliente') %}
+	<div
+		style="display: block;" class="sf-toolbar" id="sfwdt5533bb" data-sfurl="/_wdt/5533bb">
+		<!-- START of Symfony2 Web Debug Toolbar -->
+		<style>
+
+			.oculto {
+				display: none !important;
+			}
+
+			.sf-minitoolbar {
+				display: none;
+
+				position: fixed;
+				bottom: 0;
+				right: 0;
+
+				padding: 5px 5px 0;
+
+				background-color: #f7f7f7;
+				background-image: -moz-linear-gradient(top, #e4e4e4, #ffffff);
+				background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e4e4e4), to(#ffffff));
+				background-image: -o-linear-gradient(top, #e4e4e4, #ffffff);
+				background: linear-gradient(top, #e4e4e4, #ffffff);
+
+				border-radius: 16px 0 0 0;
+
+				z-index: 6000000;
+			}
+
+			.sf-toolbarreset {
+				position: fixed;
+				background-color: #f7f7f7;
+				left: 0;
+				right: 0;
+				height: 38px;
+				margin: 0;
+				padding: 0 40px 0 0;
+				z-index: 6000000;
+				font: 11px Verdana, Arial, sans-serif;
+				text-align: left;
+				color: #2f2f2f;
+
+				background-image: -moz-linear-gradient(top, #e4e4e4, #ffffff);
+				background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e4e4e4), to(#ffffff));
+				background-image: -o-linear-gradient(top, #e4e4e4, #ffffff);
+				background: linear-gradient(top, #e4e4e4, #ffffff);
+
+				bottom: 0;
+				border-top: 1px solid #bbb;
+			}
+			.sf-toolbarreset abbr {
+				border-bottom: 1px dotted #000000;
+				cursor: help;
+			}
+			.sf-toolbarreset span,
+			.sf-toolbarreset div {
+				font-size: 11px;
+			}
+			.sf-toolbarreset img {
+				width: auto;
+				display: inline;
+			}
+
+			.sf-toolbarreset .hide-button {
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+				background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAllBMVEXDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PDw8PExMTPz8/Q0NDR0dHT09Pb29vc3Nzf39/h4eHi4uLj4+P6+vr7+/v8/Pz9/f3///+Nh2QuAAAAIXRSTlMABgwPGBswMzk8QktRV4SKjZOWmaKlq7TAxszb3urt+fy1vNEpAAAAiklEQVQIHUXBBxKCQBREwRFzDqjoGh+C2YV//8u5Sll2S0E/dof1tKdKM6GyqCto7PjZRJIS/mbSELgXOSd/BzpKIH1ZefVWpDDTHsi8mZVnwImPi5ndCLbaAZk3M58Bay0h9VbeSvMpjDUAHj4jL55AW1rxN5fU2PLjIgVRzNdxVFOlGzvnJi0Fb1XNGBHA9uQOAAAAAElFTkSuQmCC');
+				background-repeat: no-repeat;
+				background-position: 13px 11px;
+			}
+
+			.sf-toolbar-block {
+				white-space: nowrap;
+				color: #2f2f2f;
+				display: block;
+				min-height: 28px;
+				border-right: 1px solid #e4e4e4;
+				padding: 0;
+				float: left;
+				cursor: default;
+			}
+
+			.sf-toolbar-block span {
+				display: inline-block;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-piece {
+				line-height: 19px;
+				margin-bottom: 5px;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-piece .sf-toolbar-status {
+				padding: 0 5px;
+				border-radius: 5px;
+				margin-bottom: 0;
+				vertical-align: top;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-piece:last-child {
+				margin-bottom: 0;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-piece a,
+			.sf-toolbar-block .sf-toolbar-info-piece abbr {
+				color: #2f2f2f;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-piece b {
+				display: inline-block;
+				min-width: 150px;
+				vertical-align: top;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-with-next-pointer:after {
+				content: ' :: ';
+				color: #999;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-with-delimiter {
+				border-right: 1px solid #999;
+				padding-right: 5px;
+				margin-right: 5px;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info {
+				display: none;
+				position: absolute;
+				background-color: #fff;
+				border: 1px solid #bbb;
+				padding: 9px 0;
+				margin-left: -1px;
+
+				bottom: 38px;
+				border-bottom-width: 0;
+				border-bottom: 1px solid #bbb;
+				border-radius: 4px 4px 0 0;
+			}
+
+			.sf-toolbarreset > div:nth-of-type(n+6) .sf-toolbar-info {
+				right: -1px;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info:empty {
+				visibility: hidden;
+			}
+
+			.sf-toolbar-block .sf-toolbar-status {
+				display: inline-block;
+				color: #fff;
+				background-color: #666;
+				padding: 3px 6px;
+				border-radius: 3px;
+				margin-bottom: 2px;
+				vertical-align: middle;
+				min-width: 6px;
+				min-height: 13px;
+			}
+
+			.sf-toolbar-block .sf-toolbar-status abbr {
+				color: #fff;
+				border-bottom: 1px dotted black;
+			}
+
+			.sf-toolbar-block .sf-toolbar-status-green {
+				background-color: #759e1a;
+			}
+
+			.sf-toolbar-block .sf-toolbar-status-red {
+				background-color: #a33;
+			}
+
+			.sf-toolbar-block .sf-toolbar-status-yellow {
+				background-color: #ffcc00;
+				color: #000;
+			}
+
+			.sf-toolbar-block .sf-toolbar-status-black {
+				background-color: #000;
+			}
+
+			.sf-toolbar-block .sf-toolbar-icon {
+				display: block;
+				padding: 5px;
+			}
+
+			.sf-toolbar-block .sf-toolbar-icon > a,
+			.sf-toolbar-block .sf-toolbar-icon > span {
+				display: block;
+				text-decoration: none;
+				margin: 0;
+				padding: 5px 8px;
+				min-width: 20px;
+				text-align: center;
+				vertical-align: middle;
+			}
+
+			.sf-toolbar-block .sf-toolbar-icon a,
+			.sf-toolbar-block .sf-toolbar-icon a:link 
+			.sf-toolbar-block .sf-toolbar-icon a:hover {
+				color: black !important;
+			}
+
+			.sf-toolbar-block .sf-toolbar-icon img {
+				border-width: 0;
+				vertical-align: middle;
+			}
+
+			.sf-toolbar-block .sf-toolbar-icon img + span {
+				margin-left: 5px;
+				margin-top: 2px;
+			}
+
+			.sf-toolbar-block .sf-toolbar-icon .sf-toolbar-status {
+				border-radius: 12px;
+				border-bottom-left-radius: 0;
+				margin-top: 0;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-method {
+				border-bottom: 1px dashed #ccc;
+				cursor: help;
+			}
+
+			.sf-toolbar-block .sf-toolbar-info-method[onclick=""] {
+				border-bottom: none;
+				cursor: inherit;
+			}
+
+			.sf-toolbar-info-php {}
+			.sf-toolbar-info-php-ext {}
+
+			.sf-toolbar-info-php-ext .sf-toolbar-status {
+				margin-left: 2px;
+			}
+
+			.sf-toolbar-info-php-ext .sf-toolbar-status:first-child {
+				margin-left: 0;
+			}
+
+			.sf-toolbar-block a .sf-toolbar-info-piece-additional,
+			.sf-toolbar-block a .sf-toolbar-info-piece-additional-detail {
+				display: inline-block;
+			}
+
+			.sf-toolbar-block a .sf-toolbar-info-piece-additional:empty,
+			.sf-toolbar-block a .sf-toolbar-info-piece-additional-detail:empty {
+				display: none;
+			}
+
+			.sf-toolbarreset:hover {
+				box-shadow: rgba(0, 0, 0, 0.3) 0 0 50px;
+			}
+
+			.sf-toolbar-block:hover {
+				box-shadow: rgba(0, 0, 0, 0.35) 0 0 5px;
+				border-right: none;
+				margin-right: 1px;
+				position: relative;
+			}
+
+			.sf-toolbar-block:hover .sf-toolbar-icon {
+				background-color: #fff;
+				border-top: 1px dotted #DDD;
+				position: relative;
+				margin-top: -1px;
+				z-index: 10002;
+			}
+
+			.overflowSaldo {
+				max-height: 500px;
+				overflow: scroll;
+			}
+
+			.sf-toolbar-block:hover .sf-toolbar-info {
+				display: block;
+				min-width: -webkit-calc(100% + 2px);
+				min-width: calc(100% + 2px);
+				z-index: 10001;
+				box-sizing: border-box;
+				padding: 9px;
+				line-height: 19px;
+			}
+
+			/***** Override the setting when the toolbar is on the top *****/
+
+
+			/***** Media query *****/
+			@media screen and(max-width: 779px) {
+				.sf-toolbar-block .sf-toolbar-icon > * >:first-child ~ * {
+					display: none;
+				}
+
+				.sf-toolbar-block .sf-toolbar-icon > * > .sf-toolbar-info-piece-additional,
+				.sf-toolbar-block .sf-toolbar-icon > * > .sf-toolbar-info-piece-additional-detail {
+					display: none !important;
+				}
+			}
+
+			@media screen and(min-width: 880px) {
+				.sf-toolbar-block .sf-toolbar-icon a[href$="config"] .sf-toolbar-info-piece-additional {
+					display: inline-block;
+				}
+			}
+
+			@media screen and(min-width: 980px) {
+				.sf-toolbar-block .sf-toolbar-icon a[href$="security"] .sf-toolbar-info-piece-additional {
+					display: inline-block;
+				}
+			}
+
+			@media screen and(max-width: 1179px) {
+				.sf-toolbar-block .sf-toolbar-icon > * > .sf-toolbar-info-piece-additional {
+					display: none;
+				}
+			}
+
+			@media screen and(max-width: 1610px) {
+				.sf-toolbar-block .sf-toolbar-icon > * > .sf-toolbar-info-piece-additional-detail {
+					display: none;
+				}
+			}
+
+			.sf-toolbar-status-label {
+				background-color: #D2710E !important;
+			}
+
+			.sf-toolbar-status-inicio {
+				background-color: #FF6600 !important;
+			}
+			.sf-toolbar-status-comercial {
+				background-color: #1496DB !important;
+			}
+			.sf-toolbar-status-planificacion {
+				background-color: #FFAD08 !important;
+			}
+			.sf-toolbar-status-tecnico {
+				background-color: #D62231 !important;
+			}
+			.sf-toolbar-status-financiero {
+				background-color: #009900 !important;
+			}
+			.sf-toolbar-status-soporte {
+				background-color: #006666 !important;
+			}
+			.sf-toolbar-status-administracion {
+				background-color: #8A2908 !important;
+			}
+			.sf-toolbar-status-modelo-predictivo-red {
+				background-color: red !important;
+				font-weight: bold !important;
+				color: white !important;
+			}
+			.sf-toolbar-status-modelo-predictivo-yellow {
+				background-color: yellow !important;
+				font-weight: bold !important;
+				color: black !important;
+			}
+			.sf-toolbar-status-modelo-predictivo-green {
+				background-color: green !important;
+				font-weight: bold !important;
+			}
+			.sf-toolbar-status-modelo-predictivo {
+				background-color: gray !important;
+				font-weight: bold !important;
+			}
+			.tabla-forma-contacto {
+				border: none;
+				width: 100%;
+				border-collapse: collapse;
+			}
+			.tabla-forma-contacto th {
+				padding: 5px;
+				text-align: center;
+				font-weight: bold;
+			}
+			.tabla-forma-contacto td {
+				padding: 5px;
+				text-align: left;
+			}
+		</style>
+		<div class="sf-minitoolbar" id="sfMiniToolbar-5533bb" style="display: none;">
+			<a onclick="
+								            var elem = this.parentNode;
+								            if (elem.style.display == 'none') {
+								                document.getElementById('sfToolbarMainContent-5533bb').style.display = 'none';
+								                document.getElementById('sfToolbarClearer-5533bb').style.display = 'none';
+								                elem.style.display = 'block';
+								            } else {
+								                document.getElementById('sfToolbarMainContent-5533bb').style.display = 'block';
+								                document.getElementById('sfToolbarClearer-5533bb').style.display = 'block';
+								                elem.style.display = 'none'
+								            }
+								        " title="Show Symfony toolbar" href="javascript:void(0);">
+				<img width="26" height="28" src="{{ asset('public/images/toolbar/logo_toolbar.png')}}" alt="Symfony">
+			</a>
+		</div>
+
+		<div style="clear: both; height: 38px; display: block;" id="sfToolbarClearer-5533bb"></div>
+
+		<div class="sf-toolbarreset" id="sfToolbarMainContent-5533bb" style="display: block;">
+			<div class="sf-toolbar-block">
+				<div class="sf-toolbar-icon">
+					<a href="#">
+						<img
+						width="26" height="28" src="{{ asset('public/images/toolbar/logo_toolbar.png')}}" alt="Symfony">
+						{#<img width="26" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAcCAMAAABIzV/hAAACZFBMVEUwLjL///////////////////////////////////////////////////////////////////+Eg4b///+Ni46Xlpj///////////+op6n///////////////////////////////////////////////////////////9ZWFv///////9qaWz///////+mpaf///////////////9ZWFv///////////////9PTVH///91dHb////////////////////g4OD///9NTE+Ih4r///////+Ni47///////92dHeRkJLk5OTLy8xlY2b///////+cm53///////+5ubr////o6Oj////////U1NT///9DQURsa22rq6ysq61hX2L///+LioxTUVVBP0NEQkZpZ2rGxsf///9ram3////s7O2SkZNfXmFxcHKmpae4uLnKysuXlpiop6l3dXiIh4pYVlmrq6ycm52trK7Nzc48Oj5dW158e36dnJ49Oz/Pz9BiYGPAv8BDQUTQz9BVU1aioaNHRUnBwcJXVVk6ODxJR0t3dnmko6U8Oj6lpKY9Oz+0tLXDwsRQTlF7en1QTlHi4eJhX2LFxcZTUVViYGNwb3J+fX83NTlFQ0dUUlW4t7icm524uLk8Oj5YVlmPjpBLSU2enZ9aWVw/PkFBP0NdW153dnk0MjZQTlE1MzdQT1JdXF9ram15eHqGhYdDQkV5eHo2NThEQkZRUFNFQ0dta244NjpGREhTUVU5NztUUlVhX2JubG9HRUlVU1ZiYGM7OTxIRkk7OT1IR0o8Oj4wLjI9Oz8YdG13AAAAynRSTlMAAAEDBAUGCgsMDQ4QEhMUGRobGx0gISIkJiYnKCktLi8wMjM0NTk6Ozw+P0NFSEpLTE5PUFBTWlteXmBiZGVmaWxtcHBxc3R0dnl5fX+BgoOGi46Pj5CRmZqanZ6eoKeoq6ytsLCwsrO0tbe5urq8vL+/wsTFx8jJycvLy8vM0NHR0tLU1NfX2NnZ2trc3N3d3eHh4uLl5ebm5ubn5+fo6urt7e3u7vDx8/Pz9PT19fX19fX29vf39/j4+fn5+vr6+vv7+/z8/f3+yR5EtwAAAbVJREFUeNpl0mVXVFEYhuF3zhkOFqMjYmCi2MUYYKGIYiJ2YCd2t4IBFqgoKjZ2jg3igI2KyO2f8sTMngGvj/te71r7wyMuk4jofZccAihcMzJKXDYnuYcVotyeYKiktV5LA0faaE7S4s7TyMsBupnMcoH/vO6gmanJaiLV1Py+Xwn5zc0fjCbSi2LI2QdkGdLyFBG+rHwMzz4BD7wyGEfFk8pfsD2TkGmyFNvFHfDj55v02VD6DcteOYylatY8oG7boA2QV4vlklzB8tU3/DIwo+dWv58guY5tRcLMtwSGdi1DkTvAn9Jqsgbu4kafRBqlV4sDFCWuIjdhMsp7yQU49rB28/QPLOu2DuWqLMfmfw6M716GskdGVRMSGDKRsEzpvZ+Qs0lFKDd94s2oArh2F7K3oNQt6ChGr5x6+Dx3J7d2E3Ygqam4PCkngRNnngYIO5cWq4lLb5t+vJ6GiifFR1nbMNqP3fSOCN8PZnQynEW5W/nmHy0PXv79eHpRSjsjtEOtWZcRc9YXlNx7VFKwceGYHjG6s0Ob3iK+X3LqlKnjkvt39rjD6w3W6BhvrCdaVw//ADrWicJIvtkmAAAAAElFTkSuQmCC" alt="Symfony">#}
+						<span>Telcos+</span>
+					</a>
+				</div>
+				<div class="sf-toolbar-info">
+					<div class="sf-toolbar-info-piece">
+						Telcos+
+						<strong>2.0</strong>
+					</div>
+					{# <div class="sf-toolbar-info-piece">
+												    <a rel="help" href="#">www.telconet.net</a>
+												</div> #}
+
+				</div>
+			</div>
+
+			{% if app.session.get('modeloPredictivo') != null %}
+				{% set datosModeloPredictivo = app.session.get('modeloPredictivo') %}
+				<div
+					class="sf-toolbar-block">
+					{# 
+										            Semaforizacion
+										                -Recorremos los datos del array para poder condicionar la probabilidad de cancelacion.
+										        #}
+                    {% if datosModeloPredictivo['param'] == 'probabilidad_Cancel_Voluntaria'%}
+                        {% for key,value in datosModeloPredictivo %}
+							{#Red#}
+							{% if key == 'probabilidadCancelVoluntaria' and value == 'Muy Alta'%}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlert.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-red">
+											Alerta Cancelación - Muy Alta
+										</span>
+									</a>
+								</div>
+							{% endif %}
+							{% if key == 'probabilidadCancelVoluntaria' and value == 'Alta'%}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlert.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-red">
+											Alerta Cancelación - Alta
+										</span>
+									</a>
+								</div>
+							{% endif %}
+							{#Yellow#}
+							{% if key == 'probabilidadCancelVoluntaria' and value == 'Media' %}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoWarning.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-yellow">
+											Alerta Cancelación - Media
+										</span>
+									</a>
+								</div>
+							{% endif %}
+							{#Green#}
+							{% if key == 'probabilidadCancelVoluntaria' and value == 'Baja'%}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlertGreen.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-green">
+											Alerta Cancelación - Baja
+										</span>
+									</a>
+								</div>
+							{% endif %}
+							{% if key == 'probabilidadCancelVoluntaria' and value == 'Muy Baja' %}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlertGreen.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-green">
+											Alerta Cancelación - Muy Baja
+										</span>
+									</a>
+								</div>
+							{% endif %}
+						
+						
+						{#Sin data#}
+						{% if key == 'Nota' %}
+							<div class="sf-toolbar-icon">
+								<a href="#">
+									<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlertempty.png')}}" alt="Modelo Predictivo">
+									<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo">
+										No data.
+									</span>
+								</a>
+							</div>
+						{% endif %}
+					{% endfor %}
+                     {% elseif datosModeloPredictivo['param'] == 'probabilidad_Cancel_Administrativa'%}
+                        {% for key,value in datosModeloPredictivo %}
+							{#Red#}
+							{% if key == 'probabilidadCancelAdministrativa' and value == 'Muy Alta'%}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlert.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-red">
+											Alerta Cancelación - Muy Alta
+										</span>
+									</a>
+								</div>
+							{% endif %}
+							{% if key == 'probabilidadCancelAdministrativa' and value == 'Alta'%}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlert.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-red">
+											Alerta Cancelación - Alta
+										</span>
+									</a>
+								</div>
+							{% endif %}
+							{#Yellow#}
+							{% if key == 'probabilidadCancelAdministrativa' and value == 'Media' %}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoWarning.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-yellow">
+											Alerta Cancelación - Media
+										</span>
+									</a>
+								</div>
+							{% endif %}
+							{#Green#}
+							{% if key == 'probabilidadCancelAdministrativa' and value == 'Baja'%}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlertGreen.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-green">
+											Alerta Cancelación - Baja
+										</span>
+									</a>
+								</div>
+							{% endif %}
+							{% if key == 'probabilidadCancelAdministrativa' and value == 'Muy Baja' %}
+								<div class="sf-toolbar-icon">
+									<a href="#">
+										<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlertGreen.png')}}" alt="Modelo Predictivo">
+										<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo-green">
+											Alerta Cancelación - Muy Baja
+										</span>
+									</a>
+								</div>
+							{% endif %}
+						
+						
+						{#Sin data#}
+						{% if key == 'Nota' %}
+							<div class="sf-toolbar-icon">
+								<a href="#">
+									<img title="Alerta Cancelación" width="21" height="28" src="{{ asset('public/images/toolbar/modeloPredictivoAlertempty.png')}}" alt="Modelo Predictivo">
+									<span class="sf-toolbar-status sf-toolbar-status-modelo-predictivo">
+										No data.
+									</span>
+								</a>
+							</div>
+						{% endif %}
+					{% endfor %}
+                    {% endif %}
+					
+
+
+					<div class="sf-toolbar-info" style="height:300px; overflow:scroll;">
+						<table class="tabla-forma-contacto">
+							<tbody>
+                            {% if datosModeloPredictivo['param'] == 'probabilidad_Cancel_Voluntaria'%}
+								{% for key,value in datosModeloPredictivo %}
+									<tr>
+										{% if (key == 'id' or key == 'login' or  key == 'probabilidadCancelVoluntaria') or key=='Nota'%}
+											{% if key == 'login' %}
+												<td style="font-weight:bold;">
+													LOGIN:
+												</td>
+
+												<td>
+													<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Muy Alta'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelVoluntaria:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:red;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Alta'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelVoluntaria:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:red;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Media'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelVoluntaria:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:orange;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Baja'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelVoluntaria:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:green;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Muy Baja'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelVoluntaria:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:green;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if key == 'Nota'%}
+												<td style="font-weight:bold;">
+													Nota:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:purple;">{{value}}</span>
+												</td>
+											{% endif %}
+
+										{% else %}
+											{% if key == 'parametros' %}
+												{% for k,v in datosModeloPredictivo['parametros'] %}
+													<tr class>
+														<td style="font-weight:bold;">
+															{{k}}:
+														</td>
+
+														<td>
+															<span>{{ v | default('sin datos') }}</span>
+														</td>
+													</tr>
+
+
+												{% endfor %}
+											{% else %}
+												<td style="font-weight:bold;">
+													{{key}}:
+												</td>
+
+												<td>
+													<span>{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+
+
+										{% endif %}
+									</tr>
+								{% endfor %}
+                            {% elseif datosModeloPredictivo['param'] == 'probabilidad_Cancel_Administrativa'%}   
+                            {% for key,value in datosModeloPredictivo %}
+									<tr>
+										{% if (key == 'id' or key == 'login' or  key == 'probabilidadCancelAdministrativa') or key=='Nota'%}
+											{% if key == 'login' %}
+												<td style="font-weight:bold;">
+													LOGIN:
+												</td>
+
+												<td>
+													<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Muy Alta'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelAdministrativa:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:red;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Alta'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelAdministrativa:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:red;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Media'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelAdministrativa:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:orange;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Baja'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelAdministrativa:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:green;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if value == 'Muy Baja'%}
+												<td style="font-weight:bold;">
+													probabilidadCancelAdministrativa:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:green;">{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+											{% if key == 'Nota'%}
+												<td style="font-weight:bold;">
+													Nota:
+												</td>
+
+												<td>
+													<span style="font-weight:bold; color:purple;">{{value}}</span>
+												</td>
+											{% endif %}
+
+										{% else %}
+											{% if key == 'parametros' %}
+												{% for k,v in datosModeloPredictivo['parametros'] %}
+													<tr class>
+														<td style="font-weight:bold;">
+															{{k}}:
+														</td>
+
+														<td>
+															<span>{{ v | default('sin datos') }}</span>
+														</td>
+													</tr>
+
+
+												{% endfor %}
+											{% else %}
+												<td style="font-weight:bold;">
+													{{key}}:
+												</td>
+
+												<td>
+													<span>{{ value | default('sin datos') }}</span>
+												</td>
+											{% endif %}
+
+
+										{% endif %}
+									</tr>
+								{% endfor %}
+                            {% endif %}
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+			{% endif %}
+
+			{% set esVIP = app.session.get('esVIP') %}
+			{% set esVipTecnico = app.session.get('esVipTecnico') %}
+
+			<div class="sf-toolbar-block">
+				{% set rutaShow = '#' %}
+				<div class="sf-toolbar-icon">
+					{% if cliente.nombre_tipo_rol is defined  %}
+						{% if cliente.nombre_tipo_rol is not null  %}
+							{% if cliente.nombre_tipo_rol == 'Cliente'  %}
+								{% set rutaShow = path('cliente_show',{'id':cliente.id , 'idper' : cliente.id_persona_empresa_rol }) %}
+								{%else%}
+								{% set rutaShow = path('precliente_show',{'id':cliente.id , 'idper' : cliente.id_persona_empresa_rol }) %}
+								{%endif%}
+							{% endif %}
+							{%endif%}
+
+							<a href="{{ rutaShow }}">
+								<img width="24" height="28" src="{{ asset('public/images/toolbar/cliente.png')}}">
+								<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+									{% if cliente.razon_social is not null  %}
+										{{ cliente.razon_social }}
+										{%else%}
+										{{ cliente.nombres }}
+										{{ cliente.apellidos }}
+										{%endif%}
+									</span>
+								</a>
+							</div>
+							<div class="sf-toolbar-info">
+								<div class="sf-toolbar-info-piece">
+									<strong>Nombre Cliente</strong>
+									<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+										{% if cliente.razon_social is not null  %}
+											{{ cliente.razon_social }}
+											{%else%}
+											{{ cliente.nombres }}
+											{{ cliente.apellidos }}
+											{%endif%}
+										</span>
+									</div>
+									<div class="sf-toolbar-info-piece">
+										<strong>Identificaci&oacute;n</strong>
+										<span>{{ cliente.identificacion }}</span>
+									</div>
+									{% if app.session.get('prefijoEmpresa') == 'MD' or app.session.get('prefijoEmpresa') == 'EN' %} 
+										<div class="sf-toolbar-info-piece">
+											<strong>Fecha Nacimiento</strong>
+											<span>{{ cliente.fechaNacimiento | default('sin datos') }}</span>
+										</div>
+										<div class="sf-toolbar-info-piece">
+											<strong>Edad</strong>
+											<span>{{ cliente.edad | default('sin datos') }}</span>
+										</div>
+									{% endif %}
+									{% if  cliente.nombre_oficina !=null %}
+										<div class="sf-toolbar-info-piece">
+											<strong>Oficina</strong>
+											<span>{{ cliente.nombre_oficina }}</span>
+										</div>
+									{% endif %}
+									<div class="sf-toolbar-info-piece">
+										<strong>Direcci&oacute;n</strong>
+										<span>{{ cliente.direccion }}</span>
+									</div>
+									{% if  esVIP != '' %}
+										<div class="sf-toolbar-info-piece">
+											<strong>Es VIP</strong>
+											<span>{{ esVIP }}</span>
+										</div>
+									{% endif %}
+									{% if  cliente.esRecontratacion is defined %}
+										<div class="sf-toolbar-info-piece">
+											<strong>Es Recontratacion</strong>
+											<span>{{ cliente.esRecontratacion }}</span>
+										</div>
+									{% endif %}
+									<div class="sf-toolbar-info-piece">
+										<strong>Opciones:</strong>
+										<a href="#" onclick="destruirSesion();">
+											<strong style="text-align:center" class="sf-toolbar-status sf-toolbar-status-red">Salir del Cliente</strong>
+										</a>
+									</div>
+								</div>
+							</div>
+
+							{% if app.session.get('cicloFacturacionCliente') != '' %}
+								<div class="sf-toolbar-block">
+									<div class="sf-toolbar-icon">
+										<a href="#">
+											<img title="ciclo" width="21" height="28" src="{{ asset('public/images/ciclo_facturacion.png')}}">
+											<span class=" sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+												{{ app.session.get('cicloFacturacionCliente') | default('sin datos') }}
+											</span>
+										</a>
+									</div>
+								</div>
+							{% endif %}
+
+
+							{% if app.session.get('prefijoEmpresa') == 'TN' %}
+								{% if app.session.get('contactosCliente') != null %}
+									{% set contactosCliente = app.session.get('contactosCliente') %}
+									<div class="sf-toolbar-block">
+										<div class="sf-toolbar-icon">
+											<a href="#">
+												<img title="contactosCliente" width="21" height="28" src="{{ asset('public/images/toolbar/contactos.png')}}">
+												<span class=" sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+													Contactos Cliente
+												</span>
+											</a>
+										</div>
+										<div class="sf-toolbar-info">
+
+											{% for contacto in contactosCliente %}
+												<div class="sf-toolbar-info-piece" style="border-bottom : 1px dotted #4F4F4E;padding-bottom:5px">
+													<div class="sf-toolbar-info-piece">
+														<strong>{{ contacto.nombres | default('sin datos') }}:</strong>
+														<span>{{ contacto.descripcionRol | default('sin datos') }}</span>
+													</div>
+													{% if app.session.get('formasContactoCliente') != null %}
+														{% set formasContactoCliente = app.session.get('formasContactoCliente') %}
+
+														{% for formaContactoCliente in formasContactoCliente %}
+															{% if contacto.idPersona == formaContactoCliente.idPersona %}
+																<div class="sf-toolbar-info-piece">
+																	<strong>{{ formaContactoCliente.formaContacto | default('sin datos') }}:</strong>
+																	<span>{{ formaContactoCliente.valor | default('sin datos') }}</span>
+																</div>
+															{% endif %}
+														{% endfor %}
+													{% endif %}
+												</div>
+											{% endfor %}
+
+										</div>
+									</div>
+								{% endif %}
+
+							{% else %}
+								{% if app.session.get('clienteContactos') != null %}
+									{% set clienteContactos = app.session.get('clienteContactos') %}
+									<div class="sf-toolbar-block">
+										<div class="sf-toolbar-icon">
+											<a href="#">
+												<img title="contactos" width="21" height="28" src="{{ asset('public/images/toolbar/contactos.png')}}">
+												<span class=" sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+													Formas Contacto Persona
+												</span>
+											</a>
+										</div>
+										<div class="sf-toolbar-info">
+
+											<table class="tabla-forma-contacto">
+												<tbody>
+													<tr>
+														<th>
+															<strong>Tipo contacto</strong>
+														</th>
+														<th>
+															<strong>Valor</strong>
+														</th>
+														<th>
+															<strong>Usuario</strong>
+														</th>
+														<th>
+															<strong>Ultima modificación</strong>
+														</th>
+													</tr>
+													{% set numContactosFijos = 0 %}
+													{% for contacto in clienteContactos %}
+														{% if contacto.formaContacto == 'Telefono Fijo' %}
+															{% if numContactosFijos <=10 %}
+																<tr>
+																	<td style="font-weight:bold;">{{ contacto.formaContacto | default('sin datos') }}</td>
+																	<td>{{ contacto.valor | default('sin datos') }}</td>
+																	<td>{{ contacto.usrCreacion | default ("N/A") }}</td>
+																	<td>{{ contacto.feCreacion | date("d/m/y H:i:s") | default ("sin datos") }}</td>
+																</tr>
+															</tr>
+															{% set numContactosFijos = numContactosFijos + 1 %}
+														{% endif %}
+													{% else %}
+														<tr>
+															<td style="font-weight:bold;">{{ contacto.formaContacto | default('sin datos') }}</td>
+															<td>{{ contacto.valor | default('sin datos') }}</td>
+															<td>{{ contacto.usrCreacion | default ("N/A") }}</td>
+															<td>{{ contacto.feCreacion | date("d/m/y H:i:s") | default ("sin datos") }}</td>
+														</tr>
+													{% endif %}
+												{% endfor %}
+											</tbody>
+										</table>
+
+									</div>
+								</div>
+							{% endif %}
+						{% endif %}
+
+						{% if app.session.get('prefijoEmpresa') == 'TN' %}
+							{% if app.session.get('ingenierosVip') != null %}
+								{% set ingenierosVip = app.session.get('ingenierosVip') %}
+								<div class="sf-toolbar-block">
+									<div class="sf-toolbar-icon">
+										<a href="#">
+											<img title="ingenierosVip" width="21" height="28" src="{{ asset('public/images/toolbar/contactos.png')}}">
+											<span class=" sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+												Ingenieros VIP
+											</span>
+										</a>
+									</div>
+									<div class="sf-toolbar-info">
+										{% for ingeniero in ingenierosVip %}
+											<div class="sf-toolbar-info-piece" style="border-bottom : 1px dotted #4F4F4E;padding-bottom:5px">
+												<div class="sf-toolbar-info-piece">
+													<strong>{{ ingeniero.ingeniero | default('sin datos') }}</strong>
+												</div>
+												<div class="sf-toolbar-info-piece">
+													<strong>Ciudad:</strong>
+													<span>{{ ingeniero.ciudad | default('sin datos') }}</span>
+												</div>
+												<div class="sf-toolbar-info-piece">
+													<strong>Correo Electr&oacute;nico:</strong>
+													<span>{{ ingeniero.correo | default('sin datos') }}</span>
+												</div>
+												<div class="sf-toolbar-info-piece">
+													<strong>Teléfono Móvil:</strong>
+													<span>{{ ingeniero.celular | default('sin datos') }}</span>
+												</div>
+												<div class="sf-toolbar-info-piece">
+													<strong>Extensi&oacute;n:</strong>
+													<span>{{ ingeniero.extension | default('sin datos') }}</span>
+												</div>
+											</div>
+										{% endfor %}
+									</div>
+								</div>
+							{% endif %}
+						{% endif %}
+
+						{% if app.session.get('ptoCliente') != null %}
+							{% set ptoCliente = app.session.get('ptoCliente') %}
+							<div class="sf-toolbar-block">
+								<div class="sf-toolbar-icon">
+									<a href="{{ path('infopunto_show',{'id':ptoCliente.id , 'rol' : 'Cliente' }) }}">
+										<span>
+											<img title="Ver Punto" width="13" height="28" src="{{ asset('public/images/toolbar/puntos.png')}}">
+											<span class="sf-toolbar-info-piece-additional-detail sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+												{{ ptoCliente.login }}
+											</span>
+										</span>
+									</a>
+								</div>
+								<div class="sf-toolbar-info">
+									<div class="sf-toolbar-info-piece">
+										<strong>Login</strong>
+										<span id="ptoClienteLogin" class="sf-toolbar-info-piece-additional-detail sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+											{{ ptoCliente.login }}
+										</span>
+										<button id="cp_btn" class="btn-copy">Copiar</button>
+										<div id="snackbar">Copiado al portapapeles</div>
+									</div>
+									<div class="sf-toolbar-info-piece">
+										<strong>Punto Cobertura</strong>
+										<span>{{ ptoCliente.cobertura }}</span>
+									</div>
+									<div class="sf-toolbar-info-piece">
+										<strong>Tipo Negocio</strong>
+										<span>{{ ptoCliente.tipo_negocio }}</span>
+									</div>
+									<div class="sf-toolbar-info-piece">
+										<strong>Tipo Ubicacion</strong>
+										<span>{{ ptoCliente.tipo_ubicacion }}</span>
+									</div>
+									<div class="sf-toolbar-info-piece">
+										<strong>Direccion</strong>
+										<span>{{ ptoCliente.direccion }}</span>
+									</div>
+									<div class="sf-toolbar-info-piece">
+										<strong>Descripcion</strong>
+										<span>{{ ptoCliente.descripcion }}</span>
+									</div>
+									<div class="sf-toolbar-info-piece">
+										<strong>Estado</strong>
+										<span>{{ ptoCliente.estado }}</span>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+
+						{% if app.session.get('prefijoEmpresa') == 'TN' %}
+
+							{% if app.session.get('contactosPunto') != null %}
+								{% set contactosPunto = app.session.get('contactosPunto') %}
+								<div class="sf-toolbar-block">
+									<div class="sf-toolbar-icon">
+										<a href="#">
+											<img title="contactosPunto" width="21" height="28" src="{{ asset('public/images/toolbar/contactos.png')}}">
+											<span class=" sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+												Contactos Punto
+											</span>
+										</a>
+									</div>
+									<div class="sf-toolbar-info">
+
+										{% for contacto in contactosPunto %}
+											<div class="sf-toolbar-info-piece" style="border-bottom : 1px dotted #4F4F4E;padding-bottom:5px">
+												<div class="sf-toolbar-info-piece">
+													<strong>{{ contacto.nombres | default('sin datos') }}:</strong>
+													<span>{{ contacto.descripcionRol | default('sin datos') }}</span>
+												</div>
+												{% if app.session.get('formasContactoPunto') != null %}
+													{% set formasContactoPunto = app.session.get('formasContactoPunto') %}
+
+													{% for formaContactoPunto in formasContactoPunto %}
+														{% if contacto.idPersona == formaContactoPunto.idPersona %}
+															<div class="sf-toolbar-info-piece">
+																<strong>{{ formaContactoPunto.formaContacto | default('sin datos') }}:</strong>
+																<span>{{ formaContactoPunto.valor | default('sin datos') }}</span>
+															</div>
+														{% endif %}
+													{% endfor %}
+												{% endif %}
+											</div>
+										{% endfor %}
+
+									</div>
+								</div>
+							{% endif %}
+
+						{% else %}
+							{% if app.session.get('puntoContactos') != null %}
+								{% set clienteContactos = app.session.get('puntoContactos') %}
+								<div class="sf-toolbar-block">
+									<div class="sf-toolbar-icon">
+										<a href="#">
+											<img title="contactos" width="21" height="28" src="{{ asset('public/images/toolbar/contactos.png')}}">
+											<span class=" sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}} sf-toolbar-info-piece-additional-detail">
+												Formas Contacto Punto
+											</span>
+										</a>
+									</div>
+									<div class="sf-toolbar-info">
+										<table class="tabla-forma-contacto">
+											<tbody>
+												<tr>
+													<th>
+														<strong>Tipo contacto</strong>
+													</th>
+													<th>
+														<strong>Valor</strong>
+													</th>
+													<th>
+														<strong>Usuario</strong>
+													</th>
+													<th>
+														<strong>Ultima modificación</strong>
+													</th>
+												</tr>
+												{% set numContactosFijos = 0 %}
+												{% for contacto in clienteContactos %}
+													{% if contacto.formaContacto == 'Telefono Fijo' %}
+														{% if numContactosFijos <=10 %}
+															<tr>
+																<td style="font-weight:bold;">{{ contacto.formaContacto | default('sin datos') }}</td>
+																<td>{{ contacto.valor | default('sin datos') }}</td>
+																<td>{{ contacto.usrCreacion | default ("N/A") }}</td>
+																<td>{{ contacto.feCreacion | date("d/m/y H:i:s") | default ("sin datos") }}</td>
+															</tr>
+															{% set numContactosFijos = numContactosFijos + 1 %}
+														{% endif %}
+													{% else %}
+														<tr>
+															<td style="font-weight:bold;">{{ contacto.formaContacto | default('sin datos') }}</td>
+															<td>{{ contacto.valor | default('sin datos') }}</td>
+															<td>{{ contacto.usrCreacion | default ("N/A") }}</td>
+															<td>{{ contacto.feCreacion | date("d/m/y H:i:s") | default ("sin datos") }}</td>
+														</tr>
+													{% endif %}
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							{% endif %}
+						{% endif %}
+
+						{% if app.session.get('serviciosPunto') != null %}
+							<div class="sf-toolbar-block">
+								<div class="sf-toolbar-icon">
+									<a href="{{ path('servicio') }}">
+										<img title="Ver Info Tecnica" width="20" height="28" src="{{ asset('public/images/toolbar/servicios.png')}}" alt="Database">
+
+										{% if app.session.get('numServicios') == 'Servicio Consultado por Resumen' %}
+											<span class="sf-toolbar-info-piece-additional-detail">
+												Servicio Consultado
+											</span>
+										{% else %}
+											<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+												{{ app.session.get('numServicios')}}
+											</span>
+											<span class="sf-toolbar-info-piece-additional-detail">
+												Servicios
+											</span>
+										{% endif %}
+
+									</a>
+								</div>
+								<div class="sf-toolbar-info">
+									{% for servicio in app.session.get('serviciosPunto')  %}
+										<div class="sf-toolbar-info-piece">
+											<strong>{{ servicio.nombre }}</strong>
+											<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+												{{ servicio.estado }}
+											</span>
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						{% endif %}
+
+						{% if app.session.get('datosFinancierosPunto') != null %}
+							{% set saldoCliente = app.session.get('datosFinancierosPunto').saldoCliente %}
+							{% set puntosFacturacion = app.session.get('datosFinancierosPunto').puntosFacturacion %}
+
+							{% if app.session.get('datosFinancierosPunto').totalPuntos is defined %}
+								{% set totalPuntos = app.session.get('datosFinancierosPunto').totalPuntos %}
+							{% endif %}
+
+							<div class="sf-toolbar-block">
+								<div class="sf-toolbar-icon">
+									<a href="{{ path('reportes_estado_cuenta_pto_cliente') }}">
+										<img title="Ver estado de Cuenta" width="20" height="28" src="{{ asset('public/images/toolbar/saldo.png')}}" alt="Database">
+										<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+											{{ saldoCliente }}
+										</span>
+										<span class="sf-toolbar-info-piece-additional-detail">
+											Saldo
+										</span>
+									</a>
+								</div>
+								<div class="sf-toolbar-info {{puntosFacturacion|length > 2 ? 'overflowSaldo':''}} ">
+									{#<div class="sf-toolbar-info-piece">
+																					  <strong>Saldo</strong>
+																					  <span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+																					      {{ app.session.get('saldoCliente')}}
+																					  </span>
+																				      </div>
+																				      #}
+									{#<div class="sf-toolbar-info-piece">
+																					  <strong>Facturas Abiertas</strong>
+																					  <span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+																					      {{ app.session.get('facturasAbiertasCliente')}}
+																					  </span>
+																				      </div>
+																				      #}
+										{% for puntoFacturacion in puntosFacturacion %}
+
+
+											<div class="sf-toolbar-info-piece" style="border-bottom : 1px dotted #4F4F4E;padding-bottom:5px"> <strong>Pto Facturacion:</strong>
+											{% if puntoFacturacion.id is defined %}
+												<a href="#" onclick="setPuntoSesionById({{puntoFacturacion.id}});">
+													<strong style="text-align:center" class="sf-toolbar-status sf-toolbar-status-red">
+														{{ puntoFacturacion.login | default('sin datos') }}
+													</strong>
+												</a>
+											{% else %}
+												<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">
+													{{ puntoFacturacion.login | default('sin datos') }}
+												</span>
+											{% endif %}
+											<br>
+											<strong>Saldo:</strong>
+											<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ puntoFacturacion.saldo | default('sin datos') }}</span>
+											<br>
+											<strong>Facturas Abiertas:</strong>
+											<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ puntoFacturacion.numFacturasAbiertas | default('sin datos') }}</span>
+											{% if app.session.get('prefijoEmpresa') == 'MD' or app.session.get('prefijoEmpresa') == 'EN' %}
+												{% if puntoFacturacion.strValor == 'S' %}
+													<br>
+													<strong>Total Diferido:</strong>
+													<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ puntoFacturacion.fltTotalDiferido | default('sin datos') }}</span>
+													<br>
+													<strong>Diferido Pagado:</strong>
+													<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ puntoFacturacion.fltDiferidoPagado | default('sin datos') }}</span>
+													<br>
+													<strong>Valor Cuota Mensual:</strong>
+													<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ puntoFacturacion.fltDiferidoPorVencer | default('sin datos') }}</span>
+													<br>
+													<strong>Diferido Impago:</strong>
+													<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ puntoFacturacion.fltDiferidoVencido | default('sin datos') }}</span>
+													<br>
+													<strong>Saldo por Generar:</strong>
+													<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ puntoFacturacion.fltSaldoPorDiferir | default('sin datos') }}</span>
+												{% endif %}
+											{% endif %}
+											{% if app.session.get('prefijoEmpresa') == 'MD' or app.session.get('prefijoEmpresa') == 'EN' %}
+												<br>
+												<strong>Estado:</strong>
+												<span class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">{{ puntoFacturacion.estado | default('sin datos') }}</span>
+												<br>
+											{% endif %}
+										</div>
+
+
+									{% endfor %}
+
+									{% if app.session.get('prefijoEmpresa') == 'MD' or app.session.get('prefijoEmpresa') == 'EN' %}
+										{% if totalPuntos is defined and totalPuntos > 0   %}
+											<span id="ver_mas" class="sf-toolbar-status sf-toolbar-status-label">Cliente tiene
+												{{totalPuntos | default('0') }}
+												login más con deuda</span>
+										{% endif %}
+									{% endif %}
+
+								</div>
+							</div>
+						{% endif %}
+
+						{#
+												                <div class="sf-toolbar-block">
+												     <div class="sf-toolbar-icon">        <a href="/_profiler/phpinfo">
+												            <img width="26" height="28" src="data:image/png;base64,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" alt="PHP">
+												        </a>
+												    </div>
+												     <div class="sf-toolbar-info">        <div class="sf-toolbar-info-piece sf-toolbar-info-php"><strong>PHP</strong><span>5.3.26</span></div><div class="sf-toolbar-info-piece sf-toolbar-info-php-ext"><strong>PHP Extensions</strong><span class="sf-toolbar-status sf-toolbar-status-red">xdebug</span><span class="sf-toolbar-status sf-toolbar-status-green">accel</span></div><div class="sf-toolbar-info-piece"><strong>PHP SAPI</strong><span>apache2handler</span></div>    </div>
+												</div>
+												
+												                                        <div class="sf-toolbar-block">
+												     <div class="sf-toolbar-icon">        <a href="/_profiler/5533bb?panel=request">        <img width="28" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAQAAADYBBcfAAACvElEQVR42tVTbUhTYRTerDCnKVoUUr/KCZmypA9Koet0bXNLJ5XazDJ/WFaCUY0pExRZXxYiJgsxWWjkaL+yK+po1gjyR2QfmqWxtBmaBtqWGnabT++c11Fu4l/P4VzOPc95zoHznsNZodIbLDdRcKnc1Bu8DAK45ZsOnykQNMopsNooLxCknb0cDq5vml9FtHiIgpBR0R6iihYyFMTDt2Lg56ObPkI6TMGXSof1EV67IqCwisJSWliFAG/E0CfFIiebdNypcxi/1zgyFiIiZ3sJQr0RQx5frLa6k7SOKRo3oMFNR5t62h2rttKXEOKFqDCxtXNmmBokO2KKTlp3IdWuT2dYRNGKwEXEBCcL172G5FG0aIxC0kR9PBTVH1kkwQn+IqJnCE33EalVzT9GJQS1tAdD3CKicJYFrxqx7W2ejCEdZy1FiC5tZxHhLJKOZaRdQJAyV/YAvDliySALHxmxR4Hqe2iwvaOR/CEuZYJFSgYhVbZRkA8KGdEktrqnqra90NndCdkt77fjIHIhexOrfO6O3bbbOj/rqu5IptgyR3sU93QbOYhquZK4MCDp0Ina/PLsu5JvbCTRaapUdUmIV/RzoMdsk/0hWRNdAvKOmvqlN0drsJbJf1P4YsQ5lGrJeuosiOUgbOC8cto3LfOXTdVd7BqZsQKbse+0jUL6WPcesqs4MNSUTQAxGjwFiC8m3yzmqwHJBWYKBJ9WNqW/dHkpU/osch1Yj5RJfXPfSEe/2UPsN490NPfZG5CKyJmcV5ayHyzy7BMqsXfuHhGK/cjAIeSpR92gehR55D8TcQhDEKJwytBJ4fr4NULvrEM8NszfJPyxDoHYAQ1oPCWmIX4gifmDS/DV2DKeb25FHWr76yEG7/9L4YFPeiQQ4/8LkgJ8Et+NncTCsYqzXAEXa7CWdPZzGWdlyV+vST0JanfPvwAAAABJRU5ErkJggg==" alt="Request">
+												        <span title="OK" class="sf-toolbar-status sf-toolbar-status-{{app.session.get('modulo_activo') | lower}}">200</span>
+												        <span class="sf-toolbar-status sf-toolbar-info-piece-additional">                                <span class="sf-toolbar-info-class sf-toolbar-info-with-next-pointer"><abbr title="telconet\seguridadBundle\Controller\DefaultController">DefaultController</abbr></span>
+												            <span onclick="" class="sf-toolbar-info-method">
+												                menuAction
+												            </span>
+												            </span>
+												        <span class="sf-toolbar-info-piece-additional-detail">on <i>menu_modulo</i></span>
+												    </a>
+												    </div>
+												     <div class="sf-toolbar-info">        <div class="sf-toolbar-info-piece"><strong>Status</strong><span class="sf-toolbar-status sf-toolbar-status-green">200</span> OK
+												            </div><div class="sf-toolbar-info-piece"><strong>Controller</strong><span class="sf-toolbar-info-class sf-toolbar-info-with-next-pointer"><abbr title="telconet\seguridadBundle\Controller\DefaultController">DefaultController</abbr></span><span onclick="" class="sf-toolbar-info-method">
+												                menuAction
+												            </span></div><div class="sf-toolbar-info-piece"><strong>Route name</strong><span>menu_modulo</span></div><div class="sf-toolbar-info-piece"><strong>Has session</strong><span>yes</span></div>    </div>
+												</div>
+												
+												            
+												            
+												                
+												                                <div class="sf-toolbar-block">
+												     <div class="sf-toolbar-icon">        <a href="/_profiler/5533bb?panel=time">        <img width="16" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAcCAYAAABoMT8aAAABqUlEQVR42t2Vv0sCYRyHX9OmEhsMx/YKGlwLQ69DTEUSBJEQEy5J3FRc/BsuiFqEIIcQIRo6ysUhoaBBWhoaGoJwiMJLglRKrs8bXgienmkQdPDAwX2f57j3fhFJkkbiPwTK5bIiFoul3kmPud8MqKMewDXpwuGww+12n9hsNhFnlijYf/Z4PDmO45Yxo+10ZFGTyWRMEItU6AdCx7lczkgd6n7J2Wx2xm63P6jJMk6n80YQBBN1aUDv9XqvlAbbm2LE7/cLODRB0un0VveAeoDC8/waCQQC18MGQqHQOcEKvw8bcLlcL6TfYnVtCrGRAlartUUYhmn1jKg/E3USjUYfhw3E4/F7ks/nz4YNFIvFQ/ogbUYikdefyqlU6gnuOg2YK5XKvs/n+xhUDgaDTVEUt+HO04ABOBA5isViDTU5kUi81Wq1AzhWMEkDGmAEq2C3UCjcYXGauDvfEsuyUjKZbJRKpVvM8IABU9SVX+cxYABmwIE9cFqtVi9xtgvsC2AHbIAFoKey0gdlHEyDObAEWLACFsEsMALdIJ80+dK0bTS95v7+v/AJnis0eO906QwAAAAASUVORK5CYII=" alt="Time">
+												        <span>1747 ms</span>
+												    </a>
+												    </div>
+												     <div class="sf-toolbar-info">        <div class="sf-toolbar-info-piece">
+												            <strong>Total time</strong>
+												            <span>1747 ms</span>
+												        </div>
+												    </div>
+												</div>
+												
+												#}
+
+
+						<a onclick="
+														            var p = this.parentNode;
+														            p.style.display = 'none';
+														            (p.previousElementSibling || p.previousSibling).style.display = 'none';
+														            document.getElementById('sfMiniToolbar-5533bb').style.display = 'block';
+														        " title="Close Toolbar" class="hide-button"></a>
+					</div>
+					<!-- END of Symfony2 Web Debug Toolbar -->
+
+					<style>
+						#snackbar {
+							visibility: hidden;
+							min-width: 150px;
+							margin-left: -125px;
+							background-color: #333;
+							color: #fff;
+							text-align: center;
+							border-radius: 4px;
+							padding: 9px;
+							position: fixed;
+							z-index: 1;
+							left: 50%;
+							bottom: 50px;
+							font-size: 12px
+						}
+						#snackbar.show {
+							visibility: visible;
+							-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+							animation: fadein 0.5s, fadeout 0.5s 2.5s
+						}
+						@-webkit-keyframes fadein {
+							from {
+								bottom: 0;
+								opacity: 0
+							}
+							to {
+								bottom: 50px;
+								opacity: 1
+							}
+						}
+						@keyframes fadein {
+							from {
+								bottom: 0;
+								opacity: 0
+							}
+							to {
+								bottom: 50px;
+								opacity: 1
+							}
+						}
+						@-webkit-keyframes fadeout {
+							from {
+								bottom: 50px;
+								opacity: 1
+							}
+							to {
+								bottom: 0;
+								opacity: 0
+							}
+						}
+						@keyframes fadeout {
+							from {
+								bottom: 50px;
+								opacity: 1
+							}
+							to {
+								bottom: 0;
+								opacity: 0
+							}
+						}
+						.btn-copy {
+							-moz-box-shadow: inset 0 1px 0 0 #fff;
+							-webkit-box-shadow: inset 0 1px 0 0 #fff;
+							box-shadow: inset 0 1px 0 0 #fff;
+							background: -webkit-gradient(linear,left top,left bottom,color-stop(0.05,#fff),color-stop(1,#f6f6f6));
+							background: -moz-linear-gradient(top,#fff 5%,#f6f6f6 100%);
+							background: -webkit-linear-gradient(top,#fff 5%,#f6f6f6 100%);
+							background: -o-linear-gradient(top,#fff 5%,#f6f6f6 100%);
+							background: -ms-linear-gradient(top,#fff 5%,#f6f6f6 100%);
+							background: linear-gradient(to bottom,#fff 5%,#f6f6f6 100%);
+							filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0);
+							background-color: #fff;
+							-moz-border-radius: 6px;
+							-webkit-border-radius: 6px;
+							border-radius: 6px;
+							border: 1px solid #dcdcdc;
+							display: inline-block;
+							cursor: pointer;
+							color: #666;
+							font-family: Arial;
+							font-size: 9px;
+							padding: 3px 8px;
+							text-decoration: none;
+							text-shadow: 0 1px 0 #fff;
+							margin-left: 5px
+						}
+						.btn-copy:hover {
+							background: -webkit-gradient(linear,left top,left bottom,color-stop(0.05,#f6f6f6),color-stop(1,#fff));
+							background: -moz-linear-gradient(top,#f6f6f6 5%,#fff 100%);
+							background: -webkit-linear-gradient(top,#f6f6f6 5%,#fff 100%);
+							background: -o-linear-gradient(top,#f6f6f6 5%,#fff 100%);
+							background: -ms-linear-gradient(top,#f6f6f6 5%,#fff 100%);
+							background: linear-gradient(to bottom,#f6f6f6 5%,#fff 100%);
+							filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff', GradientType=0);
+							background-color: #f6f6f6
+						}
+						.btn-copy:active {
+							position: relative;
+							top: 1px
+						}
+					</style>
+					<script>
+						try {
+document.getElementById("cp_btn").addEventListener("click", function () {
+document.getElementById("ptoClienteLogin");
+var e = document.getElementById("ptoClienteLogin"),
+t = document.createElement("textarea");
+t.value = e.textContent.trim(),
+document.body.appendChild(t),
+t.select(),
+document.execCommand("Copy"),
+t.remove();
+var n = document.getElementById("snackbar");
+n.className = "show",
+setTimeout(function () {
+n.className = n.className.replace("show", "")
+}, 2e3)
+});
+
+
+} catch (error) {}
+					</script>
+				</div>
+			{% endif %}
