@@ -1,0 +1,21 @@
+# RESTful Web Services: anidados en /rs
+
+rs_comercial:
+  resource: @comercialBundle/Resources/config/restfulws.yml
+  prefix:   /comercial
+
+rs_financiero:
+  resource: @financieroBundle/Resources/config/restfulws.yml
+  prefix:   /financiero
+
+rs_seguridad:
+  resource: @seguridadBundle/Resources/config/restfulws.yml
+  prefix:   /seguridad
+  
+rs_tecnico:
+  resource: @tecnicoBundle/Resources/config/restfulws.yml
+  prefix:   /tecnico  
+  
+rs_soporte:
+  resource: @soporteBundle/Resources/config/restfulws.yml
+  prefix:   /soporte

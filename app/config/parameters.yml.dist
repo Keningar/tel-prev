@@ -1,0 +1,841 @@
+parameters:
+##########################
+## EJECUCION DE SCRIPTS ##
+##########################
+    path_telcos: /var/www/
+    path_parameters: /home/telcos/app/config/parameters.yml
+    host: dev-telcos-developer.telconet.ec
+    host_scripts: dev-telcos-developer.telconet.ec
+    host_solicitudes: 'dev-telcos-developer.telconet.ec'
+    #Define la ruta donde se sube el archivo que envia GIS con la informacion a Subir
+    ruta_uploadDataGis: 'telcos/web/public/uploads/'
+    #Define la ruta donde se crear el reporte que sera enviado a GIS
+    ruta_creaExcelDataGis: '/home/telcos/web/public/uploads/'
+    #Parametro donde se guarda logs de errores
+    general.path.errorLog: 'telcos/web/public/uploads/log/'
+###############
+## BD TELCOS ##
+###############
+    database_driver:   oci8
+    database_host:
+    database_port:     '1521'
+    database_name:
+    database_service:  false
+    database_dsn:
+
+    user_comercial:   DB_COMERCIAL
+    passwd_comercial: DB_COMERCIAL
+
+    user_financiero:     DB_FINANCIERO
+    passwd_financiero: DB_FINANCIERO
+
+    user_infraestructura:   DB_INFRAESTRUCTURA
+    passwd_infraestructura: DB_INFRAESTRUCTURA
+
+    user_comunicacion:   DB_COMUNICACION
+    passwd_comunicacion: DB_COMUNICACION
+
+    user_seguridad:   DB_SEGURIDAD
+    passwd_seguridad: DB_SEGURIDAD
+
+    user_general:   DB_GENERAL
+    passwd_general: DB_GENERAL
+
+    user_soporte:   DB_SOPORTE
+    passwd_soporte: DB_SOPORTE
+
+    user_firmaelect: DB_FIRMAELECT
+    passwd_firmaelect: DB_FIRMAELECT
+
+    user_bifinanciero: BI_FINANCIERO
+    passwd_bifinanciero: BI_FINANCIERO
+
+    user_sftp:   DB_SFTP
+    passwd_sftp: Mtuq34_3
+
+    user_documental: DB_DOCUMENTAL
+    passwd_documental: DB_DOCUMENTAL
+
+    user_comprobantes:  DB_COMPROBANTES
+    passwd_comprobantes: DB_COMPROBANTES
+
+############
+## BD NAF ##
+############
+    database_driver_naf:   oci8
+    database_host_naf:
+    database_port_naf:     '1521'
+    database_name_naf:
+    database_service_naf:  false
+    database_dsn_naf:
+
+    user_naf_no:     NAF47_TNET
+    passwd_naf_no:   NAF47_TNET
+
+    user_naf:     NAF47_TNET
+    passwd_naf:   NAF47_TNET
+############################
+## Aplicativos Networking ##
+############################
+#telcos aaaa
+    database_driver_aaaa: pdo_mysql
+    database_name_aaaa: nombreBD
+    database_host_aaaa: hostBD
+    database_port_aaaa: puertoBD
+    user_aaaa: usuarioConeccion
+    passwd_aaaa: passwordConeccion
+    encode_key_aaaa: encodeKey
+#telcos tacacs
+    database_driver_tacacs: pdo_mysql
+    database_name_tacacs: nombreBD
+    database_host_tacacs: hostBD
+    database_port_tacacs: puertoBD
+    user_tacacs: usuarioConeccion
+    passwd_tacacs: passwordConeccion
+#telcos nmsbackbone
+    database_driver_nmsbackbone: pdo_mysql
+    database_name_nmsbackbone: nombreBD
+    database_host_nmsbackbone: hostBD
+    database_port_nmsbackbone: puertoBD
+    user_nmsbackbone: usuarioConeccion
+    passwd_nmsbackbone: passwordConeccion
+#########
+## SSO ##
+#########
+    gateway_login_url: https://127.0.0.1/josso/signon/login.do
+    gateway_logout_url: https://127.0.0.1/josso/signon/logout.do
+    service_endpoint_url: https://127.0.0.1
+    proxy_host:
+    proxy_port:
+    proxy_username:
+    proxy_password:
+    success_signin_url: inicio
+    success_signout_url: inicio
+    security_check_module: check
+#################
+## SSO CANALES ##
+#################
+    gateway_login_url_canales: https://127.0.0.1/josso/signon/login.do
+    gateway_logout_url_canales: https://127.0.0.1/josso/signon/logout.do
+    service_endpoint_url_canales: https://127.0.0.1
+    proxy_host_canales:
+    proxy_port_canales:
+    proxy_username_canales:
+    proxy_password_canales:
+    success_signin_url_canales: inicio
+    success_signout_url_canales: inicio
+    security_check_module_canales: check
+    sso_ips_canales:        # Direcciones IP de Distribuidores (una en cada linea)
+        - 256.256.256.256   # Direccion IP no existente, necesaria para que el arreglo quede definido
+        - 127.1.1.1         # Direccion IP Publica Distribuidor X
+###################
+## PAGO EN LINEA ##
+###################
+    financiero.InfoPagoLineaWesternUnionWS.empresaCod: '18'
+    financiero.path.pagoLineaLog: telcos/app/logs/PagosLinea
+    financiero.pagoLinea.asunto.reverso: 'Reverso de pago ${strSecuencialRecaudador}'
+    financiero.pagoLinea.tipoDocMigra.cont: 'M_DEB,M_ANT'
+##########
+## SMTP ##
+##########
+    mailer_transport: smtp
+    mailer_host: sissmtp-dev.telconet.ec
+    mailer_encryption: ssl
+    mailer_port: 25
+    mailer_user:
+    mailer_password:
+    mailer_send: false
+
+#############
+## LDAP MD ##
+############
+    #Bandera para bloquear ejecución de procesos ldap md en ambientes de test y desarrollo
+    ldap_execute: S
+
+    locale: en
+#########################
+## KEY ENCRYPT DECRYPT ##
+#########################
+    secret: ThisTokenIsNotSoSecretChangeIt
+#######################
+## WS TOKEN SECURITY ##
+#######################
+    seguridad.token_generate_url: https://127.0.0.1/url/webservice
+    seguridad.token_validate_url: https://127.0.0.1/url/webservice
+    seguridad.token_validate_generate_url: https://127.0.0.1/url/webservice
+    seguridad.token_only_url: http://127.0.0.1/url/webservice
+    seguridad.token_expired: http://127.0.0.1/url/webservice
+    seguridad.token_mail_error:
+       - sistemas-developer@telconet.ec
+    seguridad.token_ssl_verify: false
+    seguridad.token_authentication_url: http://test-apps.telconet.ec/ws/token-security/rest/token/authentication
+    seguridad.token_username_telcos: TELCOS
+    seguridad.token_password_telcos: 2345
+    seguridad.token_source_telcos: TELCOS
+
+##################################
+## WS COMPROBANTES ELECTRONICOS ##
+##################################
+    user_ws_fact_electronica: test
+    passwd_ws_fact_electronica: test
+    url_wsdl_ws_fact_electronica: http://172.0.0.1/url/webservice?wsdl
+    name_space_ws_fact_electronica: http://ws.name.space/
+###############
+## WS MCAFEE ##
+###############
+    url_wsdl_mcafee:  http://127.0.0.1/url/webservice?wsdl
+###################
+## WS NETWORKING ##
+###################
+    #Indicado para ejecutar comandos en WS , si es "N" solo devuelve informacion de comandos a ejecutar
+    ws_networking_scripts_ejecuta : N
+    #Indicado por NW para especificar que tipo de ejecucion se realiza en el WS
+    ws_networking_scripts_tipo_ejecucion : test
+    #Bandera para solicitar si se realiza o no peticion hacia el WS a nivel de telcos
+    networking_scripts_ambiente_ejecuta : N
+    #Bandera que determina si es necesario ejecutar configuracion de BW en el concentrador
+    ejecuta_script_en_concentrador : N
+    #Url Ws
+    ws_networking_scripts_url : https://127.0.0.1/url/webservice
+    #Ejecuciones tecnicas
+    cantidad_intentos: 3
+    segundos_sleep : 10
+####################################
+# Send SMS
+####################################
+    #Parámetros para enviar SMS mediante REST 2016-04-27 12:00 Duval Medina
+    #Origen para Requerimientos
+    comunicacion.sms_source_origen: SOURCESMSPROD
+    comunicacion.sms_source_password: CLAVESMSPROD
+    #Ruta del WS para envio de SMS
+    comunicacion.sms_url: http://url-prod/ws/gateway-sms/rest/sms/
+    comunicacion.sms_url_ruta_envio: send
+    comunicacion.sms_url_ruta_estadisticas: statistics
+    comunicacion.sms_url_ruta_reporte: report
+    #Emails para notificar errores, se muestra valores por defecto
+    comunicacion.sms_mail_error:
+        -  sistemas-developer@telconet.ec
+    #True por defecto, usar false solo si se desea probar contra un servidor sin certificado SSL valido
+    comunicacion.sms_ssl_verify: false
+####################################
+# Portal Cautivo
+####################################
+    wifi.ws_cargausuarios_url: http://url-prod/ws/portalcautivo/rest/clientes/cargadeusuarios
+    wifi.ws_cambiarestadousuarios_url: http://url-prod/ws/portalcautivo/rest/clientes/cambiarestadousuarios
+    wifi.ws_cargausuarios_clave: CLAVEWSPROD
+    wifi.CURLOPT_SSL_VERIFYPEER: false
+    wifi.ws_cert_netlifezone:  https://soc.i.telconet.net/ws/fortiauthenticator_admin.json
+
+############################
+## Contrato Digital ##
+############################
+# Parametros de conexion para WebService de Contrato Digital
+    ws_contrato_digital_url : http://IP-CERTIFICACION-DOCUMENTOS/ws/certificaciondocumentos/rest/procesar/procesar
+    ws_contrato_digital_timeout : 200000
+    ws_contrato_digital_status_ok : 200
+    ws_contrato_digital_status_error : 500
+    ws_contrato_digital_ruta_doc_cliente : D:/docs/cliente
+    ws_contrato_digital_id : 18
+    ws_contrato_digital_password : 12345
+    ws_contrato_digital_op_crear : 1
+    ws_contrato_digital_op_documentar : 2
+    ws_contrato_digital_op_firmar : 3
+    contrato_digital_ruta : telcos/web/public/uploads/documentos/
+    ws_contrato_digital_max_time : 10
+    contrato_digital_mail_envio_pin : rmramos@netlife.net.ec
+
+###########################
+#### TM OPERACIONES  ####
+###########################
+    url_web_service_auth: https://apps.telconet.ec/ws/authentication/tmp/rest/authentication/post
+    url_web_service_auth_nueva: http://172.24.15.97:1080/ldap/api/v1
+    bandera_web_service_auth: S
+
+####################################
+# OFFICE 365 URL
+####################################
+
+    tecnico.ws_office365_url: https://intcomex-prod.apigee.net/v1/
+    tecnico.ws_office365_ssl_verify: false
+
+####################################
+# LDAP URL
+####################################
+    tecnico.ws_ldap_url: http://url-prod/ws/rest/procesar
+    seguridad.ws_tn_ldap: https://url-prod/ws/gateway-authentication/rest/authentication/login
+
+####################################
+# MIDDLEWARE RDA
+####################################
+    ws_rda_middleware_url :     http://test-middleware.netlife.net.ec/ws/process
+    ws_rda_ambiente :           DEV
+    ws_rda_ejecuta_scripts :    SI
+    ws_rda_tipo_ejecucion :     prod
+    ws_rda_band_ejecuta :       S
+    ws_rda_opcion_confirmacion_middleware: CONFIRMACION_TN
+    ws_rda_sin_espera_respuesta: SI
+    ws_rda_empresas_sin_espera_respuesta: MD
+    ws_rda_connecttimeout_sin_espera_respuesta: 20
+    ws_rda_timeout_sin_espera_respuesta: 25
+    ws_rda_ejecuta_config:      SI
+
+####################################
+# COMERCIAL - SERVICIOS
+####################################
+    comercial.longitud_maxima_descripcion_factura: 300
+
+####################################
+# SERVIDOR DE IMAGENES
+####################################
+    imageServer: http://images.telconet.net
+
+
+###################################
+####  PARAMETRO PARA LOGGEAR  #####
+###################################
+    strWriteLog: 'S'
+
+###########################
+#### PERSONAL EXTERNO  ####
+###########################
+    ws_ldap_personal_externo_url: http://dev-ldap.telconet.ec/ws/rest/procesar
+    seguridad.token_authentication_url: http://test-apps.telconet.ec/ws/token-security/rest/token/authentication
+    seguridad.token_username_telcos: TELCOS
+    seguridad.token_password_telcos: 2345
+    seguridad.token_source_telcos: TELCOS
+    ws_ldap_personal_externo_url: http://dev-ldap.telconet.ec/ws/rest/procesar
+
+####################################
+######## SOPORTE - WS - HAL ########
+####################################
+    ws_hal_confirmaAsignacionAutMpg  : http://hal.telconet.ec:8181/cxf/planificacion/agendarSinSugerir
+    ws_hal_confirmaAsignacionAutHal  : http://hal.telconet.ec:8181/cxf/planificacion/confirmarSugerencia
+    ws_hal_solicitaSugerencia        : http://hal.telconet.ec:8181/cxf/planificacion/solicitarSugerencias
+    ws_hal_confirmaSugerencia        : http://hal.telconet.ec:8181/cxf/planificacion/notificarSeleccionSugerencia
+    ws_hal_solicitaSugerenciaInstalacion : http://hal.telconet.ec:8181/cxf/planificacion/solicitarSugerenciaInstalacion
+    ws_hal_reprogramar_planificacion : http://hal.telconet.ec:8181/cxf/cuadrilla/reprogramarPlanificacion
+    ws_hal_cambio_zona_planificacion : http://hal.telconet.ec:8181/cxf/cuadrilla/cambiarZona
+    ws_hal_validaEnlaceHal           : http://hal.telconet.ec:8181/cxf/coordinador/validarCierreCaso 
+######### NOTIFICACIONES ##########
+    ws_hal_notificaciones_basicas    : http://hal.telconet.ec:8181/cxf/{REPLACE_MODULO}/notificacion
+    ws_hal_notifica_cuadrilla_cambio : http://hal.telconet.ec:8181/cxf/cuadrilla/{REPLACE_METODO}
+    ws_hal_notifica_cambioZona_elemt : http://hal.telconet.ec:8181/cxf/elemento/cambioZona
+    ws_hal_notifica_cambio_horas     : http://hal.telconet.ec:8181/cxf/intervaloDetalle/cambio
+    ws_hal_notifica_elementos_zona   : http://hal.telconet.ec:8181/cxf/zona/notificarAccion
+    ws_hal_notifica_elem_camb_zona   : http://hal.telconet.ec:8181/cxf/elemento/cambioZona
+    ws_hal_notifica_cancelar_sugerencia : http://hal.telconet.ec:8181/cxf/planificacion/cancelarSugerencia
+    ws_hal_agrega_tareas_complentarias  : http://hal.telconet.ec:8181/cxf/planificacion/agregarTareasComplementariasInstalacion
+
+#############
+####Forti####
+#############
+    ws_forti_timeout: 1000
+    ws_forti_url_update: http://test.telconet.net/ws/update_password_fa.json
+    ws_token_generate_url: http://test-apps.telconet.ec/ws/token-security/rest/token/authentication
+    ws_user_app_token: TELCOS
+    ws_password_app_token: 2345
+    ws_nombre_app_token: TELCOS
+    ws_token_ip_url: 172.0.0.1
+    ws_cert_ssl_verify: false
+    ws_token_ssl_verify: false
+
+############################
+### PLANIFICACION MOBILE ###
+############################
+    planificacion.mobile.dias: 15
+    planificacion.mobile.hora_cierre: 14
+
+    contrato_digital_mail_envio_pin : rmramos@netlife.net.ec
+
+############################
+## Planificacion en Linea 1##
+############################
+    planificacion.hora.inicio : 0
+    planificacion.hora.fin : 23
+    planificacion.hora.intervalo : 30
+    planificacion.plantilla.minimohoras : 8
+    planificacion.plantilla.intervalomaximo : 2
+    planificacion.mobile.codFormaContactoSitio: 1-4-7-8-25-26-27-45-212
+
+###################################
+####  PARAMETROS PARA APP TELCOGRAPH  #####
+###################################
+    ws_telcoGraph_url: http://172.30.147.22:80/serTelcosBoc/webresources/entidad.telcoboc/
+
+    #Bandera para bloquear ejecutacion de procesos telcograf tn
+    telcograf_execute: N
+
+
+######## FOX PREMIUM #########
+    fox.producto.nombre_tecnico                    : 'FOXPREMIUM'
+    fox.authorization.multiurn_separator           : '|'
+    fox.authorization.rating_success               : 'G'
+    fox.authorization.rating_error                 : 'G'
+    fox.authorization.ttl_success                  : 86400
+    fox.authorization.ttl_error                    : 3600
+
+    comunicacion.api_sms_url_token: http://test-apps.telconet.ec/ws/token-security/rest/token/authentication
+    comunicacion.api_sms_url_envio: http://api-sms-test.i.telconet.net/rs/sms/ws/rest/enviar
+    comunicacion.api_sms_username: TELCOS_SMS
+    comunicacion.api_sms_password: 2345
+    comunicacion.api_sms_source_name: API-SMS
+    comunicacion.api_sms_username_MD: SMS_MD
+    comunicacion.api_sms_password_MD: tJ72!i69ELy$
+    comunicacion.api_sms_source_name_MD: APP.SMS_MD
+
+    url_notificacion_envio_sms: https://test-extranet.netlife.ec/rs/sms/ws/rest/notificar
+
+    ####################################
+    # WEBSERVICE NETVOICE
+    ####################################
+    ws_netvoice_url :               http://192.168.182.11:8090/ServiciosNetvoice
+    ws_netvoice_ambiente :          DEV
+    ws_netvoice_ejecuta_scripts :   NO
+
+    ruta_cotizaciones_mobile_comercial: '/public/uploads/documentos/cotizaciones/'
+    comercial.cotizacion.grupoproducto : '|NETHOME|'
+    comercial.cotizacion.filtro_maximo_dias : 30
+    ruta_cotizaciones_mobile_comercial: '/public/uploads/documentos/cotizaciones/'
+    ruta_cotizaciones_telcos: 'telcos/web'
+    ruta_imagenes_megadatos : telcos/web/public/images/netlife/
+
+    ws_time_out_comercial : 28800
+
+
+
+####################################
+######## SYS CLOUD CENTER ##########
+####################################
+    ws_sysCloudCenter_url: http://127.0.0.1:80/sysCloudCenter/webresources/entidad.telcoboc/
+    sysCloudCenter_execute: N
+
+
+############################
+#### CONSUMO CLOUDFORMS ####
+############################    
+    cloudforms_webService_url             : http://172.30.210.163:8080/wscloudpublicauiod/webresources/entidad.registrousuario/    
+    cloudforms_webService_ambienteEjecuta : S
+    cloudforms_ruta_archivos              : telcos/web/public/uploads/cloudforms/
+
+####################################
+############ ECUCERT ###############
+####################################
+    ws_cert_ecucert_validate_url: https://soc.i.telconet.net/ws/ecucert_validate
+    ws_cert_ecucert_block_url: https://soc.i.telconet.net/ws/ecucert_block
+    certificado_num_dias_vigencia: 3
+    certificado.ext.archivo: PFX
+    certificado_grupos_pertenencia: ME_PFX_CONTRATO_DIGITAL|APLIC_CONTRATOS|OPE_MEGADATOS
+    ws_security_data.url.certificado: https://wsingresos.securitydata.net.ec/WSCPNatural/rest/UsuarioPKIServicio/usuariosPKI
+    ws_security_data_url: https://wsingresos.securitydata.net.ec/WSCPNatural/rest/UsuarioPKIServicio/usuariosPKI
+    dir_remoto_certificados: /archivo_pfx
+    ruta_certificados_digital: 'telcos/web/public/uploads/documentos/certificados/'
+    ruta_certificados_documentos : telcos/web/public/uploads/documentos/documentacionCertificados/
+    ftp_timeout: 300000
+    ftp_user_certificado: user_ftp
+    ftp_pass_certificado: pass_ftp
+    ftp_host_certificado: host_ftp
+    ftp_port_certificado: 22
+    comercial_depto_log_tn: 131|148
+    comercial_depto_log_md: 359
+    ws_firma_digital: http://192.168.100.7:18083/firmaDigital/procesar
+    certificado_longitud_pass: 12
+    financiero_tipo_factura: 1
+    financiero_tipo_factura_proporcional: 5
+    contrato_digital_permiteAdendum: N
+    contrato_digital_permiteContratoPersonaJuridica: N
+    contrato_digital_permiteCambioFormaPagoAdendum: N
+    comercial_envio_pin_infobip: S
+
+
+####################################
+############ KASPERSKY ###############
+####################################
+    ws_kaspersky_url: http://127.0.0.1/url/webservice
+    #Bandera que determina si es necesario ejecutar las licencias con un correo específico S para pruebas, N para producción
+    ws_kaspersky_execute_correo_test: S
+    ws_kaspersky_correo_test: sistemas-developer@telconet.ec
+
+####################################
+######### PORTAL 3DEYE #############
+####################################
+    3deye.userNetlife: xxxxxx@telconet.ec
+    3deye.passNetlife: xxxxx
+    3deye.apiKey: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    3deye.WsTimeOut: 80
+    ## Rutas ##
+    3deye.urlToken: https://admin-api.3deye.me/v2/token
+    3deye.urlUser: https://admin-api.3deye.me/v2/users
+    3deye.urlRolGetUser: https://admin-api.3deye.me/v2/roles/roleId/users
+    3deye.urlCreateCamaraP2P: https://admin-api.3deye.me/v2/cameras/CreateP2P
+    3deye.urlCreateCamaraONVIF: https://admin-api.3deye.me/v2/cameras/CreateOnvif
+    3deye.urlCreateCamaraGENERIC: https://admin-api.3deye.me/v2/cameras/CreateGeneric
+    3deye.urlValidateOnlineCamara: https://admin-api.3deye.me/v2/cameras/cameraId/state
+    3deye.urlCamaras: https://admin-api.3deye.me/v2/cameras
+    3deye.urlRoles: https://admin-api.3deye.me/v2/roles
+    3deye.urlCamaraRol: https://admin-api.3deye.me/v2/roles/roleId/cameras/cameraId
+    3deye.urlAsignarUserRol: https://admin-api.3deye.me/v2/roles/roleId/users/userId
+    3deye.urlUserById: https://admin-api.3deye.me/v2/users/userId
+
+############################
+######### APINAF #########
+############################    
+    telcoNaf_user: SARH
+    telcoNaf_pass: 12345
+    telcoNaf_url:  http://app-api-naf/rs/naf/ws/rest/telcos
+
+    public_vapid_key: BGi_71070iO5-g-eUhB1qlIjoLvyKqistje-KnetleTGPjkjXRSme1p6UUI6fkovYuaF6D1OOQjpBdNu2Sz6WFM
+    fcm_access_key: AAAAu8ja7-k:APA91bEgiRNI34LbvxDXetFyIrRUbgnXrSCsmvUoQcKje9xaAlNEWhN2-8XMAWSXmRUrGf8VmHpKbX3ZLPxcnWbTHYEk_Fk6RWccbcRhhhVYIJE7SN4Bofjvzs1Yw5qMLE8ePsKnvNeX
+    webpush_agente_fcm_api_key: AIzaSyAKxY-4HTrkH_JQnUn1mlHB_fX8_hEkjow
+    webpush_agente_fcm_auth_domain: telcos-agent-push-noti.firebaseapp.com
+    webpush_agente_database_url: https://telcos-agent-push-noti.firebaseio.com
+    webpush_agente_fcm_project_id: telcos-agent-push-noti
+    webpush_agente_fcm_storage_bucket: telcos-agent-push-noti.appspot.com
+    webpush_agente_fcm_messaging_sender_id: 806528675817
+    webpush_agente_fcm_app_id: 1:806528675817:web:13a7c441bca91b7177a578
+    webpush_agente_fcm_measurement_id: G-JG86K0B1C4
+    webpush_agente_path_icono: /others/telcos/logo.png
+
+############################
+######### TELCOCRM #########
+############################
+    telcoCrm_execute: S
+    ws_telcoCrm_url: https://sites.telconet.ec/TelcoCRM/custom/service/v4_1_custom/rest.php
+
+###########################################
+######  PARAMETROS PARA APP ZABBIX  #######
+###########################################
+    ws_telcoZabbix_url: http://172.24.27.36:8000/ws/rest/pruebas_procesar
+
+################################################
+######### WS - SOLUCION/FACTIBLIDAD DC #########
+################################################
+    ws_solucion_dc     : http://localhost:1603/soluciondc/{endPoint}
+    ws_factibilidad_dc : http://localhost:8083/factibilidaddc/{endPoint}
+    ws_solicitud       : http://localhost:8084/solicitud/{endPoint}
+
+############################
+#### MS-CORE-GEN-NFS #######
+############################
+    ms_nfs: http://192.168.100.62:1603/nfs/procesar
+
+############################################
+############# ms-core-gen-sftp #############
+############################################
+ws_contrato_digital_sftp_descargar: http://172.24.14.44:1610/sftp/descargar
+
+#############################################
+######### ms-comp-contrato-digital  #########
+#############################################
+ws_contrato_digital_sftp_procesar: http://172.24.14.44:1611/contratodigital/procesar 
+ws_ms_creacion_punto_url: http://192.168.100.71:1663/contratodigital/getCreacionPunto
+ws_ms_contrato_digital_url: http://192.168.100.10:1603/contratodigital/
+
+    
+########################################################
+#Parámetro Time out para el consumo de enlaces
+######################################################### 
+    ws_forti_timeout_enlaces : 5000
+
+######## PARAMOUNT #########
+    paramount.producto.nombre_tecnico                    : 'PARAMOUNT'
+
+######## NOGGIN #########
+    noggin.producto.nombre_tecnico                    : 'NOGGIN'
+
+######## ID DE LA EMPRESA MEGADATOS #########
+    idEmpresa_megadatos: 18
+
+####################################################
+############# ms-core-comp-contrato ################
+####################################################
+    ws_ms_crearContrato_url: http://test2-microservicios.telconet.ec/contratodigital/generarContratoOAdendum
+    ws_ms_documentosContrato_url: http://test1-bld8-microservicios.telconet.ec/contrato/verificarDocumentosRequeridos
+
+
+
+#####################################################
+############# ms-core-comp-contrato-pin #############
+#####################################################
+    ws_ms_reenviarPin_url: http://test2-microservicios.telconet.ec/contratodigital/generarPin
+
+####################################################
+############# ms-core-comp-contrato-autorizar ######
+####################################################
+    ws_ms_autorizarContrato_url: http://microservicios.local.com:8090/contratodigital/autorizarContratoOAdendum
+
+############################################
+############# Token Cas ####################
+############################################
+    ws_token_cas_url: http://gw-cas.telconet.ec:9000/token/generar
+    username_cas    : telcos
+    password_cas    : K4cwkmHF$2
+    apiKey_cas      : GMAkWjr2GF9gWZqMsOSs
+
+#    +-------------------------+
+#    | NUEVA API DE NETWORKING |
+#    +-------------------------+
+    api_networking_url:
+        dev:
+            https://test-netdev-api.telconet.ec:8443/api/v1
+        prod:
+            https://netdev-api.telconet.ec/api/v1
+
+    api_networking_mode: prod
+    api_networking_user: app_sistemas
+    api_networking_pass: N6trdV@Ced
+    
+    #############################################
+    ######### ms-core-gen-geografia #############
+    #############################################
+    ws_ms_verificarCatalogo_url: http://test5-microservicios.telconet.ec/geografia/searchGeolocation
+
+######## MS-CORE-TEC-GPS ##########
+    UrlListaUltimoPuntoPor : http://test5-microservicios.telconet.ec/gps/listaUltimoPuntoPor
+
+######## wsNotificacionTraking ##########
+    UrlwsNotificacionTraking : http://mware.netlife.net.ec/process
+
+
+
+    ####################################################
+    ############# ms-comp-pre-factibilidad #############
+    ####################################################
+    ws_ms_gestionaprefactibilidad_url:  http://ms-comp-pre-factibilidad/prefactibilidad/gestionaConsultaPreFactibilidad
+
+    #############################################
+    ######### ms-core-com-persona ###############
+    #############################################
+ 
+    ws_ms_recomendacionPersona_url: http://localhost:1603/persona/personaRecomendacion
+    ws_ms_PersonaTarjetaRecomendada_url: http://localhost:1603/persona/tarjetaRecomendacion
+    ws_ms_PersonaProspecto_url: http://localhost:1603/persona/personaProspecto
+    ws_ms_personaCrearProspecto_url: http://localhost:1603/persona/precliente/crear
+    
+    ws_ms_personaValidarFormaContacto_url: http://localhost:1605/persona/validarFormaContacto
+    ws_ms_representanteLegal_verificar_url: http://localhost:1605/persona/representante/verificar
+    ws_ms_representanteLegal_consultar_url: http://localhost:1605/persona/representante/consultar
+    ws_ms_representanteLegal_actualizar_url: http://localhost:1605/persona/representante/actualizar
+
+    
+#################################
+####  Validar Ip Networking  ####
+#################################
+    url_valida_ip: https://ws-tecnico.telconet.ec/ws/telcos/api/validarSubred
+
+    ############################################################################
+    ####  Ruta(s) de java con el que se requiere ejecutar un componente JAR ####
+    ############################################################################
+    path_java_soporte: /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin/java
+    path_script_java_soporte: /usr/local/bin/jdk1.8.0_202/bin/java
+
+#################################################### 
+############# ms_core_gen_template_engine ########## 
+#################################################### 
+    ms_core_gen_template_engine_url: http://test10-microservicios.telconet.ec/template/plantillas
+ 
+#################################################### 
+############# ms_core_gen_convert_docs ########## 
+#################################################### 
+    ms_core_gen_convert_docs_url: http://test10-microservicios.telconet.ec/convert/convertirHtmlPdf
+
+
+#######################################
+####  Validaciones punto adicional ####
+#######################################
+    ws_ms_validacionesPuntoAdicional_url: http://test5-bld8-microservicios.telconet.ec/cliente/validacionesPuntoAdicional
+
+#######################################
+### Validaciones producto Adicional ###
+#######################################
+    ws_ms_validacionesProdAdicional_url: http://test5-bld8-microservicios.telconet.ec/cliente/validacionesProdAdicional
+
+##########################################
+###### Validaciones cambio plan Up #######
+##########################################
+    ws_ms_validacionesCambioPlanUp_url: http://test5-bld8-microservicios.telconet.ec/cliente/validacionesCambioPlanUp
+
+
+#######################################
+####  url hal planificacion comercial ####
+#######################################
+    planificacion.comercial.url.buscar:  http://192.168.100.71:1603/planificacion/buscar
+    planificacion.comercial.url.intervalos.hal:  http://192.168.100.71:1603/cuadrilla/getIntervalosHal
+    planificacion.comercial.url.planificacion.hal:  http://192.168.100.71:1603/cuadrilla/programarHal
+    planificacion.comercial.url.getCronogramaComercial: http://192.168.100.71:1603/cuadrilla/getCronogramaComercial
+    planificacion.comercial.url.saveCalendario:         http://192.168.100.71:1664/planificacion/saveCalendario
+    planificacion.comercial.url.getRegistroCalendario:  http://192.168.100.71:1664/planificacion/getRegistroCalendario
+    planificacion.comercial.url.inactivarRegistroCalendario: http://192.168.100.71:1664/planificacion/inactivarRegistroCalendario
+        
+#############################################
+######### ms-core-com-persona ###############
+#############################################
+    ws_ms_documento_url: http://192.168.100.10:1603/coredocdocumento/
+
+
+    ws_ms_creacion_punto_url: http://192.168.100.71:1663/contratodigital/getCreacionPunto
+    ws_ms_contrato_digital_url: http://192.168.100.10:1603/contratodigital/
+
+
+############################
+######### ORQUESTADOR #########
+############################
+    orquestador_webservice_url: https://orquestador.telconet.ec/orchestrator/execution/execution/confirmProcess
+
+#########################################
+#### WebService Analitica de camaras ####
+#########################################
+    ws_analitica_camaras_url: https://ai-dev.i.telconet.net/api/v1/cameras/setup/
+    ws_analitica_camaras_token_url: https://ai-dev.i.telconet.net/api/token
+    ws_analitica_camaras_password_token: T51c0$TNsis
+    ws_analitica_camaras_user_token: telcos
+    ws_analitica_camaras_modo: dev # test | prod segun sea el ambiente
+    ws_analitica_camaras_servicio: WS-analytics
+    ####################################### 
+    ####  Correo Resumen Compra ####
+    #######################################
+    ws_ms_resumenCompra_url: http://192.168.155.129:1630/correoResumenCompra/procesar
+    ws_ms_resumenCompra_url_cambio_plan: http://192.168.155.52:1630/correoResumenCompra/procesarCambioPlan
+    ws_ms_resumenCompra_url_aut_desc: http://192.168.155.52:1630/correoResumenCompra/procesarAutDesc
+
+#############################################
+######### ms-core-com-persona ###############
+#############################################
+ 
+    ws_ms_recomendacionPersona_url: http://localhost:1603/persona/personaRecomendacion
+    ws_ms_PersonaTarjetaRecomendada_url: http://localhost:1603/persona/tarjetaRecomendacion
+    ws_ms_PersonaProspecto_url: http://localhost:1603/persona/personaProspecto
+    ws_ms_personaCrearProspecto_url: http://localhost:1603/persona/precliente/crear
+    
+    ws_ms_personaValidarFormaContacto_url: http://localhost:1605/persona/validarFormaContacto
+    ws_ms_representanteLegal_verificar_url: http://localhost:1605/persona/representante/verificar
+    ws_ms_representanteLegal_consultar_url: http://localhost:1605/persona/representante/consultar
+    ws_ms_representanteLegal_actualizar_url: http://localhost:1605/persona/representante/actualizar
+
+####################################################################
+############# Token Cas y Token de Autorizacion ####################
+####################################################################
+    ws_token_autorizacion_url: https://gw-cas.telconet.ec:9000/token/generarAutorizacion
+    
+#######################################################
+############# Extranet TN ################
+######################################################
+    service_target_extranet_tn: https://telconetcontigo.telconet.ec/
+    ws_ms_consultarCuenta_url: https://telconetcontigo.telconet.ec/federated-entity/consultarCuenta
+
+#######################################################
+############# Empleados TN ################
+#######################################################
+    ws_ms_emplados_listar: https://microservicios.telconet.ec/empleados/listarEmpleadosPor
+
+#######################################################
+############# Credenciales regularizacion ################
+#######################################################
+
+    ws_ms_regularizacion_persona: http://192.168.100.232:1604/credencialescomercial/personaRegularizacion
+    ws_ms_generarCredencial: http://192.168.100.232:1604/credencialescomercial/generarLink
+
+
+####################################
+############  WS NOC  ##############
+####################################
+
+    ws_noc_url : https://noc-apps.telconet.ec/ws/rest/procesar/
+
+#############################################
+######### ms-core-com-documento##############
+#############################################
+   ws_ms_politicaencuesta_url: http://192.168.0.105:1603/politicaencuesta/
+
+#######################################################
+############# Empleados TN ################
+#######################################################
+    
+    ws_ms_emplados_listar: https://microservicios.telconet.ec/empleados/listarEmpleadosPor
+
+
+#######################################################
+############# Credenciales prospectos ################
+#######################################################
+
+    ws_ms_forma_contacto_prospecto_guardar: http://192.168.100.232:1604/credencialescomercial/saveContactForm
+    ws_ms_tipo_forma_contacto_prospecto: http://192.168.100.232:1604/credencialescomercial/listFormaContacto
+
+################################
+#### DERECHOS DEL TITULAR ######
+################################ 
+#URL que sirve para guardar la bitacora de los cambios del cliente en el proceso de Derechos del Titular
+    url_web_service_bitacora: http://10.184.97.60:1603/corelog/createEvento
+
+## PRODUCTOS QUE NO GENERAN CREDENCIALES DE ACCESO HBO-MAX, E-LEARN
+    ms_token_security:                  CAMBIARCLAVEPARAGENERARTOKEN
+    ws_ms_generar_token_acceso :        http://localhost:1603/external/security/token/generate
+    url_crear_password_security:        http://localhost:8080/reiniciarContrasenia/?createPasswordHbo&token=
+    url_restablecer_password_security:  http://localhost:8080/reiniciarContrasenia/?createPasswordHbo?token=
+
+#######################################################
+######################## LOPDP ######################## 
+#######################################################
+
+    ms-comp-credenciales-comercial_encrypt: http://192.168.155.135:1605/credencialescomercial/procesarCifradoCliente
+    ms-comp-credenciales-comercial_validar_general: http://192.168.155.135:1605/credencialescomercial/validarGeneralEncrypt
+    ms-comp-credenciales-comercial_validar_usuario: http://192.168.155.135:1605/credencialescomercial/validarClienteTipoUsu
+    ms-comp-credenciales-comercial_unencrypt: http://192.168.155.135:1605/credencialescomercial/procesarDescifradoCliente
+    ms-comp-credenciales-comercial_validar_cifrado: http://192.168.155.135:1605/credencialescomercial/validarClienteEncrypt
+    ms-comp-credenciales-comercial_parametro_whatsapp: http://192.168.155.135:1605/credencialescomercial/obtenerParamWhatsapp
+    ms-comp-credenciales-comercial_envio_url: http://192.168.155.135:1605/credencialescomercial/procesarEnvioLink
+
+    ws_ms_validarNumeroTarjetaCta: http://test4-bld6-microservicios.telconet.ec/contratodigital/validarCuentaBancaria
+    
+
+####################################
+# MS - MODELO PREDICTIVO
+####################################
+    ms_modelo_predictivo_url: http://192.168.155.148:1603/comppredictive/api/consultar
+    
+#######################################################
+############# notification sms ################
+#######################################################   
+    notification.sms_ms_url_send: http://dev3-bld12-microservicios.i.telconet.net/notification/sms/send
+    notification.cod_sms_en_seguimiento: 1004 
+    notification.cod_sms_md_seguimiento: 1006
+    notification.bandera_sms_notificacion: S   
+
+ ##################################################
+ ###########  WS CAMPANIAS NOTI PUSH  #############
+ ##################################################
+    ws_ms_consultarCampania_url: http://mark-comp-campaing:1603/campaing/consultarCampanias
+    ws_ms_Pantallas_url: http://mark-comp-campaing:1603/campaing/consultarPorParametroCab
+    ws_ms_Propiedades_url: http://mark-comp-campaing:1603/campaing/consultarPropiedades
+    ws_ms_EditarCampania_url: http://mark-comp-campaing:1603/campaing/editarCampania 
+    ws_ms_eliminarCampania_url: http://mark-comp-campaing:1603/campaing/eliminarCampania
+    ws_ms_clonarCampania_url: http://mark-comp-campaing:1603/campaing/clonarCampania
+    ws_ms_crearCampania_url: http://mark-comp-campaing:1603/campaing/crearCampania
+
+    
+#######################################################
+############# ms-core-log ################
+#######################################################    
+    ws_ms_listar_log_cliente: http://microservicios.telconet.ec/corelog/listarEvento
+    ws_ms_registrar_log_cliente: http://microservicios.telconet.ec/corelog/createEvento
+
+####################################################
+############# ms-core-obtener-factibilidad #########
+####################################################
+ws_ms_obtenerFactibilidad_url: http://microservicios.telconet.ec/connectivity/obtenerDatosFactibilidad    
+#################################################### 
+############# ms_comp_api_proveedor_mgnt ########## 
+#################################################### 
+    ms_comp_api_proveedor_mgnt_url: http://192.168.100.8:1601/compproveedormgnt/execute
+
+######################################
+####  WEB SERVICE SAFE ENTRY URL  ####
+######################################
+    ws_safe_entry_url_activacion: http://172.24.121.2:80/se/integration/sf/cancellation/activation/point
+    ws_safe_entry_url_creacion: http://172.24.121.2:80/se/integration/sf/record/point
+    
+#######################################
+####  Preplanifica productos CIH ####
+#######################################
+    ws_ms_preplanifica_producto_cih_url: http://IP:PUERTO/contratodigital/preplanificaProductosCIH
+    ws_ms_generaot_producto_cih_url: http://IP:PUERTO/contratodigital/generaOtServiciosCIH
+    ws_ms_reversa_preplanificacion_cih_url: http://IP:PUERTO/contratodigital/reversaPreplanificacionCIH

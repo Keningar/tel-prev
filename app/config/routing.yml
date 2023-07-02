@@ -1,0 +1,90 @@
+# Web Services: no usar routing normal dentro de /ws
+
+ayuda:
+    resource: "@ayudaBundle/Resources/config/routing.yml"
+    prefix:   /ayuda
+
+_besimple_soap:
+    resource: "@BeSimpleSoapBundle/Resources/config/routing/webservicecontroller.xml"
+    prefix:   /ws
+
+_restful_web_services:
+    resource: restfulws.yml
+    prefix:   /rs
+
+search:
+    resource: "@searchBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+noticiasPrincipal:
+    pattern:  /noticias
+    defaults: { _controller: adminBundle:inicio:noticias }   
+    
+noticiaPrincipal:
+    pattern:  /noticia/{id}
+    defaults: { _controller: adminBundle:inicio:noticia }      
+
+root:
+    pattern: /
+    defaults: { _controller: seguridadBundle:Default:menu, modulo:inicio ,opcion_menu:dashboard }
+
+check:
+  pattern: /check
+  defaults: { _controller: TelconetSSOTelconetSSOBundle:Default:check }
+
+_security_logout:
+  pattern: /logout
+  defaults: { _controller: TelconetSSOTelconetSSOBundle:Default:logout }
+
+search_modulo:
+    resource: "@searchBundle/Resources/config/routing.yml"
+    prefix: /search
+
+inicio:
+  resource: "@adminBundle/Resources/config/routing/inicio.yml"
+  prefix: /inicio
+
+soporte:
+  resource: "@soporteBundle/Resources/config/routing.yml"
+  prefix:   /soporte
+
+modulo:
+    pattern: /{modulo}
+    defaults: { _controller: seguridadBundle:Default:menu, modulo:inicio ,opcion_menu:dashboard }
+    
+menu_modulo:
+    pattern: /{modulo}/{opcion_menu}
+    defaults: { _controller: seguridadBundle:Default:menu, [modulo:inicio ,opcion_menu:dashboard] }
+
+comercial:
+    resource: "@comercialBundle/Resources/config/routing.yml"
+    prefix:   /comercial
+
+administracion:
+    resource: "@administracionBundle/Resources/config/routing.yml"
+    prefix:   /administracion
+
+catalogo:
+    resource: "@catalogoBundle/Resources/config/routing.yml"
+    prefix:   /administracion
+
+financiero:
+    resource: "@financieroBundle/Resources/config/routing.yml"
+    prefix:   /financiero
+
+tecnico:
+    resource: "@tecnicoBundle/Resources/config/routing.yml"
+    prefix:   /tecnico
+
+planificacion:
+    resource: "@planificacionBundle/Resources/config/routing.yml"
+    prefix:   /planificacion
+
+comunicaciones:
+    resource: "@comunicacionesBundle/Resources/config/routing.yml"
+    prefix:   /comunicaciones
+
+general:
+    resource: "@generalBundle/Resources/config/routing.yml"
+    prefix:   /general
+
