@@ -1,0 +1,30 @@
+infocontratodatoadicional:
+    pattern:  /
+    defaults: { _controller: "schemaBundle:InfoContratoDatoAdicional:index" }
+
+infocontratodatoadicional_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "schemaBundle:InfoContratoDatoAdicional:show" }
+
+infocontratodatoadicional_new:
+    pattern:  /new
+    defaults: { _controller: "schemaBundle:InfoContratoDatoAdicional:new" }
+
+infocontratodatoadicional_create:
+    pattern:  /create
+    defaults: { _controller: "schemaBundle:InfoContratoDatoAdicional:create" }
+    requirements: { _method: post }
+
+infocontratodatoadicional_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "schemaBundle:InfoContratoDatoAdicional:edit" }
+
+infocontratodatoadicional_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "schemaBundle:InfoContratoDatoAdicional:update" }
+    requirements: { _method: post }
+
+infocontratodatoadicional_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "schemaBundle:InfoContratoDatoAdicional:delete" }
+    requirements: { _method: post }

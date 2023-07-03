@@ -1,0 +1,30 @@
+infocontratoclausula:
+    pattern:  /
+    defaults: { _controller: "schemaBundle:InfoContratoClausula:index" }
+
+infocontratoclausula_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "schemaBundle:InfoContratoClausula:show" }
+
+infocontratoclausula_new:
+    pattern:  /new
+    defaults: { _controller: "schemaBundle:InfoContratoClausula:new" }
+
+infocontratoclausula_create:
+    pattern:  /create
+    defaults: { _controller: "schemaBundle:InfoContratoClausula:create" }
+    requirements: { _method: post }
+
+infocontratoclausula_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "schemaBundle:InfoContratoClausula:edit" }
+
+infocontratoclausula_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "schemaBundle:InfoContratoClausula:update" }
+    requirements: { _method: post }
+
+infocontratoclausula_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "schemaBundle:InfoContratoClausula:delete" }
+    requirements: { _method: post }

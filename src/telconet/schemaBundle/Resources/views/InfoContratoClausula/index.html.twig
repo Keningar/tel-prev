@@ -1,0 +1,49 @@
+<h1>InfoContratoClausula list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Clausulaid</th>
+            <th>Descripcionclausula</th>
+            <th>Fecreacion</th>
+            <th>Usrcreacion</th>
+            <th>Feultmod</th>
+            <th>Usrultmod</th>
+            <th>Estado</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('infocontratoclausula_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.clausulaId }}</td>
+            <td>{{ entity.descripcionClausula }}</td>
+            <td>{% if entity.feCreacion %}{{ entity.feCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.usrCreacion }}</td>
+            <td>{% if entity.feUltMod %}{{ entity.feUltMod|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.usrUltMod }}</td>
+            <td>{{ entity.estado }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('infocontratoclausula_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('infocontratoclausula_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('infocontratoclausula_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

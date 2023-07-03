@@ -1,0 +1,30 @@
+infocontratoformapago:
+    pattern:  /
+    defaults: { _controller: "schemaBundle:InfoContratoFormaPago:index" }
+
+infocontratoformapago_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "schemaBundle:InfoContratoFormaPago:show" }
+
+infocontratoformapago_new:
+    pattern:  /new
+    defaults: { _controller: "schemaBundle:InfoContratoFormaPago:new" }
+
+infocontratoformapago_create:
+    pattern:  /create
+    defaults: { _controller: "schemaBundle:InfoContratoFormaPago:create" }
+    requirements: { _method: post }
+
+infocontratoformapago_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "schemaBundle:InfoContratoFormaPago:edit" }
+
+infocontratoformapago_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "schemaBundle:InfoContratoFormaPago:update" }
+    requirements: { _method: post }
+
+infocontratoformapago_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "schemaBundle:InfoContratoFormaPago:delete" }
+    requirements: { _method: post }

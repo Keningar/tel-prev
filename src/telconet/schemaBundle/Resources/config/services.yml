@@ -1,0 +1,37 @@
+parameters:
+#    schema.example.class: telconet\schemaBundle\Example
+    schema.hello_prefix: Saludo
+
+services:
+#    schema.example:
+#        class: %schema.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    schema.Util:
+        class: telconet\schemaBundle\Service\UtilService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    schema.HelloWorld:
+        class: telconet\schemaBundle\Service\HelloWorldService
+        calls:
+            - [setDependencies, [%schema.hello_prefix%]]
+
+    schema.Mailer:
+        class: telconet\schemaBundle\Service\MailerService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    schema.Validator:
+        class: telconet\schemaBundle\Service\ValidatorService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    schema.Serializer:
+        class: telconet\schemaBundle\Service\SerializerService
+
+    schema.RestClient:
+        class: telconet\schemaBundle\Service\RestClientService
+
+    schema.CompararImagen:
+        class: telconet\schemaBundle\Service\CompararImagenService

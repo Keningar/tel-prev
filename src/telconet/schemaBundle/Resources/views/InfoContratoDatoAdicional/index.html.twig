@@ -1,0 +1,59 @@
+<h1>InfoContratoDatoAdicional list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Esvip</th>
+            <th>Estramitelegal</th>
+            <th>Permitecorteautomatico</th>
+            <th>Fideicomiso</th>
+            <th>Conveniopago</th>
+            <th>Tiempoesperamesescorte</th>
+            <th>Fecreacion</th>
+            <th>Feultmod</th>
+            <th>Usrcreacion</th>
+            <th>Usrultmod</th>
+            <th>Caracteristicacontratoid</th>
+            <th>Ipcreacion</th>
+            <th>Id</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('infocontratodatoadicional_show', { 'id': entity.id }) }}">{{ entity.esVip }}</a></td>
+            <td>{{ entity.esTramiteLegal }}</td>
+            <td>{{ entity.permiteCorteAutomatico }}</td>
+            <td>{{ entity.fideicomiso }}</td>
+            <td>{{ entity.convenioPago }}</td>
+            <td>{{ entity.tiempoEsperaMesesCorte }}</td>
+            <td>{% if entity.feCreacion %}{{ entity.feCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.feUltMod %}{{ entity.feUltMod|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.usrCreacion }}</td>
+            <td>{{ entity.usrUltMod }}</td>
+            <td>{{ entity.caracteristicaContratoId }}</td>
+            <td>{{ entity.ipCreacion }}</td>
+            <td>{{ entity.id }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('infocontratodatoadicional_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('infocontratodatoadicional_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('infocontratodatoadicional_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,77 @@
+<h1>InfoContratoDatoAdicional</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Esvip</th>
+            <td>{{ entity.esVip }}</td>
+        </tr>
+        <tr>
+            <th>Estramitelegal</th>
+            <td>{{ entity.esTramiteLegal }}</td>
+        </tr>
+        <tr>
+            <th>Permitecorteautomatico</th>
+            <td>{{ entity.permiteCorteAutomatico }}</td>
+        </tr>
+        <tr>
+            <th>Fideicomiso</th>
+            <td>{{ entity.fideicomiso }}</td>
+        </tr>
+        <tr>
+            <th>Conveniopago</th>
+            <td>{{ entity.convenioPago }}</td>
+        </tr>
+        <tr>
+            <th>Tiempoesperamesescorte</th>
+            <td>{{ entity.tiempoEsperaMesesCorte }}</td>
+        </tr>
+        <tr>
+            <th>Fecreacion</th>
+            <td>{{ entity.feCreacion|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Feultmod</th>
+            <td>{{ entity.feUltMod|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Usrcreacion</th>
+            <td>{{ entity.usrCreacion }}</td>
+        </tr>
+        <tr>
+            <th>Usrultmod</th>
+            <td>{{ entity.usrUltMod }}</td>
+        </tr>
+        <tr>
+            <th>Caracteristicacontratoid</th>
+            <td>{{ entity.caracteristicaContratoId }}</td>
+        </tr>
+        <tr>
+            <th>Ipcreacion</th>
+            <td>{{ entity.ipCreacion }}</td>
+        </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('infocontratodatoadicional') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('infocontratodatoadicional_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('infocontratodatoadicional_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

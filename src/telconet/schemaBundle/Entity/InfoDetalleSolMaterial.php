@@ -1,0 +1,387 @@
+<?php
+
+namespace telconet\schemaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * telconet\schemaBundle\Entity\InfoDetalleSolMaterial
+ *
+ * @ORM\Table(name="INFO_DETALLE_SOL_MATERIAL")
+ * @ORM\Entity
+ * @ORM\Entity(repositoryClass="telconet\schemaBundle\Repository\InfoDetalleSolMaterialRepository")
+ */
+class InfoDetalleSolMaterial
+{
+
+
+/**
+* @var integer $id
+*
+* @ORM\Column(name="ID_DETALLE_MATERIAL", type="integer", nullable=false)
+* @ORM\Id
+* @ORM\GeneratedValue(strategy="SEQUENCE")
+* @ORM\SequenceGenerator(sequenceName="SEQ_INFO_DETALLE_SOL_MATERIAL", allocationSize=1, initialValue=1)
+*/		
+		
+private $id;	
+	
+/**
+* @var InfoDetalleSolicitud
+*
+* @ORM\ManyToOne(targetEntity="InfoDetalleSolicitud")
+* @ORM\JoinColumns({
+*   @ORM\JoinColumn(name="DETALLE_SOLICITUD_ID", referencedColumnName="ID_DETALLE_SOLICITUD")
+* })
+*/
+		
+private $detalleSolicitudId;
+
+/**
+* @var string $materialCod
+*
+* @ORM\Column(name="MATERIAL_COD", type="string", nullable=true)
+*/		
+     		
+private $materialCod;
+
+/**
+* @var float $costoMaterial
+*
+* @ORM\Column(name="COSTO_MATERIAL", type="float", nullable=true)
+*/		
+     		
+private $costoMaterial;
+
+/**
+* @var float $precioVentaMaterial
+*
+* @ORM\Column(name="PRECIO_VENTA_MATERIAL", type="float", nullable=true)
+*/		
+     		
+private $precioVentaMaterial;
+
+/**
+* @var integer $cantidadEstimada
+*
+* @ORM\Column(name="CANTIDAD_ESTIMADA", type="integer", nullable=true)
+*/		
+     		
+private $cantidadEstimada;
+
+/**
+* @var integer $cantidadUsada
+*
+* @ORM\Column(name="CANTIDAD_USADA", type="integer", nullable=true)
+*/		
+     		
+private $cantidadUsada;
+
+/**
+* @var integer $cantidadFacturada
+*
+* @ORM\Column(name="CANTIDAD_FACTURADA", type="integer", nullable=true)
+*/		
+     		
+private $cantidadFacturada;
+
+/**
+* @var integer $cantidadCliente
+*
+* @ORM\Column(name="CANTIDAD_CLIENTE", type="integer", nullable=true)
+*/		
+     		
+private $cantidadCliente;
+
+/**
+* @var float $valorCobrado
+*
+* @ORM\Column(name="VALOR_COBRADO", type="float", nullable=true)
+*/		
+     		
+private $valorCobrado;
+
+/**
+* @var string $usrCreacion
+*
+* @ORM\Column(name="USR_CREACION", type="string", nullable=false)
+*/		
+     		
+private $usrCreacion;
+
+/**
+* @var datetime $feCreacion
+*
+* @ORM\Column(name="FE_CREACION", type="datetime", nullable=false)
+*/		
+     		
+private $feCreacion;
+
+/**
+* @var string $ipCreacion
+*
+* @ORM\Column(name="IP_CREACION", type="string", nullable=false)
+*/		
+     		
+private $ipCreacion;
+
+/**
+* Get id
+*
+* @return integer
+*/		
+     		
+public function getId(){
+	return $this->id; 
+}
+
+/**
+* Get detalleSolicitudId
+*
+* @return telconet\schemaBundle\Entity\InfoDetalleSolicitud
+*/		
+     		
+public function getDetalleSolicitudId(){
+	return $this->detalleSolicitudId; 
+}
+
+/**
+* Set detalleSolicitudId
+*
+* @param telconet\schemaBundle\Entity\InfoDetalleSolicitud $detalleSolicitudId
+*/
+public function setDetalleSolicitudId(\telconet\schemaBundle\Entity\InfoDetalleSolicitud $detalleSolicitudId)
+{
+        $this->detalleSolicitudId = $detalleSolicitudId;
+}
+
+
+/**
+* Get materialCod
+*
+* @return string
+*/		
+     		
+public function getMaterialCod(){
+	return $this->materialCod; 
+}
+
+/**
+* Set materialCod
+*
+* @param string $materialCod
+*/
+public function setMaterialCod($materialCod)
+{
+        $this->materialCod = $materialCod;
+}
+
+
+/**
+* Get costoMaterial
+*
+* @return 
+*/		
+     		
+public function getCostoMaterial(){
+	return $this->costoMaterial; 
+}
+
+/**
+* Set costoMaterial
+*
+* @param  $costoMaterial
+*/
+public function setCostoMaterial($costoMaterial)
+{
+        $this->costoMaterial = $costoMaterial;
+}
+
+
+/**
+* Get precioVentaMaterial
+*
+* @return 
+*/		
+     		
+public function getPrecioVentaMaterial(){
+	return $this->precioVentaMaterial; 
+}
+
+/**
+* Set precioVentaMaterial
+*
+* @param  $precioVentaMaterial
+*/
+public function setPrecioVentaMaterial($precioVentaMaterial)
+{
+        $this->precioVentaMaterial = $precioVentaMaterial;
+}
+
+
+/**
+* Get cantidadEstimada
+*
+* @return integer
+*/		
+     		
+public function getCantidadEstimada(){
+	return $this->cantidadEstimada; 
+}
+
+/**
+* Set cantidadEstimada
+*
+* @param integer $cantidadEstimada
+*/
+public function setCantidadEstimada($cantidadEstimada)
+{
+        $this->cantidadEstimada = $cantidadEstimada;
+}
+
+
+/**
+* Get cantidadUsada
+*
+* @return integer
+*/		
+     		
+public function getCantidadUsada(){
+	return $this->cantidadUsada; 
+}
+
+/**
+* Set cantidadUsada
+*
+* @param integer $cantidadUsada
+*/
+public function setCantidadUsada($cantidadUsada)
+{
+        $this->cantidadUsada = $cantidadUsada;
+}
+
+/**
+* Get cantidadFacturada
+*
+* @return integer
+*/		
+     		
+public function getCantidadFacturada(){
+	return $this->cantidadFacturada; 
+}
+
+/**
+* Set cantidadFacturada
+*
+* @param integer $cantidadFacturada
+*/
+public function setCantidadFacturada($cantidadFacturada)
+{
+        $this->cantidadFacturada = $cantidadFacturada;
+}
+
+/**
+* Get cantidadCliente
+*
+* @return integer
+*/		
+     		
+public function getCantidadCliente(){
+	return $this->cantidadCliente; 
+}
+
+/**
+* Set cantidadCliente
+*
+* @param integer $cantidadCliente
+*/
+public function setCantidadCliente($cantidadCliente)
+{
+        $this->cantidadCliente = $cantidadCliente;
+}
+
+
+/**
+* Get valorCobrado
+*
+* @return 
+*/		
+     		
+public function getValorCobrado(){
+	return $this->valorCobrado; 
+}
+
+/**
+* Set valorCobrado
+*
+* @param  $valorCobrado
+*/
+public function setValorCobrado($valorCobrado)
+{
+        $this->valorCobrado = $valorCobrado;
+}
+
+
+/**
+* Get usrCreacion
+*
+* @return string
+*/		
+     		
+public function getUsrCreacion(){
+	return $this->usrCreacion; 
+}
+
+/**
+* Set usrCreacion
+*
+* @param string $usrCreacion
+*/
+public function setUsrCreacion($usrCreacion)
+{
+        $this->usrCreacion = $usrCreacion;
+}
+
+
+/**
+* Get feCreacion
+*
+* @return datetime
+*/		
+     		
+public function getFeCreacion(){
+	return $this->feCreacion; 
+}
+
+/**
+* Set feCreacion
+*
+* @param datetime $feCreacion
+*/
+public function setFeCreacion($feCreacion)
+{
+        $this->feCreacion = $feCreacion;
+}
+
+
+/**
+* Get ipCreacion
+*
+* @return string
+*/		
+     		
+public function getIpCreacion(){
+	return $this->ipCreacion; 
+}
+
+/**
+* Set ipCreacion
+*
+* @param string $ipCreacion
+*/
+public function setIpCreacion($ipCreacion)
+{
+        $this->ipCreacion = $ipCreacion;
+}
+
+}

@@ -1,0 +1,50 @@
+<?php
+
+namespace telconet\schemaBundle\Form;
+
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+class InfoServicioType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            //->add('tipoOrden')
+            ->add('tipoOrden', 'choice', array('choices'=> array('N' => 'Nueva'),'empty_value' => 'Seleccione','required'  => true, 'label'=>'* Tipo de Servicio: '))
+            //->add('oficinaId')
+            //->add('numeroServicio')
+            //->add('feCreacion')
+            //->add('feUltMod')
+            //->add('usrCreacion')
+            //->add('usrUltMod')
+            //->add('ipCreacion')
+            /*->add('puntoId','entity',array('class' =>'telconet\schemaBundle\Entity\InfoPunto',
+											   'label'=>'* Punto cliente : ',
+											   'attr' => array('class' => 'campo-obligatorio-select'),
+											   'em'=> 'telconet',
+                                                                                           'required' => true,
+            ))*/
+            ->add('ultimaMillaId','entity',array('class' =>'telconet\schemaBundle\Entity\AdmiTipoMedio',
+											   'label'=>'* Ultima milla : ',
+											   'attr' => array('class' => 'campo-obligatorio-select'),
+											   'em'=> 'telconet_infraestructura',
+											   'required' => false,
+											   'empty_value' => 'Seleccione',
+            ))
+        ;
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'telconet\schemaBundle\Entity\InfoServicio'
+        ));
+    }
+
+    public function getName()
+    {
+        return 'infoserviciotype';
+    }
+}

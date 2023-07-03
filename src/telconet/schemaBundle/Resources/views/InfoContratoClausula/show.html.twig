@@ -1,0 +1,57 @@
+<h1>InfoContratoClausula</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Clausulaid</th>
+            <td>{{ entity.clausulaId }}</td>
+        </tr>
+        <tr>
+            <th>Descripcionclausula</th>
+            <td>{{ entity.descripcionClausula }}</td>
+        </tr>
+        <tr>
+            <th>Fecreacion</th>
+            <td>{{ entity.feCreacion|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Usrcreacion</th>
+            <td>{{ entity.usrCreacion }}</td>
+        </tr>
+        <tr>
+            <th>Feultmod</th>
+            <td>{{ entity.feUltMod|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Usrultmod</th>
+            <td>{{ entity.usrUltMod }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ entity.estado }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('infocontratoclausula') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('infocontratoclausula_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('infocontratoclausula_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>

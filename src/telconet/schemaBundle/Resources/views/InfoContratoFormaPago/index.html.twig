@@ -1,0 +1,61 @@
+<h1>InfoContratoFormaPago list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Mesvencimiento</th>
+            <th>Aniovencimiento</th>
+            <th>Id</th>
+            <th>Numeroctatarjeta</th>
+            <th>Numerodebitobanco</th>
+            <th>Codigoverificacion</th>
+            <th>Titularcuenta</th>
+            <th>Fecreacion</th>
+            <th>Feultmod</th>
+            <th>Usrcreacion</th>
+            <th>Usrultmod</th>
+            <th>Estado</th>
+            <th>Tipocuenta</th>
+            <th>Ipcreacion</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('infocontratoformapago_show', { 'id': entity.id }) }}">{{ entity.mesVencimiento }}</a></td>
+            <td>{{ entity.anioVencimiento }}</td>
+            <td>{{ entity.id }}</td>
+            <td>{{ entity.numeroCtaTarjeta }}</td>
+            <td>{{ entity.numeroDebitoBanco }}</td>
+            <td>{{ entity.codigoVerificacion }}</td>
+            <td>{{ entity.titularCuenta }}</td>
+            <td>{% if entity.feCreacion %}{{ entity.feCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{% if entity.feUltMod %}{{ entity.feUltMod|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.usrCreacion }}</td>
+            <td>{{ entity.usrUltMod }}</td>
+            <td>{{ entity.estado }}</td>
+            <td>{{ entity.tipoCuenta }}</td>
+            <td>{{ entity.ipCreacion }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('infocontratoformapago_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('infocontratoformapago_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('infocontratoformapago_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>
