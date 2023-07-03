@@ -1,0 +1,293 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}  
+
+{% block javascripts%}
+	{{ parent() }}          
+	<!-- kendo -->
+	<script src="{{ asset('public/js/kendo/source/js/jquery.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.core.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.grid.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.all.js') }}" type="text/javascript"></script>       
+        
+        <script>url_listar_tarjetas_cuentas="{{ path('infoplancaracteristicas_listar_tarjetas_cuentas') }}";</script>
+        <script>url_listar_bancos_asociados="{{ path('infoplancaracteristicas_listar_bancos_asociados') }}";</script>          	
+{% endblock %}
+ 
+{% block contenido_izq %}        
+        
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Agregar Condiciones al Plan</h1>
+</div>
+<div class="body_content">
+    {%if (objPlanProvieneRegClonado)%}
+            <div class="infomessage">
+                Este Plan es un registro clonado del Plan: 
+                <a  href="{{ path('infoplancaracteristicas_show', { 'id': objPlanProvieneRegClonado.id }) }}">
+                       {{objPlanProvieneRegClonado.id}} | {{objPlanProvieneRegClonado.codigoPlan}} | {{objPlanProvieneRegClonado.nombrePlan}}
+                </a>                                            
+            </div>                                
+
+     {%endif%}  
+{% if (entity.estado == 'Activo' or entity.estado == 'Pendiente')%}       
+   <table class="record_properties" width='100%'>
+   {%if(entity.id is not null)%}
+    <tbody>
+        <tr>
+            <td><b>Id Plan</b></td>                
+            <td>{{ entity.id }}</td>        
+	    <td width="9%">&nbsp;</td>
+            <td><b>Tipo</b></td>                
+            
+                {%if(entity.tipo is not null)%}
+                   <td>{{ entity.tipo }}</td>    
+                {% else %}
+                   <td>N/A</td>    
+                {%endif%} 	    
+	</tr>
+        <tr>
+            <td><b>Codigo</b></td>                
+            <td>{{ entity.codigoPlan }}</td>        
+	    <td width="9%">&nbsp;</td>
+            <td><b>Nombre</b></th>                
+            <td>{{ entity.nombrePlan }}</td>        
+	</tr>
+        <tr>
+            <td><b>Descripcion</b></td>                
+            <td>{{ entity.descripcionPlan }}</td>        
+	    <td width="9%">&nbsp;</td>
+            <td><b>Descuento del plan</b></td>                
+            <td>{{ entity.descuentoPlan }}</td>        
+	</tr>
+        <tr>
+            <td><b>Codigo Interno</b></td>                
+            <td>{{ entity.codigoInterno }}</td>  
+            <td width="9%">&nbsp;</td>            
+            <td><b>Estado</b></td>                
+            <td>{{ entity.estado }}</td>             
+	</tr>   
+    </tbody>   
+   {%endif%} 
+  </table>
+
+ {% if items is defined %}
+ <div class="secHead"><b>Listado de Productos y Caracteristicas de productos</b></div>
+ <div class="k-content" id="example">
+	<table border="1" id="table-1" width="100%">
+		<thead>
+			<tr>
+				<th class="k-header" data-field="codigo">Producto</th>
+                                <th class="k-header" data-field="instalacion">Instalacion</th>
+				<th class="k-header" data-field="cantidad">Cantidad</th>
+				<th class="k-header" data-field="precio">Precio</th>
+                                <th class="k-header" data-field="caracteristica">Caracteristica</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in items %}
+				<tr>
+					<th>{{ item.producto }}</th>
+                                        <th>{{ item.instalacion }}</th>
+					<th>{{ item.cantidad }}</th>
+					<th>{{ item.precio }}</th>
+                                        {% if caracteristicasDet is defined %}
+                                         <td><table id='table-2' width='60%'>
+                                          <thead><tr>
+                                          <th class="secHead" data-field="descripcion"><b>Descripcion</b></th>
+                                          <th class="secHead" data-field="valor"><b>Valor</b></th>
+                                          </tr></thead>
+                                         <tbody>
+                                        {% for item2 in caracteristicasDet %}
+                                           {% if item.idproducto == item2.idproducto %}                      
+                                            <tr>
+                                            <td>{{ item2.nombre }}</td>
+                                            <td>{% if item2.valor != "" %} {{ item2.valor }}
+                                                {% else %} {{ "N/A" }}
+                                                {% endif %} 
+                                            </td>                                            
+                                            </tr> 
+                                            {% endif %} 
+                                        {% endfor %}
+                                        </tbody></table></td>
+                                        {% endif %} 
+				</tr>
+			{% endfor %}                                                                    
+		</tbody>
+	</table>
+</div>
+{% endif %}
+
+<div class="k-content" >
+<form action="{{ path('infoplancaracteristicas_create_condiciones_plan') }}" method="post" class='formulario' name='info_condicion_plan'>     
+ <div class="secHead"><b>Condiciones del Plan</b></div>
+    <table border=0 class="formulario">  
+        
+     <tr>
+       <td><label class="required">* Tipo Negocio:</label>       
+       <td><select name="tipoNegocioId" id="tipoNegocioId">            
+            {% for key, tipo_negocio in arreglo_tipo_negocio %}
+                <option value="{{ key }}" > {{ tipo_negocio }}</option>
+            {% endfor %}
+       </select></td>
+     </tr>          
+                            
+    <tr>
+       <td><label> Forma de pago:</label>       
+       <td><select name="formaPagoId" id="formaPagoId">            
+            {% for key, forma_pago in arreglo_forma_pago %}
+                <option value="{{ key }}" > {{ forma_pago }}</option>
+            {% endfor %}
+       </select></td>
+     </tr>  
+      
+      <tr>  
+           <td colspan='3' style="vertical-align: top;">  
+           <div id="tipo_tarjeta_cuenta" class="{{ clase }} contenido" style="display:none">
+             <div class="secHead">Tipo de cuenta:</div>
+              <div>
+		<input type="radio" name="info" id="info" value="tarjeta">Por tarjeta<br>
+                <input type="radio" name="info" id="info" value="cuenta_bancaria">Por cuenta bancaria<br>
+              </div>
+          </div>  
+     </td></tr>                          
+      
+        <tr>  
+           <td colspan='3' style="vertical-align: top;">  
+           <div id="forma_pago_msg" style="display:none"></div>
+		<div id="forma_pago" class="{{ clase }} contenido" style="display:none">
+		<table border=0 width="100%">
+                <tr>
+                   <td><label> Tipo de Cuenta:</label>       
+                   <td><select name="tipoCuentaId" id="tipoCuentaId">            
+                         {% for key, tipo_cuenta in arreglo_tipo_cuenta %}
+                           <option value="{{ key }}" > {{ tipo_cuenta }}</option>
+                         {% endfor %}
+                       </select></td>
+                </tr>                      		                          
+		</table>
+	        </div>	    
+           </td>                                                                               
+	</tr>
+        <tr>  
+           <td colspan='3' style="vertical-align: top;">                                 
+		<div id="tipo_de_cuenta" class="{{ clase }} contenido" style="display:none">
+		<table border=0 width="100%">
+                <tr>
+                          <td><label> Banco:</label></td>      
+                          <td><select name="bancoTipoCuentaId" id="bancoTipoCuentaId" multiple="multiple">                                    
+                          <option value="null">Seleccione</option>                        
+                       </select></td>
+                </tr>        
+                </table>
+	        </div>	    
+           </td>                                                                               
+	</tr>        
+       
+        <tr><td colspan="2">&nbsp;</td></tr>
+        <tr><td colspan="2">
+        <b><div id="div_valida_condicion"></div></b>
+        <div id="div_botones">
+        <button type='button' class='button-crud' onClick='agregar_detalle();'>Agregar</button>
+        <button type='button' class='button-crud' onClick='limpiar_detalle();'>Limpiar</button>    
+        </div>
+       </td></tr>
+      
+           
+   </table>  
+   <b><div id="mensaje"></div></b>
+  <div class="secHead"><b>Listado</b></div>
+    <table id="table-3" width="100%">
+		<thead>
+			<tr>
+                                <th>Tipo Negocio</th>
+				<th>Forma de Pago</th>
+				<th>Tipo de Cuenta</th>	
+                                <th>Banco</th>	
+                                <th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+                      {% if items_detalle is defined %}
+                        {% for item in  items_detalle%}
+                            <tr>
+                                <td>{{ item.tipoNegocio }}</td>
+                                <td>{{ item.formaPago }}</td>
+                                <td>{{ item.tipoCuenta }}</td>
+                                <td>{{ item.bancoTipoCuenta }}</td>                            
+                                <td>
+                                    <button type='button' onclick='removeRow(this);' class="button-crud">Eliminar</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+		</tbody>
+    </table>
+</div>     
+  
+ <input type="hidden" name="valores" size="250" id="valores" /> 
+ <input type="hidden" name="id_plan" id="id_plan" value= {{ entity.id }}  />
+    <div class="buttons">
+        <p>
+            <button type="submit" class="button-crud">Guardar</button>
+            <span class="height20px">
+                         <a class="button-crud" href="{{ path('infoplancaracteristicas_show',{ 'id': entity.id }) }}">Regresar</a>
+            </span>   
+            <span class="height20px">
+                &oacute;&nbsp;
+                <a class="cancel-crud" href="{{ path('infoplancaracteristicas') }}">
+                cancelar
+                </a>
+            </span>
+        </p>
+    </div>
+ </form>  
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ entity.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ entity.feCreacion | date("d M Y") }}</td>
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+        
+{% else %}
+    <div class="warningmessage">
+       Solo se permite Agregar Condiciones a Planes en estado Activo o Pendiente.
+    </div>			
+{%endif%}     
+        
+</div>           
+{% endblock contenido_izq %}
+{% block javascripts_footer%}
+     <script>   
+        var informacion_controlador = {};
+        var informacion             = [];
+	 var arreglo                = {{ arreglo|raw }};
+        
+        for ( var x = 0; x < arreglo.length; x++ ) {
+                informacion.push(arreglo[x]);              
+        }
+        
+        document.getElementById("valores").value = JSON.stringify(informacion);
+     </script>     
+    
+   <script type="text/javascript" src="{{ asset('./bundles/catalogo/js/plan_caracteristica/newCondicionesPlanes.js?1') }}"></script>       
+
+{% endblock javascripts_footer%}
+   
+  

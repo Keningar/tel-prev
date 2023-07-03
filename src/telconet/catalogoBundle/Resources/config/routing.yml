@@ -1,0 +1,11 @@
+catalogoBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: catalogoBundle:Default:index }
+    
+catalogoBundle_InfoPlanCab:
+  resource: "@catalogoBundle/Resources/config/routing/infoplancab.yml"
+  prefix: /comercial/info_plan
+
+catalogoBundle_InfoPlanCaracteristica:
+  resource: "@catalogoBundle/Resources/config/routing/infoplancaracteristica.yml"
+  prefix: /comercial/info_plan_caracteristica

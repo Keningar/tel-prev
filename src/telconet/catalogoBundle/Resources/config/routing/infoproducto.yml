@@ -1,0 +1,30 @@
+infoproducto:
+    pattern:  /
+    defaults: { _controller: "catalogoBundle:InfoProducto:index" }
+
+infoproducto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "catalogoBundle:InfoProducto:show" }
+
+infoproducto_new:
+    pattern:  /new
+    defaults: { _controller: "catalogoBundle:InfoProducto:new" }
+
+infoproducto_create:
+    pattern:  /create
+    defaults: { _controller: "catalogoBundle:InfoProducto:create" }
+    requirements: { _method: post }
+
+infoproducto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "catalogoBundle:InfoProducto:edit" }
+
+infoproducto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "catalogoBundle:InfoProducto:update" }
+    requirements: { _method: post }
+
+infoproducto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "catalogoBundle:InfoProducto:delete" }
+    requirements: { _method: post }

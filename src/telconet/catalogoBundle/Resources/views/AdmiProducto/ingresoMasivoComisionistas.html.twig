@@ -1,0 +1,85 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+
+<style scoped="scoped">
+    .category-label
+    {
+        vertical-align: middle;
+        padding-right: .5em;
+    }
+    #category
+    {
+        vertical-align: middle;
+    }
+    .toolbar {
+        float: right;
+        margin-right: .8em;
+    }
+    .icon_search {
+        background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+            }
+    .icon_limpiar {
+        background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+            } 
+    .icon_add {
+        background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+            } 
+    .icon_delete {
+        background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+            }                 
+</style>
+{% endblock %}
+
+{% block javascripts%}
+{{ parent() }}
+
+<script>
+    var url_store_grid                   = "{{ path('admiproducto_gridProductosComisionan') }}";
+    var url_estados                      = "{{ path('admiproducto_lista_estados') }}";    
+    var url_nombres_tecnicos             = "{{ path('admiproducto_ajax_get_nombresTecnicosIndex') }}";    
+    var url_gridComisionPlantilla        = "{{ path('admiproducto_gridComisionPlantilla') }}";
+    var url_guardaComisionPlantillaAjax  = "{{ path('admiproducto_guardaComisionPlantillaAjax') }}"; 
+    var url_grupos                       = "{{ path('admiproducto_ajax_get_grupos') }}";
+    var url_productos                    = "{{ path('admiproducto_ajax_getProductos') }}";
+    var strPrefijoEmpresa                = "{{ strPrefijoEmpresa }}";      
+    var ftlValorMaxComision              = "{{ftlValorMaxComision}}";       
+</script>
+<script type="text/javascript" src="{{ asset('bundles/catalogo/js/producto/comisionPlantilla.js') }}"></script>
+<script type="text/javascript" src="{{ asset('bundles/catalogo/js/producto/ingresoMasivoComisionistas.js') }}"></script>
+
+{% endblock %}
+        
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('catalog.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ingreso Masivo de Plantilla de Comisionistas</h1>
+    <input id='admiproductoextratype_strComisionPlantilla' name='admiproductoextratype[strComisionPlantilla]' type='hidden' value=''>
+</div>
+<div class="dashboard_content k-content">
+    <div id="example" class="k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                         <td bgcolor='#ffffff'><div id='filtro_masivoplantilla'></div></td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                         <td bgcolor='#ffffff'><div id='listView'></div></td>
+                </tr>
+
+        </table>      
+    </div>
+</div>
+ <div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiproducto') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<br>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    
+{% endblock contenido_der %}

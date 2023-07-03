@@ -1,0 +1,347 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}  
+
+{% block javascripts%}
+	{{ parent() }}
+	<!-- kendo -->
+	<script src="{{ asset('public/js/kendo/source/js/jquery.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.core.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.grid.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.all.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoPlan/planCaractetistica.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Agregar Caracteristicas a Plan</h1>
+</div>
+<div class="body_content">
+    {%if (objPlanProvieneRegClonado)%}
+            <div class="infomessage">
+                Este Plan es un registro clonado del Plan: 
+                <a  href="{{ path('infoplancaracteristicas_show', { 'id': objPlanProvieneRegClonado.id }) }}">
+                       {{objPlanProvieneRegClonado.id}} | {{objPlanProvieneRegClonado.codigoPlan}} | {{objPlanProvieneRegClonado.nombrePlan}}
+                </a>                                            
+            </div>                                
+
+     {%endif%}  
+{% if (entity.estado == 'Activo' or entity.estado == 'Pendiente')%}               
+  <table class="record_properties" width='100%'>
+  {%if(entity.id is not null)%}
+    <tbody>
+        <tr>
+            <td><b>Id Plan</b></td>                
+            <td>{{ entity.id }}</td>        
+	    <td width="9%">&nbsp;</td>
+           <td><b>Tipo</b></td>                
+            
+                {%if(entity.tipo is not null)%}
+                   <td>{{ entity.tipo }}</td>    
+                {% else %}
+                   <td>N/A</td>    
+                {%endif%} 	      
+	</tr>
+        <tr>
+            <td><b>Codigo</b></td>                
+            <td>{{ entity.codigoPlan }}</td>        
+	    <td width="9%">&nbsp;</td>
+            <td><b>Nombre</b></th>                
+            <td>{{ entity.nombrePlan }}</td>        
+	</tr>
+        <tr>
+            <td><b>Descripcion</b></td>                
+            <td>{{ entity.descripcionPlan }}</td>        
+	    <td width="9%">&nbsp;</td>
+            <td><b>Descuento del plan</b></td>                
+            <td>{{ entity.descuentoPlan }}</td>        
+	</tr>
+        <tr>
+            <td><b>Codigo Interno</b></td>                
+            <td>{{ entity.codigoInterno }}</td>  
+            <td width="9%">&nbsp;</td>            
+            <td><b>Estado</b></td>                
+            <td>{{ entity.estado }}</td>             
+	</tr>   
+    </tbody>   
+   {%endif%} 
+</table>
+
+{% if items is defined %}
+<div class="secHead"><b>Listado de Productos y Caracteristicas de productos</b></div>
+<div class="k-content" id="example">
+	<table border="1" id="table-1" width="100%">
+		<thead>
+			<tr>
+				<th class="k-header" data-field="codigo">Producto</th>
+                                <th class="k-header" data-field="instalacion">Instalacion</th>
+				<th class="k-header" data-field="cantidad">Cantidad</th>
+				<th class="k-header" data-field="precio">Precio</th>
+                                <th class="k-header" data-field="caracteristica">Caracteristica</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in items %}
+				<tr>
+					<th>{{ item.producto }}</th>
+                                        <th>{{ item.instalacion }}</th>
+					<th>{{ item.cantidad }}</th>
+					<th>{{ item.precio }}</th>
+                                        {% if caracteristicasDet is defined %}
+                                         <td><table id='table-2' width='60%'>
+                                          <thead><tr>
+                                          <th class="secHead" data-field="descripcion"><b>Descripcion</b></th>
+                                          <th class="secHead" data-field="valor"><b>Valor</b></th>
+                                          </tr></thead>
+                                         <tbody>
+                                        {% for item2 in caracteristicasDet %}
+                                           {% if item.idproducto == item2.idproducto %}                      
+                                            <tr>
+                                            <td>{{ item2.nombre }}</td>
+                                            <td>{% if item2.valor != "" %} {{ item2.valor }}
+                                                {% else %} {{ "N/A" }}
+                                                {% endif %} 
+                                            </td>                                            
+                                            </tr> 
+                                            {% endif %} 
+                                        {% endfor %}
+                                        </tbody></table></td>
+                                        {% endif %} 
+				</tr>
+			{% endfor %}                                                                    
+		</tbody>
+	</table>
+</div>
+{% endif %}
+
+<div class="k-content" >
+<form action="{{ path('infoplancaracteristicas_create_caracteristica_plan') }}" method="post" class='formulario' name='info_caracteristica_plan'>     
+ <div class="secHead"><b>Caracteristicas del Plan</b></div>
+    <table class="formulario">
+      <tr>
+        <td><label class="required">Tipo de caracteristica:</label></td>
+        <td><select class="required" name="tipo_caracteristica" id="tipo_caracteristica">
+            {% for tipocaracteristica in listado_detalle %} 
+                <option>{{ tipocaracteristica }}</option>
+            {% endfor %}
+            </select>   
+       </td></tr>
+      <tr>
+        <td><label class="required">Caracteristica:</label></td>
+        <td><select class="required" name="caracteristica" id="caracteristica">
+            <option>Seleccione</option>            
+        </select> 
+       </td></tr> 
+        
+       <tr>          
+           <td colspan="2">
+                 <b><div id="div_valida_valor"></div></b>
+               <div id="div_valor"></div>
+           </td>
+       </tr>  
+       
+       <tr><td>
+        <div id="div_botones"></div>
+       </td></tr>
+   </table>  
+   <b><div id="mensaje"></div></b>
+  <div class="secHead"><b>Listado</b></div>
+    <table id="table-3" width="100%">
+		<thead>
+			<tr>
+				<th>Caracteristica</th>
+				<th>Tipo</th>	
+                                <th>Valor</th>	
+                                <th>&nbsp;</th>
+			</tr>
+		</thead>
+		<tbody>
+                      {% if items_detalle is defined %}
+                        {% for item in  items_detalle%}
+                            <tr>
+                                <td>{{ item.nombre }}</td>
+                                <td>{{ item.tipo }}</td>
+                                <td>{{ item.valor }}</td>                                
+                                <td>
+                                    {% if item.btnEditar=='S' %}
+                                        <button type='button' onclick='mostrarModalEditar({{ item.idCaract }})' 
+                                        class="button-crud">Editar</button>
+                                    {% else %}
+                                        <button type='button' onclick='removeRow(this,{{ item.idCaract }});' class="button-crud">Eliminar</button>
+                                    {% endif %} 
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+		</tbody>
+    </table>
+</div>     
+  
+ <input type="hidden" size="100" name="valores" id="valores" /> 
+ <input type="hidden" name="id_plan" id="id_plan" value= {{ entity.id }}  />
+    <div class="buttons">
+        <p>
+            <button type="submit" class="button-crud">Guardar</button>
+            <span class="height20px">
+                         <a class="button-crud" href="{{ path('infoplancaracteristicas_show',{ 'id': entity.id }) }}">Regresar</a>
+            </span>   
+            <span class="height20px">
+                &oacute;&nbsp;
+                <a class="cancel-crud" href="{{ path('infoplancaracteristicas') }}">
+                cancelar
+                </a>
+            </span>
+        </p>
+    </div>
+ </form>  
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ entity.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ entity.feCreacion | date("d M Y") }}</td>
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+               
+{% else %}
+    <div class="warningmessage">
+       Solo se permite Agregar Caracteristicas a Planes en estado Activo o Pendiente.
+    </div>			
+{%endif%}     
+        
+</div>      
+        
+{% endblock contenido_izq %}
+{% block javascripts_footer%}
+    <script>
+        var informacion_controlador = {};
+        var informacion             = [];
+	 var arreglo                = {{ arreglo|raw }};
+        
+        for ( var x = 0; x < arreglo.length; x++ )
+        {
+                informacion.push(arreglo[x]);
+        }
+        
+        document.getElementById("valores").value = JSON.stringify(informacion);
+               
+	//Precargo combo de caracteristica deacuerdo al tipo		
+        $('#tipo_caracteristica').change(function()
+        {
+            var tipo_caracteristica = $('#tipo_caracteristica').val();
+            //alert(tipo_caracteristica);
+            
+            $.ajax({
+                type: "POST",
+                data: "tipo_caracteristica=" + tipo_caracteristica,
+                url:'{{ path('infoplancaracteristicas_llenacmb_caracteristicas') }}',
+                success: function(msg){
+                    if (msg.msg == 'ok')
+                    {					
+                        //Llenar el div que presentara las caracteristicas                        
+                        document.getElementById("caracteristica").innerHTML   = msg.div;
+                        document.getElementById("div_valor").innerHTML        = msg.presentar_div;
+                        document.getElementById("div_botones").innerHTML      = msg.div_button;
+                        document.getElementById("div_valida_valor").innerHTML = "";
+                    }
+                    else{
+                        document.getElementById("caracteristica").innerHTML   = msg.div;
+                        document.getElementById("div_valida_valor").innerHTML = msg.msg;
+                    }
+                }
+            });
+        });
+       
+       
+        function agregar_detalle()
+        {                                
+            var valor                                      = info_caracteristica_plan.valor.value;           
+            var info_caracteristica                        = info_caracteristica_plan.caracteristica.value;
+            var caracteristica                             = info_caracteristica.split("-");
+            var info_tipo_caracteristica                   = info_caracteristica_plan.tipo_caracteristica.value;
+            var tipo_caracteristica                        = info_tipo_caracteristica.split("-");                                             
+            informacion_controlador                        = {};
+            informacion_controlador["tipo_caracteristica"] = tipo_caracteristica[0];
+            informacion_controlador["caracteristica"]      = caracteristica[0];
+            informacion_controlador["valor"]               = valor;            
+            informacion_controlador["idPlanCaract"]        = "";   
+           
+            var pos =  buscarCaracteristica(informacion,caracteristica[0]);            
+            if( pos )
+            {
+                document.getElementById("div_valida_valor").innerHTML = "Ya existe ingresada la caracteristica para el plan";
+            }
+            else
+            {
+               //Valido Campo Valor deacuerdo al tipo de Dato  : N: Numerico, T: Texto, O: Opcional (S/N)                                                        
+               $.ajax({
+                type: "POST",
+                data: "caracteristica=" + caracteristica[0] +"&valor="+valor,
+                url:'{{ path('infoplancaracteristicas_valida_valor') }}',
+                success: function(msg){
+                    if (msg.msg == 'ok')
+                    {
+                       document.getElementById("div_valida_valor").innerHTML=msg.div_valida_valor; 
+                       
+                    }
+                    else
+                    {
+                       displayResult(caracteristica,tipo_caracteristica,valor,"N");
+                       informacion.push(informacion_controlador);
+                       document.getElementById("valores").value=JSON.stringify(informacion);                          
+                    }
+                }
+               }); 
+             }
+        }
+        
+        function limpiar_detalle()
+        {           
+            if(info_caracteristica_plan.valor)
+            {
+                info_caracteristica_plan.valor.value = "";
+            }
+           $('#tipo_caracteristica').val('');  
+           $('#caracteristica').val('');  
+            document.getElementById("div_valida_valor").innerHTML = ""; 
+        }
+
+         function buscarCaracteristica(informacion,caracteristica)
+        {                
+                for( var i=0;i<informacion.length;i++ )
+                {
+                        if( String(informacion[i].caracteristica) == String(caracteristica) )
+                        {                                
+                                return true;
+                        }
+                }
+                return false;
+        }
+        function removeRow(src,caracteristica)
+        {             
+            var oRow = src.parentElement.parentElement;    
+            var i    = oRow.rowIndex;
+           // alert(oRow.rowIndex);
+            document.getElementById("table-3").deleteRow(i);              
+            //var pos = buscarCaracteristica(informacion,caracteristica);           
+            //informacion.splice(pos,1);
+            informacion.splice(i-1,1);            
+            document.getElementById("valores").value = JSON.stringify(informacion);            
+        }
+   </script>
+{% endblock javascripts_footer%}

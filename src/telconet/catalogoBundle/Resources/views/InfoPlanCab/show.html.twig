@@ -1,0 +1,141 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}  
+
+{% block javascripts%}
+	{{ parent() }}
+	<!-- kendo -->
+	<script src="{{ asset('public/js/kendo/source/js/jquery.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.core.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.grid.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.all.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Plan</h1>
+</div>
+<div class="body_content">
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Codigo</th>                
+            <td>{{ entity.codigoPlan }}</td>        
+			<td width="9%">&nbsp;</td>
+            <th>Nombre</th>                
+            <td>{{ entity.nombrePlan }}</td>        
+		</tr>
+        <tr>
+            <th>Descripcion</th>                
+            <td>{{ entity.descripcionPlan }}</td>        
+			<td width="9%">&nbsp;</td>
+            <th>Descuento del plan</th>                
+            <td>{{ entity.descuentoPlan }}</td>        
+		</tr>
+        <tr>
+            <th>Estado</th>                
+            <td>{{ entity.estado }}</td>        
+		</tr>
+    </tbody>
+</table>
+{% if items is defined %}
+<div class="secHead">Listado de productos</div>
+<div class="k-content" id="example">
+	<table id="table-3" width="100%">
+		<thead>
+			<tr>
+				<th class="k-header" data-field="codigo">Producto</th>
+				<th class="k-header" data-field="cantidad">Cantidad</th>
+				<th class="k-header" data-field="precio">Precio</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in items %}
+				<tr>
+					<td>{{ item.producto }}</td>
+					<td>{{ item.cantidad }}</td>
+					<td>{{ item.precio }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
+{% if caracteristicas is defined %}
+<div class="secHead">Listado de Caracteristicas</div>
+<div class="k-content" id="example">
+	<table id="table-3" width="100%">
+		<thead>
+			<tr>
+				<th class="k-header" data-field="codigo">Nombre</th>
+				<th class="k-header" data-field="cantidad">Valor</th>
+				<th class="k-header" data-field="estado">Estado</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in caracteristicas %}
+				<tr>
+					<td>{{ item.nombre }}</td>
+					<td>{{ item.valor }}</td>
+					<td>{{ item.estado }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
+</div>
+ <div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('infoplancab') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ entity.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ entity.feCreacion | date("d M Y") }}</td>
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('infoplancab_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo plan
+            </a>
+        </li>
+        <li>
+            &nbsp;
+        </li>
+        <li>
+            <a class="button-editar" href="{{ path('infoplancab_edit', { 'id': entity.id }) }}">
+                &nbsp;Editar plan
+            </a>
+        </li>
+        <!--li>
+            <a class="button-eliminar" href="{{ path('infoplancab_delete', { 'id': entity.id }) }}">
+                &nbsp;Eliminar plan
+            </a>
+        </li-->
+    </ul>
+{% endblock contenido_der %}

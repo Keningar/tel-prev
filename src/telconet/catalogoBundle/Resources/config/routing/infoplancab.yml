@@ -1,0 +1,60 @@
+infoplancab:
+    pattern:  /
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:index" }
+
+infoplancab_delete_ajax:
+    pattern:  /delete_ajax
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:deleteAjax" }
+    
+infoplancab_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:show" }
+
+infoplancab_new:
+    pattern:  /new
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:new" }
+
+infoplancab_create:
+    pattern:  /create
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:create" }
+    requirements: { _method: post }
+
+infoplancab_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:edit" }
+
+infoplancab_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:update" }
+    requirements: { _method: post }
+    
+infoplancab_actualizar:
+    pattern:  /actualizar
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:actualizar" }
+    requirements: { _method: post }
+
+infoplancab_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:delete" }
+#     requirements: { _method: post }
+
+infoplancab_listar_productos:
+    pattern:  /listar_productos
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:listarProductos" }
+    
+infoplancab_listar_productos_existentes:
+    pattern:  /listar_productos_existentes
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:listarProductosExistentesAction" }
+    requirements: { _method: post }
+    
+infoplancab_listar_planes:
+    pattern:  /listar_planes
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:listadoPlanes" }
+
+infoplancab_listar_caracteristicas:
+    pattern:  /listar_caracteristicas
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:listarCaracteristicasPorProducto" }
+
+infoplancab_lista_estados:
+    pattern:  /listaestados
+    defaults: { _controller: "catalogoBundle:InfoPlanCab:estados"}

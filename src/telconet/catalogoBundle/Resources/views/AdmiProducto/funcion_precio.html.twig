@@ -1,0 +1,278 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido_izq %}
+<div id="myLoading" class="myloadingjs" style="float: center; overflow: auto;">
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Definicion de la funcion precio</h1>
+    </div>
+    <table border='0' cellpadding='1' cellspacing='1' width='100%'>
+        <tr>
+            <td colspan='2'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan='2'>                                    
+                <table border='0'>                
+                    <tr><td><div class="leyendamessage"> <b><i>CONSIDERACIONES: </i></b>
+                                <ol type="1">
+                                    <li>1.Cada IF  debe poseer su condicion entre parentesis ()  y al inicio y final de cada condición las llaves 
+                                        de inicio y cierre { }</li>
+                                    <li>2.Las condiciones  a evaluar en la formula en el caso de  igualdades deberán poseer doble igual == 
+                                        , ejemplo: 
+                                        if ( [CAPACIDAD1]==1 ) 
+                                        { PRECIO=7.50 } else if ( [CAPACIDAD1]==0 ) { PRECIO=7.00 }</li>
+                                    <li>3.Si estamos evaluando valores numéricos es correcto que estos valor no tengan comillas  ejemplo:
+                                        if ([CAPACIDAD1]==1) { PRECIO=14.99 } 
+                                        else if ( [CAPACIDAD1]==0) { PRECIO=19.99 }</li>
+                                    <li>4.En el caso de que el valor a evaluar sea una cadena , las  etiquetas (características a evaluar en la 
+                                        formula) deben poseer comillas. ejemplo: 
+                                        if ( "[ESTATICO]"=="SI" ) { PRECIO=1.5 }</li>
+                                    <li>5.Math.pow(x, y) devuelve la  base x elevada al exponente y. ejemplo: 
+                                          Math.pow(5, 2) = 25</li>  
+                                    <li>6.Math.floor(x) Devuelve el máximo entero menor o igual al número x enviado como parámetro. ejemplo: 
+                                          Math.floor(1.33) = 1</li>  
+                                    <li>7.Math.ceil(x) Devuelve el menor entero que sea mayor o igual que el número x enviado como parámetro. 
+                                          ejemplo: 
+                                          Math.ceil(1.33) = 2</li>                                 
+                                </ol></div>
+                        </td></tr>
+                </table>                                   
+            </td>
+        </tr>                              
+        <tr>
+            <td colspan='2'>                                     
+
+                <div class="body_content">
+                    <form id='form_edit_producto' action="{{ path('admiproducto_guardar_funcion', { 'id_producto': id_producto }) }}" method="post"
+                          onSubmit="presentarLoading()" name="formulario">
+                        <table>
+                            <tr>
+                                <td>Listado de clausulas</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                {% for clausula in clausulas %} 
+                                <td>
+                                    <a class="button-crud" onClick='actualizar_funcion("{{ clausula }}")'>
+                            {{ clausula }}
+                                    </a>
+                                </td>
+                {% endfor %}
+                            </tr>
+                        </table>
+                        <br />
+                        <table>
+                            <tr>
+                                <td>Listado de caracteristicas</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                {% for caracteristica in caracteristicas %} 
+                                <td>
+                                    <a class="button-crud" onClick='actualizar_funcion("{{ caracteristica.descripcionCaracteristica }}")'>
+                            {{ caracteristica.descripcionCaracteristica }}
+                                    </a>
+                                </td>
+                {% endfor %}
+                            </tr>
+                        </table>
+                        <br />
+                        <table class="formulario">
+                            <tr>
+                                <td>Definición de Funcion de precio</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea id='funcion' name='funcion' 
+                                              required="" style="width: 836px; height: 126px;">{{ funcion_existente }}</textarea>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="buttons">
+                            <p>
+                                <input type='submit'class="button-crud" value="Guardar" />
+                                <span class="height20px">
+                                    <a class="button-crud" href="{{ path('admiproducto') }}">Regresar</a>
+                                </span>
+                            </p>
+                        </div>
+                        <input type="hidden" name="producto" id="producto" value={{ id_producto }}>
+                        <table>
+                            <tr>
+                                <td><div class="secHead">Validador de la formula</div></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td> <div id="contenido"></div>
+                                    <div id="mensaje" class="info-error campo-oculto"></div>
+                                </td>
+                            </tr>
+                        </table>        
+                    </form>
+                </div>	
+
+            </td></tr></table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+<script>
+    $(document).ready(function() {
+        var producto = $('#producto').val();        
+        $.ajax({
+            type: "POST",
+            data: "producto=" + producto,
+            url: '{{ path('admiproducto_listar_caracteristicas') }}',
+            success: function(msg) {
+                if (msg.msg == 'ok')
+                {
+                    document.getElementById("contenido").innerHTML = msg.div;
+                    $('#contenido').removeClass('info-error');                  
+                }
+                else
+                {
+                    document.getElementById("contenido").innerHTML = msg.msg;
+                    $('#contenido').addClass('info-error');                         
+                }
+            }
+        });
+    });
+    function validar_funcion()
+    {
+        var valor_caract = new Array();
+        var nombre_caract = new Array();
+        var prod_caract = new Array();
+        var text = "";        
+        var precio_unitario = 0;
+        var producto = $('#producto').val();        
+        informacion_controlador = {};
+        informacion_controlador["producto"] = producto;
+
+        var caracteristicas = "formulario.caracteristicas_";
+        var caracteristica_nombre = "formulario.caracteristica_nombre_";
+        var producto_caracteristica = "formulario.producto_caracteristica_";
+        var cantidad_caracteristicas = formulario.cantidad_caracteristicas.value;
+        var caracteristicas_n = "";
+        var caracteristica_nombre_n = "";
+        var producto_caracteristica_n = "";
+
+        for (var x = 0; x < cantidad_caracteristicas; x++)
+        {
+            caracteristicas_n = caracteristicas + x;
+            caracteristica_nombre_n = caracteristica_nombre + x;
+            producto_caracteristica_n = producto_caracteristica + x;
+
+            valor_caract[x] = eval(caracteristicas_n).value;
+            nombre_caract[x] = eval(caracteristica_nombre_n).value;
+            prod_caract[x] = eval(producto_caracteristica_n).value;
+        }
+
+        informacion_controlador["valor_caract"] = valor_caract;
+        informacion_controlador["nombre_caract"] = nombre_caract;
+        informacion_controlador["prod_caract"] = prod_caract;
+        var funcion_precio = formulario.funcion.value;
+        text = funcion_precio;
+        for (var x = 0; x < nombre_caract.length; x++)
+        {
+            text = replaceAll(text, nombre_caract[x], valor_caract[x]);
+        }
+        try
+        {
+            precio_unitario = eval(text);
+            informacion_controlador["precio_unitario"] = precio_unitario;
+
+            if (precio_unitario >= 0)
+            {
+                $('#mensaje').addClass('campo-oculto').html("");
+                formulario.precio_unitario.value = precio_unitario;
+
+            }
+            else
+            {
+                $('#mensaje').removeClass('campo-oculto').html("Los valores ingresados no cumplen la funcion precio, favor verificar");
+            }
+        }
+        catch (err)
+        {
+            $('#mensaje').removeClass('campo-oculto').html("Los valores ingresados no cumplen la funcion precio, favor verificar");
+        }
+    }
+
+    function replaceAll(text, busca, reemplaza)
+    {
+        while (text.toString().indexOf(busca) != - 1)
+            text = text.toString().replace(busca, reemplaza);
+        return text;
+    }
+    function limpiar_detalle()
+    {
+        var cantidad_caracteristicas = formulario.cantidad_caracteristicas.value;
+        var caracteristicas = "formulario.caracteristicas_";
+        var caracteristicas_n = "";
+        for (var x = 0; x < cantidad_caracteristicas; x++)
+        {
+            caracteristicas_n = caracteristicas + x;
+            eval(caracteristicas_n).value = "";
+        }
+        formulario.precio_unitario.value = "";
+        $('#mensaje_validaciones').addClass('campo-oculto').html("");
+    }
+    function actualizar_funcion(clausula)
+    {
+        var strTexto      = document.getElementById("funcion").value;
+        var strTextoFinal = "";
+        
+        if (strTexto != "")
+        {
+            if( clausula == "=")
+            {
+                 strTextoFinal = strTexto + clausula;
+            }
+            else
+            {
+                strTextoFinal = strTexto + " " + clausula;
+            }
+        }
+        else
+        {
+            strTextoFinal = clausula;
+        }
+        
+        document.getElementById("funcion").value = strTextoFinal;
+    }
+
+    function grabar()
+    {
+        document.forms[0].submit();
+    }
+    
+    function loadMask(el, flag, msg)
+    {
+        Mask = new Ext.LoadMask(Ext.get(el), {msg: msg});
+          
+        if (flag)
+        {
+            Mask.show();
+        }
+        else
+        {
+            Mask.hide();
+        }
+    }
+    
+    function presentarLoading()
+    {
+        loadMask('myLoading', true, 'Procesando');
+    }
+    
+    
+</script>
+{% endblock %}
+

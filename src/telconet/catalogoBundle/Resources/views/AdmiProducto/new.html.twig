@@ -1,0 +1,1083 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        $form-error-under-padding: 2px 2px 2px 0 !default;
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+
+    <script> 
+
+ 
+        var Mask;
+        
+        function loadMask(el, flag, msg)
+        {
+            Mask = new Ext.LoadMask(Ext.get(el), {msg: msg});
+            
+            if (flag)
+            {
+                Mask.show();
+            }
+            else
+            {
+                Mask.hide();
+            }
+        }
+        
+        var strPrefijoEmpresa  = "{{strPrefijoEmpresa}}";
+        var intFontSize = "{{intFontSize}}";
+        Ext.require([
+            'Ext.selection.CellModel',
+            'Ext.grid.*',
+            'Ext.data.*',
+            'Ext.util.*',
+            'Ext.state.*',
+            'Ext.form.*'
+        ]);
+
+        Ext.onReady(function () {
+            var tabs = new Ext.TabPanel({
+                height: 600,
+                width: 800,
+                renderTo: 'my-tabs',
+                activeTab: 0,
+                items: [
+                    {contentEl: 'tab1', title: 'Datos Principales'},
+                    {contentEl: 'tab2', title: 'Descuentos', listeners: {
+                            activate: function (tab) {
+                                grid_dos.view.refresh();
+
+                            }
+                        }},
+                    {contentEl: 'tab3', title: 'Impuestos', listeners: {
+                            activate: function (tab) {
+                                grid_tres.view.refresh();
+
+                            }
+                        }},
+                    {contentEl: 'tab4', title: 'Términos Y Condiciones', listeners: {
+                            activate: function (tab) {
+                                if(!$('#panelTermCondiciones').length){
+                                    new Ext.panel.Panel({          
+                                        renderTo: 'terminosCondiciones',
+                                        width: 700,
+                                        height: 500,
+                                        frame: true,
+                                        layout: 'fit',
+                                        id: 'panelTermCondiciones',
+                                        items: {
+                                            xtype: 'htmleditor',
+                                            id: 'termCondiciones',
+                                            name: 'termCondiciones',
+                                            height: 400,
+                                            width: 700,
+                                            fontFamilies : [
+                                                'Arial',
+                                                'Courier New',
+                                                'Tahoma',
+                                                'Times New Roman',
+                                                'Verdana'
+                                            ],
+                                            defaultFont: 'Arial',
+                                            enableColors: false,
+                                            enableAlignments: false,
+                                            enableFontSize:false,
+                                            enableFont:true,
+                                            value: ''
+                                        }   
+                                    });
+                                }
+                            }
+                        }},
+                ],
+                defaults: {autoScroll: true},
+            });
+
+            Ext.QuickTips.init();
+
+            function formatDate(value) {
+                return value ? Ext.Date.dateFormat(value, 'M d, Y') : '';
+            }
+
+
+            Ext.define('Caracteristica', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    // the 'name' below matches the tag name to read, except 'availDate'
+                    // which is mapped to the tag 'availability'
+                    {name: 'caracteristica'},
+                ]
+            });
+
+            var store = Ext.create('Ext.data.Store', {
+                // destroy the store if the grid is destroyed
+                model: 'Caracteristica',
+                data: [
+                    {caracteristica: ''}
+                ]
+            });
+
+            Ext.define('modelCaracteristicas', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'id', type: 'string'},
+                    {name: 'descripcion', type: 'string'}
+                ]
+            });
+
+            var store_caracteristicas = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelCaracteristicas",
+                proxy: {
+                    type: 'ajax',
+                    url: '{{path('admiproducto_ajax_get_caracteristicas')}}',
+                    reader: {
+                        type: 'json',
+                        root: 'caracteristica'
+                    }
+                }
+            });
+
+            var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+                clicksToEdit: 1
+            });
+            var cellEditing1 = Ext.create('Ext.grid.plugin.CellEditing', {
+                clicksToEdit: 1
+            });
+            var cellEditing2 = Ext.create('Ext.grid.plugin.CellEditing', {
+                clicksToEdit: 1
+            });
+// create the grid and specify what field you want
+// to use for the editor at each header.
+            grid = Ext.create('Ext.grid.Panel', {
+                store: store,
+                columns: [{
+                        header: 'Caracteristica',
+                        dataIndex: 'caracteristica',
+                        width: 200,
+                        editor: new Ext.form.field.ComboBox({
+                            id: 'id',
+                            name: 'combo_caract',
+                            valueField: 'descripcion',
+                            displayField: 'descripcion',
+                            typeAhead: true,
+                            triggerAction: 'all',
+                            selectOnTab: true,
+                            store: store_caracteristicas,
+                            lazyRender: true,
+                            listClass: 'x-combo-list-small'
+                        })
+                    }, {
+                        header: 'Acciones',
+                        xtype: 'actioncolumn',
+                        width: 130,
+                        sortable: false,
+                        items: [{
+                                //icon: '../shared/icons/fam/delete.gif',
+                                iconCls: 'button-grid-delete',
+                                tooltip: 'Eliminar',
+                                handler: function (grid, rowIndex, colIndex) {
+                                    store.removeAt(rowIndex);
+                                }
+                            }]
+                    }],
+                selModel: {
+                    selType: 'cellmodel'
+                },
+                renderTo: 'editor-grid',
+                width: 350,
+                height: 200,
+                title: 'Listado de caracteristicas',
+                frame: true,
+                tbar:
+                    [{
+                            text: 'Agregar caracteristica',
+                            handler: function ()
+                            {
+                                // Create a model instance
+                                var r = Ext.create('Caracteristica', {caracteristica: ''});
+
+                                if (!existeRecordRelacion(r, grid))
+                                {
+                                    store.insert(0, r);
+                                    cellEditing.startEditByPosition({row: 0, column: 0});
+                                } else
+                                {
+                                    alert('Ya existe un registro vacio.');
+                                }
+                            }
+                        }],
+                plugins: [cellEditing]
+            });
+
+//store.load();
+//grid para el descuento
+
+            Ext.define('Descuento', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    // the 'name' below matches the tag name to read, except 'availDate'
+                    // which is mapped to the tag 'availability'
+                    {name: 'descuentos'},
+                    {name: 'valor', type: 'float'},
+                ]
+            });
+
+            Ext.define('modelDescuento', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'id1', type: 'string'},
+                    {name: 'descripcion1', type: 'string'}
+                ]
+            });
+
+            var store_grid2 = Ext.create('Ext.data.Store', {
+                // destroy the store if the grid is destroyed
+                model: 'Descuento',
+                data: [
+                    {descuentos: '', valor: ''}
+                ]
+            });
+
+            var store_descuento = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelDescuento",
+                proxy: {
+                    type: 'ajax',
+                    url: '{{path('admiproducto_ajax_get_nivel_descuento')}}',
+                    reader: {
+                        type: 'json',
+                        root: 'descuento'
+                    }
+                }
+            });
+
+            grid_dos = Ext.create('Ext.grid.Panel', {
+                store: store_grid2,
+                columns: [{
+                        header: 'Rol',
+                        dataIndex: 'descuentos',
+                        width: 200,
+                        editor: new Ext.form.field.ComboBox({
+                            id: 'id1',
+                            name: 'combo_desc',
+                            valueField: 'descripcion1',
+                            displayField: 'descripcion1',
+                            typeAhead: true,
+                            triggerAction: 'all',
+                            selectOnTab: true,
+                            store: store_descuento,
+                            lazyRender: true,
+                            listClass: 'x-combo-list-small'
+                        })
+                    }, {
+                        header: 'Porcentaje de descuento',
+                        dataIndex: 'valor',
+                        width: 150,
+                        align: 'right',
+                        renderer: 'usMoney',
+                        field: {
+                            xtype: 'numberfield',
+                            allowBlank: false,
+                            minValue: 0,
+                            maxValue: 100000
+                        }
+                    }, {
+                        header: 'Acciones',
+                        xtype: 'actioncolumn',
+                        width: 130,
+                        sortable: false,
+                        items: [{
+                                //icon: '../shared/icons/fam/delete.gif',
+                                iconCls: 'button-grid-delete',
+                                tooltip: 'Eliminar',
+                                handler: function (grid, rowIndex, colIndex) {
+                                    store_grid2.removeAt(rowIndex);
+                                }
+                            }]
+                    }],
+                selModel: {
+                    selType: 'cellmodel'
+                },
+                renderTo: 'descuentos',
+                width: 500,
+                height: 200,
+                title: 'Listado de descuentos',
+                frame: true,
+                tbar: [{
+                        text: 'Agregar descuento',
+                        handler: function () {
+                            // Create a model instance
+                            var r = Ext.create('Descuento', {
+                                descuentos: 'Descuento'
+                            });
+                            store_grid2.insert(0, r);
+                            cellEditing1.startEditByPosition({row: 0, column: 0});
+                        }
+                    }],
+                plugins: [cellEditing1]
+            });
+// manually trigger the data store load
+// store_grid2.load();
+
+//grid para impuestos
+            Ext.define('Impuesto', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    // the 'name' below matches the tag name to read, except 'availDate'
+                    // which is mapped to the tag 'availability'
+                    {name: 'impuesto'},
+                ]
+            });
+
+            Ext.define('modelImpuesto', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'id2', type: 'string'},
+                    {name: 'descripcion2', type: 'string'}
+                ]
+            });
+
+            var store_grid3 = Ext.create('Ext.data.Store', {
+                // destroy the store if the grid is destroyed
+                model: 'Impuesto',
+                data: [
+                    {impuesto: ''}
+                ]
+            });
+
+            var store_impuesto = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelImpuesto",
+                proxy: {
+                    type: 'ajax',
+                    url: '{{path('admiproducto_ajax_get_impuestos')}}',
+                    reader: {
+                        type: 'json',
+                        root: 'impuesto'
+                    }
+                }
+            });
+
+            grid_tres = Ext.create('Ext.grid.Panel', {
+                store: store_grid3,
+                columns: [{
+                        header: 'Impuestos',
+                        dataIndex: 'impuesto',
+                        width: 200,
+                        editor: new Ext.form.field.ComboBox({
+                            id: 'id2',
+                            name: 'combo_imp',
+                            valueField: 'descripcion2',
+                            displayField: 'descripcion2',
+                            typeAhead: true,
+                            triggerAction: 'all',
+                            selectOnTab: true,
+                            store: store_impuesto,
+                            lazyRender: true,
+                            listClass: 'x-combo-list-small'
+                        })
+                    }, {
+                        header: 'Acciones',
+                        xtype: 'actioncolumn',
+                        width: 130,
+                        sortable: false,
+                        items: [{
+                                //icon: '../shared/icons/fam/delete.gif',
+                                iconCls: 'button-grid-delete',
+                                tooltip: 'Eliminar',
+                                handler: function (grid, rowIndex, colIndex) {
+                                    store_grid3.removeAt(rowIndex);
+                                }
+                            }, {
+                                    xtype: 'htmleditor',
+                                    id: 'htmlTerminos',
+                                    enableColors: false,
+                                    enableAlignments: false,    
+                                }
+]
+                    }],
+                selModel: {
+                    selType: 'cellmodel'
+                },
+                renderTo: 'impuestos',
+                width: 420,
+                height: 200,
+                title: 'Listado de impuestos',
+                frame: true,
+                tbar: [{
+                        text: 'Agregar impuesto',
+                        handler: function () {
+                            // Create a model instance
+                            var r = Ext.create('Impuesto', {
+                                impuesto: 'Impuesto'
+                            });
+                            store_grid3.insert(0, r);
+                            cellEditing2.startEditByPosition({row: 0, column: 0});
+                        }
+                    }],
+                plugins: [cellEditing2]
+            });
+//--Grid Impuestos
+//Grid Terminos y Condiciones    
+
+
+//--Grid Terminos y condiciones
+            
+            Ext.define('modelEstadoInicial', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'estado', type: 'string'}
+                ]
+            });
+
+            var estados_iniciales = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelEstadoInicial",
+                proxy: {
+                    type: 'ajax',
+                    url: '{{path('admiproducto_ajax_get_estadosIniciales')}}',
+                    reader: {
+                        type: 'json',
+                        root: 'estados'
+                    }
+                }
+            });
+            
+            new Ext.form.ComboBox({
+                xtype: 'combobox',
+                id: 'cmbEstadoInicial',
+                store: estados_iniciales,
+                labelAlign : 'left',
+                name: 'estadoInicial',
+                valueField:'estado',
+                displayField:'estado',
+                fieldLabel: '',
+                width: 120,
+                allowBlank: false,	
+                emptyText: 'Seleccione...',
+                disabled: false,
+                renderTo: 'combo_estado_inicial',                
+                listeners: {
+                    click: {
+                        element: 'el',
+                        fn: function(){ 
+                        }
+                    }			
+                }
+            });	
+            
+            /*Cargar dinámicamente los Nombres Tecnicos*/
+            Ext.define('modelNombreTecnico', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'nombre', type: 'string'}
+                ]
+            });
+
+            var nombres_tecnicos = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelNombreTecnico",
+                proxy: {
+                    type: 'ajax',
+                    url: '{{path('admiproducto_ajax_get_nombresTecnicos')}}',
+                    reader: {
+                        type: 'json',
+                        root: 'nombres'
+                    }
+                }
+            });
+            
+             new Ext.form.ComboBox({
+                xtype: 'combobox',
+                id: 'cmbNombreTecnico',
+                store: nombres_tecnicos,
+                labelAlign : 'left',
+                name: 'nombreTecnico',
+                valueField:'nombre',
+                displayField:'nombre',
+                fieldLabel: '',
+                width: 160,
+                allowBlank: false,	
+                emptyText: 'Seleccione...',
+                forceSelection: true,
+                disabled: false,
+                renderTo: 'combo_nombre_tecnico',                
+                listeners: {
+                    click: {
+                        element: 'el',
+                        fn: function(){ 
+                        }
+                    }			
+                }
+            });	
+       
+        if(strPrefijoEmpresa == 'TN')
+        {
+            $('#admiproductoextratype_subgrupo').val('');
+            $('#admiproductoextratype_grupo').val('');
+            $('#admiproductoextratype_tiponegocio').val('');
+            /*Cargar dinámicamente los Grupos*/
+            Ext.define('modelGrupo', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'nombre', type: 'string'}
+                ]
+            });
+
+            var grupos = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelGrupo",
+                proxy: {
+                    type: 'ajax',
+                    url: '{{path('admiproducto_ajax_get_grupos')}}',
+                    reader: {
+                        type: 'json',
+                        root: 'nombres'
+                    }
+                }
+            });
+            
+             new Ext.form.ComboBox({
+                xtype: 'combobox',
+                store: grupos,
+                labelAlign : 'left',
+                name: 'grupo',
+                id: 'idgrupo',
+                valueField:'nombre',
+                displayField:'nombre',
+                fieldLabel: '',
+                width: 200,
+                allowBlank: false,	
+                emptyText: 'Seleccione...',
+                disabled: false,
+                renderTo: 'combo_grupo',                
+                listeners: {
+                    select:
+                        {
+                            fn: function(combo, value)
+                            {
+                                 $('#admiproductoextratype_grupo').val(combo.getValue()); 
+                                 
+                                 var strIdGrupo=combo.getValue();
+                                 subGrupos.proxy.extraParams = {strIdGrupo: strIdGrupo};
+                                 cmbSubGrupos.clearValue();
+                            }
+                        },
+                    click: {
+                        element: 'el',
+                        fn: function(){ 
+                            ocultarDiv('div_errorgrupo');                           
+                        }
+                    }			
+                }
+            });	
+            
+             /*Cargar dinámicamente los SubGrupos*/
+            Ext.define('modelSubGrupo', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'nombre', type: 'string'}
+                ]
+            });
+            
+            var subGrupos = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelSubGrupo",
+                proxy: {
+                    type: 'ajax',
+                    url:  'getNombresSubGrupos',
+                    timeout: 300000,
+                    reader: {
+                        type: 'json',
+                        root: 'nombres'
+                    }
+                }
+            });
+                            
+          var cmbSubGrupos =  new Ext.form.ComboBox({
+                xtype: 'combobox',
+                store: subGrupos,
+                labelAlign : 'left',
+                name: 'subgrupo',
+                id: 'idsubgrupo',
+                valueField:'nombre',
+                displayField:'nombre',
+                fieldLabel: '',
+                width: 200,
+                allowBlank: false,	
+                emptyText: 'Seleccione...',
+                disabled: false,
+                renderTo: 'combo_subgrupo',
+                disable: true,
+                listeners: {
+                    select:
+                        {
+                            fn: function(combo, value)
+                            {
+                                 $('#admiproductoextratype_subgrupo').val(combo.getValue()); 
+                            }
+                        },
+                    click: {
+                        element: 'el',
+                        fn: function(){ 
+                            ocultarDiv('div_errorsubgrupo');                           
+                        }
+                    }			
+                }
+            });
+            
+             /*Cargar dinámicamente los Tipos de Negocio*/
+            Ext.define('modelTipoNegocio', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'nombre', type: 'string'}
+                ]
+            });
+            
+            var tipoNegocio = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelTipoNegocio",
+                proxy: {
+                    type: 'ajax',
+                    url: '{{path('admiproducto_getNombresTipoNegocio')}}',
+                    reader: {
+                        type: 'json',
+                        root: 'nombres'
+                    }
+                }
+            });
+                            
+            new Ext.form.ComboBox({
+                xtype: 'combobox',
+                store: tipoNegocio,
+                labelAlign : 'left',
+                name: 'tiponegocio',
+                id: 'idtiponegocio',
+                valueField:'nombre',
+                displayField:'nombre',
+                fieldLabel: '',
+                width: 200,
+                allowBlank: false,	
+                emptyText: 'Seleccione...',
+                disabled: false,
+                renderTo: 'combo_tiponegocio',                
+                listeners: {
+                    select:
+                        {
+                            fn: function(combo, value)
+                            {
+                                 $('#admiproductoextratype_tiponegocio').val(combo.getValue());                                
+                            }
+                        },
+                    click: {
+                        element: 'el',
+                        fn: function(){ 
+                            ocultarDiv('div_errortiponegocio');                           
+                        }
+                    }			
+                }
+            });
+            
+            /*Cargar dinámicamente las clasificaciones*/
+            Ext.define('modelClasificacion', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'nombre', type: 'string'}
+                ]
+            });
+
+            var clasificaciones = Ext.create('Ext.data.Store', {
+                autoLoad: false,
+                model: "modelClasificacion",
+                proxy: {
+                    type: 'ajax',
+                    url: '{{path('admiproducto_ajax_get_clasificaciones')}}',
+                    reader: {
+                        type: 'json',
+                        root: 'nombres'
+                    }
+                }
+            });
+            
+             new Ext.form.ComboBox({
+                xtype: 'combobox',
+                store: clasificaciones,
+                labelAlign : 'left',
+                name: 'clasificacion',
+                valueField:'nombre',
+                displayField:'nombre',
+                fieldLabel: '',
+                width: 120,
+                allowBlank: false,	
+                emptyText: 'Seleccione...',
+                disabled: false,
+                renderTo: 'combo_clasificacion',                
+                listeners: {
+                    click: {
+                        element: 'el',
+                        fn: function(){                              
+                        }
+                    }			
+                }
+            });	                     
+         }
+        });              
+     
+    </script>
+    <script>
+        
+         
+        function loadMask(el, flag, msg)
+        {
+            Mask = new Ext.LoadMask(Ext.get(el), {msg: msg});
+            
+            if (flag)
+            {
+                Mask.show();
+            }
+            else
+            {
+                Mask.hide();
+            }
+        }
+        
+        
+        function enviarInformacion()
+        {
+            loadMask('myLoading', true, 'Procesando');
+            var array_data = new Array();
+            var array_data_imp = new Array();
+            var array_data_caract = new Array();
+            var informacion = [];
+            for (var i = 0; i < grid.getStore().getCount(); i++)
+            {
+                //console.log(grid.getStore().getAt(i).data);
+                variable = grid.getStore().getAt(i).data;
+                for (var key in variable) {
+                    var valor = variable[key];
+                    if (valor != "")
+                        array_data.push(valor);
+                }
+            }
+            $('#listado_caracteristicas').val(array_data);
+
+            for (var i = 0; i < grid_dos.getStore().getCount(); i++)
+            {
+                //console.log(grid_dos.getStore().getAt(i).data);
+                variable = grid_dos.getStore().getAt(i).data;
+                for (var key in variable) {
+                    var valor = variable[key];
+                    if (valor != "")
+                        array_data_caract.push(valor);
+                }
+            }
+
+            $('#listado_descuentos').val(array_data_caract);
+
+            for (var i = 0; i < grid_tres.getStore().getCount(); i++)
+            {
+                //console.log(grid_tres.getStore().getAt(i).data);
+                variable = grid_tres.getStore().getAt(i).data;
+                for (var key in variable) {
+                    var valor = variable[key];
+                    if (valor != "")
+                        array_data_imp.push(valor);
+                }
+            }
+            //console.log(array_data_imp);
+            $('#listado_impuestos').val(array_data_imp);
+            $('#terminos_condiciones').val(Ext.getCmp('termCondiciones').getValue());
+            //document.forms[0].submit();
+        }
+
+        function existeRecordRelacion(myRecord, grid)
+        {
+            var existe = false;
+            var num = grid.getStore().getCount();
+
+            for (var i = 0; i < num; i++)
+            {
+                var valorParametro = grid.getStore().getAt(i).get('caracteristica');
+
+                if (valorParametro == myRecord.get('caracteristica'))
+                {
+                    existe = true;
+                    break;
+                }
+            }
+
+            return existe;
+        }
+            
+    </script>
+    
+{% endblock %}
+ 
+ 
+{% block contenido_izq %}
+    <div id="myLoading" class="myloadingjs" style="float: center; overflow: auto;">
+        <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('catalog.png') ~ '') }}" class="imagen-titulo-content">
+            <h1>Nuevo Producto</h1>
+        </div>
+        <span class="campos-requeridos">* Campos requeridos</span>
+        <div class="body_content">
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="errormessage">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            <form id='form_new_producto' action="{{ path('admiproducto_create') }}" method="post" {{ form_enctype(form) }} class='formulario'
+                  onSubmit="if(validacionesForm()){enviarInformacion();}else{return false;}">
+                {#{ form_widget(form) }#}
+                <div id="my-tabs">
+                    <div id="tab1" class="x-hide-display">
+                        <br />
+                        <table>	
+                            <tr>
+                                <td>{{  form_label(form.codigoProducto) }}</td>
+                                <td>{{  form_widget(form.codigoProducto) }}</td>     
+                                <td>{{  form_label(form.tipo) }}</td>
+                                <td> <div id='div_error_tipo' class='errormessage' style="display:none"></div>
+                                    {{  form_widget(form.tipo)}}</td>
+                            </tr>  
+                            <tr>
+                                <td>{{  form_label(form.descripcionProducto) }}</td>
+                                <td>{{  form_widget(form.descripcionProducto) }}</td>
+                                <td>{{  form_label(form.esEnlace) }}</td>
+                                <td>{{  form_widget(form.esEnlace)}}</td>   
+                            </tr>
+                            <tr>
+                                <td>{{  form_label(form.instalacion) }}</td>
+                                <td><div id='div_instalacion' class='errormessage' style="display:none"></div>
+                                    {{  form_widget(form.instalacion) }}</td>     
+                                <td>{{  form_label(form.requiereInfoTecnica) }}</td>
+                                <td>{{  form_widget(form.requiereInfoTecnica)}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label  class='campo-obligatorio'>* Nombre T&eacute;cnico:</label>
+                                </td>
+                                <td>
+                                    <div id='div_errornombre_tecnico' 
+                                         class='errormessage' style="display:none">Nombre T&eacute;cnico es obligatorio</div>
+                                    <div id='combo_nombre_tecnico' required="true"></div>
+                                </td> 
+
+                                <td>
+                                    <label  class='campo-obligatorio'>* Estado Inicial:</label>
+                                </td>
+                                <td>
+                                    <div id='div_errorestado_inicial' 
+                                         class='errormessage' style="display:none">Campo Estado Inicial es obligatorio</div>
+                                    <div id='combo_estado_inicial' required="true"></div>
+                                </td> 
+
+                            </tr>
+                            <tr>
+                                <td>{{  form_label(form.esPreferencia) }}</td>
+                                <td>{{  form_widget(form.esPreferencia)}}</td>
+                               {% if (strPrefijoEmpresa =='TN') %}
+                                    <td>
+                                        <label class='campo-obligatorio'>* Grupo:</label>
+                                    </td>
+                                    <td>
+                                        <input id='admiproductoextratype_grupo' name='admiproductoextratype[grupo]' type='hidden'>
+                                        <div id='div_errorgrupo' class='errormessage' style="display:none"></div>
+                                        <div id='combo_grupo' required="true"></div>
+                                    </td> 
+                               {% endif %}
+                               {% if (strPrefijoEmpresa =='MD' or strPrefijoEmpresa =='EN' ) %}
+                                    <td>{{  form_label(form.frecuencia) }}</td>
+                                    <td> <div id='div_error_frecuencia' class='errormessage' style="display:none"></div>
+                                        {{  form_widget(form.frecuencia)}}</td>
+                               {% endif %}
+                               </tr>
+                               <tr>
+                               {% if (strPrefijoEmpresa =='TN') %}
+                                    <td>
+                                        <label class='campo-obligatorio'>* Línea Negocio:</label>
+                                    </td>
+                                    <td>
+                                        <input id='admiproductoextratype_tiponegocio' name='admiproductoextratype[tiponegocio]' type='hidden'>
+                                        <div id='div_errortiponegocio' class='errormessage' style="display:none"></div>
+                                        <div id='combo_tiponegocio' required="true"></div>
+                                    </td>
+                               {% endif %}                              
+                               
+                               
+                               {% if (strPrefijoEmpresa =='TN') %}
+                                    <td>
+                                        <label class='campo-obligatorio'>* SubGrupo:</label>
+                                    </td>
+                                    <td>
+                                        <input id='admiproductoextratype_subgrupo' name='admiproductoextratype[subgrupo]' type='hidden'>
+                                        <div id='div_errorsubgrupo' class='errormessage' style="display:none"></div>
+                                        <div id='combo_subgrupo' required="true"></div>
+                                    </td>
+                               {% endif %}                              
+                               </tr>
+                            <tr>
+                                <td>{{  form_label(form.requierePlanificacion) }}</td>
+                                <td>{{  form_widget(form.requierePlanificacion)}}</td>
+                                {% if (strPrefijoEmpresa =='TN') %}
+                                   <td>{{  form_label(form.requiereComisionar) }}</td>
+                                   <td>{{  form_widget(form.requiereComisionar)}}</td>
+                                {% endif %}                            
+                            </tr> 
+
+                            {% if (strPrefijoEmpresa =='TN') %}
+                            <tr>
+                                <td>
+                                    <label>Clasificación:</label>
+                                </td>
+                                <td>                                                                             
+                                    <div id='combo_clasificacion'></div>
+                                </td>                                
+                            </tr>
+                            {% endif %}                           
+
+                        </table>		
+                        <div id="editor-grid"></div>
+                    </div>
+                    <div id="tab2" class="x-hide-display">
+                        <br />
+                        <div id="descuentos"></div>
+                    </div>
+                    <div id="tab3" class="x-hide-display">
+                        <br />
+                        <div id="impuestos"></div>
+                    </div>
+                    <div id="tab4" class="x-hide-display">
+                        <br />
+                         <div id='div_errorTerminosCondiciones' class='errormessage' style="display:none"></div>
+                        <div id="terminosCondiciones" ></div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <p>
+                        <input type='submit' class="button-crud" value="Guardar" />
+                        <span class="height20px">
+                            &oacute;&nbsp;
+                            <a class="cancel-crud" href="{{ path('admiproducto') }}">
+                                Cancelar
+                            </a>
+                        </span>
+                    </p>
+                </div>	
+                <input type='hidden' id='listado_caracteristicas' name='listado_caracteristicas'>
+                <input type='hidden' id='listado_descuentos' name='listado_descuentos'>
+                <input type='hidden' id='listado_impuestos' name='listado_impuestos'>
+                <input type='hidden' style:"font-size: {{intFontSize}}px !important;" id='terminos_condiciones' name='terminos_condiciones'>
+            </form>
+        </div>
+    </div>
+{% endblock contenido_izq %}
+{% block javascripts_footer%}
+<script>
+  function validacionesForm()
+  {
+      if(strPrefijoEmpresa == 'MD')
+      {
+          if($('#cmbNombreTecnico-inputEl').val()=='')
+          {
+              mostrarDiv('div_errornombre_tecnico');
+              return false;
+          }else{
+              ocultarDiv('div_errornombre_tecnico');
+          }
+          if($('#telconet_schemabundle_admiproductotype_tipo').val()=='Seleccione...')
+          {
+              mostrarDiv('div_error_tipo');
+              $('#div_error_tipo').html('Debe ingresar el tipo del producto');
+              return false;
+          }else{
+              ocultarDiv('div_error_tipo');
+          }
+          if($('#cmbEstadoInicial-inputEl').val()=='')
+          {
+              mostrarDiv('div_errorestado_inicial');
+              return false;
+          }else{
+              ocultarDiv('div_errorestado_inicial');
+          }
+          if($('#telconet_schemabundle_admiproductotype_frecuencia').val()=='Seleccione...')
+          {
+              mostrarDiv('div_error_frecuencia');
+              $('#div_error_frecuencia').html('Debe ingresar la frecuencia del producto');
+              return false;
+          }else{
+              ocultarDiv('div_error_frecuencia');
+          }
+          if($('#termCondiciones-inputEl').val()=='')
+          {
+              mostrarDiv('div_errorTerminosCondiciones');
+              $('#div_errorTerminosCondiciones').html('Debe ingresar los términos y condiciones del producto');
+              return false;
+          }else{
+              ocultarDiv('div_errorTerminosCondiciones');
+          }
+      }
+      if(strPrefijoEmpresa == 'TN')
+      {
+          if($('#admiproductoextratype_grupo').val()=='')
+          {
+              mostrarDiv('div_errorgrupo');
+              $('#div_errorgrupo').html('Debe seleccionar el grupo al que pertenece el producto');             
+              return false;
+          }
+          if($('#admiproductoextratype_subgrupo').val()=='')
+          {
+              mostrarDiv('div_errorsubgrupo');
+              $('#div_errorsubgrupo').html('Debe seleccionar el SubGrupo al que pertenece el producto');             
+              return false;
+          }
+          if($('#admiproductoextratype_tiponegocio').val()=='')
+          {
+              mostrarDiv('div_errortiponegocio');
+              $('#div_errortiponegocio').html('Debe seleccionar la Linea de Negocio al que pertenece el producto');             
+              return false;
+          }
+      }
+      return true;
+   }                            
+     
+    $("#telconet_schemabundle_admiproductotype_instalacion").blur(function()
+     { 
+         if (/^\d+(\.\d+)?$/.test($("#telconet_schemabundle_admiproductotype_instalacion").val()))
+         {    
+             ocultarDiv('div_instalacion');
+             return true;
+         }    
+         else
+         { 
+              mostrarDiv('div_instalacion');
+              $('#div_instalacion').html('Debe ingresar un valor numérico');             
+              $("#telconet_schemabundle_admiproductotype_instalacion").val('');
+          }
+     }); 
+     
+     function mostrarDiv(div)
+     {
+         capa = document.getElementById(div);
+         capa.style.display = 'block';    
+     }
+     function ocultarDiv(div)
+     {
+         capa = document.getElementById(div);
+         capa.style.display = 'none';    
+     }		 
+</script>
+{% endblock javascripts_footer%}

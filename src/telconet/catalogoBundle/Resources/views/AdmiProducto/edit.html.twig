@@ -1,0 +1,571 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	
+	<style scoped="scoped">
+		.alineando {
+			left: 42em;
+			position: absolute;
+			top: 44em;
+		}
+	</style>
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+        
+        <script>
+
+         var productoid={{ entity.id }}
+
+
+    Ext.onReady(function(){
+    
+    var tabs = new Ext.TabPanel({
+                    height: 400,
+                    width: 800,
+                    renderTo: 'my-tabs',
+                    activeTab: 0,
+                    items:[
+                        {contentEl:'tab1', title:'Datos Principales'},
+                        {contentEl:'tab2', title:'Descuentos',listeners:{
+                            activate: function(tab){
+                                    grid_dos.view.refresh();
+
+                            }
+                        }},
+                        {contentEl:'tab3', title:'Impuestos',listeners:{
+                            activate: function(tab){
+                                    grid_tres.view.refresh();
+
+                            }
+                        }},
+                    ],
+                    defaults:{autoScroll:true},
+                });
+                
+    Ext.QuickTips.init();
+ 
+    function formatDate(value){
+        return value ? Ext.Date.dateFormat(value, 'M d, Y') : '';
+    }
+
+    Ext.define('Caracteristica', {
+        extend: 'Ext.data.Model',
+        fields: [
+            // the 'name' below matches the tag name to read, except 'availDate'
+            // which is mapped to the tag 'availability'
+            {name: 'caracteristica'},
+        ]
+    });
+
+     Ext.define('modelCaracteristicas', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'id', type: 'string'},
+            {name: 'descripcion',  type: 'string'}                    
+        ]
+    });	
+            
+    var store_caracteristicas = Ext.create('Ext.data.Store', {
+		    autoLoad: false,
+		    model: "modelCaracteristicas",
+		    proxy: {
+		        type: 'ajax',
+		        url : '{{path('admiproducto_ajax_get_caracteristicas')}}',
+		        reader: {
+		            type: 'json',
+		            root: 'caracteristica'
+                        }
+                    }
+            });	
+    
+    var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+        clicksToEdit: 1
+    });
+
+    var cellEditing1 = Ext.create('Ext.grid.plugin.CellEditing', {
+        clicksToEdit: 1
+    });
+    
+    var cellEditing2 = Ext.create('Ext.grid.plugin.CellEditing', {
+        clicksToEdit: 1
+    });
+    
+    Ext.define('ListadoCaracteristicasModel', {
+        extend: 'Ext.data.Model',
+        fields: [{name:'descripcionCaracteristica', type: 'string'}
+                ]
+    }); 
+
+     var store = Ext.create('Ext.data.Store', {
+        // destroy the store if the grid is destroyed
+        autoDestroy: true,
+        model: 'ListadoCaracteristicasModel',
+        proxy: {
+            type: 'ajax',
+            // load remote data using HTTP
+            url: "{{ path('admiproducto_lista_caracteristicas_existentes') }}",
+            reader: {
+                type: 'json',
+                root: 'listadoCaracteristicas',
+                // records will have a 'plant' tag
+            },
+            extraParams:{productoid:''},
+            simpleSortMode: true               
+        },
+        listeners: {
+                beforeload: function(store){
+                        store.getProxy().extraParams.productoid= productoid; 
+                }
+        }
+    });
+
+    store.load();
+    
+    // create the grid and specify what field you want
+    // to use for the editor at each header.
+    grid = Ext.create('Ext.grid.Panel', {
+        store:store,
+        columns: [{
+            header: 'Caracteristica',
+            dataIndex: 'descripcionCaracteristica',
+            width: 200,
+            editor: new Ext.form.field.ComboBox({
+                id:'id',
+                name: 'id',
+		valueField:'descripcion',
+                displayField:'descripcion',
+                typeAhead: true,
+                triggerAction: 'all',
+                selectOnTab: true,
+                store: store_caracteristicas,
+                lazyRender: true,
+                listClass: 'x-combo-list-small'
+            })
+        }, {
+            header: 'Acciones',
+            xtype: 'actioncolumn',
+            width:130,
+            sortable: false,
+            items: [{
+                iconCls: 'button-grid-delete',
+                tooltip: 'Eliminar',
+                handler: function(grid, rowIndex, colIndex) {
+                    store.removeAt(rowIndex); 
+                }
+            }]
+        }],
+        selModel: {
+            selType: 'cellmodel'
+        },
+        renderTo: 'editor-grid',
+        width: 350,
+        height: 200,
+        title: 'Listado de caracteristicas',
+        frame: true,
+        tbar: [{
+            text: 'Agregar caracteristica',
+            handler : function(){
+                // Create a model instance
+                var r = Ext.create('ListadoCaracteristicasModel', {
+                    caracteristica: 'Caracteristica'
+                });
+                store.insert(0, r);
+                cellEditing.startEditByPosition({row: 0, column: 0});
+            }
+        }],
+        plugins: [cellEditing]
+    });
+    
+    //grid dos descuento
+    
+    Ext.define('Descuento', {
+        extend: 'Ext.data.Model',
+        fields: [
+            // the 'name' below matches the tag name to read, except 'availDate'
+            // which is mapped to the tag 'availability'
+            {name: 'descuentos'},
+            {name: 'valor', type: 'float'},
+        ]
+    });
+    
+    Ext.define('modelDescuento', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'id1', type: 'string'},
+            {name: 'descripcion1',  type: 'string'}                    
+        ]
+    });	
+    
+    /*
+    var store_grid2 = Ext.create('Ext.data.Store', {
+        // destroy the store if the grid is destroyed
+        model: 'Descuento',
+        data:[
+            {descuentos:'', valor:''}
+        ]
+    });*/
+    
+    
+    var store_grid2 = Ext.create('Ext.data.Store', {
+        // destroy the store if the grid is destroyed
+        model: 'Descuento',
+        proxy: {
+            type: 'ajax',
+            // load remote data using HTTP
+            url: "{{ path('admiproducto_nivel_descuento_existente') }}",
+            reader: {
+                type: 'json',
+                root: 'listadoNiveles',
+                // records will have a 'plant' tag
+            },
+            extraParams:{productoid:''},
+            simpleSortMode: true               
+        },
+        listeners: {
+                beforeload: function(store){
+                        store.getProxy().extraParams.productoid= productoid; 
+                }
+        }
+    });
+    
+    var store_descuento = Ext.create('Ext.data.Store', {
+            autoLoad: false,
+            model: "modelDescuento",
+            proxy: {
+                type: 'ajax',
+                url : '{{path('admiproducto_ajax_get_nivel_descuento')}}',
+                reader: {
+                    type: 'json',
+                    root: 'descuento'
+                }
+            }
+    });	
+    
+    store_grid2.load();
+    
+    grid_dos = Ext.create('Ext.grid.Panel', {
+        store:store_grid2,
+        columns: [{
+            header: 'Rol',
+            dataIndex: 'descuentos',
+            width: 200,
+            editor: new Ext.form.field.ComboBox({
+                id:'id1',
+                name: 'combo_desc',
+		valueField:'descripcion1',
+                displayField:'descripcion1',
+                typeAhead: true,
+                triggerAction: 'all',
+                selectOnTab: true,
+                store: store_descuento,
+                lazyRender: true,
+                listClass: 'x-combo-list-small'
+            })
+        },{
+            header: 'Porcentaje de descuento',
+            dataIndex: 'valor',
+            width: 150,
+            align: 'right',
+            renderer: 'usMoney',
+            field: {
+                xtype: 'numberfield',
+                allowBlank: false,
+                minValue: 0,
+                maxValue: 100000
+            }
+        },{
+            header: 'Acciones',
+            xtype: 'actioncolumn',
+            width:130,
+            sortable: false,
+            items: [{
+                //icon: '../shared/icons/fam/delete.gif',
+                iconCls: 'button-grid-delete',
+                tooltip: 'Eliminar',
+                handler: function(grid, rowIndex, colIndex) {
+                    store_grid2.removeAt(rowIndex); 
+                }
+            }]
+        }],
+        selModel: {
+            selType: 'cellmodel'
+        },
+        renderTo: 'descuentos',
+        width: 500,
+        height: 250,
+        title: 'Listado de descuentos',
+        frame: true,
+        tbar: [{
+            text: 'Agregar descuento',
+            handler : function(){
+                // Create a model instance
+                var r = Ext.create('Descuento', {
+                    descuentos: 'Descuento'
+                });
+                store_grid2.insert(0, r);
+                cellEditing1.startEditByPosition({row: 0, column: 0});
+            }
+        }],
+        plugins: [cellEditing1]
+    });
+    
+    // manually trigger the data store load
+    //Impuesto
+    
+    //grid para impuestos
+   Ext.define('Impuesto', {
+        extend: 'Ext.data.Model',
+        fields: [
+            // the 'name' below matches the tag name to read, except 'availDate'
+            // which is mapped to the tag 'availability'
+            {name: 'impuesto'},
+        ]
+    });
+    
+    Ext.define('modelImpuesto', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name: 'id2', type: 'string'},
+            {name: 'descripcion2',  type: 'string'}                    
+        ]
+    });	
+    
+    /*
+    var store_grid3 = Ext.create('Ext.data.Store', {
+        // destroy the store if the grid is destroyed
+        model: 'Impuesto',
+        data:[
+            {impuesto:''}
+        ]
+    });*/
+    
+    var store_grid3 = Ext.create('Ext.data.Store', {
+        // destroy the store if the grid is destroyed
+        model: 'Impuesto',
+        proxy: {
+            type: 'ajax',
+            // load remote data using HTTP
+            url: "{{ path('admiproducto_impuestos_existente') }}",
+            reader: {
+                type: 'json',
+                root: 'listadoImpuestos',
+                // records will have a 'plant' tag
+            },
+            extraParams:{productoid:''},
+            simpleSortMode: true               
+        },
+        listeners: {
+                beforeload: function(store){
+                        store.getProxy().extraParams.productoid= productoid; 
+                }
+        }
+    });
+    
+    store_grid3.load();
+    
+    var store_impuesto = Ext.create('Ext.data.Store', {
+            autoLoad: false,
+            model: "modelImpuesto",
+            proxy: {
+                type: 'ajax',
+                url : '{{path('admiproducto_ajax_get_impuestos')}}',
+                reader: {
+                    type: 'json',
+                    root: 'impuesto'
+                }
+            }
+    });	
+      
+    grid_tres = Ext.create('Ext.grid.Panel', {
+        store:store_grid3,
+        columns: [{
+            header: 'Impuestos',
+            dataIndex: 'impuesto',
+            width: 200,
+            editor: new Ext.form.field.ComboBox({
+                id:'id2',
+                name: 'combo_imp',
+				valueField:'descripcion2',
+                displayField:'descripcion2',
+                typeAhead: true,
+                triggerAction: 'all',
+                selectOnTab: true,
+                store: store_impuesto,
+                lazyRender: true,
+                listClass: 'x-combo-list-small'
+            })
+        },{
+            header: 'Acciones',
+            xtype: 'actioncolumn',
+            width:130,
+            sortable: false,
+            items: [{
+                //icon: '../shared/icons/fam/delete.gif',
+                iconCls: 'button-grid-delete',
+                tooltip: 'Eliminar',
+                handler: function(grid, rowIndex, colIndex) {
+                    store_grid3.removeAt(rowIndex); 
+                }
+            }]
+        }],
+        selModel: {
+            selType: 'cellmodel'
+        },
+        renderTo: 'impuestos',
+        width: 420,
+        height: 200,
+        title: 'Listado de impuestos',
+        frame: true,
+        tbar: [{
+            text: 'Agregar impuesto',
+            handler : function(){
+                // Create a model instance
+                var r = Ext.create('Impuesto', {
+                    impuesto: 'Impuesto'
+                });
+                store_grid3.insert(0, r);
+                cellEditing2.startEditByPosition({row: 0, column: 0});
+            }
+        }],
+        plugins: [cellEditing2]
+    });
+    
+    
+});
+
+    function enviarInformacion()
+    {
+        var array_data = new Array(); 
+        var array_data_imp = new Array();
+        var array_data_caract ={};
+        var j=0;
+        var informacion=[];
+        
+        for(var i=0; i < grid.getStore().getCount(); i++)
+        {
+            console.log(grid.getStore().getAt(i).data);
+            variable=grid.getStore().getAt(i).data;
+            for(var key in variable) {
+                var valor = variable[key];
+                if(valor!="")
+					array_data.push(valor);
+            }
+        }
+        $('#listado_caracteristicas').val(array_data);
+        
+        for(var i=0; i < grid_dos.getStore().getCount(); i++)
+        {
+            //console.log(grid_dos.getStore().getAt(i).data);
+            variable=grid_dos.getStore().getAt(i).data;
+            for(var key in variable) {
+                var valor = variable[key];
+                if(valor!="")
+                {
+					array_data_caract[j]=valor;
+					j++;
+				}
+            }
+            informacion.push(array_data_caract);
+            array_data_caract ={};
+            j=0;
+        }
+        //console.log(informacion);
+        $('#listado_descuentos').val(JSON.stringify(informacion));
+        
+        for(var i=0; i < grid_tres.getStore().getCount(); i++)
+        {
+            //console.log(grid_tres.getStore().getAt(i).data);
+            variable=grid_tres.getStore().getAt(i).data;
+            for(var key in variable) {
+                var valor = variable[key];
+                if(valor!="")
+					array_data_imp.push(valor);
+            }
+        }
+        console.log(array_data_imp);
+        $('#listado_impuestos').val(array_data_imp);
+        
+        document.forms[0].submit();
+    }
+ 
+        </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('catalog.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Producto</h1>
+</div>
+
+<div class="body_content">
+<form id='form_edit_producto' action="{{ path('admiproducto_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario">
+    {#{ form_widget(edit_form) }#}
+    <div id="my-tabs">
+        <div id="tab1" class="x-hide-display">
+            <table>	
+               <tr>
+                   <td>{{  form_label(edit_form.codigoProducto) }}</td>
+                   <td>{{  form_widget(edit_form.codigoProducto) }}</td>
+               </tr>
+               <tr>
+                   <td>{{  form_label(edit_form.descripcionProducto) }}</td>
+                   <td>{{  form_widget(edit_form.descripcionProducto) }}</td>
+               </tr>
+               <tr>
+                   <td>{{  form_label(edit_form.instalacion) }}</td>
+                   <td>{{  form_widget(edit_form.instalacion) }}</td>
+               </tr>
+           </table>	
+           <div id="editor-grid"></div>
+        </div>
+        <div id="tab2" class="x-hide-display">
+            <br />
+            <div id="descuentos"></div>
+        </div>
+        <div id="tab3" class="x-hide-display">
+            <br />
+            <div id="impuestos"></div>
+        </div>
+    </div>
+    <div class="buttons">
+        <p>
+            <button type='button'class="button-crud" onClick='enviarInformacion();'>Editar</button>
+            <span class="height20px">
+				<a class="button-crud" href="{{ path('admiproducto') }}">Regresar</a>
+			</span>
+        </p>
+    </div>	
+    <input type='hidden' id='listado_caracteristicas' name='listado_caracteristicas'>
+    <input type='hidden' id='listado_descuentos' name='listado_descuentos'>
+    <input type='hidden' id='listado_impuestos' name='listado_impuestos'>
+</form>
+</div>
+<div id="gridCaracteristicas" style='width:370px;'></div>	
+{% endblock contenido_izq %}
+{% block contenido_der %}
+	<div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+        {% if entity.funcionPrecio is not defined %}
+            <li>
+                <a class="listado_ac_tablas" href="{{ path('admiproducto_funcion_precio', { 'id': entity.id }) }}">
+                    Creación de función precio
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            &nbsp;
+        </li>
+        {% if entity.funcionPrecio is defined %}
+            <li>
+                <a class="listado_ac_tablas" href="{{ path('admiproducto_funcion_precio', { 'id': entity.id }) }}">
+                    Editar función precio
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}

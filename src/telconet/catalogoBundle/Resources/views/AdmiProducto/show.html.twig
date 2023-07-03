@@ -1,0 +1,395 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('catalog.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Producto</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario tabla_con_borde">
+        <tbody>
+            <tr> 
+                <th><b>C&oacute;digo</b></th>                
+                <td width="9%">{{ entity.codigoProducto }}</td>
+                <th><b>Descripci&oacute;n</b></th>                
+                <td width="9%">{{ entity.descripcionProducto }}</td>
+            </tr>
+                <th><b>Nombre T&eacute;cnico</b></th>                
+                <td width="9%">{{ entity.nombreTecnico }}</td>
+                <th><b>Tipo</b></th>
+                <td width="9%">
+                {% if(entity.tipo=="B") %}
+                    Bien
+                {% else %}
+                    Servicio
+                {% endif %}</td>
+                <th><b>Estado Inicial</b></th>                
+                <td width="9%">{{ entity.estadoInicial }}</td>
+            <tr> 
+            </tr>
+            <tr> 
+                <th><b>Es Preferencia</b></th>                
+                <td width="9%">{{ entity.esPreferencia }}</td>
+                <th><b>Es Enlace</b></th>                
+                <td width="9%">{{ entity.esEnlace }}</td>
+                <th><b>Es Concentrador</b></th>   
+                <td width="9%">{{ entity.esConcentrador }}</td>
+            </tr>
+            <tr> 
+                <th><b>Requiere Planificaci&oacute;n</b></th>                
+                <td width="9%">{{ entity.requierePlanificacion }}</td>
+                <th><b>Requiere Info T&eacute;cnica<b></th>                
+                <td width="9%">{{ entity.requiereInfoTecnica }}</td>
+                <th><b>Instalaci&oacute;n</b></th>                
+                <td width="9%">{{ entity.instalacion }}</td>        
+            </tr>
+            <tr>
+                <th><b>Funci&oacute;n Precio</b></th>                
+                <td colspan="5">{{ entity.funcionPrecio }}</td> 
+            </tr>
+            <tr>
+                <th><b>Funci&oacute;n Costo</b></th>                
+                <td colspan="5">{{ entity.funcionCosto }}</td>   
+            </tr>
+            {% if (strPrefijoEmpresa == 'MD') %}
+            <tr> 
+                <th><b>Frecuencia</b></th>                
+                <td width="9%">{{ entity.Frecuencia }}</td>
+                
+            </tr>
+            <tr> 
+                <th><b>T&eacute;rminos y condiciones</b></th>                
+                <td width="9%"><input  class="button-grid-show" value="" onclick = "ver_terminos();" style="width:30px; text-align:end;" /></td>
+            </tr>    
+            {% endif %}                                 
+            {% if (strPrefijoEmpresa =='TN') %}
+            <tr>
+                <th><b>Grupo</b></th>                
+                <td>{{ entity.grupo }}</td>
+                <th><b>Comisión Venta</b></th>                
+                <td>{{ fltComisionVenta }}</td> 
+                <th><b>Comisión Mantenimiento</b></th>                
+                <td>{{ fltComisionMantenimiento }}</td> 
+            </tr>
+             <tr>
+                <th><b>SubGrupo</b></th>                
+                <td>{{ entity.subgrupo }}</td>
+                <th><b>Linea Neg</b></th>                
+                <td>{{ entity.lineaNegocio }}</td> 
+            </tr>
+            <tr>
+                <th><b>Clasificación</b></th>                
+                <td>{{ entity.clasificacion }}</td>
+                <th><b>Requiere Comisionar</b></th>                
+                <td>{{ entity.requiereComisionar }}</td> 
+                <th><b>Estado del Producto</b></th>                
+                <td>{{ entity.estado }}</td> 
+            </tr>
+            {% endif %} 
+            
+    </tbody>
+</table>
+
+{% if strComisiones is defined %}
+<div class="secHead">Listado de comisiones</div>
+<table class="formulario" border="1">
+    <thead>
+        <tr>
+            <th><b>Grupo Rol</b></th>
+            <th><b>Comisi&oacute;n</b></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for objComision in strComisiones %} 
+            <tr>
+                <td>{{ objComision.parametroDet }}</td>
+                {% if objComision.comisionVenta is null %}
+                    <td style="text-align:center;">-</td>
+                {% else %}
+                    <td style="text-align:center;">{{ objComision.comisionVenta }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% if AdmiProductoCaracteristica is defined %}
+<div class="secHead">Listado de caracteristicas</div>
+<table class="formulario">
+    <thead>
+        <tr>
+            <th>Caracteristicas</th>        
+        </tr>
+    </thead>
+    <tbody>
+        {% for caracteristica in AdmiProductoCaracteristica %} 
+            <tr>
+                <td>{{ caracteristica.caracteristicaId.descripcionCaracteristica }}</td>        
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% if niveles_descuento is defined %}
+<div class="secHead">Listado de niveles de descuento</div>
+<table class="formulario">
+    <thead>
+        <tr>
+            <th>Rol</th>        
+            <th>Porcentaje de descuento</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for nivel in niveles_descuento %} 
+            <tr>
+                <td>{{ nivel.rol }}</td>       
+                <td>{{ nivel.porcentaje }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% if impuestos is defined %}
+<div class="secHead">Listado de impuestos</div>
+<table class="formulario">
+    <thead>
+        <tr>
+            <th>Impuesto</th>        
+            <th>Porcentaje</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for imp in impuestos %} 
+            <tr>
+                <td>{{ imp.impuesto }}</td>       
+                <td>{{ imp.porcentaje }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+ <div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiproducto') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+</div>	
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ entity.usrCreacion }}</td>
+              
+              {% if(entity.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ entity.feCreacion | date("d M Y") }}</td>
+
+              {% if(entity.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ entity.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ entity.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+
+              {% if(entity.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+       
+        {% if is_granted('ROLE_41-2') %}
+            <li>
+                <a class="button-nuevo-registro" href="{{ path('admiproducto_new') }}">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Nuevo Producto
+                </a>
+             </li>
+        {% endif %}
+        
+        <li>
+            &nbsp;  
+        </li>
+        <!--li>
+            <a class="button-editar" href="{{ path('admiproducto_edit', { 'id': entity.id }) }}">
+                &nbsp;Editar producto
+            </a>
+        </li-->
+        <!--li>
+            <a class="button-eliminar" href="{{ path('admiproducto_delete', { 'id': entity.id }) }}">
+                &nbsp;Eliminar producto
+            </a>
+        </li-->
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+        {% if entity.funcionPrecio is not defined %}
+            <li>
+                <a class="listado_ac_tablas" href="{{ path('admiproducto_funcion_precio', { 'id': entity.id }) }}">
+                    Creación de función precio
+                </a>
+            </li>
+        {% endif %}
+        {% if entity.funcionPrecio is defined %}
+            <li>
+                <a class="listado_ac_tablas" href="{{ path('admiproducto_funcion_precio', { 'id': entity.id }) }}">
+                    Editar función precio
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var urlUpdate  = '{{path('admiproducto_guardar_terminos')}}';
+        var idProducto = {{entity.id}};
+        {% autoescape false %}
+        var terminos = '{{terminos}}';
+        {% endautoescape %}
+
+        function ver_terminos()
+        {
+            btnGuardar = Ext.create('Ext.Button', {
+                text : 'Guardar',
+                cls  : 'x-btn-rigth',
+                handler: function() {
+                    Ext.Msg.confirm('Términos y Condiciones', '¿Está seguro de guardar los cambios realizados?', 
+                    function(btn) {
+                        if (btn === 'yes') {
+                            var conn = new Ext.data.Connection({
+                                listeners: {
+                                    'beforerequest': {
+                                        fn: function(con, opt) {
+                                            Ext.get(document.body).mask('Guardando...');
+                                        },
+                                        scope: this
+                                    },
+                                    'requestcomplete': {
+                                        fn: function(con, res, opt) {
+                                            Ext.get(document.body).unmask();
+                                        },
+                                        scope: this
+                                    },
+                                    'requestexception': {
+                                        fn: function(con, res, opt) {
+                                            Ext.get(document.body).unmask();
+                                        },
+                                        scope: this
+                                    }
+                                }
+                            });                            
+                            conn.request({
+                                method: 'POST',
+                                params: {
+                                    id: idProducto,
+                                    terminos: Ext.getCmp('htmlTerminos').getValue()
+                                },
+                                url: urlUpdate,
+                                success: function(response) {
+
+                                    var json = Ext.JSON.decode(response.responseText);
+
+                                    if (json.success === true)
+                                    {
+                                       Ext.Msg.alert('Guardar ', 'Registro guardado de manera exitosa');
+                                    }
+                                    else
+                                    {
+                                        Ext.Msg.alert('Error ', json.mensaje);
+                                    }
+                                },
+                                failure: function(response) {
+                                    Ext.Msg.alert('Alerta ', 'Error al realizar la accion');
+                                }
+                            });
+                            win.destroy();
+                        } else {
+                            
+                        }
+                    });
+                    terminos = Ext.getCmp('htmlTerminos').getValue();
+                    console.log(Ext.getCmp('htmlTerminos').getValue());
+                    
+                }
+            });            
+            btnSalir = Ext.create('Ext.Button', {
+                text : 'Salir',
+                cls  : 'x-btn-rigth',
+                handler: function() {
+                    win.destroy();
+                }
+            });
+
+            formPanel = new Ext.panel.Panel({
+                title: 'Términos y Condiciones',
+                renderTo: Ext.getBody(),
+                width: 550,
+                height: 250,
+                frame: true,
+                layout: 'fit',
+                items: {
+                    xtype: 'htmleditor',
+                    id: 'htmlTerminos',
+                    enableColors: false,
+                    enableAlignments: false,
+                    enableFontSize:false,
+                    value: terminos
+                }
+            });
+
+            win = Ext.create('Ext.window.Window', {
+                title       : "Ver Productos",
+                closable    : false,
+                modal       : true,
+                width       : 520,
+                height      : 400,
+                resizable   : false,
+                layout      : 'fit',
+                items       : [formPanel],
+                buttonAlign : 'center',
+                buttons     : [btnGuardar,btnSalir],
+                renderTo: Ext.getBody()
+            }).show();
+            
+        }
+    </script>   
+{% endblock javascripts %}

@@ -1,0 +1,125 @@
+infoplancaracteristicas:
+    pattern:  /
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:index" }
+
+infoplancaracteristicas_delete_ajax:
+    pattern:  /delete_ajax
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:deleteAjax" }
+    
+infoplancaracteristicas_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:show" }
+
+infoplancaracteristicas_new:
+    pattern:  /new
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:new" }
+
+infoplancaracteristicas_create:
+    pattern:  /create
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:create" }
+    requirements: { _method: post }
+
+infoplancaracteristicas_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:edit" }
+
+infoplancaracteristicas_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:update" }
+    requirements: { _method: post }
+    
+infoplancaracteristicas_actualizar:
+    pattern:  /actualizar
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:actualizar" }
+    requirements: { _method: post }
+
+infoplancaracteristicas_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:delete" }
+#     requirements: { _method: post }
+
+infoplancaracteristicas_listar_productos:
+    pattern:  /listar_productos
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:listarProductos" }
+    
+infoplancaracteristicas_listar_productos_existentes:
+    pattern:  /listar_productos_existentes
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:listarProductosExistentesAction" }
+    requirements: { _method: post }
+    
+infoplancaracteristicas_listar_planes:
+    pattern:  /listar_planes
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:listadoPlanes" }
+
+infoplancaracteristicas_listar_caracteristicas:
+    pattern:  /listar_caracteristicas
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:listarCaracteristicasPorProducto" }
+
+infoplancaracteristicas_lista_estados:
+    pattern:  /listaestados
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:estados"}
+
+infoplancaracteristicas_show_caract_plan:
+    pattern:  /{id}/newCaractPlanes
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:newCaractPlanes"}
+
+infoplancaracteristicas_llenacmb_caracteristicas:
+    pattern:  /llena_combo_caracteristicas_portipo
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:llenaComboCaracteristicasPorTipo" }
+
+infoplancaracteristicas_create_caracteristica_plan:
+    pattern:  /createCaracteristicasPlan
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:createCaracteristicasPlan" }
+
+infoplancaracteristicas_valida_valor:
+    pattern:  /validaValorCaract
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:validaValorCaract" }
+
+infoplancaracteristicas_condiciones:
+    pattern:  /{id}/newCondiciones
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:newCondicionesPlanes"}
+    
+infoplancaracteristicas_listar_bancos_asociados:
+    pattern:  /lista_bancos_asociados
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:listaBancosAsociados" }    
+
+infoplancaracteristicas_create_condiciones_plan:
+    pattern:  /createCondicionesPlan
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:createCondicionesPlan" }
+#
+infoplancaracteristicas_promociones:
+    pattern:  /promocion
+    defaults: { _controller: "comercialBundle:ProcesarPromociones:index" }
+
+infoplancaracteristicas_promociones_ejecuta:
+    pattern:  /promocion_ejecuta
+    defaults: { _controller: "comercialBundle:ProcesarPromociones:indexP" }
+
+infoplancaracteristicas_listar_tarjetas_cuentas: 
+    pattern:  /listar_tarjetas_cuentas
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:listarTarjetasCuentas" }
+    
+infoplancaracteristicas_validaTieneProductoIp: 
+    pattern:  /validaTieneProductoIp
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:validaTieneProductoIp" }    
+    
+infoplancaracteristicas_clonar:
+    pattern:  /{id}/newClonarPlanes
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:newClonarPlanes"}
+
+infoplancaracteristicas_validaCodigoNombrePlan: 
+    pattern:  /validaCodigoNombrePlan
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:validaCodigoNombrePlan" }   
+    
+infoplancaracteristicas_updateClonarPlanes:
+    pattern:  /{id}/updateClonarPlanes
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:updateClonarPlanes" }
+    requirements: { _method: post }    
+
+infoplancaracteristicas_activar:
+    pattern:  /{id}/activar
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:activar" }
+
+infoplancaracteristicas_reactivar:
+    pattern:  /{id}/reactivar
+    defaults: { _controller: "catalogoBundle:InfoPlanCaracteristica:reactivar" }    

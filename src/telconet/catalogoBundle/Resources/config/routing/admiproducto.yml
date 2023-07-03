@@ -1,0 +1,179 @@
+admiproducto:
+    pattern:  /
+    defaults: { _controller: "catalogoBundle:AdmiProducto:index" }
+
+admiproducto_delete_ajax:
+    pattern:  /delete_ajax
+    defaults: { _controller: "catalogoBundle:AdmiProducto:deleteAjax" }
+    
+admiproducto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "catalogoBundle:AdmiProducto:show" }
+
+admiproducto_new:
+    pattern:  /new
+    defaults: { _controller: "catalogoBundle:AdmiProducto:new" }
+
+admiproducto_create:
+    pattern: /create
+    defaults: { _controller: "catalogoBundle:AdmiProducto:create", _format: json}
+    requirements: { _format: (xml|json), _method: POST }
+
+admiproducto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "catalogoBundle:AdmiProducto:edit" }
+
+admiproducto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "catalogoBundle:AdmiProducto:update" }
+    requirements: { _method: post }
+
+admiproducto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "catalogoBundle:AdmiProducto:delete" }
+    requirements: { _method: post }
+
+admiproducto_ajax_list_all:
+    pattern:  /ajax_list_all
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxListAll" }
+
+admiproducto_ajax_get_caracteristicas:
+    pattern:  /ajax_getCaracteristicas
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetCaracteristicas" }
+    requirements: { _method: get }
+
+admiproducto_ajax_getCaracteristicasProducto:
+    pattern:  /ajax_get_caracteristicas_producto
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetCaracteristicasProducto" }
+    #requirements: { _method: post }
+
+admiproducto_funcion_precio:
+    pattern:  /{id}/funcion_precio
+    defaults: { _controller: "catalogoBundle:AdmiProducto:funcionPrecio" }
+    
+admiproducto_guardar_funcion:
+    pattern:  /{id_producto}/funcion_precio_guardar
+    defaults: { _controller: "catalogoBundle:AdmiProducto:guardarFuncionPrecio" } 
+
+admiproducto_lista_caracteristicas_existentes:
+    pattern:  /ajax_get_lista_caracteristicas_existentes
+    defaults: { _controller: "catalogoBundle:AdmiProducto:listarCaracteristicasExistentes" }
+
+admiproducto_lista_estados:
+    pattern:  /listaestados
+    defaults: { _controller: "catalogoBundle:AdmiProducto:estados"}
+    
+admiproducto_lista_grupos:
+    pattern:  /listagrupos
+    defaults: { _controller: "catalogoBundle:AdmiProducto:grupos"}
+
+admiproducto_ajax_get_nivel_descuento:
+    pattern:  /ajax_get_nivel_descuento
+    defaults: { _controller: "catalogoBundle:AdmiProducto:listarNivelesDescuento" }
+    
+admiproducto_ajax_get_impuestos:
+    pattern:  /ajax_get_impuestos
+    defaults: { _controller: "catalogoBundle:AdmiProducto:listarImpuestos" }
+
+admiproducto_nivel_descuento_existente:
+    pattern:  /ajax_get_lista_nivel_descuentos_existentes
+    defaults: { _controller: "catalogoBundle:AdmiProducto:listarDescuentosExistentes" }
+
+admiproducto_impuestos_existente:
+    pattern:  /ajax_get_impuestos_existentes
+    defaults: { _controller: "catalogoBundle:AdmiProducto:listarImpuestosExistentes" }
+
+admiproducto_ajax_getCaracteristicasProductoTecnico:
+    pattern:  /ajax_get_caracteristicas_producto_tecnico
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetCaracteristicasProductoTecnico" }
+
+admiproducto_listar_caracteristicas:
+    pattern:  /listar_caracteristicas
+    defaults: { _controller: "catalogoBundle:AdmiProducto:listarCaracteristicasPorProducto" }
+
+admiproducto_ajax_get_estadosIniciales:
+    pattern:  /ajax_getEstadosIniciales
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetEstadosIniciales" }
+    requirements: { _method: get }
+
+admiproducto_ajax_get_nombresTecnicos:
+    pattern:  /ajax_getNombresTecnicos
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetNombresTecnicos" }
+    requirements: { _method: get }
+
+admiproducto_ajax_get_nombresTecnicosIndex:
+    pattern:  /ajax_getNombresTecnicosIndex
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetNombresTecnicosIndex" }
+    requirements: { _method: get }
+
+admiproducto_ajax_get_grupos:
+    pattern:  /ajax_getGrupos
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetGrupos" }
+    requirements: { _method: get }
+
+admiproducto_ajax_get_gruposIndex:
+    pattern:  /ajax_getGruposIndex
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetGruposIndex" }
+    requirements: { _method: get }
+
+admiproducto_ajax_get_clasificaciones:
+    pattern:  /ajax_getClasificaciones
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetClasificaciones" }
+    requirements: { _method: get }
+
+admiproducto_ajax_get_clasificacionesIndex:
+    pattern:  /ajax_getClasificacionesIndex
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ajaxGetClasificacionesIndex" }
+    requirements: { _method: get }
+
+admiproducto_gridComisionPlantilla:
+    pattern:  /gridComisionPlantilla
+    defaults: { _controller: "catalogoBundle:AdmiProducto:gridComisionPlantilla" }
+
+admiproducto_guardaComisionPlantillaAjax:
+    pattern:  /guardaComisionPlantillaAjax
+    defaults: { _controller: "catalogoBundle:AdmiProducto:guardaComisionPlantillaAjax" }
+
+admiproducto_ingresoMasivoComisionistas:
+    pattern:  /ingresoMasivoComisionistas  
+    defaults: { _controller: "catalogoBundle:AdmiProducto:ingresoMasivoComisionistas" }
+
+admiproducto_ajax_getProductos:
+    pattern:  /ajax_getProductos
+    defaults: { _controller: "catalogoBundle:AdmiProducto:getProductosAjax" }
+    requirements: { _method: get }
+    
+admiproducto_gridProductosComisionan:
+    pattern:  /gridProductosComisionan
+    defaults: { _controller: "catalogoBundle:AdmiProducto:gridProductosComisionan" }
+    
+admiproducto_gridLogsPlantillaComision:
+    pattern:  /gridLogsPlantillaComision
+    defaults: { _controller: "catalogoBundle:AdmiProducto:gridLogsPlantillaComision" }
+    
+admiproducto_listadoGruposByParams:
+    pattern:  /listadoGruposByParams
+    defaults: { _controller: "catalogoBundle:AdmiProducto:listadoGruposByParams"}
+    
+admiproducto_listadoSubgruposByParams:
+    pattern:  /listadoSubgruposByParams
+    defaults: { _controller: "catalogoBundle:AdmiProducto:listadoSubgruposByParams"}
+    
+admiproducto_getInformacionCaractProdFuncionPrecio:
+    pattern:  /getInformacionCaractProdFuncionPrecio
+    defaults: { _controller: "catalogoBundle:AdmiProducto:getInformacionCaractProdFuncionPrecio"}
+
+admiproducto_ajax_getNombresSubGrupos:
+    pattern:  getNombresSubGrupos
+    defaults: { _controller: "catalogoBundle:AdmiProducto:getNombresSubGrupos" }
+    
+admiproducto_getNombresTipoNegocio:
+    pattern:  /getNombresTipoNegocio
+    defaults: { _controller: "catalogoBundle:AdmiProducto:getNombresTipoNegocio" }
+    requirements: { _method: get }
+    
+admiproducto_guardar_terminos:
+    pattern:  /funcion_terminos_guardar
+    defaults: { _controller: "catalogoBundle:AdmiProducto:guardarTerminosyCondiciones" }
+    
+    

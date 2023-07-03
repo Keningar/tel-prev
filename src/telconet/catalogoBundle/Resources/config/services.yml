@@ -1,0 +1,7 @@
+parameters:
+#    catalogo.example.class: telconet\catalogoBundle\Example
+
+services:
+#    catalogo.example:
+#        class: %catalogo.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

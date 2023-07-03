@@ -1,0 +1,472 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}        
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Plan</h1>
+</div>
+<div class="body_content">
+{% if (entity.estado == 'Pendiente')%}
+        
+  <form action="{{ path('infoplancaracteristicas_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" name='info_plan_nuevo'>
+    <div id="mensaje_validaciones" class="info-error campo-oculto"></div>     
+    {{ form_widget(edit_form) }}
+    <table class="record_properties" width='80%' border='0'>		
+      <tbody>                    
+       <tr>
+        <td>
+        <label class="required">* Tipo:</label></td> 
+        <td><select name="tipo" id="tipo">
+            {% for tipo in arreglo_tipo %} 
+                <option>{{ tipo }}</option>
+            {% endfor %}
+        </select></td> 
+        <td><label class="required"> Ips maximas Permitidas:</label></td> 
+        <td><input type="text" name="ips_max_permitidas" id="ips_max_permitidas" onkeypress="validate(event);" value={{ ips_max_permitidas }}></td>  
+         </tr>
+        
+        <tr>
+        <td><label class="required">* Frecuencia en meses:</label></td> 
+        <td><input type="text" name="frecuencia" id="frecuencia" onkeypress="validate(event);"  value={{ frecuencia }}></td> 
+                      
+        <td><label class="required">* Codigo Interno:</label></td> 
+        <td><input type="text" maxlength="6" name="codigo_interno" id="codigo_interno" value="{{ strCodigoInterno }}"></td> 
+        </tr>  
+        
+        {% if (strPrefijoEmpresa  == 'MD' || strPrefijoEmpresa  == 'EN') %}
+            <tr>
+                <td><label class="required">Tipo categoría plan:</label></td> 
+                <td>
+                    <select name="tipoCategoriaPlan" id="tipoCategoriaPlan">
+                     {% for tipoCategoriaPlan in arrayParamTipoPlan %} 
+                         <option>{{ tipoCategoriaPlan }}</option>
+                     {% endfor %}
+                    </select> 
+                </td>
+                <input type="hidden" id="strCaractPlan" value="{{strValorCaractPlan}}">
+            </tr>    
+        {% endif %}
+        
+       </tbody>			
+    </table> 
+         
+       <input type="hidden" name="plan_id" id="plan_id" value="{{ entity.id }}"> 
+       <br>          
+            <div class="secHead">Detalle del plan</div>
+            <div>
+                <label class="required" for="infoplancabtype_Tipo">Tipo de plan:</label>
+                <select name="tipo_plan" id="tipo_plan">
+                    {% for item in listado_detalle %} 
+                        <option>{{ item }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label class="required" for="infoplancabtype_listado_productos">Producto:</label>
+                <select name="producto" id="producto">
+                </select>
+                <div id="contenido"></div>
+            </div>
+            <div id="mensaje"></div>
+            <div class="secHead">Listado</div>
+            <table id="table-3" width="100%">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Total</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if items_detalle is defined %}
+                        {% for item in  items_detalle%}
+                            <tr>
+                                <td>{{ item.producto }}</td>
+                                <td>{{ item.cantidad }}</td>
+                                <td>{{ item.precio_total }}</td>
+                                <td>{{ item.precio_total }}</td>
+                                <td>
+                                    <button type='button' onclick='removeRow(this,{{ item.producto_id }});' class="button-crud">Eliminar</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+            <input  type='hidden' name="valores" id="valores" />
+            <div class="buttons">
+                <p>
+                    <button type='button'class="button-crud" onClick='enviarInformacion();'>Editar</button>                                       
+                    <span class="height20px">
+                         <a class="button-crud" href="{{ path('infoplancaracteristicas_show',{ 'id': entity.id }) }}">Regresar</a>
+                    </span>                   
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('infoplancaracteristicas') }}">
+                        cancelar
+                        </a>
+                    </span>
+                </p>
+            </div>
+    </form>
+{% else %}
+    <div class="warningmessage">
+       Solo se permite la edicion de Planes a Planes en estado Pendiente.
+    </div>			
+{%endif%}        
+</div>    
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<!--ul class="record_actions">
+    <li>
+        <form action="{{ path('infoplancaracteristicas_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Eliminar</button>
+        </form>
+    </li>
+</ul-->
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+    <script>
+        var informacion_controlador = {};
+        var informacion             = [];       
+        var arreglo                 = {{ arreglo|raw }};
+        var validaTieneProductoIp = "{{ path('infoplancaracteristicas_validaTieneProductoIp') }}";
+        var validaCodigoNombrePlan  = "{{ path('infoplancaracteristicas_validaCodigoNombrePlan') }}";
+        
+        for ( var x = 0; x < arreglo.length; x++ ) {
+                informacion.push(arreglo[x]);
+        }
+        
+        document.getElementById("valores").value = JSON.stringify(informacion);
+        
+		
+        $('#tipo_plan').change(function()
+        {
+            var tipo_plan = $('#tipo_plan').val();
+            //alert(tipo_plan);
+            
+            $.ajax({
+                type: "POST",
+                data: "tipo_plan=" + tipo_plan,
+                url:'{{ path('infoplancaracteristicas_listar_productos') }}',
+                success: function(msg){
+                    if (msg.msg == 'ok')
+                    {					
+                        //Llenar el div que presentara las clausulas
+                        //Validar que de respuesta sinop solicitarla
+                        document.getElementById("producto").innerHTML=msg.div;
+                        //console.log(msg.id);
+                    }
+                    else
+                    {
+                        document.getElementById("producto").innerHTML=msg.msg;
+                    }
+                }
+            });
+        });
+        
+        $('#producto').change(function()
+        {
+            var info_producto = document.getElementById('producto').value;
+            var producto      = info_producto.split("-");            
+            
+            $.ajax({
+                type: "POST",
+                data: "producto=" + producto[0],
+                url:'{{ path('infoplancaracteristicas_listar_caracteristicas') }}',
+                success: function(msg){
+                    if (msg.msg == 'ok')
+                    {					
+                        //Llenar el div que presentara las clausulas
+                        //Validar que de respuesta sinop solicitarla
+                        document.getElementById("contenido").innerHTML = msg.div;
+                        //console.log(msg.id);
+                    }
+                    else
+                    {
+                        document.getElementById("contenido").innerHTML = msg.msg;
+                    }
+                }
+            });
+        });
+        function replaceAll( text, busca, reemplaza )
+        {
+                while (text.toString().indexOf(busca) != -1)
+                text = text.toString().replace(busca,reemplaza);
+                return text;
+        }
+		
+        function displayResult(producto,cantidad,precio_unitario,precio_total)
+        {
+                var table       = document.getElementById("table-3");
+                var largo       = table.rows.length;
+                var row         = table.insertRow(largo);
+                var cell1       = row.insertCell(0);
+                var cell2       = row.insertCell(1);
+                var cell3       = row.insertCell(2);
+                var cell4       = row.insertCell(3);
+                var cell5       = row.insertCell(4);
+                cell1.innerHTML = producto[1];
+                cell2.innerHTML = cantidad;
+                cell3.innerHTML = precio_unitario;
+                cell4.innerHTML = precio_total;                
+                cell5.innerHTML = "<button type='button' onclick='removeRow(this,"+producto[0]+");' class='button-crud'>Eliminar</button>";
+                
+        }
+        
+        function buscarProducto(informacion,producto)
+        {
+                //console.log(informacion);
+                for( var i=0;i<informacion.length;i++ )
+                {
+                        if( String(informacion[i].producto) == String(producto) )
+                        {
+                                return i;
+                        }
+                }
+                return false;
+        }
+        
+        function removeRow(src,producto)
+        {             
+            var oRow = src.parentElement.parentElement;    
+            var i    = oRow.rowIndex;
+            document.getElementById("table-3").deleteRow(i);  
+            //var pos = informacion.indexOf(producto);
+            var pos = buscarProducto(informacion,producto);
+            //console.log(pos);
+            informacion.splice(pos,1);
+            
+            document.getElementById("valores").value = JSON.stringify(informacion);
+            //console.log(informacion);  // imprime: a,b,d
+        }
+		
+        function agregar_detalle()
+        {   			
+            var valor_caract                    = new Array();
+            var nombre_caract                   = new Array();
+            var prod_caract                     = new Array();            
+            var text                            = "";
+            var resultado                       = "";
+            var cantidad                        = info_plan_nuevo.cantidad.value;
+            var precio_unitario                 = 0;
+            var precio_total                    = 0;
+            var info_producto                   = info_plan_nuevo.producto.value;
+            var producto                        = info_producto.split("-");
+            var registro                        = "";
+            informacion_controlador             = {};
+            informacion_controlador["producto"] = producto[0];
+            informacion_controlador["cantidad"] = cantidad;
+            
+            var caracteristicas           = "info_plan_nuevo.caracteristicas_";
+            var caracteristica_nombre     = "info_plan_nuevo.caracteristica_nombre_";
+            var producto_caracteristica   = "info_plan_nuevo.producto_caracteristica_";                
+            var cantidad_caracteristicas  = info_plan_nuevo.cantidad_caracteristicas.value;       
+            var caracteristicas_n         = "";
+            var caracteristica_nombre_n   = "";
+            var producto_caracteristica_n = "";
+            for ( var x = 0; x < cantidad_caracteristicas; x++ )
+            {                                       
+               caracteristicas_n         = caracteristicas+x;
+               caracteristica_nombre_n   = caracteristica_nombre+x;
+               producto_caracteristica_n = producto_caracteristica+x;
+               
+               valor_caract[x]  = eval(caracteristicas_n).value;
+               nombre_caract[x] = eval(caracteristica_nombre_n).value;
+               prod_caract[x]   = eval(producto_caracteristica_n).value;                                                   
+            }                    
+            informacion_controlador["valor_caract"]  = valor_caract;
+            informacion_controlador["nombre_caract"] = nombre_caract;
+            informacion_controlador["prod_caract"]   = prod_caract;
+            
+            var funcion_precio                       = info_plan_nuevo.funcion_precio.value;
+            text                                     = funcion_precio;
+                       
+            for(var x = 0; x < nombre_caract.length; x++)
+            {                
+                text = replaceAll(text,nombre_caract[x],valor_caract[x]);
+            }
+            precio_unitario = eval(text);
+            
+            precio_total                            = (precio_unitario*cantidad);
+            informacion_controlador["precio_total"] = precio_total;
+            informacion_controlador["id_det"]       = "";
+            
+            if( precio_total >= 0 )
+            {                
+                displayResult(producto,cantidad,precio_unitario,precio_total);
+                informacion.push(informacion_controlador);
+                document.getElementById("valores").value = JSON.stringify(informacion);
+            }
+            else
+            {
+                document.getElementById("mensaje").innerHTML = "Los valores ingresados no cumplen la funcion precio, favor verificar";
+            }
+            //console.log(informacion_controlador);
+            //console.log(informacion);
+            //console.log(JSON.stringify(informacion));            
+        }
+        
+        function limpiar_detalle()
+        {            
+            var cantidad_caracteristicas = info_plan_nuevo.cantidad_caracteristicas.value;            
+            var caracteristicas          = "info_plan_nuevo.caracteristicas_";                              
+            var caracteristicas_n        = "";
+            for ( var x = 0; x < cantidad_caracteristicas; x++ )
+            {               
+               caracteristicas_n = caracteristicas+x;             
+               eval(caracteristicas_n).value="";
+            }             
+            if(info_plan_nuevo.cantidad)
+                info_plan_nuevo.cantidad.value = "";
+        }
+        
+        function validate(evt) 
+        {
+	    var theEvent = evt || window.event;
+	    var key      = theEvent.keyCode || theEvent.which;
+	    if ((key < 48 || key > 57) && !(key == 8 || key == 9 || key == 13 || key == 37 || key == 39 || key == 46) )
+	    {
+		theEvent.returnValue = false;
+		if (theEvent.preventDefault) 
+                {
+		    theEvent.preventDefault();
+                }
+	    }
+        }
+        
+ function enviarInformacion()
+{    
+   $('button[type=submit]').attr('disabled', 'disabled');
+    var ips_max_permitidas = document.getElementById("ips_max_permitidas").value;    
+    var frecuencia         = document.getElementById("frecuencia").value;  
+    var valores            = document.getElementById("valores").value;    
+    var codigo_plan        = $('#infoplancabtype_codigoPlan').val();
+    var nombre_plan        = $('#infoplancabtype_nombrePlan').val();
+    var plan_id            = $('#plan_id').val();
+    if(informacion.length>0)
+    {
+       $.ajax({
+	        type: "POST",
+		data: "ips_max_permitidas=" + ips_max_permitidas + "&valores=" + valores,               
+		url : validaTieneProductoIp,
+		success: function(msg){	                
+		      if ( msg.msg == 'ok' )
+		      { 
+                          $('#mensaje_validaciones').removeClass('campo-oculto').html(""+msg.mensaje_validaciones+"");  
+                          $('button[type=submit]').attr('disabled', 'disabled'); 
+                      }
+                      else
+                      {
+                          if ( msg.msg == '' )
+                          {                                                            
+                              //Valido en Ajax que el codigo y el nombre del plan a Clonarse sea Unico(No repetido)
+                              //en base a planes que se encuentren en estado Activo
+                               $.ajax({
+                                type: "POST",
+                                data: "codigo_plan=" + codigo_plan + "&nombre_plan=" + nombre_plan + "&plan_id="+ plan_id,               
+                                url : validaCodigoNombrePlan,
+                                success: function(msg){	                
+                                      if ( msg.msg == 'ok' )
+                                      {   //Si no paso Validacion de codigo y nombre unico para el plan
+                                          $('#mensaje_validaciones').removeClass('campo-oculto').html(""+msg.mensaje_validaciones+"");  
+                                          $('button[type=submit]').attr('disabled', 'disabled'); 
+                                      }
+                                       else
+                                       {   //Si paso Validacion de codigo y nombre unico para el plan
+                                           if ( msg.msg == '' )
+                                           {                                                                                         
+                                               if ( validar_detalle() )
+                                               {         
+                                                   $('button[type="submit"]').removeAttr('disabled');
+	                                           document.forms[0].submit();	     
+	                                       }                                                  
+                                           }
+                                        }
+                                  }
+                               }); 
+                          }
+                      }
+                }
+        });           
+    }
+    else
+    {		
+        $('#"mensaje').removeClass('campo-oculto').html("Ingrese Productos para el Plan");
+    }    
+}
+
+function validar_detalle()
+{     
+       var frecuencia     = Number(document.getElementById("frecuencia").value);
+       var codigo_interno = document.getElementById("codigo_interno").value;
+       var sysdate        = new Date();
+       var month          = sysdate.getMonth ();
+       var year           = sysdate.getYear(); 
+       if (year < 1900) year = 1900 + sysdate.getYear();
+       month += 1;
+       if (month < 10) month = '0' + month;       
+        
+       var anio           = codigo_interno.substr(0, 4);
+       var mes            = codigo_interno.substr(4, 5);
+       var CaracterMes    = mes.substr(0, 0);
+       if(CaracterMes === '0')
+       {
+          var mes    = mes.substr(1, 1); 
+       }else
+       {
+          var mes    =  mes;
+       }
+      
+       if (isNaN(frecuencia) || frecuencia <= 0 || /[^\d]/.test(frecuencia))
+	{
+		$('#mensaje_validaciones').removeClass('campo-oculto').html("Frecuencia debe ser un numero entero mayor que cero");
+		return false;
+	}
+        else if (isNaN(codigo_interno) || codigo_interno < 0 || codigo_interno.length!=6 )
+	{
+		$('#mensaje_validaciones').removeClass('campo-oculto').html("Codigo Interno debe ser un valor numerico de 6 caracteres");
+		return false;
+	}  
+        else if (anio != year)
+	{
+		$('#mensaje_validaciones').removeClass('campo-oculto').html("Codigo Interno debe ser en formato AnioMes formato yyyymm, Anio no concuerda con anio actual");
+		return false;
+	}         
+        else if (mes < 1 ||  mes > 12)
+	{
+		$('#mensaje_validaciones').removeClass('campo-oculto').html("Codigo Interno debe ser en formato AñoMes formato yyyymm, Mes no valido");
+		return false;
+	}  
+	else{
+		$('#mensaje_validaciones').addClass('campo-oculto').html("");
+		return true;
+	}
+}
+
+    //se inicializa el combo con el valor de tipo categoría del plan del plan seleccionado.
+    var strPrefijoEmpresa = "{{strPrefijoEmpresa}}";
+    if(strPrefijoEmpresa === 'MD')
+    {
+        $('#tipoCategoriaPlan').val(document.getElementById("strCaractPlan").value);
+        $('#tipoCategoriaPlan').change(function()
+        {
+            document.getElementById("tipoCategoriaPlan").value;
+        }); 
+    }
+
+   </script>
+{% endblock javascripts_footer%}

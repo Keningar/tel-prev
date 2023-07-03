@@ -1,0 +1,69 @@
+<h1>InfoProducto list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Ipcreacion</th>
+            <th>Id</th>
+            <th>Codigoproducto</th>
+            <th>Nombreproducto</th>
+            <th>Descripcionproducto</th>
+            <th>Frecuenciaproducto</th>
+            <th>Fecreacion</th>
+            <th>Feultmod</th>
+            <th>Usrcreacion</th>
+            <th>Usrultmod</th>
+            <th>Tipoitem</th>
+            <th>Aplicapromocion</th>
+            <th>Descuentoproducto</th>
+            <th>Permiteventa</th>
+            <th>Multiplesprecios</th>
+            <th>Estado</th>
+            <th>Tiempopermitido</th>
+            <th>Visiblepromocion</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('infoproducto_show', { 'id': entity.id }) }}">{{ entity.ipCreacion }}</a></td>
+            <td>{{ entity.id }}</td>
+            <td>{{ entity.codigoProducto }}</td>
+            <td>{{ entity.nombreProducto }}</td>
+            <td>{{ entity.descripcionProducto }}</td>
+            <td>{{ entity.frecuenciaProducto }}</td>
+            <td>{{ entity.feCreacion|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.feUltMod|date('Y-m-d H:i:s') }}</td>
+            <td>{{ entity.usrCreacion }}</td>
+            <td>{{ entity.usrUltMod }}</td>
+            <td>{{ entity.tipoItem }}</td>
+            <td>{{ entity.aplicaPromocion }}</td>
+            <td>{{ entity.descuentoProducto }}</td>
+            <td>{{ entity.permiteVenta }}</td>
+            <td>{{ entity.multiplesPrecios }}</td>
+            <td>{{ entity.estado }}</td>
+            <td>{{ entity.tiempoPermitido }}</td>
+            <td>{{ entity.visiblePromocion }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('infoproducto_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('infoproducto_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('infoproducto_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

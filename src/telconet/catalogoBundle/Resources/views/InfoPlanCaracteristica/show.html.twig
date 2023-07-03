@@ -1,0 +1,274 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}  
+
+{% block javascripts%}
+	{{ parent() }}
+	<!-- kendo -->
+	<script src="{{ asset('public/js/kendo/source/js/jquery.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.core.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.grid.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('public/js/kendo/source/js/kendo.all.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Plan</h1>
+</div>
+<div class="body_content">
+     {%if (objPlanProvieneRegClonado)%}         
+            <div class="infomessage">
+                Este Plan es un registro clonado del Plan: 
+                <a  href="{{ path('infoplancaracteristicas_show', { 'id': objPlanProvieneRegClonado.id }) }}">                    
+                       {{objPlanProvieneRegClonado.id}} | {{objPlanProvieneRegClonado.nombrePlan}}
+                </a>                                            
+            </div>                                
+
+     {%endif%}  
+        
+<table class="record_properties" width='100%'>
+{%if(entity.id is not null)%}
+    <tbody>
+        <tr>
+            <td><b>Id Plan</b></td>                
+            <td>{{ entity.id }}</td>        
+	    <td width="9%">&nbsp;</td>
+            <td><b>Tipo</b></td>                
+            
+                {%if(entity.tipo is not null)%}
+                   <td>{{ entity.tipo }}</td>    
+                {% else %}
+                   <td>N/A</td>    
+                {%endif%} 
+	</tr>
+        <tr>
+            <td><b>Codigo</b></td>                
+            <td>{{ entity.codigoPlan }}</td>        
+	    <td width="9%">&nbsp;</td>
+            <td><b>Nombre</b></th>                
+            <td>{{ entity.nombrePlan }}</td>        
+	</tr>
+        <tr>
+            <td><b>Descripcion</b></td>                
+            <td>{{ entity.descripcionPlan }}</td>        
+	    <td width="9%">&nbsp;</td>
+            <td><b>Descuento del plan</b></td>                
+            <td>{{ entity.descuentoPlan }}</td>        
+	</tr>
+        <tr>
+            <td><b>Codigo Interno</b></td>                
+            <td>{{ entity.codigoInterno }}</td>  
+            <td width="9%">&nbsp;</td>            
+            <td><b>Estado</b></td>                
+            <td>{{ entity.estado }}</td>             
+	</tr>        
+    </tbody>
+   {%endif%} 
+</table>
+
+{% if items is defined %}
+<div class="secHead"><b>Listado de Productos y Caracteristicas de productos </b></div>
+<div class="k-content" id="example">
+	<table border="1" id="table-1" width="100%">
+		<thead>
+			<tr>
+				<th class="k-header" data-field="codigo">Producto</th>
+                                <th class="k-header" data-field="instalacion">Instalacion</th>
+				<th class="k-header" data-field="cantidad">Cantidad</th>
+				<th class="k-header" data-field="precio">Precio</th>
+                                <th class="k-header" data-field="caracteristica">Caracteristica</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in items %}
+				<tr>
+					<td>{{ item.producto }}</td>
+                                        <td>{{ item.instalacion }}</td>
+					<td>{{ item.cantidad }}</td>
+					<td>{{ item.precio }}</td>
+                                        {% if caracteristicasDet is defined %}
+                                         <td><table id='table-2' width='60%'>
+                                          <thead><tr>
+                                          <th class="secHead" data-field="descripcion"><b>Descripcion</b></th>
+                                          <th class="secHead" data-field="valor"><b>Valor</b></th>
+                                          </tr></thead>
+                                         <tbody>
+                                        {% for item2 in caracteristicasDet %}
+                                           {% if item.idproducto == item2.idproducto %}                      
+                                            <tr>
+                                            <td>{{ item2.nombre }}</td>
+                                            <td>{% if item2.valor != "" %} {{ item2.valor }}
+                                                {% else %} {{ "N/A" }}
+                                                {% endif %} 
+                                            </td>                                            
+                                            </tr> 
+                                            {% endif %} 
+                                        {% endfor %}
+                                        </tbody></table></td>
+                                        {% endif %} 
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
+
+{% if caracteristicasPlan %}
+<div class="secHead"><b>Listado de Caracteristicas del Plan</b></div>
+<div class="k-content" id="example">
+	<table border="1" id="table-1" width="60%">
+		<thead>
+			<tr>
+				<th class="k-header" data-field="codigo">Nombre</th>
+				<th class="k-header" data-field="cantidad">Valor</th>				
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in caracteristicasPlan %}
+				<tr>
+					<td>{{ item.nombre }}</td>
+					<td>{{ item.valor }}</td>					
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
+
+{% if condicionesPlan %}
+<div class="secHead"><b>Listado de Condiciones del Plan</b></div>
+<div class="k-content" id="example">
+	<table border="1" id="table-1" width="60%">
+		<thead>
+			<tr>
+				<th class="k-header" data-field="codigo">Tipo Negocio</th>
+				<th class="k-header" data-field="cantidad">Forma de Pago</th>
+				<th class="k-header" data-field="estado">Tipo Cuenta</th>
+                                <th class="k-header" data-field="estado">Banco</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in condicionesPlan %}
+				<tr>
+					<td>{{ item.tipoNegocio }}</td>
+					<td>{{ item.formaPago }}</td>
+					<td>{{ item.tipoCuenta }}</td>
+                                        <td>{{ item.banco }}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
+</div>
+
+ <div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('infoplancaracteristicas') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ entity.usrCreacion }}</td>
+              
+              {% if(entity.usrUltMod) %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+              
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ entity.feCreacion | date("d M Y") }}</td>
+              
+               {% if(entity.feUltMod) %}
+              <th>Fecha:</th>
+              <td >{{ entity.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+              
+               {% if(entity.feUltMod) %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('infoplancaracteristicas_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo plan
+            </a>
+        </li>
+        <li>
+            &nbsp;
+        </li>
+         {% if (entity.estado =='Pendiente') %}
+        <li>
+            <a class="button-editar" href="{{ path('infoplancaracteristicas_edit', { 'id': entity.id }) }}">
+                &nbsp;Editar plan
+            </a>
+        </li>  
+         {%endif%}
+        {% if (entity.estado =='Activo' or entity.estado =='Pendiente') %}
+        <li>
+            <a class="button-agregarCaracteristica" href="{{ path('infoplancaracteristicas_show_caract_plan', { 'id': entity.id }) }}">
+                &nbsp;Agregar Caracteristicas
+            </a>
+        </li> 
+        {%endif%}               
+        {% if (entity.estado =='Activo' or entity.estado =='Pendiente') %}
+        <li>
+            <a class="button-agregarCondiciones" href="{{ path('infoplancaracteristicas_condiciones', { 'id': entity.id }) }}">
+                &nbsp;Agregar Condiciones
+            </a>
+        </li>         
+        {%endif%}
+        {% if (entity.estado =='Activo') %}
+        <li>
+            <a class="button-clonar" href="{{ path('infoplancaracteristicas_clonar', { 'id': entity.id }) }}">
+                &nbsp;Clonar plan
+            </a>
+        </li>         
+        {%endif%} 
+        {% if (entity.estado == 'Pendiente')%}
+        <li>
+            <a class="button-aprobar" href="{{ path('infoplancaracteristicas_activar', { 'id': entity.id }) }}">
+                &nbsp;Activar plan
+            </a>
+        </li>         
+        {%endif%} 
+         {% if (entity.estado == 'Activo')%}
+        <li>
+            <a class="button-delete" href="{{ path('infoplancaracteristicas_delete', { 'id': entity.id }) }}">
+                &nbsp;Inactivar plan
+            </a>
+        </li>         
+        {%endif%} 
+        {% if (entity.estado == 'Inactivo')%}
+        <li>
+            <a class="button-tuerca" href="{{ path('infoplancaracteristicas_reactivar', { 'id': entity.id }) }}">
+                &nbsp;Reactivar plan
+            </a>
+        </li>         
+        {%endif%}
+    </ul>
+{% endblock contenido_der %}
