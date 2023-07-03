@@ -1,0 +1,11 @@
+parameters:
+#    admin.example.class: telconet\adminBundle\Example
+
+services:
+#    admin.example:
+#        class: %admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    admin.ActualizarPassword:
+        class: telconet\adminBundle\Service\ActualizarPasswordService
+        calls:
+            - [setDependencies, [@service_container]]

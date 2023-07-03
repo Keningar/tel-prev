@@ -1,0 +1,55 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ExtJsCalendar/resources/css/extensible-all.css') }}" type="text/css" rel="stylesheet" />
+    <style>
+        .sample-ct {      
+            height: 600px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}   
+    <!-- Page-specific includes -->
+    <script type="text/javascript" src="{{ asset('./bundles/admin/js/MiAgenda/Calendar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/admin/js/MiAgenda/remote.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/admin/js/MiAgenda/index.js') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('todo.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Mi Agenda</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>		
+        <tr>
+            <td>
+                <table width="95%">
+                    <tr style="font-size: 14px;">
+                        <td width="2%"></td>
+                        <td width="20%"><b >Descripcion de Colores:</b></td>
+                        <td width="8%">&nbsp;</td>
+                        <td width="15%"><div class="x-combo-list-item x-cal-2"><div class="ext-cal-picker-icon">&nbsp;</div>Casos</div></td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%"><div class="x-combo-list-item x-cal-22"><div class="ext-cal-picker-icon">&nbsp;</div>Planificacion</div></td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%"><div class="x-combo-list-item x-cal-6"><div class="ext-cal-picker-icon">&nbsp;</div>Soporte</div></td>
+                        <td width="35%">&nbsp;</td>
+                    </tr>
+                </table>
+                <br/><br/>
+            </td>
+        </tr>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>
+        <tr>
+            <td>
+		<div id="simple" class="sample-ct"></div>
+	    </td>
+        </tr>
+    </table>
+</div>
+{% endblock contenido_central %}

@@ -1,0 +1,173 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido %}
+<script type="text/javascript">
+$(document).ready(function() {
+	moverSlider();
+	$("#bajar-noticia").click(function(){
+		bajarSlider();
+	});
+
+	$("#subir-noticia").click(function(){
+		subirSlider();
+	});
+
+	$(".slider-vertical").mouseover(function(){
+		verificar = 0;
+	});
+
+	$(".slider-vertical").mouseout(function(){
+		verificar = 1;
+	});
+	$("#bajar-actividad").click(function(){
+		bajarActividad();
+	});
+
+	$("#subir-actividad").click(function(){
+		subirActividad();
+	});
+});
+function abrirNoticia(idDocumento){
+    window.open(document.URL + "noticia/"+idDocumento);
+ }
+</script>
+<div style="min-height:400px;">
+<div class="doble_dashboard" style="float:left">
+    <div id="titulo_content">
+        <h1 style="font-size:15px;color: #00309E;font-weight: bold;">Noticias</h1>
+    </div>
+    <div class="clearBoth"></div>
+    <div class="dashboard_content">
+        <div class="content_submenu_menu">
+            <div class="formSubmenu_menu" style="padding-bottom:0px;">
+                <div class="nivel slider-vertical">
+                     <div class="contenedor-slider" style="height: 255px">
+                         {%if listaNoticias  %}
+                             <div class="bloque-slider">
+                                {% for item in listaNoticias %}
+                                    <div class="modulo-slider">
+                                        <a href="javascript:abrirNoticia({{item.id_documento}})" class="tituloSubmenu" >
+                                        <img class="modulo-slider_img" border="0" 
+                                             src="{{ asset('public/images/news.png' | default('tools1.png') ~ '') }}" 
+                                             width= "50" height="50" title="">{{  item.nombre}}</a>
+                                        <p>{{item.fechaPublicacion}}</p>
+                                    </div>
+                                {% endfor %}
+                             </div>
+                             <p class="mover-slider-vertical">
+                                 <a id="subir-noticia" class="subir-slider" >Subir noticia</a> 
+                                 <a id="bajar-noticia" class="bajar-slider">Bajar noticia</a></p>
+                         {% endif %}
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="doble_dashboard" style="float:right;background-color: #ffffff; border-color: #ffffff;" >
+    <div class="doble_dashboard" style="height: 132px;width: 100%;margin-left: 0px" >
+        <div id="titulo_content">
+            <h1 style="font-size:15px;color: #00309E;font-weight: bold;">Opciones de Interes</h1>
+        </div>
+        <div class="clearBoth"></div>
+        <div class="dashboard_content" style="margin-top: 10px">
+            <div class="content_submenu_menu">
+                <div class="formSubmenu_menu" style="padding-bottom:0px;">
+                    <div class="tableRow" align="center" style="padding:0px;">
+                        <table id="submenu_menu_table" width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+                            <tbody>
+                                <tr>
+                                    {% if is_granted("ROLE_314-3457") %}
+                                        {% if app.session.get('prefijoEmpresa') %}
+                                            {% if app.session.get('prefijoEmpresa')=="TN" %}
+                                                <td class="colorBorderTop" width="55" valign="top">
+                                                    <a href="{{ path('elementotablet_gridMonitoreo') }}">
+                                                        <img class="imgOpcionSubmenu" border="0" 
+                                                             src="{{ asset('/public/images/monitoreo-tablets/monitoreo.png' | default('tools1.png') ~ '') }}"
+                                                             width= "50" height="50" title="">
+                                                    </a>
+                                                </td>
+                                                <td class="colorBorderTop" valign="top">
+                                                    <div class="paddingBottom5">
+                                                        <a class="tituloSubmenu" href="{{ path('elementotablet_gridMonitoreo') }}">Monitoreo Tablets</a>
+                                                    </div>
+                                                    <span class="f11"></span>
+                                                </td>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                    <td class="colorBorderTop" width="55" valign="top">
+                                        <a href="{{ path('dashboardCambiarClave') }}">
+                                            <img class="imgOpcionSubmenu" border="0" 
+                                                 src="{{ asset('public/images/inicio/clave.png' | default('tools1.png') ~ '') }}" 
+                                                 width= "50" height="50" title="">
+                                        </a>
+                                    </td>
+                                    <td class="colorBorderTop" valign="top">
+                                        <div class="paddingBottom5">
+                                            <a class="tituloSubmenu" href="{{ path('dashboardCambiarClave') }}">Cambiar Clave</a>
+                                        </div>
+                                        <span class="f11">puede cambiar su clave cuando lo necesite</span>
+                                    </td>
+                                    <td class="colorBorderTop" width="55" valign="top">
+                                        <a href="{{ path('dashboardAgenda') }}">
+                                            <img class="imgOpcionSubmenu" border="0" 
+                                                 src="{{ asset('public/images/todo.png' | default('tools1.png') ~ '') }}" 
+                                                 width= "50" height="50" title="">
+                                        </a>
+                                    </td>
+                                    <td class="colorBorderTop" valign="top">
+                                        <div class="paddingBottom5">
+                                            <a class="tituloSubmenu" href="{{ path('dashboardAgenda') }}">Mi Agenda</a>
+                                        </div>
+                                        <span class="f11">puede verificar su agenda de tareas</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="border: 1px solid #dddddd; margin-top: 20px;background-color: #f9f9f9;padding-bottom: 1px;">
+        <div id="titulo_content">
+            <h1 style="font-size:15px;color: #00309E;font-weight: bold;">&Uacute;ltimas actividades realizadas</h1>
+        </div>
+        <div class="clearBoth"></div>
+        <div class="dashboard_content" style="margin: 5px">
+            <div class="content_submenu_menu">
+                <div class="formSubmenu_menu" style="padding-bottom:0px">
+                    <div class="nivel slider-vertical">
+                        {%if listaActividades  %}
+                        <div class="contenedor-slider" style="height: 130px">
+                            <div id="contenedor-actividades" style="top: 0px;height: 100%;width: 93%;position: relative">
+                            {% for item in listaActividades %}
+                                <div>
+                                    <img class="modulo-slider_img" border="0" 
+                                         src="{{ asset('public/images/check.png' | default('tools1.png') ~ '') }}" width= "20" height="20" title="">
+                                    <p>
+                                        {{item.fecha}} | <strong>Detalle:</strong> 
+                                        El usuario {{item.empleado}} {{item.bitacoraDetalle}} {{item.nombreAccion}} en {{item.nombreModulo}}
+                                    </p>
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <p class="mover-slider-vertical">
+                                <a id="subir-actividad" class="subir-slider" style="height: 30px;width: 30px; margin: 0px 0 35px;">Subir actividad</a>
+                                <a id="bajar-actividad" class="bajar-slider" style="height: 30px;width: 30px; margin: 65px 0 0px;">Bajar actividad</a>
+                            </p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+
+{% block javascripts_footer %}
+{% endblock %}

@@ -1,0 +1,164 @@
+inicio:
+    pattern:  /
+    defaults: { _controller: adminBundle:inicio:dashboard }
+    
+noticias:
+    pattern:  /noticias
+    defaults: { _controller: adminBundle:inicio:noticias }
+    
+noticiaInicio:
+    pattern:  /noticia/{id}
+    defaults: { _controller: adminBundle:inicio:noticia }    
+
+dashboardGlobal_guardarSesionEmpresaAjaxs:
+    pattern:  /guardarSesionEmpresaAjax
+    defaults: { _controller: adminBundle:inicio:guardarSesionEmpresaAjax }
+    
+busqueda_financiera:
+    pattern:  /financiera
+    defaults: { _controller: "adminBundle:inicio:datosFinanciera" }
+    
+busqueda_planificacion:
+    pattern:  /planificacion
+    defaults: { _controller: "adminBundle:inicio:datosPlanificacion" }
+    
+busqueda_comerciales:
+    pattern:  /comerciales
+    defaults: { _controller: "adminBundle:inicio:datosComerciales" }
+    
+busqueda_tecnica:
+    pattern:  /tecnica
+    defaults: { _controller: "adminBundle:inicio:datosTecnica" }
+    
+busqueda_soporte:
+    pattern:  /soporte
+    defaults: { _controller: "adminBundle:inicio:datosSoporte" }
+    
+# dashboardInicioBusqueda:
+#     pattern:  /busquedaAvanzada
+#     defaults: { _controller: "adminBundle:inicio:inicioBusquedaAvanzada" }
+#     requirements: { _method: get }
+
+dashboardInicioBusqueda_getFormasPago:
+    pattern:  /getFormasPago
+    defaults: { _controller: adminBundle:inicio:getFormasPago }
+
+dashboardInicioBusqueda_getBancosss:
+    pattern:  /getBancos
+    defaults: { _controller: adminBundle:inicio:getBancos }
+
+dashboardInicioBusqueda_getTiposDocumento:
+    pattern:  /getTiposDocumento
+    defaults: { _controller: adminBundle:inicio:getTiposDocumento }
+
+dashboardInicioBusqueda_getEmpleados:
+    pattern:  /getEmpleados
+    defaults: { _controller: adminBundle:inicio:getEmpleados }
+    
+dashboardInicioBusqueda_getCuadrillas:
+    pattern:  /getCuadrillas
+    defaults: { _controller: adminBundle:inicio:getCuadrillas }
+    
+dashboardInicioBusqueda_getEmpresasExternas:
+    pattern:  /getEmpresasExternas
+    defaults: { _controller: adminBundle:inicio:getEmpresasExternas }
+
+dashboardInicioBusqueda_busqueda_por_datos_generales:
+    pattern:  /buscar_datos_generales
+    defaults: { _controller: "adminBundle:inicio:datosGeneralesBusqueda" }
+
+dashboardInicioBusqueda_busqueda_por_datos_punto:
+    pattern:  /buscar_datos_punto
+    defaults: { _controller: "adminBundle:inicio:datosPuntoBusqueda" }
+
+dashboardInicioBusqueda_busqueda_por_datos_comercial:
+    pattern:  /buscar_datos_comercial
+    defaults: { _controller: "adminBundle:inicio:datosComercialBusqueda",_format:json }
+    
+dashboardInicioBusqueda_busqueda_por_datos_planificacion:
+    pattern:  /buscar_datos_planificacion
+    defaults: { _controller: "adminBundle:inicio:datosPlanificacionBusqueda",_format:json }
+    
+dashboardInicioBusqueda_busqueda_por_datos_financiero:
+    pattern:  /buscar_datos_financiero
+    defaults: { _controller: "adminBundle:inicio:datosFinancieroBusqueda",_format:json }
+    
+dashboardInicioBusqueda_busqueda_por_datos_tecnicos:
+    pattern:  /buscar_datos_tecnicos
+    defaults: { _controller: "adminBundle:inicio:datosTecnicosBusqueda",_format:json }
+    
+dashboardInicioBusqueda_busqueda_por_datos_soporte:
+    pattern:  /buscar_datos_soporte
+    defaults: { _controller: "adminBundle:inicio:datosSoporteBusqueda",_format:json }
+
+dashboardInicioBusqueda_exportarConsulta_BusquedaComercial:
+    pattern:  /exportarConsulta_BusquedaComercial
+    defaults: { _controller: "adminBundle:inicio:exportarConsulta_BusquedaComercial" }
+
+dashboardInicioBusqueda_exportarConsulta_BusquedaPlanificacion:
+    pattern:  /exportarConsulta_BusquedaPlanificacion
+    defaults: { _controller: "adminBundle:inicio:exportarConsulta_BusquedaPlanificacion" }
+
+dashboardInicioBusqueda_exportarConsulta_BusquedaFinanciera:
+    pattern:  /exportarConsulta_BusquedaFinanciera
+    defaults: { _controller: "adminBundle:inicio:exportarConsulta_BusquedaFinanciera" }
+
+dashboardInicioBusqueda_exportarConsulta_BusquedaTecnica:
+    pattern:  /exportarConsulta_BusquedaTecnica
+    defaults: { _controller: "adminBundle:inicio:exportarConsulta_BusquedaTecnica" }
+
+dashboardInicioBusqueda_exportarConsulta_BusquedaSoporte:
+    pattern:  /exportarConsulta_BusquedaSoporte
+    defaults: { _controller: "adminBundle:inicio:exportarConsulta_BusquedaSoporte" }
+
+dashboardInicioBusqueda_cargaSession:
+    pattern:  /cargaSession
+    defaults: { _controller: "adminBundle:inicio:cargaSessionAjax" }
+    requirements: { _method: post }
+    
+dashboardInicioBusqueda_destruirSesionAjax:
+    pattern:  /destruirSesionAjax
+    defaults: { _controller: "adminBundle:inicio:destruirSesionAjax" }
+    requirements: { _method: post }  
+    
+dashboardCambiarClave:
+    pattern:  /cambiarClave
+    defaults: { _controller: "adminBundle:inicio:cambiarClave" }
+    requirements: { _method: get } 
+    
+dashboardCambiarClave_imagen:
+    pattern:  /{texto}/image
+    defaults: { _controller: "adminBundle:inicio:image" }
+
+dashboardCambiarClave_actualizar:
+    pattern:  /actualizarCambioClave
+    defaults: { _controller: "adminBundle:inicio:actualizarCambioClave" }
+
+dashboardAgenda:
+    pattern:  /miAgenda
+    defaults: { _controller: "adminBundle:inicio:miAgenda" }
+    requirements: { _method: get }
+    
+dashboardAgenda_getEventosInicio:
+    pattern:  /getEventosInicio
+    defaults: { _controller: adminBundle:inicio:getEventosInicio }
+    
+dashboardAgenda_getColores:
+    pattern:  /getColores
+    defaults: { _controller: adminBundle:inicio:getColores }
+    
+dashboardInicio:
+    pattern:  /{opcion_menu}
+    defaults: { _controller: adminBundle:inicio:menu , opcion_menu: "dashboard" }
+    
+dashboardInicio_resumen:
+  pattern:  /resumen/{intServicio}/{intIdPersona}/cliente/{intPunto}
+  defaults: { _controller: adminBundle:inicio:resumenCliente } 
+  
+dashboardInicio_ventanaSeguimientoTarea:
+  pattern:  /ventana/seguimiento/tarea
+  defaults: { _controller: adminBundle:inicio:ventanaSeguimientoTarea } 
+
+dashboardCambiarClave_resetear:
+    pattern:  /resetearClave
+    defaults: { _controller: "adminBundle:inicio:resetearClave" }

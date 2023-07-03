@@ -1,0 +1,68 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/ionicons.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/dist/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        .margenClass {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        #dashboard_completo {
+            margin: 0px 11px 3px;
+            border: 1px solid #DDD;
+            background-color: #F9F9F9;
+            box-shadow: 0px 0px 3px #D7D7D7;
+            width: 98%;
+            min-height: 51em;
+        }
+        .body_content {
+            margin: 35px 25px 30px;
+            text-align: left;
+            background: #FFF none repeat scroll 0% 0%;
+            padding: 25px;
+            height: 42em;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/inicio/clave.png') }}" class="imagen-titulo-content">
+    <h3>Cambiar Clave</h3>
+</div>
+<div class="body_content k-content">
+    <div class ="col-md-12">
+        <div class ="col-md-4">
+            <p><b>La contrase&ntilde;a debe cumplir con las siguientes reglas:</b></p>
+            <p><b>1</b>. Debe tener m&iacute;nimo 8 caracteres y m&aacute;ximo 15 caracteres</p>
+            <p><b>2</b>. Debe incluir por lo menos 1 caracter en min&uacute;scula</p>
+            <p><b>3</b>. Debe incluir por lo menos 1 caracter en may&uacute;scula</p>
+            <p><b>4</b>. Debe incluir por lo menos 1 de estos caracteres num&eacute;ricos: 0 1 2 3 4 5 6 7 8 9</p>
+            <p><b>5</b>. Debe incluir por lo menos 1 de estos caracteres especiales:</p>
+            <span style="padding-bottom: 5px; padding-left: 55px;"><b style="text-align:center;">! ~ # @ % &amp; * _ - + = { [ } ] | \ ; : < , > . ? / </b><br/></p>
+            <p><b>6</b>. No debe incluir &ntilde; ni tildes</p>
+        </div>
+        <div class ="col-md-3">
+            {% if(strError is defined)  %}
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-ban"></i> Alerta!</h4>
+                {{ strError }}
+            </div>
+            {% endif %}
+            <form action="{{ path('dashboardCambiarClave_actualizar') }}" method="post" {{ form_enctype(objForm) }}>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                {{ form_widget(objForm) }}
+                <a class="btn btn-block btn-danger btn-flat" href="{{ path('inicio') }}">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock contenido_central %}

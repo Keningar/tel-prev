@@ -1,0 +1,25 @@
+{% extends '::layout_completo.html.twig' %}
+
+ {% block stylesheets %}
+<!---------------Estilos agregados a layout_completo-------------->
+<!---------------------------------------------------------------->
+<link rel="stylesheet" href="{{ asset('./bundles/ayuda/css/lightbox.css')}}" />
+<link rel="stylesheet" href="{{ asset('./bundles/ayuda/css/menus.css') }}" />
+<link rel="stylesheet" href="{{ asset('./bundles/ayuda/css/estilo.css') }}" />
+
+		{{ parent() }}
+<!--------------------------------------------------------------->
+	{% endblock %}
+
+
+{% block contenido_central %}
+
+<div class="body_content k-content">
+    <center><div class="opcion-titulo-noticia">{{ tituloNoticia }}</div></center>
+    <br/>
+    <br/>
+    <div>{{ descripcionNoticia|raw('html')}}</div>
+
+
+</div>
+{% endblock %}
