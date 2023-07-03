@@ -1,0 +1,191 @@
+DECLARE
+
+BEGIN
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+(
+     ID_PARAMETRO,
+     NOMBRE_PARAMETRO,
+     DESCRIPCION,
+     MODULO,
+     PROCESO,
+     ESTADO,
+     USR_CREACION,
+     FE_CREACION,
+     IP_CREACION,
+     USR_ULT_MOD,
+     FE_ULT_MOD,
+     IP_ULT_MOD
+)
+VALUES
+(
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+     'RENOVAR_LIC_OFFICE365',
+     'PARAMETRO QUE CONTIENE LOS VALORES NECESARIOS PARA EL CONSUMO DEL WEBSERVICE',
+     'COMERCIAL',
+     'RENOVAR LICENCIA OFF365',
+     'Activo',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1'
+);
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+     ID_PARAMETRO_DET,
+     PARAMETRO_ID,
+     DESCRIPCION,
+     VALOR1,
+     VALOR2,
+     VALOR3,
+     VALOR4,
+     ESTADO,
+     USR_CREACION,
+     FE_CREACION,
+     IP_CREACION,
+     USR_ULT_MOD,
+     FE_ULT_MOD,
+     IP_ULT_MOD,
+     EMPRESA_COD
+)
+VALUES
+(
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (
+       SELECT ID_PARAMETRO
+       FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+       WHERE NOMBRE_PARAMETRO = 'RENOVAR_LIC_OFFICE365'
+     ),
+     'PARAMETROS CONFIGURABLES PARA WS RENOVAR_LIC_OFFICCE365',
+     'http://telcos.telconet.ec/rs/tecnico/ws/rest/procesosMasivos',
+     'RenovarLicenciaOffice365',
+     'application/json',
+     'UTF-8',
+     'Activo',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1',
+     '18'
+);
+
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+(
+     ID_PARAMETRO,
+     NOMBRE_PARAMETRO,
+     DESCRIPCION,
+     MODULO,
+     PROCESO,
+     ESTADO,
+     USR_CREACION,
+     FE_CREACION,
+     IP_CREACION,
+     USR_ULT_MOD,
+     FE_ULT_MOD,
+     IP_ULT_MOD
+)
+VALUES
+(
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+     'PERIODO_RENOVAR_LICOFFICE365',
+     'PARAMETRO CONFIGURABLE PARA EL PERIODO O NUMERO DE MESES LUEGO DEL CUAL SE DEBERA RENOVAR LA LICENCIA OFFICE 365',
+     'COMERCIAL',
+     'RENOVAR LICENCIA OFF365',
+     'Activo',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1'
+);
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+     ID_PARAMETRO_DET,
+     PARAMETRO_ID,
+     DESCRIPCION,
+     VALOR1,
+     ESTADO,
+     USR_CREACION,
+     FE_CREACION,
+     IP_CREACION,
+     USR_ULT_MOD,
+     FE_ULT_MOD,
+     IP_ULT_MOD,
+     EMPRESA_COD
+)
+VALUES
+(
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (
+       SELECT ID_PARAMETRO
+       FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+       WHERE NOMBRE_PARAMETRO = 'PERIODO_RENOVAR_LICOFFICE365'
+     ),
+     'NUMERO DE MESES LUEGO DEL CUAL SE DEBERA RENOVAR LA LICENCIA OFFICE 365',
+     '12',
+     'Activo',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1',
+     '18'
+);
+
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+     ID_PARAMETRO_DET,
+     PARAMETRO_ID,
+     DESCRIPCION,
+     VALOR1,
+     VALOR2,
+     VALOR3,
+     VALOR4,
+     ESTADO,
+     USR_CREACION,
+     FE_CREACION,
+     IP_CREACION,
+     USR_ULT_MOD,
+     FE_ULT_MOD,
+     IP_ULT_MOD,
+     EMPRESA_COD
+)
+VALUES
+(
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (
+       SELECT ID_PARAMETRO
+       FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+       WHERE NOMBRE_PARAMETRO = 'DESCRIPCION_TIPO_FACTURACION'
+     ),
+     'PARAMETRO DONDE SE CONFIGURA PARA FACTURACION POR CANCELACION',
+     'telcos_cancelacion',
+     ' Valor de liquidacion proporcional de licencia de 12 meses',
+     'NetlifeCloud',
+     'MD',
+     'Activo',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1',
+     'eholguin',
+     SYSDATE,
+     '127.0.0.1',
+     '18'
+);
+
+COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  ROLLBACK;
+  dbms_output.put_line(sqlerrm);
+END;

@@ -1,0 +1,3 @@
+infoRegistroEmpleado_getRegistrosEmpleado:
+    pattern:  /getRegistros
+    defaults: { _controller: "generalBundle:InfoRegistroEmpleado:getRegistrosEmpleado" }

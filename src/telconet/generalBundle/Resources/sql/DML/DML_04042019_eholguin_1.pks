@@ -1,0 +1,2377 @@
+------------------------------------
+-- CONFIGURACION TELCOS GUATEMALA --
+------------------------------------
+
+--AREA
+INSERT INTO DB_GENERAL.ADMI_AREA (ID_AREA,NOMBRE_AREA,ESTADO,USR_CREACION,FE_CREACION,USR_ULT_MOD,FE_ULT_MOD,EMPRESA_COD) VALUES (DB_GENERAL.SEQ_ADMI_AREA.nextval, 'Tecnica','Activo','eholguin',SYSDATE,'eholguin',SYSDATE,'27');
+
+-- IMPUESTO---
+INSERT INTO DB_GENERAL.ADMI_IMPUESTO (ID_IMPUESTO,CODIGO_SRI,PORCENTAJE_IMPUESTO,DESCRIPCION_IMPUESTO,FECHA_VIGENCIA_IMPUESTO,TIPO_IMPUESTO,CUENTA_CONTABLE,ESTADO,USR_CREACION,FE_CREACION,USR_ULT_MOD,FE_ULT_MOD,CTA_CONTABLE,CODIGO_TARIFA,PRIORIDAD,CODIGO_ATS,PAIS_ID) values (DB_GENERAL.SEQ_ADMI_IMPUESTO.NEXTVAL,'2',12,'IVA 12%',SYSDATE,'IVA','NA','Activo','eholguin',SYSDATE,null,SYSDATE,null,null,'2',null,(SELECT ID_PAIS FROM DB_GENERAL.ADMI_PAIS WHERE NOMBRE_PAIS = 'GUATEMALA' AND ESTADO = 'ACTIVO'));
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'COD_FORMA_CONTACTO',
+    'PARAMETRO PARA CONFIGURAR LOS CODIGOS DE FORMA DE CONTACTO A VISUALIZAR POR EMPRESA ',
+    'COMERCIAL',
+    'COD_FORMA_CONTACTO',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'GENERA_LOGIN',
+    'PARAMETRO PARA CONFIGURAR LOS VALORES PARA GENERACION DE LOGIN PARA TN GUATEMALA',
+    'COMERCIAL',
+    'GENERA_LOGIN',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'NUM_MUNIC_DPTO',
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',
+    'COMERCIAL',
+    'NUM_MUNIC_DPTO',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'FORMATO_TELEFONO',
+    'PARAMETRO PARA CONFIGURAR FORMATO DE NUMEROS TELEFONICOS POR EMPRESA .',
+    'COMERCIAL',
+    'FORMATO_TELEFONO',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0'
+  );
+
+--PARAMETROS PARA DEPARTAMENTOS VENDEDORES PERMITIDOS
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'DEPARTAMENTOS_VENDEDORES'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'DEPARTAMENTO VENTAS',
+    'VENTAS',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+--PARAMETROS PARA NOMBRE TECNICO DE PRODUCTOS
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NOMBRE_TECNICO_PRODUCTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'OTROS',
+    'OTROS',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+--PARAMETROS PARA FRECUENCIA DE FACTURACION
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FRECUENCIA_FACTURACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'MENSUAL',
+    '1',
+    'Mensual',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FRECUENCIA_FACTURACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'ANUAL',
+    '12',
+    'Anual',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FRECUENCIA_FACTURACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'UNICA',
+    '0',
+    'Unica',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+-- PARAMETROS FORMATO NUMEROS TELEFONICOS
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FORMATO_TELEFONO'
+      AND ESTADO             = 'Activo'
+    ),
+    'Telefono fijo',
+    'numMinDigitos',
+    '7',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '26',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FORMATO_TELEFONO'
+      AND ESTADO             = 'Activo'
+    ),
+    'Telefono fijo',
+    'numMaxDigitos',
+    '13',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '26',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FORMATO_TELEFONO'
+      AND ESTADO             = 'Activo'
+    ),
+    'Telefono fijo',
+    'expRegularFormato',
+    '/^(\+?\d{1,3}?[- .]?\d{1,3}[- .]?\d{1,4})$/',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '26',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FORMATO_TELEFONO'
+      AND ESTADO             = 'Activo'
+    ),
+    'Telefono fijo',
+    'numMinDigitos',
+    '7',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FORMATO_TELEFONO'
+      AND ESTADO             = 'Activo'
+    ),
+    'Telefono fijo',
+    'numMaxDigitos',
+    '15',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FORMATO_TELEFONO'
+      AND ESTADO             = 'Activo'
+    ),
+    'Telefono fijo',
+    'expRegularFormato',
+    '/^(\+?\d{1,3}?[- .]?\d{1,8})$/',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FORMATO_TELEFONO'
+      AND ESTADO             = 'Activo'
+    ),
+    'Telefono movil',
+    'numMaxDigitos',
+    '8',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '26',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FORMATO_TELEFONO'
+      AND ESTADO             = 'Activo'
+    ),
+    'Telefono movil',
+    'expRegularFormato',
+    '/^([0-9]{8})$/',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '26',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+
+
+--PARAMETROS ESTADOS GRID SERVICIOS
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'ESTADOS_GRID_SERVICIOS'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'Eliminado',
+    'PUNTO',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+--PARAMETROS PARA VALIDAR BIN POR EMPRESA
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PERMITE_VALIDAR_BIN_POR_EMPRESA'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'VALIDA_BIN_TELCONET_GUATEMALA',
+    'NO',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'MAX_IDENTIFICACION'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO DONDE SE CONFIGURA LA LONGITUD MAXIMA DEL CAMPO IDENTIFICACION SEGUN EL TIPO Y PAIS',    
+    'DPI',
+    'GUATEMALA',
+    '13',
+    '^[0-9]{4}\s?[0-9]{5}\s?[0-9]{4}$',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'MAX_IDENTIFICACION'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO DONDE SE CONFIGURA LA LONGITUD MAXIMA DEL CAMPO IDENTIFICACION SEGUN EL TIPO Y PAIS',    
+    'NIT',
+    'GUATEMALA',
+    '13',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'MAX_IDENTIFICACION'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO DONDE SE CONFIGURA LA LONGITUD MAXIMA DEL CAMPO IDENTIFICACION SEGUN EL TIPO Y PAIS',    
+    'PAS',
+    'GUATEMALA',
+    '20',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'COD_FORMA_CONTACTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO DONDE SE CONFIGURA LOS CODIGOS DE FORMAS DE CONTACTO POR EMPRESA Y PAIS',    
+    'TFIJ',
+    'GUATEMALA',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'COD_FORMA_CONTACTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO DONDE SE CONFIGURA LOS CODIGOS DE FORMAS DE CONTACTO POR EMPRESA Y PAIS',    
+    'TINT',
+    'GUATEMALA',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'COD_FORMA_CONTACTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO DONDE SE CONFIGURA LOS CODIGOS DE FORMAS DE CONTACTO POR EMPRESA Y PAIS',    
+    'MAIL',
+    'GUATEMALA',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'GENERA_LOGIN'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR EL PREFIJO PARA GENERAR LOGIN PARA TN GUATEMALA',    
+    'GT',
+    'PrefijoLogin',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'GENERA_LOGIN'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LONGITUD DE LA SECUENCIA DEL LOGIN PARA TN GUATEMALA',    
+    '6',
+    'LongitudLogin',
+    NULL,
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL,
+    NULL,
+    NULL
+  );
+
+-- CANTIDAD MUNICIPIOS POR DEPARTAMENTO EN GUATEMALA --
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Guatemala',
+    '01',
+    '17',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'El Progreso',
+    '02',
+    '8',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Sacatepequez',
+    '03',
+    '16',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Chimaltenango',
+    '04',
+    '16',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Escuintla',
+    '05',
+    '13',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Santa Rosa',
+    '06',
+    '14',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Solola',
+    '07',
+    '19',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Totonicapan',
+    '08',
+    '8',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Quetzaltenango',
+    '09',
+    '24',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Suchitepequez',
+    '10',
+    '21',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Retalhuleu',
+    '11',
+    '9',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'San Marcos',
+    '12',
+    '30',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Huehuetenango',
+    '13',
+    '32',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Quiche',
+    '14',
+    '21',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Baja Verapaz',
+    '15',
+    '8',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Alta Verapaz',
+    '16',
+    '17',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Peten',
+    '17',
+    '14',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Izabal',
+    '18',
+    '5',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Zacapa',
+    '19',
+    '11',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Chiquimula',
+    '20',
+    '11',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Jalapa',
+    '21',
+    '7',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'NUM_MUNIC_DPTO'
+      AND MODULO             = 'COMERCIAL'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO PARA CONFIGURAR LA CANTIDAD DE MUNICIPIOS POR DEPARTAMENTO DE TN GUATEMALA',    
+    'Jutiapa',
+    '22',
+    '17',
+    NULL,
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '27',
+    NULL
+  );
+
+COMMIT;
+/

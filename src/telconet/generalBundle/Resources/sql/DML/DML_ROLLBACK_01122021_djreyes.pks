@@ -1,0 +1,17 @@
+-- Parametros para promociones de ancho de banda
+-- Eliminar detalles paremetrizados
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE PARAMETRO_ID = (
+        SELECT ID_PARAMETRO
+        FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PROMOCION ANCHO BANDA'
+    )
+AND USR_CREACION = 'djreyes';
+
+-- Eliminar cabecera 2 - producto adicional con vigencia
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+WHERE NOMBRE_PARAMETRO = 'PROMOCION ANCHO BANDA'
+AND PROCESO = 'PROMO_ANCHO_BANDA' AND USR_CREACION = 'djreyes';
+
+COMMIT;
+/

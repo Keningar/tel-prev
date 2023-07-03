@@ -1,0 +1,3 @@
+generalBundle_InfoRegistroEmpleado:
+  resource: "@generalBundle/Resources/config/routing/registroempleado.yml"
+  prefix: /registro/registroempleado

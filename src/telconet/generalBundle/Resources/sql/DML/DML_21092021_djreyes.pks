@@ -1,0 +1,773 @@
+-- Detalles de los parametros creados para goltv
+-- DET 1 - Nombre de producto goltv
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'NOMBRE_PRODUCTO_WS'
+    ),
+    'NOMBRE DE PRODUCTO WS','goltvlatam','GTVPREMIUM',null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null, null,null
+);
+
+-- DET 2 - Nombre tecnico del producto tv
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_TV'
+    ),
+    'PRODUCTOS_TV','GTVPREMIUM',null,null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null, null,null
+);
+
+-- DET 3 - Caracteristicas del producto
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'CARAC_PRODUCTOS_TV'
+    ),
+    'GTVPREMIUM','GTVPREMIUM','USUARIO_GOLTV','PASSWORD_GOLTV','SSID_GOLTV','Activo',
+    'djreyes',sysdate,'127.0.0.1','MIGRADO_GOLTV',18,null, 'VERIFICACION_INICIAL_POR_SUSCRIBER',null
+);
+
+-- DET 4 - Acciones producto
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'USUARIOS_PRODUCTOS_TV'
+    ),
+    'GTVPREMIUM','ReenvioNotiGoltv','ActivarGoltv','goltvReingreso','telcosGoltv','Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null, null,null
+);
+
+-- DET 5 - Detalles adicionales del producto
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'CONFI_ADICIONAL_PROD_TV'
+    ),
+    'GTVPREMIUM','GTVPREMIUM','Gol tv premiun',null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1','FECHA_MINIMA_SUSCRIPCION',18,'FECHA_ACTIVACION',null,null
+);
+
+-- DET 6 - URN para productos de TV
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'URN_PRODUCTOS_TV'
+    ),
+    'GTVPREMIUM','CODIGO_URN_GOLTV',null,null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null, null,null
+);
+
+-- Mensaje de error para el proceso de autenticacion
+-- DET 7 - Parametros de autenticacion SPC Activo
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+    ),
+    'Parámetros usados en la autenticación y autorización','ESTADOS_SPC_PERMITIDOS','GTVPREMIUM','Activo',1,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null, null,null
+);
+
+-- DET 8 - Parametros de autenticacion SPC Eliminado
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+  ),
+  'Parámetros usados en la autenticación y autorización', 'ESTADOS_SPC_PERMITIDOS', 'GTVPREMIUM', 'Eliminado', 2, 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, NULL, '18', NULL, NULL, NULL
+);
+
+-- DET 9 - Mensajes de error 1
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+    ),
+    'Parámetros usados en la autenticación y autorización',
+	'MENSAJES_ERRORES_USUARIO_AUTENTICACION','GTVPREMIUM','COD_ERROR_2','Usuario y/o contraseña inválidos.','Activo',
+    'djreyes',sysdate,'127.0.0.1',2,18,null, null,null
+);
+
+-- DET 10 - Mensajes de error 2
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+    ),
+    'Parámetros usados en la autenticación y autorización',
+	'MENSAJES_ERRORES_USUARIO_AUTENTICACION','GTVPREMIUM','COD_ERROR_3','No se pudo validar las credenciales del usuario: ','Activo',
+    'djreyes',sysdate,'127.0.0.1',3,18,null, null,null
+);
+
+-- DET 11 - Mensajes de error 3
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+    ),
+    'Parámetros usados en la autenticación y autorización',
+	'MENSAJES_ERRORES_USUARIO_AUTENTICACION','GTVPREMIUM','COD_ERROR_4','Usuario y/o contraseña inválidos.','Activo',
+    'djreyes',sysdate,'127.0.0.1',4,18,null, null,null
+);
+
+-- DET 12 - Mensajes de error 4
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+    ),
+    'Parámetros usados en la autenticación y autorización',
+	'MENSAJES_ERRORES_USUARIO_AUTENTICACION','GTVPREMIUM','COD_ERROR_5','Usuario y/o contraseña inválidos.','Activo',
+    'djreyes',sysdate,'127.0.0.1',2,18,null, null,null
+);
+
+-- DET 13 - Mensajes de error 5
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+    ),
+    'Parámetros usados en la autenticación y autorización',
+	'MENSAJES_ERRORES_USUARIO_AUTENTICACION','GTVPREMIUM','COD_ERROR_6','Usuario y/o contraseña inválidos.','Activo',
+    'djreyes',sysdate,'127.0.0.1',4,18,null, null,null
+);
+
+-- DET 14 - Mensajes de error 6
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+    ),
+    'Parámetros usados en la autenticación y autorización',
+	'MENSAJES_ERRORES_USUARIO_AUTENTICACION','GTVPREMIUM','COD_ERROR_7','Usuario y/o contraseña inválidos.','Activo',
+    'djreyes',sysdate,'127.0.0.1',4,18,null, null,null
+);
+
+-- DET 15 - Mensajes de error 7
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+    ),
+    'Parámetros usados en la autenticación y autorización',
+	'MENSAJES_ERRORES_USUARIO_AUTENTICACION','GTVPREMIUM','COD_ERROR_8','Usuario y/o contraseña inválidos.','Activo',
+    'djreyes',sysdate,'127.0.0.1',4,18,null, null,null
+);
+
+-- Estados permitidos del internet para creacion de productos
+-- DET 16 - Factible
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','Factible',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 17 - PrePlanificada
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','PrePlanificada',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 18 - AsignadoTarea
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','AsignadoTarea',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 19 - Asignada
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','Asignada',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 20 - EnVerificacion
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','EnVerificacion',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 21 - Planificada
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','Planificada',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 22 - Replanificada
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','Replanificada',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 23 - Detenido
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','Detenido',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 24 - Activo
+INSERT INTO db_general.admi_parametro_det 
+(
+  id_parametro_det,parametro_id,descripcion,valor1,valor2,valor3,valor4,valor5,valor6,valor7,
+  estado,usr_creacion,fe_creacion,ip_creacion,empresa_cod
+) 
+VALUES (
+    db_general.seq_admi_parametro_det.nextval,
+    (
+      SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	  WHERE NOMBRE_PARAMETRO = 'VALIDA_ESTADOS_INTERNET'
+	),
+    'PRODUCTO','GTVPREMIUM','Activo',NULL,NULL,NULL,NULL,NULL,'Activo','djreyes',SYSDATE,'127.0.0.1','18'
+);
+
+-- DET 25 - Flujo de ingreso por estado
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'FLUJO_INGRESO_POR_ESTADO_INTERNET'
+    ),
+    'FLUJO_ESTADO_PENDIENTE','GTVPREMIUM',null,null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null,'Servicio en espera de activación del Servicio de Internet',null
+); 
+
+-- Insert para registrar la urn para autenticacion de goltv
+-- CAB 1 - la urn de goltv
+INSERT INTO db_general.ADMI_PARAMETRO_CAB 
+(
+  ID_PARAMETRO,NOMBRE_PARAMETRO,DESCRIPCION,MODULO,PROCESO,ESTADO,USR_CREACION,
+  FE_CREACION,IP_CREACION,USR_ULT_MOD,FE_ULT_MOD,IP_ULT_MOD
+) 
+VALUES (
+  db_general.SEQ_ADMI_PARAMETRO_CAB.nextval,'CODIGO_URN_GOLTV',
+  'CODIGO_URN_GOLTV','COMERCIAL','OBTENER_URN_PROD_TV','Activo',
+  'djreyes',SYSDATE,'127.0.0.1',NULL,NULL,NULL
+);
+
+-- DET 26 - detalle urn de goltv
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'CODIGO_URN_GOLTV'
+  ),
+  'CODIGO_URN_GOLTV', 'urn:tve:goltv', 'GTVPREMIUM', NULL, NULL, 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, NULL, '18', NULL, NULL, NULL
+);
+
+-- Plantillas para nuevo producto GolTv
+-- DET 27 - Plantillas para correo
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'COD_PLANTILLA_CORREO_PRODUCTOS_TV'
+    ),
+    'GTVPREMIUM','GOLTV-RESCON','GOLTV-RENCON','GOLTV-NUEVO','Tu contraseña de NETLIFEPLAY / GOLTV ha sido cambiada','Activo',
+    'djreyes',sysdate,'127.0.0.1','Credenciales del servicio NETLIFEPLAY / GOLTV',18,'Confirmación del servicio NETLIFEPLAY / GOLTV',null,null
+);
+
+-- DET 28 - Plantillas para sms
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'COD_PLANTILLA_SMS_PRODUCTOS_TV'
+    ),
+    'GTVPREMIUM','SMS_GOLTV_RES','SMS_GOLTV_REN','SMS_GOLTV_NUE',null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null,null,null
+);
+
+-- Procesos de cancelacion simultanea
+-- DET 29 - Rechazo y anulacion
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'NOMBRE_TECNICO_PROD_PERMITIDOS_FLUJO_RECHAZADA_Y_ANULADA'
+    ),
+    'PRODUCTO_TV','GTVPREMIUM',null,null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null,null,null
+);
+
+-- DET 30 - Eliminacion
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PARAMETROS_ASOCIADOS_A_SERVICIOS_MD'
+    ),
+    'Nombres técnicos de adicionales que se eliminarán con el Internet desde el grid comercial',
+    'NOMBRES_TECNICOS_ELIMINACION_SIMULTANEA_X_INTERNET','GTVPREMIUM',null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null,null,null
+);
+
+-- Proceso de reenviar y restablecer credenciales
+-- DET 31 Reenvio de clave al correo
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'VALIDA_NOTIFICACION_CORREO'
+    ),
+    'VALIDA_CORREO_PERSONA_PUNTO_CORREO','GTVPREMIUM',null,null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null,null,null
+);
+
+-- DET 32 Reenvio de clave al SMS
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'ENVIO_SMS_POR_PRODUCTO'
+    ),
+    'Valor1:Campo del producto,Valor2:Valor del producto,Valor3:SI/NO se permite el envío de SMS',
+    'NOMBRE_TECNICO','GTVPREMIUM','NO',null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null,null,null
+);
+
+-- DET 33 Permitir restablecer contraseña a producto
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'PERMITIR_RESTABLECER_PASS'
+    ),
+    'PRODUCTO_TV','GTVPREMIUM',null,null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null,null,null
+);
+
+-- DET 34 Al rechazar un internet trasladado con GolTv en origen vuelva a activo
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR4 = 'GTVPREMIUM'
+WHERE DESCRIPCION = 'NOMBRES_TECNICOS_PRODUCTOS_TV'
+AND USR_CREACION = 'jmazon' AND EMPRESA_COD = 18;
+
+
+
+
+/*         GENERAR LOS ROLLBACK   */
+-- DET 35 Para proceso de cancelacion de producto adicional
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+(
+  ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,VALOR4,ESTADO,
+  USR_CREACION,FE_CREACION,IP_CREACION,VALOR5,EMPRESA_COD,VALOR6,VALOR7,OBSERVACION
+)
+VALUES 
+(
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'NOMBRE_PRODUCTO_CANCELACION_INDIVIDUAL'
+    ),
+    'PRODUCTOS_CANCELACION','GTVPREMIUM',null,null,null,'Activo',
+    'djreyes',sysdate,'127.0.0.1',null,18,null,null,null
+);
+
+-- Vigencia de productos
+-- CAB 2 - Cabecera para los nuevo flujos de vigencia
+INSERT INTO db_general.ADMI_PARAMETRO_CAB 
+(
+  ID_PARAMETRO,NOMBRE_PARAMETRO,DESCRIPCION,MODULO,PROCESO,ESTADO,USR_CREACION,
+  FE_CREACION,IP_CREACION,USR_ULT_MOD,FE_ULT_MOD,IP_ULT_MOD
+) 
+VALUES (
+  db_general.SEQ_ADMI_PARAMETRO_CAB.nextval,'FLUJO_DE_VIGENCIA_PRODUCTO_TV',
+  'Flujo para los productos que poseen un vigencia de consumo','COMERCIAL','NOMBRE_TECNICO_PROD_TV'
+  ,'Activo','djreyes',SYSDATE,'127.0.0.1',NULL,NULL,NULL
+);
+
+-- DET 36 - Indicar los productos con URN pero que si manejan vigencia
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'FLUJO_DE_VIGENCIA_PRODUCTO_TV'
+  ),
+  'PRODUCTO_RESOURCE_TV', 'GTVPREMIUM', NULL, NULL, NULL, 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, NULL, '18', NULL, NULL, NULL
+);
+
+
+-- Parametros para la autenticacion y autorizacion de productos con vigencia
+-- DET 37 - Incluir los tiempos de vigencia producto
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'PRODUCTO_FECHA_MINIMA_SUSCRIPCION'
+  ),
+  'NOMBRE_TECNICO', 'GTVPREMIUM', NULL, NULL, NULL, 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, NULL, '18', NULL, NULL,
+  'valor1: nombre tecnico del producto'
+);
+
+-- DET 39 - Incluir los tiempos de vigencia cantidad meses
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'PRODUCTO_FECHA_MINIMA_SUSCRIPCION'
+  ),
+  'MESES_MINIMOS', 'GTVPREMIUM', 1, NULL, NULL, 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, NULL, '18', NULL, NULL,
+  'valor1:nombre tecnico del producto , valor2: cantidad en numeros de los meses minimos de suscripcion'
+);
+
+
+-- DET 40 - Productos permitidos y sus mensajes Activo
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+  ),
+  'Parámetros usados en la autenticación y autorización', 'VERIFICACIONES_AUTORIZACION',
+  'GTVPREMIUM', 'ESTADOS_SERVICIOS_PERMITIDOS', 'Activo', 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, 'OK', '18', NULL, NULL, NULL
+);
+
+-- DET 41 - Productos permitidos y sus mensajes In-Corte
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+  ),
+  'Parámetros usados en la autenticación y autorización', 'VERIFICACIONES_AUTORIZACION',
+  'GTVPREMIUM', 'ESTADOS_SERVICIOS_PERMITIDOS', 'In-Corte', 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, 'ERROR', '18', '03', NULL,
+  'Registra valores pendientes de pago. Realiza tu pago en Netlife Access. Ingresa aquí'
+);
+
+-- DET 42 - Productos permitidos y sus mensajes Cancelado
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+  ),
+  'Parámetros usados en la autenticación y autorización', 'VERIFICACIONES_AUTORIZACION',
+  'GTVPREMIUM', 'ESTADOS_SERVICIOS_PERMITIDOS', 'Cancel', 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, 'POR_VALIDAR', '18', '03', NULL,
+  'Registra valores pendientes de pago. Realiza tu pago en Netlife Access. Ingresa aquí'
+);
+
+-- DET 43 - Verificar si tiene saldo pendiente y su mensaje
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+  ),
+  'Parámetros usados en la autenticación y autorización', 'VERIFICACIONES_AUTORIZACION',
+  'GTVPREMIUM', 'VERIFICA_SALDO_PENDIENTE', 'Cancel', 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, NULL, '18', '04', NULL,
+  'Registra valores pendientes de pago. Realiza tu pago en Netlife Access. Ingresa aquí'
+);
+
+-- DET 41 - Verificar si esta dentro del ciclo de facturacion
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET, PARAMETRO_ID, DESCRIPCION, VALOR1, VALOR2, VALOR3, VALOR4, ESTADO,
+  USR_CREACION, FE_CREACION, IP_CREACION, USR_ULT_MOD, FE_ULT_MOD, IP_ULT_MOD, VALOR5,
+  EMPRESA_COD, VALOR6, VALOR7, OBSERVACION
+)
+VALUES
+(
+  db_general.seq_admi_parametro_det.nextval,
+  (
+    SELECT id_parametro FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+	WHERE NOMBRE_PARAMETRO = 'PARAMETROS_WS_PRODUCTOS_TV'
+  ),
+  'Parámetros usados en la autenticación y autorización', 'VERIFICACIONES_AUTORIZACION',
+  'GTVPREMIUM', 'VERIFICA_FIN_CICLO_FACTURACION', 'Cancel', 'Activo',
+  'djreyes', SYSDATE, '127.0.0.1', NULL, NULL, NULL, NULL, '18', '05', NULL,
+  'El servicio se encuentra cancelado. Comuníquese con su proveedor.'
+);
+
+COMMIT;
+/

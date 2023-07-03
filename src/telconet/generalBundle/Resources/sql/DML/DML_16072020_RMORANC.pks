@@ -1,0 +1,46 @@
+--CREACION DE PARAMETRO DE CABECERA
+INSERT INTO db_general.admi_parametro_cab VALUES 
+(
+    db_general.SEQ_ADMI_PARAMETRO_CAB.nextval,
+    'UNIDADES_CONFIRMAR_ENLACE',
+    'PARAMETRO PARA UNIDADES DE MEDIDA UTILIZADAS EN LA CONFIRMACIÓN DEL ENLACE',
+    'TECNICO',
+    NULL,
+    'Activo',
+    'rmoranc',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+);
+
+
+--UNIDAD DE MEDIDA DE LATENCIA 
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET
+values         
+(
+                DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+                (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='UNIDADES_CONFIRMAR_ENLACE'),
+                'UNIDAD DE MEDIDA DE LA LATENCIA',
+                'UNIDAD_LATENCIA_ENLACE',
+				'ms',
+				NULL,
+				NULL,
+				'Activo',
+				'rmoranc',
+				SYSDATE,
+				'127.0.0.1',
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL
+);
+
+COMMIT;
+

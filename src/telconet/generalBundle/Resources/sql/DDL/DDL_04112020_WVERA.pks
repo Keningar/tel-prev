@@ -1,0 +1,10 @@
+
+ALTER TABLE DB_SOPORTE.INFO_EVENTO
+ADD LATITUD varchar(45);
+COMMENT ON COLUMN DB_SOPORTE.INFO_EVENTO.LATITUD IS 'Indica la latitud en donde fue ingresado el evento.';
+
+ALTER TABLE DB_SOPORTE.INFO_EVENTO
+ADD LONGITUD varchar(45);
+COMMENT ON COLUMN DB_SOPORTE.INFO_EVENTO.LONGITUD IS 'Indica la longitud en donde fue ingresado el evento.';
+
+COMMIT;

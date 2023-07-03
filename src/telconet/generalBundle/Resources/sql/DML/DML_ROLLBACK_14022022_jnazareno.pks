@@ -1,0 +1,26 @@
+/*
+ * Eliminación de parámetro para uso del procedimiento P_WS_GET_ROL_CLIENTE_EXT:
+ *
+ * @author Jean Pierre Nazareno Martinez <jnazareno@telconet.ec>
+ * @version 1.0 14-02-2022 - Versión Inicial.
+ */
+
+--ELIMINAMOS DETALLE DE FILTRO PARA DEPARTAMENTOS
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET DETALLE
+WHERE
+    PARAMETRO_ID = (
+        SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'ESTADOS_PUNTO_P_WS_GET_ROL_CLIENTE_EXT'
+    );
+    
+--ELIMINAMOS CABECERA
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB CABECERA
+WHERE
+    CABECERA.NOMBRE_PARAMETRO = 'ESTADOS_PUNTO_P_WS_GET_ROL_CLIENTE_EXT';
+
+COMMIT;
+/

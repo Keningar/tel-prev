@@ -1,0 +1,22 @@
+/**
+ * Documentación para crear características y modificar características para 
+ * producto CLEAR CHANNEL PUNTO A PUNTO
+ *
+ * @author Josue Valencia <ajvalencia@telconet.ec>
+ * @version 1.0 02-04-2023
+ */
+ 
+SET DEFINE OFF;
+
+-- Eliminar en la tabla ADMI_PARAMETRO_DET
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE PARAMETRO_ID = (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'HABILITAR_APROVISIO_CLEAR_CHANNEL');
+
+
+-- Eliminar en la tabla ADMI_PARAMETRO_CAB
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+WHERE NOMBRE_PARAMETRO = 'HABILITAR_APROVISIO_CLEAR_CHANNEL';
+ 
+COMMIT;
+
+/

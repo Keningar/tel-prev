@@ -1,0 +1,5 @@
+services:
+    general.InfoRegistroEmpleado:
+        class: telconet\generalBundle\Service\InfoRegistroEmpleadoService
+        calls:
+            - [setDependencies, [@service_container]]
