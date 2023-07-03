@@ -1,0 +1,434 @@
+infopunto:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:InfoPunto:index" }
+
+infopunto_show:
+    pattern:  /{id}/{rol}/show
+    defaults: { _controller: "comercialBundle:InfoPunto:show" }
+
+infopunto_new:
+    pattern:  /{idCli}/{idPer}/{rol}/new
+    defaults: { _controller: "comercialBundle:InfoPunto:new" }
+
+infopunto_ajaxDatosPuntoOrigen:
+    pattern: /ajaxDatosPuntoOrigen
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxDatosPuntoOrigen"}
+
+
+infopunto_create:
+    pattern:  /{idPer}/create
+    defaults: { _controller: "comercialBundle:InfoPunto:create" }
+    requirements: { _method: post }
+
+infopunto_edit:
+    pattern:  /{id}/{rol}/edit
+    defaults: { _controller: "comercialBundle:InfoPunto:edit" }
+
+infopunto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "comercialBundle:InfoPunto:update" }
+    requirements: { _method: post }
+
+infopunto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "comercialBundle:InfoPunto:delete" }
+    requirements: { _method: post }
+
+infopunto_formas_contacto_grid:
+    pattern:  /formascontactopuntogrid
+    defaults: { _controller: "comercialBundle:InfoPunto:formasContactoPuntoGrid"}
+
+infopunto_formas_contacto_persona:
+    pattern:  /formascontactopersona
+    defaults: { _controller: "comercialBundle:InfoPunto:formasContactoPersona"}
+
+infopunto_getedificios:
+    pattern:  /ajaxgetedificios
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxGetEdificios"}
+    
+infopunto_getpuntos:
+    pattern:  /{idCli}/{rol}/ajaxgetpuntos
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxGetPuntos"}
+    
+infopunto_getAjaxPuntosCliente:
+    pattern:  /{idCliente}/getAjaxPuntosCliente
+    defaults: { _controller: "comercialBundle:InfoPunto:getAjaxPuntosCliente"}
+    
+infopunto_ajaxAsignarEjecutivoCobranzas:
+    pattern:  /ajaxAsignarEjecutivoCobranzas
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxAsignarEjecutivoCobranzas"}
+
+infopunto_getpuntospersonaemprol:
+    pattern:  /{idper}/{rol}/ajaxgetpuntospersonaempresarol
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxGetPuntosPersonaEmpresaRol"}
+
+infopunto_getpuntospadre:
+    pattern:  /{idCli}/ajaxgetpuntospadre
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxGetPuntosPadre"}
+
+infopunto_getAjaxComboEjecutivosCobranzas:
+    pattern:  /getAjaxComboEjecutivosCobranzas
+    defaults: { _controller: "comercialBundle:InfoPunto:getAjaxComboEjecutivosCobranzas"}
+
+infopunto_ajax_valida_login:
+    pattern: /ajaxValidaLogin
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxValidaLogin"}
+    requirements: { _method: post }
+    
+infopunto_activaInactivaFacturacion:    
+    pattern: /ajaxActInaFacturacion
+    defaults: { _controller: "comercialBundle:InfoPunto:activaInactivaFacturacionElectronica"}
+    requirements: { _method: post }
+    
+infopunto_anula_punto:    
+    pattern: /ajaxAnulaPunto
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxAnulaPunto"}
+    requirements: { _method: post }
+    
+infopunto_ajax_lista_vendedores:
+    pattern: /getAjaxComboVendedores
+    defaults: { _controller: "comercialBundle:InfoPunto:getAjaxComboVendedores"}
+
+infopunto_ajax_genera_login:
+    pattern: /ajaxGeneraLogin
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxGeneraLogin"}
+    requirements: { _method: post }
+
+infopunto_servicios_grid: 
+    pattern:  /{id}/serviciosgrid
+    defaults: { _controller: "comercialBundle:InfoPunto:serviciosGrid"}
+
+infopunto_servicios:
+    pattern:  /{id}/servicios
+    defaults: { _controller: "comercialBundle:InfoPunto:servicios" }
+    
+infopunto_contactos_cliente:
+    pattern:  /{idCli}/contactoscliente
+    defaults: { _controller: "comercialBundle:InfoPunto:getContactosCliente" }
+
+infopunto_asigna_contactos_a_servicios:
+    pattern:  /asiganacontactosaservicios
+    defaults: { _controller: "comercialBundle:InfoPunto:asignaContactosAServicios" }
+    requirements: { _method: post }
+
+infopunto_contactos_servicio:
+    pattern:  /contactosservicio
+    defaults: { _controller: "comercialBundle:InfoPunto:getContactosServicio" }
+    
+infopunto_ajax_ptos_cliente_pto_cobertura:
+  pattern: /ajax_ptos_cliente_pto_cobertura
+  defaults: { _controller: "comercialBundle:InfoPunto:ajaxPtosClientesPtoCoberturaMes"}  
+
+infopunto_ajax_ptos_cliente_tipos_negocio:
+  pattern: /ajax_ptos_cliente_tipo_negocio
+  defaults: { _controller: "comercialBundle:InfoPunto:ajaxPtosClientesTipoNegocioMes"}
+
+infopunto_ajax_gettotalptos:
+  pattern: /{id}/ajax_gettotalptos
+  defaults: { _controller: "comercialBundle:InfoPunto:ajaxGetTotalPtos"}
+
+infopunto_ajax_asignar_padre:
+    pattern:  /ajaxasignarpadre
+    defaults: { _controller: "comercialBundle:InfoPunto:asignarPadre_ajax"}
+
+infopunto_ajax_get_puntos_cobertura:
+    pattern:  /ajaxgetpuntoscobertura
+    defaults: { _controller: "comercialBundle:InfoPunto:listaPtosCobertura_ajax"}
+
+infopunto_ajax_get_cantones_jurisdiccion:
+    pattern:  /ajaxgetcantonesjurisdiccion
+    defaults: { _controller: "comercialBundle:InfoPunto:listaCantonesJurisdiccion_ajax"}
+
+infopunto_solicitarFactibilidadAjax:
+    pattern:  /solicitarFactibilidadAjax
+    defaults: { _controller: "comercialBundle:InfoPunto:solicitarFactibilidadAjax" }
+
+infopunto_newarchivodigital:
+    pattern:  /{idPto}/newaarchivodigital
+    defaults: { _controller: "comercialBundle:InfoPunto:newArchivoDigital" }
+
+infopunto_grabarsubirarchivo:
+    pattern:  /grabarsubirarchivo
+    defaults: { _controller: "comercialBundle:InfoPunto:grabaSubirArchivo"}
+    requirements: { _method: post }
+
+infopunto_download_archivo_digital:
+    pattern:  /download/{id}
+    defaults: { _controller: comercialBundle:InfoPunto:download }
+    
+infopunto_permite_anular_punto_ajax:
+    pattern:  /permiteAnularPunto
+    defaults: { _controller: "comercialBundle:InfoPunto:permiteAnularPuntoAjax" }
+
+infopunto_delete_servicio_ajax:
+    pattern:  /deleteservicioajax
+    defaults: { _controller: "comercialBundle:InfoPunto:delete_servicio_ajax" }
+
+infopunto_listaPtosClientSesion:
+    pattern:  /listaPtosClientSesion
+    defaults: { _controller: "comercialBundle:InfoPunto:listaPtosClientSesion" }
+    
+infopunto_ver_historial_punto:
+    pattern:  /ver-historial-punto
+    defaults: { _controller: "comercialBundle:InfoPunto:verHistorialPunto" }
+
+infopunto_actualizarGastoAdministrativo:    
+    pattern: /ajaxActGastAdmi
+    defaults: { _controller: "comercialBundle:InfoPunto:actualizarGastoAdministrativo"}
+    requirements: { _method: post }
+
+infopunto_cambioVendedor:
+    pattern:  /{id}/{rol}/cambioVendedor
+    defaults: { _controller: "comercialBundle:InfoPunto:cambioVendedor" }
+
+infopunto_actualizarFormasContacto:
+    pattern:  /{id}/{rol}/actualizarFormasContacto
+    defaults: { _controller: "comercialBundle:InfoPunto:actualizarFormasContacto" }
+    
+infopunto_getServicioProductoCaracteristicasAjax:
+    pattern:  /getServicioProductoCaracteristicasAjax
+    defaults: { _controller: "comercialBundle:InfoPunto:getServicioProductoCaracteristicasAjax" }
+    
+infopunto_actualizarCaracteristicaAjax:
+    pattern:  /actualizarCaracteristicaAjax
+    defaults: { _controller: "comercialBundle:InfoPunto:actualizarCaracteristicaAjax" }
+   
+infopunto_guardaCambioVendedor:
+    pattern:  /{id}/guardaCambioVendedor
+    defaults: { _controller: "comercialBundle:InfoPunto:guardaCambioVendedor" }
+    requirements: { _method: post }    
+      
+infopunto_getCanales:
+    pattern: /getCanales
+    defaults: { _controller: "comercialBundle:InfoPunto:getCanales"}
+      
+infopunto_getPuntosVenta:
+    pattern: /getPuntosVenta
+    defaults: { _controller: "comercialBundle:InfoPunto:getPuntosVenta"}
+      
+infopunto_renovacionPlan:
+    pattern: /renovacionPlan
+    defaults: { _controller: "comercialBundle:InfoPunto:renovacionPlan"}
+
+infoservicio_documentos_fileUpload:
+    pattern: /cargarDocumento
+    defaults: { _controller: "comercialBundle:InfoPunto:documentosFileUpload"}
+
+infoservicio_documentos_subirDocumentoAnexo:
+    pattern: /subirDocumentoAnexo
+    defaults: { _controller: "comercialBundle:InfoPunto:subirDocumentoAnexo"}
+
+infoservicio_getVerDocumentos:
+    pattern: /verDocumentos
+    defaults: { _controller: "comercialBundle:InfoPunto:getVerDocumentos"}
+
+infoservicio_getDocumentosEncontrados:
+    pattern: /verDocumentosEncontrados
+    defaults: { _controller: "comercialBundle:InfoPunto:getDocumentosEncontrados"}
+
+infoservicio_getDescargaDocumentos:
+    pattern: /descargaDocumentos
+    defaults: { _controller: "comercialBundle:InfoPunto:getDescargaDocumentos"}    
+
+infopunto_editarDescPresentaFactAjax:
+    pattern:  /editarDescPresentaFactAjax
+    defaults: { _controller: "comercialBundle:InfoPunto:editarDescPresentaFactAjax" }
+    
+infopunto_agregarCarac:
+    pattern:  /agregarCarac
+    defaults: { _controller: "comercialBundle:InfoPunto:AgregarCarac" }  
+
+
+infopunto_getCamarasEmAjax:
+    pattern:  /getCamarasEmAjax
+    defaults: { _controller: "comercialBundle:InfoPunto:getCamarasEmAjax" }
+
+infopunto_getPoste:
+    pattern:  /getPoste
+    defaults: { _controller: "comercialBundle:InfoPunto:getPoste" }   
+
+
+infopunto_solicitarFactibilidadGeneral:
+    pattern:  /solicitarFactibilidadGeneral
+    defaults: { _controller: "comercialBundle:InfoPunto:solicitarFactibilidadGeneral" }   
+    
+infopunto_getServiciosUM:
+    pattern:  /getServiciosUM
+    defaults: { _controller: "comercialBundle:InfoPunto:getServiciosUM" }   
+    
+infopunto_getCamarasPorPunto:
+    pattern:  /getCamarasPorPunto
+    defaults: { _controller: "comercialBundle:InfoPunto:getCamarasPorPunto" }       
+    
+infopunto_generarFactibilidadUM:
+    pattern:  /generarFactibilidadUM
+    defaults: { _controller: "comercialBundle:InfoPunto:generarFactibilidadUM" }  
+    
+infopunto_asociarMascarillasACamaras:
+    pattern:  /asociarMascarillasACamaras
+    defaults: { _controller: "comercialBundle:InfoPunto:asociarMascarillasACamaras" }      
+
+infopunto_ajaxValidaTrasladoMd:
+    pattern:  /ajaxValidaTrasladoMd
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxValidaTrasladoMd" }
+
+infopunto_ajaxGetElementosRetirarTraslado:
+    pattern:  /ajaxGetElementosRetirarTraslado
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxGetElementosRetirarTraslado" }
+    
+infopunto_ajaxGrabaEquiposEntregados:
+    pattern:  /ajaxGrabaEquiposEntregados
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxGrabaEquiposEntregados" }
+
+infopunto_ajaxValidaElementosOrigenTraslado:
+    pattern:  /ajaxValidaElementosOrigenTraslado
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxValidaElementosOrigenTraslado" }
+    
+infopunto_actualizarFormaPagoFacturacion:
+    pattern:  /actualizarFormaPagoFacturacion
+    defaults: { _controller: "comercialBundle:InfoPunto:actualizarFormaPagoFacturacion" }    
+    
+infopunto_gridHistorial:
+    pattern:  /{intIdPunto}/gridHistorial
+    defaults: { _controller: "comercialBundle:InfoPunto:gridHistorial" }
+
+infopunto_ajax_getTipoOrigen:
+    pattern:  /getTipoOrigen
+    defaults: { _controller: "comercialBundle:InfoPunto:getTipoOrigen" }
+
+infopunto_newEditContratoExternoDigital:
+    pattern:   /{intIdPunto}/{strRol}/newEditContratoExternoDigital
+    defaults: { _controller: "comercialBundle:InfoPunto:newEditContratoExternoDigital" }
+
+infopunto_gridContratoExternoDigital:
+    pattern:  /{intIdPunto}/gridContratoExternoDigital
+    defaults: { _controller: "comercialBundle:InfoPunto:gridContratoExternoDigital" }      
+
+infopunto_eliminarContratoExternoDigital:
+    pattern:  /eliminarContratoExternoDigital/{intIdDocumento}
+    defaults: { _controller: comercialBundle:InfoPunto:eliminarContratoExternoDigital }
+
+infopunto_descargarContratoExternoDigital:
+    pattern:  /descargarContratoExternoDigital/{intIdDocumento}
+    defaults: { _controller: comercialBundle:InfoPunto:descargarContratoExternoDigital }
+
+infopunto_gridServiciosVtaExterna:
+    pattern:  /{intIdPunto}/gridServiciosVtaExterna
+    defaults: { _controller: "comercialBundle:InfoPunto:gridServiciosVtaExterna" }      
+
+infopunto_guardarContratoExternoDigital:
+    pattern:  /{intIdPunto}/{strRol}/guardarContratoExternoDigital
+    defaults: { _controller: "comercialBundle:InfoPunto:guardarContratoExternoDigital" }
+    requirements: { _method: post }    
+
+infopunto_getInformacionCrearServicioBackup:
+    pattern:  /ajaxGetInformacionCrearServicioBackup
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxGetInformacionCrearServicioBackup" }
+
+infopunto_getPlantillaComisionistaGridServicios:
+    pattern:  /getPlantillaComisionistaGridServicios
+    defaults: { _controller: "comercialBundle:InfoPunto:getPlantillaComisionistaGridServicios" }
+
+infopunto_getPersonalComisionista:
+    pattern:  /getPersonalComisionista
+    defaults: { _controller: "comercialBundle:InfoPunto:getPersonalComisionista" }
+
+infopunto_crearSolicitudesPunto:
+    pattern:  /crearSolicitudesPunto
+    defaults: { _controller: "comercialBundle:InfoPunto:crearSolicitudesPunto" }
+    
+infopunto_solicitarFactibilidadTelefonia:
+    pattern:  /solicitarFactibilidadTelefonia
+    defaults: { _controller: "comercialBundle:InfoPunto:solicitarFactibilidadTelefonia" }   
+    
+infopunto_verLineasTelefonicas:
+    pattern:  /verLineasTelefonicas
+    defaults: { _controller: "comercialBundle:InfoPunto:verLineasTelefonicas" }
+    
+infopunto_nuevasLineasTelefonicas:
+    pattern:  /nuevasLineasTelefonicas
+    defaults: { _controller: "comercialBundle:InfoPunto:nuevasLineasTelefonicas" }
+
+infopunto_ajaxVerificaDatosDeEnvioPunto:
+    pattern:  /ajaxVerificaDatosDeEnvioPunto
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxVerificaDatosDeEnvioPunto" }
+
+infopunto_obteneCoordenadaSugerida:
+    pattern:  /obteneCoordenadaSugerida
+    defaults: { _controller: "comercialBundle:InfoPunto:obteneCoordenadaSugerida" }
+
+infopunto_guardarCoordenadasSugeridas:
+    pattern:  /guardarCoordenadasSugeridas
+    defaults: { _controller: "comercialBundle:InfoPunto:guardarCoordenadasSugeridas" }
+    
+infopunto_getProductosPorEstado:
+    pattern:  /getProductosPorEstado
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getProductosPorEstado" }
+
+infopunto_getPlanesPorEstado:
+    pattern:  /getPlanesPorEstado
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getPlanesPorEstado" }    
+
+infopunto_editarSolucion:
+    pattern:  /{intIdPunto}/editarSolucion
+    defaults: { _controller: "comercialBundle:InfoPunto:editarSolucion" }  
+
+infopunto_getPuntosTelcoHomeCliente:
+    pattern:  /{intIdPersonaCliente}/getPuntosTelcoHomeCliente
+    defaults: { _controller: "comercialBundle:InfoPunto:getPuntosTelcoHomeCliente"}
+     
+infopunto_getDetallesParametros:
+    pattern:  /getDetallesParametros
+    defaults: { _controller: "comercialBundle:InfoPunto:getDetallesParametros"}
+
+infoservicio_getMotivosEliminacion:
+    pattern: /getMotivosEliminacion
+    defaults: { _controller: "comercialBundle:InfoServicio:getMotivosEliminacion"}
+
+infoservicio_ajaxGetProcesoMasivoNc:
+    pattern:  /ajaxGetProcesoMasivoNc
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetProcesoMasivoNc" }
+
+infopunto_ajaxEjecutarEmergenciaSanitariaPto:
+    pattern:  /ajaxEjecutarEmergenciaSanitariaPto
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxEjecutarEmergenciaSanitariaPto" } 
+
+infopunto_ajaxReingresoOrdenServicio:
+    pattern: /ajaxReingresoOrdenServicio
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxReingresoOrdenServicio"}
+
+infopunto_ajaxFormasContactoPuntoPorTipo:
+    pattern:  /ajaxFormasContactoPuntoPorTipo
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxFormasContactoPuntoPorTipo"}
+
+infopunto_formasContactoPorCodigoAjax:
+    pattern:  /formasContactoPorCodigoAjax
+    defaults: { _controller: "comercialBundle:InfoPunto:formasContactoPorCodigoAjax"}
+
+infopunto_ajaxValidaCodigoPromocion:
+    pattern:  /validaCodigoPromocion
+    defaults: { _controller: "comercialBundle:Promocion:validaCodigoPromocion" }
+
+infopunto_getValidaCltDistribuidor:
+    pattern: /getValidaCltDistribuidor
+    defaults: { _controller: "comercialBundle:InfoPunto:getValidaCltDistribuidor"}
+    requirements: { _method: post }
+
+infopunto_ajaxVerificarCatalogo:
+    pattern:  /ajaxVerificarCatalogo
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxVerificarCatalogo"}
+
+info_punto_CargaDeArchivosMultiples:
+    pattern:  /CargaDeArchivosMultiples
+    defaults: { _controller: "comercialBundle:InfoPunto:CargaDeArchivosMultiples"}
+
+coordinar_validadorExcedenteMaterial:
+    pattern:  /validadorExcedenteMaterial
+    defaults: { _controller: "planificacionBundle:Coordinar:validadorExcedenteMaterial" }
+
+infopunto_solicitarInfoCliente:
+    pattern:  /solicitarInfoCliente
+    defaults: { _controller: "comercialBundle:InfoPunto:solicitarInfoCliente"}
+infopunto_ajaxTipoDocumentosGeneral:
+    pattern:  /ajaxTipoDocumentosGeneral
+    defaults: { _controller: "comercialBundle:InfoPunto:ajaxTipoDocumentosGeneral"}

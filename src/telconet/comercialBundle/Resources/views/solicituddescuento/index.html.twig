@@ -1,0 +1,135 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />    
+    <link href="{{ asset('./bundles/comercial/css/InfoDetalleSolicitud.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}          
+        <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+        <script src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}" type="text/javascript"></script>  
+    
+        <script>
+        var url_lista_motivos               =   '{{path('solicituddescuento_get_motivos_ajax')}}';
+        var url_solicitar_descuento_ajax    =   '{{path('solicituddescuento_graba_solicdesc_ajax')}}';
+        var url_grid                        =   "{{path('solicituddescuento_get_servicios_ajax',{'id':puntoId}) }}";        
+        var urlGetTipoDescuento             =   '{{path('solicitudes_get_TipoDescuento_ajax')}}';
+        var url_calculaDescAdultoMayor      =   "{{path('solicituddescuento_calculaDescAdultoMayor') }}";
+        var strMotivoDescDiscapacidad       =   "{{strMotivoDescDiscapacidad}}";
+        var strPorcentajeDiscapacidad       =   "{{strPorcentajeDiscapacidad}}";
+        var strCodEmpresa                   =   "{{strCodEmpresa}}";
+        var strPrefijoEmpresa               =   "{{strPrefijoEmpresa}}";
+        
+        var url_actFechaNacimiento = "{{ path('cancelacionCambioBeneficio_actFechaNacimiento',
+                                                 { 'intIdDetalleSolicitud': '0' ,'strOpcion':'Otro' }) }}";
+        var urlFlujoMotivoAdultoMayor       = "{{ path('solicituddescuento_flujoMotivoAdultoMayor') }}";                                             
+        </script>        
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicituddescuento/servicios.js?9') }}"></script>
+{% endblock javascripts %}
+
+{% block contenido_izq %}
+<div id="titulo_content" class="col-form-label">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	Solicitud de Descuento
+</div>
+
+<div class="body_content">
+
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr bgcolor='#ffffff'>
+            <td bgcolor='#ffffff'> 
+                <div id="mensaje_validaciones" class="info-error campo-oculto" role="alert" ></div> 
+            </td>
+        </tr>
+    </table>    
+    
+{%if puntoId is not null%}
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td bgcolor='#ffffff'>&nbsp;</td>
+            </tr>            
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='filtro_servicios'></div></td>
+            </tr>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='panel_observacion'></div></td>
+            </tr>             
+            <tr bgcolor='#ffffff'>
+                     <td>&nbsp;</td><td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+            </tr>
+        </table>
+{%else%}
+<div>Debe seleccionar login previamente para poder realizar una solicitud de descuento por servicio</div>
+    
+{%endif%}    
+
+
+</div>
+    
+  <div class="modal fade" id="modalActFechaNacimiento" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>                
+                <div class="modal-footer">
+                    <button type="button" id="btConfirmarFeNacimiento" class="btn btn-info btn-sm">Confirmar</button>
+                    <button type="button" id="btActualizarFeNacimiento" class="btn btn-info btn-sm">Guardar</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{#{asset('app_dev.php/comercial/solicitud')}#}">Regresar</a>
+        </span>
+    </p>
+</div> 
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+				<!--<li>
+					<a class="listado_ac_tablas" href="{#{ path('infopunto_servicios',{ 'id': entity.id }) }#}">Servicios</a>
+				</li> -->                   
+                    <!--
+			{#% for acc in acc_relaciondas %} 
+				<li>
+					<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+				</li>
+			{% endfor %#}
+                    -->
+			<!--li>
+				<a class="listado_ac_tablas" href="{#{ path('precliente_convertir', { 'id_prospecto': entity.id }) }#}">Convertir Prospecto a Cliente</a>
+			</li-->
+		</ul>
+
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}

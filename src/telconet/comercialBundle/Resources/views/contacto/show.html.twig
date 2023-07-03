@@ -1,0 +1,78 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<style>
+    #dashboard {
+        margin: -4px -14px 0;
+        margin: 0px 11px 3px;
+        -moz-border-radius: 4px;
+        border: 1px solid #DDDDDD;
+        background-color: #FFFFFF;
+        box-shadow: none !important;
+        width: 975px;
+        width: 77.5%;
+        min-height: 10em;
+    }
+</style>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+    var intIdPersonaContacto                    = "{{ intIdPersona }}";
+    var intIdPersonaEmpresaRol                  = -1;
+    var intIdPunto                              = -1;
+    {% if app.session.get('cliente').id_persona_empresa_rol is defined %}
+        intIdPersonaEmpresaRol 	= {{ app.session.get('cliente').id_persona_empresa_rol }};
+    {% endif %}
+    {% if app.session.get('ptoCliente').id is defined %}
+        intIdPunto = {{ app.session.get('ptoCliente').id }};
+    {% endif %}
+    var urlRolesPersonaPunto                    = "{{ path('contacto_getRolesPersonaPunto') }}";
+    var urlGetAdmiFormaContacto                 = "{{ path('admiformacontacto_getAdmiFormaContacto') }}";
+    var urlGetInfoContacto                      = "{{ path('contacto_getInfoPersona') }}";
+    var urlGetInfoPersonaRelacionadasAlContacto = "{{ path('contacto_getInfoPersonaRelacionadasAlContacto') }}";
+    var urlGetInfoPersonaFormaContacto          = "{{ path('contacto_getInfoPersonaFormaContacto') }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/Contacto.js?5') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/show.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Contacto</h1>
+</div>
+<div id="" class="body_content">
+    <table align="center">
+        <tr>
+            <td>
+                <div id="divFormContacto"></div>
+            </td>
+        </tr>
+        <tr align="center">
+            <td>
+                <div class="buttons">
+                    <span class="height20px">
+                        <a class="button-crud" href="{{ path('contacto') }}">Regresar</a>
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<ul class="form_actions">
+    <li>
+        <a class="button-addPesrsona" href="{{ path('contacto_new') }}">
+            Nuevo Contacto
+        </a>
+    </li>
+    <li>
+        <a class="button-editar" href="{{ path('contacto_ingresar_masivos') }}">
+            Ingreso Masivo de Contactos
+        </a>
+    </li>
+</ul>
+{% endblock contenido_der %}

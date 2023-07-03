@@ -1,0 +1,341 @@
+
+<div class="container">
+    <h5>{{objPromocion['objAdmiGrupoPromocion'].nombreGrupo}} - Detalles Generales <i class="fa fa-info-circle"></i></h5>
+    <br />
+    <table class="table compact" width='100%' border='0'>          
+        <tbody>
+            <tr>
+                <td><b>Fecha Inicio-Vigencia:</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].feInicioVigencia| date('j. F Y')}}</td>
+                 
+                <td><b>Fecha Fin-Vigencia:</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].feFinVigencia| date('j. F Y')}}</td> 
+            </tr>
+            <tr> 
+                <td><b>Tipo Servicio:</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strTipoCliente}} </td>
+                
+                <td><b>Estado Servicio:</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strEstadoServicio}} </td>
+            </tr>
+            <tr>
+                <td><b>Forma de Pago:</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strFormaPago}} </td>
+                {%if  objPromocion['arrayCaracteristicas'].strCodigoPromocion!='' %} 
+                <td><b>Codigo Promoción:</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strCodigoPromocion}} </td>
+                {%else%}  
+                <td></td>
+                <td></td>
+                {% endif %}
+            </tr>   
+            {%if  objPromocion['arrayCaracteristicas'].strPermMinimaCancelVol!='' %} 
+                <tr>
+                    <td><strong>Permanencia Mínima de Promoción</strong></td>
+                    <td>{{objPromocion['arrayCaracteristicas'].strPermMinimaCancelVol}} </td>                       
+                </tr>  
+            {% endif %} 
+        </tbody>
+    </table>
+            
+    <div class="container">
+           {% if objPromocion['arrayEmisores'] is not empty %}
+            <label for="forma_pago" class="col-sm-12 col-form-label">Información Débito Bancario: 
+                <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                        aria-expanded="false" data-target="#contenedor_ver_emisores"><i class="fa fa-angle-down"></i>
+                </button>
+            </label>
+            <div class="bonder-titulo"></div>
+            <div class="col-md-12">
+                <div id="contenedor_ver_emisores" class="form-group row scrollbar">
+                    <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                        <thead class="thead-light"> 
+                            <tr>
+                                <th width="15%">Tipo</th>
+                                <th>Tarjeta/Cta.Bancaria</th>
+                                <th>Banco</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyInformacionEmisores">
+                            {% for Emisores in objPromocion['arrayEmisores'] %}
+                                <tr>
+                                    <td>{{ Emisores['esTarjeta'] }}</td>
+                                    <td>{{ Emisores['descCuenta'] }}</td>
+                                    <td>{{ Emisores['descBanco'] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+        <label for="forma_pago" class="col-sm-12 col-form-label">Información de Sectorización: 
+            <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                    aria-expanded="false" data-target="#contenedor_ver_sector"><i class="fa fa-angle-down"></i>
+            </button>
+        </label>
+        <div class="bonder-titulo"></div>
+        <div class="col-md-12">
+            <div id="contenedor_ver_sector" class="form-group row scrollbar">
+                <table class="table table-striped table-bordered compact table-sm"id="tablaInfSectorizacion">  
+                    <thead class="thead-light">
+                        <tr>
+                            <th><b>Jurisdicción</b></th>
+                            <th><b>Cantón</b></th>
+                            <th><b>Parroquia</b></th>
+                            <th colspan="2"><b>Sector / Olt / Edificio</b></th>                              
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyInfSectorizacion">
+                        {% if objPromocion['arrayCaracteristicas'].arraySectorizacion is defined and 
+                           objPromocion['arrayCaracteristicas'].arraySectorizacion is not empty %}
+                        {% for Sectorizacion in objPromocion['arrayCaracteristicas'].arraySectorizacion %}
+                            <tr>
+                                <td>{{ Sectorizacion['strJurisdiccion'] }}</td>
+                                <td>{{ Sectorizacion['strCanton'] }}</td>
+                                <td>{{ Sectorizacion['strParroquia'] }}</td>
+                                <td>{{ Sectorizacion['strOptSectOltEdif'] }}</td>
+                                <td>{{ Sectorizacion['strSectOltEdif'] }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td>Todos</td>
+                                <td>Todos</td>
+                                <td>Todos</td>
+                                <td>Todos</td>                                 
+                            </tr>
+                            {% endif %}
+                            </tbody>
+                </table>
+            </div>
+        </div>
+    </div>      
+                            
+    <div class="accordion container-fluid" id="accordionExample">
+    <br/> <h5>Detalle Promociones <i class="fa fa-info-circle"></i></h5>
+    {% if objPromocion['arrayTipoPromoMix'] is not empty %}
+        <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+            <div class="card-header" id="promocionMix">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionMix" aria-expanded="false" 
+                            aria-controls="collapsePromocionMix"> Mensualidad Mix de Planes y Productos <i class="fa fa-angle-down"></i>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePromocionMix" class="collapse" aria-labelledby="promocionMix" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-borderless table-sm" width='100%' border='0'>          
+                        <tbody>
+                            {% for promocionMix in objPromocion['arrayTipoPromoMix'] %}
+                                {% if promocionMix['strDescripcionCaract']=='DescUnicoVariable' %}
+                                    <tr>
+                                        <td><b>Período(s):</b></td>
+                                        <td><b>Descuento(%):</b></td>     
+                                    </tr>
+                                    {% set arrayPeriodosDesc = promocionMix['strValor']|split(',') %}
+                                    {% for strPeriodosDesc in arrayPeriodosDesc %}
+                                        {% set periodosDesc = strPeriodosDesc|split('|') %}
+                                        <tr>
+                                            <td> {{ periodosDesc[0] }}</td>
+                                            <td> {{ periodosDesc[1]~'%' }}</td>
+                                        </tr>
+                                    {% endfor %}                                      
+                                {%else%}
+                                    <tr>
+                                        <td><b>{{ promocionMix['strDescripcionCaract'] }}:</b></td>
+                                        <td> {{ promocionMix['strValor'] }}</td>
+                                    </tr>
+                                {%endif%}
+                            {% endfor %}                  
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if objPromocion['arrayTipoPromoPlanes'] is not empty %}
+        <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+            <div class="card-header" id="promocionPlanes">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionPlanes" aria-expanded="false" 
+                            aria-controls="collapsePromocionPlanes"> Mensualidad de Planes <i class="fa fa-angle-down"></i>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePromocionPlanes" class="collapse" aria-labelledby="promocionPlanes" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-borderless table-sm" width='100%' border='0'>          
+                        <tbody>
+                            {% for promocionPlanes in objPromocion['arrayTipoPromoPlanes'] %}
+                                {% if promocionPlanes['strDescripcionCaract']=='DescUnicoVariable' %}
+                                    <tr>
+                                        <td><b>Período(s):</b></td>
+                                        <td><b>Descuento(%):</b></td>     
+                                    </tr>
+                                    {% set arrayPeriodosDesc = promocionPlanes['strValor']|split(',') %}
+                                    {% for strPeriodosDesc in arrayPeriodosDesc %}
+                                        {% set periodosDesc = strPeriodosDesc|split('|') %}
+                                        <tr>
+                                            <td> {{ periodosDesc[0] }}</td>
+                                            <td> {{ periodosDesc[1]~'%' }}</td>
+                                        </tr>
+                                    {% endfor %}                                      
+                                {%else%}
+                                    <tr>
+                                        <td><b>{{ promocionPlanes['strDescripcionCaract'] }}:</b></td>
+                                        <td> {{ promocionPlanes['strValor'] }}</td>
+                                    </tr>
+                                {%endif%}
+                            {% endfor %}                  
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% if objPromocion['arrayTipoPromoProductos'] is not empty %}
+        <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+            <div class="card-header" id="promocionProductos">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionProductos" aria-expanded="false" 
+                            aria-controls="collapsePromocionProductos"> Mensualidad de Productos <i class="fa fa-angle-down"></i>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePromocionProductos" class="collapse" aria-labelledby="promocionProductos" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-borderless table-sm" width='100%' border='0'>          
+                        <tbody>
+                            {% for promocionProductos in objPromocion['arrayTipoPromoProductos'] %}
+                                {% if promocionProductos['strDescripcionCaract']=='DescUnicoVariable' %}
+                                    <tr>
+                                        <td><b>Período(s):</b></td>
+                                        <td><b>Descuento(%):</b></td>     
+                                    </tr>
+                                    {% set arrayPeriodosDesc = promocionProductos['strValor']|split(',') %}
+                                    {% for strPeriodosDesc in arrayPeriodosDesc %}
+                                        {% set periodosDesc = strPeriodosDesc|split('|') %}
+                                        <tr>
+                                            <td> {{ periodosDesc[0] }}</td>
+                                            <td> {{ periodosDesc[1]~'%' }}</td>
+                                        </tr>
+                                    {% endfor %}                                      
+                                {%else%}
+                                    <tr>
+                                        <td><b>{{ promocionProductos['strDescripcionCaract'] }}:</b></td>
+                                        <td> {{ promocionProductos['strValor'] }}</td>
+                                    </tr>
+                                {%endif%}
+                            {% endfor %}                  
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% if objPromocion['arrayTipoPromoDescTotal'] is not empty %}
+        <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+            <div class="card-header" id="promocionDescTotal">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionDescTotal" 
+                            aria-expanded="false" aria-controls="collapsePromocionDescTotal">
+                        Descuento Total en Mensualidad <i class="fa fa-angle-down"></i>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePromocionDescTotal" class="collapse" aria-labelledby="promocionDescTotal" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-borderless table-sm" width='100%' border='0'>          
+                        <tbody>
+                            {% for promocionDescTotal in objPromocion['arrayTipoPromoDescTotal'] %}
+                                {% if promocionDescTotal['strDescripcionCaract']=='DescUnicoVariable' %}
+                                    <tr>
+                                        <td><b>Período(s):</b></td>
+                                        <td><b>Descuento(%):</b></td>     
+                                    </tr>
+                                    {% set arrayPeriodosDesc = promocionDescTotal['strValor']|split(',') %}
+                                    {% for strPeriodosDesc in arrayPeriodosDesc %}
+                                        {% set periodosDesc = strPeriodosDesc|split('|') %}
+                                        <tr>
+                                            <td> {{ periodosDesc[0] }}</td>
+                                            <td> {{ periodosDesc[1]~'%' }}</td>
+                                        </tr>
+                                    {% endfor %}                                      
+                                {%else%}
+                                    <tr>
+                                        <td><b>{{ promocionDescTotal['strDescripcionCaract'] }}:</b></td>
+                                        <td> {{ promocionDescTotal['strValor'] }}</td>
+                                    </tr>
+                                {%endif%}
+                            {% endfor %}                  
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div>     
+    
+    <br/>
+  
+    <table width='100%' border='0'>          
+        <tbody>
+            <tr>
+                <td width="10%" rowspan="4">
+                <img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                <th width="11%">Creador:</th>
+                <td width="34%" >{% if(objPromocion['objAdmiGrupoPromocion'] is not null)%} 
+                    {{objPromocion['objAdmiGrupoPromocion'].usrCreacion}} 
+                    {% endif %}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].usrUltMod is not null) %}
+                    <td width="10%" rowspan="4">
+                    <img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                    <th width="11%" >Ult. Mod.:</th>
+                    <td width="34%">{{ objPromocion['objAdmiGrupoPromocion'].usrUltMod }}</td>
+                {% endif %}                
+            </tr>
+            <tr>
+                <th>Fecha:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %}
+                    {{ objPromocion['objAdmiGrupoPromocion'].feCreacion | date("d M Y") }}
+                    {% endif %}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].feUltMod is not null) %}
+                    <th>Fecha:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].feUltMod  | date("d M Y")}}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Hora:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %} 
+                    {{ objPromocion['objAdmiGrupoPromocion'].feCreacion | date("H:i:s") }} 
+                    {%endif%}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].feUltMod is not null) %}
+                    <th>Hora:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].feUltMod| date("H:i:s") }}</td>
+                {% endif %}               
+            </tr>
+            <tr>
+                <th>Ip:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %} 
+                    {{ objPromocion['objAdmiGrupoPromocion'].ipCreacion}} 
+                    {%endif%}</td>
+                    
+                {% if(objPromocion['objAdmiGrupoPromocion'].ipUltMod is not null) %}
+                    <th>Ip:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].ipUltMod }}</td>
+                {% endif %}       
+            </tr>
+        </tbody>
+    </table>   
+
+</div>
+             
+
+

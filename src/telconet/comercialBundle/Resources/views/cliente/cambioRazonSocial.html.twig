@@ -1,0 +1,944 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	 <style type="text/css">
+
+		#tooltip.pretty {
+			border: none;
+			width: 250px;
+			padding:20px;
+			height: 135px;
+			opacity: 2;
+			background: url('');
+		}
+
+		#tooltip.pretty div { 
+		width: 220px; 
+		text-align: left; 
+		background-color: #F9F9F9;
+		border: 1px solid #DDDDDD;
+		border-radius: 4px 4px 4px 4px;
+		box-shadow: 0 0 3px #D7D7D7;
+		margin: 11px 11px 11px;
+		padding: 7px 7px 7px;
+		min-height: 7em;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size:12px;		
+		}
+
+		#tooltiptable{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size:9px;
+		font-weight:normal;
+		text-align: left;
+		padding: 8px;
+		margin: 5px;
+		}
+	</style>  
+        <script>var url_getMaxLongitudIdentificacionAjax = "{{ path('cliente_getMaxLongitudIdentificacion') }}";</script> 
+        <script>var url_validarNumeroTarjetaCta = "{{ path('infocontrato_validarNumeroTarjetaCta') }}";</script> 
+        <script>var url_validarPorFormaPago = "{{ path('infocontrato_validarPorFormaPago') }}";</script> 
+        <script>var url_listarBancosAsociados = "{{ path('infocontrato_listar_bancos_asociados') }}";</script>     
+        <script>var url_formas_contacto_persona = "{{ path('cliente_formas_contacto_grid') }}";</script>    
+        <script>var url_formas_contacto = "{{path('cliente_lista_formas_contacto')}}";</script>
+		<script>
+            url_valida_identificacion="{{ path('cliente_ajax_valida_identificacion') }}";
+            url_validar_identificacion_tipo="{{ path('cliente_ajax_validar_identificacion_tipo') }}";
+            url_valida_correo_electronicoECDF="{{ path('infoservicio_ajaxValidaCorreoECDF') }}";
+            url_img_loader="{{ asset('public/images/images_crud/ajax-loader.gif') }}";
+            url_img_check="{{ asset('public/images/check.png') }}";
+            url_img_delete="{{ asset('public/images/delete.png') }}";
+			input='#clientetype_identificacionCliente';
+            inputTipo='#clientetype_tipoIdentificacion';
+            rol='{{rol}}';
+            //variable que permite cambiar el tipo de negocio
+            var puedeCambiarTipoNegocio = false;
+            var verHistorial   = 1;
+            var mensajes       = "";
+            var mensajes_bin   = "";
+			var url_reenvioPin              = '{{ path('infocontrato_reenvio_pin') }}'; 
+        	var url_autorizarContrato       = '{{ path('infocontrato_autorizarContrato') }}';  
+			var url_crearContrato           = "{{ path('infocontrato_create_ms') }}";
+			url_valida_contrato_activo      = "{{ path('cliente_ajax_valida_contrato_activo') }}";
+
+            var urlGetAdmiFormaContacto       = "{{ path('admiformacontacto_getAdmiFormaContacto') }}"; 
+            var cambioRazonSocialCP           = true; 
+			var coordinadorMD                 = "{{esCoordinadorMD}}";
+			var url_crearContratoFisico       = "{{ path('infocontrato_create') }}";
+        var urlGetAdmiFormaContacto        = "{{ path('admiformacontacto_getAdmiFormaContacto') }}";
+        var urlRepresentanteLegalVerificar  = "{{ path('cliente_ajaxRepresentanteLegalVerificar') }}";
+        var urlRepresentanteLegalConsultar  = "{{ path('cliente_ajaxRepresentanteLegalConsultar') }}";
+        var urlRepresentanteLegalActualizar = "{{ path('cliente_ajaxRepresentanteLegalActualizar') }}";
+        var urlValidarFormaContacto         = "{{ path('contacto_ajaxValidarFormaContacto') }}";
+		</script>
+        <script>var personaid = "";</script>
+        
+{% endblock %}
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Cambio de Razon Social</h1>
+	</div>
+	<div class="body_content">
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+        {% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}
+		<table class="record_properties" style="width: 100%; vertical-align: top;">
+		{%if(entity.tipoEmpresa is not null)%}
+		    <tbody>
+			<tr>
+			<td colspan='4'>
+				<div class='secHead'>Informacion Actual del Cliente</div>
+			</td>
+			</tr>
+		        <tr>
+		            <td><b>Tipo identificacion:</b></td>
+		            <td>
+					{%if(entity.tipoIdentificacion == 'CED')%}Cedula
+					{%elseif(entity.tipoIdentificacion == 'RUC')%}Ruc
+					{%elseif(entity.tipoIdentificacion == 'PAS')%}Pasaporte
+					{%endif%}
+					</td>
+		            <th><b>Tipo Empresa:</b></th>
+		            <td>{{ entity.tipoEmpresa }}</td>
+		        </tr>
+		        <tr>
+		            <td><b>Direccion Tributaria:</b></td>
+		            <td>{{ entity.direccionTributaria }}</td>
+		            <td><b>Identificacion:</b></td>
+		            <td>{{ entity.identificacionCliente }}</td>
+		        </tr>
+		        <tr>
+					{%if (entity.razonSocial) %}
+						<td><b>Nombre Cliente:<b></td>
+						<td>{{ entity.razonSocial }}</td>            
+					{%else%}
+						<td><b>Nombre Cliente:<b></td>
+						<td>{{ entity.nombres }} {{ entity.apellidos }}</td>
+					{%endif%}
+		            <td><b>Nacionalidad:<b></td>
+		            <td>
+					{%if(entity.nacionalidad == 'NAC')%}Nacional
+					{%elseif(entity.nacionalidad == 'EXT')%}Extranjero
+					{%endif%}
+					</td>
+		        </tr>
+		        <tr>          
+		            <td><b>Representante Legal:<b></td>
+		            <td>{{ entity.representanteLegal }}</td>
+		            <td><b>Referido Por:</b></td>
+		        {% if referido is not null  %}    
+		            {% if referido.razonSocial is not null  %}
+						<td><a href="{{ path('cliente_show',{'id':referido.id,'idper':idperRef.id}) }}">{{ referido.razonSocial }}</a></td>
+		            {% else %}
+		                <td><a href="{{ path('cliente_show',{'id':referido.id,'idper':idperRef.id}) }}">{{ referido.nombres }} {{ referido.apellidos }}</a></td>
+		            {% endif %}
+		        {% else %}
+		            <td>No fue referido</td>    
+		        {% endif %}
+		        </tr>         
+		        <tr>
+		            <td><b>Tipo Tributario:</b></td>
+		            <td>{%if(entity.tipoTributario == 'NAT')%} Natural
+						{%elseif(entity.tipoTributario == 'JUR')%} Juridica
+						{%endif%}
+					</td>
+		            <td><b>Estado:</b></td>
+		            <td>{{ estado }}</td>
+		        </tr>
+				<tr>
+					<td><b>Fue Prospecto:</b></td>
+					<td>
+					{%if(entity.origenProspecto == 'S')%}Si
+						{%elseif(entity.origenProspecto == 'N')%}No
+						{%endif%}
+					</td> 
+					<td></td>
+					<td></td>		
+				</tr>
+				<tr>
+				<td>
+				&nbsp;
+				</td>
+				</tr>				
+				<tr>
+					<td  colspan='4'>
+					<table>
+
+					{%for item in formasContacto%}
+					<tr>					
+					<td  width='30'><b>
+						{% if (item.formaContactoId.descripcionFormaContacto=='Telefono Fijo') %}
+							<img src='/public/images/images_crud/contact.png'>
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Claro') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Movistar') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Digicel') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Cable and Wireless') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil CNT')%}
+							<img src='/public/images/images_crud/phone.png'>				
+						{%elseif (item.formaContactoId.descripcionFormaContacto=='Correo Electronico')%}
+							<img src='/public/images/images_crud/mail.png'>							
+						{%elseif (item.formaContactoId.descripcionFormaContacto=='Facebook')%}
+							<img src='/public/images/images_crud/facebook.png'>							
+						{%elseif (item.formaContactoId.descripcionFormaContacto=='Twitter')%}
+							<img  width='16' height='16' src='/public/images/images_crud/twitter.png'>														
+						{%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil')%}
+							<img src='/public/images/images_crud/phone.png'>							
+						{%endif%}
+						</b>
+					</td>
+					<td>
+						{{item.valor}}
+					</td>		
+					</tr>					
+					{%endfor%}
+					</table>
+					</td> 		
+				</tr>
+				<tr>
+				<td>
+					&nbsp;
+				</td>
+				</tr>				
+			</tbody>
+		{%else%}
+			<tbody>
+		        <tr>
+		            <td><b>Tipo Identificacion:</b></td>
+		            <td>
+						{%if(entity.tipoIdentificacion == 'CED')%}Cedula
+						{%elseif(entity.tipoIdentificacion == 'RUC')%}Ruc
+						{%elseif(entity.tipoIdentificacion == 'PAS')%}Pasaporte
+						{%endif%}
+					</td>
+		        </tr>
+		        <tr>
+		            <td><b>Identificacion:</b></td>
+		            <td>{{ entity.identificacionCliente }}</td>   
+		            <td><b>Estado Civil:</b></td>
+		            <td>
+						{%if(entity.estadoCivil == 'C')%}Casado(a)
+						{%elseif(entity.estadoCivil == 'S')%}Soltero(a)
+						{%elseif(entity.estadoCivil == 'D')%}Divorciado(a)
+                                                {%elseif(entity.estadoCivil == 'V')%}Viudo(a)
+                                                {%elseif(entity.estadoCivil == 'U')%}Uni&oacute;n Libre  
+						{%endif%}
+					</td>
+		        </tr>
+		        <tr>
+					{%if (entity.razonSocial) %}
+						<td rowspan='3'><b>Nombre Cliente:<b></td>
+						<td rowspan='3'>{{ entity.razonSocial }}</td>            
+					{%else%}
+						<td rowspan='3'><b>Nombre Cliente:<b></td>
+						<td rowspan='3'>{{ entity.nombres }} {{ entity.apellidos }}</td>
+					{%endif%}
+		            <td><b>Nacionalidad:<b></td>
+		            <td>
+					{%if(entity.nacionalidad == 'NAC')%}Nacional
+					{%elseif(entity.nacionalidad == 'EXT')%}Extranjera
+					{%endif%}
+					</td>
+		        </tr>
+		        <tr>          
+		            <td><b>Referido Por:</b></td>
+		        {% if referido is not null  %}    
+		            {% if referido.razonSocial is not null  %}
+					<td><a href="{{ path('cliente_show',{'id':referido.id,'idper':idper}) }}">{{ referido.razonSocial }}</a></td>
+		            {% else %}
+					<td><a href="{{ path('cliente_show',{'id':referido.id,'idper':idper}) }}">{{ referido.nombres }} {{ referido.apellidos }}</a></td>
+		            {% endif %}
+		        {% else %}
+		            <td>No fue referido</td>    
+		        {% endif %}
+		        </tr>         
+		        <tr>
+		            <td><b>Direccion Tributaria:</b></td>
+		            <td>{{ entity.direccionTributaria }}</td>
+		        </tr>
+		        <tr>
+		            <td><b>Representante Legal:<b></td>
+		            <td>{{ entity.representanteLegal }}</td>
+		            <td><b>Fecha Nacimiento:</b></td>
+		            <td>{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}</td>
+		        </tr>
+		        <tr>
+		            <td><b>Tipo Tributario:</b></td>
+		            <td>
+						{%if(entity.tipoTributario == 'NAT')%} Natural
+						{%elseif(entity.tipoTributario == 'JUR')%} Juridica
+						{%endif%}
+					</td>
+		            <td><b>Estado:</b></td>
+		            <td>{{ estado }}</td>
+		        </tr>
+		        <tr>
+		            <td><b>Genero:</b></td>
+		            <td>
+						{%if(entity.genero == 'M')%}Masculino
+						{%elseif(entity.genero == 'F')%}Femenino
+						{%endif%}
+					</td> 
+					<td><b>Fue Prospecto:</b></td>
+					<td>
+						{%if(entity.origenProspecto == 'S')%}Si
+						{%elseif(entity.origenProspecto == 'N')%}No
+						{%endif%}
+					</td>           
+		        </tr> 
+				<tr>
+				<td>
+				&nbsp;
+				</td>
+				</tr>				
+				<tr>
+					<td  colspan='4'>
+					<table>
+
+					{%for item in formasContacto%}
+					<tr>					
+					<td  width='30'><b>
+						{% if (item.formaContactoId.descripcionFormaContacto=='Telefono Fijo') %}
+							<img src='/public/images/images_crud/contact.png'>
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Claro') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Movistar') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Digicel') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Cable and Wireless') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil CNT')%}
+							<img src='/public/images/images_crud/phone.png'>				
+						{%elseif (item.formaContactoId.descripcionFormaContacto=='Correo Electronico')%}
+							<img src='/public/images/images_crud/mail.png'>							
+						{%elseif (item.formaContactoId.descripcionFormaContacto=='Facebook')%}
+							<img src='/public/images/images_crud/facebook.png'>							
+						{%elseif (item.formaContactoId.descripcionFormaContacto=='Twitter')%}
+							<img  width='16' height='16' src='/public/images/images_crud/twitter.png'>														
+						{%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil')%}
+							<img src='/public/images/images_crud/phone.png'>							
+						{%endif%}
+						</b>
+					</td>
+					<td>
+						{{item.valor}}
+					</td>		
+					</tr>					
+					{%endfor%}
+					</table>
+					</td> 		
+				</tr>
+				<tr>
+				<td>
+					&nbsp;
+				</td>
+				</tr>	
+	        </tbody>
+		{%endif%}		
+		</table>
+	    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+			<tr bgcolor='#ffffff'>
+				<td bgcolor='#ffffff'><div id='filtro_ptos'></div></td>
+			</tr>	
+			<tr bgcolor='#ffffff'>
+				<td bgcolor='#ffffff'><div id='lista_ptos'></div></td>
+			</tr>
+	    </table>   
+		
+        <script>
+	        var url_cliente_delete_ajax='#';
+	        var url_cliente_lista_estados='#';
+            var prefijoEmpresa = "{{ prefijoEmpresa }}";
+			var tarjetaCompleta  = "";
+            var url_puntos_lista_estados = "{{ path('search_ajaxGetEstadosPunto') }}";
+            var url_gridPtos = "{{ path('infopunto_getpuntospersonaemprol',{'idper':idper,'rol':'Cliente'}) }}";
+			var arrayDocumentosSubir = {{ arrayListaDocumentoSubir|json_encode|raw }};
+        </script>      
+		<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/gridPtosCliente.js?2') }}"></script>  				 
+	</div>            
+
+{%if ((prefijoEmpresa=='MD' or  prefijoEmpresa=='EN')  and deuda <= 0) or (prefijoEmpresa=='TN') or (prefijoEmpresa == 'TNP')%}
+    <div id="mensaje_validaciones" class="info-error campo-oculto"></div>
+	<div  class="body_content">
+<div class='secHead'>Ingresar Nueva Informacion del Cliente</div>	
+		<form id='cambiorazonsocial_form' name='cambiorazonsocial_form' action="{{ path('cliente_cambiar_razon_social') }}" 
+               method="post" {{ form_enctype(form_documentos) }} class="formulario">
+			<input type='hidden' value='' id='procesoContrato' name='procesoContrato' />
+			<input type='hidden' value='' id='puntoCliente' name='puntoCliente' />
+			<input type='hidden' value='' id='personaEmpresaRolId' name='personaEmpresaRolId' />
+			<input type='hidden' value='' id='urlRedireccionar' name='urlRedireccionar' />
+			<input type='hidden' value='S' id='cambioRazonSocial' name='cambioRazonSocial' />
+            <input type='hidden' value='' id='datosRepresentanteLegal' name='datosRepresentanteLegal' />
+			<input type='hidden' value='' id='arrayPuntosCRS' name='arrayPuntosCRS' />
+			<div id="my-tabs-crs">
+				<div id="tab1" class="x-hide-display">
+					<table border='0'>
+						<tr><td colspan='4'>&nbsp;</td></tr>
+						<tr>
+							<td>
+								&nbsp;&nbsp;&nbsp;
+							</td>                            
+							<td  style="vertical-align: top;">
+								<div>
+								<div>{{ form_label(form.tipoEmpresa) }} {{ form_widget(form.tipoEmpresa) }}</div>                        
+								<div>{{ form_label(form.tipoIdentificacion) }} {{ form_widget(form.tipoIdentificacion) }}</div>
+								<div>{{ form_label(form.tipoTributario) }} {{ form_widget(form.tipoTributario) }}</div>
+								<div>{{ form_label(form.nacionalidad) }} {{ form_widget(form.nacionalidad) }}</div>
+								<div>{{ form_label(form.direccionTributaria) }} {{ form_widget(form.direccionTributaria) }}</div>
+                                
+                                <div>{{ form_label(form.origenIngresos) }} {{ form_widget(form.origenIngresos) }}</div>
+                                
+                                {% if (prefijoEmpresa =='TN') %}
+                                  <div>  
+                                    <div>{{ form_label(form.tieneCarnetConadis) }} {{ form_widget(form.tieneCarnetConadis) }}</div>   		
+                                    <div>{{ form_label(form.numeroConadis) }} {{ form_widget(form.numeroConadis) }}</div>   
+                                  </div>
+                                {% endif %}
+                                
+								</div>
+							</td>
+							<td>
+								&nbsp;&nbsp;&nbsp;
+							</td>
+							<td style="vertical-align: top;">
+                                <div id='divroles' class='warningmessage' style='display:none'></div>
+                                <div id='diverrorident' class='errormessage' style='display:none'></div>
+                                 {% if (prefijoEmpresa =='TN') %}
+                                <div>{{ form_label(form.idOficinaFacturacion) }} {{ form_widget(form.idOficinaFacturacion) }}</div>
+                                {% endif %} 
+								<div>{{ form_label(form.identificacionCliente) }}{{ form_widget(form.identificacionCliente) }}
+								<img id="img-valida-identificacion" src="{{ asset('public/images/check.png') }}" title="login correcto" width="25" height="25"/>
+								</div>
+								<div id="div_check_sri" style="display:none;">
+									<label style="margin:10px 20px 0px 0px;">* SRI</label><input style="margin:10px 20px 20px 0px;" type="checkbox" id="check_sri" value="check_sri" onchange="ischeked()">
+								</div>
+								<div id='div_razon_social' style="display:none">
+                                   <div>{{ form_label(form.razonSocial) }} {{ form_widget(form.razonSocial) }}</div>
+                                   <table border='0' align='left'>
+                                        <tr>
+                                            <td>
+                                                <div>
+                                                    {{ form_label(form.representanteLegal) }} {{ form_widget(form.representanteLegal) }}
+                                                </div>
+                                            </td> 
+                                        </tr>
+                                    </table>
+                                </div>
+								<div id='div_nombres'>
+									<div>{{ form_label(form.nombres) }} {{ form_widget(form.nombres) }}</div>
+									<div>{{ form_label(form.apellidos) }} {{ form_widget(form.apellidos) }}</div>
+									<div>{{ form_label(form.genero) }} {{ form_widget(form.genero) }}</div>
+									<div>{{ form_label(form.estadoCivil) }} {{ form_widget(form.estadoCivil) }}</div>
+									<div>{{ form_label(form.fechaNacimiento) }} {{ form_widget(form.fechaNacimiento) }}</div>
+									<div>{{ form_label(form.tituloId) }} {{ form_widget(form.tituloId) }}</div>
+									<input type='text' style="display: none" id="clientetype_formas_contacto" name="clientetype[formas_contacto]"/>
+									<input type='text' style="display: none" id="clientetype_idper" name="clientetype[idper]" value="{{idper}}"/>
+									<input type='hidden' readonly id='clientetype_yaexiste' name='clientetype[yaexiste]' value=''/>									
+									<input type='hidden' readonly id='clientetype_antiguoIdCliente' name='clientetype[antiguoIdCliente]' value='{{entity.id}}'/>
+									<input type='hidden' readonly id='clientetype_rucClienteInvalido' name='clientetype[rucClienteInvalido]' value=''/>										
+								</div>
+                                 {% if (prefijoEmpresa =='TN') %}
+                                <div>                                
+                                    <div>{{ form_label(form.contribuyenteEspecial) }} {{ form_widget(form.contribuyenteEspecial) }}</div>
+                                    <div>{{ form_label(form.pagaIva) }} {{ form_widget(form.pagaIva) }}</div>                           
+                                    <div>{{ form_label(form.esPrepago) }} {{ form_widget(form.esPrepago) }}</div>                                      			                                                   
+                                </div>
+                                {% endif %}
+							</td>
+						</tr>
+            {% if (prefijoEmpresa =='MD' or prefijoEmpresa =='EN') and boolExisteECDF == true %}
+            <tr id="tr_correo_electronico" style="">
+              <br />
+              	<td>
+								  &nbsp;&nbsp;&nbsp;
+							</td>
+              <td  style="vertical-align: top;">
+                <div id='divroles' class='warningmessage' style='display:block'>El cliente de origen cuenta con el producto ECDF, debe ingresar un nuevo Correo Electrónico</div>
+                <div>
+                    <label class="campo-obligatorio required">¿Tiene correo?:</label>
+                    <span>SI</span>
+                    <input type="radio" id="clientetype_si_correo_electronico" name="clientetype[tieneCorreoElectronico]" value="SI" checked onclick="validaTieneCorreo(this)" />
+                    <span>NO</span>
+                    <input type="radio" id="clientetype_no_correo_electronico" name="clientetype[tieneCorreoElectronico]" value="NO" onclick="validaTieneCorreo(this)" />
+                </div>
+                <div class="div_correo_electronico">
+                  <label class="campo-obligatorio required" for="clientetype_correo_electronico">* Correo Electrónico:</label>
+                  <input type="text" id="clientetype_correo_electronico" name="clientetype[correoElectronico]" required="required" class="campo-obligatorio" onchange="">
+                </div>
+              </td>
+            </tr>
+            {% endif %}
+					</table>
+				</div>
+				<div id="tab2"  style="justify-content: center;display: grid;" class="x-hide-display">
+		         	<table style="text-align: center;">
+						<tr><td>&nbsp;</td></tr>
+						<tr>
+							<td>
+								<div id='lista_formas_contacto_grid'></div>
+								<div class='infomessage'>Todo numero de telefono debe iniciar con el codigo de area correspondiente</div>
+                                <div class='infomessage'>Todo n&uacutemero de tel&eacute;fono internacional debe tener entre 7 y 15 d&iacute;gitos</div>
+							</td>							
+						</tr>   
+					</table>            
+				</div>
+
+
+			   <div id="tab6" class="x-hide-display">
+					          
+				</div>
+                
+                <div id="tab3" class="x-hide-display">                      
+                 	<table  style="width: 100%;">
+                       <tr>
+                           <td colspan='2'>
+                               <div id='div_valor' class='errormessage' style="display:none"></div>
+                           </td>
+                       </tr>  
+                       <tr>
+                           <td colspan='3'>&nbsp;</td>
+                       </tr>
+                     <tr class="divContrato"> 
+                       <td>&nbsp;&nbsp;&nbsp;</td>   
+                       <td style="vertical-align: top;">
+                           <label class='campo-obligatorio' for='infocontratoextratype_tipoContratoId'>
+                              Tipo Contrato:
+                           </label>
+                            <select required='required' class='campo-obligatorio-select' id="infocontratoextratype_tipoContratoId" 
+                             name="infocontratoextratype[tipoContratoId]"/>
+                              <option value=''>Seleccione...</option>
+                                 {% for tipo in objAdmiTipoContrato %}
+                              <option value='{{tipo.id}}'>{{tipo.descripcion}}</option>
+                                 {% endfor %}
+                            </select>
+                       </td>                       
+                       <td>&nbsp;&nbsp;&nbsp;</td>                       
+                      </tr> 
+					  {% if (prefijoEmpresa =='MD' or prefijoEmpresa =='EN') %}
+						<tr>
+						    <td>&nbsp;&nbsp;&nbsp;</td>  
+						    <td>
+								<div style="vertical-align: top;">
+									<label>*Forma Contrato:</label>
+								
+									<select id="formaContrato" name="formaContrato">
+										<option value="">
+											Seleccione...
+										</option>
+										<option value="Contrato Fisico">
+											Contrato Fisico
+										</option>
+										<option value="Contrato Digital">
+											Contrato Digital
+										</option>
+									</select>	
+								</div>
+							</td>
+						</tr>
+					  {% endif %} 
+					  <tr class="divAdendum" id="divFormaContrato">
+					  	<td>&nbsp;&nbsp;&nbsp;</td>  
+						  	<td> 
+								<div style='height: 30px ' >
+									<input style='width:15px' type="checkbox" id="CambioPago" name="CambioPago" value="CambioPago" onclick="mostrarFormaPago();">
+									<label for="CambioPago" id="CambioPagoLabel">Cambiar forma de pago</label><br>
+								</div>
+							</td> 
+					  </tr>                   
+                      <tr>
+                          <td>&nbsp;&nbsp;&nbsp;</td> 
+                          <td style='vertical-align:top;'>
+                            <input type='hidden' id="preclientetype_prefijoEmpresa" name="prefijoEmpresa" value="{{  prefijoEmpresa  }}" />                                                                                                         
+                            <div>{{ form_row(formInfoContrato.formaPagoId) }}</div>                                      
+                            <div class="divContrato" >{{ form_row(formInfoContrato.numeroContratoEmpPub) }}</div>                                                                                
+                            <input type='text' style='display:none' required='required' 
+                                    id='infocontratoextratype_personaEmpresaRolId' 
+                                    name='infocontratoextratype[personaEmpresaRolId]' value='{{idper}}'/>                                                             
+
+                          </td>
+                          <td>&nbsp;&nbsp;&nbsp;</td> 
+                       </tr>  
+                        <tr class="divContrato">
+                          <td>&nbsp;&nbsp;&nbsp;</td> 
+                          <td style='vertical-align:top;'>
+                          <div>{{ form_row(formInfoContrato.valorAnticipo) }}</div>  
+                          </td>   
+                          <td>&nbsp;&nbsp;&nbsp;</td> 
+                       </tr>   
+                       <tr class="divContrato">
+                          <td>&nbsp;&nbsp;&nbsp;</td> 
+                          <td style='vertical-align:top;'>
+                             <label>Fecha fin del contrato:</label>
+                             <div id='feFinContrato' required="true"></div>
+                             <input type='hidden' value='' id='feFinContratoE'/> 
+                             <input type='hidden' value='{{ strFecha | date("Y-m-d")}}' name='feFinContratoOculto' id='feFinContratoOculto'/> 
+                          </td>   
+                          <td>&nbsp;&nbsp;&nbsp;</td> 
+                       </tr> 
+					    {% if (prefijoEmpresa =='MD' or prefijoEmpresa =='EN') %}
+                        <tr>
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                            <td style='vertical-align:top;'>
+                                <label>Teléfono PIN:</label>
+                                <select id="telefonoCliente" name="telefonoCliente">
+                                    <option selected disabled>Seleccione...</option>
+                                </select>
+                            </td>
+                        </tr>
+						{% endif %}    
+                        <tr>
+                          <td>&nbsp;&nbsp;&nbsp;</td>   
+                          <td style="vertical-align: top;">                           
+                           <div id="forma_pago" class="campo-oculto contenido">
+                             	<table  style="width: 100%;">
+                                   <tr><td colspan='2'>
+                                       <div>{{ form_label(formInfoFormaPago.tipoCuentaId) }} 
+                                            {{ form_widget(formInfoFormaPago.tipoCuentaId) }}</div>	
+                                   </td></tr>        
+                                   <tr><td colspan='2'>      
+                                       <div>{{ form_label(formInfoFormaPago.bancoTipoCuentaId) }}
+                                            {{ form_widget(formInfoFormaPago.bancoTipoCuentaId) }}</div>                                                                           
+                                   </td></tr>  
+                                   <tr><td>  
+                                       <div>{{ form_label(formInfoFormaPago.numeroCtaTarjeta) }} 
+                                            {{ form_widget(formInfoFormaPago.numeroCtaTarjeta) }}</div>					
+                                   </td>      
+                                   <td> 
+                                       <div>{{ form_label(formInfoFormaPago.titularCuenta) }} 
+                                            {{ form_widget(formInfoFormaPago.titularCuenta) }}</div> 
+
+                                   </td></tr>
+                               </table>
+                           </div>
+                           <div id="tarjeta" class="campo-oculto contenido">
+                             	<table  style=" width: 100%;">
+                                    <tr><td> 
+                                       <div id="anioVencimiento">
+                                            {{ form_label(formInfoFormaPago.anioVencimiento) }} 
+                                            {{ form_widget(formInfoFormaPago.anioVencimiento) }}
+                                       </div>	
+                                   </td>      
+                                   <td>        
+                                       <div id="mesVencimiento">
+                                            {{ form_label(formInfoFormaPago.mesVencimiento) }}
+                                            {{ form_widget(formInfoFormaPago.mesVencimiento) }}
+                                       </div>	
+                                   </td></tr>      
+                                   <tr><td> 
+                                       <div id="mesVencimiento">
+                                            {{ form_label(formInfoFormaPago.codigoVerificacion) }}
+                                            {{ form_widget(formInfoFormaPago.codigoVerificacion) }}
+                                       </div>					
+                                      </td>						
+                                   </tr>
+                                </table>
+                           </div>					                                        
+                           </td>						
+                       </tr>
+
+                       <tr><td colspan='3'>&nbsp;</td></tr>                                              
+                    </table>                                                      
+                </div> 
+
+                <div id="tab4" class="x-hide-display" style="overflow:scroll; height:525px;">     
+                  	<table  style=" width: 100%;   border-collapse: separate;  border-spacing: 10px;">
+                       <tr>
+                           <td colspan='2'>&nbsp;</td>
+                       </tr>
+                       <tr>
+                           <td colspan='2'>
+                              <div class="infomessage">
+                                  Puedes dar click en <em>"Agregar mas Imagenes"</em> para agregar mas archivos al contrato
+                              </div>
+                           </td>
+                       </tr>   
+                       <tr><td>&nbsp;</td></tr>
+                       <tr>
+                           <td colspan='2'>  
+                              	<table  style=" width: 50%;   border-collapse: separate;  border-spacing: 10px;" overflow-y= 'auto'>
+                                 <tr>
+                                 <td>
+                                     <div>                                                                 
+                                     <ul id="imagenes-fields-list" data-prototype="{{ form_widget(form_documentos.imagenes.vars.prototype) | e }}">   
+                                        <li>
+                                            <input id="infodocumentotype_imagenes_0" class="campo-obligatorio" type="file" 
+											 name="infodocumentotype[imagenes][0]" onchange="readURL(this)" >
+                                        </li>
+									 {% for imagenesField in form_documentos.imagenes %}
+                                       <li>
+                                           {{ form_errors(imagenesField) }}
+                                           {{ form_widget(imagenesField) }}
+                                       </li>
+                                     {% endfor %}
+                                     </ul>	                                   
+                                     </div>   
+                                 </td>
+                                  <td>
+                                     <div>                                            
+                                     <ul id="tipos-fields-list" data-prototype="{{ form_widget(form_documentos.tipos.vars.prototype) | e }}">                                         
+										<li>
+											<select required='required' id="infodocumentotype_tipos_0" class="campo-obligatorio-select" 
+                                             name="infodocumentotype[tipos][0]"> 
+											{% for key, tipo in arrayTipoDocumentos %}        
+												{% if ( key == 2) %}
+													<option selected value="{{ key }}" > {{ tipo }}</option>
+												{% else %}
+													<option value="{{ key }}" > {{ tipo }}</option>
+												{% endif %}
+											{% endfor %}
+											</select>
+										</li>
+									 {% for tiposField in form_documentos.tipos %}
+                                       <li>
+                                           {{ form_errors(tiposField) }}
+                                           {{ form_widget(tiposField) }}
+                                       </li>
+                                     {% endfor %}
+                                     </ul>	                                   
+                                     </div>        
+                                  </td>   
+                                  </tr>
+                               </table>
+                        </td>
+                       </tr>
+                       <tr><td>&nbsp;</td></tr>
+                       <tr>
+                          <td></td>
+                          <td>
+                                <div id="agregarImagen">
+                                    <a href="#" id="agregar_imagen">Agregar mas Imagenes</a>
+                                </div>
+                          </td>
+                       </tr>    
+                       <tr><td>&nbsp;</td></tr>
+                    </table>                               
+                </div>
+
+				<div id="tab5" class="x-hide-display style="overflow:scroll; width:80px;">
+				{% if formDatoAdicionales is not null %}
+					<div style="width: 300px;padding-left: 5px;">
+						{{ form_widget(formDatoAdicionales) }}
+					</div>
+				{% endif %}
+				</div>
+			</div>
+		<div class="buttons"> 
+			<p>
+			    <button type='button' id='botonPin' class="button-crud" onclick="reenviarPin()">Reenvío de Pin</button> 
+                <button type='button' id='botonAutorizar' class="button-crud" onclick="autorizarContrato()">Autorizar Contrato</button>                     
+				<button type='button' id='botonGuardar' class="button-crud" onclick="aprobarClick()">Guardar Contrato Digital</button>
+				<button type='button' id='botonGuardarContrato' class="button-crud" onclick="crearContratoFisico()">Guardar Contrato Físico</button>
+				<button type="button" id='botonCambiarCliente' onclick="grabar('#clientetype_formas_contacto')" class="button-crud">Guardar</button>
+				<span class="height20px">
+					&nbsp;&nbsp;
+				</span>
+				<span class="height20px">
+                    <a class="button-crud" href="{{ path('cliente_show', {'id': entity.id,'idper':idper }) }}">Regresar</a>
+				</span>                                        
+			</p>
+		</div>                
+		</form>               
+	</div>	
+{%else%}
+<div class='warningmessage'>El cliente aun tiene deuda con la empresa y por lo cual no puede ser cambiada su razon social {{deuda}}</div>	        
+{%endif%}
+
+	
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+	<br />
+	
+		<ul class="form_actions">
+		{% if (estado != "Activo" and estado != "Cancel" and estado != "Cancelado") %}
+			<li>
+				<a class="button-editar" href="{{ path('cliente_edit', { 'id': entity.id }) }}">
+					Editar
+				</a>
+			</li>
+		{% endif %}	
+            {%if (is_granted("ROLE_311-3077"))  %}
+			<li>
+				<a class="button-editar" href="{{ path('cliente_cambio_razon_social', { 'id': entity.id,'idper':idper }) }}">
+					Cambio de Razon Social
+				</a>
+			</li>
+            {%endif%}
+            {%if (is_granted("ROLE_311-3077"))  %}
+            <li>
+            <a class="button-editar" href="{{ path('cliente_cambioRazonSocialPorPunto', { 'id': entity.id,'idper':idper }) }}">
+                    Cambio de Razon Social por Login
+            </a>
+            </li>
+           {%endif%}
+		</ul>
+	
+		
+	<div class="titulo-acciones-relacionadas">
+		Acciones Relacionadas
+	</div>
+	<ul class="listado_acciones_relacionadas">
+				{%if estado != 'Cancel' and estado != 'Cancelado' %}
+				<li>
+					<a class="listado_ac_tablas" href="{{ path('infopunto_new', { 'idCli': entity.id, 'idPer':idper , 'rol': 'Cliente' }) }}">
+                        Nuevo Punto
+                    </a>
+				</li>
+				<li>
+					<a class="listado_ac_tablas" href="{{ path('contacto_new') }}">Nuevo Contacto</a>
+				</li>				
+				{% if(contrato is not null) %}
+					<li>
+						<a class="listado_ac_tablas" href="{{ path('cliente_show_datos_comerciales',{ 'id': entity.id ,'idper':idper}) }}">Datos Comerciales</a>
+					</li>
+				{%endif%}
+				<!--
+		{#% for acc in acc_relaciondas %} 
+			<li>
+				<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+			</li>
+		{% endfor %#}
+				-->
+				<li>
+					<a class="listado_ac_tablas" href="{{ path('cliente_show_agregar_padre_facturacion', { 'id': entity.id,'idper':idper }) }}">Agregar Padres Facturacion</a>
+				</li>
+				{%endif%}	
+	</ul>	
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+<script>
+    var imagenesCount = '{{ form_documentos.imagenes | length }}';
+    var tiposCount    = '{{ form_documentos.tipos | length }}';
+    imagenesCount++;
+    tiposCount++;
+</script>    
+<script>formname='clientetype';</script>
+	<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/cambioRazonSocial.js?15') }}"></script>
+	<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/identificacion.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/validarFechaVencimiento.js?1') }}"></script>
+   <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/representanteLegal.js?3') }}"></script>     
+	<script>            
+            function esEmpresa(){
+				$('#clientetype_fechaNacimiento_month').removeAttr('required');
+				$('#clientetype_fechaNacimiento_day').removeAttr('required');
+				$('#clientetype_fechaNacimiento_year').removeAttr('required');
+					
+                if ($('#clientetype_tipoEmpresa').val()=='Publica' || $('#clientetype_tipoEmpresa').val()=='Privada'){
+                    ocultarDiv('div_nombres');
+                    mostrarDiv('div_razon_social');
+                    $('#clientetype_razonSocial').attr('required','required');
+                    $('#clientetype_representanteLegal').attr('required','required');
+                    $('label[for=clientetype_representanteLegal]').html('* Representante Legal:');
+                    $('label[for=clientetype_representanteLegal]').addClass('campo-obligatorio');
+                    $('#clientetype_nombres').removeAttr('required');
+                    $('#clientetype_apellidos').removeAttr('required');
+                    $('#clientetype_genero').removeAttr('required');
+                    $('#clientetype_estadoCivil').removeAttr('required');                    
+                    $('#clientetype_fechaNacimiento_year').removeAttr('required');
+                    $('#clientetype_fechaNacimiento_month').removeAttr('required');
+                    $('#clientetype_fechaNacimiento_day').removeAttr('required');       
+                    $('#clientetype_tituloId').removeAttr('required');
+                    $('#clientetype_origenIngresos').removeAttr('required');
+                    $('#clientetype_nombres').val('');
+                    $('#clientetype_apellidos').val('');
+                    $('#clientetype_genero').val('');
+                    $('#clientetype_estadoCivil').val('');                    
+                    $('#clientetype_origenIngresos').val('');
+                    $('#clientetype_fechaNacimiento_year').val('');
+                    $('#clientetype_fechaNacimiento_month').val('');
+                    $('#clientetype_fechaNacimiento_day').val('');
+                    $('#clientetype_tituloId').val('');
+                }
+                else
+                {
+                    mostrarDiv('div_nombres');
+                    ocultarDiv('div_razon_social');
+                    $('#clientetype_razonSocial').removeAttr('required');
+                    $('label[for=clientetype_representanteLegal]').removeClass('campo-obligatorio');
+                    $('label[for=clientetype_representanteLegal]').html('Representante Legal:'); 
+                    $('#clientetype_representanteLegal').removeAttr('required');
+                    $('#clientetype_nombres').attr('required','required');                    
+                    $('#clientetype_apellidos').attr('required','required');                    
+                    $('#clientetype_genero').attr('required','required');                    
+                    $('#clientetype_estadoCivil').attr('required','required');                    
+                    $('#clientetype_fechaNacimiento').attr('required','required');                    
+                    $('#clientetype_tituloId').attr('required','required');        
+                    $('#clientetype_origenIngresos').attr('required', 'required');
+                }               
+                  representanteLegalShow(); 
+            } 
+                function esRuc(){
+                    var strTipoIdentificacion        = $('#clientetype_tipoIdentificacion').val();
+                    var intMaxLongitudIdentificacion = 0;
+
+                    Ext.Ajax.request({
+                        url: url_getMaxLongitudIdentificacionAjax,
+                        method: 'POST',
+                        timeout: 99999,
+                        async: false,
+                        params: { strTipoIdentificacion : strTipoIdentificacion },
+                        success: function(response){
+
+                          var objRespuesta = Ext.JSON.decode(response.responseText);
+
+                          if(objRespuesta.intMaxLongitudIdentificacion > 0)
+                          {
+                              intMaxLongitudIdentificacion = objRespuesta.intMaxLongitudIdentificacion;
+                          }
+                          
+                          $('#clientetype_identificacionCliente').removeAttr('maxlength');
+                          $('#clientetype_identificacionCliente').attr('maxlength', intMaxLongitudIdentificacion);
+                          $('#clientetype_identificacionCliente').val('');
+						   representanteLegalShow(); 
+                        },
+                        failure: function(response)
+                        { 
+                            Ext.Msg.alert('Error ','Error: ' + response.statusText);
+                        }
+                    });
+                     
+                }
+                
+                function mostrarDiv(div){
+                    capa = document.getElementById(div);
+                    capa.style.display = 'block';    
+                }
+                function ocultarDiv(div){
+                    capa = document.getElementById(div);
+                    capa.style.display = 'none';    
+                }
+                
+        function tieneCarnetConadis()
+        {
+            if ($('#clientetype_tieneCarnetConadis').val() == 'S')
+            {
+
+                document.getElementById("clientetype_numeroConadis").required = true;
+                $('#clientetype_numeroConadis').show();
+                $('label[for=clientetype_numeroConadis]').show();
+                $('#clientetype_numeroConadis').attr('maxlength', '15');
+            }
+            else
+            {
+                $('#clientetype_tieneCarnetConadis').val('N');
+                $('#clientetype_numeroConadis').val('');
+                $('#clientetype_numeroConadis').hide();
+                $('label[for=clientetype_numeroConadis]').hide();
+                $('#clientetype_numeroConadis').removeAttr('maxlength');
+                $('#clientetype_numeroConadis').removeAttr('required');
+                document.getElementById("clientetype_numeroConadis").required = false;
+
+            }
+       }
+    if(prefijoEmpresa === 'TN')
+    {
+        $('#clientetype_esPrepago').attr('disabled','disabled'); 
+        $('#clientetype_esPrepago').val('S'); 
+        $('#clientetype_pagaIva').val('S'); 
+    }
+	</script>
+{% endblock javascripts_footer%}
+

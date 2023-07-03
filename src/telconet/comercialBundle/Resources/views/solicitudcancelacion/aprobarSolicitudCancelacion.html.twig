@@ -1,0 +1,34 @@
+{% extends "::layout_completo.html.twig" %}
+
+
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script>
+		var url_store="{{ path('aprobacionsolicitudcancelacion_grid_aprobar') }}";
+                var url_rechazar="{{ path('aprobacionsolicitudcancelacion_rechazar_ajax') }}";
+                var url_lista_motivos="{{ path('aprobacionsolicitudcancelacion_getmotivosrechazo_ajax') }}";                
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudcancelacion/aprobar.js') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Aprobar Solicitud de Cancelacion</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_prospectos'></div></td>
+            </tr>
+    </table>        
+    </div>
+</div>
+{% endblock contenido_central %}
+

@@ -1,0 +1,301 @@
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+Ext.onReady(function(){     
+
+var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+    clicksToEdit: 1
+});
+
+Ext.define('ListadoDetalleOrden', {
+    extend: 'Ext.data.Model',
+    fields: [
+			 {name:'codigo', type: 'string'},
+			 {name:'producto', type: 'string'},
+             {name:'cantidad', type: 'string'},
+             {name:'precio', type: 'string'},
+             {name:'precio_total', type: 'string'},
+             {name:'info', type: 'string'},
+             {name:'hijo', type: 'boolean'},
+            ]
+}); 
+
+// create the Data Store
+    store = Ext.create('Ext.data.Store', {
+        // destroy the store if the grid is destroyed
+        autoDestroy: true,
+        model: 'ListadoDetalleOrden',
+        proxy: {
+            type: 'memory',
+            reader: {
+                type: 'json',
+                root: 'personaFormasContacto',
+                totalProperty: 'total'
+            }             
+        }       
+    });
+
+// create the grid and specify what field you want
+// to use for the editor at each header.
+grid = Ext.create('Ext.grid.Panel', {
+        store:store,
+        columns: [new Ext.grid.RowNumberer(), 
+        {
+            text: 'Codigo',
+            width: 50,
+            dataIndex: 'codigo',
+            hidden:false,
+            tdCls: 'x-change-cell'
+		},{
+            text: 'Producto/Plan',
+            width: 200,
+            dataIndex: 'producto',
+            tdCls: 'x-change-cell'
+		},{
+            text: 'Cantidad',
+            dataIndex: 'cantidad',
+            align: 'right',
+            width: 70,
+            tdCls: 'x-change-cell'			
+        },{
+            text: 'Precio',
+            width: 130,
+            dataIndex: 'precio',
+            tdCls: 'x-change-cell'
+        },{
+            text: 'Precio Total',
+            width: 130,
+            dataIndex: 'precio_total',
+            tdCls: 'x-change-cell'
+        },{
+            header: 'Acciones',
+            xtype: 'actioncolumn',
+            width:130,
+            sortable: false,
+            items: [{
+                iconCls: 'button-grid-delete',
+                tooltip: 'Eliminar',
+                handler: function(grid, rowIndex, colIndex) {
+                    store.removeAt(rowIndex); 
+                }
+            }]
+        }],
+        selModel: {
+            selType: 'cellmodel'
+        },
+        renderTo: 'lista_informacion_pre_cargada',
+        width: 890,
+        height: 200,
+        title: 'Listado de servicios',
+        frame: true,
+        viewConfig: {
+			getRowClass: function(record, index) {
+				var c = record.get('hijo');
+				if (c)
+					return 'hijo';
+			}
+		},
+        plugins: [cellEditing]
+    });
+});
+    
+function enviarInformacion()
+{
+	var array_data_caract ={};
+	var j=0;
+	var informacion=[];
+	for(var i=0; i < grid.getStore().getCount(); i++)
+	{
+		//console.log(grid_dos.getStore().getAt(i).data);
+		variable=grid.getStore().getAt(i).data;
+		for(var key in variable) {
+			var valor = variable[key];
+			if(j==0)
+				array_data_caract['codigo']=valor;
+			if(j==1)
+				array_data_caract['producto']=valor;
+			if(j==2)
+				array_data_caract['cantidad']=valor;
+			if(j==3)
+				array_data_caract['precio']=valor;
+			if(j==4)
+				array_data_caract['precio_total']=valor;
+			if(j==5)
+				array_data_caract['info']="P";
+			j++;
+		}
+		informacion.push(array_data_caract);
+		array_data_caract ={};
+		j=0;
+	}
+	//console.log(informacion);
+	if(informacion.length>0)
+	{
+		document.getElementById("valores").value=JSON.stringify(informacion); 
+		document.forms[0].submit();
+	}
+	else
+	{
+		alert("Ingrese servicios");
+	}
+}
+
+function agregar_detalle_portafolio()
+{
+	//Modificaciones al agregar detalle del portafolio
+	//Debe listar todos los productos del plan para asi realizar el ingreso de las caracteristicas del mismo
+    //Obtener informacion del formulario
+    var info_producto=formulario.planes.value;
+    var producto=info_producto.split("-");
+    var cantidad=formulario.cantidad_plan.value;
+    var precio_unitario=0;
+    var precio_total=0;
+    var descuento=0;
+    precio_unitario=formulario.precio.value;
+	precio_total=(precio_unitario*cantidad);
+    var rec = new ListadoDetalleOrden({'codigo':producto[0],'producto':producto[1],'precio':precio_unitario,'precio_total':precio_total,'cantidad':cantidad,'info':"P",'hijo':false});
+    store.add(rec);
+    //Obtengo el detalle del plan
+    $.ajax({
+		type: "POST",
+		data: "planId="+producto[0],
+		url: detalle_plan,
+		success: function(msg){					
+			if (msg.msg == 'ok')
+			{
+				//alert ("aki");
+				var info = JSON.stringify(msg.listado);
+				var myArray = JSON.parse(info);
+				for (var i = 0; i < myArray.length; i++) {
+					var object = myArray[i];
+					//console.log(object.productoid);
+					var rec_hijos = new ListadoDetalleOrden({'codigo':object.productoid,'producto':object.nombreProducto,'precio':'-','precio_total':'-','cantidad':object.cantidad,'info':"P",'hijo':true});
+					store.add(rec_hijos);
+				}
+			}
+		}
+	});
+    
+    limpiar_detalle_portafolio();
+}
+
+function limpiar_detalle()
+{
+	var arreglo_valor_caract=formulario["caracteristicas[]"];
+	
+	if(typeof arreglo_valor_caract.value === 'string')
+		arreglo_valor_caract = [arreglo_valor_caract];
+				
+	for ( var x = 0; x < arreglo_valor_caract.length; x++ ) {
+		arreglo_valor_caract[x].value="";
+	}
+	
+	if(formulario.cantidad)
+		formulario.cantidad.value="";
+}
+
+function replaceAll( text, busca, reemplaza )
+{
+		while (text.toString().indexOf(busca) != -1)
+		text = text.toString().replace(busca,reemplaza);
+		return text;
+}
+        
+function agregar_detalle()
+{
+	var valor_caract=new Array();
+	var nombre_caract=new Array();
+	var prod_caract=new Array();
+	
+	var text="";
+	var resultado="";
+	var cantidad=formulario.cantidad.value;
+	var precio_unitario=0;
+	var precio_total=0;
+	var info_producto=formulario.producto.value;
+	var producto=info_producto.split("-");
+	var registro="";
+	informacion_controlador={};
+	informacion_controlador["producto"]=producto[0];
+	informacion_controlador["cantidad"]=cantidad;
+	
+	var arreglo_valor_caract=formulario["caracteristicas[]"];
+	var arreglo_nombre_caract=formulario["caracteristica_nombre[]"];
+	var arreglo_producto_caracteristica=formulario["producto_caracteristica[]"];
+	
+	if(typeof arreglo_valor_caract.value === 'string')
+		arreglo_valor_caract = [arreglo_valor_caract];
+		
+	if(typeof arreglo_nombre_caract.value === 'string')
+		arreglo_nombre_caract = [arreglo_nombre_caract];
+					
+	if(typeof arreglo_producto_caracteristica.value === 'string')
+		arreglo_producto_caracteristica = [arreglo_producto_caracteristica];
+				
+	//console.log(arreglo_valor_caract);
+	//console.log(arreglo_nombre_caract);
+	
+	//console.log(JSON.stringify(informacion));
+	for ( var x = 0; x < arreglo_valor_caract.length; x++ ) {
+		valor_caract[x]=arreglo_valor_caract[x].value;
+	}
+	
+	for ( var x = 0; x < arreglo_nombre_caract.length; x++ ) {
+		nombre_caract[x]=arreglo_nombre_caract[x].value;
+	}
+	
+	for ( var x = 0; x < arreglo_producto_caracteristica.length; x++ ) {
+		prod_caract[x]=arreglo_producto_caracteristica[x].value;
+	}
+	
+	informacion_controlador["valor_caract"]=valor_caract;
+	informacion_controlador["nombre_caract"]=nombre_caract;
+	informacion_controlador["prod_caract"]=prod_caract;
+	informacion_controlador["info"]="C";
+	var funcion_precio=formulario.funcion_precio.value;
+	text=funcion_precio;
+	
+	
+	for(var x = 0; x < nombre_caract.length; x++)
+	{
+		text=replaceAll(text,nombre_caract[x],valor_caract[x]);
+	}
+	
+	precio_unitario=eval(text);
+	
+	console.log(precio_unitario);
+	precio_total=(precio_unitario*cantidad);
+	console.log(cantidad);
+	informacion_controlador["precio_total"]=precio_total;
+	
+	if(precio_total>=0)
+	{
+		//displayResult(producto,cantidad,precio_unitario,precio_total);
+		//informacion.push(informacion_controlador);
+		//document.getElementById("valores").value=JSON.stringify(informacion);
+		$('#mensaje').addClass('campo-oculto');
+		var rec = new ListadoDetalleOrden({'codigo':producto[0],'producto':producto[1],'precio':precio_unitario,'precio_total':precio_total,'cantidad':cantidad,'info':"P",'hijo':false});
+		store.add(rec);
+	}
+	else
+	{
+		document.getElementById("mensaje").innerHTML="Los valores ingresados no cumplen la funcion precio, favor verificar";
+		$('#mensaje').removeClass('campo-oculto');
+	}
+	
+	
+            
+}
+
+function limpiar_detalle_portafolio()
+{
+    if(formulario.cantidad_plan)
+		formulario.cantidad_plan.value="";
+            
+	if(formulario.precio)
+		formulario.precio.value="";
+	
+	if(formulario.planes)
+		formulario.planes.options[0].selected=true;
+}

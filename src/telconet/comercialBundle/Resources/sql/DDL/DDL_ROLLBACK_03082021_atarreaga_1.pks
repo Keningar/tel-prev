@@ -1,0 +1,13 @@
+/** 
+ * @author Alex Arreaga <atarreaga@telconet.ec>
+ * @version 1.0 
+ * @since 03-08-2021  
+ * Se realiza reverso de modificación del tamaño campo USR_CREACION en la tabla DB_COMERCIAL.INFO_PLAN_CARACTERISTICA, 
+ * DB_AUDITOR.INFO_SERVICIO_AUDIT MODIFY.
+ */
+
+  ALTER TABLE DB_COMERCIAL.INFO_PLAN_CARACTERISTICA MODIFY USR_CREACION VARCHAR2(15);
+  ALTER TABLE DB_AUDITOR.INFO_SERVICIO_AUDIT MODIFY USR_CREACION VARCHAR2(15);
+
+COMMIT;
+/

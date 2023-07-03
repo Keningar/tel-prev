@@ -1,0 +1,36 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link type="text/css" rel="stylesheet" href="{{ asset('./bundles/comercial/css/SolicitudMasiva.css') }}" >
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>        
+        var urlGetEstados                       = '{{ path('aprobacionsolicitudesdescuentomasivas_getEstados') }}';
+        var urlGetProductos                     = '{{ path('solicitudesMasivas_getProductos') }}';
+        var urlGetSolicitudesMasivas            = '{{ path('aprobacionsolicitudesdescuentomasivas_getSolicitudesDescuentoMasivas') }}';
+        var urlGetSolicitudesMasivasHistorial   = '{{ path('solicitudesMasivas_getSolicitudesMasivasHistorial') }}';
+        var urlGetOficinas                      = '{{ path('solicitudesMasivas_getOficinas') }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudesmasivas/SolicitudMasiva.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudesmasivas/descuentoIndex.js?5') }}"></script>
+{% endblock javascripts%}
+
+{% block contenido %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('masivo.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Autorizaci&oacute;n de Solicitudes de Descuento Masivas</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="listadoSolicitudesMasivas"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido %}

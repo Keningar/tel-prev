@@ -1,0 +1,137 @@
+<html>
+    <head>
+      <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+      <style>
+        html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, 
+        legend, input, textarea, p, blockquote, th, td {
+            margin: 0;
+            padding: 0;
+        }
+        .x-body
+        {
+            color: black;
+            font-family: tahoma,arial,verdana,sans-serif;
+            font-size: 12px;
+            margin: 0 auto;
+        }
+        .row-logo-empresa .x-grid-cell,.row-logo-empresa .x-grid-cell img
+        {
+            background-color: white !important;
+        }
+        .row-tipo-autorizacion 
+        {
+            margin: 10px 0px;
+        }
+        .row-tipo-autorizacion .x-grid-cell
+        {
+            background-color: white !important;
+            padding: 5px 10px 5px 10px;
+            margin: 5px 0px;
+        }
+        .x-grid-table 
+        {
+            table-layout: fixed;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .x-grid-table tr 
+        {
+            font-family: arial, monospace;
+            color: black;
+            font-size:12px;
+            background-color: white;
+        }
+        .x-grid-table td
+        {
+            padding: 4px 10px 3px 10px;
+        }
+        .x-grid-table .celdaColumnaTitulo
+        {
+           background: #7ec6e3;
+        }
+        .x-grid-table thead tr,.table
+        {
+            font-family: Arial, monospace;
+            font-size: 14px;
+        }
+        .x-grid-table td, .x-grid-table th {
+            border: 1px solid black;
+        }
+        .x-grid-table .headerLogo{
+            border: 0 !important;
+        }
+        .x-grid-table tr:last-child td {
+            border-bottom: 1px solid black;
+        }
+        .x-grid-cell-inner-header
+        {
+            padding: 4px 6px 3px;
+            white-space: normal;
+        }
+        .x-grid-cell-inner
+        {
+            padding: 2px 6px 3px;
+            white-space: normal;
+        }
+        .x-grid-row-alt 
+        { 
+            background-color: #f8f8f8 !important;
+        }
+        .alignCenter
+        {
+            text-align:center;
+        }
+        .div-titulo-principal
+        {
+            font-size: 18px;
+            font-weight: bold;
+            margin:8px 2px;
+        }
+        
+    </style>
+    </head>
+    <body class="x-body">
+        <div class="body_content k-content">
+            <table cellpadding="1" cellspacing='0' class="x-grid-table">
+                <thead>
+                    <tr class="x-grid-header-row row-logo-empresa">
+                        <th colspan="{{numColumnasTabla}}" class="headerLogo x-grid-cell">
+                            <img width="150" height="55" style="float:right;" src="{{strRutaLogoEmpresa}}"/>
+                        </th>
+                    </tr>
+                    <tr class="x-grid-header-row row-logo-empresa">
+                        <th colspan="{{numColumnasTabla}}" class="headerLogo x-grid-cell">
+                            <div class="x-grid-cell-inner">&nbsp;</div>
+                        </th>
+                    </tr>
+                    <tr class="x-grid-header-row row-tipo-autorizacion">
+                        <th colspan="{{numColumnasTabla}}" class="celdaColumnaTitulo x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter boldContent div-titulo-principal">{{ strTituloAdjunto }}</div>
+                        </th>
+                    </tr>
+                    <tr class="x-grid-header-row">
+                    {%for nombreCabecera in arrayNombresCabeceraAdjunto %}
+                        <th class="celdaColumnaTitulo x-grid-cell"><div class="x-grid-cell-inner-header">{{ nombreCabecera }}</div></th>
+                    {%endfor%}
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for data in arrayDataAdjunto %}
+                        <tr class="x-grid-row {% if (loop.index is even) %} x-grid-row-alt {%endif%}">
+                            {% for key,value in data %}
+                            <td class="x-grid-cell"><div class="x-grid-cell-inner">{{ value }}</div></td>
+                            {%endfor%}
+                        </tr>
+                    {%endfor%}
+                        <tr style="border-top:1px solid black;border-left: 0;border-right: 0;border-bottom:0;">
+                            <td colspan="{{numColumnasTabla}}" style="border-top:1px solid black;border-left: 0;border-right: 0;border-bottom:0;">
+                                <div>&nbsp;</div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,41 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<link href="{{ asset('./bundles/comercial/css/supervisor.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script type="text/javascript">
+    var strUrlGetSecureCpe         = '{{ path("reporteSecureCpe_gridSecureCpe") }}';
+    var urlGenerarReporteSecureCpe = '{{ path('reporteSecureCpe_generarReporte')}}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/ReporteSecureCpe/index.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('./public/js/ExtJsCalendar/changeLanguage.js') }}"></script>
+{% endblock %}
+
+
+{% block contenido %}
+<div id="titulo_content" class="titulo_interno">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Reporte Secure Cpe</h1>
+</div>
+<div class="body_content">
+    <center>
+        <div id='filtroSecure'></div>
+
+        <div id='gridSecureCpe'></div>
+    </center>
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="button-crud" href="{{ path('comercialBundle_opcion', {'opcion_menu': 'reportes'}) }}">
+                    Regresar
+                </a>
+            </span>
+        </p>
+    </div>
+
+</div>
+{% endblock contenido %}

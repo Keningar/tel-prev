@@ -1,0 +1,244 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21/08/2017, 11:27:38 AM
+    Author     : arsuarez
+*/
+fieldset {
+    border: 1px;
+}
+
+.overflow {
+    height: 200px;
+}
+
+.hr-edit{
+    display: block;
+    height: 1px;
+    border-top: 1px solid #cccccc;
+}
+
+.hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;/*#1c94c4;     */
+}
+
+#grupo_bs,#subgrupo_bs
+{
+    width: 300px;
+}
+
+.subgrupo_bs{
+    font-size: 10px !important;
+}
+
+.ui-menu{
+    font-size: 11px;
+}
+
+#middle-productos
+{
+    position: relative;
+    float: left;
+    width: 10%;
+}
+#left-productos,#right-productos{
+    position: relative;
+    float: left;
+    width: 45%;
+    min-height: 50px;
+}
+
+#top-productos
+{
+    width: 45%;
+    min-height: 50px;    
+}
+
+#listaProductos, #listaProductosEscogidos, .connectedSortablePreferencial
+{
+    border: 2px solid #1c94c4;
+    min-height: 50px;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0 0 0;    
+    margin-right: 10px;
+}
+
+#listaProductos li, #listaProductosEscogidos li, .connectedSortablePreferencial li {
+  margin: 0 5px 5px 5px;
+  padding: 1px;
+  font-size: 12px;
+  width: 98%;  
+}
+
+#li-title-subsolucion
+{
+    font-weight: bold;
+    text-align: right;
+    color:black !important;
+}
+
+.ui-preferencial
+{        
+    font-weight: bold !important;
+    color: black !important;
+}
+
+/*Boton de configuracion del producto*/
+.ui-config
+{
+    cursor: pointer !important;       
+    padding-left: 0.3%;
+    width: 6%;
+    left: 90%;    
+    position: absolute;
+    background-color: white !important;    
+    border: 2px solid #4CAF50 !important;
+}
+.ui-config:hover, .ui-delete:hover , .ui-delete-post-c:hover{
+    background-color: #FEF9E2 !important;
+}
+
+.ui-delete{
+    cursor: pointer !important;       
+    padding-left: 0.3%;
+    width: 6%;
+    left: 83%;    
+    position: absolute;
+    background-color: white !important;    
+    border: 2px solid #4CAF50 !important;
+}
+
+.ui-delete-post-c{
+    cursor: pointer !important;       
+    padding-left: 0.3%;
+    width: 6%;
+    left: 90%;    
+    position: absolute;
+    background-color: white !important;    
+    border: 2px solid #4CAF50 !important;
+}
+/*Boton de check del producto configurado*/
+.ui-check{
+    padding-left: 1%;    
+}
+
+.mensajes-sb
+{
+    background-color: #F8F8F8;
+    border: 1px solid #FCE58A;
+    height: auto;
+    padding-top: 2px;
+}
+
+.waiting-msg
+{    
+    background-color: #FEF9E2;
+    background-position: 10px center;
+    background-repeat: no-repeat;    
+    color:#1c94c4;
+    font-weight: bold;
+    height: 20px;
+    border: 1px solid #ECB63C;
+}
+
+#content-conf-producto, #content-editar-producto{
+    overflow:auto;
+    height: 500px !important;
+}
+
+/*Informacion de item configurado*/
+.item-config
+{    
+    color: #386A50 !important;
+    font-weight: bold;
+    background: #f6f6f6 url("images/ui-bg_glass_100_f6f6f6_1x400.png") repeat-x scroll 50% 50%;
+    border: 1px solid #cccccc;
+}
+
+/*Mostrar mensaje de detalle de los productos configurados*/
+.content-detalle-producto
+{
+    width: 800px;
+    height: auto;
+    padding: 5px;
+}
+.content-detalle-producto table tr td label b{
+    color:#1c94c4;
+}
+
+.ui-tooltip{    
+    border: 2px solid white;
+    max-width: 800px;
+    height: auto;
+  }
+
+ol li{  
+  margin-left: 10px;
+}  
+
+.class-valores-pre
+{
+    color:green;
+    font-weight: bold;   
+    text-align: center;
+}
+
+.class-valores-final
+{
+    color:blue;
+    font-weight: bold;    
+    text-align: center;
+}
+
+.class-valores-edicion
+{    
+    font-weight: bold;    
+    text-align: center;
+}
+
+/*Relaciones de preferencial subtipo solucion*/
+#tbl-relaciones
+{
+    margin: 1em 0;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+#tbl-relaciones td, #tbl-relaciones th
+{
+    border: 1px solid #eee;
+	padding: .5em 5px;
+	text-align: left;
+}
+/*Css para los Progress Bar en Resumen de Recursos*/
+
+.ui-progressbar {
+    position: relative;
+    height  :25px;
+    width   : 100%;
+}
+
+.progress-label {
+    position: absolute;	  
+    left: 40%;
+    font-weight: bold;	  
+    font-size:13px;	  
+    color:black;
+}
+
+#content-recursos
+{
+    position: relative;
+    
+    width: 100%;
+}
+
+
+

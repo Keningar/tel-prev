@@ -1,0 +1,48 @@
+comercialBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: comercialBundle:Default:index }
+
+comercialBundle_Contacto:
+  resource: "@comercialBundle/Resources/config/routing/contacto.yml"
+  prefix: /contacto
+
+comercialBundle_PreCliente:
+  resource: "@comercialBundle/Resources/config/routing/precliente.yml"
+  prefix: /precliente
+  
+comercialBundle_Contrato:
+  resource: "@comercialBundle/Resources/config/routing/infocontrato.yml"
+  prefix: /documentos/contrato
+
+comercialBundle_Cliente:
+  resource: "@comercialBundle/Resources/config/routing/cliente.yml"
+  prefix: /cliente
+  
+comercialBundle_Orden:
+  resource: "@comercialBundle/Resources/config/routing/infoordentrabajo.yml"
+  prefix: /documentos/orden
+ 
+comercialBundle_punto:
+  resource: "@comercialBundle/Resources/config/routing/infopunto.yml"
+  prefix: /punto
+
+comercialBundle_solicituddescuento:
+  resource: "@comercialBundle/Resources/config/routing/solicituddescuento.yml"
+  prefix: /solicitud/solicituddescuento
+
+comercialBundle_solicitudcambiodocumento:
+  resource: "@comercialBundle/Resources/config/routing/solicitudcambiodocumento.yml"
+  prefix: /solicitud/solicitudcambiodocumento
+
+comercialBundle_dashboardChart:
+  pattern: /dashboardChart
+  defaults: { _controller: "comercialBundle:Default:dashboardChart" }
+
+comercialBundle_ajaxServiciosProductoMes:
+  pattern: /ajax_servicios_producto_mes
+  defaults: { _controller: "comercialBundle:Default:ajaxServiciosProductoMes"}
+
+comercialBundle_opcion:
+    pattern:  /{opcion_menu}
+    defaults: { _controller: comercialBundle:Default:menu , opcion_menu: "dashboard"}
+#    requirements: { opcion_menu: \d+ }

@@ -1,0 +1,919 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+
+        <script>var url_clientes = "{{ path('cliente_grid') }}";</script> 
+        <script>var url_formas_contacto_persona = "{{ path('cliente_formas_contacto_grid') }}";</script>    
+        <script>var url_formas_contacto = "{{path('cliente_lista_formas_contacto')}}";</script>
+        <script>var url_oficinas_empresa = "{{path('precliente_listar_oficinas_empresa')}}";</script>
+        <!--Se agrega ruta de controlador prefactibilidad-->
+        <script>var url_consulta_prefactibilidad ="{{path('precliente_consulta_prefactibilidad_ajax')}}";</script>
+        <script>var url_getMaxLongitudIdentificacionAjax = "{{ path('cliente_getMaxLongitudIdentificacion') }}";</script> 
+        <script>var url_puntoscobertura           = "{{ path('infopunto_ajax_get_puntos_cobertura') }}";</script> 
+        <script>var url_cantones                  = "{{ path('infopunto_ajax_get_cantones_jurisdiccion') }}";</script> 
+        <script>var url_lista_parroquias          = "{{path('cliente_ajax_lista_parroquias')}}";</script> 
+        <script>var url_lista_sectores            = "{{path('cliente_ajax_lista_sectores')}}";</script>
+        <script>var url_verificar_catalogo        = "{{ path('infopunto_ajaxVerificarCatalogo') }}"; </script>
+        <script>
+        {% if ptoCoberturaId is defined%}
+                ptoCoberturaId = "{{ptoCoberturaId}}";
+            {% endif %}
+                
+            {% if cantonId is defined%}
+                cantonId = "{{cantonId}}";
+            {% endif %}
+                
+            {% if parroquia is defined%}
+                parroquia = "{{parroquia}}";
+            {% endif %}
+                
+            {% if sectorId is defined%}
+                sectorId = "{{sectorId}}";
+            {% endif %}
+        </script> 
+        <script>
+        var prefijoEmpresa    ="{{prefijoEmpresa}}";
+        var formasDeContacto  ="{{formasDeContacto}}";
+        var banco             ="{{banco}}"; 
+        var personaid = "";
+        var formname="preclientetype";
+            url_valida_identificacion="{{ path('cliente_ajax_ms_valida_identificacion') }}";
+            url_validar_identificacion_tipo="{{ path('cliente_ajax_validar_identificacion_tipo') }}";
+            url_img_loader="{{ asset('public/images/images_crud/ajax-loader.gif') }}";
+            url_img_check="{{ asset('public/images/check.png') }}";
+            url_img_delete="{{ asset('public/images/delete.png') }}";	
+    		input='#' + formname + '_identificacionCliente';
+    		inputTipo='#' + formname + '_tipoIdentificacion';
+			rol="Pre-cliente";
+			yaTieneElRol=false;
+			yaTieneElRolCliente=false;                        
+            floatSaldoPendiente = 0;
+            strMensajeDeuda     = "";
+            strDistribuidor     = "";
+        var urlGetAdmiFormaContacto        = "{{ path('admiformacontacto_getAdmiFormaContacto') }}";
+        var urlRepresentanteLegalVerificar  = "{{ path('cliente_ajaxRepresentanteLegalVerificar') }}";
+        var urlRepresentanteLegalConsultar  = "{{ path('cliente_ajaxRepresentanteLegalConsultar') }}";
+        var urlRepresentanteLegalActualizar = "{{ path('cliente_ajaxRepresentanteLegalActualizar') }}";
+        var urlValidarFormaContacto         = "{{ path('contacto_ajaxValidarFormaContacto') }}";
+		</script>
+         <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/representanteLegal.js?3') }}"></script>     
+         <script type="text/javascript" src="{{ asset('./bundles/comercial/js/precliente/seleccionReferido.js') }}"></script>   
+
+         <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/new_edit.js?15') }}"></script>
+         <!--Se agregan scripts de coordenadas -->
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/map.js?1') }}"></script> 
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/map.js?8') }}"></script>  
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Nuevo Prospecto</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+    
+	{% if error is defined %}
+    <div id="div_msg_error">
+        <div class="errormessage">{{ error }}</div>
+    </div>
+    {% endif %}
+    
+    {% set prefijoEmpresa  = app.session.get('prefijoEmpresa') %}
+    {% set strLblPtos      = 'Ptos. Cobertura' %}
+    {% set strLblCanton    = 'Cantón' %}
+    {% set strLblParroquia = 'Parroquia' %}
+    {% set strLblSector    = 'Sector' %}
+    
+
+    <form id='precliente_form' action="{{ path('precliente_create') }}" onsubmit="return validacionesForm()" method="post" {{ form_enctype(form) }} 
+          class="formulario">
+        <div id="my-tabs">
+            <div id="tab1" class="x-hide-display">            
+                <table border='0'>
+                    <tr><td colspan='4'>&nbsp;</td></tr>
+                    <tr>
+                        <td>&nbsp;</td> 
+                        <td></td>                 
+                        <td width="500px" style="vertical-align: top;">
+                            <div id="test">{{ form_label(form.tipoIdentificacion) }} {{ form_widget(form.tipoIdentificacion) }}</div>
+                            <div id='divroles' class='infomessage' style='display:none'></div>
+                            <div id='dividentificacion' class='warningmessage' style='display:none'></div>
+                            <div id='diverrorident' class='errormessage' style='display:none'></div>
+                            <div>{{ form_label(form.identificacionCliente) }}{{ form_widget(form.identificacionCliente) }}
+                                <img id="img-valida-identificacion" src="{{ asset('public/images/check.png') }}" 
+                                     title="Identificación correcta" width="25" height="25"/>
+                            </div>
+                            <div id="div_check_sri" style="display:none;">
+                                <label style="margin:20px 20px 0px 20px;">* SRI</label><input style="margin:20px 20px 20px 0px;" type="checkbox" id="check_sri" value="check_sri" onchange="ischeked()">
+                            </div>
+                            <div>{{ form_label(form.tipoEmpresa) }} {{ form_widget(form.tipoEmpresa) }}</div>
+
+                            {% if (prefijoEmpresa =='MD' or prefijoEmpresa =='EN') %}
+                                <div> {{ form_label(form.direccionTributaria) }} <div id='combo_direccion_recomenda' required='required'></div> 
+                                </div> 
+                            {% else %}                           
+                                <div>{{ form_label(form.direccionTributaria) }} {{ form_widget(form.direccionTributaria) }}</div>
+                            {% endif %} 
+
+                            <div>{{ form_label(form.tipoTributario) }} {{ form_widget(form.tipoTributario) }}</div>
+                            <div>{{ form_label(form.origenIngresos) }} {{ form_widget(form.origenIngresos) }}</div>                     
+
+                        {% if (prefijoEmpresa =='TN') %}
+                            <div>{{ form_label(form.contribuyenteEspecial) }} {{ form_widget(form.contribuyenteEspecial) }}</div>
+                            <div>{{ form_label(form.pagaIva) }} {{ form_widget(form.pagaIva) }}</div>
+                            <div>{{ form_label(form.esPrepago) }} {{ form_widget(form.esPrepago) }}</div>  
+                            <div>{{ form_label(form.tieneCarnetConadis) }} {{ form_widget(form.tieneCarnetConadis) }}</div>   		
+                            <div>{{ form_label(form.numeroConadis) }} {{ form_widget(form.numeroConadis) }}</div>
+                        {% endif %} 
+                            
+                        {% if ((prefijoEmpresa =='MD' or prefijoEmpresa =='EN') and formFormaPago is defined) %}
+                            <div>{{ form_label(formFormaPago.formaPagoId) }} {{ form_widget(formFormaPago.formaPagoId) }}</div>
+                            <div id="forma_pago" class="{{ clase }} contenido" style="display:none">
+                                <div>{{ form_label(formFormaPago.tipoCuentaId) }} {{ form_widget(formFormaPago.tipoCuentaId) }}</div>														
+                                <div>{{ form_label(formFormaPago.bancoTipoCuentaId) }} {{ form_widget(formFormaPago.bancoTipoCuentaId) }}</div>                                        
+                            </div>
+                        {% endif %}
+                            
+                        </td>
+                        <td width="20px">&nbsp;</td>
+                        <td style="vertical-align: top;">
+                            
+                        {% if (prefijoEmpresa =='TN') %}
+                            <div>{{ form_label(form.idOficinaFacturacion) }} {{ form_widget(form.idOficinaFacturacion) }}</div>
+                        {% endif %} 
+                            
+                            <div>{{ form_label(form.nacionalidad) }} {{ form_widget(form.nacionalidad) }}</div>
+                            <div id='div_datos_persona_1'>
+                                <div>{{ form_label(form.genero) }} {{ form_widget(form.genero) }}</div>                            
+                                <div>{{ form_label(form.tituloId) }} {{ form_widget(form.tituloId) }}</div>                            
+                                <div>{{ form_label(form.nombres) }} {{ form_widget(form.nombres) }}</div>
+                                <div>{{ form_label(form.apellidos) }} {{ form_widget(form.apellidos) }}</div>
+                            </div>
+
+                           
+                            <div id='div_razon_social' style="display:none">
+                                <div>{{ form_label(form.razonSocial) }} {{ form_widget(form.razonSocial) }}</div>
+                                <div>{{ form_label(form.representanteLegal) }} {{ form_widget(form.representanteLegal) }}</div>
+                               
+                                {% if ((prefijoEmpresa =='MD' or prefijoEmpresa =='EN')) %}
+                                   <div>{{ form_label(form.fechaInicioCompania) }} {{ form_widget(form.fechaInicioCompania) }}</div>
+                                   <div>{{ form_label(form.estadoLegal) }} {{ form_widget(form.estadoLegal) }}</div> 
+                            
+                                {% endif %} 
+
+                                {% if (prefijoEmpresa =='TN') %}
+                                    <div>{{ form_label(form.holding) }} {{ form_widget(form.holding) }}</div>
+                                    <div>{{ form_label(form.es_distribuidor) }} {{ form_widget(form.es_distribuidor) }}</div>
+                                {% endif %} 
+                            </div>	
+
+                            <div style="display:none" >{{ form_label(form.dataRecomendacion) }} {{ form_widget(form.dataRecomendacion) }}</div>      
+                         		
+                            <div id='div_datos_persona_2'>
+                                <div>{{ form_label(form.estadoCivil) }} {{ form_widget(form.estadoCivil) }}</div>                            
+                                <div>{{ form_label(form.fechaNacimiento) }} {{ form_widget(form.fechaNacimiento) }}</div>                            
+                            </div>
+                                
+                            {% if (prefijoEmpresa =='MD' or prefijoEmpresa =='EN') %}
+                            <div>               
+                                <table border='0' align='left'>
+                                    <tr>
+                                        <td>
+                                            <label for='preclientetype_referido'>&nbsp;&nbsp; Referido:</label>
+                                        </td>
+                                        <td>
+                                            <input id="preclientetype_referido" class='campo-obligatorio' type='text' readonly 
+                                                   name="preclientetype[referido]" value=''/>
+                                        </td>
+                                        <td>
+                                            <div id='imgreferido'>
+                                                <a href='#' onclick="showClientes()">
+                                                    <img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" />
+                                                </a>
+                                            </div>										
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            {% endif %}
+                                
+                            <div>
+                                <input type='hidden' readonly id='preclientetype_idreferido' name='preclientetype[idreferido]' value=''/>
+                                <input type='hidden' readonly id='preclientetype_idperreferido' name='preclientetype[idperreferido]' value=''/>
+                                <input type='hidden' readonly id='preclientetype_yaexiste' name='preclientetype[yaexiste]' value='N'/>
+                                <input type='hidden' readonly id='preclientetype_id' name='preclientetype[id]' value=''/>
+                                <input type='hidden' readonly id='preclientetype_observacion' name='preclientetype[observacion]' value=''/>
+                            </div>
+                            <input id="preclientetype_formas_contacto" type='text' style='display:none' required='required'
+                                   name="preclientetype[formas_contacto]"/>
+                            <input id="preclientetype_representante_legal" type='text' style='display:none' 
+                                   name="preclientetype[representante_legal]"/>
+                                   
+                        </td>
+                    </tr>
+                </table> 
+            </div>
+            <div id="tab2" class="x-hide-display">
+                <table border='0' align='center'>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            <div id='lista_formas_contacto_grid'></div>
+                            <div class='infomessage'>Todo número de telefono debe iniciar con el código de área correspondiente</div>
+                            <div class='infomessage'>Todo n&uacutemero de tel&eacute;fono internacional debe tener entre 7 y 15 d&iacute;gitos</div>
+
+                        </td>
+
+                    </tr>   
+                </table>            
+            </div>
+            <!--Se agrega recomendaciones-->
+            <div id="tab3" class="x-hide-display"> 
+            </div>
+
+              <!--Se agrega representante legal-->
+            <div id="tab4" class="x-hide-display"> 
+            </div>
+           
+            <!--Se agrega opcion Prefactibilidad-->
+            <div id="tab5" class="x-hide-display">
+                </br>
+                </br>
+                <table border='0' align='center'>
+                <!--Se agrega inputs de coordenadas,función mapa y botón Consultar-->
+                <tr>
+                    <td style='vertical-align:top; width:450px'>
+                        <table>
+                                        <tr>
+                                            <td>
+                                            <label class='campo-obligatorio'>* {{ strLblPtos }}:</label>
+                                            </td>
+                                            <td>
+                                            <div id='combo_ptoscobertura' required="true"></div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class='campo-obligatorio'>* {{ strLblCanton }}:</label>
+                                            </td>
+                                            <td>
+                                                <div id='combo_cantones' required="true"></div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class='campo-obligatorio'>* {{ strLblParroquia }}:</label>
+                                            </td>
+                                            <td>
+                                                <div id='combo_parroquia' required="true"></div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label  class='campo-obligatorio'>* {{ strLblSector }}:</label>
+                                                </td>
+                                                <td>
+                                                <div id='div_errorsector' class='errormessage' style="display:none">Campo Sector es obligatorio</div>                                                
+                                                <div id='combo_sector' required="true"></div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                        </table>
+
+                    </td>
+
+                    <td style='vertical-align:top;'>
+                        <table>
+                                        <tr>
+                                            <td>
+                                                <label id='labelLatitud' class="campo-obligatorio">* Coord. latitud:</label> 
+                                            </td>
+                                            <td>
+                            
+                                                <div id='validaLatitud'>
+                                                           
+                                                        <input type="text" onkeyup="validarGrados(this.value,1)" class="coordenadas-field" 
+                                                               id="grados_la" name="grados_la">&deg;
+                                                        <input type="text" onkeyup="validarMinutos(this.value,1)" class="coordenadas-field"
+                                                               maxlength="2" id="minutos_la" name="minutos_la">'
+                                                        <input type="text" onkeyup="validarSegundos(this.value,1)" class="coordenadas-field" 
+                                                               maxlength="2" id="segundos_la" name="segundos_la">.
+                                                        <input type="text" onkeyup="validarDecimasSegundos(this.value,1)"
+                                                               class="coordenadas-field-mili" maxlength="3" id="decimas_segundos_la" 
+                                                               name="decimas_segundos_la">
+                                                        &quot;
+                                                        <select onchange="validaInspeccion(1)" class="text-field" id="latitud" name="latitud">
+                                                                <option value="T">Seleccione...</option>
+                                                                <option value="N">Norte</option>
+                                                                <option value="S">Sur</option>
+                                                        </select>                  
+                                                </div>                                                
+                                                
+                                            </td>
+                                            <td></td>
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                <label id='labelLongitud' class="campo-obligatorio">* Coord. longitud:</label>  
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <div id='validaLongitud'>
+                                                                <input type="text" onkeyup="validarGrados(this.value,0)"class="coordenadas-field" 
+                                                                       id="grados_lo" name="grados_lo" >&deg;
+                                                                <input type="text" onkeyup="validarMinutos(this.value,0)" class="coordenadas-field" 
+                                                                       maxlength="2"  id="minutos_lo" name="minutos_lo" >'
+                                                                <input type="text" onkeyup="validarSegundos(this.value,0)" class="coordenadas-field" 
+                                                                       maxlength="2"  id="segundos_lo" name="segundos_lo" >.
+                                                                <input type="text" onkeyup="validarDecimasSegundos(this.value,0)"
+                                                                       class="coordenadas-field-mili" maxlength="3" id="decimas_segundos_lo" 
+                                                                       name="decimas_segundos_lo" >
+                                                                &quot;
+                                                                <select onchange="validaInspeccion(0)" class="text-field" id="longitud" 
+                                                                        name="longitud">
+                                                                    <option value="T">Seleccione...</option>
+                                                                    <option value="E">Este</option>
+                                                                    <option value="O">Oeste</option>
+                                                                </select>
+                                                            </div>
+                                                            <input id='infopuntoextratype_latitudFloat' name='infopuntoextratype[latitudFloat]' 
+                                                                   type='hidden' value=''>    
+                                                            <input id='infopuntoextratype_longitudFloat' name='infopuntoextratype[longitudFloat]' 
+                                                                   type='hidden' value=''> 
+                                                            <input id='infopuntoextratype_ptoCoberturaId' name='infopuntoextratype[ptoCoberturaId]' 
+                                                                   type='hidden' value=''>
+                                                            <input id='infopuntoextratype_cantonId' name='infopuntoextratype[cantonId]' type='hidden' 
+                                                                   value=''>
+                                                            <input id='infopuntoextratype_parroquiaId' name='infopuntoextratype[parroquia]' 
+                                                                   type='hidden' value=''>
+                                                            <input id='infopuntoextratype_sectorId' name='infopuntoextratype[sectorId]' type='hidden'
+                                                                   value=''>
+                                                            
+                                                            
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:showMapaFactibilidad()" class="">
+                                                                <img src="{{ asset('public/images/images_crud/gmaps.png')}}" 
+                                                                     title="Seleccionar desde Mapa" class="button-crud">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr> 
+
+                                        <tr>
+                                            <td>
+                                                <div id='div_label_dependeedificio'>
+                                                <label for='infopuntodatoadicionaltype_login'>Depende de Edificio:</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id='div_select_dependeedificio'>
+                                                <select id="selectoption_dependedeedificio" required='required' name="infopuntodatoadicionaltype[dependedeedificio]">
+                                                    <option value='S'>Si</option><option value='N' selected='selected'>No</option>
+                                                </select>
+                                                </div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>  
+                        </table>               
+                    </td>
+                </tr>
+                </table>
+                </br>
+                <table align='center'>
+                    <tr>
+                        <td>
+                            <button  onclick="consultaPrefactibilidad()"  class="button-crud">
+                                    Consultar
+                            </button>
+                        </td> 
+                    </tr> 
+                </table>
+                </br></br>
+                <div id='labelInfoPrefactibilidad' style='display:none'>
+                <table align='center'>
+                    <tr>
+                        <td style='vertical-align:top; width:910px'>
+                        <label>Cobertura: </label>
+                        <label id='labelCoberturaSi' style='display:none'>SI</label>
+                        <label id='labelCoberturaNo' style='display:none'>NO</label>
+                        </td> 
+                    </tr> 
+                    <tr>
+                        <td>
+                        <label> Factibilidad: </label>
+                        <label id='labelFactibilidadSi' style='display:none'> SI</label>
+                        <label id='labelFactibilidadNo' style='display:none'> NO</label>
+                        </td>  
+                    </tr> 
+                </table>
+                </br> 
+                </div>
+                <div id='lista_consulta_prefactibilidad' align='center' style='display:none'></div>          
+            </div>
+
+    
+        </div>                        
+        <div class="buttons">
+            <table width="100%">
+                <tr align="center">
+                    <td>
+                        <table width="300px">
+                            <tr align="center">
+                                <td>
+                                    <button type="submit"  onclick="validateFormRequired()"
+                                            class="button-crud">
+                                        Guardar
+                                    </button>
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <button type="submit" onclick="cleanFields(1)" class="button-crud">
+                                        Limpiar
+                                    </button>
+                                </td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <form action="{{ path('precliente') }}" method="post">
+                                        <button type="submit" class="button-crud">
+                                            Cancelar
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div> 
+    </form>
+    {% if (prefijoEmpresa =='MD' or prefijoEmpresa =='EN') %}
+    <div id='windowMap' style='display:none'>
+    <div id="canvas_mapa" style="width:800px; height:600px"></div>
+    {% endif %}
+
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+
+<script>
+    function mostrarWaitMsg()
+    {
+        Ext.MessageBox.wait("Grabando Datos...", 'Por favor espere'); 
+    }
+ </script>  
+
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/identificacion.js?1') }}"></script>
+    
+<script>
+
+    esTipoNatural();
+
+    function esTipoNatural()
+    {
+        if ($('#' + formname + '_tipoTributario').val()=='NAT')
+        {
+            $('label[for=preclientetype_origenIngresos]').show();    
+            $('#' + formname + '_origenIngresos').show();
+
+            $('label[for=preclientetype_tieneCarnetConadis]').show();    
+            $('#' + formname + '_tieneCarnetConadis').show('');
+
+            if($('#' + formname + '_tieneCarnetConadis').val() == 'S')
+            {
+                $('label[for=preclientetype_numeroConadis]').show();
+                $('#' + formname + '_numeroConadis').show();
+            }
+            else
+            {
+                $('label[for=preclientetype_numeroConadis]').hide();
+                $('#' + formname + '_numeroConadis').hide();
+            }
+
+            document.getElementById("preclientetype_origenIngresos").required = true;          
+           
+        }
+        else
+        {
+            $('label[for=preclientetype_origenIngresos]').hide();    
+            $('#' + formname + '_origenIngresos').hide();
+            $('#' + formname + '_origenIngresos').val('');
+
+            $('label[for=preclientetype_tieneCarnetConadis]').hide();    
+            $('#' + formname + '_tieneCarnetConadis').hide();
+            $('#' + formname + '_tieneCarnetConadis').val('N');
+
+            $('label[for=preclientetype_numeroConadis]').hide();
+            $('#' + formname + '_numeroConadis').hide();
+            $('#' + formname + '_numeroConadis').val('');
+
+            document.getElementById("preclientetype_origenIngresos").required = false;   
+        }
+        representanteLegalShow(); 
+        document.getElementById("preclientetype_origenIngresos").empty_value = 'Seleccione...';
+    }
+
+    function tieneCarnetConadis()
+    {
+        if ($('#' + formname + '_tieneCarnetConadis').val() =='S') 
+        {
+            document.getElementById("preclientetype_numeroConadis").required = true;
+            $('label[for=preclientetype_numeroConadis]').show();
+            $('#' + formname + '_numeroConadis').show();
+            $('#' + formname + '_numeroConadis').attr('maxlength', '15');
+        } 
+        else
+        {
+            $('#' + formname + '_tieneCarnetConadis').val('N');
+            $('#' + formname + '_numeroConadis').val('');
+            $('#' + formname + '_numeroConadis').hide();
+            $('label[for=preclientetype_numeroConadis]').hide();
+            $('#' + formname + '_numeroConadis').removeAttr('maxlength');
+            $('#' + formname + '_numeroConadis').removeAttr('required');
+            document.getElementById("preclientetype_numeroConadis").required = false;
+        }
+    }
+
+    function cambiarObligatorio(id_condicion,id_validado,label)
+    {
+        if ($('#'+id_condicion).val()!='')
+        {
+            $('#'+id_validado).attr('required','required');
+            $('label[for='+id_validado+']').addClass('campo-obligatorio');
+            $('label[for='+id_validado+']').html('* '+label);
+        }
+        else
+        {
+            $('#'+id_validado).removeAttr('required');
+            $('label[for='+id_validado+']').removeClass('campo-obligatorio');
+            $('label[for='+id_validado+']').html(label);
+        }
+    } 
+
+    function mostrarDiv(div)
+    {
+        capa = document.getElementById(div);
+        capa.style.display = 'block';    
+    }
+
+    function ocultarDiv(div)
+    {
+        capa = document.getElementById(div);
+        capa.style.display = 'none';    
+    }		
+
+    function isNumeric(event)
+    {
+        return (
+            (event.keyCode > 7 && event.keyCode < 10)
+            || (event.keyCode > 47 && event.keyCode < 60)
+            || (event.keyCode > 95 && event.keyCode < 106)
+            || event.keyCode == 17
+            || event.keyCode == 116
+        );
+    } 
+
+    $('#infopersonaempformapagotype_formaPagoId').change(function()
+    {
+        $('#infopersonaempformapagotype_formaPagoId').prop('title', $('#infopersonaempformapagotype_formaPagoId option:selected').text());
+        presentaDatosTarjeta();
+    });
+
+    function presentaDatosTarjeta()
+    {
+        var seleccion = $('#infopersonaempformapagotype_formaPagoId').val();
+
+        if(seleccion == 3)
+        {
+            mostrarDiv('forma_pago');
+            $("#infopersonaempformapagotype_tipoCuentaId").attr('required','required');
+            $("#infopersonaempformapagotype_bancoTipoCuentaId").attr('required','required');
+        }
+        else
+        {
+            ocultarDiv('forma_pago');
+            limpiarDatosFormaPago();
+            $("#infopersonaempformapagotype_tipoCuentaId").removeAttr('required');
+            $("#infopersonaempformapagotype_bancoTipoCuentaId").removeAttr('required');
+        }
+
+        if(seleccion == 'Seleccione...')
+        {
+            ocultarDiv('forma_pago');
+        }
+    }
+
+    $('#infopersonaempformapagotype_tipoCuentaId').change(function()
+    {
+        $('#infopersonaempformapagotype_tipoCuentaId').prop('title', $('#infopersonaempformapagotype_tipoCuentaId option:selected').text());
+        obtieneBancos('');
+    });
+
+    function obtieneBancos(bancoTipoCuentaId)
+    {
+        var tipoCuenta = $('#infopersonaempformapagotype_tipoCuentaId').val();			
+        if(bancoTipoCuentaId!='')
+        {
+            parametros="tipoCuenta=" + tipoCuenta+"&bcoTipoCtaId="+bancoTipoCuentaId;
+        }
+        else
+        {
+            parametros="tipoCuenta=" + tipoCuenta;
+        }
+
+        $.ajax({
+            type: "POST",
+            data: parametros,
+            url:'{{ path('precliente_listar_bancos_asociados') }}',
+            success: function(msg)
+            {
+                if (msg.msg == 'ok')
+                {					
+                    //Llenar el div que presentara las clausulas
+                    //Validar que de respuesta sinop solicitarla
+                    document.getElementById("infopersonaempformapagotype_bancoTipoCuentaId").innerHTML=msg.div;
+
+                    if(banco != null && banco > 0)
+                    {
+                        $('#infopersonaempformapagotype_bancoTipoCuentaId option[value='+ banco +']').attr('selected','selected');
+                    }
+                }
+                else
+                {
+                    document.getElementById("infopersonaempformapagotype_bancoTipoCuentaId").innerHTML=msg.msg;
+                }
+            }
+        });			
+    }
+
+    function limpiarDatosFormaPago()
+    {
+        $('#infopersonaempformapagotype_tipoCuentaId').val('');
+        $('#infopersonaempformapagotype_bancoTipoCuentaId').val('');
+    }
+
+    $('#' + formname + '_identificacionCliente').keypress(
+        function()
+        {
+            if($('#' + formname + '_tipoIdentificacion').val()==='Seleccione...' || $('#' + formname + '_tipoIdentificacion').val()==='')
+            {
+                mostrarDiv('dividentificacion');
+                $("#dividentificacion").html("Antes de ingresar identificacion seleccione tipo de identificacion");  
+                $('#' + formname + '_identificacionCliente').attr('readonly','readonly');       
+            }
+            else
+            {
+                ocultarDiv('dividentificacion');
+            }
+        }
+    );
+    var boolHabilitaIdentificacion   = "{{habilitaIdentificacion}}";
+    
+    if(boolHabilitaIdentificacion!="S")
+    {
+        $('#' + formname + '_identificacionCliente').attr('readonly','readonly'); 
+    }
+
+
+    $('#' + formname + '_tipoIdentificacion').change(function()
+    {
+        $('#' + formname + '_identificacionCliente').removeAttr('onkeypress');
+        $('#' + formname + '_identificacionCliente').removeAttr('readonly');  
+        ocultarDiv('dividentificacion');
+        $('#' + formname + '_identificacionCliente').removeAttr('maxlength');  
+        $('#' + formname + '_identificacionCliente').val("");
+
+        if (strNombrePais === 'PANAMA')
+        {
+            $('#' + formname + '_identificacionCliente').attr('onkeypress','return cedulaPanama(event);');
+        }
+        var strTipoIdentificacion = $('#' + formname + '_tipoIdentificacion').val();
+        if (strTipoIdentificacion === 'Seleccione...' || strTipoIdentificacion === '')
+        {
+            mostrarDiv('dividentificacion');   
+            $("#dividentificacion").html("Antes de ingresar identificación seleccione tipo de identificación");
+            $('#' + formname + '_identificacionCliente').attr('maxlength','10');
+            $('#' + formname + '_identificacionCliente').attr('readonly','readonly');
+        }
+        else
+        {
+            var intMaxLongitudIdentificacion = 0;
+
+            Ext.Ajax.request({
+                url: url_getMaxLongitudIdentificacionAjax,
+                method: 'POST',
+                timeout: 99999,
+                async: false,
+                params: { strTipoIdentificacion : strTipoIdentificacion },
+                success: function(response){
+
+                var objRespuesta = Ext.JSON.decode(response.responseText);
+
+                  if(objRespuesta.intMaxLongitudIdentificacion > 0)
+                  {                    
+                      intMaxLongitudIdentificacion = objRespuesta.intMaxLongitudIdentificacion;
+                  }
+                    $('#' + formname + '_identificacionCliente').removeAttr('maxlength');
+                    $('#' + formname + '_identificacionCliente').attr('maxlength',intMaxLongitudIdentificacion);  
+                    
+                  representanteLegalShow();        
+                },
+                failure: function(response)
+                { 
+                    Ext.Msg.alert('Error ','Error: ' + response.statusText);
+                }
+            });
+        }
+    });    
+
+    $('#' + formname + '_tipoEmpresa').change(function()
+    {
+        validarTipoEmpresa();
+    });
+    
+    function validarTipoEmpresa()
+    {
+        if($('#' + formname + '_tipoEmpresa option:selected').index() != 0) // ES EMPRESA
+        {
+            if($('#' + formname + '_tipoIdentificacion').val() !== 'RUC')
+            {
+                var intMaxLongitudIdentificacion = 0;
+                var strTipoIdentificacion        = $('#' + formname + '_tipoIdentificacion').val();
+                
+                Ext.Ajax.request({
+                    url: url_getMaxLongitudIdentificacionAjax,
+                    method: 'POST',
+                    timeout: 99999,
+                    async: false,
+                    params: { strTipoIdentificacion : strTipoIdentificacion },
+                    success: function(response){
+
+                      var objRespuesta = Ext.JSON.decode(response.responseText);
+
+                      if(objRespuesta.intMaxLongitudIdentificacion > 0)
+                      {                    
+                          intMaxLongitudIdentificacion = objRespuesta.intMaxLongitudIdentificacion;
+                      }
+                      $('#' + formname + '_tipoIdentificacion').val('RUC');
+                      $('#' + formname + '_identificacionCliente').removeAttr('maxlength');
+                      $('#' + formname + '_identificacionCliente').attr('maxlength', intMaxLongitudIdentificacion);
+                      $('#' + formname + '_identificacionCliente').val('');                        
+                    },
+                    failure: function(response)
+                    { 
+                        Ext.Msg.alert('Error ','Error: ' + response.statusText);
+                    }
+                });                
+                
+            }
+            ocultarDiv('div_datos_persona_1');
+            mostrarDiv('div_razon_social');
+            ocultarDiv('div_datos_persona_2');
+            
+            $('#' + formname + '_genero option')[0].selected = true;
+            $('#' + formname + '_tituloId option')[0].selected = true;            
+            $('#' + formname + '_fechaNacimiento_day option')[0].selected = true;
+            $('#' + formname + '_fechaNacimiento_month option')[0].selected = true;
+            $('#' + formname + '_fechaNacimiento_year option')[0].selected = true;            
+            $('#' + formname + '_estadoCivil option')[0].selected = true;
+            $('#' + formname + '_nombres').val('');
+            $('#' + formname + '_apellidos').val('');
+ 
+            if (objTempDataPersona.genero) {
+                $("#" + formname + "_genero").val(objTempDataPersona.genero).change();   
+            } 
+            if (objTempDataPersona.tituloId) {                              
+                $("#" + formname + "_tituloId").val(objTempDataPersona.tituloId).change(); 
+            } 
+
+            if (objTempDataPersona.estadoCivil) {
+                $("#" + formname + "_estadoCivil").val(objTempDataPersona.estadoCivil).change();   
+            } 
+
+            if(objTempDataPersona.nombres){
+            $('#' + formname + '_nombres').val(objTempDataPersona.nombres);
+            }
+
+            if(objTempDataPersona.apellidos){
+            $('#' + formname + '_apellidos').val(objTempDataPersona.apellidos);
+            }
+                
+            if(objTempDataPersona.fechaNacimiento){
+                var fechaNac1 = objTempDataPersona.fechaNacimiento;
+                if (fechaNac1) {
+                    var  arrFechaNacimiento = fechaNac1.split(' ');
+                    var fechaNac2 = arrFechaNacimiento[0];
+                    var arrFechaN = fechaNac2.split('/');
+                    $("#" + formname + "_fechaNacimiento_day").val(arrFechaN[0] * 1);
+                    $("#" + formname + "_fechaNacimiento_month").val(arrFechaN[1] * 1);
+                    $("#" + formname + "_fechaNacimiento_year").val(arrFechaN[2]);
+                } 
+            }
+ 
+
+        }
+        else
+        {
+            mostrarDiv('div_datos_persona_1');
+            ocultarDiv('div_razon_social');
+            mostrarDiv('div_datos_persona_2');
+            $('#' + formname + '_razonSocial').val('');
+            $('#' + formname + '_representanteLegal').val('');
+
+            if(objTempDataPersona.razonSocial){
+            $('#' + formname + '_razonSocial').val(objTempDataPersona.razonSocial);
+            }
+
+            if (objTempDataPersona.representanteLegal){
+            $('#' + formname + '_representanteLegal').val(objTempDataPersona.representanteLegal);
+            }
+          
+            if(objTempDataPersona.estadoLegal){
+            $("#" + formname + "_estadoLegal").val(objTempDataPersona.estadoLegal);  
+            }
+
+            if(objTempDataPersona.fechaInicioCompania){
+            $("#" + formname + "_fechaInicioCompania").val(objTempDataPersona.fechaInicioCompania);  
+            }
+ 
+               
+        }
+
+        if(objTempDataPersona.dataRecomendacion){
+        $("#" + formname + "_dataRecomendacion").val(objTempDataPersona.dataRecomendacion);  
+        }
+        
+        representanteLegalShow(); 
+    }
+
+    if(prefijoEmpresa === 'TN')
+    {
+        $('#' + formname + '_esPrepago').val('S'); 
+        $('#' + formname + '_pagaIva').val('S'); 
+    }
+    
+    $("label[for=preclientetype_representanteLegal]'").html("<pre style='font-weight: bold; font-family: Arial; font-size:11px; color:gray'>"+
+                                                            "* Representante<br><span style='color:white'>*</span> Legal:</pre>");
+    if(prefijoEmpresa =='MD' || prefijoEmpresa =='EN')
+    {
+        $('label[for=infopersonaempformapagotype_formaPagoId]').css({'margin-left':'20px', 'width':'155px'});
+        $('#infopersonaempformapagotype_formaPagoId').css({'display':'inline-block', 'width':'310px', 'cursor':'pointer'});
+        $('#infopersonaempformapagotype_formaPagoId').prop('title', $('#infopersonaempformapagotype_formaPagoId option:selected').text());
+
+        $('label[for=infopersonaempformapagotype_tipoCuentaId]').css({'margin-left':'20px', 'width':'155px'});
+        $('#infopersonaempformapagotype_tipoCuentaId').css({'display':'inline-block', 'width':'310px', 'cursor':'pointer'});
+        $('#infopersonaempformapagotype_tipoCuentaId').prop('title', $('#infopersonaempformapagotype_tipoCuentaId option:selected').text());
+
+        $('label[for=infopersonaempformapagotype_bancoTipoCuentaId]').css({'margin-left':'30px', 'width':'145px'});
+        $('#infopersonaempformapagotype_bancoTipoCuentaId').css({'display':'inline-block', 'width':'310px', 'cursor':'pointer'});
+        $('#infopersonaempformapagotype_bancoTipoCuentaId').prop('title', $('#infopersonaempformapagotype_bancoTipoCuentaId option:selected').text());
+
+        $('#infopersonaempformapagotype_bancoTipoCuentaId').change(function()
+        {
+            $('#infopersonaempformapagotype_bancoTipoCuentaId').prop('title',
+                                                                     $('#infopersonaempformapagotype_bancoTipoCuentaId option:selected').text());
+        });
+
+        if($('#infopersonaempformapagotype_formaPagoId').val() == 3)
+        {
+            presentaDatosTarjeta();
+            if($('#infopersonaempformapagotype_tipoCuentaId').val() > 0)
+            {
+                obtieneBancos($('#infopersonaempformapagotype_tipoCuentaId').val());
+            }
+        }
+        else
+        {
+            $('#forma_pago').hide();
+        }
+        
+        $('label[for=preclientetype_fechaNacimiento]').html('* Fecha Nacimiento:');
+        $('label[for=preclientetype_fechaNacimiento]').css({marginLeft:'0px', width:'135px'});
+    }
+    
+</script>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+aprobacionsolicitudesdescuentomasivas_aprobar:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:descuentoIndex" }
+    
+aprobacionsolicitudesdescuentomasivas_aprobarRechazar:
+    pattern:  /{id}/aprobarRechazarDescuento
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarRechazarDescuento" }
+
+aprobacionsolicitudesdescuentomasivas_aprobarSolicitud:
+    pattern:  /aprobarSolicitudDescuento
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarSolicitudDescuento" }
+
+aprobacionsolicitudesdescuentomasivas_rechazarSolicitud:
+    pattern:  /rechazarSolicitudDescuento
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:rechazarSolicitudDescuento" }
+
+aprobacionsolicitudesdescuentomasivas_getEstados:
+    pattern:  /getEstadosDescuento
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getEstadosDescuento" }
+
+aprobacionsolicitudesdescuentomasivas_getSolicitudesDescuentoMasivas:
+    pattern:  /getSolicitudesDescuentoMasivas
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getSolicitudesDescuentoMasivas" }
+
+aprobacionsolicitudesdescuentomasivas_getDetalleSolicitudDet:
+    pattern:  /getDetalleSolicitudDetDescuento
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getDetalleSolicitudDetDescuento" }
+
+
+    
+

@@ -1,0 +1,184 @@
+<script>
+    var url_aprobar_rechazar = "{{ path('aprobar_rechazar_solicitud_reactivacion') }}";
+    var url_motivo           = "{{ path('motivos_solicitud_reactivacion') }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/SolicitudReactivacion/show.js?1') }}"></script>
+
+<div class="container">
+    <h5>Detalles Generales del cliente: {{arraySolicitudDet.strCliente}}  <i class="fa fa-info-circle"></i></h5>
+    <table class="table compact" width='80%' border='0'>
+        <tbody>
+            <tr>
+                <td><b>Identificación:</b></td>
+                <td>{{arraySolicitudDet.strIdentificacion}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Asignado a:</b></td>
+                <td>{{arraySolicitudDet.strUsAsignado}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Saldo Pendiente:</b></td>
+                <td>{{arraySolicitudDet.strSaldoPendiente}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Saldo Real:</b></td>
+                <td>{{arraySolicitudDet.strSaldoReal}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Tarea:</b></td>
+                <td>{{arraySolicitudDet.intIdTarea}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Estado:</b></td>
+                <td>{{arraySolicitudDet.strEstado}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Observación:</b></td>
+                <td>{{arraySolicitudDet.strObservacion}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Dirección:</b></td>
+                <td>{{arraySolicitudDet.strDireccion}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="result_tr" style="display: none;">
+                <td id="intIdSolicitudTd" >{{arraySolicitudDet.intIdSolicitud}} </td>
+                <td id="strEstadoTd" >{{arraySolicitudDet.strEstado}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+   <table width='100%' border='0'>
+        <tbody>
+            <tr>
+                <td width="10%" rowspan="4">
+                <img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                <th width="11%">Creador:</th>
+                <td width="34%" >{{arraySolicitudDet.strUsrCreacion}}</td>
+            </tr>
+            <tr>
+                <th>Fecha:</th>
+                <td>{{arraySolicitudDet.strFeCreacion}}</td>
+            </tr>
+        </tbody>
+    </table> 
+<div class="modal fade" id="modalAprobarDet" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h5>Para aprobar la solicitud seleccionada, llene los siguientes campos.</h5>
+                <br/>
+                <form>
+                    <div class="form-group row">
+                        <label for="observacion_aprobar_det" class="col-sm-2 col-form-label">Observación</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="observacion_aprobar_det" name="observacion_aprobar" rows="3"></textarea>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnAprobarDet" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalRechazarDet" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h5>Para rechazar la solicitud seleccionada, llene los siguientes campos.</h5>
+                <br/>
+                <form>
+                    <div class="form-group row">
+                        <label for="motivo_rechazar_det" class="col-sm-2 col-form-label">Motivo</label>
+                        <div class="col-sm-10">
+                            <select id="motivo_rechazar_det" class="form-control">
+                            </select>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="observacion_rechazar_det" class="col-sm-2 col-form-label">Observación</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="observacion_rechazar_det" name="observacion_rechazar" rows="3"></textarea>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnRechazarDet" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalAsignarDet" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h5>Para asignar la solicitud seleccionada, llene los siguientes campos.</h5>
+                <br/>
+                <form>
+                    <div class="form-group row">
+                        <label for="saldo_real_det" class="col-sm-2 col-form-label">Saldo Pendiente Real: </label>
+                        <div class="col-sm-10">
+                            <input type="number" step="any" min="0" value="0" name="saldo_real_det"
+                                    id="saldo_real_det" placeholder="Solo números" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) ||  
+                                    event.charCode == 46 || event.charCode == 0 "required>
+                            <div class="invalid-feedback">
+                                Campo Requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="observacion_asignar_det" class="col-sm-2 col-form-label">Observación</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="observacion_asignar_det" name="observacion_asignar" rows="3"></textarea>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnAsignarDet" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

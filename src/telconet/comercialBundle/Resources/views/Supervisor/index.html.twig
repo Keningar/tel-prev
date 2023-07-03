@@ -1,0 +1,67 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/comercial/css/supervisor.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+	
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">        
+        var strUrlGetVentas = '{{ path("reportessupervisor_gridVentas") }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./public/js/ExtJsCalendar/changeLanguage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/Supervisor/index.js?1') }}"></script>
+{% endblock %}
+
+
+{% block contenido_izq %}
+    <div id="titulo_content" class="titulo_interno">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Reporte General</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+
+    <div class="body_content">
+        <table>
+            <tr>
+                <td valign="top">
+                    <div id='filtroVentasBrutas'></div>
+                    <br/>
+                    <div id='gridVentasBrutas'></div>
+                </td>
+                <td colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td valign="top">
+                    <div id='filtroVentasActivas'></div>
+                    <br/>
+                    <div id='gridVentasActivas'></div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('comercialBundle_opcion', {'opcion_menu': 'reportes'}) }}">
+                        Regresar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        <li style="margin-bottom: 20px;">
+            <a class="button-nuevo-registro" href="{{ path('reportessupervisor_reporteVentasSupervisor') }}">
+                Reporte de Ventas del Supervisor
+            </a>
+        </li>
+        <li>
+            <a class="button-nuevo-registro"  href="{{ path('reportessupervisor_reporteConsolidadoVentasBrutasActivas') }}">
+                Consolidado Ventas Activas y Brutas
+            </a>
+        </li>
+    </ul>
+{% endblock contenido_der %}

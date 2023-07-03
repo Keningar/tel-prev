@@ -1,0 +1,52 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('./public/css/dist/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        #dashboard {
+            margin: -4px -14px 0;
+            margin: 0px 11px 3px;
+            -moz-border-radius: 4px;
+            border: 1px solid #DDDDDD;
+            background-color: #FFFFFF;
+            box-shadow: none !important;
+            width: 975px;
+            width: 77.5%;
+            min-height: 10em;
+        }
+    </style>
+{% endblock %}
+
+{% block contenido %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Listado de Clientes con Factura</h1>
+	</div>
+	<div class="body_content k-content">
+	    <div id="example" class="k-content">
+		    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+				<tr bgcolor='#ffffff'>
+						 <td bgcolor='#ffffff'><div id='filtro_clientes'></div></td>
+				</tr>	
+				<tr bgcolor='#ffffff'>
+						 <td bgcolor='#ffffff'><div id='lista_clientes'></div></td>
+				</tr>
+		    </table>       
+		            
+						   
+			<script>
+            var urlGetOficinasByEmpresa   = "{{ path('cliente_getOficinasByEmpresa') }}";
+            var urlGetPlanesByEmpresa     = "{{ path('cliente_getPlanesByEmpresa') }}";
+            var urlGenerarRptComercial    = "{{ path('cliente_generarReporteClientesFacturas') }}";
+            var url_cliente_delete_ajax   = '{{ path('cliente_delete_ajax')}}';
+            var url_cliente_lista_estados = '{{ path('cliente_lista_estados')}}';
+            var url_grid                  = "{{ path('cliente_grid_clientesfactura') }}";
+            var url_excel                 = "{{ path('cliente_excelclientesfactura') }}";
+      </script>
+      <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/Cliente.js') }}"></script>
+      <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/clientesFactura.js?2') }}"></script>
+    </div>
+  </div>
+{% endblock contenido %}

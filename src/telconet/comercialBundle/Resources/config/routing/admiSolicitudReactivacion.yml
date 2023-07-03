@@ -1,0 +1,20 @@
+SolicitudReactivacionController:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudReactivacion:index" }
+
+grid_solicitud_reactivacion:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:SolicitudReactivacion:grid"}
+
+show_solicitud_reactivacion:
+    pattern:  /show/{intIdSolicitud}/{strEstado}
+    defaults: { _controller: "comercialBundle:SolicitudReactivacion:show" }
+
+aprobar_rechazar_solicitud_reactivacion:
+    pattern:  /getAprobarRechazar
+    defaults: { _controller: "comercialBundle:SolicitudReactivacion:getAprobarRechazar"}
+
+motivos_solicitud_reactivacion:
+    pattern:  /getMotivos
+    defaults: { _controller: "comercialBundle:SolicitudReactivacion:getMotivos"}
+

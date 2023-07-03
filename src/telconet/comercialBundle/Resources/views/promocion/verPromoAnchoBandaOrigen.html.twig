@@ -1,0 +1,365 @@
+<link href="{{ asset('./bundles/comercial/css/promocion.css') }}" type="text/css" rel="stylesheet" />
+<div class="container">
+    <h5>{{objPromocion['objAdmiGrupoPromocion'].nombreGrupo}} - Detalles Generales 
+        <i class="fa fa-info-circle"></i>
+    </h5>
+    <table class="table compact" width='100%' border='0'>
+        <tbody>
+            <tr>
+                <td><b>Reglas</b></td>
+                <td><b>Promoción Actual</b></td>
+                <td><b>Promoción Origen</b></td>
+            </tr>
+            <tr>
+                <td><b>Nombre Promoción</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].nombreGrupo}}</td>
+                <td>{{objPromocionOrigen['objAdmiGrupoPromocion'].nombreGrupo}}</td>
+            </tr>
+            <tr>
+                <td><b>Tipo Negocio</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strTipoNegocio}} </td>
+                <td>{{objPromocionOrigen['arrayCaracteristicas'].strTipoNegocio}} </td>
+            </tr>
+            <tr>
+                <td><b>Antigüedad</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strAntiguedad}}</td>
+                <td>{{objPromocionOrigen['arrayCaracteristicas'].strAntiguedad}}</td>
+            </tr>
+            <tr>
+                <td><b>Fecha de Vigencia:</b></td>
+            </tr>
+            <tr>
+                <td><b>Fecha Inicio</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].feInicioVigencia| date('j. F Y')}}</td>
+                <td>{{objPromocionOrigen['objAdmiGrupoPromocion'].feInicioVigencia| date('j. F Y')}}</td>
+            </tr>
+            <tr>
+                <td><b>Fecha Fin</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].feFinVigencia| date('j. F Y')}}</td>
+                <td>{{objPromocionOrigen['objAdmiGrupoPromocion'].feFinVigencia| date('j. F Y')}}</td>
+            </tr>
+            <tr>
+                <td><b>Franja Horaria:</b></td>
+            </tr>
+            <tr>
+                <td><b>Hora Inicio</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].feInicioVigencia| date('H')}}</td>
+                <td>{{objPromocionOrigen['objAdmiGrupoPromocion'].feInicioVigencia| date('H')}}</td>
+            </tr>
+            <tr>
+                <td><b>Hora Fin</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].feFinVigencia| date('H')}}</td>
+                <td>{{objPromocionOrigen['objAdmiGrupoPromocion'].feFinVigencia| date('H')}}</td>
+            </tr>
+            <tr>
+                <td><b>Última Milla</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strUltimaMilla}} </td>
+                <td>{{objPromocionOrigen['arrayCaracteristicas'].strUltimaMilla}} </td>
+            </tr>
+            <tr>
+                <td><b>Estado Servicio</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strEstadoServicio}}</td>
+                <td>{{objPromocionOrigen['arrayCaracteristicas'].strEstadoServicio}}</td>
+            </tr>
+            <tr>
+                <td><b>Tipo Cliente</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strTipoCliente}}</td>
+                <td>{{objPromocionOrigen['arrayCaracteristicas'].strTipoCliente}}</td>
+            </tr>
+            <tr>
+                <td><b>Período</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strPeriodo}} </td>
+                <td>{{objPromocionOrigen['arrayCaracteristicas'].strPeriodo}} </td>
+            </tr>
+            <tr>
+                <td><b>Forma de Pago</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strFormaPago}}</td>
+                <td>{{objPromocionOrigen['arrayCaracteristicas'].strFormaPago}}</td>
+            </tr>  
+            <tr>
+                <td><b>Codigo Promoción</b></td>
+                {%if  objPromocion['arrayCaracteristicas'].strCodigoPromocion!='' %} 
+                <td>{{objPromocion['arrayCaracteristicas'].strCodigoPromocion}} </td>
+                {%else%}  
+                <td>No Posee</td>
+                {% endif %}
+                {%if  objPromocionOrigen['arrayCaracteristicas'].strCodigoPromocion!='' %} 
+                <td>{{objPromocionOrigen['arrayCaracteristicas'].strCodigoPromocion}} </td>
+                {%else%}  
+                <td>No Posee</td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+    <div class="container">
+        {% if objPromocion['arrayEmisores'] is not empty %}
+            <label for="forma_pago" class="col-sm-12 col-form-label">Información Débito Bancario: 
+                <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                        aria-expanded="false" data-target="#contenedor_ver_emisores"><i class="fa fa-angle-down"></i>
+                </button>
+            </label>
+            <div class="bonder-titulo"></div>
+            <div class="col-md-12">
+                <div id="contenedor_ver_emisores" class="form-group row scrollbar">
+                   <table class="table table-striped table-bordered compact table-sm" >  
+                        <thead class="thead-light"> 
+                            <tr>
+                                <th colspan="2">Promoción Actual</th>
+                                <th colspan="2">Promoción Origen</th>
+                            </tr>
+                        </thead>
+               
+                          <tr>  
+                           <td colspan="2">   
+                             <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                                {% if objPromocionOrigen['arrayEmisores']  is empty %}
+                                    <td colspan="3"> NO POSEE </td>
+                                {% else %}     
+                                    {% for Emisores in  objPromocion['arrayEmisores'] %}
+                                        <tr>
+                                            <td>{{ Emisores['esTarjeta'] }}</td>
+                                            <td>{{ Emisores['descCuenta'] }}</td>
+                                            <td>{{ Emisores['descBanco'] }}</td>
+                                        </tr>
+                                    {% endfor %}  
+                                 {% endif %}
+                               
+                              </table> 
+                            </td> 
+                      
+                           <td colspan="2">   
+                             <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                                {% if objPromocionOrigen['arrayEmisores']  is empty %}
+                                    <td colspan="3"> NO POSEE </td>
+                                {% else %}     
+                                    {% for Emisores in  objPromocionOrigen['arrayEmisores'] %}
+                                        <tr>
+                                            <td>{{ Emisores['esTarjeta'] }}</td>
+                                            <td>{{ Emisores['descCuenta'] }}</td>
+                                            <td>{{ Emisores['descBanco'] }}</td>
+                                        </tr>
+                                    {% endfor %}  
+                                 {% endif %}
+                           
+                             </table> 
+                            </td> 
+                       </tr>
+                  
+                    </table>    
+                    
+
+                </div>
+            </div>
+        {% endif %}
+        <label for="forma_pago" class="col-sm-12 col-form-label">Información de Sectorización: 
+            <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                    aria-expanded="false" data-target="#contenedor_ver_sector"><i class="fa fa-angle-down"></i>
+            </button>
+        </label>
+        <div class="bonder-titulo"></div>
+        <div class="col-md-12">
+            <div id="contenedor_ver_sector" class="form-group row scrollbar">
+                    <table class="table table-striped table-bordered compact table-sm" >  
+                        <thead class="thead-light"> 
+                            <tr>
+                                <th colspan="2">Promoción Actual</th>
+                                <th colspan="2">Promoción Origen</th>
+                            </tr>
+                        </thead>
+               
+                          <tr>  
+                           <td colspan="2">   
+                             <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                                   <thead class="thead-light"> 
+                                        <tr>
+                                            <th><b>Jurisdicción</b></th>
+                                            <th><b>Cantón</b></th>
+                                            <th><b>Parroquia</b></th>
+                                            <th colspan="2"><b>Sector / Olt / Edificio</b></th>
+                                        </tr>
+                                    </thead>
+                                    {% if objPromocion['arraySectorizacion'] is not empty %}
+                                    <tbody id="tbodyInformacionEmisores">
+                                        {% for Sectorizacion in objPromocion['arraySectorizacion'] %}
+                                            <tr>
+                                                <td>{{ Sectorizacion['strJurisdiccion'] }}</td>
+                                                <td>{{ Sectorizacion['strCanton'] }}</td>
+                                                <td>{{ Sectorizacion['strParroquia'] }}</td>
+                                                <td>{{ Sectorizacion['strSectOltEdif'] }}</td>
+                                                <td>{{ Sectorizacion['strSectorOltEdif'] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    {%else%}
+                                    <tbody id="tbodyInformacionEmisores">
+                                        <tr>
+                                            <td>Todos</td>
+                                            <td>Todos</td>
+                                            <td>Todos</td>
+                                            <td>Todos</td>
+                                        </tr>
+                                    </tbody>
+                                    {% endif %}
+                           
+                              </table> 
+                            </td> 
+                      
+                           <td colspan="2">   
+                             <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                                     <thead class="thead-light"> 
+                                        <tr>
+                                            <th><b>Jurisdicción</b></th>
+                                            <th><b>Cantón</b></th>
+                                            <th><b>Parroquia</b></th>
+                                            <th colspan="2"><b>Sector / Olt / Edificio</b></th>
+                                        </tr>
+                                    </thead>
+                                    {% if objPromocionOrigen['arraySectorizacion'] is not empty %}
+                                    <tbody id="tbodyInformacionEmisores">
+                                        {% for Sectorizacion in objPromocionOrigen['arraySectorizacion'] %}
+                                            <tr>
+                                                <td>{{ Sectorizacion['strJurisdiccion'] }}</td>
+                                                <td>{{ Sectorizacion['strCanton'] }}</td>
+                                                <td>{{ Sectorizacion['strParroquia'] }}</td>
+                                                <td>{{ Sectorizacion['strSectOltEdif'] }}</td>
+                                                <td>{{ Sectorizacion['strSectorOltEdif'] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    {%else%}
+                                    <tbody id="tbodyInformacionEmisores">
+                                        <tr>
+                                            <td>Todos</td>
+                                            <td>Todos</td>
+                                            <td>Todos</td>
+                                            <td>Todos</td>
+                                        </tr>
+                                    </tbody>
+                                    {% endif %}
+                             </table> 
+                            </td> 
+                       </tr>
+                    </table>
+            </div>
+        </div>
+        <label for="forma_pago" class="col-sm-12 col-form-label">Información de Planes: 
+            <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse"
+                    aria-expanded="false" data-target="#contenedor_ver_planes"><i class="fa fa-angle-down"></i>
+            </button>
+        </label>
+        <div class="bonder-titulo"></div>
+        <div class="col-md-12">
+            <div id="contenedor_ver_planes" class="form-group row scrollbar">
+              
+                    
+               <table class="table table-striped table-bordered compact table-sm" >  
+                        <thead class="thead-light"> 
+                            <tr>
+                                <th colspan="2">Promoción Actual</th>
+                                <th colspan="2">Promoción Origen</th>
+                            </tr>
+                        </thead>
+               
+                          <tr>  
+                           <td colspan="2">   
+                             <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                                       <thead class="thead-light"> 
+                                            <tr>
+                                                <th><b>Plan</b></th>
+                                                <th><b>Plan Nuevo</b></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodyInformacionPlanes">
+                                            {% for Planes in objPromocion['arrayPlanes'] %}
+                                                <tr>
+                                                    <td>{{ Planes['nombrePlan'] }}</td>
+                                                    <td>{{ Planes['nombrePlanSuperior'] }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                           
+                              </table> 
+                            </td> 
+                      
+                           <td colspan="2">   
+                             <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                                       <thead class="thead-light"> 
+                                            <tr>
+                                                <th><b>Plan</b></th>
+                                                <th><b>Plan Superior</b></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodyInformacionPlanes">
+                                            {% for Planes in objPromocionOrigen['arrayPlanes'] %}
+                                                <tr>
+                                                    <td>{{ Planes['nombrePlan'] }}</td>
+                                                    <td>{{ Planes['nombrePlanSuperior'] }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                           
+                             </table> 
+                            </td> 
+                       </tr>
+                  
+                    </table> 
+                    
+                    
+             
+            </div>
+        </div>
+    </div>
+   <br>      
+   <table width='100%' border='0'>          
+        <tbody>
+            <tr>
+                <td width="10%" rowspan="4">
+                <img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                <th width="11%">Creador:</th>
+                <td width="34%" >{% if(objPromocion['objAdmiGrupoPromocion'] is not null)%} 
+                    {{objPromocion['objAdmiGrupoPromocion'].usrCreacion}} 
+                    {% endif %}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].usrUltMod is not null) %}
+                    <td width="10%" rowspan="4">
+                    <img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                    <th width="11%" >Ult. Mod.:</th>
+                    <td width="34%">{{ objPromocion['objAdmiGrupoPromocion'].usrUltMod }}</td>
+                {% endif %}                
+            </tr>
+            <tr>
+                <th>Fecha:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %}
+                    {{ objPromocion['objAdmiGrupoPromocion'].feCreacion | date("d M Y") }}
+                    {% endif %}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].feUltMod is not null) %}
+                    <th>Fecha:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].feUltMod  | date("d M Y")}}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Hora:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %} 
+                    {{ objPromocion['objAdmiGrupoPromocion'].feCreacion | date("H:i:s") }} 
+                    {%endif%}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].feUltMod is not null) %}
+                    <th>Hora:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].feUltMod| date("H:i:s") }}</td>
+                {% endif %}               
+            </tr>
+            <tr>
+                <th>Ip:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %} 
+                    {{ objPromocion['objAdmiGrupoPromocion'].ipCreacion}} 
+                    {%endif%}</td>
+                    
+                {% if(objPromocion['objAdmiGrupoPromocion'].ipUltMod is not null) %}
+                    <th>Ip:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].ipUltMod }}</td>
+                {% endif %}       
+            </tr>
+        </tbody>
+    </table> 
+</div>

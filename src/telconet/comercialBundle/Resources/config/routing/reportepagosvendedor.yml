@@ -1,0 +1,11 @@
+reporte_pagos_vendedor:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:ReportePagosVendedor:index" }
+    
+reporte_pagos_vendedor_gridPagosVendedor:
+    pattern:  /gridPagosVendedor
+    defaults: { _controller: "comercialBundle:ReportePagosVendedor:gridPagosVendedor" }
+    
+reporte_pagos_vendedor_generarReporte:
+    pattern:  /generarReportePagosVendedor
+    defaults: { _controller: "comercialBundle:ReportePagosVendedor:generarReportePagosVendedor" }    

@@ -1,0 +1,13 @@
+SET DEFINE OFF;
+--Se agrega el id del producto Internet Small Business (1155)
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET
+    VALOR1 = '236,237,238,242,1155',
+    USR_ULT_MOD = 'amortega',
+    FE_ULT_MOD = SYSDATE
+WHERE
+    DESCRIPCION = 'SERVICIOS_TRADICIONALES';
+
+COMMIT;
+/

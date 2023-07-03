@@ -1,0 +1,20 @@
+/**
+ * @author Jonathan Mazon Sanchez <jmazon@telconet.ec>
+ * @version 1.0
+ * @since 06-04-2021
+ * Se crea ROLLBACK para parametros de traslado del producto Extender Duan Band
+ */
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET 
+WHERE PARAMETRO_ID = (SELECT ID_PARAMETRO FROM	DB_GENERAL.ADMI_PARAMETRO_CAB 
+						WHERE	NOMBRE_PARAMETRO = 'PARAMETROS_ASOCIADOS_A_SERVICIOS_MD' 
+						AND ESTADO = 'Activo')
+AND VALOR1 = 'TRASLADO'
+AND VALOR2 = 'ESTADOS_SERVICIOS_X_PROD_PERMITIDOS'
+AND VALOR3 = 'EXTENDER_DUAL_BAND'
+AND ESTADO = 'Activo';
+
+
+COMMIT;
+
+/

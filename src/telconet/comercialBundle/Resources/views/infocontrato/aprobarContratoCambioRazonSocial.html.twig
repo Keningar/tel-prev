@@ -1,0 +1,539 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}         
+
+<script>var url_formas_contacto_persona = "{{ path('cliente_formas_contacto_grid') }}";</script>    
+<script>var url_formas_contacto = "{{path('cliente_lista_formas_contacto')}}";</script>
+<script>var url_validarNumeroTarjetaCta = "{{ path('infocontrato_validarNumeroTarjetaCta') }}";</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/validarNumeroTarjetaCuenta.js?3') }}"></script>
+<script>var personaid = {{entity.id}};
+    input = '#procesoaprobarcontratotype_identificacionCliente';
+    url_valida_identificacion = "{{ path('cliente_ajax_valida_identificacion') }}";
+    url_img_loader = "{{ asset('public/images/images_crud/ajax-loader.gif') }}";
+    url_img_check = "{{ asset('public/images/check.png') }}";
+    url_img_delete = "{{ asset('public/images/delete.png') }}";
+    var url_reenvioPin              = '{{ path('infocontrato_reenvio_pin') }}'; 
+    var prefijoEmpresa              = "{{ prefijoEmpresa }}";
+    var url_autorizarContrato       = '{{ path('infocontrato_autorizarContrato') }}'; 
+    var estadoContrato              = "{{entityContrato.estado}}";
+</script>
+
+<script>
+    var url_store = "{{ path('aprobacioncontrato_listadoServiciosAprobCambioRazonSocial',{'id_per_emp_rol': id_per_emp_rol  }) }}";
+</script>  
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/verArchivosDigitales.js?6') }}"></script>
+<script>var url_showDocumentosContrato = "{{ path('aprobacioncontrato_showDocumentosContrato',{'idContrato': entityContrato.id  }) }}";
+</script>           
+{% endblock %}
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Datos del Cliente a Aprobar por Cambio de Razon Social</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="errormessage">
+        {{ flashMessage }}
+</div>
+{% endfor %}
+<div class="body_content">
+    <form id='convertir_form' name='convertir_form' action="{{ path('aprobacioncontrato_procesaAprobContratoCambioRazonSocial',
+           { 'id_contrato': entityContrato.id }) }}" method="post" {{ form_enctype(form) }} class="formulario">
+        <input type='hidden' value='' id='urlRedireccionar' name='urlRedireccionar' />
+        <input type='hidden' value='' id='puntoCliente' name='puntoCliente' />
+        <input type='hidden' value='' id='arrayPuntosCRS' name='arrayPuntosCRS' />
+
+		<input type='hidden' value='{{id_per_emp_rol}}' id='personaEmpresaRolId' name='personaEmpresaRolId' />
+        <input type='hidden' value='S' id='cambioRazonSocial' name='cambioRazonSocial' />
+        <div id="my-tabs">
+            <div id="tab1" class="x-hide-display">
+                <table border='0' width='90%'>                        
+                    <tr>    
+                        <td>&nbsp;&nbsp;&nbsp;</td> 
+                        <td colspan="3"><div class="secHead">Informaci&oacute;n del Prospecto</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>                              
+                        <td  style="vertical-align: top;">
+                            <div>
+                                <div>{{ form_label(form.tipoEmpresa) }} {{ form_widget(form.tipoEmpresa) }}</div>                        
+                                <div>{{ form_label(form.tipoIdentificacion) }} {{ form_widget(form.tipoIdentificacion) }}</div>
+                                <div>{{ form_label(form.tipoTributario) }} {{ form_widget(form.tipoTributario) }}</div>
+                                <div>{{ form_label(form.nacionalidad) }} {{ form_widget(form.nacionalidad) }}</div>
+                                <div>{{ form_label(form.direccionTributaria) }} 
+                                    <textarea id='convertirextratype_direccionTributaria' name='convertirextratype[direccionTributaria]' 
+                                              maxlength='150' cols='26' rows='5'>{{direccionTributaria}}</textarea></div>
+                                {% if (prefijoEmpresa =='TN') %}
+                                  <div>  
+                                    <div>{{ form_label(form.tieneCarnetConadis) }} {{ form_widget(form.tieneCarnetConadis) }}</div>   		
+                                    <div>{{ form_label(form.numeroConadis) }} {{ form_widget(form.numeroConadis) }}</div>   
+                                  </div>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td style="vertical-align: top;">
+                            {% if (prefijoEmpresa =='TN') %}
+                                <div>{{ form_label(form.idOficinaFacturacion) }} {{ form_widget(form.idOficinaFacturacion) }}</div>
+                            {% endif %} 
+                            <div>{{ form_label(form.identificacionCliente) }}{{ form_widget(form.identificacionCliente) }}
+                            </div>
+                            <div id='div_razon_social' style="display:none">
+                                 {{ form_label(form.razonSocial) }} {{ form_widget(form.razonSocial) }}
+                            </div>
+                            <div>{{ form_label(form.representanteLegal) }} {{ form_widget(form.representanteLegal) }}</div>
+                            <div id='div_nombres'>
+                                <div>{{ form_label(form.genero) }} {{ form_widget(form.genero) }}</div>                                    
+                                <div>{{ form_label(form.tituloId) }} {{ form_widget(form.tituloId) }}</div>                                    
+                                <div>{{ form_label(form.nombres) }} {{ form_widget(form.nombres) }}</div>
+                                <div>{{ form_label(form.apellidos) }} {{ form_widget(form.apellidos) }}</div>
+                                <div>{{ form_label(form.estadoCivil) }} {{ form_widget(form.estadoCivil) }}</div>
+                                <div>{{ form_label(form.origenIngresos) }} {{ form_widget(form.origenIngresos) }}</div>
+                                <div>{{ form_label(form.fechaNacimiento) }} {{ form_widget(form.fechaNacimiento) }}</div>
+                                <input type='hidden' id="procesoaprobarcontratotype_formas_contacto" required='required'
+                                       name="procesoaprobarcontratotype[formas_contacto]"/>
+                            </div>
+                             {% if (prefijoEmpresa =='TN') %}
+                                <div>                                
+                                    <div>{{ form_label(form.contribuyenteEspecial) }} {{ form_widget(form.contribuyenteEspecial) }}</div>
+                                    <div>{{ form_label(form.pagaIva) }} {{ form_widget(form.pagaIva) }}</div>                           
+                                    <div>{{ form_label(form.esPrepago) }} {{ form_widget(form.esPrepago) }}</div>                                      			                                                   
+                                </div>
+                             {% endif %}
+                        </td>                            
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>                              
+                        <td  style="vertical-align: top;"><a class="button-log" onClick="verArchivosDigitales({{ entityContrato.id }});" href="#">
+                                Ver Archivos Digitales
+                            </a>
+                        </td>                            
+                    </tr>             
+                </table>
+
+                <table border='0' valign='top'>                     
+                    <tr>
+                        <td valign='top'><table border='0'>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;</td> 
+                                    <td colspan="2"><div class="secHead">Informaci&oacute;n Comercial</div></td></tr>
+                                <tr>
+                                    <td>&nbsp;&nbsp;&nbsp;</td> 
+                                    <td><div id="mensaje_validaciones" class="info-error campo-oculto"></div></td></tr>
+                                <tr>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;                         
+                                    </td>
+                                    <td><div>{{ form_label(edit_form.formaPagoId) }} {{ form_widget(edit_form.formaPagoId) }}
+                                            <input type='hidden' id="infocontratotype_id_forma_pago" name="id_forma_pago"/>
+                                        </div></td>
+                                </tr>                 
+                                <tr>
+                                    <td>
+                                        &nbsp;&nbsp;&nbsp;
+                                    </td>
+                                    <td>
+		                            {% if formFormaPago is defined %}
+                                        <div id="forma_pago" class="{{ clase }} contenido" style="display:none">
+                                            <table>
+                                                <tr>
+                                                    <td> <input type='hidden' id="infocontratoformapagotype_id_tipo_cuenta" name="id_tipo_cuenta"/>
+                                                        <div>
+                                                            {{ form_label(formFormaPago.tipoCuentaId) }}
+                                                            {{ form_widget(formFormaPago.tipoCuentaId) }}
+                                                        </div>	                                         					                    
+                                                        <div>
+                                                            {{ form_label(formFormaPago.numeroCtaTarjeta) }} 
+                                                            {{ form_widget(formFormaPago.numeroCtaTarjeta) }}
+                                                        </div>                   
+                                                        <div id='datosParaTarjeta' style=''>                       
+                                                            <div>{{ form_label(formFormaPago.mesVencimiento) }} 
+                                                                 {{ form_widget(formFormaPago.mesVencimiento) }}</div>
+                                                            <div>{{ form_label(formFormaPago.codigoVerificacion) }} 
+                                                                 {{ form_widget(formFormaPago.codigoVerificacion) }}</div>
+                                                        </div>
+                                                    </td>
+
+                                                    <td style="vertical-align: top;">
+                                                        <div>{{ form_label(formFormaPago.bancoTipoCuentaId) }} 
+                                                             {{ form_widget(formFormaPago.bancoTipoCuentaId) }}</div>
+                                                        <div>{{ form_label(formFormaPago.titularCuenta) }} 
+                                                             {{ form_widget(formFormaPago.titularCuenta) }}</div>
+                                                        <div>{{ form_label(formFormaPago.anioVencimiento) }} 
+                                                             {{ form_widget(formFormaPago.anioVencimiento) }}</div>
+                                                    </td>                                                               
+                                                </tr>
+                                            </table>
+                                        </div>
+		                            {% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>                                              
+                        {% if (prefijoEmpresa =='MD') or (prefijoEmpresa =='EN') %}
+                            <label>Teléfono PIN:</label>
+                            <select id="telefonos" name="telefonoCliente">
+                                {% for telefono in arrayTelefonosCliente %}
+                                    <option value="{{ telefono }}">
+                                    {{ telefono }}
+                                    </option>
+                                {% endfor %}
+                            </select>	
+                        {% endif %}          
+                        <td valign='top'><table border='0'>                                    
+                                <tr>   
+                                    <td>&nbsp;&nbsp;&nbsp;</td> 
+                                    <td><div class="secHead">Listado de Servicios que realizan Cambio de Razon Social</div></td>
+                                </tr>
+                                <tr bgcolor='#ffffff'>
+                                    <td>&nbsp;&nbsp;&nbsp;</td> 
+                                    <td bgcolor='#ffffff'>
+                                        <input type='hidden' id="infocontratotype_listadoServicios" name="array_listado_servicios"/>
+                                        <div id='lista_servicios'></div></td>
+                                </tr>
+                            </table> 
+                       </td>                    
+                    </tr>                        
+                </table>       
+
+            </div>
+            <div id="tab2" class="x-hide-display">
+                <table border='0' align='center'>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+
+                        <td>
+                            <div id='lista_formas_contacto_grid'></div>
+                            <div class='infomessage'>Todo n&uacutemero de tel&eacute;fono internacional debe tener entre 7 y 15 d&iacute;gitos</div>
+                        </td>
+
+                    </tr>   
+                </table>            
+            </div>
+        </div>
+
+        <div class="buttons">
+            <p>
+                {% if (prefijoEmpresa =='MD') or (prefijoEmpresa =='EN') %}
+                    <button type='button' id='botonPin' class="button-crud" onclick="reenviarPin(0)">Reenvío de Pin</button>
+                    <button type='button' id='botonAutorizar' 
+                        class="button-crud" onclick="autorizarContrato($('#personaEmpresaRolId').val(),
+                                                                $('#puntoCliente').val())">Autorizar Contrato</button> 
+                {% endif %}
+                <button type="button" id='botonCambiarRazonS' onclick="grabar('#procesoaprobarcontratotype_formas_contacto')" 
+                        class="button-crud">Aceptar</button>
+                <span class="height20px">
+                    &nbsp;&nbsp;
+                </span>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('aprobacioncontrato_aprobar_contrato') }}">Regresar</a>
+                </span>                                        
+            </p>
+        </div>                
+    </form>
+</div>
+{% endblock contenido_central %}
+{% block javascripts_footer%}
+<script type="text/javascript">
+    
+    {# Implementación de método dummy para evitar excepción en el consumo del método desde validarNumeroTarjetaCuenta.js #}
+    function aprobarClick(){}
+    
+    $(function() 
+    {
+        $("#infocontratoformapagotype_numeroCtaTarjeta").keydown(function(event) {
+            if (!isNumeric(event))
+                return false;
+        });
+    });
+    function isNumeric(event)
+    {
+        return (
+            (event.keyCode > 7 && event.keyCode < 10)
+            || (event.keyCode > 47 && event.keyCode < 60)
+            || (event.keyCode > 95 && event.keyCode < 106)
+            || event.keyCode == 17
+            || event.keyCode == 116
+            )
+    }
+
+    function validarFormulario()
+    {
+        var numeroCtaTarjeta   = $('#infocontratoformapagotype_numeroCtaTarjeta').val();
+        var titularCuenta      = $('#infocontratoformapagotype_titularCuenta').val();
+        var bancoTipoCuentaId  = $('#infocontratoformapagotype_bancoTipoCuentaId').val();
+        var anioVencimiento    = $('#infocontratoformapagotype_anioVencimiento').val();
+        var mesVencimiento     = $('#infocontratoformapagotype_mesVencimiento').val();
+        var codigoVerificacion = $('#infocontratoformapagotype_codigoVerificacion').val();
+        if (numeroCtaTarjeta == "")
+        {
+            $('#mensaje_validaciones').removeClass('campo-oculto').html("Ingrese el Numero de Cuenta");
+            return false;
+        }
+        else if (titularCuenta == "")
+        {
+            $('#mensaje_validaciones').removeClass('campo-oculto').html("Ingrese el Titular de Cuenta");
+            return false;
+        }
+        else
+        {
+            var validacion = false;
+            //Funcion para obtener si la forma de pago es Tarjeta o Cuenta Bancaria 
+            $.ajax({
+                type: "POST",
+                data: "bancoTipoCuentaId=" + bancoTipoCuentaId,
+                url: '{{ path('infocontrato_validarPorFormaPago') }}',
+                success: function(msg) {
+                    if (msg.msg == 'TARJETA')
+                    {
+                        $('label[for=infocontratoformapagotype_mesVencimiento]').html('* Mes Vencimiento:');
+                        $('label[for=infocontratoformapagotype_mesVencimiento]').addClass('campo-obligatorio');
+                        $("#infocontratoformapagotype_mesVencimiento").attr('required', 'required');
+                        $('label[for=infocontratoformapagotype_anioVencimiento]').html('* A&ntilde;o Vencimiento:');
+                        $('label[for=infocontratoformapagotype_anioVencimiento]').addClass('campo-obligatorio');
+                        $("#infocontratoformapagotype_anioVencimiento").attr('required', 'required');
+                        $('label[for=infocontratoformapagotype_codigoVerificacion]').html('* Codigo Verificaci&oacute;n:');
+                        $('label[for=infocontratoformapagotype_codigoVerificacion]').addClass('campo-obligatorio');
+                        $("#infocontratoformapagotype_codigoVerificacion").attr('required', 'required');
+                        if (anioVencimiento == "" || mesVencimiento == "")
+                        {
+                            $('#mensaje_validaciones').removeClass('campo-oculto').html("Ingrese Anio y mes de Vencimiento de la tarjeta");
+                            return false;
+                        }
+                        else if (codigoVerificacion == "")
+                        {
+                            $('#mensaje_validaciones').removeClass('campo-oculto').html("Ingrese el codigo de verificacion de la tarjeta");
+                            return false;
+                        }
+                        else
+                        {
+                            validacionesForm();
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        $("#infocontratoformapagotype_mesVencimiento").removeAttr('required');
+                        $("#infocontratoformapagotype_anioVencimiento").removeAttr('required');
+                        $("#infocontratoformapagotype_codigoVerificacion").removeAttr('required');
+                        $('#mensaje_validaciones').addClass('campo-oculto').html("");
+                        validacionesForm();
+                        return true;
+                    }
+                }
+            });
+            return validacion;
+        }
+    }
+
+</script>   
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/aprobarContratoCambioRazonSocial.js?3') }}"></script>
+
+<script>
+    var fp = $('#infocontratotype_formaPagoId').val();
+    $('#infocontratotype_id_forma_pago').val(fp);
+
+    var tc = $('#infocontratoformapagotype_tipoCuentaId').val();
+    $('#infocontratoformapagotype_id_tipo_cuenta').val(tc);
+
+    //No permito editar la FORMA DE PAGO
+    $("#infocontratotype_formaPagoId").attr("disabled", "disabled");
+    //No permito editar TIPO DE CUENTA : Tarjetas o cuenta Ahorro / Corriente
+    $("#infocontratoformapagotype_tipoCuentaId").attr("disabled", "disabled");
+
+    $('#infocontratoformapagotype_numeroCtaTarjeta').val('{{  strNumeroCtaTarjeta  }}');
+    presentaDatosTarjeta();
+    {%if bancoTipoCuentaId is not null%}
+         var bancoTipoCuentaId = {{bancoTipoCuentaId}};
+         obtieneBancos(bancoTipoCuentaId);
+    {%endif%}
+
+    function mostrarDiv(div)
+    {
+        capa = document.getElementById(div);
+        capa.style.display = 'block';
+    }
+
+    function ocultarDiv(div)
+    {
+        capa = document.getElementById(div);
+        capa.style.display = 'none';
+    }
+
+    $('#infocontratotype_formaPagoId').change(function()
+    {
+        presentaDatosTarjeta();
+    });
+
+    function presentaDatosTarjeta()
+    {
+        var seleccion = $('#infocontratotype_formaPagoId').val();
+
+        if (seleccion == 3)
+        {
+            mostrarDiv('forma_pago');
+            $("#infocontratoformapagotype_tipoCuentaId").attr('required', 'required');
+            $("#infocontratoformapagotype_bancoTipoCuentaId").attr('required', 'required');
+            $("#infocontratoformapagotype_numeroCtaTarjeta").attr('required', 'required');
+            $("#infocontratoformapagotype_titularCuenta").attr('required', 'required');
+
+            var seleccion = $('#infocontratoformapagotype_tipoCuentaId').val();
+            if (seleccion != 1 && seleccion != 2)
+            {
+                mostrarDiv('datosParaTarjeta');
+                $('label[for=infocontratoformapagotype_mesVencimiento]').html('* Mes Vencimiento:');
+                $('label[for=infocontratoformapagotype_mesVencimiento]').addClass('campo-obligatorio');
+                $("#infocontratoformapagotype_mesVencimiento").attr('required', 'required');
+                $('label[for=infocontratoformapagotype_anioVencimiento]').html('* A&ntilde;o Vencimiento:');
+                $('label[for=infocontratoformapagotype_anioVencimiento]').addClass('campo-obligatorio');
+                $("#infocontratoformapagotype_anioVencimiento").attr('required', 'required');
+                $('label[for=infocontratoformapagotype_codigoVerificacion]').html('* Codigo Verificaci&oacute;n:');
+                $('label[for=infocontratoformapagotype_codigoVerificacion]').addClass('campo-obligatorio');
+                $("#infocontratoformapagotype_codigoVerificacion").attr('required', 'required');
+            }
+            else
+            {
+                ocultarDiv('datosParaTarjeta');
+                $("#infocontratoformapagotype_mesVencimiento").removeAttr('required');
+                $("#infocontratoformapagotype_anioVencimiento").removeAttr('required');
+                $("#infocontratoformapagotype_codigoVerificacion").removeAttr('required');
+                $("#infocontratoformapagotype_mesVencimiento").val('');
+                $("#infocontratoformapagotype_anioVencimiento").val('');
+                $("#infocontratoformapagotype_codigoVerificacion").val('');
+            }
+        }
+        else
+        {
+            ocultarDiv('forma_pago');
+            limpiarDatosFormaPago();
+            $("#infocontratoformapagotype_tipoCuentaId").removeAttr('required');
+            $("#infocontratoformapagotype_bancoTipoCuentaId").removeAttr('required');
+            $("#infocontratoformapagotype_numeroCtaTarjeta").removeAttr('required');
+            $("#infocontratoformapagotype_titularCuenta").removeAttr('required');
+            $("#infocontratoformapagotype_mesVencimiento").removeAttr('required');
+            $("#infocontratoformapagotype_anioVencimiento").removeAttr('required');
+            $("#infocontratoformapagotype_codigoVerificacion").removeAttr('required');
+        }
+    }
+
+    $('#infocontratoformapagotype_tipoCuentaId').change(function()
+    {
+        var seleccion = $('#infocontratoformapagotype_tipoCuentaId').val();
+        if (seleccion == 1 || seleccion == 2 || seleccion == 11) {
+            mostrarDiv('datosParaTarjeta');
+            $('label[for=infocontratoformapagotype_mesVencimiento]').html('* Mes Vencimiento:');
+            $('label[for=infocontratoformapagotype_mesVencimiento]').addClass('campo-obligatorio');
+            $("#infocontratoformapagotype_mesVencimiento").attr('required', 'required');
+            $('label[for=infocontratoformapagotype_anioVencimiento]').html('* A&ntilde;o Vencimiento:');
+            $('label[for=infocontratoformapagotype_anioVencimiento]').addClass('campo-obligatorio');
+            $("#infocontratoformapagotype_anioVencimiento").attr('required', 'required');
+            $('label[for=infocontratoformapagotype_codigoVerificacion]').html('* Codigo Verificaci&oacute;n:');
+            $('label[for=infocontratoformapagotype_codigoVerificacion]').addClass('campo-obligatorio');
+            $("#infocontratoformapagotype_codigoVerificacion").attr('required', 'required');
+        } 
+        else 
+        {
+            ocultarDiv('datosParaTarjeta');
+            $("#infocontratoformapagotype_mesVencimiento").removeAttr('required');
+            $("#infocontratoformapagotype_anioVencimiento").removeAttr('required');
+            $("#infocontratoformapagotype_codigoVerificacion").removeAttr('required');
+            $("#infocontratoformapagotype_mesVencimiento").val('');
+            $("#infocontratoformapagotype_anioVencimiento").val('');
+            $("#infocontratoformapagotype_codigoVerificacion").val('');           
+        }
+    });
+
+
+
+    $("#infocontratotype_tipoContratoId").change(function(event) 
+    {
+        $(this).val($(this).find("option").select().val());
+    });    
+
+    $('#infocontratoformapagotype_tipoCuentaId').change(function()
+    {
+        obtieneBancos('');
+    });
+
+    function obtieneBancos(bancoTipoCuentaId)
+    {
+        var tipoCuenta = $('#infocontratoformapagotype_tipoCuentaId').val();
+        if (bancoTipoCuentaId != '') {
+            parametros = "tipoCuenta=" + tipoCuenta + "&bcoTipoCtaId=" + bancoTipoCuentaId;
+        } else
+        {
+            parametros = "tipoCuenta=" + tipoCuenta;
+        }
+
+        $.ajax({
+            type: "POST",
+            data: parametros,
+            url: '{{ path('infocontrato_listar_bancos_asociados') }}',
+            success: function(msg) 
+           {
+                if (msg.msg == 'ok')
+                {
+                    //Llenar el div que presentara las clausulas
+                    //Validar que de respuesta sinop solicitarla
+                    document.getElementById("infocontratoformapagotype_bancoTipoCuentaId").innerHTML = msg.div;
+                    //console.log(msg.id);                            
+                }
+                else
+                    document.getElementById("infocontratoformapagotype_bancoTipoCuentaId").innerHTML = msg.msg;
+
+
+            }
+        });
+    }
+
+
+    function limpiarDatosFormaPago()
+    {
+        $('#infocontratoformapagotype_tipoCuentaId').val('');
+        $('#infocontratoformapagotype_bancoTipoCuentaId').val('');
+        $('#infocontratoformapagotype_numeroCtaTarjeta').val('');
+        $('#infocontratoformapagotype_titularCuenta').val('');
+        $('#infocontratoformapagotype_mesVencimiento').val('');
+        $('#infocontratoformapagotype_anioVencimiento').val('');
+        $('#infocontratoformapagotype_codigoVerificacion').val('');
+    }
+    
+        function tieneCarnetConadis()
+        {
+            if ($('#procesoaprobarcontratotype_tieneCarnetConadis').val() == 'S')
+            {
+
+                document.getElementById("procesoaprobarcontratotype_numeroConadis").required = true;
+                $('#procesoaprobarcontratotype_numeroConadis').show();
+                $('label[for=procesoaprobarcontratotype_numeroConadis]').show();
+                $('#procesoaprobarcontratotype_numeroConadis').attr('maxlength', '15');
+            }
+            else
+            {
+                $('#procesoaprobarcontratotype_tieneCarnetConadis').val('N');
+                $('#procesoaprobarcontratotype_numeroConadis').val('');
+                $('#procesoaprobarcontratotype_numeroConadis').hide();
+                $('label[for=procesoaprobarcontratotype_numeroConadis]').hide();
+                $('#procesoaprobarcontratotype_numeroConadis').removeAttr('maxlength');
+                $('#procesoaprobarcontratotype_numeroConadis').removeAttr('required');
+                document.getElementById("procesoaprobarcontratotype_numeroConadis").required = false;
+
+            }
+       }
+
+</script>
+{% endblock %}
+
+{# empty Twig template #}

@@ -1,0 +1,57 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link type="text/css" rel="stylesheet" href="{{ asset('./bundles/comercial/css/SolicitudMasiva.css?2') }}" >
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var usrLoginActivo                      = '{{ app.session.get('user') }}';
+        var urlGetTipoSolicitud                 = '{{ path('solicitudesMasivas_getTipoSolicitud') }}';
+        var urlGetEstados                       = '{{ path('solicitudesMasivas_getEstados') }}';
+        var urlGetPlanes                        = '{{ path('solicitudesMasivas_getPlanes') }}';
+        var urlGetProductos                     = '{{ path('solicitudesMasivas_getProductos') }}';
+        var urlGetSolicitudesMasivas            = '{{ path('solicitudesMasivas_getSolicitudesMasivas') }}';
+        var urlGetSolicitudesMasivasHistorial   = '{{ path('solicitudesMasivas_getSolicitudesMasivasHistorial') }}';
+        var urlDeleteSolicitudMasiva            = '{{ path('solicitudesMasivas_delete') }}';
+        var urlSubirArchivo                     = '{{ path('solicitudesMasivas_uploadArchivo') }}';
+        var urlDownloadArchivo                  = '{{ path('solicitudesMasivas_downloadArchivo') }}';
+        var urlGetOficinas                      = '{{ path('solicitudesMasivas_getOficinas') }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudesmasivas/SolicitudMasiva.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudesmasivas/index.js?11') }}"></script>
+{% endblock javascripts%}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('solicitudcorvent.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Solicitudes Masivas (Cambio Plan / Cancelaciones / Demos)</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="listadoSolicitudesMasivas"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_izq %}
+
+    
+{% block contenido_der %}
+
+	<div class="titulo-acciones-relacionadas">
+		Acciones Relacionadas
+	</div>	
+	<ul class="listado_acciones_relacionadas">
+        {% if(is_granted('ROLE_346-2')) %}
+            <a class="button-add" href="{{ path('solicitudesmasivas_new') }}">
+                Nueva Solicitud Masiva
+            </a>
+        {% endif %}
+	</ul>
+{% endblock contenido_der %}

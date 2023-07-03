@@ -1,0 +1,16 @@
+
+aprobacionsolicitudcambioequipo_aprobar_solicitud:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudCambioEquipo:aprobarSolicitudCambioEquipo" }
+
+aprobacionsolicitudcambioequipo_grid_aprobar:
+    pattern:  /gridaprobarsolicitudsuspensiontemporal
+    defaults: { _controller: "comercialBundle:SolicitudCambioEquipo:gridAprobarSolicitudCambioEquipo"}
+
+aprobacionsolicitudcambioequipo_rechazar_ajax:
+    pattern:  /rechazarsolicitudcambioequipoajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioEquipo:rechazarSolicitudCambioEquipoAjax" }
+
+aprobacionsolicitudcambioequipo_getmotivosrechazo_ajax:
+    pattern:  /getmotivosrechazosolicitudcambioequipoAjax
+    defaults: { _controller: "comercialBundle:SolicitudCambioEquipo:getMotivosRechazoSolicitudCambioEquipo_ajax" }

@@ -1,0 +1,8 @@
+# RESTful Web Services: anidados en /rs/comercial
+
+rs_comercial_webServices:
+    resource: restfulws/comercial.yml
+    defaults: { _format: json }
+    requirements: { _method: post, _format: json }
+    prefix: /ws/rest
+

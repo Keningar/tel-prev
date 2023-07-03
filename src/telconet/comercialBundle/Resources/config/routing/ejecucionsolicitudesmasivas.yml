@@ -1,0 +1,24 @@
+
+ejecucionsolicitudesmasivas_index:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:ejecutarIndex" }
+    
+ejecucionsolicitudesmasivas_ejecutar:
+    pattern:  /{id}/ejecutar
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:ejecutar" }
+
+ejecucionsolicitudesmasivas_ejecutarSolicitud:
+    pattern:  /ejecutarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:ejecutarSolicitud" }
+
+ejecucionsolicitudesmasivas_rechazarSolicitud:
+    pattern:  /rechazarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:rechazarEjecucionSolicitud" }
+
+ejecucionsolicitudesmasivas_getSolicitudesMasivas:
+    pattern:  /getSolicitudesMasivasEjecucion
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getSolicitudesMasivasEjecucion" }
+
+
+    
+

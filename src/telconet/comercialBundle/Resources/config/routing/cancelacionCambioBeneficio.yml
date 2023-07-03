@@ -1,0 +1,40 @@
+cancelacionCambioBeneficio_index:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:index" }
+    
+cancelacionCambioBeneficio_grid:
+    pattern:  /gridSolicitudes
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:gridSolicitudes"}
+  
+cancelacionCambioBeneficio_actFechaNacimiento:
+    pattern:  /actFechaNacimiento/{intIdDetalleSolicitud}/{strOpcion}
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:actFechaNacimiento"}
+
+cancelacionCambioBeneficio_buscarCliente:
+    pattern:  /buscarCliente
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:buscarCliente" }    
+
+cancelacionCambioBeneficio_cambioBeneficio:
+    pattern:  /cambioBeneficio
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:cambioBeneficio" }    
+    
+cancelacionCambioBeneficio_cancelacionBeneficio:
+    pattern:  /cancelacionBeneficio
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:cancelacionBeneficio"}
+    
+cancelacionCambioBeneficio_actualizarFeNacimiento:
+    pattern:  /actualizarFeNacimiento
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:actualizarFeNacimiento"}
+
+cancelacionCambioBeneficio_confirmarFeNacimiento:
+    pattern:  /confirmarFeNacimiento
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:confirmarFeNacimiento"}
+
+cancelacionCambioBeneficio_getMotivos:
+    pattern:  /getMotivos
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:getMotivos" }        
+
+cancelacionCambioBeneficio_guardarArchivos:
+    pattern:  /{strOpcion}/guardarArchivos
+    defaults: { _controller: "comercialBundle:CancelacionCambioBeneficio:guardarArchivos" }
+    requirements: { _method: post }    

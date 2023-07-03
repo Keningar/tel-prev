@@ -1,0 +1,16 @@
+infoLogs_index:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:InfoLogs:index" }
+infoLogs_gridInfoLogs:
+    pattern:  /gridInfoLogs
+    defaults: { _controller: "comercialBundle:InfoLogs:gridInfoLogs" }    
+infoLogs_getParametroRangoFechas:
+    pattern:  /getParametroRangoFechas
+    defaults: { _controller: "comercialBundle:InfoLogs:getParametroRangoFechas" }
+infoLogs_getMetodos:
+    pattern:  /getMetodos
+    defaults: { _controller: "comercialBundle:InfoLogs:getMetodos" }
+infoLogs_ajaxGuardarLog:
+    pattern:  /ajaxGuardarLog
+    defaults: { _controller: "comercialBundle:InfoLogs:ajaxGuardarLog"}    
+    

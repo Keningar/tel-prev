@@ -1,0 +1,986 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+<style>
+    #dashboard 
+    {
+        width: 1200px;
+    }
+    label 
+    {
+        display: block;
+        margin: 30px 0 0 0;
+    }
+
+    .no-close .ui-dialog-titlebar-close {
+      display: none;
+    }
+
+    .formulario label {
+        margin-bottom:0px !important;
+    }
+    #tbProducto
+    {
+        border-collapse: collapse;
+    }
+    .tr-prod-caract-relacion {
+        background-color: #d7eaf4;
+        padding: 5px;
+    }
+    .contenedor-archivos-input{
+        display: flex;
+        flex-direction: row;
+    }
+</style>
+    <link href="{{ asset('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.css')}}" type="text/css" rel="stylesheet" />    
+	
+    <link href="{{ asset('./bundles/comercial/css/funcionPrecio.css')}}" type="text/css" rel="stylesheet" />  
+    <link href="{{ asset('./bundles/comercial/css/businessSolution.css')}}" type="text/css" rel="stylesheet" /> 
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var url_puntos_lista_estados        = "{{ path('search_ajaxGetEstadosPunto') }}";
+        var url_lista_tiposNegocios         = '{{ path('cliente_lista_tiposNegocios') }}';
+        var url_tipoNegocioActual           = '{{ path('cliente_tipoNegocioActual') }}';
+        //Hace referencia al controlador que actualiza el tipo de negocio
+        var url_cambiaTipoNegocio = '{{ path('cliente_cambiaTipoNegocio') }}';
+        
+        var url_clientes                    = "{{ path('infoordentrabajo_listar_pto_clientes') }}";
+        var frecuencias                     = "{{frecuencias}}";
+        var idPunto                         = "{{punto_id.id}}";
+        var strCiudadPermitida              = "{{strCiudadPermitida}}";
+        var prefijoEmpresa                  = "{{prefijoEmpresa}}";
+        url_vendedores                      = '{{path('infopunto_ajax_lista_vendedores')}}';
+        var url_ajaxValidaCorreoMcAfee      = '{{path('infoservicio_ajaxValidaCorreoMcAfee')}}';
+        var url_ajaxValidaCorreoECDF        = '{{path('infoservicio_ajaxValidaCorreoECDF')}}';
+        var strUrlValidaAgregarIPMP         = '{{path('infoservicio_validaAgregarIPMP')}}';
+        var url_ajaxValidaFrecuencia        = '{{path('infoservicio_ajaxValidaFrecuencia')}}';
+        var valida_estado_punto             = "{{path('infoservicio_ajax_valida_estado_punto')}}";
+        loginEmpleado                       = "{{loginEmpleado}}";
+        nombreEmpleado                      = "{{nombreEmpleado}}";
+        var rol                             = "{{rol}}";
+        var strCombosValidar                = "";
+        var strAjaxGetRelacionPersonal      = "{{ path('infoservicio_ajaxGetRelacionPersonal') }}";
+        var frecuenciaItem                  = '{{frecuencia_item|json_encode()|raw}}';
+        var arrayListadoPropuesta           = '{{arrayListadoPropuesta}}';
+        var booleanAgregarWifiDualBand      = false;
+        var booleanAgregarIpWanPyme         = false;
+        var existeIpWan                     = '{{ existeIpWan }}';
+        var cantidadTotalIngresada          = '{{ cantidadTotalIngresada }}';
+        var urlajaxGetLicencias             = '{{ path('search_ajaxGetLicencias')}}';
+        var urlGuardarMaquinasVirtuales     = '{{ path("servicio_ajaxGuardarMaquinasVirtuales")}}';
+        var urlActualizarMaquinasVirtuales  = '{{ path("servicio_ajaxActualizarMaquinaVirtual")}}';
+        var strUrlValidaEliminacionServicio = '{{ path("servicio_validaEliminacionServicio")}}';
+        var strUrlGetPuntosMdAsociados      = '{{ path("servicio_getPuntosMdAsociados")}}';
+        var urlValidaCodigoPromocion        = '{{ path("validaCodigoPromocion")}}';
+        var strCodigoPromocionIns           = "";
+        var strNombrePromocionIns           = "";
+        var strTipoPromocionIns             = "";
+        var strCodigoPromocionBw            = "";
+        var strNombrePromocionBw            = "";
+        var strTipoPromocionBw              = "";
+        var strCodigoPromocion              = "";
+        var strNombrePromocion              = "";
+        var strTipoPromocion                = "";
+        var strServiciosMix                 = "";
+        var arrayListaTipoRed               = '{{arrayListaTipoRed}}';
+        var arrayListaClassRelacion         = JSON.parse('{{ arrayListaClassRelacion | json_encode | raw }}');
+        var url_ajaxValidaCorreoHboElearn   = '{{path('infoservicio_ajaxValidaCorreoHboElearn')}}';
+        var stUrlValidaProdAdicionalMs      = '{{ path('infoservicio_ajaxValidaProdAdicionalMs') }}';
+    </script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoordentrabajo/buscarCliente.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/new.js?53') }}"></script>
+    <script src="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.js') }}" type="text/javascript"></script>    
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/newSolutions.js?8') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/maquinasVirtualesComercial.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/recursosMv.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/helpersInfoServicio.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/Multiupload.js') }}"></script>
+
+{% endblock javascripts %}
+        
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h5>Nuevos Servicios</h5>
+    </div>
+    <div class="body_content">
+
+        <form action="{{ path('infoservicio_create') }}" method="post" enctype="multipart/form-data" {{ form_enctype(form) }} class="formulario" name="formulario" id="formulario" onsubmit="return enviarInformacion();" >
+			{% if(punto_id is defined) %}
+				<div class="secHead">Información del cliente</div>
+				<div class="formulario">
+					<table width='100%'>
+						<tr>
+							<td><b>Razón social:</b></td>
+							<input class='' type='hidden' readonly id="strUuidPaquete" name="strUuidPaquete" value=''/>
+							<input class='' type='hidden' readonly id="strTipoPaquete" name="strTipoPaquete" value=''/>
+							<td>{{ cliente.razon_social }}</td>
+							<td width='10%'>&nbsp;</td>
+							<td><b>Cliente:</b></td>
+							<td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+						</tr>
+						<tr>
+							<td><b>Pto. cliente:</b></td>
+							<td> {{ punto_id.login }}</td>
+							<td width='10%'>&nbsp;</td>
+							<td><b>Descripción:</b></td>
+							<td>{{ punto_id.descripcion }}</td>
+						</tr>
+						<tr>
+							<td><b>Tipo de negocio:</b></td>
+							<td id="nombreTipoNegocio">{{ nombre_tipo_negocio }}</td>
+						</tr>
+					</table>
+				</div>
+                <hr>
+			{% else %}
+				<div>               
+					<table border='0' align='left'>
+						<tr>
+							<td>
+								<label for='punto'>Pto. cliente:</label>
+							</td>
+							<td>
+							<input class='campo-obligatorio' type='text' readonly id="punto" name="punto" value=''/>
+							<input type='hidden' readonly id='puntoid' name='puntoid' value=''/>
+							<a href='#' onclick="showClientes()"><img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" /></a>
+							</td>
+					</table>
+				</div>       
+			{% endif %}
+                
+            <!-- Se valida solo para que la empresa TN vea la segmentacion de creacion de nuevos Servicios -->
+            {% if prefijoEmpresa == 'TN' %}   
+                <div class="secHead">Escoja la forma de Crear su Servicio</div>
+                <fieldset id="selector">                    
+                    <label for="tipoSeleccionProducto">Escoja una Opci&oacute;n</label>
+                    <select id="tipoSeleccionProducto" style="width:300px;">                      
+                        <option disabled selected>Seleccione...</option>
+                        <option value="servicio_unico" >Servicio/Producto &Uacute;nico</option>
+                        <option value="servicio_bs" >Business Solution</option>                                                
+                    </select>
+                </fieldset>
+            {% endif %}
+
+            <div id="servicio-unico-content">
+                <!-- Se válida solo para que la empresa TN tenga la opción de elegir el tipo de red en la creación de nuevos Servicios. -->
+                {% if prefijoEmpresa == 'TN' and  strCiudadPermitida =='S' and arrayListaTipoRed %}
+                    <div class="secHead">Escoja el tipo de red para crear su servicio</div>
+                    <fieldset id="selector">
+                        <label for="tipoRed">Escoja una Opci&oacute;n</label>
+                        <select id="tipoRed" style="width:125px;" onchange="actualizarProductos()">
+                            {% for item in arrayListaTipoRed %}
+                                <option value="{{ item.strValue }}"{{ item.strSelected == 'SI' ? ' selected' : '' }}>{{ item.strTipo }}</option>
+                            {% endfor %}
+                        </select>
+                    </fieldset>
+                {% endif %}
+                <div class="secHead">Servicios</div>
+                        {{ form_widget(form) }}
+                {% if prefijoEmpresa == 'TN' and arrayListadoPropuesta%}
+                    <div class="secHead">Cliente en sesión tiene propuestas asignadas en TelcoCRM</div>
+                    <fieldset id="selector">
+                        <label >Escoja una Propuesta</label>
+                        <select name='objListadoPropuesta' id='objListadoPropuesta' style="width:300px;">
+                            <option value="">Seleccione</option>
+                            {% for item in arrayListadoPropuesta %}
+                                    <option value="{{ item.intIdPropuesta }}">{{ item.strPropuesta }}</option>
+                            {% endfor %}
+                        </select>
+                    </fieldset>
+                {% endif %}
+                <div class="secHead">Tipo</div>
+
+                <div>
+                    <input type="radio" name="info" id="info" value="catalogo">Por Producto<br>
+                    <input type="radio" name="info" id="info" value="portafolio">Por Paquete<br>
+                </div>
+
+                <input id='infopuntoextratype_loginVendedor' name='infopuntoextratype[loginVendedor]' type='hidden' value='{{loginEmpleado}}'>
+                <input id='infopuntoextratype_nombreVendedor' name='infopuntoextratype[nombreVendedor]' type='hidden' value='{{nombreEmpleado}}'>
+
+                {% if (prefijoEmpresa == "MD" or prefijoEmpresa == "EN"  or  prefijoEmpresa == "TNP")%}
+                <div>
+                    <div id='div_errorvendedor' class='errormessage' style="display:none">Campo Vendedor es obligatorio</div>  
+                    <div class="secHead"><label  class='campo-obligatorio'>* Vendedor:</label></div>
+                    <div id='combo_vendedor' required='required'></div>             
+                </div>
+                {% endif %}
+
+                <div id="formulario_portafolio" class="campo-oculto">
+                    <div class="secHead">Por portafolio:</div>
+                    <div id="infoMensajeAdicionalPlan" class="infomessage" style="display:none"></div>
+                    <input type="hidden" name="validacionGuardarPlan" id="validacionGuardarPlan"/>
+                    <div style="display:none;" id="infoValidaGuardarPlan" name="infoValidaGuardarPlan"></div>
+                    <div>
+                        <div>
+                            <label class="required" for="listado">* Listado de Planes:</label>
+                            <select id="planes">
+                            </select>
+                        </div>
+                        <div id="divUltimaMillaId">
+                            <label>* Ultima Milla:</label>
+                             <select name='ultimaMillaId' id='ultimaMillaId' class="campo-obligatorio" >
+                                <option value="0">Seleccione</option>
+                                {% for item in tipo_medio %}
+                                    {% if item.nombreTipoMedio != "FTTx"  %}
+                                        <option value="{{ item.id }}">{{ item.nombreTipoMedio }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>                       
+                            <input type="hidden" name="requiere_ultimaMilla_plan" id="requiere_ultimaMilla_plan" value="SI" >
+                        </div>
+                        <div id='form_cantidad_planes'>
+                            <label class="required" for="cantidad">* Cantidad:</label>
+                            <input type="text" class="campo-obligatorio" name="cantidad_plan" id="cantidad_plan" onkeypress="validate(event)">
+                        </div>
+
+                        <div id='form_precio_planes'>
+                            <label class="required" for="cantidad">* Precio:</label>
+                            <input type="text" class="campo-obligatorio" name="precio" id="precio">
+                            <input type="hidden" name="precio_h" id="precio_h">                        
+                        </div>
+                        <div id="div_caracts_planes_productos" style="display:none"></div>
+                        <input type="hidden" name="frecuencia_plan" id="frecuencia_plan" >
+
+                        <div id='form_btn_planes'>
+                            <button type='button' class='button-crud' onClick='agregar_detalle_portafolio();'>Agregar</button>
+                            &nbsp;
+                            <button type='button' class='button-crud' onClick='limpiar_detalle_portafolio();'>Limpiar</button>
+                        </div>
+                    </div>
+                    <div id="tagsAdicionalesPlan" style="display:none"></div>
+                </div>
+
+                <div id="formulario_catalogo" class="campo-oculto">
+                    <div class="secHead">Por catalogo:</div>
+                    <div class="infomessage">
+                        Frecuencia  o ciclo de Facturaci&oacute;n del Producto: {{frecuencias}}
+                    </div>
+                    <div>
+                        <table id="tbProducto" class='formulario' width="100%">
+                            <tr id='idFrecuenciaPro' {% if (prefijoEmpresa == "MD" or prefijoEmpresa == "EN") %} style="display:none;"{% endif %} >
+                                <td width="230px">
+                                    <label style="white-space:nowrap; text-align:right;" for="frecuencia_prod">* Frecuencia de Facturación:</label>
+                                </td>
+                                <td style="padding-left: 5px;">
+                                    <select name='frecuencia_producto' id='frecuencia_producto'>
+                                        <option value="">Seleccione</option>
+                                {% for item in frecuencia_item %}
+                                        <option value="{{ item.valor1 }}">{{ item.valor2 }}</option>
+                                {% endfor %}
+                                    </select>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label style="white-space:nowrap;">* Listado de Productos:</label>
+                                </td>
+                                <td style="padding-left: 5px;">
+                                    <select id="producto"/>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                    {% if prefijoEmpresa == "TN" %}
+                            <tr>
+                                <td colspan="4">
+                                    <div id="divCabPlantillaComisionista" class="secHead campo-oculto">Plantilla Comisionistas</div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div id="plantillaComisionistas"></div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <br/><br/><br/>
+                            <tr>
+                                <td colspan="4">
+                                    <div id="divCabCaracteristicaProducto" class="secHead campo-oculto">Caracter&iacute;sticas del Producto</div></div>
+                                </td>
+                            </tr>
+                    {% endif %}
+                        </table>
+                    </div>
+                </div>
+                <input type='hidden' id='listado_informacion' name='listado_informacion'>
+                <div id="mensaje_validaciones" class="alert alert-danger campo-oculto animated fadeIn" role="alert"></div>
+                </br>
+                </br>
+                <div id="contenedor_archivos" name="contenedor_archivos">
+                    <div class="secHead">Carga de archivos</div>
+                </div>
+                <div class="secHead" style="margin-top: 15px;">Listado</div>
+                <div id='lista_informacion_pre_cargada'></div>
+                <input type="hidden" name="valores" id="valores" />            
+                <input type="hidden" name="num_ips_max_permitidas" id="num_ips_max_permitidas">
+                <input type="hidden" name="existe_ip_wan" id="existe_ip_wan" value="{{ existeIpWan }}">
+                <input type="hidden" name="num_ips_utilizadas" id="num_ips_utilizadas">
+                <input type="hidden" name="requiereAprobServicio" id="requiereAprobServicio">
+                <input type="hidden" name="msjSolAprobServicio" id="msjSolAprobServicio" value="{{ msjSolAprobServicio }}">
+                <input type="hidden" name="infoAdicionalProductos" id="infoAdicionalProductos" />
+                <input type="hidden" name="cantidad_total_ingresada" id="cantidad_total_ingresada" value="{{ cantidadTotalIngresada }}">
+                <input type="hidden" name="prod_ip" id="prod_ip">
+                <div class="buttons">
+                    <p>
+                        <button type='submit'class="button-crud" >Guardar</button>
+                        <span class="height20px">
+                            <a class="button-crud" href="{{ path('infopunto_show', {'id':punto_id.id, 'rol':rol }) }}">Regresar</a>
+                        </span>
+                    </p>
+                </div>
+            </div>           
+        </form>
+                
+        <div id="bs-content" align="center">
+            <br />            
+            <div class="secHead hr"></div>
+            <div id="titulo_subcontent">
+                <img src="{{ asset('public/images/paqueteProductos.jpg' | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+                <h5 align="left"><b>Selecci&oacute;n de Business Solutions</b></h5>
+            </div>
+            <br />
+            <div id="accordion" style="width: 90%;" align="center">
+                <h3>Filtro para Grupo de Productos</h3>
+                <div>                   
+                    <table>
+                        {% if prefijoEmpresa == 'TN' %}
+                            <tr id="objFilaPropuesta">
+                                <td>
+                                    <label for="objLblPropuestaBS" id="objLblPropuestaBS"><b>Escoja una Propuesta</b></label>
+                                    <select id="objSelectPropuestaBS" ><option disabled selected>Seleccione</option></select>
+                                </td>
+                            </tr>
+                            <tr id="objFilaCotizacion">
+                                <td>
+                                    <label for="objLblCotizacionBS" id="objLblCotizacionBS"><b>Escoja una Cotización</b></label>
+                                    <select id="objSelectCotizacionBS" ></select>
+                                </td>
+                            </tr>
+                        {% endif %}
+                        <tr>
+                            <td>
+                                <label for="grupo_bs"><b>Grupo Productos</b></label>
+                                <select id="grupo_bs"><option disabled selected>Seleccione Grupo</option></select>
+                            </td>
+                        </tr>
+                    </table>  
+                    
+                    <!-- Informacion de PAQUETE a ser creado -->
+                    <label id="descripcion-solucion" class="mensajes-sb"></label>
+                    
+                    <!-- Seleccion de productos para forma el paquete requerido -->
+                    <div id="content-select-producto">
+                        <br />
+                        
+                        <div align="left" class="secHead hr fd-tipo-subsolucion"></div>
+                        <fieldset  class='fd-tipo-subsolucion'>
+                            <h5 >
+                                <b>
+                                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;
+                                    Por favor escoja como desea organizar su soluci&oacute;n: 
+                                </b>                               
+                            </h5>
+                            <div id='fieldSet-subtipos'></div>
+                        </fieldset> 
+                                               
+                        <div align="left" class="secHead hr"></div>
+                        <fieldset>
+                            <h5>
+                                <b>
+                                    <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;
+                                    Por favor arrastre los Productos que necesita hacia el recuadro de la derecha para crear su Soluci&oacute;n
+                                </b>
+                            </h5>
+                        </fieldset>                                                
+                        <label for="subgrupo_bs"><b>Sub-Grupo Productos</b></label>
+                        <select id="subgrupo_bs"><option disabled selected value="NA">Seleccione Subgrupo</option></select><br/>
+                        <!-- Bloque de productos -->
+                        
+                        <div id="left-productos">                                                        
+                            <label><b>Cat&aacute;logo Productos Por Grupo/Subgrupo</b></label><br/>
+                            <ul id="listaProductos" class="connectedSortable" title="Por favor arrastre los productos que desea configurar"></ul>
+                        </div>
+                        <div id="middle-productos">&nbsp;</div>
+                        <div id="right-productos">                            
+                            <label><b id='lbl-titulo-solucion'></b></label><br/>
+                            <ul id="listaProductosEscogidos" class="connectedSortable connectedSortablePreferencial" data-type="STANDARD"></ul>
+                        </div>
+                        <!-- Bloque de productos -->
+                        
+                        <div class="secHead"></div>
+                        <div align="center">
+                            <button id="buttonGuardar"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar</button>
+                            <button id="buttonRegresar"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Regresar</button>
+                        </div>
+                    </div>                       
+                </div>                      
+            </div>
+        </div>
+        
+        <!-- modal waiting form -->
+        <div id="modal-message" class="modal-message" align="center">
+            <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+            <span id="modal-content-message"></span>
+        </div>
+        
+        <!-- alert message -->
+        <div id="modal-infoError-message" align="center" title="Alerta"></div>
+        
+        
+        <!-- resumen de productos seleccionados -->
+        <div id="content-resumen" title="Resumen de Solución"></div>
+
+        <!-- Solución creada -->
+        <div id="content-solucion-creada" align="left" title="Solución"></div>
+
+        <!-- configuracion de relacion entre preferencial y sub tipo de solucion-->
+        <div id="content-relacion-subtiposolucion" title="Relacionar Preferencial con Sub-Grupo de Solución"></div>
+         
+    </div>
+{% endblock contenido_izq %}
+{% block javascripts_footer %}
+<script>         
+	$('button[type=submit]').attr('disabled', 'disabled');
+    $('#contenedor_archivos').hide()    
+    var informacion_controlador = {};
+    var informacion             = [];
+
+	var nombre_tipo_negocio             = "{{ nombre_tipo_negocio }}";
+	var nombre_tipo_negocio_no          = "{{ nombre_tipo_negocio_no }}";
+	var detalle_plan                    = "{{ path('infoservicio_detalle_plan') }}";
+	var listar_caracteristicas_producto = "{{ path('admiproducto_ajax_getCaracteristicasProductoTecnico') }}";
+	var valida_ips_max_permitidas       = "{{ path('infoservicio_valida_ipsmaxpermitidas') }}";
+	var urlRequiereBackup               = "{{ path('infoservicio_servicios_requiere_backup') }}";
+    var valida_frecuencia               = "{{ path('infoservicio_valida_frecuencia') }}";
+    var valida_producto_netlifecam      = "{{ path('infoservicio_valida_producto_netlifecam') }}";
+    var valida_producto_internet        = "{{ path('infoservicio_valida_producto_internet') }}";
+    var validaCamaraActiva              = "{{ path('infoservicio_validarCamaraActiva') }}";
+    var strValidarPlantilla             = "S";
+    var urlGetGrupoSubgrupo             = "{{ path('infoservicio_ajaxGetGrupoSubgrupoProductos') }}";
+    var urlGetPropuestasTelcoCRM        = "{{ path('infoservicio_ajaxGetPropuestasTelcoCrm') }}";
+    var urlGetCotizacionTelcoCRM        = "{{ path('infoservicio_ajaxGetCotizacionTelcoCrm') }}";
+    var urlGetCaracteristicas           = "{{ path('infoplancaracteristicas_listar_caracteristicas') }}";  
+    var urlGetComisionistas             = "{{ path('infoservicio_ajaxGetPlantillaComisionista') }}";
+    var urlGuardarSolucion              = "{{ path('infoservicio_ajaxGuardarSolucion')}}";
+    var urlPathShowPunto                = "{{ path('infopunto_show', {'id':punto_id.id, 'rol':rol }) }}";
+    var valida_producto_adicional       = "{{ path('infoservicio_valida_productoAdicional') }}";
+    const urlGetTipoEsquema             = "{{ path('infoservicio_ajaxGetTipoEsquema') }}";
+    var urlGetArchivosReqSafeEntry      = "{{ path('infoservicio_ajaxGetArchivosReqSafeEntry') }}";
+    var intIdMotivoInstalacion          = 0;
+    var arrayMotivoInstalacion          = [];
+    $("input:radio[@name='info']").change(function() 
+    {        
+        strTipoRed    = (prefijoEmpresa == 'TN' && $('#tipoRed').val()!=undefined) ? $('#tipoRed').val():'MPLS';
+        var radioName = $(this).attr("name");
+        var intIdPropuesta = document.getElementById("objListadoPropuesta");
+        if(intIdPropuesta != null && intIdPropuesta != undefined)
+        {
+            intIdPropuesta = document.getElementById("objListadoPropuesta").value ? document.getElementById("objListadoPropuesta").value:'';
+        }
+        else
+        {
+            intIdPropuesta = '';
+        }
+        $('#objListadoPropuesta').prop('disabled','true');
+        if(radioName === 'info')
+        {
+            /*
+            if( (prefijoEmpresa == 'MD' || prefijoEmpresa == 'EN') && $("input:radio[@name='info']:checked").val() == 'catalogo')
+            {
+                var strMensaje = '';
+                strMensaje = validaPorProductoAdicionalMs({{ cliente.id_persona }},{{ punto_id.id }}); 
+                
+                if(strMensaje !== '')
+                {
+                    Ext.Msg.alert("Advertencia", strMensaje);
+                    $('#formulario_portafolio').addClass('campo-oculto');
+                    $('#formulario_catalogo').addClass('campo-oculto');
+                    return false;
+                }
+            }*/
+ 
+            $.ajax({
+                type: "POST",
+                data: "strTipoRed="+strTipoRed+"&tipo="+$("input:radio[@name='info']:checked").val()+"&nombre="+nombre_tipo_negocio+"&nombre_no="+nombre_tipo_negocio_no+"&intIdPropuesta="+intIdPropuesta,
+                url:  "{{ path('infoordentrabajo_tipo') }}",
+                beforeSend: function() 
+                {
+                    var tipo = $("input:radio[@name='info']:checked").val();
+
+                    if(tipo == 'portafolio')
+                    {
+                        tipo = "Paquete";
+                    }
+                    else
+                    {
+                        tipo = "Producto";
+                    }
+
+                    Ext.MessageBox.wait("Cargando Datos de " + tipo + "s");
+
+                    $('#formulario_portafolio').addClass('campo-oculto');
+                    $('#formulario_catalogo').addClass('campo-oculto');
+                },
+                complete: function() 
+                {
+                    Ext.MessageBox.hide();
+                },
+                success: function(msg)
+                {				
+                    if (msg.msg == 'ok')
+                    {
+                        if(msg.info=='portafolio')
+                        {
+                            document.getElementById("planes").innerHTML    = msg.div;
+                            $('#formulario_portafolio').removeClass('campo-oculto');
+                            $('#formulario_catalogo').addClass('campo-oculto');
+                        }
+                        else if(msg.info=='catalogo')
+                        {
+                            document.getElementById("cantidad_plan").value = "";
+                            document.getElementById("precio").value        = "";
+                            document.getElementById("producto").innerHTML  = msg.div;
+                            $('#formulario_portafolio').addClass('campo-oculto');
+                            $('#formulario_catalogo').removeClass('campo-oculto');
+                        }
+                    }
+                    else
+                    {
+                        $('#formulario_portafolio').addClass('campo-oculto');
+                        $('#formulario_catalogo').addClass('campo-oculto');
+                    }
+                }
+            });
+        }
+    });
+        
+    $('#producto').change(function()
+    {
+        intIdMotivoInstalacion = 0;
+        limpiarCaracteristicasProducto();
+        var info_producto           = document.getElementById('producto').value;
+        var producto                = info_producto.split("-");
+        var intFrecuencia           = document.getElementById("frecuencia_producto").value;
+        var infoAdicionalProductos  = "";
+        var intIdPropuesta          = document.getElementById("objListadoPropuesta");
+        if(intIdPropuesta != null && intIdPropuesta != undefined)
+        {
+            intIdPropuesta = document.getElementById("objListadoPropuesta").value ? document.getElementById("objListadoPropuesta").value:'';
+        }
+        else
+        {
+            intIdPropuesta = '';
+        }
+        if(producto.length > 1)
+        {
+            if( prefijoEmpresa == 'TN' )
+            {
+                $('#plantillaComisionistas').html(null);
+                $('#divCabPlantillaComisionista').removeClass('campo-oculto');
+                $('#divCabCaracteristicaProducto').removeClass('campo-oculto');
+                
+                $.ajax(
+                {
+                    type: "POST",
+                    data: "intIdProducto=" + producto[0],
+                    url:  urlGetComisionistas,
+                    beforeSend: function() 
+                    {
+                        $('#plantillaComisionistas').html('<div class="info-success" style="padding:5px!important; margin: 15px 0px!important;">'+
+                                                          'Cargando información de comisionistas...'+
+                                                          '</div>');
+                    },
+                    success: function(response)
+                    {
+                        if( response.strMensaje == 'OK' || response.strMensaje == 'ERROR' )
+                        {
+                            if( response.strMensaje == 'OK' )
+                            {
+                                strCombosValidar = response.strCombosValidar;
+                            }
+
+                            $('#plantillaComisionistas').html(response.strPlantillaComisionista);
+                        }
+                        else
+                        {
+                            strValidarPlantilla = "N";
+                            $('#plantillaComisionistas').html(response.strPlantillaComisionista);
+                        }
+                    }
+                });
+            }
+            
+            if(document.getElementById("infoAdicionalProductos"))
+            {
+                if(document.getElementById("infoAdicionalProductos").value)
+                {
+                    infoAdicionalProductos   = document.getElementById("infoAdicionalProductos").value;
+                }
+                else
+                {
+                    infoAdicionalProductos   = "";
+                }
+            }
+            else
+            {
+                infoAdicionalProductos   = "";
+            }
+            
+            $.ajax(
+            {
+                type: "POST",
+                data: "strTipoRed="+strTipoRed+"&producto=" + producto[0] + "&idPunto=" + {{ punto_id.id }}
+                      + "&verCaracteristicas=true&infoAdicionalProductos="+infoAdicionalProductos+"&intIdPropuesta="+intIdPropuesta
+                      + "&strTipoProceso=CrearServicio",
+                url:  urlGetCaracteristicas,
+                beforeSend: function() 
+                {
+                    Ext.MessageBox.wait("Cargando Características del producto");
+                    $('#contenido').addClass('campo-oculto');
+                },
+                complete: function() 
+                {
+                    Ext.MessageBox.hide();
+                },
+                success: function(msg)
+                {
+                    if (msg.msg == 'ok')
+                    {
+                        arrayMotivoInstalacion = msg.arrayMotivosInstalacion;
+                        //Agregar a la Tabla las características del producto.
+                        $('#tbProducto').append(msg.div);
+                        if ((document.getElementById('producto').value).includes('PAQUETE HORAS SOPORTE'))
+                        {
+                            Array.from(document.getElementsByTagName('input')).filter(input => input.name.includes('caracteristica_nombre')).forEach(element => {
+                                var num = element.name.substr(-1);
+                                if ((element.value).includes('Acumulación de horas') || (element.value).includes('Fracción/Hora') || (element.value).includes('Embebido')){
+                                    $('#caracteristicas_'+num)[0].type = 'checkbox';
+                                    if ((element.value).includes('Acumulación de horas')) {
+                                        $('#caracteristicas_'+num)[0].checked = true;
+                                    }
+                                }
+                            });
+
+                        }
+                        $('#cmbTercerizadora').addClass('campo-oculto required');
+
+                        //Setear la frecuencia del producto
+                        if( prefijoEmpresa == 'MD' || prefijoEmpresa == 'EN')
+                        {
+                            document.getElementById('idFrecuenciaPro').style = '';
+                            if(msg.strFrecuencia != null && msg.strFrecuencia != undefined)
+                            {
+                                $("#frecuencia_producto").val(msg.strFrecuencia).change();
+                            }
+                            else
+                            {
+                                $("#frecuencia_producto").val('').change();
+                            }
+                            $("#frecuencia_producto").attr('disabled', 'disabled');
+                        }
+                        
+                        if (producto[1] === 'SAFE ENTRY')
+                        {
+                            $.ajax({
+                                type: "POST",
+                                url:  urlGetArchivosReqSafeEntry,
+                                success: function(response)
+                                {
+                                    Object.entries(response).forEach(([key, value]) => 
+                                    {
+                                        // mostarContenedorArchivos >> nombre tag esRequerido
+                                        mostarContenedorArchivos(value[0],value[2],value[1])
+                                    });
+                                }
+                            });
+                        }
+
+                        /*
+                         * Se elimina la programación document.getElementById('mensaje_validaciones').style.display 
+                         * ya que se verifica que algunos errores no están siendo mostrados por el uso de esta propiedad
+                         * 
+                         * La forma correcta sería:
+                         * Para ocultar el div $('#mensaje_validaciones').addClass('campo-oculto').html("");
+                         * Para mostrar el div $('#mensaje_validaciones').removeClass('campo-oculto').html("Mensaje de error");
+                         */
+                        $('#mensaje_validaciones').addClass('campo-oculto').html("");
+                        /* Agrego un pequeño timeout de 2 segundos para asegurarnos de que haya llegado la respuesta
+                        y haya sido colocada en el DOM. */
+                        setTimeout(function () {
+                            if (producto[1] === 'INTERNET WIFI' || producto[1] === 'COU LINEAS TELEFONIA FIJA')
+                            {
+                                ListadoDetalleOrden.prototype.fields.add(new Ext.data.Field({name: 'tipo_esquema', type: 'int'}));
+                                ListadoDetalleOrden.prototype.fields.add(new Ext.data.Field({name: 'instalacion_simultanea', type: 'int'}));
+                                $.ajax(
+                                    {
+                                        type: "POST",
+                                        data: "idPunto=" + {{ punto_id.id }},
+                                        url:  urlGetTipoEsquema,
+                                        success: function(response)
+                                        {
+                                            if (response.strStatus == 'OK' && response.boolAllOptions === false) {
+                                                $('#e2').attr('disabled', 'disabled');
+                                            }
+                                        }
+                                    });
+                                    const objSelectElement  = document.getElementById("ultimaMillaIdProd");
+                                    let objLblInstSim       = $("label").filter(function() { return ($(this).text().trim() === '* Instalación Simultánea:') });
+                                    let objLblTipEsq        = $("label").filter(function() { return ($(this).text().trim() === '* Tipo de Esquema:') });
+                                    
+                                    disableOptions(objSelectElement, ['Fibra Optica', 'UTP', 'Radio']);
+                                    /* Con esta validacion se controla que siempre vaya primero el checkbox de "Instalación Simultánea y luego
+                                    el combo para elegir el tipo de esquema */
+                                    if(objLblInstSim[0] && objLblTipEsq[0])
+                                    {
+                                        const objParentInstSim  = objLblInstSim[0].parentElement.parentElement;
+                                        const objParentTipEsq   = objLblTipEsq[0].parentElement.parentElement;
+                                        objParentTipEsq.before(objParentInstSim);
+                                    }
+                             }
+                                                    
+                        }, 2500);
+
+                        //Validar que de respuesta sino solicitarla
+                        if(msg.eval)
+                        {
+                            actualizaDescripcion(true);
+                        }
+                    }
+                    else
+                    {
+                        $('#tbProducto').append(msg.msg);
+                    }
+                }
+            });
+        }
+    });
+
+    /**
+     * Documentación para la función 'actualizarProductos'.
+     *
+     * Función que limpia el formulario al momento de cambiar el tipo de red, para elegir nuevamente
+     * el producto e ingresar los valores.
+     *
+     * @author Kevin Baque Puya <kbaque@telconet.ec>
+     * @version 1.0 17-09-2019
+     *
+     */
+    function actualizarProductos()
+    {
+        strTipoProducto = ($("input:radio[@name='info']:checked").val()!= undefined) ? $("input:radio[@name='info']:checked").val():'';
+        strTipoRed      = ( prefijoEmpresa == 'TN' && $('#tipoRed').val()!=undefined) ? $('#tipoRed').val():'';
+        if(strTipoProducto != '')
+        {
+            limpiar_detalle();
+            $("input:radio[@name='info']").change();
+        }
+    }
+
+    /**
+     * Función que permite deshabilitar las opciones que no se encuentren dentro de un arreglo.
+     *
+     * @author Pablo Pin 18-04-2019
+     * @version 1.0
+     * @param objSelectElement -> Es el objeto seleccionado del DOM.
+     * @param arrayPermited -> Arreglo con las opciones permitidas, las cuales no se van a deshabilitar.
+     *
+     */
+    function disableOptions(objSelectElement, arrayPermited)
+    {
+        const intElementLength = objSelectElement.options.length;
+        for (let i = 0; i < intElementLength; i++) {
+            let strText = objSelectElement.options.item(i).text;
+            if (!arrayPermited.includes(strText))
+            {
+                objSelectElement.options.item(i).setAttribute("disabled", "disabled");
+            }
+        }
+    }
+
+    $('#divUltimaMillaId').addClass('campo-oculto required');
+        
+    $('#planes').change(function()
+    {   
+        strCodigoPromocionIns                                               = "";
+        strNombrePromocionIns                                               = "";
+        strTipoPromocionIns                                                 = "";
+        strCodigoPromocionBw                                                = "";
+        strNombrePromocionBw                                                = "";
+        strTipoPromocionBw                                                  = "";
+        strCodigoPromocion                                                  = "";
+        strNombrePromocion                                                  = "";
+        strTipoPromocion                                                    = "";
+        strServiciosMix                                                     = "";
+        document.getElementById("infoMensajeAdicionalPlan").innerHTML       = "";
+        document.getElementById("infoMensajeAdicionalPlan").style.display   = "none";
+        document.getElementById("validacionGuardarPlan").value              = "";
+        document.getElementById("infoValidaGuardarPlan").innerHTML          = "";
+        document.getElementById("div_caracts_planes_productos").innerHTML       = "";
+        document.getElementById("div_caracts_planes_productos").style.display   = "none";
+        var info_plan                                                       = document.getElementById('planes').value;
+        var plan=info_plan.split("-");
+        $.ajax({
+            type: "POST",
+            data: "plan=" + plan[0] + "&idPunto=" + {{ punto_id.id }} ,
+            url:  "{{ path('infoordentrabajo_info_plan') }}",
+            beforeSend: function()
+            {
+                limpiar_detalle_portafolio(false);
+                Ext.MessageBox.wait("Cargando Datos del plan");
+            },
+            complete: function() 
+            {
+                Ext.MessageBox.hide();
+            },
+            success: function(msg)
+            {
+                if (msg.msg == 'ok')
+                {	console.log("strHtmlCaratsPlanes")	
+                    console.log(msg.strHtmlCaratsPlanes)			
+                    //Llenar el div que presentara las cláusulas
+                    //Validar que de respuesta sinop solicitarla
+                    document.getElementById("precio").value   = msg.precio;
+                    document.getElementById("precio_h").value = msg.precio;
+
+                    document.getElementById("requiere_ultimaMilla_plan").value = msg.esEnlace;
+
+                    $('#mensaje_validaciones').addClass('campo-oculto');
+                    $('#form_cantidad_planes').removeClass('campo-oculto');
+                    $('#form_precio_planes').removeClass('campo-oculto');
+                    $('#form_btn_planes').removeClass('campo-oculto');
+
+                    if(prefijoEmpresa == 'MD' || prefijoEmpresa == 'EN')
+                    {
+                        $('#divUltimaMillaId').removeClass('campo-oculto required');
+                        if(msg.strExisteInfoAdicional == "SI")
+                        {
+                            document.getElementById("infoMensajeAdicionalPlan").innerHTML       = msg.strMensajeInformacion;
+                            document.getElementById("infoMensajeAdicionalPlan").style.display   = "block";
+                        }
+                        
+                        if(msg.strTagsAdicionales!="")
+                        {
+                            document.getElementById("tagsAdicionalesPlan").innerHTML        = msg.strTagsAdicionales;
+                        }
+                        
+                        if(msg.strHtmlCaratsPlanes!="")
+                        {
+                            document.getElementById("div_caracts_planes_productos").innerHTML        = msg.strHtmlCaratsPlanes;
+                            document.getElementById("div_caracts_planes_productos").style.display    = "block";
+                        }
+                        
+                        if(msg.strStatusValidaciones)
+                        {
+                            document.getElementById("validacionGuardarPlan").value          = msg.strStatusValidaciones;
+                            document.getElementById("infoValidaGuardarPlan").innerHTML      = msg.strMensajeValidaciones;
+                        }
+                        
+                        if(msg.strNoRequiereUltimaMilla=="SI")
+                        {
+                            $('#divUltimaMillaId').addClass('campo-oculto required');
+                        }
+                    }
+                    else
+                    {
+                        if(msg.esEnlace == 'SI')
+                        {
+                            $('#divUltimaMillaId').removeClass('campo-oculto required');
+                        }
+                        else
+                        {
+                            $('#divUltimaMillaId').addClass('campo-oculto required');
+                        }
+                    }
+                }
+                else
+                {
+                    document.getElementById("precio").value                     = "";
+                    document.getElementById("precio_h").value                   = "";
+                    document.getElementById("mensaje_validaciones").innerHTML   = msg.msg;
+                    $('#mensaje_validaciones').removeClass('campo-oculto');
+                    $('#form_cantidad_planes').addClass('campo-oculto');
+                    $('#form_precio_planes').addClass('campo-oculto');
+                    $('#form_btn_planes').addClass('campo-oculto');
+
+                }
+            }
+        });
+    });
+
+    $('#ultimaMillaId').change(function()
+    {
+        $('#mensaje_validaciones').addClass('campo-oculto').html("");
+        $('#mensaje_validaciones').addClass('campo-oculto').html("");
+        var strCodigoPromoIns   = "";
+        var strCodigoPromoBw    = "";
+        if (prefijoEmpresa == 'MD' || prefijoEmpresa == 'EN')
+        {   strCodigoPromoIns = strCodigoPromocionIns;
+            strCodigoPromoBw  = strCodigoPromocionBw;
+            if (strCodigoPromoIns !== "" || strCodigoPromoBw !== "") 
+            {
+                Ext.Msg.alert("Advertencia", `<b>Se borrarán los datos ingresados por código que dependen de la regla Última Milla.</b>`);
+                document.getElementById("PROM_INS").value = "";
+                document.getElementById("PROM_BW").value  = "";
+                strCodigoPromocionIns                     = "";
+                strNombrePromocionIns                     = "";
+                strTipoPromocionIns                       = "";
+                strCodigoPromocionBw                      = "";
+                strNombrePromocionBw                      = "";
+                strTipoPromocionBw                        = "";
+                strServiciosMix                           = "";
+            }
+        }
+    });
+
+    /** 
+     * Función que limpia las características de un producto
+     * 
+     * @author Lizbeth Cruz <mlcruz@telconet.ec>
+     * @version 1.1 30-08-2019 Se elimina la programación document.getElementById('mensaje_validaciones').style.display 
+     *                          para mostrar el error, ya que al hacerlo de esta manera, impide que otros errores se muestren
+     * 
+     * @author Leonardo Mero <lemero@telconet.ec>
+     * @version 1.2 06-12-2022 - Se oculta el contenedor de archivos
+     *
+     *@since 1.0
+     */
+    function limpiarCaracteristicasProducto()
+    {
+        // Se elimina el código html de todas las etiquedas <tr> con el nombre "caracts" que alojan todas las características 
+        // y propiedades del producto
+        var x = document.getElementsByName("caracts");
+        var i;
+        for (i = 0; i < x.length; i++)
+        {
+            x[i].innerHTML = '';
+        }
+
+        $('#mensaje_validaciones').addClass('campo-oculto').html("");
+        $('#mensaje_validaciones').addClass('campo-oculto');
+        $('#contenedor_archivos').hide()
+    }
+     
+     function mostrarDiv(div)
+     {
+         capa = document.getElementById(div);
+         capa.style.display = 'block';    
+     }
+     function ocultarDiv(div)
+     {
+         capa = document.getElementById(div);
+         capa.style.display = 'none';    
+     }		 
+</script>
+{% endblock javascripts_footer %}
+    

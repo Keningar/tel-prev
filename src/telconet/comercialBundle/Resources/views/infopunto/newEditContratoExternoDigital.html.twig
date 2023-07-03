@@ -1,0 +1,278 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+        <style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+        </style>
+{% endblock %}
+        
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_gridContratoExternoDigital = "{{ path('infopunto_gridContratoExternoDigital',{'intIdPunto':objInfoPunto.id}) }}";
+        var url_gridServiciosVtaExterna    = "{{ path('infopunto_gridServiciosVtaExterna',{'intIdPunto': objInfoPunto.id }) }}";
+        var strRol     = "{{strRol}}";
+        var intIdPunto = '{{ objInfoPunto.id }}';
+        var prefijoEmpresa = '{{ strPrefijoEmpresa }}';
+    </script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/seleccionCliente.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/newEditContratoExternoDigital.js?1') }}"></script>
+  
+    <script>
+        Ext.onReady(function () {
+            var tabs = new Ext.TabPanel({
+                height: 500,
+                renderTo: 'my-tabs',
+                activeTab: 0,
+                items:[
+                    {contentEl:'tab1', title:'Editar Archivos', id: 'tab_1'},
+                    {contentEl:'tab2', title:'Subir Archivos', id: 'tab_2'}
+                    ],
+                defaults:{autoScroll:true},
+                 listeners: {
+                'tabchange': function(tabPanel, tab){                    
+                    if(tab.id == 'tab_1')
+                    {
+                       store.load({params: {start: 0, limit: 10}});
+                    }
+                    else
+                    {
+                        storeServicios.load(); 
+                    }                   
+                }
+            }
+            });           
+        });
+    </script>
+     
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1> Subir/Editar Contratos Externos Digitales</h1>
+    </div>
+
+   {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+   {% endfor %}
+
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}
+    <div class="body_content">
+        {% if (objInfoPunto)%}
+           <table class="record_properties" width="80%" border='0'>
+           <tbody>
+           <tr>
+                <td colspan="2" class="secHead">Informaci&oacute;n del Cliente:</td>
+           </tr>
+           <tr>
+               <td><b>Cliente:</b></td>
+               <td>{{ arrayInfoCliente.cliente }}</td>  
+           </tr>    
+           <tr>
+               <td><b>Pto. Cliente:</b></td>
+               <td>{{ arrayInfoCliente.puntoId }}</td>
+           </tr>
+           </tbody>
+           </table>
+           <br>
+            <form action="{{ path('infopunto_guardarContratoExternoDigital', { 'intIdPunto': objInfoPunto.id, 'strRol':strRol }) }}" 
+                  method="post" {{ form_enctype(formDocumentos) }} class='formulario' onsubmit="return mostrarWaitMsg()">
+                <div id="my-tabs"> 
+                    <div id="tab1" class="x-hide-display">    
+                        <table width="80%" cellpadding="1" cellspacing='0'  border='0'>
+                        <tr bgcolor='#ffffff'>
+                         <td bgcolor='#ffffff'><div id='listado'></div></td>
+                        </tr>
+                        </table>
+                    </div>     
+                    <div id="tab2" class="x-hide-display">
+                         <table border='0' cellpadding='1' cellspacing='1' width='80%'>
+                             <tr>
+                                <td colspan='2'>&nbsp;</td>
+                            </tr>
+                             <tr>
+                                <td colspan='2'>
+                                   <div class="infomessage">Puedes dar click en <i>"Agregar mas Imágenes"</i> 
+                                       para agregar mas Documentos</div>
+                                </td>
+                            </tr>   
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="#" id="agregar_imagen">Agregar mas Imagenes</a>
+                                </td>
+                            </tr> 
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td colspan='2'>  
+                                 <table border='0' cellpadding='1' cellspacing='1' width='50%'>
+                                 <tr>
+                                 <td>
+                                     <input type='text' style='display:none' required='required' 
+                                      id='infopuntoextratype_personaEmpresaRolId' name='infopuntoextratype[personaEmpresaRolId]'
+                                      value='{{objInfoPersonaEmpresaRol.id}}'/>
+                                     <div>                                    
+                                     <input id="infodocumentotype_imagenes_0" class="campo-obligatorio" type="file" 
+                                            name="infodocumentotype[imagenes][0]">
+                                     <ul id="imagenes-fields-list" class="campo-obligatorio" 
+                                         data-prototype="{{ form_widget(formDocumentos.imagenes.vars.prototype) | e }}">
+                                     {% for imagenesField in formDocumentos.imagenes %}
+                                       <li>
+                                           {{ form_errors(imagenesField) }}
+                                           {{ form_widget(imagenesField) }}
+                                       </li>
+                                     {% endfor %}
+                                     </ul>
+                                     </div>
+                                  </td>                                  
+                                    <td>
+                                       <div>
+                                       <select id="infodocumentotype_tipos_0" class="campo-obligatorio" name="infodocumentotype[tipos][0]"> 
+                                          {% for key, tipo in arrayTipoDocumentos %}
+                                            {% if ( key == 2) %}
+                                               <option selected value="{{ key }}" > {{ tipo }}</option>
+                                            {% else %}
+                                               <option value="{{ key }}" > {{ tipo }}</option>
+                                            {% endif %} 
+                                         {% endfor %}
+                                       </select>
+                                       <ul id="tipos-fields-list" data-prototype="{{ form_widget(formDocumentos.tipos.vars.prototype) | e }}">
+                                       {% for tiposField in formDocumentos.tipos %}
+                                         <li>
+                                             {{ form_errors(tiposField) }}
+                                             {{ form_widget(tiposField) }}
+                                         </li>
+                                       {% endfor %}
+                                       </ul>
+                                       </div>
+                                    </td>                                  
+                                  </tr></table>
+                                        
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            {% if strPrefijoEmpresa == 'MD' %}
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                       <b>Proveedor:</b>
+                                        <select id="idPersonaRolProveedor" class="campo-obligatorio" name="idPersonaRolProveedor"> 
+                                            {% for key, proveedor in arrayProveedores %}
+                                                 <option value="{{ key }}" > {{ proveedor }}</option>
+                                           {% endfor %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr><td colspan='2'>
+                                    <table border='0'>
+                                      <tr>
+                                        <td><div class="secHead">Listado de Servicios</div>
+                                        <input type='hidden' id="infopuntotype_listadoServicios" name="array_listado_servicios"/>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td><div id='lista_servicios'></div>                                   
+                                        </td>
+                                      </tr>                                   
+                                     </table>
+                                </td></tr>
+                            {% endif %}
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td> <div class="buttons">
+                                     <p> 
+                                       <span class="height20px">  
+                                         <button type='submit'class="button-crud">Guardar</button>
+                                       </span>
+                                     </p>
+                                     </div>    
+                                </td></tr>
+                            <tr><td>&nbsp;</td></tr> 
+                           </table>                          
+                     </div> 
+                     
+                </div>
+
+                <input type="hidden" size="100" name="valores" id="valores" /> 
+                
+                <div class="buttons">
+                    <p>                                                
+                        <span class="height20px">
+                        <a class="button-crud" href="{{ path('infopunto_show',{'id':objInfoPunto.id,'rol':strRol }) }}">Regresar</a>
+                        </span>
+                    </p>
+                </div>
+            </form>	
+        {% else %}
+            <div class="warningmessage">
+                Solo puede agregar mas archivos digitales si el Login en sesion posee Servicios de Proveedores Externos en los Estados:
+                Pre-servicio, Factible, PrePlanificada, Planificada, AsignadoTarea.
+            </div>
+        {%endif%}
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+<script type="text/javascript">
+    var imagenesCount = '{{ formDocumentos.imagenes | length }}';
+    var tiposCount    = '{{ formDocumentos.tipos | length }}';
+    imagenesCount++;
+    tiposCount++;
+    jQuery(document).ready(function() {
+        jQuery('#agregar_imagen').click(function() {
+        if(tiposCount <3 ) 
+        {
+            var imagenesList = jQuery('#imagenes-fields-list');
+            var tiposList    = jQuery('#tipos-fields-list');
+            var newWidget = imagenesList.attr('data-prototype');
+            var newWidgetTipo = tiposList.attr('data-prototype');
+            var name='__name__';
+            newWidget = newWidget.replace(name, imagenesCount);
+            newWidgetTipo = newWidgetTipo.replace(name, tiposCount);
+            newWidget = newWidget.replace(name, imagenesCount);
+            newWidgetTipo = newWidgetTipo.replace(name, tiposCount);
+            imagenesCount++;
+            tiposCount++;
+            // crea un nuevo elemento lista y lo añade a la lista
+            var newLi = jQuery('<li></li>').html(newWidget);
+            newLi.appendTo(jQuery('#imagenes-fields-list'));
+
+            var newLi = jQuery('<li></li>').html(newWidgetTipo);
+            newLi.appendTo(jQuery('#tipos-fields-list'));
+           
+            return false;
+        }
+        else
+        {
+            Ext.Msg.alert('Error ', 'Solo Puede agregar hasta 3 documentos digitales');
+        }
+
+        });
+    })
+    
+</script>
+<script>
+var flagTtarjetaValida = 1;
+
+</script>
+
+ {% endblock javascripts_footer%}

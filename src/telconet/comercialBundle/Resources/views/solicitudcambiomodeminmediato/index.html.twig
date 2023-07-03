@@ -1,0 +1,89 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}      
+{% endblock %}
+{% block javascripts%}
+	{{ parent() }}          
+        <script>
+            var url_lista_motivos               = '{{ path('solicitudcambiomodeminmediato_get_motivos_ajax') }}';
+            var url_solicitar_cancelacion_ajax  = '{{ path('solicitudcambiomodeminmediato_graba_solicitudcambiomodeminmediato_ajax') }}';
+            var url_obtene_informacion_servicio = '{{ path('solicitudcambiomodeminmediato_ajaxInformacionServicioMdAction') }}';
+            var url_grid                        = "{{ path('solicitudcambiomodeminmediato_get_servicios_ajax',{'id':puntoId}) }}";
+            var prefijoEmpresa                  = '{{ app.session.get('prefijoEmpresa') }}';
+            var strAplicaFacturacionCambioModem = '{{ aplicaFacturacionCambioModem }}';
+            var strEsPuntoGpon          = "{{ strEsPuntoGpon }}";
+            var url_asignar_cuadrilla   = "{{ path('asignarresponsable_getCuadrillas') }}";
+            var url_asignar_responsable = "{{ path('asignarresponsable_getLiderCuadrilla') }}";
+        </script>        
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudcambiomodeminmediato/servicios.js?7') }}"></script>
+{% endblock javascripts %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Solicitud Cambio Modem Inmediato</h1>
+</div>
+
+<div class="body_content">
+
+{%if puntoId is not null%}
+    {% if aplicaFacturacionCambioModem == 'S' %}
+        <div class="infomessage">Si el cambio de mo&#769;dem inmediato es de tipo "Facturable", el valor a facturar sera&#769; cargado internamente a trave&#769;s de la plantilla de productos.</div>
+    {% endif %}
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td bgcolor='#ffffff'>&nbsp;</td>
+            </tr>            
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='filtro_servicios'></div></td>
+            </tr>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='panel_observacion'></div></td>
+            </tr>             
+            <tr bgcolor='#ffffff'>
+                     <td>&nbsp;</td><td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+            </tr>
+        </table>
+{%else%}
+<div>Debe seleccionar login previamente para poder realizar una solicitud de cambio de equipo</div>
+    
+{%endif%}    
+
+
+</div>
+  
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{#{asset('app_dev.php/comercial/solicitud')}#}">Regresar</a>
+        </span>
+    </p>
+</div> 
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+				<!--<li>
+					<a class="listado_ac_tablas" href="{#{ path('infopunto_servicios',{ 'id': entity.id }) }#}">Servicios</a>
+				</li> -->                   
+                    <!--
+			{#% for acc in acc_relaciondas %} 
+				<li>
+					<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+				</li>
+			{% endfor %#}
+                    -->
+			<!--li>
+				<a class="listado_ac_tablas" href="{#{ path('precliente_convertir', { 'id_prospecto': entity.id }) }#}">Convertir Prospecto a Cliente</a>
+			</li-->
+		</ul>
+
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}

@@ -1,0 +1,15 @@
+solicitudcancelacion:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudCancelacion:index" }
+
+solicitudcancelacion_graba_soliccanc_ajax:
+    pattern:  /grabasolicituddescajax
+    defaults: { _controller: "comercialBundle:SolicitudCancelacion:grabaSolicitudCancelacion_ajax" }
+
+solicitudcancelacion_get_motivos_ajax:
+    pattern:  /getmotivoscancelacionajax
+    defaults: { _controller: "comercialBundle:SolicitudCancelacion:getMotivos_ajax" }
+
+solicitudcancelacion_get_servicios_ajax:
+    pattern:  /{id}/getserviciossolicitudcancelacionajax
+    defaults: { _controller: "comercialBundle:SolicitudCancelacion:getServiciosParaSolicitudCancelacion_ajax" }

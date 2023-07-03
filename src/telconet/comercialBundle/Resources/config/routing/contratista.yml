@@ -1,0 +1,3 @@
+contratista_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:Contratista:grid"}

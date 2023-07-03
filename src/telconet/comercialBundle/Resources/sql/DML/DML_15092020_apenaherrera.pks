@@ -1,0 +1,1205 @@
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD',
+    'Parametros definidos para las validaciones en el Flujo de Solicitudes de descuento Fijo para personas con Discapacidad',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO',
+    'Activo',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO',
+    'In-Corte',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SOLICITUD',
+    'Pendiente',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SOLICITUD',
+    'Aprobado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SOLICITUD',
+    'Finalizada',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'PORCENTAJE_DESCUENTO',
+    '50',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'MOTIVO_DESC_DISCAPACIDAD',
+    'Cliente con Discapacidad',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+ 
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'Contiene el mensaje por validación en el Ingreso de Solicitudes para personas con Discapacidad',
+    'NOTIFICACION_INGRESO',
+    'Cliente ya posee descuento En Login: {strLogin}- Dirección: {strDireccion}. No puede ingresar una nueva solicitud de descuento.',
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'Contiene el mensaje por validación en la Aprobación de Solicitudes para personas con Discapacidad',
+    'NOTIFICACION_APROBACION',
+    'Solicitud Imposible de Aprobar-Cliente ya posee beneficio.',
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'VALIDACION_SOLICITUD_DISCAPACIDAD_POR_CLIENTE',
+    'S',
+    'Tipo de Validación habilitada S: POR_CLIENTE, N: POR_PUNTO',
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'migracion_ttco',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Anulado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Cancelado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Cancelar',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'AnuladoMigra',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Eliminado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Reubicado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Pre-cancelado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Migrado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Trasladado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'MigradoOnnet',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Cancel',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Rechazada',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Rechazado',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'Elimiando',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'ESTADOS_SERVICIO_LIBERA_BENEFICIO',
+    'cancelarCliente',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+COMMIT;
+/
+

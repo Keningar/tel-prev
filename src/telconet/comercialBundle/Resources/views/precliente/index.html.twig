@@ -1,0 +1,115 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('users.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Prospectos</h1>
+</div>
+ {% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}    
+ <script>	       
+   var prefijoEmpresa = "{{ prefijoEmpresa }}";           
+ </script>      
+
+ <input id='infopersonarolextratype_oficinaId' name='infopersonarolextratype[oficinaId]' type='hidden' value=''>    
+ <input id='strIdLogin' name='strIdLogin' type='hidden' value=''>
+  
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_prospectos'></div></td>
+            </tr>
+
+    </table>        
+            
+
+        <script>
+
+        var url_precliente_delete_ajax='{{path('precliente_delete_ajax')}}';
+        var url_editar_nombre_ajax='{{path('precliente_editar_nombre_ajax')}}';
+        var url_user_creacion_ajax='{{path('precliente_editar_user_creacion_ajax')}}';
+        var url_precliente_lista_estados='{{path('precliente_lista_estados')}}';
+        var url_grid = "{{ path('precliente_grid') }}";
+        var url_empleados = "{{ path('precliente_get_empleados') }}";
+        var puedeEditarNombre = '{{ is_granted("ROLE_6-1697") }}';
+        var puedeEditarUser = '{{ is_granted("ROLE_6-6357") }}';
+        
+        var url_lista_oficinas="{{ path('aprobacioncontrato_getoficinas_ajax') }}";   
+        
+        </script>        
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/precliente/index.js?5') }}"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/precliente/ediciones.js?3') }}"></script>         
+
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="acciones_relacionadas">
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}
+
+<ul>
+  <li>
+	<a href="{{ path('precliente_new') }}" class="button-nuevo-registro">
+		<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+		&nbsp;Nuevo Prospecto
+	</a>
+  </li>
+  {% if (prefijoEmpresa =='TN') %}
+    <br>
+    <li>
+        <a href="{{ path('precliente_InformacionCliente') }}" class="button-nuevo-registro">
+        <img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" />
+        &nbsp;Consultar por Identificación
+      </a>
+    </li>
+  {%endif%}
+</ul>
+</div>
+	<div class="titulo-acciones-relacionadas">
+		Acciones Relacionadas
+	</div>
+<ul class="listado_acciones_relacionadas">
+  {% if ((prefijoEmpresa =='MD' or prefijoEmpresa =='EN') and  is_granted("ROLE_6-8837")) %}
+    <li>
+      <a  href="{{ path('precliente_ProspectoFormulario') }}">Solicitar aceptación de políticas y cláusulas</a>
+    <li>
+  {%endif%}
+	
+</ul>
+{% endblock contenido_der %}

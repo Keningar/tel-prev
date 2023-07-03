@@ -1,0 +1,466 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+        <style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+        </style>
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />  
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />    
+{% endblock %}
+        
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+		var url_clientes                = "{{ path('precliente_grid') }}";		
+        var url_validarNumeroTarjetaCta = "{{ path('infocontrato_validarNumeroTarjetaCta') }}";
+        var imagenesCount               = '{{ form_documentos.imagenes | length }}';       
+        var tiposCount                  = '{{ form_documentos.tipos | length }}'; 
+        var url_validarFormaPago        = '{{ path('infocontrato_validarPorFormaPago') }}';   
+        var url_listarBancosAsoc        = '{{ path('infocontrato_listar_bancos_asociados') }}'; 
+        var url_listarClausulas         = '{{ path('infocontrato_listar_clausulas') }}'; 
+        var url_reenvioPin              = '{{ path('infocontrato_reenvio_pin') }}'; 
+        var url_autorizarContrato       = '{{ path('infocontrato_autorizarContrato') }}';
+        var url_valida_contrato_activo  = "{{ path('cliente_ajax_valida_contrato_activo') }}";
+        var url_crearContratoMs         = "{{ path('infocontrato_create_ms') }}";
+        var url_crearContratoFisico     = "{{ path('infocontrato_create') }}";
+        var identificacion              = "{{ identificacion }}";
+        var url_grid                    = "{{ path('infopunto_servicios_grid',{'id':idPuntoSession }) }}";
+        var urlCodigoPromocion          = "{{ path('infopunto_ajaxValidaCodigoPromocion')}}";
+        var strIsGrantedICodPromo       = "{%if is_granted("ROLE_431-7757")%}S{%else%}N{%endif%}";
+        var puntoCliente                =  app.session.get('ptoCliente');
+        var serviciosPunto              =  app.session.get('serviciosPunto');
+        var tarjetaCompleta             = "";
+	</script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/seleccionCliente.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/validarNumeroTarjetaCuenta.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/validarFechaVencimiento.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoContrato/new.js?9') }}"></script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/promocionesContrato.js?1') }}"></script>
+    
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo {{nombrePantalla}}</h1>
+    </div>
+   {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}   
+
+ <div id="mensaje_validaciones" class="info-error campo-oculto"></div>
+ 
+{% set puntoCliente   = app.session.get('ptoCliente') %}
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}	
+    <div class="body_content">
+        {% if ((estadoCliente=='Activo')
+            and ((tipoRolClienteSesion=='Pre-cliente' and nombrePantalla !='Adendum') or (tipoRolClienteSesion=='Cliente' and nombrePantalla =='Adendum')
+            or (cambioRazonSocial == 'S'))
+            and ((((prefijoEmpresa=='MD' or prefijoEmpresa=='EN')  or prefijoEmpresa=='TNP') and tieneServiciosFactibles)  or (prefijoEmpresa=='TNG' )
+            or (prefijoEmpresa=='TN' and strTieneServiciosTN))) %}
+            {%  if ((prefijoEmpresa=='MD' or prefijoEmpresa=='EN') or prefijoEmpresa=='TNP' or prefijoEmpresa=='TNG') or (prefijoEmpresa=='TN' and boolContactosRequeridos) %}
+            {% if creacionPunto is defined and creacionPunto is not null and creacionPunto is not empty 
+                and creacionPunto.tipoContratoClausula is not null %}
+                <input type='hidden' value='{{creacionPunto.tipoContratoClausula}}' id='tipoContratoClausula' name='tipoContratoClausula' />
+            {%endif%}
+            {% if creacionPunto is defined and creacionPunto is not null and creacionPunto is not empty 
+                and creacionPunto.haslinkDatosBancarios == true and creacionPunto.dataBancario is not null %}
+                <input type='hidden' value='{{creacionPunto.dataBancario.formaPagoId}}' id='formaPagoId' name='formaPagoId' />
+                <input type='hidden' value='{{creacionPunto.dataBancario.tipoCuentaId}}' id='tipoCuentaId' name='tipoCuentaId' />
+                <input type='hidden' value='{{creacionPunto.dataBancario.numeroCuenta}}' id='numeroCuenta' name='numeroCuenta' />
+                <input type='hidden' value='{{creacionPunto.dataBancario.titular}}' id='titular' name='titular' />
+                <input type='hidden' value='{{creacionPunto.dataBancario.anio}}' id='anio' name='anio' />
+                <input type='hidden' value='{{creacionPunto.dataBancario.mes}}' id='mes' name='mes' />
+                <input type='hidden' value='{{creacionPunto.dataBancario.mostrarCuenta}}' id='mostrarCuenta' name='mostrarCuenta' />
+                <input type='hidden' value='{{creacionPunto.dataBancario.bancoTipoCuentaId}}' id='bancoTipoCuentaId' name='bancoTipoCuentaId' />
+                <input type='hidden' value='S' id='boolRequiereValidar' name='boolRequiereValidar' />
+            {%endif%}    
+            {% if creacionPunto is defined and creacionPunto is not null and creacionPunto is not empty 
+                and creacionPunto.haslinkDatosBancarios == true and creacionPunto.hastieneClausulasSaved == false %}
+                <div class="warningmessage">
+                   El punto no tiene asociadas las respuestas de cláusulas de contrato.
+                </div>
+            {% elseif creacionPunto is defined and creacionPunto is not null and creacionPunto is not empty 
+                and creacionPunto.haslinkDatosBancarios == true and creacionPunto.dataBancario is not null
+                and creacionPunto.dataBancario.formaPagoId == 3 and creacionPunto.dataBancario.titular is null %}
+                <div class="warningmessage">
+                    El punto no tiene asociados los datos de forma de pago
+                </div>
+            {% else %}    
+            <form id="formularioContrato" action="{{ path('infocontrato_create') }}" method="post" {{ form_enctype(form) }} class='formulario' name="formulario">
+                <input type='hidden' value='' id='items'/> 
+                {% if puntoCliente is not null and puntoCliente != '' %}
+                    <input type='hidden' value='{{puntoCliente.id}}' id='puntoCliente' name='puntoCliente' />
+                {% endif %}
+                {% if creacionPunto is defined and creacionPunto is not null and creacionPunto is not empty 
+                and creacionPunto.hastieneClausulasSaved == true %}
+                    <input type='hidden' value='S' id='clausulaGuardada' name='clausulaGuardada' />
+                {% else %}
+                    <input type='hidden' value='N' id='clausulaGuardada' name='clausulaGuardada' />
+                {%endif%}
+                <input type='hidden' value='' id='urlRedireccionar' name='urlRedireccionar' />
+                <input type='hidden' data-arraydocumento='{{ arrayListaDocumentoSubir|json_encode|raw }}' id='urlDocumento' name='urlRedireccionar' />
+                <input type='hidden' value='{{nombrePantalla}}' id='nombrePantalla' name='nombrePantalla' />
+                {% if creacionPunto is defined and creacionPunto is not null and creacionPunto is not empty 
+                and creacionPunto.haslinkDatosBancarios == true and creacionPunto.dataBancario is not null %}
+                    <input type='hidden' value='{{creacionPunto.dataBancario|json_encode()|raw}}' id='objDatoBancario' name='objDatoBancario' />
+                {%endif%} 
+                <input type='hidden' value='{{entityAdendum}}' id='entityAdendum' name='entityAdendum' />
+                <input type='hidden' value='{{entityContrato}}' id='entityContrato' name='entityContrato' />
+                <input type='hidden' value='{{cambioRazonSocial}}' id='cambioRazonSocial' name='cambioRazonSocial' />
+                <input type='hidden' value='{{idper}}' id='personaEmpresaRolId' name='personaEmpresaRolId' />
+                <input type='hidden' value='{{totalCaracteres}}' id='totalCaracteres' name='totalCaracteres' />
+                <input type='hidden' value='{{arrayPuntosCRS |json_encode }}' id='arrayPuntosCRS' name='arrayPuntosCRS' />
+                <div id="my-tabs">
+                    <div id="tab1" class="x-hide-display">
+                        <table border='0' cellpadding='1' cellspacing='1' width='100%'>
+                            <tr>
+                                <td colspan='2'>
+                                    <div id='div_valor' class='errormessage' style="display:none"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='2'>
+                                    &nbsp;
+                                </td>
+                            </tr>                            
+                            <tr>
+                                <td colspan='2' style='padding-left:10px '>
+                                    <div>
+                                        <table border='0' align='left'>
+                                            {% if (nombrePantalla =='Contrato') %}
+                                                <tr>
+                                                    <td>
+                                                        <label class='campo-obligatorio' for='infocontratoextratype_tipoContratoId'>
+                                                            *Tipo Contrato:
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <select required='required' class='campo-obligatorio-select' id="infocontratoextratype_tipoContratoId" 
+                                                        name="infocontratoextratype[tipoContratoId]"/>
+                                                            <option value=''>Seleccione...</option>
+                                                                {% for tipo in entityAdmiTipoContrato %}
+                                                                    <option value='{{tipo.id}}'>{{tipo.descripcion}}</option>
+                                                                {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            {%endif%} 
+                                            {% if (prefijoEmpresa=='MD' or prefijoEmpresa=='EN') and nombrePantalla =='Contrato' %}
+                                                <tr>
+                                                    <td>
+                                                        <label>*Forma Contrato:</label>
+                                                    </td>
+                                                    <td>
+                                                        <select id="formaContrato" name="formaContrato">
+                                                            <option value="">
+                                                                Seleccione...
+                                                            </option>
+                                                            <option value="Contrato Fisico">
+                                                                Contrato Fisico
+                                                            </option>
+                                                            <option value="Contrato Digital">
+                                                                Contrato Digital
+                                                            </option>
+                                                        </select>	
+                                                    </td>
+                                                </tr>
+                                            {% endif %} 
+                                            <tr>
+                                                <td>
+                                                    <label class='campo-obligatorio' for='infocontratoextratype_cliente'>Cliente:</label>
+                                                </td>
+                                                <td>
+                                                    <input class='campo-obligatorio' type='text' id="infocontratoextratype_cliente" 
+                                                           name="infocontratoextratype[cliente]" value='{{nombreClienteSesion}}'/>
+                                                    <input type='text' style='display:none' required='required' id='infocontratoextratype_idcliente' 
+                                                           name='infocontratoextratype[idcliente]' value='{{idClienteSesion}}'/>
+                                                    <input type='text' style='display:none' required='required' 
+                                                           id='infocontratoextratype_personaEmpresaRolId' 
+                                                           name='infocontratoextratype[personaEmpresaRolId]' value='{{idper}}'/>
+                                                    {% if (idClienteSesion is null) %}
+                                                    <a href='#' 
+                                                       onclick="showClientes('#infocontratoextratype_cliente','#infocontratoextratype_idcliente',
+                                                                   'Prospectos','preclientes')">
+                                                        <img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" />
+                                                    </a>
+                                                    {%endif%}
+                                                </td>
+                                            </tr>
+                                        </table>					
+                                    </div>					
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style='vertical-align:top;margin-top:0;padding-left:10px '>
+                                    <input type='hidden' id="preclientetype_prefijoEmpresa" name="prefijoEmpresa" value="{{  prefijoEmpresa  }}" />                                                                                                         
+                                        <div class='divAdendum' style='height: 30px ' >
+                                            <input style='width:15px' type="checkbox" id="CambioPago" name="CambioPago" value="CambioPago" onclick="mostrarFormaPago();">
+                                            <label for="CambioPago" id="CambioPagoLabel">Cambiar forma de pago</label><br>
+                                        </div>
+                                        {% if ( prefijoEmpresa =='MD' or prefijoEmpresa =='EN' ) and nombrePantalla =='Adendum' %}
+                                                <label>*Forma Adendum:</label>
+                                                <select id="formaAdemdun" name="formaAdemdun">
+                                                            <option value="">
+                                                                Seleccione...
+                                                            </option>
+                                                            <option value="Contrato Fisico">
+                                                                Contrato Fisico
+                                                            </option>
+                                                            <option value="Contrato Digital">
+                                                                Contrato Digital
+                                                            </option>
+                                               </select>
+                                        {% endif %} 	
+                                        <div>{{ form_row(form.formaPagoId) }}</div>   
+                                        {% if (nombrePantalla =='Contrato') %}                                   
+                                            <div>{{ form_row(form.numeroContratoEmpPub) }}</div>   
+                                            <div>{{ form_row(form.valorAnticipo) }}</div> 
+                                        {% endif %}                                                  
+                                        <div id='fechaCuadro'>
+                                        <label>Fecha fin del contrato:</label>
+                                        <div id='feFinContrato' required="true"></div>
+                                        <input type='hidden' value='' id='feFinContratoE'/> 
+                                        </div>
+                                        {% if (prefijoEmpresa=='MD' or prefijoEmpresa=='EN') %}
+                                            <label>Teléfono PIN:</label>
+                                            <select id="telefonos" name="telefonoCliente">
+                                                {% for telefono in arrayTelefonosCliente %}
+                                                    <option value="{{ telefono }}">
+                                                    {{ telefono }}
+                                                    </option>
+                                                {% endfor %}
+                                             </select>
+                                            <div id='correoFisico'>
+                                                <label>Correo Electronico:</label>
+                                                <select id="correoFisico" name="correoFisicoCliente">
+                                                    {% for mailCliente in arrayCorreoCliente %}
+                                                        <option value="{{ mailCliente }}">
+                                                        {{ mailCliente }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>	
+                                        {% endif %} 							
+                                </td>
+                                <td>  
+                                    {% if ((prefijoEmpresa=='MD' or prefijoEmpresa=='EN') and formFormaPago is defined) %}   
+                                        <div id="forma_pago_prospecto" class="campo-oculto contenido">
+                                            <div>{{ form_label(formFormaPago.formaPagoId) }} {{ form_widget(formFormaPago.formaPagoId) }}</div>					
+                                            <div>{{ form_label(formFormaPago.tipoCuentaId) }} {{ form_widget(formFormaPago.tipoCuentaId) }}</div>					
+                                            <div>{{ form_label(formFormaPago.bancoTipoCuentaId) }} {{ form_widget(formFormaPago.bancoTipoCuentaId) }}</div>
+                                        </div>                                        
+                                    {% endif %} 
+                                        <div id="forma_pago" class="campo-oculto contenido">			
+                                                {{ form_widget(formInfoPago) }}                                               
+                                        </div>					                                        
+                                </td>						
+                            </tr>					
+                        </table>
+                    </div>
+                    {% if (nombrePantalla =='Contrato') %}
+                        <div id="tab2" class="x-hide-display">
+                            No existen clausulas para ese tipo de contrato
+                        </div>
+                    {% endif %}
+                    {% if (nombrePantalla =='Contrato') %}
+                        <div id="tab3" class="x-hide-display formulario">
+                            {{ form_widget(formDatoAdicioanles) }}
+                        </div>
+                    {% endif %}
+                    {% if (nombrePantalla =='Contrato') %}
+                       <div id="tab4" class="x-hide-display">
+                    {% else %}
+                        <div id="tab2" class="x-hide-display">   
+                    {% endif %}
+                      
+                         <table border='0' cellpadding='1' cellspacing='1' width='100%'>
+                             <tr>
+                                <td colspan='2'>&nbsp;</td>
+                            </tr>
+                             <tr>
+                                <td colspan='2'>
+                                   <div class="infomessage">Puedes dar click en <i>"Agregar mas Imagenes"</i> para agregar mas archivos que desees al contrato</div>
+                                </td>
+                            </tr>   
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td colspan='2'>  
+                                 <table border='0' cellpadding='1' cellspacing='1' width='50%'>
+                                 <tr>
+                                 <td>
+                                     <div>                                    
+                                     <ul id="imagenes-fields-list" data-prototype="{{ form_widget(form_documentos.imagenes.vars.prototype) | e }}">  
+                                     {% for documentosSubir in arrayListaDocumentoSubir %}
+                                        <li style="height:40px;width: 300px;">
+                                            <input id="infodocumentotype_imagenes_{{ loop.index - 1}}" data-documento='{{ documentosSubir|json_encode|raw }}' class="campo-obligatorio" type="file" name="infodocumentotype[imagenes][{{ loop.index -1 }}]" onchange="readURL(this)" >
+                                         </li>
+                                     {% endfor %}
+                                     {% for imagenesField in form_documentos.imagenes %}
+                                       <li>
+                                           {{ form_errors(imagenesField) }}
+                                           {{ form_widget(imagenesField) }}
+                                       </li>
+                                     {% endfor %}
+                                     </ul>	                                   
+                                     </div>   
+                                 </td>
+                                  <td>
+                                     <div>
+                                     <ul id="tipos-fields-list" data-prototype="{{ form_widget(form_documentos.tipos.vars.prototype) | e }}">                                         
+                                     {% for documentosSubir in arrayListaDocumentoSubir %}
+                                        <li  style="height:40px">
+                                            <select required='required' id="infodocumentotype_tipos_{{ loop.index - 1}}" class="campo-obligatorio-select" name="infodocumentotype[tipos][{{ loop.index - 1}}]"> 
+                                                <option value="{{ documentosSubir.idTipoDocumento }}" > {{ documentosSubir.descripcionTipoDocumento }}</option>
+                                            </select>
+                                        </li>
+                                     {% endfor %}
+                                     {% for tiposField in form_documentos.tipos %}
+                                       <li>
+                                           {{ form_errors(tiposField) }}
+                                           {{ form_widget(tiposField) }}
+                                       </li>
+                                     {% endfor %}
+                                     </ul>	                                   
+                                     </div>        
+                                  </td>   
+                                  </tr></table>
+                                        
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="#" id="agregar_imagen">Agregar mas Imagenes</a>
+                                </td>
+                            </tr>    
+                            <tr><td>&nbsp;</td></tr>
+                           </table>
+                     </div> 
+                     
+                </div>
+                                     
+               {% if (nombrePantalla =='Contrato') %}
+                       <div id="tab5" class="x-hide-display">
+                    {% else %}
+                        <div id="tab3" class="x-hide-display">   
+                    {% endif %}    
+                    <div id='divContainer'> 
+                    </div> 
+                    <div class="accordion container-fluid" id="accordionExample">                   
+                    </div>  
+                    {% if (nombrePantalla =='Contrato') %}
+                        <div style="display: flex; justify-content: center;">
+                            <button type="button" id="btnValidarCodigoPromocion" onclick="validaCodigosPromo()" class="btn btn-info btn-sm" data-dismiss="modal">Validar
+                              <i class="fa fa-spinner fa-spin spinner_btnValidarCodigoPromocion" ></i>
+                            </button>
+                            </br>
+                        </div>
+                    {% endif %}
+                    </br></br>
+                </div>                       
+                    
+                <input type="hidden" size="100" name="valores" id="valores" /> 
+                <div class="buttons">
+                    <p>  
+                        <button type='button' id='botonPin' class="button-crud" onclick="reenviarPin()">Reenvío de Pin</button> 
+                        <button type='button' id='botonAutorizar' class="button-crud" onclick="autorizarContrato()">Autorizar Contrato</button>                     
+                        <button type='button' id='botonGuardar' class="button-crud" onclick="enviarInformacion()">Guardar</button>
+                        <span class="height20px">
+                            <a class="button-crud" href="{{ path('infocontrato') }}">Regresar</a>
+                        </span>
+                    </p>
+                </div>                                            
+            </form>	
+            {%endif%}
+         {% else %}
+            <div class="warningmessage">
+                 Para la creacion de un contrato se requiere el ingreso obligatorio de  Contacto Comercial, Contacto Facturacion, Contacto cobranzas.
+                 Favor verificar Contactos Ingresados.
+            </div>			
+         {%endif%}       
+        
+        {% else %}
+            <div class="warningmessage">
+                {% if (nombrePantalla == 'Contrato') %}
+                    El contrato solo se puede crear para Prospectos que tengan estado Activo y tengan al menos un servicio con estado "Factible" o "Pendiente".
+                {% else %}
+                    El adendum solo se puede crear para Clientes que tengan estado Activo y tengan al menos un servicio con estado "Factible" o "Pendiente".
+                {%endif%}
+            </div>			
+        {%endif%}
+    </div>
+    <div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+           <div class="modal-content">
+               <div class="modal-header">
+                    <h5 class="modal-title">Mensaje</h5>
+                           <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+               </div>
+               <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+               </div>
+           </div>
+        </div>
+    </div>
+             
+                                     
+    <!-- Modal -->
+     <div class="modal fade" id="modalMensajes2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Resumen Códigos Promocionales</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id='divResumen'>
+
+            </div>
+            <div class="modal-footer">
+                 <button type="button" id='btnAceptaCodigos' class="btn btn-primary">Aceptar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+     
+{% endblock contenido_der %}

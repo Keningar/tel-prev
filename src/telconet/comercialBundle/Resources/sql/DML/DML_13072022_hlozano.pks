@@ -1,0 +1,2932 @@
+--Caracteristica Permanencia Minima
+----------------------------------------------------------------------
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO,
+    DETALLE_CARACTERISTICA
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_PERM_MIN_CV',
+    'T',
+    'Activo',
+    SYSDATE,
+    'hlozano',
+    NULL,
+    NULL,
+    'COMERCIAL',
+    'Característica fundamental para el calculo de valores a cobrar para el proceso de Cancelación Voluntaria.'
+  );
+
+--Parametro de meses de Permanencia Minima
+----------------------------------------------------------------------
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    'PROD_PROM_PERMANENCIA_MINIMA_CV(Parámetro para Cancelación Voluntaria)',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '2',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '4',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '6',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '7',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '8',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '9',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '10',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '11',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '12',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '13',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '14',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '15',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '16',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '17',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '18',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '19',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '20',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '21',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '22',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '23',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '24',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '25',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '26',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '27',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '28',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '29',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '30',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '31',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '32',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '33',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '34',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '35',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '36',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+--Parametro Productos Adicionales para Cancelacion Voluntaria
+----------------------------------------------------------------------
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PRODUCTOS_ADICIONALES_CV',
+    'Parámetro de Productos Adicionales para la Cancelación Voluntaria: VALOR1:Nombre Producto Adicional - 
+     VALOR2:Presenta interfaz de cancelación voluntaria - VALOR3:Tiene equipos asociados',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'EXTENDER_DUAL_BAND',
+    'S',
+    'S',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'NETLIFECAM',
+    'S',
+    'S',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'I. PROTEGIDO MULTI PAID',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'NetlifeCloud',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'ECOMMERCE BASIC',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'CABLEADO ETHERNET',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'PARAMOUNT+',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'ECDF',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'HBO-MAX',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'Netlife Assistance Pro',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'Netlife Assistance',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'IP FIJA',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PRODUCTOS_ADICIONALES_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'Producto Adicional para la Cancelación Voluntaria',
+    'IP FIJA ADICIONAL PYME',
+    'N',
+    'N',
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+--Caracteristicas para Equipos Extender Dual Band
+----------------------------------------------------------------------
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO,
+    DETALLE_CARACTERISTICA
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'ZXHN H196A V9',
+    'N',
+    'Activo',
+    SYSDATE,
+    'hlozano',
+    NULL,
+    NULL,
+    'COMERCIAL',
+    NULL
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO,
+    DETALLE_CARACTERISTICA
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'WA8M8011VW09',
+    'N',
+    'Activo',
+    SYSDATE,
+    'hlozano',
+    NULL,
+    NULL,
+    'COMERCIAL',
+    NULL
+  );
+
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO,
+    DETALLE_CARACTERISTICA
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'WA8011V',
+    'N',
+    'Activo',
+    SYSDATE,
+    'hlozano',
+    NULL,
+    NULL,
+    'COMERCIAL',
+    NULL
+  );
+
+-- Parametro para Equipos Extender Dual Band
+----------------------------------------------------------------------
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'RETIRO_EQUIPOS_SOPORTE'
+      AND ESTADO             = 'Activo'
+    ),
+    'ZXHN H196A V9',
+    'ZTE',
+    75,
+    (
+      SELECT ID_CARACTERISTICA
+      FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'ZXHN H196A V9'
+    ),
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'N',
+    '18',
+    '75',
+    '1232',
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'RETIRO_EQUIPOS_SOPORTE'
+      AND ESTADO             = 'Activo'
+    ),
+    'WA8M8011VW09',
+    'HUAWEI',
+    75,
+    (
+      SELECT ID_CARACTERISTICA
+      FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'WA8M8011VW09'
+    ),
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'N',
+    '18',
+    '75',
+    '1232',
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'RETIRO_EQUIPOS_SOPORTE'
+      AND ESTADO             = 'Activo'
+    ),
+    'WA8011V',
+    'HUAWEI',
+    75,
+    (
+      SELECT ID_CARACTERISTICA
+      FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'WA8011V'
+    ),
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'N',
+    '18',
+    '75',
+    '1232',
+    NULL
+  );
+
+--Parametro de Facturacion Detallada para Extender Dual Band
+----------------------------------------------------------------------
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FACTURACION SOLICITUD DETALLADA'
+      AND ESTADO             = 'Activo'
+    ),
+    'ZXHN H196A V9',
+    (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='Extender Dual Band'),
+    NULL,
+    (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA='ZXHN H196A V9'),
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FACTURACION SOLICITUD DETALLADA'
+      AND ESTADO             = 'Activo'
+    ),
+    'WA8M8011VW09',
+    (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='Extender Dual Band'),
+    NULL,
+    (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA='WA8M8011VW09'),
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FACTURACION SOLICITUD DETALLADA'
+      AND ESTADO             = 'Activo'
+    ),
+    'WA8011V',
+    (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='Extender Dual Band'),
+    NULL,
+    (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA='WA8011V'),
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+
+--Parametro de Permanencia Minima de meses para Extender Dual Band
+----------------------------------------------------------------------
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERMANENCIA_MIN_EXTENDER_CV',
+    '36',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+-- Agrega campo VALOR8 a DB_GENERAL.ADMI_PARAMETRO_DET
+---------------------------------------------------------------------
+ALTER TABLE DB_GENERAL.ADMI_PARAMETRO_DET ADD VALOR8  VARCHAR2(300);
+COMMENT ON COLUMN DB_GENERAL.ADMI_PARAMETRO_DET.VALOR8 IS 'CAMPO QUE INDICA LOS EQUIPOS QUE PERTENECEN A LA MISMA CATEGORIA';
+
+--Equipos NETLIFECAM
+---------------------------------------------------------------------
+UPDATE ADMI_PARAMETRO_DET SET VALOR7=78,VALOR8='EQUIPO',DESCRIPCION='CS-C1C-D0-1D1WFR' WHERE ID_PARAMETRO_DET = 16193;
+UPDATE ADMI_PARAMETRO_DET SET VALOR7=78,VALOR8='EQUIPO',DESCRIPCION='CS-CV206(MINI-O)' WHERE ID_PARAMETRO_DET = 16194;
+UPDATE ADMI_PARAMETRO_DET SET VALOR7=78,VALOR8='EQ_ADICIONAL',DESCRIPCION='MICRO SD 32GB KINGSTON' WHERE ID_PARAMETRO_DET = 16195;
+
+-- Agrega campo VALOR9 a DB_GENERAL.ADMI_PARAMETRO_DET
+---------------------------------------------------------------------
+ALTER TABLE DB_GENERAL.ADMI_PARAMETRO_DET ADD VALOR9  VARCHAR2(300);
+COMMENT ON COLUMN DB_GENERAL.ADMI_PARAMETRO_DET.VALOR9 IS 'CAMPO QUE INDICA EL ID DEL PRODUCTO EN LA DESCRIPCION';
+
+-- Se actualiza la descripcion de la cabecera del parametro FACTURACION SOLICITUD DETALLADA
+UPDATE DB_GENERAL.ADMI_PARAMETRO_CAB SET DESCRIPCION = 'PARAMETROS PARA FACTURACION POR SOLICITUD DETALLADA. DESCRIPCIÓN: ITEM, V1=PRODUCTO_ID FACT, 
+V2=PLAN_ID FACT, V3=CARACTERISTICA_ID,V4=PRODUCTO_ID NC, V5=PLAN_ID NC, V8= EQUIPOS DE LA MISMA CATEGORIA, V9= ID_PRODUCTO' where NOMBRE_PARAMETRO='FACTURACION SOLICITUD DETALLADA';
+
+--Se actualiza el valor 9 con el id de los productos adicionales
+---------------------------------------------------------------------
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET SET VALOR9 =(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='NetlifeCloud' AND ESTADO ='Activo') WHERE DESCRIPCION='NetlifeCloud' AND PARAMETRO_ID IN (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'FACTURACION SOLICITUD DETALLADA') ;
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET SET VALOR9 =(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='NETLIFECAM - Servicio Básico de Visualización Remota Residencial' AND ESTADO ='Activo'),VALOR1=(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='NETLIFECAM - Servicio Básico de Visualización Remota Residencial' AND ESTADO ='Activo'),VALOR2 = null
+  WHERE DESCRIPCION='PromoNetlifecam' AND PARAMETRO_ID IN (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'FACTURACION SOLICITUD DETALLADA') ;
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET SET VALOR9 =(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='Extender Dual Band' AND ESTADO ='Activo') WHERE DESCRIPCION='EXTENDER DUAL BAND' AND PARAMETRO_ID IN (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'FACTURACION SOLICITUD DETALLADA') ;
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET SET VALOR9 =(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='El Canal Del Fútbol' AND ESTADO ='Activo') WHERE DESCRIPCION='ElCanalDelFutbol' AND PARAMETRO_ID IN (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'FACTURACION SOLICITUD DETALLADA') ;
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET SET VALOR9 =(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='NetlifeAssistance' AND ESTADO ='Activo') WHERE DESCRIPCION='NetlifeAssistance' AND PARAMETRO_ID IN (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'FACTURACION SOLICITUD DETALLADA') ;
+         
+       
+--Parametros de Cancelacion de Producto Adicional
+---------------------------------------------------------------------
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION,
+    VALOR8,
+    VALOR9
+  ) 
+  VALUES 
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FLUJO_ACTA_CANCELACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'codigoPlantillaCancelacionProdAdicional',
+    'actaCancelacionProdAdicionalMd',
+    'Cancelacion',
+    null,
+    null,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '127.0.0.1',
+    null,
+    null,
+    null,
+    null,
+    '18',
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET 
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION,
+    VALOR8,
+    VALOR9
+  ) 
+  VALUES 
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'FLUJO_ACTA_CANCELACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'ActivarActaCancelacionProdAdicional',
+    'S',
+    'Cancelacion',
+    null,
+    null,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '127.0.0.1',
+    null,
+    null,
+    null,
+    null,
+    '18',
+    null,
+    null,
+    null,
+    null,
+    null
+  );
+
+
+
+COMMIT;
+/

@@ -1,0 +1,134 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Datos Comerciales Cliente</h1>
+	</div>
+
+    <div class="body_content">
+        <table class="formulario" width='100%' border='0'>
+            <tbody>
+                <tr>
+                    <td><b>N°. contrato:</b></td>
+                    <td>{{ contrato.numeroContrato }}</td>
+                    <td width="9%">&nbsp;</td>
+                    <td><b>N°. contrato emp. publica:</b></td>
+                    <td>{{ contrato.numeroContratoEmpPub }}</td>
+                </tr>
+                <tr>
+                    <td><b>Tipo de contrato:</b></td>
+                    <td>{{ contrato.tipoContratoId.descripcionTipoContrato }}</td>
+                    <td width="9%">&nbsp;</td>
+                    <td><b>Cliente:</b></td>
+                    <td>{{ contrato.personaEmpresaRolId.personaId.nombres }} {{ contrato.personaEmpresaRolId.personaId.apellidos }}</td>
+                </tr>
+                <tr>
+                    <td><b>Forma de pago:</b></td>
+                    <td>{{ contrato.formaPagoId.descripcionFormaPago }}</td>
+                    <td width="9%">&nbsp;</td>
+                    <td><b>Fecha fin del contrato:</b></td>
+                    <td>{{ contrato.feFinContrato|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                {% if formFormaPago is not null %}
+                <tr class="contenido">
+                    <td><b>Tipo de Cuenta:</b></td>
+                    <td>{{ formFormaPago.tipoCuentaId }}</td>
+                    <td width="9%">&nbsp;</td>
+                    <td><b>Banco:</b></td>
+                    <td>{{ formFormaPago.bancoTipoCuentaId }}</td>
+                </tr>
+                <tr class="contenido">
+                    <td><b>N° Tarjeta / Cuenta:</b></td>
+                    <td><div id='div_numero_tarjeta' name='div_numero_tarjeta'>{{ formFormaPago.numeroCtaTarjeta }}</div></td>
+                    <td width="9%">&nbsp;</td>
+                    <td><b>Titular:</b></td>
+                    <td>{{ formFormaPago.titularCuenta }}</td>
+                </tr>
+                <tr class="contenido">
+                    <td><b>Mes vencimiento:</b></td>
+                    <td>{{ formFormaPago.mesVencimiento }}</td>
+                    <td width="9%">&nbsp;</td>
+                    <td><b>Año vencimiento:</b></td>
+                    <td>{{ formFormaPago.anioVencimiento }}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td><b>Valor:</th>
+                    <td>{{ contrato.valorContrato }}</td>
+                    <td width="9%">&nbsp;</td>
+                    <td><b>Anticipo:</b></td>
+                    <td>{{ contrato.valorAnticipo }}</td>
+                </tr>
+                <tr>
+                    <td><b>Garantia:</b></td>
+                    <td>{{ contrato.valorGarantia }}</td>
+                    <td width="9%">&nbsp;</td>
+                    <td><b>Estado:</b></td>
+                    <td>{{ contrato.estado }}</td>
+                </tr>
+            </tbody>
+        </table>
+	</div>
+
+	<div  class="body_content">
+	    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>	
+			<tr bgcolor='#ffffff'>
+				<td bgcolor='#ffffff'><div id='lista_datos_comerciales'></div></td>
+			</tr>
+	    </table>     
+        
+		<script>
+	        var url_servicios='{{path('cliente_ajax_servicios_per',{'idper':idper})}}';
+	        //var idCliente={{entity.id}};
+	        var url_gridPtos = "{{ path('infopunto_getpuntos',{'idCli':entity.id,'rol':'Cliente'}) }}";
+        </script>      
+		<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/datosComerciales.js') }}"></script>      
+	</div>
+
+	<div class="buttons">
+	    <p>
+	        <span class="height20px">
+	            <a class="button-crud" href="{{ path('cliente') }}">Regresar</a>
+	        </span>
+	    </p>
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+	{% if (entity.Estado != "Convertido") %}
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('infopunto_new',{ 'idCli': entity.id, 'idPer':idper, 'rol':'Cliente' }) }}">
+                            Nuevo Punto
+                        </a>
+                    </li>
+                    <!--
+			{#% for acc in acc_relaciondas %} 
+				<li>
+					<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+				</li>
+			{% endfor %#}
+                    -->
+			<!--li>
+				<a class="listado_ac_tablas" href="{#{ path('precliente_convertir', { 'id_prospecto': entity.id }) }#}">Convertir Prospecto a Cliente</a>
+			</li-->
+		</ul>
+	{% endif %}
+    <script>
+    $( document ).ready(function() {
+        var numeroTarjeta=document.getElementById("div_numero_tarjeta").innerHTML;
+        var numeroModificado= numeroTarjeta.substring(1,numeroTarjeta.length-2);
+        var datosReemplazadores="";
+        for(var i=0;i<numeroModificado.length;i++){
+            datosReemplazadores=datosReemplazadores+"X";
+        }
+        numeroTarjeta=numeroTarjeta.replace(numeroModificado,datosReemplazadores);
+        document.getElementById("div_numero_tarjeta").innerHTML=numeroTarjeta;
+    });
+    </script>
+{% endblock contenido_der %}

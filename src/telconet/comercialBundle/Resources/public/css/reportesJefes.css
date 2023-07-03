@@ -1,0 +1,160 @@
+.messageInTab {
+    background-color: #61b832;
+    border-color: #55a12c;
+    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .4);
+    width: 95%;
+    border: 1px solid;
+    color: #fff;
+    padding: 5px 16px 5px 10px;
+    position: initial;
+    _position: absolute;
+    margin-left: 0px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+}
+.closeMessage {
+    text-align: right;
+    position: relative;
+    padding-bottom: 0px;
+    font-weight: bolder;
+    margin-left: 850px;
+    font-size: 10px;
+}
+.closeMessage a {
+    color: blueviolet;
+}
+.msg.focused {
+    left: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.hide {
+    display: none;
+}
+
+.panelBar1 .x-panel-header
+{
+    background-image: -webkit-linear-gradient(top, #76c0e0, #c4e2e5); /* For Chrome and Safari */
+    background-image:    -moz-linear-gradient(top, #76c0e0, #c4e2e5); /* For old Fx (3.6 to 15) */
+    background-image:     -ms-linear-gradient(top, #76c0e0, #c4e2e5); /* For pre-releases of IE 10*/
+    background-image:      -o-linear-gradient(top, #76c0e0, #c4e2e5); /* For old Opera (11.1 to 12.0) */
+    background-image:         linear-gradient(to bottom, #76c0e0, #c4e2e5); /* Standard syntax; must be last */
+}
+
+.alinearRefreshButton
+{
+    padding-left: 10px; 
+    border-color: #D0D0D0;
+    border-width: 1px;
+    border-style: solid;
+    color: #eeeeee;
+    background-image: -webkit-linear-gradient(top, #e6e6e6, #eeeeee); /* For Chrome and Safari */
+    background-image:    -moz-linear-gradient(top, #e6e6e6, #eeeeee); /* For old Fx (3.6 to 15) */
+    background-image:     -ms-linear-gradient(top, #e6e6e6, #eeeeee); /* For pre-releases of IE 10*/
+    background-image:      -o-linear-gradient(top, #e6e6e6, #eeeeee); /* For old Opera (11.1 to 12.0) */
+    background-image:         linear-gradient(to bottom, #e6e6e6, #eeeeee); /* Standard syntax; must be last */
+}
+
+.iconReloadDataStore
+{
+    background-image: url("../../../../public/images/reload_data_store.png");
+}
+
+.tooltipStyle
+{
+    margin: 0;
+    top: 0px;
+    left: 0px;
+    color: #336ad6;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.trafficlight2
+{
+    background-image: url("../../../../public/images/semaforo.png");
+    text-decoration: none;
+    background-repeat: no-repeat;
+}
+
+.trafficlight2-red-small
+{
+    background-position: 2px 0px;
+    background-size: 50px;
+    height: 20px;
+    width: 19px;
+}
+
+.trafficlight2-green-small
+{
+    background-position: -33px 0px;
+    background-size: 50px;
+    width: 17px;
+    height: 20px;
+    margin-left: 2px;
+}
+
+.trafficlight2-yellow-small
+{
+    background-position: -17px 0px;
+    background-size: 50px;
+    height: 20px;
+    width: 16px;
+    margin-left: 2px;
+}
+
+.x-grid-row-summary 
+{
+    background-image: -webkit-linear-gradient(top, #122c4b, #000000); /* For Chrome and Safari */
+    background-image:    -moz-linear-gradient(top, #122c4b, #000000); /* For old Fx (3.6 to 15) */
+    background-image:     -ms-linear-gradient(top, #122c4b, #000000); /* For pre-releases of IE 10*/
+    background-image:      -o-linear-gradient(top, #122c4b, #000000); /* For old Opera (11.1 to 12.0) */
+    background-image:         linear-gradient(to bottom, #122c4b, #000000); /* Standard syntax; must be last */
+}
+
+
+.custom-grid-none .x-grid-cell 
+{ 
+    border-bottom-color: silver; 
+}
+
+.custom-grid .x-grid-cell 
+{ 
+    border-bottom-color: silver; 
+}
+
+.custom-grid .x-grid-row-over .x-grid-cell
+{ 
+    background-color: #ff6; 
+    border-bottom-color: black; 
+    border-bottom-style: dashed; 
+    border-top-color: black; 
+    border-top-style: dashed; 
+} 
+
+.custom-grid .x-grid-row-selected .x-grid-cell
+{ 
+    background-color: #c4e2e5;
+    font-weight: bolder;
+    border-bottom-color: black; 
+    border-bottom-style: solid; 
+    border-top-color: black; 
+    border-top-style: solid; 
+}
+
+.extra-alt .x-grid-row .x-grid-cell 
+{ 
+    background-color: #FFEDE9; 
+} 
+
+.extra-alt .x-grid-row-alt .x-grid-cell 
+{ 
+    background-color: #dbe8f9; 
+}
+
+.x-form-empty-field {
+    font-style: italic;
+}

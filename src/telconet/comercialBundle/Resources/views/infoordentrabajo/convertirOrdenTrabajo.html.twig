@@ -1,0 +1,187 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script>
+        var strUrlStore                        = "{{ path('infoordentrabajo_listado_ot') }}";
+        var strUrlAprobar                      = "{{ path('infoordentrabajo_convertir') }}";
+        var intIdPtoCliente                    = "{{ punto_id.id }}";
+        var strUrlValidarServiciosVentaExterna = "{{ path('infoordentrabajo_validarServiciosConvertirOrdenTrabajo') }}";
+        var boolTabHiddenVentaNormal           = true;
+        var boolTabHiddenVentaExterna          = true;
+        var intPuntosDeuda                     = {{intPuntosDeuda}};
+        var strMensajeObservacion              = '{{strMensajeObservacion}}';
+        {%if strMuestraGridOT is defined %}
+        var strMuestraGridOT                   = '{{strMuestraGridOT}}';
+        {%else%}
+        var strMuestraGridOT                   = '';
+        {%endif%}
+    </script>
+    
+    {% if is_granted("ROLE_9-886") %}
+        <script> boolTabHiddenVentaNormal = false; </script> 
+    {% endif %}
+    
+    {% if is_granted("ROLE_9-5117") %}
+        <script> boolTabHiddenVentaExterna = false; </script> 
+    {% endif %}
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoordentrabajo/convertir.js?6') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Convertir a Orden de Trabajo</h1>
+</div>
+<div class="body_content k-content">
+	<table class="record_properties" width='100%'>
+		<tr>
+			<td><b>Razón social:</b></td>
+			<td>{{ cliente.razon_social }}</td>
+		</tr>
+		<tr>
+			<td><b>Cliente:</b></td>
+			<td> {{ cliente.nombres }} {{ cliente.apellidos }}</td>
+		</tr>
+		<tr>
+			<td><b>Pto. cliente:</b></td>
+			<td> {{ punto_id.login }}</td>
+		</tr>
+		<tr>
+			<td><b>Descripción:</b></td>
+			<td>{{ punto_id.descripcion }}</td>
+		</tr>
+	</table>
+    {%if arrayPuntosDeuda is defined and arrayPuntosDeuda|length > 0%}
+    <div id="mensajeErrorPuntosDeuda" class="info-error" >
+        <b>Mensaje del sistema: </b> <br/><br/>
+        El cliente tiene deuda en uno o más puntos.
+        <br/>
+        <div>&nbsp;</div>
+
+
+        <table style="border: 1px">
+            <tr style="background: #FF6666; padding: 5px; text-align: center"> <td><b> Login </b></td> <td><b> Saldo </b></td> </tr>
+                            {% for punto in arrayPuntosDeuda %}
+            <tr>
+                <td style="padding: 5px">{{ punto.login|e }}</td>
+                <td style="padding: 5px;text-align: right">$ {{ punto.deuda|e |number_format(2, '.', '')}}</td>
+            </tr>
+                            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+    {% if strMuestraGridOT != 'S' %}
+        <br/>
+        <br/>
+        <div id="mensajeError" class="info-error" >
+            <b>Mensaje del sistema: </b> <br/><br/>
+            <b> El Cliente posee una Factura de Instalación Asociada al Servicio</b>
+            <br/>
+            <div>&nbsp;</div>
+        </div>                
+        <br/>
+        <br/>
+        <div id="mensajeError" class="info-error" >
+            <b>Mensaje del sistema: </b> <br/><br/>
+            {% if strMensajeBloqueo is defined %}
+                {{strMensajeBloqueo}}
+            {% else %}
+                Ha ocurrido un error inesperado al obtener la información.
+            {% endif %}
+            <br/>
+            <div>&nbsp;</div>
+        </div>
+    {%else%}
+	<div class="secHead">Listado de servicios</div>
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr bgcolor='#ffffff'>
+            <td bgcolor='#ffffff'>
+                <div id="mensajeError" class="info-error" style="clear: both; overflow: hidden; padding-bottom: 5px; display: none">
+                    Estimado Usuario,<br/>
+                    <div id="preServiciosVentaExterna" style="display: none">
+                        <div style="clear:both;">
+                            <div style='float:left;'>* Existen servicios con productos de <b>Venta Externa</b> en estado <b>Pre-servicio</b>.</div>
+                            <a style='width: 15px; float: left; margin-left: 5px;' 
+                               href='{{ path('infopunto_show',{'id':punto_id.id, 'rol': "Cliente" }) }}'>
+                                <div class='icon_search'>&nbsp;</div>
+                            </a>
+                            <br/>
+                        </div>
+                        <div style="clear:both;">
+                            <div style='float:left;'>&nbsp;&nbsp;Recordar subir el <b>Contrato Externo Digital</b>.</div>
+                            <a style='width: 15px; float: left; margin-left: 5px;'
+                               href="{{ path('infopunto_newEditContratoExternoDigital', {'intIdPunto':punto_id.id, 'strRol': "Cliente" }) }}" >
+                                <div class='icon_search'>&nbsp;</div>
+                            </a>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                    <div id="sinServiciosInternet" style="display: none">
+                        <div style='float:left;'>* No tiene servicios de <b>Internet</b> contratados.</div>
+                        <a style='width: 15px; float: left; margin-left: 5px;' 
+                           href='{{ path('infopunto_show',{'id':punto_id.id, 'rol': "Cliente" }) }}'>
+                            <div class='icon_search'>&nbsp;</div>
+                        </a>
+                    </div>
+                </div>
+                <div id='listaVentas' style="clear: both;">
+                    <div id = "fieldsTabVentasNormales"></div>
+                    <div id = "fieldsTabVentasExternas"></div>
+                </div>
+            </td>
+        </tr>
+    </table>        
+    </div>
+    {% endif %}
+
+    <div class="buttons">
+	   <p>
+		   <span class="height20px">
+			   <a class="button-crud" href=" {{ path('infopunto_show',{'id':punto_id.id, 'rol': "Pre-cliente" }) }}">Regresar</a>
+		   </span>
+	   </p>
+	</div>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <div class="acciones_relacionadas">
+
+    </div>
+    <ul class="listado_acciones_relacionadas"></ul>
+{% endblock contenido_der %}

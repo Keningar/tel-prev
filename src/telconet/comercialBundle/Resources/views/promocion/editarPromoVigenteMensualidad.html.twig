@@ -1,0 +1,1265 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/daterangepicker.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/comercial/css/Promocion.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script>
+        var url_getJurisdicciones                = "{{ path('promocion_getJurisdicciones') }}";
+        var url_getCantones                      = "{{ path('promocion_getCantones') }}";
+        var url_getParroquias                    = "{{ path('promocion_getParroquias') }}";
+        var url_getSectores                      = "{{ path('promocion_getSectores') }}";
+        var url_getOlts                          = "{{ path('promocion_getOlts') }}";
+        var url_getEdificios                     = "{{ path('promocion_getEdificios') }}";
+        var urlGetFormasPago                     = "{{ path('promocion_getFormasPago') }}";
+        var urlGetTipoClientes                   = "{{ path('promocion_getTipoClientes') }}";
+        var url_GetProductos                     = "{{ path('promocion_getProductos') }}";
+        var url_GetPlanes                        = "{{ path('promocion_getPlanes') }}";
+        var urlGetPermanenciasMinimas            = "{{ path('promocion_getPermanenciasMinimas') }}";
+        var urlGetPermanenciaPromoCancelVol      = "{{ path('promocion_getPermanenciaPromoCancelVol') }}";
+        var urlGetEstadosServ                    = "{{ path('promocion_getEstadosServ') }}";
+        var urlGetPeriodos                       = "{{ path('promocion_getPeriodos') }}";
+        var urlGetTipoCuenta                     = "{{ path('promocion_getTipoCuenta') }}";
+        var urlGetBancos                         = "{{ path('promocion_getBancos') }}";
+        var url_editarPromocionMensualidad       = "{{ path('promocion_editarPromoMensualidadVigente') }}";
+        var url_getEmisoresPromoMensualidad      = "{{ path('promocion_getEmisoresPromoMensualidad') }}";
+        var urlGetMotivos                        = "{{ path('promocion_getMotivos') }}"; 
+        var strUrlListaPromo                     = '{{ path('promocion_index') }}';
+        var url_guardarPromocionMensualidad      = "{{ path('promocion_guardarPromoMensualidad') }}";
+        var urlCodigoUnico                       = "{{ path('promocion_validaCodigoUnico') }}"; 
+        var strEstadosServicios                  = "";
+        var strIdFormasPagos                     = "";
+        var strTipoCliente                       = "";
+        var strPermMinimaCancelVol               = "";
+        var checkPromoMix                        = "";
+        var strIdProductosMix                    = "";
+        var strIdPlanesMix                       = "";
+        var intPermanenciaMinimaMix              = "";
+        var strTieneMoraMix                      = "";
+        var intValMoraMix                        = "";
+        var strPromoIndefinidaMix                = "";
+        var strDescIndefinidoMix                 = "";
+        var strTipoPeriodoMix                    = "";
+        var strPeriodoDescuentosMix              = "";
+
+        var checkPromoPlan                       = "";
+        var strIdPlanesPromoPlan                 = "";
+        var intPermanenciaMinimaPlan             = "";
+        var strTieneMoraPlan                     = "";
+        var intValMoraPlan                       = "";
+        var strPromoIndefinidaPlan               = "";
+        var strDescIndefinidoPlan                = "";
+        var strTipoPeriodoPlan                   = "";
+        var strPeriodoDescuentosPlan             = "";
+        
+        var checkPromoProd                       = "";
+        var strIdProductosPromoProd              = "";
+        var intPermanenciaMinimaProd             = "";
+        var strTieneMoraProd                     = "";
+        var intValMoraProd                       = "";
+        var strPromoIndefinidaProd               = "";
+        var strDescIndefinidoProd                = "";
+        var strTipoPeriodoProd                   = "";
+        var strPeriodoDescuentosProd             = "";
+        
+        var checkPromoDescTotal                  = "";
+        var strTipoPeriodoDescTotal              = "";
+        var strPeriodoDescuentosDescTotal        = "";
+        var strTipoEdicion                       = "{{objPromocion['strTipoEdicion']}}";
+                    
+        {%if objPromocion['arrayCaracteristicas'].strEstadoServicio is defined %}
+             strEstadosServicios  = "{{objPromocion['arrayCaracteristicas'].strEstadoServicio}}";             
+        {% endif %}
+            
+        {%if objPromocion['arrayCaracteristicas'].strIdFormasPagos is defined %}
+             strIdFormasPagos  = "{{objPromocion['arrayCaracteristicas'].strIdFormasPagos}}";
+        {% endif %}
+            
+        {%if objPromocion['arrayCaracteristicas'].strPermMinimaCancelVol is defined %}
+             strPermMinimaCancelVol  = "{{objPromocion['arrayCaracteristicas'].strPermMinimaCancelVol}}";            
+        {% endif %}    
+            
+        {%if objPromocion['arrayCaracteristicas'].strTipoCliente is defined %}
+             strTipoCliente  = "{{objPromocion['arrayCaracteristicas'].strTipoCliente}}";            
+        {% endif %}
+            
+        {% if objPromocion['arrayTipoPromoMix'] is not empty and objPromocion['arrayTipoPromoMix'] is defined   %}
+            checkPromoMix = 'checked';
+            {% for promoMix in objPromocion['arrayTipoPromoMix'] %}
+                {%if promoMix['strDescripcionCaract'] == 'Productos' %}
+                    strIdProductosMix = "{{promoMix['strValor']}}";
+                {% endif %}                   
+                {%if promoMix['strDescripcionCaract'] == 'Planes' %}
+                    strIdPlanesMix = "{{promoMix['strValor']}}";
+                {% endif %}
+                {%if promoMix['strDescripcionCaract'] == 'PROM_PERMANENCIA_MINIMA' %}
+                    intPermanenciaMinimaMix = "{{promoMix['strValor']}}";
+                {% endif %}
+                {%if promoMix['strDescripcionCaract'] == 'PROM_PIERDE_PROMOCION_MORA' %}
+                    strTieneMoraMix = "{{promoMix['strValor']}}";
+                {% endif %}
+                {%if promoMix['strDescripcionCaract'] == 'PROM_DIAS_MORA' %}
+                    intValMoraMix = "{{promoMix['strValor']}}";
+                {% endif %}
+                {%if promoMix['strDescripcionCaract'] == 'PROM_PROMOCION_INDEFINIDA' %}
+                    strPromoIndefinidaMix = "{{promoMix['strValor']}}";
+                {% endif %}
+                {%if promoMix['strDescripcionCaract'] == 'PROM_DESCUENTO' %}
+                    strDescIndefinidoMix = "{{promoMix['strValor']}}";
+                {% endif %}
+                {%if promoMix['strDescripcionCaract'] == 'PROM_TIPO_PERIODO' %}
+                    strTipoPeriodoMix = "{{promoMix['strValor']}}";
+                {% endif %}
+                {%if promoMix['strDescripcionCaract'] == 'PROM_PERIODO' %}
+                    strPeriodoDescuentosMix = "{{promoMix['strValor']}}";
+                {% endif %}
+            {% endfor %} 
+        {% endif %}
+            
+        {% if objPromocion['arrayTipoPromoPlanes'] is not empty and objPromocion['arrayTipoPromoPlanes'] is defined   %}
+            checkPromoPlan = 'checked';
+            {% for promoPlan in objPromocion['arrayTipoPromoPlanes'] %}                
+                {%if promoPlan['strDescripcionCaract'] == 'Planes' %}
+                    strIdPlanesPromoPlan = "{{promoPlan['strValor']}}";
+                {% endif %}
+                {%if promoPlan['strDescripcionCaract'] == 'PROM_PERMANENCIA_MINIMA' %}
+                    intPermanenciaMinimaPlan = "{{promoPlan['strValor']}}";
+                {% endif %}
+                {%if promoPlan['strDescripcionCaract'] == 'PROM_PIERDE_PROMOCION_MORA' %}
+                    strTieneMoraPlan = "{{promoPlan['strValor']}}";
+                {% endif %}
+                {%if promoPlan['strDescripcionCaract'] == 'PROM_DIAS_MORA' %}
+                    intValMoraPlan = "{{promoPlan['strValor']}}";
+                {% endif %}
+                {%if promoPlan['strDescripcionCaract'] == 'PROM_PROMOCION_INDEFINIDA' %}
+                    strPromoIndefinidaPlan = "{{promoPlan['strValor']}}";
+                {% endif %}
+                {%if promoPlan['strDescripcionCaract'] == 'PROM_DESCUENTO' %}
+                    strDescIndefinidoPlan = "{{promoPlan['strValor']}}";
+                {% endif %}
+                {%if promoPlan['strDescripcionCaract'] == 'PROM_TIPO_PERIODO' %}
+                    strTipoPeriodoPlan = "{{promoPlan['strValor']}}";
+                {% endif %}
+                {%if promoPlan['strDescripcionCaract'] == 'PROM_PERIODO' %}
+                    strPeriodoDescuentosPlan = "{{promoPlan['strValor']}}";
+                {% endif %}
+            {% endfor %}                
+        {% endif %}
+            
+        {% if objPromocion['arrayTipoPromoProductos'] is not empty and objPromocion['arrayTipoPromoProductos'] is defined   %}
+            checkPromoProd = 'checked';
+            {% for promoProd in objPromocion['arrayTipoPromoProductos'] %}                
+                {%if promoProd['strDescripcionCaract'] == 'Productos' %}
+                    strIdProductosPromoProd = "{{promoProd['strValor']}}";
+                {% endif %}
+                {%if promoProd['strDescripcionCaract'] == 'PROM_PERMANENCIA_MINIMA' %}
+                    intPermanenciaMinimaProd = "{{promoProd['strValor']}}";
+                {% endif %}
+                {%if promoProd['strDescripcionCaract'] == 'PROM_PIERDE_PROMOCION_MORA' %}
+                    strTieneMoraProd = "{{promoProd['strValor']}}";
+                {% endif %}
+                {%if promoProd['strDescripcionCaract'] == 'PROM_DIAS_MORA' %}
+                    intValMoraProd = "{{promoProd['strValor']}}";
+                {% endif %}
+                {%if promoProd['strDescripcionCaract'] == 'PROM_PROMOCION_INDEFINIDA' %}
+                    strPromoIndefinidaProd = "{{promoProd['strValor']}}";
+                {% endif %}
+                {%if promoProd['strDescripcionCaract'] == 'PROM_DESCUENTO' %}
+                    strDescIndefinidoProd = "{{promoProd['strValor']}}";
+                {% endif %}
+                {%if promoProd['strDescripcionCaract'] == 'PROM_TIPO_PERIODO' %}
+                    strTipoPeriodoProd = "{{promoProd['strValor']}}";
+                {% endif %}
+                {%if promoProd['strDescripcionCaract'] == 'PROM_PERIODO' %}
+                    strPeriodoDescuentosProd = "{{promoProd['strValor']}}";
+                {% endif %}
+            {% endfor %}                
+        {% endif %}
+            
+        {% if objPromocion['arrayTipoPromoDescTotal'] is not empty and objPromocion['arrayTipoPromoDescTotal'] is defined   %}
+            checkPromoDescTotal = 'checked';
+            {% for promoDescTotal in objPromocion['arrayTipoPromoDescTotal'] %}     
+                {%if promoDescTotal['strDescripcionCaract'] == 'PROM_TIPO_PERIODO' %}
+                    strTipoPeriodoDescTotal = "{{promoDescTotal['strValor']}}";
+                {% endif %}
+                {%if promoDescTotal['strDescripcionCaract'] == 'PROM_PERIODO' %}
+                    strPeriodoDescuentosDescTotal = "{{promoDescTotal['strValor']}}";
+                {% endif %}  
+            {% endfor %}   
+        {% endif %}
+            
+        {%if objPromocion['objAdmiGrupoPromocionOrigenClonado'].feInicioVigencia is defined  and 
+             objPromocion['objAdmiGrupoPromocionOrigenClonado'].feFinVigencia is defined %}
+            strFeInicioVigencia = "{{objPromocion['objAdmiGrupoPromocionOrigenClonado'].feInicioVigencia| date("Y-m-d")}}";
+            strFeFinVigencia    = "{{objPromocion['objAdmiGrupoPromocionOrigenClonado'].feFinVigencia| date("Y-m-d")}}";
+        {%else%}    
+            strFeInicioVigencia  = "";
+            strFeFinVigencia     = "";
+        {% endif %}  
+        
+    </script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/promocion/editarPromoMensualidad_1.js?2') }}"></script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/promocion/editarPromoMensualidad_2.js?3') }}"></script> 
+{% endblock %}
+
+{% block contenido_izq %}
+    <div class="container-fluid">        
+        <div class="row">
+            <div class=" page-header col-md-12">    
+                <br/><h4>Editar Promoción de Mensualidad <i class="fa fa-gift" ></i></h4><br/>    
+            </div>
+        </div>
+    </div>
+
+    <form id="formularioPromocionMensual" class="formPromoMensualidad" novalidate onsubmit="return false;" method="POST">
+        <div class="container shadow-sm p-4 mb-4 bg-white">
+            <div class="row">
+                <div class="col-md-12">
+                    <h6>Configuraciones Generales</h6><br />
+                    <input type="hidden" id="idPromocion" value="{{objPromocion['objAdmiGrupoPromocion'].id}}">
+                    <div id="formConfGenerales">     
+                        <div class="form-group row">
+                            <div class="form-group col-md-3">
+                                <label for="nombre_promocion" class="col-sm-12 col-form-label">Nombre Promoción:</label>
+                                <div class="col-sm-12">
+                                    <input type="text" class="form-control input-sm" id="nombre_promocion" placeholder="Nombre Promoción"
+                                           value="ED_{{objPromocion['objAdmiGrupoPromocion'].nombreGrupo}}" required>
+                                    <div class="invalid-feedback">
+                                        Campo requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="estado_servicio" class="col-sm-12 col-form-label">Estado Servicio:&nbsp;&nbsp;
+                                    <i class="fa fa-spinner fa-spin spinner_estadoServ" ></i>
+                                </label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="estado_servicio" required>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Campo requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inicio_vigencia" class="col-sm-12 col-form-label">Fecha Inicio-Vigencia:</label>
+                                <div class="input-group date col-sm-12" id="datetimepickerFechaIniVigencia">
+                                    <input type="text" class="form-control" name="inicio_vigencia" placeholder="YYYY-MM-DD"
+                                           id="inicio_vigencia" value="{{objPromocion['dateFechaActual']| date("Y-m-d")}}" 
+                                           readonly="readonly"   >
+
+                                    <span class="input-group-addon">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-feIniVigencia">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                    <div class="invalid-feedback">
+                                        Campo Requerido
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="fin_vigencia" class="col-sm-12 col-form-label">Fecha Fin-Vigencia:</label>
+                                <div class="input-group date col-sm-12" id="datetimepickerFechaFinVigencia">
+                                    <input type="text" class="form-control" name="fechaFinVigencia" placeholder="YYYY-MM-DD"
+                                           id="fin_vigencia" value="{{objPromocion['objAdmiGrupoPromocion'].feFinVigencia| date("Y-m-d")}}" required>
+                                      
+                                    <div class="input-group-addon">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-feFinVigencia">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Campo Requerido
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">                     
+                            <div class="form-group col-md-3">
+                                <label for="forma_pago" class="col-sm-12 col-form-label">Forma de Pago:&nbsp;&nbsp;
+                                    <i class="fa fa-spinner fa-spin spinner_formaPago" ></i>
+                                </label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="forma_pago" required>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Campo requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">                            
+                                <label for="codigo_promocion" class="col-sm-12 col-form-label">Código Promoción:</label> 
+                                <div class="col-sm-12">
+                                    {%if objPromocion['arrayCaracteristicas'].strCodPromocion is defined %}
+                                         <input type="text" class="form-control input-sm" placeholder="Código Promoción" id="codigo_promocion" 
+                                           name="codigo_promocion" style="height: 1.8rem"  value='{{objPromocion['arrayCaracteristicas'].strCodPromocion}}'>
+                                          <input type="hidden" id="codigo_promocion_ingresado"  name="codigo_promocion_ingresado" value='S' >
+                                     {%else%} 
+                                         <input type="text" class="form-control input-sm" placeholder="Código Promoción" id="codigo_promocion" 
+                                           name="codigo_promocion" style="height: 1.8rem" >
+                                          <input type="hidden" id="codigo_promocion_ingresado"  name="codigo_promocion_ingresado" value='N' >
+
+                                     {% endif %}
+
+
+                                     <div class="invalid-feedback">
+                                            Campo requerido.
+                                    </div> 
+
+                                </div>
+                            </div> 
+                            <div class="form-group col-md-3 cont_tipoCliente">
+                                <label for="tipo_cliente" class="col-sm-12 col-form-label">Tipo Servicio:</label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="tipo_cliente" required multiple="multiple">
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Campo requerido.
+                                    </div>
+                                </div>
+                            </div>     
+                            <div class="form-group col-md-3">
+                                <label for="tiempoPermanencia" class="col-sm-12 col-form-label">Permanencia mínima de promoción &nbsp;
+                                 <input type="checkbox" id="check_tiempoPermanencia" value="">
+                                </label>
+                                <div class="col-sm-12 cont_permanenciaMin"> 
+                                     <select class="form-control form-control-sm" id="selectTiempoPermanencia" required style="height: 2.2rem">
+                                    <option></option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Campo requerido.
+                                </div>
+                                </div>
+                            </div>     
+                            
+                            
+                        </div>              
+                        <div class="form-group row"> 
+                            <div class="form-group col-md-3">
+                                <label for="motivo_inactivar" class="col-sm-2 col-form-label">Motivo:
+                                    <i class="fa fa-spinner fa-spin spinner_motivoInactivar" ></i></label>
+                                <div class="col-sm-12">
+                                    <select id="motivo_inactivar_vigente" class="form-control" required>                                    
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Campo requerido.
+                                    </div>
+                                </div>
+                            </div>                           
+
+                            <div class="form-group col-md-3">
+                                <label for="observacion_inactivar" class="col-sm-2 col-form-label">Observación:</label>
+                                <div class="col-sm-12">
+                                    <textarea class="form-control" id="observacion_inactivar_vigente" name="observacion_inactivar" rows="2" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Campo requerido.
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                                     
+                        {%if  intIdOrigen!='N' %}
+                         <div class="accordion container-fluid" id="accordionExample">                   
+                             
+                                <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+                                    <div class="card-header" id="promocionMix">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionMix" aria-expanded="false" 
+                                                    aria-controls="collapsePromocionMix"> Configuraciones Generales Origen<i class="fa fa-angle-down"></i>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapsePromocionMix" class="collapse" aria-labelledby="promocionMix" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                             <table class="table compact" width='100%' border='0'>          
+                                                <tbody>
+                                                   
+                                                    <tr>
+                                                        <td><b>Fecha Inicio-Vigencia:</b></td>
+                                                        <td>{{objPromocionOrigen['objAdmiGrupoPromocion'].feInicioVigencia| date('j. F Y')}}</td>
+
+                                                        <td><b>Fecha Fin-Vigencia:</b></td>
+                                                        <td>{{objPromocionOrigen['objAdmiGrupoPromocion'].feFinVigencia| date('j. F Y')}}</td> 
+                                                    </tr>
+                                                    <tr> 
+                                                        <td><b>Tipo Cliente:</b></td>
+                                                        <td>{{objPromocionOrigen['arrayCaracteristicas'].strTipoCliente}} </td>
+
+                                                        <td><b>Estado Servicio:</b></td>
+                                                        <td>{{objPromocionOrigen['arrayCaracteristicas'].strEstadoServicio}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Forma de Pago:</b></td>
+                                                        <td>{{objPromocionOrigen['arrayCaracteristicas'].strFormaPago}} </td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>                       
+                                                </tbody>
+                                            </table>
+                                          
+                                      </div>    
+                                    </div>    
+                                 </div>    
+                         </div>                  
+                            {% endif %}                 
+                        <div class="form-group row">                     
+                            <div class="form-group col-md-12" id ="idContenedorEmisores">
+                                <label class="col-sm-12 col-form-label">Información Débito Bancario:&nbsp;&nbsp;
+                                    <i class="fa fa-spinner fa-spin spinner_emisores" ></i>
+                                </label>
+                                <div class="bonder-titulo"></div>
+                                <div id="contenedor_informacion_emisores" class="col-md-12">
+                                    <div id="contenedor_tipo_emisores">
+                                        <div class="col-md-12 form-group row">
+                                            <div class="form-group col-md-2">
+                                                <label for="tipo_emisor">Tipo Emisor</label>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optTipoEmisor" id="optTipoEmisorTarjeta" value="Tarjeta">Tarjeta
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optTipoEmisor" id="optTipoEmisorCtaBanco" value="Cuenta Bancaria">
+                                                        Cuenta Bancaria
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div id="contenedorTarjCta" class="form-group col-md-3">
+                                                <label for="opcionEmisorTarCta" class="col-md-12 col-form-label">Tarjeta / Cta. Bancaria
+                                                    <i class="fa fa-spinner fa-spin spinner_tajeta_ctaBanco" ></i>
+                                                </label>
+                                                <div class="col-md-12">
+                                                    <select class="form-control" id="opcionEmisorTarCta">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div id="contenedorBanco" class="form-group col-md-3">
+                                                <label for="opcionEmisorBanco" class="col-md-12 col-form-label">Banco
+                                                    <i class="fa fa-spinner fa-spin spinner_banco" ></i>
+                                                </label>
+                                                <div class="col-md-12">
+                                                    <select class="form-control" id="opcionEmisorBanco">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <label col-form-label class="col-sm-12">Todos</label>
+                                                <div class="col-sm-12">
+                                                    <label class="radio">
+                                                        <input type="radio" name="optTipoTodos" id="optTipoSi" value="Si">Si&nbsp;
+                                                    </label>
+                                                    <label class="radio">
+                                                        <input type="radio" name="optTipoTodos" id="optTipoNo" value="No">No
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-2">
+                                                <div class="col-md-12">
+                                                    <button type="button" class="btn btn-success btn btn-md btnAgregaEmisor" id="btnAgregaEmisor" 
+                                                            title="Agregar"><i class="fa fa-plus-square"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="contenedorTablaEmisor" class="form-group row scrollbar col-md-10 offset-md-1">
+                                            <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>Tipo</th>
+                                                        <th>Tarjeta/Cta.Bancaria</th>
+                                                        <th>Banco</th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbodyInformacionEmisores">
+                                                </tbody>                       
+                                            </table>
+                                        </div>
+                                    </div>          
+                                </div>
+                            </div>
+                            {%if  intIdOrigen!='N' %}
+                                <div> </br></br></div>
+                               <div class="accordion container-fluid" id="accordionExample">                   
+                             
+                                <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+                                    <div class="card-header" id="promocionMix">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionMix" aria-expanded="false" 
+                                                    aria-controls="collapsePromocionMix"> Información Débito Bancario Origen <i class="fa fa-angle-down"></i>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapsePromocionMix" class="collapse" aria-labelledby="promocionMix" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                            
+                                        <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisoresO">
+                                            <thead class="thead-light"> 
+                                                <tr>
+                                                    <th width="15%">Tipo</th>
+                                                    <th>Tarjeta/Cta.Bancaria</th>
+                                                    <th>Banco</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbodyInformacionEmisores2">
+                                                {% if objPromocionOrigen['arrayEmisores']  is empty %}
+                                                   <td colspan="3"> NO POSEE</td>
+                                                {% else %}      
+                                                    {% for Emisores in  objPromocionOrigen['arrayEmisores'] %}
+                                                        <tr>
+                                                            <td>{{ Emisores['esTarjeta'] }}</td>
+                                                            <td>{{ Emisores['descCuenta'] }}</td>
+                                                            <td>{{ Emisores['descBanco'] }}</td>
+                                                        </tr>
+                                                    {% endfor %}  
+                                                {% endif %}
+                             
+                                            </tbody>
+                                        </table>
+                                          
+                                      </div>    
+                                    </div>    
+                                 </div>    
+                         </div>  
+                       {% endif %}
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col">
+                                <label for="restriccion_sectorizacion" class="col-sm-12 col-form-label">No aplica restricción de Sectorización &nbsp;
+                                    <input type="checkbox" id="check_sectorizacion" value=""></label>      
+                            </div>
+                        </div> 
+                        <div class="form-group row" id="contenedor_sectorizacion">
+                            <div class="form-group col-md-3">
+                                <label for="jurisdiccion" class="col-sm-12 col-form-label">Jurisdicción: &nbsp;&nbsp;
+                                    <i class="fa fa-spinner fa-spin spinner_jurisdiccion" ></i></label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="jurisdiccion">
+                                        <option></option>
+                                    </select>
+                                    <br>
+                                    <input type="checkbox" name="radioTodosJurisd"  id="radioTodosJurisd" value="sector"> Todos
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="canton" class="col-sm-12 col-form-label">Cantón: &nbsp;&nbsp;
+                                    <i class="fa fa-spinner fa-spin spinner_canton" ></i>
+                                </label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="canton">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="parroquia" class="col-sm-12 col-form-label">Parroquia: &nbsp;&nbsp;
+                                    <i class="fa fa-spinner fa-spin spinner_parroquia" ></i>
+                                </label>
+                                <div class="col-sm-12">
+                                    <select class="form-control" id="parroquia">
+                                        <option></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <div class="col-sm-12">
+                                    <label class="radio">
+                                        <input type="radio" name="radio_sect_olt_edif"  id="radioSector" value="sector" checked=""> Sector&nbsp;
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="radio_sect_olt_edif" id="radioOlt" value="olt"> Olt&nbsp;
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="radio_sect_olt_edif" id="radioEdificio" value="edificio"> Edificio&nbsp;
+                                        <i class="fa fa-spinner fa-spin spinner_sect_olt_edif" ></i>
+                                    </label>
+                                </div>     
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <select class="form-control" id="sect_olt_edif">
+                                                <option></option>
+                                            </select>
+                                            <input type="hidden" class="form-control input-sm" id="cod_parroquia" >
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button type="button" class="btn btn-success btn btn-md btnAgregaSectorizacion"  id="btnAgregaSectorizacion" 
+                                                    title="Agregar"><i class="fa fa-plus-square"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-md-center">
+                            <div class="form-group col-md-8">
+                               <div id="contenedor_ver_sector" class="form-group row scrollbar">
+                                    <table class="table table-striped table-bordered compact table-sm" id="tablaInfSectorizacion">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th><b>Jurisdicción</b></th>
+                                                <th><b>Cantón</b></th>
+                                                <th><b>Parroquia</b></th>
+                                                <th colspan="2"><b>Sector / Olt / Edificio</b></th>
+                                                <th><b>Acciones</b></th>       
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbodyInfSectorizacion">
+                                            {% if objPromocion['arrayCaracteristicas'].arraySectorizacion is defined and 
+                                               objPromocion['arrayCaracteristicas'].arraySectorizacion is not empty %}
+                                                {% for Sectorizacion in objPromocion['arrayCaracteristicas'].arraySectorizacion %}
+                                                    <tr>
+                                                        <td style="display:none;">{{ Sectorizacion['intJurisdiccion'] }}</td>
+                                                        <td style="display:none;">{{ Sectorizacion['intCanton'] }}</td>
+                                                        <td style="display:none;">{{ Sectorizacion['intParroquia'] }}</td>
+                                                        <td style="display:none;">{{ Sectorizacion['strOptSectOltEdif'] }}</td>
+                                                        <td style="display:none;">{{ Sectorizacion['arraySectOltEdif'] }}</td>
+                                                        <td style="display:none;">{{ Sectorizacion['intSectorizacion'] }}</td>
+                                                        <td>{{ Sectorizacion['strJurisdiccion'] }}</td>
+                                                        <td>{{ Sectorizacion['strCanton'] }}</td>
+                                                        <td>{{ Sectorizacion['strParroquia'] }}</td>
+                                                        <td>{{ Sectorizacion['strOptSectOltEdif'] }}</td>
+                                                        <td>{{ Sectorizacion['strSectOltEdif'] }}</td>
+                                                        <td class="actions">
+                                                            <button title="Limpiar" type="button" 
+                                                                    class="btn btn-danger btn btn-sm btnEliminarSectorizacion"
+                                                                    id="btnEliminarSectorizacion">
+                                                                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </tbody>                      
+                                    </table>
+                                </div>
+                            </div>
+                            {%if  intIdOrigen!='N' %}           
+                            <div class="accordion container-fluid" id="accordionExample">                   
+                             
+                                <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+                                    <div class="card-header" id="promocionMix">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionMix" aria-expanded="false" 
+                                                    aria-controls="collapsePromocionMix"> Detalles Sectorización Origen <i class="fa fa-angle-down"></i>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="collapsePromocionMix" class="collapse" aria-labelledby="promocionMix" data-parent="#accordionExample">
+                                      <div class="card-body">
+                                         <div id="contTablaSectorizacion" class="scrollbar">   
+                                        <table class="table table-striped table-bordered compact table-sm"id="tablaInfSectorizacionO">  
+                                             <thead class="thead-light">
+                                                 <tr>
+                                                     <th><b>Jurisdicción</b></th>
+                                                     <th><b>Cantón</b></th>
+                                                     <th><b>Parroquia</b></th>
+                                                     <th colspan="2"><b>Sector / Olt / Edificio</b></th>                              
+                                                 </tr>
+                                             </thead>
+                                             <tbody id="tbodyInfSectorizacion">
+                                                 {% if objPromocionOrigen['arrayCaracteristicas'].arraySectorizacion is defined and 
+                                                    objPromocionOrigen['arrayCaracteristicas'].arraySectorizacion is not empty %}
+                                                 {% for Sectorizacion in objPromocionOrigen['arrayCaracteristicas'].arraySectorizacion %}
+                                                     <tr>
+                                                         <td>{{ Sectorizacion['strJurisdiccion'] }}</td>
+                                                         <td>{{ Sectorizacion['strCanton'] }}</td>
+                                                         <td>{{ Sectorizacion['strParroquia'] }}</td>
+                                                         <td>{{ Sectorizacion['strOptSectOltEdif'] }}</td>
+                                                         <td>{{ Sectorizacion['strSectOltEdif'] }}</td>
+                                                     </tr>
+                                                 {% endfor %}
+                                                 {% else %}
+                                                     <tr>
+                                                         <td>Todos</td>
+                                                         <td>Todos</td>
+                                                         <td>Todos</td>
+                                                         <td>Todos</td>                                 
+                                                     </tr>
+                                                     {% endif %}
+                                                     </tbody>
+                                         </table>
+                                        </div>    
+                                      </div>    
+                                    </div>    
+                                </div>    
+                            </div>      
+                            {% endif %}
+                        </div>            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid shadow-sm p-4 mb-4 bg-white" >
+            <h6>Tipo de Promoción</h6><br/>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#promo_mix">Mix</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#promo_planes">Planes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#promo_productos">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#promo_descuento_total">Descuento Total</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active container" id="promo_mix">
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa fa-info-circle "></i> El descuento debe ser numérico: entero o decimal (Formato:9999.99).<br/>
+                        <i class="fa fa-info-circle "></i> Los días de mora deben ser numéricos: entero (Formato:999999).
+                    </div>
+                    <div class="form-group"> 
+                        <label col-form-label>Promoción Mix</label>&nbsp;
+                        <input type="checkbox" name="check_promoMix" value="promoMix" id="check_promoMix">
+                    </div>
+                    <div id="promoMix_form">                    
+                        <div class="form-group row">
+                            <div class="form-group col-md-4">
+                                <label for="promoMix_planes">Planes: &nbsp;&nbsp;<i class="fa fa-plus-square"></i></label>
+                                <select class="form-control form-control-sm" id="promoMix_planes" required>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Campo requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="promoMix_productos">Productos: &nbsp;&nbsp;<i class="fa fa-plus-square"></i></label>
+                                <select class="form-control form-control-sm" id="promoMix_productos" required> 
+                                </select>
+                                <div class="invalid-feedback">
+                                    Campo requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2 cont_permanenciaMin">
+                                <label for="promoMix_permanenciaMin">Tiempo servicio activo:</label>
+                                <select class="form-control form-control-sm" id="promoMix_permanenciaMin" style="height: 1.8rem">
+                                    <option></option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Campo requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-1">
+                                <label for="promoMix_mora">Mora:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" id="promoMix_moraSi" name="promoMix_mora" value="SI">Si
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" id="promoMix_moraNo" name="promoMix_mora" checked value="NO">No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-1 promoMix_contDiasMora">
+                                <label for="promoMix_diasMora">Día Mora:</label>
+                                <input type="text" class="form-control input-sm" id="promoMix_diasMora">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-md-3">
+                                <label for="promoMix_indefinida">Promoción Indefinida:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" id="promoMix_indefinidaSi" name="promoMix_indefinida" checked="" 
+                                               value="SI">Si
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" id="promoMix_indefinidaNo" name="promoMix_indefinida" 
+                                               value="NO">No
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" id="promoMix_descIndefinido" 
+                                           name="promoMix_descIndefinido" placeholder="Ingresar % Desc. Indefinido">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3" id="promoMix_cont_tipoPeriodo">
+                                <label for="promoMix_tipoPeriodo">Tipo Período:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" id="promoMix_tipoPeriodoUnico" name="promoMix_tipoPeriodo" 
+                                               checked="" value="Unico">Único
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" id="promoMix_tipoPeriodoVariable" name="promoMix_tipoPeriodo" 
+                                               value="Variable">Variable
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" id="promoMix_descUnico"  name="promoMix_descUnico"
+                                           placeholder="Ingresar % Desc. Único" >
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6" id="promoMix_contPeriodo">
+                                <label for="promoMix_periodo">Período:</label><br/>
+                                <div  class="col-md-12" id="promoMix_checkPeriodos"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane container" id="promo_planes">
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa fa-info-circle "></i> El descuento debe ser numérico: entero o decimal (Formato:9999.99).<br/>
+                        <i class="fa fa-info-circle "></i> Los días de mora deben ser numéricos: entero (Formato:999999).
+                    </div>
+                    <div class="form-group"> 
+                        <label col-form-label>Promoción Planes</label>&nbsp;
+                        <input type="checkbox" name = "check_promoPlan" value="promoPlan" id="check_promoPlan">
+                    </div>  
+                    <div id="promoPlan_form">  
+                        <div class="form-group row">
+                            <div class="form-group col-md-5">
+                                <label for="promoPlan_planes">Planes: &nbsp;&nbsp;<i class="fa fa-plus-square"></i></label><br/>
+                                <select class="form-control form-control-sm" id="promoPlan_planes" required>
+                                </select>
+                                 <div class="invalid-feedback">
+                                    Campo requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 cont_permanenciaMin">
+                                <label for="promoPlan_permanenciaMin">Tiempo servicio activo:</label><br/>
+                                <select class="form-control form-control-sm" id="promoPlan_permanenciaMin" style="height: 1.8rem">
+                                    <option></option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Campo requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-1">
+                                <label for="promoPlan_mora">Mora:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoPlan_mora" id="promoPlan_moraSi" value="SI">Si
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoPlan_mora" id="promoPlan_moraNo" checked="" 
+                                               value="NO">No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2 promoPlan_contDiasMora">
+                                <label for="promoPlan_diasMora">Días Mora:</label>
+                                <input type="text" class="form-control input-sm" id="promoPlan_diasMora">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-md-3">
+                                <label for="promoPlan_indefinida">Promoción Indefinida:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoPlan_indefinida" id="promoPlan_indefinidaSi" 
+                                               checked="" value="SI">Si
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input"  name="promoPlan_indefinida" id="promoPlan_indefinidaNo" 
+                                               value="NO">No
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" id="promoPlan_descIndefinido" 
+                                           name="promoPlan_descIndefinido" placeholder="Ingresar % Desc. Indefinido">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3" id="promoPlan_cont_tipoPeriodo">
+                                <label for="promoPlan_tipoPeriodo">Tipo Período:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoPlan_tipoPeriodo" id="promoPlan_tipoPeriodoUnico" 
+                                               checked="" value="Unico">Único
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoPlan_tipoPeriodo" id="promoPlan_tipoPeriodoVariable"
+                                               value="Variable">Variable
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" id="promoPlan_descUnico"  name="promoPlan_descUnico" 
+                                           placeholder="Ingresar % Desc. Único">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6" id="promoPlan_contPeriodo">
+                                <label for="promoPlan_periodo">Período:</label><br/>
+                                <div  class="col-md-12" id="promoPlan_checkPeriodos"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane container" id="promo_productos"> 
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa fa-info-circle "></i> El descuento debe ser numérico: entero o decimal (Formato:9999.99).<br/>
+                        <i class="fa fa-info-circle "></i> Los días de mora deben ser numéricos: entero (Formato:999999).
+                    </div>
+                    <div class="form-group"> 
+                        <label col-form-label>Promoción Productos</label>&nbsp;
+                        <input type="checkbox" name = "check_promoProd" value="promoProd" id="check_promoProd">
+                    </div>  
+                    <div id="promoProd_form">  
+                        <div class="form-group row">
+                            <div class="form-group col-md-5">
+                                <label for="promoProd_productos">Productos: &nbsp;&nbsp;<i class="fa fa-plus-square"></i></label><br/>
+                                <select class="form-control form-control-sm" id="promoProd_productos" required>
+                                </select>
+                                 <div class="invalid-feedback">
+                                    Campo requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4 cont_permanenciaMin">
+                                <label for="promoProd_permanenciaMin">Tiempo servicio activo:</label><br/>
+                                <select class="form-control form-control-sm" id="promoProd_permanenciaMin" style="height: 1.8rem">
+                                    <option></option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Campo requerido.
+                                </div>
+                            </div>
+                            <div class="form-group col-md-1">
+                                <label for="promoProd_mora">Mora:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoProd_mora" id="promoProd_moraSi" value="SI">Si
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoProd_mora" id="promoProd_moraNo" checked="" 
+                                               value="NO">No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-2 promoProd_contDiasMora">
+                                <label for="promoProd_diasMora">Días Mora:</label>
+                                <input type="text" class="form-control input-sm" id="promoProd_diasMora">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-md-3">
+                                <label for="promoProd_indefinida">Promoción Indefinida:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoProd_indefinida" id="promoProd_indefinidaSi" 
+                                               checked="" value="SI">Si
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoProd_indefinida" id="promoProd_indefinidaNo" 
+                                               value="NO">No
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" id="promoProd_descIndefinido" 
+                                           name="promoProd_descIndefinido" placeholder="Ingresar % Desc. Indefinido">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3" id="promoProd_cont_tipoPeriodo">
+                                <label for="promoProd_tipoPeriodo">Tipo Período:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoProd_tipoPeriodo" id="promoProd_tipoPeriodoUnico" 
+                                               checked="" value="Unico">Único
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoProd_tipoPeriodo" id="promoProd_tipoPeriodoVariable" 
+                                               value="Variable">Variable
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" id="promoProd_descUnico"  name="promoProd_descUnico"
+                                           placeholder="Ingresar % Desc. Único">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6" id="promoProd_contPeriodo">
+                                <label for="promoProd_periodo">Período:</label><br/>
+                                <div  class="col-md-12" id="promoProd_checkPeriodos"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-pane container" id="promo_descuento_total">
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa fa-info-circle "></i> El descuento debe ser numérico: entero o decimal (Formato:9999.99).
+                    </div>
+                    <div class="form-group"> 
+                        <label col-form-label>Promoción Descuento Total</label>&nbsp;
+                        <input type="checkbox" name = "check_promoDescTotal" value="promoDescTotal" id="check_promoDescTotal">
+                    </div>
+                    <div id="promoDescTotal_form">
+                        <div class="form-group row">
+                            <div class="form-group col-md-3">
+                                <label for="promoDescTotal_tipoPeriodo">Tipo Período:</label><br/>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="promoDescTotal_tipoPeriodo" 
+                                               id="promoDescTotal_tipoPeriodoUnico" checked="" value="Unico">Único
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input"  name="promoDescTotal_tipoPeriodo" 
+                                               id="promoDescTotal_tipoPeriodoVariable" value="Variable">Variable
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control form-control-sm" id="promoDescTotal_descUnico" 
+                                           name="promoDescTotal_descUnico" placeholder="Ingresar % Desc. Único">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-9" id="promoDescTotal_contPeriodo">
+                                <label for="promoDescTotal_periodo">Período:</label><br/>
+                                <div  class="col-md-12" id="promoDescTotal_checkPeriodos"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+   
+  {%if  intIdOrigen!='N' %}          
+  <div class="accordion container-fluid" id="accordionExample">
+    {% if objPromocionOrigen['arrayTipoPromoMix'] is not empty %}
+        <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+            <div class="card-header" id="promocionMix">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionMix" aria-expanded="false" 
+                            aria-controls="collapsePromocionMix"> Tipo de Promoción Origen<i class="fa fa-angle-down"></i>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePromocionMix" class="collapse" aria-labelledby="promocionMix" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-borderless table-sm" width='100%' border='0'>          
+                        <tbody>
+                            {% for promocionMix in objPromocionOrigen['arrayTipoPromoMix'] %}
+                                {% if promocionMix['strDescripcionCaract']=='DescUnicoVariable' %}
+                                    <tr>
+                                        <td><b>Período(s):</b></td>
+                                        <td><b>Descuento(%):</b></td>     
+                                    </tr>
+                                    {% set arrayPeriodosDesc = promocionMix['strValor']|split(',') %}
+                                    {% for strPeriodosDesc in arrayPeriodosDesc %}
+                                        {% set periodosDesc = strPeriodosDesc|split('|') %}
+                                        <tr>
+                                            <td> {{ periodosDesc[0] }}</td>
+                                            <td> {{ periodosDesc[1]~'%' }}</td>
+                                        </tr>
+                                    {% endfor %}                                      
+                                {%else%}
+                                    <tr>
+                                        <td><b>{{ promocionMix['strDescripcionCaract'] }}:</b></td>
+                                        <td> {{ promocionMix['strValor'] }}</td>
+                                    </tr>
+                                {%endif%}
+                            {% endfor %}                  
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if objPromocion['arrayTipoPromoPlanes'] is not empty %}
+        <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+            <div class="card-header" id="promocionPlanes">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionPlanes" aria-expanded="false" 
+                            aria-controls="collapsePromocionPlanes"> Mensualidad de Planes Origen <i class="fa fa-angle-down"></i>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePromocionPlanes" class="collapse" aria-labelledby="promocionPlanes" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-borderless table-sm" width='100%' border='0'>          
+                        <tbody>
+                            {% for promocionPlanes in objPromocionOrigen['arrayTipoPromoPlanes'] %}
+                                {% if promocionPlanes['strDescripcionCaract']=='DescUnicoVariable' %}
+                                    <tr>
+                                        <td><b>Período(s):</b></td>
+                                        <td><b>Descuento(%):</b></td>     
+                                    </tr>
+                                    {% set arrayPeriodosDesc = promocionPlanes['strValor']|split(',') %}
+                                    {% for strPeriodosDesc in arrayPeriodosDesc %}
+                                        {% set periodosDesc = strPeriodosDesc|split('|') %}
+                                        <tr>
+                                            <td> {{ periodosDesc[0] }}</td>
+                                            <td> {{ periodosDesc[1]~'%' }}</td>
+                                        </tr>
+                                    {% endfor %}                                      
+                                {%else%}
+                                    <tr>
+                                        <td><b>{{ promocionPlanes['strDescripcionCaract'] }}:</b></td>
+                                        <td> {{ promocionPlanes['strValor'] }}</td>
+                                    </tr>
+                                {%endif%}
+                            {% endfor %}                  
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% if objPromocion['arrayTipoPromoProductos'] is not empty %}
+        <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+            <div class="card-header" id="promocionProductos">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionProductos" aria-expanded="false" 
+                            aria-controls="collapsePromocionProductos"> Mensualidad de Productos Origen<i class="fa fa-angle-down"></i>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePromocionProductos" class="collapse" aria-labelledby="promocionProductos" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-borderless table-sm" width='100%' border='0'>          
+                        <tbody>
+                            {% for promocionProductos in objPromocionOrigen['arrayTipoPromoProductos'] %}
+                                {% if promocionProductos['strDescripcionCaract']=='DescUnicoVariable' %}
+                                    <tr>
+                                        <td><b>Período(s):</b></td>
+                                        <td><b>Descuento(%):</b></td>     
+                                    </tr>
+                                    {% set arrayPeriodosDesc = promocionProductos['strValor']|split(',') %}
+                                    {% for strPeriodosDesc in arrayPeriodosDesc %}
+                                        {% set periodosDesc = strPeriodosDesc|split('|') %}
+                                        <tr>
+                                            <td> {{ periodosDesc[0] }}</td>
+                                            <td> {{ periodosDesc[1]~'%' }}</td>
+                                        </tr>
+                                    {% endfor %}                                      
+                                {%else%}
+                                    <tr>
+                                        <td><b>{{ promocionProductos['strDescripcionCaract'] }}:</b></td>
+                                        <td> {{ promocionProductos['strValor'] }}</td>
+                                    </tr>
+                                {%endif%}
+                            {% endfor %}                  
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    {% if objPromocion['arrayTipoPromoDescTotal'] is not empty %}
+        <div class="card" style="border-bottom:1px solid rgba(0,0,0,.125)">
+            <div class="card-header" id="promocionDescTotal">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePromocionDescTotal" 
+                            aria-expanded="false" aria-controls="collapsePromocionDescTotal">
+                        Descuento Total en Mensualidad Origen<i class="fa fa-angle-down"></i>
+                    </button>
+                </h2>
+            </div>
+            <div id="collapsePromocionDescTotal" class="collapse" aria-labelledby="promocionDescTotal" data-parent="#accordionExample">
+                <div class="card-body">
+                    <table class="table table-borderless table-sm" width='100%' border='0'>          
+                        <tbody>
+                            {% for promocionDescTotal in objPromocionOrigen['arrayTipoPromoDescTotal'] %}
+                                {% if promocionDescTotal['strDescripcionCaract']=='DescUnicoVariable' %}
+                                    <tr>
+                                        <td><b>Período(s):</b></td>
+                                        <td><b>Descuento(%):</b></td>     
+                                    </tr>
+                                    {% set arrayPeriodosDesc = promocionDescTotal['strValor']|split(',') %}
+                                    {% for strPeriodosDesc in arrayPeriodosDesc %}
+                                        {% set periodosDesc = strPeriodosDesc|split('|') %}
+                                        <tr>
+                                            <td> {{ periodosDesc[0] }}</td>
+                                            <td> {{ periodosDesc[1]~'%' }}</td>
+                                        </tr>
+                                    {% endfor %}                                      
+                                {%else%}
+                                    <tr>
+                                        <td><b>{{ promocionDescTotal['strDescripcionCaract'] }}:</b></td>
+                                        <td> {{ promocionDescTotal['strValor'] }}</td>
+                                    </tr>
+                                {%endif%}
+                            {% endfor %}                  
+                        </tbody>
+                    </table>           
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div> 
+    {% endif %} 
+      <br /><div class="row justify-content-center">                          
+                <div class="col-md-3 offset-1">
+                     <i class="fa fa-spinner fa-spin spinner_guardarPromocion" ></i>
+                    <button type="submit" class="btn btn-primary btn-sm" id="guardarPromociones">Guardar</button>
+                    <button type="button" class="btn btn-secondary btn-sm" id="limpiarPromocion">Limpiar</button>
+                </div>
+            </div>
+                     
+            
+        </div>
+                                        
+    </form>
+    <div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mensaje Promoción</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas"> 
+        <li>
+            <a href="{{path('promocion_index')}}">Consulta de Promociones</a>
+        </li>
+    </ul>
+{% endblock contenido_der %}
+

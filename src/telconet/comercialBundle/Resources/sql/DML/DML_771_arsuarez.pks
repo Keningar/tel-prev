@@ -1,0 +1,730 @@
+-- DEFINIR CONCENTRADOR PARA LAS INTERCONEXIONES
+
+update db_comercial.admi_producto set nombre_tecnico = 'CONCINTER' , ES_CONCENTRADOR = 'SI', ESTADO_INICIAL = 'Pre-servicio' WHERE DESCRIPCION_PRODUCTO = 'Concentrador Interconexiones';
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'NOMBRE_TECNICO_PRODUCTO'),
+    'CONCINTER',
+    'CONCINTER',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+--CLIENTES DEFINIDOS PARA SER ESCOGIDOS PARA MIGRAR DATOS TECNICOS DE SUS PUNTOS
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'CLIENTES A MIGRAR POR INTERCONEXION',
+    'CLIENTES A MIGRAR POR INTERCONEXION',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+  
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'CLIENTES A MIGRAR POR INTERCONEXION'),
+    NULL,
+    'FARMAENLACE',
+    (SELECT PERSONA_ROL.ID_PERSONA_ROL
+    FROM 
+      DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL PERSONA_ROL,
+      DB_COMERCIAL.INFO_PERSONA PERSONA,
+      DB_COMERCIAL.INFO_EMPRESA_ROL EMPRESA_ROL,
+      DB_GENERAL.ADMI_ROL ROL,
+      DB_GENERAL.ADMI_TIPO_ROL TIPO_ROL
+    WHERE PERSONA_ROL.PERSONA_ID      = PERSONA.ID_PERSONA
+    AND PERSONA_ROL.EMPRESA_ROL_ID    = EMPRESA_ROL.ID_EMPRESA_ROL
+    AND EMPRESA_ROL.ROL_ID            = ROL.ID_ROL
+    AND ROL.TIPO_ROL_ID               = TIPO_ROL.ID_TIPO_ROL
+    AND TIPO_ROL.DESCRIPCION_TIPO_ROL = 'Cliente'
+    AND PERSONA.RAZON_SOCIAL          = 'FARMAENLACE'
+    AND PERSONA_ROL.ESTADO            = 'Activo'
+    AND EMPRESA_ROL.ESTADO            = 'Activo'
+    AND ROL.ESTADO                    = 'Activo'
+    AND TIPO_ROL.ESTADO               = 'Activo'
+    ),
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+--TIPOS DE PRODUCTOS A SER MIGRADOS POR RAZON SOCIAL
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PRODUCTOS A MIGRAR POR INTERCONEXION',
+    'PRODUCTOS A MIGRAR POR INTERCONEXION',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PRODUCTOS A MIGRAR POR INTERCONEXION'),
+    'FARMAENLACE',
+    'L3MPLS',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PRODUCTOS A MIGRAR POR INTERCONEXION'),
+    'OTECEL S . A.',
+    'L3MPLS',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+-- validacion sobre que razon social se realizara la migracion cuando se cree un nuevo punto
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'RAZON SOCIAL CON OPCION DE INTERCONEXION',
+    'RAZON SOCIAL CON OPCION DE INTERCONEXION',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'RAZON SOCIAL CON OPCION DE INTERCONEXION'
+    ),
+    NULL,
+    'OTECEL S . A.',
+    (SELECT PERSONA_ROL.ID_PERSONA_ROL
+    FROM DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL PERSONA_ROL,
+      DB_COMERCIAL.INFO_PERSONA PERSONA,
+      DB_COMERCIAL.INFO_EMPRESA_ROL EMPRESA_ROL,
+      DB_GENERAL.ADMI_ROL ROL,
+      DB_GENERAL.ADMI_TIPO_ROL TIPO_ROL
+    WHERE PERSONA_ROL.PERSONA_ID      = PERSONA.ID_PERSONA
+    AND PERSONA_ROL.EMPRESA_ROL_ID    = EMPRESA_ROL.ID_EMPRESA_ROL
+    AND EMPRESA_ROL.ROL_ID            = ROL.ID_ROL
+    AND ROL.TIPO_ROL_ID               = TIPO_ROL.ID_TIPO_ROL
+    AND TIPO_ROL.DESCRIPCION_TIPO_ROL = 'Cliente'
+    AND PERSONA.RAZON_SOCIAL          = 'OTECEL S . A.'
+    AND PERSONA_ROL.ESTADO            = 'Activo'
+    AND EMPRESA_ROL.ESTADO            = 'Activo'
+    AND ROL.ESTADO                    = 'Activo'
+    AND TIPO_ROL.ESTADO               = 'Activo'
+    ),
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+--------------------------------------------------------------------------------------------
+-- caracteristica para servicio que hereda informacion
+--------------------------------------------------------------------------------------------
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'SERVICIO_HEREDADO',
+    'N',
+    'Activo',
+    sysdate,
+    'arsuarez',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'INTERCONEXION_CLIENTES',
+    'N',
+    'Activo',
+    sysdate,
+    'arsuarez',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+      VALUES(DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO = 'L3MPLS' AND EMPRESA_COD = 10 AND ESTADO = 'Activo' AND NOMBRE_TECNICO = 'L3MPLS'),
+      (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA IN ('INTERCONEXION_CLIENTES')),
+      SYSDATE,NULL,'arsuarez',NULL,'Activo','NO');
+
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+      VALUES(DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO = 'L3MPLS' AND EMPRESA_COD = 10 AND ESTADO = 'Activo' AND NOMBRE_TECNICO = 'L3MPLS'),
+      (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA IN ('SERVICIO_HEREDADO')),
+      SYSDATE,NULL,'arsuarez',NULL,'Activo','NO');
+
+-- caracteristicas a ser asignadas a nuevo concentrador
+
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+      VALUES(DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO = 'Concentrador Interconexiones' AND EMPRESA_COD = 10 AND ESTADO = 'Activo'),
+      (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA IN ('INTERCONEXION_CLIENTES')),
+      SYSDATE,NULL,'arsuarez',NULL,'Activo','NO');
+
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+      VALUES(DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO = 'Concentrador Interconexiones' AND EMPRESA_COD = 10 AND ESTADO = 'Activo'),
+      (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA IN ('TIPO_FACTIBILIDAD')),
+      SYSDATE,NULL,'arsuarez',NULL,'Activo','NO');
+
+/
+
+DECLARE 
+
+	type array_t IS     varray(200) OF VARCHAR2(200);
+	array array_t := array_t('VLAN',
+		                'TRASLADO',
+		                'VPN_IMPORTADA',
+		                'PROTOCOLO_ENRUTAMIENTO',
+		                'ENLACE_DATOS',
+		                'VRF',
+		                'Zona',
+		                'REQUIERE_BACKUP',
+		                'ES_BACKUP',
+		                'DEFAULT_GATEWAY',
+		                'ROUTE_MAP',
+		                'ROUTE_MAP_PREFIX',
+		                'CACTI',
+		                'TERCERIZADORA');
+BEGIN
+
+  FOR i IN 1..array.count
+  LOOP
+      
+	      INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+	      VALUES(DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO = 'Concentrador Interconexiones' AND EMPRESA_COD = 10 AND ESTADO = 'Activo'),
+	      (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA IN (array(i))),
+	      SYSDATE,NULL,'arsuarez',NULL,'Activo','NO');
+  
+  END LOOP;
+
+END;
+
+/
+
+--informacion para asignacion de recursos de red ( subredes )
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'SUBREDES INTERCONEXION ENTRE CLIENTES',
+    'SUBREDES INTERCONEXION ENTRE CLIENTES',
+    'TECNICO',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CLIENTES',
+    '10',
+    '84',
+    '8',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CLIENTES',
+    '10',
+    '84',
+    '9',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CLIENTES',
+    '10',
+    '84',
+    '10',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CLIENTES',
+    '10',
+    '84',
+    '11',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CLIENTES',
+    '10',
+    '84',
+    '12',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CLIENTES',
+    '10',
+    '84',
+    '13',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CLIENTES',
+    '10',
+    '84',
+    '14',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CLIENTES',
+    '10',
+    '84',
+    '15',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+----- concentradores
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CONCENTRADORES',
+    '10',
+    '84',
+    '2',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    'R1',
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'OTECEL S . A.',
+    'CONCENTRADORES',
+    '10',
+    '84',
+    '1',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    'R2',
+    10
+  );
+
+-- agregar parametro para agregar anillos virtuales por ciudad
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'ANILLOS_MPLS'),
+    'V-R1',
+    '1500',
+    '2000',
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'ANILLOS_MPLS'),
+    'V-R2',
+    '1000',
+    '1499',
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+
+-- crear y subnetear subredes designadas
+
+/
+
+declare
+
+begin
+
+	for i in 1..15 loop
+
+		if i<> 3 and i<>4 and i<>5 and i<>6 and i<>7 then
+			
+			DECLARE
+			  PV_PREFIJORED VARCHAR2(200);
+			  PV_INICIORED NUMBER;
+			  PV_FINRED NUMBER;
+			  PV_PRIMEROCT VARCHAR2(200);
+			  PV_TERCEROCT VARCHAR2(200);
+			  PV_TIPOUSO VARCHAR2(200);
+			  LV_MENSAERROR VARCHAR2(200);
+			BEGIN
+			  PV_PREFIJORED := '84';
+			  PV_INICIORED  := 0;
+			  PV_FINRED     := 255;
+			  PV_PRIMEROCT  := '10';
+			  PV_TERCEROCT  := i;
+			  PV_TIPOUSO    := 'DATOS-MIGRA-CLIENTES';
+
+			  DB_INFRAESTRUCTURA.INFRK_TRANSACCIONES.INFRP_CREAR_REDES_Y_SUBREDES(
+			    PV_PREFIJORED => PV_PREFIJORED,
+			    PV_INICIORED => PV_INICIORED,
+			    PV_FINRED => PV_FINRED,
+			    PV_PRIMEROCT => PV_PRIMEROCT,
+			    PV_TERCEROCT => PV_TERCEROCT,
+			    PV_TIPOUSO => PV_TIPOUSO,
+			    LV_MENSAERROR => LV_MENSAERROR
+			  );
+			  
+			END;            			
+			
+		end if;
+	end loop;
+
+end;
+
+/
+
+--creacion de las VLANS de interconexion a los PE-ROUTER
+DECLARE
+--
+    --   
+    Pn_Contador       NUMBER;
+--
+BEGIN
+--    
+    FOR ELEMENTOS IN 
+    (
+        SELECT 
+            ID_ELEMENTO
+        FROM 
+            DB_INFRAESTRUCTURA.INFO_ELEMENTO
+        WHERE 
+            NOMBRE_ELEMENTO IN ('ro1nnitelefonica.telconet.net','ro1nnitelefonicauio.telconet.net')
+    )
+    LOOP
+    
+          FOR RANGOS IN
+          (
+              SELECT 
+                DET.VALOR1,
+                DET.VALOR2,
+                DET.VALOR3
+              FROM 
+                DB_GENERAL.ADMI_PARAMETRO_CAB CAB,
+                DB_GENERAL.ADMI_PARAMETRO_DET DET
+              WHERE 
+                    CAB.NOMBRE_PARAMETRO = 'ANILLOS_MPLS'
+              AND CAB.ID_PARAMETRO       = DET.PARAMETRO_ID
+              AND DET.ESTADO             = 'Activo'
+              AND CAB.ESTADO             = 'Activo'
+              AND DET.DESCRIPCION        IN ('V-R1','V-R2')
+              ORDER BY DET.DESCRIPCION ASC
+          )
+          LOOP
+      
+              --Se agregan las VLANs relacionada a cada anillo 0 al 4 en el PE
+              FOR Pn_Contador IN RANGOS.VALOR1..RANGOS.VALOR2
+                 LOOP
+                     INSERT
+                        INTO DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO VALUES
+                          (
+                            DB_INFRAESTRUCTURA.SEQ_INFO_DETALLE_ELEMENTO.NEXTVAL,
+                            ELEMENTOS.ID_ELEMENTO ,
+                            'VLAN',
+                            Pn_Contador,
+                            'VLAN PE',
+                            'arsuarez',
+                            SYSDATE,
+                            '127.0.0.1',
+                            NULL,
+                            'Activo'
+                          );
+              END LOOP;
+      
+              IF RANGOS.VALOR3 IS NOT NULL THEN
+                  --Se agrega la VLAN relacionada a Internet MPLS para el PE
+                  INSERT
+                    INTO DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO VALUES
+                      (
+                        DB_INFRAESTRUCTURA.SEQ_INFO_DETALLE_ELEMENTO.NEXTVAL,
+                        ELEMENTOS.ID_ELEMENTO ,
+                        'VLAN',
+                        RANGOS.VALOR3,
+                        'VLAN PE',
+                        'arsuarez',
+                        SYSDATE,
+                        '127.0.0.1',
+                        NULL,
+                        'Activo'
+                      );    
+                  
+              END IF;
+      
+          END LOOP;
+    
+    END LOOP;
+
+    COMMIT;
+
+EXCEPTION
+WHEN OTHERS THEN
+  ROLLBACK;
+  raise_application_error(-20001,'UN ERROR A OCURRIDO - '||SQLERRM || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE ||' -ERROR- '||SQLERRM);
+END;
+
+/
+
+--actualizacion del valor de anillo de los switches virtuales
+
+--GYE
+UPDATE 
+  DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+SET 
+  DETALLE_VALOR  = 'V-R1'
+WHERE ELEMENTO_ID IN
+  (SELECT ID_ELEMENTO
+  FROM DB_INFRAESTRUCTURA.INFO_ELEMENTO
+  WHERE NOMBRE_ELEMENTO = 'sw1nnitelefonica.telconet.net'
+  )
+AND DETALLE_NOMBRE = 'ANILLO'
+AND ESTADO         = 'Activo';
+
+--UIO
+UPDATE 
+  DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+SET 
+  DETALLE_VALOR  = 'V-R2'
+WHERE ELEMENTO_ID IN
+  (SELECT ID_ELEMENTO
+  FROM DB_INFRAESTRUCTURA.INFO_ELEMENTO
+  WHERE NOMBRE_ELEMENTO = 'sw1nnitelefonicauio.telconet.net'
+  )
+AND DETALLE_NOMBRE = 'ANILLO'
+AND ESTADO         = 'Activo';

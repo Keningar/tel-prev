@@ -1,0 +1,35 @@
+reportessupervisor_index:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:Supervisor:index" }
+    
+reportessupervisor_gridVentas:
+    pattern:  /gridVentas
+    defaults: { _controller: "comercialBundle:Supervisor:gridVentas" }
+    
+reportessupervisor_reporteVentasSupervisor:
+    pattern:  /ventas
+    defaults: { _controller: "comercialBundle:Supervisor:reporteVentasSupervisor" }
+    
+reportessupervisor_gridReporteVentasSupervisor:
+    pattern:  /gridReporteVentasSupervisor
+    defaults: { _controller: "comercialBundle:Supervisor:gridReporteVentasSupervisor" }
+    
+reportessupervisor_getAdmiJurisdiccion:
+    pattern:  /getAdmiJurisdiccion
+    defaults: { _controller: "comercialBundle:Supervisor:getAdmiJurisdiccion" }
+    
+reportessupervisor_getAdmiSector:
+    pattern:  /getAdmiSector
+    defaults: { _controller: "comercialBundle:Supervisor:getAdmiSector" }
+    
+reportessupervisor_reporteConsolidadoVentasBrutasActivas:
+    pattern:  /consolidadoVentasBrutasActivas
+    defaults: { _controller: "comercialBundle:Supervisor:reporteConsolidadoVentasBrutasActivas" }
+    
+reportessupervisor_gridReporteConsolidadoVentasBrutasActivas:
+    pattern:  /gridConsolidadoVentasBrutasActivas
+    defaults: { _controller: "comercialBundle:Supervisor:gridReporteConsolidadoVentasBrutasActivas" }
+    
+reportessupervisor_exportarReporteConsolidadoVentasBrutasActivas:
+    pattern:  /exportarConsolidadoVentasBrutasActivas
+    defaults: { _controller: "comercialBundle:Supervisor:exportarReporteConsolidadoVentasBrutasActivas" }

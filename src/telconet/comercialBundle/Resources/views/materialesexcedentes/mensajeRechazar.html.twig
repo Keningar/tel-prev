@@ -1,0 +1,111 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+            <img alt=""  src="http://images.telconet.net/others/sit/notificaciones/rp_telco_logo.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para indicarle que se rechazo la siguiente Solicitud de Materiales Excedentes
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <strong>Detalle Solicitud # {{ detalleSolicitud.id}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+              <td>
+                <strong>Servicio / Producto:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.productoId %}
+						{% if detalleSolicitud.servicioId.productoId.descripcionProducto %}
+							{{ detalleSolicitud.servicioId.productoId.descripcionProducto }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.planId %}
+						{% if detalleSolicitud.servicioId.planId.nombrePlan %}
+							{{ detalleSolicitud.servicioId.planId.nombrePlan }}
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha de creacion:</strong>
+              </td>
+              <td>{{detalleSolicitud.feCreacion | date("d-M-Y") }} | {{ detalleSolicitud.feCreacion | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario de creacion:</strong>
+              </td>
+              <td>{{ detalleSolicitud.usrCreacion}}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha de rechazo:</strong>
+              </td>
+              <td>{{detalleSolicitud.feRechazo | date("d-M-Y") }} | {{ detalleSolicitud.feRechazo | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario que rechaza:</strong>
+              </td>
+              <td>{{ detalleSolicitud.usrRechazo}}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Motivo de rechazo:</strong>
+              </td>
+              <td>{{ motivo.nombreMotivo }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Observacion:</strong>
+              </td>
+              <td>{{ detalleSolicitud.observacion }}</td>
+            </tr>
+            <tr>
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+      <tr>
+          <td><strong><font size='2' face='Tahoma'>TELCONET S.A.</font></strong></p>
+          </td>   
+      </tr>  
+    </table>
+  </body>
+</html>

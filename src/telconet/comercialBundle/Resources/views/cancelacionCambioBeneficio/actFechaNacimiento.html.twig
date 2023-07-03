@@ -1,0 +1,281 @@
+{% block stylesheets %}  
+   
+    <link href="{{ asset('./bundles/comercial/css/InfoDetalleSolicitud.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+ 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cancelacionCambioBeneficio/actFechaNacimiento.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+     <script>
+        {%if arraySolicitud['nombreCliente'] is defined %}
+             strNombreCliente  = "{{arraySolicitud['nombreCliente']}}";
+        {%else%}    
+             strNombreCliente  = "";
+        {% endif %}    
+        
+        {%if arraySolicitud['identificacion'] is defined %}
+             strIdentificacion  = "{{arraySolicitud['identificacion']}}";
+        {%else%}    
+             strIdentificacion  = "";
+        {% endif %}   
+            
+        {%if arraySolicitud['fechaNacimiento'] is defined and arraySolicitud['fechaNacimiento']!= null %}            
+            strFechaNacimiento = "{{arraySolicitud['fechaNacimiento'] | date("Y-m-d")}}";           
+        {%else%}    
+            strFechaNacimiento  = "";          
+        {% endif %}
+        
+        {%if arraySolicitud['edad'] is defined %}
+             strEdadCliente  = "{{arraySolicitud['edad']}}";
+        {%else%}    
+             strEdadCliente  = "";
+        {% endif %} 
+            
+        {%if arraySolicitud['tipoIdentificacion'] is defined %}
+             strTipoIdentificacion  = "{{arraySolicitud['tipoIdentificacion']}}";
+        {%else%}    
+             strTipoIdentificacion  = "";
+        {% endif %} 
+        
+        {%if arraySolicitud['tipoTributario'] is defined %}
+             strTipoTributario  = "{{arraySolicitud['tipoTributario']}}";
+        {%else%}    
+             strTipoTributario  = "";
+        {% endif %}             
+                
+        {%if arraySolicitud['strMsjValidaTipoTributario'] is defined %}
+             strMsjValidaTipoTributario  = "{{arraySolicitud['strMsjValidaTipoTributario']}}";
+        {%else%}    
+             strMsjValidaTipoTributario  = "";
+        {% endif %}       
+        
+        {%if strOpcion is defined %}
+             strOpcion  = "{{ strOpcion }}";
+        {%else%}    
+             strOpcion  = "";
+        {% endif %} 
+            
+        {%if arraySolicitud['idPersonaRol'] is defined %}
+             intIdPersonaRol  = "{{arraySolicitud['idPersonaRol']}}";
+        {%else%}    
+             intIdPersonaRol  = "";
+        {% endif %}      
+            
+         var url_buscarCliente          = "{{ path('cancelacionCambioBeneficio_buscarCliente') }}";
+         var url_actualizarFeNacimiento = "{{ path('cancelacionCambioBeneficio_actualizarFeNacimiento') }}";
+         var url_confirmarFeNacimiento  = "{{ path('cancelacionCambioBeneficio_confirmarFeNacimiento') }}";         
+
+     </script>      
+{% endblock %}
+<form method="post" {{ form_enctype(form_documentos) }}  
+      id='formulario' name="formulario"> 
+    
+    <h5>Actualización de Fecha de Nacimiento</h5>                                   
+    <div id="actFeNacimiento_form">       
+        <table border='0' cellpadding='1' cellspacing='1' width='100%'>                            
+            <tr>
+                <td colspan='2'>
+                    <div class="infomessage">Puedes dar click en <i>"Agregar mas Imagenes"</i>
+                        para agregar mas archivos que desees al contrato</div>
+                </td>
+            </tr>   
+            <tr><td colspan="2">&nbsp;</td></tr>                            
+            <tr>
+                <td colspan='2'>  
+                    <table border='0' cellpadding='1' cellspacing='1' width='100%'>      
+                       {%if strOpcion is defined  and strOpcion == 'General' %}                       
+                        <tr>
+                            <td> 
+                                <label for="identificacion" class="col-sm-12 col-form-label">Identificación:</label>   
+                                <div class="input-group date col-sm-12">
+                                    <input type="text" class="form-control input-sm" placeholder="Identificación"
+                                           id="identificacion_b" name="identificacion_b" value = ''
+                                           style="height: 1.8rem; width: 13em">
+                                </div>
+                            </td>
+                            <td><button type="button" class="btn btn-info btn-sm" id="buscar_cliente">
+                                    <i class="fa fa-search"></i>Buscar
+                                </button>
+                                <button type="button" class="btn btn-secondary btn-sm" id="limpiar_formCliente">
+                                    <i class="fa fa-paint-brush"></i> Limpiar
+                                </button>&nbsp;
+                            </td>
+                        </tr>
+                        {% endif %}  
+                        <tr><td colspan="2">&nbsp;</td></tr>     
+                        <tr>
+                            <td colspan="2">                                                
+                                <label for="nombre_cliente" class="col-sm-12 col-form-label">Cliente:</label>   
+                                <div class="input-group date col-sm-12">
+                                    <input type="text" class="form-control input-sm" placeholder="Nombre Cliente"
+                                           id="nombre_cliente" name="nombre_cliente" value = '' 
+                                           style="height: 1.8rem; width: 13em" required>
+                                </div>
+                            </td>                                            
+                        </tr>
+
+                        <tr>
+                            <td>                                                
+                                <label for="fecha_nacimiento" class="col-sm-12 col-form-label">Fecha de Nacimiento:</label>
+                                <div class="input-group date col-sm-12" id="datetimepickerFechaNacimiento">
+                                    <input type="text" class="form-control" name="fecha_nacimiento" placeholder="YYYY-MM-DD"
+                                           id="fecha_nacimiento">
+                                    <span class="input-group-addon">
+                                        <button class="btn btn-outline-secondary button-addon1" type="button" id="button-addon1">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </button>
+                                    </span>
+                                    <div class="invalid-feedback">
+                                        Campo Requerido
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <label for="edad_cliente" class="col-sm-12 col-form-label">Edad:</label>   
+                                <div class="input-group date col-sm-12">
+                                    <input type="text" class="form-control input-sm" placeholder="Edad Cliente"
+                                           id="edad_cliente" name="edad_cliente" style="height: 1.8rem; width: 5em" required>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <label for="identificacion_cliente" class="col-sm-12 col-form-label">Identificación:</label>   
+                                <div class="input-group date col-sm-12">
+                                    <input type="text" class="form-control input-sm" placeholder="Identificacion"
+                                           id="identificacion_cliente" name="identificacion_cliente"
+                                           style="height: 1.8rem; width: 5em" required>
+                                </div>
+                            </td>
+                            <td>
+                                <label for="tipo_tributario_cliente" class="col-sm-12 col-form-label">Tipo Tributario:</label>   
+                                <div class="input-group date col-sm-12">
+                                    <input type="text" class="form-control input-sm" placeholder="Tipo Persona"
+                                           id="tipo_tributario_cliente" name="tipo_tributario_cliente" 
+                                           style="height: 1.8rem; width: 5em" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>                                                
+                                <label for="tipo_identificacion_cliente" class="col-sm-12 col-form-label">
+                                    Tipo Identificación:</label>   
+                                <div class="input-group date col-sm-12">
+                                    <input type="text" class="form-control input-sm" placeholder="Tipo Identificación"
+                                           id="tipo_identificacion_cliente" name="tipo_identificacion_cliente" 
+                                           style="height: 1.8rem; width: 13em" required>
+                                </div>
+                            </td>  
+                            <td>&nbsp;</td>
+                        </tr>                                                                                                                
+                    </table>
+                </td>
+            </tr>                                                     
+            <tr><td>&nbsp;</td></tr>
+        </table>
+    </div>                 
+                        
+    <div class="container">       
+        <label for="imagenes" class="col-sm-12 col-form-label">Cargar Imagenes: 
+            <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                    aria-expanded="false" data-target="#contenedor_ver_imagenes"><i class="fa fa-angle-down"></i>
+            </button>
+        </label>
+           
+        <div class="bonder-titulo"></div>
+        <div id="contenedor_ver_imagenes" class="form-group row scrollbar2">
+            <table class="table" id="tablaInformacionImagenes">                                      
+                <tbody id="tbodyInfImagenes">                                     
+                    <tr>                                                  
+                        <td>
+                            <input type='text' style='display:none'
+                             id='infocontratoextratype_personaEmpresaRolId' name='infocontratoextratype[personaEmpresaRolId]' 
+                             value=''/>                                     
+                            <div>                                    
+                                <input id="infodocumentotype_imagenes_0" type="file" 
+                                       name="infodocumentotype[imagenes][0]">                                   
+                                <ul id="imagenes-fields-list" 
+                                    data-prototype="{{ form_widget(form_documentos.imagenes.vars.prototype) | e }}">   
+                                    {% for imagenesField in form_documentos.imagenes %}
+                                        <li>
+                                            {{ form_errors(imagenesField) }}
+                                            {{ form_widget(imagenesField) }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>	        
+                            </div>   
+                        </td>
+                        <td>
+                            <div>   
+                                <select id="infodocumentotype_tipos_0" name="infodocumentotype[tipos][0]"> 
+                                    {% for key, tipo in arrayTipoDocumentos %}        
+                                        {% if ( key == 2) %}
+                                            <option selected value="{{ key }}" > {{ tipo }}</option>
+                                        {% else %}
+                                            <option value="{{ key }}" > {{ tipo }}</option>
+                                        {% endif %} 
+                                    {% endfor %}
+                                </select>
+                                <ul id="tipos-fields-list" 
+                                    data-prototype="{{ form_widget(form_documentos.tipos.vars.prototype) | e }}">                                         
+                                    {% for tiposField in form_documentos.tipos %}
+                                        <li>
+                                            {{ form_errors(tiposField) }}
+                                            {{ form_widget(tiposField) }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>	     
+                            </div>        
+                        </td>   
+                    </tr>                                                                       
+                </tbody>
+            </table>  
+            <a href="#" id="agregar_imagen">Agregar mas Imagenes</a>
+        </div>                                 
+    </div>
+</form>
+                                    
+{% block javascripts_footer%}
+<script src="{{ asset('public/js/jquery-tooltip/jquery.tooltip.js') }}" type="text/javascript"></script>
+<script type="text/javascript">    
+    var imagenesCount = '{{ form_documentos.imagenes | length }}';       
+    var tiposCount    = '{{ form_documentos.tipos | length }}';  
+    var intCantDocumentosPermitidos ='{{intCantDocumentosPermitidos}}';
+    imagenesCount++;
+    tiposCount++;
+    jQuery(document).ready(function() {
+        jQuery('#agregar_imagen').click(function() {
+            if(imagenesCount>=intCantDocumentosPermitidos)
+            {
+                alert('Solo es permitido hasta: '+intCantDocumentosPermitidos+' documentos digitales.'); 
+            }
+            else
+            {                            
+                var imagenesList = jQuery('#imagenes-fields-list');
+                var tiposList    = jQuery('#tipos-fields-list');           
+                var newWidget = imagenesList.attr('data-prototype');
+                var newWidgetTipo = tiposList.attr('data-prototype');            
+                var name='__name__';
+                newWidget = newWidget.replace(name, imagenesCount);            
+                newWidgetTipo = newWidgetTipo.replace(name, tiposCount);
+                newWidget = newWidget.replace(name, imagenesCount);            
+                newWidgetTipo = newWidgetTipo.replace(name, tiposCount);
+                imagenesCount++;
+                tiposCount++;                        
+                // crea un nuevo elemento lista y lo añade a la lista
+                var newLi = jQuery('<li></li>').html(newWidget);
+                newLi.appendTo(jQuery('#imagenes-fields-list'));
+  
+                var newLi = jQuery('<li></li>').html(newWidgetTipo);             
+                newLi.appendTo(jQuery('#tipos-fields-list'));            
+            }
+            return false;
+        });
+    })
+    
+</script>     
+
+ {% endblock javascripts_footer%}                                            

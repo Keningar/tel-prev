@@ -1,0 +1,66 @@
+cliente:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:Cliente:index" }
+
+cliente_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "comercialBundle:Cliente:show" }
+
+cliente_new:
+    pattern:  /new
+    defaults: { _controller: "comercialBundle:Cliente:new" }
+
+cliente_create:
+    pattern:  /create
+    defaults: { _controller: "comercialBundle:Cliente:create" }
+    requirements: { _method: post }
+
+cliente_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "comercialBundle:Cliente:edit" }
+
+cliente_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "comercialBundle:Cliente:update" }
+    requirements: { _method: post }
+
+cliente_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "comercialBundle:Cliente:delete" }
+    requirements: { _method: post }
+
+cliente_delete_ajax:
+    pattern:  /delete
+    defaults: { _controller: "comercialBundle:Cliente:delete_ajax" }
+
+cliente_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:Cliente:grid"}
+    
+cliente_lista_estados:
+    pattern:  /listaestados
+    defaults: { _controller: "comercialBundle:Cliente:estados"}
+
+cliente_lista_formas_contacto:
+    pattern:  /listaformascontacto
+    defaults: { _controller: "comercialBundle:Cliente:formasContactoAjax"}
+
+cliente_formas_contacto_grid:
+    pattern:  /formascontactogrid
+    defaults: { _controller: "comercialBundle:Cliente:formasContactoGrid"}
+
+cliente_show_datos_comerciales:
+    pattern:  /{id}/datoscomerciales
+    defaults: { _controller: "comercialBundle:Cliente:datosComerciales" }
+
+cliente_ajax_servicios:
+    pattern:  /{idCli}/ajaxservicios
+    defaults: { _controller: "comercialBundle:Cliente:ajaxServicios"}
+
+cliente_ajax_gettotalcontactos:
+  pattern: /{id}/ajax_gettotalcontactos
+  defaults: { _controller: "comercialBundle:Cliente:ajaxGetTotalContactosCliente"}
+
+cliente_ajax_getclienteconvertido:
+  pattern: /{id}/ajax_getclienteconvertido
+  defaults: { _controller: "comercialBundle:Cliente:ajaxGetClienteConvertido"}

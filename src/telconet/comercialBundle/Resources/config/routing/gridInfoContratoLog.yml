@@ -1,0 +1,5 @@
+gridInfoContratoLog_verContratoFormaPagoLog:
+    pattern:  /verContratoFormaPagoLog
+    defaults: { _controller: "comercialBundle:InfoContrato:verContratoFormaPagoLog" }
+   
+    

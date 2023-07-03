@@ -1,0 +1,42 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        th, td { padding: 1px; }
+        table { border-collapse: collapse; border-spacing: 0; width: 100% !important;}   /* cellspacing="0" */
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/AutorizarHorasSoporte/index.js?1') }}"></script>
+
+    <script>
+        var getSolicitudesPuntoTipo = '{{path("horasDeSoporte_getSolicitudesPuntoTipo")}}'
+        var putAprobarSolAjstTiempoSoporte = '{{path("horasDeSoporte_putAprobarSolAjstTiempoSoporte")}}'
+    </script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content" alt="imagen">
+        <h1>Autorizar horas de soporte</h1>
+    </div>
+    <div class="body_content k-content">
+        <table  border='0'>
+            <tr>
+                <td>
+                    <div id='filtro'></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="grid"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

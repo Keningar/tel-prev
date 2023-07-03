@@ -1,0 +1,202 @@
+infocontrato:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:InfoContrato:index" }
+
+infocontrato_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "comercialBundle:InfoContrato:show" }
+
+infocontrato_new:
+    pattern:  /{idper}/new
+    defaults: { _controller: "comercialBundle:InfoContrato:new" }
+
+validarTarjetaCta:
+    pattern:  /validarTarjetaCta
+    defaults: { _controller: "comercialBundle:InfoContrato:validarTarjetaCta" }
+
+infocontrato_create:
+    pattern:  /create
+    defaults: { _controller: "comercialBundle:InfoContrato:create" }
+    requirements: { _method: post }
+
+infocontrato_create_ms:
+    pattern:  /createMs
+    defaults: { _controller: "comercialBundle:InfoContrato:createContratoMS" }
+    requirements: { _method: post }
+
+infocontrato_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "comercialBundle:InfoContrato:edit" }
+
+infocontrato_update:
+    pattern:  /{intId}/update
+    defaults: { _controller: "comercialBundle:InfoContrato:update" }
+    requirements: { _method: post }
+
+infocontrato_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "comercialBundle:InfoContrato:delete" }
+    requirements: { _method: post }
+
+infocontrato_listar_clausulas:
+    pattern:  /listar_clausulas
+    defaults: { _controller: "comercialBundle:InfoContrato:listarClausulas" }
+
+infocontrato_reenvio_pin:
+    pattern:  /reenvio_pin
+    defaults: { _controller: "comercialBundle:InfoContrato:reenvioPin" }
+
+infocontrato_autorizarContrato:
+    pattern:  /autorizar_contrato
+    defaults: { _controller: "comercialBundle:InfoContrato:autorizarContrato" }
+
+infocontrato_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:InfoContrato:grid"}
+
+infocontrato_lista_estados:
+    pattern:  /listaestados
+    defaults: { _controller: "comercialBundle:InfoContrato:estados"}
+
+infocontrato_delete_ajax:
+    pattern:  /{id}/delete_ajax
+    defaults: { _controller: "comercialBundle:InfoContrato:deleteAjax" }
+    requirements: { _method: post }
+
+infocontrato_listar_bancos_asociados:
+    pattern:  /lista_bancos_asociados
+    defaults: { _controller: "comercialBundle:InfoContrato:listaBancosAsociados" }
+
+infocontrato_ajax_getcontratocliente:
+  pattern: /{id}/ajax_getcontratocliente
+  defaults: { _controller: "comercialBundle:InfoContrato:ajaxGetContratoCliente"}
+
+infocontrato_download:
+    pattern:  /download/{id}
+    defaults: { _controller: comercialBundle:InfoContrato:download }
+    
+infocontrato_forma_pago_historial:
+    pattern:  /{idContrato}/showLogFormaPagoContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:showLogFormaPagoContrato" }    
+
+infocontrato_newArchivoDigital:
+    pattern:  /{intId}/{intIdAdendum}/newArchivoDigital
+    defaults: { _controller: "comercialBundle:InfoContrato:newArchivoDigital" }
+
+infocontrato_guardarArchivoDigital:
+    pattern:  /{intId}/{intIdAdendum}/guardarArchivoDigital
+    defaults: { _controller: "comercialBundle:InfoContrato:guardarArchivoDigital" }
+    requirements: { _method: post }    
+
+infocontrato_showDocumentosContrato:
+    pattern:  /{idContrato}/{idAdendum}/showDocumentosContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:showDocumentosContrato" }      
+
+infocontrato_descargarDocumento:
+    pattern:  /descargarDocumento/{id}
+    defaults: { _controller: comercialBundle:InfoContrato:descargarDocumento }
+
+infocontrato_eliminarDocumento:
+    pattern:  /eliminarDocumento/{id}
+    defaults: { _controller: comercialBundle:InfoContrato:eliminarDocumento }
+   
+infocontrato_eliminarDocumentoAjax:
+    pattern:  /eliminarDocumentoAjax
+    defaults: { _controller: comercialBundle:InfoContrato:eliminarDocumentoAjax }   
+
+infocontrato_validarNumeroTarjetaCta:
+    pattern:  /validarNumeroTarjetaCta
+    defaults: { _controller: "comercialBundle:InfoContrato:validarNumeroTarjetaCta" }
+
+infocontrato_validarPorFormaPago:
+    pattern:  /validarPorFormaPago
+    defaults: { _controller: "comercialBundle:InfoContrato:validarPorFormaPago" }
+    
+infocontrato_formas_pago:
+    pattern:  /formapago
+    defaults: { _controller: "comercialBundle:InfoContrato:formasPago"}    
+    
+infocontrato_editarDatosAdicionalesContrato:
+    pattern:  /{id}/editarDatosAdicionalesContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:editarDatosAdicionalesContrato" }
+
+infocontrato_updateDatosAdicionalesContrato:
+    pattern:  /{id}/updateDatosAdicionalesContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:updateDatosAdicionalesContrato" }
+    requirements: { _method: post }
+
+infocontrato_obtenerPuntosContrato:
+  pattern:  /obtenerPuntosContrato
+  defaults: { _controller: "comercialBundle:InfoContrato:obtenerPuntosContrato" }
+
+infocontrato_setLogNumeroCtaTarjeta:
+    pattern:  /{idContrato}/setLogNumeroCtaTarjeta
+    defaults: { _controller: "comercialBundle:InfoContrato:setLogNumeroCtaTarjeta" }
+  
+infocontrato_gridInfoContratoLog:
+    pattern:  /gridInfoContratoLog
+    defaults: { _controller: "comercialBundle:InfoContrato:gridInfoContratoLog" }   
+    
+infocontrato_editFormaPago:
+    pattern:  /{id}/edit
+    defaults: { _controller: "schemaBundle:InfoContratoFormaPago:edit" }
+    
+info_contrato_getMotivosFactura:
+    pattern : /getMotivosFactura
+    defaults: { _controller: "comercialBundle:InfoContrato:getMotivosFactura"} 
+    
+infocontrato_getValorInsProMensuales:
+    pattern : /getValorInsProMensuales
+    defaults: { _controller: "comercialBundle:InfoContrato:getValorInsProMensuales"} 
+    
+infocontrato_cambioFormaPago:
+    pattern:  /cambioFormaPago
+    defaults: { _controller: "comercialBundle:InfoContrato:cambioFormaPago" }
+    requirements: { _method: post }
+    
+infocontrato_doc_forma_pago_historial:
+    pattern:  /getDocumentoLogFormaPagoContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:getDocumentoLogFormaPagoContrato" }  
+
+infocontrato_guardarLog:
+    pattern:  /guardarLogContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:guardarLogContrato" }
+
+infocontrato_datos:
+    pattern:  /datosContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:datosContrato" }
+
+infocontrato_getClausula:
+    pattern:  /getClausula
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:getClausula"}
+
+infocontrato_solicitar_informacion:
+    pattern:  /getSolicitarInformacion
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:getSolicitarInformacion"}
+
+infocontrato_getCreacionPunto:
+    pattern:  /getCreacionPunto
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:getCreacionPunto"}
+infocontrato_get_correos_cliente:
+    pattern:  /getCorreosCliente
+    defaults: { _controller: "comercialBundle:InfoContrato:getCorreosCliente" }
+
+infocontrato_notificar_autorizar:
+    pattern:  /notificarAutorizar
+    defaults: { _controller: "comercialBundle:InfoContrato:notificarAutorizar" }
+
+infocontrato_correo_autorizar:
+    pattern:  /correoAutorizar
+    defaults: { _controller: "comercialBundle:InfoContrato:correoAutorizar" }
+
+infocontrato_autorizar_contrato_fisico:
+    pattern:  /autorizarContratoFisico
+    defaults: { _controller: "comercialBundle:InfoContrato:autorizarContratoFisico" }
+
+infocontrato_gridAdendumContrato:
+    pattern:  /gridAdendumContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:gridAdendumContrato" }
+
+infocontrato_reenviar_documento_contrato:
+    pattern:  /reenviarDocumentoContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:reenviarDocumentoContrato" }

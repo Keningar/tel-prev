@@ -1,0 +1,15 @@
+reportesvendedor_index:
+    pattern:  /indexResumenVendedor
+    defaults: { _controller: "comercialBundle:Vendedor:index" }
+    
+reportesvendedor_gridVentas:
+    pattern:  /gridVentas
+    defaults: { _controller: "comercialBundle:Vendedor:gridVentas" }
+    
+reportesvendedor_reporteVentas:
+    pattern:  /ventas
+    defaults: { _controller: "comercialBundle:Vendedor:reporteVentas" }
+    
+reportesvendedor_gridReporteVentas:
+    pattern:  /gridReporteVentas
+    defaults: { _controller: "comercialBundle:Vendedor:gridReporteVentas" }

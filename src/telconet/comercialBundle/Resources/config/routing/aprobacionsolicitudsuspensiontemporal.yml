@@ -1,0 +1,16 @@
+
+aprobacionsolicitudsuspensiontemporal_aprobar_solicitud:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudSuspensionTemporal:aprobarSolicitudSuspensionTemporal" }
+
+aprobacionsolicitudsuspensiontemporal_grid_aprobar:
+    pattern:  /gridaprobarsolicitudsuspensiontemporal
+    defaults: { _controller: "comercialBundle:SolicitudSuspensionTemporal:gridAprobarSolicitudSuspensionTemporal"}
+
+aprobacionsolicitudsuspensiontemporal_rechazar_ajax:
+    pattern:  /rechazarsolicitudsuspensiontemporalajax
+    defaults: { _controller: "comercialBundle:SolicitudSuspensionTemporal:rechazarSolicitudSuspensionTemporalAjax" }
+
+aprobacionsolicitudsuspensiontemporal_getmotivosrechazo_ajax:
+    pattern:  /getmotivosrechazosolicitudsuspensiontemporalAjax
+    defaults: { _controller: "comercialBundle:SolicitudSuspensionTemporal:getMotivosRechazoSolicitudSuspensionTemporal_ajax" }

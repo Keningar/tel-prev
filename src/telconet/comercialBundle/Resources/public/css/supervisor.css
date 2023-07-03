@@ -1,0 +1,33 @@
+.trafficlight
+{
+    background-image: url("../../../../public/images/semaforo.jpg");
+    text-decoration: none;
+    background-repeat: no-repeat;
+}
+
+.trafficlight-red-small
+{
+    background-position: 2px 0px;
+    background-size: 50px;
+    height: 20px;
+    width: 20px;
+}
+
+.trafficlight-green-small
+{
+    background-position: -33px 0px;
+    background-size: 50px;
+    width: 17px;
+    height: 20px;
+    margin-left: 2px;
+}
+
+.trafficlight-yellow-small
+{
+    background-position: -17px 0px;
+    background-size: 50px;
+    height: 20px;
+    width: 17px;
+    margin-left: 2px;
+}
+

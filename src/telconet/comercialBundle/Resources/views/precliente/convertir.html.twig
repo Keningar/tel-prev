@@ -1,0 +1,142 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}         
+        
+        <script>var url_formas_contacto_persona = "{{ path('cliente_formas_contacto_grid') }}";</script>    
+        <script>var url_formas_contacto = "{{path('cliente_lista_formas_contacto')}}";</script>
+        <script>var personaid = {{entity.id}};
+            url_valida_identificacion="{{ path('cliente_ajax_valida_identificacion') }}";
+            url_validar_identificacion_tipo="{{ path('cliente_ajax_validar_identificacion_tipo') }}";
+            url_img_loader="{{ asset('public/images/images_crud/ajax-loader.gif') }}";
+            url_img_check="{{ asset('public/images/check.png') }}";
+            url_img_delete="{{ asset('public/images/delete.png') }}";
+    	    input='#convertirtype_identificacionCliente';
+    		inputTipo='#convertirtype_tipoIdentificacion';
+		</script>
+        
+        
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Convertir a Cliente</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<div class="body_content">
+
+        <form id='convertir_form' onsubmit="return validacionesForm()" action="{{ path('precliente_procesar_prospecto',{ 'id_prospecto': entity.id }) }}" method="post" {{ form_enctype(form) }} class="formulario">
+            <div id="my-tabs">
+                <div id="tab1" class="x-hide-display">
+                    <table border='0'>
+                        <tr><td colspan='4'>&nbsp;</td></tr>
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;
+                            </td>                       
+                            <td  style="vertical-align: top;">
+                                <div>
+                                <div>{{ form_label(form.tipoEmpresa) }} {{ form_widget(form.tipoEmpresa) }}</div>                        
+                                <div>{{ form_label(form.tipoIdentificacion) }} {{ form_widget(form.tipoIdentificacion) }}</div>
+                                <div>{{ form_label(form.tipoTributario) }} {{ form_widget(form.tipoTributario) }}</div>
+                                <div>{{ form_label(form.nacionalidad) }} {{ form_widget(form.nacionalidad) }}</div>
+                                <div>{{ form_label(form.direccionTributaria) }} 
+								<textarea id='convertirextratype_direccionTributaria' name='convertirextratype[direccionTributaria]' 
+								maxlength='150' cols='26' rows='5'>{{direccionTributaria}}</textarea></div>
+                                </div>
+                            </td>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td style="vertical-align: top;">
+                                <div id='diverrorident' class='errormessage' style='display:none'></div>
+                                <div>{{ form_label(form.identificacionCliente) }}{{ form_widget(form.identificacionCliente) }}
+								<img id="img-valida-identificacion" src="{{ asset('public/images/check.png') }}" title="Identificacion correcta" width="25" height="25"/>
+								</div>
+                                <div id="div_check_sri" style="display:none;">
+									<label style="margin:10px 20px 0px 0px;">* SRI</label><input style="margin:10px 20px 20px 0px;" type="checkbox" id="check_sri" value="check_sri" onchange="ischeked()">
+								</div>
+                                <div id='div_razon_social' style="display:none">{{ form_label(form.razonSocial) }} {{ form_widget(form.razonSocial) }}</div>
+                                <div>{{ form_label(form.representanteLegal) }} {{ form_widget(form.representanteLegal) }}</div>
+                                <div id='div_nombres'>
+                                    <div>{{ form_label(form.genero) }} {{ form_widget(form.genero) }}</div>                                    
+                                    <div>{{ form_label(form.tituloId) }} {{ form_widget(form.tituloId) }}</div>                                    
+                                    <div>{{ form_label(form.nombres) }} {{ form_widget(form.nombres) }}</div>
+                                    <div>{{ form_label(form.apellidos) }} {{ form_widget(form.apellidos) }}</div>
+                                    <div>{{ form_label(form.estadoCivil) }} {{ form_widget(form.estadoCivil) }}</div>
+                                    <div>{{ form_label(form.fechaNacimiento) }} {{ form_widget(form.fechaNacimiento) }}</div>
+                                    <input type='hidden' id="convertirtype_formas_contacto" required='required' name="convertirtype[formas_contacto]"/>
+                                    <input type='hidden' id="convertirtype_rucClienteInvalido" name="convertirtype[rucClienteInvalido]" value=''/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="tab2" class="x-hide-display">
+                    <table border='0' align='center'>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            
+                            <td>
+                                <div id='lista_formas_contacto_grid'></div>
+                                <div class='infomessage'>Todo numero de telefono debe iniciar con el codigo de area correspondiente</div>
+                            </td>
+                            
+                        </tr>   
+                    </table>            
+                </div>
+            </div>
+                
+
+		
+                <div class="buttons">
+				<p>
+                                    <button type="submit" onclick="grabar('#convertirtype_formas_contacto')" class="button-crud">Guardar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('cliente') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div>                
+	</form>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 1
+        </a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 2
+        </a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 3
+        </a>
+    </li>
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/precliente/convertir.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/identificacion.js?1') }}"></script>
+
+{% endblock %}

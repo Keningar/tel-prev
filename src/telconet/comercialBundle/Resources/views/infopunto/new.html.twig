@@ -1,0 +1,960 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+        
+ 	<style scoped="scoped">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+  map_canvas { height: 100% }
+  .solInfCliente {
+        margin: auto;
+        width: 60%;
+        padding: 30px;
+        font-size: medium;
+    }
+	</style>       
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}      
+        
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/seleccionEdificio.js?3') }}"></script>
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+        <script>
+            personaid                     = '{{cliente.id}}';
+            direccionProspecto            = '{{cliente.direccionTributaria}}';
+            url_formas_contacto_persona   = "{{ path('infopunto_formas_contacto_persona') }}"; 
+            url_formas_contacto           = "{{path('cliente_lista_formas_contacto')}}";
+            url_valida_login              = "{{ path('infopunto_ajax_valida_login') }}";
+            url_genera_login              = "{{ path('infopunto_ajax_genera_login') }}";
+            url_lista_documentos          = "{{ path('infopunto_ajaxTipoDocumentosGeneral') }}";
+            url_ValidaCltDistribuidor     = "{{ path('infopunto_getValidaCltDistribuidor') }}";
+            strEsDistribuidor             = "{{strEsDistribuidor}}";
+            url_getMaxLongitudIdentificacionAjax = "{{ path('cliente_getMaxLongitudIdentificacion') }}";
+            clienteId                     = "{{cliente.id}}";
+            url_img_loader                = "{{ asset('public/images/images_crud/ajax-loader.gif') }}";
+            url_img_check                 = "{{ asset('public/images/check.png') }}";
+            url_img_delete                = "{{ asset('public/images/delete.png') }}";
+            url_puntoscobertura           = "{{ path('infopunto_ajax_get_puntos_cobertura') }}";
+            url_cantones                  = "{{ path('infopunto_ajax_get_cantones_jurisdiccion') }}";
+            url_lista_parroquias          = "{{path('cliente_ajax_lista_parroquias')}}";
+            url_lista_sectores            = "{{path('cliente_ajax_lista_sectores')}}";
+            url_vendedores                = "{{path('infopunto_ajax_lista_vendedores')}}";
+            url_edificios                 = "{{path('infopunto_getedificios')}}";
+            url_canales                   = "{{path('infopunto_getCanales')}}";
+            url_punto_venta               = "{{path('infopunto_getPuntosVenta')}}";
+            url_getEncontradosNodoCliente = "{{path("elementoNodoCliente_getEncontrados") }}";
+            url_getCantones               = "{{path("admicanton_getCantones") }}";
+            url_modelo                    = "{{path("elementoNodoCliente_modelosPorTipoElemento") }}";
+            url_lista_ciudades            = '{{path('cliente_ajax_lista_ciudades')}}';
+            strUrlTipoOrigenEmpresa       = '{{path("infopunto_ajax_getTipoOrigen") }}';
+            strAplicaTipoOrigen           = '{{strAplicaTipoOrigen}}';
+            strIsGrantedTipoOrigen        = "{%if is_granted("ROLE_9-6377")%}S{%else%}N{%endif%}";
+            url_grabar                    = null;
+            urlGetAdmiFormaContacto       = "{{ path('admiformacontacto_getAdmiFormaContacto') }}";        
+            prefijoEmpresa                = "{{prefijoEmpresa}}";
+            pf_obligatorio                = "S";
+            loginEmpleado                 = "";
+            nombreEmpleado                = "";           
+            strTipoOrigenSelected         = "";
+            strTipoOrigenDescripcion      = "Nuevo";
+            url_verificar_catalogo        = "{{ path('infopunto_ajaxVerificarCatalogo') }}";
+            url_solInfCliente             = "{{ path('infopunto_solicitarInfoCliente') }}";
+            urlComboPuntosAtencion        = '{{ path('callactivity_ajaxGetComboPuntoAtencion') }}';
+            boolBanderaTipo               ='{{strTipo}}'!="manual"&&'{{strTipo}}'!=""?true:false;
+            strTipo                       ='{{strTipo}}';            
+            strEditarCampos               ='{{strEditarCampos}}'=="N"?true:false;
+            intPuntoId                    ='{{intPuntoId}}';
+            url_carga_datos_origen        = "{{path('infopunto_ajaxDatosPuntoOrigen')}}";
+            url_formas_contacto_punto_origen   = "{{ path('infopunto_formas_contacto_grid') }}";
+            {% if (direccion is defined) %}
+                direccion = "{{direccionProspecto}}";
+            {% endif %}
+            {% if (pf_obligatorio is defined) %}
+                pf_obligatorio = "{{ pf_obligatorio }}";
+            {% endif %}
+                
+            {% if (loginEmpleado is defined) %}
+                loginEmpleado = "{{loginEmpleado}}";
+            {% endif %}
+                
+            {% if (nombreEmpleado is defined) %}
+                nombreEmpleado = "{{nombreEmpleado}}";
+            {% endif %}
+                
+            {% if latitudFloat is defined and longitudFloat is defined%}
+                latitudFloat  = "{{latitudFloat}}";
+                longitudFloat = "{{longitudFloat}}";
+            {% endif %}
+                
+            {% if ptoCoberturaId is defined%}
+                ptoCoberturaId = "{{ptoCoberturaId}}";
+            {% endif %}
+                
+            {% if cantonId is defined%}
+                cantonId = "{{cantonId}}";
+            {% endif %}
+                
+            {% if parroquiaId is defined%}
+                parroquiaId  = "{{parroquiaId }}";
+            {% endif %}
+                
+            {% if sectorId is defined%}
+                sectorId = "{{sectorId}}";
+            {% endif %}
+                
+            {% if formasDeContacto is defined%}
+                formasDeContacto = "{{formasDeContacto}}";
+            {% endif %}
+                
+            {% if canal is defined%}
+                canal = "{{canal}}";
+            {% endif %}
+                
+            {% if puntoVenta is defined%}
+                puntoVenta = "{{puntoVenta}}";
+            {% endif %}
+                
+            {% if esError is defined%}
+                esError = "{{esError}}";
+            {% endif %}
+            
+            {% if strNombreOrigen is defined%}
+                strNombreOrigen = "{{strNombreOrigen}}";
+            {% endif %}
+
+            {% if strNombrePuntoAtencion is defined%}
+                strNombrePuntoAtencion = "{{strNombrePuntoAtencion}}";
+            {% endif %}
+             
+            {% if numeroMaxCorreos is defined%}
+                numeroMaxCorreos = "{{numeroMaxCorreos}}";
+            {% endif %}
+            
+            {% if numeroMaxTelefonos is defined%}
+                numeroMaxTelefonos = "{{numeroMaxTelefonos}}";
+            {% endif %}
+            
+            {% if tipoDocumentoId is defined%}
+                tipoDocumentoId = "{{tipoDocumentoId}}";
+            {% endif %}            
+            loginPunto     = "{{login}}";
+                        
+            function AbreVentanaDatoEnvio()
+            {
+                document.getElementById("numeroMaxCorreosDatoEnvio").value      = numeroMaxCorreos;
+                document.getElementById("numeroMaxTelefonosDatoEnvio").value    = numeroMaxTelefonos;
+                winDatosEnvio();
+            }
+            
+        </script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/map.js?8') }}"></script>  
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/new.js?15') }}"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/datosEnvio.js?4') }}"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/Contacto.js?5') }}"></script>
+        
+{% endblock %}
+{% block contenido_central %}
+
+    {% set strLblPtos      = 'Ptos. Cobertura' %}
+    {% set strLblCanton    = 'Cantón' %}
+    {% set strLblParroquia = 'Parroquia' %}
+    {% set strLblSector    = 'Sector' %}
+    {% if app.session.get('strNombrePais') == 'PANAMA' %}
+        {% set strLblCanton    = 'Distrito' %}
+        {% set strLblParroquia = 'Corregimiento' %}       
+    {%elseif (app.session.get('strNombrePais') == 'GUATEMALA')%}
+        {% set strLblCanton    = 'Departamento' %}
+        {% set strLblParroquia = 'Municipio' %}        
+    {% endif %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	{%if (rol == 'Cliente')%}
+	<h1>Nuevo Punto Cliente</h1>
+	{%elseif (rol == 'Pre-cliente')%}
+	<h1>Nuevo Punto de Prospecto</h1>	
+	{%endif%}
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+{% if error is defined %}
+    <div class='errormessage'>{{ error }}</div>
+{% endif %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% if strStatusBloqueo  is defined %}  
+    <input id='strStatusBloqueo' name='strStatusBloqueo' type='hidden' value=" {{strStatusBloqueo}}"> 
+    <input id='strMsjBloqueo' name='strMsjBloqueo' type='hidden' value=" {{strMsjBloqueo}}"> 
+{% endif %} 
+
+{% if (strTipo!="editar") %} 
+<form id='formpunto' action="{{ path('infopunto_create', {'idPer':idPer}) }}" method="post" {{ form_enctype(form) }}  class="formulario" 
+      onSubmit="if(validacionesForm()){if(comprueba_extension()){return true;}else{return false;}}else{return false;}">
+{% endif %} 
+{% if (strTipo=="editar") %} 
+  <form action="{{ path('infopunto_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(form) }}  class="formulario" 
+  onSubmit="if(validacionesForm()){if(comprueba_extension()){return true;}else{return false;}}else{return false;}">
+{% endif %} 
+      <input id='solicitarInfoClient' name='solicitarInfoClient' type='hidden' value=''> 
+      <input id='strTipo' name='strTipo' type='hidden' value='{{strTipo}}'> 
+      <input id='intPuntoAnterior' name= 'intPuntoAnterior' type='hidden' value = {{ intPuntoId }}>
+        <input id='tipoNegocioId' name='tipoNegocioId' type='hidden' > 
+            <div id="my-tabs">
+                <div id="tab1" class="x-hide-display">     
+                    <table border='0' width='100%'>
+                        <tr><td colspan='4'>&nbsp;</td></tr>
+                        <tr>
+                            <td width='10px'></td>                            
+                            <td style="vertical-align: top;">
+                                    <table border='0' align='left' width='100%'>
+                                       <tr>
+                                            <td>
+                                                <label  class='campo-obligatorio' for='infopuntodatoadicionaltype_login'>* Login:</label>
+                                            </td>
+                                            <td>
+                                                <table>
+                                                <tr>
+                                                <td>
+                                                    <input type='text' id="infopuntodatoaldicionaltype_login" onchange="validaLogin()" onblur="validaLogin()" maxlength="30" required='required' name="infopuntodatoadicionaltype[login]" value='{{login}}'/> 
+                                                </td>
+                                                <td>
+                                                    <img id="img-valida-login" src="{{ asset('public/images/delete.png') }}" title="login correcto" width="25" height="25"/>
+                                                </td>
+                                                </table>
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(form.nombrepunto) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.nombrepunto) }}
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label id="lb_esPadreFacturacion" style="white-space: nowrap">* Es Padre Facturación:</label>
+                                            </td>
+                                            <td>
+                                                <select id="infopuntodatoadicionaltype_esPadreFacturacion" required='required' 
+                                                        name="infopuntodatoadicionaltype[esPadreFacturacion]"  onchange="esPadreDeFacturacion()" >
+                                                    <option value=''>Seleccione...</option>
+                                                    <option value='S'>Si</option>
+                                                    <option value='N'>No</option>
+                                                </select>
+                                            </td> 
+                                            <td></td>
+                                            <td>
+                                                {% if (prefijoEmpresa == 'TN') %}
+                                                    <div id='informacionDatosEnvio' style="margin-left: -349px; display: none; ">
+                                                        <a href="#" onClick="AbreVentanaDatoEnvio();" title="Asignar Datos de Envio">
+                                                            <img src="{{ asset('public/images/images_crud/datos_envio_pto.png')}}" border="0"/>
+                                                        </a>
+                                                    </div>
+                                                {% endif %}    
+                                            </td> 
+                                        </tr>
+                                        {% if (prefijoEmpresa == 'TN') and (strEsDistribuidor == 'SI')%}
+                                        <tr>
+                                            <td>
+                                                <div class='infomessage'>Datos del cliente del distribuidor</div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label id="lb_razonSocialCltDistribuidor" style="white-space: nowrap">*Razón social:</label>
+                                            </td>
+                                            <td>
+                                                <input type='text' id="razonSocialCltDistribuidor" name="razonSocialCltDistribuidor" maxlength="80" required="true"/>
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label id="lb_tipoIdentificacionCltDistribuidor" style="white-space: nowrap">* Tipo Identificación:</label>
+                                            </td>
+                                            <td>
+                                                <select id="tipoIdentificacionCltDistribuidor" name="tipoIdentificacionCltDistribuidor" onchange="validarIdentificacionTipo()">
+                                                    <option value="SELECCIONE">Seleccione...</option>
+                                                    <option value="CED">Cedula</option>
+                                                    <option value="RUC">Ruc</option>
+                                                    <option value="PAS">Pasaporte</option>
+                                                </select>
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label id="lb_identificacionCltDistribuidor" style="white-space: nowrap">*Identificación:</label>
+                                            </td>
+                                            <td>
+                                                <input type='text' id="identificacionCltDistribuidor" readonly name="identificacionCltDistribuidor" maxlength="13" required="true"/>
+                                                <img id="img-valida-identificacion-dist" src="{{ asset('public/images/delete.png') }}" title="Identificación correcta" width="25" height="25"/>
+                                            </td> 
+                                        </tr>
+                                        {% endif %}
+                                        {% if (prefijoEmpresa == 'MD' or prefijoEmpresa=='EN') %}
+                                         <tr>
+                                            <td>
+                                                <label for="chkDireccion" style="white-space: nowrap">Desea utilizar la misma direccion tributaria?</label>
+                                            </td>
+                                            <td>
+                                                <input id="chkDireccion" type="checkbox" value="1" name="chkDireccion" onChange='Check(this)'>
+                                            </td>
+                                         </tr>
+                                         {% endif %} 
+                                        <tr>
+                                            <td>
+                                                {{ form_label(form.direccion) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.direccion) }}
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(form.descripcionpunto) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.descripcionpunto) }}
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(form.observacion) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.observacion) }}
+                                            </td> 
+                                        </tr>  
+                                        <tr>
+                                            <td>
+                                                {{ form_label(form.fileDigital) }}
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>  
+                                                        <td>{{ form_widget(form.fileDigital) }}</td>
+                                                        <td>
+                                                            <div class="button-clean-field" title="Limpiar Archivo"
+                                                                 onClick='document.getElementById("infopuntotype_fileDigital").value = ""'></div>
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                </table>
+                                            </td>
+
+                                        </tr>  
+                                       {% if (prefijoEmpresa == 'MD' or prefijoEmpresa=='EN') %}
+                                            {% if (strTipo!="manual" and strTipo!="") %}
+                                         <tr >
+                                         <td ><label>* Origen:</label></td>
+                                            <td >
+                                                <select id="strNombreOrigen" onChange="ocultarPuntoAtencion()" class="form-control " name="strNombreOrigen" style="width: 240px;color:#777777;font-weight: 600 ">
+                                                </select>
+                                            </td>
+                                        </tr> 
+
+
+                                          <tr style="display: none" id="bloquePuntoAtencion">
+                                         <td ><label>Punto de Atencion:</label></td>
+                                            <td >
+                                                <select id="strNombrePuntodeAtencion" class="form-control " name="strNombrePuntodeAtencion" style="width: 240px;color:#777777;font-weight: 600 ">
+                                                </select>
+                                            </td>
+                                        </tr> 
+
+                                        {% endif %}   
+                                        <tr id="blockCanal">
+                                            <td>
+                                                <label  class='campo-obligatorio'>* Canal:</label>
+                                            </td>
+                                            <td>
+                                                <div id='div_errorcanal' class='errormessage' style="display:none">Canal es obligatorio</div>                                                
+                                                <div id='Canales'></div>
+                                            </td> 
+                                        </tr> 
+                                        <tr  id="blockPuntoVenta">
+                                            <td>
+                                                <label id="label_punto_venta" style='display: block' class='campo-obligatorio'>* Punto de venta:
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <div id='div_errorpuntoventa' class='errormessage' style="display:none">Punto de Venta es obligatorio
+                                                </div>                                                
+                                                <div id='PuntosVenta' style='display: block'></div>
+                                            </td> 
+                                        </tr>
+                                         {% if (prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN') %}
+                                            <tr>
+                                                <td> 
+                                                    <label for="solInformacionCliente" id="lblSolicitarInfClt">Solicitar información al cliente</label><br>
+                                                </td>
+                                                <td> 
+                                                    <input type="checkbox" value="N" id="solInformacionCliente" name="solInformacionCliente" style="width:60px">
+                                                </td> 
+                                            </tr> 
+                                         {% endif %} 
+                                        {% endif %}    
+                                    </table>
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td style="vertical-align: top;">
+        
+                                <table border='0' >                                    
+                                 {% if (prefijoEmpresa == 'MD' or prefijoEmpresa=='EN') %}                                            
+                                        <tr>
+                                            <td>
+                                                <label id='labelLatitud' class="campo-obligatorio">* Coord. latitud:</label> 
+                                            </td>
+                                            <td>
+                                                
+                                                <div id='validaLatitud'>
+                                                           
+                                                        <input type="text" onkeyup="validarGrados(this.value,1)" class="coordenadas-field" 
+                                                               id="grados_la" name="grados_la" required='required'>&deg;
+                                                        <input type="text" onkeyup="validarMinutos(this.value,1)" class="coordenadas-field"
+                                                               maxlength="2" id="minutos_la" name="minutos_la" required='required'>'
+                                                        <input type="text" onkeyup="validarSegundos(this.value,1)" class="coordenadas-field" 
+                                                               maxlength="2" id="segundos_la" name="segundos_la" required='required'>.
+                                                        <input type="text" onkeyup="validarDecimasSegundos(this.value,1)"
+                                                               class="coordenadas-field-mili" maxlength="3" id="decimas_segundos_la" 
+                                                               name="decimas_segundos_la" required='required'>
+                                                        &quot;
+                                                        <select onchange="validaInspeccion(1)" class="text-field" id="latitud" name="latitud">
+                                                                <option value="T">Seleccione...</option>
+                                                                <option value="N">Norte</option>
+                                                                <option value="S">Sur</option>
+                                                        </select>                  
+                                                </div>                                                
+                                                
+                                            </td>
+                                            <td></td>
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                <label id='labelLongitud' class="campo-obligatorio">* Coord. longitud:</label>  
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <div id='validaTiempo'>
+                                                                <input type="text" onkeyup="validarGrados(this.value,0)"class="coordenadas-field" 
+                                                                       id="grados_lo" name="grados_lo" required='required'>&deg;
+                                                                <input type="text" onkeyup="validarMinutos(this.value,0)" class="coordenadas-field" 
+                                                                       maxlength="2"  id="minutos_lo" name="minutos_lo" required='required'>'
+                                                                <input type="text" onkeyup="validarSegundos(this.value,0)" class="coordenadas-field" 
+                                                                       maxlength="2"  id="segundos_lo" name="segundos_lo" required='required'>.
+                                                                <input type="text" onkeyup="validarDecimasSegundos(this.value,0)"
+                                                                       class="coordenadas-field-mili" maxlength="3" id="decimas_segundos_lo" 
+                                                                       name="decimas_segundos_lo" required='required'>
+                                                                &quot;
+                                                                <select onchange="validaInspeccion(0)" class="text-field" id="longitud" 
+                                                                        name="longitud">
+                                                                    <option value="T">Seleccione...</option>
+                                                                    <option value="E">Este</option>
+                                                                    <option value="O">Oeste</option>
+                                                                </select>
+                                                            </div>
+                                                            <input id='strTipoOrigenSelected' name='strTipoOrigenSelected' type='hidden'>
+                                                            <input type='text' style='display:none' id="infopuntoextratype_formas_contacto" 
+                                                                   required='required' name="infopuntoextratype[formas_contacto]"/>    
+                                                            <input id='infopuntoextratype_personaId' name='infopuntoextratype[personaId]' 
+                                                                   type='hidden' value='{{cliente.id}}'>    
+                                                            <input id='infopuntoextratype_latitudFloat' name='infopuntoextratype[latitudFloat]' 
+                                                                   type='hidden' value=''>    
+                                                            <input id='infopuntoextratype_longitudFloat' name='infopuntoextratype[longitudFloat]' 
+                                                                   type='hidden' value=''>    
+                                                            <input id='infopuntoextratype_ptoCoberturaId' name='infopuntoextratype[ptoCoberturaId]' 
+                                                                   type='hidden' value=''>
+                                                            <input id='infopuntoextratype_cantonId' name='infopuntoextratype[cantonId]' type='hidden' 
+                                                                   value=''>
+                                                            <input id='infopuntoextratype_parroquiaId' name='infopuntoextratype[parroquiaId]' 
+                                                                   type='hidden' value=''>
+                                                            <input id='infopuntoextratype_sectorId' name='infopuntoextratype[sectorId]' type='hidden'
+                                                                   value=''>
+                                                            <input id='infopuntoextratype_loginVendedor' name='infopuntoextratype[loginVendedor]' 
+                                                                   type='hidden' value='{{loginEmpleado}}'>												
+                                                            <input id='infopuntoextratype_canal' name='infopuntoextratype[canal]' type='hidden'>												
+                                                            <input id='infopuntoextratype_punto_venta' name='infopuntoextratype[punto_venta]' 
+                                                                   type='hidden'>												
+                                                            <input id='infopuntoextratype_oficina' name='infopuntoextratype[oficina]' type='hidden' 
+                                                                   value='{{oficina}}'>												
+                                                            <input id='infopuntoextratype_rol' name='infopuntoextratype[rol]' type='hidden' 
+                                                                   value='{{rol}}'>
+                                                            <input id='canton' name='canton' type='hidden' value=''>
+                                                            <!--INI - Componentes Dato de Envío -->
+                                                            <input id='nombreDatoEnvio' name='nombreDatoEnvio' type='hidden' value=''>
+                                                            <input id='ciudadDatoEnvio' name='ciudadDatoEnvio' type='hidden' value=''>
+                                                            <input id='parroquiaDatoEnvio' name='parroquiaDatoEnvio' type='hidden' value=''>
+                                                            <input id='sectorDatoEnvio' name='sectorDatoEnvio' type='hidden' value=''>
+                                                            <input id='direccionDatoEnvio' name='direccionDatoEnvio' type='hidden' value=''>
+                                                            <input id='correoElectronicoDatoEnvio' name='correoElectronicoDatoEnvio' type='hidden' value=''>
+                                                            <input id='telefonoDatoEnvio' name='telefonoDatoEnvio' type='hidden' value=''>
+                                                            <input id='numeroMaxCorreosDatoEnvio' name='numeroMaxCorreosDatoEnvio' type='hidden' value='0'>
+                                                            <input id='numeroMaxTelefonosDatoEnvio' name='numeroMaxTelefonosDatoEnvio' type='hidden' value='0'> 
+                                                            <input id='loginVend' name='loginVend' type='hidden' value=''> 
+
+                                                            <!--FIN - Componentes Dato de Envío -->
+                                                            {{ form_widget(form._token)}}    
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:muestraMapa()" class="">
+                                                                <img src="{{ asset('public/images/images_crud/gmaps.png')}}" 
+                                                                     title="Seleccionar desde Mapa" alt="" class="button-crud">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>  
+                                        {% endif %}   
+                                        <tr>
+                                            <td>
+                                            <label class='campo-obligatorio'>* {{ strLblPtos }}:</label>
+                                            </td>
+                                            <td>
+                                            <div id='combo_ptoscobertura' required="true"></div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class='campo-obligatorio'>* {{ strLblCanton }}:</label>
+                                            </td>
+                                            <td>
+                                                <div id='combo_cantones' required="true"></div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label class='campo-obligatorio'>* {{ strLblParroquia }}:</label>
+                                            </td>
+                                            <td>
+                                                <div id='combo_parroquias' required="true"></div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                        {% if (prefijoEmpresa == 'TNG') %}
+                                            <tr style="display:none">
+                                        {% else %}
+                                            <tr>
+                                        {% endif %}
+                                            <td>
+                                            <label  class='campo-obligatorio'>* {{ strLblSector }}:</label>
+                                            </td>
+                                            <td>
+                                            <div id='div_errorsector' class='errormessage' style="display:none">Campo Sector es obligatorio</div>                                                
+                                            <div id='combo_sector' required="true"></div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>                                      
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+												<div id='div_label_nombreEdificio' style='display:none'>
+                                                <label for='infopuntodatoadicionaltype_nombreEdificio' class='campo-obligatorio'>Nombre Edificio:</label>
+												</div>
+                                            </td>
+                                            <td>
+												<div id='div_nombreEdificio' style='display:none'>											
+												<input type='text' id="infopuntodatoadicionaltype_nombreEdificio" name="infopuntodatoadicionaltype[nombreEdificio]" maxlength="60" />
+												</div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>										
+                                        {%if 'S' == strAplicaTipoOrigen and is_granted("ROLE_9-6377")%}
+                                        <tr>
+                                            <td>
+                                                <div id='lblEsMigracion'>
+                                                    <label for='tipoOrigenDiv'>* Tipo de Origen:</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id='tipoOrigenDiv'>
+                                                </div>
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                        {%endif%}
+                                            <tr>
+                                                <td>
+                                                    <div id='div_label_dependeedificio'>
+                                                    <label for='infopuntodatoadicionaltype_login'>Depende de Edificio:</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div id='div_select_dependeedificio'>
+                                                    <select id="infopuntodatoadicionaltype_dependedeedificio" onchange="dependeDeEdificio()" required='required' name="infopuntodatoadicionaltype[dependedeedificio]">
+                                                        <option value='S'>Si</option><option value='N' selected='selected'>No</option>
+                                                    </select>
+                                                    </div>
+                                                </td> 
+                                                <td></td>
+                                            </tr> 
+                                        <tr>
+                                            <td>
+                                                <div id='div_label_edifpadre' style='display: none'>
+                                                <label for='infopuntodatoadicionaltype_login'>Edificio Padre:</label>
+                                                </div>
+                                            </td>
+                                            <td><div id='div_input_edifpadre' style='display: none'>
+                                                <input type='text' id="infopuntodatoadicionaltype_puntoedificio" readonly name="infopuntodatoadicionaltype[puntoedificio]"/>
+                                                <input type='hidden' id="infopuntodatoadicionaltype_puntoedificioid" name="infopuntodatoadicionaltype[puntoedificioid]"/>
+                                                <input type='hidden' id="infopuntodatoadicionaltype_tipoedificio" name="infopuntodatoadicionaltype[tipoedificioid]"/>
+                                                <input type='hidden' id="nuevoNodoCliente" name="infopuntodatoadicionaltype[nuevoNodoCliente]" value ="" />
+                                                <a href='#' onclick="showEdificios()"><img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11"   alt="" /></a>
+                                                </div>    
+                                            </td> 
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(form.tipoNegocioId) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.tipoNegocioId)}}
+                                            </td> 
+                                            <td></td>
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                {{ form_label(form.tipoUbicacionId) }} 
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.tipoUbicacionId) }}
+                                            </td> 
+                                            <td></td>
+                                        </tr> 
+                                        <tr>
+                                        <td>
+                                        </td>
+                                        <td>
+                                            <div class='infomessage'>croquis: solo formato jpg y png</div>
+                                        </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ form_label(form.file) }}
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            {{ form_widget(form.file) }}
+                                                        </td>
+                                                        <td>
+                                                            <div class="button-clean-field" title="Limpiar Archivo Croquis"
+                                                                 onClick='document.getElementById("infopuntotype_file").value = ""'></div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td> 
+                                        </tr>  
+                                          {% if (prefijoEmpresa != 'MD' and prefijoEmpresa!='EN') %}                                            
+                                        <tr>
+                                            <td>
+                                                <label id='labelLatitud' class="campo-obligatorio">* Coord. latitud:</label> 
+                                            </td>
+                                            <td>
+                                                
+                                                <div>
+                                                           
+                                                        <input type="text" onkeyup="validarGrados(this.value,1)" class="coordenadas-field" 
+                                                               id="grados_la" name="grados_la" required='required'>&deg;
+                                                        <input type="text" onkeyup="validarMinutos(this.value,1)" class="coordenadas-field"
+                                                               maxlength="2" id="minutos_la" name="minutos_la" required='required'>'
+                                                        <input type="text" onkeyup="validarSegundos(this.value,1)" class="coordenadas-field" 
+                                                               maxlength="2" id="segundos_la" name="segundos_la" required='required'>.
+                                                        <input type="text" onkeyup="validarDecimasSegundos(this.value,1)"
+                                                               class="coordenadas-field-mili" maxlength="3" id="decimas_segundos_la" 
+                                                               name="decimas_segundos_la" required='required'>
+                                                        &quot;
+                                                        <select onchange="validaInspeccion(1)" class="text-field" id="latitud" name="latitud">
+                                                                <option value="T">Seleccione...</option>
+                                                                <option value="N">Norte</option>
+                                                                <option value="S">Sur</option>
+                                                        </select>                  
+                                                </div>                                                
+                                                
+                                            </td>
+                                            <td></td>
+                                        </tr> 
+                                        <tr>
+                                            <td>
+                                                <label id='labelLongitud' class="campo-obligatorio">* Coord. longitud:</label>  
+                                            </td>
+                                            <td>
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <div>
+                                                                <input type="text" onkeyup="validarGrados(this.value,0)"class="coordenadas-field" 
+                                                                       id="grados_lo" name="grados_lo" required='required'>&deg;
+                                                                <input type="text" onkeyup="validarMinutos(this.value,0)" class="coordenadas-field" 
+                                                                       maxlength="2"  id="minutos_lo" name="minutos_lo" required='required'>'
+                                                                <input type="text" onkeyup="validarSegundos(this.value,0)" class="coordenadas-field" 
+                                                                       maxlength="2"  id="segundos_lo" name="segundos_lo" required='required'>.
+                                                                <input type="text" onkeyup="validarDecimasSegundos(this.value,0)"
+                                                                       class="coordenadas-field-mili" maxlength="3" id="decimas_segundos_lo" 
+                                                                       name="decimas_segundos_lo" required='required'>
+                                                                &quot;
+                                                                <select onchange="validaInspeccion(0)" class="text-field" id="longitud" 
+                                                                        name="longitud">
+                                                                    <option value="T">Seleccione...</option>
+                                                                    <option value="E">Este</option>
+                                                                    <option value="O">Oeste</option>
+                                                                </select>
+                                                            </div>
+                                                            <input id='strTipoOrigenSelected' name='strTipoOrigenSelected' type='hidden'>
+                                                            <input type='text' style='display:none' id="infopuntoextratype_formas_contacto" 
+                                                                   required='required' name="infopuntoextratype[formas_contacto]"/>    
+                                                            <input id='infopuntoextratype_personaId' name='infopuntoextratype[personaId]' 
+                                                                   type='hidden' value='{{cliente.id}}'>    
+                                                            <input id='infopuntoextratype_latitudFloat' name='infopuntoextratype[latitudFloat]' 
+                                                                   type='hidden' value=''>    
+                                                            <input id='infopuntoextratype_longitudFloat' name='infopuntoextratype[longitudFloat]' 
+                                                                   type='hidden' value=''>    
+                                                            <input id='infopuntoextratype_ptoCoberturaId' name='infopuntoextratype[ptoCoberturaId]' 
+                                                                   type='hidden' value=''>
+                                                            <input id='infopuntoextratype_cantonId' name='infopuntoextratype[cantonId]' type='hidden' 
+                                                                   value=''>
+                                                            <input id='infopuntoextratype_parroquiaId' name='infopuntoextratype[parroquiaId ]' 
+                                                                   type='hidden' value=''>
+                                                            <input id='infopuntoextratype_sectorId' name='infopuntoextratype[sectorId]' type='hidden'
+                                                                   value=''>
+                                                            <input id='infopuntoextratype_loginVendedor' name='infopuntoextratype[loginVendedor]' 
+                                                                   type='hidden' value='{{loginEmpleado}}'>												
+                                                            <input id='infopuntoextratype_canal' name='infopuntoextratype[canal]' type='hidden'>												
+                                                            <input id='infopuntoextratype_punto_venta' name='infopuntoextratype[punto_venta]' 
+                                                                   type='hidden'>												
+                                                            <input id='infopuntoextratype_oficina' name='infopuntoextratype[oficina]' type='hidden' 
+                                                                   value='{{oficina}}'>												
+                                                            <input id='infopuntoextratype_rol' name='infopuntoextratype[rol]' type='hidden' 
+                                                                   value='{{rol}}'>
+                                                            <input id='canton' name='canton' type='hidden' value=''>
+                                                            <!--INI - Componentes Dato de Envío -->
+                                                            <input id='nombreDatoEnvio' name='nombreDatoEnvio' type='hidden' value=''>
+                                                            <input id='ciudadDatoEnvio' name='ciudadDatoEnvio' type='hidden' value=''>
+                                                            <input id='parroquiaDatoEnvio' name='parroquiaDatoEnvio' type='hidden' value=''>
+                                                            <input id='sectorDatoEnvio' name='sectorDatoEnvio' type='hidden' value=''>
+                                                            <input id='direccionDatoEnvio' name='direccionDatoEnvio' type='hidden' value=''>
+                                                            <input id='correoElectronicoDatoEnvio' name='correoElectronicoDatoEnvio' type='hidden' value=''>
+                                                            <input id='telefonoDatoEnvio' name='telefonoDatoEnvio' type='hidden' value=''>
+                                                            <input id='numeroMaxCorreosDatoEnvio' name='numeroMaxCorreosDatoEnvio' type='hidden' value='0'>
+                                                            <input id='numeroMaxTelefonosDatoEnvio' name='numeroMaxTelefonosDatoEnvio' type='hidden' value='0'> 
+                                                            <input id='loginVend' name='loginVend' type='hidden' value=''> 
+                                                            <!--FIN - Componentes Dato de Envío -->
+                                                            {{ form_widget(form._token)}}    
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:muestraMapa()" class="">
+                                                                <img src="{{ asset('public/images/images_crud/gmaps.png')}}" 
+                                                                    alt="" title="Seleccionar desde Mapa" class="button-crud">
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>  
+                                        {% endif %}      
+                                        <tr>
+                                            <td>
+                                            <label  class='campo-obligatorio'>* Vendedor:</label>
+                                            </td>
+                                            <td>
+                                            <div id='div_errorvendedor' class='errormessage' style="display:none">Campo Vendedor es obligatorio</div>                                                
+                                            <div id='combo_vendedor' required='required'></div>
+                                            </td> 
+                                        </tr> 
+                                        
+                                    </table>
+                                                                
+                            </td>
+                        </tr>
+                    </table>    
+                    </div>
+                <div id="tab2"  style="justify-content: center;display: grid;" class="x-hide-display">
+		         	<table style="text-align: center;">
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td>
+                                <div id='lista_formas_contacto_grid'></div>
+                                <div class='infomessage'>Todo número de telefono debe iniciar con el codigo de area correspondiente</div>
+                                <div class='infomessage'>Todo n&uacutemero de tel&eacute;fono internacional debe tener entre 7 y 15 d&iacute;gitos</div>
+                            </td>
+                            
+                        </tr>   
+                    </table>            
+                </div>                    
+                </div>
+                <div class="buttons">
+				<p>
+                    <button type="submit" id="btn-guardar" class="button-crud" onclick="grabarFormasContacto('#infopuntoextratype_formas_contacto');">
+                        Guardar
+                    </button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                    <span class="height20px">
+                        <a class="button-crud" href="{{ path('cliente_show',{'id':cliente.id,'idper':idPer}) }}">
+                            Regresar
+                        </a>
+                    </span>                                        
+				</p>
+		</div> 
+</form>
+</div> 
+<div id='windowMap' style='display:none'>
+<div id="map_canvas" style="width:800px; height:600px"></div>
+</div>
+{% endblock contenido_central %}
+
+{% block javascripts_footer%}
+<script> 
+	{%if (rol == 'Pre-cliente')%}
+            $('#infopuntotype_fileDigital').removeAttr('required');
+            $('label[for=infopuntotype_fileDigital]').html('Archivo:');
+        {%endif%}    
+            
+            //validaLogin();
+            
+            function esEdificio(){
+                if ($('#infopuntodatoadicionaltype_esedificio').val()=='S'){
+                    
+                    ocultarDiv('div_label_dependeedificio');
+                    ocultarDiv('div_select_dependeedificio');
+					mostrarDiv('div_nombreEdificio');					
+					mostrarDiv('div_label_nombreEdificio');					
+                    $('#infopuntodatoadicionaltype_dependedeedificio').val('N');
+                    ocultarDiv('div_label_edifpadre');
+                    ocultarDiv('div_input_edifpadre');
+                    $('#infopuntodatoadicionaltype_puntoedificio').attr('required','required');
+					$('#infopuntodatoadicionaltype_nombreEdificio').attr('required','required');
+                    $('#infopuntodatoadicionaltype_puntoedificio').val('');
+                    $('#infopuntodatoadicionaltype_puntoedificioid').val('');
+					$('#infopuntodatoadicionaltype_nombreEdificio').val('');
+                }
+                else
+                {
+                    mostrarDiv('div_label_dependeedificio');
+                    mostrarDiv('div_select_dependeedificio');                    
+                    ocultarDiv('div_label_edifpadre');
+                    ocultarDiv('div_input_edifpadre');
+					ocultarDiv('div_nombreEdificio');
+					ocultarDiv('div_label_nombreEdificio');					
+                    $('#infopuntodatoadicionaltype_dependedeedificio').val('N');
+                    $('#infopuntodatoadicionaltype_puntoedificio').removeAttr('required');
+					$('#infopuntodatoadicionaltype_nombreEdificio').removeAttr('required');
+                    $('#infopuntodatoadicionaltype_puntoedificio').val('');
+                    $('#infopuntodatoadicionaltype_puntoedificioid').val('');
+					$('#infopuntodatoadicionaltype_nombreEdificio').val('');
+                }
+                
+            }
+            function dependeDeEdificio(){
+                if ($('#infopuntodatoadicionaltype_dependedeedificio').val()=='S'){
+                    mostrarDiv('div_label_edifpadre');
+                    mostrarDiv('div_input_edifpadre');
+                    $('#infopuntodatoadicionaltype_puntoedificio').attr('required','required');
+                    $('#infopuntodatoadicionaltype_puntoedificio').val('');
+                    $('#infopuntodatoadicionaltype_puntoedificioid').val('');
+                }
+                else
+                {
+                    ocultarDiv('div_label_edifpadre');
+                    ocultarDiv('div_input_edifpadre');
+                    $('#infopuntodatoadicionaltype_puntoedificio').removeAttr('required');
+                    $('#infopuntodatoadicionaltype_puntoedificio').val('');
+                    $('#infopuntodatoadicionaltype_puntoedificioid').val('');
+                    $('#nuevoNodoCliente').val('');
+                }
+                
+            } 
+                
+                function mostrarDiv(div){
+                    capa = document.getElementById(div);
+                    capa.style.display = 'block';    
+                }   
+                function ocultarDiv(div){
+                    capa = document.getElementById(div);
+                    capa.style.display = 'none';    
+                }		
+
+function esNoLoginCaracter(event){
+    //alert(event.keyCode);
+    return (
+        //letras mayusculas
+        (event.keyCode > 64 && event.keyCode < 91)  
+        ||
+        //letras minusculas
+        (event.keyCode >= 96 && event.keyCode < 123)
+        //numeros
+        || (event.keyCode > 47 && event.keyCode < 58)
+        // caracter -
+        || (event.keyCode == 173)
+        // backspace
+        || (event.keyCode == 8)    
+        // suprimir
+        || (event.keyCode == 46)       
+    )
+}
+$(function(){
+    $("#infopuntodatoaldicionaltype_login").keydown(function(event){
+        //alert('code:'+esNoLoginCaracter(event));
+        if(!esNoLoginCaracter(event)) return false;
+    });
+});
+
+    // Si el nuevo punto tiene la obligación de ser padre facturación no se muestra el combo y se setea el valor de 'S' para que cumpla la condición.
+    if(pf_obligatorio === 'S')
+    {   
+        $("#infopuntodatoadicionaltype_esPadreFacturacion").val("S"); 
+        $('#informacionDatosEnvio').show();
+    }
+    else
+    {
+        // Se debe especificar mediante selección del combo si el nuevo punto será o no padre de facturación.
+        $('#infopuntodatoadicionaltype_esPadreFacturacion').attr('required','required');
+        $("#infopuntodatoadicionaltype_esPadreFacturacion").val("").change();       
+        mostrarDiv('lb_esPadreFacturacion');
+        mostrarDiv('infopuntodatoadicionaltype_esPadreFacturacion');
+    }
+    
+    function esPadreDeFacturacion(){
+        var valorSeleccionado = '';
+        
+        valorSeleccionado = $( "#infopuntodatoadicionaltype_esPadreFacturacion" ).val();
+        
+        if ( prefijoEmpresa === 'TN' )
+        {
+            if(valorSeleccionado === 'S')
+            {
+                AbreVentanaDatoEnvio();
+                //$('#informacionDatosEnvio').show();
+            }
+            else
+            {
+               $("#informacionDatosEnvio").css({'display':'none'});  
+            }
+        }
+    }
+
+    function Check(value) {
+        if (value.checked == true && $( "#infopuntotype_direccion" ).val() == "" )
+        {
+            document.getElementById('infopuntotype_direccion').value = "{{cliente.direccionTributaria}}";
+        }
+      };                    
+</script>      
+
+{% endblock javascripts_footer%}

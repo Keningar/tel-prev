@@ -1,0 +1,62 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/comercial/css/supervisor.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+	
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">        
+        var strUrlGetVentas            = '{{ path("reportessupervisor_gridReporteVentasSupervisor") }}';
+        var strUrlGetEstadosSerrvicios = '{{ path("search_ajaxGetEstadoServicios") }}';
+        var strUrlGetPuntosClientes    = '{{ path("tareas_getClientes") }}';
+        var urlGetPlanes               = '{{ path("notasCreditoMasivasEstadosPlanes") }}';
+        var strUrlGetEmpresas          = '{{ path('infocaso_ajaxGetEmpresasPorSistema') }}';
+        var strUrlGetJurisdicciones    = '{{ path("reportessupervisor_getAdmiJurisdiccion") }}';
+        var strUrlGetSectores          = '{{ path("reportessupervisor_getAdmiSector") }}';
+        var boolFitroEmpresa           = '{{ boolFiltroEmpresa }}';
+        var strPrefijoEmpresa          = '{{ strPrefijoEmpresa }}';
+        var strUrlCanales              = "{{ path('infopunto_getCanales') }}";
+        var strUrlPuntoVenta           = "{{ path('infopunto_getPuntosVenta')}}";
+        
+        {% if boolFiltroEmpresa %}
+            var boolAutoloadJurisdiccion = false;
+        {% else %}
+            var boolAutoloadJurisdiccion = true;    
+        {% endif %}
+    </script>
+    <script type="text/javascript" src="{{ asset('./public/js/ExtJsCalendar/changeLanguage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/Supervisor/reporteVentasSupervisor.js?2') }}"></script>
+{% endblock %}
+
+
+{% block contenido_central %}
+    <div id="titulo_content" class="titulo_interno">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Reporte de Ventas del Supervisor</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+
+    <div class="body_content">
+        <table>
+            <tr>
+                <td valign="top">
+                    <div id='filtros'></div>
+                    <br/>
+                    <div id='gridReporteVentasSupervisor'></div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('reportessupervisor_index') }}">
+                        Regresar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </div>
+{% endblock contenido_central %}

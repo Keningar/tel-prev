@@ -1,0 +1,27 @@
+SolicitudProyectoController:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudProyecto:index" }
+
+grid_solicitud_proyecto:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:SolicitudProyecto:grid"}
+
+show_solicitud_proyecto:
+    pattern:  /show/{intIdCotizacion}/{strEstado}
+    defaults: { _controller: "comercialBundle:SolicitudProyecto:show" }
+
+aprobar_rechazar_solicitud_proyecto:
+    pattern:  /getAprobarRechazarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudProyecto:getAprobarRechazarSolicitud"}
+
+estados_solicitud_proyecto:
+    pattern:  /getEstados
+    defaults: { _controller: "comercialBundle:SolicitudProyecto:getEstados"}
+
+motivo_solicitud_proyecto:
+    pattern:  /getMotivos
+    defaults: { _controller: "comercialBundle:SolicitudProyecto:getMotivos"}
+
+usuarios_solicitud_proyecto:
+    pattern:  /getUsuarios
+    defaults: { _controller: "comercialBundle:SolicitudProyecto:getUsuarios"}

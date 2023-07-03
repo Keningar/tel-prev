@@ -1,0 +1,205 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+<style scoped="scoped">
+   .alineando
+   {
+        left: 42em;
+        position: absolute;
+        top: 44em;
+    }
+    .formulario label
+    {
+        margin:0px !important;
+        width: 155px !important;
+    }
+
+    .contenido
+    {
+        background-color: #F9F9F9;
+        border: 2px solid #F9F9F9;
+        border-radius: 13px 13px 13px 13px;
+        font-size: 10px;
+        margin: 10px;
+        padding: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block contenido_izq %}
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+    
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Datos Adicionales del Contrato</h1>
+</div>
+
+ <div class="body_content">
+    <form action="{{ path('infocontrato_updateDatosAdicionalesContrato', { 'id': objContrato.id }) }}" 
+          method="post" {{ form_enctype(formContratoDatoAdi) }} class="formulario" name="formulario">
+    <table width='80%'>        
+        <tr>           
+            <td>
+                <table class="record_properties" width='100%'>
+                    <tr>  
+                    <td colspan='5'>
+				    <div class='secHead'>Informaci&oacute;n del Cliente</div>
+			       </td>
+                   </tr>
+                    <tr style="height: 23px">
+                        <td style="width: 125px"><b>Raz&oacute;n Social</b></td>
+                        <td style="width: 10px"> <b>:           </b></td>
+                        <td>{% if(objPersona.razonSocial is not null)%}  {{objPersona.razonSocial}}  {% else %} N/A  {% endif %} </td>
+
+                        <td style="width: 80px"><b>Identificaci&oacute;n</b></td>
+                        <td style="width: 10px"><b>:             </b></td>
+                        <td>{% if(objPersona.identificacionCliente is not null)%}  
+                            {{objPersona.identificacionCliente}}  
+                            {% else %} N/A  
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr style="height: 23px">
+                        <td><b>Nombres</b></td>
+                        <td><b>:      </b></td>
+                        <td>{% if(objPersona.nombres is not null)%}  {{objPersona.nombres}}  {% else %} N/A  {% endif %}</td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="height: 23px">
+                        <td><b>Apellidos</b></td>
+                        <td><b>:        </b></td>
+                        <td>{% if(objPersona.apellidos is not null)%}  {{objPersona.apellidos}}  {% else %} N/A  {% endif %}</td>
+
+                        <td><b>Direcci&oacute;n</b></td>
+                        <td><b>:        </b></td>
+                        <td>{% if(objPersona.direccion is not null)%}  {{objPersona.direccion}}  {% else %} N/A  {% endif %}</td>
+                    </tr>
+                    <tr style="height: 23px">
+                        <td><b>Representante Legal</b></td>
+                        <td><b>:                  </b></td>
+                        <td>{% if(objPersona.representanteLegal is not null)%}  
+                            {{objPersona.representanteLegal}}  
+                            {% else %} N/A  
+                            {% endif %}
+                        </td>
+                        <td><b>Estado</b></td>
+                        <td><b>:     </b></td>
+                        <td>{% if(objPersona.estado is not null)%}  {{objPersona.estado}}  {% else %} N/A  {% endif %}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>        
+       
+        <tr><td>
+        <table width='20%'>
+                <tr>  
+                    <td colspan='2'>
+				    <div class='secHead'>Datos Adicionales del Contrato</div>
+			       </td>
+                </tr>
+				<tr>
+                    <td>{{ form_label(formContratoDatoAdi.esVip) }}</td>
+                    <td>{{ form_widget(formContratoDatoAdi.esVip) }}</td>
+				</tr>
+                <tr>
+                    <td>{{ form_label(formContratoDatoAdi.esTramiteLegal) }}</td>
+                    <td>{{ form_widget(formContratoDatoAdi.esTramiteLegal) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(formContratoDatoAdi.permiteCorteAutomatico) }}</td> 
+                    <td>{{ form_widget(formContratoDatoAdi.permiteCorteAutomatico) }}</td>
+				</tr>
+                <tr>
+                    <td>{{ form_label(formContratoDatoAdi.fideicomiso) }}</td>
+                    <td>{{ form_widget(formContratoDatoAdi.fideicomiso) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(formContratoDatoAdi.convenioPago) }}</td>
+                    <td>{{ form_widget(formContratoDatoAdi.convenioPago) }}</td>
+                </tr>
+                
+                <tr>
+                    <td>{{ form_label(formContratoDatoAdi.notificaPago) }}</td>
+                    <td>{{ form_widget(formContratoDatoAdi.notificaPago) }}</td>
+                </tr>                
+                <tr>
+                <td colspan='2'>
+                   <div id='div_valor' class='errormessage' style="display:none"></div>
+                </td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(formContratoDatoAdi.tiempoEsperaMesesCorte) }}</td> 
+                    <td>{{ form_widget(formContratoDatoAdi.tiempoEsperaMesesCorte) }}</td>  
+                </tr>              
+	    </table>  
+        </td></tr>                                
+    </table>
+        
+   <div class="buttons">
+    <p>
+        <button type='submit'class="button-crud"  >Guardar</button>
+       <span class="height20px">                           
+         <a class="button-crud" href="{{ path('infocontrato_show', { 'id': objContrato.id }) }}"> Regresar </a>
+       </span>
+    </p>
+   </div>
+</form>
+     
+</div>
+
+{% endblock contenido_izq %}
+
+
+{% block contenido_der %}
+
+<br/>
+<div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}   
+
+{% block javascripts_footer%}
+<script type="text/javascript">   
+
+ $("#infocontratodatoadicionaltype_tiempoEsperaMesesCorte").blur(function(){
+ if (validaTiempoEsperaMesesCorte() || $("#infocontratodatoadicionaltype_tiempoEsperaMesesCorte").val()=="")
+ {    
+     ocultarDiv('div_valor');
+     return true;
+ }    
+ else
+ { 
+     mostrarDiv('div_valor');
+     $('#div_valor').html('El Tiempo de espera en meses para corte debe ser un valor numerico entero.');
+     $("#infocontratodatoadicionaltype_tiempoEsperaMesesCorte").val('');
+  }
+ });  
+ 
+function validaTiempoEsperaMesesCorte()
+{           
+    return /^\d+\)?$/.test($("#infocontratodatoadicionaltype_tiempoEsperaMesesCorte").val());
+}   
+
+function mostrarDiv(div)
+{
+    capa               = document.getElementById(div);
+    capa.style.display = 'block';    
+}
+function ocultarDiv(div)
+{
+    capa               = document.getElementById(div);
+    capa.style.display = 'none';    
+}      
+</script>
+{% endblock javascripts_footer%}        

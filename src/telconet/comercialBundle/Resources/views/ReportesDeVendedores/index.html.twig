@@ -1,0 +1,42 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<link href="{{ asset('./bundles/comercial/css/supervisor.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script type="text/javascript">
+    var strUrlGetVendedores = '{{ path("reporte_de_vendedores_gridVendedores") }}';
+    var strUrlGetReporteVentasPorVendedor = '{{ path("reporte_de_vendedores_gridPuntosServiciosVendedores") }}';
+    var strUrlExcelPuntosServiciosPorVendedor = "{{ path('reporte_de_vendedores_excelPuntosServiciosVendedores') }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/ReporteDeVendedores/index.js') }}"></script> 
+<script type="text/javascript" src="{{ asset('./public/js/ExtJsCalendar/changeLanguage.js') }}"></script>
+{% endblock %}
+
+
+{% block contenido %}
+<div id="titulo_content" class="titulo_interno">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Reporte de Servicios Por Vendedor</h1>
+</div>
+<div class="body_content">
+    <center>
+        <div id='filtroVendedores'></div>
+
+        <div id='gridReporteDeVentas'></div>
+    </center>
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="button-crud" href="{{ path('comercialBundle_opcion', {'opcion_menu': 'reportes'}) }}">
+                    Regresar
+                </a>
+            </span>
+        </p>
+    </div>
+
+</div>
+{% endblock contenido %}

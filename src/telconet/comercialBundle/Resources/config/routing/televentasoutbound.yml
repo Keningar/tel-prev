@@ -1,0 +1,24 @@
+televentasoutbound:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:TeleventasOutbound:index" }
+
+televentasoutbound_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:TeleventasOutbound:reporteTeleventasOutbound" }
+    
+televentasoutbound_exportarReporte:
+    pattern:  /exportarReporte
+    defaults: { _controller: "comercialBundle:TeleventasOutbound:exportarReporteTeleventasOutbound" }
+    
+televentasoutbound_getAjaxComboFormasPago:
+    pattern:  /getAjaxComboFormasPago
+    defaults: { _controller: "comercialBundle:TeleventasOutbound:getAjaxComboFormasPago" }
+    
+televentasoutbound_getAjaxComboEmpresas:
+    pattern:  /getAjaxComboEmpresas
+    defaults: { _controller: "comercialBundle:TeleventasOutbound:getAjaxComboEmpresas" }
+    
+televentasoutbound_getAjaxComboJurisdicciones:
+    pattern:  /getAjaxComboJurisdicciones
+    defaults: { _controller: "comercialBundle:TeleventasOutbound:getAjaxComboJurisdicciones" }
+    

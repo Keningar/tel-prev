@@ -1,0 +1,11 @@
+--Se actualiza el número de ips adicionales Small Business tanto para el plan de 20MB y 50MB
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR4         = '4'
+WHERE PARAMETRO_ID =
+  (SELECT ID_PARAMETRO
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO = 'IP_MAX_PERMITIDAS_PRODUCTO'
+  AND ESTADO             = 'Activo'
+  )
+AND ESTADO = 'Activo';
+COMMIT;

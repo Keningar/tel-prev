@@ -1,0 +1,446 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+	</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+		var url_clientes = "{{ path('infoordentrabajo_listar_pto_clientes') }}";
+	</script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoordentrabajo/buscarCliente.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Editar Orden de Trabajo</h1>
+    </div>
+    <div class="body_content">
+        <form action="{{ path('infoordentrabajo_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" name="formulario">
+            {{ form_widget(edit_form) }}
+            <div class="secHead">Tipo de orden de trabajo</div>
+            <div>
+                <input type="radio" name="info" id="info" value="catalogo">Por catálogo<br>
+                <input type="radio" name="info" id="info" value="portafolio">Por portafolio<br>
+            </div>
+            <div id="formulario_portafolio" class="campo-oculto">
+                <div class="secHead">Por portafolio:</div>
+                <div>
+                    <div>
+                        <label class="required" for="listado">* Listado de Planes:</label>
+                        <select id="planes">
+                        </select>
+                    </div>
+                    <div id='form_cantidad_planes'>
+                        <label class="required" for="cantidad">* Cantidad:</label>
+                        <input type="text" class="campo-obligatorio" name="cantidad_plan" id="cantidad_plan" onkeypress="validate(event)">
+                    </div>
+                    <div id='form_precio_planes'>
+                        <label class="required" for="cantidad">* Precio:</label>
+                        <input type="text" class="campo-obligatorio" name="precio" id="precio" readonly="readonly">
+                        <div id="contenido_plan"></div>
+                    </div>
+                    <div id='form_btn_planes'>
+                        <button type='button' class='button-crud' onClick='agregar_detalle_portafolio();'>Agregar</button>
+                        &nbsp;
+                        <button type='button' class='button-crud' onClick='limpiar_detalle_portafolio();'>Limpiar</button>
+                    </div>
+                </div>
+            </div>
+            <div id="formulario_catalogo" class="campo-oculto">
+                <div class="secHead">Por catalogo:</div>
+                <div>
+                    <div>
+                        <label class="required" for="listado">* Listado de Productos:</label>
+                        <select id="producto">
+                        </select>
+                    </div>
+                    <div id="contenido"></div>
+                </div>
+            </div>
+            <div id="mensaje" class="info-error campo-oculto"></div>
+            <div class="secHead">Listado</div>
+            <table id="table-3" width="100%">
+                <thead>
+                    <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Precio Total</th>
+                    <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if items_detalle is defined %}
+                        {% for item in  items_detalle%}
+                            <tr>
+                                <td>{{ item.producto }}</td>
+                                <td>{{ item.cantidad }}</td>
+                                <td>{{ item.precio_total }}</td>
+                                <td>{{ item.precio_total }}</td>
+                                <td>
+                                    <button type='button' onclick='removeRow(this,{{ item.producto_id }});' class="button-crud">Eliminar</button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+            <input type="hidden" name="valores" id="valores" />
+            <div class="buttons">
+                <p>
+                    <button type='submit'class="button-crud">Editar</button>
+                    <span class="height20px">
+                        <a class="button-crud" href="{{ path('infoordentrabajo') }}">Regresar</a>
+                    </span>
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('infoordentrabajo_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nueva orden
+            </a>
+        </li>
+        <li>
+            &nbsp;
+        </li>
+        <li>
+            <form action="{{ path('infoordentrabajo_delete', { 'id': entity.id }) }}" method="post" name="form_eliminar" >
+                <img src="{{ asset('public/images/images_crud/edit.png')}}"/>
+                    &nbsp;Eliminar orden
+                </a>
+             </form>
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+    <script>
+        var informacion_controlador={};
+        var informacion=[];
+        
+        {% if arreglo is defined %}
+            var arreglo={{ arreglo|raw }};
+            for ( var x = 0; x < arreglo.length; x++ ) {
+                informacion.push(arreglo[x]);
+            }
+        {% endif %}
+        
+        
+        document.getElementById("valores").value=JSON.stringify(informacion);
+        
+        $("input:radio[@name='info']").change(function() {
+            $.ajax({
+                type: "POST",
+                data: "tipo=" + $("input:radio[@name='info']:checked").val(),
+                url:"{{ path('infoordentrabajo_tipo') }}",
+                success: function(msg){					
+                    if (msg.msg == 'ok')
+                    {
+                        if(msg.info=='portafolio')
+                        {
+                            $('#formulario_portafolio').removeClass('campo-oculto');
+                            $('#formulario_catalogo').addClass('campo-oculto');
+                            document.getElementById("contenido").innerHTML="";
+                            document.getElementById("planes").innerHTML=msg.div;
+                        }
+                        
+                        if(msg.info=='catalogo')
+                        {
+                            document.getElementById("cantidad_plan").value="";
+                            document.getElementById("precio").value="";
+                            $('#formulario_catalogo').removeClass('campo-oculto');
+                            $('#formulario_portafolio').addClass('campo-oculto');
+                            document.getElementById("producto").innerHTML=msg.div;
+                        }
+                    }
+                }
+            });
+        });
+        
+        $('#producto').change(function()
+        {
+            var info_producto=document.getElementById('producto').value;
+            var producto=info_producto.split("-");
+            //var producto=$('#producto').val();
+            
+            $.ajax({
+                type: "POST",
+                data: "producto=" + producto[0],
+                url:'{{ path('infoplancab_listar_caracteristicas') }}',
+                success: function(msg){
+                    if (msg.msg == 'ok')
+                    {					
+                        //Llenar el div que presentara las clausulas
+                        //Validar que de respuesta sinop solicitarla
+                        document.getElementById("contenido").innerHTML=msg.div;
+                        $('#contenido').removeClass('info-error');
+                        //console.log(msg.id);
+                    }
+                    else
+                        document.getElementById("contenido").innerHTML=msg.msg;
+                        $('#contenido').addClass('info-error');
+                        $('#mensaje').addClass('campo-oculto');
+                }
+            });
+        });
+        
+        
+        $('#planes').change(function()
+        {
+            var info_plan=document.getElementById('planes').value;
+            var plan=info_plan.split("-");
+            //var producto=$('#producto').val();
+            
+            $.ajax({
+                type: "POST",
+                data: "plan=" + plan[0],
+                url:'{{ path('infoordentrabajo_info_plan') }}',
+                success: function(msg){
+                    if (msg.msg == 'ok')
+                    {					
+                        //Llenar el div que presentara las clausulas
+                        //Validar que de respuesta sinop solicitarla
+                        document.getElementById("precio").value=msg.precio;
+                        //console.log(msg.id);
+                        $('#mensaje').addClass('campo-oculto');
+                        $('#form_cantidad_planes').removeClass('campo-oculto');
+                        $('#form_precio_planes').removeClass('campo-oculto');
+                        $('#form_btn_planes').removeClass('campo-oculto');
+                    }
+                    else
+                    {
+                        //document.getElementById("contenido_plan").innerHTML=msg.msg;
+                        document.getElementById("precio").value="";
+                        document.getElementById("mensaje").innerHTML=msg.msg;
+                        $('#mensaje').removeClass('campo-oculto');
+                        $('#form_cantidad_planes').addClass('campo-oculto');
+                        $('#form_precio_planes').addClass('campo-oculto');
+                        $('#form_btn_planes').addClass('campo-oculto');
+					}
+                }
+            });
+        });
+        
+        function replaceAll( text, busca, reemplaza )
+        {
+                while (text.toString().indexOf(busca) != -1)
+                text = text.toString().replace(busca,reemplaza);
+                return text;
+        }
+
+        function displayResult(producto,cantidad,precio_unitario,precio_total)
+        {
+                var table=document.getElementById("table-3");
+                var largo=table.rows.length;
+                var row=table.insertRow(largo);
+                var cell1=row.insertCell(0);
+                var cell2=row.insertCell(1);
+                var cell3=row.insertCell(2);
+                var cell4=row.insertCell(3);
+                var cell5=row.insertCell(4);
+                cell1.innerHTML=producto[1];
+                cell2.innerHTML=cantidad;
+                cell3.innerHTML=precio_unitario;
+                cell4.innerHTML=precio_total;                
+                cell5.innerHTML="<button type='button' onclick='removeRow(this,"+producto[0]+");' class='button-crud'>Eliminar</button>";
+                
+        }
+	
+        function buscarProducto(informacion,producto)
+        {
+                //console.log(informacion);
+                for(var i=0;i<informacion.length;i++)
+                {
+                        if(String(informacion[i].producto) == String(producto))
+                        {
+                                return i;
+                        }
+                }
+                return false;
+        }
+        
+        function removeRow(src,producto)
+        {             
+            var oRow = src.parentElement.parentElement;    
+            var i=oRow.rowIndex;
+            document.getElementById("table-3").deleteRow(i);  
+            //var pos = informacion.indexOf(producto);
+            var pos = buscarProducto(informacion,producto);
+            console.log(pos);
+            informacion.splice(pos,1);
+            
+            document.getElementById("valores").value=JSON.stringify(informacion);
+            //console.log(informacion);  // imprime: a,b,d
+        }
+	
+        
+        function agregar_detalle()
+        {   
+			
+            var valor_caract=new Array();
+            var nombre_caract=new Array();
+            var prod_caract=new Array();
+            
+            var text="";
+            var resultado="";
+            var cantidad=formulario.cantidad.value;
+            var precio_unitario=0;
+            var precio_total=0;
+            var info_producto=formulario.producto.value;
+            var producto=info_producto.split("-");
+            var registro="";
+            informacion_controlador={};
+            informacion_controlador["producto"]=producto[0];
+            informacion_controlador["cantidad"]=cantidad;
+            
+            var arreglo_valor_caract=formulario["caracteristicas[]"];
+            var arreglo_nombre_caract=formulario["caracteristica_nombre[]"];
+            var arreglo_producto_caracteristica=formulario["producto_caracteristica[]"];
+            
+            if(typeof arreglo_valor_caract.value === 'string')
+				arreglo_valor_caract = [arreglo_valor_caract];
+				
+            if(typeof arreglo_nombre_caract.value === 'string')
+				arreglo_nombre_caract = [arreglo_nombre_caract];
+                            
+            if(typeof arreglo_producto_caracteristica.value === 'string')
+				arreglo_producto_caracteristica = [arreglo_producto_caracteristica];
+                        
+            //console.log(arreglo_valor_caract);
+            //console.log(arreglo_nombre_caract);
+            
+            //console.log(JSON.stringify(informacion));
+            for ( var x = 0; x < arreglo_valor_caract.length; x++ ) {
+                valor_caract[x]=arreglo_valor_caract[x].value;
+            }
+            
+            for ( var x = 0; x < arreglo_nombre_caract.length; x++ ) {
+                nombre_caract[x]=arreglo_nombre_caract[x].value;
+            }
+            
+            for ( var x = 0; x < arreglo_producto_caracteristica.length; x++ ) {
+                prod_caract[x]=arreglo_producto_caracteristica[x].value;
+            }
+            
+            informacion_controlador["valor_caract"]=valor_caract;
+            informacion_controlador["nombre_caract"]=nombre_caract;
+            informacion_controlador["prod_caract"]=prod_caract;
+            informacion_controlador["info"]="C";
+            var funcion_precio=formulario.funcion_precio.value;
+            text=funcion_precio;
+            
+            
+            for(var x = 0; x < nombre_caract.length; x++)
+            {
+                text=replaceAll(text,nombre_caract[x],valor_caract[x]);
+            }
+            
+            precio_unitario=eval(text);
+            
+            console.log(precio_unitario);
+            precio_total=(precio_unitario*cantidad);
+            console.log(cantidad);
+            informacion_controlador["precio_total"]=precio_total;
+            informacion_controlador["id_det"]="";
+            if(precio_total>=0)
+            {
+                displayResult(producto,cantidad,precio_unitario,precio_total);
+                informacion.push(informacion_controlador);
+                document.getElementById("valores").value=JSON.stringify(informacion);
+            }
+            else
+            {
+                document.getElementById("mensaje").innerHTML="Los valores ingresados no cumplen la funcion precio, favor verificar";
+            }
+            
+        }
+        
+        function agregar_detalle_portafolio()
+        {   
+            var text="";
+            var resultado="";
+            var cantidad=formulario.cantidad_plan.value;
+            var precio_unitario=0;
+            var precio_total=0;
+            var info_producto=formulario.planes.value;
+            var producto=info_producto.split("-");
+            var registro="";
+            informacion_controlador={};
+            informacion_controlador["producto"]=producto[0];
+            informacion_controlador["cantidad"]=cantidad;
+            
+            precio_unitario=formulario.precio.value;
+            precio_total=(precio_unitario*cantidad);
+            informacion_controlador["precio_total"]=precio_total;
+            informacion_controlador["info"]="P";
+            informacion_controlador["id_det"]="";
+            if(precio_total>=0 && cantidad>0 && producto[0]!="")
+            {
+                displayResult(producto,cantidad,precio_unitario,precio_total);
+                informacion.push(informacion_controlador);
+                document.getElementById("valores").value=JSON.stringify(informacion);
+            }
+            else
+            {
+                document.getElementById("mensaje").innerHTML="Los valores ingresados no cumplen la funcion precio, favor verificar";
+            }
+            
+        }
+        
+        function limpiar_detalle()
+        {
+            var arreglo_valor_caract=formulario["caracteristicas[]"];
+            
+            if(typeof arreglo_valor_caract.value === 'string')
+                arreglo_valor_caract = [arreglo_valor_caract];
+                        
+            for ( var x = 0; x < arreglo_valor_caract.length; x++ ) {
+                arreglo_valor_caract[x].value="";
+            }
+            
+            if(formulario.cantidad)
+                formulario.cantidad.value="";
+        }
+        
+        function limpiar_detalle_portafolio()
+        {
+            if(formulario.cantidad_plan)
+                formulario.cantidad_plan.value="";
+            
+            if(formulario.precio)
+                formulario.precio.value="";
+        }
+    </script>
+{% endblock javascripts_footer%}

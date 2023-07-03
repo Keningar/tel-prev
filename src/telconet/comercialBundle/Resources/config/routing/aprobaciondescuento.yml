@@ -1,0 +1,28 @@
+
+aprobaciondescuento_aprobar_descuento:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:aprobarDescuento" }
+
+aprobaciondescuento_grid_aprobar:
+    pattern:  /gridAprobarDescuento
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:gridAprobarDescuento"}
+
+aprobaciondescuento_aprobar_ajax:
+    pattern:  /aprobarDescuentoAjax
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:aprobarDescuentoAjax" }
+
+aprobaciondescuento_rechazar_ajax:
+    pattern:  /rechazardescuentoajax
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:rechazarSolicitudDescuentoAjax" }
+
+aprobaciondescuento_getmotivosrechazo_ajax:
+    pattern:  /getMotivosRechazoAjax
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:getMotivosRechazoDescuento_ajax" }
+
+aprobaciondescuento_validaSolDesc:
+    pattern:  /validaSolDesc
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:validaSolDesc" }    
+
+aprobaciondescuento_getEstado_ajax:
+    pattern:  /getEstadoAjax
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:getEstadoAjax" }

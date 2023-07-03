@@ -1,0 +1,7 @@
+logsdocumentosdigitales:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:VerLogsDocumentos:index" }
+
+logsdocdigitales_gridInfoLogs:
+    pattern:  /gridLogsDocumentosDigitales
+    defaults: { _controller: "comercialBundle:VerLogsDocumentos:gridInfoLogsDocumentosDigitales" }

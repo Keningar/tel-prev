@@ -1,0 +1,108 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+    <link href="{{ asset('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.css')}}" type="text/css" rel="stylesheet" /> 
+    <link href="{{ asset('./bundles/comercial/css/funcionPrecio.css')}}" type="text/css" rel="stylesheet" />  
+    <link href="{{ asset('./bundles/comercial/css/businessSolution.css')}}" type="text/css" rel="stylesheet" />
+ 	<style scoped="scoped">
+        html { height: 100% }
+        body { height: 100%; margin: 0px; padding: 0px }
+        map_canvas { height: 100% }
+        #content-conf-producto label, #content-editar-producto label
+        {
+            display: block;
+            margin: 30px 0 0 0;
+        }
+	</style> 		
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+    <script>
+        var idPunto                          = "{{idPunto}}";
+        var arraySoluciones                  = '{{arraySolucionesPorPunto|json_encode()|raw}}';
+        var frecuencia                       = '{{frecuencia|json_encode()|raw}}';
+        var prefijoEmpresa                   = "{{prefijoEmpresa}}";
+        var urlGetDetallesPorSolucion        = "{{ path('infoservicio_ajaxGetDetalleProductosPorSolucion') }}";
+        var urlGetGrupoSubgrupo              = "{{ path('infoservicio_ajaxGetGrupoSubgrupoProductos') }}";
+        var urlGetCaracteristicas            = "{{ path('infoplancaracteristicas_listar_caracteristicas') }}";   
+        var urlGetComisionistas              = "{{ path('infoservicio_ajaxGetPlantillaComisionista') }}";
+        var urlGuardarSolucion               = "{{ path('infoservicio_ajaxGuardarSolucion')}}";
+        var urlEditarNombreSolucion          = "{{ path('infoservicio_ajaxEditarNombreSolucion')}}";
+        var urlEliminaServicioSolucion       = "{{ path('infoservicio_ajaxEliminarServiciosSolucion')}}";
+        var urlGetInformacionServicio        = "{{ path('infoservicio_ajaxGetInformacionServicioSolucion')}}";
+        var urlEditarServicioSolucion        = "{{ path('infoservicio_ajaxEditarServicioSolucion')}}";
+        var urlPathShowPunto                 = "{{ path('infopunto_show', {'id':idPunto, 'rol':rol }) }}";
+        var urlajaxGetLicencias              = '{{ path('search_ajaxGetLicencias')}}';
+        var urlGetInformacionGeneralHosting  = '{{ path('servicio_ajaxGetInformacionGeneralHosting')}}';
+        var urlGuardarMaquinasVirtuales      = '{{ path("servicio_ajaxGuardarMaquinasVirtuales")}}';
+        var urlActualizarMaquinasVirtuales  = '{{ path("servicio_ajaxActualizarMaquinaVirtual")}}';
+
+
+    </script>
+    <script src="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/funciones_generales.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/newSolutions.js?7') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/editarSolucion.js?7') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/maquinasVirtualesComercial.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/recursosMv.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/helpersInfoServicio.js?6') }}"></script>
+
+{% endblock javascripts %}
+
+{% block contenido_central %}
+    
+        <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            <h5>Editar Soluciones</h5>
+        </div>
+                 
+        <div class="dashboard_content k-content" id="servicios">    
+                <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                    <tr>
+                        <td>
+                            <div align="center" id="content-soluciones"></div>
+                        </td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            <div align="left" class="secHead hr-edit"></div>
+                            <fieldset>
+                                <h5>                                    
+                                        <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;
+                                        Resumen de Servicios ingresados en la Solución <b style='color:#4D793E;' id="lbl-txt-solucion"></b></label>                                                                   
+                                </h5>                            
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            <div align="center" id="content-productos-solucion"></div>
+                        <td>
+                    </tr>
+                </table>     
+            </div> 
+            <input id='infopuntoextratype_loginVendedor'  name='infopuntoextratype[loginVendedor]'  type='hidden' value='{{loginEmpleado}}'>
+            <input id='infopuntoextratype_nombreVendedor' name='infopuntoextratype[nombreVendedor]' type='hidden' value='{{nombreEmpleado}}'>
+            
+            <div id="content-conf-producto" title="Características del Servicio"></div>  
+            
+            <div id="content-editar-producto" title="Características del Servicio a Editar"></div>  
+            <!-- resumen de productos seleccionados -->
+            <div id="content-resumen" title="Resumen de Solución"></div>
+        
+            <!-- configuracion de relacion entre preferencial y sub tipo de solucion-->
+            <div id="content-relacion-subtiposolucion" title="Relacionar Preferencial con Sub-Grupo de Solución"></div>            
+            <br/>
+            <div align="center">
+                {#<button id="buttonGuardar"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar</button>#}
+                <button id="buttonRegresar"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Regresar</button>
+            </div>
+            <br/>
+      
+{% endblock contenido_central %}
+

@@ -1,0 +1,94 @@
+precliente:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:PreCliente:index" }
+
+precliente_show:
+    pattern:  /{id}/{idper}/show
+    defaults: { _controller: "comercialBundle:PreCliente:show" }
+
+precliente_new:
+    pattern:  /new
+    defaults: { _controller: "comercialBundle:PreCliente:new" }
+
+precliente_create:
+    pattern:  /create
+    defaults: { _controller: "comercialBundle:PreCliente:create" }
+    requirements: { _method: post }
+
+precliente_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "comercialBundle:PreCliente:edit" }
+
+precliente_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "comercialBundle:PreCliente:update" }
+    requirements: { _method: post }
+
+precliente_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "comercialBundle:PreCliente:delete" }
+    requirements: { _method: post }
+
+precliente_delete_ajax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "comercialBundle:PreCliente:delete_ajax" }
+
+precliente_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:PreCliente:grid"}
+
+precliente_get_empleados:
+    pattern:  /getEmpleados
+    defaults: { _controller: "comercialBundle:PreCliente:getEmpleados"}
+
+precliente_lista_estados:
+    pattern:  /listaestados
+    defaults: { _controller: "comercialBundle:PreCliente:estados"}
+    
+precliente_ajax_get_clientes_por_nombre:
+    pattern:  /clientes_por_nombre
+    defaults: { _controller: "comercialBundle:PreCliente:ajaxGetClientesPorNombre"}
+
+precliente_convertir:
+    pattern:  /{id_prospecto}/convertir
+    defaults: { _controller: "comercialBundle:PreCliente:convertir" }
+
+precliente_procesar_prospecto:
+    pattern:  /{id_prospecto}/procesar_prospecto
+    defaults: { _controller: "comercialBundle:PreCliente:procesar_prospecto" }
+
+precliente_ajax_ultimos_prospectos:
+    pattern:  /ajax_ultimos_prospectos
+    defaults: { _controller: "comercialBundle:PreCliente:ajaxProspectosPorTipoEmpresaMes"}
+    
+precliente_listar_bancos_asociados:
+    pattern:  /lista_bancos_asociados
+    defaults: { _controller: "comercialBundle:InfoContrato:listaBancosAsociados" }
+
+precliente_ajax_plan_condicion_incumplida:
+    pattern:  /plan_condicion_incumplida_ajax
+    defaults: { _controller: "comercialBundle:PreCliente:planCondicionIncumplidaAjax" }
+
+precliente_editar_user_creacion_ajax:
+    pattern: /getEditUserCreacionAction
+    defaults: { _controller: "comercialBundle:PreCliente:getEditUserCreacion" }
+
+precliente_editar_nombre_ajax:
+    pattern: /editarNombreClienteProspecto
+    defaults: { _controller: "comercialBundle:PreCliente:editarNombrePersona" }
+precliente_listar_oficinas_empresa:
+    pattern:  /listarOficinasEmpresa
+    defaults: { _controller: "comercialBundle:PreCliente:getListaOficinasEmpresa"}    
+precliente_InformacionCliente:
+    pattern:  /InformacionCliente
+    defaults: { _controller: "comercialBundle:PreCliente:getInformacionCliente" }
+precliente_gridInformacionCliente:
+    pattern:  /gridInformacionCliente
+    defaults: { _controller: "comercialBundle:PreCliente:gridInformacionCliente"}
+precliente_consulta_prefactibilidad_ajax:
+    pattern: /consulta_prefactibilidad_ajax
+    defaults: { _controller: "comercialBundle:PreCliente:callWsPrefactibilidadAjax" }
+precliente_ProspectoFormulario:
+    pattern:  /ProspectoFormulario
+    defaults: { _controller: "comercialBundle:PreCliente:prospectoFormulario" }
+

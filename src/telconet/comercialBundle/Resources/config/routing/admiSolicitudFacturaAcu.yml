@@ -1,0 +1,35 @@
+SolicitudFacturaAcuController:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudFacturaAcu:index" }
+
+grid_solicitud_proyecto:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:SolicitudFacturaAcu:grid"}
+
+show_solicitud_factura:
+    pattern:  /show
+    defaults: { _controller: "comercialBundle:SolicitudFacturaAcu:show" }
+    
+listar_facturas:
+    pattern:  /listarFacturas
+    defaults: { _controller: "comercialBundle:SolicitudFacturaAcu:listarFacturas"}
+
+solicitud_factura:
+    pattern:  /getSolicitudFactura
+    defaults: { _controller: "comercialBundle:SolicitudFacturaAcu:getSolicitudFactura"}
+    
+aprobar_rachazar_solicitud:
+    pattern:  /getGestionaSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudFacturaAcu:getGestionaSolicitud"}    
+
+estados_solicitud_factura:
+    pattern:  /getEstados
+    defaults: { _controller: "comercialBundle:SolicitudFacturaAcu:getEstados"}
+
+motivo_solicitud_factura:
+    pattern:  /getMotivos
+    defaults: { _controller: "comercialBundle:SolicitudFacturaAcu:getMotivos"}
+
+usuarios_solicitud_proyecto:
+    pattern:  /getUsuarios
+    defaults: { _controller: "comercialBundle:SolicitudProyecto:getUsuarios"}

@@ -1,0 +1,70 @@
+aprobacioncontrato_aprobar_contrato:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:InfoContrato:aprobarContrato" }
+
+aprobacioncontrato_grid_aprobar:
+    pattern:  /gridAprobarContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:gridAprobarContrato"}
+
+aprobacioncontrato_aprobar_ajax:
+    pattern:  /aprobarContratoAjax
+    defaults: { _controller: "comercialBundle:InfoContrato:aprobarContratoAjax" }
+
+aprobacioncontrato_rechazar_ajax:
+    pattern:  /rechazarcontratoajax
+    defaults: { _controller: "comercialBundle:InfoContrato:rechazarContratoAjax" }
+
+aprobacioncontrato_getmotivosrechazo_ajax:
+    pattern:  /getMotivosRechazoContratoAjax
+    defaults: { _controller: "comercialBundle:InfoContrato:getMotivosRechazoContrato_ajax" }
+
+aprobacioncontrato_getoficinas_ajax:
+    pattern:  /getOficinasAjax
+    defaults: { _controller: "comercialBundle:InfoContrato:getOficinas_ajax" }
+ 
+#
+aprobacioncontrato_showDocumentosEntregables:
+    pattern:  /{intIdContrato}/{strFormaPago}/showDocumentosEntregables
+    defaults: { _controller: "comercialBundle:InfoContrato:showDocumentosEntregables" } 
+    
+aprobacioncontrato_guardarDocumentoEntregable:
+    pattern:  /guardarDocumentoEntregable
+    requirements: { _method: post, _format: json }
+    defaults: { _controller: "comercialBundle:InfoContrato:guardarDocumentoEntregable" } 
+    
+aprobacioncontrato_proceso_aprobar:
+    pattern:  /{id_persona}/{id_contrato}/procesoAprobarContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:procesoAprobarContrato"}
+
+aprobacioncontrato_listado_ot:
+    pattern:  /{id_per_emp_rol}/listado_ot
+    defaults: { _controller: "comercialBundle:InfoContrato:listadoServicios" }
+
+aprobacioncontrato_guardar_proceso_aprobar:
+    pattern:  /{id_contrato}/guardarProcesoAprobContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:guardarProcesoAprobContrato"}
+
+aprobacioncontrato_showDocumentosContrato:
+    pattern:  /{idContrato}/showDocumentosContrato
+    defaults: { _controller: "comercialBundle:InfoContrato:showDocumentosContrato" } 
+
+aprobacioncontrato_aprobarContratoCambioRazonSocial:
+    pattern:  /{id_persona}/{id_contrato}/aprobarContratoCambioRazonSocial
+    defaults: { _controller: "comercialBundle:InfoContrato:aprobarContratoCambioRazonSocial"}    
+
+aprobacioncontrato_procesaAprobContratoCambioRazonSocial:
+    pattern:  /{id_contrato}/procesaAprobContratoCambioRazonSocial
+    defaults: { _controller: "comercialBundle:InfoContrato:procesaAprobContratoCambioRazonSocial"}
+
+aprobacioncontrato_listadoServiciosAprobCambioRazonSocial:
+    pattern:  /{id_per_emp_rol}/listadoServiciosAprobCambioRazonSocial
+    defaults: { _controller: "comercialBundle:InfoContrato:listadoServiciosAprobCambioRazonSocial" }
+    
+aprobacioncontrato_aprobacionContratoDigitalPorPagoFactura:
+    pattern:  /{strPrefijoEmpresa}/{strUsrCreacion}/{strIpCreacion}/aprobacionContratoDigitalPorPagoFactura
+    defaults: { _controller: "comercialBundle:InfoContrato:aprobacionContratoDigitalPorPagoFactura"}
+    
+aprobacioncontrato_rechazarContratoDigitalPorNoPagarFactura:
+    pattern:  /{strPrefijoEmpresa}/{strUsrCreacion}/{strIpCreacion}/rechazarContratoDigitalPorNoPagarFactura
+    defaults: { _controller: "comercialBundle:InfoContrato:rechazarContratoDigitalPorNoPagarFactura"}
+    

@@ -1,0 +1,228 @@
+comercialBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: comercialBundle:Default:index }
+
+comercialBundle_VisorDocumento:
+    resource: "@comercialBundle/Resources/config/routing/visordocumentos.yml"
+    prefix: /documentos/visor_documentos_comercial
+        
+comercialBundle_Contacto:
+  resource: "@comercialBundle/Resources/config/routing/contacto.yml"
+  prefix: /contacto
+
+comercialBundle_PreCliente:
+  resource: "@comercialBundle/Resources/config/routing/precliente.yml"
+  prefix: /precliente
+  
+comercialBundle_Contrato:
+  resource: "@comercialBundle/Resources/config/routing/infocontrato.yml"
+  prefix: /documentos/contrato
+
+comercialBundle_Cliente:
+  resource: "@comercialBundle/Resources/config/routing/cliente.yml"
+  prefix: /cliente
+
+comercialBundle_admiCiclosFacturacion:
+  resource: "@comercialBundle/Resources/config/routing/admiciclosfacturacion.yml"
+  prefix: /ciclos/admiCiclosFacturacion
+  
+comercialBundle_Orden:
+  resource: "@comercialBundle/Resources/config/routing/infoordentrabajo.yml"
+  prefix: /documentos/orden
+  
+comercialBundle_servicios:
+  resource: "@comercialBundle/Resources/config/routing/infoservicio.yml"
+  prefix: /documentos/servicios
+  
+comercialBundle_materialesexcedentes:
+  resource: "@comercialBundle/Resources/config/routing/materialesexcedentes.yml"
+  prefix: /autorizaciones/materiales_excedentes
+ 
+comercialBundle_punto:
+  resource: "@comercialBundle/Resources/config/routing/infopunto.yml"
+  prefix: /punto
+
+comercialBundle_cambioCiclosFacturacion:
+  resource: "@comercialBundle/Resources/config/routing/cambiociclosfacturacion.yml"
+  prefix: /ciclos/cambioCiclosFacturacion
+  
+comercialBundle_solicitudes:
+  resource: "@comercialBundle/Resources/config/routing/solicitudes.yml"
+  prefix: /solicitud/solicitudes
+    
+comercialBundle_solicituddescuento:
+  resource: "@comercialBundle/Resources/config/routing/solicituddescuento.yml"
+  prefix: /solicitud/solicituddescuento
+
+comercialBundle_cancelacionCambioBeneficio:
+  resource: "@comercialBundle/Resources/config/routing/cancelacionCambioBeneficio.yml"
+  prefix: /solicitud/cancelacionCambioBeneficio
+
+comercialBundle_solicitudcambiodocumento:
+  resource: "@comercialBundle/Resources/config/routing/solicitudcambiodocumento.yml"
+  prefix: /solicitud/solicitudcambiodocumento
+
+comercialBundle_solicitudcancelacion:
+  resource: "@comercialBundle/Resources/config/routing/solicitudcancelacion.yml"
+  prefix: /solicitud/solicitudcancelacion
+
+comercialBundle_solicitudsuspensiontemporal:
+  resource: "@comercialBundle/Resources/config/routing/solicitudsuspensiontemporal.yml"
+  prefix: /solicitud/solicitudsuspensiontemporal
+  
+comercialBundle_solicituddescuentounico:
+  resource: "@comercialBundle/Resources/config/routing/solicituddescuentounico.yml"
+  prefix: /solicitud/solicituddescuentounico
+  
+comercialBundle_solicitudinstalacion:
+  resource: "@comercialBundle/Resources/config/routing/solicitudinstalacion.yml"
+  prefix: /solicitud/solicitudinstalacion  
+  
+comercialBundle_solicitudcambioequipo:
+  resource: "@comercialBundle/Resources/config/routing/solicitudcambioequipo.yml"
+  prefix: /solicitud/solicitudcambioequipo
+
+comercialBundle_solicitudcambiomodeminmediato:
+  resource: "@comercialBundle/Resources/config/routing/solicitudcambiomodeminmediato.yml"
+  prefix: /solicitud/solicitudcambiomodeminmediato  
+
+comercialBundle_aprobacioncontrato:
+  resource: "@comercialBundle/Resources/config/routing/aprobacioncontrato.yml"
+  prefix: /autorizaciones/aprobacioncontrato
+
+comercialBundle_aprobaciondescuento:
+  resource: "@comercialBundle/Resources/config/routing/aprobaciondescuento.yml"
+  prefix: /autorizaciones/aprobaciondescuento
+  
+comercialBundle_aprobacionsolicitudesmasivas:
+  resource: "@comercialBundle/Resources/config/routing/aprobacionsolicitudesmasivas.yml"
+  prefix: /autorizaciones/aprobacionsolicitudesmasivas
+
+comercialBundle_aprobacioninstalacion:
+  resource: "@comercialBundle/Resources/config/routing/aprobacioninstalacion.yml"
+  prefix: /autorizaciones/aprobacioninstalacion 
+  
+comercialBundle_aprobaciondescuentounico:
+  resource: "@comercialBundle/Resources/config/routing/aprobaciondescuentounico.yml"
+  prefix: /autorizaciones/aprobaciondescuentounico
+  
+comercialBundle_aprobacioncambiodocumento:
+  resource: "@comercialBundle/Resources/config/routing/aprobacioncambiodocumento.yml"
+  prefix: /autorizaciones/aprobacioncambiodocumento
+
+comercialBundle_aprobacionsolicitudcancelacion:
+  resource: "@comercialBundle/Resources/config/routing/aprobacionsolicitudcancelacion.yml"
+  prefix: /autorizaciones/aprobacionsolicitudcancelacion
+
+comercialBundle_aprobacionsolicitudsuspensiontemp:
+  resource: "@comercialBundle/Resources/config/routing/aprobacionsolicitudsuspensiontemporal.yml"
+  prefix: /autorizaciones/aprobacionsolicitudsuspensiontemporal
+
+comercialBundle_aprobacionsolicitudcambioequipo:
+  resource: "@comercialBundle/Resources/config/routing/aprobacionsolicitudcambioequipo.yml"
+  prefix: /autorizaciones/aprobacionsolicitudcambioequipo
+
+comercialBundle_getInformacionGraficosDashboardComercial:
+    pattern:  /reportes/getInformacionGraficosDashboardComercial
+    defaults: { _controller: "comercialBundle:Default:getInformacionGraficosDashboardComercial" }
+
+comercialBundle_getInformacionDestacados:
+    pattern:  /reportes/getInformacionDestacados
+    defaults: { _controller: "comercialBundle:Default:getInformacionDestacados" }
+
+comercialBundle_getVentasPorVendedor:
+    pattern:  /reportes/getVentasPorVendedor
+    defaults: { _controller: "comercialBundle:Default:getVentasPorVendedor" }
+
+comercialBundle_getDetalleVentas:
+    pattern:  /reportes/getDetalleVentas
+    defaults: { _controller: "comercialBundle:Default:getDetalleVentas" }
+
+comercialBundle_getDetalleFacturacionAsesor:
+    pattern:  /reportes/getDetalleFacturacionAsesor
+    defaults: { _controller: "comercialBundle:Default:getDetalleFacturacionAsesor" }
+
+comercialBundle_getDetalleResultadosVentas:
+    pattern:  /reportes/getDetalleResultadosVentas
+    defaults: { _controller: "comercialBundle:Default:getDetalleResultadosVentas" }
+    
+comercialBundle_getDetalleResultadosClientes:
+    pattern:  /reportes/getDetalleResultadosClientes
+    defaults: { _controller: "comercialBundle:Default:getDetalleResultadosClientes" }    
+    
+comercialBundle_dashboardChart:
+  pattern: /dashboardChart
+  defaults: { _controller: "comercialBundle:Default:dashboardChart" }
+
+comercialBundle_ajaxServiciosProductoMes:
+  pattern: /ajax_servicios_producto_mes
+  defaults: { _controller: "comercialBundle:Default:ajaxServiciosProductoMes"}
+
+comercialBundle_opcion:
+    pattern:  /{opcion_menu}
+    defaults: { _controller: comercialBundle:Default:menu , opcion_menu: "dashboard"}
+#    requirements: { opcion_menu: \d+ }
+
+comercialBundle_reportes:
+  resource: "@comercialBundle/Resources/config/route/reportes.yml"
+  prefix: /reportes
+  
+comercialBundle_Contratista:
+  resource: "@comercialBundle/Resources/config/routing/contratista.yml"
+  prefix: /contratista
+
+comercialBundle_solicitudesmasivas:
+  resource: "@comercialBundle/Resources/config/routing/solicitudesmasivas.yml"
+  prefix: /solicitud/solicitudesmasivas
+  
+comercialBundle_ejecucionsolicitudesmasivas:
+  resource: "@comercialBundle/Resources/config/routing/ejecucionsolicitudesmasivas.yml"
+  prefix: /autorizaciones/ejecucionsolicitudesmasivas
+  
+comercialBundle_aprobacionsolicitudesdescuentomasivas:
+  resource: "@comercialBundle/Resources/config/routing/aprobacionsolicitudesdescuentomasivas.yml"
+  prefix: /autorizaciones/aprobacionsolicitudesdescuentomasivas
+
+comercialBundle_aprobacionsolicitudesmasivasradio:
+  resource: "@comercialBundle/Resources/config/routing/aprobacionsolicitudesmasivasradio.yml"
+  prefix: /autorizaciones/aprobacionsolicitudesmasivasradio
+  
+comercialBundle_aprobacionsolicitudesmasivasipccl2:
+  resource: "@comercialBundle/Resources/config/routing/aprobacionsolicitudesmasivasipccl2.yml"
+  prefix: /autorizaciones/aprobacionsolicitudesmasivasipccl2
+  
+comercialBundle_autorizarsolicitudesclientes:
+  resource: "@comercialBundle/Resources/config/routing/autorizarsolicitudesclientes.yml"
+  prefix: /autorizaciones/autorizarsolicitudesclientes
+  
+comercialBundle_promocion:
+  resource: "@comercialBundle/Resources/config/routing/promocion.yml"
+  prefix: /promocion  
+
+comercialBundle_gestionseguimiento:
+  resource: "@comercialBundle/Resources/config/routing/gestionseguimiento.yml"
+  prefix: /gestionseguimiento 
+
+comercialBundle_admiSolicitudProyecto:
+  resource: "@comercialBundle/Resources/config/routing/admiSolicitudProyecto.yml"
+  prefix: /solicitud/admiSolicitudProyecto
+
+comercialBundle_admiSolicitudReactivacion:
+  resource: "@comercialBundle/Resources/config/routing/admiSolicitudReactivacion.yml"
+  prefix: /solicitud/admiSolicitudReactivacion
+  
+comercialBundle_admiSolicitudFacturaAcu:
+  resource: "@comercialBundle/Resources/config/routing/admiSolicitudFacturaAcu.yml"
+  prefix: /solicitud/admiSolicitudFacturaAcu
+
+comercialBundle_admiSolicitudDistribuidor:
+  resource: "@comercialBundle/Resources/config/routing/admiSolicitudDistribuidor.yml"
+  prefix: /solicitud/admiSolicitudDistribuidor
+
+comercialBundle_gestionautorizaciones:
+  resource: "@comercialBundle/Resources/config/routing/gestionautorizaciones.yml"
+  prefix: /autorizaciones/gestionautorizaciones
+
+comercialBundle_horasDeSoporte:
+  resource: "@comercialBundle/Resources/config/routing/horasDeSoporte.yml"
+  prefix: /autorizaciones/autorizarHorasSoporte

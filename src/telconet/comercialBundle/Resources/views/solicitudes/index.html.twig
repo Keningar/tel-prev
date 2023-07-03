@@ -1,0 +1,64 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/Multiupload.js') }}"></script>
+    <script>
+        var prefEmpresa = "{{empresaCod}}"; 
+        var numArchivosSubidos              = 0;
+
+        var strUrlGetSeguimientoMaterialesExcedentes = "{{ path('materialesexcedentes_getSeguimientoMaterialesExcedentes')}}";
+        var url_multipleFileUpload                 = "{{path('materialesexcedentes_multipleFileUpload') }}";
+        var url_documentosMaterialesExced                = "{{path('materialesexcedentes_getDocumentosMaterialesExced')}}";
+        var url_eliminar_adjunto              = "{{ path('materialesexcedentes_eliminarDocumentoRegistroYArchivo') }}";
+        var url_verifica_materiales                = "{{path('materialesexcedentes_getVerificaDocumentosMaterialesExcedentes') }}";
+        var strUrlIngresarSeguimientoMaterialesExcedentes = "{{ path('materialesexcedentes_IngresarSeguimientoMaterialesExcedentes')}}";
+
+
+
+        var url_actualizarPrecioTraslado    = "{{ path('infoservicio_ajaxActualizaPrecioTraslado') }}";
+        var url_aprobarSolicitudReubicacion = "{{ path('infoservicio_ajaxAprobarSolicitudReubicacion') }}";
+        var url_aprobarSolicitudSoporte     = "{{ path('infoservicio_ajaxAprobarRechazarSolicitudSoporte') }}";
+        var url_getServiciosATrasladar      = "{{ path('infoservicio_getServiciosATrasladar') }}";
+        var url_aprobarSolTraslado          = "{{ path('infoservicio_trasladar_servicios_create') }}";
+        var url_rechazarSolTraslado         = "{{ path('infoservicio_rechazarSolTraslado') }}";
+        var url_getMotivoRechazo            = "{{ path('solicitudes_getMotivosRechazoTraslado') }}";
+        var url_getModelosCpeOntPorSoporte  = "{{ path('solicitudes_getModelosCpeOntPorSoporte') }}";
+        var strUrlGestionarSolicitudServicio= "{{ path('solicitudes_gestionarSolicitudesServicio') }}";
+        var strUrlGestionarSolServicioMpls  = "{{ path('solicitudes_gestionarSolicitudesServicioMpls') }}";
+        var strUrlGetInfoSolicitudesServicio= "{{ path('solicitudes_getInfoSolicitudesServicio') }}";
+        //Cloudforms
+        var url_getMotivoRechazoCloud        = "{{ path('solicitudes_ajaxGetMotivosRechazoCloudPublic') }}";
+        var url_aprobarSolicitudCloudPublic  = "{{ path('solicitudes_ajaxAprobarSolicitudContratoCloudPublic') }}";
+        var url_rechazarSolicitudCloudPublic = "{{ path('solicitudes_ajaxRechazarSolicitudContratoCloudPublic') }}";
+        var puedeAprobarSolicitudCloud       = "{{ is_granted("ROLE_413-5937")}}";
+        //Cambio de equipo por soporte
+        var permiteAprobarSolicitudCEPS     = '{{ is_granted("ROLE_432-6537")}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudes/index.js?10') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudes/funciones.js?2') }}"></script>
+    
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Solicitudes</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_central %}

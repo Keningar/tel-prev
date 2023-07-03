@@ -1,0 +1,15 @@
+solicituddescuentounico:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudDescuentoUnico:index" }
+
+solicituddescuentounico_graba_solicdesc_ajax:
+    pattern:  /grabasolicituddescajax
+    defaults: { _controller: "comercialBundle:SolicitudDescuentoUnico:grabaSolicitudDesc_ajax" }
+
+solicituddescuentounico_get_motivos_ajax:
+    pattern:  /getmotivosajax
+    defaults: { _controller: "comercialBundle:SolicitudDescuentoUnico:getMotivos_ajax" }
+
+solicituddescuentounico_get_servicios_ajax:
+    pattern:  /{id}/getserviciossolicituddescuentoajax
+    defaults: { _controller: "comercialBundle:SolicitudDescuentoUnico:getServiciosParaSolicitudDesc_ajax" }

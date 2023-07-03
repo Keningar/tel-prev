@@ -1,0 +1,85 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ux-all.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/chooser.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/ingresarMasivos.js') }}"></script>     	
+{% endblock %}
+
+{% block contenido_izq %}
+
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Ingreso Masivo de Contactos</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+    
+    {% if error is defined %}
+        <div class='errormessage'>{{ error }}</div>
+    {% endif %}    
+    
+        <form name='form_contactos' action="{{ path('contacto_upload_file') }}" method="post" enctype="multipart/form-data" >            
+            <table  width="100%" border="0" class="box-section-content">
+                <tr>	
+                    <td width="5%">&nbsp;</td>	
+                    <td colspan="3">
+                        <div class='infomessage' id="msg1" style="width:400px;float:left;"> Seleccionar una acción de ingreso de Contactos</div>
+                    </td>		    
+                </tr>
+                <tr>	
+                    <td width="5%">&nbsp;</td>			    
+                </tr>		
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%"><label>Tipo de Ingreso de Contactos(*):</label></td>
+                    <td width="100%">			
+                        <input type="radio" name="tipo_ingreso" value="a" >Agregar 
+                        <input type="radio" name="tipo_ingreso" value="r" checked>Reemplazar
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                </tr>	
+                <tr>
+                    <td width="5%">&nbsp;</td>			    
+                </tr>		
+                <tr>	
+                    <td width="5%">&nbsp;</td>	
+                    <td colspan="3">
+                        <div class='infomessage' id="msg2" style="width:400px;float:left;">Se recuerda que solo se aceptan archivos con extensión CSV</div>
+                    </td>		    
+		</tr>
+                <tr>	
+                    <td width="5%">&nbsp;</td>			    
+                </tr>		   	
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%"><label>Archivo a Cargar(*): </label></td>
+		    <td><input name="file_contactos" type="file"> </td>	
+                    <td width="5%">&nbsp;</td>			    
+               	
+                    <td width="5%">&nbsp;</td>
+                </tr>
+            </table>	
+		
+            {%if(puntoCliente)%}
+                <input type="hidden" name="id_punto" value="{{ puntoCliente.id }}" />
+                <input type="hidden" name="login_punto" value="{{ puntoCliente.login }}" />
+            {% else %}
+                <input type="hidden" name="id_punto" value="0" />
+            {% endif %}
+            <div class="buttons">
+                <p>
+                    <input type="button" class="button-crud" value="Guardar"  onclick="guardar();"/>
+                    <input type="button" class="button-crud" value="Cancelar" onclick="cancelar();"/>                 
+                </p>
+            </div>  
+     </form>
+   </div>
+{% endblock contenido_izq %}
+
+

@@ -1,0 +1,180 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            
+            .hgfh label{
+                width: 155px !important;
+            }
+            
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+	</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_clientes  = "{{ path('infoordentrabajo_listar_pto_clientes') }}";		
+        var url_Logins    = "{{ path('infoservicio_gridPuntosTraslados', { 'id': id, 'intIdPersonaRol': intIdPersonaRol, 'rol': rol }) }}";
+        var url_servicios = "{{ path('infoservicio_getServiciosByLogin', { 'id': id, 'rol': rol }) }}";
+        var punto_id      = "{{ id }}";
+        var strEmpresaCod = "{{ strPrefijoEmpresa }}";
+        var url_validaTrasladoTn = "{{ path('infoservicio_ajaxValidaTrasladoTn') }}";
+	</script>
+
+    
+    <script type="text/javascript" src="{{ asset('bundles/comercial/js/infoservicio/reubicacion.js?2') }}"></script>
+{% endblock %}
+        
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Reubicar Servicios</h1>
+    </div>
+    <div class="body_content">
+    {% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+    {% endfor %} 
+        <form action="{{ path('infoservicio_reubicar_servicios_create') }}" method="post" name="formulario" onSubmit="return validarFormulario();">
+			{% if(punto_id is defined) %}
+                                {%if (mensajeError != "")%}
+                                <div class="warningmessage" >
+                                        <td>{{ mensajeError }}</td>
+                                </div>
+                                {%endif%}  
+				<div class="secHead">Información del cliente</div>
+				<div class="formulario">
+					<table width='100%'>
+						<tr>
+							<th><label>Razón social:</label></th>
+							<td>{{ cliente.razon_social }}</td>
+							{%if (strPrefijoEmpresa == "MD")%}
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <th><label>Cliente:</label></th>
+                                                            <td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+                                                        {%else%}
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <th><label></label></th>
+                                                            <td><label></label></td>
+                                                        {%endif%} 
+							
+						</tr>
+						<tr>
+							<th><label>Pto. cliente:</label></th>
+							<td> {{ punto_id.login }}</td>
+                                                        {%if (strPrefijoEmpresa == "MD")%}
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <th><label>Descripción:</label></th>
+                                                            <td>{{ punto_id.descripcion }}</td>
+                                                        {%endif%} 
+						</tr>
+						<tr>
+							<th><label>Tipo de negocio:</label></th>
+							<td>{{ nombre_tipo_negocio }}</td>
+						</tr>
+					</table>
+				</div>
+                                {%if (strPrefijoEmpresa == "TN")%}
+                                    <div class="secHead">Información financiera</div>
+                                    <div>
+                                            <table width='90%'>
+                                                    <tr>
+                                                        <th class="formulario"><label>Motivo:</label></th>
+                                                        <td>&nbsp;</td>
+                                                        <td>
+                                                            <select name='objListadoMotivos' id='objListadoMotivos' style="width:200px;">
+                                                                <option value="">Seleccione</option>
+                                                                {% for item in arrayMotivos %}
+                                                                        <option value="{{ item.intIdMotivos }}">{{ item.strMotivos }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr><td>&nbsp;</td></tr>
+                                                    <tr>
+                                                            <th class="formulario"><label>Es facturable:</label></th>
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <td><select name='esFacturableTn' id='esFacturableTn'>
+                                                                    <option value="SI">SI</option>
+                                                                    <option value="NO">NO</option>
+                                                                </select>
+                                                            </td>
+                                                    </tr>
+                                                    <tr><td width='10%'>&nbsp;</td></tr>
+                                                    <tr>
+                                                            <th class="formulario"><label>Precio de reubicación $:</label></th>
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <td><input id="precioReubicacionTn"c name="precioReubicacionTn" type="text" onkeypress="return isNumberKey(this, event);" size="8" maxlength="8"/></td>
+                                                    </tr>
+                                                    <tr><td width='10%'>&nbsp;</td></tr>
+                                                    <tr>
+                                                            <th class="formulario" ><label>Descripción de reubicación (ingrese todo el detalle necesario):</label></th>
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <td><textarea id="descripcionReubicacionTn"  name="descripcionReubicacionTn" rows="10" cols="62" ></textarea></td>
+                                                    </tr>
+                                            </table>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <center><div id="servicios_traslado"></div></center>
+                                {%endif%} 
+			{% else %}
+				<div>               
+					<table border='0' align='left'>
+						<tr>
+							<td>
+								<label for='punto'>Pto. cliente:</label>
+							</td>
+							<td>
+							<input class='campo-obligatorio' type='text' readonly id="punto" name="punto" value=''/>
+							<input type='hidden' readonly id='puntoid' name='puntoid' value=''/>
+							<a href='#' onclick="showClientes()"><img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" /></a>
+							</td>
+					</table>
+				</div>       
+			{% endif %}
+			<br>
+			<br>
+            <div class="buttons">
+                <p>
+                    <button type='submit'class="button-crud" >Guardar</button>
+                    <span class="height20px">
+                        <a class="button-crud" href=" {{ path('infopunto_show', { 'id': id, 'rol': rol }) }}">Regresar</a>
+                    </span>
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock contenido_izq %}
+{% block javascripts_footer%}
+    <script>
+        $('#esFacturableTn').change(function()
+        {
+            document.getElementById("precioReubicacionTn").value                     = "";
+            if ( document.getElementById("esFacturableTn").value == "NO" ) {
+                document.getElementById('precioReubicacionTn').setAttribute("disabled","disabled");
+            } else {
+               document.getElementById('precioReubicacionTn').removeAttribute("disabled");
+            }
+        });
+    </script>
+{% endblock javascripts_footer%}
+    

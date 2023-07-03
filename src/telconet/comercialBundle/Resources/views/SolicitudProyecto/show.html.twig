@@ -1,0 +1,207 @@
+
+<script>
+    var url_aprobar_rechazar_solicitud_proyecto  = "{{ path('aprobar_rechazar_solicitud_proyecto') }}";
+    var url_motivo_solicitud_proyecto            = "{{ path('motivo_solicitud_proyecto') }}";
+    var url_usuarios_solicitud_proyecto          = "{{ path('usuarios_solicitud_proyecto') }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/SolicitudProyecto/show.js?1') }}"></script>
+
+<div class="container">
+    <h5>Detalles Generales del cliente: {{arraySolicitudDet.strCliente}}  <i class="fa fa-info-circle"></i></h5>
+    <table class="table compact" width='100%' border='0'>
+        <tbody>
+            <tr>
+                <td><b>Vendedor:</b></td>
+                <td>{{arraySolicitudDet.strAsesor}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="result_tr" style="display: none;">
+                <td id="intIdCotizacionTd" >{{arraySolicitudDet.intIdCotizacion}} </td>
+                <td id="strEstadoTd" >{{arraySolicitudDet.strEstado}} </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container">
+        <label for="formulario" class="col-sm-12 col-form-label">Información del servicio:
+            <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                    aria-expanded="false" data-target="#contenedor_servicio"><i class="fa fa-angle-down"></i>
+            </button>
+        </label>
+        <div class="bonder-titulo"></div>
+        <div class="col-md-12">
+            <div id="contenedor_servicio" class="form-group row scrollbar">
+                <table class="table table-striped table-bordered compact table-sm"id="tablaServicio">
+                    <thead class="thead-light">
+                        <tr>
+                            <th><b>Login</b></th>
+                            <th><b>Cant.</b></th>
+                            <th><b>Producto</b></th>
+                            <th><b>Precio inst.</b></th>
+                            <th><b>Desc. total</b></th>
+                            <th><b>Desc. Unitario</b></th>
+                            <th><b>P.V.P.</b></th>
+                            <th><b>P. Total</b></th>
+                            <th><b>Estado</b></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyServicio">
+                        {% if arraySolicitudDet['arrayServicio'] is defined and 
+                            arraySolicitudDet['arrayServicio'] is not empty %}
+                            {% for arrayItem in arraySolicitudDet.arrayServicio %}
+                            <tr>
+                                <td>{{ arrayItem['strLogin'] }}</td>
+                                <td>{{ arrayItem['strCantidad'] }}</td>
+                                <td>{{ arrayItem['strProducto'] }}</td>
+                                <td>{{ arrayItem['strPrecioInst'] }}</td>
+                                <td>{{ arrayItem['strDescuento'] }}</td>
+                                <td>{{ arrayItem['strDescuentoUni'] }}</td>
+                                <td>{{ arrayItem['strPrecioVenta'] }}</td>
+                                <td>{{ arrayItem['strPrecioTotal'] }}</td>
+                                <td>{{ arrayItem['strEstadoSer'] }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>
+<div class="modal fade" id="modalAprobarDet" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h5>Para aprobar la solicitud de proyecto seleccionado, llene los siguientes campos.</h5>
+                <br/>
+                <form>
+                    <div class="form-group row">
+                        <label for="codigo_aprobar_det" class="col-sm-2 col-form-label">Código</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="codigo_aprobar_det" name="codigo_aprobar_det" rows="3"></textarea>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="usuarios_asignar_det" class="col-sm-2 col-form-label">Usuarios</label>
+                        <div class="col-sm-10">
+                            <select id="usuarios_asignar_det" class="form-control">
+                            </select>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="observacion_aprobar_det" class="col-sm-2 col-form-label">Observación</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="observacion_aprobar_det" name="observacion_aprobar" rows="3"></textarea>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnAprobarDet" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalRechazarDet" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h5>Para rechazar la solicitud de proyecto seleccionado, llene los siguientes campos.</h5>
+                <br/>
+                <form>
+                    <div class="form-group row">
+                        <label for="motivo_rechazar_det" class="col-sm-2 col-form-label">Motivo</label>
+                        <div class="col-sm-10">
+                            <select id="motivo_rechazar_det" class="form-control">
+                            </select>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="observacion_rechazar_det" class="col-sm-2 col-form-label">Observación</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="observacion_rechazar_det" name="observacion_rechazar" rows="3"></textarea>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnRechazarDet" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalReasignarDet" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h5>Para reasignar la solicitud de proyecto seleccionado, llene los siguientes campos.</h5>
+                <br/>
+                <form>
+                    <div class="form-group row">
+                        <label for="motivo_reasignar_det" class="col-sm-2 col-form-label">Motivo</label>
+                        <div class="col-sm-10">
+                            <select id="motivo_reasignar_det" class="form-control">
+                            </select>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="observacion_reasignar_det" class="col-sm-2 col-form-label">Observación</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="observacion_reasignar_det" name="observacion_reasignar" rows="3"></textarea>
+                            <div class="invalid-feedback">
+                                Campo requerido.
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnReasignarDet" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

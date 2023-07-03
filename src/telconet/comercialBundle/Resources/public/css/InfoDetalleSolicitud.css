@@ -1,0 +1,57 @@
+
+.cont_permanenciaMin .select2-selection.select2-selection--single,
+.cont_tipoCliente .select2-selection.select2-selection--single,
+#nombre_promo_buscar 
+{
+    height: 37px;
+}
+
+#select2-promoMix_permanenciaMin-container,
+#select2-promoPlan_permanenciaMin-container,
+#select2-promoProd_permanenciaMin-container,
+#select2-tipo_cliente-container 
+{
+    line-height: 35px;
+}
+
+.input_descuento_periodo,.input_descuento_periodo_plan,.input_descuento_periodo_prod,.input_descuento_periodo_total
+{
+    width: 3.5rem;
+}
+
+.descuento_periodo_promoMix,.descuento_periodo_promoPlan,.descuento_periodo_promoProd,.descuento_periodo_promoDescTotal
+{
+    padding-bottom: 10px;
+}
+
+.select2-container 
+{
+    width: 100% !important; 
+} 
+
+.bonder-titulo
+{
+    margin-bottom: 10px; 
+    border:10px; 
+    width: 100%; 
+    height: 1px; 
+    background-color:#17a2b8;    
+}
+.navbar .dropdown-menu .dropdown-item 
+{
+    width: inherit;
+}
+.scrollbar 
+{   height: auto;
+    max-height: 500px; 
+    overflow-y: auto; 
+    position: relative; 
+    display: block;
+}
+.scrollbar2 
+{   height: auto;
+    max-height: 200px; 
+    overflow-y: auto; 
+    position: relative; 
+    display: block;
+}

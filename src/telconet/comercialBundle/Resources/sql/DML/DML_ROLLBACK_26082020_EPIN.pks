@@ -1,0 +1,18 @@
+DELETE FROM DB_COMERCIAL.ADMI_NUMERACION WHERE OFICINA_ID =  (SELECT ID_OFICINA
+                                                         FROM DB_COMERCIAL.INFO_OFICINA_GRUPO
+                                                         WHERE NOMBRE_OFICINA = 'MEGADATOS - VIRTUAL');     
+DELETE FROM DB_COMERCIAL.INFO_OFICINA_GRUPO iog WHERE NOMBRE_OFICINA = 'MEGADATOS - VIRTUAL';
+
+DELETE FROM ADMI_PARAMETRO_DET  WHERE PARAMETRO_ID = (SELECT ID_PARAMETRO
+                                                   FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+                                                   WHERE NOMBRE_PARAMETRO = 'ESTADO SERVICIO PARA ADENDUM');
+                                               
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'ESTADO SERVICIO PARA ADENDUM';
+
+DELETE FROM ADMI_PARAMETRO_DET WHERE PARAMETRO_ID = (SELECT ID_PARAMETRO
+                                                   FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+                                                   WHERE NOMBRE_PARAMETRO = 'OFICINA VIRTUAL');
+                                               
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'OFICINA VIRTUAL';
+
+COMMIT;

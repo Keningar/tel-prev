@@ -1,0 +1,9 @@
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET where DESCRIPCION in ('Cableado Ethernet', 'Paramount +', 'Noggin', 'Wifi DualBand Premium y Extender Wifi Dual Band (W+AP)');
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET 
+where PARAMETRO_ID = (SELECT id_parametro 
+FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+WHERE NOMBRE_PARAMETRO='CARACTERISTICAS_PROD_ADICIONALES_TM_COMERCIAL')  and descripcion = 'ES_GRATIS' and valor1 in ('WADB', 'CABL');
+
+COMMIT;
+/

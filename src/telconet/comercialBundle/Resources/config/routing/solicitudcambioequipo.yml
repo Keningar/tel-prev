@@ -1,0 +1,15 @@
+solicitudcambioequipo:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudCambioEquipo:index" }
+
+solicitudcambioequipo_graba_solicitudcambequipo_ajax:
+    pattern:  /grabasolicitudcambioequipoajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioEquipo:grabaSolicitudCambioEquipo_ajax" }
+
+solicitudcambioequipo_get_motivos_ajax:
+    pattern:  /getmotivoscambioequipoajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioEquipo:getMotivos_ajax" }
+
+solicitudcambioequipo_get_servicios_ajax:
+    pattern:  /{id}/getserviciossolicitudcambioequipoajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioEquipo:getServiciosParaSolicitudCambioEquipo_ajax" }

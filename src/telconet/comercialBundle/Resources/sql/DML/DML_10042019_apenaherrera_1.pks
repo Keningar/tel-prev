@@ -1,0 +1,3867 @@
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROM_TIPO_PROMOCIONES',
+    'Define los Tipos de Promociones existentes para el modulo de Promociones ',
+    'COMERCIAL',
+    'ADMI_TIPO_PROMOCION',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento en Mensualidad Mix de Planes y Productos',
+    'PROM_MIX',
+    'PROM_MENS',
+    '2',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento en Mensualidad de Planes',
+    'PROM_MPLA',
+    'PROM_MENS',
+    '3',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento en Mensualidad de Productos',
+    'PROM_MPRO',
+    'PROM_MENS',
+    '4',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento Total en Mensualidad',
+    'PROM_TOT',
+    'PROM_MENS',
+    '1',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento y Diferido de Instalación',
+    'PROM_INS',
+    'PROM_INS',
+    '1',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento por Ancho de Banda',
+    'PROM_BW',
+    'PROM_BW',
+    '1',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_TIPO_NEGOCIO',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_ULTIMA_MILLA',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_ULTIMA_MILLA',
+    'PROD_PROM_ULTIMA_MILLA',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ULTIMA_MILLA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ULTIMA_MILLA',
+    'Fibra Optica',
+    'FO',
+    '1',
+    'PROM_INS',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ULTIMA_MILLA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ULTIMA_MILLA',
+    'Cobre',
+    'CO',
+    '3',
+    'PROM_INS',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ULTIMA_MILLA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ULTIMA_MILLA',
+    'Fibra Optica',
+    'FO',
+    '1',
+    'PROM_BW',
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_FORMA_PAGO',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_FORMA_PAGO',
+    'PROD_PROM_FORMA_PAGO',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_FORMA_PAGO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_FORMA_PAGO',
+    'EFECTIVO',
+    'EFEC',
+    '1',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_FORMA_PAGO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_FORMA_PAGO',
+    'DEBITO BANCARIO',
+    'DEB',
+    '3',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_EMISOR',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_DESCUENTO',
+    'N',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_JURISDICCION',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_CANTON',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_PARROQUIA',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_SECTOR',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_ELEMENTO',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_EDIFICIO',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_TIPO_CLIENTE',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_DIAS_MORA',
+    'N',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_INVALIDA_PROMO',
+    'T',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_TIPO_PERIODO',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_TIPO_PERIODO',
+    'PROD_PROM_TIPO_PERIODO',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_TIPO_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_TIPO_PERIODO',
+    'Único',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_TIPO_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_TIPO_PERIODO',
+    'Variable',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_PERIODO',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_PERIODO',
+    'PROD_PROM_PERIODO',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '2',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '4',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '6',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '7',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '8',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '9',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '10',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '11',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '12',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '15',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '18',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '21',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '24',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '27',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '30',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '33',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '36',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_ESTADO_SERVICIO',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_ESTADO_SERVICIO',
+    'PROD_PROM_ESTADO_SERVICIO',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ESTADO_SERVICIO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ESTADO_SERVICIO',
+    'Activo',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_PIERDE_PROMOCION_MORA',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_PIERDE_PROMOCION_MORA',
+    'PROD_PROM_PIERDE_PROMOCION_MORA',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PIERDE_PROMOCION_MORA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PIERDE_PROMOCION_MORA',
+    'S',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PIERDE_PROMOCION_MORA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PIERDE_PROMOCION_MORA',
+    'N',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_PROMOCION_INDEFINIDA',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_PROMOCION_INDEFINIDA',
+    'PROD_PROM_PROMOCION_INDEFINIDA',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PROMOCION_INDEFINIDA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PROMOCION_INDEFINIDA',
+    'S',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PROMOCION_INDEFINIDA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PROMOCION_INDEFINIDA',
+    'N',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_PERMANENCIA_MINIMA',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '2',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '4',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '6',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '7',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '8',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '9',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '10',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '11',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '12',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '15',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '18',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '21',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '24',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '27',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '30',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '33',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '36',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_NUMERO_FACTURAS',
+    'N',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_NUMERO_MESES',
+    'N',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_TIPO_ELEMENTO',
+    'S',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_TIPO_ELEMENTO',
+    'PROD_PROM_TIPO_ELEMENTO',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_TIPO_ELEMENTO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_TIPO_ELEMENTO',
+    'OLT',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_TIPO_SOLICITUD
+  (
+    ID_TIPO_SOLICITUD,
+    DESCRIPCION_SOLICITUD,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    ESTADO,
+    TAREA_ID,
+    ITEM_MENU_ID,
+    PROCESO_ID
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_TIPO_SOLICITUD.NEXTVAL,
+    'SOLICITUD DESCUENTO Y DIFERIDO DE INSTALACIÓN',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'Activo',
+    NULL,
+    14,
+    NULL
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_TIPO_SOLICITUD
+  (
+    ID_TIPO_SOLICITUD,
+    DESCRIPCION_SOLICITUD,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    ESTADO,
+    TAREA_ID,
+    ITEM_MENU_ID,
+    PROCESO_ID
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_TIPO_SOLICITUD.NEXTVAL,
+    'SOLICITUD DESCUENTO EN MENSUALIDAD MIX DE PLANES Y PRODUCTOS',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'Activo',
+    NULL,
+    14,
+    NULL
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_TIPO_SOLICITUD
+  (
+    ID_TIPO_SOLICITUD,
+    DESCRIPCION_SOLICITUD,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    ESTADO,
+    TAREA_ID,
+    ITEM_MENU_ID,
+    PROCESO_ID
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_TIPO_SOLICITUD.NEXTVAL,
+    'SOLICITUD DESCUENTO EN MENSUALIDAD DE PLANES',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'Activo',
+    NULL,
+    14,
+    NULL
+  );
+
+
+INSERT
+INTO DB_COMERCIAL.ADMI_TIPO_SOLICITUD
+  (
+    ID_TIPO_SOLICITUD,
+    DESCRIPCION_SOLICITUD,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    ESTADO,
+    TAREA_ID,
+    ITEM_MENU_ID,
+    PROCESO_ID
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_TIPO_SOLICITUD.NEXTVAL,
+    'SOLICITUD DESCUENTO EN MENSUALIDAD DE PRODUCTOS',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'Activo',
+    NULL,
+    14,
+    NULL
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_TIPO_SOLICITUD
+  (
+    ID_TIPO_SOLICITUD,
+    DESCRIPCION_SOLICITUD,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    ESTADO,
+    TAREA_ID,
+    ITEM_MENU_ID,
+    PROCESO_ID
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_TIPO_SOLICITUD.NEXTVAL,
+    'SOLICITUD DESCUENTO TOTAL EN MENSUALIDAD',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'Activo',
+    NULL,
+    14,
+    NULL
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_TIPO_SOLICITUD
+  (
+    ID_TIPO_SOLICITUD,
+    DESCRIPCION_SOLICITUD,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    ESTADO,
+    TAREA_ID,
+    ITEM_MENU_ID,
+    PROCESO_ID
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_TIPO_SOLICITUD.NEXTVAL,
+    'SOLICITUD DESCUENTO POR ANCHO DE BANDA',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'Activo',
+    NULL,
+    14,
+    NULL
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROM_ANTIGUEDAD',
+    'N',
+    'Activo',
+    SYSDATE,
+    'apenaherrera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROD_PROM_ANTIGUEDAD',
+    'Define que antiguedad del cliente aplica para la promocion por ancho de banda',
+    'COMERCIAL',
+    'ADMI_TIPO_PROMOCION',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ANTIGUEDAD'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ANTIGUEDAD',
+    'Define que antiguedad del cliente aplica para la promocion por ancho de banda',
+    '24',
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18'
+  );
+
+ COMMIT;
+/
+

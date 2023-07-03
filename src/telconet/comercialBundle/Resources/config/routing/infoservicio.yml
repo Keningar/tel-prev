@@ -1,0 +1,319 @@
+infoservicio:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:InfoServicio:index" }
+
+infoservicio_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "comercialBundle:InfoServicio:show" }
+
+infoservicio_new:
+    pattern:  /{rol}/new
+    defaults: { _controller: "comercialBundle:InfoServicio:new" }
+
+infoservicio_create:
+    pattern:  /create
+    defaults: { _controller: "comercialBundle:InfoServicio:create" }
+    requirements: { _method: post }
+
+infoservicio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "comercialBundle:InfoServicio:edit" }
+
+infoservicio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "comercialBundle:InfoServicio:update" }
+    requirements: { _method: post }
+
+infoservicio_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "comercialBundle:InfoServicio:delete" }
+    requirements: { _method: post }
+
+infoservicio_tipo:
+    pattern:  /tipo_orden
+    defaults: { _controller: "comercialBundle:InfoServicio:tipoOrden" }
+    
+infoservicio_info_plan:
+    pattern:  /info_plan
+    defaults: { _controller: "comercialBundle:InfoServicio:informacionPlan" }
+
+infoservicio_lista_estados:
+    pattern:  /lista_estados
+    defaults: { _controller: "comercialBundle:InfoServicio:estados" }
+
+infoservicio_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:InfoServicio:grid"}
+
+infoservicio_delete_ajax:
+    pattern:  /delete_ajax
+    defaults: { _controller: "comercialBundle:InfoServicio:deleteAjax" }
+    requirements: { _method: post }
+
+infoservicio_planificacion_ajax:
+    pattern:  /{id}/planificacion_ajax
+    defaults: { _controller: "comercialBundle:InfoServicio:planificacionAjax" }
+    requirements: { _method: post }
+
+infoservicio_definirEsquemaSdwanCambioEquipo:
+    pattern:  /definirEsquemaSdwanCambioEquipo
+    defaults: { _controller: "comercialBundle:InfoServicio:definirEsquemaSdwanCambioEquipo" }
+
+infoservicio_getServicioProdCaract:
+    pattern:  /getServicioProdCaract
+    defaults: { _controller: "comercialBundle:InfoServicio:getServicioProdCaract" }
+    requirements: { _method: post }
+
+infoservicio_listar_pto_clientes:
+    pattern:  /listar_ptos_ajax
+    defaults: { _controller: "comercialBundle:InfoServicio:ptoClientesAjax" }
+
+infoservicio_trasladar_servicios:
+    pattern:  /{id}/{rol}/trasladarServicios
+    defaults: { _controller: "comercialBundle:InfoServicio:trasladarServicios" }
+    
+infoservicio_reubicar_servicios:
+    pattern:  /{id}/{rol}/reubicarServicios
+    defaults: { _controller: "comercialBundle:InfoServicio:reubicarServicios" }
+
+infoservicio_trasladar_servicios_create:
+    pattern:  /trasladarServiciosCreate
+    defaults: { _controller: "comercialBundle:InfoServicio:trasladarServiciosCreate" }
+    
+infoservicio_reubicar_servicios_create:
+    pattern:  /reubicarServiciosCreate
+    defaults: { _controller: "comercialBundle:InfoServicio:reubicarServiciosCreate" }
+
+infoservicio_getServiciosByLogin:
+    pattern:  /{id}/{rol}/getServiciosByLogin
+    defaults: { _controller: "comercialBundle:InfoServicio:getServiciosByLogin" }
+
+infoservicio_ajaxValidaTrasladoTn:
+    pattern:  /ajaxValidaTrasladoTn
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxValidaTrasladoTn" }
+
+infoservicio_ajaxValidaTrasladoMd:
+    pattern:  /ajaxValidaTrasladoMd
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxValidaTrasladoMd" }
+    
+infoservicio_generarSolicitudTraslado:
+    pattern:  /generarSolicitudTraslado
+    defaults: { _controller: "comercialBundle:InfoServicio:generarSolicitudTraslado" }
+
+infoservicio_getServiciosATrasladar:
+    pattern:  /getServiciosATrasladar
+    defaults: { _controller: "comercialBundle:InfoServicio:getServiciosATrasladar" }
+
+infoservicio_getProductosServicios:
+    pattern:  /getProductosServicios
+    defaults: { _controller: "comercialBundle:InfoServicio:getProductosServicios"}
+
+infoservicio_rechazarSolTraslado:
+    pattern:  /rechazarSolTraslado
+    defaults: { _controller: "comercialBundle:InfoServicio:rechazarSolTraslado" }
+
+infoservicio_ajaxActualizaPrecioTraslado:
+    pattern:  /ajaxActualizaPrecioTraslado
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxActualizaPrecioTraslado" }
+    
+infoservicio_ajaxAprobarSolicitudReubicacion:
+    pattern:  /ajaxAprobarRechazarSolicitudReubicacion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxAprobarRechazarSolicitudReubicacion" }
+    
+infoservicio_ajaxAprobarRechazarSolicitudSoporte:
+    pattern:  /ajaxAprobarRechazarSolicitudSoporte
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxAprobarRechazarSolicitudSoporte" }
+    
+infoservicio_detalle_plan:
+    pattern:  /detalle_plan
+    defaults: { _controller: "comercialBundle:InfoServicio:detallePlan" }
+    
+infoservicio_valida_ipsmaxpermitidas:
+    pattern:  /ips_max_permitidas
+    defaults: { _controller: "comercialBundle:InfoServicio:validaIpsMaxPermitidas" }
+
+infoservicio_valida_frecuencia:
+    pattern:  /valida_frecuencia
+    defaults: { _controller: "comercialBundle:InfoServicio:validaFrecuencia" }
+
+infoservicio_valida_producto_netlifecam:
+    pattern:  /valida_producto_netlifecam
+    defaults: { _controller: "comercialBundle:InfoServicio:validaProductoNetlifecam" } 
+    
+infoservicio_valida_producto_internet:
+    pattern:  /valida_producto_internet
+    defaults: { _controller: "comercialBundle:InfoServicio:validaProductoInternet" } 
+    
+infoservicio_validarCamaraActiva:
+    pattern:  /validarCamaraActiva
+    defaults: { _controller: "comercialBundle:InfoServicio:validarCamaraActiva" }     
+
+infoservicio_ajaxGetPuntosParaEnlazarDatos:
+    pattern:  /ajaxGetPuntosParaEnlazarDatos
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetPuntosParaEnlazarDatos" }
+
+infoservicio_ajaxGetServiciosDatosByPunto:
+    pattern:  /ajaxGetServiciosDatosByPunto
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetServiciosDatosByPunto" }
+
+infoservicio_ajaxCrearEnlaceDatos:
+    pattern:  /ajaxCrearEnlaceDatos
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxCrearEnlaceDatos" }
+
+infoservicio_ajaxGetInfoEnlaceDatos:
+    pattern:  /ajaxGetInfoEnlaceDatos
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetInfoEnlaceDatos" }
+    
+infoservicio_servicios_requiere_backup:
+    pattern:  /servicios_requiere_backup
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxServiciosRequiereBackup" }
+    
+infoservicio_ajaxGetAdmiTipoMedio:
+    pattern:  /ajaxGetAdmiTipoMedio
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetAdmiTipoMedio" }
+    
+infoservicio_ajaxValidaCorreoMcAfee:
+    pattern:  /ajaxValidaCorreoMcAfee
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxValidaCorreoMcAfee" }
+
+infoservicio_ajaxValidaCorreoECDF:
+    pattern:  /ajaxValidaCorreoECDF
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxValidaCorreoECDF" }
+
+infoservicio_validaAgregarIPMP:
+    pattern:  /validaAgregarIPMP
+    defaults: { _controller: "comercialBundle:InfoServicio:validaAgregarIPMP" }
+        
+infoservicio_ajaxActualizarPlanEquivalente:
+    pattern:  /ajaxActualizarPlanEquivalente
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxActualizarPlanEquivalente" }
+    
+infoservicio_ajaxGetFrecuenciasFacturacion:
+    pattern:  /ajaxGetFrecuenciasFacturacion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetFrecuenciasFacturacion" }
+    
+infoservicio_cambiarFrecuenciaFacturacion:
+    pattern:  /cambiarFrecuenciaFacturacion
+    defaults: { _controller: "comercialBundle:InfoServicio:cambiarFrecuenciaFacturacion" }
+
+infoservicio_definirEsquemaPeHsrp:
+    pattern:  /definirEsquemaPeHsrp
+    defaults: { _controller: "comercialBundle:InfoServicio:definirEsquemaPeHsrp" }
+
+infoservicio_reversarOrdenTrabajo:
+    pattern:  /reversarOrdenTrabajo
+    defaults: { _controller: "comercialBundle:InfoServicio:reversarOrdenTrabajo" }
+
+infoservicio_ajaxGetTiposConcentradores:
+    pattern:  /ajaxGetTiposConcentradores
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetTiposConcentradores" }
+
+infoservicio_gridPuntosTraslados:
+    pattern:  /{id}/{intIdPersonaRol}/gridPuntosTraslados
+    defaults: { _controller: "comercialBundle:InfoServicio:gridPuntosTraslados" }
+
+infoservicio_ajaxCrearServicioBackup:
+    pattern:  /ajaxCrearServicioBackup
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxCrearServicioBackup" }  
+    requirements: { _method: post }
+
+infoservicio_ajaxGetPlantillaComisionista:
+    pattern:  /ajaxGetPlantillaComisionista
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetPlantillaComisionista" }
+
+infoservicio_ajaxGetRelacionPersonal:
+    pattern:  /ajaxGetRelacionPersonal
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetRelacionPersonal" }
+    
+infoservicio_ajaxGetGrupoSubgrupoProductos:
+    pattern:  /ajaxGetGrupoSubgrupoProductos
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetGrupoSubgrupoProductos" }
+    
+infoservicio_ajaxGuardarSolucion:
+    pattern:  /ajaxGuardarSolucion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGuardarSolucion" }    
+    
+infoservicio_ajaxGetInfoClientesParaMigracion:
+    pattern:  /ajaxGetInfoClientesParaMigracion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetInfoClientesParaMigracion" }
+    
+infoservicio_ajaxClonarServiciosMigracion:
+    pattern:  /ajaxClonarServiciosMigracion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxClonarServiciosMigracion" }    
+
+infoservicio_ajaxValidaFrecuencia:
+    pattern:  /ajaxValidaFrecuencia
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxValidaFrecuencia" }
+
+infoservicio_ajaxGetDetalleProductosPorSolucion:
+    pattern:  /ajaxGetDetalleProductosPorSolucion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetDetalleProductosPorSolucion" } 
+    
+infoservicio_ajaxEditarNombreSolucion:
+    pattern:  /ajaxEditarNombreSolucion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxEditarNombreSolucion" }    
+    
+infoservicio_ajaxGetInformacionServicioSolucion:
+    pattern:  /ajaxGetInformacionServicioSolucion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetInformacionServicioSolucion" }
+    
+infoservicio_ajaxEditarServicioSolucion:
+    pattern:  /ajaxEditarServicioSolucion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxEditarServicioSolucion" }    
+    
+infoservicio_ajaxEliminarServiciosSolucion:
+    pattern:  /ajaxEliminarServiciosSolucion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxEliminarServiciosSolucion" } 
+    
+infoservicio_ajaxAnularRechazarServiciosSolucion:
+    pattern:  /ajaxAnularRechazarServiciosSolucion
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxAnularRechazarServiciosSolucion" }    
+
+infoservicio_ajaxGetTipoEsquema:
+    pattern:  /ajaxGetTipoEquema
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetTipoEsquema" }
+
+infoservicio_ajaxValidaCorreoHboElearn:
+    pattern:  /ajaxValidaCorreoHboElearn
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxValidaCorreoHboElearn" }
+
+servicio_validaEliminacionServicio:
+    pattern:  /validaEliminacionServicio
+    defaults: { _controller: "comercialBundle:InfoServicio:validaEliminacionServicio" }
+    
+servicio_getPuntosMdAsociados:
+    pattern:  /getPuntosMdAsociados
+    defaults: { _controller: "comercialBundle:InfoServicio:getPuntosMdAsociados" }
+
+infoservicio_valida_productoAdicional:
+    pattern:  /validaProductoAdicional
+    defaults: { _controller: "comercialBundle:InfoServicio:validaProductoAdicional" }    
+
+infoservicio_ajaxGetPropuestasTelcoCrm:
+    pattern:  /ajaxGetPropuestasTelcoCrm
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetPropuestasTelcoCrm" }
+
+infoservicio_ajaxGetCotizacionTelcoCrm:
+    pattern:  /ajaxGetCotizacionTelcoCrm
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetCotizacionTelcoCrm" }
+    
+validaCodigoPromocion:
+    pattern:  /validaCodigoPromocion
+    defaults: { _controller: "comercialBundle:Promocion:validaCodigoPromocion" }
+
+infoservicio_ajax_valida_estado_punto:
+    pattern:  /ajax_valida_estado_punto
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxValidaEstadoPunto" }     
+
+infoservicio_ajaxValidaProdAdicionalMs:
+    pattern:  /ajaxValidaProductoAdicionalMs
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxValidaProdAdicionalMs" }
+
+infoservicio_ajaxGetArchivosReqSafeEntry:
+    pattern: /ajaxGetArchivosReqSafeEntry
+    defaults: { _controller: "comercialBundle:InfoServicio:ajaxGetArchivosReqSafeEntry" }
+    
+infoservicio_comprobar_deuda_ajax:
+    pattern:  /comprobar_deuda_ajax
+    defaults: { _controller: "comercialBundle:InfoServicio:comprobarDeudasCliente" }
+    requirements: { _method: post }

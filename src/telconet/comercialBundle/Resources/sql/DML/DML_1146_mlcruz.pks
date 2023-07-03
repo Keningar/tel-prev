@@ -1,0 +1,313 @@
+/**
+ *Creación de parámetros con descripciones de productos considerados en la vista V_SCANNING_FIREWALL
+ */
+DECLARE
+  Ln_IdParamFirewall NUMBER(5,0);
+BEGIN
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+    (
+      ID_PARAMETRO,
+      NOMBRE_PARAMETRO,
+      DESCRIPCION,
+      ESTADO,
+      USR_CREACION,
+      FE_CREACION,
+      IP_CREACION
+    )
+    VALUES
+    (
+      DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+      'DESCRIPCION_PRODUCTO_V_SCANNING_FIREWALL',
+      'Descripción de productos considerados en la vista V_SCANNING_FIREWALL',
+      'Activo',
+      'mlcruz',
+      CURRENT_TIMESTAMP,
+      '127.0.0.1'
+    );
+  SELECT ID_PARAMETRO
+  INTO Ln_IdParamFirewall
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO='DESCRIPCION_PRODUCTO_V_SCANNING_FIREWALL';
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamFirewall,
+    NULL,
+    'SECURITY NG FIREWALL',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamFirewall,
+    NULL,
+    'ONSITE UTM PROTECTION',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamFirewall,
+    NULL,
+    'ONSITE UTM PROTECTION_1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamFirewall,
+    NULL,
+    'SECURITY SALE',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamFirewall,
+    NULL,
+    'SECURITY EQUIPMENT',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamFirewall,
+    NULL,
+    'Fortigate',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamFirewall,
+    NULL,
+    'FortiGate 60D 24x7x3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado las descripciones de productos consideradas en la vista V_SCANNING_FIREWALL');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);  
+  ROLLBACK;
+END;

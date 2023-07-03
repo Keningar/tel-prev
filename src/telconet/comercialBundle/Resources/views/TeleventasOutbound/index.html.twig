@@ -1,0 +1,38 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlGridTeleventasOutbound  = '{{path('televentasoutbound_grid')}}';
+    var urlCargarFormasPagoActivas = '{{path('televentasoutbound_getAjaxComboFormasPago')}}';
+    var urlCargarEmpresas          = '{{path('televentasoutbound_getAjaxComboEmpresas')}}';
+    var urlCargarJurisdicciones    = '{{path('televentasoutbound_getAjaxComboJurisdicciones')}}';
+    var empresa                    = "{{empresa}}"
+    var jurisdiccion               = "{{jurisdiccion}}"
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/TeleventasOutbound/index.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado Televentas Outbound</h1>
+</div>
+<div class="body_content k-content">
+    {% for flashMessage in app.session.flashbag.get('error') %}
+    <div id="msgReporteTeleventasOutbound" class="errormessage">
+            {{ flashMessage }}
+    </div>
+    {% endfor %}
+    <form action="{{ path('televentasoutbound_exportarReporte') }}" method="post">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtroTeleventasOutbound'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="gridTeleventasOutbound"></div></td>
+            </tr>
+        </table> 
+    </form>	
+</div>
+{% endblock contenido_izq %}
+

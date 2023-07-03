@@ -1,0 +1,195 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/kendo2012_1/source/styles/kendo.common.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/kendo2012_1/source/styles/kendo.default.css') }}" type="text/css" rel="stylesheet" />
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+    
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />    
+    <link href="{{ asset('./bundles/comercial/css/InfoDetalleSolicitud.css') }}" type="text/css" rel="stylesheet" />
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}    
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content" class="col-form-label">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		Listado de Clientes
+	</div>
+    {% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}    
+    <script>	       
+    var prefijoEmpresa = "{{ prefijoEmpresa }}";           
+    </script>  
+    
+    <input id='infopersonarolextratype_oficinaId' name='infopersonarolextratype[oficinaId]' type='hidden' value=''>
+                                                            
+	<div class="body_content k-content">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+        {% endfor %}
+	    <div id="example" class="k-content">
+		    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+				<tr bgcolor='#ffffff'>
+						 <td bgcolor='#ffffff'><div id='filtro_clientes'></div></td>
+				</tr>	
+				<tr bgcolor='#ffffff'>
+						 <td bgcolor='#ffffff'><div id='lista_clientes'></div></td>
+				</tr>
+		    </table>        
+		            						   
+        <script>
+            var url_cliente_delete_ajax           = '{{path('cliente_delete_ajax')}}';
+            var url_cliente_lista_estados         = '{{path('cliente_lista_estados')}}';
+            var url_cliente_lista_usuario         = '{{path('cliente_lista_usuario')}}';
+            var url_grid                          = "{{ path('cliente_grid') }}";
+            var url_actualizarDireccionTributaria = "{{ path('cliente_ajax_actualizaDireccionTributaria') }}";
+            var url_editar_nombre_ajax            = '{{path('precliente_editar_nombre_ajax')}}';
+            var puedeEditarNombre                 = '{{ is_granted("ROLE_6-1697") }}';
+            var puedeEditarDireccion              = '{{ is_granted("ROLE_8-625") }}';
+            var url_lista_oficinas                = "{{ path('aprobacioncontrato_getoficinas_ajax') }}"; 
+            var boolEditarTipoEmpresaTributario   = '{{ is_granted("ROLE_8-4937") }}';  
+            var urlEditarTipoEmpresaTributario    = "{{ path('cliente_ajaxActualizaTipoEmpresaTributario') }}";
+            var urlReactivacion                   = "{{ path('cliente_reactivacion') }}";
+            
+            var url_actFechaNacimiento = "{{ path('cancelacionCambioBeneficio_actFechaNacimiento',
+                                                 { 'intIdDetalleSolicitud': '0' ,'strOpcion':'General' }) }}";
+            var puedeActualizarNombre_RS          = '{{ is_granted("ROLE_8-8737") }}';                                     
+        </script>        
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/index.js?8') }}"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/precliente/ediciones.js?3') }}"></script>
+        {% set prefijoEmpresa = app.session.get('prefijoEmpresa') %} 
+        <textarea id="direccion_oculta" style="display:none;" ></textarea>
+      </div>
+        
+    <div class="modal fade" id="modalActFechaNacimiento" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    
+                </div>                
+                <div class="modal-footer">
+                    <button type="button" id="btConfirmarFeNacimiento" class="btn btn-info btn-sm">Confirmar</button>
+                    <button type="button" id="btActualizarFeNacimiento" class="btn btn-info btn-sm">Guardar</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>      
+        
+        
+  </div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+	<div class="titulo-acciones-relacionadas">
+		Acciones Relacionadas
+	</div>	
+	<ul class="listado_acciones_relacionadas">
+           {%if ( is_granted("ROLE_151-7997") and app.session.get('prefijoEmpresa') and (app.session.get('prefijoEmpresa') == 'MD' or app.session.get('prefijoEmpresa') == 'EN') ) %}
+            <li>            
+               <button type="button" class="btn btn-outline-dark btn-sm" title="Actualizar Fecha de Nacimiento"
+                   onClick="javascript:mostrarModalActFeNacimiento(url_actFechaNacimiento);">
+                   <i class="fa fa-edit"></i>Actualizaci&oacute;n Fecha Nacimiento</button>
+            </li>
+            {%endif%}
+            
+            {%if ( is_granted("ROLE_151-7337") and app.session.get('prefijoEmpresa') and app.session.get('prefijoEmpresa') == 'TN' ) %}
+            <li>
+                <a class="listado_ac_tablas" href="{{ path('cliente_generarCorteMasivoTN') }}">
+                    Generar Corte Masivo
+                </a>
+            </li>
+            {%endif%}
+            {%if ( is_granted("ROLE_151-7357") and app.session.get('prefijoEmpresa') and app.session.get('prefijoEmpresa') == 'TN' ) %}
+            <li>
+                <a class="listado_ac_tablas" href="{{ path('cliente_generarReactivarMasivoTN') }}">
+                    Generar Reactivaci&oacute;n Masiva
+                </a>
+            </li>
+            {%endif%}
+            {% if ((app.session.get('prefijoEmpresa') and (app.session.get('prefijoEmpresa')=='MD' or app.session.get('prefijoEmpresa')=='EN')) and is_granted("ROLE_8-9037")) %}
+            <li>
+                <a  href="{{ path('cliente_AceptacionPoliticas') }}">Solicitar aceptación de políticas y cláusulas a clientes</a>
+            <li>
+            {%endif%}
+            {%if ( is_granted("ROLE_8-9077") and app.session.get('prefijoEmpresa') and app.session.get('prefijoEmpresa') == 'MD' ) %}
+            <li>
+                <a class="listado_ac_tablas" href="{{ path('cliente_cliente_envio_link') }}">
+                    Solicitar desencriptaci&oacute;n de datos
+                </a>
+            </li>
+            {%endif%}
+
+	</ul>
+{% endblock contenido_der %}
+
+
+{% block javascripts_footer%}
+<script>
+function mostrarModalActFeNacimiento(url_accion) {   
+    $.ajax({
+        url: url_accion,
+        type: 'get',
+        dataType: "html",
+        success: function (response) {
+            $('#modalActFechaNacimiento .modal-body').html(response);
+            $('#modalActFechaNacimiento').modal({show: true});
+        },
+        error: function () {
+            $('#modalActFechaNacimiento .modal-body').html('<p>Ocurrió un error, por favor consulte con el Administrador.</p>');
+            $('#modalActFechaNacimiento').modal('show');
+        }
+    });
+}
+</script>
+ {% endblock javascripts_footer%}

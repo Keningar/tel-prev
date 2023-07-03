@@ -1,0 +1,58 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+{{ parent() }}            
+<script>
+    var url_store                  = "{{ path('solicitudes_gridSolicitudesPunto') }}";
+    var urlListaMotivosAnulacion   = '{{ path('solicitudes_getMotivosAnulacion') }}';
+    var urlListaMotivosFinalizar   = '{{ path('solicitudes_getMotivosFinalizar') }}';
+    var urlAnularSolicitudPunto    = '{{ path('solicitudes_anularSolicitudesPunto') }}';
+    var urlFinalizarSolicitudPunto = '{{ path('solicitudes_finalizarSolicitudesPunto') }}';
+    var urlGetMaterialesPunto      = '{{ path('solicitudes_getMaterialesPunto') }}';
+    var puedeAnularSolicitudes     = '{{ is_granted("ROLE_287-2698") }}';       
+    var puedeFinalizarSolicitudes  = '{{ is_granted("ROLE_335-3517") }}';       
+</script>   
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudes/solicitudesPunto.js?3') }}"></script>
+{% endblock javascripts %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Solicitudes del Punto</h1>
+</div>
+
+<div class="body_content">
+    {%if puntoId is not null%}
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td bgcolor='#ffffff'>&nbsp;</td>
+            </tr>                     
+            <tr bgcolor='#ffffff'>
+                     <td>&nbsp;</td>
+                     <td bgcolor='#ffffff'><div id='lista_solicitudes'></div></td>
+            </tr>
+        </table>
+    {%else%}
+        <div>Debe seleccionar login previamente para poder revisar las solicitudes</div>
+    {%endif%}
+</div>
+    
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('infopunto_show', { 'id': puntoId,'rol':rol }) }}">Regresar</a>
+        </span>
+    </p>
+</div> 
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+        <ul class="listado_acciones_relacionadas">     
+        </ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}

@@ -1,0 +1,101 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+        
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Asignar Punto de Facturaci&oacute;n a Servicios</h1>
+</div>
+
+<div class="body_content">
+<table class="record_properties" width='100%'>
+    <tbody>
+        <tr>
+            <td><b>Razon Social:<b></td>
+            <td>{{ entity.razonSocial }}</td>            
+
+            <td><b>Identificacion:</b></td>
+            <td>{{ entity.identificacionCliente }}</td>
+
+        </tr>
+        <tr>
+            <td><b>Nombres:</b></td>
+            <td>{{ entity.nombres }}</td>            
+
+
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><b>Apellidos:</b></td>
+            <td>{{ entity.apellidos }}</td>            
+
+            <td><b>Direccion:</b></td>
+            <td>{{ entity.direccion }}</td>
+
+        </tr>
+        <tr>
+            <td><b>Representante Legal:</b></td>
+            <td>{{ entity.representanteLegal }}</td>
+
+            <td><b>Estado:</b></td>
+            <td>{{ entity.estado }}</td>
+        </tr>
+        </tbody>
+</table>
+</div>
+
+
+<div  class="body_content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_servicios'></div></td>
+            </tr>
+        
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+            </tr>
+
+    </table>     
+        <script>
+        var url_servicios='{{path('cliente_ajax_servicios',{'idCli':entity.id})}}';            
+        var url_asignar_ajax="{{path('infopunto_ajax_asignar_padre')}}";
+        var url_padres='{{path('infopunto_getpuntospadre',{'idCli':entity.id})}}';
+        var url_gridPtos = "{{ path('infopunto_getpuntos',{'idCli':entity.id, 'rol':'Cliente'}) }}";
+        </script>      
+        
+         <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/asignarPadreAHijo.js') }}"></script>              
+
+         
+</div>
+
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('cliente') }}">Regresar</a>
+        </span>
+    </p>
+</div>        
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+
+	<br />
+
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+			<li>
+				<a class="listado_ac_tablas" href="{{ path('cliente_show_agregar_padre_facturacion', { 'id': entity.id,'idper':idper }) }}">Agregar Puntos de Facturaci&oacute;n</a>
+			</li>
+			<li>
+				<a class="listado_ac_tablas" href="{{path('cliente_show',{'id':entity.id,'idper':idper})}}">Ver Cliente</a>
+			</li>                        
+		</ul>
+
+{% endblock contenido_der %}

@@ -1,0 +1,51 @@
+reportes_referidos:
+    pattern:  /referidos
+    defaults: { _controller: "comercialBundle:Cliente:referidos" }
+
+reportes_clientesfactura:
+    pattern:  /clientesfactura
+    defaults: { _controller: "comercialBundle:Cliente:clientesFactura" }
+    
+reportes_vendedor:
+  resource: "@comercialBundle/Resources/config/routing/vendedor.yml"
+  prefix: /vendedor
+    
+reportes_supervisor:
+  resource: "@comercialBundle/Resources/config/routing/supervisor.yml"
+  prefix: /supervisor
+  
+reportes_televentas_outbound:
+  resource: "@comercialBundle/Resources/config/routing/televentasoutbound.yml"
+  prefix: /televentas_outbound
+    
+reportes_reportesjefes:
+  resource: "@comercialBundle/Resources/config/routing/reportesjefes.yml"
+  prefix: /reportes_jefes
+
+reportes_de_vendedores:
+  resource: "@comercialBundle/Resources/config/routing/reportesdevendedores.yml"
+  prefix: /reportes_de_vendedores
+  
+reportes_pagos_vendedor:
+  resource: "@comercialBundle/Resources/config/routing/reportepagosvendedor.yml"
+  prefix: /reportes_pagos_vendedor    
+
+reportes_aprobacion_contratos:
+    resource: "@comercialBundle/Resources/config/routing/reporteaprobacioncontratos.yml"
+    prefix: /reportes_aprobacion_contratos  
+    
+reportes_gridInfoContratoLog:
+    resource: "@comercialBundle/Resources/config/routing/gridInfoContratoLog.yml"
+    prefix: /gridInfoContratoLog    
+   
+reportes_verLogsDocumentos:
+    resource: "@comercialBundle/Resources/config/routing/logsdocumentosdigitales.yml"
+    prefix: /VerLogsDocumentosDigitales
+    
+reporteSecureCpe:
+  resource: "@comercialBundle/Resources/config/routing/reporteSecureCpe.yml"
+  prefix: /reporteSecureCpe 
+  
+reportes_infoLogs:
+    resource: "@comercialBundle/Resources/config/routing/infoLogs.yml"
+    prefix: /infoLogs  

@@ -1,0 +1,14 @@
+# RESTful Web Services: anidados en /rs/tecnico/ws/rest
+
+#ws para procesar las peticiones del flujo de activacion
+rs_comercial_procesar:
+  pattern:  /procesar
+  defaults: { _controller: telconet\comercialBundle\WebService\ComercialMobileWSAppsController::procesarAction }
+
+rs_comercial_ejecutar:
+  pattern:  /ejecutar
+  defaults: { _controller: telconet\comercialBundle\WebService\ComercialMobileWSControllerRest::procesarAction }
+
+rs_comercial_gestionar:
+  pattern:  /gestionar
+  defaults: { _controller: telconet\comercialBundle\WebService\ComercialWSController::procesarAction }

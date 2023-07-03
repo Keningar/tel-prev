@@ -1,0 +1,16 @@
+
+aprobacionsolicitudcancelacion_aprobar_solicitud:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudCancelacion:aprobarSolicitudCancelacion" }
+
+aprobacionsolicitudcancelacion_grid_aprobar:
+    pattern:  /gridaprobarsolicitudcancelacion
+    defaults: { _controller: "comercialBundle:SolicitudCancelacion:gridAprobarSolicitudCancelacion"}
+
+aprobacionsolicitudcancelacion_rechazar_ajax:
+    pattern:  /rechazarsolicitudcancelacionajax
+    defaults: { _controller: "comercialBundle:SolicitudCancelacion:rechazarSolicitudCancelacionAjax" }
+
+aprobacionsolicitudcancelacion_getmotivosrechazo_ajax:
+    pattern:  /getmotivosrechazosolicitudcancelacionAjax
+    defaults: { _controller: "comercialBundle:SolicitudCancelacion:getMotivosRechazoSolicitudCancelacion_ajax" }

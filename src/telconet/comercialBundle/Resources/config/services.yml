@@ -1,0 +1,195 @@
+parameters:
+#    comercial.example.class: telconet\comercialBundle\Example
+ ruta_upload: telcos/web/public/uploads/
+
+services:
+#    comercial.example:
+#        class: %comercial.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    comercial.InfoPersonaEmpresaRol:
+        class: telconet\comercialBundle\Service\InfoPersonaEmpresaRolService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoContratoAprob:
+        class: telconet\comercialBundle\Service\InfoContratoAprobService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.Comercial:
+        class: telconet\comercialBundle\Service\ComercialService
+        calls:
+            - [setDependencies, [@service_container]]
+            
+    comercial.ComercialMobile:
+        class: telconet\comercialBundle\Service\ComercialMobileService
+        calls:
+            - [setDependencies, [@service_container]]            
+
+    comercial.ComercialCRM:
+        class: telconet\comercialBundle\Service\ComercialCrmService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.Cliente:
+        class: telconet\comercialBundle\Service\ClienteService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.PreCliente:
+        class: telconet\comercialBundle\Service\PreClienteService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoPersona:
+        class: telconet\comercialBundle\Service\InfoPersonaService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoPunto:
+        class: telconet\comercialBundle\Service\InfoPuntoService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoServicio:
+        class: telconet\comercialBundle\Service\InfoServicioService
+        calls:
+            - [setDependencies, [@service_container, @tecnico.InfoActivarPuerto , @tecnico.InfoServicioTecnico, @tecnico.InfoConfirmarServicio]]
+
+    comercial.InfoContrato:
+        class: telconet\comercialBundle\Service\InfoContratoService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoPersonaFormaContacto:
+        class: telconet\comercialBundle\Service\InfoPersonaFormaContactoService
+        calls:
+            - [setDependencies, [@doctrine.orm.telconet_entity_manager, @service_container]]
+
+    comercial.Solicitudes:
+        class: telconet\comercialBundle\Service\SolicitudesService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoContratoDigital:
+        class: telconet\comercialBundle\Service\InfoContratoDigitalService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.Autorizaciones:
+        class: telconet\comercialBundle\Service\AutorizacionesService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoServicioHistorial:
+        class: telconet\comercialBundle\Service\InfoServicioHistorialService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.SolicitudCambioDocumento:
+        class: telconet\comercialBundle\Service\SolicitudCambioDocumentoService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.Promocion:
+        class: telconet\comercialBundle\Service\PromocionService
+        calls:
+            - [setDependencies, [@service_container]] 
+            
+    comercial.PromocionMensualidad:
+        class: telconet\comercialBundle\Service\PromocionMensualidadService
+        calls:
+            - [setDependencies, [@service_container]]
+            
+    comercial.PromocionInstalacion:
+        class: telconet\comercialBundle\Service\PromocionInstalacionService
+        calls:
+            - [setDependencies, [@service_container]] 
+            
+    comercial.PromocionAnchoBanda:
+        class: telconet\comercialBundle\Service\PromocionAnchoBandaService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.AdmiProducto:
+        class: telconet\comercialBundle\Service\AdmiProductoService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.CertificacionDocumentos:
+        class: telconet\comercialBundle\Service\CertificacionDocumentosService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoCotizacion:
+        class: telconet\comercialBundle\Service\InfoCotizacionService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.ContratoDigital:
+        class: telconet\comercialBundle\Service\ContratoDigitalService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.ComercialExamenCovid:
+        class: telconet\comercialBundle\Service\ComercialExamenCovidService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoSolucion:
+        class: telconet\comercialBundle\Service\InfoSolucionService
+        calls:
+            - [setDependencies, [@service_container]]
+    comercial.RegularizaContratosAdendums:
+        class: telconet\comercialBundle\Service\RegularizaContratosAdendumsService
+        calls:
+            - [setDependencies, [@service_container]]
+
+            
+    comercial.ComercialCrmCm:
+        class: telconet\comercialBundle\Service\ComercialCrmCmService
+        calls:
+            - [setDependencies, [@service_container]]
+        
+    comercial.ConvertirOrdenTrabajo:
+        class: telconet\comercialBundle\Service\ConvertirOrdenTrabajoService
+        calls:
+            - [setDependencies, [@service_container]] 
+
+    comercial.CancelacionCambioBeneficio:
+        class: telconet\comercialBundle\Service\CancelacionCambioBeneficioService
+        calls:
+            - [setDependencies, [@service_container]]         
+            
+    comercial.ComercialCrmFlujo:
+        class: telconet\comercialBundle\Service\ComercialCrmFlujoService
+        calls:
+            - [setDependencies, [@service_container]]
+            
+    comercial.Orquestador:
+        class: telconet\comercialBundle\Service\OrquestadorService
+        calls:
+            - [setDependencies, [@service_container]]        
+
+
+    comercial.PreClienteMs:
+        class: telconet\comercialBundle\Service\PreClienteMsService
+        calls:
+            - [setDependencies, [@service_container]]
+
+
+    comercial.RepresentanteLegalMs:
+        class: telconet\comercialBundle\Service\RepresentanteLegalMsService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    comercial.InfoLog:
+        class: telconet\comercialBundle\Service\InfoLogService
+        calls:
+            - [setDependencies, [@service_container]] 
+    
+    comercial.ConsumoKonibit:
+        class: telconet\comercialBundle\Service\ConsumoKonibitService
+        calls:
+            - [setDependencies, [@service_container]]

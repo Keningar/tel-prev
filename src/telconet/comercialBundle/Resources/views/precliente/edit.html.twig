@@ -1,0 +1,426 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+{% block javascripts%}
+	{{ parent() }}
+
+        <script>var url_clientes = "{{ path('cliente_grid') }}";</script> 
+        <script>var url_formas_contacto_persona = "{{ path('cliente_formas_contacto_grid') }}";</script>    
+        <script>var url_formas_contacto = "{{path('cliente_lista_formas_contacto')}}";</script>
+        <script>var url_oficinas_empresa = "{{path('precliente_listar_oficinas_empresa')}}";</script>
+        <script>var personaid = "{{entity.id}}";</script> 
+		<script>
+            url_valida_identificacion="{{ path('cliente_ajax_valida_identificacion') }}";
+            url_validar_identificacion_tipo="{{ path('cliente_ajax_validar_identificacion_tipo') }}";
+            url_img_loader="{{ asset('public/images/images_crud/ajax-loader.gif') }}";
+            url_img_check="{{ asset('public/images/check.png') }}";
+            url_img_delete="{{ asset('public/images/delete.png') }}";
+			input='#preclientetype_identificacionCliente';
+			inputTipo='#preclientetype_tipoIdentificacion';
+			formname="preclientetype";
+            url_planCondicionIncumplida="{{ path('precliente_ajax_plan_condicion_incumplida') }}";
+            var strPrefijoEmpresa = "{{strPrefijoEmpresa}}";
+		</script>		
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/precliente/seleccionReferido.js') }}"></script>                      
+        
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Prospecto</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %} 
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}        
+<form action="{{ path('precliente_update', { 'id': entity.id }) }}" onsubmit="return validacionesForm()" method="post" {{ form_enctype(edit_form) }}  class="formulario">
+        
+            <div id="my-tabs">
+            <div id="tab1" class="x-hide-display">    
+            <table border='0'>
+                <tr><td colspan='4'>&nbsp;</td></tr>
+                <tr>
+                    <td>
+                       &nbsp;&nbsp;&nbsp;
+                    </td>                     
+                    <td  style="vertical-align: top;">  
+                        <div>{{ form_label(edit_form.tipoEmpresa) }} {{ form_widget(edit_form.tipoEmpresa) }}</div>                        
+                        <div>{{ form_label(edit_form.tipoIdentificacion) }} {{ form_widget(edit_form.tipoIdentificacion) }}</div>
+                        <div>{{ form_label(edit_form.tipoTributario) }} {{ form_widget(edit_form.tipoTributario) }}</div>
+                        <div>{{ form_label(edit_form.nacionalidad) }} {{ form_widget(edit_form.nacionalidad) }}</div>
+                        <div>{{ form_label(edit_form.direccionTributaria) }} {{ form_widget(edit_form.direccionTributaria) }}</div>
+                        <div>{{ form_label(edit_form.origenIngresos) }} {{ form_widget(edit_form.origenIngresos) }}</div>
+                        <div>               
+                            <table border='0' align='left'>
+                                <tr>
+                                    <td>
+                                        <label for='preclientetype_referido'>Referido:</label>
+                                    </td>
+                                    <td>
+									<table>
+									<tr>
+									<td>
+                            {% if referidoActualPer is not null  %}
+                                {% if referidoActualPer.personaId.razonSocial is not null  %}
+                                        <input class='campo-obligatorio' type='text' readonly id="preclientetype_referido" name="preclientetype[referido]" value='{{referidoActualPer.personaId.razonSocial}}'/>
+                                {% else %}
+                                        <input type='text' readonly id="preclientetype_referido" name="preclientetype[referido]" value='{{referidoActualPer.personaId.nombres}} {{referidoActualPer.personaId.apellidos}}'/>
+                                {% endif %}
+                                <input type='hidden' readonly id='preclientetype_idreferido' name='preclientetype[idreferido]' value='{{referidoActualPer.personaId.id}}'/>
+                                <input type='hidden' readonly id='preclientetype_idperreferido' name='preclientetype[idperreferido]' value='{{referidoActualPer.id}}'/>
+                            {%else%}
+                                <input class='campo-obligatorio' type='text' readonly id="preclientetype_referido" name="preclientetype[referido]" value=''/>
+                                <input type='hidden' readonly id='preclientetype_idreferido' name='preclientetype[idreferido]' value=''/>
+                                <input type='hidden' readonly id='preclientetype_idperreferido' name='preclientetype[idperreferido]' value=''/>                                
+                            {% endif %}                                
+                                <input  type='hidden' id="preclientetype_personaEmpresaRolId" name="personaEmpresaRolId" value="{{  personaEmpresaRolId  }}" />                                       
+                                <input type='hidden' id="preclientetype_prefijoEmpresa" name="prefijoEmpresa" value="{{  prefijoEmpresa  }}" />                                                                       
+                                <input  type='hidden' id="preclientetype_mensaje" name="mensaje" value="" />                                       
+                               									</td>
+									<td>
+                                   <div id='imgreferido'> 
+								   <a href='#' onclick="showClientes()"><img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" /></a>
+								   </div>
+								   </td>
+								   </tr>
+								   </table>
+                                    </td>
+                            </table>
+                        </div>
+                        
+                    </td>
+                    <td>
+                        &nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td style="vertical-align: top;">
+                        {% if (prefijoEmpresa =='TN') %}
+                            <div>{{ form_label(edit_form.idOficinaFacturacion) }} {{ form_widget(edit_form.idOficinaFacturacion) }}</div> 
+                        {% endif %} 
+                        <div id='diverrorident' class='errormessage' style='display:none'></div>
+                        <div id='dividentificacion' class='warningmessage' style='display:none'></div>
+                        <div>{{ form_label(edit_form.identificacionCliente) }}{{ form_widget(edit_form.identificacionCliente) }}
+						<img id="img-valida-identificacion" src="{{ asset('public/images/check.png') }}" title="login correcto" width="25" height="25"/>
+						</div>
+                        <div id='div_razon_social' style="display:none">{{ form_label(edit_form.razonSocial) }} {{ form_widget(edit_form.razonSocial) }}</div>
+                        <div>{{ form_label(edit_form.representanteLegal) }} {{ form_widget(edit_form.representanteLegal) }}</div>
+                        <div id='div_nombres'>
+                            <div>{{ form_label(edit_form.genero) }} {{ form_widget(edit_form.genero) }}</div>                  
+                            <div>{{ form_label(edit_form.tituloId) }} {{ form_widget(edit_form.tituloId) }}</div>                            
+                            <div>{{ form_label(edit_form.nombres) }} {{ form_widget(edit_form.nombres) }}</div>
+                            <div>{{ form_label(edit_form.apellidos) }} {{ form_widget(edit_form.apellidos) }}</div>
+                            <div>{{ form_label(edit_form.estadoCivil) }} {{ form_widget(edit_form.estadoCivil) }}</div>                            
+                            <div>{{ form_label(edit_form.fechaNacimiento) }} {{ form_widget(edit_form.fechaNacimiento) }}</div>
+                            <input type='text' style="display:none" id="preclientetype_formas_contacto" name="preclientetype[formas_contacto]" class='campo-obligatorio' required="required"/>                            
+                        </div>                        
+                      
+                    </td>
+                                      
+                </tr>
+                
+                {% if ((prefijoEmpresa =='MD' or  prefijoEmpresa =='EN' )and formFormaPago is defined) %}
+                 <div>
+                 <tr>
+                    <td>
+                                &nbsp;&nbsp;&nbsp;
+                    </td> 
+                  <td colspan='3' style="vertical-align: top;">
+                      <div>{{ form_label(formFormaPago.formaPagoId) }} {{ form_widget(formFormaPago.formaPagoId) }}</div>
+                  </td>
+                 </tr>    
+                 </div>
+                  {% endif %} 
+                 {% if (prefijoEmpresa =='TN') %}
+                 <div>
+                 <tr>
+                    <td>
+                                &nbsp;&nbsp;&nbsp;
+                    </td> 
+                  <td colspan='3' style="vertical-align: top;">
+                        <div>{{ form_label(edit_form.contribuyenteEspecial) }} {{ form_widget(edit_form.contribuyenteEspecial) }}</div>                        
+			<div>{{ form_label(edit_form.pagaIva) }} {{ form_widget(edit_form.pagaIva) }}</div>                           
+			<div>{{ form_label(edit_form.esPrepago) }} {{ form_widget(edit_form.esPrepago) }}</div>
+            <div>{{ form_label(edit_form.tieneCarnetConadis) }} {{ form_widget(edit_form.tieneCarnetConadis) }}</div> 
+            <div>{{ form_label(edit_form.numeroConadis) }} {{ form_widget(edit_form.numeroConadis) }}</div>  
+                  </td>
+                 </tr>    
+                 </div>
+                  {% endif %}                    
+                  
+                 <tr>
+                    <td>
+                                &nbsp;&nbsp;&nbsp;
+                    </td> 
+                  <td colspan='3' style="vertical-align: top;">                      
+                           {% if ((prefijoEmpresa =='MD' or  prefijoEmpresa =='EN' ) and formFormaPago is defined) %}
+			    <div id="forma_pago" class="{{ clase }} contenido" style="display:none">
+				<table border=0 width="100%">
+				<tr>
+                                <td colspan="4"> 
+				<div>{{ form_label(formFormaPago.tipoCuentaId) }} {{ form_widget(formFormaPago.tipoCuentaId) }}</div>														
+                                </td>                                                               
+				<td colspan="4"> 
+                                <div>{{ form_label(formFormaPago.bancoTipoCuentaId) }} {{ form_widget(formFormaPago.bancoTipoCuentaId) }}</div>                                        
+                                </td>                                                               
+				</tr>
+				</table>
+			     </div>
+		           {% endif %}                         
+                    </td>
+                </tr>
+                
+            </table>
+            </div>
+            <div id="tab2" class="x-hide-display">
+                    <table border='0' align='center'>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            
+                            <td>
+                                <div id='lista_formas_contacto_grid'></div>
+                                <div class='infomessage'>Todo numero de telefono debe iniciar con el codigo de area correspondiente</div>
+                                <div class='infomessage'>Todo n&uacutemero de tel&eacute;fono internacional debe tener entre 7 y 15 d&iacute;gitos</div>
+                            </td>
+                            
+                        </tr>   
+                    </table>            
+               </div>
+               </div>                    
+		<div class="buttons">
+				<p>
+					<button type="submit"  onclick="grabar('#preclientetype_formas_contacto')" class="button-crud">Guardar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('precliente') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div>      
+</form>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/edit.js?6') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/identificacion.js') }}"></script>
+	<script>   
+	    $('#preclientetype_identificacionCliente').attr('readonly','readonly');
+	    $('#preclientetype_tipoIdentificacion option:not(:selected)').each(function(){
+		$(this).attr('disabled', 'disabled');
+	    });
+			//validaIdentificacionEdit();
+            function esEmpresa(){
+                if ($('#preclientetype_tipoEmpresa').val()=='Publica' || $('#preclientetype_tipoEmpresa').val()=='Privada'||
+				$('#preclientetype_razonSocial').val()!=''){
+                    ocultarDiv('div_nombres');
+                    mostrarDiv('div_razon_social');
+                    $('#preclientetype_razonSocial').attr('required','required');
+                    $('#preclientetype_representanteLegal').attr('required','required');
+                    $('label[for=preclientetype_representanteLegal]').html('* Representante Legal:');
+                    $('label[for=preclientetype_representanteLegal]').addClass('campo-obligatorio');
+                    $('#preclientetype_nombres').removeAttr('required');
+                    $('#preclientetype_apellidos').removeAttr('required');
+                    $('#preclientetype_genero').removeAttr('required');
+                    $('#preclientetype_tituloId').removeAttr('required');
+                    $('#preclientetype_estadoCivil').removeAttr('required');                    
+                    $('#preclientetype_nombres').val('');
+                    $('#preclientetype_apellidos').val('');  
+                    $('#preclientetype_fechaNacimiento_day').removeAttr('required');   
+                    $('#preclientetype_fechaNacimiento_month').removeAttr('required');                                       
+                    $('#preclientetype_fechaNacimiento_year').removeAttr('required'); 
+                }
+                else
+                {
+                    mostrarDiv('div_nombres');
+                    ocultarDiv('div_razon_social');
+                    $('#preclientetype_razonSocial').removeAttr('required');
+                    $('label[for=preclientetype_representanteLegal]').removeClass('campo-obligatorio');
+                    $('label[for=preclientetype_representanteLegal]').html('Representante Legal:'); 
+                    $('#preclientetype_representanteLegal').removeAttr('required');
+                    $('#preclientetype_nombres').attr('required','required');                    
+                    $('#preclientetype_apellidos').attr('required','required');                    
+                    $('#preclientetype_genero').attr('required','required');                    
+                    $('#preclientetype_tituloId').attr('required','required');
+                    $('#preclientetype_estadoCivil').attr('required');                    
+                    $('#preclientetype_razonSocial').val('');      
+                    $('#preclientetype_fechaNacimiento_day').attr('required','required');
+                    $('#preclientetype_fechaNacimiento_month').attr('required','required');
+                    $('#preclientetype_fechaNacimiento_year').attr('required','required');
+                    $('label[for=preclientetype_fechaNacimiento_day]').addClass('campo-obligatorio');
+                    $('label[for=preclientetype_fechaNacimiento_month]').addClass('campo-obligatorio');
+                    $('label[for=preclientetype_fechaNacimiento_year]').addClass('campo-obligatorio');
+                    $('label[for=preclientetype_fechaNacimiento]').html('* Fecha Nacimiento:');
+                }
+                
+            } 
+                function esRuc(){
+                    if ($('#preclientetype_tipoIdentificacion').val()=='RUC'){
+                        $('#preclientetype_identificacionCliente').removeAttr('maxlength');
+                        $('#preclientetype_identificacionCliente').attr('maxlength','13');
+                        //$('#preclientetype_identificacionCliente').val('');
+                    }else
+                    {
+                        $('#preclientetype_identificacionCliente').removeAttr('maxlength');
+                        $('#preclientetype_identificacionCliente').attr('maxlength','10');
+                        //$('#preclientetype_identificacionCliente').val('');
+                    }
+                }
+                 function tieneCarnetConadis(){
+                    if ($('#preclientetype_tieneCarnetConadis').val()=='S'){
+                     document.getElementById("preclientetype_numeroConadis").required = true;
+                     $('#preclientetype_numeroConadis').show();
+                     $('label[for=preclientetype_numeroConadis]').show();
+                     $('#preclientetype_numeroConadis').attr('maxlength', '15');                 
+                    }else
+                    {	
+                     $('#preclientetype_numeroConadis').val('');
+                     $('#preclientetype_numeroConadis').hide();
+                     $('label[for=preclientetype_numeroConadis]').hide();
+                     $('#preclientetype_numeroConadis').removeAttr('maxlength');
+                     $('#preclientetype_numeroConadis').removeAttr('required');
+                     document.getElementById("preclientetype_numeroConadis").required = false;
+                    
+                    }
+                }                 
+                function cambiarObligatorio(id_condicion,id_validado,label){
+                    if ($('#'+id_condicion).val()!=''){
+                        $('#'+id_validado).attr('required','required');
+                        $('label[for='+id_validado+']').addClass('campo-obligatorio');
+                        $('label[for='+id_validado+']').html('* '+label);
+                        
+                    }else
+                    {
+                        $('#'+id_validado).removeAttr('required');
+                        $('label[for='+id_validado+']').removeClass('campo-obligatorio');
+                        $('label[for='+id_validado+']').html(label);
+                    }
+                }               
+               
+                $(document).ready(function(){
+                 
+                    esEmpresa();
+                    esRuc();
+                    
+                    if ($('#preclientetype_tieneCarnetConadis').val()=='S')
+                    {   
+                        $('#preclientetype_numeroConadis').attr('required','required');
+                        $('#preclientetype_numeroConadis').show();
+                        $('label[for=preclientetype_numeroConadis]').show();
+                    }
+                    else if ($('#preclientetype_tieneCarnetConadis').val()=='N')
+                    {   
+                        $('#preclientetype_numeroConadis').hide();
+                        $('label[for=preclientetype_numeroConadis]').hide();
+                    }                    
+                });
+	</script>
+        <script>
+    //Informacion de la forma de Pago	
+     if($('#preclientetype_prefijoEmpresa').val() === 'MD' || $('#preclientetype_prefijoEmpresa').val() === 'EN')
+     {
+			presentaDatosTarjeta();                        
+     }               
+                        {%if bancoTipoCuentaId is not null%}
+				var bancoTipoCuentaId = {{bancoTipoCuentaId}};                              
+				obtieneBancos(bancoTipoCuentaId);
+			{%endif%}
+                         
+			function mostrarDiv(div){
+						capa = document.getElementById(div);
+						capa.style.display = 'block';    
+			}
+
+			function ocultarDiv(div){
+						capa = document.getElementById(div);
+						capa.style.display = 'none';    
+			}
+				
+            $('#infopersonaempformapagotype_formaPagoId').change(function()
+            {
+                     presentaDatosTarjeta();
+                 
+            });
+
+	function presentaDatosTarjeta(){
+                var seleccion=$('#infopersonaempformapagotype_formaPagoId').val();
+                                
+                if(seleccion == 3){					
+                        mostrarDiv('forma_pago');
+			$("#infopersonaempformapagotype_tipoCuentaId").attr('required','required');
+		        $("#infopersonaempformapagotype_bancoTipoCuentaId").attr('required','required');
+					
+                }else{
+			limpiarDatosFormaPago();
+                        ocultarDiv('forma_pago');					
+			$("#infopersonaempformapagotype_tipoCuentaId").removeAttr('required');
+			$("#infopersonaempformapagotype_bancoTipoCuentaId").removeAttr('required');
+                                        		
+					
+		      }			
+                if(seleccion == 'Seleccione'){
+                    ocultarDiv('forma_pago');
+                }
+	}
+	             	                             
+            
+            $('#infopersonaempformapagotype_tipoCuentaId').change(function()
+            {
+                    $('button[type=submit]').attr('disabled', 'disabled');
+                    $("#infopersonaempformapagotype_bancoTipoCuentaId").val('');
+					obtieneBancos('');
+            });
+			
+		function obtieneBancos(bancoTipoCuentaId){
+                var tipoCuenta=$('#infopersonaempformapagotype_tipoCuentaId').val();			
+				if(bancoTipoCuentaId!=''){
+					parametros="tipoCuenta=" + tipoCuenta+"&bcoTipoCtaId="+bancoTipoCuentaId;
+				}else
+				{
+					parametros="tipoCuenta=" + tipoCuenta;
+				}
+
+                $.ajax({
+                    type: "POST",
+                    data: parametros,
+                    url:'{{ path('precliente_listar_bancos_asociados') }}',
+                    success: function(msg){
+                        if (msg.msg == 'ok')
+                        {					
+                            //Llenar el div que presentara las clausulas
+                            //Validar que de respuesta sinop solicitarla
+                            document.getElementById("infopersonaempformapagotype_bancoTipoCuentaId").innerHTML=msg.div;
+                            //console.log(msg.id);
+                        }
+                        else
+                            document.getElementById("infopersonaempformapagotype_bancoTipoCuentaId").innerHTML=msg.msg;
+                    }
+                   });	
+                   $('button[type="submit"]').removeAttr('disabled');
+	        }
+			
+			
+		function limpiarDatosFormaPago(){
+                        $('#infopersonaempformapagotype_tipoCuentaId').val('');
+			$('#infopersonaempformapagotype_bancoTipoCuentaId').val('');
+					
+		}                                      
+    if($('#preclientetype_prefijoEmpresa').val() === 'TN')
+    {
+        $('#preclientetype_esPrepago').attr('disabled','disabled'); 
+        
+    }	
+        </script>
+{% endblock %}

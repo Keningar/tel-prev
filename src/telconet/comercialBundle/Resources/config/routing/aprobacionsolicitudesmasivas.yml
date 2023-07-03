@@ -1,0 +1,22 @@
+
+aprobacionsolicitudesmasivas_aprobar:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarIndex" }
+    
+aprobacionsolicitudesmasivas_aprobarRechazar:
+    pattern:  /{id}/aprobarRechazar
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarRechazar" }
+
+aprobacionsolicitudesmasivas_aprobarSolicitud:
+    pattern:  /aprobarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarSolicitud" }
+
+aprobacionsolicitudesmasivas_rechazarSolicitud:
+    pattern:  /rechazarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:rechazarSolicitud" }
+
+aprobacionsolicitudesmasivas_getDetalleSolicitudEstado:
+    pattern:  /getDetalleSolicitudEstado
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getDetalleSolicitudEstado" }
+    
+

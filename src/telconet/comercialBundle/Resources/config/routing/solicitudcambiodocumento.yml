@@ -1,0 +1,16 @@
+solicitudcambiodocumento:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:index" }
+
+solicitudcambiodocumento_graba_soliccambiodoc_ajax:
+    pattern:  /grabasolicituddescajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:grabaSolicitud_ajax" }
+
+solicitudcambiodocumento_get_motivos_ajax:
+    pattern:  /getmotivosajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:getMotivos_ajax" }
+
+
+solicitudcambiodocumento_get_servicios_ajax:
+    pattern:  /{id}/getserviciossolicitudcambdocajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:getServiciosParaSolicitudCambioDoc_ajax" }

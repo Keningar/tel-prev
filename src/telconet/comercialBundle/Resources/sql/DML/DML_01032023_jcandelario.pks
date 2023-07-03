@@ -1,0 +1,4927 @@
+/**
+ * Documentación INSERT DE configuración de plantilla, alias y parámetros en la estructura DB_GENERAL.ADMI_PARAMETRO_CAB 
+ * y  DB_GENERAL.ADMI_PARAMETRO_DET.
+ *
+ * @author José Candelario <jcandelario@telconet.ec>
+ * @version 1.0 01-03-2023
+ */
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ESTADO_SERVICIO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ESTADO_SERVICIO',
+    'Activo',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '2',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '4',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '6',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '7',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '8',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '9',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '10',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '11',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '12',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '15',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '18',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '21',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '24',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '27',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '30',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '33',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA',
+    '36',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '2',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '4',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '6',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '7',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '8',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '9',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '10',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '11',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '12',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '13',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '14',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '15',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '16',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '17',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '18',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '19',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '20',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '21',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '22',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '23',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '24',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '25',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '26',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '27',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '28',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '29',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '30',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '31',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '32',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '33',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '34',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '35',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERMANENCIA_MINIMA_CV'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERMANENCIA_MINIMA_CV',
+    '36',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'TIPO_CLIENTE_PROM'
+      AND ESTADO             = 'Activo'
+    ),
+    'TIPO_CLIENTE',
+    'MENS',
+    'Nuevo',
+    'Nuevo',
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'TIPO_CLIENTE_PROM'
+      AND ESTADO             = 'Activo'
+    ),
+    'TIPO_CLIENTE',
+    'MENS',
+    'Existente',
+    'Existente',
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'TIPO_CLIENTE_PROM'
+      AND ESTADO             = 'Activo'
+    ),
+    'TIPO_CLIENTE',
+    'MENS',
+    'Existente Upgrade',
+    'Upgrade',
+    'CambioPlan',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'TIPO_CLIENTE_PROM'
+      AND ESTADO             = 'Activo'
+    ),
+    'TIPO_CLIENTE',
+    'MENS',
+    'Existente Downgrade',
+    'Downgrade',
+    'CambioPlan',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '2',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '4',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '6',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '7',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '8',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '9',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '10',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '11',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '12',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '15',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '18',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '21',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '24',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '27',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '30',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '33',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PERIODO',
+    '36',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento en Mensualidad Mix de Planes y Productos',
+    'PROM_MIX',
+    'PROM_MENS',
+    '2',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento en Mensualidad de Planes',
+    'PROM_MPLA',
+    'PROM_MENS',
+    '3',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento en Mensualidad de Productos',
+    'PROM_MPRO',
+    'PROM_MENS',
+    '4',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento Total en Mensualidad',
+    'PROM_TOT',
+    'PROM_MENS',
+    '1',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento y Diferido de Instalación',
+    'PROM_INS',
+    'PROM_INS',
+    '1',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_TIPO_PROMOCIONES'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_TIPO_PROMOCIONES',
+    'Descuento por Ancho de Banda',
+    'PROM_BW',
+    'PROM_BW',
+    '1',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ULTIMA_MILLA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ULTIMA_MILLA',
+    'Fibra Optica',
+    'FO',
+    '1',
+    'PROM_INS',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ULTIMA_MILLA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ULTIMA_MILLA',
+    'Cobre',
+    'CO',
+    '3',
+    'PROM_INS',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_ULTIMA_MILLA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_ULTIMA_MILLA',
+    'Fibra Optica',
+    'FO',
+    '1',
+    'PROM_BW',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PIERDE_PROMOCION_MORA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PIERDE_PROMOCION_MORA',
+    'S',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PIERDE_PROMOCION_MORA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PIERDE_PROMOCION_MORA',
+    'N',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PROMOCION_INDEFINIDA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PROMOCION_INDEFINIDA',
+    'S',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_PROMOCION_INDEFINIDA'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_PROMOCION_INDEFINIDA',
+    'N',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_TIPO_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_TIPO_PERIODO',
+    'Único',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_TIPO_PERIODO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_TIPO_PERIODO',
+    'Variable',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_TIPO_ELEMENTO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_TIPO_ELEMENTO',
+    'OLT',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_FORMA_PAGO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_FORMA_PAGO',
+    'EFECTIVO',
+    'EFEC',
+    '1',
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROD_PROM_FORMA_PAGO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROD_PROM_FORMA_PAGO',
+    'DEBITO BANCARIO',
+    'DEB',
+    '3',
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PARAMETROS'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_REPORTE_CLONAR',
+    'RPT_PROMO_CLON',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PARAMETROS'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_REPORTE_CLONAR',
+    'RPT_PROM_CLN_EN',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PARAMETROS'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_REPORTE_INACTIVAR',
+    'RPT_PROMO_INACT',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PARAMETROS'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_REPORTE_INACTIVAR',
+    'RPT_PROM_INA_EN',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '33',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT 
+INTO 
+  DB_COMUNICACION.ADMI_ALIAS
+  (
+    ID_ALIAS,
+    VALOR,
+    ESTADO,
+    EMPRESA_COD,
+    FE_CREACION,
+    USR_CREACION
+  ) 
+  VALUES
+  (
+    DB_COMUNICACION.SEQ_ADMI_ALIAS.NEXTVAL,
+    'xmoreano@netlife.net.ec',
+    'Activo',
+    '33',
+    sysdate,
+    'jcandelario'
+  );
+
+INSERT
+INTO
+  DB_COMUNICACION.ADMI_PLANTILLA
+  (
+    ID_PLANTILLA,
+    NOMBRE_PLANTILLA,
+    CODIGO,
+    MODULO,
+    PLANTILLA,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION
+  )
+  VALUES
+  (
+    DB_COMUNICACION.SEQ_ADMI_PLANTILLA.NEXTVAL,
+    'Reporte de Inactivación de Promociones',    
+    'RPT_PROM_INA_EN',
+    'COMERCIAL',
+    '<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<style type="text/css">table.cssTable { font-family: verdana,arial,sans-serif;font-size:11px;color:#333333;border-width: 1px;border-color: #999999;border-collapse: collapse;}table.cssTable th {background-color:#c3dde0;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9c6c9;}table.cssTable tr {background-color:#d4e3e5;}table.cssTable td {border-width: 1px;padding: 8px;border-style: solid;border-color: #a9c6c9;}table.cssTblPrincipal{font-family: verdana,arial,sans-serif;font-size:12px;}</style>
+</head>
+<body>
+<table class = "cssTblPrincipal" align="center" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+<img alt=""  src="http://images.telconet.net/others/sit/notificaciones/logo.png"/>
+</td>
+</tr>
+<tr><td style="border:1px solid #6699CC;">
+    <table width="100%" cellspacing="0" cellpadding="5">
+    <tr><td colspan="2">Estimados,</td></tr>
+    <tr>
+    <td colspan="2">
+    En el presente mail se adjunta Reporte de Promociones Inactivadas. Alguna novedad favor notificar a Sistemas.
+    </td></tr>
+    <tr><td colspan="2"><hr /></td></tr>
+    </table>
+</td></tr>
+<tr><td></td></tr></table></body></html>
+',
+    'Activo',
+    SYSDATE,
+    'jcandelario'
+  );
+
+INSERT
+INTO
+  DB_COMUNICACION.INFO_ALIAS_PLANTILLA
+  (
+    ID_ALIAS_PLANTILLA,
+    ALIAS_ID,
+    PLANTILLA_ID,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    ES_COPIA
+  )
+  VALUES
+  (
+    DB_COMUNICACION.SEQ_INFO_ALIAS_PLANTILLA.NEXTVAL,
+    (
+      SELECT MAX(ID_ALIAS)
+      FROM DB_COMUNICACION.ADMI_ALIAS
+      WHERE VALOR      = 'xmoreano@netlife.net.ec'
+      AND ESTADO       IN ('Activo','Modificado')
+      AND EMPRESA_COD  = '33'    
+    ),
+    (
+      SELECT ID_PLANTILLA
+      FROM DB_COMUNICACION.ADMI_PLANTILLA
+      WHERE CODIGO = 'RPT_PROM_INA_EN'
+      AND ESTADO   = 'Activo'
+    ),
+    'Activo',
+    SYSDATE,
+    'jcandelario',
+    'NO'
+  );
+
+INSERT
+INTO
+  DB_COMUNICACION.ADMI_PLANTILLA
+  (
+    ID_PLANTILLA,
+    NOMBRE_PLANTILLA,
+    CODIGO,
+    MODULO,
+    PLANTILLA,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION
+  )
+  VALUES
+  (
+    DB_COMUNICACION.SEQ_ADMI_PLANTILLA.NEXTVAL,
+    'Reporte de Clonación de Promociones',    
+    'RPT_PROM_CLN_EN',
+    'COMERCIAL',
+    '<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+<style type="text/css">table.cssTable { font-family: verdana,arial,sans-serif;font-size:11px;color:#333333;border-width: 1px;border-color: #999999;border-collapse: collapse;}table.cssTable th {background-color:#c3dde0;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9c6c9;}table.cssTable tr {background-color:#d4e3e5;}table.cssTable td {border-width: 1px;padding: 8px;border-style: solid;border-color: #a9c6c9;}table.cssTblPrincipal{font-family: verdana,arial,sans-serif;font-size:12px;}</style>
+</head>
+<body>
+<table class = "cssTblPrincipal" align="center" width="100%" cellspacing="0" cellpadding="5">
+<tr>
+<td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+<img alt=""  src="http://images.telconet.net/others/sit/notificaciones/logo.png"/>
+</td>
+</tr>
+<tr><td style="border:1px solid #6699CC;">
+    <table width="100%" cellspacing="0" cellpadding="5">
+    <tr><td colspan="2">Estimados,</td></tr>
+    <tr>
+    <td colspan="2">
+    En el presente mail se adjunta Reporte de Promociones Clonadas. Alguna novedad favor notificar a Sistemas.
+    </td></tr>
+    <tr><td colspan="2"><hr /></td></tr>
+    </table>
+</td></tr>
+<tr><td></td></tr></table></body></html>
+',
+    'Activo',
+    SYSDATE,
+    'jcandelario'
+  );
+
+INSERT
+INTO
+  DB_COMUNICACION.INFO_ALIAS_PLANTILLA
+  (
+    ID_ALIAS_PLANTILLA,
+    ALIAS_ID,
+    PLANTILLA_ID,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    ES_COPIA
+  )
+  VALUES
+  (
+    DB_COMUNICACION.SEQ_INFO_ALIAS_PLANTILLA.NEXTVAL,
+    (
+      SELECT MAX(ID_ALIAS)
+      FROM DB_COMUNICACION.ADMI_ALIAS
+      WHERE VALOR      = 'xmoreano@netlife.net.ec'
+      AND ESTADO       IN ('Activo','Modificado')
+      AND EMPRESA_COD  = '33'    
+    ),
+    (
+      SELECT ID_PLANTILLA
+      FROM DB_COMUNICACION.ADMI_PLANTILLA
+      WHERE CODIGO = 'RPT_PROM_CLN_EN'
+      AND ESTADO   = 'Activo'
+    ),
+    'Activo',
+    SYSDATE,
+    'jcandelario',
+    'NO'
+  );
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR5='SOLICITUD DESCUENTO POR ANCHO DE BANDA',
+VALOR6 = 'Promoción de Ancho de Banda'
+WHERE DESCRIPCION='PROM_TIPO_PROMOCIONES' AND VALOR2='PROM_BW'
+AND EMPRESA_COD='33';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR5='SOLICITUD DESCUENTO Y DIFERIDO DE INSTALACIÓN',
+VALOR6 = 'Promoción de Instalación'
+WHERE DESCRIPCION='PROM_TIPO_PROMOCIONES' AND VALOR2='PROM_INS'
+AND EMPRESA_COD='33';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR5='SOLICITUD DESCUENTO TOTAL EN MENSUALIDAD',
+VALOR6 = 'Promoción de Mensualidad'
+WHERE DESCRIPCION='PROM_TIPO_PROMOCIONES' AND VALOR2='PROM_TOT'
+AND EMPRESA_COD='33';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR5='SOLICITUD DESCUENTO EN MENSUALIDAD DE PRODUCTOS',
+VALOR6 = 'Promoción de Mensualidad'
+WHERE DESCRIPCION='PROM_TIPO_PROMOCIONES' AND VALOR2='PROM_MPRO'
+AND EMPRESA_COD='33';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR5='SOLICITUD DESCUENTO EN MENSUALIDAD DE PLANES',
+VALOR6 = 'Promoción de Mensualidad'
+WHERE DESCRIPCION='PROM_TIPO_PROMOCIONES' AND VALOR2='PROM_MPLA'
+AND EMPRESA_COD='33';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR5='SOLICITUD DESCUENTO EN MENSUALIDAD MIX DE PLANES Y PRODUCTOS',
+VALOR6 = 'Promoción de Mensualidad'
+WHERE DESCRIPCION='PROM_TIPO_PROMOCIONES' AND VALOR2='PROM_MIX'
+AND EMPRESA_COD='33';
+
+COMMIT;
+
+/

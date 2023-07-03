@@ -1,0 +1,248 @@
+
+--Caracteristica para el producto
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'FACTIBILIDAD_HOUSING_PAC',
+    'N',
+    'Activo',
+    sysdate,
+    'arsuarez',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+      VALUES(DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO = 'HOUSING Alquiler de Espacio Físico'),
+      (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA = 'FACTIBILIDAD_HOUSING_PAC'),
+      SYSDATE,NULL,'arsuarez',NULL,'Activo','NO');
+
+---------------------------------- CHECKLIST -------------------------------
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'CHECKLIST FACTIBILIDAD PAC',
+    'CHECKLIST FACTIBILIDAD PAC',
+    'PLANIFICACION',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'CHECKLIST FACTIBILIDAD PAC'),
+    'CAPACIDAD ELECTRICA DEL RACK',
+    'SI',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'CHECKLIST FACTIBILIDAD PAC'),
+    'DISPONIBILIDAD DE TOMA',
+    'SI',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'CHECKLIST FACTIBILIDAD PAC'),
+    'DISPONIBILIDAD DE MATERIALES',
+    'NO',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'CHECKLIST FACTIBILIDAD PAC'),
+    'ATS',
+    'NO',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+
+--nmotivos de rechazo
+
+INSERT
+INTO DB_GENERAL.ADMI_MOTIVO  
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_MOTIVO.NEXTVAL,
+    (SELECT ID_RELACION_SISTEMA
+      FROM DB_SEGURIDAD.SEGU_RELACION_SISTEMA
+      WHERE MODULO_ID =
+        (SELECT ID_MODULO
+        FROM DB_SEGURIDAD.SIST_MODULO
+        WHERE NOMBRE_MODULO = 'factibilidad_pac'
+        AND ESTADO          = 'Activo'
+        )
+      AND ACCION_ID =
+        (SELECT ID_ACCION
+        FROM DB_SEGURIDAD.SIST_ACCION
+        WHERE NOMBRE_ACCION = 'index'
+        AND ESTADO          = 'Activo'
+        )),
+    'Cliente administra su propia capacidad electrica',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    'arsuarez',
+    sysdate,
+    NULL,
+    NULL
+  );
+
+--Modelos de PDU
+
+INSERT
+INTO DB_INFRAESTRUCTURA.ADMI_TIPO_ELEMENTO VALUES
+  (
+    DB_INFRAESTRUCTURA.SEQ_ADMI_TIPO_ELEMENTO.NEXTVAL,
+    'PDU',
+    'PDU DATA CENTER',
+    'ACTIVO',
+    'Activo',
+    'arsuarez',
+    sysdate,
+    NULL,
+    NULL,
+    'BACKBONE'
+  );
+
+INSERT
+INTO DB_INFRAESTRUCTURA.ADMI_MODELO_ELEMENTO VALUES
+  (
+    DB_INFRAESTRUCTURA.SEQ_ADMI_MODELO_ELEMENTO.NEXTVAL,
+    (SELECT ID_MARCA_ELEMENTO FROM DB_INFRAESTRUCTURA.ADMI_MARCA_ELEMENTO WHERE NOMBRE_MARCA_ELEMENTO = 'OTROS'),
+    (SELECT ID_TIPO_ELEMENTO FROM DB_INFRAESTRUCTURA.ADMI_TIPO_ELEMENTO WHERE NOMBRE_TIPO_ELEMENTO = 'PDU'),
+    'AP7563',
+    '6 nemas L6-20R y 21 nemas 5-20R',
+    NULL,
+    'DIAS',
+    NULL,
+    'DIAS',
+    NULL,
+    'MM',
+    NULL,
+    'MM',
+    NULL,
+    'MM',
+    NULL,
+    'GR',
+    '1',
+    NULL,
+    'BPS',
+    NULL,
+    'BPS',
+    NULL,
+    'W',
+    NULL,
+    'W',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    'arsuarez',
+    sysdate,
+    'SI'
+  );
+
+INSERT
+INTO DB_INFRAESTRUCTURA.ADMI_MODELO_ELEMENTO VALUES
+  (
+    DB_INFRAESTRUCTURA.SEQ_ADMI_MODELO_ELEMENTO.NEXTVAL,
+    (SELECT ID_MARCA_ELEMENTO FROM DB_INFRAESTRUCTURA.ADMI_MARCA_ELEMENTO WHERE NOMBRE_MARCA_ELEMENTO = 'OTROS'),
+    (SELECT ID_TIPO_ELEMENTO FROM DB_INFRAESTRUCTURA.ADMI_TIPO_ELEMENTO WHERE NOMBRE_TIPO_ELEMENTO = 'PDU'),
+    'AP8661',
+    '3 C19 y 21 C13',
+    NULL,
+    'DIAS',
+    NULL,
+    'DIAS',
+    NULL,
+    'MM',
+    NULL,
+    'MM',
+    NULL,
+    'MM',
+    NULL,
+    'GR',
+    '1',
+    NULL,
+    'BPS',
+    NULL,
+    'BPS',
+    NULL,
+    'W',
+    NULL,
+    'W',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    'arsuarez',
+    sysdate,
+    'SI'
+  );

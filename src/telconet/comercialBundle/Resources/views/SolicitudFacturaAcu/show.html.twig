@@ -1,0 +1,77 @@
+
+
+<div class="container">
+    <h5>Detalles Generales del cliente: {{arraySolicitudDet.strCliente}}  <i class="fa fa-info-circle"></i></h5>
+    <table class="table compact" width='100%' border='0'>
+        <tbody>
+            <tr>
+                <td><b>Solicitud:</b></td>
+                <td>{{arraySolicitudDet.intSolicitudId}} </td>
+                <td></td>
+                <td><b>Estado:</b></td>
+                <td>{{arraySolicitudDet.strEstadoSol}} </td>
+                <td></td>
+                <td><b>Motivo:</b></td>
+                <td>{{arraySolicitudDet.strMotivo}} </td>
+            
+            </tr>
+            <hr>
+            <tr>
+                <td><b>Factura:</b></td>
+                <td>{{arraySolicitudDet.intFacturaId}} </td>
+                <td></td>
+                <td><b>Tipo Facturación:</b></td>
+                <td>{{arraySolicitudDet.strCambioFactura}} </td>
+                <td></td>
+                <td><b>Fecha Factura:</b></td>
+                <td>{{arraySolicitudDet.strFechaFactura}} </td>
+            
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container">
+        <label for="formulario" class="col-sm-12 col-form-label">Información del servicio:
+            <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                    aria-expanded="false" data-target="#contenedor_servicio"><i class="fa fa-angle-down"></i>
+            </button>
+        </label>
+        <div class="bonder-titulo"></div>
+        <div class="col-md-12">
+            <div id="contenedor_servicio" class="form-group row scrollbar">
+                <table class="table table-striped table-bordered compact table-sm"id="tablaServicio">
+                    <thead class="thead-light">
+                        <tr>
+                            <th><b>Descripcion</b></th>
+                            <th><b>Producto</b></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyServicio">
+                        {% if arraySolicitudDet['arrayServicio'] is defined and 
+                            arraySolicitudDet['arrayServicio'] is not empty %}
+                            {% for arrayItem in arraySolicitudDet.arrayServicio %}
+                            <tr>
+                                <td>{{ arrayItem['strDescripcion'] }}</td>
+                                <td>{{ arrayItem['strProducto'] }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

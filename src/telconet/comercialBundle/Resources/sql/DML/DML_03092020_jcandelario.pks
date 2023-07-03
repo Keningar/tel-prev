@@ -1,0 +1,391 @@
+INSERT 
+INTO 
+  DB_GENERAL.ADMI_PARAMETRO_CAB 
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  ) 
+  VALUES 
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'PARAMETRO PADRE PARA CONSIDERAR LA PRIORIDAD QUE SE DEBE CONSIDERAR EN LA REGLA DE SECTORIZACION',
+    'COMERCIAL',
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '127.0.0.1',
+    'jcandelario',
+    SYSDATE,
+    '127.0.0.1');
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PRIORIDAD_SECTORIZACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'EDIFICIO',
+    '1',
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PRIORIDAD_SECTORIZACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'SECTOR',
+    '2',
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PRIORIDAD_SECTORIZACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'ELEMENTO',
+    '3',
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PRIORIDAD_SECTORIZACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'PARROQUIA',
+    '4',
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+ 
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PRIORIDAD_SECTORIZACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'CANTON',
+    '5',
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PRIORIDAD_SECTORIZACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'JURISDICCION',
+    '6',
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROM_PRIORIDAD_SECTORIZACION'
+      AND ESTADO             = 'Activo'
+    ),
+    'PROM_PRIORIDAD_SECTORIZACION',
+    'SIN_SECTORIZACION',
+    '7',
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );
+
+COMMIT;
+/

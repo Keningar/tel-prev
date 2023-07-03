@@ -1,0 +1,11 @@
+reporteSecureCpe:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:ReporteSecureCpe:index" }
+    
+reporteSecureCpe_gridSecureCpe:
+    pattern:  /gridSecureCpe
+    defaults: { _controller: "comercialBundle:ReporteSecureCpe:gridSecureCpe" }
+    
+reporteSecureCpe_generarReporte:
+    pattern:  /generarReporteSecureCpe
+    defaults: { _controller: "comercialBundle:ReporteSecureCpe:generarReporteSecureCpe" }    

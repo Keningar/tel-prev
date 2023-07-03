@@ -1,0 +1,31 @@
+
+
+Delete from DB_GENERAL.ADMI_PARAMETRO_DET
+where parametro_id=(select ID_PARAMETRO from DB_GENERAL.ADMI_PARAMETRO_CAB 
+where nombre_parametro = 'CORREO_GERENTE_SEGURIDAD' and estado='Activo');
+
+Delete from DB_GENERAL.ADMI_PARAMETRO_CAB
+where NOMBRE_PARAMETRO='CORREO_GERENTE_SEGURIDAD' ;
+
+Delete from DB_GENERAL.ADMI_PARAMETRO_DET
+where parametro_id=(select ID_PARAMETRO from DB_GENERAL.ADMI_PARAMETRO_CAB 
+where nombre_parametro = 'DIAS_FIN_SEGURIDAD' and estado='Activo');
+
+Delete from DB_GENERAL.ADMI_PARAMETRO_CAB
+where NOMBRE_PARAMETRO='DIAS_FIN_SEGURIDAD' ;
+
+
+Delete from DB_GENERAL.ADMI_PARAMETRO_DET
+where parametro_id=(select ID_PARAMETRO from DB_GENERAL.ADMI_PARAMETRO_CAB 
+where nombre_parametro = 'CREAR_TAREA_SEGURIDAD_L2' and estado='Activo');
+
+Delete from DB_GENERAL.ADMI_PARAMETRO_CAB
+where NOMBRE_PARAMETRO='CREAR_TAREA_SEGURIDAD_L2' ;
+
+
+DELETE FROM DB_COMUNICACION.ADMI_PLANTILLA
+WHERE NOMBRE_PLANTILLA='Notificación de Finalizacion en el servicio de Seguridad' AND CODIGO='SEGURIDAD_SDWAN' AND ESTADO='Activo';
+
+commit;
+
+/

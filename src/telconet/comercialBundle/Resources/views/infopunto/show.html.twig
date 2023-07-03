@@ -1,0 +1,1359 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+<style>
+    #dashboard 
+    {
+        width: 1100px;
+    }
+</style>
+<style>
+    #customers {
+            font-size: 10px;
+            border-collapse: collapse;
+            width: 100%;
+            height: 50px;
+            table-layout: fixed;
+        }
+       
+        #customers thead tr {
+            display: block;
+        }
+        
+        #customers tbody{
+            display:block;
+            overflow: auto;
+            height: 80px;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #B9BDBC;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers thead tr {
+            display: block;
+         }
+        #customers th {
+            padding: 1px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            font-size: 9px;
+        }
+        #customers td {
+            padding: 2px;
+            font-size: 10px;
+        }
+        #table-wrapper {
+        position:relative;
+        }
+        #table-scroll {
+        height:95px;
+        align-content: center;       
+        }
+        #table-wrapper table {
+        width:100%;
+        }
+        #table-wrapper table thead th .text {
+        position:absolute;  
+        z-index:2;
+        height:20px;
+       
+        }
+</style>    
+    <style scoped="scoped">
+        
+
+        .greenTextGrid 
+        {
+            background-color: white;
+            color: #2D7F0F;
+            cursor: pointer;
+        }
+        .blackTextGrid 
+        {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        
+.col-form-label-2 {
+  padding-top: calc(0.375rem + 1px);
+  padding-bottom: calc(0.375rem + 1px);
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: 1.5;
+  color: #00309E;
+  font-size: 14px;
+  font-weight: bold;
+}
+.col-form-label-3 {
+  padding-top: calc(0.375rem + 1px);
+  padding-bottom: calc(0.375rem + 1px);
+  margin-bottom: 0;
+  font-size: inherit;
+  line-height: 1.5;
+  color: #2D7F0F;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.custom-control-label::before, 
+.custom-control-label::after {
+top: .8rem;
+width: 1.25rem;
+height: 1.25rem;
+}
+
+    </style>        
+       
+    <link href="{{ asset('./bundles/comercial/css/InfoPunto.css') }}" type="text/css" rel="stylesheet" />
+	<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <link href="{{ asset('./bundles/planificacion/css/housing.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.css')}}" type="text/css" rel="stylesheet" />
+    
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />  
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" /> 
+    <link href="{{ asset('public/css/crud.css') }}" type="text/css" rel="stylesheet" /> 
+       
+        
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}          
+    
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}">
+    </script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/crearEmergenciaSanitariaPunto.js?') }}"></script>
+
+    <script>        
+        urlGetParametrosDet                         = "{{ path('emergenciaSanitaria_getParametros') }}";        
+        var urlAjaxEjecutarEmergenciaSanitariaPto   = "{{ path('infopunto_ajaxEjecutarEmergenciaSanitariaPto') }}";      
+        
+        {%if fltTotalSaldoFactPorPto is defined %}
+            var fltTotalSaldoFactPorPto  = "{{fltTotalSaldoFactPorPto}}";
+        {%else%}    
+            var fltTotalSaldoFactPorPto  = "";
+        {% endif %}
+            
+    </script>
+    
+    <script>
+        //RUTAS
+        var url_servicio_delete_ajax        = '{{ path('infopunto_delete_servicio_ajax')}}';
+        var url_ver_historial_puntos        = "{{ path('infopunto_ver_historial_punto') }}";      
+        var url_cliente_lista_estados       = '{{ path('cliente_lista_estados')}}';
+        var url_grid                        = "{{ path('infopunto_servicios_grid',{'id':entity.id }) }}";
+        var url_motivo_anulacion            = '{{ path('coordinar_getMotivosAnulacion')}}';
+        var url_anular                      = '{{ path('coordinar_anular_ajax')}}';
+        var strUrlGetInfoSolsGestionSimultanea = '{{ path('coordinar_getInfoSolsGestionSimultanea') }}';
+        var strUrlEjecutaSolsGestionSimultanea = '{{ path('coordinar_ejecutaSolsGestionSimultanea') }}';
+        var url_anular_punto                = '{{ path('infopunto_permite_anular_punto_ajax')}}';
+        var url_anula_punto_ajax            = "{{ path('infopunto_anula_punto') }}";
+        var url_contactos_cliente           = "{{ path('infopunto_contactos_cliente',{'idCli':entity.personaEmpresaRolId.personaId.id}) }}";
+        var url_contactos_servicio          = "{{ path('infopunto_contactos_servicio') }}";
+        var url_grabaContactos              = "{{ path('infopunto_asigna_contactos_a_servicios') }}";
+        var url_getCaracteristicasServicio  = "{{ path('infopunto_getServicioProductoCaracteristicasAjax') }}";
+        var actualizarCaracteristica        = "{{ path('infopunto_actualizarCaracteristicaAjax')}}";
+        var url_get_puntos_para_enlazar     = "{{ path('infoservicio_ajaxGetPuntosParaEnlazarDatos')}}";
+        var url_get_info_enlace_datos       = "{{ path('infoservicio_ajaxGetInfoEnlaceDatos')}}";
+        var url_get_servicios_datos         = "{{ path('infoservicio_ajaxGetServiciosDatosByPunto')}}";
+        var url_crear_enlace_datos          = "{{ path('infoservicio_ajaxCrearEnlaceDatos')}}";
+        var url_get_admi_tipo_medio         = "{{ path('infoservicio_ajaxGetAdmiTipoMedio')}}";
+        var url_editarDescPresentaFactAjax  = "{{ path('infopunto_editarDescPresentaFactAjax')}}";
+        var url_agregarCarac                = "{{ path('infopunto_agregarCarac')}}";
+        var url_buscarDatosNaf              = "{{ path('servicio_buscarDatosNaf')}}";
+        var url_getCamarasEm                = "{{ path('infopunto_getCamarasEmAjax') }}";
+        var strUrlGetPoste                  = "{{ path('infopunto_getPoste')}}";
+        var urlFrecuenciasFacturacion       = "{{ path('infoservicio_ajaxGetFrecuenciasFacturacion')}}";
+        var urlCambiarFrecuenciaFacturacion = "{{ path('infoservicio_cambiarFrecuenciaFacturacion')}}";
+        var url_motivo_eliminacion          = "{{ path('infoservicio_getMotivosEliminacion')}}";
+        var urlGetProcesoMasivoNC           = "{{ path('infoservicio_ajaxGetProcesoMasivoNc')}}";
+
+        var strUrlHistorialPunto            = "{{ path('infopunto_gridHistorial', {'intIdPunto': entity.id})}}";
+        var url_actualizaPlanEquivalente    = "{{ path('infoservicio_ajaxActualizarPlanEquivalente')}}";
+        var puedeActualizarIdPlan           = "{{ is_granted('ROLE_13-4577') }}";        
+        var url_get_tipos_concentradores    = "{{ path('infoservicio_ajaxGetTiposConcentradores')}}";
+        
+        //ENLACE DE DATOS
+        var puedeEnlazarDatos               = "{{ is_granted('ROLE_322-3337') }}";
+        var strUrlRenovacionPlan            = "{{ path('infopunto_renovacionPlan') }}";
+        //ROLES
+        var rolpersona                      = "{{rol}}";
+        var prefijoEmpresa                  = "{{prefijoEmpresa}}";
+        var llenoDatosBancario              = "{{llenoDatosBancario}}";
+        
+        //SEGURIDAD LOGICA
+        var url_subirDocumentoAnexo         = "{{path('infoservicio_documentos_subirDocumentoAnexo') }}";
+        var url_eliminar_adjunto            = "{{path('gestion_documentos_eliminarDocumentoRegistroYArchivo') }}";
+        var url_fileUpload                  = "{{path('infoservicio_documentos_fileUpload') }}";
+        var url_verDocumentos               = "{{path('infoservicio_getVerDocumentos') }}";
+        var url_verifica_documentos         = "{{ path('infoservicio_getDocumentosEncontrados') }}";
+        var url_descargaDocumentos          = "{{path('infoservicio_getDescargaDocumentos') }}";        
+        //FORMA PAGO FACTURACION
+        var strUrlGridFormaPago                  = '{{ path('admiformapago_grid') }}';
+        var strUrlActualizarFormaPagoFacturacion = '{{ path('infopunto_actualizarFormaPagoFacturacion') }}';
+        var intIdPunto                           = '{{ entity.id }}';
+        
+        //Informacion para creacion de servicios backups
+        var getUltimaMilla                       = '{{path('servicio_getUltimaMilla')}}';
+        var getUltimaMillaCambioMedio            = '{{path('servicio_getUltimaMillaCambioMedio')}}';
+        var urlGetInformacionBackup              = '{{path('infopunto_getInformacionCrearServicioBackup')}}';
+        var urlVendedores                        = '{{path('infopunto_ajax_lista_vendedores')}}';
+        var urlCrearServicioBackup               = '{{path('infoservicio_ajaxCrearServicioBackup')}}';
+        var getTipoRedPorProducto                = '{{path('servicio_getTipoRedPorProducto')}}';
+
+        //Información para la plantilla de comisionistas
+        var strUrlGetPlantillaComisionista       = '{{ path('infopunto_getPlantillaComisionistaGridServicios') }}';
+        var strUrlGetPersonalComisionista        = '{{ path('infopunto_getPersonalComisionista') }}';
+        var floatValorMaxComision                = '{{ floatValorMaxComision }}';
+        var strUrlValidarSolicitudes             = "{{ path('autorizarsolicitudesclientes_validarSolicitudesClientes') }}";
+        var strUrlCrearSolicitudesComisionistas  = "{{ path('infopunto_crearSolicitudesPunto') }}";
+
+        //Obtener coordenadas sugeridas
+        var urlObtenerCoordenadaPunto            = "{{ path('infopunto_obteneCoordenadaSugerida') }}";
+        var urlGuardarCoordenadasSugeridas       = "{{ path('infopunto_guardarCoordenadasSugeridas') }}";
+        
+        //Migrar datos de factibilidad externa
+        var urlGetInfoClientesParaMigracion      = "{{ path('infoservicio_ajaxGetInfoClientesParaMigracion') }}";
+        var url_getOficinas                      = '{{path('envioplantilla_getOficinas')}}';
+        var urlClonarInformacionServicio         = "{{ path('infoservicio_ajaxClonarServiciosMigracion')}}";
+        var urlCodigoPromocion                   = "{{ path('infopunto_ajaxValidaCodigoPromocion')}}";
+        var urlGuardarCodigoPromocion            = "{{ path('promocion_ajaxGuardarCodigoPromocion')}}";
+        var urlValidaCaracExist                  = "{{ path('promocion_ajaxValidaCaracExistPromo')}}";
+        
+        //SAFE VIDEO ANALYTICS CAM
+        var urlGetCamarasSafecity                = "{{ path('infopunto_getCamarasPorPunto') }}";
+        var urlAsociarMascarillaConCamara        = "{{ path('infopunto_asociarMascarillasACamaras') }}";
+
+        //Eliminar Servicios de la Solucion
+        var urlEliminaServicioSolucion           = "{{ path('infoservicio_ajaxEliminarServiciosSolucion')}}";
+        var urlAnularRechazarSol                 = '{{ path('infoservicio_ajaxAnularRechazarServiciosSolucion') }}';
+        var url_solicitarFactibilidadTelefonia   = "{{ path('infopunto_solicitarFactibilidadTelefonia') }}";
+        var url_verLineasTelefonicas             = "{{ path('infopunto_verLineasTelefonicas') }}";
+        var url_nuevasLineas                     = "{{ path('infopunto_nuevasLineasTelefonicas') }}";
+        var url_gestionarLineasTelefonicas       = "{{ path('servicio_gestionarLineasTelefonicas') }}";
+        var strUrlMotivosEliminar                = '{{ path('coordinar_getMotivosRechazo') }}';
+        
+        var strUrlGetPlanesPorEstado             = "{{ path('infopunto_getPlanesPorEstado') }}";
+        var strUrlGetProductosPorEstado          = "{{ path('infopunto_getProductosPorEstado') }}";        
+
+        var urlGetInformacionGeneralCuartoTi     = '{{ path("elementosDataCenter_ajaxGetInformacionCuartoTi")}}';
+        var urlGetUnidadesRack                   = '{{ path('factibilidad_housing_ajaxGetInformacionRack') }}';
+        var urlGetInformacionGeneralHosting      = '{{ path('servicio_ajaxGetInformacionGeneralHosting')}}';
+       
+        var puntoId                              = "{{entity.id}}";    
+        var url_formasContactoPorCodigoAjax      = "{{ path('infopunto_formasContactoPorCodigoAjax')}}";
+        var url_ajaxFormasContactoPuntoPorTipo   = "{{ path('infopunto_ajaxFormasContactoPuntoPorTipo')}}";
+        var urlAjaxReingresoOrdenServicio        = "{{ path('infopunto_ajaxReingresoOrdenServicio')}}";
+    
+        var url_configurarLoginServicio            = "{{ path('gestionPaqueteSoporte_redirigir')}}";
+
+        var url_puntoscobertura                  = "{{ path('infopunto_ajax_get_puntos_cobertura')}}";
+        var url_cantones                         = "{{ path('infopunto_ajax_get_cantones_jurisdiccion')}}";
+        var url_lista_parroquias                 = '{{path('cliente_ajax_lista_parroquias')}}';
+        var url_lista_sectores                   = '{{path('cliente_ajax_lista_sectores')}}';
+        var url_getEncontradosNodoCliente        = '{{path("elementoNodoCliente_getEncontrados")}}';
+        var url_modelo                           = "{{path("elementoNodoCliente_modelosPorTipoElemento")}}";
+
+        var urlValidaTrasladoMd                  = "{{ path('infopunto_ajaxValidaTrasladoMd')}}";
+        var urlGetElementosRetirarTraslado       = "{{ path('infopunto_ajaxGetElementosRetirarTraslado')}}";
+        var urlGrabaEquiposEntregados            = "{{ path('infopunto_ajaxGrabaEquiposEntregados')}}";
+        
+        var url_valida_login                     = "{{ path('infopunto_ajax_valida_login') }}";
+        var url_genera_login                     = "{{ path('infopunto_ajax_genera_login') }}";
+        var url_img_loader                       = "{{ asset('public/images/images_crud/ajax-loader.gif') }}";
+        var url_img_check                        = "{{ asset('public/images/check.png') }}";
+        var url_img_delete                       = "{{ asset('public/images/delete.png') }}";
+    
+
+        var clienteId                            = "{{entity.personaEmpresaRolId.personaId.id}}";
+        var tipoNegocioId                        = "{{entity.tipoNegocioId.id}}";    
+        
+        var tipoIdentificacion                   = "{{entity.personaEmpresaRolId.personaId.tipoIdentificacion}}"; 
+        var identificacionCliente                = "{{entity.personaEmpresaRolId.personaId.identificacionCliente}}"; 
+        var tipoTributario                       = "{{entity.personaEmpresaRolId.personaId.tipoTributario}}"; 
+
+        var puedeIngresarCodigosPromocionales    = "{{ is_granted('ROLE_431-7758') }}";
+        
+        var permisoReingresoOrdenServicioNuevo       = "{{ is_granted('ROLE_151-8257') }}";
+        var permisoReingresoOrdenServicioTraslado    = "{{ is_granted('ROLE_151-8258') }}";
+        //subir archivos
+        var urlValidadorMaterial                 = '{{ path('coordinar_validadorExcedenteMaterial') }}';
+        var url_CargaDeArchivosMultiples         = "{{path('info_punto_CargaDeArchivosMultiples') }}";
+        var url_ValidateServiceCrsPorPunto       = "{{path('cliente_validate_service_CrsPorPunto')}}";
+
+        let url_compobar_deudas_cliente          = "{{ path('infoservicio_comprobar_deuda_ajax') }}";
+        let permisoValidarDeudas                 = "{{ is_granted('ROLE_13-9097') }}";
+
+
+        //configuracion logines y servicios
+        var strRazonSocial = '{{entity.personaEmpresaRolId.personaId.razonSocial}}';
+        var strCliente = '{{entity.personaEmpresaRolId.personaId.nombres }} {{ entity.personaEmpresaRolId.personaId.apellidos }}';
+        var strEsPadreFacturacion = '{{entityPuntoDatoAdicional.esPadreFacturacion}}';
+        var strRol                = "{{rol}}";
+        var strLogin = '{{entity.login}}'
+        {# Obtiene la informaciòn de horas soporte #}
+        var urlAjaxGetHorasSoporte          = '{{ path('servicio_ajaxGetHorasSoporte') }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/show.js?7') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/enlazar.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/crearBackup.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/cambiarTipoMedio.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/servicios.js?57') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/seleccionEdificio.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/verHistorial.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/verContactosServicios.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/agregarContactosServicios.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexLineasTelefonicas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexLineasFijasActiva.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexLineasFijas.js?2') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/funciones.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/ElementosDataCenter/elementosPasivos.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/indexServiciosDataCenter.js?4') }}"></script>
+    
+{% endblock %}
+
+{% block contenido_izq %}
+    {% set strLblParroquia = 'Parroquia' %}
+    {% set strLblCanton = 'Ciudad' %}
+    {% set strLblSector    = 'Sector' %}
+    {% if app.session.get('strNombrePais') == 'PANAMA' %}
+        {% set strLblCanton = 'Distrito' %}
+        {% set strLblParroquia = 'Corregimiento' %}
+    {%elseif (app.session.get('strNombrePais') == 'GUATEMALA')%}
+        {% set strLblCanton    = 'Departamento' %}
+        {% set strLblParroquia = 'Municipio' %}          
+    {% endif %}
+<div id="titulo_content">
+    <table>
+        <tr>
+            <td width="60px">
+                <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            </td>
+            {%if (rol == 'Cliente')%}
+                <td width="110px" class="col-form-label">
+                    Ver Punto Cliente
+                </td>
+            {%elseif (rol == 'Pre-cliente')%}
+                <td width="145px" class="col-form-label">
+                    Ver Punto de Prospecto
+                </td>
+            {%endif%}
+            <td id="divToolBarVip" width="180px">
+                <div id="toolBarVip"/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="body_content">   
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+     <div class="errormessage">
+        {{ flashMessage }}
+     </div>
+    {% endfor %}
+    
+    {% for flashMessageSubida in app.session.flashbag.get('subida') %}
+        <div class="successmessage">
+            {{flashMessageSubida}}
+        </div>
+    {% endfor %}
+        
+    {%if (objSolicitudMigracion)%}   
+     {%for solicitudMigracion in objSolicitudMigracion%}
+        <script>
+            alert('El cliente tiene '.
+                  'una {{solicitudMigracion.descripcionSolicitud}} {{solicitudMigracion.estado}} No. {{solicitudMigracion.id}}, \n\
+                   favor revisar');
+        </script>
+        
+        <div class="warningmessage" style="width:600px">
+             {{solicitudMigracion.descripcionSolicitud}} en estado : {{solicitudMigracion.estado}}  No. {{solicitudMigracion.id}}
+             {%if solicitudMigracion.estado == 'In-Corte' %}  
+                  Cliente Cortado, No se puede Procesar Migracion hasta que este Activo
+             {%endif%}
+             {%if solicitudMigracion.estado == 'Pendiente' and tieneCasoMigracionCreado == false %} 
+              <a href = "{{ path('infocaso_new', { 'idSolicitud': solicitudMigracion.id }) }}" >Generar Caso de click aqui</a>
+             {%elseif solicitudMigracion.estado == 'Pendiente' and tieneCasoMigracionCreado == true %}
+                . Ya tiene CASO relacionado
+             {%endif%}    
+                
+        </div>   
+      {%endfor%}           
+    {%endif%}
+        
+    {%if (arraySolicitudAgregarEquipo)%}   
+     {%for solicitudAgregarEquipo in arraySolicitudAgregarEquipo%}
+        <script>
+            alert('El cliente tiene una {{solicitudAgregarEquipo.descripcionSolicitud}} {{solicitudAgregarEquipo.estado}} No. {{solicitudAgregarEquipo.id}}, \n\
+                   favor revisar');
+        </script>
+      {%endfor%}           
+    {%endif%}
+
+    {%if (arraySolicitudAgregarEquipoMasivo)%}
+     {%for solicitudAgregarEquipo in arraySolicitudAgregarEquipoMasivo%}
+        <script>
+            alert('El cliente tiene una {{solicitudAgregarEquipo.descripcionSolicitud}} {{solicitudAgregarEquipo.estado}} \n\
+                   No. {{solicitudAgregarEquipo.id}}, favor revisar');
+        </script>
+      {%endfor%}
+    {%endif%}
+
+    {%if (arraySolicitudReubicacionTraslado)%}   
+     {%for solicitudReubicacionTraslado in arraySolicitudReubicacionTraslado%}
+        <script>
+            alert('El cliente tiene una {{solicitudReubicacionTraslado.descripcionSolicitud}} {{solicitudReubicacionTraslado.estado}} No. {{solicitudReubicacionTraslado.id}}, \n\
+                   favor revisar');
+        </script>
+      {%endfor%}           
+    {%endif%}
+    
+    {%if (arraySolicitudAprobServicio)%}   
+     {%for solicitudAprobServicio in arraySolicitudAprobServicio%}
+        <script>
+            alert('El cliente tiene una {{solicitudAprobServicio.descripcionSolicitud }} {{solicitudAprobServicio.estadoSolicitud }} '
+            +'No. {{solicitudAprobServicio.idSolicitud}} asociada al login {{ solicitudAprobServicio.loginPuntoSolicitud}}, \n\ favor revisar');
+        </script>
+      {%endfor%}           
+    {%endif%}
+        
+    {%if is_granted("ROLE_265-1797")  %}
+        <div class="infomessage" style="width:200px">
+            <a href='#' onClick="verHistorialPunto({{entity.id}})">Ver historial del punto</a>    
+        </div> 
+
+    {%endif%}
+        
+     {%if (entity.estado == 'PendienteEdif') %}
+        <div class="warningmessage" style="width:200px">
+            Finalizar la solicitud de Edificación para continuar con el proceso.
+        </div>
+    {%endif%}
+
+    {%if (strMensajeContrato is not null and strMensajeContrato != '') %}
+        <div class="warningmessage" style="width:85%">
+            {{strMensajeContrato}}
+        </div>
+    {%endif%}
+
+    {%if (strMensajeAdendum is not null and strMensajeAdendum != '') %}
+        <div class="warningmessage" style="width:85%">
+            {{strMensajeAdendum}}
+        </div>
+    {%endif%}
+        
+    {%if (objNombreLoginTrasladado)%}
+            
+    <div class="infomessage">
+                Este Login fue creado por Traslado de: 
+                <a  href="{{ path('infopunto_show', { 'id': objNombreLoginTrasladado.id,'rol':rol }) }}">
+                        {{objNombreLoginTrasladado.login}}
+                </a>                                            
+            </div>                                
+
+     {%endif%}  
+<table class="record_properties" border='0' width='100%'>
+    <tbody>
+        
+        <tr height="18px">
+            <td width='125px'><b>Cliente</b></td>
+            <td width='10px'>:</td>
+            {% if entity.personaEmpresaRolId.personaId.razonSocial is not null  %}
+            <input type="hidden" name="strInformacionCliente" id="strInformacionCliente" value={{entity.personaEmpresaRolId.personaId.razonSocial}} />
+            <td width='400px'>{{ entity.personaEmpresaRolId.personaId.razonSocial }}</td>
+            {%else%}
+            <td width='400px'>{{ entity.personaEmpresaRolId.personaId.nombres }} {{ entity.personaEmpresaRolId.personaId.apellidos }}</td>
+            <input type="hidden" name="strInformacionCliente" id="strInformacionCliente" value="{{entity.personaEmpresaRolId.personaId.nombres }} {{ entity.personaEmpresaRolId.personaId.apellidos }}"/>
+            {%endif%}
+            <td width='120px'><b>Referencia</b></td>
+            <td width='10px'>:</td>
+            <td>{{ entity.descripcionPunto }}</td>            
+        </tr>   
+        
+        <tr height="18px">
+            <td><b>Direcci&oacute;n</b></td>
+            <td>:</td>
+            <td>{{ entity.direccion }}</td>
+            <td><b>Latitud</b></td>
+            <td>:</td>
+            <input type="hidden" name="floatLatitud" id="floatLatitud" value={{entity.latitud}} />
+            <td>{{ entity.latitud }}</td>             
+        </tr>
+        
+        <tr height="18px">
+            <td><b>Punto Cobertura</b></td>
+            <td>:</td>
+            <td>{{ entity.puntoCoberturaId }}</td>             
+            <td><b>Longitud</b></td>
+            <td>:</td>
+            <input type="hidden" name="floatLongitud" id="floatLongitud" value={{entity.longitud}} />
+            <td>{{ entity.longitud }}
+                {% if is_granted("ROLE_9-5697") and boolTieneTarea %}
+                <div style="float:right; margin-left: 1px; width:200px;">
+                    <a id="btnFormaPAgoFacturacion" class="button-editar-coordenada-punto" onclick="actualizarCoordenadaPunto({{entity.id}},{{entity.latitud}},{{entity.longitud}});"
+                       title="Actualizar Coordenada del Punto.">
+                        &nbsp;
+                    </a>
+                </div>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td>
+        </tr>
+        
+        <tr height="18px">
+            <td><b>{{ strLblParroquia }}</b></td>
+            <td>:</td>
+            <td>{{ entity.sectorId.parroquiaId.nombreParroquia }}</td>             
+            <td><b>{{ strLblSector }}</b></td>
+            <td>:</td>
+            <td>{{ entity.sectorId.nombreSector }}</td>            
+        </tr>        
+        
+        <tr height="18px">
+            <td><b>Ruta Croquis</b></td>
+            <td>:</td>
+            <td>{{ strNombreArcCroquis }}</td>
+            <td><b>Observaci&oacute;n</b></td>
+            <td>:</td>
+            <td>{{ entity.observacion }}</td>            
+        </tr>
+        
+        <tr height="18px">
+            <td><b>Usuario Vendedor</b></td>
+            <td>:</td>
+            <td>{{ nombreVendedor }}</td>
+            <td><b>Estado</b></td>
+            <td>:</td>
+            <td>{{ entity.estado }}</td>            
+        </tr>
+        
+        <tr height="18px">
+            <td><b>Login</b></td>
+            <td>:</td>
+            <td>{{ entity.login }}</td>
+            <td><b>Nombre del Punto</b></td>
+            <td>:</td>
+            <td>  {{entity.nombrePunto}} </td>
+        </tr>
+        
+        <tr height="18px">
+            <td><b>Depende de Edificio</b></td>
+            <td>:</td>
+            <td>
+                {%if entityPuntoDatoAdicional is not null%}
+                    {%if entityPuntoDatoAdicional.dependeDeEdificio is not null%}
+                        {%if entityPuntoDatoAdicional.dependeDeEdificio == 'S' %}SI{%else%}NO{%endif%}
+                    {%endif%}
+                {%else%}
+                    NO 
+                {%endif%}
+            </td>
+            <td><b>Edificio</b></td>
+            <td>:</td>
+            <td>                
+                {%if entityPuntoEdificioDatoAdicional is not null%}
+
+                        {{ entityPuntoEdificioDatoAdicional.nombreEdificio }}                
+                {%else%} 
+                        {{ nombreNodoCliente }}
+                {%endif%}   
+                
+                {%if entityPuntoEdificioDatoAdicional is not null or nombreNodoCliente != '' %}
+                    <br><span style="font-weight: bold; font-size: 17.5px;">&#10551;</span>
+                    <span  style="font-size: 9.5px;">Administración : 
+                    <b>{{ tipoAdministracion }}</b></span>
+                {%endif%}   
+            </td>            
+        </tr> 
+       
+        <tr height="18px">
+            <td><b>Padre de Facturación</b></td>
+            <td>:</td>
+            <td>
+                {%if entityPuntoDatoAdicional is defined and entityPuntoDatoAdicional.esPadreFacturacion == 'S'%}
+                    SI
+                {%else%}
+                    NO
+                {%endif%}    
+            </td>
+            <td><b>Datos Envio</b></td>
+            <td>:</td>
+            <td>
+                {%if entityPuntoDatoAdicional.datosEnvio == 'S'%}
+                    SI
+                {%else%}
+                    NO
+                {%endif%}    
+            </td> 
+        </tr>
+        
+        <tr height="18px">
+            
+            {%if is_granted("ROLE_282-2259")  %}
+                <td><b>Archivo</b></td>
+                <td>:</td>
+                <td><a href="{{ path('infopunto_download_archivo_digital', { 'id': entity.id }) }}">{{ strNombreArcDigital }}</a></td>
+            {%else%}
+                <td><b>Es Prepago</b></td>
+                <td>:</td>
+
+                {% if(esPrepago == 'S') %}
+                    <td>Sí</td>
+                {%else%}
+                    <td>No</td>
+                {%endif%}
+                    
+            {%endif%}
+            
+            {% if (prefijoEmpresa == 'TN')  %}
+                <td><b>Ejecutivo Cobranzas</b></td>
+                <td>:</td>
+                <td>{{ejecutivoCobranzas}}</td>
+            {%else%}
+                
+                {%if is_granted("ROLE_282-2259")  %}
+                    <td><b>Es Prepago</b></td>
+                    <td>:</td>
+
+                    {%if(esPrepago == 'S') %}
+                        <td>Sí</td>
+                    {%else%}
+                        <td>No</td>
+                    {%endif%}
+                {%else%}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {%endif%}
+
+            {%endif%}
+        </tr>  
+        {% if (prefijoEmpresa == 'TN' and is_granted("ROLE_282-2259"))  %}
+        <tr height="18px">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>Es Prepago</b></td>
+            <td>:</td>
+
+            {% if(esPrepago == 'S') %}
+                <td>Sí</td>
+            {%else%}
+                <td>No</td>
+            {%endif%}
+                    
+        </tr>  
+        {% endif %}
+        {% if ((prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN'))  %}
+        <tr height="18px">
+            <td><b>Canal</b></td>
+            <td>:</td>
+            <td>{{canalDesc}}</td>
+            <td><b>Punto de Venta</b></td>
+            <td>:</td>
+            <td>{{puntoVentaDesc}}</td>           
+        </tr>
+        {% endif %}
+        {% if arrayTipoOrigen.valores.strDescripcion is defined and '' != arrayTipoOrigen.valores.strDescripcion%}
+        <tr height="18px">
+            <td><b>Tipo de Origen</b></td>
+            <td>:</td>
+            <td>{{arrayTipoOrigen.valores.strDescripcion}}</td>
+        </tr>
+        {% endif %}
+        {% if (prefijoEmpresa == 'TN')  %}
+        <tr height="18px">
+            <td><b>Forma Pago Facturaci&oacute;n</b></td>
+            <td>:</td>
+            <td colspan="4">
+                <div id="formaPagoPunto" style="float:left;">
+                    {{ strFormaPagoFacturacion }}
+                </div>
+                {% if is_granted("ROLE_9-4857") %}
+                    <div style="float:left; margin-left: 10px; width:100px;">
+                        <a id="btnFormaPAgoFacturacion" class="button-editar-forma-pago-facturacion" onclick="editarFormaPagoFacturacion();"
+                           title="Editar Forma Pago Facturación">
+                            &nbsp;
+                        </a>
+                    </div>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </td> 
+        </tr>
+
+        {% if (boolVerDistribuidor)  %}
+            <tr>
+                <td colspan='5'>
+                    <table  border='0' width='100%'>		
+                        <tr>
+                            <td colspan="4">
+                                <div class="secHead">Datos del cliente del Distribuidor</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Raz&oacute;n Social:   </b>{{ strRazonSocialCltDistribuidor }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Identificaci&oacute;n: </b>{{ strIdentificacionCltDistribuidor }}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        {% endif %}
+        {% endif %}
+        <tr>
+            <td colspan='5'>
+                <table  border='0' width='100%'>		
+                    <tr>
+                        <td colspan="4">
+                            <div class="secHead">Contactos del Punto</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                            {%for item in formasContactoPunto%}
+                                <tr>					
+                                    <td>
+                                        <b>
+                                        {% if (item.formaContactoId.descripcionFormaContacto=='Telefono Fijo') %}
+                                                <img src='/public/images/images_crud/contact.png'>
+                                        {%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Claro') or
+                                        (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Claro') or
+                                        (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Movistar') or
+                                        (item.formaContactoId.descripcionFormaContacto=='Telefono Movil CNT') or 
+                                        (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Cable and Wireless') or
+                                        (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Digicel') %}
+                                                <img src='/public/images/images_crud/phone.png'>				
+                                        {%elseif (item.formaContactoId.descripcionFormaContacto=='Correo Electronico')%}
+                                                <img src='/public/images/images_crud/mail.png'>							
+                                        {%elseif (item.formaContactoId.descripcionFormaContacto=='Facebook')%}
+                                                <img src='/public/images/images_crud/facebook.png'>							
+                                        {%elseif (item.formaContactoId.descripcionFormaContacto=='Twitter')%}
+                                                <img  width='16' height='16' src='/public/images/images_crud/twitter.png'>														
+                                        {%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil')%}
+                                                <img src='/public/images/images_crud/phone.png'>							
+                                        {%endif%}
+                                        </b>
+                                    </td>
+                                    <td>
+                                        {{item.valor}}
+                                    </td>		
+                                </tr>					
+                            {%endfor%}
+                            </table>
+                        </td>
+                    </tr>	
+                </table>
+            </td>
+        </tr>	
+    </tbody>
+</table>
+
+</div>
+{%if entityPuntoDatoAdicional is not null%}
+        {%if (entityPuntoDatoAdicional.esPadreFacturacion == 'S') and (entityPuntoDatoAdicional.datosEnvio == 'S')%}
+        <div class="body_content">
+            <table class="record_properties" border='0' width='100%'>
+                <tr>
+                    <td colspan="4">
+                        <div class="secHead">Datos de envio</div>
+                    </td>    
+                <tr>
+                    <td><b>Nombre:</b></td>
+                    <td>{{entityPuntoDatoAdicional.nombreEnvio}}</td>
+                    <td><b>Direccion:</b></td>
+                    <td>{{entityPuntoDatoAdicional.direccionEnvio}}</td>
+                </tr>
+                <tr>
+                    <td><b>Telefono:</b></td>
+                    <td>{{entityPuntoDatoAdicional.telefonoEnvio}}</td>
+                    <td><b>ciudad:</b></td>
+                    {%if (entityPuntoDatoAdicional.sectorId is not null)%}
+                    <td>{{entityPuntoDatoAdicional.sectorId.parroquiaId.cantonId.nombreCanton}}</td>
+                    {%else%}
+                    <td></td>
+                    {%endif%}
+                </tr> 
+                <tr>
+                    <td><b>Email:</b></td>
+                    <td>{{entityPuntoDatoAdicional.emailEnvio}}</td>
+                    <td><b> {{ strLblParroquia }}:</b></td>
+                    {%if (entityPuntoDatoAdicional.sectorId is not null)%}
+                    <td>{{entityPuntoDatoAdicional.sectorId.parroquiaId.nombreParroquia}}</td>
+                    {%else%}
+                    <td></td>
+                    {%endif%}                    
+                    
+                </tr> 
+                <tr>
+                    <td><b></b></td>
+                    <td></td>
+                    <td><b>{{ strLblSector }}:</b></td>
+                    {%if (entityPuntoDatoAdicional.sectorId is not null)%}
+                    <td>{{entityPuntoDatoAdicional.sectorId.nombreSector}}</td>
+                    {%else%}
+                    <td></td>
+                    {%endif%}                       
+                    
+                </tr>                 
+            </table>
+        </div>
+        {%elseif (entityPuntoDatoAdicional.esPadreFacturacion == 'S') and (entityPuntoDatoAdicional.datosEnvio != 'S')%}
+        <div id='div_alerta' class='warningmessage' style="">Este punto es un padre de facturaci&oacute;n y aun no tiene ingresado los datos de envio.</div>        
+        {%endif%}        
+{%endif%}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="successmessage">
+            {{ flashMessage }}
+    </div>
+{% endfor %}
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+       
+<div class="body_content_servicios">
+    <div id="my-tabs">
+        <!-- TAB DE MAPA/CROQUIS -->
+        <div id="tab2" class="x-hide-display">    
+            {%if (((entity.latitud is not null) and (entity.longitud is not null)) or (entity.path is not null))%}    
+                <table width='90%'>
+                <tr>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><div class='secHead'>Ubicaci&oacute;n en Mapa</div></td>
+                        <td><div class='secHead'>Croquis</div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        {%if ((entity.latitud is not null) and (entity.longitud is not null))%}
+                        <div id="map_canvas" style="width:350px; height:350px"></div>       
+                        {%else%}
+                        <img width='350' height="350" src="{{asset('public/images/images_crud/no_image_200_200.png')}}">
+                        {%endif%}
+                    </td>
+                    <td>
+                        {%if (entity.path is not null)%}
+                            {%if boolCroquisUrl == true %}
+                                <img width='350' height="350" src="{{entity.getPath()}}">
+                            {%else%}
+                                <img width='350' height="350" src="{{asset( entity.getWebPath1())}}">
+                            {%endif%}
+                        {%else%}
+
+                        <img width='350' height="350" src="{{asset('public/images/images_crud/no_image_200_200.png')}}">
+                        {%endif%}            
+                    </td>
+                </tr>    
+                </table>
+            {%endif%} 
+        </div>
+        <!-- TAB DE GRID DE SERVICIOS -->
+        <div id="tab1"> 
+            <table width="100%">
+                <tr bgcolor='#ffffff'>
+                    <td>&nbsp;</td><td bgcolor='#ffffff'><div id='filtro_servicios'>
+                        <input type="hidden" name="strFlagActivacionSim" id="strFlagActivacionSim" value={{strFlagActivacion}} />
+                        </div></td>
+                </tr>
+            
+                <tr bgcolor='#ffffff'>
+                         <td>&nbsp;</td><td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+                </tr>
+            </table>
+        </div>
+          <!-- TAB DE RECOMENDACIONES-->
+         {% if ((prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN'))  %}
+            <div id="tab3" class="x-hide-display"> 
+            </div>
+         {%endif%} 
+    </div>
+</div>
+    
+<div class="buttons">
+    <p>
+        <span class="height20px">
+		{% if (rol=='Cliente')%}
+            <a class="button-crud" href="{{ path('cliente_show',{'id':entity.personaEmpresaRolId.personaId.id,'idper':entity.personaEmpresaRolId.id}) }}">Regresar</a>
+		{%else%}
+			<a class="button-crud" href="{{ path('precliente_show',{'id':entity.personaEmpresaRolId.personaId.id,'idper':entity.personaEmpresaRolId.id}) }}">Regresar</a>
+		{%endif%}
+        </span>
+    </p>
+</div> 
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="4"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ entity.usrCreacion }}</td>
+
+              {% if(entity.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Inactivo") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ entity.feCreacion | date("d M Y") }}</td>
+
+              {% if(entity.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ entity.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Inactivo") %}
+              <th>Fecha:</th>
+              <td>{{ entity.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+
+              {% if(entity.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Inactivo") %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Ip:</th>
+              <td>{{ entity.ipCreacion}}</td>
+            </tr>            
+
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+       <div class="modal-content">
+           <div class="modal-header">
+                <h5 class="modal-title">Mensaje</h5>
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+           </div>
+           <div class="modal-body">
+           </div>
+           <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+           </div>
+       </div>
+    </div>
+</div>
+<div class="modal fade" id="modalDiferir" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <h5>Diferir Deuda Por Emergencia Sanitaria por Punto</h5>                                        
+                <form>
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa fa-info-circle"></i> Solo podrá diferir si el Punto posee Facturas impagas mayor a 
+                        <b>$ {{fltValorFactMin}}</b> y si no posee Notas de Credito en Flujo de autorización.
+                    </div>
+                    <div class="form-group row">
+                        <label for="deuda_actual" class="col-sm-4 col-form-label-2">Deuda Actual:  </label>                           
+                        <div class="col-sm-6 col-form-label-2">{{fltTotalSaldoFactPorPto}}</div>
+                    </div>                            
+                        
+                    <div class="form-group row">                            
+                        <label  for="meses_diferir" class="col-sm-4 col-form-label-2">Meses a Diferir: </label>                            
+                        <div class="col-sm-6">
+                            <select class="form-control" name="meses_diferir" id="meses_diferir" required>
+                            <option></option>
+                            </select>
+                             <label  for="meses_diferir" class="col-sm-4 col-form-label-2">Meses </label>      
+                            <div class="invalid-feedback">
+                            Campo Requerido.
+                            </div>
+                        </div>
+                    </div>                        
+                                        
+                    <div class="form-group row">                        
+                        <div class="col-sm-10 col-form-label-3" id ="idContenedorCuotas"></div>  
+                    </div>        
+                        
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btDiferidoFacturas" class="btn btn-primary btn-sm" data-dismiss="modal">Aceptar</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="limpiarDiferidoFacturas">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>  
+                    
+ <div class="modal fade" id="modalCodigoPromocion" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                     <h5>Ingreso de Códigos Promocionales</h5>    
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                </div>
+                <div class="modal-body">
+                    <br/>
+                    <form>
+                        <div class="form-group row" id = "promocionMix">
+                            <div class="col-sm-5" >
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="checkPromoMix"  onChange="controlValidaMix('codigoMens','PROM_MPLA')" value="">
+                                    <label class="custom-control-label" for="checkPromoMix">Promoción Mix</label>
+                                </div>
+                            </div>
+                        </div>  
+                        <div class="form-group row" id="div-mens">
+                            <label for="promocion_mens" class="col-sm-5 col-form-label">Código Mensualidad:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control input-sm" id="codigoMens" name="codigoMens" onkeyup="controlGuardar('codigoMens','PROM_MPLA')" onChange="validaCodigoPromociones('PROM_MPLA')"  placeholder="Código Mensualidad">
+                                <input type="hidden" id="codigoMensVal" name="codigoMensVal">
+                                <div  id='divSuccesMens'>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="div-bw">
+                            <label for="promocion_bw" class="col-sm-5 col-form-label">Código Ancho de Banda:</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control input-sm" id="codigoBW" name="codigoBW" onkeyup="controlGuardar('codigoBW','PROM_BW')" onChange="validaCodigoPromociones('PROM_BW')" placeholder="Código Ancho de Banda">
+                                <input type="hidden" id="codigoBWVal" name="codigoBWVal">
+                                <div  id='divSuccesBw'>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                         <input type="hidden" id="intIdServicio" name="idServicio">
+                         <input type="hidden" id="intIdProducto" name="intIdProducto">
+                         <input type="hidden" id="strTipoProducto" name="strTipoProducto">
+                         <input type="hidden" id="strAplicaMens" name="strAplicaMens">
+                         <input type="hidden" id="strAplicaBW" name="strAplicaBW">
+                         <input type="hidden" id="strServiciosMix" name="strServiciosMix">
+                         <input type="hidden" id="strPomocionMens" name="strPomocionMens">
+                         <input type="hidden" id="strPromocionBw" name="strPromocionBw">
+                         <input type="hidden" id="strIdTipoMens" name="strIdTipoMens">
+                         <input type="hidden" id="strIdTipoBw" name="strIdTipoBw">
+                   
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnGuardarCodigoPromocion" onclick="guardarCodigoPromociones()" class="btn btn-info btn-sm" data-dismiss="modal" disabled="">Guardar</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>                     
+              
+{% endblock contenido_izq %}
+{% block contenido_der %}
+	<div class="acciones_relacionadas">
+	{%if estadoCliente !='Cancel' and estadoCliente!='Cancelado'%}
+        <a href="{{ path('infopunto_new', { 'idCli': entity.personaEmpresaRolId.personaId.id, 'idPer': entity.personaEmpresaRolId.id, 'rol':rol,'strTipo':'manual' }) }}"
+           class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nuevo Punto
+		</a>
+      
+	{%endif%}    
+                   
+	</div>
+    
+    <br />
+    {% if (prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN') and is_granted("ROLE_9-7377")%}
+        <li>
+       <button type="button" data-toggle="modal" data-target="#modalDiferir" class="btn btn-info btn-sm" title="Diferir Deuda Por 
+       Emergencia Sanitaria por Punto" <i class="fa fa-ban"></i> Diferir Deuda </button>     
+       </li>
+    {%endif%}
+    
+	<br />
+        	<ul class="form_actions">
+
+			<li>
+				<a class="button-editar" href="{{ path('infopunto_newarchivodigital', { 'idPto': entity.id }) }}">
+					Subir Archivo Digital
+				</a>
+			</li>
+            {%if (is_granted("ROLE_281-2257"))  %}
+                <li>
+                    <a class="button-editar" href="{{ path('infopunto_cambioVendedor', { 'id': entity.id,'rol':rol }) }}">
+                            Cambio de Vendedor
+                    </a>
+                </li>
+            {%endif%}
+            {%if (is_granted("ROLE_281-2258"))  %}
+                <li>
+                    <a class="button-editar" href="{{ path('infopunto_actualizarFormasContacto', { 'id': entity.id,'rol':rol }) }}">
+                            Actualización Formas de Contacto
+                    </a>
+                </li>
+            {%endif%}
+            <li>
+                <a class="button-editar" href="{{ path('infocontrato', { 'tipo': 'adendum' }) }}">
+                        Crear Adendum
+                </a>
+            </li>
+            {% if ((prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN'))%}
+                <li>
+                    <a class="button-editar" href="{{ path('infocontrato_datos', { 'idPer': entity.personaEmpresaRolId.id, 'idPto': entity.id,'identificacionCliente':entity.personaEmpresaRolId.personaId.identificacionCliente }) }}">
+                            Datos para el contrato
+                    </a>
+                </li>
+			{%endif%}
+            {% if ((prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN'))%}
+                <li>                    
+                   <a class="button-editar" href='#' onClick="validateServiceCrsPorPunto({{entity.personaEmpresaRolId.id}}, {{entity.id}}, '{{ path('infocontrato', { 'tipo': 'contratoCRS' }) }}')">
+                          Crear Contrato CRS 
+                    </a>
+                </li>
+			{%endif%}
+		</ul>	
+		<ul class="form_actions">
+			{% if (is_granted("ROLE_9-4") and boolPermiteEditarPto== true )%}
+                <li>
+                    <a class="button-editar" href="{{ path('infopunto_edit', { 'id': entity.id,'rol':rol }) }}">
+                        Editar
+                    </a>
+                </li>
+			{%endif%}
+		</ul>
+        <ul class="form_actions">
+			{% if ((prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN') and is_granted("ROLE_8-4"))%}
+                <li>
+                    <a class="button-editar" href="{{ path('cliente_edit', { 'id': entity.personaEmpresaRolId.personaId.id }) }}">
+                        Actualización Datos Clientes
+                    </a>
+                </li>
+			{%endif%}
+		</ul>
+    
+        <ul class="form_actions">
+          {% if ( ((prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN') or boolContieneFacturacionConsumo ) and is_granted("ROLE_9-5077"))%}
+          <li>		
+            <a class="button-editar" href="{{ path('infopunto_newEditContratoExternoDigital', { 'intIdPunto': entity.id,'strRol':rol }) }}">
+                &nbsp;Subir Contratos Externos Digitales
+            </a>		
+          </li>
+        {%endif%}
+        </ul>
+
+         <ul class="form_actions">
+          {% if  (prefijoEmpresa == 'MD' and estadoCliente !='Cancel' and estadoCliente!='Cancelado' and  entity.estado!='Cancel' and entity.estado!='Cancelado' and entity.estado!='Anulado' and entity.estado!='PendienteNodo')%}
+
+          <li>			
+
+       <a href="#" onclick='comprobarDeudasCliente("{{ path('infopunto_new', { 'idCli': entity.personaEmpresaRolId.personaId.id, 'idPer': entity.personaEmpresaRolId.id, 'rol':rol,'strTipo':'continuo','idPunto':entity.id }) }}")' class="button-editar">
+                    &nbsp;Proceso Traslado        </a>
+
+          </li>
+        {%endif%}
+        </ul>
+    
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+        <ul class="listado_acciones_relacionadas">
+            {% if rol!="Pre-cliente" %}
+                {% if entity.estado!='Cancel' and entity.estado!='Cancelado' and entity.estado!='Anulado'%}
+                <li>
+                    <a  href="{{ path('infoordentrabajo_new') }}">Nueva Orden de Trabajo</a>
+                </li>
+                {%endif%}
+                {%if is_granted("ROLE_66-2")  %}
+                <li>
+                        <a class="listado_ac_tablas" href="{{ path('infopagocab_new') }}">Nuevo Pago</a>
+                </li>
+                {%endif%}
+                {%if is_granted("ROLE_68-2")  %}                                        
+                <li>
+                        <a class="listado_ac_tablas" href="{{ path('anticipo') }}">Nuevo Anticipo</a>
+                </li>
+                {%endif%}
+                {%if is_granted("ROLE_67-2")  %}
+                <li>
+                        <a class="listado_ac_tablas" href="{{ path('infodocumentofinancierocab_new') }}" target="_blank">Nueva Factura</a>
+                </li> 
+                {%endif%}
+                {%if is_granted("ROLE_67-1")  %}
+                <li>
+                        <a class="listado_ac_tablas" href="{{ path('infodocumentofinancierocab') }}" target="_blank">Ver Facturas</a>
+                </li> 
+                {%endif%}
+                {%if is_granted("ROLE_256-1617")  %}
+                <li>
+                        <a class="listado_ac_tablas" href="{{ path('solicitudcambiodocumento') }}">Nueva Solicitud cambio documento</a>
+                </li> 		
+                {%endif%}
+                {%if is_granted("ROLE_286-2697")  %}
+                <li>
+                        <a class="listado_ac_tablas" href="{{ path('solicitudes_solicitudesPunto') }}">Ver solicitudes</a>
+                </li> 		
+                {%endif%}                
+                {% if entity.estado!='Cancel' and entity.estado!='Cancelado' and entity.estado!='Anulado' and entity.estado!='PendienteNodo' %}
+                    {%if llenoDatosBancario == 'S' %}
+                        <li>
+                            <a href="{{ path('infoservicio_new',{'rol': rol }) }}">Agregar Servicio</a>
+                        </li>
+                    {%endif%}
+                    
+                    {%if is_granted("ROLE_9-5717") %}
+                        <li>
+                            <a  href="{{ path('infopunto_editarSolucion', { 'intIdPunto' : entity.id }) }}">Editar Soluciones</a>
+                        </li>	
+                    {%endif%}
+
+                    {%if is_granted("ROLE_9-886") or is_granted("ROLE_9-5117")  %}
+                        <li>
+                            <a  href="{{ path('infoordentrabajo_listar_convertir') }}">Convertir a Orden Trabajo</a>
+                        </li>	
+                    {%endif%}
+
+                    {% if (prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN') or (prefijoEmpresa == 'TN' and is_granted("ROLE_404-5637"))%}
+                        <li>
+                            <a  href="{{ path('infoservicio_trasladar_servicios', { 'id': entity.id, 'rol': rol }) }}">Trasladar Servicios</a>
+                            
+                        </li>		
+                    {%endif%}
+                    
+                    {% if prefijoEmpresa == 'TN' and is_granted("ROLE_404-5657")%}
+                        <li>
+                            <a  href="{{ path('infoservicio_reubicar_servicios', { 'id': entity.id, 'rol': rol }) }}">Reubicar Servicios</a>
+                            
+                        </li>		
+                    {%endif%}                                       
+                
+                {% endif %}	
+            {%else%}
+                {% if entity.estado!='Cancel' and entity.estado!='Cancelado'  and entity.estado!='Anulado' and entity.estado!='PendienteEdif' %}				
+                    {%if llenoDatosBancario == 'S' %}
+                        <li>
+                                <a  href="{{ path('infoservicio_new',{'rol': rol }) }}">Agregar Servicio</a>
+                        </li>
+                    {%endif%}
+                {% endif %}						
+            {% endif %}
+            <li>
+                    <a  href="{{ path('seguimiento_solicitud') }}">Trazabilidad Servicio</a>
+            </li>
+        </ul>	
+{% endblock contenido_der %}
+{% block javascripts_footer %}
+<script>
+var mapa;
+var ciudad = "";
+var tipoUbicacion = "";
+var login = "";
+var flagLoginCorrecto = 0;
+var markerPto ;
+    function muestraMapa(vlat,vlong){
+        if((vlat)&&(vlong)){
+		var latlng = new google.maps.LatLng(vlat,vlong);
+		//var latlng = new google.maps.LatLng(-2.176963, -79.883673);
+		 
+		var myOptions = {
+			zoom: 14,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+
+        
+		if(mapa){
+			mapa.setCenter(latlng);
+		}else{
+			mapa = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		}
+				
+		if(ciudad=="gye")
+		  layerCiudad = 'http://157.100.3.122/Coberturas.kml';
+		else
+		  layerCiudad = 'http://157.100.3.122/COBERTURAQUITONETLIFE.kml';
+		  	
+		//google.maps.event.addListener(mapa, 'dblclick', function(event) {
+		  
+		  if(markerPto)
+		      markerPto.setMap(null);
+		   
+		     markerPto = new google.maps.Marker({
+			position: latlng, 
+			map: mapa
+		      });
+		   mapa.setZoom(17);
+		   
+
+		//  dd2dms(event.latLng.lat(),event.latLng.lng());
+
+
+		//});
+       }
+    } 
+        
+    
+</script>
+<script>
+Ext.onReady(function(){   
+
+   let  items= [
+             {contentEl:'tab1', title:'Servicios'},
+             {contentEl:'tab2', title:'Mapa/Croquis',listeners:{
+                  activate: function(tab){
+                    {%if (entity.latitud is not null)and(entity.longitud is not null)%}
+                        muestraMapa({{entity.latitud}},{{entity.longitud}});
+                    {%endif%}
+                                    
+                    }
+                                    
+                }}
+            ] ;  
+
+    var tabs = new Ext.TabPanel({
+        height: 530,
+        renderTo: 'my-tabs',
+        activeTab: 0,
+        plain:true,
+        autoRender:true,
+        autoShow:true,
+        items:items
+    });
+    
+   });
+  
+
+</script>
+{% endblock javascripts_footer %}

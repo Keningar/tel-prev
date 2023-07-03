@@ -1,0 +1,1108 @@
+REM INSERTING into DB_GENERAL.ADMI_PARAMETRO_DET
+SET DEFINE OFF;
+
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO
+  (
+    ID_PRODUCTO,
+    EMPRESA_COD,
+    CODIGO_PRODUCTO,
+    DESCRIPCION_PRODUCTO,
+    INSTALACION,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    ES_PREFERENCIA,
+    ES_ENLACE,
+    REQUIERE_PLANIFICACION,
+    REQUIERE_INFO_TECNICA,
+    NOMBRE_TECNICO,
+    TIPO,
+    ES_CONCENTRADOR,
+    FUNCION_PRECIO,
+    SOPORTE_MASIVO,
+    ESTADO_INICIAL,
+    GRUPO,
+    COMISION_VENTA,
+    CLASIFICACION,
+    REQUIERE_COMISIONAR,
+    SUBGRUPO,
+    LINEA_NEGOCIO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO.NEXTVAL,
+    '10',
+    'CONN',
+    'Internet Small Business Razón Social',
+    '100',
+    'Activo',
+    SYSDATE,
+    'wgaibor',
+    '127.0.0.1',
+    'SI',
+    'SI',
+    'SI',
+    'SI',
+    'INTERNET SMALL BUSINESS',
+    'S',
+    'NO',
+    'if ([VELOCIDAD]==20) { PRECIO=105; } else if ([VELOCIDAD]==50) { PRECIO = 250; }  else if ([VELOCIDAD]==10) { PRECIO = 62.5; }  else if ([VELOCIDAD]==35) { PRECIO = 200; }',
+    'S',
+    'Pre-servicio',
+    'INTERNET Y DATOS',
+    '3',
+    'INTERNET',
+    'SI',
+    'INTERNET SMALL BUSINESS',
+    'CONNECTIVITY'
+  );
+-- Creación de las caracteristicas
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '1128',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'SI'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '643',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '644',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '641',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '642',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '5',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '700',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'SI'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '639',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '301',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '645',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '22',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '23',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '10',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '241',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '361',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '363',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '222',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '6',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '1098',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '1049',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '8',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '362',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '1211',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    '1213',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+
+--===============================================================================
+--================= IP Small Business Razón Social ==============================
+--===============================================================================
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO
+  (
+    ID_PRODUCTO,
+    EMPRESA_COD,
+    CODIGO_PRODUCTO,
+    DESCRIPCION_PRODUCTO,
+    INSTALACION,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    ES_PREFERENCIA,
+    ES_ENLACE,
+    REQUIERE_PLANIFICACION,
+    REQUIERE_INFO_TECNICA,
+    NOMBRE_TECNICO,
+    TIPO,
+    ES_CONCENTRADOR,
+    FUNCION_PRECIO,
+    SOPORTE_MASIVO,
+    ESTADO_INICIAL,
+    GRUPO,
+    COMISION_VENTA,
+    CLASIFICACION,
+    REQUIERE_COMISIONAR,
+    SUBGRUPO,
+    LINEA_NEGOCIO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO.NEXTVAL,
+    '10',
+    'IPSB',
+    'IP Small Business Razón Social',
+    '0',
+    'Activo',
+    SYSDATE,
+    'wgaibor',
+    '127.0.0.1',
+    'NO',
+    'NO',
+    'NO',
+    'SI',
+    'IPSB',
+    'S',
+    'NO',
+    'if ([VELOCIDAD]==20) { PRECIO=1.75; } else if ([VELOCIDAD]==10) { PRECIO = 1.75; } else if ([VELOCIDAD]==35) { PRECIO = 2.00; } else if ([VELOCIDAD]==50) { PRECIO = 2.00; }',
+    'S',
+    'PreAsignacionInfoTecnica',
+    'INTERNET Y DATOS',
+    '3',
+    'INTERNET',
+    'SI',
+    'INTERNET SMALL BUSINESS',
+    'CONNECTIVITY'
+  );
+--===============================================================================
+--============ Caracteristicas IP Small Business Razoó Social ===================
+--===============================================================================
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    '942',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    '639',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    '1128',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'SI'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    '1133',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    '222',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    '1049',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    '1211',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    '1213',
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+
+--============================================================================================================
+--==================================== [COMISIÓN] Internet Small Business Razón Social =======================
+--============================================================================================================
+INSERT
+INTO DB_COMERCIAL.ADMI_COMISION_CAB
+  (
+    ID_COMISION,
+    PRODUCTO_ID,
+    PLAN_ID,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    ESTADO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_COMISION_CAB.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    ),
+    NULL,
+    SYSDATE,
+    'wgaibor',
+    '127.0.0.1',
+    'Activo'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_COMISION_DET
+  (
+    ID_COMISION_DET,
+    COMISION_ID,
+    PARAMETRO_DET_ID,
+    COMISION_VENTA,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    ESTADO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_COMISION_DET.NEXTVAL,
+    (SELECT ACCA.ID_COMISION
+    FROM DB_COMERCIAL.ADMI_COMISION_CAB ACCA,
+      DB_COMERCIAL.ADMI_PRODUCTO ADPR
+    WHERE ACCA.PRODUCTO_ID        = ADPR.ID_PRODUCTO
+    AND ADPR.DESCRIPCION_PRODUCTO = 'Internet Small Business Razón Social'
+    AND ACCA.USR_CREACION         = 'wgaibor'),
+    3190,
+    3,
+    SYSDATE,
+    'wgaibor',
+    '127.0.0.1',
+    'Activo'
+  );
+  
+--============================================================================================================
+--======================================== IP Small Business Razón Social ====================================
+--============================================================================================================
+
+INSERT
+INTO DB_COMERCIAL.ADMI_COMISION_CAB
+  (
+    ID_COMISION,
+    PRODUCTO_ID,
+    PLAN_ID,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    ESTADO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_COMISION_CAB.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    ),
+    NULL,
+    SYSDATE,
+    'wgaibor',
+    '127.0.0.1',
+    'Activo'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_COMISION_DET
+  (
+    ID_COMISION_DET,
+    COMISION_ID,
+    PARAMETRO_DET_ID,
+    COMISION_VENTA,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    ESTADO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_COMISION_DET.NEXTVAL,
+    (SELECT ACCA.ID_COMISION
+    FROM DB_COMERCIAL.ADMI_COMISION_CAB ACCA,
+      DB_COMERCIAL.ADMI_PRODUCTO ADPR
+    WHERE ACCA.PRODUCTO_ID        = ADPR.ID_PRODUCTO
+    AND ADPR.DESCRIPCION_PRODUCTO = 'IP Small Business Razón Social'
+    AND ACCA.USR_CREACION         = 'wgaibor'
+    ),
+    3190,
+    3,
+    SYSDATE,
+    'wgaibor',
+    '127.0.0.1',
+    'Activo'
+  );
+
+--============================================================================================================
+--======================================== ADMI_PARAMETRO_CAB ================================================
+--============================================================================================================
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'LISTA_RAZON_SOCIAL_SMB',
+    'LISTADO DE PERSONA EMPRESA ROL ID QUE PUEDEN INSTALAR EL PRODUCTO SMALL BUSINESS RAZÓN SOCIAL',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'wgaibor',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+
+--============================================================================================================
+--======================================== ADMI_PARAMETRO_DET ================================================
+--============================================================================================================
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'LISTA_RAZON_SOCIAL_SMB'
+    ),
+    'SMALL BUSINESS RAZÓN SOCIAL - BANCO PICHINCHA',
+    '676680',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+
+/

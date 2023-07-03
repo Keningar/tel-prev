@@ -1,0 +1,949 @@
+REM INSERTING into DB_GENERAL.ADMI_PARAMETRO_DET
+SET DEFINE OFF;
+
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO
+  (
+    ID_PRODUCTO,
+    EMPRESA_COD,
+    CODIGO_PRODUCTO,
+    DESCRIPCION_PRODUCTO,
+    INSTALACION,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    ES_PREFERENCIA,
+    ES_ENLACE,
+    REQUIERE_PLANIFICACION,
+    REQUIERE_INFO_TECNICA,
+    NOMBRE_TECNICO,
+    TIPO,
+    ES_CONCENTRADOR,
+    FUNCION_PRECIO,
+    SOPORTE_MASIVO,
+    ESTADO_INICIAL,
+    GRUPO,
+    COMISION_VENTA,
+    CLASIFICACION,
+    REQUIERE_COMISIONAR,
+    SUBGRUPO,
+    LINEA_NEGOCIO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO.NEXTVAL,
+    '10',
+    'DFWA',
+    'Datos FWA',
+    '100',
+    'Activo',
+    SYSDATE,
+    'wgaibor',
+    '127.0.0.1',
+    'NO',
+    'NO',
+    'NO',
+    'NO',
+    'DATOS FWA',
+    'S',
+    'NO',
+    'PRECIO=200',
+    'S',
+    'Pre-servicio',
+    'INTERNET Y DATOS',
+    '3',
+    'DATOS',
+    'NO',
+    'DATOS FWA',
+    'CONNECTIVITY'
+  );
+--##############################################################################
+--#######################  ADMI_CARACTERISTICA  ################################
+--##############################################################################
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'IP_LOOPBACK',
+    'C',
+    'Activo',
+    SYSDATE,
+    'wgaibor',
+    NULL,
+    NULL,
+    'TECNICA'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'IP_WAN_TELEFONICA',
+    'C',
+    'Activo',
+    SYSDATE,
+    'wgaibor',
+    NULL,
+    NULL,
+    'TECNICA'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'TAREA_FWA',
+    'C',
+    'Activo',
+    SYSDATE,
+    'wgaibor',
+    NULL,
+    NULL,
+    'TECNICA'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'CONCENTRADOR_FWA',
+    'N',
+    'Activo',
+    SYSDATE,
+    'wgaibor',
+    NULL,
+    NULL,
+    'TECNICA'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'LOGIN_FWA',
+    'C',
+    'Activo',
+    SYSDATE,
+    'wgaibor',
+    'TECNICA'
+  );
+--##############################################################################
+--#########################  ADMI_PARAMETRO_CAB  ###############################
+--##############################################################################
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PRODUCTO_NO_VALIDA_VELOCIDADES',
+    'PRODUCTO QUE NO REQUIERE VALIDAR VELOCIDADES',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL);
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PYL_CONTACTO_FWA',
+    'CONTACTO COMERCIAL QUE REALIZA EL CONTACTO CON TELEFÓNICA',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL);
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'IP_LOOPBACK_FWA',
+    'Ip loopback asignada al producto FWA',
+    'PLANIFICACION',
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL);
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'ROUTER_FWA',
+    'Router asignado al producto FWA',
+    'PLANIFICACION',
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL);
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'TAREA_FACTIBILIDAD_FWA',
+    'Tarea que se crea para dar factibilidad al producto FWA',
+    'PLANIFICACION',
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL);
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'CAPACIDAD FWA',
+    'CAPACIDAD QUE MANEJARA EL PRODUCTO FWA TANTO DE SUBIDA COMO DE BAJADA',
+    'COMERCIAL',
+    'CAPACIDAD FWA',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1'
+  );
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'CONCENTRADOR INTERCONEXION FWA',
+    'PRODUCTO CONCENTRADOR INTERCONEXION FWA',
+    'COMERCIAL',
+    'CONCENTRADOR VIRTUAL FWA',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1'
+  );
+--##############################################################################
+--#########################  ADMI_PARAMETRO_DET  ###############################
+--##############################################################################
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PRODUCTO_NO_VALIDA_VELOCIDADES'
+    ),
+    'PRODUCTO DATOS FWA NO REQUIERE VALIDAR VELOCIDADES',
+    (SELECT ADPR.ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO ADPR
+    WHERE ADPR.DESCRIPCION_PRODUCTO = 'Datos FWA'
+    AND ADPR.EMPRESA_COD            = 10
+    ),
+    (SELECT ADPR.DESCRIPCION_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO ADPR
+    WHERE ADPR.DESCRIPCION_PRODUCTO = 'Datos FWA'
+    AND ADPR.EMPRESA_COD            = 10
+    ),
+    NULL,
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PYL_CONTACTO_FWA'
+    ),
+    'PERSONAL DE PYL QUE REALIZA EL CONTACTO CON TELEFÓNICA',
+    'vcastro',
+    '237652',
+    '238047',
+    'INSTALACIÓN: PRODUCTO FWA',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    'Tarea automática por aprovisionamiento de servicio FWA',
+    'PLANIFICACION Y LOGISTICA',
+    NULL
+  );
+--  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'SUBREDES INTERCONEXION ENTRE CLIENTES'),
+    'CLIENTE-FWA',
+    'CLIENTES',
+    '10',
+    '21',
+    '9',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    'DATOS-FWA',
+    NULL,
+    10
+  );
+--  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'ROUTER_FWA'),
+    'Router asignado a la zona R1 producto FWA',
+    'ro1nnitelefonica.telconet.net',
+    'R1',
+    NULL,
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+--  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'ROUTER_FWA'),
+    'Router asignado a la zona R2 producto FWA',
+    'ro1nnitelefonicauio.telconet.net',
+    'R2',
+    NULL,
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10
+  );
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    VALOR7,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'IP_LOOPBACK_FWA'),
+    'SubRedes asignada al producto FWA - Zona R2',
+    'R2',
+    '10.21.9.0/25',
+    '10.21.9.1',
+    '10.21.9.126',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    '10.21.9.127',
+    '10.21.9.255',
+    'DATOS FWA',
+    10
+  );
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    VALOR7,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'IP_LOOPBACK_FWA'),
+    'SubRedes asignada al producto FWA - Zona R1',
+    'R1',
+    '10.21.9.128/25',
+    '10.21.9.130',
+    '10.21.9.253',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    '10.21.9.254',
+    '10.21.9.255',
+    'DATOS FWA',
+    10
+  );
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'TAREA_FACTIBILIDAD_FWA'
+    ),
+    'FACTIBILIDAD DEL DPTO GIS R1',
+    'dalban',
+    'R1',
+    '616397',
+    'FACTIBILIDAD: CONCENTRADOR INTERCONEXION FWA',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    'Tarea automática de factibilidad concentrador virtual FWA',
+    'GIS',
+    NULL
+  );
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    VALOR6,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'TAREA_FACTIBILIDAD_FWA'
+    ),
+    'FACTIBILIDAD DEL DPTO GIS R2',
+    'ecabrera',
+    'R2',
+    '239638',
+    'FACTIBILIDAD: CONCENTRADOR INTERCONEXION FWA',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    'Tarea automática de factibilidad concentrador virtual FWA',
+    'GIS',
+    NULL
+  );
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO='CAPACIDAD FWA'
+    AND ESTADO            ='Activo'
+    ),
+    'CAPACIDADES QUE MANEJARA EL PRODUCTO FWA',
+    '5120',
+    'KB',
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1'
+  );
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO='CONCENTRADOR INTERCONEXION FWA'
+    AND ESTADO            ='Activo'
+    ),
+    'PRODUCTO CONCENTRADOR INTERCONEXION',
+    'CONCINTER',
+    NULL,
+    'Activo',
+    'wgaibor',
+    SYSDATE,
+    '127.0.0.1'
+  );
+--##############################################################################
+--##############################  ADMI_TAREA  ##################################
+--##############################################################################
+INSERT
+  INTO DB_SOPORTE.ADMI_TAREA
+    (
+      ID_TAREA,
+      PROCESO_ID,
+      NOMBRE_TAREA,
+      DESCRIPCION_TAREA,
+      ESTADO,
+      USR_CREACION,
+      USR_ULT_MOD,
+      FE_CREACION
+    )
+    VALUES
+    (
+      DB_SOPORTE.SEQ_ADMI_TAREA.NEXTVAL,
+      (SELECT ID_PROCESO
+      FROM DB_SOPORTE.ADMI_PROCESO
+      WHERE NOMBRE_PROCESO='SISTEMAS: TELCOS -COMERCIAL'),
+      'INSTALACIÓN: PRODUCTO FWA',
+      'Proceso utilizado para la instalación de servicios FWA',
+      'Activo',
+      'wgaibor',
+      'wgaibor',
+      SYSDATE
+    );
+--
+INSERT
+  INTO DB_SOPORTE.ADMI_TAREA
+    (
+      ID_TAREA,
+      PROCESO_ID,
+      NOMBRE_TAREA,
+      DESCRIPCION_TAREA,
+      ESTADO,
+      USR_CREACION,
+      USR_ULT_MOD,
+      FE_CREACION
+    )
+    VALUES
+    (
+      DB_SOPORTE.SEQ_ADMI_TAREA.NEXTVAL,
+      (SELECT ID_PROCESO
+      FROM DB_SOPORTE.ADMI_PROCESO
+      WHERE NOMBRE_PROCESO='SISTEMAS: TELCOS -COMERCIAL'),
+      'FACTIBILIDAD: CONCENTRADOR INTERCONEXION FWA',
+      'Proceso empleado al dar factibilidad de servicios FWA',
+      'Activo',
+      'wgaibor',
+      'wgaibor',
+      SYSDATE
+    );
+--##############################################################################
+--#######################  ADMI_PRODUCTO_CARAC  ################################
+--##############################################################################
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    (SELECT ID_PRODUCTO
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO='Concentrador Interconexiones'
+    AND ESTADO                ='Activo'
+    ),
+    (SELECT ID_CARACTERISTICA
+    FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+    WHERE DESCRIPCION_CARACTERISTICA='CONCENTRADOR_FWA'
+    ),
+    SYSDATE,
+    'wgaibor',
+    'Activo',
+    'NO'
+  );
+COMMIT;
+
+/

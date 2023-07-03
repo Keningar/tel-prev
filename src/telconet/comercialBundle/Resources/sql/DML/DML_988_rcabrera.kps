@@ -1,0 +1,146 @@
+---------------------------GRANT SELECT------------------------------------
+
+GRANT SELECT ON DB_SOPORTE.ADMI_TAREA TO DB_GENERAL;
+GRANT SELECT ON DB_COMERCIAL.INFO_CONTRATO_DATO_ADICIONAL TO DB_FINANCIERO;
+
+---------------------------GRANT SELECT------------------------------------
+
+-----------------------------------------------INGRESO DE CARACTERISTICAS------------------------------------------
+insert into db_comercial.ADMI_CARACTERISTICA values
+(db_comercial.SEQ_ADMI_CARACTERISTICA.nextval,'ID_PUNTO_TRASLADO','N','Activo',sysdate,'rcabrera',null,null,'COMERCIAL');
+
+
+insert into db_comercial.ADMI_CARACTERISTICA values
+(db_comercial.SEQ_ADMI_CARACTERISTICA.nextval,'SERVICIOS_TRASLADAR','N','Activo',sysdate,'rcabrera',null,null,'COMERCIAL');
+
+insert into db_comercial.ADMI_CARACTERISTICA values
+(db_comercial.SEQ_ADMI_CARACTERISTICA.nextval,'TIPO_NEGOCIO','N','Activo',sysdate,'rcabrera',null,null,'COMERCIAL');
+
+insert into db_comercial.ADMI_CARACTERISTICA values
+(db_comercial.SEQ_ADMI_CARACTERISTICA.nextval,'REGION','N','Activo',sysdate,'rcabrera',null,null,'COMERCIAL');
+-----------------------------------------------INGRESO DE CARACTERISTICAS------------------------------------------
+
+
+--------------------------------------------------INGRESO DE PARAMETROS---------------------------------------------
+
+/
+
+DECLARE
+
+ln_id_param NUMBER;
+
+BEGIN
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PARAMETROS PROYECTO TRASLADO',
+    'PARAMETROS UTILIZADOS EN EL PROYECTO DE TRASLADO',
+    'COMERCIAL',
+    'TRASLADO',
+    'Activo',
+    'rcabrera',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  ); 
+
+
+  SELECT id_parametro
+  INTO ln_id_param
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO = 'PARAMETROS PROYECTO TRASLADO'; 
+    
+ 
+    
+    INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+    (
+      DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+      ln_id_param,
+      'DEPARTAMENTO DE COBRANZAS',
+      142,
+      NULL,
+      NULL,
+      NULL,
+      'Activo',
+      'rcabrera',
+      sysdate,
+      '127.0.0.1',
+      NULL,
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    );  
+    
+    INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+    (
+      DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+      ln_id_param,
+      'CORREOS_VENTAS_GYE',
+      'ventas_gye@telconet.ec',
+      'aventas_gye@telconet.ec',
+      NULL,
+      NULL,
+      'Activo',
+      'rcabrera',
+      sysdate,
+      '127.0.0.1',
+      NULL,
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    );   
+    
+    INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+    (
+      DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+      ln_id_param,
+      'CORREOS_VENTAS_UIO',
+      'ventas_uio@telconet.ec',
+      'aventas_uio@telconet.ec',
+      NULL,
+      NULL,
+      'Activo',
+      'rcabrera',
+      sysdate,
+      '127.0.0.1',
+      NULL,
+      NULL,
+      NULL,
+      NULL,
+      NULL
+    );     
+    
+END;  
+
+/ 
+
+
+--------------------------------------------------INGRESO DE PARAMETROS---------------------------------------------
+
+
+---------------------------------------INGRESO DE SOLICITUD CON NUEVO ESTADO----------------------------------------
+
+INSERT INTO DB_COMERCIAL.info_detalle_solicitud (id_detalle_solicitud,servicio_id,TIPO_SOLICITUD_ID,usr_creacion,fe_creacion,estado)
+values(DB_COMERCIAL.seq_info_detalle_solicitud.nextval,31451,6,'rcabrera',sysdate,'PendienteAutorizar');
+
+---------------------------------------INGRESO DE SOLICITUD CON NUEVO ESTADO----------------------------------------
+
+---------------------------------------------INGRESO MOTIVOS--------------------------------------------------------
+
+INSERT INTO DB_GENERAL.ADMI_MOTIVO VALUES(DB_GENERAL.SEQ_ADMI_MOTIVO.nextval,9731,'Incumplimiento del Convenio de Pago','Activo','rcabrera',sysdate,'rcabrera',sysdate,null,null);
+INSERT INTO DB_GENERAL.ADMI_MOTIVO VALUES(DB_GENERAL.SEQ_ADMI_MOTIVO.nextval,9731,'Mora recurrente','Activo','rcabrera',sysdate,'rcabrera',sysdate,null,null);
+INSERT INTO DB_GENERAL.ADMI_MOTIVO VALUES(DB_GENERAL.SEQ_ADMI_MOTIVO.nextval,9731,'No reconoce la deuda','Activo','rcabrera',sysdate,'rcabrera',sysdate,null,null);
+INSERT INTO DB_GENERAL.ADMI_MOTIVO VALUES(DB_GENERAL.SEQ_ADMI_MOTIVO.nextval,9731,'Falta de liquidez','Activo','rcabrera',sysdate,'rcabrera',sysdate,null,null);
+INSERT INTO DB_GENERAL.ADMI_MOTIVO VALUES(DB_GENERAL.SEQ_ADMI_MOTIVO.nextval,9731,'A solicitud del Area Comercial','Activo','rcabrera',sysdate,'rcabrera',sysdate,null,null);
+INSERT INTO DB_GENERAL.ADMI_MOTIVO VALUES(DB_GENERAL.SEQ_ADMI_MOTIVO.nextval,9731,'Cliente desiste del traslado','Activo','rcabrera',sysdate,'rcabrera',sysdate,null,null);
+
+---------------------------------------------INGRESO MOTIVOS--------------------------------------------------------

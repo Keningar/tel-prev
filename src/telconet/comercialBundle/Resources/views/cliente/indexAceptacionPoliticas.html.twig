@@ -1,0 +1,23 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/ext-4.1.1/resources/css/CheckHeader.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+       strUrlIndex                   = "{{ path('cliente') }}";
+       strUrlRegularizacionPersona   = "{{path('cliente_personaRegularizacionAjax')}}"; 
+       strUrlGenerarCredencial       = "{{path('cliente_generarCredencialAjax')}}"; 
+       enviaWhatsapp                 = "{{ enviaWhatsapp }}";
+    </script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/indexAceptacionPoliticas.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/src/ux/CheckColumn.js') }}"></script>
+
+{% endblock %}
+
+{% block contenido_central %}
+    <div id='aceptacion_cliente'></div>
+{% endblock contenido_central %}

@@ -1,0 +1,196 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}
+<script>var url_formas_contacto_persona = "{{ path('cliente_formas_contacto_grid') }}";</script>    
+<script>var url_formas_contacto = "{{path('cliente_lista_formas_contacto')}}";</script>
+<script>var personaid = "{{entity.id}}";
+    var formname = 'clientetype';
+    var strPrefijoEmpresa = "{{strPrefijoEmpresa}}";
+    var puedeEditarCampos = '{{ is_granted("ROLE_8-8757") }}';
+</script>	
+
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Cliente</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %} 
+    {% if (strPrefijoEmpresa == 'MD' or strPrefijoEmpresa == 'EN')%}
+        <div class='warningmessage'>Solo se pueden editar las formas de contacto de un cliente y editar la Dirección Tributaria</div>
+    {% else   %}
+        <div class='warningmessage'>Solo se pueden editar las formas de contacto de un cliente</div>
+    {%endif%}    
+    
+    <form id='cliente_form' action="{{ path('cliente_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} onsubmit='return validaFormasContacto();' class="formulario">
+        <div id="my-tabs">
+            <div id="tab1" class="x-hide-display">
+                <table border='0'>
+                    <tr><td colspan='4'>&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td> 
+                        <td  style="vertical-align: top;">
+                            <div>
+                                <div>{{ form_label(edit_form.tipoEmpresa) }} {{ form_widget(edit_form.tipoEmpresa) }}</div>                        
+                                <div>{{ form_label(edit_form.tipoIdentificacion) }} {{ form_widget(edit_form.tipoIdentificacion) }}</div>
+                                <div>{{ form_label(edit_form.tipoTributario) }} {{ form_widget(edit_form.tipoTributario) }}</div>
+                                <div>{{ form_label(edit_form.nacionalidad) }} {{ form_widget(edit_form.nacionalidad) }}</div>
+                                <div>{{ form_label(edit_form.direccionTributaria) }} {{ form_widget(edit_form.direccionTributaria) }}</div>
+                            </div>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td style="vertical-align: top;">
+                            <div>{{ form_label(edit_form.identificacionCliente) }}{{ form_widget(edit_form.identificacionCliente) }}</div>
+                            <div id='div_razon_social' style="display:none">{{ form_label(edit_form.razonSocial) }} {{ form_widget(edit_form.razonSocial) }}</div>
+                            <div>{{ form_label(edit_form.representanteLegal) }} {{ form_widget(edit_form.representanteLegal) }}</div>
+                            <div id='div_nombres'>
+                                <div>{{ form_label(edit_form.nombres) }} {{ form_widget(edit_form.nombres) }}</div>
+                                <div>{{ form_label(edit_form.apellidos) }} {{ form_widget(edit_form.apellidos) }}</div>
+                                <div>{{ form_label(edit_form.genero) }} {{ form_widget(edit_form.genero) }}</div>
+                                <div>{{ form_label(edit_form.estadoCivil) }} {{ form_widget(edit_form.estadoCivil) }}</div>
+                                <div>{{ form_label(edit_form.origenIngresos) }} {{ form_widget(edit_form.origenIngresos) }}</div>
+                                <div>{{ form_label(edit_form.fechaNacimiento) }} {{ form_widget(edit_form.fechaNacimiento) }}</div>
+                                <div>{{ form_label(edit_form.tituloId) }} {{ form_widget(edit_form.tituloId) }}</div>
+                                <input type='text' style="display:none" id="clientetype_formas_contacto" name="clientetype[formas_contacto]" />                            
+                            </div>
+
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="tab2" class="x-hide-display">
+                <table border='0' align='center'>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            <div id='lista_formas_contacto_grid'></div>
+                            <div class='infomessage'>Todo numero de telefono debe iniciar con el codigo de area correspondiente</div>
+                            <div class='infomessage'>Todo n&uacutemero de tel&eacute;fono internacional debe tener entre 7 y 15 d&iacute;gitos</div>
+                        </td>
+                    </tr>   
+                </table>            
+            </div>
+        </div>
+        <div class="buttons">
+            <p>
+                <button type="submit"  onclick="grabar('#clientetype_formas_contacto')" class="button-crud">Guardar</button>
+                <span class="height20px">
+                    &nbsp;&nbsp;
+                </span>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('cliente') }}">Regresar</a>
+                </span>                                        
+            </p>
+        </div>                
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/edit.js?6') }}"></script>
+<script>
+    //alert('Edit de Clientes');
+    function esEmpresa() {
+        if (($('#clientetype_tipoEmpresa').val() == 'Publica' || $('#clientetype_tipoEmpresa').val() == 'Privada') ||
+            $('#clientetype_razonSocial').val() != '')
+        {
+            //alert('empresa');
+            ocultarDiv('div_nombres');
+            mostrarDiv('div_razon_social');
+            $('#clientetype_razonSocial').attr('required', 'required');
+            $('#clientetype_representanteLegal').attr('required', 'required');
+            $('label[for=clientetype_representanteLegal]').html('* Representante Legal:');
+            $('label[for=clientetype_representanteLegal]').addClass('campo-obligatorio');
+            $('#clientetype_nombres').removeAttr('required');
+            $('#clientetype_apellidos').removeAttr('required');
+            $('#clientetype_genero').removeAttr('required');
+            $('#clientetype_estadoCivil').removeAttr('required');
+            $('#clientetype_fechaNacimiento_month').removeAttr('required');
+            $('#clientetype_fechaNacimiento_day').removeAttr('required');
+            $('#clientetype_fechaNacimiento_year').removeAttr('required');
+            $('#clientetype_tituloId').removeAttr('required');
+        }
+        else
+        {
+            //alert('persona');
+            mostrarDiv('div_nombres');
+            ocultarDiv('div_razon_social');
+            $('#clientetype_razonSocial').removeAttr('required');
+            $('label[for=clientetype_representanteLegal]').removeClass('campo-obligatorio');
+            $('label[for=clientetype_representanteLegal]').html('Representante Legal:');
+            $('#clientetype_representanteLegal').removeAttr('required');
+            $('#clientetype_nombres').attr('required', 'required');
+            $('#clientetype_apellidos').attr('required', 'required');
+            $('#clientetype_genero').attr('required', 'required');
+            $('#clientetype_estadoCivil').attr('required', 'required');
+            $('#clientetype_fechaNacimiento_month').attr('required', 'required');
+            $('#clientetype_fechaNacimiento_day').attr('required', 'required');
+            $('#clientetype_fechaNacimiento_year').attr('required', 'required');
+            $('#clientetype_tituloId').attr('required', 'required');
+        }
+
+    }
+    function esRuc() {
+        if ($('#clientetype_tipoIdentificacion').val() == 'RUC') {
+            $('#clientetype_identificacionCliente').removeAttr('maxlength');
+            $('#clientetype_identificacionCliente').attr('maxlength', '13');
+            //$('#clientetype_identificacionCliente').val('');
+        } else
+        {
+            $('#clientetype_identificacionCliente').removeAttr('maxlength');
+            $('#clientetype_identificacionCliente').attr('maxlength', '10');
+            //$('#clientetype_identificacionCliente').val('');
+        }
+    }
+
+    function mostrarDiv(div) {
+        capa = document.getElementById(div);
+        capa.style.display = 'block';
+    }
+    function ocultarDiv(div) {
+        capa = document.getElementById(div);
+        capa.style.display = 'none';
+    }
+
+    $(document).ready(function() {
+        $('#clientetype_tipoEmpresa').attr('disabled', true);
+        $('#clientetype_tipoIdentificacion').attr('disabled', true);
+        $('#clientetype_identificacionCliente').attr('readonly', 'readonly');
+        $('#clientetype_razonSocial').attr('readonly', 'readonly');
+        $('#clientetype_nombres').attr('readonly', 'readonly');
+        $('#clientetype_apellidos').attr('readonly', 'readonly');
+        esEmpresa();
+        esRuc();
+        deshabilitaCampos();
+        // Se pone obligatoriedad solo si no es empresa MD 
+        if(strPrefijoEmpresa !='MD' && strPrefijoEmpresa !='EN')
+        {
+            $('label[for=clientetype_formas_contacto]').addClass('campo-obligatorio');
+            $('#clientetype_formas_contacto').attr('required', 'required');
+        }
+    });
+
+</script>	
+{% endblock %}

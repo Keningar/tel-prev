@@ -1,0 +1,85 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de servicios de {{entity.login}}</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_servicios'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+            </tr>
+        </table>
+        
+        <script>
+        var url_cliente_delete_ajax              = '{{path('cliente_delete_ajax')}}';
+        var url_cliente_lista_estados            = '{{path('cliente_lista_estados')}}';
+        var url_grid                             = "{{ path('infopunto_servicios_grid',{'id':entity.id }) }}";
+        var url_contactos_cliente                = "{{ path('infopunto_contactos_cliente',{'idCli':entity.personaId.id}) }}";
+        var url_contactos_servicio               = "{{ path('infopunto_contactos_servicio') }}";
+        var url_grabaContactos                   = "{{ path('infopunto_asigna_contactos_a_servicios') }}";
+        var strUrlGetPlantillaComisionista       = '{{ path('infopunto_getPlantillaComisionistaGridServicios') }}';
+        var strUrlGetPersonalComisionista        = '{{ path('infopunto_getPersonalComisionista') }}';
+        var floatValorMaxComision                = '0';
+        var strUrlValidarSolicitudes             = "{{ path('autorizarsolicitudesclientes_validarSolicitudesClientes') }}";
+        var strUrlCrearSolicitudesComisionistas  = "{{ path('infopunto_crearSolicitudesPunto') }}";
+     
+        </script>        
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/servicios.js?56') }}"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/verContactosServicios.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/agregarContactosServicios.js') }}"></script>
+    </div> 
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('infopunto_show',{'id':entity.id}) }}">Regresar</a>
+        </span>
+    </p>
+</div>        
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="acciones_relacionadas">
+	<a href="{{ path('infopunto_new',{'idCli':entity.PersonaId.id}) }}" class="button-nuevo-registro">
+		<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+		&nbsp;Nuevo Punto
+	</a>
+</div>
+<ul class="listado_acciones_relacionadas"></ul>
+{% endblock contenido_der %}

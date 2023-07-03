@@ -1,0 +1,7 @@
+visor_documentos_comercial:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:GestionDocumentos:index" , modulo:comercial }
+    
+visor_documentos_comercial_new:
+    pattern:  /new
+    defaults: { _controller: "soporteBundle:GestionDocumentos:new" , modulo:comercial }

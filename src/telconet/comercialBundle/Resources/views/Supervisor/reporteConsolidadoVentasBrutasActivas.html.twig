@@ -1,0 +1,58 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/comercial/css/supervisor.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+	
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">        
+        var strUrlGetConsolidadoVentas = '{{ path("reportessupervisor_gridReporteConsolidadoVentasBrutasActivas") }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./public/js/ExtJsCalendar/changeLanguage.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/Supervisor/reporteConsolidadoVentasBrutasActivas.js?1') }}"></script>
+{% endblock %}
+
+
+{% block contenido_central %}
+    <div id="titulo_content" class="titulo_interno">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Reporte Consolidado de Ventas Brutas y Activas</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+
+    <div class="body_content">
+        <form action="{{ path('reportessupervisor_exportarReporteConsolidadoVentasBrutasActivas') }}" method="get" >
+            
+            <input id="expFeAprobacionDesde" name="expFeAprobacionDesde" type="hidden" value="" />
+            <input id="expFeAprobacionHasta" name="expFeAprobacionHasta" type="hidden" value="" />
+            <input id="expFeActivacionDesde" name="expFeActivacionDesde" type="hidden" value="" />
+            <input id="expFeActivacionHasta" name="expFeActivacionHasta" type="hidden" value="" />
+            <input id="expFeCreacionPuntoDesde" name="expFeCreacionPuntoDesde" type="hidden" value="" />
+            <input id="expFeCreacionPuntoHasta" name="expFeCreacionPuntoHasta" type="hidden" value="" />
+            <input id="expFePlanificacionDesde" name="expFePlanificacionDesde" type="hidden" value="" />
+            <input id="expFePlanificacionHasta" name="expFePlanificacionHasta" type="hidden" value="" />
+            
+            <table>
+                <tr>
+                    <td valign="top">
+                        <div id='filtros'></div>
+                        <br/>
+                        <div id='gridReporteConsolidado'></div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('reportessupervisor_index') }}">
+                        Regresar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </div>
+{% endblock contenido_central %}

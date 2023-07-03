@@ -1,0 +1,59 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/comercial/css/supervisor.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+	
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">        
+        var strUrlGetVentas = '{{ path("reportesvendedor_gridVentas") }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/Vendedor/index.js') }}"></script>
+{% endblock %}
+
+
+{% block contenido_izq %}
+    <div id="titulo_content" class="titulo_interno">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Reporte General</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+
+    <div class="body_content">
+        <table width="100%" align="center">
+            <tr>
+                <td valign="top">
+                    <center>
+                        <div id='filtroVentas'></div>
+                    </center>
+                    <br/>
+                    <center>
+                        <div id='gridVentasVendedor'></div>
+                    </center>
+                </td>
+            </tr>
+        </table>
+
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('comercialBundle_opcion', {'opcion_menu': 'reportes'}) }}">
+                        Regresar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        <li style="margin-bottom: 20px;">
+            <a class="button-nuevo-registro" href="{{ path('reportesvendedor_reporteVentas') }}">
+                Reporte Detallado de Ventas
+            </a>
+        </li>
+    </ul>
+{% endblock contenido_der %}

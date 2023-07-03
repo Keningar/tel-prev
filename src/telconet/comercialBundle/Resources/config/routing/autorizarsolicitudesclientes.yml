@@ -1,0 +1,31 @@
+autorizarsolicitudesclientes:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:AutorizarSolicitudesClientes:index" }
+
+autorizarsolicitudesclientes_grid:
+    pattern:  /gridSolicitudesClientes
+    defaults: { _controller: "comercialBundle:AutorizarSolicitudesClientes:grid"}
+
+autorizarsolicitudesclientes_aprobarRechazar:
+    pattern:  /aprobarRechazarSolicitudesClientes
+    defaults: { _controller: "comercialBundle:AutorizarSolicitudesClientes:aprobarRechazarSolicitudesCliente" }
+
+autorizarsolicitudesclientes_getMotivosRechazo:
+    pattern:  /getMotivosRechazoSolicitudesClientes
+    defaults: { _controller: "comercialBundle:AutorizarSolicitudesClientes:getMotivosRechazo" }
+
+autorizarsolicitudesclientes_getTipoSolicitudesClientes:
+    pattern:  /getTipoSolicitudesClientes
+    defaults: { _controller: "comercialBundle:AutorizarSolicitudesClientes:getTipoSolicitudesClientes" }
+
+autorizarsolicitudesclientes_validarSolicitudesClientes:
+    pattern:  /validarSolicitudesClientes
+    defaults: { _controller: "comercialBundle:AutorizarSolicitudesClientes:validarSolicitudesClientes" }
+
+autorizarsolicitudesclientes_aprobarRechazarMasivo:
+    pattern:  /aprobarRechazarSolicitudesClientesMasivo
+    defaults: { _controller: "comercialBundle:AutorizarSolicitudesClientes:aprobarRechazarSolicitudesClienteMasivo" }
+
+autorizarsolicitudesclientes_getClientesPorSolicitud:
+    pattern:  /getClientesPorSolicitudAjax
+    defaults: { _controller: "comercialBundle:AutorizarSolicitudesClientes:getClientesPorSolicitudAjax" }

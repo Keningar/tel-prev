@@ -1,0 +1,146 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/administracion/css/Plantillas.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/InfoLogs/index.js?1') }}"></script> 
+
+    <script>var urlGridInfoLogs    = "{{ path('infoLogs_gridInfoLogs') }}";</script>
+    <script>var urlGetRangoFechas  = "{{ path('infoLogs_getParametroRangoFechas') }}";</script>
+    <script>var urlGetMetodos      = "{{ path('infoLogs_getMetodos') }}";</script>
+{% endblock %}
+
+{% block contenido_central %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md">
+                 <div>
+                    <br/>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <button type="button" class="btn btn-outline-info btn-sm collapsed" data-toggle="collapse" aria-expanded="false" 
+                                            data-target="#contenedor_busqueda">Criterios de Búsqueda <em class="fa fa-angle-down"></em></button>   
+                                </li>                                
+                            </ul>
+                        </div>
+                    </nav>
+                </div>                
+                <div id="contenedor_busqueda" class="collapse">
+                    <form><br />
+                        <div class="form-group row">
+                            
+                            <div class="form-group col-md-1">
+                                <label for="fecha_desde">Fecha Desde:</label>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <input type="text" class="form-control" id="fecha_desde" name="fecha_desde" 
+                                       placeholder="YYYY-MM-DD">
+                            </div>
+                            
+                            <div class="form-group col-md-1">
+                                <label for="fecha_hasta">Fecha Hasta:</label>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <input type="text" class="form-control" id="fecha_hasta" name="fecha_hasta" 
+                                       placeholder="YYYY-MM-DD">
+                            </div>                          
+                        </div>
+                        
+                         <div class="form-group row">
+                             <div class="form-group col-md-1">
+                                <label for="metodos_consulta">Acción:</label>
+                            </div>                            
+                            <div class="form-group col-md-2">                                
+                                <select  class="form-control custom" id="metodos_consulta" name="metodos_consulta"></select>
+                            </div>
+                             
+                            <div class="col-col-md-2">                                
+                                <button type="button" class="btn btn-secondary btn-sm" id="limpiar_formulario">
+                                    <em class="fa fa-paint-brush"></em> Limpiar
+                                </button>&nbsp;                                
+                                <button type="button" class="btn btn-info btn-sm" id="buscar_info_logs"><em class="fa fa-search"></em> Buscar</button>                               
+                            </div>
+                        </div> 
+                    </form>              
+                </div>
+         </div>
+    </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="body_content k-content">
+                    <h6>Consulta de Logs</h6><br />
+                    <table class="table table-striped table-bordered compact" id="tabla_lista_logs" class="display" style="width:100%">
+                        <thead class="thead-light"> 
+                            <tr>
+                                <th>Orígen</th>
+                                <th>Acción</th>
+                                <th>Nombre </th>
+                                <th>Apellido </th>
+                                <th>Razón Social </th>
+                                <th>Identificación</th>
+                                <th>Tipo Identificación</th>
+                                <th>Tpo Tributario</th>
+                                <th>Login</th>                                  
+                                <th>Usuario </th>
+                                <th>Fecha</th>
+                                <th>Ip</th>                                
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+       </form>
+    </div>
+    
+    <div class="modal fade" id="modalDetalle" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mensaje Logs</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>                                         
+{% endblock contenido_central %}

@@ -1,0 +1,852 @@
+-- INGRESANDO PROGRESOS DE TAREA DE EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.ADMI_PROGRESOS_TAREA 
+(
+ID_PROGRESOS_TAREA
+, CODIGO_TAREA 
+, NOMBRE_TAREA 
+, DESCRIPCION_TAREA 
+, ESTADO
+, USR_CREACION
+, FE_CREACION 
+, IP_CREACION 
+, USR_ULT_MOD 
+, FE_ULT_MOD
+) 
+values 	
+(
+DB_SOPORTE.SEQ_ADMI_PROGRESOS_TAREA.NEXTVAL,
+'1', 						-- CODIGO_TAREA 
+'INSTALACION_EXTENDER_DUAL_BAND_V5', 			-- NOMBRE_TAREA 
+'Tareas de instalación de producto Extender Dual Band para equipos V5', 	-- DESCRIPCION_TAREA 
+'Activo', 					-- ESTADO
+'jnazareno', 					-- USR_CREACION
+SYSDATE, 					-- FE_CREACION 
+'127.0.0.1', 				-- IP_CREACION 
+NULL, 						-- USR_ULT_MOD 
+NULL 						-- FE_ULT_MOD
+);
+
+-- PROGRESO DE ACTA EPP PARA TAREA MD EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+	(
+		ID_PROGRESO_PORCENTAJE,
+		PORCENTAJE,
+		TIPO_PROGRESO_ID,
+		TAREA_ID,
+		ESTADO,
+		USR_CREACION,
+		FE_CREACION,
+		IP_CREACION,
+		USR_ULT_MOD,
+		FE_ULT_MOD,
+		ORDEN,
+		EMPRESA_ID
+	) 
+	values 	
+	(
+		DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL,
+		'5',--PORCENTAJE 
+		'2',-- ID TIPO PROGRESO 
+		'1',-- ID TAREA 
+		'Activo',-- ESTADO 
+		'jnazareno',-- USR CREACION 
+		SYSDATE,-- FECHA CREACION
+		'127.0.0.1',-- IP CREACION 
+		NULL,-- USR MODIFICACION
+		NULL,-- FECHA MODIFICACION
+		'1',-- ORDEN 
+		'18'-- ID EMPRESA 
+);
+
+-- PROGRESO DE SEGUIMIENTOS PARA TAREA MD EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+	(
+		ID_PROGRESO_PORCENTAJE,
+		PORCENTAJE,
+		TIPO_PROGRESO_ID,
+		TAREA_ID,
+		ESTADO,
+		USR_CREACION,
+		FE_CREACION,
+		IP_CREACION,
+		USR_ULT_MOD,
+		FE_ULT_MOD,
+		ORDEN,
+		EMPRESA_ID
+	) 
+	values 	
+	(
+		DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL,
+		'5',--PORCENTAJE 
+		'1',-- ID TIPO PROGRESO 
+		'1',-- ID TAREA 
+		'Activo',-- ESTADO 
+		'jnazareno',-- USR CREACION 
+		SYSDATE,-- FECHA CREACION
+		'127.0.0.1',-- IP CREACION 
+		NULL,-- USR MODIFICACION
+		NULL,-- FECHA MODIFICACION
+		'2',-- ORDEN 
+		'18'-- ID EMPRESA 
+);
+
+
+-- PROGRESO DE FOTOS PARA TAREA MD EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+	(
+		ID_PROGRESO_PORCENTAJE,
+		PORCENTAJE,
+		TIPO_PROGRESO_ID,
+		TAREA_ID,
+		ESTADO,
+		USR_CREACION,
+		FE_CREACION,
+		IP_CREACION,
+		USR_ULT_MOD,
+		FE_ULT_MOD,
+		ORDEN,
+		EMPRESA_ID
+	) 
+	values 	
+	(
+		DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL,
+		'10',--PORCENTAJE 
+		'10',-- ID TIPO PROGRESO 
+		'1',-- ID TAREA 
+		'Activo',-- ESTADO 
+		'jnazareno',-- USR CREACION 
+		SYSDATE,-- FECHA CREACION
+		'127.0.0.1',-- IP CREACION 
+		NULL,-- USR MODIFICACION
+		NULL,-- FECHA MODIFICACION
+		'3',-- ORDEN 
+		'18'-- ID EMPRESA 
+);
+
+
+-- PROGRESO DE INGRESOS DE EQUIPOS PARA TAREA MD EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+	(
+		ID_PROGRESO_PORCENTAJE,
+		PORCENTAJE,
+		TIPO_PROGRESO_ID,
+		TAREA_ID,
+		ESTADO,
+		USR_CREACION,
+		FE_CREACION,
+		IP_CREACION,
+		USR_ULT_MOD,
+		FE_ULT_MOD,
+		ORDEN,
+		EMPRESA_ID
+	) 
+	values 	
+	(
+		DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL,
+		'10',--PORCENTAJE 
+		'21',-- ID TIPO PROGRESO 
+		'1',-- ID TAREA 
+		'Activo',-- ESTADO 
+		'jnazareno',-- USR CREACION 
+		SYSDATE,-- FECHA CREACION
+		'127.0.0.1',-- IP CREACION 
+		NULL,-- USR MODIFICACION
+		NULL,-- FECHA MODIFICACION
+		'4',-- ORDEN 
+		'18'-- ID EMPRESA 
+);
+
+-- PROGRESO DE ACTIVACION PARA TAREA MD EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+	(
+		ID_PROGRESO_PORCENTAJE,
+		PORCENTAJE,
+		TIPO_PROGRESO_ID,
+		TAREA_ID,
+		ESTADO,
+		USR_CREACION,
+		FE_CREACION,
+		IP_CREACION,
+		USR_ULT_MOD,
+		FE_ULT_MOD,
+		ORDEN,
+		EMPRESA_ID
+	) 
+	values 	
+	(
+		DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL,
+		'40',--PORCENTAJE 
+		'6',-- ID TIPO PROGRESO 
+		'1',-- ID TAREA 
+		'Activo',-- ESTADO 
+		'jnazareno',-- USR CREACION 
+		SYSDATE,-- FECHA CREACION
+		'127.0.0.1',-- IP CREACION 
+		NULL,-- USR MODIFICACION
+		NULL,-- FECHA MODIFICACION
+		'5',-- ORDEN 
+		'18'-- ID EMPRESA 
+);
+
+-- PROGRESO DE ACTA PARA TAREA MD EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+	(
+		ID_PROGRESO_PORCENTAJE,
+		PORCENTAJE,
+		TIPO_PROGRESO_ID,
+		TAREA_ID,
+		ESTADO,
+		USR_CREACION,
+		FE_CREACION,
+		IP_CREACION,
+		USR_ULT_MOD,
+		FE_ULT_MOD,
+		ORDEN,
+		EMPRESA_ID
+	) 
+	values 	
+	(
+		DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL,
+		'10',--PORCENTAJE 
+		'7',-- ID TIPO PROGRESO 
+		'1',-- ID TAREA 
+		'Activo',-- ESTADO 
+		'jnazareno',-- USR CREACION 
+		SYSDATE,-- FECHA CREACION
+		'127.0.0.1',-- IP CREACION 
+		NULL,-- USR MODIFICACION
+		NULL,-- FECHA MODIFICACION
+		'6',-- ORDEN 
+		'18'-- ID EMPRESA 
+);
+
+-- PROGRESO DE ENCUESTA PARA TAREA MD EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+	(
+		ID_PROGRESO_PORCENTAJE,
+		PORCENTAJE,
+		TIPO_PROGRESO_ID,
+		TAREA_ID,
+		ESTADO,
+		USR_CREACION,
+		FE_CREACION,
+		IP_CREACION,
+		USR_ULT_MOD,
+		FE_ULT_MOD,
+		ORDEN,
+		EMPRESA_ID
+	) 
+	values 	
+	(
+		DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL,
+		'10',--PORCENTAJE 
+		'8',-- ID TIPO PROGRESO 
+		'1',-- ID TAREA 
+		'Activo',-- ESTADO 
+		'jnazareno',-- USR CREACION 
+		SYSDATE,-- FECHA CREACION
+		'127.0.0.1',-- IP CREACION 
+		NULL,-- USR MODIFICACION
+		NULL,-- FECHA MODIFICACION
+		'7',-- ORDEN 
+		'18'-- ID EMPRESA 
+);
+
+-- PROGRESO DE FINALIZAR  PARA TAREA MD EXTENDER DUAL BAND V5
+Insert 
+into DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+	(
+		ID_PROGRESO_PORCENTAJE,
+		PORCENTAJE,
+		TIPO_PROGRESO_ID,
+		TAREA_ID,
+		ESTADO,
+		USR_CREACION,
+		FE_CREACION,
+		IP_CREACION,
+		USR_ULT_MOD,
+		FE_ULT_MOD,
+		ORDEN,
+		EMPRESA_ID
+	) 
+	values 	
+	(
+		DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL,
+		'10',--PORCENTAJE 
+		'9',-- ID TIPO PROGRESO 
+		'1',-- ID TAREA 
+		'Activo',-- ESTADO 
+		'jnazareno',-- USR CREACION 
+		SYSDATE,-- FECHA CREACION
+		'127.0.0.1',-- IP CREACION 
+		NULL,-- USR MODIFICACION
+		NULL,-- FECHA MODIFICACION
+		'8',-- ORDEN 
+		'18'-- ID EMPRESA 
+);
+
+--Actualizar los registros ya creados
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET 
+  SET VALOR4 = 'SI', 
+      VALOR5 = NULL, 
+      USR_ULT_MOD = 'jnazareno', 
+      FE_ULT_MOD = SYSDATE
+  WHERE PARAMETRO_ID = (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='ACTIVACION_PRODUCTOS_MEGADATOS')
+  AND USR_CREACION = 'rmoranc';
+
+-- PRODUCTO Extender Dual Band
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='ACTIVACION_PRODUCTOS_MEGADATOS'),
+        'Extender Dual Band',
+        'EXDB',
+        'SERIE_EXTENDER,MAC_EXTENDER,MODELO_EXTENDER,DESCRIPCION_EXTENDER',
+        (select ID_PROGRESOS_TAREA from DB_SOPORTE.admi_progresos_tarea where NOMBRE_TAREA = 'INSTALACION_EXTENDER_DUAL_BAND_V5'),
+        'NO',
+        'Activo',
+        'jnazareno',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        'En Valor1 se coloca el código del producto, valor2 son los equipos a ingresar, valor3 es el id del flujo del progreso, valor4 define si se activa en conjunto con el internet'
+);
+
+--Id del producto de Extender Dual Band Megadatos
+INSERT INTO db_general.admi_parametro_det VALUES 
+(
+    db_general.seq_admi_parametro_det.NEXTVAL,
+    (
+        SELECT
+            id_parametro
+        FROM
+            db_general.admi_parametro_cab
+        WHERE
+            nombre_parametro = 'PARAMETROS_GENERALES_MOVIL'
+    ),
+    'Id del producto de Extender Dual Band Megadatos',
+    'ID_PRODUCTO_EXTENDER_DUAL_BAND',
+    '1232',
+    NULL,
+    NULL,
+    'Activo',
+    'jnazareno',
+    SYSDATE,
+    '127.0.0.1', 
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+);
+
+--Cabecera de modelos a validar
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_CAB
+values         
+(
+                DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+                'MODELOS_EQUIPOS_VALIDAR_MOVIL',
+                'Modelos de equipos a validar ingresados desde el movil',
+                'SOPORTE',
+				'MODELOS_EQUIPOS_VALIDAR_MOVIL',
+				'Activo',
+				'jnazareno',
+				SYSDATE,
+				'127.0.0.1',
+				null,
+				null,
+				null
+);
+
+--Modelo de equipo ONT producto EXTENDER_DUAL_BAND
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='MODELOS_EQUIPOS_VALIDAR_MOVIL'),
+        'ONT wifi dual band básico 2x2  en 2.4Ghz y 5 Ghz',
+        'ONT wifi dual band',
+        'EG8M8145V5G06',
+        'CPE ONT',
+        'EXTENDER_DUAL_BAND',
+        'Activo',
+        'jnazareno',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        'S',
+        NULL,
+        NULL,
+        NULL,
+        'valor1 = descripción corta del equipo, valor2 = modelo del equipo, valor3 = tipo de equipo, valor4 = producto a validar, valor5 = disponible para registro'
+);
+
+--Modelo de equipo ONT producto WDB_Y_EDB
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='MODELOS_EQUIPOS_VALIDAR_MOVIL'),
+        'Equipo HS8245W 2.4G 3x3, 5G 4x4 soporte de beamforming, roaming',
+        'Equipo HS8245W',
+        'HS8M8245WG04',
+        'CPE ONT',
+        'WDB_Y_EDB',
+        'Activo',
+        'jnazareno',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        'N',
+        NULL,
+        NULL,
+        NULL,
+        'valor1 = descripción corta del equipo, valor2 = modelo del equipo, valor3 = tipo de equipo, valor4 = producto a validar, valor5 = disponible para registro'
+);
+
+--Modelo de equipo ONT producto WDB_Y_EDB
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='MODELOS_EQUIPOS_VALIDAR_MOVIL'),
+        'Equipo HS8245W 2.4G 3x3, 5G 4x4 soporte de beamforming, roaming',
+        'Equipo HS8245W',
+        'HS8M8245WG06',
+        'CPE ONT',
+        'WDB_Y_EDB',
+        'Activo',
+        'jnazareno',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        'N',
+        NULL,
+        NULL,
+        NULL,
+        'valor1 = descripción corta del equipo, valor2 = modelo del equipo, valor3 = tipo de equipo, valor4 = producto a validar, valor5 = disponible para registro'
+);
+
+--Modelo de equipo EXTENDER producto EXTENDER_DUAL_BAND
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='MODELOS_EQUIPOS_VALIDAR_MOVIL'),
+        'AP 2X2 2.4Ghz y 5GHz',
+        'AP',
+        'WA8M8011VW09',
+        'EXTENDER',
+        'EXTENDER_DUAL_BAND',
+        'Activo',
+        'jnazareno',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        'N',
+        NULL,
+        NULL,
+        NULL,
+        'valor1 = descripción corta del equipo, valor2 = modelo del equipo, valor3 = tipo de equipo, valor4 = producto a validar, valor5 = disponible para registro'
+);
+
+--Modelo de equipo EXTENDER producto EXTENDER_DUAL_BAND
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='MODELOS_EQUIPOS_VALIDAR_MOVIL'),
+        'WA8011V',
+        'WA8011V',
+        'WA8011V',
+        'EXTENDER',
+        'EXTENDER_DUAL_BAND',
+        'Activo',
+        'jnazareno',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        'N',
+        NULL,
+        NULL,
+        NULL,
+        'valor1 = descripción corta del equipo, valor2 = modelo del equipo, valor3 = tipo de equipo, valor4 = producto a validar, valor5 = disponible para registro'
+);
+
+--Modelo de equipo EXTENDER producto EXTENDER_DUAL_BAND
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='MODELOS_EQUIPOS_VALIDAR_MOVIL'),
+        'K562E',
+        'K562E',
+        'K562E',
+        'EXTENDER',
+        'EXTENDER_DUAL_BAND',
+        'Activo',
+        'jnazareno',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        'N',
+        NULL,
+        NULL,
+        NULL,
+        'valor1 = descripción corta del equipo, valor2 = modelo del equipo, valor3 = tipo de equipo, valor4 = producto a validar, valor5 = disponible para registro'
+);
+
+--Modelo de equipo WIFI DUAL BAND producto WDB_Y_EDB
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='MODELOS_EQUIPOS_VALIDAR_MOVIL'),
+        'WA8011V',
+        'WA8011V',
+        'WA8011V',
+        'WIFI DUAL BAND',
+        'WDB_Y_EDB',
+        'Activo',
+        'jnazareno',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        'N',
+        NULL,
+        NULL,
+        NULL,
+        'valor1 = descripción corta del equipo, valor2 = modelo del equipo, valor3 = tipo de equipo, valor4 = producto a validar, valor5 = disponible para registro'
+);
+
+--SE CREA UN NUEVO REGISTRO PARA GUARDAR EL PROGRESO DE ACTA EN INTERDEPARTAMENTAL TN
+--
+INSERT INTO DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+(
+    ID_PROGRESO_PORCENTAJE, 
+    PORCENTAJE, 
+    TIPO_PROGRESO_ID, 
+    TAREA_ID, 
+    ESTADO, 
+    USR_CREACION, 
+    FE_CREACION, 
+    IP_CREACION, 
+    FE_ULT_MOD, 
+    ORDEN, 
+    EMPRESA_ID
+) 
+VALUES 
+(
+    DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+    '5', 
+    (SELECT ID_TIPO_PROGRESO FROM DB_SOPORTE.ADMI_TIPO_PROGRESO atp WHERE CODIGO = 'ACTAS'), 
+    '-1', 
+    'Activo', 
+    'jnazareno', 
+    SYSDATE, 
+    '127.0.0.1', 
+    SYSDATE, 
+    '8', 
+    '10'
+);
+
+--SE CREA UN NUEVO REGISTRO PARA GUARDAR EL PROGRESO DE ENCUESTA EN INTERDEPARTAMENTAL TN
+--
+INSERT INTO DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+(
+    ID_PROGRESO_PORCENTAJE, 
+    PORCENTAJE, 
+    TIPO_PROGRESO_ID, 
+    TAREA_ID, 
+    ESTADO, 
+    USR_CREACION, 
+    FE_CREACION, 
+    IP_CREACION, 
+    FE_ULT_MOD, 
+    ORDEN, 
+    EMPRESA_ID
+) 
+VALUES 
+(
+    DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+    '5', 
+    (SELECT ID_TIPO_PROGRESO FROM DB_SOPORTE.ADMI_TIPO_PROGRESO atp WHERE CODIGO = 'ENCUESTAS'), 
+    '-1', 
+    'Activo', 
+    'jnazareno', 
+    SYSDATE, 
+    '127.0.0.1', 
+    SYSDATE, 
+    '9', 
+    '10'
+);
+
+--SE CREA UN NUEVO REGISTRO PARA GUARDAR EL PROGRESO DE EQUIPOS EN INTERDEPARTAMENTAL TN
+--
+INSERT INTO DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+(
+    ID_PROGRESO_PORCENTAJE, 
+    PORCENTAJE, 
+    TIPO_PROGRESO_ID, 
+    TAREA_ID, 
+    ESTADO, 
+    USR_CREACION, 
+    FE_CREACION, 
+    IP_CREACION, 
+    FE_ULT_MOD, 
+    ORDEN, 
+    EMPRESA_ID
+) 
+VALUES 
+(
+    DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+    '5', 
+    (SELECT ID_TIPO_PROGRESO FROM DB_SOPORTE.ADMI_TIPO_PROGRESO atp WHERE CODIGO = 'INGRESO_EQUIPOS'), 
+    '-1', 
+    'Activo', 
+    'jnazareno', 
+    SYSDATE, 
+    '127.0.0.1', 
+    SYSDATE, 
+    '10', 
+    '10'
+);
+
+--SE ACTUALIZA EL REGISTRO PARA CAMBIAR EL PORCENTAJE DE SEGUIMIENTO EN INTERDEPARTAMENTAL TN
+--
+UPDATE DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+SET 
+PORCENTAJE = '5', 
+USR_ULT_MOD = 'jnazareno',
+FE_ULT_MOD = SYSDATE
+WHERE 
+ID_PROGRESO_PORCENTAJE = 40;
+
+--SE CREA UN NUEVO REGISTRO PARA GUARDAR EL PROGRESO DE ACTA EN INTERDEPARTAMENTAL MD
+--
+INSERT INTO DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+(
+    ID_PROGRESO_PORCENTAJE, 
+    PORCENTAJE, 
+    TIPO_PROGRESO_ID, 
+    TAREA_ID, 
+    ESTADO, 
+    USR_CREACION, 
+    FE_CREACION, 
+    IP_CREACION, 
+    FE_ULT_MOD, 
+    ORDEN, 
+    EMPRESA_ID
+) 
+VALUES 
+(
+    DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+    '5', 
+    (SELECT ID_TIPO_PROGRESO FROM DB_SOPORTE.ADMI_TIPO_PROGRESO atp WHERE CODIGO = 'ACTAS'), 
+    '-1', 
+    'Activo', 
+    'jnazareno', 
+    SYSDATE, 
+    '127.0.0.1', 
+    SYSDATE, 
+    '7', 
+    '18'
+);
+
+--SE CREA UN NUEVO REGISTRO PARA GUARDAR EL PROGRESO DE ENCUESTA EN INTERDEPARTAMENTAL MD
+--
+INSERT INTO DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+(
+    ID_PROGRESO_PORCENTAJE, 
+    PORCENTAJE, 
+    TIPO_PROGRESO_ID, 
+    TAREA_ID, 
+    ESTADO, 
+    USR_CREACION, 
+    FE_CREACION, 
+    IP_CREACION, 
+    FE_ULT_MOD, 
+    ORDEN, 
+    EMPRESA_ID
+) 
+VALUES 
+(
+    DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+    '5', 
+    (SELECT ID_TIPO_PROGRESO FROM DB_SOPORTE.ADMI_TIPO_PROGRESO atp WHERE CODIGO = 'ENCUESTAS'), 
+    '-1', 
+    'Activo', 
+    'jnazareno', 
+    SYSDATE, 
+    '127.0.0.1', 
+    SYSDATE, 
+    '8', 
+    '18'
+);
+
+--SE CREA UN NUEVO REGISTRO PARA GUARDAR EL PROGRESO DE EQUIPOS EN INTERDEPARTAMENTAL MD
+--
+INSERT INTO DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+(
+    ID_PROGRESO_PORCENTAJE, 
+    PORCENTAJE, 
+    TIPO_PROGRESO_ID, 
+    TAREA_ID, 
+    ESTADO, 
+    USR_CREACION, 
+    FE_CREACION, 
+    IP_CREACION, 
+    FE_ULT_MOD, 
+    ORDEN, 
+    EMPRESA_ID
+) 
+VALUES 
+(
+    DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+    '5', 
+    (SELECT ID_TIPO_PROGRESO FROM DB_SOPORTE.ADMI_TIPO_PROGRESO atp WHERE CODIGO = 'INGRESO_EQUIPOS'), 
+    '-1', 
+    'Activo', 
+    'jnazareno', 
+    SYSDATE, 
+    '127.0.0.1', 
+    SYSDATE, 
+    '9', 
+    '18'
+);
+
+--SE ACTUALIZA EL REGISTRO PARA CAMBIAR EL PORCENTAJE DE SEGUIMIENTO EN INTERDEPARTAMENTAL MD
+--
+UPDATE DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+SET 
+PORCENTAJE = '5', 
+USR_ULT_MOD = 'jnazareno',
+FE_ULT_MOD = SYSDATE
+WHERE 
+ID_PROGRESO_PORCENTAJE = 21;
+
+--SE CREA UN NUEVO REGISTRO PARA GUARDAR EL PROGRESO DE EQUIPOS EN SOPORTE TN
+--
+INSERT INTO DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+(
+    ID_PROGRESO_PORCENTAJE, 
+    PORCENTAJE, 
+    TIPO_PROGRESO_ID, 
+    TAREA_ID, 
+    ESTADO, 
+    USR_CREACION, 
+    FE_CREACION, 
+    IP_CREACION, 
+    FE_ULT_MOD, 
+    ORDEN, 
+    EMPRESA_ID
+) 
+VALUES 
+(
+    DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+    '5', 
+    (SELECT ID_TIPO_PROGRESO FROM DB_SOPORTE.ADMI_TIPO_PROGRESO atp WHERE CODIGO = 'INGRESO_EQUIPOS'), 
+    '0', 
+    'Activo', 
+    'jnazareno', 
+    SYSDATE, 
+    '127.0.0.1', 
+    SYSDATE, 
+    '11', 
+    '10'
+);
+
+--SE ACTUALIZA EL REGISTRO PARA CAMBIAR EL PORCENTAJE DE SEGUIMIENTO EN SOPORTE TN
+--
+UPDATE DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+SET 
+PORCENTAJE = '5', 
+USR_ULT_MOD = 'jnazareno',
+FE_ULT_MOD = SYSDATE
+WHERE 
+ID_PROGRESO_PORCENTAJE = 34;
+
+--SE CREA UN NUEVO REGISTRO PARA GUARDAR EL PROGRESO DE EQUIPOS EN SOPORTE MD
+--
+INSERT INTO DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+(
+    ID_PROGRESO_PORCENTAJE, 
+    PORCENTAJE, 
+    TIPO_PROGRESO_ID, 
+    TAREA_ID, 
+    ESTADO, 
+    USR_CREACION, 
+    FE_CREACION, 
+    IP_CREACION, 
+    FE_ULT_MOD, 
+    ORDEN, 
+    EMPRESA_ID
+) 
+VALUES 
+(
+    DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+    '5', 
+    (SELECT ID_TIPO_PROGRESO FROM DB_SOPORTE.ADMI_TIPO_PROGRESO atp WHERE CODIGO = 'INGRESO_EQUIPOS'), 
+    '0', 
+    'Activo', 
+    'jnazareno', 
+    SYSDATE, 
+    '127.0.0.1', 
+    SYSDATE, 
+    '9', 
+    '18'
+);
+
+--SE ACTUALIZA EL REGISTRO PARA CAMBIAR EL PORCENTAJE DE SEGUIMIENTO EN SOPORTE MD
+--
+UPDATE DB_SOPORTE.INFO_PROGRESO_PORCENTAJE 
+SET 
+PORCENTAJE = '5', 
+USR_ULT_MOD = 'jnazareno',
+FE_ULT_MOD = SYSDATE
+WHERE 
+ID_PROGRESO_PORCENTAJE = 15;
+
+
+COMMIT;

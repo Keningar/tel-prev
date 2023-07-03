@@ -1,0 +1,80 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}      
+{% endblock %}
+{% block javascripts%}
+	{{ parent() }}          
+        <script>
+        var url_lista_motivos='{{path('solicitudsuspensiontemporal_get_motivos_ajax')}}';
+        var url_solicitar_cancelacion_ajax='{{path('solicitudsuspensiontemporal_graba_solicsusptemp_ajax')}}';
+        var url_grid = "{{ path('solicitudsuspensiontemporal_get_servicios_ajax',{'id':puntoId}) }}";
+        </script>        
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudsuspensiontemporal/servicios.js') }}"></script>
+{% endblock javascripts %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Solicitud de Suspension Temporal</h1>
+</div>
+
+<div class="body_content">
+
+{%if puntoId is not null%}
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td bgcolor='#ffffff'>&nbsp;</td>
+            </tr>            
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='filtro_servicios'></div></td>
+            </tr>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='panel_observacion'></div></td>
+            </tr>             
+            <tr bgcolor='#ffffff'>
+                     <td>&nbsp;</td><td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+            </tr>
+        </table>
+{%else%}
+<div>Debe seleccionar login previamente para poder realizar una solicitud de cancelacion por servicio</div>
+    
+{%endif%}    
+
+
+</div>
+    
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{#{asset('app_dev.php/comercial/solicitud')}#}">Regresar</a>
+        </span>
+    </p>
+</div> 
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+				<!--<li>
+					<a class="listado_ac_tablas" href="{#{ path('infopunto_servicios',{ 'id': entity.id }) }#}">Servicios</a>
+				</li> -->                   
+                    <!--
+			{#% for acc in acc_relaciondas %} 
+				<li>
+					<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+				</li>
+			{% endfor %#}
+                    -->
+			<!--li>
+				<a class="listado_ac_tablas" href="{#{ path('precliente_convertir', { 'id_prospecto': entity.id }) }#}">Convertir Prospecto a Cliente</a>
+			</li-->
+		</ul>
+
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}

@@ -1,0 +1,15 @@
+solicitudinstalacion:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudInstalacion:index" }
+
+solicitudinstalacion_graba_solicdesc_ajax:
+    pattern:  /grabasolicituddescajax
+    defaults: { _controller: "comercialBundle:SolicitudInstalacion:grabaSolicitudDesc_ajax" }
+
+solicitudinstalacion_get_motivos_ajax:
+    pattern:  /getmotivosajax
+    defaults: { _controller: "comercialBundle:SolicitudInstalacion:getMotivos_ajax" }
+
+solicitudinstalacion_get_servicios_ajax:
+    pattern:  /{id}/getserviciossolicituddescuentoajax
+    defaults: { _controller: "comercialBundle:SolicitudInstalacion:getServiciosParaSolicitudDesc_ajax" }

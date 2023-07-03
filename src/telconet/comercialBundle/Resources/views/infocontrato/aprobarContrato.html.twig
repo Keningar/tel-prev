@@ -1,0 +1,82 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/ext-4.1.1/resources/css/CheckHeader.css') }}" />
+    
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}
+{% block javascripts%} 
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/src/ux/CheckColumn.js') }}"></script>
+    
+    <script>
+		var url_store="{{ path('aprobacioncontrato_grid_aprobar') }}";
+		var url_aprobar="{{ path('aprobacioncontrato_aprobar_ajax') }}";
+        var url_rechazar="{{ path('aprobacioncontrato_rechazar_ajax') }}";
+        var url_lista_motivos="{{ path('aprobacioncontrato_getmotivosrechazo_ajax') }}";    
+        var url_lista_oficinas="{{ path('aprobacioncontrato_getoficinas_ajax') }}";    
+		var urlGuardarDocumentoEntregable ="{{ path('aprobacioncontrato_guardarDocumentoEntregable') }}";
+		var prefijoEmpresa = "{{ prefijoEmpresa }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/aprobar.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Aprobar Contratos</h1>
+	</div>
+    {% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="successmessage">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('warning') %}
+    <div class="warningmessage">
+        {{ flashMessage }}
+    </div>
+    {% endfor %}
+	<div class="body_content k-content">
+	    <div id="example" class="k-content">
+	    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+			<tr bgcolor='#ffffff'>
+				 <td bgcolor='#ffffff'><div id='filtro_contratos'></div></td>
+			</tr>	
+			<tr bgcolor='#ffffff'>
+				 <td bgcolor='#ffffff'><div id='lista_contratos'></div></td>
+			</tr>
+	    </table>        
+	    </div>
+	</div>
+{% endblock contenido_central %}
+

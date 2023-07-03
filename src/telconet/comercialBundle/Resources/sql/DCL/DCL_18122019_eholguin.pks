@@ -1,0 +1,13 @@
+    /**
+     * DEBE EJECUTARSE EN DB_COMERCIAL.
+     * Script para dar permisos necesarios para consulta de tablas de mapeo de promociones al esquema DB_FINANCIERO.
+     * @author Edgar Holguín <eholguin@telconet.ec>
+     * @version 1.0 18-12-2019
+     */
+    GRANT SELECT  ON DB_COMERCIAL.INFO_DETALLE_MAPEO_PROMO TO DB_FINANCIERO;
+    GRANT SELECT  ON DB_COMERCIAL.INFO_DETALLE_MAPEO_SOLICITUD TO DB_FINANCIERO;
+    GRANT EXECUTE ON DB_COMERCIAL.GET_ID_SERVICIO_PREF TO DB_FINANCIERO;
+    GRANT EXECUTE ON DB_COMERCIAL.CMKG_PROMOCIONES_UTIL TO DB_FINANCIERO;
+/
+
+   

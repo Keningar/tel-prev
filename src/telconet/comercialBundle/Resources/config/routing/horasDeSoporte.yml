@@ -1,0 +1,12 @@
+horasDeSoporte:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:AutorizarHorasSoporte:index" }
+
+horasDeSoporte_getSolicitudesPuntoTipo:
+    pattern: /getSolicitudesPuntoTipo
+    defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:getSolicitudesPuntoTipo" }
+
+horasDeSoporte_putAprobarSolAjstTiempoSoporte:
+    pattern: /putAprobarSolAjstTiempoSoporte
+    defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:putAprobarSolAjstTiempoSoporte" }
+

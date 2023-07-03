@@ -1,0 +1,184 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+	<style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+            a:hover {
+                cursor:pointer;
+            }
+	</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_clientes  = "{{ path('infoordentrabajo_listar_pto_clientes') }}";		
+        var url_Logins    = "{{ path('infoservicio_gridPuntosTraslados', { 'id': id, 'intIdPersonaRol': intIdPersonaRol, 'rol': rol }) }}";
+        var url_servicios = "{{ path('infoservicio_getServiciosByLogin', { 'id': id, 'rol': rol }) }}";
+        var punto_id      = "{{ id }}";
+        var strEmpresaCod = "{{ strPrefijoEmpresa }}";
+        var url_validaTrasladoTn = "{{ path('infoservicio_ajaxValidaTrasladoTn') }}";
+        var url_validaTrasladoMd = "{{ path('infoservicio_ajaxValidaTrasladoMd') }}";
+        var url_generarSolicitud = "{{ path('infoservicio_generarSolicitudTraslado') }}";
+        var arrayMotivos         = '{{arrayMotivos}}';
+        let strTipoProceso       = "{{ strTipoProceso }}";
+        let strLoginAnterior     = "{{ strLoginAnterior }}";
+        let strLoginTraslado     = "{{ punto_id.login }}";
+        let strDireccionTraslado = "{{ punto_id.direccion }}";
+        let strDireccionAnterior = "{{ strDireccionAnterior  }}";
+        let url_anula_punto_ajax = "{{ path('infopunto_anula_punto') }}";
+        let intIdPuntoAnterior   = "{{ intIdPuntoAnterior }}";
+	</script>
+
+    
+    <script type="text/javascript" src="{{ asset('bundles/comercial/js/infoservicio/traslado.js?10') }}"></script>
+{% endblock %}
+        
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Trasladar Servicios</h1>
+    </div>
+    <div class="body_content">
+    {% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+    {% endfor %} 
+        <form action="{{ path('infoservicio_trasladar_servicios_create') }}" method="post" name="formulario" onSubmit="return validarFormulario();">
+			{% if(punto_id is defined) %}
+                                {%if (mensajeError != "")%}
+                                <div class="warningmessage" >
+                                        <td>{{ mensajeError }}</td>
+                                </div>
+                                {%endif%}  
+				<div class="secHead">Información del cliente</div>
+				<div class="formulario">
+					<table width='100%'>
+						<tr>
+							<th><label>Razón social:</label></th>
+							<td>{{ cliente.razon_social }}</td>
+							{%if (strPrefijoEmpresa == "MD")%}
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <th><label>Cliente:</label></th>
+                                                            <td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+                                                        {%else%}
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <th><label></label></th>
+                                                            <td><label></label></td>
+                                                        {%endif%} 
+							
+						</tr>
+						<tr>
+							<th><label>Pto. cliente:</label></th>
+							<td> {{ punto_id.login }}</td>
+                                                        {%if (strPrefijoEmpresa == "MD")%}
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <th><label>Descripción:</label></th>
+                                                            <td>{{ punto_id.descripcion }}</td>
+                                                        {%endif%} 
+						</tr>
+						<tr>
+							<th><label>Tipo de negocio:</label></th>
+							<td>{{ nombre_tipo_negocio }}</td>
+						</tr>
+					</table>
+				</div>
+                                {%if (strPrefijoEmpresa == "TN")%}
+                                    <div class="secHead">Información financiera</div>
+                                    <div>
+                                            <table width='90%'>
+                                                    <tr>
+                                                        <th class="formulario"><label>Motivo:</label></th>
+                                                        <td width='10%'>&nbsp;</td>
+                                                        <td>
+                                                            <select name='objListadoMotivos' id='objListadoMotivos' style="width:200px;">
+                                                                <option value="">Seleccione</option>
+                                                                {% for item in arrayMotivos %}
+                                                                        <option value="{{ item.intIdMotivos }}">{{ item.strMotivos }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr><td>&nbsp;</td></tr>
+                                                    <tr>
+                                                            <th class="formulario"><label>Precio de traslado $:</label></th>
+                                                            <td>&nbsp;</td>
+                                                            <td><input id="precioTrasladoTn" name="precioTrasladoTn" type="text" onkeypress="return isNumberKey(this, event);" size="8" maxlength="8"/></td>
+                                                    </tr>
+                                                    <tr><td width='10%'>&nbsp;</td></tr>
+                                                    <tr>
+                                                            <th class="formulario"><label>Descripción traslado:</label></th>
+                                                            <td width='10%'>&nbsp;</td>
+                                                            <td><textarea id="descripcionTrasladoTn" name="descripcionTrasladoTn" rows="4" cols="50" ></textarea></td>
+                                                    </tr>
+                                            </table>
+                                    </div>
+                                {%endif%} 
+			{% else %}
+				<div>               
+					<table border='0' align='left'>
+						<tr>
+							<td>
+								<label for='punto'>Pto. cliente:</label>
+							</td>
+							<td>
+							<input class='campo-obligatorio' type='text' readonly id="punto" name="punto" value=''/>
+							<input type='hidden' readonly id='puntoid' name='puntoid' value=''/>
+							<a href='#' onclick="showClientes()"><img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" /></a>
+							</td>
+					</table>
+				</div>       
+			{% endif %}
+			<br>
+			<br>
+			<div id="title_traslado" class="secHead">Datos de Traslado</div>
+			<div id="info_traslado"></div>
+			<div id="servicios_traslado"></div>
+			<input type="hidden" value="" id="idsServiciosTrasladar" name="idsServiciosTrasladar" />
+            <input type="hidden" id="banderaAutorizarSol" name="banderaAutorizarSol" value="N"/>
+            <input type="hidden" value="" id="idPuntoTraslado" name="idPuntoTraslado" />
+            <input type="hidden" value="{{ nombre_tipo_negocio }}" id="tipoNegocio" name="tipoNegocio" />
+            <input type="hidden" value="{{ strTipoProceso }}" id="strTipo" name="strTipo" />
+            <div class="buttons">
+                <p>
+                    {% if strTipoProceso is defined and strTipoProceso == 'continuo' and strPrefijoEmpresa == "MD" %}
+                        <button type='submit' class="button-crud" >Guardar</button>
+                        <span class="height20px">
+                            <a class="button-crud" href="{{ path('infopunto_new', { 'idCli': punto_id.id_persona, 'idPer': punto_id.id_persona_empresa_rol, 'rol': rol,'strTipo':'editar','idPunto': punto_id.id }) }}">Regresar</a>
+                        </span>
+                        <span class="height20px">
+                            <a class="cancel-crud" onclick="anularPunto({{ punto_id.id }})">Cancelar Traslado</a>
+                        </span>
+                    {% else %}
+                        <button type='submit' class="button-crud" >Guardar</button>
+                        <span class="height20px">
+                            <a class="button-crud" href=" {{ path('infopunto_show', { 'id': id, 'rol': rol }) }}">Regresar</a>
+                        </span>
+                    {%  endif %}
+                </p>
+            </div>
+
+        </form>
+
+    </div>
+{% endblock contenido_izq %}
+{% block javascripts_footer%}
+{% endblock javascripts_footer%}
+    

@@ -1,0 +1,31 @@
+aprobacionsolicitudesmasivasradio_aprobar:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:radioIndex" }
+    
+aprobacionsolicitudesmasivasradio_aprobarRechazar:
+    pattern:  /{id}/aprobarRechazar
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarRechazarRadio" }
+
+aprobacionsolicitudesmasivasradio_aprobarSolicitud:
+    pattern:  /aprobarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarSolicitudRadio" }
+
+aprobacionsolicitudesmasivasradio_rechazarSolicitud:
+    pattern:  /rechazarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:rechazarSolicitudRadio" }
+
+aprobacionsolicitudesmasivasradio_getEstados:
+    pattern:  /getEstados
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getEstadosDescuento" }
+
+aprobacionsolicitudesmasivasradio_getSolicitudesMasivasRadio:
+    pattern:  /getSolicitudesMasivas
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getSolicitudesMasivasRadio" }
+
+aprobacionsolicitudesmasivasradio_getDetalleSolicitudDet:
+    pattern:  /getDetalleSolicitudDet
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getDetalleSolicitudDetRadio" }
+
+
+    
+

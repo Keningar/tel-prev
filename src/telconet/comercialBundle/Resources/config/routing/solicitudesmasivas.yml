@@ -1,0 +1,96 @@
+solicitudesmasivas:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:index" }
+    
+solicitudesmasivas_new:
+    pattern:  /new
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:new" }
+    
+solicitudesmasivas_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:show" }
+
+solicitudesmasivas_create:
+    pattern:  /create
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:create" }
+    requirements: { _method: post }
+
+solicitudesmasivas_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:edit" }
+
+solicitudesmasivas_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:update" }
+    requirements: { _method: post }
+
+solicitudesMasivas_delete:
+    pattern:  /delete
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:delete" }
+    requirements: { _method: post }
+    
+solicitudesMasivas_getTipoSolicitud:
+    pattern:  /getTipoSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getTipoSolicitud" }
+
+solicitudesMasivas_getEstados:
+    pattern:  /getEstados
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getEstados" }
+    
+solicitudesMasivas_getPlanes:
+    pattern:  /getPlanes
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getPlanes" }
+    
+solicitudesMasivas_getProductos:
+    pattern:  /getProductos
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getProductos" }
+    
+solicitudesMasivas_getClienteMora:
+    pattern:  /getClienteMora
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getClienteMora" }
+    requirements: { _method: post }
+
+solicitudesMasivas_getMotivos:
+    pattern:  /getMotivos
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getMotivos" }
+
+solicitudesMasivas_getSolicitudesMasivas:
+    pattern:  /getSolicitudesMasivas
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getSolicitudesMasivas" }
+    
+solicitudesMasivas_getSolicitudesMasivasHistorial:
+    pattern:  /getSolicitudesMasivasHistorial
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getSolicitudesMasivasHistorial" }
+    
+solicitudesMasivas_getPuntosServicios:
+    pattern:  /getPuntosServicios
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getPuntosServicios" }
+    
+solicitudesMasivas_getServiciosSeleccionados:
+    pattern:  /getServiciosSeleccionados
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getServiciosSeleccionados" }
+    
+solicitudesMasivas_getDetalleSolicitudDet:
+    pattern:  /getDetalleSolicitudDet
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getDetalleSolicitudDet" }
+    
+solicitudesMasivas_uploadArchivo:
+    pattern:  /uploadArchivo
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:uploadArchivo" }
+    
+solicitudesMasivas_downloadArchivo:
+    pattern:  /downloadArchivo
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:downloadArchivo" }
+    
+solicitudesMasivas_getDetalleEstaciones:
+    pattern:  /getDetalleEstaciones
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getDetalleEstaciones" }
+    requirements: { _method: post }
+    
+solicitudesMasivas_downloadExcel:
+    pattern:  /downloadExcel
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:downloadExcel" }
+    
+solicitudesMasivas_getOficinas:
+    pattern:  /getOficinas
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getOficinas" }

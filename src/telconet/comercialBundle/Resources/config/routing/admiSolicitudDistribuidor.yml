@@ -1,0 +1,31 @@
+SolicitudDistribuidorController:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudDistribuidor:index" }
+
+new:
+    pattern:  /new
+    defaults: { _controller: "comercialBundle:SolicitudDistribuidor:new"}
+
+grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:SolicitudDistribuidor:grid"}
+
+show:
+    pattern:  /show/{intIdSolicitud}/{strEstado}
+    defaults: { _controller: "comercialBundle:SolicitudDistribuidor:show" }
+
+aprobar_rechazar:
+    pattern:  /getAprobarRechazar
+    defaults: { _controller: "comercialBundle:SolicitudDistribuidor:getAprobarRechazar"}
+
+vendedor:
+    pattern:  /getVendedor
+    defaults: { _controller: "comercialBundle:SolicitudDistribuidor:getVendedor"}
+
+productos:
+    pattern:  /getProductos
+    defaults: { _controller: "comercialBundle:SolicitudDistribuidor:getProductos"}
+
+lineaNegocio:
+    pattern:  /getLineaNegocio
+    defaults: { _controller: "comercialBundle:SolicitudDistribuidor:getLineaNegocio"}

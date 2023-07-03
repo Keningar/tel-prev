@@ -1,0 +1,13 @@
+/**
+ * @author Alex Arreaga <atarreaga@telconet.ec>
+ * @version 1.0
+ * @since 22-03-2021
+ * Se crea script para reversar de campo en la tabla DB_COMERCIAL.INFO_SERVICIO_CARACTERISTICA.
+ */
+
+--SE ELIMINA CAMPO 'REF_ID_SERVICIO_CARACTERISTICA'.
+ALTER TABLE DB_COMERCIAL.INFO_SERVICIO_CARACTERISTICA DROP COLUMN REF_ID_SERVICIO_CARACTERISTICA;
+
+
+COMMIT;
+/

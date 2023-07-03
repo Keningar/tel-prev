@@ -1,0 +1,445 @@
+--INSERT PRODUCTO
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO 
+        SELECT DB_COMERCIAL.SEQ_ADMI_PRODUCTO.NEXTVAL,
+            AP.EMPRESA_COD,
+            'SAFECITY',
+            'DATOS GPON VIDEO ANALYTICS CAM',
+            AP.FUNCION_COSTO,
+            AP.INSTALACION,
+            AP.ESTADO,
+            SYSDATE,
+            'facaicedo',
+            AP.IP_CREACION,
+            AP.CTA_CONTABLE_PROD,
+            AP.CTA_CONTABLE_PROD_NC,
+            AP.ES_PREFERENCIA,
+            AP.ES_ENLACE,
+            AP.REQUIERE_PLANIFICACION,
+            AP.REQUIERE_INFO_TECNICA,
+            'DATOS SAFECITY',
+            AP.CTA_CONTABLE_DESC,
+            AP.TIPO,
+            AP.ES_CONCENTRADOR,
+            'PRECIO=20',
+            AP.SOPORTE_MASIVO,
+            AP.ESTADO_INICIAL,
+            'INTERNET Y DATOS',
+            AP.COMISION_VENTA,
+            AP.COMISION_MANTENIMIENTO,
+            AP.USR_GERENTE,
+            AP.CLASIFICACION,
+            AP.REQUIERE_COMISIONAR,
+            'DATOS SAFECITY',
+            AP.LINEA_NEGOCIO
+        FROM DB_COMERCIAL.ADMI_PRODUCTO AP 
+        WHERE AP.DESCRIPCION_PRODUCTO='TELEWORKER' 
+            AND AP.ESTADO='Activo' 
+            AND AP.NOMBRE_TECNICO='INTERNET SMALL BUSINESS' AND AP.EMPRESA_COD=10;
+
+--INSERT CARACTERISTICAS
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+        SELECT DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+            (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='DATOS GPON VIDEO ANALYTICS CAM'  AND ESTADO='Activo'),
+            APC.CARACTERISTICA_ID,
+            SYSDATE,
+            APC.FE_ULT_MOD,
+            'facaicedo',
+            APC.USR_ULT_MOD,
+            APC.ESTADO,
+            APC.VISIBLE_COMERCIAL
+        FROM DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC 
+        WHERE APC.PRODUCTO_ID = (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+                                 WHERE DESCRIPCION_PRODUCTO='TELEWORKER' AND ESTADO='Activo' AND NOMBRE_TECNICO='INTERNET SMALL BUSINESS' AND EMPRESA_COD=10)
+            AND APC.ESTADO = 'Activo'
+            AND APC.CARACTERISTICA_ID != (SELECT ID_CARACTERISTICA FROM ADMI_CARACTERISTICA
+                            WHERE DESCRIPCION_CARACTERISTICA = 'VELOCIDAD');
+
+--INSERT NIVEL PRODUCTO
+INSERT INTO DB_COMERCIAL.INFO_PRODUCTO_NIVEL
+        SELECT DB_COMERCIAL.SEQ_INFO_PRODUCTO_NIVEL.NEXTVAL,
+            (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='DATOS GPON VIDEO ANALYTICS CAM'  AND ESTADO='Activo'),
+            IPN.EMPRESA_ROL_ID,
+            IPN.PORCENTAJE_DESCUENTO,
+            IPN.ESTADO
+        FROM DB_COMERCIAL.INFO_PRODUCTO_NIVEL IPN
+        WHERE IPN.PRODUCTO_ID=(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+                               WHERE DESCRIPCION_PRODUCTO='L3MPLS' AND ESTADO='Activo' AND NOMBRE_TECNICO='L3MPLS' AND EMPRESA_COD=10)
+        AND IPN.ESTADO = 'Activo';
+
+--INSERT IMPUESTO
+INSERT INTO DB_COMERCIAL.INFO_PRODUCTO_IMPUESTO
+        SELECT DB_COMERCIAL.SEQ_INFO_PRODUCTO_IMPUESTO.NEXTVAL,
+            (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='DATOS GPON VIDEO ANALYTICS CAM'  AND ESTADO='Activo'),
+            IPI.IMPUESTO_ID,
+            IPI.PORCENTAJE_IMPUESTO,
+            SYSDATE,
+            'facaicedo',
+            IPI.FE_ULT_MOD,
+            IPI.USR_ULT_MOD,
+            IPI.ESTADO
+        FROM DB_COMERCIAL.INFO_PRODUCTO_IMPUESTO IPI
+        WHERE IPI.PRODUCTO_ID=(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+                               WHERE DESCRIPCION_PRODUCTO='L3MPLS' AND ESTADO='Activo' AND NOMBRE_TECNICO='L3MPLS' AND EMPRESA_COD=10)
+        AND IPI.ESTADO = 'Activo';
+
+--INSERT COMISION
+INSERT INTO DB_COMERCIAL.ADMI_COMISION_CAB 
+        SELECT DB_COMERCIAL.SEQ_ADMI_COMISION_CAB.NEXTVAL,
+            (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO WHERE DESCRIPCION_PRODUCTO='DATOS GPON VIDEO ANALYTICS CAM'  AND ESTADO='Activo'),
+            ACCA.PLAN_ID,
+            SYSDATE,
+            'facaicedo',
+            ACCA.IP_CREACION,
+            ACCA.ESTADO
+        FROM DB_COMERCIAL.ADMI_COMISION_CAB ACCA
+        WHERE PRODUCTO_ID=(SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+                           WHERE DESCRIPCION_PRODUCTO='L3MPLS' AND ESTADO='Activo' AND NOMBRE_TECNICO='L3MPLS' AND EMPRESA_COD=10)
+            AND ACCA.ESTADO  = 'Activo';
+
+--INSERT DETALLES COMISION
+INSERT INTO DB_COMERCIAL.ADMI_COMISION_DET
+	SELECT DB_COMERCIAL.SEQ_ADMI_COMISION_DET.NEXTVAL,
+            ( SELECT ID_COMISION FROM DB_COMERCIAL.ADMI_COMISION_CAB AC, DB_COMERCIAL.ADMI_PRODUCTO AP
+              WHERE AP.ID_PRODUCTO=AC.PRODUCTO_ID AND
+              AP.DESCRIPCION_PRODUCTO='DATOS GPON VIDEO ANALYTICS CAM' AND AP.ESTADO='Activo' AND AP.EMPRESA_COD=10 ),
+            ACD.PARAMETRO_DET_ID,
+            ACD.COMISION_VENTA,
+            SYSDATE,
+            'facaicedo',
+            ACD.IP_CREACION,
+            ACD.ESTADO
+        FROM DB_COMERCIAL.ADMI_COMISION_DET ACD
+        WHERE ACD.COMISION_ID = (SELECT ID_COMISION FROM DB_COMERCIAL.ADMI_COMISION_CAB
+                                 WHERE PRODUCTO_ID = (SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO 
+                                                      WHERE DESCRIPCION_PRODUCTO='L3MPLS' AND ESTADO='Activo' AND NOMBRE_TECNICO='L3MPLS' AND EMPRESA_COD=10)
+                                 AND ESTADO='Activo');
+
+--INSERT ADMI_PRODUCTO_CARACTERISTICA 'VRF'
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    ( SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+      WHERE DESCRIPCION_PRODUCTO = 'DATOS GPON VIDEO ANALYTICS CAM' AND ESTADO = 'Activo' ),
+    ( SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'VRF' AND ESTADO = 'Activo' ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    'Activo',
+    'NO'
+);
+
+--INSERT ADMI_PRODUCTO_CARACTERISTICA 'TIPO_RED'
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    ( SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+      WHERE DESCRIPCION_PRODUCTO = 'DATOS GPON VIDEO ANALYTICS CAM' AND ESTADO = 'Activo' ),
+    ( SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'TIPO_RED' AND ESTADO = 'Activo' ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    'Activo',
+    'SI'
+);
+
+--INSERT ADMI_PRODUCTO_CARACTERISTICA 'Zona'
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    ( SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+      WHERE DESCRIPCION_PRODUCTO = 'DATOS GPON VIDEO ANALYTICS CAM' AND ESTADO = 'Activo' ),
+    ( SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'Zona' AND ESTADO = 'Activo' ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    'Activo',
+    'SI'
+);
+
+-- INGRESO DE LA CARACTERISTICA PARA LA VELOCIDAD_GPON
+INSERT INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+    )
+VALUES
+    (
+        DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+        'VELOCIDAD_GPON',
+        'S',
+        'Activo',
+        SYSDATE,
+        'facaicedo',
+        NULL,
+        NULL,
+        'COMERCIAL'
+);
+
+--INSERT CARACTERISTICA 'Cantidad Camaras'
+INSERT INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+(
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO,
+    ESTADO
+)
+VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'Cantidad Camaras',
+    'S',
+     SYSDATE,
+    'facaicedo',
+    'TECNICO',
+    'Activo'
+);
+
+--INSERT CARACTERISTICA 'Precio Camaras'
+INSERT INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+(
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO,
+    ESTADO
+)
+VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'Precio Camaras',
+    'N',
+     SYSDATE,
+    'facaicedo',
+    'TECNICO',
+    'Activo'
+);
+
+-- INGRESO DE LA CARACTERISTICA PARA EL MAC CLIENTE
+INSERT INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+    )
+VALUES
+    (
+        DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+        'MAC CLIENTE',
+        'T',
+        'Activo',
+        SYSDATE,
+        'facaicedo',
+        NULL,
+        NULL,
+        'TECNICA'
+);
+
+--INSERT ADMI_PRODUCTO_CARACTERISTICA 'Cantidad Camaras'
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    ( SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+      WHERE DESCRIPCION_PRODUCTO = 'DATOS GPON VIDEO ANALYTICS CAM' AND ESTADO = 'Activo' ),
+    ( SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'Cantidad Camaras' AND ESTADO = 'Activo' ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    'Activo',
+    'SI'
+);
+
+--INSERT ADMI_PRODUCTO_CARACTERISTICA 'Precio Camaras'
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    ( SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+      WHERE DESCRIPCION_PRODUCTO = 'DATOS GPON VIDEO ANALYTICS CAM' AND ESTADO = 'Activo' ),
+    ( SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'Precio Camaras' AND ESTADO = 'Activo' ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    'Activo',
+    'SI'
+);
+
+--INSERT ADMI_PRODUCTO_CARACTERISTICA 'VELOCIDAD_GPON'
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    ( SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+      WHERE DESCRIPCION_PRODUCTO = 'DATOS GPON VIDEO ANALYTICS CAM' AND ESTADO = 'Activo' ),
+    ( SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'VELOCIDAD_GPON' AND ESTADO = 'Activo' ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    'Activo',
+    'SI'
+);
+
+INSERT INTO db_comercial.admi_producto_caracteristica VALUES (
+    db_comercial.seq_admi_producto_carac.nextval,
+    (
+        SELECT
+            id_producto
+        FROM
+            db_comercial.admi_producto
+        WHERE
+            descripcion_producto = 'DATOS GPON VIDEO ANALYTICS CAM'
+            AND empresa_cod = 10
+            AND nombre_tecnico <> 'FINANCIERO'
+            AND estado = 'Activo'
+    ),
+    (
+        SELECT
+            id_caracteristica
+        FROM
+            db_comercial.admi_caracteristica
+        WHERE
+            descripcion_caracteristica = 'MAC CLIENTE'
+    ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    'Activo',
+    'NO'
+);
+
+--actualizar precios de los productos por tipo red
+UPDATE db_comercial.ADMI_PRODUCTO SET FUNCION_PRECIO = 'if ("[TIPO_RED]"=="GPON") {
+    if ([CAPACIDAD1]>=1024 && [CAPACIDAD1]<=5120) { PRECIO = 19.00; }
+    else if ([CAPACIDAD1]>5120 && [CAPACIDAD1]<=10240) { PRECIO = 24.99; }
+    else if ([CAPACIDAD1]>10240 && [CAPACIDAD1]<=15360) { PRECIO = 33.40; }
+    else { PRECIO = 50; }
+    Math.round(PRECIO * 100) / 100;
+}
+else{
+    if("[Zona]"=="Zona3"){
+            if ([CAPACIDAD2] >= [CAPACIDAD1]) { PRECIO=1000*Math.ceil([CAPACIDAD2]/1024);}
+            else{	 PRECIO=1000*Math.ceil([CAPACIDAD2]/1024)*1000;}
+    }
+    else{
+            if ( "[Grupo Negocio]" == "ISP" ) {
+
+                    if ( "[Zona]"=="Zona1"||"[Zona]"=="Zona2") {
+                            if ( [CAPACIDAD1]== [CAPACIDAD2] ){
+                    if ([CAPACIDAD1]<52224)  { PRECIO=20*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=52224 && [CAPACIDAD1]<102400)  { PRECIO=20*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=102400 && [CAPACIDAD1]<204800)  { PRECIO=15*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=204800 && [CAPACIDAD1]<409600)  { PRECIO=13*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=409600 && [CAPACIDAD1]<1024000)  { PRECIO=12*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=1024000 && [CAPACIDAD1]<1536000)  { PRECIO=11*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=1536000)  { PRECIO=10*([CAPACIDAD1]/1024);  }
+                    }
+
+            Math.round(PRECIO * 100) / 100;
+            }
+            } else if ( "[Grupo Negocio]" == "Corporativo" ) {
+                    if ( "[Zona]"=="Zona1"||"[Zona]"=="Zona2") {
+                            if ( [CAPACIDAD1]== [CAPACIDAD2] ){
+                    if ([CAPACIDAD1]<=1024)  { PRECIO=40;  }
+                    else if ([CAPACIDAD1]>1024 && [CAPACIDAD1]<2048)  { PRECIO=40*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=2048 && [CAPACIDAD1]<3072)  { PRECIO=35*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=3072 && [CAPACIDAD1]<4096)  { PRECIO=30*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=4096 && [CAPACIDAD1]<5120)  { PRECIO=28*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=5120)  { PRECIO=25*([CAPACIDAD1]/1024);  }
+                    }
+
+            Math.round(PRECIO * 100) / 100;
+            }
+
+            } else if ( "[Grupo Negocio]" == "Cybers" ) {
+
+                    if( [CAPACIDAD2] >= [CAPACIDAD1]) {
+                            if( [CAPACIDAD2] < 512 ){PRECIO=150;}
+                            else if( [CAPACIDAD2] <=768 ) {PRECIO=139.8;}
+                            else if( [CAPACIDAD2] <=1024) {PRECIO=120;}
+                            else if( [CAPACIDAD2] >=2048) {PRECIO=105;}
+                            else if( [CAPACIDAD2] >=2048) {PRECIO=135;}
+                    } else {
+                            if( [CAPACIDAD1] < 512 ){PRECIO=150;}
+                            else if( [CAPACIDAD1] <=768 ) {PRECIO=139.8;}
+                            else if( [CAPACIDAD1] <=1024) {PRECIO=120;}
+                            else if( [CAPACIDAD1] >=2048) {PRECIO=105;}
+                            else if( [CAPACIDAD1] >=2048) {PRECIO=135;}
+                    }
+            }
+    }
+}'
+WHERE ID_PRODUCTO = ( SELECT
+        id_producto
+    FROM
+        db_comercial.admi_producto
+    WHERE
+        descripcion_producto = 'Internet Dedicado'
+        AND empresa_cod = 10
+        AND nombre_tecnico <> 'FINANCIERO'
+        AND estado = 'Activo'
+);
+
+UPDATE db_comercial.ADMI_PRODUCTO SET FUNCION_PRECIO = 'if ("[TIPO_RED]"=="GPON") {
+    if ([CAPACIDAD1]>=1024 && [CAPACIDAD1]<=5120) { PRECIO = 19.00; }
+    else if ([CAPACIDAD1]>5120 && [CAPACIDAD1]<=10240) { PRECIO = 24.99; }
+    else if ([CAPACIDAD1]>10240 && [CAPACIDAD1]<=15360) { PRECIO = 33.40; }
+    else { PRECIO = 50; }
+}
+else{
+    if ( "[Zona]"=="Zona1"||"[Zona]"=="Zona2") {
+            if ( [CAPACIDAD1]== [CAPACIDAD2] ){
+                    if ([CAPACIDAD1]<=1024)  { PRECIO=40;  }
+                    else if ([CAPACIDAD1]>1024 && [CAPACIDAD1]<2048)  { PRECIO=40*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=2048 && [CAPACIDAD1]<3072)  { PRECIO=35*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=3072 && [CAPACIDAD1]<4096)  { PRECIO=30*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=4096 && [CAPACIDAD1]<5120)  { PRECIO=28*([CAPACIDAD1]/1024);  }
+                    else if ([CAPACIDAD1]>=5120)  { PRECIO=25*([CAPACIDAD1]/1024);  }
+            }
+    }
+    else {
+            if ([CAPACIDAD2] >= [CAPACIDAD1]){PRECIO=1000*Math.ceil([CAPACIDAD2]/1024);}
+            else{PRECIO=1000*Math.ceil([CAPACIDAD2]/1024)*1000;}
+    }
+}
+Math.round(PRECIO * 100) / 100;'
+WHERE ID_PRODUCTO = ( SELECT
+        id_producto
+    FROM
+        db_comercial.admi_producto
+    WHERE
+        descripcion_producto = 'L3MPLS'
+        AND empresa_cod = 10
+        AND nombre_tecnico <> 'FINANCIERO'
+        AND estado = 'Activo'
+);
+
+COMMIT;
+/

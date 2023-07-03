@@ -1,0 +1,54 @@
+    /**
+     *
+     * Se realiza el script de reverso de parámetros y cargos.
+     *
+     * @author Kevin Baque Puya <kbaque@telconet.ec>
+     * @version 1.0 03-12-2021
+     */
+    --Restablecemos los rangos de asignación de solicitudes
+    UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+    SET
+        VALOR2 = '10'
+    WHERE
+            PARAMETRO_ID = (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='RANGO_APROBACION_SOLICITUDES')
+        AND VALOR3 = 'SUBGERENTE';
+
+    UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+    SET
+        VALOR1 = '0',
+        VALOR2 = '30'
+    WHERE
+            PARAMETRO_ID = (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='RANGO_APROBACION_SOLICITUDES')
+        AND VALOR3 = 'GERENTE_VENTAS';
+
+    UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+    SET
+        VALOR1 = '0',
+        VALOR2 = '100'
+    WHERE
+            PARAMETRO_ID = (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='RANGO_APROBACION_SOLICITUDES')
+        AND VALOR3 IN ( 'GERENTE_GENERAL_REGIONAL', 'GERENTE_GENERAL' );
+    --Restablecemos el cargo del usuario mescobar
+    UPDATE DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL_CARAC
+    SET
+        ESTADO = 'Eliminado',
+        USR_ULT_MOD = ''
+    WHERE
+        ID_PERSONA_EMPRESA_ROL_CARACT = 1199147;
+    --Restablecemos el cargo del usuario jyerovi
+    UPDATE DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL_CARAC
+    SET
+        ESTADO = 'Activo',
+        USR_ULT_MOD = 'kbaque'
+    WHERE
+        ID_PERSONA_EMPRESA_ROL_CARACT = 1769303;
+
+    UPDATE DB_COMERCIAL.INFO_PRODUCTO_NIVEL
+    SET
+        PORCENTAJE_DESCUENTO = '10'
+    WHERE
+        EMPRESA_ROL_ID IN ( 3470, 90 )
+        AND PORCENTAJE_DESCUENTO = '15.09';
+
+COMMIT;
+/

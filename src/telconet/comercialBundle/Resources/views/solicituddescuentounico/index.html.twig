@@ -1,0 +1,62 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}          
+        <script>
+        var url_lista_motivos           = '{{path('solicituddescuentounico_get_motivos_ajax')}}';
+        var url_solicitar_descuento_ajax= '{{path('solicituddescuentounico_graba_solicdesc_ajax')}}';
+        var url_grid                    = "{{ path('solicituddescuentounico_get_servicios_ajax',{'id':puntoId}) }}";
+        var urlGetTipoDescuento         = '{{path('solicitudes_get_TipoDescuento_ajax')}}';
+        </script>        
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicituddescuentounico/servicios.js?3') }}"></script>
+{% endblock javascripts %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Solicitud de Descuento Único</h1>
+</div>
+
+<div class="body_content">
+
+{%if puntoId is not null%}
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td bgcolor='#ffffff'>&nbsp;</td>
+            </tr>            
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='filtro_servicios'></div></td>
+            </tr>
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='panel_observacion'></div></td>
+            </tr>             
+            <tr bgcolor='#ffffff'>
+                     <td>&nbsp;</td><td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+            </tr>
+        </table>
+{%else%}
+<div>Debe seleccionar login previamente para poder realizar una solicitud de descuento único</div>
+    
+{%endif%}    
+
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="button-crud" href="/comercial/solicitud">Regresar</a>
+            </span>
+        </p>
+    </div>
+
+</div>
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+		</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}

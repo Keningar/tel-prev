@@ -1,0 +1,241 @@
+promocion_index:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:Promocion:index" }
+    
+promocion_crearPromoMensualidad:
+    pattern:  /crearPromoMensualidad
+    defaults: { _controller: "comercialBundle:Promocion:crearPromoMensualidad" }
+
+promocion_grid:
+    pattern:  /gridPromociones
+    defaults: { _controller: "comercialBundle:Promocion:gridPromociones"}
+    
+promocion_detalle:
+    pattern:  /detalle/{intIdPromocion}/{strIdOrigen}
+    defaults: { _controller: "comercialBundle:Promocion:detalle" }
+
+promocion_detener:
+    pattern:  /detener
+    defaults: { _controller: "comercialBundle:Promocion:detener"}
+    requirements: { _method: post }
+
+promocion_anular:
+    pattern:  /anular
+    defaults: { _controller: "comercialBundle:Promocion:anular"}
+    requirements: { _method: post }
+
+promocion_getEstados:
+    pattern:  /getEstados
+    defaults: { _controller: "comercialBundle:Promocion:getEstados"}
+                       
+promocion_getJurisdicciones:
+    pattern:  /getJurisdicciones
+    defaults: { _controller: "comercialBundle:InfoPunto:listaPtosCobertura_ajax"}
+
+promocion_getCantones:
+    pattern:  /getCantones
+    defaults: { _controller: "comercialBundle:InfoPunto:listaCantonesJurisdiccion_ajax"}
+    
+promocion_getParroquias:
+    pattern:  /getParroquias
+    defaults: { _controller: "comercialBundle:Cliente:listaParroquias_ajax"}
+    
+promocion_getSectores:
+    pattern:  /getSectores
+    defaults: { _controller: "comercialBundle:Cliente:listaSectores_ajax"}
+    
+promocion_getOlts:
+    pattern:  /getOlts
+    defaults: { _controller: "comercialBundle:Promocion:getOlts"}
+
+promocion_getEdificios:
+    pattern:  /getEdificios
+    defaults: { _controller: "comercialBundle:Promocion:getEdificios"}
+    
+promocion_getProductos:
+    pattern:  /getProductos
+    defaults: { _controller: "comercialBundle:Promocion:getProductos"}
+    
+promocion_getPlanes:
+    pattern:  /getPlanes
+    defaults: { _controller: "comercialBundle:Promocion:getPlanes"}
+
+promocion_getPlanesNoSeleccionados:
+    pattern:  /getPlanesNoSeleccionados
+    defaults: { _controller: "comercialBundle:Promocion:getPlanesNoSeleccionados"}
+
+promocion_getPlanesDestino:
+    pattern:  /getPlanesDestino
+    defaults: { _controller: "comercialBundle:Promocion:getPlanesDestino"}
+    requirements: { _method: post }
+
+promocion_getPermanenciasMinimas:
+    pattern:  /getPermanenciasMinimas
+    defaults: { _controller: "comercialBundle:Promocion:getPermanenciasMinimas"}
+    
+promocion_getPermanenciaPromoCancelVol:
+    pattern:  /getPermanenciaPromoCancelVol
+    defaults: { _controller: "comercialBundle:Promocion:getPermanenciaPromoCancelVol"}
+    
+promocion_guardarPromoMensualidad:
+    pattern:  /guardarPromoMensualidad
+    defaults: { _controller: "comercialBundle:Promocion:ajaxGuardarPromoMensualidad" } 
+
+promocion_ajaxClonarPromociones:
+    pattern:  /ajaxClonarPromociones
+    defaults: { _controller: "comercialBundle:Promocion:ajaxClonarPromociones" }
+
+promocion_crearPromoInstalacion:
+    pattern:  /crearPromoInstalacion
+    defaults: { _controller: "comercialBundle:Promocion:crearPromoInstalacion" }
+
+promocion_ajaxGuardarPromoInstalacion:
+    pattern:  /ajaxGuardarPromoInstalacion
+    defaults: { _controller: "comercialBundle:Promocion:ajaxGuardarPromoInstalacion" }
+    requirements: { _method: post }
+
+promocion_getMotivos:
+    pattern:  /getMotivos
+    defaults: { _controller: "comercialBundle:Promocion:getMotivos" }
+    
+promocion_getFormasPago:
+    pattern:  /getFormasPago
+    defaults: { _controller: "comercialBundle:Promocion:getFormasPago" }  
+
+promocion_getPeriodos:
+    pattern:  /getPeriodos
+    defaults: { _controller: "comercialBundle:Promocion:getPeriodos" }      
+
+promocion_getTiposNegocio:
+    pattern:  /getTiposNegocio
+    defaults: { _controller: "comercialBundle:Promocion:getTiposNegocio" }
+
+promocion_getUltimaMilla:
+    pattern:  /getUltimaMilla
+    defaults: { _controller: "comercialBundle:Promocion:getUltimaMilla" }    
+
+promocion_getEstadosServ:
+    pattern:  /getEstadosServ
+    defaults: { _controller: "comercialBundle:Promocion:getEstadosServ" }   
+
+promocion_ajaxInactivarPromociones:
+    pattern:  /ajaxInactivarPromociones
+    defaults: { _controller: "comercialBundle:Promocion:ajaxInactivarPromociones" } 
+  
+promocion_getTipoCuenta:
+    pattern:  /getTipoCuenta
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getTipoCuenta" }
+    
+promocion_crear_ancho_banda:
+    pattern:  /crearAnchoBanda
+    defaults: { _controller: "comercialBundle:Promocion:crearPromoAnchoBanda" }
+    
+promocion_editar_ancho_banda:
+    pattern:  /editarAnchoBanda
+    defaults: { _controller: "comercialBundle:Promocion:editarAnchoBanda" }
+
+promocion_ver_ancho_banda:
+    pattern:  /verAnchoBanda
+    defaults: { _controller: "comercialBundle:Promocion:verPromoAnchoBanda" }
+
+promocion_graba_promo_ancho_banda:
+    pattern:  /grabaPromoAnchoBanda
+    defaults: { _controller: "comercialBundle:Promocion:guardaPromoAnchoBanda" }
+    
+promocion_editarPromoAnchoBanda:
+    pattern:  /editarPromoAnchoBanda
+    defaults: { _controller: "comercialBundle:Promocion:editarPromoAnchoBanda" }
+    
+promocion_getBancos:
+    pattern:  /getBancos
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getBancos" }
+    
+promocion_getAntiguedad:
+    pattern:  /getAntiguedad
+    defaults: { _controller: "comercialBundle:Promocion:getAntiguedad" }
+    
+promocion_getDatosGenePromo:
+    pattern: /getDatosGenePromo
+    defaults: { _controller: "comercialBundle:Promocion:getDatosGenePromoAnchoBanda"}
+    
+promocion_getPlanesPromo:
+    pattern: /getPlanesPromo
+    defaults: { _controller: "comercialBundle:Promocion:getPlanesPromoAnchoBanda"}
+    
+promocion_getEmisoresPromo:
+    pattern: /getEmisoresPromo
+    defaults: { _controller: "comercialBundle:Promocion:getEmisoresPromoAnchoBanda"}
+
+promocion_getTiposNegocioSelect:
+    pattern:  /getTiposNegocioSelect
+    defaults: { _controller: "comercialBundle:Promocion:getSelectTiposNegocio" }
+    
+promocion_getUltimaMillaSelect:
+    pattern:  /getUltimaMillaSelect
+    defaults: { _controller: "comercialBundle:Promocion:getSelectUltimMilla" }
+    
+promocion_getFormasPagoSelect:
+    pattern:  /getFormasPagoSelect
+    defaults: { _controller: "comercialBundle:Promocion:getSelectFormaPagos" }
+    
+promocion_getEstadosSelect:
+    pattern:  /getEstadosSelect
+    defaults: { _controller: "comercialBundle:Promocion:getSelectEstados" }
+
+promocion_getPeriodosSelect:
+    pattern:  /getPeriodosSelect
+    defaults: { _controller: "comercialBundle:Promocion:getSelectPeriodos" }
+
+promocion_detalleEditar:
+    pattern:  /detalleEditar/{intIdPromocion}/{strTipoEdicion}
+    defaults: { _controller: "comercialBundle:Promocion:detalleEditar" }
+
+promocion_ajaxEditarPromoInstalacion:
+    pattern:  /ajaxEditarPromoInstalacion
+    defaults: { _controller: "comercialBundle:Promocion:ajaxEditarPromoInstalacion" }
+    requirements: { _method: post }
+
+promocion_editarPromoMensualidad:
+    pattern:  /editarPromoMensualidad
+    defaults: { _controller: "comercialBundle:Promocion:ajaxEditarPromoMensualidad" }
+    requirements: { _method: post }
+    
+promocion_getEmisoresPromoMensualidad:
+    pattern: /getEmisoresPromoMensualidad
+    defaults: { _controller: "comercialBundle:Promocion:getEmisoresPromoMensualidad"}
+ 
+promocion_getTipoClientes:
+    pattern:  /getTipoClientes
+    defaults: { _controller: "comercialBundle:Promocion:getTipoClientes" }   
+
+promocion_editarPromoMensualidadVigente:
+    pattern:  /editarPromoMensualidadVigente
+    defaults: { _controller: "comercialBundle:Promocion:ajaxEditarPromoMensualidadVigente" }
+    requirements: { _method: post }    
+ 
+promocion_validaCodigoUnico:
+    pattern:  /validaCodigoUnico
+    defaults: { _controller: "comercialBundle:Promocion:ajaxValidaCodigoUnico" }  
+
+promocion_ajaxGuardarCodigoPromocion:
+    pattern:  /guardarCodigoPromocion
+    defaults: { _controller: "comercialBundle:Promocion:guardarCodigoPromocion" }
+
+promocion_ajaxValidaCaracExistPromo:
+    pattern:  /validaCaracExistPromo
+    defaults: { _controller: "comercialBundle:Promocion:validaCaracExistPromo" }
+
+promocion_beneficiariosOlt:
+    pattern:  /getBeneficiariosOlt
+    defaults: { _controller: "comercialBundle:Promocion:getBeneficiariosOlt" }
+promocion_getTipoCuentaJson:
+    pattern:  /getTipoCuentaJson
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:getTipoCuentaJson"}
+
+promocion_getCorreo:
+    pattern:  /getCorreo
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:getCorreo"}
+    
+promocion_getEmpresaEnSesion:
+    pattern:  /getEmpresaEnSesion
+    defaults: { _controller: "comercialBundle:Promocion:getEmpresaEnSesion" }

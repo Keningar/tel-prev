@@ -1,0 +1,76 @@
+reportesjefes:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:ReportesJefes:index" }
+
+reportesjefes_gridResultadosMes:
+    pattern:  /gridResultadosMes
+    defaults: { _controller: "comercialBundle:ReportesJefes:gridResultadosMes" }
+    
+reportesjefes_gridResultadosPorSupervisor:
+    pattern:  /gridResultadosPorSupervisor
+    defaults: { _controller: "comercialBundle:ReportesJefes:gridResultadosPorSupervisor" }
+    
+reportesjefes_gridVentasPorAsesor:
+    pattern:  /gridVentasPorAsesor
+    defaults: { _controller: "comercialBundle:ReportesJefes:gridVentasPorAsesor" } 
+    
+reportesjefes_metaDataResultadosConsolidados:
+    pattern:  /metaDataResultadosConsolidados
+    defaults: { _controller: "comercialBundle:ReportesJefes:metaDataResultadosConsolidados" }
+    
+reportesjefes_gridResultadosConsolidados:
+    pattern:  /gridResultadosConsolidados
+    defaults: { _controller: "comercialBundle:ReportesJefes:gridResultadosConsolidados" }
+    
+reportesjefes_gridRechazosVentas:
+    pattern:  /gridRechazosVentas
+    defaults: { _controller: "comercialBundle:ReportesJefes:gridRechazosVentas" }
+    
+reportesjefes_getAjaxComboSupervisores:
+    pattern:  /getAjaxComboSupervisores
+    defaults: { _controller: "comercialBundle:ReportesJefes:getAjaxComboSupervisores" }
+    
+reportesjefes_getAjaxComboAsesores:
+    pattern:  /getAjaxComboAsesores
+    defaults: { _controller: "comercialBundle:ReportesJefes:getAjaxComboAsesores" }
+    
+reportesjefes_getAjaxComboJurisdicciones:
+    pattern:  /getAjaxComboJurisdicciones
+    defaults: { _controller: "comercialBundle:ReportesJefes:getAjaxComboJurisdicciones" }
+    
+reportesjefes_gridVentasJefatura:
+    pattern:  /gridVentasJefatura
+    defaults: { _controller: "comercialBundle:ReportesJefes:gridVentasJefatura" }
+    
+reportesjefes_getMetasActivasSupervisores:
+    pattern:  /getMetasActivasSupervisores
+    defaults: { _controller: "comercialBundle:ReportesJefes:getMetasActivasSupervisores" }    
+      
+reportesjefes_getAjaxComboCanales:
+    pattern: /getAjaxComboCanales
+    defaults: { _controller: "comercialBundle:ReportesJefes:getAjaxComboCanales"}
+      
+reportesjefes_getAjaxComboPuntoVenta:
+    pattern: /getAjaxComboPuntoVenta
+    defaults: { _controller: "comercialBundle:ReportesJefes:getAjaxComboPuntoVenta"}
+    
+reportesjefes_generarReporteResultadosMes:
+    pattern: /generarReporteResultadosMes
+    defaults: { _controller: "comercialBundle:ReportesJefes:generarReporteResultadosMes"}
+    
+reportesjefes_generarReporteResultadosSupervisor:
+    pattern: /generarReporteResultadosSupervisor
+    defaults: { _controller: "comercialBundle:ReportesJefes:generarReporteResultadosSupervisor"}
+    
+reportesjefes_generarReporteResultadosConsolidados:
+    pattern: /generarReporteResultadosConsolidados
+    defaults: { _controller: "comercialBundle:ReportesJefes:generarReporteResultadosConsolidados"}
+    
+reportesjefes_generarReporteRechazosVentas:
+    pattern: /generarReporteRechazosVentas
+    defaults: { _controller: "comercialBundle:ReportesJefes:generarReporteRechazosVentas"}
+    
+reportesjefes_generarReporteVentasJefatura:
+    pattern: /generarReporteVentasJefatura
+    defaults: { _controller: "comercialBundle:ReportesJefes:generarReporteVentasJefatura"}
+    

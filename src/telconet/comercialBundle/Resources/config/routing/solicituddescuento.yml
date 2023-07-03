@@ -1,0 +1,24 @@
+solicituddescuento:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:index" }
+
+solicituddescuento_graba_solicdesc_ajax:
+    pattern:  /grabasolicituddescajax
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:grabaSolicitudDesc_ajax" }
+
+solicituddescuento_get_motivos_ajax:
+    pattern:  /getmotivosajax
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:getMotivos_ajax" }
+
+solicituddescuento_get_servicios_ajax:
+    pattern:  /{id}/getserviciossolicituddescuentoajax
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:getServiciosParaSolicitudDesc_ajax" }
+
+solicituddescuento_calculaDescAdultoMayor:
+    pattern:  /calculaDescAdultoMayor
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:calculaDescAdultoMayor" }    
+    
+solicituddescuento_flujoMotivoAdultoMayor:
+    pattern:  /flujoMotivoAdultoMayor
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:flujoMotivoAdultoMayor" } 
+    

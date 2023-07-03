@@ -1,0 +1,40 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+        
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGetTipoSolicitudesClientes               = '{{ path('autorizarsolicitudesclientes_getTipoSolicitudesClientes') }}';
+        var strUrlGridSolicitudesClientes                  = '{{ path('autorizarsolicitudesclientes_grid') }}';
+        var strUrlAprobarRechazarSolicitudesClientes       = '{{ path('autorizarsolicitudesclientes_aprobarRechazar') }}';
+        var strUrlAprobarRechazarSolicitudesClientesMasivo = '{{ path('autorizarsolicitudesclientes_aprobarRechazarMasivo') }}';
+        var strUrlGetMotivosRechazo                        = '{{ path('autorizarsolicitudesclientes_getMotivosRechazo') }}';
+        var strUrlClientesPorSolicitud                     = '{{ path('autorizarsolicitudesclientes_getClientesPorSolicitud')}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('bundles/comercial/js/AutorizarSolicitudesClientes/index.js?2') }}"></script>
+{% endblock %}
+       
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Autorizar Solicitudes de los Clientes</h1>
+    </div>
+    <div class="body_content k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td>
+                    <div id='filtroBusqueda'></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br/>
+                    <div id="grid"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+) VALUES (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'CAMBIO_FACTURA_COMISION'
+            AND MODULO = 'COMERCIAL'
+    ),
+    'LISTA_USUARIO_APROBACION',
+    'fvillacreses',
+    'R1',
+    'Pendiente Gerente',
+    'GERENTE_VENTAS',
+    'Activo',
+    'kbaque',
+    SYSDATE,
+    '127.0.0.1',
+    10
+);
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+) VALUES (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+        SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'CAMBIO_FACTURA_COMISION'
+            AND MODULO = 'COMERCIAL'
+    ),
+    'LISTA_USUARIO_APROBACION',
+    'mescobar',
+    'R2',
+    'Pendiente Gerente',
+    'GERENTE_VENTAS',
+    'Activo',
+    'kbaque',
+    SYSDATE,
+    '127.0.0.1',
+    10
+);
+
+COMMIT;
+
+/

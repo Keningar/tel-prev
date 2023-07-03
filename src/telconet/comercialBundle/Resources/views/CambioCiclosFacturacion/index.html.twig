@@ -1,0 +1,79 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./public/css/alertaOpcionNoDisponible.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('./public/css/dist/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+            
+            #dashboard {
+                margin: -4px -14px 0;
+                margin: 0px 11px 3px;
+                -moz-border-radius: 4px;
+                border: 1px solid #DDDDDD;
+                background-color: #FFFFFF;
+                box-shadow: none !important;
+                width: 975px;
+                width: 77.5%;
+                min-height: 10em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/Cliente.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cambiociclosfacturacion/cambioCiclosFacturacion.js?2') }}"></script>
+    <script>                
+        var urlGetClientesACambiarCicloFact         = '{{ path('cambioCiclosFacturacion_getClientesACambiarCicloFact') }}';
+        var urlGetAsignarCicloFact                  = "{{ path('cambioCiclosFacturacion_getAsignarCicloFact') }}";         
+        var urlGetAsignarCicloFactTodos             = "{{ path('cambioCiclosFacturacion_getAsignarCicloFactTodos') }}";         
+        var urlGetCiclosFacturacion                 = '{{ path('cambioCiclosFacturacion_getCiclosFacturacion') }}';
+        var urlGenerarRptCambioCiclo                = "{{ path('cambioCiclosFacturacion_generarRptCambioCiclo') }}";
+        var urlGetFormasPagoParaContrato            = '{{ path('cambioCiclosFacturacion_getFormasPagoParaContrato') }}';
+        var urlGetPtosCoberturaByEmpresa            = "{{ path('reporte_getPtosCoberturaByEmpresa') }}";        
+        var urlGetTipoCuenta                        = '{{ path('cambioCiclosFacturacion_getTipoCuenta') }}';
+        var urlGetBancos                            = "{{ path('cambioCiclosFacturacion_getBancos') }}";   
+        var urlGetBancosTarjetas                    = "{{ path('procesomasivo_getBancosTarjetas') }}";          
+        var urlGetEstadosServCambioCiclo            = "{{ path('cambioCiclosFacturacion_getEstadosServCambioCiclo') }}";         
+        var intCantidaRegProcesa                    = "{{intCantidaRegProcesa}}";
+    </script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Cambio de Ciclo de Facturacion</h1>    
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="0" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="listView"></div></td>
+        </tr>
+        <tr>
+            <td><div id="mensaje"></div></td>
+        </tr>        
+    </table> 
+</div>
+
+{% endblock contenido_central %}

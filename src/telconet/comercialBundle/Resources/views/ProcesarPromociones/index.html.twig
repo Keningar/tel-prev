@@ -1,0 +1,50 @@
+{# empty Twig template #}
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Procesar</h1>
+</div>
+<div class="body_content k-content">
+<a class="button-nuevo-registro" href="{{ path('infoplancaracteristicas_promociones_ejecuta') }}">
+	<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+	&nbsp;Procesar        
+</a>        
+</div>
+    <div>Resultado: {{ msg }}</div>
+    <div>out_var: {{ out_var}}</div>
+{% endblock contenido_izq %}
+                

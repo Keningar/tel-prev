@@ -1,0 +1,172 @@
+
+<div class="container">
+    <h5>{{objPromocion['objAdmiGrupoPromocion'].nombreGrupo}} - Detalles Generales <i class="fa fa-info-circle"></i></h5>
+    <table class="table compact" width='100%' border='0'>          
+        <tbody>           
+            <tr>
+                <td><b>Fecha Inicio Vigencia:</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].feInicioVigencia| date('j. F Y')}}</td>
+                <td><b>Fecha Fin Vigencia:</b></td>
+                <td>{{objPromocion['objAdmiGrupoPromocion'].feFinVigencia| date('j. F Y')}}</td> 
+            </tr>
+            <tr>         
+                <td><b>Última Milla:</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strUltimaMilla}} </td>
+                <td><b>Tipo Negocio:</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strTipoNegocio}} </td>
+            </tr>
+            <tr>         
+                <td><b>Período(s):</b></td>
+                <td>                   
+                    {% for periodo in objPromocion['arrayCaracteristicas'].arrayPeriodo %}        
+                    {{ periodo }} 
+                    {% endfor %}                        
+                <td><b>Descuento(%):</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].arrayDescuento[0]}} </td>
+            </tr>   
+            <tr>
+                <td><b>Forma de Pago:</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strFormaPago}} </td>
+                {%if  objPromocion['arrayCaracteristicas'].strCodigoPromocion!='' %} 
+                <td><b>Codigo Promoción:</b></td>
+                <td>{{objPromocion['arrayCaracteristicas'].strCodigoPromocion}} </td>
+                {%else%}  
+                <td></td>
+                <td></td>
+                {% endif %}
+            </tr>
+         
+        </tbody>
+    </table>
+    
+    <div class="container">
+        {% if objPromocion['arrayEmisores'] is not empty %}
+            <label for="forma_pago" class="col-sm-12 col-form-label">Información Débito Bancario: 
+                <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                        aria-expanded="false" data-target="#contenedor_ver_emisores"><i class="fa fa-angle-down"></i>
+                </button>
+            </label>
+            <div class="bonder-titulo"></div>
+            <div class="col-md-12">
+                <div id="contenedor_ver_emisores" class="form-group row scrollbar">
+                    <table class="table table-striped table-bordered compact table-sm" id="tablaInformacionEmisores">
+                        <thead class="thead-light"> 
+                            <tr>
+                                <th width="15%">Tipo</th>
+                                <th>Tarjeta/Cta.Bancaria</th>
+                                <th>Banco</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyInformacionEmisores">
+                            {% for Emisores in objPromocion['arrayEmisores'] %}
+                                <tr>
+                                    <td>{{ Emisores['esTarjeta'] }}</td>
+                                    <td>{{ Emisores['descCuenta'] }}</td>
+                                    <td>{{ Emisores['descBanco'] }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+        <label for="forma_pago" class="col-sm-12 col-form-label">Información de Sectorización: 
+            <button type="button" class="btn btn-outline-info btn-sm collapsed angle-down" data-toggle="collapse" 
+                    aria-expanded="false" data-target="#contenedor_ver_sector"><i class="fa fa-angle-down"></i>
+            </button>
+        </label>
+        <div class="bonder-titulo"></div>
+        <div class="col-md-12">
+            <div id="contenedor_ver_sector" class="form-group row scrollbar">
+                <table class="table table-striped table-bordered compact table-sm"id="tablaInfSectorizacion">  
+                    <thead class="thead-light">
+                        <tr>
+                            <th><b>Jurisdicción</b></th>
+                            <th><b>Cantón</b></th>
+                            <th><b>Parroquia</b></th>
+                            <th colspan="2"><b>Sector / Olt / Edificio</b></th>                              
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyInfSectorizacion">
+                        {% if objPromocion['arrayCaracteristicas'].arraySectorizacion is defined and 
+                              objPromocion['arrayCaracteristicas'].arraySectorizacion is not empty %}    
+                            {% for Sectorizacion in objPromocion['arrayCaracteristicas'].arraySectorizacion %}
+                            <tr>
+                                <td>{{ Sectorizacion['strJurisdiccion'] }}</td>
+                                <td>{{ Sectorizacion['strCanton'] }}</td>
+                                <td>{{ Sectorizacion['strParroquia'] }}</td>
+                                <td>{{ Sectorizacion['strOptSectOltEdif'] }}</td>
+                                <td>{{ Sectorizacion['strSectOltEdif'] }}</td>
+                            </tr>
+                        {% endfor %}
+                        {% else %}
+                         <tr>
+                         <td>Todos</td>
+                         <td>Todos</td>
+                         <td>Todos</td>
+                         <td>Todos</td>                          
+                         </tr>
+                        {% endif %}    
+                    </tbody>
+                </table>
+            </div>
+        </div>        
+        <br>      
+        <table width='100%' border='0'>          
+        <tbody>
+            <tr>
+                <td width="10%" rowspan="4">
+                <img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                <th width="11%">Creador:</th>
+                <td width="34%" >{% if(objPromocion['objAdmiGrupoPromocion'] is not null)%} 
+                    {{objPromocion['objAdmiGrupoPromocion'].usrCreacion}} 
+                    {% endif %}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].usrUltMod is not null) %}
+                    <td width="10%" rowspan="4">
+                    <img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                    <th width="11%" >Ult. Mod.:</th>
+                    <td width="34%">{{ objPromocion['objAdmiGrupoPromocion'].usrUltMod }}</td>
+                {% endif %}                
+            </tr>
+            <tr>
+                <th>Fecha:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %}
+                    {{ objPromocion['objAdmiGrupoPromocion'].feCreacion | date("d M Y") }}
+                    {% endif %}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].feUltMod is not null) %}
+                    <th>Fecha:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].feUltMod  | date("d M Y")}}</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <th>Hora:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %} 
+                    {{ objPromocion['objAdmiGrupoPromocion'].feCreacion | date("H:i:s") }} 
+                    {%endif%}</td>
+
+                {% if(objPromocion['objAdmiGrupoPromocion'].feUltMod is not null) %}
+                    <th>Hora:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].feUltMod| date("H:i:s") }}</td>
+                {% endif %}               
+            </tr>
+            <tr>
+                <th>Ip:</th>
+                <td>{% if(objPromocion['objAdmiGrupoPromocion'] is not null) %} 
+                    {{ objPromocion['objAdmiGrupoPromocion'].ipCreacion}} 
+                    {%endif%}</td>
+                    
+                {% if(objPromocion['objAdmiGrupoPromocion'].ipUltMod is not null) %}
+                    <th>Ip:</th>
+                    <td>{{ objPromocion['objAdmiGrupoPromocion'].ipUltMod }}</td>
+                {% endif %}       
+            </tr>
+        </tbody>
+      </table>            
+    </div>        
+</div>
+
+
+
+

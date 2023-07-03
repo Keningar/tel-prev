@@ -1,0 +1,838 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}	
+        <link href="{{ asset('public/js/jquery-tooltip/jquery.tooltip.css') }}" type="text/css" rel="stylesheet" />
+	 <style type="text/css">
+
+		#tooltip.pretty {
+			border: none;
+			width: 250px;
+			padding:20px;
+			height: 135px;
+			opacity: 2;
+			background: url('');
+		}
+
+		#tooltip.pretty div { 
+		width: 220px; 
+		text-align: left; 
+		background-color: #F9F9F9;
+		border: 1px solid #DDDDDD;
+		border-radius: 4px 4px 4px 4px;
+		box-shadow: 0 0 3px #D7D7D7;
+		margin: 11px 11px 11px;
+		padding: 7px 7px 7px;
+		min-height: 7em;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size:12px;		
+		}
+
+		#tooltiptable{
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size:9px;
+		font-weight:normal;
+		text-align: left;
+		padding: 8px;
+		margin: 5px;
+		}
+	</style>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var urlGetAdmiFormaContacto        = "{{ path('admiformacontacto_getAdmiFormaContacto') }}";
+        var urlGetInfoPersonaFormaContacto = "{{ path('contacto_getInfoPersonaFormaContacto') }}"; 
+
+
+        var urlRepresentanteLegalVerificar  = "{{ path('cliente_ajaxRepresentanteLegalVerificar') }}";
+        var urlRepresentanteLegalConsultar  = "{{ path('cliente_ajaxRepresentanteLegalConsultar') }}";
+        var urlRepresentanteLegalActualizar = "{{ path('cliente_ajaxRepresentanteLegalActualizar') }}";
+        var urlValidarFormaContacto         = "{{ path('contacto_ajaxValidarFormaContacto') }}";
+        
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/representanteLegal.js?3') }}"></script>
+{% endblock %}
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}  
+{% block flujo %}
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}  
+{#% if app.session.get('cliente') != null %#}
+<div style=' background-color: #F9F9F9;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 0 3px #D7D7D7;
+    margin: 11px 11px 11px;
+	padding: 3px 6px 3px;
+    min-height: 7em;
+    width: 97%;'>
+<table border='0' cellpadding='0' cellspacing='0' width='100%' align='left'>
+<tr>
+<td colspan='13'>&nbsp;</td>
+</tr>
+<tr>
+<td width='70'>	
+<span id='flujo-prospecto' 
+title="">
+<img id="img_flujo_prospecto" src="{{ asset('public/images/prospecto_gris.png') }}"/>
+</span>
+</td>
+<td width='30'>
+<img  src="{{ asset('public/images/circle_blue.png') }}"/>
+</td>
+<td width='70'>
+<span id='flujo-cliente' 
+title="">
+<img id='img_flujo_cliente' src="{{ asset('public/images/cliente_gris.png') }}"/>
+</span>
+</td>
+<td width='30'>
+<img src="{{ asset('public/images/circle_blue.png') }}"/>
+</td>
+<td width='70'>
+<span id='flujo-ptoscliente' 
+title="">
+<img id='img_flujo_ptoscliente' src="{{ asset('public/images/ptos_cliente_pros_gris.png') }}"/>
+</span>
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+<td>
+
+</td>
+</tr>
+</table>
+</div>
+{#% endif %#}
+{% endblock flujo %} 
+
+{% block contenido_izq %}
+    {% set strIva    = 'IVA' %}
+    {% if app.session.get('strNombrePais') == 'PANAMA' %}
+        {% set strIva    = 'ITBMS' %}
+    {% endif %}
+
+<div id="titulo_content">
+    <table>
+        <tr>
+            <td width="60px">
+                <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            </td>
+            <td width="100px">
+                <h1>Ver Prospecto</h1>
+            </td>
+            <td id="divToolBarVip" width="180px">
+                <div id="toolBarVip"/>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="body_content">
+<table class="record_properties" width='100%' border='0'>
+
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}	
+{%if(entity.tipoEmpresa is not null)%}
+    <tbody>
+        <tr>
+            <td><b>Tipo identificacion:</b></td>
+            <td>
+			{%if(entity.tipoIdentificacion == 'CED')%}Cedula
+			{%elseif(entity.tipoIdentificacion == 'RUC')%}Ruc
+			{%elseif(entity.tipoIdentificacion == 'PAS')%}Pasaporte
+            {%elseif(entity.tipoIdentificacion == 'NIT')%}NIT
+            {%elseif(entity.tipoIdentificacion == 'DPI')%}DPI
+			{%endif%}
+			</td>
+            <th><b>Tipo Empresa:</b></th>
+            <td>{{ entity.tipoEmpresa }}</td>
+        </tr>
+        <tr>
+            <td><b>Direccion Tributaria:</b></td>
+            <td>{{ entity.direccionTributaria }}</td>
+            <td><b>Identificacion:</b></td>
+            <td>{{ entity.identificacionCliente }}</td>
+        </tr>
+        <tr>
+			{%if (entity.razonSocial) %}
+				<td><b>Nombre Prospecto:<b></td>
+				<td>{{ entity.razonSocial }}</td>            
+			{%else%}
+				<td><b>Nombre Prospecto:<b></td>
+				<td>{{ entity.nombres }} {{ entity.apellidos }}</td>
+			{%endif%}
+            <td><b>Nacionalidad:<b></td>
+            <td>
+			{%if(entity.nacionalidad == 'NAC')%}Nacional
+			{%elseif(entity.nacionalidad == 'EXT')%}Extranjero
+			{%endif%}
+			</td>
+        </tr>
+        <tr>          
+            <td><b>Representante Legal:<b></td>
+            <td>{{ entity.representanteLegal }}</td>
+            <td><b>Referido Por:</b></td>
+        {% if referido is not null  %}    
+            {% if referido.razonSocial is not null  %}
+				<td><a href="{{ path('cliente_show',{'id':referido.id,'idper':idperref}) }}">{{ referido.razonSocial }}</a></td>
+            {% else %}
+                <td><a href="{{ path('cliente_show',{'id':referido.id,'idper':idperref}) }}">{{ referido.nombres }} {{ referido.apellidos }}</a></td>
+            {% endif %}
+        {% else %}
+            <td>No fue referido</td>    
+        {% endif %}
+        </tr>         
+        <tr>
+            <td><b>Tipo Tributario:</b></td>
+            <td>{%if(entity.tipoTributario == 'NAT')%} Natural
+				{%elseif(entity.tipoTributario == 'JUR')%} Juridica
+				{%endif%}
+			</td>
+            <td><b>Estado:</b></td>
+            <td>{{ estado }}</td>
+        </tr> 
+        
+         {% if (prefijoEmpresa =='MD') %}
+            <tr>
+                <td><b>Ciclo de Facturacion:</b></td><td>{{strNombreCiclo}}</td>		
+            </tr>     
+         {%endif%}
+            
+       {% if (prefijoEmpresa =='TN') %}
+        {%if(oficinaFacturacion is not null)%} 
+         <td><b>Oficina de Facturacion:</b></td>
+         <td>{{  oficinaFacturacion.nombreOficina }}</td>
+        {%endif%}  
+        {%if(holding is not null)%} 
+         <td><b>Holding:</b></td>
+         <td>{{  holding }}</td>
+        {%endif%}  
+	    <tr>
+		<td><b>Contribuyente Especial:</b></td>
+		<td>{%if(entity.contribuyenteEspecial == 'S')%} Si
+				    {%else%} No
+				    {%endif%}
+		</td>
+		<td><b>Paga {{ strIva }}:</b></td>
+		<td>{%if(entity.pagaIva == 'S')%} Si
+				    {%else%} No
+				    {%endif%}
+		</td>
+	    </tr>  
+	    <tr>
+		<td><b>Tiene Carnet CONADIS:</b></td>
+		<td>{%if(entity.numeroConadis !=null)%} Si
+				    {%else%} No
+				    {%endif%}
+		</td>
+		<td><b>Numero Carnet CONADIS:</b></td>
+		<td>{%if(entity.numeroConadis !=null)%} {{ entity.numeroConadis }}
+				    {%else%} 
+				    {%endif%}
+		</td>
+	    </tr>         
+	    <tr>
+		<td><b>Es Prepago:</b></td>
+		<td>{%if(entityPersonaEmpresaRol.esPrepago == 'S')%} Si
+				    {%else%} No
+				    {%endif%}
+		</td>        
+	    </tr>  
+        <tr>
+            <td><b>Es Distribuidor:</b></td>
+            <td>{{  strEsDistribuidor }}</td>
+        </tr>
+	{%endif%}    
+		<tr>
+		<td>
+		&nbsp;
+		</td>
+		</tr>			
+		<tr>
+			<td  colspan='4'>
+			<table>
+
+			{%for item in formasContacto%}
+			<tr>					
+			<td  width='30'><b>
+				{% if (item.formaContactoId.descripcionFormaContacto=='Telefono Fijo') %}
+					<img src='/public/images/images_crud/contact.png'>
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Claro') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Claro') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Movistar') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil CNT') or 
+                (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Cable and Wireless') or
+                (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Digicel') %}
+					<img src='/public/images/images_crud/phone.png'>				
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Correo Electronico')%}
+					<img src='/public/images/images_crud/mail.png'>							
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Facebook')%}
+					<img src='/public/images/images_crud/facebook.png'>							
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Twitter')%}
+					<img  width='16' height='16' src='/public/images/images_crud/twitter.png'>														
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil')%}
+					<img src='/public/images/images_crud/phone.png'>							
+				{%endif%}
+				</b>
+			</td>
+			<td>
+				{{item.valor}}
+			</td>		
+			</tr>					
+			{%endfor%}
+			</table>
+			</td> 		
+		</tr>		
+        </tbody>
+{%else%}
+
+    <tbody>
+        <tr>
+            <td><b>Tipo Identificacion:</b></td>
+            <td>
+			{%if(entity.tipoIdentificacion == 'CED')%}Cedula
+			{%elseif(entity.tipoIdentificacion == 'RUC')%}Ruc
+			{%elseif(entity.tipoIdentificacion == 'PAS')%}Pasaporte
+            {%elseif(entity.tipoIdentificacion == 'NIT')%}NIT
+            {%elseif(entity.tipoIdentificacion == 'DPI')%}DPI                
+			{%endif%}
+			</td>
+            {%if(entity.tipoTributario == 'NAT')%} 
+            <td><b>Origen de Ingresos:</b></td>
+            <td>
+                {%if(entity.origenIngresos == 'B')%}Empleado Público
+                {%elseif(entity.origenIngresos == 'V')%}Empleado Privado
+                {%elseif(entity.origenIngresos == 'I')%}Independiente
+                {%elseif(entity.origenIngresos == 'A')%}Ama de casa o estudiante
+                {%elseif(entity.origenIngresos == 'R')%}Rentista
+                {%elseif(entity.origenIngresos == 'J')%}Jubilado
+                {%elseif(entity.origenIngresos == 'M')%}Remesas del exterior
+                {%endif%}
+            </td>
+            {%elseif(entity.tipoTributario == 'JUR')%} 
+            <td></td>
+            <td></td>
+            {%endif%}
+        </tr>
+        <tr>
+            <td><b>Identificacion:</b></td>
+            <td>{{ entity.identificacionCliente }}</td>            
+
+
+            <td><b>Estado Civil:</b></td>
+            <td>
+			{%if(entity.estadoCivil == 'C')%}Casado(a)
+			{%elseif(entity.estadoCivil == 'S')%}Soltero(a)
+			{%elseif(entity.estadoCivil == 'D')%}Divorciado(a)
+			{%elseif(entity.estadoCivil == 'V')%}Viudo(a)
+			{%elseif(entity.estadoCivil == 'U')%}Uni&oacute;n Libre
+                        {%else%}{{entity.estadoCivil}}                            
+			{%endif%}
+			</td>
+        </tr>
+        
+        <tr>
+			{%if (entity.razonSocial) %}
+				<td rowspan='3'><b>Nombre Prospecto:<b></td>
+				<td rowspan='3'>{{ entity.razonSocial }}</td>            
+			{%else%}
+				<td rowspan='3'><b>Nombre Prospecto:<b></td>
+				<td rowspan='3'>{{ entity.nombres }} {{ entity.apellidos }}</td>
+			{%endif%}
+            <td><b>Nacionalidad:<b></td>
+            <td>
+			{%if(entity.nacionalidad == 'NAC')%}Nacional
+			{%elseif(entity.nacionalidad == 'EXT')%}Extranjera
+			{%endif%}
+			</td>
+
+        </tr>
+        <tr>          
+            <td><b>Referido Por:</b></td>
+        {% if referido is not null  %}    
+            {% if referido.razonSocial is not null  %}
+		<td><a href="{{ path('cliente_show',{'id':referido.id,'idper':idperref}) }}">{{ referido.razonSocial }}</a></td>
+            {% else %}
+                <td><a href="{{ path('cliente_show',{'id':referido.id,'idper':idperref}) }}">{{ referido.nombres }} {{ referido.apellidos }}</a></td>
+            {% endif %}
+        {% else %}
+            <td>No fue referido</td>    
+        {% endif %}
+
+        </tr>         
+        <tr>
+            <td><b>Direccion Tributaria:</b></td>
+            <td>{{ entity.direccionTributaria }}</td>
+
+        </tr>
+        <tr>
+			{%if(entity.tipoIdentificacion == 'RUC')%}
+            <td><b>Representante Legal:<b></td>
+            <td>{{ entity.representanteLegal }}</td>
+			{%else%}
+            <td></td>
+            <td></td>
+			{%endif%}
+            <td><b>Fecha Nacimiento:</b></td>
+            <td>{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}</td>
+
+
+        </tr>
+        <tr>
+            <td><b>Tipo Tributario:</b></td>
+            <td>{%if(entity.tipoTributario == 'NAT')%} Natural
+				{%elseif(entity.tipoTributario == 'JUR')%} Juridica
+				{%endif%}</td>
+
+            <td><b>Estado:</b></td>
+            <td>{{ estado }}</td>
+        </tr>
+        {%if(oficinaFacturacion is not null)%} 
+	    <td><b>Oficina de Facturacion:</b></td>
+	    <td>{{  oficinaFacturacion.nombreOficina }}</td>
+       {%endif%}         
+       {% if (prefijoEmpresa =='TN') %}
+	    <tr>
+		<td><b>Contribuyente Especial:</b></td>
+		<td>{%if(entity.contribuyenteEspecial == 'S')%} Si
+				    {%else%} No
+				    {%endif%}
+		</td>
+		<td><b>Paga {{ strIva }}:</b></td>
+		<td>{%if(entity.pagaIva == 'S')%} Si
+				    {%else%} No
+				    {%endif%}
+		</td>
+	    </tr>  
+	    <tr>
+		<td><b>Tiene Carnet CONADIS:</b></td>
+		<td>{%if(entity.numeroConadis !=null)%} Si
+				    {%else%} No
+				    {%endif%}
+		</td>
+		<td><b>Numero Carnet CONADIS:</b></td>
+		<td>{%if(entity.numeroConadis !=null)%} {{ entity.numeroConadis }}
+				    {%else%} 
+				    {%endif%}
+		</td>
+	    </tr>         
+	    <tr>
+		<td><b>Es Prepago:</b></td>
+		<td>{%if(entityPersonaEmpresaRol.esPrepago == 'S')%} Si
+				    {%else%} No
+				    {%endif%}
+		</td>
+	    </tr>  
+	   {%endif%}           
+        <tr>
+
+            <td><b>Genero:</b></td>
+            <td>
+			{%if(entity.genero == 'M')%}Masculino
+			{%elseif(entity.genero == 'F')%}Femenino
+            {%elseif(entity.genero == 'O')%}Otro
+			{%endif%}
+			</td> 
+            
+            {% if (prefijoEmpresa =='MD') %}
+                <td><b>Ciclo de Facturacion:</b></td>	
+                <td>{{strNombreCiclo}}</td>		                
+            {%endif%}
+            <td></td>
+            <td></td>           
+        </tr>
+        
+        {%if(formaPago is not null)%}
+         <tr>
+            <td><b>Forma de Pago:</b></td>
+            <td> {{  formaPago.descripcionFormaPago }} </td>
+           {%if(tipoCuenta is not null)%} 
+               <td><b>Tipo de cuenta:</b></td>
+               <td>{{  tipoCuenta.descripcionCuenta }}</td>
+           {%endif%}      
+          </tr>
+        {%endif%}   
+          {%if(banco is not null)%} 
+          <tr>
+            <td><b>Banco:</b></td>
+            <td>{{  banco.descripcionBanco }}</td>
+            <td></td>
+            <td></td>
+          </tr>
+        {%endif%}  
+		<tr>
+		<td>
+		&nbsp;
+		</td>
+		</tr>			
+		<tr>
+			<td  colspan='4'>
+			<table>
+
+			{%for item in formasContacto%}
+			<tr>					
+			<td  width='30'><b>
+				{% if (item.formaContactoId.descripcionFormaContacto=='Telefono Fijo') %}
+					<img src='/public/images/images_crud/contact.png'>
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Claro') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Claro') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil Movistar') or
+				(item.formaContactoId.descripcionFormaContacto=='Telefono Movil CNT') or 
+                (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Cable and Wireless') or
+                (item.formaContactoId.descripcionFormaContacto=='Telefono Movil Digicel') %}
+					<img src='/public/images/images_crud/phone.png'>				
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Correo Electronico')%}
+					<img src='/public/images/images_crud/mail.png'>							
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Facebook')%}
+					<img src='/public/images/images_crud/facebook.png'>							
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Twitter')%}
+					<img  width='16' height='16' src='/public/images/images_crud/twitter.png'>														
+				{%elseif (item.formaContactoId.descripcionFormaContacto=='Telefono Movil')%}
+					<img src='/public/images/images_crud/phone.png'>							
+				{%endif%}
+				</b>
+			</td>
+			<td>
+				{{item.valor}}
+			</td>		
+			</tr>					
+			{%endfor%}
+			</table>
+			</td> 		
+		</tr>		
+        </tbody>
+
+{%endif%}		
+</table>
+</div>
+
+<div  class="body_content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_ptos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_ptos'></div></td>
+            </tr>
+    </table>     
+        <script>
+            var verHistorial                = '{{verHistorial}}';    
+            var prefijoEmpresa              = '{{prefijoEmpresa}}';
+            var url_cliente_delete_ajax     = '#';
+            var url_cliente_lista_estados   = '#';
+            //variable utilizada para anulacion de punto
+            var url_anula_punto_ajax        = "{{ path('infopunto_anula_punto') }}";
+            var url_puntos_lista_estados    = "{{ path('search_ajaxGetEstadosPunto') }}";        
+            var url_gridPtos                = "{{ path('infopunto_getpuntospersonaemprol',{'idper':idper, 'rol':'Pre-cliente'}) }}";
+            //variable que permite cambiar el tipo de negocio
+            var puedeCambiarTipoNegocio     = false;
+            var urlGridHistorialProspecto   = "{{ path('cliente_gridAjaxHistorialCliente', {'idPer':idper}) }}";
+        </script>      
+
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/gridPtosCliente.js?2') }}"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/precliente/show.js') }}"></script>    
+</div>
+
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('precliente') }}">Regresar</a>
+        </span>
+    </p>
+</div>        
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="4"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ creacion.usrCreacion }}</td>
+
+              {% if(ultMod is not null) %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ ultMod.usrCreacion }}</td>
+              {% endif %}
+
+              {% if(eliminado is not null) %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ eliminado.usrCreacion }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ creacion.feCreacion | date("d M Y") }}</td>
+
+              {% if(ultMod is not null) %}
+              <th>Fecha:</th>
+              <td >{{ ultMod.feCreacion  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(eliminado is not null) %}
+              <th>Fecha:</th>
+              <td>{{ eliminado.feCreacion | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ creacion.feCreacion | date("H:i:s") }}</td>
+
+              {% if(ultMod is not null) %}
+              <th>Hora:</th>
+              <td>{{ ultMod.feCreacion | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(eliminado is not null) %}
+              <th>Hora:</th>
+              <td>{{ eliminado.feCreacion | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Ip:</th>
+              <td>{{ creacion.ipCreacion}}</td>
+            </tr>            
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+	<div class="acciones_relacionadas">
+		<a href="{{ path('precliente_new') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nuevo Prospecto
+		</a>
+	</div>
+	<br />
+	{#% if (convertido.estado != "Convertido") %#}
+		<ul class="form_actions">
+			<li>
+				{% if (estado=='Pendiente')%}
+				<a class="button-editar" href="{{ path('precliente_edit', { 'id': entity.id }) }}">
+					Editar
+				</a>
+				{%endif%}
+			</li>
+		</ul>
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+					{%if(estado == "Pendiente" or estado=="Activo") %}
+		            <li>
+                        <a class="listado_ac_tablas" href="{{ path('infopunto_new',{ 'idCli': entity.id, 'idPer': idper, 'rol': 'Pre-cliente' }) }}">
+                            Nuevo Punto
+                        </a>
+                    </li>
+					{%endif%}			
+                    {%if(estado == "Pend-convertir") %}
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('precliente_convertir',{ 'id_prospecto': entity.id }) }}">Convertir a Cliente</a>
+                    </li>
+                    {%endif%}
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('infocontrato') }}">Contrato</a>
+                    </li>
+					<li>
+						<a class="listado_ac_tablas" href="{{ path('cliente_referidos') }}">Referidos</a>
+					</li>
+                    {%if(prefijoEmpresa =='MD' and entity.tipoTributario == 'JUR') %}
+                        <li>
+                            <a class="listado_ac_tablas" href="javascript:void(0)" onclick="gestorRepresentanteLegal('modal','{{entity.tipoIdentificacion}}','{{entity.identificacionCliente}}',{{ esCoordinadorMD }})">
+                                Ver representante legal
+                            </a>
+                        </li>
+                    {%endif%}
+                    <!--
+			{#% for acc in acc_relaciondas %} 
+				<li>
+					<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+				</li>
+			{% endfor %#}
+                    -->
+			<!--li>
+				<a class="listado_ac_tablas" href="{#{ path('precliente_convertir', { 'id_prospecto': entity.id }) }#}">Convertir Prospecto a Cliente</a>
+			</li-->
+
+            {%if(is_granted("ROLE_486-1") and prefijoEmpresa =='MD') %}
+                <li> 
+                    <a class="listado_ac_tablas" href="{{path('admiDocEnunciadoResp',{'identificacionCliente':entity.identificacionCliente})}}">Ver Políticas y Cláusulas</a>
+                </li>  
+            {%endif%}    
+
+		</ul>
+	{#% endif %#}
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+<script src="{{ asset('public/js/jquery-tooltip/jquery.tooltip.js') }}" type="text/javascript"></script>
+<script>
+var url_total_ptos="{{ path('infopunto_ajax_gettotalptos',{'id':entity.id}) }}";
+var url_cliente="{{ path('cliente_ajax_getclienteconvertido',{'id':entity.id}) }}";
+var estado_prospecto="{{ estado }}";
+</script>
+
+<script>
+Ext.require([
+    '*'
+]);    
+Ext.onReady(function(){
+//JS para flujo de prospectos
+var items="<tr><td colspan='2' style='padding:6px;'><h1>Flujo de Prospecto</h1></td></tr>";
+if (estado_prospecto=='Convertido')
+{
+    $("#img_flujo_prospecto").attr("src","{{ asset('public/images/prospecto_verde.png') }}");
+    items=items+"<tr><td style='padding:6px;'><img width='18' height='18' src='{{ asset('public/images/check.png') }}'></td><td  style='padding:6px;'>El prospecto ya fue convertido a Cliente.</td></tr>";                      
+    
+}
+if (estado_prospecto=='Activo')
+{
+    $("#img_flujo_prospecto").attr("src","{{ asset('public/images/prospecto_gris.png') }}");
+    items=items+"<tr><td style='padding:6px;'><img width='18' height='18' src='{{ asset('public/images/delete.png') }}'></td><td  style='padding:6px;'>El prospecto aun no es convertido a Cliente.</td></tr>";
+}
+if (estado_prospecto=='Inactivo')
+{
+    $("#img_flujo_prospecto").attr("src","{{ asset('public/images/prospecto_amarillo.png') }}");
+    items=items+"<tr><td style='padding:6px;'><img width='18' height='18' src='{{ asset('public/images/delete.png') }}'></td><td  style='padding:6px;'>El prospecto esta inactivo.</td></tr>";
+}
+$("#flujo-prospecto").attr("title",
+"<div><table>"+items+"</table></div>");
+$('#flujo-prospecto').tooltip({
+track: true,
+delay: 0,
+showURL: false,
+showBody: " - ",
+extraClass: "pretty",
+fixPNG: true,
+left: -6
+}); 
+
+//JS para flujo de Cliente
+    Ext.define('ListaDetalleModel', {
+        extend: 'Ext.data.Model',
+        fields: [{name:'estado', type: 'string'}
+                ]
+    });
+
+    storeCliente = Ext.create('Ext.data.JsonStore', {
+        model: 'ListaDetalleModel',
+        proxy: {
+            type: 'ajax',
+            url: url_cliente,
+            reader: {
+                type: 'json',
+                root: 'cliente'
+            }
+        },
+        listeners: {
+            load: function(store){
+                store.each(function(record) {
+                    var items="<tr><td colspan='2' style='padding:6px;'><h1>Flujo de Cliente</h1></td></tr>";
+                    if(record.data.estado){ 
+                        if(record.data.estado == 'Activo')
+                        {
+                            $("#img_flujo_cliente").attr("src","{{ asset('public/images/cliente_verde.png') }}");
+                            items=items+"<tr><td style='padding:6px;'><img width='18' height='18' src='{{ asset('public/images/check.png') }}'></td><td  style='padding:6px;'>El cliente se encuentra activo.</td></tr>";                      
+                        }
+                        else
+                        {
+                            $("#img_flujo_cliente").attr("src","{{ asset('public/images/cliente_gris.png') }}");
+                            items=items+"<tr><td style='padding:6px;'><img width='18' height='18' src='{{ asset('public/images/delete.png') }}'></td><td  style='padding:6px;'>El cliente no se encuentra activo.</td></tr>";                    
+                        }
+                    }
+                    else
+                    {
+                        $("#img_flujo_cliente").attr("src","{{ asset('public/images/cliente_gris.png') }}");
+                        items=items+"<tr><td style='padding:6px;'><img width='18' height='18' src='{{ asset('public/images/delete.png') }}'></td><td  style='padding:6px;'>El prospecto aun no a sido convertido a Cliente.</td></tr>";                        
+                    }
+                    $("#flujo-cliente").attr("title",
+                    "<div><table>"+items+"</table></div>");
+                    $('#flujo-cliente').tooltip({
+                    track: true,
+                    delay: 0,
+                    showURL: false,
+                    showBody: " - ",
+                    extraClass: "pretty",
+                    fixPNG: true,
+                    left: -6
+                    });                    
+                });
+            }
+        }
+    });
+
+    storeCliente.load();  
+
+//JS para flujo de Ptos. Cliente
+    Ext.define('ptosModel', {
+        extend: 'Ext.data.Model',
+        fields: [{name:'total', type: 'int'}
+                ]
+    }); 
+
+    store = Ext.create('Ext.data.JsonStore', {
+        model: 'ptosModel',
+        proxy: {
+            type: 'ajax',
+            url: url_total_ptos,
+            reader: {
+                type: 'json',
+                root: 'total_ptos'
+            }
+        },
+        listeners: {
+            load: function(store){
+                store.each(function(record) {
+                    var items="<tr><td colspan='2' style='padding:6px;'><h1>Flujo de Punto Cliente</h1></td></tr>";
+                    if(record.data.total > 0)
+                    {
+                        $("#img_flujo_ptoscliente").attr("src","{{ asset('public/images/ptos_cliente_pros_verde.png') }}");
+                        items=items+"<tr><td style='padding:6px;'><img width='18' height='18' src='{{ asset('public/images/check.png') }}'></td><td  style='padding:6px;'>Tiene al menos 1 punto cliente ingresado.</td></tr>";                      
+                    }
+                    else
+                    {
+        		$("#img_flujo_ptoscliente").attr("src","{{ asset('public/images/ptos_cliente_pros_gris.png') }}");
+                	items=items+"<tr><td style='padding:6px;'><img width='18' height='18' src='{{ asset('public/images/delete.png') }}'></td><td  style='padding:6px;'>No tiene puntos cliente ingresados en el cliente.</td></tr>";                    
+                    }
+                    $("#flujo-ptoscliente").attr("title",
+                    "<div><table>"+items+"</table></div>");
+                    $('#flujo-ptoscliente').tooltip({
+                    track: true,
+                    delay: 0,
+                    showURL: false,
+                    showBody: " - ",
+                    extraClass: "pretty",
+                    fixPNG: true,
+                    left: -6
+                    });                    
+                });
+            }
+        }
+    });
+
+    store.load();  
+
+
+
+});
+</script>    
+
+{% endblock javascripts_footer%}        

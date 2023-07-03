@@ -1,0 +1,32 @@
+
+gestionautorizaciones_aprobar_descuento:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:Seguimiento:gestionDescuento" }
+
+seguimiento_solicitud:
+    pattern:  /show
+    defaults: { _controller: "comercialBundle:Seguimiento:show" }    
+    
+treegrid:
+    pattern:  /treegrid
+    defaults: { _controller: "comercialBundle:Seguimiento:treegrid" }
+    
+solicitudes_grafico_ajax:
+    pattern:  /graficaServicio
+    defaults: { _controller: "comercialBundle:Seguimiento:graficaServicio" }    
+    
+solicitudes_getDetalleServicios:
+    pattern:  /getDetallesServicios
+    defaults: { _controller: "comercialBundle:Seguimiento:getDetallesServicios" } 
+    
+infopunto_getProductosPorEstado:
+    pattern:  /getProductosPorEstado
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getProductosPorEstado" }
+    
+solicitudes_getSeguimientoServicio:
+    pattern:  /getHistorialSeguimiento
+    defaults: { _controller: "comercialBundle:Seguimiento:getHistorialSeguimiento" }
+    
+filtro_getSeguimientoServicio:
+    pattern:  /getFiltroServicios
+    defaults: { _controller: "comercialBundle:Seguimiento:getFiltroServicios" }

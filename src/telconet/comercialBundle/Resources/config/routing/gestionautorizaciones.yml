@@ -1,0 +1,8 @@
+
+gestionautorizaciones_aprobar_descuento:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:gestionDescuento" }
+    
+gestionautorizaciones_getTipoAutorizacionAjax:
+    pattern:  /getTipoAutorizacionAjax
+    defaults: { _controller: "comercialBundle:SolicitudDescuento:getTipoAutorizacionAjax" }

@@ -1,0 +1,102 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+ 	<style scoped="scoped">
+  html { height: 100% }
+  body { height: 100%; margin: 0px; padding: 0px }
+  map_canvas { height: 100% }
+	</style>        
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}      
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/newArchivoDigital.js?3') }}"></script>
+    <script>
+        prefijoEmpresa       = '{{prefijoEmpresa}}';
+        url_lista_documentos = "{{ path('infopunto_ajaxTipoDocumentosGeneral') }}";
+        documentos           = "{{documentos}}"
+    </script>
+   
+{% endblock %}
+{% block contenido_izq %}
+
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+
+	<h1>Subir Archivo Digital en Punto</h1>
+
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+{% if error is defined %}
+    <div class='errormessage'>{{ error }}</div>
+{% endif %}
+{% for flashMessage in app.session.flashbag.get('notice') %}
+ <div class="errormessage">
+    {{ flashMessage }}
+ </div>
+{% endfor %}
+
+<form id='formpunto' action="{{ path('infopunto_grabarsubirarchivo') }}" method="post" {{ form_enctype(form) }}  class="formulario" onSubmit="if(validarFile()){return true;}else{return false;}">
+                     <table border='0'width='100%'>
+                        <tr><td colspan='4'>&nbsp;</td></tr>
+                        <tr>
+                            <td>
+                               
+                            </td>                            
+                            <td style="vertical-align: top;">
+                                    <table border='0' align='left' width='100%'>
+                                        <tr>
+                                            {% if (prefijoEmpresa == 'MD' or prefijoEmpresa == 'EN' ) %}
+                                                <td>Tipo de Documento:</td>
+                                                <td><div id='combo_documentos' required="true"></div></td>
+                                            {% endif %}                                               
+                                            <td>
+                                                {{ form_label(form.fileDigital) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.fileDigital) }}
+                                                        
+                                                    <input id='infopuntoextratype_idpunto' name='infopuntoextratype[idpunto]' type='hidden' value='{{idPto}}'>    
+                                                    <input id='infopuntoextratype_idTipoDocumento' name='infopuntoextratype[idTipoDocumento]' type='hidden' value=''>    
+                                            </td> 
+                                        </tr>                                           										
+                                    </table>
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    </table>    
+
+                <div class="buttons">
+				<p>
+                                    <button type="submit" class="button-crud">Guardar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('infopunto_show',{'id':entity.id,'rol':rol}) }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div>
+        <div class="object-example-container"
+                data-example-objects="{{documentos|json_encode()}}"
+            ></div> 
+</form>
+</div> 
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+
+{% endblock %}

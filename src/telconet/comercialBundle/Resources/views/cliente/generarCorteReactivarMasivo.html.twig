@@ -1,0 +1,173 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+
+<script>
+    var url_razon_social         = "{{path('cliente_getAjaxComboRazonSocial')}}";
+    var url_servicios_clientes   = '{{path('cliente_getAjaxServiciosPorClienteTN')}}';
+    var url_generar_masivo       = "{{path('cliente_generarSolicitudCorteReactivarMasivoTN')}}";
+    var url_logins_clientes      = "{{path('cliente_getAjaxLoginsPorRazonSocial')}}";
+    var url_getMotivos           = '{{path('solicitud_getMotivos')}}';
+    var booleanPerEmp            = "{{booleanPerEmp}}";
+    var strRazonSocial           = "{{strRazonSocial}}";
+    var intIdPerEmpRol           = "{{intIdper}}";
+    var intMaxServiciosAgregar   = "{{intMaxServiciosAgregar}}";
+    var intIdMotivo              = null;
+    var arrayIdServicios         = [];
+    var arrayDatosServicios      = [];
+    var strTipoProceso           = "{{strTipoProceso}}";
+    var strNombreProceso         = 'el Corte Masivo';
+    var strMinNombreProceso      = 'corte masivo';
+    if( strTipoProceso === 'ReactivarClienteTN' ){
+        strNombreProceso         = 'la Reactivación Masiva';
+        strMinNombreProceso      = 'reactivación masiva';
+    }
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/gridGenerarCorteReactivarMasivoTN.js?2') }}"></script>
+<style>
+    .x-btn-item-medium .x-btn-inner {
+        font-size: 13px !important;
+    }
+    .x-btn-item-large .x-btn-inner {
+        font-size: 16px !important;
+    }
+    .button-text-green .x-btn-inner, .button-text-green .x-btn-icon {
+        color: green !important;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    {%if (strTipoProceso == 'CortarClienteTN') %}
+    <h1>Generar Corte Masivo
+    {%elseif (strTipoProceso == 'ReactivarClienteTN') %}
+    <h1>Generar Reactivaci&oacute;n Masiva
+    {%endif%}
+<div>
+    <table width='85%'>
+        <tr height="20px"></tr>
+        <tr>
+            <td></td>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td width="50%">
+                            <div class="secHead"><b>Escoja la Raz&oacute;n Social</b></div>
+                        </td>
+                        <td width="50%">
+                            <div class="secHead"><b>Escoja el Login</b></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">
+                            <fieldset id="selector">
+                                <div id='combo_razon_social' required='required'></div>
+                            </fieldset>
+                        </td>
+                        <td width="50%">
+                            <fieldset id="selector">
+                                <div id='combo_logins_razon_social' required='required'></div>
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%" style="font-size: 15px !important;">
+                            <div style="padding-top:6px;">
+                                {%if (strTipoIdentificacion != null and strTipoIdentificacion != '' and strIdentificacion != null and strIdentificacion != '') %}
+                                <b id='label_tipo_identificacion_cliente'>{{strTipoIdentificacion}}: </b><label id='label_identificacion_cliente'>{{strIdentificacion}}</label>
+                                {%else %}
+                                <b id='label_tipo_identificacion_cliente'></b><label id='label_identificacion_cliente'></label>
+                                {%endif%}
+                            </div>
+                        </td>
+                        <td width="50%">
+                        </td>
+                    </tr>
+                </table>
+                {%if (strTipoProceso == 'CortarClienteTN') %}
+                <table width="100%">
+                    <tr>
+                        <td width="50%">
+                            <div class="secHead"><b>Escoja el Motivo</b></div>
+                        </td>
+                        <td width="50%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="50%">
+                            <fieldset id="selector">
+                                <div id='combo_motivo' required='required'></div>
+                            </fieldset>
+                        </td>
+                        <td width="50%">
+                        </td>
+                    </tr>
+                </table>
+                {%endif%}
+                <br>
+                <table width="100%">
+                    <tr>
+                        <td width="15%">
+                            <div id='btn_limpiar'></div>
+                        </td>
+                        <td width="85%">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr height="5px"></tr>
+        <tr>
+            <td></td>
+            <td>
+                <br/>
+                <label style="font-size: 15px !important;">Total servicios agregados: </label><label id='div_count_servicios'></label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <br/>
+                <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                    <tr bgcolor='#ffffff'>
+                        <td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+                    </tr>                        
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <br/>
+                <table width="100%">
+                    <tr>
+                        <td width="70%">
+                        </td>
+                        <td width="30%">
+                            <div id='btn_generar_masivo'></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('cliente') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<br/>
+<div class="titulo-acciones-relacionadas">Acciones Relacionadas</div>
+<ul class="listado_acciones_relacionadas">
+</ul>
+{% endblock contenido_der %}

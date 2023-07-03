@@ -1,0 +1,199 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+        <style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+        </style>
+{% endblock %}
+        
+{% block javascripts%}
+    {{ parent() }}
+    <script>		
+                var url_eliminar="{{path('infocontrato_eliminarDocumentoAjax')}}";
+    </script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/seleccionCliente.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/quitarArchivosDigitales.js') }}"></script>
+    <script>
+        Ext.onReady(function () {
+            var tabs = new Ext.TabPanel({
+                height: 450,
+                renderTo: 'my-tabs',
+                activeTab: 0,
+                items:[                    
+                    {contentEl:'tab1', title:'Quitar Archivos'},
+                    {contentEl:'tab2', title:'Subir Archivos'}                    
+                    ],
+                defaults:{autoScroll:true},
+            });           
+        });
+    </script>
+     
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Agregar/Quitar Archivos al Contrato</h1>
+    </div>
+	
+   {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}	
+    <div class="body_content">
+        {% if (estadoCliente=='Activo') and (tipoRolClienteSesion=='Pre-cliente') and (boolTieneServiciosFactibles) and (objInfoContrato)%}
+            <form action="{{ path('infocontrato_guardarArchivoDigital', { 'intId': objInfoContrato.id,'intIdAdendum': idAdendum }) }}" method="post" {{ form_enctype(form_documentos) }} class='formulario' onsubmit="mostrarWaitMsg()">            
+                <div id="my-tabs"> 
+                    <div id="tab1" class="x-hide-display">    
+                        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>                       	
+                        <tr bgcolor='#ffffff'>
+                         <td bgcolor='#ffffff'><div id='listado'></div></td>
+                        </tr>
+                        </table>                        
+                    </div>     
+                    <div id="tab2" class="x-hide-display">     
+                         <table border='0' cellpadding='1' cellspacing='1' width='100%'>
+                             <tr>
+                                <td colspan='2'>&nbsp;</td>
+                            </tr>
+                             <tr>
+                                <td colspan='2'>
+                                   <div class="infomessage">Puedes dar click en <i>"Agregar mas Imagenes"</i> para agregar mas archivos que desees al contrato</div>
+                                </td>
+                            </tr>   
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td colspan='2'>  
+                                 <table border='0' cellpadding='1' cellspacing='1' width='50%'>
+                                 <tr>
+                                 <td>
+                                     <input type='text' style='display:none' required='required' 
+                                      id='infocontratoextratype_personaEmpresaRolId' name='infocontratoextratype[personaEmpresaRolId]' value='{{objPersonaEmpresaRol.id}}'/>
+                                     <div>                                    
+                                     <input id="infodocumentotype_imagenes_0" class="campo-obligatorio" type="file" name="infodocumentotype[imagenes][0]">                                   
+                                     <ul id="imagenes-fields-list" data-prototype="{{ form_widget(form_documentos.imagenes.vars.prototype) | e }}">   
+                                     {% for imagenesField in form_documentos.imagenes %}
+                                       <li>
+                                           {{ form_errors(imagenesField) }}
+                                           {{ form_widget(imagenesField) }}
+                                       </li>
+                                     {% endfor %}
+                                     </ul>	                                   
+                                     </div>   
+                                 </td>
+                                  <td>
+                                     <div>   
+                                     <select id="infodocumentotype_tipos_0" class="campo-obligatorio" name="infodocumentotype[tipos][0]"> 
+                                        {% for key, tipo in arrayTipoDocumentos %}        
+                                          {% if ( key == 2) %}
+                                             <option selected value="{{ key }}" > {{ tipo }}</option>
+                                          {% else %}
+                                             <option value="{{ key }}" > {{ tipo }}</option>
+                                          {% endif %} 
+                                       {% endfor %}
+                                     </select>
+                                     <ul id="tipos-fields-list" data-prototype="{{ form_widget(form_documentos.tipos.vars.prototype) | e }}">                                         
+                                     {% for tiposField in form_documentos.tipos %}
+                                       <li>
+                                           {{ form_errors(tiposField) }}
+                                           {{ form_widget(tiposField) }}
+                                       </li>
+                                     {% endfor %}
+                                     </ul>	                                   
+                                     </div>        
+                                  </td>   
+                                  </tr></table>
+                                        
+                                </td>
+                            </tr>
+                            <tr><td>&nbsp;</td></tr>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <a href="#" id="agregar_imagen">Agregar mas Imagenes</a>
+                                </td>
+                            </tr>    
+                            <tr><td>&nbsp;</td></tr>
+                           </table>
+                     </div> 
+                     
+                </div>
+                    
+                <input type="hidden" size="100" name="valores" id="valores" /> 
+                
+                <div class="buttons">
+                    <p>
+                        <button type='submit'class="button-crud"  >Guardar</button>
+                        <span class="height20px">                           
+                            <a class="button-crud" href="{{ path('infocontrato_show', { 'id': objInfoContrato.id }) }}"> Regresar </a>                          
+                        </span>
+                    </p>
+                </div>
+            </form>	
+        {% else %}
+            <div class="warningmessage">
+                Solo puede agregar mas archivos digitales a contratos en estado "Pendiente".
+            </div>			
+        {%endif%}
+    </div>
+{% endblock contenido_izq %}
+        
+{% block javascripts_footer%}
+<script type="text/javascript">    
+    var imagenesCount = '{{ form_documentos.imagenes | length }}';       
+    var tiposCount    = '{{ form_documentos.tipos | length }}';       
+    imagenesCount++;
+    tiposCount++;
+    jQuery(document).ready(function() {
+        jQuery('#agregar_imagen').click(function() {           
+            var imagenesList = jQuery('#imagenes-fields-list');
+            var tiposList    = jQuery('#tipos-fields-list');           
+            var newWidget = imagenesList.attr('data-prototype');
+            var newWidgetTipo = tiposList.attr('data-prototype');            
+            var name='__name__';
+            newWidget = newWidget.replace(name, imagenesCount);            
+            newWidgetTipo = newWidgetTipo.replace(name, tiposCount);
+            newWidget = newWidget.replace(name, imagenesCount);            
+            newWidgetTipo = newWidgetTipo.replace(name, tiposCount);
+            imagenesCount++;
+            tiposCount++;
+            // crea un nuevo elemento lista y lo añade a la lista
+            var newLi = jQuery('<li></li>').html(newWidget);
+            newLi.appendTo(jQuery('#imagenes-fields-list'));
+
+            var newLi = jQuery('<li></li>').html(newWidgetTipo);             
+            newLi.appendTo(jQuery('#tipos-fields-list'));
+           
+            return false;
+        });
+    })
+    
+</script>    
+<script>    
+var flagTtarjetaValida = 1;
+		
+function mostrarWaitMsg()
+{
+   Ext.MessageBox.wait("Grabando Datos...", 'Por favor espere'); 
+}        
+</script>   
+
+ {% endblock javascripts_footer%}

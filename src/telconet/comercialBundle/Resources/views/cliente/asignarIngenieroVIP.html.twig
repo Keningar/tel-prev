@@ -1,0 +1,108 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+
+<script>
+    var url_grid_ingenieros_vip     = "{{path('cliente_gridIngenierosVIPCliente',  {'idPer':idper})}}";
+    var url_combo_ingenieros_vip    = '{{path('cliente_getAjaxComboIngenierosVIP', {'idPer':idper})}}';
+    var url_combo_ciudades_vip      = '{{path('cliente_getAjaxComboCiudadesVIP')}}';
+    var url_ajax_asignar_ingeniero  = "{{path('cliente_ajaxAsignarIngenieroVIP',   {'idPer':idper})}}";
+    var url_ajax_editar_ingeniero   = "{{path('cliente_ajaxEditarIngenieroVIP',    {'intIdPer':idper})}}";
+    var url_ajax_eliminar_ingeniero = "{{path('cliente_ajaxEliminarIngenieroVIP',   {'idPer':idper})}}";
+    var idPer                       = "{{idper}}";
+</script>
+
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/gridAsignarIngenieroVIP.js?2') }}"></script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Asignar Ingeniero VIP
+
+<div >
+    <table>
+        <tr height="20px"></tr>
+        <tr>
+            <td></td>
+            <td>
+                <table class="record_properties" width='100%'>
+                    <tr style="height: 23px">
+                        <td style="width: 125px"><b>Raz&oacute;n Social</b></td>
+                        <td style="width: 10px"> <b>:           </b></td>
+                        <td>{% if(entity.razonSocial is not null)%}  {{entity.razonSocial}}  {% else %} N/A  {% endif %} </td>
+
+                        <td style="width: 80px"><b>Identificaci&oacute;n</b></td>
+                        <td style="width: 10px"><b>:             </b></td>
+                        <td>{% if(entity.identificacionCliente is not null)%}  {{entity.identificacionCliente}}  {% else %} N/A  {% endif %}</td>
+                    </tr>
+                    <tr style="height: 23px">
+                        <td><b>Nombres</b></td>
+                        <td><b>:      </b></td>
+                        <td>{% if(entity.nombres is not null)%}  {{entity.nombres}}  {% else %} N/A  {% endif %}</td>
+
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr style="height: 23px">
+                        <td><b>Apellidos</b></td>
+                        <td><b>:        </b></td>
+                        <td>{% if(entity.apellidos is not null)%}  {{entity.apellidos}}  {% else %} N/A  {% endif %}</td>
+
+                        <td><b>Direcci&oacute;n</b></td>
+                        <td><b>:        </b></td>
+                        <td>{% if(entity.direccion is not null)%}  {{entity.direccion}}  {% else %} N/A  {% endif %}</td>
+                    </tr>
+                    <tr style="height: 23px">
+                        <td><b>Representante Legal</b></td>
+                        <td><b>:                  </b></td>
+                        <td>{% if(entity.representanteLegal is not null)%}  {{entity.representanteLegal}}  {% else %} N/A  {% endif %}</td>
+
+                        <td><b>Estado</b></td>
+                        <td><b>:     </b></td>
+                        <td>{% if(entity.estado is not null)%}  {{entity.estado}}  {% else %} N/A  {% endif %}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr height="5px"></tr>
+        <tr>
+            <td></td>
+            <td>
+
+                <br/>
+                <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                    <tr bgcolor='#ffffff'>
+                        <td bgcolor='#ffffff'><div id='lista_ingenieros_vip'></div></td>
+                    </tr>                        
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('cliente') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+
+{% endblock contenido_izq %}
+
+
+{% block contenido_der %}
+
+<br/>
+<div class="titulo-acciones-relacionadas">Acciones Relacionadas</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+        <a class="listado_ac_tablas" href="{{path('cliente_show',{'id':entity.id,'idper':idper})}}">Ver Cliente</a>
+    </li>                        
+</ul>
+
+{% endblock contenido_der %}

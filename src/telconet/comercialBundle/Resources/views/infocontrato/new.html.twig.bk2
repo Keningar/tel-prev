@@ -1,0 +1,251 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+	</style>
+{% endblock %}
+        
+{% block javascripts%}
+	{{ parent() }}
+		<script>var url_clientes = "{{ path('precliente_grid') }}";</script> 
+		<script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/seleccionCliente.js') }}"></script>
+
+        <script>
+            Ext.onReady(function () {
+                var tabs = new Ext.TabPanel({
+                    height: 450,
+                    renderTo: 'my-tabs',
+                    activeTab: 0,
+                    items:[
+                        {contentEl:'tab1', title:'Datos Principales'},
+                        {contentEl:'tab2', title:'Clausulas'},
+                        {contentEl:'tab3', title:'Datos Adicionales'}
+                    ],
+                    defaults:{autoScroll:true},
+                });
+                    
+                var f = new Date();
+                fecha=((f.getFullYear() +1)+"-"+ (f.getMonth()+1) +"-"+f.getDate());
+
+                var maintenance_date = new Ext.form.DateField({
+                    name: 'feFinContratoPost',
+                    allowBlank: false,
+                    format: 'Y-m-d',
+                    renderTo: 'feFinContrato',
+                    value: fecha
+                });
+               
+                
+            });
+        </script>
+     
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Contrato </h1>
+    </div>
+	
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+	    <div class="errormessage">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %}
+	
+    <div class="body_content">
+	{#% if(tipoRolClienteSesion=='Pre-cliente' and estadoCliente=='Activo') %#}
+	{% if(tipoRolClienteSesion=='Pre-cliente') %}
+        <form action="{{ path('infocontrato_create') }}" method="post" {{ form_enctype(form) }} class='formulario'>
+            <div id="my-tabs">
+                <div id="tab1" class="x-hide-display">
+                    {#Cuenta Bancaria{ form_widget(form) }#}
+                    {#{ form_row(form.tipoContratoId) }#}
+					<table border='0' cellpadding='1' cellspacing='1' width='100%'>
+					<tr>
+						<td colspan='2'>
+						&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td colspan='2'>
+							<div>
+								<table border='0' align='left'>
+									<tr>
+										<td>
+											<label class='campo-obligatorio' for='infocontratoextratype_tipoContratoId'>Tipo Contrato:</label>
+										</td>
+										<td>
+										<select required='required' class='campo-obligatorio' id="infocontratoextratype_tipoContratoId" name="infocontratoextratype[tipoContratoId]"/>
+											<option value=''>Seleccione...</option>
+											{% for tipo in entityAdmiTipoContrato %}
+												<option value='{{tipo.id}}'>{{tipo.descripcion}}</option>
+											{% endfor %}
+										</select>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<label class='campo-obligatorio' for='infocontratoextratype_cliente'>Cliente:</label>
+										</td>
+										<td>
+											
+										<input class='campo-obligatorio' type='text' id="infocontratoextratype_cliente" name="infocontratoextratype[cliente]" value='{{nombreClienteSesion}}'/>
+										<input type='text' style='display:none' required='required' id='infocontratoextratype_idcliente' name='infocontratoextratype[idcliente]' value='{{idClienteSesion}}'/>
+										{% if (idClienteSesion is null) %}
+										<a href='#' onclick="showClientes('#infocontratoextratype_cliente','#infocontratoextratype_idcliente','Prospectos','preclientes')"><img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" /></a>
+										{%endif%}
+										</td>
+									</tr>
+								</table>					
+							</div>					
+						</td>
+					</tr>
+					<tr>
+						<td style='vertical-align:top;margin-top:0; '>
+							<div>{{ form_row(form.formaPagoId) }}</div>	
+	
+							<div>
+									<div>
+										{{ form_label(form.file) }}
+									</div>
+									<div>
+										{{ form_widget(form.file) }}
+									</div> 									
+							</div>
+							{{ form_rest(form) }}
+							<div>
+								<label>Fecha fin del contrato:</label>
+								<div id='feFinContrato' required="true"></div>
+								<input type='hidden' value='' id='feFinContratoE'/> 
+							</div>								
+						</td>
+						<td>
+							<div id="forma_pago" class="campo-oculto contenido">			
+								{{ form_widget(formInfoPago) }}
+							</div>					
+						</td>						
+					</tr>					
+					</table>
+                </div>
+                <div id="tab2" class="x-hide-display">
+                    No existen clausulas para ese tipo de contrato
+                </div>
+                <div id="tab3" class="x-hide-display formulario">
+                    {{ form_widget(formDatoAdicioanles) }}
+                </div>
+            </div>
+            <div class="buttons">
+                <p>
+                    <button type='submit'class="button-crud">Guardar</button>
+                    <span class="height20px">
+                        <a class="button-crud" href="{{ path('infocontrato') }}">Regresar</a>
+                    </span>
+                </p>
+            </div>
+        </form>
+	{% else %}
+	    <div class="warningmessage">
+	        Solo es permitido ingresar un contrato para Prospectos y que tengan estado Activo.
+	    </div>
+{% endif %}		
+    </div>
+{% endblock contenido_izq %}
+        
+{% block javascripts_footer%}
+        <script>
+		
+		
+$(function(){
+    $("#infocontratoformapagotype_numeroCtaTarjeta").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });
+    $("#infocontratoformapagotype_mesVencimiento").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });
+    $("#infocontratoformapagotype_anioVencimiento").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    }); 
+	$("#infocontratoformapagotype_codigoVerificacion").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });
+});
+function isNumeric(event){
+    return (
+        (event.keyCode > 7 && event.keyCode < 10)
+        || (event.keyCode > 47 && event.keyCode < 60)
+        || (event.keyCode > 95 && event.keyCode < 106)
+        || event.keyCode == 17
+        || event.keyCode == 116
+    )
+}		
+		
+		
+            $('#infocontratotype_formaPagoId').change(function()
+            {
+                var seleccion=$('#infocontratotype_formaPagoId').val();
+                if(seleccion >1)
+                    $('#forma_pago').removeClass("campo-oculto");
+                else
+                    $('#forma_pago').addClass("campo-oculto");
+            });
+            
+            $('#infocontratotype_tipoContratoId').change(function()
+            {
+                var tipoContratoId=$('#infocontratotype_tipoContratoId').val();
+                $.ajax({
+                    type: "POST",
+                    data: "tipoContratoId=" + tipoContratoId,
+                    url:'{{ path('infocontrato_listar_clausulas') }}',
+                    success: function(msg){
+                        if (msg.msg == 'ok')
+                        {					
+                            //Llenar el div que presentara las clausulas
+                            //Validar que de respuesta sinop solicitarla
+                            document.getElementById("tab2").innerHTML=msg.div;
+                            //console.log(msg.id);
+                        }
+                        else
+                            document.getElementById("tab2").innerHTML=msg.msg;
+                    }
+                });
+            });
+            
+            $('#infocontratoformapagotype_tipoCuentaId').change(function()
+            {
+                var tipoCuenta=$('#infocontratoformapagotype_tipoCuentaId').val();
+                $.ajax({
+                    type: "POST",
+                    data: "tipoCuenta=" + tipoCuenta,
+                    url:'{{ path('infocontrato_listar_bancos_asociados') }}',
+                    success: function(msg){
+                        if (msg.msg == 'ok')
+                        {					
+                            //Llenar el div que presentara las clausulas
+                            //Validar que de respuesta sinop solicitarla
+                            document.getElementById("infocontratoformapagotype_bancoTipoCuentaId").innerHTML=msg.div;
+                            //console.log(msg.id);
+                        }
+                        else
+                            document.getElementById("infocontratoformapagotype_bancoTipoCuentaId").innerHTML=msg.msg;
+                    }
+                });
+            });
+        </script>
+{% endblock javascripts_footer%}

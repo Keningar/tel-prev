@@ -1,0 +1,31 @@
+aprobacionsolicitudesmasivasipccl2_aprobar:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:ipccl2Index" }
+    
+aprobacionsolicitudesmasivasipccl2_aprobarRechazar:
+    pattern:  /{id}/aprobarRechazar
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarRechazarIpccl2" }
+
+aprobacionsolicitudesmasivasipccl2_aprobarSolicitud:
+    pattern:  /aprobarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:aprobarSolicitudIpccl2" }
+
+aprobacionsolicitudesmasivasipccl2_rechazarSolicitud:
+    pattern:  /rechazarSolicitud
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:rechazarSolicitudIpccl2" }
+
+aprobacionsolicitudesmasivasipccl2_getEstados:
+    pattern:  /getEstados
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getEstadosDescuento" }
+
+aprobacionsolicitudesmasivasipccl2_getSolicitudesMasivasIpccl2:
+    pattern:  /getSolicitudesMasivas
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getSolicitudesMasivasIpccl2" }
+
+aprobacionsolicitudesmasivasipccl2_getDetalleSolicitudDet:
+    pattern:  /getDetalleSolicitudDet
+    defaults: { _controller: "comercialBundle:SolicitudesMasivas:getDetalleSolicitudDetIpccl2" }
+
+
+    
+

@@ -1,0 +1,45 @@
+--Característica para distinguir guardar el origen de la activación, cuando el servicio tiene un Extender Dual Band incluido en el plan
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'ORIGEN_ACTIVACION',
+    'C',
+    'Activo',
+    SYSDATE,
+    'mlcruz',
+    'TECNICA'
+  );
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      63,
+      (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA = 'ORIGEN_ACTIVACION'),
+      CURRENT_TIMESTAMP,
+      'mlcruz',
+      'Activo',
+      'NO'
+    );
+COMMIT;
+/

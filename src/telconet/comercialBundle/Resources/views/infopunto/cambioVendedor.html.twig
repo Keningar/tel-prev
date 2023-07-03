@@ -1,0 +1,153 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts%} 	{{ parent() }}
+<script>
+    var personaid                = "{{objPunto.id}}";
+    var url_vendedores           = '{{path('infopunto_ajax_lista_vendedores')}}';
+    var vendedor_default         = "{{objPunto.usrVendedor}}";
+    var strVendedorPorServicio   = "{{ strVendedorPorServicio }}";
+    var strUrlGridServicios      = "{{ path('infopunto_servicios_grid', {'id':objPunto.id }) }}";
+    var strPrefijoEmpresa        = "{{ strPrefijoEmpresa }}";
+    var strUrlValidarSolicitudes = "{{ path('autorizarsolicitudesclientes_validarSolicitudesClientes') }}";
+    $('#infopuntodatoadicionaltype_login').attr('readonly', 'readonly');
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/cambioVendedor.js?3') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ objItemMenu.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Cambio de Vendedor</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content" align='center'>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+         {{ flashMessage }}
+    </div>
+    {% endfor %}   
+    {% if is_granted('ROLE_281-2257') %}
+    <form action="{{ path('infopunto_guardaCambioVendedor', { 'id': objPunto.id }) }}" method="post" {{ form_enctype(objEditForm) }}
+          class="formulario" onsubmit="return validarFormulario();">
+        <table border='0'>
+            <tr>
+                <td colspan='3'>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td style="vertical-align: top;">
+                    <table border='0'>
+                        <tr>
+                            <td width="15px"></td>
+                            <td width="30px"><label for='infopuntodatoadicionaltype_login'>Login:</label></td>
+                            <td width="100px">
+                                {{ strLogin }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15px"></td>
+                            <td width="30px">
+                                <label>
+                                    Direcci&oacute;n:
+                                </label>
+                            </td>
+                            <td width="100px">
+                                {% if is_granted('ROLE_9-5277') %}
+                                    <div>
+                                        {{ form_widget(objEditForm.direccion) }}
+                                    </div>
+                                {% else %}
+                                    {{ objPunto.direccion }}
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15px"></td>
+                            <td width="30px">
+                                <label>
+                                    Referencia:
+                                </label>
+                            </td>
+                            <td width="100px">
+                                {{ objPunto.descripcionPunto }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15px"></td>
+                            <td width="30px">
+                                <label>
+                                    Observaci&oacute;n:
+                                </label>
+                            </td>
+                            <td width="100px">
+                                {{ objPunto.observacion }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15px"></td>
+                            <td width="30px">
+                                <label>
+                                    Vendedor:
+                                </label>
+                            </td>
+                            <td width="100px">
+                                <div id='div_errorvendedor' class='errormessage' style="display:none">
+                                    Campo Vendedor es obligatorio
+                                </div>
+                                <div id='combo_vendedor' required="true"></div>
+                            </td>
+                        </tr> 
+                    </table>
+                </td>
+                <td width="30px">
+                    <input id='infopuntoextratype_personaId' name='infopuntoextratype[personaId]' type='hidden' value='{{objCliente.id}}'>    
+                    <input id='infopuntoextratype_loginVendedor' name='infopuntoextratype[loginVendedor]' type='hidden' 
+                           value='{{objPunto.usrVendedor}}'>
+                    <input id='infopuntoextratype_rol' name='infopuntoextratype[rol]' type='hidden' value='{{rol}}'>
+                    <input id='infopuntoextratype_strServiciosSelected' name='infopuntoextratype[strServiciosSelected]' type='hidden' />
+                    {{ form_widget(objEditForm._token)}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div style="padding: 5px">&nbsp;</div>
+                </td>
+            </tr>
+        </table>
+        
+        {% if strVendedorPorServicio == "S" %}
+            <div style="clear:both;">
+                <input type="checkbox" name="strAsignarServicios" id="strAsignarServicios" style="width: 30px;" onchange="mostrarGridServicios();" />
+                Actualizar Vendedor a Servicios
+            </div>
+            <div style="clear:both;">
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <div id="filtroServicios" class="campo-oculto"></div>
+                            <div id="gridServicios" class="campo-oculto"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>            
+        {% endif %}
+
+        <div class="buttons" style="margin-top:30px;">
+            <p>
+                <button type="submit" class="button-crud">Guardar</button>
+                <span class="height20px">
+                    &nbsp;&nbsp;
+                </span>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('infopunto_show',{'id':objPunto.id,'rol':rol }) }}">Regresar</a>
+                </span>
+            </p>
+        </div>
+    </form>
+    {% endif %}
+</div>
+{% endblock contenido_central %}

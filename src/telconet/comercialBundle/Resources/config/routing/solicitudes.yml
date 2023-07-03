@@ -1,0 +1,91 @@
+solicitudes:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:Solicitudes:index" }
+
+solicitudes_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:Solicitudes:grid" }
+
+solicitudes_getSolicitudes:
+    pattern:  /getSolicitudes
+    defaults: { _controller: "comercialBundle:Solicitudes:getSolicitudes" }
+
+solicitudes_gridMaterialesUtilizados:
+    pattern:  /gridMaterialesUtilizados
+    defaults: { _controller: "comercialBundle:Solicitudes:gridMaterialesUtilizados" }    
+    
+solicitudes_getJsonHistorialSolicitud:
+    pattern:  /getJsonHistorialSolicitud
+    defaults: { _controller: "comercialBundle:Solicitudes:getJsonHistorialSolicitud" }
+
+solicitudes_ajaxGetTiposSolicitud:
+    pattern:  /ajaxGetTiposSolicitud
+    defaults: { _controller: "comercialBundle:Solicitudes:ajaxGetTiposSolicitud" }
+
+solicitudes_ajaxGetEstadosTiposSolicitud:
+    pattern:  /ajaxGetEstadosTiposSolicitud
+    defaults: { _controller: "comercialBundle:Solicitudes:ajaxGetEstadosTiposSolicitud" }
+
+solicitudes_solicitudesPunto:
+    pattern:  /solicitudesPunto
+    defaults: { _controller: "comercialBundle:Solicitudes:solicitudesPunto" }
+
+solicitudes_getMotivosRechazoTraslado:
+    pattern:  /getMotivosRechazoTraslado
+    defaults: { _controller: "comercialBundle:Solicitudes:getMotivosRechazoTraslado" }
+    
+solicitudes_getModelosCpeOntPorSoporte:
+    pattern:  /getModelosCpeOntPorSoporte
+    defaults: { _controller: "comercialBundle:Solicitudes:getModelosCpeOntPorSoporte" }
+
+solicitudes_gridSolicitudesPunto:
+    pattern:  /gridSolicitudesPunto
+    defaults: { _controller: "comercialBundle:Solicitudes:gridSolicitudesPunto" }
+
+solicitudes_getMotivosAnulacion:
+    pattern:  /ajaxGetMotivosAnulacion
+    defaults: { _controller: "comercialBundle:Solicitudes:getMotivosAnulacion" }
+
+solicitudes_getMotivosFinalizar:
+    pattern:  /ajaxGetMotivosFinalizar
+    defaults: { _controller: "comercialBundle:Solicitudes:getMotivosFinalizar" }
+
+solicitudes_anularSolicitudesPunto:
+    pattern:  /ajaxAnularSolicitudesPunto
+    defaults: { _controller: "comercialBundle:Solicitudes:anularSolicitudPunto" }
+
+solicitudes_finalizarSolicitudesPunto:
+    pattern:  /ajaxFinalizarSolicitudesPunto
+    defaults: { _controller: "comercialBundle:Solicitudes:finalizarSolicitudPunto" }
+    
+solicitudes_getMaterialesPunto:
+    pattern:  /getMaterialesPunto
+    defaults: { _controller: "comercialBundle:Solicitudes:getMaterialesPunto" }
+    
+solicitudes_get_TipoDescuento_ajax:
+    pattern:  /getTipoDescuento
+    defaults: { _controller: "comercialBundle:Solicitudes:getTipoDescuento" }
+    
+solicitudes_gestionarSolicitudesServicio:
+    pattern:  /gestionarSolicitudesServicio
+    defaults: { _controller: "comercialBundle:Solicitudes:gestionarSolicitudesServicio" }
+
+solicitudes_gestionarSolicitudesServicioMpls:
+    pattern:  /gestionarSolicitudesServicioMpls
+    defaults: { _controller: "comercialBundle:Solicitudes:gestionarSolicitudesServicioMpls" }
+
+solicitudes_getInfoSolicitudesServicio:
+    pattern:  /getInfoSolicitudesServicio
+    defaults: { _controller: "comercialBundle:Solicitudes:getInfoSolicitudesServicio" }
+
+solicitudes_ajaxAprobarSolicitudContratoCloudPublic:
+    pattern:  /ajaxAprobarSolicitudContratoCloudPublic
+    defaults: { _controller: "comercialBundle:Solicitudes:ajaxAprobarSolicitudContratoCloudPublic" }
+    
+solicitudes_ajaxRechazarSolicitudContratoCloudPublic:
+    pattern:  /ajaxRechazarSolicitudContratoCloudPublic
+    defaults: { _controller: "comercialBundle:Solicitudes:ajaxRechazarSolicitudContratoCloudPublic" } 
+    
+solicitudes_ajaxGetMotivosRechazoCloudPublic:
+    pattern:  /ajaxGetMotivosRechazoCloudPublic
+    defaults: { _controller: "comercialBundle:Solicitudes:ajaxGetMotivosRechazoCloudPublic" }

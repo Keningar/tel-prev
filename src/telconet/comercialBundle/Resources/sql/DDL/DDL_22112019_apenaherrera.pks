@@ -1,0 +1,4 @@
+BEGIN
+      DBMS_SCHEDULER.disable(name=>'"DB_COMERCIAL"."JOB_MAPEO_PROMO_CLI_EXISTENTES"', force => TRUE);
+END;
+/

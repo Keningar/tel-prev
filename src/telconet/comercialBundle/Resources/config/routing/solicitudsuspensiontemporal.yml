@@ -1,0 +1,15 @@
+solicitudsuspensiontemporal:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudSuspensionTemporal:index" }
+
+solicitudsuspensiontemporal_graba_solicsusptemp_ajax:
+    pattern:  /grabasolicitudsuspensiontempajax
+    defaults: { _controller: "comercialBundle:SolicitudSuspensionTemporal:grabaSolicitudSuspTemporal_ajax" }
+
+solicitudsuspensiontemporal_get_motivos_ajax:
+    pattern:  /getmotivossuspensiontempajax
+    defaults: { _controller: "comercialBundle:SolicitudSuspensionTemporal:getMotivos_ajax" }
+
+solicitudsuspensiontemporal_get_servicios_ajax:
+    pattern:  /{id}/getserviciossolicitudsuspenciontempajax
+    defaults: { _controller: "comercialBundle:SolicitudSuspensionTemporal:getServiciosParaSolicitudSuspTemporal_ajax" }

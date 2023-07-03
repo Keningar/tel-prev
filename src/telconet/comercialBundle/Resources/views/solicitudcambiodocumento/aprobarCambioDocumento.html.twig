@@ -1,0 +1,89 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+		var url_store="{{ path('aprobacioncambiodocumento_grid_aprobar') }}";
+		var url_aprobar="{{ path('aprobacioncambiodocumento_aprobar_ajax') }}";
+        var url_rechazar="{{ path('aprobacioncambiodocumento_rechazar_ajax') }}";
+        var url_lista_motivos="{{ path('aprobacioncambiodocumento_getmotivosrechazo_ajax') }}";                
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/solicitudcambiodocumento/aprobar.js?4') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Aprobar Cambio de Documento</h1>
+</div>
+<div class="body_content k-content">
+    
+    <table class="record_properties" border='0' width='100%'>
+        <tbody>
+            <tr>
+                <td width='10%' ><b>Pendiente por aprobar:</b></td>
+                <td width='40%'>{{totalAprobar}}</td> 
+            </tr>
+            <tr>
+                <td width='10%'><b>Cortes&iacute;as año actual:</b></td>
+                <td width='30%'>{{totalAnioActual}} </td>      
+            </tr>
+            <tr>
+                <td width='10%' ><b>Cortes&iacute;as año pasado:</b></td>
+                <td width='40%'>{{totalAnioPasado}} </td> 
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='panel_observacion'></div></td>
+            </tr>            
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_prospectos'></div></td>
+            </tr>
+    </table>        
+    </div>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <div class="acciones_relacionadas">
+
+    </div>
+    <ul class="listado_acciones_relacionadas"></ul>
+{% endblock contenido_der %}

@@ -1,0 +1,356 @@
+
+cliente:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:Cliente:index" }
+
+cliente_show:
+    pattern:  /{id}/{idper}/show
+    defaults: { _controller: "comercialBundle:Cliente:show" }
+
+cliente_new:
+    pattern:  /new
+    defaults: { _controller: "comercialBundle:Cliente:new" }
+
+cliente_create:
+    pattern:  /create
+    defaults: { _controller: "comercialBundle:Cliente:create" }
+    requirements: { _method: post }
+
+cliente_cambiar_razon_social:
+    pattern:  /cambiarrazonsocial
+    defaults: { _controller: "comercialBundle:Cliente:cambiarRazonSocial" }
+    requirements: { _method: post }
+
+cliente_ajax_validar_identificacion_tipo:
+    pattern: /ajaxValidarIdentificacionTipo
+    defaults: { _controller: "comercialBundle:Cliente:ajaxValidarIdentificacionTipo"}
+    requirements: { _method: post }
+
+cliente_ajax_valida_identificacion:
+    pattern: /ajaxValidaIdentificacion
+    defaults: { _controller: "comercialBundle:Cliente:ajaxValidaIdentificacion"}
+    requirements: { _method: post }
+
+cliente_ajax_ms_valida_identificacion:
+    pattern: /ajaxMsValidaIdentificacion
+    defaults: { _controller: "comercialBundle:Cliente:ajaxMsValidaIdentificacion"}
+    requirements: { _method: post }
+
+cliente_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "comercialBundle:Cliente:edit" }
+
+cliente_cambio_razon_social:
+    pattern:  /{id}/{idper}/cambiorazonsocial
+    defaults: { _controller: "comercialBundle:Cliente:cambioRazonSocial" }	
+
+cliente_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "comercialBundle:Cliente:update" }
+    requirements: { _method: post }
+
+cliente_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "comercialBundle:Cliente:delete" }
+    requirements: { _method: post }
+
+cliente_delete_ajax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "comercialBundle:Cliente:delete_ajax" }
+
+cliente_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:Cliente:grid"}
+
+cliente_referidos:
+    pattern:  /referidos
+    defaults: { _controller: "comercialBundle:Cliente:referidos" }
+
+cliente_grid_referidos:
+    pattern:  /gridreferidos
+    defaults: { _controller: "comercialBundle:Cliente:gridReferidos"}
+    
+cliente_lista_estados:
+    pattern:  /listaestados
+    defaults: { _controller: "comercialBundle:Cliente:estados"}
+
+cliente_lista_formas_contacto:
+    pattern:  /listaformascontacto
+    defaults: { _controller: "comercialBundle:Cliente:formasContactoAjax"}
+
+cliente_formas_contacto_grid:
+    pattern:  /formascontactogrid
+    defaults: { _controller: "comercialBundle:Cliente:formasContactoGrid"}
+
+cliente_show_datos_comerciales:
+    pattern:  /{idper}/datoscomerciales
+    defaults: { _controller: "comercialBundle:Cliente:datosComerciales" }
+
+cliente_ajax_servicios:
+    pattern:  /{idCli}/ajaxservicios
+    defaults: { _controller: "comercialBundle:Cliente:ajaxServicios"}
+
+cliente_ajax_servicios_per:
+    pattern:  /{idper}/ajaxserviciosper
+    defaults: { _controller: "comercialBundle:Cliente:ajaxServiciosPer"}
+
+cliente_ajax_gettotalcontactos:
+  pattern: /{id}/ajax_gettotalcontactos
+  defaults: { _controller: "comercialBundle:Cliente:ajaxGetTotalContactosCliente"}
+
+cliente_ajax_getclienteconvertido:
+  pattern: /{id}/ajax_getclienteconvertido
+  defaults: { _controller: "comercialBundle:Cliente:ajaxGetClienteConvertido"}
+
+cliente_show_agregar_padre_facturacion:
+    pattern:  /{id}/{idper}/agregarPadreFacturacion
+    defaults: { _controller: "comercialBundle:Cliente:agregarPadreFacturacion" }
+    
+cliente_show_asignar_ejecutivo_cobranzas:
+    pattern:  /{id}/{idper}/showAsignarEjecutivoCobranzas
+    defaults: { _controller: "comercialBundle:Cliente:showAsignarEjecutivoCobranzas" }
+
+cliente_ajax_agregar_padre:
+    pattern:  /ajaxagregarpadre
+    defaults: { _controller: "comercialBundle:Cliente:agregarPadre_ajax"}
+
+cliente_ajax_quitar_padre:
+    pattern:  /ajaxquitarpadre
+    defaults: { _controller: "comercialBundle:Cliente:quitarPadre_ajax"}
+
+cliente_show_asignar_padre:
+    pattern:  /{id}/{idper}/asignarPadreAHijo
+    defaults: { _controller: "comercialBundle:InfoPunto:asignarPadreAHijo" }
+
+cliente_ajax_lista_ciudades:
+    pattern:  /ajaxlistaciudades
+    defaults: { _controller: "comercialBundle:Cliente:listaCiudades_ajax"}
+
+cliente_ajax_lista_parroquias:
+    pattern:  /ajaxlistaparroquias
+    defaults: { _controller: "comercialBundle:Cliente:listaParroquias_ajax"}
+
+cliente_ajax_lista_sectores:
+    pattern:  /ajaxlistasectores
+    defaults: { _controller: "comercialBundle:Cliente:listaSectores_ajax"}
+
+cliente_ajax_grabardatosenvio:
+    pattern:  /ajaxgrabardatosenvio
+    defaults: { _controller: "comercialBundle:Cliente:grabaDatosEnvio_ajax"}
+
+cliente_ajax_actualizaDireccionTributaria:
+    pattern:  /actualizaDireccionTributaria
+    defaults: { _controller: "comercialBundle:Cliente:actualizaDireccionTributaria"}
+
+cliente_clientesfactura:
+    pattern:  /clientesfactura
+    defaults: { _controller: "comercialBundle:Cliente:clientesFactura" }
+
+cliente_grid_clientesfactura:
+    pattern:  /gridclientesfactura
+    defaults: { _controller: "comercialBundle:Cliente:gridReporteClientesFacturas"}
+
+cliente_excelreferidos:
+    pattern:  /excelreferidos
+    defaults: { _controller: "comercialBundle:Cliente:excelReferidos"}
+
+cliente_excelclientesfactura:
+    pattern:  /excelclientesfactura
+    defaults: { _controller: "comercialBundle:Cliente:excelClientesFactura"}
+
+cliente_lista_tiposNegocios:
+    pattern:  /tiposNegocios
+    defaults: { _controller: "comercialBundle:Cliente:tiposNegocioActivosPorEmpresa_ajax"}
+
+cliente_cambiaTipoNegocio:
+    pattern:  /cambiarTipoNegocio
+    defaults: { _controller: "comercialBundle:Cliente:cambiaTipoNegocio_ajax"}
+
+cliente_ajax_listar_personas_por_roles:
+    pattern:  /{roles}/ajaxlistarpersonasporroles
+    defaults: { _controller: "comercialBundle:Cliente:ajaxListarPersonasPorRoles"}
+
+cliente_tipoNegocioActual:
+    pattern:  /tipoNegocioActual
+    defaults: { _controller: "comercialBundle:Cliente:tipoNegocioActual_ajax"}
+ 
+cliente_cambioRazonSocialPorPunto:
+    pattern:  /{id}/{idper}/cambioRazonSocialPorPunto
+    defaults: { _controller: "comercialBundle:Cliente:cambioRazonSocialPorPunto" }
+
+cliente_ejecutaCambioRazonSocialPorPunto:
+    pattern:  /ejecutaCambioRazonSocialPorPunto
+    defaults: { _controller: "comercialBundle:Cliente:ejecutaCambioRazonSocialPorPunto" }
+    requirements: { _method: post }
+ 
+cliente_gridPuntosCambioRazonSocialPorLogin:
+    pattern:  /{idper}/gridPuntosCambioRazonSocialPorLogin
+    defaults: { _controller: "comercialBundle:Cliente:gridPuntosCambioRazonSocialPorLogin"}    
+
+cliente_ajax_valida_contrato_activo:
+    pattern: /ajaxValidaContratoActivo
+    defaults: { _controller: "comercialBundle:Cliente:ajaxValidaContratoActivo"}
+    requirements: { _method: post }
+
+cliente_getRutaGeorreferencial:
+    pattern: /getRutaGeorreferencial
+    defaults: { _controller: "comercialBundle:Cliente:getRutaGeorreferencial"}
+
+# INICIO Bloque Gestion Ingenieros VIP Cliente
+cliente_getAjaxDefinirClienteVIPNormal:
+    pattern:  /getAjaxDefinirClienteVIPNormal
+    defaults: { _controller: "comercialBundle:Cliente:getAjaxDefinirClienteVIPNormal"}
+    
+cliente_show_asignar_ingeniero_VIP:
+    pattern:  /{intIdPersona}/{intIdPersonaEmpresaRol}/showAsignarIngenieroVIP
+    defaults: { _controller: "comercialBundle:Cliente:showAsignarIngenieroVIP" }	
+ 
+cliente_gridIngenierosVIPCliente:
+    pattern:  /{idPer}/gridIngenierosVIPCliente
+    defaults: { _controller: "comercialBundle:Cliente:gridIngenierosVIPCliente"}
+
+cliente_cambiarMarcaVIPTecnico:
+    pattern:  /{intIdPer}/cambiarMarcaVipTecnico
+    defaults: { _controller: "comercialBundle:Cliente:ajaxCambiarMarcaVipTecnico"}
+
+cliente_getAjaxComboIngenierosVIP:
+    pattern:  /{idPer}/getAjaxComboIngenierosVIP
+    defaults: { _controller: "comercialBundle:Cliente:getAjaxComboIngenierosVIP"}
+
+cliente_ajaxAsignarIngenieroVIP:
+    pattern:  /{idPer}/ajaxAsignarIngenieroVIP
+    defaults: { _controller: "comercialBundle:Cliente:ajaxAsignarIngenieroVIP"}
+
+cliente_ajaxEditarIngenieroVIP:
+    pattern:  /{intIdPer}/ajaxEditarIngenieroVIP
+    defaults: { _controller: "comercialBundle:Cliente:ajaxEditarIngenieroVip"}
+
+cliente_getAjaxComboCiudadesVIP:
+    pattern:  /getAjaxComboCiudadesVIP
+    defaults: { _controller: "comercialBundle:Cliente:getAjaxComboCiudadesVip"}
+
+cliente_ajaxEliminarIngenieroVIP:
+    pattern:  /{idPer}/ajaxEliminarIngenieroVIP
+    defaults: { _controller: "comercialBundle:Cliente:ajaxEliminarIngenieroVIP"}
+    
+cliente_gridAjaxHistorialVIP:
+    pattern:  /{idPer}/gridAjaxHistorialVIP
+    defaults: { _controller: "comercialBundle:Cliente:gridAjaxHistorialVIP"}
+    
+cliente_ajaxActualizarDatosFacturacion:
+    pattern:  /cliente_ajaxActualizarDatosFacturacion
+    defaults: { _controller: "comercialBundle:Cliente:ajaxActualizarDatosFacturacion"}
+
+cliente_gridAjaxHistorialCliente:
+    pattern:  /{idPer}/gridAjaxHistorialCliente
+    defaults: { _controller: "comercialBundle:Cliente:gridAjaxHistorialCliente"}
+
+cliente_ajaxActualizarFeFinContrato:
+    pattern:  /cliente_ajaxActualizarFeFinContrato
+    defaults: { _controller: "comercialBundle:Cliente:ajaxActualizarFeFinContrato"}
+    
+cliente_ajaxActualizaTipoEmpresaTributario:
+    pattern:  /actualizaTipoEmpresaTributario
+    defaults: { _controller: "comercialBundle:Cliente:actualizaTipoEmpresaTributario"} 
+    
+cliente_getOficinasByEmpresa:
+    pattern:  /getOficinasByEmpresa
+    defaults: { _controller: "comercialBundle:Cliente:getOficinasByEmpresa" }  
+    
+cliente_getPlanesByEmpresa:
+    pattern:  /getPlanesByEmpresa
+    defaults: { _controller: "comercialBundle:Cliente:getPlanesByEmpresa" }   
+    
+cliente_generarReporteClientesFacturas:
+    pattern:  /generarReporteClientesFacturas
+    defaults: { _controller: "comercialBundle:Cliente:generarReporteClientesFacturas" }
+    
+cliente_getMaxLongitudIdentificacion:
+    pattern:  /getMaxLongitudIdentificacion
+    defaults: { _controller: "comercialBundle:Cliente:getMaxLongitudIdentificacion" }     
+
+cliente_showCorteReactivacionTelcohome:
+    pattern:  /{intIdPersona}/{intIdPer}/showCorteReactivacionTelcohome
+    defaults: { _controller: "comercialBundle:Cliente:showCorteReactivacionTelcohome" }
+
+cliente_generarCorteMasivoTN:
+    pattern:  /generarCorteMasivoTN
+    defaults: { _controller: "comercialBundle:Cliente:generarCorteMasivoTN" }
+
+cliente_generarReactivarMasivoTN:
+    pattern:  /generarReactivarMasivoTN
+    defaults: { _controller: "comercialBundle:Cliente:generarReactivarMasivoTN" }
+
+cliente_generarSolicitudCorteReactivarMasivoTN:
+    pattern:  /generarSolicitudCorteReactivarMasivoTN
+    defaults: { _controller: "comercialBundle:Cliente:generarSolicitudCorteReactivarMasivoTN" }
+
+cliente_getAjaxServiciosPorClienteTN:
+    pattern:  /getAjaxServiciosPorClienteTN
+    defaults: { _controller: "comercialBundle:Cliente:getAjaxServiciosPorClienteTN" }
+
+cliente_getAjaxComboRazonSocial:
+    pattern:  /getAjaxComboRazonSocial
+    defaults: { _controller: "comercialBundle:Cliente:getAjaxComboRazonSocial" }
+
+cliente_getAjaxLoginsPorRazonSocial:
+    pattern:  /getAjaxLoginsPorRazonSocial
+    defaults: { _controller: "comercialBundle:Cliente:getAjaxLoginsPorRazonSocial" }
+
+cliente_reactivacion:
+    pattern:  /reactivarCliente
+    defaults: { _controller: "comercialBundle:Cliente:reactivarCliente"} 
+
+cliente_lista_usuario:
+    pattern:  /getUsuarioSolicitud
+    defaults: { _controller: "comercialBundle:Cliente:getUsuarioSolicitud"}
+
+
+cliente_ajaxVerificarRecomendaciones:
+    pattern:  /ajaxVerificarRecomendaciones
+    defaults: { _controller: "comercialBundle:Cliente:ajaxVerificarRecomendaciones"}
+
+ 
+cliente_ajaxRepresentanteLegalVerificar: 
+  pattern:  /ajaxRepresentanteLegalVerificar
+  defaults: { _controller: "comercialBundle:Cliente:ajaxRepresentanteLegalVerificar" }
+ 
+cliente_ajaxRepresentanteLegalConsultar: 
+  pattern:  /ajaxRepresentanteLegalConsultar
+  defaults: { _controller: "comercialBundle:Cliente:ajaxRepresentanteLegalConsultar" }
+ 
+cliente_ajaxRepresentanteLegalActualizar: 
+  pattern:  /ajaxRepresentanteLegalActualizar
+  defaults: { _controller: "comercialBundle:Cliente:ajaxRepresentanteLegalActualizar" }
+ 
+cliente_lista_formas_contacto_prospecto:
+    pattern:  /listaformascontactoProspecto
+    defaults: { _controller: "comercialBundle:Cliente:formasContactoProspectoAjax"}
+
+cliente_guardar_formas_contacto_prospecto:
+    pattern:  /guardarFormascontactoProspecto
+    defaults: { _controller: "comercialBundle:Cliente:guardarFormasContactoProspectoAjax"}
+
+cliente_validate_service_CrsPorPunto:
+    pattern:  /verificarServiciosCrsPorPunto
+    defaults: { _controller: "comercialBundle:Cliente:verificarServiciosCrsPorPuntoAjax"}
+
+cliente_AceptacionPoliticas:
+    pattern:  /AceptacionPoliticas
+    defaults: { _controller: "comercialBundle:Cliente:aceptacionPoliticas" }
+ 
+cliente_personaRegularizacionAjax:
+    pattern:  /personaRegularizacionAjax
+    defaults: { _controller: "comercialBundle:Cliente:personaRegularizacionAjax" }
+
+cliente_generarCredencialAjax:
+    pattern:  /generarCredencialAjax
+    defaults: { _controller: "comercialBundle:Cliente:generarCredencialAjax" }
+
+cliente_cliente_envio_link:
+    pattern: /clienteEnviarLink
+    defaults: { _controller: "comercialBundle:Cliente:clienteEnvioLink" }
+
+cliente_ajax_envio_link_descifrar:
+    pattern: /clienteAjaxEnviarLinkDescifrar
+    defaults: { _controller: "comercialBundle:Cliente:ajaxEnviarLinkDescifrar" }

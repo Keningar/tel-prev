@@ -1,0 +1,24 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/ext-4.1.1/resources/css/CheckHeader.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+       url_formas_contacto_persona   = "{{ path('infopunto_formas_contacto_grid') }}";
+       url_formas_contacto           = "{{path('cliente_lista_formas_contacto_prospecto')}}"; 
+       url_guardar_formas_contacto   = "{{path('cliente_guardar_formas_contacto_prospecto')}}"; 
+       strUrlIndex                   = "{{ path('precliente') }}";
+       enviaWhatsapp                 = "{{ enviaWhatsapp }}"
+    </script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/precliente/indexProspectoFormulario.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/src/ux/CheckColumn.js') }}"></script>
+
+{% endblock %}
+
+{% block contenido_central %}
+    <div id='formas_contacto_prospecto'></div>
+{% endblock contenido_central %}

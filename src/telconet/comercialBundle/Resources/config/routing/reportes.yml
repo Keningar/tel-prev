@@ -1,0 +1,7 @@
+reportes_referidos:
+    pattern:  /referidos
+    defaults: { _controller: "comercialBundle:Cliente:referidos" }
+
+reportes_clientesfactura:
+    pattern:  /clientesfactura
+    defaults: { _controller: "comercialBundle:Cliente:clientesFactura" }

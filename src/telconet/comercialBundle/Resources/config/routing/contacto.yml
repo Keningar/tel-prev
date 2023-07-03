@@ -1,0 +1,111 @@
+contacto:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:Contacto:index" }
+
+contacto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "comercialBundle:Contacto:show" }
+
+contacto_asignaTipoContactoAjax:
+    pattern:  /asignaTipoContactoAjax
+    defaults: { _controller: "comercialBundle:Contacto:asignaTipoContactoAjax" }
+    
+contacto_editarContactoAjax:
+    pattern:  /editarContactoAjax
+    defaults: { _controller: "comercialBundle:Contacto:editarContactoAjax" }
+
+contacto_eliminaTipoContactoAjax:
+    pattern:  /eliminaTipoContactoAjax
+    defaults: { _controller: "comercialBundle:Contacto:eliminaTipoContactoAjax" }
+    
+contacto_getInfoPersona:
+    pattern:  /getInfoPersona
+    defaults: { _controller: "comercialBundle:Contacto:getInfoPersona" }
+
+contacto_getInfoPersonaRelacionadasAlContacto:
+    pattern:  /getInfoPersonaRelacionadasAlContacto
+    defaults: { _controller: "comercialBundle:Contacto:getInfoPersonaRelacionadasAlContacto" }
+
+contacto_getInfoPersonaFormaContacto:
+    pattern:  /getInfoPersonaFormaContacto
+    defaults: { _controller: "comercialBundle:Contacto:getInfoPersonaFormaContacto" }
+
+contacto_getRolesPersonaPunto:
+    pattern:  /getRolesPersonaPunto
+    defaults: { _controller: "comercialBundle:Contacto:getRolesPersonaPunto" }
+
+contacto_eliminarContactoAjax:
+    pattern:  /eliminarContactoAjax
+    defaults: { _controller: "comercialBundle:Contacto:eliminarContactoAjax" }
+
+contacto_creaPersonaFormaContacto:
+    pattern:  /creaPersonaFormaContacto
+    defaults: { _controller: "comercialBundle:Contacto:creaPersonaFormaContacto" }
+
+contacto_new:
+    pattern:  /new
+    defaults: { _controller: "comercialBundle:Contacto:new" }
+
+contacto_create:
+    pattern:  /create
+    defaults: { _controller: "comercialBundle:Contacto:create" }
+    requirements: { _method: post }
+
+contacto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "comercialBundle:Contacto:edit" }
+
+contacto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "comercialBundle:Contacto:update" }
+    requirements: { _method: post }
+
+contacto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "comercialBundle:Contacto:delete" }
+    requirements: { _method: post }
+
+contacto_ajax_get_formas_contacto:
+    pattern:  /ajax_getFormasContacto
+    defaults: { _controller: "comercialBundle:Contacto:ajaxGetFormasContacto" }
+    requirements: { _method: get }
+
+contacto_grabar_contacto:
+    pattern: /grabarContacto
+    defaults: { _controller: "comercialBundle:Contacto:grabarContacto", _format: json}
+    requirements: { _format: (xml|json), _method: POST }
+
+contacto_delete_ajax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "comercialBundle:Contacto:delete_ajax" }
+
+contacto_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:Contacto:grid"}
+
+contacto_lista_estados:
+    pattern:  /listaestados
+    defaults: { _controller: "comercialBundle:Contacto:estados"}
+    
+contacto_ingresar_masivos:
+    pattern:  /ingresar-masivos
+    defaults: { _controller: "comercialBundle:Contacto:ingresarMasivos"}   
+    
+contacto_upload_file:
+    pattern:  /uploadfile
+    defaults: { _controller: "comercialBundle:Contacto:fileUpload"}
+
+contacto_contactoClienteByTipoRolAjax:
+    pattern:  /contactoClienteByTipoRolAjax
+    defaults: { _controller: "comercialBundle:Contacto:getContactoClienteByTipoRolAjax"}     
+
+contacto_duplicarContactoAjax:
+    pattern:  /duplicarContactoAjax
+    defaults: { _controller: "comercialBundle:Contacto:duplicarContactoAjax" }
+
+
+contacto_ajaxValidarFormaContacto: 
+  pattern:  /ajaxValidarFormaContacto
+  defaults: { _controller: "comercialBundle:Contacto:ajaxValidarFormaContacto" }
+ 
+ 

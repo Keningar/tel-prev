@@ -1,0 +1,130 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+<link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('./public/css/dist/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
+<style>
+    #dashboard {
+        margin: -4px -14px 0;
+        margin: 0px 11px 3px;
+        -moz-border-radius: 4px;
+        border: 1px solid #DDDDDD;
+        background-color: #FFFFFF;
+        box-shadow: none !important;
+        width: 975px;
+        width: 77.5%;
+        min-height: 10em;
+    }
+    .button-seleccion-puntos-modal {
+        background-image: url('/public/images/task.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 2px;
+        height: 8px;
+        width: 8px;
+    }
+    .button-seleccion-puntos-agregar {
+        background-color: #E3E3E3;
+        border-color: #C5C5C5;
+        border-radius: 5px 5px 5px 5px;
+        border-spacing: 0;
+        border-style: solid;
+        border-width: 1px;
+        font-size: 14px;
+        padding: 2px 15px 0 5px;
+        color: #2E2E2E;
+        font-size: 11px;
+        text-align: center;
+        text-decoration: none;
+        background-image: url('/public/images/imp_prospectos.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 25px;
+        width: 25px;
+        margin-left: 5px;
+    }
+    .button-seleccion-puntos-cerrar {
+        background-image: url('/public/images/images_crud/tick1.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 2px;
+        height: 8px;
+        width: 8px;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+    <script>
+        var urlGetAdmiTitulo            = "{{ path('admititulo_getAdmiTitulo') }}";
+        var urlGetAdmiRolbyTipoRol      = "{{ path('admitiporol_getAdmiRolbyTipoRol') }}";
+        var urlGetAdmiFormaContacto     = "{{ path('admiformacontacto_getAdmiFormaContacto') }}";
+        var urlGetEscalabilidadContacto = "{{ path('admiformacontacto_getEscalabilidadContacto') }}";
+        var urlGetHorarioContacto       = "{{ path('admihorariocontacto_getHorarioContacto') }}";
+        var urlCreaPersonaFormaContacto = "{{ path('contacto_creaPersonaFormaContacto') }}";
+        url_validar_identificacion_tipo = "{{ path('cliente_ajax_validar_identificacion_tipo') }}";
+        var url_getMaxLongitudIdentificacionAjax = "{{ path('cliente_getMaxLongitudIdentificacion') }}";
+        var url_puntos_lista_estados    = "{{ path('search_ajaxGetEstadosPunto') }}";
+        var intIdPersona                = {{ app.session.get('cliente').id_persona }};
+        var intIdPersonaEmpresaRol      = {{ app.session.get('cliente').id_persona_empresa_rol }};
+    </script>
+    {% if app.session.get('cliente').id is defined or app.session.get('ptoCliente').id is defined %}
+        <script>
+            var url_gridPtos = "{{ path('infopunto_getpuntospersonaemprol',
+                {'idper': app.session.get('cliente').id_persona_empresa_rol, 'rol':'Cliente'}) }}";
+        </script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/Contacto.js?7') }}"></script>
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contacto/new.js?7') }}"></script>
+    {% endif %}
+{% endblock %}
+
+{% block contenido_izq %}
+<div class="body_content">
+    <div class="col-xs-12">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h2 class="page-header" style = "font-size: 14px">
+            <i class="fa fa-globe"></i> Nuevo contacto para el cliente
+            <small class="pull-right">{% if strNombreCliente is defined %} {{ strNombreCliente }} {% endif %}</small>
+        </h2>
+        {% if objReturnResponse is defined %}
+        {% if '001' == objReturnResponse.strStatus %}
+            <div class="callout callout-danger lead">
+                <h4>Error!</h4>
+                <p> {{ objReturnResponse.strMessageStatus }} </p>
+            </div>
+        {% else %}
+            <table align="center">
+                <tr>
+                    <td>
+                        <div id="divCrearContacto"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+                <tr align="center">
+                    <td>
+                        <div class="buttons">
+                            <span class="height20px">
+                                <a class="button-crud" href="{{ path('contacto') }}">Regresar</a>
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        {% endif %}
+        {% else %}
+            <div class="callout callout-danger lead">
+                <h4>Error!</h4>
+                <p> No se estan definiendo parametros </p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+{% endblock contenido_der %}

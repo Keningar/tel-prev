@@ -1,0 +1,15 @@
+reporte_aprobacion_contratos:     
+    pattern:  /
+    defaults: { _controller: "comercialBundle:ReportesAprobacionContratos:index" }
+
+reporte_getPtosCoberturaByEmpresa:
+    pattern:  /getPtosCoberturaByEmpresa
+    defaults: { _controller: "comercialBundle:ReportesAprobacionContratos:getPtosCoberturaByEmpresa" }  
+    
+reporte_grid_ReporteAprobacionContratos:
+    pattern:  /gridReporteAprobacionContratos
+    defaults: { _controller: "comercialBundle:ReportesAprobacionContratos:gridReporteAprobacionContratos"}
+
+reporte_generarRptAprobContratos:
+    pattern:  /generarRptAprobContratos
+    defaults: { _controller: "comercialBundle:ReportesAprobacionContratos:generarRptAprobContratos" }

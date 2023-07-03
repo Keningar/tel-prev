@@ -1,0 +1,84 @@
+infoordentrabajo:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:index" }
+
+infoordentrabajo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:show" }
+
+infoordentrabajo_new:
+    pattern:  /new
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:new" }
+
+infoordentrabajo_create:
+    pattern:  /create
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:create" }
+    requirements: { _method: post }
+
+infoordentrabajo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:edit" }
+
+infoordentrabajo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:update" }
+    requirements: { _method: post }
+
+infoordentrabajo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:delete" }
+    requirements: { _method: post }
+
+infoordentrabajo_tipo:
+    pattern:  /tipo_orden
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:tipoOrden" }
+    
+infoordentrabajo_info_plan:
+    pattern:  /info_plan
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:informacionPlan" }
+
+infoordentrabajo_lista_estados:
+    pattern:  /lista_estados
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:estados" }
+
+infoordentrabajo_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:grid"}
+
+infoordentrabajo_delete_ajax:
+    pattern:  /delete_ajax
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:deleteAjax" }
+    requirements: { _method: post }
+
+infoordentrabajo_planificacion_ajax:
+    pattern:  /{id}/planificacion_ajax
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:planificacionAjax" }
+    requirements: { _method: post }
+
+infoordentrabajo_listar_pto_clientes:
+    pattern:  /listar_ptos_ajax
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:ptoClientesAjax" }
+    
+infoordentrabajo_convertir:
+    pattern:  /convertir_servicios_ot
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:convertirOrdenTrabajo" }
+    
+infoordentrabajo_listar_convertir:
+    pattern:  /convertir_ot
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:presentarListadoConvertir" }
+    
+infoordentrabajo_listado_ot:
+    pattern:  /listado_ot
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:listadoServicios" }
+
+infoordentrabajo_listado_servicio_by_estado:
+    pattern:  /listado_servicio_by_estado
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:listadoServiciosByEstado" }
+
+infoordentrabajo_crear_reubicacion:
+    pattern:  /crear_reubicacion
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:crearReubicacion" }
+
+infoordentrabajo_validarServiciosConvertirOrdenTrabajo:
+    pattern:  /validarServiciosConvertirOrdenTrabajo
+    defaults: { _controller: "comercialBundle:InfoOrdenTrabajo:validarServiciosConvertirOrdenTrabajo" }

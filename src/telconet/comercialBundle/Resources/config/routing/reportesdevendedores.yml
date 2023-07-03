@@ -1,0 +1,19 @@
+reporte_de_vendedores_index:
+    pattern:  /index
+    defaults: { _controller: "comercialBundle:ReportesDeVendedores:index" }
+    
+reporte_de_vendedores_raiz:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:ReportesDeVendedores:index" }    
+
+reporte_de_vendedores_gridPuntosServiciosVendedores:
+    pattern:  /gridPuntosServiciosVendedores
+    defaults: { _controller: "comercialBundle:ReportesDeVendedores:gridPuntosServiciosPorVendedor" }
+   
+reporte_de_vendedores_excelPuntosServiciosVendedores:
+    pattern:  /excelclientesfactura
+    defaults: { _controller: "comercialBundle:ReportesDeVendedores:excelPuntosServiciosPorVendedor"}
+
+reporte_de_vendedores_gridVendedores:    
+    pattern: /gridVendedores
+    defaults: { _controller: "comercialBundle:InfoPunto:getAjaxComboVendedores"}   

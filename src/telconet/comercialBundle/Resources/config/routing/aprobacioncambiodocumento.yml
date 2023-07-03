@@ -1,0 +1,19 @@
+aprobacioncambiodocumento_aprobar_cambiodocumento:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:aprobarCambioDocumento" }
+
+aprobacioncambiodocumento_grid_aprobar:
+    pattern:  /gridAprobarCambioDocumento
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:gridAprobarCambioDocumento"}
+
+aprobacioncambiodocumento_aprobar_ajax:
+    pattern:  /aprobarCambioDocumentoAjax
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:aprobarCambioDocumentoAjax" }
+
+aprobacioncambiodocumento_rechazar_ajax:
+    pattern:  /rechazarcambiodocumentoajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:rechazarSolicitudCambioDocumentoAjax" }
+
+aprobacioncambiodocumento_getmotivosrechazo_ajax:
+    pattern:  /getMotivosRechazoCambioDocumentoAjax
+    defaults: { _controller: "comercialBundle:SolicitudCambioDocumento:getMotivosRechazoCambioDocumento_ajax" }

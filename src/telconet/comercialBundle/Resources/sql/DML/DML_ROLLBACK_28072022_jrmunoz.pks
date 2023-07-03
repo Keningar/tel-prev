@@ -1,0 +1,22 @@
+/*
+ * @author Joel Muñoz <jrmunoz@telconet.ec>
+ * @version 1.0
+ * @since 28-07-2022
+ */
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE PARAMETRO_ID IN ( SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'LISTA_PRODUCTOS_SDWAN_MIGRACIONES'
+      AND ESTADO             = 'Activo'
+      AND USR_CREACION       = 'jrmunoz');
+
+
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'LISTA_PRODUCTOS_SDWAN_MIGRACIONES'
+      AND ESTADO             = 'Activo'
+      AND USR_CREACION       = 'jrmunoz';
+
+COMMIT;
+/

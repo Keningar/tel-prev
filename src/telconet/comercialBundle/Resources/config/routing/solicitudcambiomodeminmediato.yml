@@ -1,0 +1,19 @@
+solicitudcambiomodeminmediato:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:SolicitudCambioModemInmediato:index" }
+
+solicitudcambiomodeminmediato_graba_solicitudcambiomodeminmediato_ajax:
+    pattern:  /grabasolicitudcambiomodeminmediatoajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioModemInmediato:grabaSolicitudCambioModemInmediato_ajax" }
+
+solicitudcambiomodeminmediato_get_motivos_ajax:
+    pattern:  /getmotivoscambiomodeminmediatoajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioModemInmediato:getMotivos_ajax" }
+
+solicitudcambiomodeminmediato_get_servicios_ajax:
+    pattern:  /{id}/getserviciossolicitudcambiomodeminmediatoajax
+    defaults: { _controller: "comercialBundle:SolicitudCambioModemInmediato:getServiciosParaSolicitudCambioModemInmediato_ajax" }
+
+solicitudcambiomodeminmediato_ajaxInformacionServicioMdAction:
+    pattern:  /ajaxInformacionServicioMd
+    defaults: { _controller: "comercialBundle:SolicitudCambioModemInmediato:ajaxInformacionServicioMd" }

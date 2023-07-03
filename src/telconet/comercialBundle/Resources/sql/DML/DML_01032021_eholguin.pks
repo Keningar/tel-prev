@@ -1,0 +1,315 @@
+/*
+ * @author Edgar Holguín <eholguin@telconet.ec>
+ * @version 1.0
+ * @since 01-03-2021
+ * Se crean las sentencias DML para insertar parámetros  relacionados con la facturación de solicitudes Netlifecam.
+ */
+INSERT INTO DB_COMERCIAL.ADMI_CARACTERISTICA (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+) VALUES (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'CAMARA EZVIZ CS-C1C-D0-1D1WFR',
+    'N',
+    'Activo',
+    SYSDATE,
+    'eholguin',
+    NULL,
+    NULL,
+    'COMERCIAL'
+);
+
+INSERT INTO DB_COMERCIAL.ADMI_CARACTERISTICA (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+) VALUES (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'CAMARA EZVIZ CS-CV206 (MINI-O)',
+    'N',
+    'Activo',
+    SYSDATE,
+    'eholguin',
+    NULL,
+    NULL,
+    'COMERCIAL'
+);
+
+
+INSERT INTO DB_COMERCIAL.ADMI_CARACTERISTICA (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+) VALUES (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'TARJETA MICRO SD 32 GB KINGSTON',
+    'N',
+    'Activo',
+    SYSDATE,
+    'eholguin',
+    NULL,
+    NULL,
+    'COMERCIAL'
+);
+
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'DESCUENTO NETLIFECAM',
+    'N',
+    'Activo',
+    sysdate,
+    'eholguin',
+    sysdate,
+    'eholguin',
+    'COMERCIAL'
+  );
+
+
+
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO
+  (
+    ID_PRODUCTO,
+    EMPRESA_COD,
+    CODIGO_PRODUCTO,
+    DESCRIPCION_PRODUCTO,
+    FUNCION_COSTO,
+    INSTALACION,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    CTA_CONTABLE_PROD,
+    CTA_CONTABLE_PROD_NC,
+    ES_PREFERENCIA,
+    ES_ENLACE,
+    REQUIERE_PLANIFICACION,
+    REQUIERE_INFO_TECNICA,
+    NOMBRE_TECNICO,
+    CTA_CONTABLE_DESC,
+    TIPO,
+    ES_CONCENTRADOR,
+    SOPORTE_MASIVO,
+    ESTADO_INICIAL,
+    GRUPO,
+    COMISION_VENTA,
+    COMISION_MANTENIMIENTO,
+    USR_GERENTE,
+    CLASIFICACION,
+    REQUIERE_COMISIONAR,
+    SUBGRUPO,
+    FUNCION_PRECIO,
+    LINEA_NEGOCIO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO.NEXTVAL,
+    '18',
+    'TARSD',
+    'TARJETA MICRO SD',
+    NULL,
+    '0',
+    'Inactivo',
+    SYSDATE,
+    'eholguin',
+    '127.0.0.1',
+    '0',
+    '0',
+    'NO',
+    'NO',
+    'NO',
+    'NO',
+    'OTROS',
+    NULL,
+    'B',
+    'NO',
+    'N',
+    NULL,
+    'OTROS',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'OTROS',
+    'PRECIO=20',
+    'OTROS'
+  );
+
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO
+  (
+    ID_PRODUCTO,
+    EMPRESA_COD,
+    CODIGO_PRODUCTO,
+    DESCRIPCION_PRODUCTO,
+    FUNCION_COSTO,
+    INSTALACION,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    CTA_CONTABLE_PROD,
+    CTA_CONTABLE_PROD_NC,
+    ES_PREFERENCIA,
+    ES_ENLACE,
+    REQUIERE_PLANIFICACION,
+    REQUIERE_INFO_TECNICA,
+    NOMBRE_TECNICO,
+    CTA_CONTABLE_DESC,
+    TIPO,
+    ES_CONCENTRADOR,
+    SOPORTE_MASIVO,
+    ESTADO_INICIAL,
+    GRUPO,
+    COMISION_VENTA,
+    COMISION_MANTENIMIENTO,
+    USR_GERENTE,
+    CLASIFICACION,
+    REQUIERE_COMISIONAR,
+    SUBGRUPO,
+    FUNCION_PRECIO,
+    LINEA_NEGOCIO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO.NEXTVAL,
+    '18',
+    'CAMFR',
+    'CAMARA EZVIZ CS-C1C-D0-1D1WFR',
+    NULL,
+    '0',
+    'Inactivo',
+    SYSDATE,
+    'eholguin',
+    '127.0.0.1',
+    '0',
+    '0',
+    'NO',
+    'NO',
+    'NO',
+    'NO',
+    'OTROS',
+    NULL,
+    'B',
+    'NO',
+    'N',
+    NULL,
+    'OTROS',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'OTROS',
+    'PRECIO=60',
+    'OTROS'
+  );
+
+
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO
+  (
+    ID_PRODUCTO,
+    EMPRESA_COD,
+    CODIGO_PRODUCTO,
+    DESCRIPCION_PRODUCTO,
+    FUNCION_COSTO,
+    INSTALACION,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    CTA_CONTABLE_PROD,
+    CTA_CONTABLE_PROD_NC,
+    ES_PREFERENCIA,
+    ES_ENLACE,
+    REQUIERE_PLANIFICACION,
+    REQUIERE_INFO_TECNICA,
+    NOMBRE_TECNICO,
+    CTA_CONTABLE_DESC,
+    TIPO,
+    ES_CONCENTRADOR,
+    SOPORTE_MASIVO,
+    ESTADO_INICIAL,
+    GRUPO,
+    COMISION_VENTA,
+    COMISION_MANTENIMIENTO,
+    USR_GERENTE,
+    CLASIFICACION,
+    REQUIERE_COMISIONAR,
+    SUBGRUPO,
+    FUNCION_PRECIO,
+    LINEA_NEGOCIO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO.NEXTVAL,
+    '18',
+    'CAMIN',
+    'CAMARA EZVIZ CS-CV206 (MINI-O)',
+    NULL,
+    '0',
+    'Inactivo',
+    SYSDATE,
+    'eholguin',
+    '127.0.0.1',
+    '0',
+    '0',
+    'NO',
+    'NO',
+    'NO',
+    'NO',
+    'OTROS',
+    NULL,
+    'B',
+    'NO',
+    'N',
+    NULL,
+    'OTROS',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'OTROS',
+    'PRECIO=60',
+    'OTROS'
+  );
+
+COMMIT;
+/

@@ -1,0 +1,39 @@
+admiCiclosFacturacion:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:AdmiCiclosFacturacion:index" }  
+  
+admiCiclosFacturacion_gridListadoCiclosFacturacion:
+    pattern:  /getListadoCiclosFacturacion
+    defaults: { _controller: "comercialBundle:AdmiCiclosFacturacion:gridListadoCiclosFacturacion" }  
+
+admiCiclosFacturacion_gridListadoCiclosClientes:
+    pattern:  /getListadoCiclosClientes
+    defaults: { _controller: "comercialBundle:AdmiCiclosFacturacion:gridListadoCiclosClientes" }
+
+admiCiclosFacturacion_eliminarCiclosFacturacionAjax:
+    pattern:  /eliminarCiclosFacturacionAjax/{intIdCiclo}
+    defaults: { _controller: comercialBundle:AdmiCiclosFacturacion:eliminarCiclosFacturacionAjax }
+
+admiCiclosFacturacion_gridListadoCiclosFacturacionHist:
+    pattern:  /getListadoCiclosFacturacionHist
+    defaults: { _controller: "comercialBundle:AdmiCiclosFacturacion:gridListadoCiclosFacturacionHist" }  
+
+admiCiclosFacturacion_validaCiclosFacturacionAjax:
+    pattern:  /validaCiclosFacturacionAjax
+    defaults: { _controller: "comercialBundle:AdmiCiclosFacturacion:validaCiclosFacturacionAjax" }
+
+admiCiclosFacturacion_guardarCicloFacturacionAjax:
+    pattern:  /guardarCicloFacturacionAjax
+    defaults: { _controller: "comercialBundle:AdmiCiclosFacturacion:guardarCicloFacturacionAjax" }  
+
+admiCiclosFacturacion_validaCicloAEliminarAjax:
+    pattern:  /validaCicloAEliminarAjax
+    defaults: { _controller: "comercialBundle:AdmiCiclosFacturacion:validaCicloAEliminarAjax" }    
+
+admiCiclosFacturacion_activarCiclosFacturacionAjax:
+    pattern:  /activarCiclosFacturacionAjax/{intIdCiclo}
+    defaults: { _controller: comercialBundle:AdmiCiclosFacturacion:activarCiclosFacturacionAjax }
+
+admiCiclosFacturacion_mensajesValidacionAjaxAction:
+    pattern:  /mensajesValidacionAjaxAction
+    defaults: { _controller: "comercialBundle:AdmiCiclosFacturacion:mensajesValidacionAjax" }

@@ -1,0 +1,24 @@
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE PARAMETRO_ID IN ( SELECT ID_PARAMETRO
+                        FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+                        WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_ADULTO_MAYOR'
+                        AND ESTADO             = 'Activo');
+                        
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_ADULTO_MAYOR'
+  AND ESTADO           = 'Activo';
+
+UPDATE DB_GENERAL.ADMI_MOTIVO SET NOMBRE_MOTIVO ='Beneficio 3era Edad',
+USR_ULT_MOD ='apenaherrera', FE_ULT_MOD=SYSDATE
+WHERE NOMBRE_MOTIVO='Beneficio 3era Edad / Adulto Mayor';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET 
+ SET VALOR2='Cliente ya posee descuento En Login: {strLogin}- Dirección: {strDireccion}. No puede ingresar una nueva solicitud de descuento.'
+ WHERE VALOR1='NOTIFICACION_INGRESO'
+      AND PARAMETRO_ID IN (SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PARAM_FLUJO_SOLICITUD_DESC_DISCAPACIDAD'
+      AND ESTADO             = 'Activo'); 
+
+COMMIT;
+/

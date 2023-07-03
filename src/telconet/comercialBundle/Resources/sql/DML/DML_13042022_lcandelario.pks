@@ -1,0 +1,280 @@
+/*
+*
+* @author Liceth Candelario <lcandelario@telconet.ec>
+* @version 1.0 13-04-2022
+*/
+
+
+SET SERVEROUTPUT ON
+/*  Creación de parámetro PARAM_CARACT_VELOCIDAD_X_PRODUCTO: */
+DECLARE
+  Ln_IdParamCab    NUMBER;
+BEGIN
+  Ln_IdParamCab := DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL;
+
+  --INSERT ADMI_PARAMETRO_CAB
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+			(Ln_IdParamCab,
+			'PARAM_CARACT_VELOCIDAD_X_PRODUCTO',
+			'PARAM_CARACT_VELOCIDAD_X_PRODUCTO',
+			'TECNICO',
+			NULL,
+			'Activo',
+			'lcandelario',
+			SYSDATE,
+			'127.0.0.1',
+			NULL,
+			NULL,
+			NULL
+			);
+ 
+  -- INSERT ADMI_PARAMETRO_DET
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+        ID_PARAMETRO_DET,
+        PARAMETRO_ID,
+        DESCRIPCION,
+        VALOR1,
+        VALOR2,
+	VALOR3,
+	VALOR4,
+        ESTADO,
+        USR_CREACION,
+        FE_CREACION,
+        IP_CREACION,
+        EMPRESA_COD
+)
+VALUES
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        Ln_IdParamCab,
+        'Productos que tienen velocidades diferentes',
+	'INTERNET SAFE',
+        'DESCRIPCION_CARACT_VELOCIDAD_X_NOMBRE_TECNICO_INTERNET_SAFE',
+        '[VELOCIDAD_INTERNET_SAFE]',
+        'VELOCIDAD_INTERNET_SAFE',
+	'Activo',
+        'lcandelario',
+        SYSDATE,
+        '127.0.0.1',
+        (
+            SELECT COD_EMPRESA
+            FROM DB_COMERCIAL.INFO_EMPRESA_GRUPO
+            WHERE PREFIJO = 'TN'
+        )
+);
+
+
+/*
+ * Creación de parámetro DESCRIPCION_CARACT_VELOCIDAD_X_NOMBRE_TECNICO_INTERNET_SAFE: 
+ */
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+        ID_PARAMETRO_DET,
+        PARAMETRO_ID,
+        DESCRIPCION,
+        VALOR1,
+        VALOR2,
+	VALOR3,
+	VALOR4,
+        ESTADO,
+        USR_CREACION,
+        FE_CREACION,
+        IP_CREACION,
+        EMPRESA_COD
+)
+VALUES
+(
+        DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+        Ln_IdParamCab,
+        'Productos que tienen velocidades diferentes',
+	'IP Internet SAFE',
+        'DESCRIPCION_CARACT_VELOCIDAD_X_NOMBRE_TECNICO_INTERNET_SAFE',
+        '[VELOCIDAD_INTERNET_SAFE]',
+        'VELOCIDAD_INTERNET_SAFE',
+	'Activo',
+        'lcandelario',
+        SYSDATE,
+        '127.0.0.1',
+        (
+            SELECT COD_EMPRESA
+            FROM DB_COMERCIAL.INFO_EMPRESA_GRUPO
+            WHERE PREFIJO = 'TN'
+        )
+);
+
+
+
+-- Se inserta característica VELOCIDAD para el producto INTERNET SAFE: PROCESO DE SOLICITUD MASIVA
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    FE_ULT_MOD,
+    USR_CREACION,
+    USR_ULT_MOD,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.nextval,
+    (SELECT id_producto
+    FROM DB_COMERCIAL.ADMI_PRODUCTO
+    WHERE DESCRIPCION_PRODUCTO = 'INTERNET SAFE'
+    ),
+    (SELECT ID_CARACTERISTICA
+    FROM DB_COMERCIAL.admi_caracteristica
+    WHERE DESCRIPCION_CARACTERISTICA = 'VELOCIDAD'
+    ),
+    sysdate,
+    NULL,
+    'lcandelario',
+    NULL,
+    'Activo',
+    'NO'
+  );
+  
+
+-- Se cambia el estado para la vizualización al botón de cambio de velocidad - internet safe
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET SET estado = 'Eliminado', fe_ult_mod= sysdate WHERE parametro_id =
+                              (SELECT DB_GENERAL.ADMI_PARAMETRO_CAB.ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+                                    WHERE nombre_parametro = 'NO_VISUALIZAR_BOTON_DE_CAMBIO_VELOCIDAD') ;
+
+
+-- Se ejecuta UPDATE para los valores de cambio de plan
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '16'
+        WHERE DETALLE_NOMBRE = 'LINE-PROFILE-ID'
+        AND DETALLE_VALOR    = '54'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '16'
+        WHERE DETALLE_NOMBRE = 'GEM-PORT'
+        AND DETALLE_VALOR    = '54'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '16'
+        WHERE DETALLE_NOMBRE = 'TRAFFIC-TABLE'
+        AND DETALLE_VALOR    = '54'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '25'
+        WHERE DETALLE_NOMBRE = 'LINE-PROFILE-ID'
+        AND DETALLE_VALOR    = '55'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '25'
+        WHERE DETALLE_NOMBRE = 'GEM-PORT'
+        AND DETALLE_VALOR    = '55'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '25'
+        WHERE DETALLE_NOMBRE = 'TRAFFIC-TABLE'
+        AND DETALLE_VALOR    = '55'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '31'
+        WHERE DETALLE_NOMBRE = 'LINE-PROFILE-ID'
+        AND DETALLE_VALOR    = '56'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '31'
+        WHERE DETALLE_NOMBRE = 'GEM-PORT'
+        AND DETALLE_VALOR    = '56'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '31'
+        WHERE DETALLE_NOMBRE = 'TRAFFIC-TABLE'
+        AND DETALLE_VALOR    = '56'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '39'
+        WHERE DETALLE_NOMBRE = 'LINE-PROFILE-ID'
+        AND DETALLE_VALOR    = '57'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '39'
+        WHERE DETALLE_NOMBRE = 'GEM-PORT'
+        AND DETALLE_VALOR    = '57'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_INFRAESTRUCTURA.INFO_DETALLE_ELEMENTO
+        SET DETALLE_VALOR    = '39'
+        WHERE DETALLE_NOMBRE = 'TRAFFIC-TABLE'
+        AND DETALLE_VALOR    = '57'
+        AND USR_CREACION     = 'afayala';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+        SET VALOR3         = '16'
+        WHERE PARAMETRO_ID =
+        (SELECT ID_PARAMETRO
+          FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+          WHERE NOMBRE_PARAMETRO = 'CNR_PERFIL_CLIENT_PCK'
+          AND ESTADO             = 'Activo'
+        )
+        AND DESCRIPCION = 'TN_PLAN_15M'
+        AND VALOR1      = 'TN_PLAN_15M'
+        AND VALOR2      = 'TN_PLAN_15M';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+        SET VALOR3         = '25'
+        WHERE PARAMETRO_ID =
+        (SELECT ID_PARAMETRO
+         FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+         WHERE NOMBRE_PARAMETRO = 'CNR_PERFIL_CLIENT_PCK'
+         AND ESTADO             = 'Activo'
+        )
+        AND DESCRIPCION = 'TN_PLAN_25M'
+        AND VALOR1      = 'TN_PLAN_25M'
+        AND VALOR2      = 'TN_PLAN_25M';
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+        SET VALOR3         = '31'
+        WHERE PARAMETRO_ID =
+        (SELECT ID_PARAMETRO
+         FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+         WHERE NOMBRE_PARAMETRO = 'CNR_PERFIL_CLIENT_PCK'
+         AND ESTADO             = 'Activo'
+        )
+        AND DESCRIPCION = 'TN_PLAN_30M'
+        AND VALOR1      = 'TN_PLAN_30M'
+        AND VALOR2      = 'TN_PLAN_30M';
+
+
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+        SET VALOR3         = '39'
+        WHERE PARAMETRO_ID =
+        (SELECT ID_PARAMETRO
+         FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+         WHERE NOMBRE_PARAMETRO = 'CNR_PERFIL_CLIENT_PCK'
+         AND ESTADO             = 'Activo'
+        )
+        AND DESCRIPCION = 'TN_PLAN_40M'
+        AND VALOR1      = 'TN_PLAN_40M'
+        AND VALOR2      = 'TN_PLAN_40M';
+COMMIT;
+
+
+  SYS.DBMS_OUTPUT.PUT_LINE('Se creo ajustes para el servicio Internet safe');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK || ' - ERROR_BACKTRACE: ' 
+                            || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/

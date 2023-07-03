@@ -1,0 +1,61 @@
+materialesexcedentes:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:index" }
+
+materialesexcedentes_grid:
+    pattern:  /grid
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:grid"}
+
+materialesexcedentes_gridFactibilidadMateriales:
+    pattern:  /gridFactibilidadMateriales
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:gridFactibilidadMateriales"}
+
+materialesexcedentes_rechazar_ajax:
+    pattern:  /rechazar
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:rechazarAjax" }
+
+materialesexcedentes_aprobar_ajax:
+    pattern:  /aprobar
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:aprobarAjax" }
+    
+materialesexcedentes_getMotivosRechazo:
+    pattern:  /getMotivosRechazo
+    defaults: { _controller: comercialBundle:MaterialesExcedentes:getMotivosRechazo }
+    
+materialesexcedentes_aprobarSolicitudMateriales:
+    pattern:  /aprobarSolicitudMateriales
+    defaults: { _controller: comercialBundle:MaterialesExcedentes:aprobarSolicitudMateriales }
+        
+materialesexcedentes_rechazarSolicitudMateriales:
+    pattern:  /rechazarSolicitudMateriales
+    defaults: { _controller: comercialBundle:MaterialesExcedentes:rechazarSolicitudMateriales }
+
+materialesexcedentes_getSeguimientoMaterialesExcedentes:
+    pattern:  /getSeguimientoMaterialesExcedentes
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:getSeguimientoMaterialesExcedentes"}
+
+materialesexcedentes_IngresarSeguimientoMaterialesExcedentes:
+    pattern:  /IngresarSeguimientoMaterialesExcedentes
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:IngresarSeguimientoMaterialesExcedentes"}    
+
+materialesexcedentes_multipleFileUpload:
+    pattern:  /multipleFileUpload
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:multipleFileUpload"}    
+
+materialesexcedentes_AprobarSeguimientoMaterialesExcedentes:
+    pattern:  /AprobarSeguimientoMaterialesExcedentes
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:AprobarSeguimientoMaterialesExcedentes"}    
+
+materialesexcedentes_getVerificaDocumentosMaterialesExcedentes:
+    pattern:  /getVerificaDocumentosMaterialesExcedentes
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:getVerificaDocumentosMaterialesExcedentes" }
+    requirements: { _method: post }
+
+materialesexcedentes_getDocumentosMaterialesExced:
+    pattern:  /getDocumentosMaterialesExced
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:getDocumentosMaterialesExced" }
+
+materialesexcedentes_eliminarDocumentoRegistroYArchivo:
+    pattern:  /eliminarDocumentoRegistroYArchivo
+    defaults: { _controller: "comercialBundle:MaterialesExcedentes:eliminarDocumentoRegistroYArchivo"}
+

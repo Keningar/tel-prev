@@ -1,0 +1,68 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Listado de Referidos</h1>
+	</div>
+	<div class="body_content k-content">
+	    <div id="example" class="k-content">
+		    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+				<tr bgcolor='#ffffff'>
+						 <td bgcolor='#ffffff'><div id='filtro_clientes'></div></td>
+				</tr>	
+				<tr bgcolor='#ffffff'>
+						 <td bgcolor='#ffffff'><div id='lista_clientes'></div></td>
+				</tr>
+		    </table>        
+		            
+						   
+			<script>
+		        var url_cliente_delete_ajax='{{path('cliente_delete_ajax')}}';
+		        var url_cliente_lista_estados='{{path('cliente_lista_estados')}}';
+		        var url_grid = "{{ path('cliente_grid_referidos') }}";
+                        var url_excel = "{{ path('cliente_excelreferidos') }}";
+			</script>        
+			<script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/referidos.js') }}"></script>
+		</div>
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+	<div class="titulo-acciones-relacionadas">
+		Acciones Relacionadas
+	</div>
+	<ul class="listado_acciones_relacionadas"></ul>
+{% endblock contenido_der %}

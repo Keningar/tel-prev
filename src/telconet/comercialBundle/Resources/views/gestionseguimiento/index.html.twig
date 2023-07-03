@@ -1,0 +1,84 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+	{{ parent() }}
+    
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/seguimiento/Seguimiento.js?1') }}"></script>                
+        <script type="text/javascript" src="{{ asset('./bundles/comercial/js/seguimiento/servicios.js?1') }}"></script>
+        
+        <script>
+        var url_treegrid                    =   '{{path('treegrid')}}';
+        var url_solicitar_descuento_ajax    =   '{{path('solicituddescuento_graba_solicdesc_ajax')}}';
+        var urlGetTipoDescuento             =   '{{path('solicitudes_get_TipoDescuento_ajax')}}';
+        var urlEjecutarSeguimiento          =   '{{path('solicitudes_grafico_ajax')}}';
+        var urlGetDetalleServicios          =   '{{ path('solicitudes_getDetalleServicios') }}';
+        var strUrlGetProductosPorEstado     =   '{{ path('infopunto_getProductosPorEstado') }}';
+        var urlSeguimientoHistorial         =   '{{ path('solicitudes_getSeguimientoServicio') }}';
+        var urlFiltroSeguimiento            =   '{{ path('filtro_getSeguimientoServicio') }}';
+        </script>        
+        
+{% endblock javascripts %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link type="text/css" rel="stylesheet" href="{{ asset('./bundles/comercial/css/seguimiento.css') }}" >
+        <link href="{{ asset('./public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" />
+
+    <style>
+        .body_contentgf {
+            margin: 0 20px 30px;
+            padding: 20px;
+        }
+
+        #dashboard {
+            width: 82.5%;
+        }
+        .x-grid-cell-inner {
+            white-space: pre-line;
+        }
+        #table-wrapper {
+        position:relative;
+        }
+        #table-scroll {
+        height:95px;
+        align-content: center;        
+        }
+        #table-wrapper table {
+        width:100%;
+        }
+
+        .fontSize10{
+            font-size: 10px !important;
+        }
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Seguimientos</h1>
+</div>
+
+<div class="body_contentgf">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'> 
+            <tr bgcolor='#ffffff'>
+                <td>&nbsp;</td><td bgcolor='#ffffff'><div id='filtro_servicios'></div></td>
+            </tr>
+            
+    </table>
+</div>
+<div class='panel' id="panel2" >    
+
+</div>
+
+
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="javascript:history.back()">Regresar</a>
+        </span>
+    </p>
+</div> 
+
+{% endblock contenido_izq %}

@@ -1,0 +1,39 @@
+cambioCiclosFacturacion:
+    pattern:  /
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:index" }  
+    
+cambioCiclosFacturacion_getClientesACambiarCicloFact:
+    pattern:  /getClientesACambiarCicloFact
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getClientesACambiarCicloFact" }  
+
+cambioCiclosFacturacion_getAsignarCicloFact:
+    pattern:  /getAsignarCicloFact
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getAsignarCicloFact" }  
+
+cambioCiclosFacturacion_getAsignarCicloFactTodos:
+    pattern:  /getAsignarCicloFactTodos
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getAsignarCicloFactTodos" }  
+    
+cambioCiclosFacturacion_getCiclosFacturacion:
+    pattern:  /getCiclosFacturacion
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getCiclosFacturacion" }  
+
+cambioCiclosFacturacion_generarRptCambioCiclo:
+    pattern:  /generarRptCambioCiclo
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:generarRptCambioCiclo" }  
+
+cambioCiclosFacturacion_getFormasPagoParaContrato:
+    pattern:  /getFormasPagoParaContrato
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getFormasPagoParaContrato" }  
+
+cambioCiclosFacturacion_getTipoCuenta:
+    pattern:  /getTipoCuenta
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getTipoCuenta" }        
+
+cambioCiclosFacturacion_getBancos:
+    pattern:  /getBancos
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getBancos" }         
+    
+cambioCiclosFacturacion_getEstadosServCambioCiclo:
+    pattern:  /getEstadosServCambioCiclo
+    defaults: { _controller: "comercialBundle:CambioCiclosFacturacion:getEstadosServCambioCiclo" }               

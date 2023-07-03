@@ -1,0 +1,135 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Agregar Puntos de Facturaci&oacute;n</h1>
+</div>
+
+<div class="body_content">
+    <table class="record_properties" width='100%'>
+        <tbody>
+            <tr>
+                <td><b>Razon Social:<b></td>
+                            <td>{{ entity.razonSocial }}</td>            
+
+                            <td><b>Identificacion:</b></td>
+                            <td>{{ entity.identificacionCliente }}</td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Nombres:</b></td>
+                                <td>{{ entity.nombres }}</td>            
+
+
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><b>Apellidos:</b></td>
+                                <td>{{ entity.apellidos }}</td>            
+
+                                <td><b>Direccion:</b></td>
+                                <td>{{ entity.direccion }}</td>
+
+                            </tr>
+                            <tr>
+                                <td><b>Representante Legal:</b></td>
+                                <td>{{ entity.representanteLegal }}</td>
+
+                                <td><b>Estado:</b></td>
+                                <td>{{ entity.estado }}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            </div>
+                            <div  class="body_content">
+                                {% if prefijoEmpresa=='TN' %}
+                                    <div class="warningmessage" style="width: 980px;">
+                                        Favor proceder a ingresar / actualizar los datos de envío                                          
+                                    </div>   
+                                {% endif %}
+                                <table width="100%" cellpadding="1" cellspacing='0'  border='0'>	
+                                    <tr bgcolor='#ffffff'>
+                                        <td bgcolor='#ffffff'><div id='filtro_puntos'></div></td>
+                                    </tr>                 
+                                    <tr bgcolor='#ffffff'>
+                                        <td bgcolor='#ffffff'><div id='lista_ptos'></div></td>
+                                        <!--INI - Componentes Dato de Envío -->
+                                        <input id='numeroMaxCorreosDatoEnvio'   name='numeroMaxCorreosDatoEnvio' type='hidden' value=''>
+                                        <input id='numeroMaxTelefonosDatoEnvio' name='numeroMaxTelefonosDatoEnvio' type='hidden' value=''>
+                                        <input id='prefjoEmpresa' name='prefjoEmpresa' type='hidden' value=''>
+                                        <!--FIN - Componentes Dato de Envío -->
+                                    </tr>                     
+                                </table>
+                            </div>        
+                            <div  class="body_content">
+                                <table width="100%" cellpadding="1" cellspacing='0'  border='0'>	
+                                    <tr bgcolor='#ffffff'>
+                                        <td bgcolor='#ffffff'><div id='filtro_servicios'></div></td>
+                                    </tr>                  
+                                    <tr bgcolor='#ffffff'>
+                                        <td bgcolor='#ffffff'><div id='lista_servicios'></div></td>
+                                    </tr>                        
+
+                                </table>     
+                                <script>
+                                    var url_agregar_ajax                = "{{path('cliente_ajax_agregar_padre')}}";
+                                    var url_cliente_lista_estados       = '#';
+                                    var url_gridPtos                    = "{{ path('infopunto_getpuntos',{'idCli':entity.id,'rol':'Cliente' }) }}";
+                                    
+                                    //se agrega url para ejecutar accion de actualiza el valor de bandera de facturacion electronica  		
+                                    var url_actInaFacturacion           = "{{ path('infopunto_activaInactivaFacturacion')}}";
+
+                                    var url_quitar_ajax                 = "{{path('cliente_ajax_quitar_padre')}}";
+                                    var url_servicios                   = '{{path('cliente_ajax_servicios',{'idCli':entity.id})}}';
+                                    var url_asignar_ajax                = "{{path('infopunto_ajax_asignar_padre')}}";
+                                    var url_padres                      = '{{path('infopunto_getpuntospadre',{'idCli':entity.id})}}';
+                                    var url_verifica_datos_envio_ajax   = "{{path('infopunto_ajaxVerificaDatosDeEnvioPunto')}}";
+                                </script>      
+                                <script>
+                                    var url_lista_estados               = '{{path('infopagocab_estados')}}';
+                                    var url_grid                        = "{{ path('anticipo_gridsinclientes') }}";
+                                    var url_grabar                      = "{{ path('cliente_ajax_grabardatosenvio') }}";
+                                    var url_lista_clientes              = '{{path('reportes_listar_clientes')}}';
+                                    var url_lista_ciudades              = '{{path('cliente_ajax_lista_ciudades')}}';
+                                    var url_lista_parroquias            = '{{path('cliente_ajax_lista_parroquias')}}';
+                                    var url_lista_sectores              = '{{path('cliente_ajax_lista_sectores')}}';
+                                    var url_ActGastAdmi                 = '{{path('infopunto_actualizarGastoAdministrativo')}}';
+                                    var boolActivaDesactivaFactElect    = false;
+
+                                    //Verificamos permisos para activar o desactivar facturacion electronica
+                                    {% if is_granted("ROLE_8-5417") %}
+                                        var boolActivaDesactivaFactElect=true;
+                                    {%endif%}
+                                    document.getElementById("numeroMaxCorreosDatoEnvio").value      = "{{ numeroMaxCorreos }}";
+                                    document.getElementById("numeroMaxTelefonosDatoEnvio").value    = "{{ numeroMaxTelefonos }}";
+                                    document.getElementById("prefjoEmpresa").value                  = "{{ prefijoEmpresa }}";
+                                </script>         
+                                <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/gridAgregarPtosPadres.js?4') }}"></script>
+                                <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/actualizarDatosEnvio.js?2') }}"></script>
+                                <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/agregarDatosEnvioPadreFacturacion.js') }}"></script>
+                                <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/verDatosEnvio.js') }}"></script>
+                                <script type="text/javascript" src="{{ asset('./bundles/comercial/js/cliente/datosEnvio.js') }}"></script>
+                            </div>
+
+                            <div class="buttons">
+                                <p>
+                                    <span class="height20px">
+                                        <a class="button-crud" href="{{ path('cliente') }}">Regresar</a>
+                                    </span>
+                                </p>
+                            </div>     
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+                            <br />
+                            <div class="titulo-acciones-relacionadas">
+                                Acciones Relacionadas
+                            </div>
+                            <ul class="listado_acciones_relacionadas">
+                                <li>
+                                    <a class="listado_ac_tablas" href="{{path('cliente_show',{'id':entity.id,'idper':idper})}}">Ver Cliente</a>
+                                </li>                        
+                            </ul>
+{% endblock contenido_der %}

@@ -1,0 +1,348 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/daterangepicker.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/comercial/css/Promocion.css') }}" type="text/css" rel="stylesheet" />
+    <style>
+    a:link {
+        color: #ff7800;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    a:visited {
+        color: #ff7800;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #a46420;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+    a:active {
+        color: yellow;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+    .container-preload {background-color:rgba(0,0,0,0.09);
+                        height: 100%;
+                        width:  100%;
+                        position: absolute;
+                        z-index:2; left:0px; top:3em;}
+    .preload { width:100px;
+        height: 100px;
+        position: fixed;
+        top: 50%;
+        left: 50%;}
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script>
+        var idPersonaEmpresaRol                  = "{{personaEmpresaRolId}}";
+        var idPunto                              = "{{puntoId}}";
+        var identificacionCliente               = "{{ identificacionCliente }}";
+
+        var urlClausulaContrato                  = "{{ path('infocontrato_getClausula') }}";
+        var urlListadoBancosAsociados            = "{{ path('infocontrato_listar_bancos_asociados') }}";
+        var urlSolicitarInformacionCliente       = "{{ path('infocontrato_solicitar_informacion') }}";
+        var urlGetFormasPago                     = "{{ path('promocion_getFormasPago') }}";
+        var urlGetTipoCuenta                     = "{{ path('promocion_getTipoCuentaJson') }}";
+        var urlGetCorreo                         = "{{ path('promocion_getCorreo') }}";
+        var urlCreacionPunto                     = "{{ path('infocontrato_getCreacionPunto') }}";
+        var urlDatosIniciales                    = "{{ path('admi_plantillapregcontr_datosIniciales') }}";
+        var urlGuardarClausulasOrDataBancaria    = "{{ path('admi_plantillapregcontr_guardar') }}";
+        var urlActualizarEstadoClausula          = "{{ path('admi_plantillapregcontr_actualizarEstadoClausula') }}";
+        var urlObtenerInformacionCliente         = "{{ path('admi_plantillapregcontr_obtenerInformacionCliente') }}";
+        
+    </script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/datosBancario.js?1') }}"></script> 
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contrato/clausulaContrato.js?1') }}"></script> 
+
+{% endblock %}
+
+{% block contenido_izq %}
+
+    <div class="container-preload">
+        <div class="preload">
+            <img style="height:100px; width:100px" src="https://acegif.com/wp-content/uploads/loading-12.gif" alt="loading">
+        </div>
+    </div>
+    <div class="container-fluid">        
+        <div class="row">
+            <div class=" page-header col-md-12">    
+                <br/><h4><em class="fa fa-file-o" ></em>  Datos para el contrato </h4><br/>    
+            </div>
+        </div>
+    </div>
+
+    <div id="accionPermitida" class="alert alert-warning alert-dismissible fade show" role="alert" style="display:none">
+        <strong>ACCIÓN NO PERMITIDA</strong> 
+        <span id="mensajeLinkBancario"></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <form id="formularioDatosContrato" class="formDatosContrato" novalidate onsubmit="return false;" method="POST">
+        <input id='strMostrarClausula' name='strMostrarClausula' type='hidden' value="">
+        <input id='esDebitoBancario' name='esDebitoBancario' type='hidden' value="">
+        <input id='strMostrarInfoBanco' name='strMostrarInfoBanco' type='hidden' value="">
+        <input id='hastieneClausulasSaved' name='hastieneClausulasSaved' type='hidden' value="">
+        <input id='esRolCliente' name='esRolCliente' type='hidden' value="">
+        <input id='esDataBancaria' name='esDataBancaria' type='hidden' value="">
+        <div class="container-fluid shadow-sm p-4 mb-4 bg-white" >
+            <div class="form-group row" id="enlacesDatosBancario" style="display: none;">
+                <div class="form-group col-md-2">
+                </div>
+                <div class=" page-header col-md-10" style="color:orange">    
+                    <br/><h6><em class="fa fa-caret-square-o-up" ></em>  
+                    <a href="#" data-parent="#panel" data-toggle="modal" data-target="#modalCrear">Solicitar información al cliente</a>
+                    </h6>
+                    <div id="mostrarCorreo" class="alert alert-warning alert-dismissible fade show" role="alert" style="display:none">
+                        <strong>Correo:</strong> 
+                        <span id="correoSeleccionadoMostrar"></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>  
+                    <div id="mostrarNumero" class="alert alert-warning alert-dismissible fade show" role="alert" style="display:none">
+                        <strong>Número:</strong> 
+                        <span id="numeroSeleccionadoMostrar"></span>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>    
+                </div>
+                <div class="form-group col-md-2">
+                </div>
+                <div class=" page-header col-md-10" style="color:orange">    
+                    <br/><h6><em class="fa fa-caret-square-o-down" ></em>  
+                    <a href="#" onClick="recibirInformacionCliente(); return false;">Recibir información del cliente</a>
+                    </h6><br/>    
+                </div>
+            </div>
+            <div id="formularioLinkBancario">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item" id="tabClausulas">
+                        <a class="nav-link active" data-toggle="tab" href="#clausula_contrato">Cláusulas de contrato</a>
+                    </li>
+                    <li class="nav-item" id="tabFormaPago">
+                        <a class="nav-link" data-toggle="tab" href="#pago_forma">Datos forma de pago</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active container" id="clausula_contrato">
+                        <div class="alert alert-warning d-md-inline-flex" role="alert">
+                            <em class="fa fa-info-circle "></em> &nbsp&nbspCLÁUSULAS DE CONTRATO DE ADHESIÓN.<br/>
+                        </div>
+
+                        <div id="clausulaContrato_form">
+                        </div>
+                    </div>
+
+                    <div class="tab-pane container" id="pago_forma">
+                        <div id="formaPago_form" class="container shadow-sm p-4 mb-4 bg-light">
+                            <div class="form-group row">
+                                <div class="form-group col-md-3">
+                                    <label for="forma_pago" class="col-sm-12 col-form-label">Forma de Pago:</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="forma_pago" required>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Campo requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="tipo_cuenta" class="col-sm-12 col-form-label">Tipo Cuenta:
+                                        <em class="fa fa-spinner fa-spin spinner_tajeta_ctaBanco" ></em>
+                                    </label>
+                                    <div class="col-sm-12">
+                                        <select class="form-control" id="tipo_cuenta" required>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Campo requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="tipo_banco" class="col-sm-12 col-form-label">Banco:
+                                        <em class="fa fa-spinner fa-spin spinner_Banco" ></em>
+                                    </label>
+                                    <div class="col-sm-15">
+                                        <select class="form-control" id="tipo_banco" required>
+
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Campo requerido.
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="form-group col-md-5">
+                                    <label for="num_tarjeta" class="col-sm-6 col-form-label">No.Tarjeta/Cuenta:</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control input-sm" id="num_tarjeta"
+                                            name="num_tarjeta" style="height: 1.8rem" required>
+                                        <div class="invalid-feedback">
+                                                Campo requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <label for="titular_cta" class="col-sm-6 col-form-label">Titular:</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" class="form-control input-sm" id="titular_cta"
+                                            name="titular_cta" style="height: 1.8rem" required>
+                                        <div class="invalid-feedback">
+                                                Campo requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row" id="row_fechas">
+                                <div class="form-group col-md-5">
+                                    <label for="anio_vencimiento" class="col-sm-6 col-form-label">Año vencimiento:</label>
+                                    <div class="col-sm-4">
+                                        <select class="form-control input-sm" placeholder="año" id="anio_vencimiento"
+                                            name="anio_vencimiento" style="height: 2.3rem" >
+                                        </select>
+                                        <div class="invalid-feedback">
+                                                Campo requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <label for="mes_vencimiento" class="col-sm-6 col-form-label">Mes vencimiento:</label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control input-sm" placeholder="mes" id="mes_vencimiento"
+                                            name="mes_vencimiento" style="height: 2.3rem" >
+                                            <option value="01">Enero</option>
+                                            <option value="02">Febrero</option>
+                                            <option value="03">Marzo</option>
+                                            <option value="04">Abril</option>
+                                            <option value="05">Mayo</option>
+                                            <option value="06">Junio</option>
+                                            <option value="07">Julio</option>
+                                            <option value="08">Agosto</option>
+                                            <option value="09">Septiembre</option>
+                                            <option value="10">Octubre</option>
+                                            <option value="11">Noviembre</option>
+                                            <option value="12">Diciembre</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                                Campo requerido.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-3 offset-1" id="sectionButtonContrato" style="display: none;">
+                            <em class="fa fa-spinner fa-spin spinner_guardarClausula" style="display: none;"></em>
+                            <button type="submit" class="btn btn-primary btn-sm" id="guardarClausula">Guardar</button>
+                            <button type="button" class="btn btn-secondary btn-sm" id="limpiarClausula">Limpiar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detalleModal">Detalle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalCrear" role="dialog">
+        <div class="modal-dialog" id="modalCrearP">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <h5>Seleccione la cuenta del cliente al cual se envían las credenciales.</h5>
+                    <br/>
+                    <form id="formularioModalCorreo" class="formModalCorreo" novalidate onsubmit="return false;" method="POST">
+                        <div class="form-group row justify-content-center" id="mostrarCheckReenvio" style="display:none">
+                            <div class="checkbox">
+                                <label>
+                                <input type="checkbox" id="chkReenviarCredenciales">
+                                Reenvío de contraseña por datos invalidos
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row justify-content-center">
+                            <label>
+                                Correo electrónico
+                            </label>
+                        </div>
+
+                        <div class="form-group row justify-content-center">
+                            <div id="strCorreo3"  class="col-sm-9">
+                                <select class="form-select form-control form-control-sm" id="strCorreoEnvio" required placeholder="Seleccione Correo"> 
+                                </select> </br> </br>
+                                <div id="divNumeroEnvio" >
+                                     <div class="form-group row justify-content-center">
+                                        <label>
+                                            Teléfono móvil
+                                        </label>
+                                       </div>
+                                        <select class="form-select form-control form-control-sm" id="strNumeroEnvio" placeholder="Seleccione Número"> 
+                                        </select>
+                                </div>
+   
+                                <div id="faltaCorreo" class="alert alert-warning alert-dismissible fade show" role="alert" style="display:none">
+                                    <span id="msjCorreoNoSeleccionado"></span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div> 
+                                <em class="fa fa-spinner fa-spin spinner_correo" ></em>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSolInfCliente" class="btn btn-info btn-sm" >Solicitar</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    
+{% endblock contenido_der %}

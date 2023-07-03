@@ -1,0 +1,231 @@
+/**
+ * Documentación para crear registros de estados para el formulario de Cambio Ciclo de Facturacion, Empresa Ecuanet
+ * Parámetros de creación en DB_GENERAL.ADMI_PARAMETRO_DET
+ 
+ *
+ * @author Daniel Males <dsmales@telconet.ec>
+ * @version 1.0 21-03-2023
+ */
+
+
+--INSERT CON REFERENCIA AL ID QUE DEFINE LA CANTIDAD DE REGISTROS PERMITIDOS A PROCESAR EN EL PMA DE CAMBIO DE CICLO DE FACTURACION 
+--PARA EMPRESA ECUANET
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET
+  ,PARAMETRO_ID
+  ,DESCRIPCION 
+  ,VALOR1 
+  ,VALOR2 
+  ,VALOR3 
+  ,VALOR4
+  ,ESTADO 
+  ,USR_CREACION 
+  ,FE_CREACION 
+  ,IP_CREACION 
+  ,USR_ULT_MOD 
+  ,FE_ULT_MOD 
+  ,IP_ULT_MOD 
+  ,VALOR5 
+  ,EMPRESA_COD 
+  ,VALOR6
+    ,VALOR7
+    ,OBSERVACION
+    ,VALOR8
+    ,VALOR9
+)
+VALUES
+(
+  DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+  (
+        SELECT ID_PARAMETRO
+        FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'CANTIDAD_PROCESA_PMA_CAMBIOCICLO'
+    )
+  ,'1000'
+  ,'1000'
+  ,null
+  ,null
+    ,null
+    ,'Activo'
+  ,'dsmales'
+    ,SYSDATE
+  ,'127.0.0.1'
+    ,'dsmales'
+    ,SYSDATE
+    ,'127.0.0.1'
+    ,NULL
+    ,'33'
+    ,NULL
+    ,NULL
+    ,NULL
+    ,NULL
+    ,NULL
+);
+
+
+--INSERT ESTADOS ACTIVO, IN-CORTE Y CANCEL 
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET
+  ,PARAMETRO_ID 
+  ,DESCRIPCION 
+  ,VALOR1 
+  ,VALOR2 
+  ,VALOR3 
+  ,VALOR4
+  ,ESTADO 
+  ,USR_CREACION 
+  ,FE_CREACION 
+  ,IP_CREACION 
+  ,USR_ULT_MOD 
+  ,FE_ULT_MOD 
+  ,IP_ULT_MOD 
+  ,VALOR5 
+  ,EMPRESA_COD 
+  ,VALOR6
+    ,VALOR7
+    ,OBSERVACION
+    ,VALOR8
+    ,VALOR9
+)
+VALUES
+(
+  DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+  (
+        SELECT ID_PARAMETRO
+        FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'ESTADOS_SERVICIOS_CAMBIO_CICLO'
+    )
+  ,'Activo'
+  ,'Activo'
+  ,null
+  ,null
+    ,null
+    ,'Activo'
+  ,'dsmales'
+    ,SYSDATE
+  ,'127.0.0.1'
+    ,'dsmales'
+    ,SYSDATE
+    ,'127.0.0.1'
+    ,NULL
+    ,'33'
+    ,NULL
+    ,NULL
+    ,NULL
+    ,NULL
+    ,NULL
+);
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET
+  ,PARAMETRO_ID 
+  ,DESCRIPCION 
+  ,VALOR1 
+  ,VALOR2 
+  ,VALOR3 
+  ,VALOR4
+  ,ESTADO 
+  ,USR_CREACION 
+  ,FE_CREACION 
+  ,IP_CREACION 
+  ,USR_ULT_MOD 
+  ,FE_ULT_MOD 
+  ,IP_ULT_MOD 
+  ,VALOR5 
+  ,EMPRESA_COD 
+  ,VALOR6
+    ,VALOR7
+    ,OBSERVACION
+    ,VALOR8
+    ,VALOR9
+)
+VALUES
+(
+  DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+  (
+        SELECT ID_PARAMETRO
+        FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'ESTADOS_SERVICIOS_CAMBIO_CICLO'
+    )
+  ,'In-Corte'
+  ,'In-Corte'
+  ,null
+  ,null
+    ,null
+    ,'Activo'
+  ,'dsmales'
+    ,SYSDATE
+  ,'127.0.0.1'
+    ,'dsmales'
+    ,SYSDATE
+    ,'127.0.0.1'
+    ,NULL
+    ,'33'
+    ,NULL
+    ,NULL
+    ,NULL
+    ,NULL
+    ,NULL
+);
+
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+(
+  ID_PARAMETRO_DET
+  ,PARAMETRO_ID 
+  ,DESCRIPCION 
+  ,VALOR1 
+  ,VALOR2 
+  ,VALOR3 
+  ,VALOR4
+  ,ESTADO 
+  ,USR_CREACION 
+  ,FE_CREACION 
+  ,IP_CREACION 
+  ,USR_ULT_MOD 
+  ,FE_ULT_MOD 
+  ,IP_ULT_MOD 
+  ,VALOR5 
+  ,EMPRESA_COD 
+  ,VALOR6
+    ,VALOR7
+    ,OBSERVACION
+    ,VALOR8
+    ,VALOR9
+)
+VALUES
+(
+  DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+  (
+        SELECT ID_PARAMETRO
+        FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE NOMBRE_PARAMETRO = 'ESTADOS_SERVICIOS_CAMBIO_CICLO'
+    )
+  ,'Cancel'
+  ,'Cancel'
+  ,null
+  ,null
+    ,null
+    ,'Activo'
+  ,'dsmales'
+    ,SYSDATE
+  ,'127.0.0.1'
+    ,'dsmales'
+    ,SYSDATE
+    ,'127.0.0.1'
+    ,NULL
+    ,'33'
+    ,NULL
+    ,NULL
+    ,NULL
+    ,NULL
+    ,NULL
+);
+
+COMMIT;
+/
+

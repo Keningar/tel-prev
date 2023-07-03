@@ -1,0 +1,77 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %} {{ parent() }}
+
+<style scoped="scoped">
+    html { height: 100% }
+    body { height: 100%; margin: 0px; padding: 0px }
+    map_canvas { height: 100% }
+</style>
+{% endblock %}
+
+{% block javascripts%} {{ parent() }}
+<script>
+    url_formas_contacto_persona = "{{ path('infopunto_formas_contacto_grid') }}";
+    url_formas_contacto = "{{path('cliente_lista_formas_contacto')}}";
+    personaid = "{{objPunto.id}}";
+    $('#infopuntodatoadicionaltype_login').attr('readonly', 'readonly');
+    vendedor_default = "{{objPunto.usrVendedor}}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/infopunto/cambioVendedorFormasContacto.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ objItemMenu.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Actualización de Formas de Contacto</h1>
+</div>
+<div class="body_content">
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+         {{ flashMessage }}
+    </div>
+         {% endfor %}   
+    {% if is_granted('ROLE_281-2258') %}
+    <form action="{{ path('infopunto_guardaCambioVendedor', { 'id': objPunto.id }) }}" method="post" {{ form_enctype(objEditForm) }} 
+          onsubmit='if (validacionesForm()){return true;} else{return false;}' class="formulario">
+        <table border='0' align='center'>
+            <tr>
+                <td>
+                    <label for='infopuntodatoadicionaltype_login'>Login:</label>
+                    <input type='text' id="infopuntodatoadicionaltype_login" maxlength="20" required='required' 
+                           readonly='readonly' name="infopuntodatoadicionaltype[login]" value='{{strLogin}}'
+                           style="color:gray; font-weight:bold"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id='lista_formas_contacto_grid'></div>
+                    <div class='infomessage'>Todo número de teléfono debe iniciar con el código de área correspondiente</div>
+                    <div class='infomessage'>Todo n&uacutemero de tel&eacute;fono internacional debe tener entre 7 y 15 d&iacute;gitos</div>
+                </td>
+                <td style="vertical-align: top;">
+                    <input id='infopuntoextratype_personaId' name='infopuntoextratype[personaId]' type='hidden' value='{{objCliente.id}}'>    
+                    <input id='infopuntoextratype_loginVendedor' name='infopuntoextratype[loginVendedor]' type='hidden' 
+                           value='{{objPunto.usrVendedor}}'>
+                    <input id='infopuntoextratype_rol' name='infopuntoextratype[rol]' type='hidden' value='{{rol}}'>
+                    <input id='infopuntoextratype_formas_contacto' name='infopuntoextratype[formas_contacto]' type='hidden' value=''>
+                    <input id='infopuntodatoadicionaltype_login' name='infopuntodatoadicionaltype[login]' type='hidden' value='{{strLogin}}'>
+                    {{ form_widget(objEditForm._token)}}
+                </td>
+            </tr>   
+        </table>            
+        <div class="buttons">
+            <p>
+                <button type="submit" onclick="grabarFormasContacto('#infopuntoextratype_formas_contacto');" class="button-crud">Guardar</button>
+                <span class="height20px">
+                    &nbsp;&nbsp;
+                </span>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('infopunto_show',{'id':objPunto.id,'rol':rol }) }}">Regresar</a>
+                </span>
+            </p>
+        </div>
+    </form>
+   {% endif %}
+</div>
+{% endblock contenido_central %}

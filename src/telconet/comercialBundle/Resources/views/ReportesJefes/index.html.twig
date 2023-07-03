@@ -1,0 +1,285 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<style>
+    #dashboard 
+    {
+        margin: 0px 11px 3px;
+        border: 1px solid #DDD;
+        background-color: #F9F9F9;
+        box-shadow: 0px 0px 3px #D7D7D7;
+        width: 98%;
+        min-height: 10em;
+    }
+</style>
+<link href="{{ asset('./bundles/comercial/css/supervisor.css')}}" type="text/css" rel="stylesheet" />
+<link href="{{ asset('./bundles/comercial/css/reportesJefes.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlGridResultadosMes              = '{{ path('reportesjefes_gridResultadosMes')}}';
+    var urlGridResultadosPorSupervisor    = '{{ path('reportesjefes_gridResultadosPorSupervisor')}}';
+    var urlGridVentasPorAsesor            = '{{ path('reportesjefes_gridVentasPorAsesor')}}';
+    var urlGridResultadosConsolidados     = '{{ path('reportesjefes_gridResultadosConsolidados')}}';
+    var urlGridRechazos                   = '{{ path('reportesjefes_gridRechazosVentas')}}';
+    var urlGridVentasJefatura             = '{{ path('reportesjefes_gridVentasJefatura')}}';
+    var urlMetaDataResultadosConsolidados = '{{ path('reportesjefes_metaDataResultadosConsolidados')}}';
+    var urlCargarSupervisores             = '{{ path('reportesjefes_getAjaxComboSupervisores')}}';
+    var urlCargarAsesores                 = '{{ path('reportesjefes_getAjaxComboAsesores')}}';
+    var urlCargarJurisdicciones           = '{{ path('reportesjefes_getAjaxComboJurisdicciones')}}';
+    var urlMetasSupervisores              = '{{ path('reportesjefes_getMetasActivasSupervisores')}}';
+    var urlCanales                        = '{{ path('reportesjefes_getAjaxComboCanales')}}';
+    var urlPuntosVenta                    = '{{ path('reportesjefes_getAjaxComboPuntoVenta')}}';
+    var url_lista_clientes_por_roles      = '{{ path('cliente_ajax_listar_personas_por_roles',{'roles':'CLIENTE|PRE-CLIENTE' })}}';
+    var url_lista_ptos                    = '{{ path('reportes_listado_ptos_cliente')}}'; 
+    var url_store_grid                    = "{{ path('infoplancab_listar_planes') }}";
+    var url_GetEstadosServicios           = '{{ path("search_ajaxGetEstadoServicios") }}';
+    var url_puntoscobertura               = "{{ path('infopunto_ajax_get_puntos_cobertura') }}";
+    var url_lista_sectores                = "{{ path('cliente_ajax_lista_sectores')}}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/ReportesJefes/resultadosMes.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/ReportesJefes/resultadosPorSupervisor.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/ReportesJefes/resultadosConsolidados.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/ReportesJefes/rechazosJefatura.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/comercial/js/ReportesJefes/ventasJefatura.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./public/js/ExtJsCalendar/changeLanguage.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Reportes de Jefatura</h1>
+    <input type='hidden' name='intTamanioGrids' id='intTamanioGrids' value='{{ tamanio }}' />
+    <input type='hidden' name='strJurisdiccion' id='strJurisdiccion' value='' />
+</div>
+
+<div class="body_content k-content">
+    <table width="100%">
+        <tr>
+            <td>
+                
+                <div id="msgResultadosMes" class="errormessage" style="display:none" >
+                    <label id="lblResultadosMes">DEBE ESCOGER UNA FECHA PARA LA CONSULTA</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <div id="msgResultadosMes2" class="errormessage" style="display:none" >
+                    <label id="lblResultadosMes2">NO EXISTEN DATOS PARA GENERAR EL REPORTE DE RESULTADOS DEL MES</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <form action="{{ path('reportesjefes_generarReporteResultadosMes') }}" method="post">
+                    <div id='ResultadosMes'/>
+                </form>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+                <div id="msgResultadosSupervisor" class="errormessage" style="display:none" >
+                    <label id="lblResultadosSupervisor">DEBE ESCOGER UNA FECHA PARA LA CONSULTA</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <div id="msgResultadosSupervisor2" class="errormessage" style="display:none" >
+                    <label id="lblResultadosSupervisor2">NO EXISTEN DATOS PARA GENERAR EL REPORTE DE RESULTADOS POR SUPERVISOR</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td width="550px">
+
+                            <form action="{{ path('reportesjefes_generarReporteResultadosSupervisor') }}" method="post">
+                                <div id='ResultadosPorSupervisor'/>
+                            </form>
+
+                        </td>
+                        <td width="10px">
+                        </td>
+                        <td>
+                            <div id='VentasPorAsesor'/>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id='charResultadosPorSupervisor'/>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <div id='charVentasPorAsesor'/>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+                <div id="msgResultadosConsolidados" class="errormessage" style="display:none" >
+                    <label id="lblResultadosConsolidados">DEBE ESCOGER UNA FECHA PARA LA CONSULTA</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <div id="msgResultadosConsolidados2" class="errormessage" style="display:none" >
+                    <label id="lblResultadosConsolidados2">NO EXISTEN DATOS PARA GENERAR EL REPORTE DE RESULTADOS CONSOLIDADOS</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <form action="{{ path('reportesjefes_generarReporteResultadosConsolidados') }}" method="post">
+                    <div id='ResultadosConsolidados'/>
+                </form>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+                <div id="msgRechazosVentas" class="errormessage" style="display:none" >
+                    <label id="lblRechazosVentas">DEBE ESCOGER UNA FECHA PARA LA CONSULTA</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <div id="msgRechazosVentas2" class="errormessage" style="display:none" >
+                    <label id="lblRechazosVentas2">NO EXISTEN DATOS PARA GENERAR EL REPORTE DE RECHAZOS EN VENTAS</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <form action="{{ path('reportesjefes_generarReporteRechazosVentas') }}" method="post">
+                    <div id='ReporteRechazos'/>
+                </form>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+                <div id="msgVentasJefatura" class="errormessage" style="display:none" >
+                    <label id="lblVentasJefatura">DEBE ESCOGER UNA FECHA PARA LA CONSULTA</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <div id="msgVentasJefatura2" class="errormessage" style="display:none" >
+                    <label id="lblVentasJefatura2">NO EXISTEN DATOS PARA GENERAR EL REPORTE DE VENTAS DE LA JEFATURA</label>
+                    <div class="closeMessage">
+                        <a href="#">close</a>
+                    </div>
+                </div>
+                
+                <form action="{{ path('reportesjefes_generarReporteVentasJefatura') }}" method="post">
+                    <div id='ReporteVentasJefatura'/>
+                </form>
+            
+            </td>
+        </tr>
+    </table>
+</div>
+                    
+{% endblock contenido_izq %}

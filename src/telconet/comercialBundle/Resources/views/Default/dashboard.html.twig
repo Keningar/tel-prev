@@ -1,0 +1,806 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+    <link href="{{ asset('./public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/ionicons.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/dist/AdminLTE.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('./public/css/dist/skins/_all-skins.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('./public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="{{ asset('./public/css/AmCharts/Export/export.css') }}" type="text/css" media="all" />
+    <link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquerysctipttop.css') }}" type="text/css" rel="stylesheet" />
+    <style> 
+        #ventasCatergoria1, #ventasCatergoria2, #ventasCatergoria3, #Pymes, #Corporativo, #KAM
+        {
+            width: 100%;
+            height: 500px;
+            font-size: 11px;
+        }
+
+        /* Important part */
+        .modal-dialog
+        {
+            overflow-y: initial !important;
+        }
+        
+        .modal-body
+        {
+            height: 330px;
+            overflow-y: auto;
+        }
+        
+        .width-700px
+        {
+            width: 800px!important;
+        }
+        
+        .height-250px
+        {
+            height: 250px!important;
+        }
+    </style>
+{% endblock %}
+
+{% block contenido_central %}       
+
+{%if strPermiteAcceso =="NO"  %}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="">    
+        <section class="content-header">
+            <div class="row" >
+                <div class="col-lg-12" align="justify">
+                    <h2><FONT FACE="small fonts">Estimado Usuario</FONT></h2>
+                    <h4><FONT FACE="times new roman">Lamentamos informarle que el servicio del Dashboard Comercial no se encuentra disponible.</FONT></h4>
+                    <h4><FONT FACE="times new roman">El horario permitido es desde las {{strHoraInicio}} hasta las {{strHoraFin}}</FONT></h4>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="col-lg-12" align="justify">
+                    <h4><FONT FACE="times new roman">Agradecemos su comprensión.</FONT></h4>
+                    <h4><FONT FACE="times new roman">Atentamente,</FONT></h4>
+                    <h4><FONT FACE="times new roman">Departamento de Sistemas</FONT></h4>
+                </div>
+            </div>
+        </section>
+    </div><!-- /.content-wrapper -->                    
+{%else%}
+    <!-- Content Wrapper. Contains page content -->
+    <div class="">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="row">
+                <div class="col-lg-4">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="col-lg-8">
+                    <div style="margin-top:27px; float:right; padding: 0px 10px; cursor:pointer;">
+                        <i class="fa fa-search" onclick="cargarInformacionDashboard();"
+                           style="float:right; margin-left: 10px; position: relative; top: 16px;">&nbsp;</i>
+                        <i class="fa fa-calendar" style="float:right; margin-left: 10px; position: relative; top: 16px;">&nbsp;</i>
+                        <input id="divCalendario" name="divCalendario" type="text"
+                               style="float:right; cursor:pointer; height: 40px; font-size: 24px; font-family: 'Source Sans Pro',sans-serif;
+                                      width:220px; border: none; background-color: #f9f9f9; text-align: right; "/>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-aqua">
+                        <div class="inner">
+                            <h3>
+                                <sup style="font-size: 20px">$ </sup>
+                                <span id="floatBuenasVentas">0</span>
+                            </h3>
+                            <p>
+                                <div id="intTotalBuenasVentas">0</div>
+                                <div>&Oacute;rdenes Activas</div>
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <div class="small-box bg-aqua small-box-footer col-lg-6">
+                            <a href="#"  class="small-box-footer" onclick="verMas('ORDENES_ACTIVAS');" data-toggle="modal"
+                               data-target="#modalVerMas">
+                                <b>Mostrar Detalle</b>
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                        <div class="small-box bg-aqua small-box-footer col-lg-6">
+                            <a href="#"  class="small-box-footer" onclick="exportarDetalleVentas('ORDENES_ACTIVAS');">
+                                <b>Exportar Reporte</b>
+                                <i class="fa fa-file-excel-o"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div><!-- /.col-4 -->
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-blue">
+                        <div class="inner">
+                            <h3>
+                                <sup style="font-size: 20px">$ </sup>
+                                <span id="floatVentasNoConcretadas">0</span>
+                            </h3>
+                            <p>
+                                <div id="intTotalVentasNoConcretadas">0</div>
+                                <div>Ventas por Implementar</div>
+                            </p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-ios-cart"></i>
+                        </div>
+                        <div class="small-box bg-blue small-box-footer col-lg-6">
+                            <a href="#"  class="small-box-footer" onclick="verMas('ORDENES_NO_CONCRETADAS');" data-toggle="modal"
+                               data-target="#modalVerMas">
+                                <b>Mostrar Detalle</b>
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                        <div class="small-box bg-blue small-box-footer col-lg-6">
+                            <a href="#"  class="small-box-footer" onclick="exportarDetalleVentas('ORDENES_NO_CONCRETADAS');">
+                                <b>Exportar Reporte</b>
+                                <i class="fa fa-file-excel-o"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div><!-- /.col-4 -->
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-red">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h3>
+                                        <sup style="font-size: 20px">$ </sup>
+                                        <span id="floatMalasVentas">0</span>
+                                    </h3>
+                                    <p>
+                                        <div id="intTotalMalasVentas">0</div>
+                                        <div>&Oacute;rdenes Canceladas</div>
+                                    </p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h4><!--Enero - --><span id="strMesAnioActualClientesCancelados"></span></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-alert-circled"></i>
+                        </div>
+                        <div class="small-box bg-red small-box-footer col-lg-6">
+                            <a href="#"  class="small-box-footer" onclick="verMas('ORDENES_CANCELADAS');" data-toggle="modal"
+                               data-target="#modalVerMas">
+                                <b>Mostrar Detalle</b>
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                        <div class="small-box bg-red small-box-footer col-lg-6">
+                            <a href="#"  class="small-box-footer" onclick="exportarDetalleVentas('ORDENES_CANCELADAS');">
+                                <b>Exportar Reporte</b>
+                                <i class="fa fa-file-excel-o"></i>
+                            </a>
+                        </div>
+                            
+                            
+                    </div>
+                </div><!-- /.col-4 -->
+            </div><!-- /.row -->
+            <div class="row">
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-lime">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <h3>
+                                        <sup style="font-size: 20px">$ </sup>
+                                        <span id="floatMrc">0</span>
+                                    </h3>
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p>
+                                                <div id="intTotalMrc">0 Clientes</div>
+                                                <div>Facturaci&oacute;n MRC</div>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                                <div id="intInternetDatos">$ 0</div>
+                                                <div>Internet/Datos</div>
+                                                <div id="Business">$ 0</div>
+                                                <div>Business Solution</div>
+                                        </div>
+                                        {#<div class="col-lg-4">
+                                                <div id="OtrosMrc">$ 0</div>
+                                                <div>Otros</div>
+                                        </div>#}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h4><span id="strMesAnioActualFacMrc"></span></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-social-usd"></i>
+                        </div>
+                        <!--se valida que tenga el perfil PerfilVerDashboardExcelMrcNrc para poder ver el link para descargar Excel de MRC-->
+                        {%if is_granted("ROLE_387-5797")  %}
+                            <div class="small-box bg-lime small-box-footer col-lg-4">
+                                <a href="#"  class="small-box-footer" onclick="verDetalleFact('MRC','DETALLADO');" data-toggle="modal"
+                                   data-target="#modalVerMas">
+                                    <b>Mostrar Detalle</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                            <div class="small-box bg-lime small-box-footer col-lg-4">
+                                <a href="#"  class="small-box-footer" onclick="verDetalleFact('ORDENES_MRC','DETALLADO');" data-toggle="modal"
+                                   data-target="#modalVerMas">
+                                    <b>&Oacute;rdenes</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                            <div class="small-box bg-lime small-box-footer col-lg-4">
+                                <a href="#"  class="small-box-footer" onclick="exportarDetalleFact('MRC');">
+                                    <b>Exportar Reporte</b>
+                                    <i class="fa fa-file-excel-o"></i>
+                                </a>
+                            </div>
+                        {%else%}
+                            <div class="small-box bg-lime small-box-footer col-lg-6">
+                                <a href="#"  class="small-box-footer" onclick="verDetalleFact('MRC');" data-toggle="modal"
+                                   data-target="#modalVerMas">
+                                    <b>Mostrar Detalle</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                            <div class="small-box bg-lime small-box-footer col-lg-6">
+                                <a href="#"  class="small-box-footer" onclick="verDetalleFact('ORDENES_MRC');" data-toggle="modal"
+                                   data-target="#modalVerMas">
+                                    <b>&Oacute;rdenes</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>                            
+                        {%endif%}
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-green">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h3>
+                                        <sup style="font-size: 20px">$ </sup>
+                                        <span id="floatNrc">0</span>
+                                    </h3>
+                                    <p>
+                                        <div id="intTotalNrc">0 Clientes</div>
+                                        <div>Facturaci&oacute;n NRC</div>
+                                    </p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h3>
+                                        <sup style="font-size: 20px">$ </sup>
+                                        <span id="floatNrc3">0</span>
+                                    </h3>
+                                    <p>
+                                        <div id="intTotalNrcTri">0 Clientes</div>
+                                        <div>Facturaci&oacute;n Trimestral NRC</div>
+                                    </p>
+                                </div>
+                                <div class="col-lg-6">
+                                    <h4><span id="strMesAnioActualFacNrc"></span></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-cash"></i>
+                        </div>
+                        <!--se valida que tenga el perfil PerfilVerDashboardExcelMrcNrc para poder ver el link para descargar Excel de NRC-->
+                        {%if is_granted("ROLE_387-5797")  %}
+                            <div class="small-box bg-green small-box-footer col-lg-6">
+                                <a href="#"  class="small-box-footer" onclick="modalNrc('Detalle');" data-toggle="modal"
+                                   >
+                                    <b>Mostrar Detalle</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                            <div class="small-box bg-green small-box-footer col-lg-6">
+                                <a href="#"  class="small-box-footer" onclick="modalNrc('Exportar');">
+                                    <b>Exportar Reporte</b>
+                                    <i class="fa fa-file-excel-o"></i>
+                                </a>
+                            </div>
+                        {%else%}
+                            <div class="small-box bg-green small-box-footer col-lg-12">
+                                <a href="#"  class="small-box-footer" onclick="modalNrc('NRC');" data-toggle="modal"
+                                   data-target="#modalVerMas">
+                                    <b>Mostrar Detalle</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        {%endif%}
+                    </div>
+                </div>
+
+
+                <section class="col-lg-4 connectedSortable">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="info-box bg-black" style="height: 140px!important;">
+                        <span class="info-box-icon" style="height: 140px!important;">
+                            <i class="fa fa-money" style="line-height: 2.6!important;"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Nuevas &Oacute;rdenes de Servicio</span>
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-lg-6">
+                                    <span class="progress-description" style="margin-top: 5px;">
+                                        &Uacute;nica
+                                    </span>
+                                </div>
+                                <div class="col-lg-5">
+                                    <span class="info-box-number text-right" id="floatFacturacionUnica">
+                                        $ 0
+                                    </span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="progress-description" style="margin-top: 5px;">
+                                        Mensual
+                                    </span>
+                                </div>
+                                <div class="col-lg-5">
+                                    <span class="info-box-number text-right" id="floatFacturacionMensual">
+                                        $ 0
+                                    </span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <span class="progress-description" style="margin-top: 5px;">
+                                        Otro Ciclo
+                                    </span>
+                                </div>
+                                <div class="col-lg-5">
+                                    <span class="info-box-number text-right" id="floatFacturacionNoMensual">
+                                        $ 0
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.info-box-content -->                        
+                    </div>
+                </section>                
+            </div><!-- /.row -->
+            <!-- SECOND row -->
+            <div class="row">
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-navy">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <h3>
+                                        <span id="SemaforoMRC">0</span>
+                                    </h3>
+                                    <h4>
+                                        <span id="SemaforoMRCID">0</span>
+                                    </h4>
+                                    <h4>
+                                        <span id="SemaforoMRCBS">0</span>
+                                    </h4>
+                                    <p>Cumplimiento de presupuesto MRC</p>
+                                </div>
+                                <div class="col-lg-5">
+                                    <h3>
+                                        <sup style="font-size: 20px">$ </sup>
+                                        <span id="TotalPresupuestoMRC">0</span>
+                                    </h3>
+                                    <br>
+                                    <h4>
+                                        <sup style="font-size: 15px">$ </sup>
+                                        <span id="TotalPresupuestoMRCID">0</span>
+                                    </h4>
+                                    <h4>
+                                        <sup style="font-size: 15px">$ </sup>
+                                        <span id="TotalPresupuestoMRCBS">0</span>
+                                    </h4>
+                                    <p>
+                                        Presupuesto
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--se valida que tenga el perfil PerfilVerDashboardExcelMrcNrc para poder ver el link para descargar Excel de MRC-->
+                        {%if is_granted("ROLE_387-5797")  %}
+                            <div class="small-box bg-navy small-box-footer col-lg-6">
+                                <a href="#"  class="small-box-footer" onclick="modalCumplimientoMrc('Detalle');" data-toggle="modal"
+                                >
+                                    <b>Mostrar Detalle</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                            <div class="small-box bg-navy small-box-footer col-lg-6">
+                                <a href="#"  class="small-box-footer" onclick="modalCumplimientoMrc('Reporte');">
+                                    <b>Exportar Reporte</b>
+                                    <i class="fa fa-file-excel-o"></i>
+                                </a>
+                            </div>
+                        {%else%}
+                            <div class="small-box bg-navy small-box-footer col-lg-12">
+                                <a href="#"  class="small-box-footer" onclick="verDetalleResultadosVentas('MRC','OTROS');" data-toggle="modal"
+                                data-target="#modalVerMas">
+                                    <b>Mostrar Detalle</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        {%endif%}
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-xs-6">
+                    <!-- small box -->
+                    <div class="small-box bg-navy">
+                        <div class="inner">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <h3>
+                                        <span id="SemaforoNRC">0</span>
+                                    </h3>
+                                    <p>Cumplimiento de presupuesto NRC</p>
+                                </div>
+                                <div class="col-lg-5">
+                                    <h3>
+                                        <sup style="font-size: 20px">$ </sup>
+                                        <span id="TotalPresupuestoNRC">0</span>
+                                    </h3>
+                                    <p>
+                                        Presupuesto
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--se valida que tenga el perfil PerfilVerDashboardExcelMrcNrc para poder ver el link para descargar Excel de MRC-->
+                        {%if is_granted("ROLE_387-5797")  %}
+                            <div class="small-box bg-navy small-box-footer col-lg-6">
+                                <a href="#"  class="small-box-footer" onclick="verDetalleResultadosVentas('NRC','OTROS');" data-toggle="modal"
+                                data-target="#modalVerMas">
+                                    <b>Mostrar Detalle</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                            <div class="small-box bg-navy small-box-footer col-lg-6">
+                                <a href="#"  class="small-box-footer" onclick="exportarCumplimiento('NRC','EXPORTAR_NRC');">
+                                    <b>Exportar Reporte</b>
+                                    <i class="fa fa-file-excel-o"></i>
+                                </a>
+                            </div>
+                        {%else%}
+                            <div class="small-box bg-navy small-box-footer col-lg-12">
+                                <a href="#"  class="small-box-footer" onclick="verDetalleResultadosVentas('NRC','OTROS');" data-toggle="modal"
+                                data-target="#modalVerMas">
+                                    <b>Mostrar Detalle</b>
+                                    <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        {%endif%}
+                    </div>
+                </div>
+
+
+                <section class="col-lg-4 connectedSortable">
+                    <div class="info-box bg-orange-active" style="height: 153px!important;">
+                        <span class="info-box-icon" style="height: 153px!important;">
+                            <i class="icon ion-person" style="line-height: 2.8!important;"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Clientes</span>
+                            <div class="row" style="margin-top: 5px;">
+                                <div class="col-lg-6">
+                                    <span class="progress-description" style="margin-top: 5px;"  id="intCantidadClientesNuevos">
+                                        Clt. Nuevos
+                                    </span>
+                                </div>
+                                <div class="col-lg-5">
+                                    <span class="info-box-number text-right" id="floatTotalClientesNuevos">
+                                        $ 0
+                                    </span>
+                                </div>                                
+                                <div class="col-lg-6">
+                                    <span class="progress-description" style="margin-top: 5px;" id="intCantidadClientesCancel">
+                                        Clt. cancelados(mes anterior)
+                                    </span>
+                                </div>
+                                <div class="col-lg-5">
+                                    <span class="info-box-number text-right" id="floatTotalClientesCancel">
+                                        $ 0
+                                    </span>
+                                </div>                                
+                                <div class="col-lg-6">
+                                    <span class="progress-description" style="margin-top: 5px;" id="intCantidadClientesFact">
+                                        Clt. por facturar
+                                    </span>
+                                </div>
+                                <div class="col-lg-5">
+                                    <span class="info-box-number text-right" id="floatTotalClientesFact">
+                                        $ 0
+                                    </span>
+                                </div>   
+                                <div class="small-box bg-orange-active small-box-footer col-lg-11" style=" margin-top:12px;">
+                                    <a href="#"  class="small-box-footer" onclick="verMas('CLIENTES');" data-toggle="modal"
+                                       data-target="#modalVerMas">
+                                        <b>Mostrar Detalle</b>
+                                        <i class="fa fa-arrow-circle-right"></i>
+                                    </a>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </section>            
+            </div><!-- /.row -->
+            <!-- SECOND row -->
+            <div class="row">          
+                <!-- Left col -->
+                <section class="col-lg-8 connectedSortable">
+                    <!-- Custom tabs (Charts with tabs)-->
+                    <div class="nav-tabs-custom">
+                        <!-- Tabs within a box -->
+                        <ul class="nav nav-tabs pull-right">
+                            <li>
+                                <a href="#SECURITY" data-toggle="tab"
+                                   onclick="cargarGraficosPastel('SECURITY', 'SECURITY', 'SECURITY');">
+                                    SECURITY
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#OTROS" 
+                                   onclick="cargarGraficosPastel('OTROS', 'OTROS', 'OTROS');"
+                                   data-toggle="tab">
+                                    OTROS
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#NETWORK" data-toggle="tab" 
+                                   onclick="cargarGraficosPastel('NETWORK', 'NETWORK', 'NETWORK');">
+                                    NETWORK
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#CONNECTIVITY" data-toggle="tab"
+                                   onclick="cargarGraficosPastel('CONNECTIVITY', 'CONNECTIVITY', 'CONNECTIVITY');">
+                                    CONNECTIVITY
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#COLLABORATION" 
+                                   onclick="cargarGraficosPastel('COLLABORATION', 'COLLABORATION', 'COLLABORATION');"
+                                   data-toggle="tab">
+                                    COLLABORATION
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#CLOUD" 
+                                   onclick="cargarGraficosPastel('CLOUD', 'CLOUD', 'CLOUD');"
+                                   data-toggle="tab">
+                                    CLOUD
+                                </a>
+                            </li>                                                        
+                            <li class="active">
+                                <a href="#ventasTotales" onclick="cargarGraficosPastel('ventasTotales', '');"
+                                   data-toggle="tab">Totales</a>
+                            </li>
+                            <li class="pull-left header">
+                                <i class="fa fa-shopping-cart"></i>Ventas <span id="strVentasFechaActual"></span>
+                            </li>
+                        </ul>
+                        <div class="tab-content no-padding">
+                            <!-- Morris chart - Sales -->
+                            <div class="chart tab-pane active" id="ventasTotales" style="position: relative; height: 390px;"></div>
+                            <div class="chart tab-pane" id="CLOUD" style="position: relative; height: 390px;"></div>
+                            <div class="chart tab-pane" id="COLLABORATION" style="position: relative; height: 390px;"></div>
+                            <div class="chart tab-pane" id="CONNECTIVITY" style="position: relative; height: 390px;"></div>
+                            <div class="chart tab-pane" id="NETWORK" style="position: relative; height: 390px;"></div>
+                            <div class="chart tab-pane" id="OTROS" style="position: relative; height: 390px;"></div>
+                            <div class="chart tab-pane" id="SECURITY" style="position: relative; height: 390px;"></div>                            
+                        </div>
+                    </div><!-- /.nav-tabs-custom -->
+                </section><!-- <section class="col-lg-7 connectedSortable"> -->
+                <!-- Left col -->
+                <section class="col-lg-4 connectedSortable">
+                    <!-- Info Boxes Style 2 -->
+                    <div class="small-box info-box bg-blue-gradient" style="height: 205px!important;">
+                        <span class="info-box-icon" style="height: 205px!important;">
+                            <i class="fa fa-tty" style="line-height: 3.1!important;"></i>
+                        </span>
+
+                        <div class="info-box-content">
+                            <div>
+                                <span class="info-box-text">Productos Destacados</span>
+                                <span class="info-box-text">&nbsp;</span>
+                            </div>
+                            <div id="divArrayProductosDestacados" class="row"></div>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                    <div class="info-box bg-yellow" style="height: 205px!important;">
+                        <span class="info-box-icon" style="height: 205px!important;">
+                            <i class="fa fa-user" style="line-height: 3.1!important;"></i>
+                        </span>
+
+                        <div class="info-box-content">
+                            <div>
+                                <span class="info-box-text">Vendedores Destacados</span>
+                                <span class="info-box-text">&nbsp;</span>
+                            </div>
+                            <div id="divArrayVendedoresDestacados" class="row"></div>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                </section><!-- <section class="col-lg-4 connectedSortable"> -->
+            </div><!-- /.row -->
+            <!-- THIRD row -->
+            {#<div class="row">
+                <!-- Left col -->
+                <section class="col-lg-12 connectedSortable">
+                    <!-- BAR CHART -->
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div style="float:left;">
+                                        <h4>Metas por Vendedor</h4> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="box-tools pull-right">
+                                    <div class="btn-group" style="margin-top:8px">
+                                        {% if strTipoVendedor is defined %}
+                                            {% if strTipoVendedor == '' or strTipoVendedor == 'PYMES' %}
+                                                <a id="linkPYMES" href="#PYMES" class="btn btn-success" data-toggle="tab" 
+                                                   onclick="cargarGraficosBarChart('PYMES', 'Pymes');" >Pymes</a>
+                                            {% endif %}
+                                            {% if strTipoVendedor == '' or strTipoVendedor == 'CORPORATIVO' %}
+                                                <a id="linkCORPORATIVO" href="#CORPORATIVO" class="btn btn-success" data-toggle="tab" 
+                                                    onclick="cargarGraficosBarChart('CORPORATIVO', 'Corporativo');" >Corporativo</a>
+                                            {% endif %}
+                                            {% if strTipoVendedor == '' or strTipoVendedor == 'KAM' %}
+                                                <a id="linkKAM" href="#KAM" class="btn btn-success" data-toggle="tab" 
+                                                    onclick="cargarGraficosBarChart('KAM', 'KAM');" >KAM</a>
+                                            {% endif %}
+                                            {% if strTipoVendedor == '' or strTipoVendedor == 'PROVINCIAS' %}
+                                                <a id="linkPROVINCIAS" href="#PROVINCIAS" class="btn btn-success" data-toggle="tab" 
+                                                   onclick="cargarGraficosBarChart('PROVINCIAS', 'Provincias');" >Provincias</a>
+                                            {% endif %}
+                                        {% else %}
+                                            <a id="linkPYMES" href="#PYMES" class="btn btn-success" data-toggle="tab" 
+                                               onclick="cargarGraficosBarChart('PYMES', 'Pymes');" >Pymes</a>
+                                            <a id="linkCORPORATIVO" href="#CORPORATIVO" class="btn btn-success" data-toggle="tab" 
+                                               onclick="cargarGraficosBarChart('CORPORATIVO', 'Corporativo');" >Corporativo</a>
+                                            <a id="linkKAM" href="#KAM" class="btn btn-success" data-toggle="tab" 
+                                               onclick="cargarGraficosBarChart('KAM', 'KAM');" >KAM</a>
+                                            <a id="linkPROVINCIAS" href="#PROVINCIAS" class="btn btn-success" data-toggle="tab" 
+                                               onclick="cargarGraficosBarChart('PROVINCIAS', 'Provincias');" >Provincias</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content no-padding">
+                            {% if strTipoVendedor is defined %}
+                                {% if strTipoVendedor == '' or strTipoVendedor == 'PYMES' %}
+                                    <div class="chart tab-pane {% if strTipoVendedor == '' or strTipoVendedor == 'PYMES' %} active {% endif %}"
+                                         id="PYMES" style="position: relative; height: 500px;"></div>
+                                {% endif %}
+                                {% if strTipoVendedor == '' or strTipoVendedor == 'CORPORATIVO' %}
+                                    <div class="chart tab-pane {% if strTipoVendedor == 'CORPORATIVO' %} active {% endif %}" id="CORPORATIVO"
+                                         style="position: relative; height: 500px;"></div>
+                                {% endif %}
+                                {% if strTipoVendedor == '' or strTipoVendedor == 'KAM' %}
+                                    <div class="chart tab-pane {% if strTipoVendedor == 'KAM' %} active {% endif %}" id="KAM" 
+                                         style="position: relative; height: 500px;"></div>
+                                {% endif %}
+                                {% if strTipoVendedor == '' or strTipoVendedor == 'PROVINCIAS' %}
+                                    <div class="chart tab-pane {% if strTipoVendedor == 'PROVINCIAS' %} active {% endif %}" id="PROVINCIAS"
+                                         style="position: relative; height: 500px;"></div>
+                                {% endif %}
+                            {% else %}
+                                <div class="chart tab-pane active" id="PYMES" style="position: relative; height: 500px;"></div>
+                                <div class="chart tab-pane" id="CORPORATIVO" style="position: relative; height: 500px;"></div>
+                                <div class="chart tab-pane" id="KAM" style="position: relative; height: 500px;"></div>
+                                <div class="chart tab-pane" id="PROVINCIAS" style="position: relative; height: 500px;"></div>
+                            {% endif %}
+                                
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </section><!-- <section class="col-lg-12 connectedSortable"> -->
+            </div><!-- /.row -->#}
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+    <input type="hidden" id="strCategoriaSelected" name="strCategoriaSelected" />
+    <input type="hidden" id="strGrupoSelected" name="strGrupoSelected" />
+    <input type="hidden" id="strFechaInicio" name="strFechaInicio" value="{% if strFechaInicio is defined %}{{ strFechaInicio }}{% endif %}" />
+    <input type="hidden" id="strFechaFin" name="strFechaFin" value="{% if strFechaFin is defined %}{{ strFechaFin }}{% endif %}" />
+    <!-- Default bootstrap modal example -->
+    <div class="modal fade" id="modalVerMas" tabindex="-1" role="dialog" aria-labelledby="modalVerMasLabel" aria-hidden="true">
+        <div class="modal-dialog" id="divModalDialog">
+            <div class="modal-content">
+                <div class="modal-header" id="divModalTitle" style="position: fixed; right: -132px;   width:850px !important;">
+                
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="strModalTitle"></h4>
+                </div>
+                
+                <div class="modal-body" id="strModalBody" style="position: fixed; right: -132px;  width:850px !important; height:500px !important;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal-info fade" id="modalVerMas1">
+      <div class="modal-dialog" id="divModalDialog1">
+        <div class="modal-content">
+          <div class="modal-header" id="divModalTitle1">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="strModalTitle1">Info Modal</h4>
+          </div>
+          <div class="modal-body" id="strModalBody1">
+            <p>One fine body&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-outline">Save changes</button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+{%endif%}    
+{% endblock contenido_central %}
+      
+{% block javascripts%}
+    {{ parent() }}
+
+    <script src="{{ asset('./public/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('./public/js/jquery-ui.min.js') }}" type="text/javascript"></script>
+    <script>$.widget.bridge('uibutton', $.ui.button);</script>
+    <script src="{{ asset('./public/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('./public/js/Highcharts/highcharts.js') }}"></script>
+    <script src="{{ asset('./public/js/Highcharts/modules/data.js') }}"></script>
+    <script src="{{ asset('./public/js/Highcharts/modules/drilldown.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery.monthpicker.js') }}"></script>
+    <script> 
+        var strGetInformacionGraficosDashboardComercial = '{{ path('comercialBundle_getInformacionGraficosDashboardComercial') }}';
+        var strUrlInformacionDestacados                 = '{{ path('comercialBundle_getInformacionDestacados') }}';
+        var strUrlGetInformacionVendedores              = '{{ path('comercialBundle_getVentasPorVendedor') }}';
+        var strUrlDetalladoVentas                       = '{{ path('comercialBundle_getDetalleVentas') }}';
+        var strUrlDetalladoFacturacion                  = '{{ path('comercialBundle_getDetalleFacturacionAsesor') }}';
+        var strUrlDetalladoResultadosVentas             = '{{ path('comercialBundle_getDetalleResultadosVentas') }}';
+        var strTipoVendedor                             = '{{ strTipoVendedor }}';
+        var strUrlGetDetalleResultadosClientes          = '{{ path('comercialBundle_getDetalleResultadosClientes') }}';
+        var strPermiteAcceso                            = '{{ strPermiteAcceso }}';
+        var strHoraInicio                               = '{{ strHoraInicio }}';
+        var strHoraFin                                  = '{{ strHoraFin }}';        
+    </script>
+    <script  type="text/javascript" src="{{ asset('bundles/comercial/js/Default/default.js?12') }}"></script>
+{% endblock %} 
