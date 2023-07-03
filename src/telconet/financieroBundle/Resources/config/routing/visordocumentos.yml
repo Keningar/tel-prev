@@ -1,0 +1,7 @@
+visor_documentos_financiero:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:GestionDocumentos:index" , modulo:financiero }
+    
+visor_documentos_financiero_new:
+    pattern:  /new
+    defaults: { _controller: "soporteBundle:GestionDocumentos:new" , modulo:financiero }

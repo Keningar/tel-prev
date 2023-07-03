@@ -1,0 +1,153 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Tipo Cta / Tarjeta</h1>
+</div>
+<div class="body_content">
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Totalcaracteres</th>
+            <td>{{ entity.totalCaracteres }}</td>
+        </tr>
+        <tr>
+            <th>Totalcodseguridad</th>
+            <td>{{ entity.totalCodseguridad }}</td>
+        </tr>
+        <tr>
+            <th>Caracterempieza</th>
+            <td>{{ entity.caracterEmpieza }}</td>
+        </tr>
+        <tr>
+            <th>Usrcreacion</th>
+            <td>{{ entity.usrCreacion }}</td>
+        </tr>
+        <tr>
+            <th>Fecreacion</th>
+            <td>{{ entity.feCreacion|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Usrultmod</th>
+            <td>{{ entity.usrUltMod }}</td>
+        </tr>
+        <tr>
+            <th>Feultmod</th>
+            <td>{{ entity.feUltMod|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ entity.estado }}</td>
+        </tr>
+        <tr>
+            <th>Estarjeta</th>
+            <td>{{ entity.esTarjeta }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="4"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ entity.usrCreacion }}</td>
+
+              {% if(entity.usrUltMod is not null) %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(entity.estado == 'Inactivo') %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ entity.feCreacion | date("d M Y") }}</td>
+
+              {% if(entity.feUltMod is not null) %}
+              <th>Fecha:</th>
+              <td >{{ entity.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(entity.estado == 'Inactivo') %}
+              <th>Fecha:</th>
+              <td>{{ entity.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+
+              {% if(entity.feUltMod is not null) %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(entity.estado == 'Inactivo') %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+           
+
+        </tbody>
+    </table>
+</div>
+
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admibancotipocuenta') }}">Regresar</a>
+        </span>
+    </p>
+</div>  
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+	<div class="acciones_relacionadas">
+		<a href="{{ path('admibancotipocuenta_new') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nuevo Tipo Cta / Tarjeta
+		</a>
+	</div>
+	<br />
+		<ul class="form_actions">
+			<li>
+				<a class="button-editar" href="{{ path('admibancotipocuenta_edit', { 'id': entity.id }) }}">
+					Editar
+				</a>
+			</li>
+		</ul>
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">  
+
+                    <!--
+			{#% for acc in acc_relaciondas %} 
+				<li>
+					<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+				</li>
+			{% endfor %#}
+                    -->
+			<!--li>
+				<a class="listado_ac_tablas" href="{#{ path('precliente_convertir', { 'id_prospecto': entity.id }) }#}">Convertir Prospecto a Cliente</a>
+			</li-->
+		</ul>
+{% endblock contenido_der %}

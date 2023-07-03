@@ -1,0 +1,23 @@
+/** 
+ * @author Leonela Burgos <mlburgos@telconet.ec>
+ * @version 1.0 
+ * @since 04-05-2023
+ * Se crea DML de configuraciones para mensaje parametrizado de Porcentaje de Servicio
+ */
+
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB(ID_PARAMETRO,NOMBRE_PARAMETRO, 
+DESCRIPCION, MODULO, ESTADO, USR_CREACION, FE_CREACION, IP_CREACION)
+VALUES( DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,'MENSAJES_NC', 
+'Parametro para los mensajes de la creacion de NC','FINANCIERO','Activo','mlburgos',SYSDATE,'127.0.0.1');
+
+COMMIT;
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET(ID_PARAMETRO_DET, PARAMETRO_ID, 
+DESCRIPCION, VALOR1, VALOR2,VALOR3, ESTADO, USR_CREACION, FE_CREACION, IP_CREACION)
+VALUES(DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+(SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO   = 'MENSAJES_NC' AND ESTADO      = 'Activo'),
+'MENSAJE_NC', 'OTROS', 'Tener en consideración no se aplicará descuento por nombre técnico del producto OTROS','PS','Activo','mlburgos',SYSDATE,'127.0.0.1'
+);
+
+COMMIT;

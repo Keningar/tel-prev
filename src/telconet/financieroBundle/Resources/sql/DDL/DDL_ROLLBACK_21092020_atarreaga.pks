@@ -1,0 +1,15 @@
+/**
+ * Se crea script para eliminar índices.
+ *
+ * @author Alex Arreaga <atarreaga@telconet.ec>
+ * @version 1.0 
+ * @since 21-09-2020
+ */
+
+DROP INDEX DB_FINANCIERO.INFO_PAGO_CAB_INDEX3;
+DROP INDEX DB_FINANCIERO.INFO_PAGO_CAB_INDEX4;
+DROP INDEX DB_FINANCIERO.INFO_PAGO_DET_INDEX1;
+DROP INDEX DB_FINANCIERO.INFO_DOCUMENTO_FINANCIERO_CAB;
+
+COMMIT;
+/

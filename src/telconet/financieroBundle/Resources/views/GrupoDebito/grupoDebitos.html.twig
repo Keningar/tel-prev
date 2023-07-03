@@ -1,0 +1,107 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+	{{ parent() }}
+    <style type="text/css">
+        .x-monthpicker-months{width: 125px}
+        .x-monthpicker-years{width: 120px}
+    </style>
+{% endblock %}
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Grupo Debitos</h1>
+    </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% for flashMessageSubida in app.session.flashbag.get('subida') %}
+        <div class="successmessage">
+            {{flashMessageSubida}}
+        </div>
+    {% endfor %}
+    <div class="body_content k-content">
+        <div id="example" class="k-content">
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+               
+                <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                         <div id='div1'></div>
+                    </td>
+                </tr>
+                 <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                         <div id='div2'></div>
+                    </td>
+                </tr>
+                 <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                         <div id='div3'></div>
+                    </td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='lista'>
+                            <div id = "fieldsTabDebitosGenerales"></div>
+                            <div id = "fieldsTabDebitosVisaMastercard"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>                               
+            <script>
+            var strUrlGrid                  = "{{ path('generardebitos_grid_generar_debitos') }}";
+            var strUrlObtieneComboGrupo         = '{{ path('grupodebitos_combo_grupo_debitos') }}';
+            var strPrefijoEmpresa           = "{{ prefijoEmpresa }}";
+            var strUrlObtieneComboBancos                = "{{ path('grupodebitos_combo_banco_debitos') }}";
+            var strUrlObtieneComboTipoCuenta ='{{path('grupodebitos_getListadoTiposCuenta')}}'
+            
+            </script>        
+            <script type="text/javascript" src="{{ asset('./bundles/financiero/js/grupoDebitos/grupoDebitos.js?1') }}"></script>
+        </div>
+    </div>
+    <form action="{{ path('grupodebitos_crea_grupo') }}" method="post" {{ form_enctype(form) }} class="formulario" 
+          id='form_grupo_debitos' name='form_grupo_debitos'>
+        
+        <input id='strCheckNuevoGrupo' name='strCheckNuevoGrupo' type='hidden' value=''/>
+        <input id='strComboGrupo' name='strComboGrupo' type='hidden' value=''/>
+
+        <input id='strComboBanco' name='strComboBanco' type='hidden' value=''/>
+
+        <input id='strComboTipoCuenta' name='strComboTipoCuenta' type='hidden' value=''/>
+
+        <input id='strTextGrupo' name='strTextGrupo' type='hidden' value=''/>
+         <div class="buttons">
+            <p>
+                <a class="button-crud" href="#" onClick='procesar()'>Agregar Banco a Grupo</a> 
+            </p>
+        </div>
+    </form>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <br />
+    <ul class="form_actions">
+        <li>
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+        <li>
+            <a class="listado_ac_tablas" href="{{ path('respuestadebitos_list_debitos_general') }}">Debitos Generados</a>
+        </li>  					
+    </ul>
+{% endblock contenido_der %}

@@ -1,0 +1,93 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style scoped="scoped">
+        .category-label
+        {
+            vertical-align: middle;
+            padding-right: .5em;
+        }
+        #category
+        {
+            vertical-align: middle;
+        }
+        .toolbar {
+            float: right;
+            margin-right: .8em;
+        }
+        .icon_search {
+            background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+        }
+        .icon_limpiar {
+            background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+        } 
+        .icon_add {
+            background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+        } 
+        .icon_delete {
+            background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_store_estados               = '{{path('infodocumentofinancierocab_estados')}}';
+        var url_store_grid                  = "{{ path('infodocumentofinancierocab_ajax_get_todas_facturas') }}";
+        var url_listar_motivos              = "{{ path('infodocumentofinancierocab_ajax_motivos') }}";
+        var url_procesar                    = "{{ path('infodocumentofinancierocab_delete_ajax_seleccionada') }}";
+        var url_editar_sri                  = "{{ path('infodocumentofinancierocab_ajax_editar_sri') }}";
+        var url_mensajesCompElectronico     = "{{ path('infodocumentofinancierocab_mnscompelctronico') }}";
+        var url_envianotificacion           = "{{ path('infodocumentofinancierocab_envionotificacion') }}";
+        var url_updateCompElectronico       = "{{ path('infodocumentofinancierocab_ajax_updatecompelec') }}";
+        var url_downloadCompElectronico     = "{{ path('infodocumentofinancierocab_download_comprobantes') }}";
+        var url_simularCompElectronico      = "{{ path('infodocumentofinancierocab_simularCompElectronico') }}";
+        var url_editar_feEmision            = "{{ path('infodocumentofinancierocab_ajax_editar_feEmision') }}";
+        var url_reajustar_impuestos         = "{{ path('infodocumentofinancierocab_ajax_reajustar_impuestos') }}";
+        var url_lista_ptos                  = "{{ path('reportes_listado_ptos_cliente') }}";        
+        var puede_editar_sri                = "{{ is_granted('ROLE_221-4') }}";
+        var puede_anular                    = "{{ is_granted('ROLE_260-8') }}";
+        var intIdPunto                      = "{{ intIdPunto }}";
+        var strUrlGetDepartamentos          = '{{ path("seguperfilpersona_getDepartamentosByEmpresaYNombre") }}';
+        var url_apiInterfazPanama           = "{{ path('infodocumentofinancierocab_apiInterfazPanama') }}";
+        var url_facturaElectronicaGt        = "{{ path('infodocumentofinancierocab_facturaElectronicaGt') }}";
+    </script>   
+
+                     
+{% endblock %}
+
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Listado de facturas</h1>
+    </div>
+
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/facturacion/index.js?11') }}"></script>
+    <div class="dashboard_content k-content">
+        <div id="example" class="k-content">
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+                </tr>	
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'><div id='lista_prospectos'></div></td>
+                </tr>
+
+            </table>      
+        </div>
+    </div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+    <a class="button-nuevo-registro" href="{{ path('infodocumentofinancierocab_new') }}">
+        <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+        &nbsp;Nueva factura
+    </a>
+
+{% endblock contenido_der %}

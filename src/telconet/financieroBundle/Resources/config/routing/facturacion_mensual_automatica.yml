@@ -1,0 +1,88 @@
+facturacion_mensual_automatica_list:
+    pattern:  /facturacion_mensual_automatica
+    defaults: { _controller: "financieroBundle:FacturacionMensual:listarFacturas" }
+    
+facturacion_mensual_automatica_grid:
+    pattern:  /facturacion_mensual_automatica_grid
+    defaults: { _controller: "financieroBundle:FacturacionMensual:listarFacturasGrid" }
+    
+facturacion_mensual_automatica_users:
+    pattern:  /facturacion_mensual_automatica_users
+    defaults: { _controller: "financieroBundle:FacturacionMensual:getUsersCreacionFact" }        
+    
+facturacion_mensual_automatica_procesar:
+    pattern:  /facturacion_mensual_automatica_procesar
+    defaults: { _controller: "financieroBundle:FacturacionMensual:facturasProcesar" }
+
+facturacion_mensual_automatica_list_procesadas:
+    pattern:  /facturacion_mensual_automatica_procesadas
+    defaults: { _controller: "financieroBundle:FacturacionMensual:listarFacturasProcesadas" }
+    
+facturacion_mensual_automatica_grid_procesadas:
+    pattern:  /facturacion_mensual_automatica_grid_procesadas
+    defaults: { _controller: "financieroBundle:FacturacionMensual:facturasProcesadas" }
+    
+facturacion_mensual_impresion:
+    pattern:  /impresion_facturacion
+    defaults: { _controller: "financieroBundle:FacturacionMensual:listarFacturasAImprimir" }
+
+facturacion_mensual_impresion_proceso_imprimir:
+    pattern:  /impresion_facturacion_proceso
+    defaults: { _controller: "financieroBundle:FacturacionMensual:impresionFacturas" }
+
+facturacion_mensual_impresion_grid:
+    pattern:  /imprimir
+    defaults: { _controller: "financieroBundle:FacturacionMensual:imprimir" }
+    
+facturacion_mensual_descargar:
+    pattern:  /descargar
+    defaults: { _controller: "financieroBundle:FacturacionMensual:download" }
+
+facturacion_mensual_automatica_exportar:
+    pattern:  /exportar_excel
+    defaults: { _controller: "financieroBundle:FacturacionMensual:exportarListadoFacturas" }
+    
+facturacion_mensual_automatica_rechazar:
+    pattern:  /rechazar_facturas
+    defaults: { _controller: "financieroBundle:FacturacionMensual:rechazarListadoFacturas" }
+
+facturacion_mensual_numerar:
+    pattern:  /numerar_facturas
+    defaults: { _controller: "financieroBundle:FacturacionMensual:numerarFacturasJava" }
+
+facturacion_mensual_ptos_cliente:
+    pattern:  /listar_pto_cliente
+    defaults: { _controller: "financieroBundle:FacturacionMensual:listarPtosClientes" }
+
+facturacion_proporcional_automatica_list:
+    pattern:  /facturacion_propocional_automatica
+    defaults: { _controller: "financieroBundle:FacturacionProporcionalAutomatica:listarFacturas" }
+    
+facturacion_proporcional_automatica_grid:
+    pattern:  /facturacion_proporcional_automatica_grid
+    defaults: { _controller: "financieroBundle:FacturacionProporcionalAutomatica:listarFacturasGrid" }
+    
+facturacion_proporcional_automatica_users:
+    pattern:  /facturacion_proporcional_automatica_users
+    defaults: { _controller: "financieroBundle:FacturacionProporcionalAutomatica:getUsersCreacionFact" }
+
+facturacion_proporcional_automatica_procesadas:
+    pattern:  /facturacion_proporcional_automatica_procesadas
+    defaults: { _controller: "financieroBundle:FacturacionProporcionalAutomatica:listarFacturasProcesadas" }
+    
+facturacion_proporcional_automatica_grid_procesadas:
+    pattern:  /facturacion_proporcional_automatica_grid_procesadas
+    defaults: { _controller: "financieroBundle:FacturacionProporcionalAutomatica:facturasProcesadas" }
+
+reportes_archivo_courier:
+    pattern:  /listado_archivo_courier
+    defaults: { _controller: "financieroBundle:Reportes:listarArchivosCourier" }
+
+reportes_grid_archivo_courier:
+    pattern:  /grid_archivo_courier
+    defaults: { _controller: "financieroBundle:Reportes:gridArchivoCourier" }
+
+reportes_download_archivo_impresion:
+    pattern:  /downloadarchivoImpresion/{archivo}
+    defaults: { _controller: "financieroBundle:Reportes:downloadArchivoImpresion" }
+

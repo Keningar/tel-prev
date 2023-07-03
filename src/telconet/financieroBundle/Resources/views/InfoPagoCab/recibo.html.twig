@@ -1,0 +1,164 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+    <style>
+            .tamano_letra_direccion
+            {
+                font-size:9px;
+            }
+            .tamano_letra_detalles
+            {
+                font-size:11px;
+            }            
+    </style>
+  </head>
+  <body>
+
+<table  class="record_properties" width='100%'>
+<tr>
+<td align="left" colspan='4' >
+        {% if(prefijoEmpresa=='TTCO')%}
+	<img alt=""  width="150" height="120" src="http://images.telconet.net/others/telcos/logo_transtelco_new.jpg"/>
+        {%elseif(prefijoEmpresa=='MD') %}
+        <img alt=""  width="300" height="70"  src="http://images.telconet.net/others/telcos/logo_netlife_big.jpg"/>
+        {%elseif(prefijoEmpresa=='EN') %}
+        <img alt=""  width="300" height="80"  src="http://images.telconet.net/others/telcos/logo_ecuanet.png"/>
+        {%elseif(prefijoEmpresa=='TN') %}
+        <img alt=""  width="200" height="70" src="http://images.telconet.net/logo_telconet.png"/>
+        {%elseif(prefijoEmpresa=='TNP') %}
+        <img alt=""  width="200" height="70"  src="http://images.telconet.net/logo_telconet.png"/>            
+        {%endif%}
+        
+</td>
+</tr>
+<tr>
+<td class='tamano_letra_direccion'>{{ oficina.direccionOficina }}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>
+<table> 
+<tr><td class='tamano_letra_direccion'>PBX:</td ><td class='tamano_letra_direccion'>{{ oficina.telefonoFijoOficina }}</td></tr>
+</table>
+</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+  <td colspan='4'>&nbsp;</td>
+</tr>
+
+</table>	
+	
+<table  class="record_properties" width='100%'>
+
+        <tr>
+            <td class='tamano_letra_detalles'><b>Numero Recibo:</b></td>
+            <td class='tamano_letra_detalles'>{{ entity.numeroPago }}</td>
+            <td class='tamano_letra_detalles'><b>Total:</b></td>
+            <td class='tamano_letra_detalles'>${{ entity.valorTotal }}</td>            
+        </tr>        
+        <tr>
+            <td class='tamano_letra_detalles'><b>Cliente:</b></td>
+            {%if punto.personaEmpresaRolId.personaId.razonSocial%}
+            <td class='tamano_letra_detalles'>{{ punto.personaEmpresaRolId.personaId.razonSocial }}</td>
+            {%else%}
+            <td class='tamano_letra_detalles'>{{ punto.personaEmpresaRolId.personaId.nombres }} {{ punto.personaEmpresaRolId.personaId.apellidos }}</td>
+            {%endif%}
+            {% if prefijoEmpresa=='TN' %}
+                <td class='tamano_letra_detalles'><b>Recibido por:</b></td>
+                <td class='tamano_letra_detalles'>{{ recibidoPor }}</td>                 
+            {%else%}
+                <td class='tamano_letra_detalles'><b>Recibido por:</b></td>
+                <td class='tamano_letra_detalles'>{{ entity.usrCreacion }}</td>           
+            {%endif%}
+        </tr>		
+        <tr>
+            <td class='tamano_letra_detalles'><b>Punto:</b></td>
+            <td class='tamano_letra_detalles'>{{ punto.login }}</td>
+            <td class='tamano_letra_detalles'><b>Comentario:</b></td>
+            <td class='tamano_letra_detalles'>{{ entity.comentarioPago }}</td>            
+        </tr>
+        <tr>
+            <td class='tamano_letra_detalles'><b>Oficina:</b></td>
+            <td class='tamano_letra_detalles'>{{ oficina.nombreOficina }}</td>
+            <td class='tamano_letra_detalles'><b>Fecha Creacion:</b></td>
+            <td class='tamano_letra_detalles'>{{ entity.feCreacion|date('Y-m-d H:i:s') }}</td>            
+        </tr>
+        <tr>
+            <td class='tamano_letra_detalles'><b>Saldo del punto:</b></td>
+            <td class='tamano_letra_detalles'>${{ saldo }}</td>
+            <td class='tamano_letra_detalles'></td>
+            <td class='tamano_letra_detalles'></td>            
+        </tr>
+	  <tr>
+          <td colspan='4'>&nbsp;</td>
+      </tr>
+	  
+	  
+	  <tr>
+          <td colspan='4'>
+		  <table width='100%'>
+		  <tr><td class='tamano_letra_detalles'><b>Forma Pago<b></td>
+                      <td class='tamano_letra_detalles'><b>Factura<b></td>
+                      <td align='right' class='tamano_letra_detalles'><b>Valor<b></td></tr>
+		  
+		  {%for det in detalles%}
+		  {%if det.banco == ""%}
+		  <tr><td class='tamano_letra_detalles'>{{det.formaPago}} | {{det.numero}}</td>
+                      <td class='tamano_letra_detalles'>{{det.factura}}</td>
+                      <td align='right' class='tamano_letra_detalles'>${{det.valor}}</td></tr>
+		{%else%}
+		
+		   {%if det.numero == ""%}
+                    <tr><td class='tamano_letra_detalles' style="padding:0px; margin: 0px; width: 50%">{{det.formaPago}} | {{det.banco}} </td>
+                    <td class='tamano_letra_detalles'>{{det.factura}}</td>
+                    <td  align='right' class='tamano_letra_detalles'>${{det.valor}}</td></tr>	
+                    {%else%}
+                    <tr><td class='tamano_letra_detalles' style="padding:0px; margin: 0px; width: 50%">{{det.formaPago}} | {{det.banco}} | {{det.numero}}</td>
+                    <td class='tamano_letra_detalles'>{{det.factura}}</td>
+                    <td  align='right' class='tamano_letra_detalles'>${{det.valor}}</td></tr>	
+		    {%endif%}
+		
+		{%endif%}
+		  {%endfor%}
+		  </table>
+		  </td>
+      </tr>		
+		
+	  <tr>
+          <td colspan='4'>&nbsp;</td>
+      </tr>
+
+
+		<tr>
+			<td class='tamano_letra_detalles' colspan='4'>
+				<label>Firma: .....................................................</label>
+			</td>
+		</tr>	
+		<tr>
+			<td class='tamano_letra_detalles' colspan='4'>
+                {% if prefijoEmpresa=='TN' %}                
+                    <label>{{recibidoPor}}</label>
+                {% else %}
+                    <label>Facturaci&oacute;n Departamento de Cobranza</label>
+                {% endif %}                
+			</td
+		</tr>		
+	  <tr>
+          <td colspan='4'>&nbsp;</td>
+      </tr>
+		
+		<tr>
+		<td colspan='4' class='tamano_letra_detalles'>
+		Gracias por su pago!!
+		</td>		
+		</tr>		
+</table>
+	
+  </body>
+</html>

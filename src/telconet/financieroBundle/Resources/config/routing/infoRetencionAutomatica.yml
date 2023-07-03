@@ -1,0 +1,59 @@
+infoRetencionAutomatica:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:index" }
+    
+infoRetencionAutomatica_grid:
+    pattern:  /grid
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:gridRetenciones" }    
+    
+infoRetencionAutomatica_getEstados:
+    pattern:  /getEstados
+    defaults: { _controller: "financieroBundle:infoRetencionAutomatica:getEstados"}  
+    
+infoRetencionAutomatica_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:new" }    
+    
+infoRetencionAutomatica_documentosFileUpload:
+    pattern:  /documentosFileUpload
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:documentosFileUpload" }
+    
+infoRetencionAutomatica_verDetalleRetencion:
+    pattern:  /detalle/{intIdPagoAutomatico}
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:verDetalleRetencion" } 
+   
+infoRetencionAutomatica_gridDetalle:
+    pattern:  /gridDetalle
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:gridDetalle" }
+    
+infoRetencionAutomatica_ajaxProcesarRetenciones:
+    pattern:  /ajaxProcesarRetenciones
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:ajaxProcesarRetenciones" } 
+    
+infoRetencionAutomatica_eliminarRetencion:
+    pattern:  /eliminarRetencion
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:eliminarRetencion" } 
+    
+infoRetencionAutomatica_showFactura:
+    pattern:  /showFactura
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:showFactura" } 
+    
+infoRetencionAutomatica_gridHistorial:
+    pattern:  /gridHistorial
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:gridHistorial" }
+    
+infoRetencionAutomatica_editarFechaRetencion:
+    pattern:  /editarFechaRetencion
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:editarFechaRetencion" } 
+    
+infoRetencionAutomatica_cargarReporte:
+    pattern:  /cargarReporte
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:cargarReporte" }  
+    
+infoRetencionAutomatica_procesarReporte:
+    pattern:  /procesarReporte
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:procesarReporte" } 
+    
+infoRetencionAutomatica_getMotivosRetencion:
+    pattern:  /getMotivosRetencion
+    defaults: { _controller: "financieroBundle:InfoRetencionAutomatica:getMotivosRetencion" }    

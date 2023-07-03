@@ -1,0 +1,131 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+	</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        {% if(punto_id is defined) %}
+            var punto_id             = '{{ punto_id.id }}';
+            var strPrefijoEmpresa    = '{{ strPrefijoEmpresa }}';
+            var strPermiteEdicionNdi = '{{ strPermiteEdicionNdi }}';
+        {% endif %}
+        var Mask;
+    </script>   
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/notasdebito/new.js?4') }}"></script>                 
+{% endblock %}
+    
+{% block contenido_izq %}
+    <div id="myLoading" class="myloadingjs" style="float: center; overflow: auto;">
+        <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            <h1>Nueva Nota de Debito Interna </h1>
+        </div>
+        <div class="body_content">
+            {% if(punto_id is defined) %}
+                <div class="secHead">Información del cliente</div>
+                <table class="formulario">
+                    <tr>
+                        <td><b>Razón social:</b></td>
+                        <td>{{ cliente.razon_social }}</td>
+                        <td width = "25px"></td>
+                        <td><b>Cliente:</b></td>
+                        <td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Pto. cliente:</b></td>
+                        <td> {{ punto_id.login }}</td>
+                        <td width = "25px"></td>
+                        <td><b>Descripción:</b></td>
+                        <td> {{ punto_id.descripcion }}</td>
+                    </tr>
+                </table>
+                <form action="{{ path('infodocumentonotadebitointerna_create') }}" method="post" {{ form_enctype(form) }} class="formulario" name="formulario" id="formulario">
+                    <div class="secHead">Información principal</div>
+                    <div>
+                        <label>Pagos/Anticipos:</label>
+                        <select id="pagos" onChange="llenarTotal(this)">
+                            <option>Seleccione...</option>
+                            {% for pago in listadosPagos %}
+                                <option value="{{ pago.id }}-{{ pago.valorPago }}-{{ pago.depositado }}-{{ pago.esDepositable }}
+                                        -{{ pago.codigoTipoDocumento }}-{{ pago.nombreTipoDocumento }}-{{ pago.estado }}">
+                                    Número de {{ pago.codigoTipoDocumento }}: {{ pago.numeroPago }} - Fp: {{pago.codigoFormaPago}} 
+                                    - Valor: {{ pago.valorPago }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div id="mensaje" class="campo-oculto"></div>
+                    <div id="contenedorDocumento">
+                        <div class="secHead">Detalles</div>
+                        <div>
+                            <label>Motivos:</label>
+                            <select id="motivos" onChange="validarMotivos()">
+                                <option>Seleccione...</option>
+                                {% for motivo in listadoMotivos %}
+                                    <option value="{{ motivo.id }}-{{ motivo.nombreMotivo }}">{{ motivo.nombreMotivo }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <label>Observación:</label>
+                            <div><textarea id="observacion"></textarea></div>
+                        </div>
+                        <div id='div_valor' class='errormessage' style="display:none"></div>
+                        <div>
+                            <label>Valor:</label>
+                            <div><input type="text" value="" name="valor_p" id="valor_p" readonly onblur="validaValor()" /></div>
+                            <div id="multa" class="campo-oculto">
+                                <label>Valor Multa:</label>
+                                <div><input type="text" value="" name="valor_comision" id="valor_comision"/></div>
+                                <div id="mensaje-multa" class="campo-oculto"></div>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <p>
+                                <button type='button' class="button-crud" onClick='generarDetalle();'>Agregar detalle</button>
+                            </p>
+                        </div>	
+                    </div>
+                    <div class="secHead">Detalles ingresados</div>
+                    <div id='lista_informacion_nd'></div>
+                    <input type='hidden' id='punto_id' name='punto_id' value='{{ punto_id.id }}'>
+                    <input type='hidden' id='pago_id_det' name='pago_id_det' value=''>
+                    <input type='hidden' id='listado_informacion' name='listado_informacion'>
+                    <div class="buttons">
+                        <p>
+                            <button type='button' class="button-crud" onClick='enviarInformacion();'>Guardar</button>
+                            <span class="height20px">
+                            &oacute;&nbsp;
+                            <a class="cancel-crud" href="{{ path('infodocumentonotadebitointerna') }}">
+                                    cancelar
+                            </a>
+                            </span>
+                        </p>
+                    </div>	
+                </form>
+            {% else %}
+                <div class="info-error">Debe seleccionar el Pto. Cliente para hacer la nota de debito</div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock contenido_izq %}

@@ -1,0 +1,6 @@
+# RESTful Web Services: anidados en /rs/financiero
+rs_financiero_webServices:
+    resource: restfulws/financiero.yml
+    defaults: { _format: json }
+    requirements: { _method: post, _format: json }
+    prefix: /ws/rest

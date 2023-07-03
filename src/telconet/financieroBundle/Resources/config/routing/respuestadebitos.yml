@@ -1,0 +1,68 @@
+respuestadebitos:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:respuestaDebitos" }
+
+respuestadebitos_lee_archivo:
+    pattern:  /leearchivo
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:leeArchivo"}
+
+respuestadebitos_list_pagos_debito:
+    pattern:  /{idDebGen}/listpagosdebito
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:listPagosDebito"}
+
+respuestadebitos_gridPagosDebitos:
+    pattern:  /gridPagosDebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridPagosDebitos"}
+
+respuestadebitos_list_debitos:
+    pattern:  /{idDebGen}/listdebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:listDebitos"}
+    
+    
+respuestadebitos_list_debitos_cierre_final_manual:
+    pattern:  /{idDebGen}/cierrefinalmanual
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:listDebitosCierreFinalManual"}
+    
+respuestadebitos_procesar_debitos_cierre_final_manual:
+    pattern:  /procesarcierrefinalmanual
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:generarCierreFinalManual"}
+    
+admiformatodebito_excelDiferenciaDebitosGenerados:
+    pattern:  /{debitoCabId}/exceldiferenciasdebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:excelDiferenciaDebitosGenerados"}
+    
+admiformatodebito_excelDiferenciaArchivoRespuesta:
+    pattern:  /{debitoGeneralId}/exceldiferenciasarchivorespuesta
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getGeneraArchivoDiferencias"}   
+    
+respuestadebitos_saldo_debitos_pendientes:
+    pattern:  /{intIdDebGen}/saldodebitospendientes
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:saldoDebitosPendientes"}
+
+respuestadebitos_list_debitos_pendientes:
+    pattern:  /{idDebGen}/listdebitospendientes
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:listDebitosPendientes"}
+
+respuestadebitos_gridDebitos:
+    pattern:  /gridDebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridDebitos"}
+
+respuestadebitos_gridDebitosPendientes:
+    pattern:  /gridDebitosPendientes
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridDebitosPendientes"}
+
+respuestadebitos_marcarrechazados:
+    pattern:  /marcarrechazados
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:marcarRechazadosAjax"}
+
+respuestadebitos_procesardebitospendientes:
+    pattern:  /procesardebitospendientes
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:generarPagosDebitosPendientesAjax"}
+
+respuestadebitos_list_debitos_general:
+    pattern:  /listdebitosgeneral
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:listDebitosGeneral"}
+
+respuestadebitos_gridDebitosGeneral:
+    pattern:  /gridDebitosGeneral
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridDebitosGeneral"}

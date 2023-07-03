@@ -1,0 +1,80 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/financiero/js/pagos/generarRecaudacion.js') }}"> </script>
+   
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Subir Recaudaci&oacute;n</h1>
+</div>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+		 
+<div class="body_content k-content">
+       
+<form action="{{ path('inforecaudacion_lee_archivo') }}" method="post" {{ form_enctype(form) }} class="formulario" id='form_recaudacion' 
+      name='form_recaudacion' onsubmit="return validarFormulario();">
+<table border='0' width='100%' cellpadding='2' cellspacing='2'>
+
+    {%if(boolTieneFormatoRec)%}
+        <tr id="canalesRecaudacion" >
+            <td>
+                <label>Recaudaciones Iniciadas:</label>
+            </td>
+            <td>
+                <select id='canalRecaudacion' name='canalRecaudacion'>
+                    {%for canalRecaudacion in arrayCanalesRecaudacion %}
+                        <option value="{{canalRecaudacion.id}}">{{canalRecaudacion.nombreCanalRecaudacion}}</option>
+                    {%endfor%}
+                </select>
+            </td>
+        </tr>
+    {% endif %}
+<tr>
+                                            <td>
+                                                {{ form_label(form.file) }}
+                                            </td>
+                                            <td>
+                                                {{ form_widget(form.file) }}
+                                            </td> 
+</tr>
+</table>
+	{{ form_widget(form._token)}}
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <button type="submit" class="button-crud">Procesar</button>
+        </span>
+        <span class="height20px">
+            <a href="{{ path('inforecaudacion')}}" class="button-crud">Regresar</a>
+        </span>			
+    </p>
+</div>
+</form>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+		<ul class="form_actions">
+			<li>
+			</li>
+		</ul>
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+<ul class="listado_acciones_relacionadas">
+                    <li>
+                        <!--a class="listado_ac_tablas" href="{#{ path('generardebitos') }#}">Generar Debitos</a-->
+                    </li>                    
+</ul>
+{% endblock contenido_der %}

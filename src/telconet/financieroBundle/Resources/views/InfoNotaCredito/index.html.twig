@@ -1,0 +1,80 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .category-label
+        {
+            vertical-align: middle;
+            padding-right: .5em;
+        }
+        #category
+        {
+            vertical-align: middle;
+        }
+        .toolbar {
+            float: right;
+            margin-right: .8em;
+        }
+        .icon_search {
+            background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+        }
+        .icon_limpiar {
+            background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+        } 
+        .icon_add {
+            background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+        } 
+        .icon_delete {
+            background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+        }                 
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_store_estados           = '{{path('infodocumentonotacredito_lista_estados')}}';
+        var url_store_grid              = "{{ path('infodocumentonotacredito_listar_todas_nc') }}";
+        var url_listar_motivos          = "{{ path('infodocumentofinancierocab_ajax_motivos') }}";
+        var url_mensajesCompElectronico = "{{ path('infodocumentofinancierocab_mnscompelctronico') }}";
+        var url_envianotificacion       = "{{ path('infodocumentofinancierocab_envionotificacion') }}";
+        var url_updateCompElectronico   = "{{ path('infodocumentofinancierocab_ajax_updatecompelec') }}";
+        var url_downloadCompElectronico = "{{ path('infodocumentofinancierocab_download_comprobantes') }}";
+        var url_procesar                = "{{ path('infodocumentonotacredito_delete_ajax_seleccionada') }}";
+        var intIdPunto                  = "{{ intIdPunto }}";
+        var url_simularCompElectronico  = "{{ path('infodocumentofinancierocab_simularCompElectronico') }}";
+        var url_apiInterfazPanama       = "{{ path('infodocumentofinancierocab_apiInterfazPanama') }}";
+        var url_ncElectronicaGt        = "{{ path('infodocumentofinancierocab_NcElectronicaGt') }}";
+    </script>   
+                     
+{% endblock %}
+
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Listado de notas de credito</h1>
+    </div>
+    {% if (intIdPunto == 0) %}
+        <div class="info-error">Para consultar las notas de credito debe tener un punto en sesion</div>
+    {% else %}
+        <script type="text/javascript" src="{{ asset('bundles/financiero/js/notascredito/index.js?5') }}"></script>
+        <div class="dashboard_content k-content">
+            <div id="example" class="k-content">
+                <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                    <tr bgcolor='#ffffff'>
+                        <td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+                    </tr>	
+                    <tr bgcolor='#ffffff'>
+                        <td bgcolor='#ffffff'><div id='lista_prospectos'></div></td>
+                    </tr>
+                </table>      
+            </div>
+        </div>
+    {% endif %}
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+{% endblock contenido_der %}

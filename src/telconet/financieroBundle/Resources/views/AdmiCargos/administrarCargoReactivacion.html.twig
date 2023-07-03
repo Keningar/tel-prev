@@ -1,0 +1,90 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<style>
+    .category-label
+    {
+        vertical-align: middle;
+        padding-right: .5em;
+    }
+    #category
+    {
+        vertical-align: middle;
+    }
+    .toolbar {
+        float: right;
+        margin-right: .8em;
+    }
+    .icon_search {
+        background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+    }
+    .icon_limpiar {
+        background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+    } 
+    .icon_add {
+        background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+    } 
+    .icon_delete {
+        background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+    }
+    .red-back 
+    {
+        background:#ffe2e2 !important;
+    }
+    .yellow-back 
+    {
+        background:#fdffc9 !important;
+    }
+    #dashboard {
+        margin: 0px 11px 3px;
+        border: 1px solid #DDD;
+        background-color: #F9F9F9;
+        box-shadow: 0px 0px 3px #D7D7D7;
+        width: 90%;
+        min-height: 10em;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlGetstoreListaParametros              = '{{ path('cargoReactivacion_getListadoParametrosCabJson') }}';
+    var urlGetStoreParametrosDet                = '{{ path('cargoReactivacion_getListadoParametrosDetJson') }}';
+    var urlGetStoreParametrosHist               = '{{ path('cargoReactivacion_getListadoParametrosHistJson') }}';    
+    var urlActualizaParametroDet                = '{{ path('admiParametroCab_actualizaParametroDet') }}';
+    var urlActualizaParametroCab                = '{{ path('admiParametroCab_actualizaParametroCab') }}';
+    var urlActivarInactivar                     = '{{ path('cargoReactivacion_activarInactivarCargoReactivacion') }}';
+    var urlValidarDisponibilidadOpcionPorHora   = '{{ path('admiParametroCab_validarDisponibilidadOpcionPorHoraAjax')}}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/financiero/js/admicargos/cargoReactivacion.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Administraci&oacute;n de Cargo por Reactivaci&oacute;n de Servicio</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr bgcolor='#ffffff'>
+            <td bgcolor='#ffffff'>
+                <div id='ListadosCabeceraParametros'>
+                </div>
+            </td>
+        </tr>	      
+        <tr bgcolor='#ffffff'>
+            <td bgcolor='#ffffff'>
+                <div id='ListadosDetalleParametros'></div>
+            </td>
+        </tr>
+        <tr bgcolor='#ffffff'>
+            <td bgcolor='#ffffff'>
+                <div id='ListadoHistorialParametros'></div>
+            </td>
+        </tr>        
+        
+    </table>
+</div>
+{% endblock contenido_izq %}

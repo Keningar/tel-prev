@@ -1,0 +1,42 @@
+# RESTful Web Services: anidados en /rs/financiero/ws/rest
+
+rs_financiero_consultarComprobante:
+  pattern:  /consultarComprobantes
+  defaults: { _controller: telconet\financieroBundle\WebService\FinancieroWSController::consultarComprobantesAction }
+
+rs_financiero_consultarSaldoCliente:
+  pattern:  /consultarSaldoCliente
+  defaults: { _controller: telconet\financieroBundle\WebService\FinancieroWSController::consultarSaldoClienteAction }
+
+rs_financiero_consutarSaldo:
+  pattern:  /consultarSaldo
+  defaults: { _controller: telconet\financieroBundle\WebService\PagosLineaWSController::consultarSaldoAction }
+
+rs_financiero_procesarPago:
+  pattern:  /procesarPago
+  defaults: { _controller: telconet\financieroBundle\WebService\PagosLineaWSController::procesarPagoAction }
+
+rs_financiero_reversarPagoConciliado:
+  pattern:  /reversarPagoConciliado
+  defaults: { _controller: telconet\financieroBundle\WebService\PagosLineaWSController::reversarPagoConciliadoAction }
+
+rs_financiero_reversarPago:
+  pattern:  /reversarPago
+  defaults: { _controller: telconet\financieroBundle\WebService\PagosLineaWSController::reversarPagoAction }
+
+rs_financiero_conciliarPago:
+  pattern:  /conciliarPago
+  defaults: { _controller: telconet\financieroBundle\WebService\PagosLineaWSController::conciliarPagoAction }
+
+rs_financiero_eliminarPago:
+  pattern:  /eliminarPago
+  defaults: { _controller: telconet\financieroBundle\WebService\PagosLineaWSController::eliminarPagoAction }
+
+rs_financiero_anularPago:
+  pattern:  /anularPago
+  defaults: { _controller: telconet\financieroBundle\WebService\PagosLineaWSController::anularPagoAction }
+  
+#ws para procesar comprobantes electrónicos de pdf y xml
+rs_financiero_procesar:
+   pattern: /procesar
+   defaults: { _controller: telconet\financieroBundle\WebService\FinancieroWSController::procesarAction }  

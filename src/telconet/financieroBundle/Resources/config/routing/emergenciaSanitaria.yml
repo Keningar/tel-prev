@@ -1,0 +1,15 @@
+emergenciaSanitaria_crear:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:EmergenciaSanitaria:crearEmergenciaSanitaria" }
+
+emergenciaSanitaria_getCiclos:
+    pattern:  /getCiclos
+    defaults: { _controller: "financieroBundle:EmergenciaSanitaria:getCiclos" }
+
+emergenciaSanitaria_getParametros:
+    pattern:  /getParametros
+    defaults: { _controller: "financieroBundle:EmergenciaSanitaria:getParametrosDet" }
+
+emergenciaSanitaria_ejecutar:
+    pattern:  /ejecutarEmergenciaSanitaria
+    defaults: { _controller: "financieroBundle:EmergenciaSanitaria:ejecutarEmerSanit" }

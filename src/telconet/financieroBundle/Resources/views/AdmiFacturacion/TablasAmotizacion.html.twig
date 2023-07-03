@@ -1,0 +1,143 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<style>
+    .category-label
+    {
+        vertical-align: middle;
+        padding-right: .5em;
+    }
+    #category
+    {
+        vertical-align: middle;
+    }
+    .toolbar {
+        float: right;
+        margin-right: .8em;
+    }
+    .icon_search {
+        background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+    }
+    .icon_limpiar {
+        background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+    } 
+    .icon_add {
+        background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+    } 
+    .icon_delete {
+        background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+    }
+    .red-back 
+    {
+        background:#ffe2e2 !important;
+    }
+    .yellow-back 
+    {
+        background:#fdffc9 !important;
+    }
+    #dashboard {
+        margin: 0px 11px 3px;
+        border: 1px solid #DDD;
+        background-color: #F9F9F9;
+        box-shadow: 0px 0px 3px #D7D7D7;
+        width: 100%;
+        min-height: 10em;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlGetstoreListaParamInst               = '{{ path('Admi_Tablas_amortizacion_getListadoParamCabInstJson') }}';    
+    var urlGetStoreParametrosDet                = '{{ path('Admi_Tablas_amortizacion_getListadoParametrosDetJson') }}';
+    var urlGetStoreParametrosHist               = '{{ path('Admi_Tablas_amortizacion_getListadoParametrosHistJson') }}';        
+    var urlActualizaParametroDet                = '{{ path('admiParametroCab_actualizaParametroDet') }}';
+    var urlActualizaParametroCab                = '{{ path('admiParametroCab_actualizaParametroCab') }}';    
+    var urlGetstoreListaParamEquipo             = '{{ path('Admi_Tablas_amortizacion_getListadoParamEquipoJson') }}';
+    var urlGetStoreParametrosDetEquipo          = '{{ path('Admi_Tablas_amortizacion_getListParamDetEquiposJson') }}';
+    var urlGetStoreParametrosHistEquipo         = '{{ path('Admi_Tablas_amortizacion_getListParamHistEquiposJson') }}';
+    
+    var urlActualizaParamEquipoDet              = '{{ path('Admi_Tablas_amortizacion_getactualizaParametro') }}';
+    //Tablas Amortización Cancelación Voluntaria.
+    var urlGetValoresAmortizacionInst24          = '{{ path('Admi_Tablas_amortizacion_getListadoParametrosDetJson')}}';       
+    var urlGetValoresAmortizacionEquipo24        = '{{ path('Admi_Tablas_amortizacion_getListParamDetEquiposJson')}}';    
+    var urlGetValoresAmortizacionInst36          = '{{ path('Admi_Tablas_amortizacion_getListadoParametrosDetJson')}}';    
+    var urlGetValoresAmortizacionEquipo36        = '{{ path('Admi_Tablas_amortizacion_getListParamDetEquiposJson')}}';
+    var urlGetPermanenciaMin                     = '{{ path('Admi_Tablas_amortizacion_getPermanenciaMinJson')}}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/financiero/js/AdmiFacturacion/admiAmortizacion.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Administrar Tablas de Amortización </h1>
+</div>
+
+<div class="body_content k-content">   
+    <div id="tabs_admi">
+        <div id="tab1" class="x-hide-display body_content" >                           
+            <table>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>                                        
+                        <div id="CabeceraInstalacion"> </div>
+                    </td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>                                        
+                        </br> <div id='ListadosDetParamInstalacion'></div>   
+                    </td>
+                </tr>  
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>                                        
+                        </br> <div id='ListadoHistParamInstalacion'></div>
+                    </td>
+                </tr>                                               
+            </table>
+        </div>            
+        <div id="tab2" class="x-hide-display body_content" >                                       
+                <table>
+                    <tr bgcolor='#ffffff'>
+                        <td bgcolor='#ffffff'>                                        
+                            <div id="CabeceraEquipos"> </div> 
+                        </td>
+                    </tr>
+                    <tr bgcolor='#ffffff'>
+                        <td bgcolor='#ffffff'>                                        
+                            </br> <div id='ListadosDetParamEquipo'></div>   
+                        </td>
+                    </tr>  
+                    <tr bgcolor='#ffffff'>
+                        <td bgcolor='#ffffff'>                                        
+                            </br> <div id='ListadoHistParamEquipo'></div>
+                        </td>
+                    </tr>                                               
+                </table>                
+        </div>
+        <div id="tab3" class="x-hide-display" >  
+            <table>  
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>                                        
+                       </br> <div id='TablaAmortizacion24Inst'></div>                         
+                       </br> <div id='TablaAmortizacion24Equipo'></div> 
+                    </td>
+                </tr>                                               
+            </table>             
+        </div>  
+        <div id="tab4" class="x-hide-display" >  
+            <table>  
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>                                        
+
+                       </br> <div id='TablaAmortizacion36Inst'></div> 
+                       </br> <div id='TablaAmortizacion36Equipo'></div> 
+                    </td>
+                </tr>                                               
+            </table>             
+        </div>        
+    </div>    
+</div>    
+{% endblock contenido_izq %}
+

@@ -1,0 +1,12 @@
+/**
+ * @author Edgar Holguín <eholguin@telconet.ec>
+ * @version 1.0
+ * @since 28-07-2021    
+ * Se crea la sentencia DML para eliminación de registros.
+ */
+ 
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET DET WHERE DET.PARAMETRO_ID  = (SELECT ID_PARAMETRO FROM ADMI_PARAMETRO_CAB CAB WHERE CAB.NOMBRE_PARAMETRO = 'AUTOMATIZACION_RETENCIONES') AND DET.DESCRIPCION = 'ESTADO CLIENTE';
+
+COMMIT;
+
+/

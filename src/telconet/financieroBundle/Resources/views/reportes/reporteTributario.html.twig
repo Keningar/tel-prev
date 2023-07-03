@@ -1,0 +1,38 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}    
+{% endblock %}
+        
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script>
+        var strUrlGenerarReporteTributario = '{{ path('reportes_generarReporteTriburario') }}'; 
+    </script>
+     <script type="text/javascript" src="{{ asset('bundles/financiero/js/reportes/reporteTributario.js') }}"></script> 
+{% endblock %}
+       
+{% block contenido_central %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Reportes Tributario Banco Guayaquil</h1>
+    </div>
+    <div class="body_content k-content">
+        <center>
+            <table width="80%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr>
+                    <td><div id='filtroBusquedaDocumentos'></div></td>
+                </tr>	
+                <tr>
+                    <td><div id="gridDocumentos"></div></td>
+                </tr> 
+            </table> 
+        </center>
+    </div>
+    <br/>
+    <div id="tr_error"  style=" display:none; position:absolute; left: 830px; top:195px" >
+        <div class="info-error" style="margin: 0 !important;" id="busqueda_error"></div>
+        <br/>
+    </div>      
+{% endblock contenido_central %} 

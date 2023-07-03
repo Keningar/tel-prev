@@ -1,0 +1,90 @@
+infodocumentonotacreditointerna:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:index" }
+
+infodocumentonotacreditointerna_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:show" }
+
+infodocumentonotacreditointerna_new:
+    pattern:  /{id}/new
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:new" }
+
+infodocumentonotacreditointerna_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:create" }
+    requirements: { _method: post }
+
+infodocumentonotacreditointerna_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:edit" }
+
+infodocumentonotacreditointerna_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:update" }
+    requirements: { _method: post }
+
+infodocumentonotacreditointerna_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:delete" }
+    requirements: { _method: post }
+
+infodocumentonotacreditointerna_tipo:
+    pattern:  /tipo_orden
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:tipoOrden" }
+    
+infodocumentonotacreditointerna_info_plan:
+    pattern:  /info_plan
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:informacionPlan" }
+
+infodocumentonotacreditointerna_lista_estados:
+    pattern:  /lista_estados
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:estados" }
+
+infodocumentonotacreditointerna_grid:
+    pattern:  /grid
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:grid"}
+
+infodocumentonotacreditointerna_delete_ajax:
+    pattern:  /delete_ajax
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:deleteAjax" }
+    requirements: { _method: post }
+
+infodocumentonotacreditointerna_planificacion_ajax:
+    pattern:  /{id}/planificacion_ajax
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:planificacionAjax" }
+    requirements: { _method: post }
+
+infodocumentonotacreditointerna_listar_pto_clientes:
+    pattern:  /listar_ptos_ajax
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:ptoClientesAjax" }
+    
+infodocumentonotacreditointerna_listar_detalle_factura_procesado:
+    pattern:  /listar_detalle_factura_procesado
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:ajaxGenerarDetallesPorDias" }
+
+infodocumentonotacreditointerna_listar_detalle_factura_porcentaje:
+    pattern:  /listar_detalle_factura_porcentaje
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:ajaxGenerarDetallesPorcentaje" }
+    
+infodocumentonotacreditointerna_listar_detalle_factura_valor_original:
+    pattern:  /listar_detalle_factura_valor_original
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:ajaxGenerarDetalleValorOriginal" }
+    
+infodocumentonotacreditointerna_listar_todas_nc:
+    pattern:  /listar_todas_nc
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:listarTodasNC" }
+
+infodocumentonotacreditointerna_ajax_get_detalle:
+    pattern:  /ajax_get_detalle_nc
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:detalleNC" }
+
+infodocumentonotacreditointerna_delete_ajax_seleccionada:
+    pattern:  /ajax_delete_seleccionada
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:deleteSeleccionadasAjax" }
+    
+infodocumentonotacreditointerna_imprimir:
+    pattern:  /{id}/imprimir_nc
+    defaults: { _controller: "financieroBundle:InfoNotaCreditoInterna:ncPdf" }
+    
+    

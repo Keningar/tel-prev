@@ -1,0 +1,19 @@
+aprobaciones_aprobar_notadebito:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AutorizacionNotaDebito:index" }
+
+aprobaciones_grid_aprobar_notadebito:
+    pattern:  /gridaprobarnotadebito
+    defaults: { _controller: "financieroBundle:AutorizacionNotaDebito:gridAprobarNotaDebito"}
+
+aprobaciones_aprobar_notadebito_ajax:
+    pattern:  /aprobarnotadebitoajax
+    defaults: { _controller: "financieroBundle:AutorizacionNotaDebito:aprobarNotaDebitoAjax" }
+
+aprobaciones_rechazar_notadebito_ajax:
+    pattern:  /rechazarnotadebitoajax
+    defaults: { _controller: "financieroBundle:AutorizacionNotaDebito:rechazarNotaDebitoAjax" }
+
+aprobaciones_get_motivos_rechazo_notadebito_ajax:
+    pattern:  /getmotivosrechazonotadebitoajax
+    defaults: { _controller: "financieroBundle:AutorizacionNotaDebito:getMotivosRechazoNotaDebito_ajax" }

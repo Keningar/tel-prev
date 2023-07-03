@@ -1,0 +1,19 @@
+AdministracionMotivosRechazoPYL:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiMotivos:administrarMotivosRechazoPYL" }
+    
+AdministracionMotivosRechazoPYL_getListadoParametrosCabJson:
+    pattern:  /getListadoParametrosCabJson
+    defaults: { _controller: "financieroBundle:AdmiMotivos:getListadoParametrosCabAjax" }  
+    
+AdministracionMotivosRechazoPYL_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "financieroBundle:AdmiMotivos:getListadoParametrosDetAjax" }  
+    
+AdministracionMotivosRechazoPYL_getListadoParametrosHistJson:
+    pattern:  /getListadoParametrosHistJson
+    defaults: { _controller: "financieroBundle:AdmiMotivos:getListadoParametrosHistAjax" }      
+    
+AdministracionMotivosRechazoPYL_activarInactivarMotivosRechazo:
+    pattern:  /activarInactivarMotivosRechazoAjax
+    defaults: { _controller: "financieroBundle:AdmiMotivos:activarInactivarMotivosRechazoAjax" }

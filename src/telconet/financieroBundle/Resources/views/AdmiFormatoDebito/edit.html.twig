@@ -1,0 +1,385 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+        <script>
+function mostrarDiv(div){
+    capa = document.getElementById(div);
+    capa.style.display = 'block';    
+}
+function ocultarDiv(div){
+    capa = document.getElementById(div);
+    capa.style.display = 'none';    
+}		
+        url_lista_bancos='{{path('admiformatodebito_getListadoBancos')}}';
+url_lista_tipos_cuenta='{{path('admiformatodebito_getListadoTiposCuenta')}}';        
+        </script>  	
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{#{ asset('public/images/'~ img_opcion_menu ~ '') }#}" class="imagen-titulo-content">
+	<h1>Editar Formato Debito</h1>
+</div>
+<div class="body_content">
+<table class="record_properties" width='100%'>
+    <tbody>
+        <tr>
+            <td><b>Banco:</b></td>
+            <td>{{ entity.bancoId.descripcionBanco }}</td>
+			<td>&nbsp;</td>
+            <td><b>Tipo Tarjeta / Cuenta:</b></td>
+            <td>{{ entity.tipoCuentaId.descripcionCuenta }}</td>			
+        </tr>
+        <tr>
+            <td><b>Total cod. seguridad:</b></td>
+            <td>{{ entity.totalCodseguridad }}</td>
+			<td>&nbsp;</td>
+            <td><b>Total caracteres:</b></td>
+            <td>{{ entity.totalCaracteres }}</td>						
+        </tr>
+        <tr>
+            <td><b>Caracter Empieza:</b></td>
+            <td>{{ entity.caracterEmpieza }}</td>
+			<td>&nbsp;</td>
+            <td><b>Es tarjeta:</b></td>
+            <td>{{ entity.esTarjeta }}</td>					
+        </tr>
+        <tr>
+            <td><b>Estado:</b></td>
+            <td>{{ entity.estado }}</td>
+			<td>&nbsp;</td>
+            <td><b>&nbsp;</b></td>
+            <td>&nbsp;</td>						
+        </tr>
+    </tbody>
+</table>
+</div>
+
+
+
+<form action="{{ path('admiformatodebito_update',{ 'id':entity.id } ) }}" method="post" {{ form_enctype(form) }} class="formulario" onsubmit="">        
+
+<div class="body_content">
+{% if error is defined %}
+    <div class='errormessage'>{{ error }}</div>
+{% endif %}
+    <table border='0' align='left' width='100%'>
+    <tr>
+        <td>
+            {{ form_label(form.descripcion) }}
+        </td>
+        <td>
+            {{ form_widget(form.descripcion) }}
+        </td> 
+        <td>
+		    <label>Alineado a la:</label>
+        </td>
+        <td>
+            <select id="admiformatodebitotype_orientacionCaracterRelleno" onchange="" required='required' name="admiformatodebitotype[orientacionCaracterRelleno]">
+                <option value='D' selected='selected'>Derecha</option><option value='I'>Izquierda</option>
+            </select>
+            <input id='admiformatodebitoextratype_bancoId' name='admiformatodebitoextratype[bancoId]' type='hidden' value='{{entity.bancoId.id}}'>     
+            <input id='admiformatodebitoextratype_tipoCuentaId' name='admiformatodebitoextratype[tipoCuentaId]' type='hidden' value='{{entity.tipoCuentaId.id}}'>
+            <input id='admiformatodebitoextratype_detalles' name='admiformatodebitoextratype[detalles]' type='hidden' value=''>
+        </td> 		 
+    </tr>   
+    <tr>
+        <td>
+            {{ form_label(form.longitud) }}
+        </td>
+        <td>
+            {{ form_widget(form.longitud) }}
+        </td> 
+        <td>
+            {{ form_label(form.tipoCampo) }}
+        </td>
+        <td>
+            <select id="admiformatodebitotype_tipoCampo" onchange="presentaVariable()" required='required' name="admiformatodebitotype[tipoCampo]">
+                <option value='F' selected='selected'>Fijo</option>
+				<option value='S'>Secuencial</option>
+				<option value='V'>Variable</option>
+            </select>		
+        </td> 
+    </tr>      
+    <tr>
+        <td>
+             <label>Relleno:</label>
+        </td>
+        <td>
+            <select id="admiformatodebitoextratype_caracterRelleno" onchange="" name="admiformatodebitoextratype[caracterRelleno]">
+                <option value='0' selected='selected'>Cero</option>
+				<option value=''>Sin Relleno</option>
+				<option value=' ' selected='selected'>Espacio en Blanco</option>
+            </select>
+        </td> 
+        <td>
+		<div id='div_label_variable' style='display:none'>
+           {{ form_label(form.variableFormatoId) }}
+		   </div>
+		<div id='div_label_contenido'>	
+           {{ form_label(form.contenido) }}
+		</div>   
+        </td>
+        <td>
+			<div id='div_input_variable' style='display:none'>
+				<select id="admiformatodebitotype_variableFormatoId" onchange="" name="admiformatodebitotype[variableFormatoId]">
+					<option value=''>Seleccione...</option>
+			{%for variable in variables %}		
+					<option value='{{variable.id}}'>{{variable.descripcion}}</option>
+			{%endfor%}		
+				</select>
+			</div>
+			<div id='div_input_contenido'>			
+            {{ form_widget(form.contenido) }}
+			</div>
+        </td>
+    </tr>   
+    <tr>
+        <td>
+		<label>Posicion:</label>
+        </td>
+        <td>		
+            <select id="admiformatodebitoextratype_posicion" required='required' name="admiformatodebitoextratype[posicion]">
+                <option value='1' selected='selected'>1</option>
+				<option value='2'>2</option>
+				<option value='3'>3</option>
+				<option value='4'>4</option>
+				<option value='5'>5</option>
+				<option value='6'>6</option>
+				<option value='7'>7</option>
+				<option value='8'>8</option>
+				<option value='9'>9</option>
+				<option value='10'>10</option>
+				<option value='11'>11</option>
+				<option value='12'>12</option>
+				<option value='13'>13</option>
+				<option value='14'>14</option>
+				<option value='15'>15</option>
+				<option value='16'>16</option>
+				<option value='17'>17</option>
+				<option value='18'>18</option>
+				<option value='19'>19</option>
+				<option value='20'>20</option>
+				<option value='21'>21</option>
+				<option value='22'>22</option>
+				<option value='23'>23</option>
+				<option value='24'>24</option>
+				<option value='25'>25</option>
+				<option value='26'>26</option>
+				<option value='27'>27</option>
+				<option value='28'>28</option>
+				<option value='29'>29</option>
+				<option value='30'>30</option>				
+            </select>		
+        </td> 
+        <td>
+		<div id='div_label_validacion' style='display:none'>
+			<label>Requiere Validacion:</label>
+		</div>
+        </td>
+        <td>
+		<div id='div_input_validacion' style='display:none'>		
+            <select id="admiformatodebitoextratype_validacion" required='required' name="admiformatodebitoextratype[validacion]">
+                <option value='S'>Si</option>
+				<option value='N' selected='selected'>No</option>
+            </select>
+		</div>	
+        </td>
+    </tr>  	
+	
+    <tr>
+        <td>
+		<label>Tipo Dato:</label>
+        </td>
+        <td>		
+            <select id="admiformatodebitoextratype_tipoDato" required='required' name="admiformatodebitoextratype[tipoDato]">
+                <option value='N' selected='selected'>Numerico</option>
+				<option value='A'>Alfanumerico</option>			
+            </select>		
+        </td> 
+        <td>
+        </td>
+        <td>
+        </td>
+    </tr> 		
+	
+    <tr>
+        <td colspan='4'>
+		<div class="buttons">
+						<p>
+							<button type="button" onclick="agregaDetalle()" class="button-crud">Agregar</button>                                    
+						</p>
+		</div>        
+        </td>
+    </tr>   
+	<tr>
+	<td colspan='4'>
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_detalles'></div></td>
+            </tr>
+    </table> 
+	</td>
+	</tr>
+    </table>
+         {{ form_widget(form._token)}} 
+</div> 
+</form> 
+
+
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+        
+                       
+        <script>
+        var url_grid = "{{ path('admiformatodebito_grid_show',{'id':entity.id}) }}";
+        var url_campos = "{{ path('admiformatodebito_getListadoCampos') }}";
+		var url_grabar = "{{ path('admiformatodebito_asignarValidaciones') }}";
+        </script>        
+         <script type="text/javascript" src="{{ asset('./bundles/financiero/js/admiformatodebito/edit.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('./bundles/financiero/js/admiformatodebito/ingresarValidaciones.js') }}"></script>		 
+    </div>
+</div>
+
+                <div class="buttons">
+				<p>
+                                    <button type="button" class="button-crud" onclick="if(valida()){grabar();}">Guardar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('admiformatodebito') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div>  
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+	<div class="acciones_relacionadas">
+		<a href="{{ path('admiformatodebito_new') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nuevo Formato Debito
+		</a>
+	</div>
+	<br />
+		<ul class="form_actions">
+			<li>
+				<!--a class="button-editar" href="{#{ path('admiformatodebito_edit', { 'id': entity.id }) }#}">
+					Editar
+				</a-->
+			</li>
+		</ul>
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">  
+		</ul>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+<script>
+function agregaDetalle(){
+    var variable='';
+    if($('#admiformatodebitotype_descripcion').val() && $('#admiformatodebitotype_longitud').val() 
+        //&&  $('#admiformatodebitotype_caracterRelleno').val() 
+		&& $('#admiformatodebitotype_tipoCampo').val() 
+        &&  $('#admiformatodebitotype_orientacionCaracterRelleno').val()
+		)
+    {
+		if($('#admiformatodebitotype_variableFormatoId').val()){
+		variable=$("select[id='admiformatodebitotype_variableFormatoId'] option:selected").text();
+		}
+        rec = new FormatoDetModel({'descripcion':$('#admiformatodebitotype_descripcion').val(),
+            'longitud':$("#admiformatodebitotype_longitud").val(),
+			'caracterRelleno':$("select[id='admiformatodebitoextratype_caracterRelleno'] option:selected").text(),
+            'caracterRellenoId':$('#admiformatodebitoextratype_caracterRelleno').val(),
+            'tipoCampo':$("select[id='admiformatodebitotype_tipoCampo'] option:selected").text(),
+			'tipoCampoId':$("#admiformatodebitotype_tipoCampo").val(),
+			'tipoDato':$("select[id='admiformatodebitoextratype_tipoDato'] option:selected").text(),
+			'tipoDatoId':$("#admiformatodebitoextratype_tipoDato").val(),
+            'contenido':$("#admiformatodebitotype_contenido").val(),
+            'orientacionCaracter':$("select[id='admiformatodebitotype_orientacionCaracterRelleno'] option:selected").text(),
+			'variable':variable,
+			'variableId':$("#admiformatodebitotype_variableFormatoId").val(),
+			'orientacionCaracterId':$("#admiformatodebitotype_orientacionCaracterRelleno").val(),
+			'requiereValidacion':$("#admiformatodebitoextratype_validacion").val(),
+			'posicion':$("#admiformatodebitoextratype_posicion").val()
+			});
+        storeDetalle.add(rec);
+        limpia();
+    }
+    else
+    {
+        Ext.Msg.alert('Alerta ','Faltan datos por ingresar.');
+    }
+}
+
+function limpia(){
+    $('#admiformatodebitotype_descripcion').val('');
+    $('#admiformatodebitotype_longitud').val('');
+    $('#admiformatodebitotype_caracterRelleno').val('');
+    $('#admiformatodebitotype_contenido').val(''); 
+	$('#admiformatodebitotype_variableFormatoId').val(''); 
+}
+
+function valida(){
+        if(grid.getStore().getCount()>0){
+		
+			return true;
+            
+        }else{
+            Ext.Msg.alert('Alerta','Debe ingresar al menos 1 detalle.');
+            return false;
+        }
+}
+
+function presentaVariable(){
+    var texto=$("select[id='admiformatodebitotype_tipoCampo'] option:selected").text();
+	console.log(texto.toUpperCase());
+    if (texto.toUpperCase()=='FIJO')
+    {                    
+        ocultarDiv('div_label_variable');
+		ocultarDiv('div_input_variable');
+		ocultarDiv('div_label_validacion');
+		ocultarDiv('div_input_validacion');
+        mostrarDiv('div_label_contenido');
+		mostrarDiv('div_input_contenido');		
+    }
+    if(texto.toUpperCase()=='VARIABLE')
+    {
+        mostrarDiv('div_label_variable');
+		mostrarDiv('div_input_variable');
+		mostrarDiv('div_input_validacion');
+        mostrarDiv('div_label_validacion');
+        ocultarDiv('div_label_contenido');
+		ocultarDiv('div_input_contenido');		
+    }
+    if(texto.toUpperCase()=='SECUENCIAL')
+    {
+        ocultarDiv('div_label_variable');
+		ocultarDiv('div_input_variable');
+		ocultarDiv('div_input_validacion');
+        ocultarDiv('div_label_validacion');		
+        mostrarDiv('div_label_contenido');
+		mostrarDiv('div_input_contenido');				
+    }
+}
+
+function grabar(){
+    var array_data = new Array();
+    var variable='';
+    for(var i=0; i < grid.getStore().getCount(); i++){ 
+        variable=grid.getStore().getAt(i).data;
+        for(var key in variable) {
+            var valor = variable[key];
+            array_data.push(valor);
+        }
+        array_data.push('|');
+        //console.log(array_data);
+    }
+    $('#admiformatodebitoextratype_detalles').val(array_data); 
+     document.forms[0].submit();  
+}
+</script>
+{% endblock javascripts_footer %}

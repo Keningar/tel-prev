@@ -1,0 +1,16 @@
+cargoReprocesoDebito:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:administrarCargoReproceso" }  
+
+cargoReprocesoDebito_getListadoParametrosCabJson:
+    pattern:  /getListadoParametrosCabJson
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getListadoParametrosCabAjax" }  
+    
+cargoReprocesoDebito_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getListadoParametrosDetAjax" }  
+    
+cargoReprocesoDebito_activarInactivarCargoReproceso:
+    pattern:  /activarInactivarCargoReprocesoAjax
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:activarInactivarCargoReprocesoAjax" }     
+     

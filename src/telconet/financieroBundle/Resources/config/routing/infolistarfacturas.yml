@@ -1,0 +1,13 @@
+#############################################################   
+infolistarfacturas:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:listarFacturas" }    
+#############################################################
+infoshowfacturasgeneradas:
+    pattern:  /facturas_grid   
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:gridFacturas" }
+    
+facturas_descargar_impresion:
+    pattern:  /facturas_descargar_impresion/{archivo} 
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:downloadArchivoImpresion" }
+

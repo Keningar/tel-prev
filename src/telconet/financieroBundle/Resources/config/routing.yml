@@ -1,0 +1,195 @@
+financiero_documentos:
+  resource: "@financieroBundle/Resources/config/routing/infodocumentofinancierocab.yml"
+  prefix: /documentos/facturas
+  
+financiero_consolidado_documentos:
+  resource: "@financieroBundle/Resources/config/routing/documentosfinancieros.yml"
+  prefix: /documentos/documentos_financieros
+  
+financiero_VisorDocumento:
+  resource: "@financieroBundle/Resources/config/routing/visordocumentos.yml"
+  prefix: /documentos/visor_documentos_financiero
+  
+financiero_documentos_proporcionales:
+  resource: "@financieroBundle/Resources/config/routing/facturasproporcionales.yml"
+  prefix: /documentos/facturas_proporcionales
+
+financiero_nota_de_credito:
+  resource: "@financieroBundle/Resources/config/routing/infodocumentonotacredito.yml"
+  prefix: /documentos/nota_de_credito
+  
+financiero_nota_de_credito_interna:
+  resource: "@financieroBundle/Resources/config/routing/infodocumentonotacreditointerna.yml"
+  prefix: /documentos/nota_de_credito_interna
+  
+financiero_nota_de_debito:
+  resource: "@financieroBundle/Resources/config/routing/infodocumentonotadebito.yml"
+  prefix: /documentos/nota_de_debito
+  
+financiero_nota_de_debito_interna:
+  resource: "@financieroBundle/Resources/config/routing/infodocumentonotadebitointerna.yml"
+  prefix: /documentos/nota_de_debito_interna
+
+financiero_notasCreditoMasivas:
+  resource: "@financieroBundle/Resources/config/routing/notascreditomasivas.yml"
+  prefix: /documentos/notasCreditoMasivas
+  
+############################Imprimir Facturas
+financiero_imprimir_factura:
+  resource: "@financieroBundle/Resources/config/routing/infoimprimirfacturas.yml"
+  #prefix: /documentos/imprimir_factura
+  prefix: /documentos/imprimir_documentos_lote
+
+financiero_listar_facturas:
+  resource: "@financieroBundle/Resources/config/routing/infolistarfacturas.yml"
+  #prefix: /documentos/listar_facturas_generadas
+  prefix: /documentos/listar_documentos_lote
+    
+#############################Generar Excel del Courier#################
+financiero_excel_courier:
+  resource: "@financieroBundle/Resources/config/routing/excel_courier.yml"
+  prefix: /documentos/excelcouier
+#############################################
+
+financiero_reportes:
+  resource: "@financieroBundle/Resources/config/routing/reportes.yml"
+  prefix: /reportes
+
+financiero_infopagocab:
+  resource: "@financieroBundle/Resources/config/routing/infopagocab.yml"
+  prefix: /pagos/infopagocab
+
+financiero_anticipo:
+  resource: "@financieroBundle/Resources/config/routing/anticipo.yml"
+  prefix: /pagos/anticipo
+
+financiero_admibancotipocuenta:
+  resource: "@financieroBundle/Resources/config/routing/admibancotipocuenta.yml"
+  prefix: /debitos/admibancotipocuenta
+
+financiero_infodeposito:
+  resource: "@financieroBundle/Resources/config/routing/infodeposito.yml"
+  prefix: /pagos/infodeposito
+
+financiero_admiformatodebito:
+  resource: "@financieroBundle/Resources/config/routing/admiformatodebito.yml"
+  prefix:   /debitos/admiformatodebito
+
+financiero_generardebitos:
+  resource: "@financieroBundle/Resources/config/routing/generardebitos.yml"
+  prefix:   /debitos/generardebitos
+  
+financiero_tarjetasabu:
+  resource: "@financieroBundle/Resources/config/routing/tarjetasabu.yml"
+  prefix:   /debitos/tarjetasabu  
+
+financiero_respuestadebitos:
+  resource: "@financieroBundle/Resources/config/routing/respuestadebitos.yml"
+  prefix:   /debitos/respuestadebitos
+
+financiero_inforecaudacion:
+  resource: "@financieroBundle/Resources/config/routing/inforecaudacion.yml"
+  prefix:   /pagos/recaudacion
+  
+financiero_reprocesamientoFacturacion:
+  resource: "@financieroBundle/Resources/config/routing/reprocesamientoFacturacion.yml"
+  prefix:   /procesosautomaticos/reprocesamiento_facturacion
+
+financiero_facturacion_mensual_automatica:
+  resource: "@financieroBundle/Resources/config/routing/facturacion_mensual_automatica.yml"
+  prefix:   /procesosautomaticos
+
+financiero_aprobacion_nota_credito:
+  resource: "@financieroBundle/Resources/config/routing/aprobacionnotacredito.yml"
+  prefix: /autorizacionesfinancieras/aprobacionnotacredito
+
+financiero_aprobacion_nota_debito:
+  resource: "@financieroBundle/Resources/config/routing/aprobacionnotadebito.yml"
+  prefix: /autorizacionesfinancieras/aprobacionnotadebito
+
+financiero_ajaxfacturasAbiertasMes:
+  pattern: /ajax_facturas_abiertas
+  defaults: { _controller: "financieroBundle:Default:ajaxFacturasAbiertasMes"}
+
+financiero_ajaxfacturasVencidas:
+  pattern: /ajax_facturas_vencidas
+  defaults: { _controller: "financieroBundle:Default:ajaxFacturasVencidas"}
+
+financiero_ajaxfacturasPeriodo:
+  pattern: /ajax_facturas_peri
+  defaults: { _controller: "financieroBundle:Default:ajaxFacturasPeriodo"}
+
+financiero_ajaxPagosPeriodo:
+  pattern: /ajax_pagos_peri
+  defaults: { _controller: "financieroBundle:Default:ajaxPagosPeriodo"}
+
+financiero_ajaxAdeudadoPeriodo:
+  pattern: /ajax_adeudado_peri
+  defaults: { _controller: "financieroBundle:Default:ajaxAdeudadoPeriodo"}
+
+financiero_clientesfinanciero:
+  pattern: /clientesfinanciero
+  defaults: { _controller: "comercialBundle:Cliente:index"}
+  
+financiero_opcion:
+  pattern:  /{opcion_menu}
+  defaults: { _controller: financieroBundle:Default:menu , opcion_menu: "dashboard"}
+  
+financiero_cargoReprocesoDebito:
+  resource: "@financieroBundle/Resources/config/routing/cargoReprocesoDebito.yml"
+  prefix:   /administracion/cargoReprocesoDebito
+  
+financiero_cargoReactivacion:
+  resource: "@financieroBundle/Resources/config/routing/admicargos.yml"
+  prefix:   /administracion/cargoReactivacion 
+  
+financiero_admiMotivosEliminar:
+  resource: "@financieroBundle/Resources/config/routing/admiMotivosEliminar.yml"
+  prefix:   /administracion/admiMotivosEliminar
+  
+financiero_admimotivosrechazopyl:
+  resource: "@financieroBundle/Resources/config/routing/admimotivosrechazopyl.yml"
+  prefix:   /administracion/AdministracionMotivosRechazoPYL
+
+financiero_admitablasamortizacion:
+  resource: "@financieroBundle/Resources/config/routing/admitablasamortizacion.yml"
+  prefix:   /administracion/Admi_Tablas_amortizacion  
+
+financiero_cambioFormaPago:
+  resource: "@financieroBundle/Resources/config/routing/admimotivos_forma_pago.yml"
+  prefix:   /administracion/Motivos_Cambio_Forma_Pago
+  
+financiero_admimotivos_nc_indisponibilidad:
+  resource: "@financieroBundle/Resources/config/routing/admimotivos_nc_indisponibilidad.yml"
+  prefix:   /administracion/motivos_nc_indisponibilidad
+
+financiero_emergenciaSanitaria:
+  resource: "@financieroBundle/Resources/config/routing/emergenciaSanitaria.yml"
+  prefix: /administracion/emergenciaSanitaria 
+  
+financiero_automatizacionPagos:
+  resource: "@financieroBundle/Resources/config/routing/infoPagoAutomatico.yml"
+  prefix:   /pagos/pagos/automatizacionPagos  
+
+financiero_admiMotivoRechazoOS:
+  resource: "@financieroBundle/Resources/config/routing/admiMotivoRechazoOS.yml"
+  prefix: /administracion/admiMotivoRechazoOS
+
+
+#############################Anulacion de Pagos#################
+financiero_anularpagocab:
+  resource: "@financieroBundle/Resources/config/routing/anularpagocab.yml"
+  prefix: /pagos/anularpagocab
+
+financiero_automatizacionRetenciones:
+  resource: "@financieroBundle/Resources/config/routing/infoRetencionAutomatica.yml"
+  prefix:   /pagos/pagos/automatizacionRetenciones   
+
+#############################Grupo Debitos#################
+financiero_grupoDebito:
+  resource: "@financieroBundle/Resources/config/routing/grupodebito.yml"
+  prefix: /debitos/grupoDebitos/indexGrupoDebitos
+
+financiero_adminMotivosCancelacion:
+  resource: "@financieroBundle/Resources/config/routing/adminMotivosCancelacion.yml"
+  prefix:   /administracion/adminMotivosCancelacion

@@ -1,0 +1,130 @@
+infopagocab:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoPagoCab:index" }
+
+infopagocab_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:InfoPagoCab:show" }
+
+infopagocab_recibo:
+    pattern:  /{id}/recibo
+    defaults: { _controller: "financieroBundle:InfoPagoCab:reciboPdf" }
+
+infopagocab_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:InfoPagoCab:new" }
+
+infopagocab_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:InfoPagoCab:create" }
+    requirements: { _method: post }
+
+infopagocab_createAjax:
+    pattern:  /createajax
+    defaults: { _controller: "financieroBundle:InfoPagoCab:createAjax"}
+
+infopagocab_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "financieroBundle:InfoPagoCab:edit" }
+
+infopagocab_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "financieroBundle:InfoPagoCab:update" }
+    requirements: { _method: post }
+
+infopagocab_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "financieroBundle:InfoPagoCab:delete" }
+    requirements: { _method: post }
+
+infopagocab_getListadoBancos:
+    pattern:  /getListadoBancos
+    defaults: { _controller: "financieroBundle:InfoPagoCab:getListadoBancos"}
+
+infopagocab_getListadoBancosTarjeta:
+    pattern:  /getlistadobancostarjeta
+    defaults: { _controller: "financieroBundle:InfoPagoCab:getListadoBancosTarjeta"}
+
+infopagocab_getListadoTiposCuenta:
+    pattern:  /getListadoTiposCuenta
+    defaults: { _controller: "financieroBundle:InfoPagoCab:getListadoTiposCuenta"}
+
+infopagocab_getListadoBancosContables:
+    pattern:  /getListadoBancosContables
+    defaults: { _controller: "financieroBundle:InfoPagoCab:getListadoBancosContables"}
+
+infopagocab_getListadoCuentasBancosContables:
+    pattern:  /getListadoCuentaBancosContables
+    defaults: { _controller: "financieroBundle:InfoPagoCab:getListadoCuentaBancosContables"}
+
+infopagocab_getDetallesPago:
+    pattern:  /{id}/getDetallesPagos
+    defaults: { _controller: "financieroBundle:InfoPagoCab:getDetallesPago_ajax"}
+    
+infopagocab_ajaxGetDetallesPagoForEdit:
+    pattern:  /{id}/ajaxGetDetallesPagoForEdit
+    defaults: { _controller: "financieroBundle:InfoPagoCab:ajaxGetDetallesPagoForEdit"}
+
+infopagocab_ajaxActualizaDetPago:
+    pattern:  /ajaxActualizaDetPago
+    defaults: { _controller: "financieroBundle:InfoPagoCab:ajaxActualizaDetPago"}
+
+infopagocab_estados:
+    pattern:  /estados
+    defaults: { _controller: "financieroBundle:InfoPagoCab:estados"}
+
+infopagocab_grid:
+    pattern:  /grid
+    defaults: { _controller: "financieroBundle:InfoPagoCab:grid"}
+
+infopagocab_verificaRetencion:
+    pattern:  /verficaRetencion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:verificaRetencion_ajax"}
+
+infopagocab_getValoresFact:
+    pattern:  /getValoresFact
+    defaults: { _controller: "financieroBundle:InfoPagoCab:getValoresFact_ajax"}
+
+infopagocab_actualizaPtoCliente:
+    pattern:  /actualizarPtoCliente
+    defaults: { _controller: "financieroBundle:InfoPagoCab:actualizaPtoCliente" }
+
+infopagocab_motivosCambioPunto:
+    pattern:  /motivoCambio
+    defaults: { _controller: "financieroBundle:InfoPagoCab:motivoCambio" }
+
+infopagocab_xmlats:
+    pattern:  /xmlats
+    defaults: { _controller: "financieroBundle:InfoPagoCab:generarXmlVentasAts"}
+
+infopagocab_anulaPagos:
+    pattern:  /anulaPagos
+    defaults: { _controller: "financieroBundle:InfoPagoCab:anulaPagos"}
+
+infopagocab_motivosAnulacionPago:
+    pattern:  /motivosAnulacionPago
+    defaults: { _controller: "financieroBundle:InfoPagoCab:motivosAnulacionPago"}
+
+infopagocab_getListadoCuentasBancariasEmpresa:
+    pattern:  /getListadoCuentasBancariasEmpresa
+    defaults: { _controller: "financieroBundle:InfoPagoCab:getListadoCuentasBancariasEmpresa"}
+
+infopagocab_validarFechaPago:
+    pattern:  /validarFechaPago
+    defaults: { _controller: "financieroBundle:InfoPagoCab:validarFechaPago"}
+    
+infopagocab_preCancelacionDiferida:
+    pattern:  /preCancelacionDiferida/indexPreCancelacion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:indexPreCancelacion" }
+    
+infopagocab_ejecutarNDIPreCancelacionDiferida:
+    pattern:  /ejecutarNDIPreCancelacionDiferida
+    defaults: { _controller: "financieroBundle:InfoPagoCab:ejecutarNDIPreCancelacionDiferida" }
+
+infopagocab_anulacionPagos:
+    pattern:  /anulacionPagos/indexAnulacionPagos
+    defaults: { _controller: "financieroBundle:AnularPagoCab:indexAnulacionPagos" }
+
+infopagocab_verificaRetencionDuplicada:
+    pattern:  /verficaRetencionDuplicada
+    defaults: { _controller: "financieroBundle:InfoPagoCab:verificaRetencionDuplicada_ajax"}

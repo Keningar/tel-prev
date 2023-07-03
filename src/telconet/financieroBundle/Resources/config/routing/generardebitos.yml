@@ -1,0 +1,15 @@
+generardebitos:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:listDebitosGeneral" }
+
+generardebitos_generar:
+    pattern:  /generar
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:generarDebitos" }
+
+generardebitos_grid_generar_debitos:
+    pattern:  /gridgenerardebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridGenerarDebitos"}
+
+generardebitos_crea_archivo:
+    pattern:  /creaarchivo
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:creaArchivo"}

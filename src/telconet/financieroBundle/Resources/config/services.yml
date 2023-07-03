@@ -1,0 +1,75 @@
+parameters:
+#    financiero.example.class: telconet\financieroBundle\Example
+
+services:
+#    financiero.example:
+#        class: %financiero.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    financiero.InfoCompElectronico:
+        class: telconet\financieroBundle\Service\InfoCompElectronicoService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    financiero.InfoPago:
+        class: telconet\financieroBundle\Service\InfoPagoService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    financiero.InfoPagoLinea:
+        class: telconet\financieroBundle\Service\InfoPagoLineaService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    financiero.InfoRecaudacion:
+        class: telconet\financieroBundle\Service\InfoRecaudacionService
+        calls:
+            - [setDependencies, [@service_container]]
+            
+    financiero.InfoDevolucion:
+        class: telconet\financieroBundle\Service\InfoDevolucionService
+        calls:
+            - [setDependencies, [@service_container]]
+            
+    financiero.InfoNotaCredito:
+        class: telconet\financieroBundle\Service\InfoNotaCreditoService
+        calls:
+            - [setDependencies, [@service_container,@financiero.InfoDetalleDocumento]]
+
+    financiero.InfoDebitoCab:
+        class: telconet\financieroBundle\Service\InfoDebitoCabService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    financiero.InfoDetalleDocumento:
+        class: telconet\financieroBundle\Service\InfoDetalleDocumentoService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    financiero.InfoPagoDet:
+        class: telconet\financieroBundle\Service\InfoPagoDetService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    financiero.InfoRecaudacionDet:
+        class: telconet\financieroBundle\Service\InfoRecaudacionDetService
+        arguments: ['@service_container']
+
+    financiero.InfoDocumentoFinancieroCab:
+        class: telconet\financieroBundle\Service\InfoDocumentoFinancieroCabService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    financiero.Reportes:
+        class: telconet\financieroBundle\Service\ReportesService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    financiero.EmergenciaSanitaria:
+        class: telconet\financieroBundle\Service\EmergenciaSanitariaService
+        calls:
+            - [setDependencies, [@service_container]]
+            
+    financiero.InfoPagoAutomatico:
+        class: telconet\financieroBundle\Service\InfoPagoAutomaticoService
+        calls:
+            - [setDependencies, [@service_container]]            

@@ -1,0 +1,17 @@
+#############################################################   
+infoimprimirfacturascab:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:imprimirFacturas" }    
+#############################################################
+infoimprimirfacturasgetnumeracion:
+    pattern:  /getFacturaNumeracion   
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getFacturaNumeracion" }
+
+infogetnumeracion:
+    pattern:  /getNumeracionXTipoDocumento
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getNumeracionXTipoDocumento" }
+
+infoimprimirfacturasgenerarpdf:
+    pattern:  /generarPdf   
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:generarPdf" }
+    

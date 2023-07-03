@@ -1,0 +1,80 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/financiero/js/imprimir_factura/index.js') }}"></script>
+   
+{% endblock %}
+
+{% block contenido_central %}	
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Generacion Documentos Recurrentes</h1>
+	</div>	
+	<div class="body_content">
+	    <form action="{{ path('infoimprimirfacturasgenerarpdf') }}" method="get" {{ form_enctype(form) }} class="formulario" onsubmit="return validarFormulario();" novalidate="novalidate"  enctype="multipart/form-data" >
+	        <div id="contenedor_principal" >
+	            <div id="datos_generales">
+	                <table width="100%" border="0" class="box-section-content">
+	                
+			    <tr coslpan="3">	
+				<td width="5%">&nbsp;</td>
+				<td><label>Generación de :</label></td>
+				<td><div id="tipoDocumento"></div></td>	
+				<td><input type="hidden" id="tipoHD" name="tipoHD"/></td>
+			    </tr>
+			    
+			    <tr> <td width="5%">&nbsp;</td></tr>
+			    
+			    <tr class="rangos">
+	                        <td width="5%">&nbsp;</td>
+	                        <td><label>Numeracion SRI:</label></td>
+	                        <td><div id="numeracion"></div></td>	 	                        
+	                        <td class="soloFacturas" width="15%">{{ form_label(form.descripcion) }}</td>
+	                        <td class="soloFacturas" width="15%">{{ form_widget(form.descripcion, { 'attr': {'style': 'width:250px;'} }) }}</td>	                       	                        
+	                        <td><input type="hidden" id="numeracionHD" name="numeracionHD"/></td>
+	                    </tr>
+	                    
+	                    <tr> <td width="5%">&nbsp;</td></tr>
+	                    
+	                    <tr class="rangos">
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%">{{ form_label(form.inicio) }}</td>	                       
+	                        <td width="15%">{{ form_widget(form.inicio)}}</td>
+	                        <td width="15%">{{ form_label(form.fin) }}</td>
+	                        <td width="15%">{{ form_widget(form.fin) }}</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+	                    
+	                    <tr class="soloFacturas">
+			        <td width="5%">&nbsp;</td>
+			        <td><label>Nota al Cliente :</label></td>
+			        <td><textarea width="300" id="observacion" name="observacion" onKeyPress="return validador(event,'')";></textarea></td>			        
+			        <td><label>Fecha Limite de Pago :</label></td>
+			        <td><div id="fechaLimite" name="fechaLimite"></div></td>
+	                    </tr>
+	                    
+	                    <tr>
+	                        <td width="5%" colspan='4'>&nbsp;</td>
+	                    </tr>
+	                    <tr>
+				<td width="5%" colspan='5' align='center'>
+				  <label style="position:relative;margin-left:43%;color: #777777;width:240px;">{{error}}</label>
+				</td>
+	                    </tr>
+	                </table>	               
+	            </div>   
+	        </div>
+	        <div class="buttons">
+	            <p>
+	                <button type="submit" class="button-crud">Generar Documentos</button>	                
+	            </p>
+	        </div>	       
+	    </form>
+	</div>
+{% endblock contenido_central %}

@@ -1,0 +1,84 @@
+{% extends "::layout.html.twig" %}
+        
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Reporte de Anticipos Cruzados</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<form id='form_anticipos' action="{{ path('reportes_excelanticiposcruzados') }}" method="post" class="formulario">
+{% if error is defined %}
+        <div id='div_error' class='errormessage' style="">{{ error }}</div>
+{% endif %} 
+    
+<div class="body_content"> 
+<table border='0'>
+<tr>
+    <td><label for='infopagodettype_valor' class=''>Mes Cruce:</label></td>
+    <td>
+        <select id='mes' name='mes'>
+			<option value=''>Seleccione</option>
+			<option value='01'>Enero</option>
+			<option value='02'>Febrero</option>
+			<option value='03'>Marzo</option>
+			<option value='04'>Abril</option>
+			<option value='05'>Mayo</option>
+			<option value='06'>Junio</option>
+			<option value='07'>Julio</option>
+			<option value='08'>Agosto</option>
+			<option value='09'>Septiembre</option>
+			<option value='10'>Octubre</option>
+			<option value='11'>Noviembre</option>
+			<option value='12'>Diciembre</option>
+		</select>
+    </td>
+    <td>&nbsp;</td>  
+    <td><label for='infopagodettype_valor' class=''>A&ntilde;o Cruce:</label></td>
+    <td>
+		{% if (strPrefijoEmpresa =='EN') %}
+			<select id='anio' name='anio'>
+				<option value=''>Seleccione</option>
+				{% for anio in 2023.."now"|date("Y") %}
+					<option value={{anio}}>{{anio}}</option>
+				{% endfor %}	
+			</select>
+		{% else %}
+			<select id='anio' name='anio'>
+				<option value=''>Seleccione</option>
+				{% for anio in 2010.."now"|date("Y") %}
+					<option value={{anio}}>{{anio}}</option>
+				{% endfor %}	
+			</select>
+		{% endif %}
+
+    </td>	
+</tr>
+</table>     
+</div>
+
+<div class="body_content">      
+                <div class="buttons">
+				<p>
+                                    <button type="button" onclick="document.forms[0].submit()" class="button-crud">Generar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('infopagocab') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div>         
+</div>
+</form>
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+{% endblock %}

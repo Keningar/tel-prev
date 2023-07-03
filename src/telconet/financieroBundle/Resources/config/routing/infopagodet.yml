@@ -1,0 +1,30 @@
+infopagodet:
+    pattern:  /
+    defaults: { _controller: "schemaBundle:InfoPagoDet:index" }
+
+infopagodet_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "schemaBundle:InfoPagoDet:show" }
+
+infopagodet_new:
+    pattern:  /new
+    defaults: { _controller: "schemaBundle:InfoPagoDet:new" }
+
+infopagodet_create:
+    pattern:  /create
+    defaults: { _controller: "schemaBundle:InfoPagoDet:create" }
+    requirements: { _method: post }
+
+infopagodet_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "schemaBundle:InfoPagoDet:edit" }
+
+infopagodet_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "schemaBundle:InfoPagoDet:update" }
+    requirements: { _method: post }
+
+infopagodet_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "schemaBundle:InfoPagoDet:delete" }
+    requirements: { _method: post }

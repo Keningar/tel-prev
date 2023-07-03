@@ -1,0 +1,78 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		} 
+		.icon_bank {
+			background-image:url('{{ asset('public/images/images_crud/bank.png') }}') !important;
+                }                  
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Pagos del dia</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                <td bgcolor='#ffffff'><div id='filtro_pagos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_pagos'></div></td>
+            </tr>
+
+    </table>        
+                    
+       <link href="{{ asset('public/js/ext-4.1.1/extjs-boxselect-2.0.3/src/BoxSelect.css') }}" type="text/css" rel="stylesheet" />    
+       <script src="{{ asset("public/js/ext-4.1.1/extjs-boxselect-2.0.3/src/BoxSelect.js")}}"></script>                    
+        <script>
+                  
+        
+        var url_grid ='{{path('reportes_cierreCajaAjax')}}'; 
+        {% if (strPrefijoEmpresa =='TN') %}
+            var url_lista_oficinas = "{{ path('infooficinagrupo_getOficinasPrincipalesByPrefijoEmpresaJson') }}";
+        {% elseif (strPrefijoEmpresa =='TNP') %}
+            var url_lista_oficinas = "{{ path('infooficinagrupo_getOficinasPrincipalesByPrefijoEmpresaJson') }}";  
+        {% else %}
+            var url_lista_oficinas = "{{ path('infooficinagrupo_getOficinasByPrefijoEmpresaJson') }}"; 
+        {% endif %}                    
+        var url_lista_formaspago='{{path('reportes_formaPagoDepositable')}}';
+       //var url_generarPDF='{path('reportes_ pdfCierreCaja')}}';
+        //var url_show_pagoDet='{path('infopagodet_show',{'id':entity.id}) }}';
+        var url_marcar_depositado_ajax='';
+        var url_lista_bancos='';    
+		var url_lista_bancos_contables='';
+        var url_lista_cuentas='';
+		var url_lista_cuentas_bancos_contables='';
+                
+       
+        </script>        
+         <script type="text/javascript" src="{{ asset('./bundles/financiero/js/reportes/cierreCaja.js?3') }}"></script>              
+
+            </script>
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+
+{% endblock contenido_der %}

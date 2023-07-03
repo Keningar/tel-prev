@@ -1,0 +1,27 @@
+/**
+ * @author Alex Arreaga <atarreaga@telconet.ec>
+ * @version 1.0
+ * @since 20-05-2021    
+ * Se crea reverso de los parámetros de cargo por reproceso de débitos.
+ */
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE PARAMETRO_ID = 
+  (
+  SELECT ID_PARAMETRO 
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+  WHERE NOMBRE_PARAMETRO = 'PARAM_CARGO_REPROCESO_DEBITOS'
+  AND MODULO             = 'FINANCIERO'
+  AND ESTADO             = 'Activo' 
+  )
+AND DESCRIPCION = 'ESTADOS_SOLICITUD';
+
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+WHERE NOMBRE_PARAMETRO = 'PARAM_CARGO_REPROCESO_DEBITOS'
+AND MODULO             = 'FINANCIERO'
+AND PROCESO            = 'CARGO_REPROCESO_DEBITO'
+AND ESTADO             = 'Activo';
+
+COMMIT;
+/

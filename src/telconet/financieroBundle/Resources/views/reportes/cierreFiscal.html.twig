@@ -1,0 +1,87 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_apiCierreFiscal = "{{ path('reportes_generaCierreFiscal') }}";
+    </script>   
+                     
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Reporte de Cierre Fiscal</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+
+{% if error is defined %}
+        <div id='div_error' class='errormessage' style="">{{ error }}</div>
+{% endif %} 
+    
+<div class="body_content"> 
+<table border='0'>
+<tr>
+    <td><label for='infopagodettype_valor' class=''>*Tipo de Cierre: </label></td>
+    <td>
+        <select id='tipo_cierre' name='tipo_cierre'>			
+			<option value='cierrex'>Cierre Fiscal X</option>
+			<option value='cierrez'>Cierre Fiscal Z</option>			
+		</select>
+    </td>    	
+</tr>
+</table>     
+</div>
+
+<div class="body_content">      
+                <div class="buttons">
+				<p>
+                                    <button type="button" onclick="generaCierreFiscal()" class="button-crud">Generar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('financiero_opcion') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div>         
+</div>
+</form>
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+<script type="text/javascript">    
+function generaCierreFiscal()
+{
+    var tipo_cierre     = $('#tipo_cierre').val();	
+   
+    Ext.MessageBox.wait('Procesando');
+    Ext.Ajax.request({
+        url: url_apiCierreFiscal,
+        method: 'post',
+        params: {strTipoCierre: tipo_cierre},
+        success: function (response) 
+        {
+            var text = Ext.decode(response.responseText);
+            if (text.strCodError === 'OK') 
+            {
+                Ext.Msg.alert('Success', text.strMensaje);
+            } else {
+                Ext.Msg.alert('Error', text.strMensaje);
+            }
+        },
+        failure: function (rec, op) {
+            var json = Ext.JSON.decode(op.response.responseText);
+            Ext.Msg.alert('Alerta ', json.mensaje);
+        }
+    });
+}
+</script>  
+ {% endblock javascripts_footer%}

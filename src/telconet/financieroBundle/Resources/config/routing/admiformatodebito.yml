@@ -1,0 +1,162 @@
+admiformatodebito:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:index" }
+
+admiformatodebito_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:show" }
+
+admiformatodebito_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:new" }
+
+admiformatodebito_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:create" }
+    requirements: { _method: post }
+
+admiformatodebito_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:edit" }
+
+admiformatodebito_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:update" }
+    requirements: { _method: post }
+
+admiformatodebito_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:delete" }
+    requirements: { _method: post }
+
+admiformatodebito_estados:
+    pattern:  /listestados
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:estados"}
+
+admiformatodebito_grid:
+    pattern:  /grid
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:grid"}
+
+admiformatodebito_grid_show:
+    pattern:  /{id}/gridshow
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridShow"}
+
+admiformatodebito_asignarValidaciones:
+    pattern:  /asignarValidaciones
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:asignar_validacion_ajax"}
+
+admiformatodebito_getListadoTiposCuenta:
+    pattern:  /getListadoTiposCuentaVisibleFormato
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getListadoTiposCuenta"}
+
+admiformatodebito_getListadoCampos:
+    pattern:  /getListadoCampos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getListadoCampos"}
+
+admiformatodebito_grid_generar_debitos:
+    pattern:  /gridgenerardebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridGenerarDebitos"}
+
+admiformatodebito_generar_debitos:
+    pattern:  /generardebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:generarDebitos"}
+
+admiformatodebito_getListadoBancos:
+    pattern:  /getListadoBancos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getListadoBancos"}
+
+admiformatodebito_getListadoBancosParaDebitos:
+    pattern:  /getListadoBancosParaDebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getListadoBancosTipoCtaDebitos"}
+
+admiformatodebito_download_archivo_generado:
+    pattern:  /downloadarchivogenerado/{archivo}
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:downloadArchivoDebitoGenerado" }
+
+admiformatodebito_download_archivo_respuesta:
+    pattern:  /downloadarchivorecaudacion/{archivo}
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:downloadArchivoDebitosNoEncontrados" }
+
+admiformatodebito_excelpagos_por_debito_gen:
+    pattern:  /excelpagospordebitogen/{idDebGen}
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:excelPagosPorDebitoGen"}
+
+admiformatodebito_exceldebitos_por_debito_gen:
+    pattern:  /exceldebitospordebitogen/{idDebGen}
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:excelDebitosGenerados"}
+
+admiformatodebito_grid_debitos_por_punto:
+    pattern:  /griddebitosporpunto
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridDebitosPorPunto"}
+
+admiformatodebito_grid_debitos_por_cliente:
+    pattern:  /griddebitosporcliente
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridDebitosPorCliente"}
+
+admiformatodebito_get_grupo_debito_por_debito_gen:
+    pattern:  /getGrupoDebitosPorDebitoGeneral
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getGrupoDebitosPorDebitoGeneralAjax"}
+
+admiformatodebito_anula_cabecera_debito:
+    pattern:  /anulaCabeceraDebito
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:anulaCabeceraDebito" }
+
+admiformatodebito_reabre_cabecera_debito:
+    pattern:  /reabreCabeceraDebito
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:reabreCabeceraDebito" }
+
+admiformatodebito_getImpuestos:
+    pattern:  /getImpuestos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getImpuestos" }
+
+admiformatodebito_getInformacionCombosDebitos:
+    pattern:  /getInformacionCombosDebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getInformacionCombosDebitos" }
+
+admiformatodebito_getMensajesDebitos:
+    pattern:  /getMensajesDebitos
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getMensajesDebitos" }
+
+admiformatodebito_getParametroFlujoPlanificado:
+    pattern:  /getParametroFlujoPlanificado:
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getParametroFlujoPlanificado" }
+
+admiformatodebito_gridGrupoDebitosDet:
+    pattern:  /gridGrupoDebitosDet
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:gridGrupoDebitosDet" }
+
+admiformatodebito_validadorDebitoExistente:
+    pattern:  /validadorDebitoExistente
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:validadorDebitoExistente" }
+
+admiformatodebito_obtieneCiclosPorEstado:
+    pattern:  /obtieneCiclosPorEstado
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:obtieneCiclosPorEstado" }
+    
+admiformatodebito_obtieneEscenariosPorEstado:
+    pattern:  /obtieneEscenariosPorEstado
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:obtieneEscenariosPorEstado" }
+
+admiformatodebito_obtieneMontosEscenario2:
+    pattern:  /obtieneMontosEscenario2
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:obtieneMontosEscenario2" }
+    
+admiformatodebito_obtieneCuotasEscenario3:
+    pattern:  /obtieneCuotasEscenario3
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:obtieneCuotasEscenario3" }
+
+admiformatodebito_cuentaCabeceras:
+    pattern:  /cuentaCabeceras
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:cuentaCabeceras" }
+    
+admiformatodebito_cuentaRegistroDebitoGeneralHistorial:
+    pattern:  /cuentaRegistroDebitoHistorial
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getCuentaRegistroDebitoGeneralHistorial"}
+    
+admiformatodebito_getValorDetParametros:
+    pattern:  /getValorDetParametros
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getValorDetParametros" }
+    
+admiformatodebito_getValorMsjParamDebito:
+    pattern:  /getValorMsjParamDebito
+    defaults: { _controller: "financieroBundle:AdmiFormatoDebito:getValorMsjParamDebito" }

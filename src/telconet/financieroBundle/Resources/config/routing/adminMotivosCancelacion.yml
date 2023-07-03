@@ -1,0 +1,32 @@
+adminMotivosCancelacion:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdminMotivosCancelacion:index" }
+    
+adminMotivosCancelacion_grid:
+    pattern:  /gridMotivos
+    defaults: { _controller: "financieroBundle:AdminMotivosCancelacion:gridMotivos"}
+
+adminMotivosCancelacion_editar:
+    pattern:  /editar/{intIdMotivo}
+    defaults: { _controller: "financieroBundle:AdminMotivosCancelacion:editar" }
+
+adminMotivosCancelacion_eliminar:
+    pattern:  /eliminar/{intIdMotivo}
+    defaults: { _controller: "financieroBundle:AdminMotivosCancelacion:eliminar" }
+    
+adminMotivosCancelacion_nueva:
+    pattern:  /crear
+    defaults: { _controller: "financieroBundle:AdminMotivosCancelacion:crear" }
+
+adminMotivosCancelacion_crear_accion:
+    pattern:  /crear_accion
+    defaults: { _controller: "financieroBundle:AdminMotivosCancelacion:crearMotivo" }
+
+adminMotivosCancelacion_editar_accion:
+    pattern:  /editar_accion
+    defaults: { _controller: "financieroBundle:AdminMotivosCancelacion:editarMotivo" }
+
+adminMotivosCancelacion_eliminar_accion:
+    pattern:  /eliminar_accion
+    defaults: { _controller: "financieroBundle:AdminMotivosCancelacion:eliminarMotivo" }
+

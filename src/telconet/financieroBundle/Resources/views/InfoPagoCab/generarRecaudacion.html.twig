@@ -1,0 +1,58 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Generar Recaudacion</h1>
+    </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% for flashMessageSubida in app.session.flashbag.get('subida') %}
+        <div class="successmessage">
+            {{flashMessageSubida}}
+        </div>
+    {% endfor %}
+    <div class="body_content k-content">
+        <div id="example" class="k-content">
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='lista'>
+                            <div id = "fieldsTabDebitosGenerales"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>                               
+            <script>
+            var strUrlGridCanalesRecaudacion  = "{{ path('inforecaudacion_canales_recaudacion') }}";
+            </script>        
+            <script type="text/javascript" src="{{ asset('./bundles/financiero/js/pagos/generarRecaudacion.js') }}"></script>
+        </div>
+    </div>
+    <form action="{{ path('inforecaudacion_generar_recaudacion') }}" method="post" class="formulario" id='form_genera_recaudacion' >
+        <input id='canalesRecaudacion' name='canalesRecaudacion' type='hidden' value=''/>
+        <div class="buttons">
+            <p>
+                <a class="button-crud" href="#" onClick='procesar()'>Generar</a>
+            </p>
+        </div>
+    </form>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <br />
+    <ul class="form_actions">
+        <li>
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+{% endblock contenido_der %}

@@ -1,0 +1,77 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		} 
+		.icon_process {
+			background-image:url('{{ asset('public/images/images_crud/developer.png') }}') !important;
+                }                  
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Procesar Depositos</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_pagos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_pagos'></div></td>
+            </tr>
+
+    </table>        
+        
+        <link href="{{ asset('public/js/ext-4.1.1/extjs-boxselect-2.0.3/src/BoxSelect.css') }}" type="text/css" rel="stylesheet" />
+        <script src="{{ asset("public/js/ext-4.1.1/extjs-boxselect-2.0.3/src/BoxSelect.js")}}"></script>                       
+        <script>
+        var url_grid                   = "{{ path('infodeposito_griddepositos') }}";
+        var url_anular                 = "{{ path('infodeposito_anular') }}";
+        var url_marcar_depositado_ajax = '{{path('infodeposito_depositar')}}';
+        var url_lista_bancos           = '{{path('infopagocab_getListadoBancos')}}';
+        var url_lista_cuentas          = '{{path('infopagocab_getListadoBancos')}}';
+        var url_procesar               = '{{path('infodeposito_procesar')}}';
+        var url_editarDeposito         ='{{path('infodeposito_editardeposito')}}';
+        var puedeVerExcelPagosDeposito = '{{ is_granted("ROLE_86-4098") }}';        
+        var puedeVerProcesarDeposito   = '{{ is_granted("ROLE_86-4118") }}';
+        var puedeAnularDeposito        = '{{ is_granted("ROLE_86-4117") }}';
+        var strPrefijoEmpresa          = '{{strPrefijoEmpresa}}';    
+        var strContabiliza             = '{{ strContabiliza }}';
+        var strUrlValidarFechaPago     = '{{ path('infopagocab_validarFechaPago') }}';
+        </script>        
+         <script type="text/javascript" src="{{ asset('./bundles/financiero/js/infodeposito/depositos.js?5') }}"></script>              
+
+            </script>
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+<ul class="listado_acciones_relacionadas">
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('infopagocab') }}">Lista de Pagos</a>
+                    </li>    
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('infodeposito') }}">Generar Depositos</a>
+                    </li>                    
+</ul>
+{% endblock contenido_der %}

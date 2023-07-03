@@ -1,0 +1,19 @@
+admiMotivosEliminar:
+    pattern:  /show
+    defaults: { _controller: "financieroBundle:AdmiMotivosEliminar:administrarMotivosEliminacion" }
+    
+admiMotivosEliminar_getListadoParametrosCabJson:
+    pattern:  /getListadoParametrosCabJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosEliminar:getListadoParametrosCabAjax" }  
+    
+admiMotivosEliminar_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosEliminar:getListadoParametrosDetAjax" }  
+    
+admiMotivosEliminar_getListadoParametrosHistJson:
+    pattern:  /getListadoParametrosHistJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosEliminar:getListadoParametrosHistAjax" }      
+    
+admiMotivosEliminar_activarInactivarMotivosRechazo:
+    pattern:  /activarInactivarMotivosRechazoAjax
+    defaults: { _controller: "financieroBundle:AdmiMotivosEliminar:activarInactivarMotivosRechazoAjax" } 

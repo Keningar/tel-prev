@@ -1,0 +1,804 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin:0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+        .error-inline {
+            display: flex;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            gap: 0.4em;
+            white-space: initial;
+        }
+    </style>
+    <link href="{{ asset('./bundles/comercial/css/funcionPrecio.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquerysctipttop.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_listar_informacion_existente = '{{path('infodocumentofinancierocab_ajax_get_info_pto_cliente')}}';
+        var strUrlGetOficinasFacturacion     = '{{ path("infodocumentofinancierocab_getOficinasFacturacion") }}';
+        var strUrlGetNumeracionesFacturacion = '{{ path("infodocumentofinancierocab_getNumeracionesFacturacion") }}';
+        var strUrlGetNumeroFactura           = '{{ path("infodocumentofinancierocab_getNumeroFactura") }}';
+        var url_listar_caracteristicas       = '{{ path('infoplancaracteristicas_listar_caracteristicas') }}';
+        var strUrlGetImpuestos               = '{{ path('infodocumentofinancierocab_getImpuestos') }}';
+        var getSolicitudReprocesoAjax        = '{{ path('infodocumentofinancierocab_getSolicitudReprocesoAjax') }}';
+        var strFechaConsumo                  = 'N';
+        var strOpcionesFechaConsumo          = 'N';
+        var strPrecargadaSinFrecuencia       = 'N';
+        
+        {% if strClonarFactura is defined %}
+            {% if strClonarFactura == "S" %}
+                var strClonarFactura = "{{ strClonarFactura }}";
+                {% if observacion is defined %}
+                    var strObservacion = "{{ observacion }}";
+                {% endif %}
+                {% if idfactura is defined %}
+                    var strIdFactura= "{{idfactura}}";
+                {% endif %}
+                
+                var strNecesitaEliminarPrefactura =  "{{ strNecesitaEliminarPrefactura }}";
+                {% if mes_consumo is defined %}
+                    var mes_consumo = "{{mes_consumo}}";
+                {% endif %}
+                {% if anio_consumo is defined %}
+                    var anio_consumo = "{{anio_consumo}}";
+                {% endif %}
+                var strDescripcionDetCaract = "{{strDescripcionDetCaract}}";
+            {% endif %}
+            {% else %}
+                var strClonarFactura = "N";
+                var strIdFactura= null;
+                var strNecesitaEliminarPrefactura="false";
+                var strDescripcionDetCaract = null;
+            {% endif %}
+        
+        {% if fecha_consumo is defined %}
+            var fecha_consumo = "{{ fecha_consumo }}"
+        {% endif %}
+        
+        {% if diaInicial is defined %}
+            var dia_inicial = "{{ diaInicial }}";
+        {% endif %}
+
+        {% if diaFinal is defined %}
+            var dia_final = "{{ diaFinal }}";
+        {% endif %}
+
+        {% if mesInicial is defined %}
+            var mes_inicial = "{{ mesInicial }}";
+        {% endif %}
+
+        {% if mesFinal is defined %}
+            var mes_final = "{{ mesFinal }}";
+        {% endif %}
+        
+        
+        
+        {% if FECHA_CONSUMO is defined %}
+            {% if FECHA_CONSUMO == 'S' %}
+                strFechaConsumo = '{{ FECHA_CONSUMO }}';
+            {% endif %}
+        {% endif %}
+            
+        {% if OPCIONES_FECHA_CONSUMO is defined %}
+            {% if OPCIONES_FECHA_CONSUMO == 'S' %}
+                strOpcionesFechaConsumo = '{{ OPCIONES_FECHA_CONSUMO }}';
+            {% endif %}
+        {% endif %}
+            
+        {% if PRECARGADA_SIN_FRECUENCIA is defined %}
+            {% if PRECARGADA_SIN_FRECUENCIA == 'S' %}
+                strPrecargadaSinFrecuencia = '{{ PRECARGADA_SIN_FRECUENCIA }}';
+            {% endif %}
+        {% endif %}
+        
+        {% if(punto_id is defined) %}
+            var punto_id            = '{{ punto_id.id }}';
+            var strPrefijoEmpresa   = '{{ strPrefijoEmpresa }}';
+            
+            {% if strClonarFactura is defined and strClonarFactura=="S"%}
+                var intIdOficina = '{{ intIdOficinaClonar }}';
+            {% else %}
+                var intIdOficina = '{{ intIdOficina }}';
+            {% endif %}
+   
+            var strNombreOficina    = '{{ strNombreOficina }}';
+        {% endif %}
+            
+        var url_info_portafolio         = '{{ path('infoordentrabajo_tipo') }}';
+        var url_info_plan               = '{{ path('infoordentrabajo_info_plan') }}';
+        var acum_subtotal               = 0;
+        var acum_impuesto               = 0;
+        var acum_subtotal_ice           = 0;
+        var acum_impuestoIce            = 0;
+        var acum_impuestoIva            = 0;
+        var acum_impuestoOtros          = 0;
+        var acum_total                  = 0;
+        var acum_descuento              = 0;
+        var floatCompensacionSolidaria  = 0;
+        var floatPorcentajeCompensacion = '{{ floatPorcentajeCompensacion }}';
+        var nombre_tipo_negocio         ='{{ nombre_tipo_negocio }}';
+        var nombre_tipo_negocio_no      ='{{ nombre_tipo_negocio_no }}';
+        var strPagaIva                  ='{{ strPagaIva }}';
+        var boolFacturacionAgrupada     = false;
+        var boolDisableComboOficina     = '{{ boolDisableComboOficina }}';
+        var intIdImpuestoIvaActivo      = '{{ intIdImpuestoIvaActivo }}';
+        var strClienteEsCompensado      = '{{ esCompensado }}';
+        var Mask;
+        
+        function loadMask(el, flag, msg)
+        {
+            Mask = new Ext.LoadMask(Ext.get(el), {msg: msg});
+            
+            if (flag)
+            {
+                Mask.show();
+            }
+            else
+            {
+                Mask.hide();
+            }
+        }
+    </script>   
+    {% if boolPuedeFacturar %}
+        <script type="text/javascript" src="{{ asset('bundles/financiero/js/facturacion/new.js?32') }}"></script>
+     {% endif %}
+    <script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/ux/exporter/Exporter-all.js?3')}}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery_ui_1_8_17/js/jquery-1.7.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery.monthpicker.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="myLoading" class="myloadingjs" style="float: center; overflow: auto;">
+        <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            <h1>Nueva factura</h1>
+        </div>
+        <div class="body_content">
+            {% for flashMessage in app.session.flashbag.get('notice') %}
+               <div class="errormessage">
+                   {{ flashMessage }}
+               </div>
+            {% endfor %}
+
+            {% for arrayFacturaDuplicada in app.session.flashbag.get('facturaDuplicada') %}
+               <div class="errormessage error-inline">
+                    <span>{{ arrayFacturaDuplicada['mensaje'] }}</span>
+                    <a target="_blank" href={{'/financiero/documentos/facturas/'~ arrayFacturaDuplicada['idFactura'] ~'/show'}}>
+                     Haz click aquí para visualizar el documento
+                    </a>
+               </div>
+            {% endfor %}
+            
+                
+            
+            {% if(punto_id is defined)%}
+                {% if boolPuedeFacturar %}
+
+                    {% if arrayAlertasClonacion is defined %}
+                        {% for mensaje_factura_clon_especial in  arrayAlertasClonacion %}
+                            <div class='warningmessage'>
+                                {{ mensaje_factura_clon_especial }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div id="div-info-fac" class="secHead">Informacion de factura</div>
+                    <table id="tab-info-fac" class="formulario">
+                        <tr>
+                            <td><b>Oficina de Facturaci&oacute;n: </b></td>
+                            <td>
+                                <div id="oficinaFacturacion"></div>
+                            </td>
+                            <td width = "25px"></td>
+                            <td><b>Numeración: </b></td>
+                            <td>
+                                <div id="numeracionFacturacion"></div>
+                            </td>
+                            {% if is_granted('ROLE_67-4277') %}
+                                <td width = "40px"></td>
+                                <td><b>Impuesto:</b></td>
+                                <td><div id="divImpuestoIva"></div></td>
+                            {% elseif is_granted('ROLE_67-4297') %}
+                                <td width = "40px"></td>
+                                <td><b>&nbsp;</b></td>
+                                <td>&nbsp;</td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td><b>Numero de Factura: </b></td>
+                            <td>
+                                <div id="numFactura"></div>
+                            </td>
+                            <td width = "25px"></td>
+                            <td><b>Es Electronica: </b></td>
+                            <td>{{ esElectronica }}</td>
+                            {% if is_granted('ROLE_67-4297') %}
+                                <td width = "40px"></td>
+                                {% if(strPrefijoEmpresa=='TN' or strPrefijoEmpresa=='MD' or strPrefijoEmpresa == 'EN')%}
+                                    <td><b>Aplica ICE:</b></td>
+                                    <td><input type="checkbox" value="SI" id="aplicaIce" checked="checked" name="aplicaIce" style="width:30px" /></td>
+                                {% elseif(strPrefijoEmpresa=='TNP')%}
+                                    <td><b>Aplica IEC:</b></td>
+                                    <td><input type="checkbox" value="SI" id="aplicaIce" checked="checked" name="aplicaIce" style="width:30px" /></td>
+                                {% endif %}
+                                <td><input type="hidden" value="NO" id="aplicaIce" name="aplicaIce" style="width:30px" /></td>
+                            {% elseif is_granted('ROLE_67-4277') %}
+                                <td width = "40px"></td>
+                                <td><b>&nbsp;</b></td>
+                                <td>&nbsp;</td>
+                            {% endif %}
+                        </tr>
+                        {% if is_granted('ROLE_67-4777') %}
+                            <tr>
+                                {% if(strPrefijoEmpresa!='TNG')%}
+                                    <td height="30px">
+                                        <b>Es Compensado:</b>
+                                    </td>
+                                    <td height="30px">
+                                        <input type="checkbox" value="SI" id="esCompensado" name="esCompensado" style="width:30px"
+                                        {% if esCompensado == "S" %} checked="checked" {% endif %} onclick="verificarSiClienteEsCompensado();"/>
+                                    </td>
+                                    <td colspan="6" height="30px">&nbsp;</td>
+                                      {% else %}
+                                    <input type="hidden" value="NO" id="esCompensado" name="esCompensado" style="width:30px"/>
+                                {% endif %}
+                            </tr>
+                        {% endif %}
+                    </table>
+                    <br/>
+                    <div class="secHead">Información del cliente</div>
+                    <table class="formulario">
+                        <tr>
+                            <td><b>Razón social: </b></td>
+                            <td>{{ cliente.razon_social }}</td>
+                            <td width = "25px"></td>
+                            <td><b>Cliente: </b></td>
+                            <td>{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Pto. cliente: </b></td>
+                            <td> {{ punto_id.login }}</td>
+                            <td width = "25px"></td>
+                            <td><b>Descripción: </b></td>
+                            <td> {{ punto_id.descripcion }}</td>
+                        </tr>
+                        <tr>
+                            {% if(strPrefijoEmpresa=='TN' or strPrefijoEmpresa=='MD' or strPrefijoEmpresa=='TNG' or strPrefijoEmpresa == 'EN')%}
+                                <td><b>Paga Iva: </b></td>
+                            {% elseif(strPrefijoEmpresa=='TNP')%}
+                                <td><b>Paga Itbms: </b></td>
+                            {% endif %} 
+                            {% if strPagaIva == "S" %}
+                                <td> Si </td>
+                            {% elseif strPagaIva == "N" %}
+                                <td> No </td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div id="msgCompensacion" {% if esCompensado != "S" %} style="display: none" {% endif %} class="info-success" 
+                                     style="padding:5px!important; margin: 15px 0px!important;">
+                                    <b>Atenci&oacute;n: </b>El usuario ser&aacute; compensado
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <form action="{{ path('infodocumentofinancierocab_create') }}" method="post" {{ form_enctype(form) }} 
+                          class="formulario" name="formulario">
+                          {% if strClonarFactura is defined %}          
+                            {% if strClonarFactura=="S" %}
+                                <input type="hidden" id="strClonarFactura" name="strClonarFactura" />
+                                <input type="hidden" id="strIdFactura" name="strIdFactura" value="{{idfactura}}" />
+                                {% if strNecesitaEliminarPrefactura is defined %}
+                                    <input type="hidden" id="strNecesitaEliminarPrefactura" name="strNecesitaEliminarPrefactura" value="{{strNecesitaEliminarPrefactura}}" />
+                                {% endif %}
+                                {% if strDescripcionDetCaract is defined %}
+                                    <input type="hidden" id="strDescripcionDetCaract" name="strDescripcionDetCaract" value="{{strDescripcionDetCaract}}" />
+                                {% endif %}
+                            {% endif %}  
+                          {% endif %}
+                        <input type="hidden" id="intIdOficina" name="intIdOficina" />
+                        <input type="hidden" id="intIdNumeracion" name="intIdNumeracion" />
+                        <input type="hidden" id="strNumeroFacturacion" name="strNumeroFacturacion" />
+                        <input type="hidden" id="strFacturacionAgrupada" name="strFacturacionAgrupada" value="N" />
+                        <input type="hidden" id="intTxtIdImpuesto" name="intTxtIdImpuesto" value="0" />
+                        <input type="hidden" id="strPagaIce" name="strPagaIce" value="SI" />
+                        <input type="hidden" id="strEsCompensado" name="strEsCompensado" {% if esCompensado != "S" %} value="NO" {% else %}
+                               value="SI" {% endif %}/>
+
+                        {{ form_widget(form) }}
+                        {% if FECHA_CONSUMO is defined %}
+                            {% if FECHA_CONSUMO == 'S' %}
+                                <div class="secHead">Fecha de Consumo</div>
+                                <table>
+                                    <tr><td><div id="strFechaConsumo"></div></td>
+                                        <td width = "25px"></td>
+                                        <td><div id ="textFieldAnio"></div></td>
+                                    </tr>
+                                </table>   
+                            {% endif %}             
+                        {% endif %}
+                        {% if OPCIONES_FECHA_CONSUMO is defined %}
+                            {% if OPCIONES_FECHA_CONSUMO == 'S' %}
+                                <div id="cabeceraFecha" style="clear:both; margin-bottom: 20px; overflow:hidden;">
+                                    <div style="float:left; width: 45%">
+                                        <div id="formulario_motivos" style="clear:both;">
+                                            <div class="secHead">Opciones de Fecha de Consumo:</div>
+                                            <div>
+                                                <div>
+                                                {% if strClonarFactura is defined %}
+                                                    {% if strClonarFactura == 'S' %}
+                                                        <input type="radio" id="feConsumo" name="opcConsumo" value="feConsumo"
+                                                           onclick="verificarCheck(this.value)"/>Por Fecha de Consumo<br>
+                                                    {% else %}
+                                                        <input type="radio" id="feConsumo" name="opcConsumo" value="feConsumo"  checked="checked" 
+                                                           onclick="verificarCheck(this.value)"/>Por Fecha de Consumo<br>
+                                                    {% endif %}
+                                                {% else %}
+                                                    <input type="radio" id="feConsumo" name="opcConsumo" value="feConsumo"  checked="checked" 
+                                                           onclick="verificarCheck(this.value)"/>Por Fecha de Consumo<br>
+                                                {% endif %}
+                                                     {% if(strPrefijoEmpresa!='TNG')%}
+                                                     <input type="radio" id="rangoConsumo"name="opcConsumo" value="rangoConsumo" onclick="verificarCheck(this.value)"/>
+                                                        Por Rango de Fechas<br>
+                                                     {% endif %} 
+                                                    <input type="hidden" id="opcFeConsumoSelected" name="opcFeConsumoSelected" value="feConsumo" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width: 10%">&nbsp</div>
+                                    <div style="float:left; width: 45%">
+                                        <div class="secHead">Fecha de Consumo</div>
+                                        <div id="div_feConsumo" style="clear:both;">
+                                            <table>
+                                                <tr>
+                                                    <td><div id="strFechaConsumo"></div></td>
+                                                    <td width="10px"></td>
+                                                    <td><div id ="textFieldAnio"></div></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div id="div_rangoConsumo" style="display:none; clear:both;">
+
+                                            <div style="float:left">
+                                                <input type="radio" id="opcRangoConsumoDias" name="opcRangoConsumo" value="consumoDias" checked="checked" 
+                                                       onclick="verificarCheck(this.value)"/>Por D&iacute;as<br>
+                                                <input type="radio" id="opcRangoConsumoMeses" name="opcRangoConsumo" value="consumoMeses"
+                                                       onclick="verificarCheck(this.value)"/>
+                                                    Por Meses<br>
+                                                <input type="hidden" id="opcRangoConsumoSelected" name="opcRangoConsumoSelected"
+                                                       value="consumoDias" />
+                                            </div>
+
+                                            <div style="float:left; margin-left: 30px;">
+                                                <div id="divPorDias">
+                                                    <table>
+                                                        <tr>
+                                                            <td><div id="dateFechaDiaInicio"></div></td>
+                                                            <td width="10px">&nbsp;</td>
+                                                            <td width="10px"> al </td>
+                                                            <td width="10px">&nbsp;</td>
+                                                            <td><div id ="dateFechaDiaFin"></div></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div id="divPorMeses" style="display:none; clear:both;">
+                                                    <table>
+                                                        <tr>
+                                                            <td><div id="dateFechaMesInicio"></div></td>
+                                                            <td width="10px">&nbsp;</td>
+                                                            <td width="10px"> al </td>
+                                                            <td width="10px">&nbsp;</td>
+                                                            <td><div id ="dateFechaMesFin"></div></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="txtFechaMesInicio" id="txtFechaMesInicio" />
+                                        <input type="hidden" name="txtFechaMesFin" id="txtFechaMesFin" />
+                                    </div>
+                                </div>
+                            {% endif %}                  
+                        {% endif %}
+
+                        {% if strMuestraObservacion == "S" %}    
+                            <div class="secHead">Observacion:</div>
+                            <div>
+                                <div>
+                                    <div id='observacion-div' required="true"></div>
+                                    <textarea cols='130' rows='2' name="observacion" id="observacion"> </textarea>
+                                </div>
+                            </div>                          
+                        {% endif %}    
+                        <div class="secHead">Tipo de orden de servicio</div>
+                        <div>
+                        {% if strClonarFactura is defined %}
+                            <input type="radio" id="radio-clonar" name="info" value="Clonar" onclick="verificarCheck(this.value)" checked="true" style="visibility:hidden"><br>
+                        {% endif %}
+                            <input type="radio" name="info" value="Orden" onclick="verificarCheck(this.value)">Precargada Normal<br>
+                            {% if(strPrefijoEmpresa!='TNG')%}
+                                <input type="radio" name="info" value="Agrupada" onclick="verificarCheck(this.value)">Precargada Agrupada<br>
+                                {% if PRECARGADA_SIN_FRECUENCIA is defined %}
+                                    {% if PRECARGADA_SIN_FRECUENCIA == 'S' %}
+                                        <input type="radio" name="info" value="SinFrencuencia" onclick="verificarCheck(this.value)">
+                                        Precargada Sin Frecuencia<br>
+                                        {% if(strPrefijoEmpresa=='TN')%}
+                                            <input type="radio" name="info" value="SinFrencuenciaOrden" onclick="verificarCheck(this.value)">
+                                            Precargada Sin Frecuencia y Precargada Normal<br>
+                                            <input type="radio" name="info" value="AgrupadaSinFrencuenciaOrden" onclick="verificarCheck(this.value)">
+                                            Precargada Agrupada de Precargada Sin Frecuencia y Precargada Normal<br>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                            <input type="radio" name="info" value="Manual" onclick="verificarCheck(this.value)">Manual<br>
+                        </div>
+                        
+                       {% if(strPrefijoEmpresa=='TNP' or strPrefijoEmpresa=='TNG')%}
+                          <div id="formulario_tipo" class="campo-oculto"> 
+                             <div class="secHead">Tipo</div>
+
+                             <div>
+                                  <input type="radio" name="tipo_ingreso" id="tipo_ingreso" value="catalogo" 
+                                         onclick="verificarTipoCheck(this.value)">Por Producto<br>
+                                  <input type="radio" name="tipo_ingreso" id="tipo_ingreso" value="portafolio"
+                                         onclick="verificarTipoCheck(this.value)">Por Paquete<br>
+                             </div>
+                          </div>
+                       {% endif %}  
+                       
+                        <div id="formulario_portafolio" class="campo-oculto">
+                            <div class="secHead">Por portafolio:</div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label class="required" for="listado"><b>* Listado de Planes:</b></label>
+                                    </td>
+                                    <td>
+                                        <select id="planes">
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <label class="required" for="cantidad"><b>* Descripci&oacute;n:</b></label>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="campo-obligatorio" name="descripcion_plan" id="descripcion_plan" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="required" for="cantidad"><b>* Cantidad:</b></label>
+                                    </td>
+                                    <td>
+                                        <div id='div_valor_c' class='errormessage' style="display:none"></div>
+                                        <input type="text" class="campo-obligatorio" name="cantidad_plan" id="cantidad_plan" value="1">
+                                    </td>
+                                    <td>
+                                        <label class="required" for="cantidad"><b>* Descuento:</b></label>
+                                    </td>
+                                    <td>
+                                        <div id='div_valor_d' class='errormessage' style="display:none"></div>
+                                        <input type="text" class="campo-obligatorio" name="descuento_plan" id="descuento_plan" value="0">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="required" for="cantidad"><b>* Precio:</b></label>
+                                    </td>
+                                    <td>
+                                        <div id='div_valor' class='errormessage' style="display:none"></div>
+                                        <input type="text" class="campo-obligatorio" name="precio" id="precio">
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="tipoOrden" id="tipoOrden">
+                                        <input type="hidden" name="tieneImpuesto" id="tieneImpuesto">
+                                        <input type="hidden" name="tipo" id="tipo">
+                                    </td>
+                                    <td>
+                                        <div id="contenido_plan"></div>
+                                        <input type="hidden" name="txtMes" id="txtMes" />
+                                    </td>
+                                </tr>
+                            </table>
+                            <div>
+                                <button type='button' class='button-crud' onClick='validar();' id='agregar'>Agregar</button>
+                                &nbsp;
+                                <button type='button' class='button-crud' onClick='limpiar_detalle_portafolio();'>Limpiar</button>
+                            </div>
+                        </div>
+                        <div id="formulario_catalogo" class="campo-oculto">
+                            <div class="secHead">Por catalogo:</div>
+                            <div>
+                                <div class="warningmessage">
+                                     Caracter&iacute;sticas del Producto: Debemos llenar los datos de las caracter&iacute;sticas presentes
+                                     en la funci&oacute;n precio
+                                </div> 
+                                <div>
+                                    <label class="required" for="listado">* Listado de Productos:</label>
+                                    <select id="producto">
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="contenido"></div>
+                            <div id="mensaje" class="info-error campo-oculto"></div>
+                        </div>
+                        <div id='lista_informacion_pre_cargada' style="margin-top:30px;"></div>
+                        </br>
+                        <div style="clear:both; text-align: right; width: 100%; margin-top: 20px;">
+                            <div style="float:left; width: 720px;"><b>Subtotal &nbsp;&nbsp;$</b></div>
+                            <div style="float:left; width:80px;" id='subtotalDetalle' name='subtotalDetalle'>0.00</div>
+                        </div>
+                        <div style="clear:both; text-align: right; width: 100%;">
+                            <div style="float:left; width: 720px;"><b>Descuento &nbsp;&nbsp;$</b></div>
+                            <div style="float:left; width:80px;" id='descuentoDetalle' name='descuentoDetalle'>0.00</div>
+                        </div>
+                        {% if(strPrefijoEmpresa=='TN' or strPrefijoEmpresa=='MD' or strPrefijoEmpresa == 'EN') %}
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Ice &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='iceDetalle' name='iceDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Iva &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='ivaDetalle' name='ivaDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Otros impuestos &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='otrosImpDetalle' name='otrosImpDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Compensaci&oacute;n Solidaria &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='compensacionSolidaria' name='compensacionSolidaria'>0.00</div>
+                            </div>
+                         {% elseif(strPrefijoEmpresa=='TNG')%}
+                            <div style="clear:both; text-align: right; width: 100%;display: none;">
+                                <div style="float:left; width: 720px;"><b>Iec &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='iceDetalle' name='iceDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Iva &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='ivaDetalle' name='ivaDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Otros impuestos &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='otrosImpDetalle' name='otrosImpDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;display: none;">
+                                <div style="display: none" style="float:left; width: 720px;"><b>Compensaci&oacute;n Solidaria &nbsp;&nbsp;$</b></div>
+                                <div style="display: none" style="float:left; width:80px;" id='compensacionSolidaria' name='compensacionSolidaria'>0.00</div>
+                            </div>
+                        {% elseif(strPrefijoEmpresa=='TNP' )%}
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Iec &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='iceDetalle' name='iceDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Itbms &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='ivaDetalle' name='ivaDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="float:left; width: 720px;"><b>Sume &nbsp;&nbsp;$</b></div>
+                                <div style="float:left; width:80px;" id='otrosImpDetalle' name='otrosImpDetalle'>0.00</div>
+                            </div>
+                            <div style="clear:both; text-align: right; width: 100%;">
+                                <div style="display: none" style="float:left; width: 720px;"><b>Compensaci&oacute;n Solidaria &nbsp;&nbsp;$</b></div>
+                                <div style="display: none" style="float:left; width:80px;" id='compensacionSolidaria' name='compensacionSolidaria'>0.00</div>
+                            </div>
+                        {% endif %}
+                        <div style="clear:both; text-align: right; width: 100%;">
+                            <div style="float:left; width: 720px;"><b>Total &nbsp;&nbsp;$</b></div>
+                            <div style="float:left; width:80px;" id='totalDetalle' name='totalDetalle'>0.00</div>
+                        </div>
+                        <input type='hidden' id='punto_id' name='punto_id' value='{{ punto_id.id }}'>
+                        <input type='hidden' id='listado_informacion' name='listado_informacion'>
+                        </br>
+                        <div class="buttons">
+                            <p>
+                                <button type='button' class="button-crud" onClick='enviarInformacion();' id='guardar'>Guardar</button>
+                                <span class="height20px">
+                                    &oacute;&nbsp;
+                                    <a class="cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                                        cancelar
+                                    </a>
+                                </span>
+                            </p>
+                        </div>	
+                    </form>
+                {% else %}
+                    {% if booleanPresentarMensajeValidacion %}
+                        <div class="info-error">
+                                <b>
+                                    {% if(strMensajeValidacion is defined) %}
+                                        {{ strMensajeValidacion }}
+                                    {% endif %}
+                                </b>
+                        </div>
+                    {% else %}
+                        <div class="info-error">
+                            Usted no puede facturar al cliente en sessión puesto pertenece a la oficina <b>{{ cliente.nombre_oficina }}</b>, y la oficina
+                            de facturaci&oacute;n a la que usted pertenece es <b>{{ strNombreOficina }}</b>.<br/>Por favor su ayuda contactando con su 
+                            Jefa de Facturaci&oacute;n para verificar el inconveniente.
+                        </div>
+                    {% endif %}
+                    
+                    
+                {% endif %}
+            {% else %}
+                <div class="info-error">Debe seleccionar el Pto. de facturaci&oacute;n para poder hacer la factura</div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock contenido_izq %}
+{% block javascripts_footer%}
+    <script>
+        {% if boolPuedeFacturar %}
+ 
+            $(function ()
+            {
+
+                $("#descuento_plan").blur(function () {
+                    if (validaValorDescuento())
+                    {
+                        ocultarDiv('div_valor_d');
+                        return true;
+                    }
+                    else {
+                        mostrarDiv('div_valor_d');
+                        if($("#descuento_plan").val() > ($("#precio").val() * $("#cantidad_plan").val()))
+                        {
+                           $('#div_valor_d').html('El valor sobrepasa el valor permitido.');
+
+                        }
+                        else
+                        {                       
+                            $('#div_valor_d').html('El valor debe ser en formato decimal (Formato:9999.99)');
+                        }                       
+                        //Ext.Msg.alert('Alerta','El valor del pago que desea ingresar no esta en formato decimal');
+                        $("#descuento_plan").val('');
+                    }
+                });
+
+                $("#cantidad_plan").blur(function () {
+                    if (validaValorCantidad())
+                    {
+                        ocultarDiv('div_valor_c');
+                        return true;
+                    }
+                    else {
+                        mostrarDiv('div_valor_c');
+                        $('#div_valor_c').html('El valor debe ser en formato decimal (Formato:9999.99)');
+                        //Ext.Msg.alert('Alerta','El valor del pago que desea ingresar no esta en formato decimal');
+                        $("#cantidad_plan").val('');
+                    }
+                });
+
+                $("#precio").blur(function () {
+                    if (validaValor())
+                    {
+                        ocultarDiv('div_valor');
+                        return true;
+                    }
+                    else {
+                        mostrarDiv('div_valor');
+                        $('#div_valor').html('El valor debe ser en formato decimal (Formato:9999.99)');
+                        //Ext.Msg.alert('Alerta','El valor del pago que desea ingresar no esta en formato decimal');
+                        $("#precio").val('');
+                    }
+                });
+            });
+
+            function isNumeric(event) {
+                return (
+                    (event.keyCode > 7 && event.keyCode < 10)
+                    || (event.keyCode > 47 && event.keyCode < 60)
+                    || (event.keyCode > 95 && event.keyCode < 106)
+                    || event.keyCode == 17
+                    || event.keyCode == 116
+                    )
+            }
+
+            function validaValor() {
+                //patron= new RegExp("^[0-9]*\.?[0-9]{1,4}$","gi");
+                return /^\d+(\.\d+)?$/.test($("#precio").val());
+            }
+
+            function validaValorCantidad() {
+                //patron= new RegExp("^[0-9]*\.?[0-9]{1,4}$","gi");
+                return /^\d+(\.\d+)?$/.test($("#cantidad_plan").val());
+            }
+
+            function validaValorDescuento() {
+                //patron= new RegExp("^[0-9]*\.?[0-9]{1,4}$","gi");
+                if($("#descuento_plan").val() > ($("#precio").val() * $("#cantidad_plan").val()))
+                {
+                    return false;
+                    
+                }
+                else
+                {
+                    return /^\d+(\.\d+)?$/.test($("#descuento_plan").val());
+                }                
+            }
+
+
+            function mostrarDiv(div)
+            {
+                capa = document.getElementById(div);
+                capa.style.display = 'block';
+            }
+
+            function ocultarDiv(div) {
+                capa = document.getElementById(div);
+                capa.style.display = 'none';
+            }
+
+            function validar() 
+            {
+                //obteniendo el valor que se puso en campo text del formulario
+                cantidad = document.getElementById("cantidad_plan").value;
+                precio   = document.getElementById("precio").value;
+                //la condición
+                if ((cantidad.length == 0) || (precio.length == 0))
+                {
+                    if (cantidad.length == 0)
+                    {
+                        mostrarDiv('div_valor_c');
+                        $('#div_valor_c').html('Ingresar cantidad');
+                    }
+                    else
+                    {
+                        ocultarDiv('div_valor_c');
+                        return true;
+                    }
+
+                    if (precio.length == 0)
+                    {
+                        mostrarDiv('div_valor');
+                        $('#div_valor').html('Ingresar precio');
+                    }
+                    else
+                    {
+                        ocultarDiv('div_valor');
+                        return true;
+                    }
+                }
+                else
+                {
+                    agregar_detalle_portafolio();
+                    return true;
+                }
+
+            }
+
+            function agregar_detalle()
+            {
+                agregar_detalle_catalogo();
+            }
+        {% endif %}
+        
+    </script>
+{% endblock %}

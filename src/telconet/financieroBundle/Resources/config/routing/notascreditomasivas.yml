@@ -1,0 +1,39 @@
+notasCreditoMasivas:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:index" }
+
+notasCreditoMasivasEstadosDocs:
+    pattern:  /notasCreditoMasivasEstadosDocs
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:getEstadosDocumentos" }
+
+notasCreditoMasivasEstadosPlanes:
+    pattern:  /notasCreditoMasivasEstadosPlanes
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:getPlanes" }
+
+notasCreditoMasivasEstadosProductos:
+    pattern:  /notasCreditoMasivasEstadosProductos
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:getProductos" }
+
+notasCreditoMasivasListarDocumentos:
+    pattern:  /notasCreditoMasivasListarDocumentos
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:listarDocumentosFinanciero" }
+
+notasCreditoMasivasMotivosNcAction:
+    pattern:  /notasCreditoMasivasMotivosNcAction
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:getMotivosNc" }
+
+notasCreditoMasivascreaNCValorOriginal:
+    pattern:  /notasCreditoMasivascreaNCValorOriginal
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:creaNcMasivaValorOriginal" }
+
+notasCreditoMasivascreaNCPorcentajeServ:
+    pattern:  /notasCreditoMasivascreaNCPorcentajeServ
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:creaNCPorcentajeServ" }
+
+notasCreditoMasivascreaNCProporcionalXDias:
+    pattern:  /notasCreditoMasivascreaNCProporcionalXDias
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:creaNCProporcionalXDias" }
+
+notasCreditoMasivascreaNotaCreditoMasiva:
+    pattern:  /notasCreditoMasivascreaNotaCreditoMasiva
+    defaults: { _controller: "financieroBundle:InfoNotasCreditoMasivas:creaNotaCreditoMasiva" }

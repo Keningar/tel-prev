@@ -1,0 +1,23 @@
+AdministracionMotivoRechazoOrdenServicio:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiMotivoRechazoOS:administrarMotivosRechazoOS" }
+    
+AdministracionMotivoRechazoOrdenServicio_getListadoParametrosCabJson:
+    pattern:  /getListadoParametrosCabJson
+    defaults: { _controller: "financieroBundle:AdmiMotivoRechazoOS:getListadoParametrosCabAjax" }  
+    
+AdministracionMotivosRechazoOS_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "financieroBundle:AdmiMotivoRechazoOS:getListadoParametrosDetAjax" }  
+    
+AdministracionMotivosRechazoOS_getListadoParametrosHistJson:
+    pattern:  /getListadoParametrosHistJson
+    defaults: { _controller: "financieroBundle:AdmiMotivoRechazoOS:getListadoParametrosHistAjax" }      
+    
+AdministracionMotivosRechazoOS_activarInactivarMotivosRechazo:
+    pattern:  /activarInactivarMotivosRechazoAjax
+    defaults: { _controller: "financieroBundle:AdmiMotivoRechazoOS:activarInactivarMotivosRechazoAjax" }
+
+AdministracionMotivosRechazoOS_actualizaEstadoParametroDet:
+    pattern:  /actualizarEstadoMotivoRechazoOSAjax
+    defaults: { _controller: "financieroBundle:AdmiMotivoRechazoOS:actualizarEstadoMotivoRechazoOSAjax" }

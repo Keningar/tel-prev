@@ -1,0 +1,72 @@
+<html>
+	<head>
+		<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+	</head>
+	<body>
+		<table  class="record_properties" width='100%' style='margin-top:100px;' cellspacing="0" cellpadding="0">
+			<tr style='margin:0px;  '>
+				<td width="10%">&nbsp;</td>
+				<td style='font-size:10px; width:300px;'>{{ entity.feCreacion|date('Y-m-d H:i:s') }}</td>
+				<td width="30%">&nbsp;</td>
+				<td style='font-size:9px; width:100px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ entityNc.numeroFacturaSri }}</td>
+			</tr>        
+			<tr style='margin:0px; padding:0px' >
+				<td width="10%">&nbsp;</td>
+				{%if datoAdicional != null %}
+					{% if datoAdicional.nombreEnvio!=null %}
+						<td style='font-size:10px; width:300px;'>{{ datoAdicional.nombreEnvio }}</td>
+					{%else%}
+						{%if punto.personaEmpresaRolId.personaId.razonSocial%}
+							<td style='font-size:10px; width:300px;'>{{ punto.personaEmpresaRolId.personaId.razonSocial }}</td>
+						{%else%}
+							<td style='font-size:10px; width:300px;'>{{ punto.personaEmpresaRolId.personaId.nombres }} {{ punto.personaEmpresaRolId.personaId.apellidos }}</td>
+						{%endif%}
+					{%endif%}	
+				{%else%}
+					{%if punto.personaEmpresaRolId.personaId.razonSocial%}
+						<td style='font-size:10px; width:300px;'>{{ punto.personaEmpresaRolId.personaId.razonSocial }}</td>
+					{%else%}
+						<td style='font-size:10px; width:300px;'>{{ punto.personaEmpresaRolId.personaId.nombres }} {{ punto.personaEmpresaRolId.personaId.apellidos }}</td>
+					{%endif%}
+				{%endif%}				
+				<td width="10%">&nbsp;</td>
+				<td style='font-size:10px; width:100px;'>{{ punto.personaEmpresaRolId.personaId.identificacionCliente }}</td>
+			</tr>
+			<tr style='margin:0px; padding:0px ' >
+				<td width="10%">&nbsp;</td>
+				<td style='font-size:10px; width:300px; padding:0px; margin:0px '>{{punto.personaEmpresaRolId.personaId.direccionTributaria|slice(0,50)}}</td>
+				<!--<td style='font-size:10px; width:300px;'>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>-->
+				<td width="10%">&nbsp;</td>
+				<td style='font-size:10px; width:100px;'>{{ telefono }}</td>
+			</tr>   		
+		</table>
+		<table  class="record_properties" width='100%' style='margin:0px; margin-top:50px;'>
+			{%for det in entityDet%}
+				<tr style='height:10%;'>
+					<td width="15%" align="center" style='font-size:10px;'>{{ det.cantidad }}</td>
+					<td width="55%" align="left" style='font-size:10px;'>{{ det.plan }}</td>
+					<td width="15%" align="right" style='font-size:10px;'>{{ det.punitario }}</td>
+					<td width="15%" align="right" style='font-size:10px;'>{{ det.ptotal }}</td>
+				</tr>
+			{%endfor%}
+		</table>
+		<div style="position:absolute; top: 405px; right:10px ">
+		
+		<table  class="record_properties" width='15%' align='right' style='margin-top:0px; padding:0px'>
+				<tr style='height:20px; padding:0px '>
+					<td align="right" style='font-size:10px;width:15px;'>{{ entity.subtotal }}</td>
+					
+				</tr>
+				<tr style='height:10px;'>
+					<td align="right" style='font-size:10px;width:15px;'>&nbsp;</td>
+				</tr>
+				<tr style='height:20px;'>
+					<td align="right" style='font-size:10px;width:15px;'>{{ entity.subtotalConImpuesto }}</td>
+				</tr>
+				<tr style='height:20px;padding:0px'>
+					<td align="right" style='font-size:10px;width:15px;'>{{ entity.valorTotal }}</td>
+				</tr>
+		</table>
+		</div>
+	</body>
+</html>

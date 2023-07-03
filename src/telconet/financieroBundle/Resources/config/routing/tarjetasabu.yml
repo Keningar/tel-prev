@@ -1,0 +1,7 @@
+tarjetasabu:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:TarjetasAbu:cargarArchivoAbu" }
+
+tarjetasabu_procesarArchivo:
+    pattern:  /procesarArchivo
+    defaults: { _controller: "financieroBundle:TarjetasAbu:procesarArchivo" } 

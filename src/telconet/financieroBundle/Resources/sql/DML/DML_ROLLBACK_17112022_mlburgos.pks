@@ -1,0 +1,53 @@
+/** 
+ * @author Leonela Burgos <mlburgos@telconet.ec>
+ * @version 1.0 
+ * @since 17-11-2022
+ * Se crea DML Rollback de configuraciones del Proyecto Tarjetas ABU
+ */
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET WHERE 
+PARAMETRO_ID =(SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'PARAM_TARJETAS_ABU') AND 
+            DESCRIPCION = 'PARAMETROS_WEBSERVICES_TAREA'; 
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET WHERE 
+PARAMETRO_ID =(SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'PARAM_TARJETAS_ABU') AND 
+            DESCRIPCION = 'PROCESO' AND VALOR1='PROCESO'; 
+
+UPDATE 
+DB_GENERAL.ADMI_PARAMETRO_DET 
+SET VALOR3 = NULL 
+WHERE 
+    VALOR1='ORIGEN_TAREA' AND 
+    DESCRIPCION ='TAREA_CIERRE_ABU'  AND 
+    PARAMETRO_ID = (SELECT
+                      ID_PARAMETRO
+                    FROM
+                      DB_GENERAL.ADMI_PARAMETRO_CAB
+                    WHERE
+                    NOMBRE_PARAMETRO = 'PARAM_TARJETAS_ABU');
+                      
+UPDATE 
+DB_GENERAL.ADMI_PARAMETRO_DET 
+SET VALOR3 = NULL 
+WHERE 
+    VALOR1='GENERA_TAREA' AND 
+    DESCRIPCION ='TAREA_CIERRE_ABU'  AND 
+    PARAMETRO_ID = (SELECT
+                      ID_PARAMETRO
+                    FROM
+                      DB_GENERAL.ADMI_PARAMETRO_CAB
+                    WHERE
+                      NOMBRE_PARAMETRO = 'PARAM_TARJETAS_ABU'); 
+
+
+COMMIT;

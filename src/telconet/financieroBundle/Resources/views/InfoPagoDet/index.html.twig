@@ -1,0 +1,61 @@
+<h1>InfoPagoDet list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Referenciaid</th>
+            <th>Valorpago</th>
+            <th>Numeroreferencia</th>
+            <th>Feaplicacion</th>
+            <th>Estado</th>
+            <th>Comentario</th>
+            <th>Depositado</th>
+            <th>Depositopagoid</th>
+            <th>Numerocuentabanco</th>
+            <th>Fecreacion</th>
+            <th>Feultmod</th>
+            <th>Usrcreacion</th>
+            <th>Usrultmod</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('infopagodet_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{{ entity.referenciaId }}</td>
+            <td>{{ entity.valorPago }}</td>
+            <td>{{ entity.numeroReferencia }}</td>
+            <td>{{ entity.feAplicacion }}</td>
+            <td>{{ entity.estado }}</td>
+            <td>{{ entity.comentario }}</td>
+            <td>{{ entity.depositado }}</td>
+            <td>{{ entity.depositoPagoId }}</td>
+            <td>{{ entity.numeroCuentaBanco }}</td>
+            <td>{% if entity.feCreacion %}{{ entity.feCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.feUltMod }}</td>
+            <td>{{ entity.usrCreacion }}</td>
+            <td>{{ entity.usrUltMod }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('infopagodet_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('infopagodet_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('infopagodet_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

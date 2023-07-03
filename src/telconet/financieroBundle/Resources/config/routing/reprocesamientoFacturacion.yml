@@ -1,0 +1,12 @@
+reprocesamientoFacturacion_index:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:ReprocesamientoContable:indexFacturacion" }
+    
+reprocesamientoFacturacion_getTiposProcesoContable:
+    pattern:  /getTiposProcesoContable
+    defaults: { _controller: "financieroBundle:ReprocesamientoContable:getTiposProcesoContable" }
+    
+reprocesamientoFacturacion_reprocesarFacturacion:
+    pattern:  /reprocesarFacturacion
+    defaults: { _controller: "financieroBundle:ReprocesamientoContable:reprocesarFacturacion" }
+

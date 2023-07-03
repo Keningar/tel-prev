@@ -1,0 +1,66 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	
+	<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+	<style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var direccion="{{ path('ExcelCourier_procesar') }}";
+        var url_cargar_numeracion="{{ path('ExcelCourier_numeracion') }}";
+        var url_cargar_tipos="{{ path('ExcelCourier_tipos_documentos') }}";
+    </script>   
+    
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/excelcourier/factura_automatica_listado_imprimir.js') }}"></script>              
+{% endblock %}
+
+            
+{% block contenido_central %}
+    {% if mensaje is defined %}
+        <div class="info-error">{{ mensaje }}</div>
+    {% else %}
+        <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            <h1>Generacion de archivo de Courier</h1>
+        </div>
+        <div class="dashboard_content k-content">
+            <div id="example" class="k-content">
+                <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                        <tr bgcolor='#ffffff'>
+                            <td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+                        </tr>	
+                </table>      
+            </div>
+        </div>
+    {% endif %}
+{% endblock contenido_central %}

@@ -1,0 +1,83 @@
+{% extends "::layout.html.twig" %}
+        
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Anexo Transaccional</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<form id='form_ats' action="{{ path('infopagocab_xmlats') }}" method="post" class="formulario">
+{% if error is defined %}
+        <div id='div_error' class='errormessage' style="">{{ error }}</div>
+{% endif %} 
+    
+<div class="body_content"> 
+<table border='0'>
+<tr>
+    <td><label for='infopagodettype_valor' class=''>Mes:</label></td>
+    <td>
+        <select id='mes' name='mes'>
+			<option value=''>Seleccione</option>
+			<option value='01'>Enero</option>
+			<option value='02'>Febrero</option>
+			<option value='03'>Marzo</option>
+			<option value='04'>Abril</option>
+			<option value='05'>Mayo</option>
+			<option value='06'>Junio</option>
+			<option value='07'>Julio</option>
+			<option value='08'>Agosto</option>
+			<option value='09'>Septiembre</option>
+			<option value='10'>Octubre</option>
+			<option value='11'>Noviembre</option>
+			<option value='12'>Diciembre</option>
+		</select>
+    </td>
+    <td>&nbsp;</td>  
+    <td><label for='infopagodettype_valor' class=''>A&ntilde;o:</label></td>
+    <td>
+        <select id='anio' name='anio'>
+			<option value=''>Seleccione</option>
+			<option value='2010'>2010</option>
+			<option value='2011'>2011</option>
+			<option value='2012'>2012</option>
+			<option value='2013'>2013</option>
+			<option value='2014'>2014</option>
+			<option value='2015'>2015</option>
+			<option value='2016'>2016</option>
+			<option value='2017'>2017</option>
+			<option value='2018'>2018</option>			
+			<option value='2019'>2019</option>			
+			<option value='2020'>2020</option>			
+		</select>
+
+    </td>	
+</tr>
+</table>     
+</div>
+
+<div class="body_content">      
+                <div class="buttons">
+				<p>
+                                    <button type="button" onclick="document.forms[0].submit()" class="button-crud">Generar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('infopagocab') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div>         
+</div>
+</form>
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+{% endblock %}

@@ -1,0 +1,127 @@
+/**
+ * @author Alex Arreaga <atarreaga@telconet.ec>
+ * @version 1.0
+ * @since 25-03-2020    
+ * Se crea DML para configuraciones de item menú de reporte Tributario Banco Gye.
+ */
+
+
+INSERT INTO DB_SEGURIDAD.SIST_ITEM_MENU (
+ID_ITEM_MENU,
+ITEM_MENU_ID,
+NOMBRE_ITEM_MENU,
+URL_IMAGEN,
+POSICION,
+HTML,
+ESTADO,
+CODIGO,
+USR_CREACION,
+FE_CREACION,
+USR_ULT_MOD,
+FE_ULT_MOD,
+DESCRIPCION_ITEM_MENU,
+TITLE_HTML,
+DESCRIPCION_HTML
+) VALUES (
+DB_SEGURIDAD.SEQ_SIST_ITEM_MENU.NEXTVAL,
+(SELECT ID_ITEM_MENU FROM DB_SEGURIDAD.SIST_ITEM_MENU WHERE NOMBRE_ITEM_MENU = 'Reportes' AND DESCRIPCION_ITEM_MENU = 'Menu Secundario'),
+'Reporte Tributario Bco. Guayaquil',
+null,
+null,
+null,
+'Activo',
+null,
+'atarreaga',
+SYSDATE,
+null,
+null,
+'Reporte Tributario de Bco. Guayaquil',
+'Reporte Tributario de Bco. Guayaquil',
+null
+);
+
+
+INSERT INTO DB_SEGURIDAD.SIST_MODULO (
+ID_MODULO,
+NOMBRE_MODULO,
+ESTADO,
+CODIGO,
+USR_CREACION,
+FE_CREACION,
+USR_ULT_MOD,
+FE_ULT_MOD
+) VALUES (
+DB_SEGURIDAD.SEQ_SIST_MODULO.NEXTVAL,
+'mostrarReporteTributario',
+'Activo',
+null,
+'atarreaga',
+SYSDATE,
+null,
+null
+);
+
+
+INSERT INTO DB_SEGURIDAD.SEGU_RELACION_SISTEMA (
+ID_RELACION_SISTEMA,
+MODULO_ID,
+ACCION_ID,
+ITEM_MENU_ID,
+RELACION_SISTEMA_ID,
+USR_CREACION,
+FE_CREACION,
+IP_CREACION,
+TAREA_INTERFACE_MODELO_TRA_ID
+) VALUES (
+DB_SEGURIDAD.SEQ_SEGU_RELACION_SISTEMA.NEXTVAL,
+(SELECT ID_MODULO FROM DB_SEGURIDAD.SIST_MODULO WHERE NOMBRE_MODULO = 'mostrarReporteTributario' AND ESTADO = 'Activo'),
+(SELECT ID_ACCION FROM DB_SEGURIDAD.SIST_ACCION WHERE NOMBRE_ACCION = 'index' AND ESTADO = 'Activo'),
+(SELECT ID_ITEM_MENU FROM DB_SEGURIDAD.SIST_ITEM_MENU WHERE NOMBRE_ITEM_MENU ='Reporte Tributario Bco. Guayaquil' AND ESTADO = 'Activo'),
+null,
+'atarreaga',
+SYSDATE,
+'127.0.0.1',
+null
+);
+
+
+INSERT INTO DB_SEGURIDAD.SIST_PERFIL (
+ID_PERFIL,
+NOMBRE_PERFIL,
+ESTADO,
+USR_CREACION,
+FE_CREACION,
+USR_ULT_MOD,
+FE_ULT_MOD
+) VALUES (
+DB_SEGURIDAD.SEQ_SIST_PERFIL.NEXTVAL,
+'Reporte Tributario de Bco. Guayaquil',
+'Activo',
+'atarreaga',
+SYSDATE,
+null,
+null
+);
+
+
+INSERT INTO DB_SEGURIDAD.SEGU_ASIGNACION (
+PERFIL_ID,
+RELACION_SISTEMA_ID,
+USR_CREACION,
+FE_CREACION,
+IP_CREACION
+) VALUES (
+(SELECT ID_PERFIL FROM DB_SEGURIDAD.SIST_PERFIL WHERE NOMBRE_PERFIL = 'Reporte Tributario de Bco. Guayaquil'),
+(SELECT ID_RELACION_SISTEMA 
+ FROM DB_SEGURIDAD.SEGU_RELACION_SISTEMA WHERE MODULO_ID = (SELECT ID_MODULO 
+                                                            FROM DB_SEGURIDAD.SIST_MODULO 
+                                                            WHERE NOMBRE_MODULO = 'mostrarReporteTributario'
+                                                            AND ESTADO = 'Activo')
+),
+'atarreaga',
+SYSDATE,
+'127.0.0.1'
+);
+
+COMMIT;
+/

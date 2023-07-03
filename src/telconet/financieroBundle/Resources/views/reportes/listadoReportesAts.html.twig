@@ -1,0 +1,44 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_grid = "{{ path('reportes_grid_reportes_ats') }}";
+    </script>   
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/reportes/listadoReportesAts.js?1') }}"></script> 
+{% endblock %}
+
+            
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Reportes ATS</h1>
+</div>
+<div style = "margin-left: auto; margin-right: auto; width: 25%;">
+    <div >
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'><div id='filtro_reportes'></div></td>
+                </tr>	            
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'><div id='lista_reportes'></div></td>
+                </tr>	
+        </table>      
+    </div>
+    
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+
+</ul>
+{% endblock contenido_der %}

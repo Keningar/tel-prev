@@ -1,0 +1,157 @@
+infodocumentofinancierocab:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:index" }
+    
+infodocumentofinancierocab_indexRechazadas:
+    pattern:  /indexFactRechazadas
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:indexFactRechazadas" }
+    
+infodocumentofinancierocab_gridRechazadas:
+    pattern:  /gridFactRechazadas
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:gridFactRechazadas" }
+    
+infodocumentofinancierocab_tipoErrores:
+    pattern:  /getErroresFactRechazadas
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getErroresFactRechazadas" }
+    
+infodocumentofinancierocab_ejecutarReprocesoFactRechazadas:
+    pattern:  /ejecutarReprocesoFactRechazadas
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:ejecutarReprocesoFactRechazadas" }
+
+infodocumentofinancierocab_validaAutorizadoSri:
+    pattern:  /validaAutorizadoSri
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:validaAutorizadoSri" }
+
+infodocumentofinancierocab_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:show" }
+
+infodocumentofinancierocab_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:new" }
+
+infodocumentofinancierocab_clonar:
+    pattern:  /{intId}/clonar
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:clonarPrefactura" }
+
+
+infodocumentofinancierocab_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:create" }
+    requirements: { _method: post }
+
+infodocumentofinancierocab_download_comprobantes:
+    pattern:  /descargarComprobante
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:descargarComprobante" }
+
+infodocumentofinancierocab_simularCompElectronico:
+    pattern:  /simularCompElectronico
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:simularCompElectronico" }
+
+infodocumentofinancierocab_mnscompelctronico:
+    pattern:  /getMensajesCompElectronico
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getMensajesCompElectronico" }
+
+infodocumentofinancierocab_envionotificacion:
+    pattern:  /getEnvioNotificacionAjax
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getEnvioNotificacionAjax" }
+
+infodocumentofinancierocab_ajax_updatecompelec:
+    pattern:  /updatecompelctronico
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:actualizaCompElectronicoAjax" }
+#infodocumentofinancierocab_edit:
+    #pattern:  /{id}/edit
+    #defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:edit" }
+
+#infodocumentofinancierocab_update:
+    #pattern:  /{id}/update
+    #defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:update" }
+    #requirements: { _method: post }
+infodocumentofinancierocab_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:delete" }
+    requirements: { _method: post }
+
+infodocumentofinancierocab_ajax_get_info_pto_cliente:
+    pattern:  /ajax_get_info_pto_cliente
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:infoOrdenesPtoCliente" }
+
+infodocumentofinancierocab_ajax_getDiasRestantes:
+    pattern:  /ajax_get_dias_restantes
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getDiasRestantes" }
+    
+infodocumentofinancierocab_ajax_get_detalle:
+    pattern:  /ajax_get_detalle
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:detalleFactura" }
+
+infodocumentofinancierocab_ajax_modificar_detalle:
+    pattern:  /ajax_modificar_detalle_factura
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:detalleFacturaModificar" }
+    
+infodocumentofinancierocab_ajax_get_detalle_factura:
+    pattern:  /ajax_get_detalle_factura
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:detalleFacturaEditar" }
+    
+infodocumentofinancierocab_ajax_get_todas_facturas:
+    pattern:  /ajax_get_todas_facturas
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:listarTodasFacturas" }
+
+infodocumentofinancierocab_ajax_reajustar_impuestos:
+    pattern:  /ajax_reajustar_impuestos
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:reajustarImpuestosAjax" }
+
+infodocumentofinancierocab_ajax_facturasProporcionales:
+    pattern:  /ajax_facturasProporcionales
+    defaults: { _controller: "financieroBundle:FacturasProporcional:listarTodasFacturas" }
+    
+infodocumentofinancierocab_estados:
+    pattern:  /estados
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:estados" }
+    
+infodocumentofinancierocab_delete_ajax:
+    pattern:  /ajax_delete
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:deleteAjax" }
+    
+infodocumentofinancierocab_ajax_motivos:
+    pattern:  /ajax_motivos
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:listarMotivos" }
+
+infodocumentofinancierocab_delete_ajax_seleccionada:
+    pattern:  /ajax_delete_seleccionada
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:deleteSeleccionadasAjax" }
+    
+infodocumentofinancierocab_ajax_editar_sri:
+    pattern:  /ajax_editar_sri
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:editarNumeroSriAjax" }
+
+infodocumentofinancierocab_ajax_editar_feEmision:
+    pattern:  /ajax_editar_feEmision
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:editarFeEmisionAjax" }
+    
+infodocumentofinancierocab_getOficinasFacturacion:
+    pattern:  /getOficinasFacturacion
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getOficinasFacturacion" }
+
+infodocumentofinancierocab_getNumeracionesFacturacion:
+    pattern:  /getNumeracionesFacturacion
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getNumeracionesFacturacion" }
+
+infodocumentofinancierocab_getNumeroFactura:
+    pattern:  /getNumeroFactura
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getNumeroFactura" }
+
+infodocumentofinancierocab_getImpuestos:
+    pattern:  /getImpuestos
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getImpuestos" }
+    
+infodocumentofinancierocab_getSolicitudReprocesoAjax:
+    pattern:  /getSolicitudReprocesoAjax
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getSolicitudReprocesoAjax" }
+
+infodocumentofinancierocab_apiInterfazPanama:
+    pattern:  /apiInterfazPanama
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:apiInterfazPanama" }
+    
+infodocumentofinancierocab_facturaElectronicaGt:
+    pattern:  /facturaElectronicaGt
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:facturaElectronicaGt" }

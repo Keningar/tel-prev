@@ -1,0 +1,430 @@
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+            Ext.require([
+                '*',
+                'Ext.tip.QuickTipManager',
+                    'Ext.window.MessageBox'
+            ]);
+
+            var itemsPerPage = 10;
+            var store='';
+            var estado_id='';
+            var area_id='';
+            var login_id='';
+            var tipo_asignacion='';
+            var pto_sucursal='';
+            var idClienteSucursalSesion;
+
+            Ext.onReady(function(){
+				
+			
+                
+            //CREA CAMPOS PARA USARLOS EN LA VENTANA DE BUSQUEDA		
+            DTFechaDesde = new Ext.form.DateField({
+                    id: 'fechaDesde',
+                    fieldLabel: 'Desde',
+                    labelAlign : 'left',
+                    xtype: 'datefield',
+                    format: 'Y-m-d',
+                    width:200,
+            });
+            DTFechaHasta = new Ext.form.DateField({
+                    id: 'fechaHasta',
+                    fieldLabel: 'Hasta',
+                    labelAlign : 'left',
+                    xtype: 'datefield',
+                    format: 'Y-m-d',
+                    width:200,
+            });
+			
+            //CREAMOS DATA STORE PARA EMPLEADOS
+            Ext.define('modelCliente', {
+                extend: 'Ext.data.Model',
+                fields: [
+                    {name: 'idcliente', type: 'string'},
+                    {name: 'descripcion',  type: 'string'}                    
+                ]
+            });	
+            	
+			var states = Ext.create('Ext.data.Store', {
+				fields: ['estado', 'nombreEstado'],
+				data : [
+					{"estado":"Courier", "nombreEstado":"Aprobada"},
+					{"estado":"Rechazada", "nombreEstado":"Rechazada"}
+				]
+			});
+
+			
+			estado_cmb =Ext.create('Ext.form.ComboBox', {
+				fieldLabel: 'Estado',
+				store: states,
+				id:'idestado',
+				name:'idestado',
+				displayField: 'nombreEstado',
+				valueField: 'estado'
+			});
+
+            var estado_clientes = Ext.create('Ext.data.Store', {
+		    autoLoad: true,
+		    model: "modelCliente",
+		    proxy: {
+		        type: 'ajax',
+		        url : url_store_clientes,
+		        reader: {
+		            type: 'json',
+		            root: 'clientes'
+                        }
+                    }
+            });	
+            
+            clientes_cmb = new Ext.form.ComboBox({
+                xtype: 'combobox',
+                store: estado_clientes,
+                labelAlign : 'left',
+                id:'idcliente',
+                name: 'idcliente',
+				valueField:'idcliente',
+                displayField:'descripcion',
+                fieldLabel: 'Clientes',
+				width: 300,
+				allowBlank: false,	
+			});
+
+
+                Ext.define('ListaDetalleModel', {
+                    extend: 'Ext.data.Model',
+                    fields: [{name:'id', type: 'string'},
+							{name:'documento', type: 'string'},
+							{name:'oficina', type: 'string'},
+                            {name:'cliente', type: 'string'},
+                            {name:'punto', type: 'string'},
+                            {name:'subtotal', type: 'string'},
+                            {name:'impuestos', type: 'string'},
+                            {name:'descuento', type: 'string'},
+                            {name:'total', type: 'string'},
+                            {name:'FeEmision', type: 'string'},
+                            {name:'Fecreacion', type: 'string'},
+                            ]
+                }); 
+
+
+                store = Ext.create('Ext.data.JsonStore', {
+                    model: 'ListaDetalleModel',
+                            pageSize: itemsPerPage,
+                    proxy: {
+                        type: 'ajax',
+                        url: url_store_grid,
+                        reader: {
+                            type: 'json',
+                            root: 'documentos',
+                            totalProperty: 'total'
+                        },
+                        extraParams:{fechaDesde:'',fechaHasta:'', idcliente:'' , idestado:''},
+                        simpleSortMode: true
+                    },
+                    listeners: {
+                        beforeload: function(store){
+						store.getProxy().extraParams.fechaDesde= Ext.getCmp('fechaDesde').getValue();
+						store.getProxy().extraParams.fechaHasta= Ext.getCmp('fechaHasta').getValue();   
+						store.getProxy().extraParams.idcliente= Ext.getCmp('idcliente').getValue();
+						store.getProxy().extraParams.idestado= Ext.getCmp('idestado').getValue();
+                        },
+                    }
+                });
+
+                store.load();    
+
+
+
+                sm = new Ext.selection.CheckboxModel( {
+                    listeners:{
+                        selectionchange: function(selectionModel, selected, options){
+                            arregloSeleccionados= new Array();
+                            Ext.each(selected, function(record){
+                                    //arregloSeleccionados.push(record.data.idOsDet);
+                    });			
+                            //console.log(arregloSeleccionados);
+
+                        }
+                    }
+                });
+
+
+                var listView = Ext.create('Ext.grid.Panel', {
+                    width:1250,
+                    height:1300,
+                    collapsible:false,
+                    title: '',
+                    selModel: sm,
+                    dockedItems: [ {
+                                    xtype: 'toolbar',
+                                    dock: 'top',
+                                    align: '->',
+                                    items: [
+                                        //tbfill -> alinea los items siguientes a la derecha
+                                        { xtype: 'tbfill' },
+					,]}],                 
+                    renderTo: Ext.get('lista_prospectos'),
+                    store: store,
+                    multiSelect: false,
+                    viewConfig: {
+                        emptyText: 'No hay datos para mostrar'
+                    },
+                    listeners:{
+                            itemdblclick: function( view, record, item, index, eventobj, obj ){
+                                var position = view.getPositionByEvent(eventobj),
+                                data = record.data,
+                                value = data[this.columns[position.column].dataIndex];
+                                Ext.Msg.show({
+                                    title:'Copiar texto?',
+                                    msg: "Para poder copiar el contenido, seleccionar y presione Ctrl + C: <br> -&gt; <b>" + value + "</b>",
+                                    buttons: Ext.Msg.OK,
+                                    icon: Ext.Msg.INFORMATION
+                                });
+                            }
+                    },
+                    columns: [new Ext.grid.RowNumberer(),{
+                        text: 'F. Emision',
+                        dataIndex: 'FeEmision',
+                        align: 'right',
+                        width: 100			
+                    },{
+                        text: 'F. Creacion',
+                        dataIndex: 'Fecreacion',
+                        align: 'right',
+                        width: 100			
+                    },{
+                        text: 'Oficina',
+                        width: 130,
+                        dataIndex: 'oficina'
+                    },{
+                        text: 'No. documento',
+                        width: 130,
+                        dataIndex: 'documento'
+                    },{
+                        text: 'Cliente',
+                        width: 130,
+                        dataIndex: 'cliente'
+                    },{
+                        text: 'Pto cliente',
+                        width: 130,
+                        dataIndex: 'punto'
+                    },{
+                        text: 'Subtotal',
+                        width: 130,
+                        align: 'right',
+                        dataIndex: 'subtotal'
+                    },{
+                        text: 'Impuesto',
+                        width: 130,
+                        align: 'right',
+                        dataIndex: 'impuestos'
+                    },{
+                        text: 'Descuento',
+                        dataIndex: 'descuento',
+                        align: 'right',
+                        width: 80			
+                    },{
+                        text: 'Total',
+                        dataIndex: 'total',
+                        align: 'right',
+                        width: 80			
+                    }]
+                });            
+
+
+            function renderAcciones(value, p, record) {
+                    var iconos='';
+                    var estadoIncidencia=true;
+                    iconos=iconos+'<b><a href="'+record.data.linkVer+'" onClick="" title="Ver" class="button-grid-show"></a></b>';			
+                    iconos=iconos+'<b><a href="#" onClick="eliminar(\''+record.data.linkEliminar+'\')" title="Eliminar" class="button-grid-delete"></a></b>';	
+                    return Ext.String.format(
+                                    iconos,
+                        value,
+                        '1',
+                                    'nada'
+                    );
+            }
+
+            var filterPanel = Ext.create('Ext.panel.Panel', {
+                bodyPadding: 7,  // Don't want content to crunch against the borders
+                //bodyBorder: false,
+                border:false,
+                //border: '1,1,0,1',
+                buttonAlign: 'center',
+                layout:{
+                    type:'table',
+                    columns: 1,
+                    align: 'left',
+                },
+                bodyStyle: {
+                            background: '#fff'
+                        },                     
+
+                collapsible : true,
+                collapsed: false,
+                width: 1250,
+                title: 'Criterios de busqueda',
+                
+                    buttons: [
+                        
+                        {
+                            text: 'Buscar',
+                            //xtype: 'button',
+                            iconCls: "icon_search",
+                            handler: Buscar,
+                        },
+                        {
+                            text: 'Limpiar',
+                            iconCls: "icon_limpiar",
+                            handler: function(){ limpiar();}
+                        }
+                        
+                        ],                
+
+                        items: [
+                                //{html:"&nbsp;",border:false,width:50},
+                                DTFechaDesde,
+                                {html:"&nbsp;",border:false,width:10},
+                                DTFechaHasta,
+                                {html:"&nbsp;",border:false,width:10},
+                                //{html:"&nbsp;",border:false,width:50},
+                                clientes_cmb,
+                                {html:"&nbsp;",border:false,width:50},
+                                estado_cmb
+                                ],	
+                renderTo: 'filtro_prospectos'
+            }); 
+            
+            verificarCmbSesion();
+            
+    });
+
+    function Buscar()
+    {
+		
+        /*if  (( Ext.getCmp('fechaDesde').getValue()!=null)&&(Ext.getCmp('fechaHasta').getValue()!=null) )
+        {
+                if (Ext.getCmp('fechaDesde').getValue() > Ext.getCmp('fechaHasta').getValue())
+                {
+                   Ext.Msg.show({
+                   title:'Error en Busqueda',
+                   msg: 'Por Favor para realizar la busqueda Fecha Desde debe ser fecha menor a Fecha Hasta.',
+                   buttons: Ext.Msg.OK,
+                   animEl: 'elId',
+                   icon: Ext.MessageBox.ERROR
+                        });		 
+
+                }
+                else
+                {*/
+					store.load({params: {start: 0, limit: 10}});
+                /*}
+        }
+        else
+        {
+
+                Ext.Msg.show({
+                title:'Error en Busqueda',
+                msg: 'Por Favor Ingrese criterios de fecha.',
+                buttons: Ext.Msg.OK,
+                animEl: 'elId',
+                icon: Ext.MessageBox.ERROR
+                     });
+        }*/
+    }
+    
+    /*
+    function Procesar(valor)
+    {
+		var param = '';
+		if(sm.getSelection().length > 0)
+		{
+			var estado = 0;
+			for(var i=0 ;  i < sm.getSelection().length ; ++i)
+			{
+				param = param + sm.getSelection()[i].data.id;
+
+				if(sm.getSelection()[i].data.estado == 'Eliminado')
+				{
+					estado = estado + 1;
+				}
+				if(i < (sm.getSelection().length -1))
+				{
+					param = param + '|';
+				}
+			}      
+	  
+			var radios = Ext.getCmp("proceso");
+			// now set the value of the radio button(s) that match the key/value pair
+			var valor_chek=radios.getValue()['opcion'];
+			
+			Ext.Msg.confirm('Alerta','Se procesaran las facturas seleccionadas. Desea continuar?', function(btn){
+				if(btn=='yes'){
+					Ext.Ajax.request({
+						url: direccion,
+						timeout:600000,
+						method: 'post',
+						params: { 
+							param : param, 
+							valor_check:valor_chek
+						},
+						success: function(response){
+							var text = response.responseText;
+							store.load();
+						},
+						failure: function(result)
+						{
+							Ext.Msg.alert('Error ','Error: ' + result.statusText);
+						}
+					});
+				}
+			});
+		}
+		else
+		{
+		  alert('Seleccione por lo menos un registro de la lista');
+		}
+    }
+
+    function eliminar(direccion)
+    {
+        //alert(direccion);
+        Ext.Msg.confirm('Alerta','Se eliminara el registro. Desea continuar?', function(btn){
+            if(btn=='yes'){
+                Ext.Ajax.request({
+                    url: direccion,
+                    timeout:600000,
+                    method: 'post',
+                    success: function(response){
+                        var text = response.responseText;
+                        store.load();
+                    },
+                    failure: function(result)
+                    {
+                        Ext.Msg.alert('Error ','Error: ' + result.statusText);
+                    }
+                });
+            }
+        });
+    }
+
+	*/
+    function limpiar(){
+        Ext.getCmp('fechaDesde').setRawValue("");
+        Ext.getCmp('fechaHasta').setRawValue("");
+        Ext.getCmp('idcliente').setRawValue("");
+        Ext.getCmp('idestado').setRawValue("");
+
+    }
+    
+    function verificarCmbSesion()
+    {
+		if(cliente=="S")
+			clientes_cmb.setVisible(false);
+		else
+			clientes_cmb.setVisible(true);
+	}
+

@@ -1,0 +1,8 @@
+consolidado_documentos_index:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:DocumentosFinancieros:index" }
+
+consolidado_documentos_grid:
+    pattern:  /grid
+    defaults: { _controller: "financieroBundle:DocumentosFinancieros:grid" }
+    

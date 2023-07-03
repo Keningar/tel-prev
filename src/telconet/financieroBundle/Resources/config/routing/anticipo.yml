@@ -1,0 +1,98 @@
+anticipo_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:Anticipo:create" }
+    requirements: { _method: post }
+
+anticipo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "financieroBundle:Anticipo:edit" }
+
+anticipo_ajaxActualizaDetAnticipo:
+    pattern:  /ajaxActualizaDetAnticipo
+    defaults: { _controller: "financieroBundle:Anticipo:ajaxActualizaDetAnticipo"}
+
+anticipo_grabasincliente:
+    pattern:  /grabasincliente
+    defaults: { _controller: "financieroBundle:Anticipo:grabaSinCliente" }
+    requirements: { _method: post }
+
+anticipo_getListadoBancos:
+    pattern:  /getListadoBancos
+    defaults: { _controller: "financieroBundle:Anticipo:getListadoBancos"}
+
+anticipo_getListadoTiposCuenta:
+    pattern:  /getListadoTiposCuenta
+    defaults: { _controller: "financieroBundle:Anticipo:getListadoTiposCuenta"}
+
+anticipo_getDetallesPago:
+    pattern:  /{id}/getDetallesPagos
+    defaults: { _controller: "financieroBundle:Anticipo:getDetallesPago_ajax"}
+
+anticipo_estados:
+    pattern:  /estados
+    defaults: { _controller: "financieroBundle:Anticipo:estados"}
+
+anticipo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:Anticipo:show" }
+
+anticipo_showsincliente:
+    pattern:  /{id}/showsincliente
+    defaults: { _controller: "financieroBundle:Anticipo:showSinCliente" }
+
+anticipo_gridsinclientes:
+    pattern:  /gridsinclientes
+    defaults: { _controller: "financieroBundle:Anticipo:gridSinClientes"}
+
+anticipo_listanticiposincliente:
+    pattern:  /listanticiposincliente
+    defaults: { _controller: "financieroBundle:Anticipo:listAnticipoSinCliente"}
+
+anticipo:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:Anticipo:new" }
+
+anticipo_newsincliente:
+    pattern:  /newsincliente
+    defaults: { _controller: "financieroBundle:Anticipo:newSinCliente" }
+
+anticipo_getfacturaspendientes:
+    pattern:  /getFacturasPendientes
+    defaults: { _controller: "financieroBundle:Anticipo:getFacturasPendientes_ajax"}
+
+anticipo_cruzaranticipo:
+    pattern:  /cruzarAnticipo
+    defaults: { _controller: "financieroBundle:Anticipo:cruzarAnticipo_ajax" }
+
+anticipo_cruzaranticipounafactura:
+    pattern:  /cruzarAnticipounafactura
+    defaults: { _controller: "financieroBundle:Anticipo:cruzarAnticipoUnaFactura_ajax" }
+
+anticipo_facturascliente:
+    pattern:  /facturascliente
+    defaults: { _controller: "financieroBundle:Anticipo:facturasConPunto" }
+    
+anticipo_puntocliente:
+    pattern:  /{id_anticipo}/{id_punto}/actualizarPagoAntPunto
+    defaults: { _controller: "financieroBundle:Anticipo:actualizarPagoAntPunto" }
+
+anticipo_anulaAnticipo:
+    pattern:  /anulaAnticipo
+    defaults: { _controller: "financieroBundle:Anticipo:anulaAnticipo" }
+
+anticipo_motivosAnulacionAnticipo:
+    pattern:  /motivosAnulacionAnticipo
+    defaults: { _controller: "financieroBundle:Anticipo:motivosAnulacionAnticipo" }
+
+anticipo_excel_anticipos_sin_cliente:
+    pattern:  /excelanticipossincliente
+    defaults: { _controller: "financieroBundle:Anticipo:excelAnticiposSinCliente"}
+    
+anticipo_validacionCreacionAnticipo:
+    pattern:  /validacionCreacionAnticipo
+    defaults: { _controller: "financieroBundle:Anticipo:validacionCreacionAnticipo"}
+
+anticipo_verificaretencion:
+    pattern:  /AnticipoValidacionRetencion
+    defaults: { _controller: "financieroBundle:Anticipo:validacionRetencionDuplicada"}
+

@@ -1,0 +1,49 @@
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD, 
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'URL_INTERFAZ_API'
+      AND ESTADO             = 'Activo'
+    ),
+    'URL_INTERFAZ_API_CIERREFISCAL',    
+    'http://172.24.36.10:80/panama/cierrefiscal',
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    'apenaherrera',
+    SYSDATE,
+    '172.17.0.1',
+    null,
+    '26',
+    'CONTIENE VALOR1: URL DE INTERFAZ CON API PARA IMPRESORA PANAMA, METODO PERMITE IMPRIMIR EL CIERRE FISCAL X CIERRE FISCAL Z'
+  );
+
+COMMIT;
+

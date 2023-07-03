@@ -1,0 +1,649 @@
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO,
+    DETALLE_CARACTERISTICA
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'PROCESO_DE_EJECUCION',
+    'T',
+    'Activo',
+    SYSDATE,
+    'jcandelario',
+    NULL,
+    NULL,
+    'FINANCIERO',
+    'Aplicación que generó el documento.'
+  );
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE PARAMETRO_ID IN ( SELECT ID_PARAMETRO
+                        FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+                        WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+                        AND ESTADO             = 'Activo')
+AND DESCRIPCION = 'MES_DIFERIDO';
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '2',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '4',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '6',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '7',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '8',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '9',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '10',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '11',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'PROCESO_EMER_SANITARIA'
+      AND ESTADO             = 'Activo'
+    ),
+    'MES_DIFERIDO',
+    '12',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    'jcandelario',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    'valor3'
+  );
+
+COMMIT;
+/

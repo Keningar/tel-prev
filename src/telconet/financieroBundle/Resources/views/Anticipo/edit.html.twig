@@ -1,0 +1,107 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Pago</h1>
+</div>
+<div class="body_content">
+<table  class="record_properties" width='100%'>
+    <tbody>
+        <tr>
+            <td><b>Numero:</b></td>
+            <td>{{ entity.numeroPago }}</td>
+            <td><b>Total:</b></td>
+            <td>{{ entity.valorTotal }}</td>            
+        </tr>        
+        <tr>
+            <td><b>Empresa:</b></td>
+            <td>{{ oficina.empresaId.nombreEmpresa }}</td>
+            <td><b>Estado:</b></td>
+            <td>{{ entity.estadoPago }}</td>            
+        </tr>
+        <tr>
+            <td><b>Oficina:</b></td>
+            <td>{{ oficina.nombreOficina }}</td>
+            <td><b>Fecha Creacion:</b></td>
+            <td>{{ entity.feCreacion|date('Y-m-d H:i:s') }}</td>            
+        </tr>
+        <tr>
+	  <td><b>Comentario:</b></td>
+	  <td>
+	      
+	      {{ entity.comentarioPago }}
+	      
+	  </td>  
+	  <td>&nbsp;</td>
+            <td>
+	      &nbsp;
+	    </td> 
+        </tr>
+    </tbody>
+</table>
+</div>
+<div  class="body_content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_detalles'></div></td>
+            </tr>
+    </table>     
+        <script>
+
+        var url_cliente_delete_ajax='#';
+        var url_cliente_lista_estados='#';
+         url_lista_bancos='{{path('infopagocab_getListadoBancos')}}';
+	url_lista_bancos_tarjeta='{{path('infopagocab_getListadoBancosTarjeta')}}';
+    url_lista_tipos_cuenta='{{path('infopagocab_getListadoTiposCuenta')}}';
+    url_lista_bancos_contables='{{path('infopagocab_getListadoBancosContables')}}';
+    url_lista_cuentas_bancos_contables='{{path('infopagocab_getListadoCuentasBancosContables')}}';	
+    url_verifica_retencion='{{path('infopagocab_verificaRetencion')}}';
+    url_valores_fact='{{path('infopagocab_getValoresFact')}}';
+    url_graba_pago='{{path('infopagocab_createAjax')}}';
+	url_reactivacion_masiva='{{path('procesomasivo_reactivarClientesMasivo')}}';
+        var url_grid = "{{ path('infopagocab_ajaxGetDetallesPagoForEdit',{'id':entity.id}) }}";
+        </script>    
+    <script type="text/javascript" src="{{ asset('./bundles/financiero/js/anticipo/edit.js?1') }}"></script>
+         
+</div>    
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('anticipo_listanticiposincliente') }}">Regresar</a>
+        </span>
+    </p>
+</div> {% endblock contenido_izq %}
+        
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+		<a href="{{ path('anticipo_newsincliente') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nuevo Anticipos Sin Cli
+		</a>        
+		</li>
+        <li>
+            &nbsp;
+        </li>
+    </ul>
+	<br />
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('anticipo') }}">Nuevo Anticipo</a>
+                    </li>                  
+                    <!--
+			{#% for acc in acc_relaciondas %} 
+				<li>
+					<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+				</li>
+			{% endfor %#}
+                    -->
+			<!--li>
+				<a class="listado_ac_tablas" href="{#{ path('precliente_convertir', { 'id_prospecto': entity.id }) }#}">Convertir Prospecto a Cliente</a>
+			</li-->
+		</ul>
+{% endblock contenido_der %}

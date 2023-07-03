@@ -1,0 +1,88 @@
+infodocumentonotadebito:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:index" }
+
+infodocumentonotadebito_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:show" }
+
+infodocumentonotadebito_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:new" }
+
+infodocumentonotadebito_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:create" }
+    requirements: { _method: post }
+
+infodocumentonotadebito_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:edit" }
+
+infodocumentonotadebito_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:update" }
+    requirements: { _method: post }
+
+infodocumentonotadebito_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:delete" }
+    requirements: { _method: post }
+
+infodocumentonotadebito_lista_estados:
+    pattern:  /lista_estados
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:estados" }
+
+infodocumentonotadebito_delete_ajax:
+    pattern:  /delete_ajax
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:deleteAjax" }
+    requirements: { _method: post }
+
+infodocumentonotadebito_listar_pto_clientes:
+    pattern:  /listar_ptos_ajax
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:ptoClientesAjax" }
+    
+infodocumentonotadebito_listar_todas_nd:
+    pattern:  /listar_todas_nd
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:listarTodasND" }
+
+infodocumentonotadebito_ajax_get_detalle:
+    pattern:  /ajax_get_detalle_nc
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:detalleND" }
+    
+infodocumentonotadebito_ajax_eliminar_seleccionada:
+    pattern:  /ajax_eliminar_seleccionada
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:deleteSeleccionadasAjax" }
+    
+infodocumentonotadebito_editarnotadebito:
+    pattern:  /editarnotadebito
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:editarnotadebito" }
+    
+infodocumentonotadebito_devolucion:
+    pattern:  /devolucion
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:indexDevolucion" }
+
+infodocumentonotadebito_devolucion_ajax_listado:
+    pattern:  /listar_devoluciones
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:ajaxListarDevolucion" }
+    
+infodocumentonotadebito_devolucion_session:
+    pattern:  /devolucion_session
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:obtenerSession" }
+
+infodocumentonotadebito_devolucion_show:
+    pattern:  /{id}/show_devolucion
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:showDevolucion" }
+
+infodocumentonotadebito_devolucion_new:
+    pattern:  /new_devolucion
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:newDevolucion" }
+
+infodocumentonotadebito_devolucion_create:
+    pattern:  /create_devolucion
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:createDevolucion" }
+    requirements: { _method: post }
+    
+infodocumentonotadebito_devolucion_ajax_get_detalle:
+    pattern:  /ajax_get_detalle_devolucion
+    defaults: { _controller: "financieroBundle:InfoNotaDebito:detalleDevolucion" }

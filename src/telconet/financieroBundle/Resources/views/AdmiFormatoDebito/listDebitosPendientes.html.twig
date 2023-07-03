@@ -1,0 +1,128 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .category-label
+        {
+            vertical-align: middle;
+            padding-right: .5em;
+        }
+        #category
+        {
+            vertical-align: middle;
+        }
+        .toolbar 
+        {
+            float: right;
+            margin-right: .8em;
+        }
+        .icon_search 
+        {
+            background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+        }
+        .icon_limpiar 
+        {
+            background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+        } 
+        .icon_add 
+        {
+            background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+        } 
+        .icon_delete 
+        {
+            background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+        }                 
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Generar Pagos de Debitos Pendientes</h1>
+</div>
+<div class="body_content k-content">
+    <table  class="record_properties" width='100%'>
+        <tr>
+            <td><b>Fecha Generado:</b></td><td>{{ entityDebitoGen.feCreacion|date('Y-m-d H:i:s') }}</td>  
+            {% if  entityDebitoGen.cicloId is not null %}
+                <td><b>Ciclo:</b></td><td>{{ entityDebitoGen.cicloId.nombreCiclo }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td><b>Estado:</b></td><td>{{ entityDebitoGen.estado }}</td>
+            <td><b>Usuario Creacion:</b></td><td>{{ entityDebitoGen.UsrCreacion }}</td>
+        </tr>
+        <tr>
+            <td><b>Bancos:</b></td colspan='3'><td>{{ bancos }}</td>   
+        </tr>
+    </table>
+</div>
+<div class="body_content k-content">
+    <div class='warningmessage' >
+        Generación Manual : Genera los pagos que hayan sido seleccionados.<br />
+        Generación Automatica : Genera todo los pagos pendientes de forma automatica.
+    </div>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                <td bgcolor='#ffffff'><div id='panel_automatico'></div></td>
+            </tr>
+            <tr bgcolor='#ffffff'>
+                <td bgcolor='#ffffff'><div id='filtro_pagos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                <td bgcolor='#ffffff'><div id='panel_observacion'></div></td>
+            </tr>             
+            <tr bgcolor='#ffffff'>
+                <td bgcolor='#ffffff'><div id='panel_opciones'></div></td>
+            </tr>
+            <tr bgcolor='#ffffff'>
+                <td bgcolor='#ffffff'><div id='panel_valores_opciones'></div></td>
+            </tr>     
+            <tr bgcolor='#ffffff'>
+                <td bgcolor='#ffffff'><div id='lista_pagos'></div></td>
+            </tr>
+        </table>        
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('respuestadebitos_list_debitos_general')}}" onClick=''>Regresar</a>
+                </span>
+            </p>
+        </div>
+        <script>
+            var url_lista_bco_tipo_cta           = '{{path('admiformatodebito_getListadoBancosParaDebitos')}}';
+            var url_grid                         = "{{ path('respuestadebitos_gridDebitosPendientes') }}";
+            var url_marchar_rechazo              = "{{ path('respuestadebitos_marcarrechazados') }}";
+            var url_procesar                     = "{{ path('respuestadebitos_procesardebitospendientes') }}";				
+            var debitoGenId                      = {{entityDebitoGen.id}};	
+            var nombreBanco                      = "{{ bancos }}";
+            var fechaGenerado                    =  "{{ entityDebitoGen.feCreacion|date('Y-m-d H:i:s') }}";
+            var porcentajeRetencionFte           = {{ porcentajeRetFte }};  
+            var porcentajeRetencionIva           = {{ porcentajeRetIva }}; 
+            var url_lista_ctas_bancarias_empresa = '{{path('infopagocab_getListadoCuentasBancariasEmpresa')}}';  
+            var prefijoEmpresa                   = "{{ prefijoEmpresa }}";  
+            var strUrlListaDebitos               = '{{ path('generardebitos') }}';
+            var strUrlSaldoDebitosPendientes     = '{{ path('respuestadebitos_saldo_debitos_pendientes',{'intIdDebGen':entityDebitoGen.id}) }}';
+        </script>        
+        <script type="text/javascript" src="{{ asset('./bundles/financiero/js/admiformatodebito/listDebitosPendientes.js?3') }}"></script>
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+        <a class="listado_ac_tablas" href="{{ path('generardebitos') }}">Generar Debitos</a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="{{ path('respuestadebitos_list_pagos_debito',{'idDebGen':entityDebitoGen.id}) }}">Ver Pagos Generados</a>
+    </li>  					
+</ul>
+{% endblock contenido_der %}

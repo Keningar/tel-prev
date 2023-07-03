@@ -1,0 +1,79 @@
+facturasproporcionales:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:FacturasProporcional:index" }
+
+facturasproporcionales_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:FacturasProporcional:show" }
+
+facturasproporcionales_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:FacturasProporcional:new" }
+
+facturasproporcionales_clonar:
+    pattern:  /{intId}/clonar
+    defaults: { _controller: "financieroBundle:FacturasProporcional:clonarPrefactura" }
+
+
+facturasproporcionales_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:FacturasProporcional:create" }
+    requirements: { _method: post }
+
+#infodocumentofinancierocab_edit:
+    #pattern:  /{id}/edit
+    #defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:edit" }
+
+#infodocumentofinancierocab_update:
+    #pattern:  /{id}/update
+    #defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:update" }
+    #requirements: { _method: post }
+
+facturasproporcionales_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "financieroBundle:FacturasProporcional:delete" }
+    requirements: { _method: post }
+
+facturasproporcionales_ajax_get_info_pto_cliente:
+    pattern:  /ajax_get_info_pto_cliente
+    defaults: { _controller: "financieroBundle:FacturasProporcional:infoOrdenesPtoCliente" }
+    
+facturasproporcionales_ajax_get_detalle:
+    pattern:  /ajax_get_detalle
+    defaults: { _controller: "financieroBundle:FacturasProporcional:detalleFactura" }
+    
+facturasproporcionales_ajax_get_detalle_factura:
+    pattern:  /ajax_get_detalle_factura
+    defaults: { _controller: "financieroBundle:FacturasProporcional:detalleFacturaEditar" }
+    
+facturasproporcionales_ajax_get_todas_facturas:
+    pattern:  /ajax_get_todas_facturas
+    defaults: { _controller: "financieroBundle:FacturasProporcional:listarTodasFacturas" }
+    
+facturasproporcionales_estados:
+    pattern:  /estados
+    defaults: { _controller: "financieroBundle:FacturasProporcional:estados" }
+    
+facturasproporcionales_delete_ajax:
+    pattern:  /ajax_delete
+    defaults: { _controller: "financieroBundle:FacturasProporcional:deleteAjax" }
+    
+facturasproporcionales_ajax_motivos:
+    pattern:  /ajax_motivos
+    defaults: { _controller: "financieroBundle:FacturasProporcional:listarMotivos" }
+
+facturasproporcionales_delete_ajax_seleccionada:
+    pattern:  /ajax_delete_seleccionada
+    defaults: { _controller: "financieroBundle:FacturasProporcional:deleteSeleccionadasAjax" }
+    
+facturasproporcionales_ajax_info_proporcional:
+    pattern:  /ajax_info_proporcional
+    defaults: { _controller: "financieroBundle:FacturasProporcional:tipoOrdenFactProporcionales" }
+    
+facturasproporcionales_ajax_info_proporcional_plan:
+    pattern:  /ajax_info_proporcional_plan
+    defaults: { _controller: "financieroBundle:FacturasProporcional:informacionPlanFactProporcionales" }  
+    
+facturasproporcionales_getFechasDiasPeriodoAjax:
+    pattern:  /getFechasDiasPeriodoAjax
+    defaults: { _controller: "financieroBundle:FacturasProporcional:getFechasDiasPeriodoAjax" }  

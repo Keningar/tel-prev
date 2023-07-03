@@ -1,0 +1,334 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+	
+
+<script>
+    url_lista_bancos                   = "{{path('infopagocab_getListadoBancos')}}";
+    url_lista_bancos_tarjeta           = '{{path('infopagocab_getListadoBancosTarjeta')}}';    
+    url_lista_tipos_cuenta             = '{{path('infopagocab_getListadoTiposCuenta')}}';
+    url_lista_bancos_contables         = '{{path('infopagocab_getListadoBancosContables')}}';
+    url_lista_cuentas_bancos_contables = '{{path('infopagocab_getListadoCuentasBancosContables')}}';	
+    url_lista_ctas_bancarias_empresa   = '{{path('infopagocab_getListadoCuentasBancariasEmpresa')}}';  
+    strPrefijoEmpresa                  = '{{strPrefijoEmpresa}}';
+    var strUrlValidarFechaPago         = '{{ path('infopagocab_validarFechaPago') }}';
+    var strUrlValidarCreacionAnticipo  = '{{ path('anticipo_validacionCreacionAnticipo') }}';
+    url_verifica_retencion             = '{{ path('anticipo_verificaretencion') }}';
+    {% if (punto is not null) %}
+        id_persona = {{punto.personaEmpresaRolId.personaId.id}};
+    {% endif %}
+    {% if (oficina is not null) %}
+        codEmpresa = '{{oficina.empresaId.id}}';
+    {% endif %}
+</script>	
+<script type="text/javascript" src="{{ asset('./bundles/financiero/js/anticipo/bloqueoTeclas.js') }}"></script>
+{% if (punto is not null)%}
+    <script type="text/javascript" src="{{ asset('./bundles/financiero/js/anticipo/new.js?11') }}"></script>
+{% endif %}    
+
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Nuevo Anticipo</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+{% if (punto is not null)%}
+<form id='form_cab'  name='form_cab' action="{{ path('anticipo_create') }}" method="post" {{ form_enctype(form) }} class="formulario">
+{% if error is defined %}
+        <div>{{ error }}</div>
+{% endif %}
+
+<div class="body_content">
+    <table  class="record_properties" width='100%'>
+        <tbody>      
+            <tr>
+                <td><b>Empresa:</b></td>
+                <td>{{ oficina.empresaId.nombreEmpresa }}</td>
+                <td><b>Punto:</b></td>
+                <td>{{ punto.login }}</td>            
+            </tr>
+            <tr>
+                <td><b>Oficina:</b></td>
+                <td>{{ oficina.nombreOficina }}</td>
+                <td><b>Cliente:</b></td>
+                {%if punto.personaEmpresaRolId.personaId.razonSocial%}
+                <td>{{ punto.personaEmpresaRolId.personaId.razonSocial }}</td>
+                {%else%}
+                <td>{{ punto.personaEmpresaRolId.personaId.nombres }} {{ punto.personaEmpresaRolId.personaId.apellidos }}</td>
+                {%endif%}                       
+            </tr>
+        </tbody>
+    </table>
+</div> 
+        
+<div class="body_content">        
+<div class='secHead'>Detalle</div>
+    <table border='0'>
+        <tr>
+            <td><label for='infopagotype_forma_pago' class=''>* Forma Pago:</label></td>
+            <td>
+                <select id='infopagodettype_forma_pago' name='infopagodettype[forma_pago]' onChange='presentaFormaPago()'>
+                    <option value='' selected>Seleccione...</option>
+                    {% for fc in formasPago %}
+                        <option value="{{ fc.id }}">{{ fc.descripcionFormaPago }}</option>
+                    {% endfor %}
+                </select>
+                {% for fc in formasPago %}
+                    <input type="hidden" id="{{ fc.id }}-{{ fc.descripcionFormaPago }}" name="{{ fc.id }}-{{ fc.descripcionFormaPago }}"
+                           value="{{ fc.tipoFormaPago }}"/>
+                {% endfor %}
+            </td>
+            <td>&nbsp;</td>
+        </tr> 
+        <tr>
+            <td><label for='infopagodettype_valor' class=''>Valor:</label></td>
+            <td><div id='div_valor' class='errormessage' style="display:none"></div>
+                <input type='text' id="infopagodettype_valor" name="infopagodettype[valor]"  maxlength="10"/></td>
+            <td>&nbsp;</td>
+            <td rowspan="3">
+
+                <!--DIV para tarjeta de credito-->
+                <div id='div_tCredito' style="display:none">
+                    <div>
+                        <label>Banco:</label>
+                        <div id='combo_banco2' required="true"></div>
+                    </div>
+
+                    <div>
+                        <label>Tipo Tarjeta:</label>
+                        <div id='combo_tipo_tarjeta' required="true"></div>
+                    </div>      
+                    <div>
+                        <label>Numero Tarjeta:</label>
+                        <input type='text' id="infopagodettype_numero_tarjeta" name="infopagodettype[numero_tarjeta]" maxlength="16"/>
+                    </div>
+                    <div id='div_tCredito_numero_documento' style="display:none">
+                        <label>Numero Documento:</label>
+                        <input type='text' id="infopagodettype_numero_voucher" name="infopagodettype[numero_voucher]" maxlength="16"/>
+                    </div>   
+                    <div id='div_tCredito_fecha_documento' style="display:none">
+                        <label>Fecha Documento:</label>
+                        <div id='fecha_voucher_tc' required="true"></div>
+                    </div> 	            
+                    <div id='div_tCredito_cuenta_empresa' style="display:none">
+                        <label>Cta. Empresa:</label>
+                        <div id='combo_ctas_bancarias_empresa_tc' required="true"></div>
+                    </div>                         
+                </div>
+                <!--DIV para CTA BANCARIA (DEBITOS)-->
+                <div id='div_debito' style="display:none">
+                    <div>
+                        <label>Banco:</label>
+                        <div id='combo_banco_debito' required="true"></div>
+                    </div>
+
+                    <div>
+                        <label>Tipo Cuenta:</label>
+                        <div id='combo_tipo_cuenta_debito' required="true"></div>
+                    </div>      
+                    <div>
+                        <label>Codigo Debito:</label>
+                        <input type='text' id="infopagodettype_codigo_debito" name="infopagodettype[codigo_debito]" maxlength="16"/>
+                    </div>
+                    <div>
+                        <label>Numero Cuenta:</label>
+                        <input type='text' id="infopagodettype_numero_cuenta_debito" name="infopagodettype[numero_cuenta_debito]" maxlength="16"/>
+                    </div>                
+                    <div>
+                        <label>Fecha Debito:</label>
+                        <div id='fecha_debito' required="true"></div>
+                    </div>  
+                    <div id='div_debito_cuenta_empresa' style="display:none">
+                        <label>Cta. Empresa:</label>
+                        <div id='combo_ctas_bancarias_empresa_deb' required="true"></div>
+                    </div>             
+                </div>         
+                <!--DIV para Cheque-->
+                <div id='div_cheque' style="display:none">
+                    <div>
+                        <label>Banco:</label>
+                        <div id='combo_banco_cheque' required="true"></div>
+                    </div>
+                    <div>
+                        <label>Tipo Cuenta:</label>
+                        <input type='hidden' id="infopagodettype_id_tipo_cuenta_cheque" name="infopagodettype[tipo_cuenta_cheque]" 
+                               value='{{tipoCuenta.id}}'/>
+                        <input type='text' readonly id="infopagodettype_tipo_cuenta_cheque" name="infopagodettype[tipo_cuenta_cheque]" 
+                               value='{{tipoCuenta.descripcionCuenta}}'/>
+                    </div>     
+                    <div>
+                        <label>Numero Cheque:</label>
+                        <input type='text' id="infopagodettype_numero_cheque" name="infopagodettype[numero_cheque]" maxlength="16"/>
+                    </div>        
+                </div>   
+                <!--DIV para Retencion-->
+                <div id='div_retencion' style="display:none">    
+                    <div>
+                        <div id='div_numero_retencion' class='errormessage' style="display:none"></div>                
+                        <label>Numero Documento:</label>
+                        <input type='text' id="infopagodettype_numero_retencion" name="infopagodettype[numero_retencion]" maxlength="15"/>
+                    </div> 
+                    <div>
+                        <label>Fecha Documento:</label>
+                        <div id='fecha_retencion' required="true"></div>
+                    </div>               
+                </div>  
+                <!--DIV para Deposito-->
+                <div id='div_deposito' style="display:none">
+                    <div>
+                        <label>Numero Documento:</label>
+                        <input type='text' id="infopagodettype_numero_papeleta" name="infopagodettype[numero_papeleta]" maxlength="16"/>
+                    </div>        
+                    <div>
+                        <label>Fecha Deposito:</label>
+                        <div id='fecha_deposito' required="true"></div>
+                    </div>
+                    <div>
+                        <label>Cta. Empresa:</label>
+                        <div id='combo_ctas_bancarias_empresa' required="true"></div>
+                    </div>            
+                </div>        
+
+            </td>    
+        </tr>
+        <tr>
+            <td></td> 
+            <td></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><label for='infopagotype_comentario' class=''>Comentario:</label></td>
+            <td colspan='2'><textarea cols='26' rows='2' name="infopagodettype[comentario]" id="infopagodettype_comentario"> </textarea></td>
+        </tr>
+    </table>
+                <div class="buttons">
+				<p>
+                                    <button type="button" onclick="verifRetencionesDuplicadas()" class="button-crud">Agregar</button>                                    
+				</p>
+		</div>  
+</div>
+<div class="body_content"> 
+<table>
+    <tr>
+        <td>    
+<input type="hidden" required='required' name="infopagodettype[detalles]" id="infopagodettype_detalles" value="" />             
+        </td>
+        <td>&nbsp;</td>
+        <td>    
+        <div>{{ form_label(form.valorTotal) }} {{ form_widget(form.valorTotal) }}</div>
+        <input type="hidden" required='required' name="infopagocabtype[idpunto]" id="infopagocabtype_idpunto" value="{{punto.id}}" />           
+        </td> 
+    </tr>
+</table>     
+<div id='lista_grid'></div>
+                <div class="buttons">
+				<p>
+                                    <button type="button" onclick="grabar()" class="button-crud">Guardar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('infopagocab') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div>         
+</div>
+</form>
+{%else%}
+<div class="body_content"> 
+    <div class='warningmessage'>Para ingresar un Anticipo debe tener en sesion un punto cliente</div>
+</div>    
+{% endif %}
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+        <a class="listado_ac_tablas" href="{{ path('infopagocab_new') }}">Nuevo Pago</a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="{{ path('anticipo_listanticiposincliente') }}">Anticipos sin Cliente</a>
+    </li> 
+    <li>
+        <a class="listado_ac_tablas" href="{{ path('infopagocab') }}">Listado de Pagos</a>
+    </li> 
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+<script>
+$(function(){    
+    $("#infopagodettype_numero_cuenta").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });    
+    $("#infopagodettype_numero_tarjeta").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });
+    $("#infopagodettype_numero_cheque").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });
+    $("#infopagodettype_numero_retencion").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    }); 
+    $("#infopagodettype_numero_papeleta").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    }); 
+    $("#infopagodettype_numero_cuenta_debito").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    }); 
+    $("#infopagodettype_numero_voucher").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    }); 
+    $("#infopagodettype_valor").blur(function(){
+        if (validaValor())
+        {    
+            ocultarDiv('div_valor');
+            return true;
+        }    
+        else{ 
+            mostrarDiv('div_valor');
+            $('#div_valor').html('El valor debe ser en formato decimal');
+            $("#infopagodettype_valor").val('');
+        }
+    });     
+});
+function isNumeric(event){
+    return (
+        (event.keyCode > 7 && event.keyCode < 10)
+        || (event.keyCode > 47 && event.keyCode < 60)
+        || (event.keyCode > 95 && event.keyCode < 106)
+        || event.keyCode == 17
+        || event.keyCode == 116
+    )
+} 
+function validaValor(){
+//patron= new RegExp("^[0-9]*\.?[0-9]{1,4}$","gi");
+return /^\d+(\.\d+)?$/.test($("#infopagodettype_valor").val());
+}
+</script>
+{% endblock %}

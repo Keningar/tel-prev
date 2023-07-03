@@ -1,0 +1,117 @@
+/**
+ * @author Wilson Quinto <wquinto@telconet.ec>
+ * @version 1.0
+ * @since 29-04-2021    
+ * Se crea la sentencia DML para insert de parametros
+ */
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PARAM_ANULACION_PAGOS',
+    'PARAMETRO CONFIGURABLES DE PAGINA DE ANULAR PAGO',
+    'FINANCIERO',
+    'Activo',
+    'wquinto',
+     SYSDATE,
+    '127.0.0.1'
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+	VALOR2,
+	VALOR3,
+	VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO        FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO   = 'PARAM_ANULACION_PAGOS' AND ESTADO      = 'Activo'),
+     'PARAMETRO PARA NOTIFICACION DE ANULACION DE PAGO',
+     'ANULACION-OK',
+	 'notificaciones_telcos@telconet.ec',
+	 'ANULACIÓN DE PAGO',
+	 'contabilidad@netlife.net.ec,cobranzasgye@netlife.net.ec,cobranzasuio@netlife.net.ec,',
+    'Activo',
+    'wquinto',
+     SYSDATE,
+    '127.0.0.1'
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+	VALOR2,
+	VALOR3,
+	VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO        FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO   = 'PARAM_ANULACION_PAGOS' AND ESTADO      = 'Activo'),
+     'PARAMETRO PARA NOTIFICACION DE ANULACION DE PAGO',
+     'ANULACION-DOC',
+	 'notificaciones_telcos@telconet.ec',
+	 'ANULACIÓN DOCUMENTOS',
+	 'contabilidad@netlife.net.ec,cobranzasgye@netlife.net.ec,cobranzasuio@netlife.net.ec,',
+    'Activo',
+    'wquinto',
+     SYSDATE,
+    '127.0.0.1'
+  );
+
+
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+	VALOR2,
+	VALOR3,
+	VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO        FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO   = 'PARAM_ANULACION_PAGOS' AND ESTADO      = 'Activo'),
+     'PARAMETRO PARA LIMITIR EL NUMERO DE MESES EN CALENDARIO DE PAGINA',
+     'PAGINA',
+	 'NUM_MESES',
+	 '1',
+	 '',
+    'Activo',
+    'wquinto',
+     SYSDATE,
+    '127.0.0.1'
+  );

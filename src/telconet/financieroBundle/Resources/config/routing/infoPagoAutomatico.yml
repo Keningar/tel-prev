@@ -1,0 +1,100 @@
+infoPagoAutomatico:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:index" }
+    
+infoPagoAutomatico_grid:
+    pattern:  /grid
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:gridEstadosCuenta" }    
+    
+    
+infoPagoAutomatico_getCuentasContablesBanco:
+    pattern:  /getCuentasContablesBanco
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getCuentasContablesBanco" }      
+    
+infoPagoAutomatico_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:new" }
+    
+infoPagoAutomatico_documentosFileUpload:
+    pattern:  /documentosFileUpload
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:documentosFileUpload" }
+    
+infoPagoAutomatico_verEstadoCuenta:
+    pattern:  /detalle/{intIdPagoAutomatico}
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:verEstadoCuenta" } 
+   
+infoPagoAutomatico_gridDetalle:
+    pattern:  /gridDetalle
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:gridDetalle" }  
+    
+infoPagoAutomatico_getFormasPago:
+    pattern:  /getFormasPago
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getFormasPagoAutomatico" }
+    
+infoPagoAutomatico_getClientes:
+    pattern:  /getClientes
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getClientes" }
+    
+infoPagoAutomatico_getLoginesCliente:
+   pattern:  /getLoginesCliente
+   defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getLoginesCliente" } 
+   
+infoPagoAutomatico_getFacturasPendientesPto:
+   pattern:  /getFacturasPendientesPto
+   defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getFacturasPendientesPto" }
+   
+infoPagoAutomatico_getSaldoFactura:
+   pattern:  /getSaldoFactura
+   defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getSaldoFactura" }
+
+infoPagoAutomatico_procesarPago:
+   pattern:  /procesarPago
+   defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:procesarPago" }      
+        
+infoPagoAutomatico_getEstadoCuentaPorFactura:
+   pattern:  /getEstadoCuentaPorFactura
+   defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getEstadoCuentaPorFactura" } 
+   
+infoPagoAutomatico_eliminarEstadoCuenta:
+    pattern:  /eliminarEstadoCuenta
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:eliminarEstadoCuenta" }   
+
+infoPagoAutomatico_getListadoErrores:
+    pattern:  /getListadoErrores
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getListadoErrores" } 
+    
+infoPagoAutomatico_getEstados:
+    pattern:  /getEstados
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getEstados"} 
+    
+infoPagoAutomatico_getDetEstadoCuenta:
+   pattern:  /getDetEstadoCuenta
+   defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getDetEstadoCuenta" } 
+   
+infoPagoAutomatico_gridPagoPrecargado:
+    pattern:  /gridPagoPrecargado
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:gridPagoPrecargado" } 
+    
+infoPagoAutomatico_getPagosEstadoCta:
+    pattern:  /getPagosEstadoCta
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getPagosEstadoCta" }
+    
+infoPagoAutomatico_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:InfoPagoCab:show" }
+    
+infoPagoAutomatico_recibo:
+    pattern:  /{id}/recibo
+    defaults: { _controller: "financieroBundle:InfoPagoCab:reciboPdf" }  
+    
+infoPagoAutomatico_notificaPago:
+   pattern:  /notificaPago
+   defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:notificaPago" } 
+   
+infoPagoAutomatico_getMaxNumDetalles:
+   pattern:  /getMaxNumDetalles
+   defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getMaxNumDetalles" }   
+    
+infoPagoAutomatico_getHistorialPagos:
+    pattern:  /getHistorialEstadoCta
+    defaults: { _controller: "financieroBundle:InfoPagoAutomaticoCab:getHistorialEstadoCta" }

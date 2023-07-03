@@ -1,0 +1,288 @@
+<html>
+    <head>
+        <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+        <style>
+            .tamano_letra_direccion
+            {
+                font-size:9px;
+            }
+            .tamano_letra_detalles
+            {
+                font-size:11px;
+            }
+
+
+            table{
+                border: 0px solid black;
+                border-spacing: 0px;
+            }
+
+            table thead tr{
+                font-family: Arial, monospace;
+                font-size: 12px;
+            }
+            
+            table thead tr th{
+                border-bottom: 2px solid black;
+                border-top: 1px solid black;
+                margin: 0px;
+                padding: 2px;
+                background-color: #cccccc;
+            }
+            #sumaPorGrupo{
+                border-bottom: 2px solid black;
+                border-top: 1px solid black;
+                margin: 0px;
+                padding: 2px;
+                background-color: #cccccc;
+            }
+
+            table tr {
+                font-family: arial, monospace;
+                color: black;
+                font-size:10px;
+                background-color: white;
+            }
+
+            table tr.odd {
+                background-color: #AAAAAA;
+            }
+
+            table tr td{
+                width: auto;
+            }
+ 
+            table tr th{
+                width: 150px;
+            } 
+            
+            table tr td, th{
+                padding: 2px;
+            }
+            
+            a:link{
+                font-family:arial, monospace;
+                text-decoration: none;
+                color: teal;
+            }
+
+            a:hover{
+                text-decoration: underline;
+            }
+
+            a:visited{
+                color:black;
+                text-decoration: none;
+            }
+            
+            H1.SaltoDePagina
+            {
+                page-break-after: always
+            }            
+    
+        </style>
+    </head>
+    <body>
+
+        <table  class="record_properties" width='100%'>
+            <tr>
+                <td align="left" colspan='4' >
+                    <img alt="" src="{{logoEmpresa}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class='tamano_letra_direccion'>{{direccionOficina}}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <table>
+                        <tr><td class='tamano_letra_direccion'>{{pbxOficina}}</td></tr>
+                    </table>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan='4'>&nbsp;</td>
+            </tr>
+
+        </table>	
+        <br>
+        <div style="alignment-baseline: central"> <h5>REPORTE DETALLADO DE PAGOS </h5></div> 
+        <div style="position: absolute; left:50%; top:100px; ">
+            <table style="font-size: 9px ; width: 100%">
+
+                <tr>
+                    <td><b>Fecha consulta</b></td>
+                    <td>{{fechaConsulta}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>Fecha de doc:</b></td>
+                    <td>{{fechaDesde}}</td>
+                    <td><b>Oficina</b></td>
+                      {% if oficina =='' %}
+
+                    <td>Todas</td>
+                    {%endif%}
+                     {% if oficina!='' %}
+                    <td>{{nombreoficina}}</td>
+                    {%endif%}
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>Cantidad Pagos:</b></td>
+                    <td>{{totalRegistros}}</td>
+
+                    <td><b> Total Pagos </b></td>
+                    <td>${{sumaTotal}}</td>
+
+                </tr>
+
+            </table>
+
+        </div> 
+
+       {% set conter=0%}
+       {% set enter=0%}
+       {% set cont=0%}
+        <br>
+            {% set formaPago = '' %}
+        
+            {%for detAgru in  detAgrupados%}           
+        
+             {% if (conter == 0 )%}
+                
+                {% set formaPago = detAgru.strDescripcionFpago%}
+               
+                <h5>{{ formaPago }}</h5>
+                
+             {% else%}
+                
+                {% if (formaPago != detAgru.strDescripcionFpago )%}
+                
+                      {% set formaPago = detAgru.strDescripcionFpago%}
+                
+                      <h5>{{ formaPago }}</h5>
+                      
+                {%endif%}
+                
+             {%endif%}
+              
+              <table style=" width: 100%">
+                  <thead>
+                      <tr> 
+                          <th ></th>
+                      
+                          <th># Doc</th>
+
+                          <th ></th>
+                          <th>Empleado</th>
+
+                          <th ></th>
+                          <th >Fecha </th>
+
+                          <th ></th>
+                          <th >login </th>
+                          <th ></th>
+                          <th ></th>
+                          <th >Cliente </th>
+                          
+                          <th ></th>
+                          <th >#Referencia </th>
+
+                          <th ></th>
+                          <th >F.Pago </th>
+
+                          <th ></th>
+                          <th > Valor </th>
+                          <th ></th>
+                      </tr>
+
+                  </thead>
+                  </table> 
+                  <table style="width: 100%">
+                                   
+                  <tbody>
+
+                        {%for detalle in  detalles%}
+                            
+                             {%for det in  detalle%}
+                                {%if (detAgru.intIdFormaPago   == det.intFormaPagoId and 
+                                      detAgru.strUsrCreacion   == det.strUsrCreacion and 
+                                      detAgru.strNumReferencia == det.strNumReferencia
+                                     ) 
+                                %} 
+                                 {% set conter=conter +1 %} 
+                                  
+                                   <tr>  
+                                       <td >{{conter}} </td>
+                                       <td ></td>
+
+                                       <td >{{det.strNumeroPago}}</td>
+                                       <td ></td>
+
+                                       <td >{{det.strNombreUser}} </td>
+                                       <td ></td>
+
+                                       <td >{{det.fechaCreacion}}</td>
+                                       <td ></td>
+
+                                       <td >{{det.strLogin}}</td>
+                                       <td ></td>
+
+                                       <td >{{det.strCliente}}</td>
+                                       <td ></td>
+
+                                       <td >{{det.strNumReferencia}}</td>
+                                       <td ></td>
+
+                                       <td >{{det.strFormaPago}}</td>
+                                       <td ></td>
+
+                                       <td  >${{det.floatValor}}</td>
+                                       <td ></td>
+                                   </tr>
+
+                               {%endif%}
+                               
+                             {%endfor%} 
+                         {%endfor%}
+
+                      <tr id="sumaPorGrupo" style="width: 100%">  
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>                         
+                          <th ></th>
+                          <th ></th>
+                          <th ></th>                          
+                          <th ></th>
+                          <th >Suma Total: </th>
+                          <th ></th>
+                          <th >${{detAgru.floatSumaPago}}</th>
+                          <th ></th>
+                      </tr> 
+                      <br>
+                  </tbody>
+                  <tfoot>  
+                  </tfoot>                  
+              </table>                      
+              <br>                     
+            {% set cont=cont+1 %}             
+       {%endfor%} 
+              
+    </body>
+</html>

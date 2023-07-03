@@ -1,0 +1,66 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquerysctipttop.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('public/js/jquery_ui_1_8_17/js/jquery-1.7.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery.monthpicker.js') }}"></script>
+    <script>
+        var strUrlGridReportesBuro = "{{ path('reportes_grid_buro') }}";
+        var strUrlEliminarReporte  = "{{ path('reportes_eliminar_reporte_buro') }}";
+        var iconoEjecutando        = '<img src="{{ asset('public/images/images_crud/loading19.gif')}}" width="16" height="16" />';
+    </script>   
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/reportes/indexReportesBuro.js?2') }}"></script>              
+{% endblock %}
+
+            
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Listado de Reportes para el Bur&oacute; de Cr&eacute;dito</h1>
+    </div>
+    {% for flashMessageSubida in app.session.flashbag.get('subida') %}
+        <div class="successmessage">
+            {{flashMessageSubida}}
+        </div>
+    {% endfor %}
+    
+    <div class="dashboard_content k-content">
+        <div id="example" class="k-content">
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <center>
+                            <div id='filtro_reportes'></div>
+                        </center>
+                    </td>
+                </tr>	            
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <center>
+                            <div id='lista_reportes'></div>
+                        </center>
+                    </td>
+                </tr>	
+            </table>      
+        </div>
+    </div>
+    <a id="linkDownload"></a>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="acciones_relacionadas">
+        <a href="{{ path('reportes_generar_reporte_buro') }}" class="button-nuevo-registro">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+            &nbsp;Generar Reporte Buro
+        </a>
+    </div>
+    <ul class="listado_acciones_relacionadas"></ul>
+{% endblock contenido_der %}
+

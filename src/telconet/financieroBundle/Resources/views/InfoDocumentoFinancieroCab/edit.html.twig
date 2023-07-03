@@ -1,0 +1,109 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+        
+	<style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+	</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_listar_informacion_existente='{{path('infodocumentofinancierocab_ajax_get_info_pto_cliente')}}';
+        //var punto_id={{ entity.puntoId }};
+        var punto_id='{{ punto_id }}';
+        var factura_id='{{ entity.id }}'
+        var url_info_portafolio='{{ path('infoordentrabajo_tipo') }}';
+        var url_info_plan='{{ path('infoordentrabajo_info_plan') }}';
+        var url_info_detalle_factura='{{ path('infodocumentofinancierocab_ajax_get_detalle_factura') }}';
+    </script>   
+    
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/facturacion/edit.js') }}"></script>                 
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Editar factura</h1>
+	</div>
+    <div class="body_content">
+		<form action="{{ path('infodocumentofinancierocab_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" name="formulario">
+			{{ form_widget(edit_form) }}
+			<div class="secHead">Tipo de orden de servicio</div>
+            <div>
+                <input type="radio" name="info" value="Orden" onclick="verificarCheck(this.value)">Precargada<br>
+                <input type="radio" name="info" value="Manual" onclick="verificarCheck(this.value)">Manual<br>
+            </div>
+           <div id="formulario_portafolio" class="campo-oculto">
+                <div class="secHead">Por portafolio:</div>
+                <div>
+                    <div>
+                        <label class="required" for="listado">* Listado de Planes:</label>
+                        <select id="planes">
+                        </select>
+                    </div>
+                    <div>
+                        <label class="required" for="cantidad">* Cantidad:</label>
+                        <input type="text" class="campo-obligatorio" name="cantidad_plan" id="cantidad_plan">
+                    </div>
+                    <div>
+                        <label class="required" for="cantidad">* Descuento:</label>
+                        <input type="text" class="campo-obligatorio" name="descuento_plan" id="descuento_plan">
+                    </div>
+                    <div>
+                        <label class="required" for="cantidad">* Precio:</label>
+                        <input type="text" class="campo-obligatorio" name="precio" id="precio" readonly="readonly">
+                        <div id="contenido_plan"></div>
+                    </div>
+                    <div>
+                        <button type='button' class='button-crud' onClick='agregar_detalle_portafolio();'>Agregar</button>
+                        &nbsp;
+                        <button type='button' class='button-crud' onClick='limpiar_detalle_portafolio();'>Limpiar</button>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id='lista_informacion_pre_cargada'></div>
+            <input type='hidden' id='punto_id' name='punto_id' value='{{ punto_id }}'>
+            <input type='hidden' id='listado_informacion' name='listado_informacion'>
+            <div class="buttons">
+                <p>
+                    <button type='button' class="button-crud" onClick='enviarInformacion();'>Editar</button>
+                    <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                            cancelar
+                    </a>
+                    </span>
+                </p>
+            </div>	
+		</form>
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<ul class="record_actions">
+    <li>
+        <form action="{{ path('infodocumentofinancierocab_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Eliminar</button>
+        </form>
+    </li>
+</ul>
+{% endblock contenido_der %}

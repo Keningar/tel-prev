@@ -1,0 +1,181 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/comercial/css/Promocion.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script>
+        var url_grid_factRechazadas            = "{{ path('infodocumentofinancierocab_gridRechazadas') }}";
+        var url_getTipoErrores                 = "{{ path('infodocumentofinancierocab_tipoErrores') }}";
+        var urlEjecutarReprocesoFactRechazadas = "{{ path('infodocumentofinancierocab_ejecutarReprocesoFactRechazadas') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/facturacion/reprocesoFactRechazada.js') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md">
+                <div>
+                    <br/>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <button type="button" class="btn btn-outline-info btn-sm collapsed" data-toggle="collapse" aria-expanded="false" 
+                                            data-target="#contenedor_busqueda">Criterios de Búsqueda <i class="fa fa-angle-down"></i></button>   
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>                    
+                <div id="contenedor_busqueda" class="collapse">
+                    <form><br />
+                        <div class="form-group row justify-content-md-center">
+                            <div class="form-group col-md-2">
+                                <label for="fecha_emision_desde">F.Emisión Desde:</label>
+                                <input type="text" class="form-control" id="fecha_emision_desde" name="fecha_emision_desde" 
+                                       placeholder="DD-MM-YYYY">
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="fecha_emision_hasta">F.Emisión Hasta:</label>
+                                <input type="text" class="form-control" id="fecha_emision_hasta" name="fecha_emision_hasta" 
+                                       placeholder="DD-MM-YYYY">
+                            </div>
+                             <div class="form-group col-md-2">
+                                <label for="identificacion_cliente">Identificación Cliente:</label>
+                                <input type="text" class="form-control" id="identificacion_cliente" name="identificacion_cliente" >
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="login">Login:</label>
+                                <input type="text" class="form-control" id="login" name="login">
+                            </div>    
+                            <div class="form-group col-md-3">
+                                <label for="tipo_rechazo">Tipo de Rechazo:</label>
+                                <select class="form-control" id="tipo_rechazo" name="tipo_rechazo"  multiple="multiple">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row row justify-content-md-center">
+                            <div class="form-group col-md-2" >                                                        
+                                <button type="button" class="btn btn-secondary btn-sm" id="limpiarFactRechazadas">
+                                    <i class="fa fa-paint-brush"></i> Limpiar
+                                </button>&nbsp;
+                                <button type="button" class="btn btn-info btn-sm" id="buscarFactRechazadas"><i class="fa fa-search"></i> Buscar</button>
+                                &nbsp;&nbsp;<label><i class="fa fa-spinner fa-pulse fa-2x spinner_buscarFactRechazadas" ></i></label>
+                            </div>                          
+                        </div>
+                    </form>              
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="body_content k-content">
+                    <div class="row">
+                        <div class="col-md-9"><h6>Listado de Facturas Rechazadas</h6> </div>  
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#reprocesoMasivo" style="margin-left: 15px">Reproceso Masivo</button>
+                            <button type="button" class="btn btn-info btn-sm" id='btnReprocesoIndividual'data-toggle="modal" >Reproceso Individual</button>
+                        </div>                      
+                    </div>               
+                    <br />
+                    <table class="table table-striped table-bordered compact" id="tabla_facturas_rechazadas" class="display" style="width:100%">
+                        <thead class="thead-light"> 
+                            <tr>
+                                <th><input name="select_all" value="1" id="factRechazada-select-all"  type="checkbox"></th>
+                                <th>No.Fact. SRI</th>
+                                <th>Pto.Cliente</th>
+                                <th>Cliente</th>
+                                <th>Identificación</th>
+                                <th>Estado</th> 
+                                <th>Fe.Creación</th>
+                                <th>Fe.Emisión</th>
+                                <th>Valor Total</th>
+                                <th>Motivo Rechazo</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalDetalle" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Mensaje Informativo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="modal fade" id="reprocesoMasivo" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Reproceso Masivo</h5>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <h6>¿Está seguro de realizar el proceso?</h6>                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btReprocesoMasivo" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+    <div class="modal fade" id="reprocesoIndividual" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Reproceso Individual</h5>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">                     
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btReprocesoIndividual" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>  
+{% endblock contenido_central %}

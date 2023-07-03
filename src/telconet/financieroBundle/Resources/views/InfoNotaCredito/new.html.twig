@@ -1,0 +1,522 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin:0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+            {% if(punto_id is defined) %}
+                var punto_id   = '{{ punto_id.id }}';
+                var strPagaIva = '{{ strPagaIva }}';
+            {% endif %}
+            var url_info_por_dias        = '{{ path('infodocumentonotacredito_listar_detalle_factura_procesado') }}';
+            var url_info_por_porcentaje  = '{{ path('infodocumentonotacredito_listar_detalle_factura_porcentaje') }}';
+            var url_info_valor_original  = '{{ path('infodocumentonotacredito_listar_detalle_factura_valor_original') }}';
+            idFactura                    = '{{ idFactura }}';
+            valorSubTotalFactura         = '{{ valorSubTotalFactura }}';
+            var strEsCompensado          = '{{ strEsCompensado }}';
+            var intPorcentajeImpuestoIce = '{{ intPorcentajeImpuestoIce }}';  
+            var strIvaAplicado           = '{{ strIvaAplicado }}';  
+            var intSaldo                 = '{{ intSaldo }}';
+            var intEditValoresNcCaract   = '{{ intEditValoresNcCaract }}';
+            var intPorcentajeIvaE        = '{{ intPorcentajeIvaE }}';
+
+            var Mask;
+            function loadMask(el, flag, msg)
+            {
+                Mask = new Ext.LoadMask(Ext.get(el), {msg: msg});
+                if (flag)
+                    Mask.show();
+                else
+                    Mask.hide();
+            }
+    </script>              
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="myLoading" class="myloadingjs" style="float: center; overflow: auto;">
+        <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            <h1>Nueva nota de credito</h1>
+        </div>
+        <div class="body_content">
+            
+            {% if(boolFacturaContrato is defined) %}
+                {% if(boolFacturaContrato) %}
+                    {% if(strObservacionFact is defined) %}
+                        <div class="info-error">{{ strObservacionFact }} </div>
+                    {% else %}
+                        <div class="info-error">No existe la variable strObservacionFact</div>
+                    {% endif %}
+                    <div class="buttons">
+                        <p>
+                            <a class="cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                                Ver Facturas
+                            </a>
+                        </p>
+                    </div>
+                {% else %}
+                    {% if (strMensajeError is defined) %}
+                        {% if (strMensajeError == 'No existe Error') %}
+                            {% if (boolTieneNc is defined) %}
+                                {% if (boolTieneNc == true) %}
+                                    {% if(strObservacionNotaCredito is defined) %}
+                                        <div class="info-error">{{ strObservacionNotaCredito }} </div>
+                                    {% else %}
+                                        <div class="info-error">No existe la variable strObservacionNotaCredito</div>
+                                    {% endif %}
+                                    <div class="buttons">
+                                        <p>
+                                            <a class="cancel-crud" href="{{ path('infodocumentonotacredito') }}">
+                                                Ver Notas de Credito
+                                            </a>
+                                        </p>
+                                    </div>
+                                {% else %}
+                                    {% if(boolTieneSaldo is defined) %}
+                                        {% if(boolTieneSaldo == false) %}
+                                            {% if(strObservacionSinSaldo is defined) %}
+                                                <div class="info-error">{{ strObservacionSinSaldo }} </div>
+                                            {% else %}
+                                                <div class="info-error">No existe la variable strObservacionSinSaldo</div>
+                                            {% endif %}
+                                            <div class="buttons">
+                                                <p>
+                                                    <a class="cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                                                        Ver Facturas
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        {% else %}
+                                            {% if(punto_id is defined) %}
+                                                {% if(punto_id is not null) %}
+                                                    <div class="secHead">Información del cliente</div>
+                                                    <script>
+                                                        var strPrefijoEmpresa      = '{{ strPrefijoEmpresa }}';
+                                                        var strUrlGetDepartamentos = '{{ path("seguperfilpersona_getDepartamentosByEmpresaYNombre") }}';
+                                                    </script>
+                                                    <script type="text/javascript" src="{{ asset('bundles/financiero/js/notascredito/new.js?13') }}"></script>
+                                                    <table colspan="5">
+                                                        <tr>
+                                                            <td width="15%"><b>Razón social:</b></td>
+                                                            <td width="25%">{{ cliente.razon_social }}</td>
+                                                            <td width="10%">&nbsp</td>
+                                                            <td width="15%"><b>Es Electronica: </b></td>
+                                                            <td width="35%">{{ esElectronica }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="15%"><b>Cliente:</b></td>
+                                                            <td width="25%">{{ cliente.nombres }} {{ cliente.apellidos }}</td>
+                                                            <td width="10%">&nbsp</td>
+                                                            <td width="15%"><b>Factura a Aplicar: </b></td>
+                                                            <td width="35%">{{ strNumeroFacturaSri }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="15%"><b>Pto. cliente:</b></td>
+                                                            <td width="25%"> {{ punto_id.login }}</td>
+                                                            <td width="10%">&nbsp</td>
+                                                            <td width="15%"><b>Valor Factura: </b></td>
+                                                            <td width="35%">{{ intValorFactura }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="15%"><b>Descripción:</b></td>
+                                                            <td width="25%"> {{ punto_id.descripcion }}</td>
+                                                            <td width="10%">&nbsp</td>                                                            
+                                                                {% if strPrefijoEmpresa == "TNP" %} 
+                                                                    <td width="15%"><b>Paga Itbms: </b></td>
+                                                                    <td width="35%">{{ strPagaIva }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                        (<b>{{ strIvaAplicado }}%</b>)</td> 
+                                                                {% else %}
+                                                                    <td width="15%"><b>Paga IVA: </b></td>
+                                                                    <td width="35%">{{ strPagaIva }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                        (<b>{{ strIvaAplicado }}%</b>)</td>
+                                                                {% endif %}
+                                                        </tr>
+                                                        <tr>
+                                                            <td width="15%"><b>Saldo disponible: </b></td>
+                                                            <td colspan="4">
+                                                                {% if(strObservacionConSaldo is defined) %}
+                                                                    <div class="info-success" style="padding:5px!important; margin: 15px 0px!important;">
+                                                                        {{ strObservacionConSaldo }}
+                                                                    </div>
+                                                                {% else %}
+                                                                    <div class="info-error" style="padding:5px!important; margin: 15px 0px!important;">
+                                                                        No existe la variable strObservacionConSaldo
+                                                                    </div>
+                                                                {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                        {% if strEsCompensado == "S" %}
+                                                            <tr>
+                                                                <td colspan="5">
+                                                                    <div class="info-success" style="padding:5px!important; margin: 15px 0px!important;">
+                                                                        La nota de crédito será compensada
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endif %}
+                                                    </table>
+                                                    <form action="{{ path('infodocumentonotacredito_create') }}" method="post" {{ form_enctype(form) }} 
+                                                          class="formulario" name="formulario" id="formulario">
+                                                        <div style="clear:both; margin-bottom: 20px; overflow:hidden;">
+                                                            <div style="float:left; width: 45%">
+                                                                <div class="secHead">Tipo de Nota de Credito</div>
+                                                                <div>
+                                                                    <input type="radio" name="info" value="PorDias" onclick="verificarCheck(this.value)">
+                                                                        Proporcional por días<br>
+                                                                    <input type="radio" name="info" value="PorServicio" onclick="verificarCheck(this.value)">
+                                                                        Porcentaje de Servicio<br>
+                                                                    {% if strPrefijoEmpresa == "TN" %} 
+                                                                        <input type="radio" name="info" value="ValorPorDetalle" 
+                                                                               onclick="verificarCheck(this.value)">
+                                                                            Valor Por Detalle<br>
+                                                                    {% endif %}
+                                                                    <input type="radio" name="info" value="ValorOriginal" 
+                                                                           onclick="verificarCheck(this.value)" 
+                                                                           {% if (boolTieneNcActiva is defined) %}
+                                                                               {% if (boolTieneNcActiva == true) %}
+                                                                                   disabled = "disabled"
+                                                                               {% endif %}
+                                                                           {% endif %} >
+                                                                        Valor Original
+                                                                        {% if (boolTieneNcActiva is defined) %}
+                                                                            {% if (boolTieneNcActiva == true) %}
+                                                                                * <p style="color: red;">
+                                                                                    <br>* Se deshabilita opci&oacute;n porque la factura ya posee una Nota de
+                                                                                    Cr&eacute;dito en estado Activo
+                                                                                </p>
+                                                                            {% endif %}
+                                                                        {% endif %}
+                                                                </div>
+                                                            </div>
+                                                            <div style="float:left; width: 10%">&nbsp</div>
+                                                            <div style="float:left; width: 45%">
+                                                                <div class="secHead" style="float:rigth">Responsables</div>
+                                                                <div>
+                                                                    <input type="radio" name="responsable" value="Cliente"
+                                                                           onclick="verificarCheck(this.value);">
+                                                                        Cliente<br>
+                                                                    <div>
+                                                                        <div style="float:left; padding: 0px 20px 0px 4px;">
+                                                                            <input type="radio" name="responsable" value="Empresa"
+                                                                                   onclick="verificarCheck(this.value);">
+                                                                                Empresa
+                                                                        </div>
+                                                                        <div style="float:left;" id="departamentos"></div>
+                                                                    </div>
+                                                                    <input type="hidden" id="checkTipoResponsable" name="checkTipoResponsable"/>
+                                                                    <input type="hidden" id="checkEmpresaResponsable" name="checkEmpresaResponsable"/>
+                                                                    <input type="hidden" id="checkClienteResponsable" name="checkClienteResponsable"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="formulario_por_dias" class="campo-oculto" style="clear:both;">
+                                                            <div class="secHead">Proporcional del valor de la factura:</div>
+                                                            <div style="clear:both; overflow:hidden;">
+                                                                <div style="float:left; margin-right: 15px;">
+                                                                    <label style="width:auto;" class="required" for="listado">* Desde:</label>
+                                                                    <div id='feDesdeFactura' required="true"></div>
+                                                                    <input type='hidden' value='' id='feDesdeFacturaE'/> 
+                                                                </div>
+                                                                <div style="float:left; margin-left: 150px;">
+                                                                    <label style="width:auto;" class="required" for="cantidad">* Hasta:</label>
+                                                                    <div id='feHastaFactura' required="true"></div>
+                                                                    <input type='hidden' value='' id='feHastaFacturaE'/> 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div id="formulario_por_porcentaje" class="campo-oculto" style="clear:both;">
+                                                            <div class="secHead">Porcentaje del valor de la factura:</div>
+                                                            <div>
+                                                                <div id='div_porcentaje' class='errormessage' style="display:none"></div>
+                                                                <div>
+                                                                    <input type='text' value='' id='porcentajeFactura'/>%
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div style="clear:both; margin-bottom: 20px; overflow:hidden;">
+                                                            <div style="float:left; width: 45%">
+                                                                <div id="formulario_motivos" style="clear:both;">
+                                                                    <div class="secHead">Motivos:</div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <select id="motivos" name="motivos">
+                                                                                <option>Seleccione...</option>
+                                                                                {% for motivo in listadoMotivos %}
+                                                                                    <option value="{{ motivo.id }}-{{ motivo.nombreMotivo }}">
+                                                                                        {{ motivo.nombreMotivo }}
+                                                                                    </option>
+                                                                                {% endfor %}
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div style="float:left; width: 10%">&nbsp</div>
+                                                            <div style="float:left; width: 45%">
+                                                                <div id="formulario_observacion" style="clear:both;">
+                                                                    <div class="secHead">Observacion:</div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <textarea rows="4" cols="45" id="observacion" name="observacion"></textarea> 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {% if strPrefijoEmpresa == "TN" %}
+                                                            <div style="clear:both; margin-bottom: 20px; overflow:hidden; width: 100%;">
+                                                                <div id="formulario_observacion" style="clear:both;">
+                                                                    <div class="secHead">Descripci&oacute;n Interna:</div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <textarea rows="4" cols="100" id="descripcionInterna" 
+                                                                                      name="descripcionInterna"></textarea> 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        {% endif %}
+                                                        <br />
+                                                        <div class="buttons">
+                                                            <p>
+                                                                <button type='button' class="button-crud" onClick='generarDetalle();'>
+                                                                    Generar detalle
+                                                                </button>
+                                                                <input type='hidden' value='' id='info_check'/>
+                                                            </p>
+                                                        </div>	
+                                                        <div class="secHead">Detalle</div>
+                                                        <div id='lista_informacion_pre_cargada'></div>
+                                                        <input type='hidden' id='punto_id' name='punto_id' value='{{ punto_id.id }}'>
+                                                        <input type='hidden' id='factura_id' name='factura_id' value='{{ idFactura }}'>
+                                                        <input type='hidden' id='listado_informacion' name='listado_informacion'>
+                                                        <input type='hidden' id='strPagaIva' name='strPagaIva' value="{{ strPagaIva }}">
+                                                        <input type='hidden' id='strEsCompensado' name='strEsCompensado' value="{{ strEsCompensado }}"/>
+                                                        <input type='hidden' id='intPorcentajeImpuestoIce' name='intPorcentajeImpuestoIce' value="{{ intPorcentajeImpuestoIce }}"/> 
+                                                        <input type='hidden' id='intEditValoresNcCaract' name='intEditValoresNcCaract' value="{{ intEditValoresNcCaract }}"/>        
+                                                        </br>
+                                                        <div style="clear:both; text-align: right; width: 100%; margin-top: 20px;">
+                                                            <div style="float:left; width: 720px;"><b>Subtotal &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='subtotalDetalle' name='subtotalDetalle'>0.00</div>
+                                                        </div>
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                            <div style="float:left; width: 720px;"><b>Descuento &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='descuentoDetalle' name='descuentoDetalle'>0.00</div>
+                                                        </div>
+                                                       {% if(strPrefijoEmpresa=='TN' or strPrefijoEmpresa=='MD' or strPrefijoEmpresa=='EN' )%}
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                            <div style="float:left; width: 720px;"><b>Ice &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='iceDetalle' name='iceDetalle'>0.00</div>
+                                                        </div>
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                            <div style="float:left; width: 720px;"><b>Iva &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='ivaDetalle' name='ivaDetalle'>0.00</div>
+                                                        </div>                                                                                                                    
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                            <div style="float:left; width: 720px;"><b>Otros impuestos &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='otrosImpDetalle' name='otrosImpDetalle'>0.00</div>
+                                                        </div>
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                            <div style="float:left; width: 720px;"><b>Compensaci&oacute;n Solidaria &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='compensacionSolidaria' name='compensacionSolidaria'>
+                                                                0.00
+                                                            </div>
+                                                        </div>
+                                                       {% elseif(strPrefijoEmpresa=='TNG')%}  
+                                                        <div style="clear:both; text-align: right; width: 100%;display: none;">
+                                                        <div style="float:left; width: 720px;"><b>Iec &nbsp;&nbsp;$</b></div>
+                                                        <div style="float:left; width:80px;" id='iceDetalle' name='iceDetalle'>0.00</div>
+                                                        </div>
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                            <div style="float:left; width: 720px;"><b>Iva &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='ivaDetalle' name='ivaDetalle'>0.00</div>
+                                                        </div>                                                                                                                    
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                            <div style="float:left; width: 720px;"><b>Otros impuestos &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='otrosImpDetalle' name='otrosImpDetalle'>0.00</div>
+                                                        </div>
+                                                        <div style="clear:both; text-align: right; width: 100%;display: none;">
+                                                        <div style="display: none" style="float:left; width: 720px;">
+                                                            <b>Compensaci&oacute;n Solidaria &nbsp;&nbsp;$</b></div>
+                                                        <div style="display: none" style="float:left; width:80px;" 
+                                                             id='compensacionSolidaria' name='compensacionSolidaria'>0.00</div>
+                                                        </div>
+                                                       {% elseif(strPrefijoEmpresa=='TNP')%}   
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                        <div style="float:left; width: 720px;"><b>Iec &nbsp;&nbsp;$</b></div>
+                                                        <div style="float:left; width:80px;" id='iceDetalle' name='iceDetalle'>0.00</div>
+                                                        </div>
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                        <div style="float:left; width: 720px;"><b>Itbms &nbsp;&nbsp;$</b></div>
+                                                        <div style="float:left; width:80px;" id='ivaDetalle' name='ivaDetalle'>0.00</div>
+                                                        </div>
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                        <div style="float:left; width: 720px;"><b>Sume &nbsp;&nbsp;$</b></div>
+                                                        <div style="float:left; width:80px;" id='otrosImpDetalle' name='otrosImpDetalle'>0.00</div>
+                                                        </div>
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                        <div style="display: none" style="float:left; width: 720px;">
+                                                            <b>Compensaci&oacute;n Solidaria &nbsp;&nbsp;$</b></div>
+                                                        <div style="display: none" style="float:left; width:80px;" 
+                                                             id='compensacionSolidaria' name='compensacionSolidaria'>0.00</div>
+                                                        </div>
+                                                       {% endif %}    
+                                                        <div style="clear:both; text-align: right; width: 100%;">
+                                                            <div style="float:left; width: 720px;"><b>Total &nbsp;&nbsp;$</b></div>
+                                                            <div style="float:left; width:80px;" id='totalDetalle' name='totalDetalle'>0.00</div>
+                                                        </div>
+                                                        <br/>
+
+                                                        <div class="buttons" style="clear:both; padding-top: 25px;">
+                                                            <p>
+                                                                <button type='button' class="button-crud" onClick='enviarInformacion();'>Guardar</button>
+                                                                <span class="height20px">
+                                                                    &oacute;&nbsp;
+                                                                    <a class="button-crud cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                                                                        Cancelar
+                                                                    </a>
+                                                                </span>
+                                                            </p>
+                                                        </div>	
+                                                    </form>
+                                                {% else %}
+                                                    <div class="info-error">Debe seleccionar el Pto. Cliente para hacer la nota de credito</div>
+                                                {% endif %}
+                                            {% else %}
+                                                <div class="info-error"> No existe la variable punto_id </div>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% else %}
+                                        <div class="info-error"> No existe la variable boolTieneSaldo </div>
+                                        <div class="buttons">
+                                            <p>
+                                                <a class="cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                                                    Ver Facturas
+                                                </a>
+                                            </p>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                <div class="info-error"> No existe la variable boolTieneNc </div>
+                                <div class="buttons">
+                                    <p>
+                                        <a class="cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                                            Ver Facturas
+                                        </a>
+                                    </p>
+                                </div>
+                            {% endif %}
+                        {% else %}
+                            <div class="info-error"> {{ strMensajeError }} </div>
+                            <div class="buttons">
+                                <p>
+                                    <a class="cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                                        Ver Facturas
+                                    </a>
+                                </p>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="info-error"> La variable strMensajeError no ha sido definida </div>
+                        <div class="buttons">
+                            <p>
+                                <a class="cancel-crud" href="{{ path('infodocumentofinancierocab') }}">
+                                    Ver Facturas
+                                </a>
+                            </p>
+                        </div>
+                    {% endif %}                                                                       
+                {% endif %}
+            {% endif %}                          
+        </div>
+    </div>
+{% endblock contenido_izq %}
+    {% block javascripts_footer%}
+        <script>
+            {%if cliente.razon_social%}
+                document.getElementById("checkClienteResponsable").value = '{{cliente.razon_social}}';
+            {% else %}
+                document.getElementById("checkClienteResponsable").value = '{{cliente.nombres}} {{cliente.apellidos}}';
+            {% endif %}
+            $(function ()
+            {
+                $("#porcentajeFactura").keydown(function (event) {
+                    if (!validaFloat($("#porcentajeFactura").val()))
+                        return false;
+                });
+
+            });
+
+
+            function isNumeric(event) {
+                alert(event.keyCode)
+                return (
+                    (event.keyCode > 7 && event.keyCode < 10)
+                    || (event.keyCode > 47 && event.keyCode < 60)
+                    || (event.keyCode > 95 && event.keyCode < 106)
+                    || (event.keyCode >= 48 && event.keyCode <= 57)
+                    || event.keyCode == 17
+                    || event.keyCode == 116
+                    || event.keyCode == 110
+                    || event.keyCode <= 13
+                    || event.keyCode == 46
+                    || event.keyCode == 190
+                    )
+            }
+
+            function validaFloat(numero)
+            {
+                if (!/^([0-9])*[.]?[0-9]*$/.test(numero))
+                    return false;
+                else
+                    return true;
+            }
+
+            $("#porcentajeFactura").blur(function () {
+                if ($("#porcentajeFactura").val() <= 100)
+                {
+                    ocultarDiv('div_porcentaje');
+                    return true;
+                }
+                else {
+                    mostrarDiv('div_porcentaje');
+                    $('#div_porcentaje').html('El valor debe ser menor a 100%');
+                    //Ext.Msg.alert('Alerta','El valor del pago que desea ingresar no esta en formato decimal');
+                    $("#porcentajeFactura").val('');
+                }
+            });
+
+            function mostrarDiv(div)
+            {
+                capa = document.getElementById(div);
+                capa.style.display = 'block';
+            }
+
+            function ocultarDiv(div) {
+                capa = document.getElementById(div);
+                capa.style.display = 'none';
+            }
+        </script>
+    {% endblock %}

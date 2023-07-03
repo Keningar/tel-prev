@@ -1,0 +1,19 @@
+Motivos_Cambio_Forma_Pago:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiMotivosFormaPago:administrarMotivosFormaPago" }
+    
+Motivos_Cambio_Forma_Pago_getListadoParametrosCabJson:
+    pattern:  /getListadoParametrosCabJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosFormaPago:getListadoParametrosCabAjax" }  
+    
+Motivos_Cambio_Forma_Pago_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosFormaPago:getListadoParametrosDetAjax" }  
+    
+Motivos_Cambio_Forma_Pago_getListadoParametrosHistJson:
+    pattern:  /getListadoParametrosHistJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosFormaPago:getListadoParametrosHistAjax" }
+    
+Motivos_Cambio_Forma_Pago_creaMotivoParametroDet:
+    pattern:  /creaMotivoParametroDet
+    defaults: { _controller: "financieroBundle:AdmiMotivosFormaPago:creaMotivoParametroDetAjax" }    

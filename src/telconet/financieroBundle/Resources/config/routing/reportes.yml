@@ -1,0 +1,267 @@
+reportes_descarga:
+    pattern:  /downloadarchivo/{archivo}/{ruta}
+    defaults: { _controller: "financieroBundle:Reportes:downloadReporte" }
+    
+reportes_estado_de_cuenta:
+    pattern:  /estado_de_cuenta
+    defaults: { _controller: "financieroBundle:Reportes:estadoCuenta" }
+    
+reportes_listar_clientes:
+    pattern:  /listar_clientes
+    defaults: { _controller: "financieroBundle:Reportes:listarClientes" }
+    
+reportes_estado_cuenta_cliente:
+    pattern:  /estado_cuenta_cliente
+    defaults: { _controller: "financieroBundle:Reportes:estadoCuentaPorCliente" }
+    
+reportes_estado_cuenta_pto_cliente:
+    pattern:  /estado_cuenta_pto
+    defaults: { _controller: "financieroBundle:Reportes:estadoCuentaPto" }
+    
+reportes_listado_ptos_cliente:
+    pattern:  /listar_pto_cliente
+    defaults: { _controller: "financieroBundle:Reportes:listarPtosClientes" }
+
+reportes_movimientos_pto_cliente:
+    pattern:  /movimientos_pto_cliente
+    defaults: { _controller: "financieroBundle:Reportes:estadoCuentaPorPtoCliente" }
+
+reportes_reporte_anticipos_cruzados:
+    pattern:  /reporteanticiposcruzados
+    defaults: { _controller: "financieroBundle:Reportes:reporteAnticiposCruzados" }
+
+reportes_excelanticiposcruzados:
+    pattern:  /excelanticiposcruzados
+    defaults: { _controller: "financieroBundle:Reportes:excelAnticiposCruzados"}
+    
+reportes_listado_facturas_mensual:
+    pattern:  /listado_facturas_mensual
+    defaults: { _controller: "financieroBundle:Reportes:listarFacturas" }
+    
+reportes_listado_nc_mensual:
+    pattern:  /listado_nc_mensual
+    defaults: { _controller: "financieroBundle:Reportes:listarNC" }
+
+reportes_listado_reportes_cartera:
+    pattern:  /listado_reportes_cartera
+    defaults: { _controller: "financieroBundle:Reportes:listarReportesCartera" }
+
+reportes_grid_reportes_cartera:
+    pattern:  /grid_reportes_cartera
+    defaults: { _controller: "financieroBundle:Reportes:gridReportesCartera" }
+
+reportes_listado_reportes_comparativo_mensual:
+    pattern:  /listado_reportes_comparativo_mensual
+    defaults: { _controller: "financieroBundle:Reportes:listarReportesComparativoMensual" }
+
+reportes_grid_reportes_comparativo_mensual:
+    pattern:  /grid_reportes_comparativo_mensual
+    defaults: { _controller: "financieroBundle:Reportes:gridReportesComparativoMensual" }
+
+reportes_listado_reportes_ats:
+    pattern:  /listado_reportes_ats
+    defaults: { _controller: "financieroBundle:Reportes:listarReportesAts" }
+
+reportes_grid_reportes_ats:
+    pattern:  /grid_reportes_ats
+    defaults: { _controller: "financieroBundle:Reportes:gridReportesAts" }
+
+reportes_grid_descargar:
+    pattern:  /{intNum}/descargarDocumento
+    defaults: { _controller: "financieroBundle:Reportes:descargarDocumento" }
+
+reportes_download_archivo_ats:
+    pattern:  /downloadReporteAts/{archivo}
+    defaults: { _controller: "financieroBundle:Reportes:downloadReporteAts" }
+
+reportes_searchDocumentos:
+    pattern:  /search_documentos
+    defaults: { _controller: "financieroBundle:Reportes:SearchDocumentos" }    
+
+reportes_configuraReportePago:
+    pattern:  /configuraReportePago
+    defaults: { _controller: "financieroBundle:Reportes:configAutomatic" }
+
+reportes_getFormasPagoMulti:
+    pattern:  /getFormasPagoMulti
+    defaults: { _controller: "financieroBundle:Reportes:getFormasPagoMulti" }
+
+reportes_getEstadoPunto:
+    pattern:  /getEstadoPunto
+    defaults: { _controller: "financieroBundle:Reportes:getEstadoPunto" }
+
+reportes_getEstadoPago:
+    pattern:  /getEstadoPago
+    defaults: { _controller: "financieroBundle:Reportes:getEstadoPago" }
+
+reportes_getFormasPago:
+    pattern:  /getFormasPago
+    defaults: { _controller: "financieroBundle:Reportes:getFormasPago" }
+
+reportes_getTipoDocumentos:
+    pattern:  /get_tipoDocumentos
+    defaults: { _controller: "financieroBundle:Reportes:getTipoDocumentos" }
+
+reportes_buscarDatosFinanciero:
+    pattern:  /buscar_datosFinanciero
+    defaults: { _controller: "financieroBundle:Reportes:busquedaDatosFinanciero", _format:json } 
+    
+reportes_exportarConsultaBusquedaFinanciera:
+    pattern:  /buscar_consultaBusquedaFinanciera
+    defaults: { _controller: "financieroBundle:Reportes:exportarConsulta_BusquedaFinanciera" }
+
+reporte_guardaParametrosAutomaticoPagos:
+    pattern:  /buscar_guardarParametrosPagos
+    defaults: { _controller: "financieroBundle:Reportes:guardarParametros_ReportePagos" }
+
+reportes_getBancos:
+    pattern:   /getBancos
+    defaults: { _controller: "financieroBundle:Reportes:getBancos" }
+
+reportes_cargaSession:
+    pattern:   /cargaSession
+    defaults: { _controller: "financieroBundle:Reportes:cargaSessionAjax" }
+
+reportes_destruirSesionAjax:
+    pattern:   /destruirSesionAjax
+    defaults: { _controller: "financieroBundle:Reportes:destruirSesionAjax" }  
+
+reportes_mostrarCierreFiscal:
+    pattern:  /mostrarCierreFiscal
+    defaults: { _controller: "financieroBundle:Reportes:mostrarCierreFiscal" }
+
+reportes_generaCierreFiscal:
+    pattern:  /generaCierreFiscal
+    defaults: { _controller: "financieroBundle:Reportes:generaCierreFiscal"}
+
+reportes_mostrarCierreCaja:
+    pattern:   /mostrarCierreCaja
+    defaults: { _controller: "financieroBundle:Reportes:mostrarCierreCaja" }
+    
+reportes_cierreCajaAjax:
+    pattern:   /cierreCajaAjax
+    defaults: { _controller: "financieroBundle:Reportes:cierreCajaAjax" }
+
+reportes_pdfCierreCaja:
+    pattern:   /pdfCierreCaja
+    defaults: { _controller: "financieroBundle:Reportes:pdfCierreCaja" }
+
+reportes_pdfResumenCierreCaja:
+    pattern:   /pdfResumenCierreCaja
+    defaults: { _controller: "financieroBundle:Reportes:pdfResumenCierreCaja" }
+
+reportes_formaPagoDepositable:
+    pattern:   /formaPagoDepositable
+    defaults: { _controller: "financieroBundle:Reportes:formaPagoDepositable" }
+
+reportes_getOficinas:
+    pattern:   /getOficinas
+    defaults: { _controller: "financieroBundle:Reportes:getOficinas" }
+
+reportes_getListadoErrores:
+    pattern:   /getListadoErrores
+    defaults: { _controller: "financieroBundle:Reportes:getListadoErrores" }
+
+reportes_facturas_electronicas:
+    pattern:   /reportes_facturasElectronicas/{strTipoDocFinanciero}
+    defaults: { _controller: financieroBundle:Reportes:resumenFacturasElectronicas, strTipoDocFinanciero: "FAC" }
+
+reportes_resumenFacturasElectronicasFACP:
+    pattern:   /reportes_resumenFacturasElectronicasFACP/{strTipoDocFinanciero}
+    defaults: { _controller: financieroBundle:Reportes:resumenFacturasElectronicas, strTipoDocFinanciero: "FACP" }
+
+reportes_resumenFacturasElectronicasNC:
+    pattern:   /reportes_resumenFacturasElectronicasNC/{strTipoDocFinanciero}
+    defaults: { _controller: financieroBundle:Reportes:resumenFacturasElectronicas, strTipoDocFinanciero: "NC" }
+
+reportes_resumenFacturasElectronicas:
+    pattern:   /reportes_resumenFacturasElectronicas
+    defaults: { _controller: "financieroBundle:Reportes:getTotalResumenFactElectronicas" }
+
+reportes_reportePagosLinea:
+    pattern:   /reportes_reportePagosLinea
+    defaults: { _controller: financieroBundle:Reportes:getReportePagosLinea }
+
+reportes_gridResumenPagosLinea:
+    pattern:   /getGridReportePagosLinea
+    defaults: { _controller: financieroBundle:Reportes:getGridReportePagosLinea }
+
+reportes_exportResumenPagosLinea:
+    pattern:   /exportResumenPagosLinea
+    defaults: { _controller: financieroBundle:Reportes:exportResumenPagosLinea }
+
+reportes_documentosNoCreados:
+    pattern:   /reportes_documentosNoCreados
+    defaults: { _controller: "financieroBundle:Reportes:getDocumentosNoCreados" }
+    
+reportes_reporte_dinardap:
+    pattern:  /reporte_dinardap
+    defaults: { _controller: "financieroBundle:Reportes:listarReportesDinardap" }
+
+reportes_grid_reportes_dinardap:
+    pattern:  /grid_reportes_dinardap
+    defaults: { _controller: "financieroBundle:Reportes:gridReportesDinardap" }
+    
+reportes_buro:
+    pattern:  /reporte_buro
+    defaults: { _controller: "financieroBundle:Reportes:reportesBuro" }
+
+reportes_grid_buro:
+    pattern:  /gridReportesBuro
+    defaults: { _controller: "financieroBundle:Reportes:gridReportesBuro" }
+
+reportes_generar_reporte_buro:
+    pattern:  /generarReporteBuro
+    defaults: { _controller: "financieroBundle:Reportes:generarReporteBuro" }
+
+reportes_crear_reporte_buro:
+    pattern:  /crearReporteBuro
+    defaults: { _controller: "financieroBundle:Reportes:crearReporteBuro" }
+
+reportes_descargar_reporte_buro:
+    pattern:  /descargarReporteBuro/{strNombreArchivo}
+    defaults: { _controller: "financieroBundle:Reportes:descargarReporteBuro" }
+
+reportes_eliminar_reporte_buro:
+    pattern:  /deleteAjax
+    defaults: { _controller: "financieroBundle:Reportes:deleteAjax" }
+    
+reportes_getRptCierreCajaXEmpleado:
+    pattern:   /getRptCierreCajaXEmpleado
+    defaults: { _controller: "financieroBundle:Reportes:getRptCierreCajaXEmpleado" } 
+    
+reportes_getRptCierreCajaXPapeleta:
+    pattern:   /getRptCierreCajaXPapeleta
+    defaults: { _controller: "financieroBundle:Reportes:getRptCierreCajaXPapeleta" }
+
+reportes_getTipoDocumentosPerfil:
+    pattern:  /getTipoDocumentosPerfil
+    defaults: { _controller: "financieroBundle:Reportes:getTipoDocumentosPerfil" }
+
+reportes_contabilidad:
+    pattern:  /reportes_contabilidad
+    defaults: { _controller: "financieroBundle:Reportes:reportesContabilidad" }
+    
+reportes_generarReporteContabilidad:
+    pattern:  /generarReporteContabilidad
+    defaults: { _controller: "financieroBundle:Reportes:generarReporteContabilidad" }
+    
+reportes_getTiposReportesContabilidad:
+    pattern:  /getTiposReportesContabilidad
+    defaults: { _controller: "financieroBundle:Reportes:getTiposReportesContabilidad" }
+
+reportes_historicoDocumentosFinancieros:
+    pattern:  /reportesHistoricosDocumentosFinancieros
+    defaults: { _controller: "financieroBundle:Reportes:reportesHistoricoDocumentosFinancieros" }
+    
+reportes_getTiposReportesHistoricoDocumentosFinancieros:
+    pattern:  /getTiposReportesHistoricoDocumentosFinancieros
+    defaults: { _controller: "financieroBundle:Reportes:getTiposReportesHistoricoDocumentosFinancieros" }
+    
+reportes_mostrarReporteTributario:
+    pattern:  /mostrarReporteTributario
+    defaults: { _controller: "financieroBundle:Reportes:mostrarReporteTributario" }
+    
+reportes_generarReporteTriburario:
+    pattern:  /generarReporteTriburario
+    defaults: { _controller: "financieroBundle:Reportes:generarReporteTriburario" }     

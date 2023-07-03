@@ -1,0 +1,37 @@
+Admi_Tablas_amortizacion:
+    pattern:  /show
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:admitablasamortizacion" }
+    
+Admi_Tablas_amortizacion_getListadoParamCabInstJson:
+    pattern:  /getListadoParamCabInstJson
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:getListadoParameCabInstAjax" }  
+    
+Admi_Tablas_amortizacion_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:getListadoParametrosDetAjax" }  
+    
+Admi_Tablas_amortizacion_getListadoParametrosHistJson:
+    pattern:  /getListadoParametrosHistJson
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:getListadoParametrosHistAjax" }          
+
+Admi_Tablas_amortizacion_getListadoParamEquipoJson:
+    pattern:  /getListadoParamEquipoJson
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:getListadoParamEquipoAjax" }         
+ 
+Admi_Tablas_amortizacion_getListParamDetEquiposJson:
+    pattern:  /getListParamDetEquiposJson
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:getListParamDetEquiposAjax" } 
+
+Admi_Tablas_amortizacion_getactualizaParametro:
+    pattern:  /getactualizaParametro
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:getactualizaParametroDetAjax" }    
+
+Admi_Tablas_amortizacion_getListParamHistEquiposJson:
+    pattern:  /getListParamHistEquiposJson
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:getListParamHistEquiposAjax" }
+    
+Admi_Tablas_amortizacion_getPermanenciaMinJson:
+    pattern:  /getPermanenciaMinJson
+    defaults: { _controller: "financieroBundle:AdmiTablasAmortizacion:getValorPermanenciaMinima" }   
+    
+    

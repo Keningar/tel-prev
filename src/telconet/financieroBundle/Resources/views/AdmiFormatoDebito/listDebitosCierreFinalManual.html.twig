@@ -1,0 +1,206 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }
+		#table-3 {
+			border: 1px solid #DFDFDF;
+			background-color: #F9F9F9;
+			width: 100%;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+		}
+		#table-3 td, #table-3 th {
+			border-top-color: white;
+			border-bottom: 1px solid #DFDFDF;
+		}
+		#table-3 th {
+			font-weight: normal;
+			padding: 7px 7px 8px;
+			text-align: left;
+			line-height: 1.3em;
+			font-size: 14px;
+		}
+		#table-3 td {
+			font-size: 12px;
+			padding: 4px 7px 2px;
+			vertical-align: top;
+		}               
+    </style>
+    
+{% endblock %}
+
+{% block contenido_izq %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+	</div>
+    {% endfor %}
+    {% for flashMessageSubida in app.session.flashbag.get('subida') %}
+    <div class="successmessage">
+        {{flashMessageSubida}}
+    </div>
+    {% endfor %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Cierre Final Manual</h1>
+</div>
+<div class="body_content k-content">
+    <table  class="record_properties" width='100%'>
+        <tr>
+            <td><b>Fecha Generado:</b></td><td>{{ entityDebitoGen.feCreacion|date('Y-m-d H:i:s') }}</td>  
+            {% if  entityDebitoGen.cicloId is not null %}
+                <td><b>Ciclo:</b></td><td>{{ entityDebitoGen.cicloId.nombreCiclo }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td><b>Estado:</b></td><td>{{ entityDebitoGen.estado }}</td>  
+            <td><b>Usuario Creación:</b></td><td>{{ entityDebitoGen.UsrCreacion }}</td>
+            <td><b>Id Débito General : {{entityDebitoGen.id}}</b></td>
+        </tr>       
+    </table>
+</div>
+<div class="body_content">       
+    <form action="{{ path('respuestadebitos_procesar_debitos_cierre_final_manual') }}" method="post"  class="formulario" onsubmit="">      
+<div class="secHead">Cierre Débitos General</div>      
+    <table style="width:950px;height:15px;margin-top:5px;text-align: center;">
+        <tbody>
+                <tr style ="font-size: 15px; border: #000000">
+                    <td style="background-color: #BDBDBD ;border:1px solid #000000" rowspan="2"><b>Banco</b></td>              
+                    <td style="background-color: #D7DF01;border:1px solid #000000" colspan="1"><b>Procesados "OK"</b></td>
+                    <td style="background-color: #04B431;border:1px solid #000000" colspan="1"><b>Pagos Generados</b></td>
+                    {% if(caracteristica == 1) %}
+                        
+                        <td  style="background-color: #D7DF01;border:1px solid #000000" colspan="1"><b>Pend. Abonados</b></td>
+                        <td style="background-color: #04B431;border:1px solid #000000" colspan="1"><b>Diferencias</b></td>
+                    {%else%}
+                         <td style="background-color: #04B431;border:1px solid #000000" colspan="1"><b>Diferencias</b></td>
+                    {%endif%}
+                    <td style="background-color: #F3F781;border:1px solid #000000" colspan="1"><b>Archivo Excel</b></td>
+                                          
+                </tr>
+                <tr  style ="font-size: 15px">                                       
+                    <td style="background-color: #BDBDBD;border:1px solid #000000"><b>$ Valores</b></td>                                                           
+                    <td style="background-color: #BDBDBD;border:1px solid #000000"><b>$ Valores</b></td>
+                    {% if(caracteristica == 1) %} 
+                        <td style="background-color: #BDBDBD;border:1px solid #000000"><b>$ Valores</b></td>                
+                    {%endif%}
+                    <td style="background-color: #BDBDBD;border:1px solid #000000"><b> </b></td>
+                    <td style="background-color: #BDBDBD;border:1px solid #000000"><b>$ Valores </b></td>
+                                       
+                </tr>    
+                {% for key, item1 in bancos %}
+                   
+                        <tr  style ="font-size: 15px"> 
+                           <td style="border:1px solid #000000">{{ item1['banco'] }}</td>
+                           <td style="background-color: #F3F781;border:1px solid #000000">{{ item1['valor_total'] }}</td>
+                           <td style="background-color: #D8F6CE;border:1px solid #000000"> {{item1['procesados_valor']}}</td> 
+                           {% if(caracteristica == 1) %} 
+                                {% if(item1['pendientesAbonados_valor'])%}    
+                                    
+                                           <td  style="background-color: #F3F781;border:1px solid #000000; font-size: 15px"><b>{{item1['pendientesAbonados_valor'] }}</b></td>
+                                    {%else%}
+                                           <td  style="background-color: #F3F781;border:1px solid #000000; font-size: 15px">{{ item1['pendientesAbonados_valor']}}</td>
+                                    {%endif%}                 
+                            {%endif%}
+                            {% if(item1['valor_total'] != item1['valor_archivo']) %}
+                               
+                                {% if(item1['valor_total'] != item1['procesados_valor']) %}
+                                   <td style="background-color: #D8F6CE;border:1px solid #000000">
+                                   <b><a href="{{item1['excel_diferencias']}}" onClick="" title="Diferencias"  class="button-grid-excel"></a></b></td>
+                                {% else %} 
+                                   <td></td>
+                                {% endif %} 
+                                
+                                {%if(item1['valor_archivo'] != "")%}
+                                    <td style="background-color: #F3F781;border:1px solid #000000"> {{item1['valor_archivo']}}</td> 
+                                {% endif %} 
+                            {% endif %} 
+                      
+                        </tr>
+                {% endfor %}    
+                {% for key, item1 in totales %}
+                   
+                        <tr  style ="font-size: 15px"> 
+                           <td style="background-color: #BDBDBD;border:1px solid #000000"><b>TOTAL :</b></td>
+                           <td style="background-color: #BDBDBD;border:1px solid #000000"><b>{{ item1['total_generado'] }}</b></td>
+                           <td style="background-color: #BDBDBD;border:1px solid #000000"><b> {{item1['total_generados']}}</b></td>
+                           {% if(caracteristica == 1) %}             
+                           
+                            <td  style="background-color: #BDBDBD;border:1px solid #000000; font-size: 15px"><b>{{item1['total_abonados'] }}</b></td>
+                                                   
+                            {%endif%}
+                        </tr>
+                {% endfor %}    
+        </tbody>
+    </table>
+</div>
+{% if(caracteristica == 1) %}        
+<div class="body_content k-content">
+    <table  class="record_properties" width='60%'>
+        <tr>
+            <td>
+                <td><b>Agregar Observación:</b></td>
+            </td>
+            <td>  
+                <input type="text" name="observacion_descuadre" required="required"
+                       id="observacion_descuadre" size="15" style="width: 400px; height: 40px;font-size: 15px" maxlength="100" />
+            </td>
+        </tr>      
+    </table>
+</div>       
+ {%endif%}
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('respuestadebitos_list_debitos_general')}}" onClick=''>Regresar</a>
+                </span>
+           
+                <span class="height20px">
+                    {% for key, item2 in totales %}
+                        {% if(item2['total_generado'] == item2['total_archivo'] or caracteristica == 1) %}
+                            <button type="submit" class="button-crud">Generar Cierre Final</button>
+                        {% endif %} 
+                    {% endfor %}  
+                    <a href="{{ path('respuestadebitos_procesar_debitos_cierre_final_manual', {'reverso': entityDebitoGen.id }) }}"><b>Reproceso Diferencias<b></a>
+                 
+                </span>
+            <input id='debitoGeneralId' name='debitoGeneralId' type='hidden' value='{{entityDebitoGen.id}}'>
+          
+            </p>
+        </div>  
+ </form>
+             
+        
+   </div>
+</div>
+{% endblock contenido_izq %}
+

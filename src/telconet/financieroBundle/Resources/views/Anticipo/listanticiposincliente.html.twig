@@ -1,0 +1,92 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar 
+        {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search 
+        {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+        }
+		.icon_limpiar 
+        {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+        } 
+		.icon_add 
+        {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+        } 
+		.icon_delete 
+        {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+        }                 
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/extjs-boxselect-2.0.3/src/BoxSelect.css') }}" type="text/css" rel="stylesheet" />        
+    <script src="{{ asset("public/js/ext-4.1.1/extjs-boxselect-2.0.3/src/BoxSelect.js")}}"></script>         
+    <script>
+        var puedeEditarPagosyAnticipos = '{{ is_granted("ROLE_65-926") }}';
+        var puedeCruzarAnticiposVariasFacturas = '{{ is_granted("ROLE_68-1458") }}';
+        var puedeCruzarAnticiposSinClientePunto = '{{ is_granted("ROLE_68-1737") }}';        
+        var puedeAnularPagos = '{{ is_granted("ROLE_66-1357") }}';          
+        var puedeDescargarExcel = '{{ is_granted("ROLE_68-2058") }}';                  
+        var url_anula_anticipo= '{{ path('anticipo_anulaAnticipo') }}';
+        var url_lista_motivosAnulacionAnticipo= '{{ path('anticipo_motivosAnulacionAnticipo') }}';
+        var url_lista_estados='{{path('infopagocab_estados')}}';
+        var url_grid = "{{ path('anticipo_gridsinclientes') }}";
+        var url_lista_facturas = "{{ path('anticipo_getfacturaspendientes') }}";        
+        var url_cruzar = "{{ path('anticipo_cruzaranticipo') }}";   
+        var url_valores_fact='{{path('infopagocab_getValoresFact')}}';
+        var url_lista_clientes='{{path('cliente_ajax_listar_personas_por_roles',{'roles':'CLIENTE|PRE-CLIENTE' })}}';
+        var url_lista_ptos='{{path('reportes_listado_ptos_cliente')}}';  
+        var url_lista_facturas_cliente="{{path('anticipo_facturascliente')}}";  		
+        var url_excel_anticipos="{{path('anticipo_excel_anticipos_sin_cliente')}}";  	        
+    </script>        
+    <script type="text/javascript" src="{{ asset('./bundles/financiero/js/anticipo/listanticipossincliente.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/ux/exporter/Exporter-all.js?3')}}"></script>    
+{% endblock %}
+
+{% block contenido_izq %}
+
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Anticipos sin Cliente</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr bgcolor='#ffffff'>
+            <td bgcolor='#ffffff'><div id='filtro_pagos'></div></td>
+        </tr>	
+        <tr bgcolor='#ffffff'>
+            <td bgcolor='#ffffff'><div id='lista_pagos'></div></td>
+        </tr>
+    </table>        
+   </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="acciones_relacionadas">
+	<a href="{{ path('anticipo_newsincliente') }}" class="button-nuevo-registro">
+		<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+		&nbsp;Nuevo Anticipo sin Cli
+	</a>
+</div>
+<ul class="listado_acciones_relacionadas"></ul>
+{% endblock contenido_der %}

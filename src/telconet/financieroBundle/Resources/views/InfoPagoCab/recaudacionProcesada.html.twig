@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+</head>
+<body>
+  <table align="center" width="100%" cellspacing="0" cellpadding="5">
+    <tr>
+      <td align="center"
+        style="border: 1px solid #6699CC; background-color: #E5F2FF;"><img
+        alt=""
+        src="http://images.telconet.net/others/sit/notificaciones/logo.png" />
+        {#<img alt=""
+        src="https://telcos.telconet.ec/public/images/logo.png"/>#}</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #6699CC;">
+        <table width="100%" cellspacing="0" cellpadding="5">
+          <tr>
+            <td colspan="2">Estimado personal,</td>
+          </tr>
+          <tr>
+            <td colspan="2">El presente correo es para indicarle que se ha procesado correctamente la siguiente recaudación:</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <hr />
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Fecha de creación:</strong></td>
+            <td>{{ recaudacion.feCreacion | date("d-M-Y") }} | {{ recaudacion.feCreacion | date("H:i") }}</td>
+          </tr>
+          <tr>
+            <td><strong>Usuario:</strong></td>
+            <td>{{ recaudacion.usrCreacion }}</td>
+          </tr>
+          <tr>
+            <td><strong>Estado:</strong></td>
+            <td>{{ recaudacion.estado }}</td>
+          </tr>
+          <tr>
+            <td><strong>Nota:</strong></td>
+            <td>
+            {% if isReactivado %}
+            Se ha programado la reactivación de los servicios
+            {% else %}
+            No se ha encontrado servicios para reactivar
+            {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <hr />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">Por favor revisar la <a href="https://telcos.telconet.ec/financiero/pagos/recaudacion/{{recaudacion.id}}/listpagosrecaudacion">recaudación</a></td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong><font size='2' face='Tahoma'>
+            {% if empresa == 'TTCO' %}
+            TransTelco S.A.
+            {% elseif empresa == 'MD' %}
+            MegaDatos S.A.
+            {% elseif empresa == 'EN' %}
+            Ecuanet S.A.
+            {% else %}
+            Telconet S.A.
+            {% endif %}
+            </font></strong></td>
+          </tr>
+          <tr>
+            <td colspan="2"><br /></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,15 @@
+INSERT INTO DB_COMPROBANTES.ADMI_ESTADO_DOCUMENTO
+ (ID_EST_DOC,
+ NOMBRE,
+ DESCRIPCION, 
+FE_CREACION,
+ USR_CREACION,
+ IP_CREACION) 
+VALUES ('12',
+'Pend Validar XSD', 
+'Documento fue migrado desde INFO_COMPROBANTE_ELECTRONICO y esta pendiente de Validar XSD', 
+SYSDATE, 
+'admin', 
+'127.0.0.1')
+;
+COMMIT;

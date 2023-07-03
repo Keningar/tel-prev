@@ -1,0 +1,212 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	
+	<style>
+		#table-3 {
+			border: 1px solid #DFDFDF;
+			background-color: #F9F9F9;
+			width: 100%;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+		}
+		#table-3 td, #table-3 th {
+			border-top-color: white;
+			border-bottom: 1px solid #DFDFDF;
+		}
+		#table-3 th {
+			font-weight: normal;
+			padding: 7px 7px 8px;
+			text-align: left;
+			line-height: 1.3em;
+			font-size: 14px;
+		}
+		#table-3 td {
+			font-size: 12px;
+			padding: 4px 7px 2px;
+			vertical-align: top;
+		}
+	</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+		var factura_id="{{ entity.id }}";
+        var url_listar_informacion_existente='{{path('infodocumentonotadebito_devolucion_ajax_get_detalle')}}';
+    </script>   
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/devolucion/show.js') }}"></script>                 
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver devolucion</h1>
+</div>
+<div class="body_content">
+	<table class="record_properties">
+		<tbody>
+			<tr>
+				<td class="secHead">Informaci&oacute;n del Cliente:</td>
+			</tr>
+			<tr>
+				<td><b>Oficina:</b></td>
+				<td>{{ oficina }}</td>
+			</tr>
+			<tr>
+				<td><b>Cliente:</b></td>
+				<td>{{ info_cliente.cliente }}</td>
+				<td width="9%">&nbsp;</td>
+				<td><b>Pto. cliente:</b></td>
+				<td>{{ info_cliente.puntoId }}</td>
+			</tr>
+			<tr>
+				<td class="secHead">Informaci&oacute;n devolucion</td>
+			</tr>
+			<tr>
+				<td><b>No. factura SRI:</b></td>
+				<td>{{ entity.numeroFacturaSri }}</td>
+				<td width="9%">&nbsp;</td>
+				<td><b>Estado:</b></td>
+				<td>{{ entity.estadoImpresionFact }}</td>
+			</tr>
+			<tr>
+				<td><b>Fe. Emision:</b></td>
+				{% if entity.feEmision is null %}
+					<td>&nbsp;</td>
+				{% else %}
+					<td>{{ entity.feEmision  | date("d M Y") }}</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<td><b>Observacion:</b></td>
+				<td>{{ entity.observacion }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<table style="width:800px;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+		<tbody>
+			<tr>
+				<td><b>Rte fte</b></td>
+				<td><b>Automatica</b></td>
+				<td><b>Prorrateo</b></td>
+				<td><b>Reactivacion</b></td>
+				<td><b>Recurrente</b></td>
+				<td><b>Comisiona</b></td>
+			</tr>
+			<tr>
+				{% if entity.entregoRetencionFte=='S' %}
+					<td>Si</td>
+				{% else %}
+					<td>No</td>
+				{% endif %}
+				{% if entity.esAutomatica=='S' %}
+					<td>Si</td>
+				{% else %}
+					<td>No</td>
+				{% endif %}
+				{% if entity.prorrateo=='S' %}
+					<td>Si</td>
+				{% else %}
+					<td>No</td>
+				{% endif %}
+				
+				{% if entity.reactivacion=='S' %}
+					<td>Si</td>
+				{% else %}
+					<td>No</td>
+				{% endif %}
+				{% if entity.recurrente=='S' %}
+					<td>Si</td>
+				{% else %}
+					<td>No</td>
+				{% endif %}
+				
+				{% if entity.comisiona=='S' %}
+					<td>Si</td>
+				{% else %}
+					<td>No</td>
+				{% endif %}
+			</tr>
+			<tr>
+				<td><b>Subtotal</b></td>
+				<td><b>Impuesto 0%</b></td>
+				<td><b>Impuesto</b></td>
+				<td><b>Descuento</b></td>
+				<td><b>Total</b></td>
+			</tr>
+			<tr>
+				<td>{{ entity.subtotal }}</td>
+				<td>{{ entity.subtotalCeroImpuesto }}</td>
+				<td>{{ entity.subtotalConImpuesto }}</td>
+				<td>{{ entity.subtotalDescuento }}</td>
+				<td>{{ entity.valorTotal }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="secHead">Detalle devolucion</div>
+	<div id='listado_devolucion'></div>
+	<div class="buttons">
+		<p>
+			<span class="height20px">
+				<a class="button-crud" href="{{ path('infodocumentonotadebito_devolucion') }}">Regresar</a>
+			</span>
+		</p>
+	</div>        
+
+	<div class="body_content">
+		<table class="formulario">
+			<tbody>
+				<tr>
+				  <td width="10%" rowspan="4"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+				  <th width="11%">Creador:</th>
+				  <td width="34%" >{{ entity.usrCreacion }}</td>
+
+				  {% if(entity.estadoImpresionFact=="Modificado") %}
+				  <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+				  <th width="11%" >Ult. Mod.:</th>
+				  <td width="34%">{{ entity.usrUltMod }}</td>
+				  {% endif %}
+
+				  {% if(entity.estadoImpresionFact=="Inactivo") %}
+				  <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+				  <th width="6%">Eliminado:</th>
+				  <td width="34%">{{ entity.usrUltMod }}</td>
+				  {% endif %}
+				</tr>
+				<tr>
+				  <th>Fecha:</th>
+				  <td >{{ entity.feCreacion | date("d M Y") }}</td>
+
+				  {% if(entity.estadoImpresionFact=="Modificado") %}
+				  <th>Fecha:</th>
+				  <td >{{ entity.feUltMod  | date("d M Y")}}</td>
+				  {% endif %}
+
+				  {% if(entity.estadoImpresionFact=="Inactivo") %}
+				  <th>Fecha:</th>
+				  <td>{{ entity.feUltMod | date("d M Y") }}</td>
+				  {% endif %}
+				</tr>
+				<tr>
+				  <th>Hora:</th>
+				  <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+
+				  {% if(entity.estadoImpresionFact=="Modificado") %}
+				  <th>Hora:</th>
+				  <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+				  {% endif %}
+
+				  {% if(entity.estadoImpresionFact=="Inactivo") %}
+				  <th>Hora:</th>
+				  <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+				  {% endif %}
+				</tr>
+			</tbody>
+		</table>
+	</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+{% endblock contenido_der %}

@@ -1,0 +1,105 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Pagos</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            {% if ((cliente is not null)or(ptoCliente is not null))%}
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_pagos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_pagos'></div></td>
+            </tr>
+            {%else%}
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'>Para ver los pagos debe tener en sesion un punto cliente o el cliente </td>
+            </tr>	            
+            {%endif%}
+    </table>        
+            
+        
+        {% if ((cliente is not null)or(ptoCliente is not null))%}               
+        <script>
+            var puedeAnularPagos = '{{ is_granted("ROLE_66-1357") }}';
+            var url_anula_pagos= '{{ path('infopagocab_anulaPagos') }}';
+            var url_lista_motivosAnulacionPago= '{{ path('infopagocab_motivosAnulacionPago') }}';
+            var url_lista_estados='{{path('infopagocab_estados')}}';
+            var url_grid = "{{ path('infopagocab_grid') }}";
+            var url_lista_facturas = "{{ path('anticipo_getfacturaspendientes') }}";        
+            var url_cruzar = "{{ path('anticipo_cruzaranticipounafactura') }}";   
+            var url_valores_fact='{{path('infopagocab_getValoresFact')}}';        
+            url_reactivacion_masiva='{{path('procesomasivo_reactivarClientesMasivo')}}';
+            var puedeCruzarAnticiposUnaFactura = '{{ is_granted("ROLE_68-1459") }}'; 
+            var puedeEditarPagos = '{{ is_granted("ROLE_66-926") }}';        
+        </script>        
+         <script type="text/javascript" src="{{ asset('./bundles/financiero/js/pagos/index.js?9') }}"></script>
+         {% endif %}
+	<script>
+	    var url_lista_clientes='{{path('reportes_listar_clientes')}}';
+            var url_lista_clientes_por_roles='{{path('cliente_ajax_listar_personas_por_roles',{'roles':'CLIENTE|PRE-CLIENTE' })}}';
+            var url_lista_ptos='{{path('reportes_listado_ptos_cliente')}}';  
+	    var url_actualizaPtoCliente = '{{ path('infopagocab_actualizaPtoCliente')}}';
+	    var url_lista_motivosCambioPunto='{{path('infopagocab_motivosCambioPunto')}}';
+	    var puedeCambiarPuntos='{{ is_granted("ROLE_246-1397") }}';
+	</script>
+   </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="acciones_relacionadas">
+    {% if ((cliente is not null)or(ptoCliente is not null))%}
+	<a href="{{ path('infopagocab_new') }}" class="button-nuevo-registro">
+		<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+		&nbsp;Nuevo Pago
+	</a>
+     {%endif%}
+</div>
+    		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+<ul class="listado_acciones_relacionadas">
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('anticipo') }}">Nuevo Anticipo</a>
+                    </li>
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('anticipo_listanticiposincliente') }}">Anticipos sin Cliente</a>
+                    </li>                    
+</ul>
+{% endblock contenido_der %}

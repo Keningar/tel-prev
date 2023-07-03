@@ -1,0 +1,89 @@
+/**
+ * Se realiza parametrización en débitos por mejora en la generación 
+ * de archivos para envío de débitos.
+ *
+ * @author Hector Lozano <hlozano@telconet.ec>
+ * @version 1.0 
+ * @since 18-09-2020
+ */
+
+--PARÁMETRO PARA EXCLUIR FACTURAS DE INSTALACIÓN EN LOS DÉBITOS.
+INSERT 
+INTO 
+  DB_GENERAL.ADMI_PARAMETRO_CAB 
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  ) 
+  VALUES 
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'EXCLUIR_FACT_INST_DEBITOS',
+    'PARAMETRO PARA EXCLUIR FACTURAS DE INSTALACION EN LA GENERACION DE LOS DEBITOS',
+    'FINANCIERO',
+    'GENERACION_ARCHIVOS_DEBITOS',
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '127.0.0.1');
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'EXCLUIR_FACT_INST_DEBITOS'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO QUE EXCLUYE FACTURAS DE INSTALACION EN LA GENERACION DE LOS DEBITOS',
+    'S',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );      
+
+COMMIT;
+/

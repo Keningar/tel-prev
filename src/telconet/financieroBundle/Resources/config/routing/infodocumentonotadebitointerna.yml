@@ -1,0 +1,28 @@
+infodocumentonotadebitointerna:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoNotaDebitoInterna:index" }
+
+infodocumentonotadebitointerna_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:InfoNotaDebitoInterna:show" }
+
+infodocumentonotadebitointerna_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:InfoNotaDebitoInterna:new" }
+
+infodocumentonotadebitointerna_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:InfoNotaDebitoInterna:create" }
+    requirements: { _method: post }
+
+infodocumentonotadebitointerna_lista_estados:
+    pattern:  /lista_estados
+    defaults: { _controller: "financieroBundle:InfoNotaDebitoInterna:estados" }
+    
+infodocumentonotadebitointerna_listar_todas_nd:
+    pattern:  /listar_todas_nd
+    defaults: { _controller: "financieroBundle:InfoNotaDebitoInterna:ajaxListarNotasDebitoInterna" }
+
+infodocumentonotadebitointerna_ajax_get_detalle:
+    pattern:  /ajax_get_detalle_nc
+    defaults: { _controller: "financieroBundle:InfoNotaDebitoInterna:detalleND" }

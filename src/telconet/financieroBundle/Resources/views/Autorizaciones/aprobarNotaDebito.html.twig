@@ -1,0 +1,41 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_lista_motivos="{{path('aprobaciones_get_motivos_rechazo_notadebito_ajax')}}";	
+		var url_store="{{ path('aprobaciones_grid_aprobar_notadebito') }}";
+		var url_aprobar="{{ path('aprobaciones_aprobar_notadebito_ajax') }}";
+		var url_rechazar="{{ path('aprobaciones_rechazar_notadebito_ajax') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/financiero/js/autorizaciones/aprobar.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Aprobar Nota de Debito</h1>
+</div>
+<div class="errormessage campo-oculto" id="mensaje_error" name="mensaje_error">
+</div>
+<div class="infomessage campo-oculto" id="mensaje_info" name="mensaje_info">
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro'></div></td>
+            </tr>				
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista'></div></td>
+            </tr>
+    </table>        
+    </div>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <div class="acciones_relacionadas">
+
+    </div>
+    <ul class="listado_acciones_relacionadas"></ul>
+{% endblock contenido_der %}

@@ -1,0 +1,182 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}     
+        <script>
+            url_lista_tipos_cuenta='{{path('admibancotipocuenta_getListadoTiposCuenta')}}';        
+        </script>
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+<h1>Nuevo Tipo Cta / Tarjeta</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+{% if error is defined %}
+        <div>{{ error }}</div>
+    {% endif %}
+        <form action="{{ path('admibancotipocuenta_create') }}" method="post" {{ form_enctype(form) }} class="formulario" onsubmit="if(!valida())return false;">
+
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        <label class="campo-obligatorio">* Es Tarjeta:</label>
+                    </div>
+                    <div>
+                        <select id="admibancotipocuentatype_esTarjeta" required='required'
+                            name="admibancotipocuentatype[esTarjeta]" onChange='reloadTipoCuenta()'>
+                         <option value='S'>Si</option><option value='N' selected='selected'>No</option>
+                    </select>
+                    </div>
+                </td>    
+            </tr>
+            <tr>
+                <td><div>{{ form_label(form.bancoId) }} {{ form_widget(form.bancoId) }}</div></td>
+            </tr>
+            <tr>
+                <td><div>
+                <label class='campo-obligatorio'>* Tipo Cta / Tarjeta:</label>
+                <div id='combo_tipo_cuenta' required="true"></div>
+            </div></td>
+            </tr>            
+        </table>
+        <table>
+            <tr>
+                <td><div>{{ form_label(form.caracterEmpieza) }} {{ form_widget(form.caracterEmpieza) }}</div></td>
+            </tr>            
+            <tr>
+                <td><div>{{ form_label(form.totalCaracteres) }} {{ form_widget(form.totalCaracteres) }}</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ form_label(form.totalCodseguridad) }} {{ form_widget(form.totalCodseguridad) }}</div></td>
+            </tr>            
+        </table>        
+                <div class="buttons">
+				<p>
+                                    <button type="submit" class="button-crud">Guardar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('admibancotipocuenta') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div> 
+    {{ form_widget(form._token)}} 
+<input id='admibancotipocuentaextratype_tipoCuentaId' name='admibancotipocuentaextratype[tipoCuentaId]' type='hidden' value=''>                
+</form>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 1
+        </a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 2
+        </a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 3
+        </a>
+    </li>
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+<script type='text/javascript'>    
+    //VALIDACIONES DE DATOS INGRESADOS
+$(function(){
+    $("#admibancotipocuentatype_caracterEmpieza").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });
+    $("#admibancotipocuentatype_totalCodseguridad").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });
+    $("#admibancotipocuentatype_totalCaracteres").keydown(function(event){
+        if(!isNumeric(event)) return false;
+    });    
+});
+function isNumeric(event){
+    return (
+        (event.keyCode > 7 && event.keyCode < 10)
+        || (event.keyCode > 47 && event.keyCode < 60)
+        || (event.keyCode > 95 && event.keyCode < 106)
+        || event.keyCode == 17
+        || event.keyCode == 116
+    )
+}
+
+Ext.onReady(function(){
+
+
+Ext.define('TiposCuentaList', {
+        extend: 'Ext.data.Model',
+        fields: [
+            {name:'id_cuenta', type:'int'},
+            {name:'descripcion_cuenta', type:'string'}
+        ]
+});
+storeTipoCuenta = Ext.create('Ext.data.Store', {
+            model: 'TiposCuentaList',
+            proxy: {
+                type: 'ajax',
+                url : url_lista_tipos_cuenta,
+                reader: {
+                    type: 'json',
+                    totalProperty: 'total',
+                    root: 'encontrados'
+                },
+                listeners:{
+                    beforeload: function(){
+                            
+                    }
+                }
+            }
+});
+
+    combo_tipocuenta = new Ext.form.ComboBox({
+            id: 'cmb_tipocuenta',
+            name: 'cmb_tipocuenta',
+            fieldLabel: false,
+            anchor: '100%',
+            queryMode:'local',
+            width: 200,
+            emptyText: 'Seleccione tipo cuenta',
+            store: storeTipoCuenta,
+            displayField: 'descripcion_cuenta',
+            valueField: 'id_cuenta',
+            renderTo: 'combo_tipo_cuenta',
+            listeners:{
+                select:{fn:function(combo, value) {  
+                        $('#admibancotipocuentaextratype_tipoCuentaId').val(combo.getValue())
+                }}
+            }
+    });
+    
+
+reloadTipoCuenta();
+});
+
+function reloadTipoCuenta(){
+    storeTipoCuenta.load({params: {es_tarjeta: $('#admibancotipocuentatype_esTarjeta').val()}});
+}
+
+function valida(){
+    //alert(Ext.getCmp('cmb_tipocuenta').getValue());
+    if(Ext.getCmp('cmb_tipocuenta').getValue()){
+        return true;
+    }else{
+        alert('Por favor ingresar el campo Tipo Cta / Tarjeta');
+        return false;}
+}
+</script>
+{% endblock %}

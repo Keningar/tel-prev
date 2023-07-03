@@ -1,0 +1,488 @@
+  /**
+  * @author Kevin Villegas <kmvillegas@telconet.ec>
+  * @version 1.0 25-08-2022 Se realizan inserts necesarios para notificacion a alias de cobranza por estado incorte.
+  */
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'OFICINAS FACTURACION',
+    2,
+    'cobranzas_gye@telconet.ec',
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA NOTIFICACION A ALIAS DE COBRANZA POR OFICINA.'
+  );
+  
+
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'OFICINAS FACTURACION',
+    1,
+    'cobranzas_cue@telconet.ec',
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA NOTIFICACION A ALIAS DE COBRANZA POR OFICINA.'
+  );
+  
+
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'OFICINAS FACTURACION',
+    7,
+    'cobranzas_uio@telconet.ec',
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA NOTIFICACION A ALIAS DE COBRANZA POR OFICINA.'
+  );
+  
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'OFICINAS FACTURACION',
+    8,
+    'ebalon@telconet.ec',
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA NOTIFICACION A ALIAS DE COBRANZA POR OFICINA.'
+  );
+  
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'OFICINAS FACTURACION',
+    11,
+    'cobranzas_qvdo@telconet.ec',
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA NOTIFICACION A ALIAS DE COBRANZA POR OFICINA.'
+  );
+  
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'OFICINAS FACTURACION',
+    12,
+    'cobranzas_mnt@telconet.ec',
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA NOTIFICACION A ALIAS DE COBRANZA POR OFICINA.'
+  );
+  
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'OFICINAS FACTURACION',
+    24,
+    'cobranzas_lja@telconet.ec',
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA NOTIFICACION A ALIAS DE COBRANZA POR OFICINA.'
+  );
+  
+--Inserte campos para los bancos que no se validaran por duplicidad 
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'EXCLUCION BANCOS',
+    105,
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA VALIDACION DE DUPLICIDAD AL SUBIR NUEVO ESTADO DE CUENTA VALOR1 = ID_BANCO_TIPO_CUENTA, DESCRIPCION= PROCESO REALIZADO.'
+  );
+
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'AUTOMATIZACION PAGOS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'DECIMALES_BANCO_AMAZONAS',
+    164,
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'kmvillegas',
+    SYSDATE,
+    '127.0.0.0',
+    NULL,
+    NULL,
+    NULL,
+    'NULL',
+    '10',
+    NULL,
+    NULL,
+    'CONFIGURA PARAMETROS PARA CAMBIO DE DECIMALES PUNTO POR VACIO Y COMA POR PUNTO VALOR1 = ID_BANCO_TIPO_CUENTA, DESCRIPCION= PROCESO REALIZADO.'
+  );
+
+  COMMIT;
+  /

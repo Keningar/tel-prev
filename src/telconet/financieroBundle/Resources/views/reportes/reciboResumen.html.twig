@@ -1,0 +1,298 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+    <style>
+            .tamano_letra_direccion
+            {
+                font-size:9px;
+            }
+            .tamano_letra_detalles
+            {
+                font-size:11px;
+            }
+            
+                
+ table{
+  border: 0px solid black;
+  border-spacing: 0px;
+}
+
+table thead tr{
+  font-family: Arial, monospace;
+  font-size: 14px;
+}
+
+table thead tr th{
+  border-bottom: 2px solid #cccccc;
+  border-top: 1px solid #cccccc;
+  margin: 0px;
+  padding: 2px;
+  background-color: #cccccc;
+}
+#sumaPorGrupo{
+  border-bottom: 2px solid black;
+  border-top: 1px solid black;
+  margin: 0px;
+  padding: 2px;
+  background-color: #cccccc;
+}
+
+table tr {
+  font-family: arial, monospace;
+  color: black;
+  font-size:12px;
+  background-color: white;
+}
+
+table tr.odd {
+  background-color: #AAAAAA;
+}
+
+table tr td, th{
+  /*border-bottom: 1px solid black;*/
+  padding: 2px;
+}
+
+a:link{
+  font-family:arial, monospace;
+  text-decoration: none;
+  color: teal;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+a:visited{
+  color:black;
+  text-decoration: none;
+}
+
+table thead tr{
+  font-family: Arial, monospace;
+  font-size: 14px;
+}
+
+table tfoot tr th{
+  border-bottom: 0.5px solid #cccccc;
+  border-top: 0.5px solid #cccccc;
+  margin: 0px;
+  padding: 0px;
+  background-color: #cccccc; 
+}
+#primeraCelda th{
+   margin: 0; padding: 0;
+   color: #cccccc;
+    }
+
+    </style>
+  </head>
+  <body>
+
+<table  class="record_properties" width='100%'>
+<tr>
+<td align="left" colspan='4' >
+	<img alt="" src="{{logoEmpresa}}"/>
+</td>
+</tr>
+<tr>
+<td class='tamano_letra_direccion'>{{direccionOficina}}</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>
+<table>
+<tr><td class='tamano_letra_direccion'>{{pbxOficina}}</td></tr>
+</table>
+</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+  <td colspan='4'>&nbsp;</td>
+</tr>
+
+</table>	
+	
+           {% if oficina!='' %}
+         <br><br><br><br><br>
+         {%else %}
+         <br><br><br><br>
+           {%endif %}
+      <div align="center" > <h5>REPORTE RESUMIDO DE PAGOS  </h5></div>
+      <br> <br>
+      <div style="position: absolute; left:50%; top:100px; ">
+          <table style="font-size: 9px ; width: 100%">
+                  
+              <tr>
+                   <td><b>Fecha consulta</b></td>
+                    <td>{{fechaConsulta}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                      <td><b>Fecha de doc:</b></td>
+                       <td>{{fechaDesde}}</td>
+                        <td><b>Oficina</b></td>
+                      {% if oficina =='' %}
+                      
+                       <td>Todas</td>
+                    {%endif%}
+                     {% if oficina!='' %}
+                    <td>{{nombreoficina}}</td>
+                    {%endif%}
+                     <td></td>
+                  </tr>
+                  <tr>
+                   <td><b>Cantidad Pagos:</b></td>
+                    <td>{{totalregistros}}</td>
+                   
+                    <td><b> Total Pagos </b></td>
+                    <td>${{sumaTotal}}</td>
+                   
+                  </tr>
+             
+          </table>
+         
+      </div> 
+ 
+     <table  >
+         
+      {%for detAgru in  detAgrupados%}
+         
+         <thead>
+             <tr><th>{{detAgru.descripcionFpago}}</th></tr>
+          <tr id="primeraCelda"> 
+               
+                <th ></th>
+                 <th ></th>
+                <th></th>
+                <th ></th>
+                <th ></th>
+                <th>  </th>
+                <th ></th>
+                <th>  </th>
+                <th ></th>
+                <th ></th>
+                <th ></th>
+                 <th ></th>
+                <th ></th>
+                 <th ></th>
+                <th>  </th>
+                <th ></th>
+                <th ></th>
+                <th ></th>
+                 <th ></th>
+                <th ></th>
+                <th ></th>
+                <th>  </th>
+                <th ></th>
+                <th ></th>
+                <th ></th>
+                 <th ></th>
+                <th ></th>
+               
+             </tr>
+         
+         </thead>
+         <tbody>
+                                 <tr>  
+                                 
+                                 
+                                 <td ></td>
+                                  <td ></td>   
+                                 <td >Cant. Registros</td>
+                                  <td ></td>
+                                  <td ></td>
+                                  <td ></td>
+                                  <td ></td>
+                                   <td ></td>
+                                  <td ></td>
+                                <td >{{detAgru.cantFpagos}} </td>
+                                  <td ></td>
+                                  <td > </td>
+                                
+                                
+                                 </tr>
+                                 
+                                  <tr> 
+                                 <td ></td>
+                                  <td ></td>   
+                                 <td ><b>Valor Total</b></td>
+                                  <td ></td>
+                                  <td ></td>
+                                  <td ></td>
+                                  <td ></td>
+                                   <td ></td>
+                                  <td ></td>
+                                <td ><b>${{detAgru.sumaPago}} </b></td>
+                                  <td ></td>
+                                  <td ></td>
+                                </tr>
+                                
+                                
+                                
+                                </tr>
+                                 
+                                  <tr> 
+                                 <td ></td>
+                                  <td ></td>   
+                                 <td ></td>
+                                  <td ></td>
+                                  <td ></td>
+                                <td > </td>
+                                  <td ></td>
+                                  <td ></td>
+                                </tr>
+         </tbody>       
+                            
+                              
+                            
+                                 
+                                 
+      
+ {%endfor%} 
+     
+     
+
+         <tfoot>
+         
+              <tr style="padding-bottom: 50px"
+       
+                
+            </tr>
+             <tr style="padding-bottom: 50px"
+       
+                
+            </tr>
+             <tr style="padding-bottom: 50px"
+       
+                
+            </tr>
+             
+            
+           <tr>
+        
+                 <th style="padding-left: 50px" ></th>
+                
+                <th> SUMA TOTAL </th>
+               
+                <th ></th>
+                <th ></th>
+                 <th >${{sumaTotal}}</th>
+                
+                 <th ></th>
+                <th style="padding-left: 50px"></th>
+         </tr>
+         </tfoot>   
+    
+       </table> 
+             
+     
+	
+  </body>
+</html>

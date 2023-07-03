@@ -1,0 +1,20 @@
+anularpagocab:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AnularPagoCab:indexAnulacionPagos" }
+
+anularpagocab_listaPagoArchivoExcel:
+    pattern:  /listaPagoArchivoExcel
+    defaults: { _controller: "financieroBundle:AnularPagoCab:listaPagoArchivoExcel"}
+
+anularpagocab_obtenerListaPago:
+    pattern:  /obtenerListaPago
+    defaults: { _controller: "financieroBundle:AnularPagoCab:obtenerListaPago"}
+
+anularpagocab_anularPagos:
+    pattern:  /anularPagos
+    defaults: { _controller: "financieroBundle:AnularPagoCab:anularPagos"}
+
+anularpagocab_parametrosPagina:
+    pattern:  /parametrosPagina
+    defaults: { _controller: "financieroBundle:AnularPagoCab:parametrosPagina"}
+

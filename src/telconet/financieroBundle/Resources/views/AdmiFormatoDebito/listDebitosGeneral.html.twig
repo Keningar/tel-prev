@@ -1,0 +1,128 @@
+{% extends "::layout_completo.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+<style>
+    .category-label
+    {
+        vertical-align: middle;
+        padding-right: .5em;
+    }
+    #category
+    {
+        vertical-align: middle;
+    }
+    .toolbar {
+        float: right;
+        margin-right: .8em;
+    }
+    .icon_search {
+        background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+    }
+    .icon_limpiar {
+        background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+    } 
+    .icon_add {
+        background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+    } 
+    .icon_delete {
+        background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+    }
+    #dashboard {
+        margin: 0px 11px 3px;
+        border: 1px solid #DDD;
+        background-color: #F9F9F9;
+        box-shadow: 0px 0px 3px #D7D7D7;
+        width: 98.5%;
+        min-height: 10em;
+    }
+    .uncheckedChkbox {
+        height: 13px;
+        width: 13px;
+        background: url('{{ asset('public/images/images_crud/unchecked.png') }}') no-repeat -1px -2px;
+        float: left;
+        margin: 0 5px 0 0;
+    }
+    .x-boundlist-selected .uncheckedChkbox {
+        background: url('{{ asset('public/images/images_crud/checked.png') }}') no-repeat -1px -2px;
+    }
+
+    .sel-all {
+        padding: 3px;
+        padding-left: 10px;
+        cursor: pointer;
+        border: 1px solid gray;
+    }
+    </style>
+{% endblock %}
+
+{% block contenido_central %}
+<link href="{{ asset('public/css/table-style.css') }}" type="text/css" rel="stylesheet" />    
+<style>
+    .body_content
+    {
+        margin: 0px 0px 0px;
+        text-align: left;
+        padding: 25px 5px;
+        background: none;
+    }
+    #dashboard
+    {
+        width: 100%;
+    }
+
+</style>
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+	    <div class="errormessage">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %}
+{% for flashMessageSubida in app.session.flashbag.get('subida') %}
+    <div class="successmessage">
+        {{flashMessageSubida}}
+    </div>
+{% endfor %}
+{% for flashMessageSubida in app.session.flashbag.get('reverso') %}
+    <div class="successmessage">
+        {{flashMessageSubida}}
+    </div>
+{% endfor %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Debitos Generados</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                         <td bgcolor='#ffffff'><div id='filtro_pagos'></div></td>
+                </tr>	
+                <tr bgcolor='#ffffff'>
+                         <td bgcolor='#ffffff'><div id='lista_pagos'></div></td>
+                </tr>
+        </table>        
+                     
+        <script>
+             var url_get_grupo_debitos    = "{{ path('admiformatodebito_get_grupo_debito_por_debito_gen') }}";            
+             var url_anula_cabecera_debitos  = "{{ path('admiformatodebito_anula_cabecera_debito') }}";
+             var url_reabre_cabecera_debitos = "{{ path('admiformatodebito_reabre_cabecera_debito') }}";        
+             var url_lista_estados           = '{{path('infopagocab_estados')}}';
+             var strUrlObtieneCiclos         = '{{path('admiformatodebito_obtieneCiclosPorEstado')}}';
+             var strUrlGenerarDebitos        = '{{ path('generardebitos_generar') }}';
+             var strUrlSubirRespuestaDebitos = '{{ path('respuestadebitos') }}';
+             var strAplicaCiclosFacturacion  = '{{ strAplicaCiclosFacturacion }}';
+             var strUrlCuentaCabeceras       = '{{ path('admiformatodebito_cuentaCabeceras') }}';
+             var url_grid                    = "{{ path('respuestadebitos_gridDebitosGeneral') }}";   
+             var iconoEjecutando             = '<img src="{{ asset('public/images/images_crud/loading19.gif')}}" width="14" height="14" />';
+             var puedeAnularCabeceraDebito   = '{{ is_granted("ROLE_87-1677") }}';
+             var puedeReabrirCabeceraDebito  = '{{ is_granted("ROLE_87-1678") }}';
+             var puedeVerExcelDebito         = '{{ is_granted("ROLE_87-2037") }}';
+             var puedeVerExcelPagosDebito    = '{{ is_granted("ROLE_87-2038") }}';
+             var strUrlGetParametroFlujoPlanificado= "{{ path('admiformatodebito_getParametroFlujoPlanificado') }}";
+         </script>
+         <script type="text/javascript" src="{{ asset('./bundles/financiero/js/admiformatodebito/listDebitosGeneral.js?8') }}"></script>
+   </div>
+</div>
+         <form id="formSubmit" method="POST" target="_blank" action="{{ path('respuestadebitos') }}">
+             <input type="hidden" value="" id="idDebitoGeneral" name="debitosGeneral"/>
+         </form>
+{% endblock contenido_central %}

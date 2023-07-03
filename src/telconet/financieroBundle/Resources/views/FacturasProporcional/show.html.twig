@@ -1,0 +1,354 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<style>
+		#table-3 {
+			border: 1px solid #DFDFDF;
+			background-color: #F9F9F9;
+			width: 100%;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+		}
+		#table-3 td, #table-3 th {
+			border-top-color: white;
+			border-bottom: 1px solid #DFDFDF;
+		}
+		#table-3 th {
+			font-weight: normal;
+			padding: 7px 7px 8px;
+			text-align: left;
+			line-height: 1.3em;
+			font-size: 14px;
+		}
+		#table-3 td {
+			font-size: 12px;
+			padding: 4px 7px 2px;
+			vertical-align: top;
+		}
+	</style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+		var factura_id="{{ entity.id }}";
+        var url_listar_informacion_existente='{{path('facturasproporcionales_ajax_get_detalle')}}';
+    </script>   
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/facturacionproporcional/show.js?3') }}"></script>                 
+{% endblock %}
+
+{% block contenido_izq %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver factura proporcional</h1>
+</div>
+<div class="body_content">
+	<table class="record_properties">
+		<tbody>
+			<tr>
+				<td class="secHead">Informaci&oacute;n del Cliente:</td>
+			</tr>
+			<tr>
+				<td><b>Oficina:</b></td>
+				<td>{{ oficina.nombreOficina }}</td>
+			</tr>
+			<tr>
+				<td><b>Cliente:</b></td>
+				<td>{{ info_cliente.cliente }}</td>
+				<td width="9%">&nbsp;</td>
+				<td><b>Pto. cliente:</b></td>
+				<td>{{ info_cliente.puntoId }}</td>
+			</tr>
+            <tr>
+                {% if(strPrefijoEmpresa=='TN' or strPrefijoEmpresa=='MD' or strPrefijoEmpresa== 'EN')%}
+                    <td><b>Paga Iva: </b></td>
+                {% elseif(strPrefijoEmpresa=='TNP')%}
+                    <td><b>Paga Itbms: </b></td>
+                {% endif %}  
+                {% if info_cliente.strPagaIva == "S" %}
+                    <td> Si </td>
+                {% elseif info_cliente.strPagaIva == "N" %}
+                    <td> No </td>
+                {% endif %}
+            </tr>
+			<tr>
+				<td class="secHead">Informaci&oacute;n de Factura:</td>
+			</tr>
+			<tr>
+                                {% if(strPrefijoEmpresa=='TN' or strPrefijoEmpresa=='MD' or strPrefijoEmpresa == 'EN')%}
+                                    <td><b>No. factura SRI:</b></td>
+                                {% elseif(strPrefijoEmpresa=='TNP')%}
+                                    <td><b>No. factura DGI:</b></td>
+                                {% endif %}    
+				<td>{{ entity.numeroFacturaSri }}</td>
+				<td width="9%">&nbsp;</td>
+				<td><b>Estado:</b></td>
+				<td>{{ entity.estadoImpresionFact }}</td>
+			</tr>
+            <tr>
+                <td><b>Fe. Autorizacion:</b></td>
+                {% if entity.feAutorizacion is null %}
+                    <td>&nbsp;</td>
+                {% else %}
+                    <td>{{ entity.feAutorizacion  | date("d M Y") }}</td>
+                {% endif %}
+            </tr>
+			<tr>
+				<td><b>Fe. Emision:</b></td>
+				{% if entity.feEmision is null %}
+					<td>&nbsp;</td>
+				{% else %}
+					<td>{{ entity.feEmision  | date("d M Y") }}</td>
+				{% endif %}
+			</tr>
+            <tr>
+				<td><b>Fe. Consumo:</b></td>
+                <td>{{ info_cliente.strFeConsumo }}</td>
+			</tr>
+		</tbody>
+	</table>
+    <table style="width:910px;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+        <tbody>
+            <tr>
+                <td><b>Rte fte</b></td>
+                <td><b>Automatica</b></td>
+                <td><b>Prorrateo</b></td>
+                <td><b>Reactivacion</b></td>
+                <td><b>Recurrente</b></td>
+                <td><b>Comisiona</b></td>
+                <td><b>Es Electronica</b></td>
+            </tr>
+            <tr>
+                {% if entity.entregoRetencionFte=='S' %}
+                    <td>Si</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+                    
+                {% if entity.esAutomatica=='S' %}
+                    <td>Si</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+                    
+                {% if entity.prorrateo=='S' %}
+                    <td>Si</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+
+                {% if entity.reactivacion=='S' %}
+                    <td>Si</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+                    
+                {% if entity.recurrente=='S' %}
+                    <td>Si</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+
+                {% if entity.comisiona=='S' %}
+                    <td>Si</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+
+                <td>
+                    {% if entity.eselectronica=='S' %}
+                        Si
+                    {% else %}
+                        No
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td><b>Subtotal</b></td>
+                <td><b>Impuesto 0%</b></td>
+                <td><b>Impuesto</b></td>
+                <td><b>Descuento</b></td>
+                {% if(strPrefijoEmpresa=='TN' or strPrefijoEmpresa=='MD' or strPrefijoEmpresa == 'EN')%}
+                    <td><b>Compensaci&oacute;n<br/>Solidaria</b></td>
+                {% endif %} 
+                <td colspan="2"><b>Total</b></td>
+            </tr>
+            <tr>
+                <td>{{ entity.subtotal }}</td>
+                <td>{{ entity.subtotalCeroImpuesto }}</td>
+                <td>{{ entity.subtotalConImpuesto }}</td>
+                <td>{{ entity.subtotalDescuento }}</td>
+                {% if(strPrefijoEmpresa=='TN' or strPrefijoEmpresa=='MD' or strPrefijoEmpresa == 'EN')%}
+                    <td>{{ entity.descuentoCompensacion }}</td>
+                {% endif %} 
+                <td colspan="2">{{ entity.valorTotal }}</td>
+            </tr>
+        </tbody>
+    </table>
+	<div class="secHead">Detalle de factura</div>
+	<div id='listado_detalle_factura'></div>
+	<div class="buttons">
+		<p>
+			<span class="height20px">
+				<a class="button-crud" href="{{ path('facturasproporcionales') }}">Regresar</a>
+			</span>
+		</p>
+	</div>        
+    <div class="body_content"> 
+      
+    <div class="secHead">Caracter&iacute;sticas del Documento</div>      
+    <table style="width:800px;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+        <tbody>
+            <tr>
+                <td><b>Caracter&iacute;stica</b></td>
+                <td><b>Valor</b></td>
+            </tr>
+            {% for key, item1 in arrayCaracteristicas %}
+                <tr>
+                    {% for key_in, item2 in item1 %}
+                        <td>{{ item2 }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}   
+        </tbody>
+    </table>          
+    <div class="secHead">Historial del Documento</div>      
+    <table style="width:900px;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+            <tbody>
+                    <tr>
+                            <td><b>Motivo</b></td>
+                            <td><b>Estado</b></td>
+                            <td><b>Fe. Creaci&oacute;n</b></td>
+                            <td><b>Usr. Creaci&oacute;n</b></td>
+                            <td><b>Observaci&oacute;n</b></td>
+                    </tr>
+                    
+                    {% for key, fila in historial %}
+                            <tr>
+                            {% for key_in, columna in fila %}
+                                            <td>{{ columna }}</td>
+                            {% endfor %}
+                            </tr>
+                    {% endfor %}        
+            </tbody>
+    </table>
+    </div>
+	<div class="body_content">
+		<table class="formulario">
+			<tbody>
+				<tr>
+				  <td width="10%" rowspan="4"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+				  <th width="11%">Creador:</th>
+				  <td width="34%" >{{ entity.usrCreacion }}</td>
+
+				  {% if(entity.estadoImpresionFact=="Modificado") %}
+				  <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+				  <th width="11%" >Ult. Mod.:</th>
+				  <td width="34%">{{ entity.usrUltMod }}</td>
+				  {% endif %}
+
+				  {% if(entity.estadoImpresionFact=="Inactivo") %}
+				  <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+				  <th width="6%">Eliminado:</th>
+				  <td width="34%">&nbsp;</td>
+				  {% endif %}
+				</tr>
+				<tr>
+				  <th>Fecha:</th>
+				  <td >{{ entity.feCreacion | date("d M Y") }}</td>
+
+				  {% if(entity.estadoImpresionFact=="Modificado") %}
+				  <th>Fecha:</th>
+				  <td >{{ entity.feUltMod  | date("d M Y")}}</td>
+				  {% endif %}
+
+				  {% if(entity.estadoImpresionFact=="Inactivo") %}
+				  <th>Fecha:</th>
+				  <td width="34%">&nbsp;</td>
+				  {% endif %}
+				</tr>
+				<tr>
+				  <th>Hora:</th>
+				  <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+
+				  {% if(entity.estadoImpresionFact=="Modificado") %}
+				  <th>Hora:</th>
+				  <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+				  {% endif %}
+
+				  {% if(entity.estadoImpresionFact=="Inactivo") %}
+				  <th>Hora:</th>
+				  <td width="34%">&nbsp;</td>
+				  {% endif %}
+				</tr>
+			</tbody>
+		</table>
+	</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        <!--li>
+            <a class="button-nuevo-registro" href="{{ path('infodocumentofinancierocab_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo factura
+            </a>
+        </li-->
+        <li>
+            &nbsp;
+        </li>
+        <!--li>
+            <a class="button-editar" href="{#{ path('infodocumentofinancierocab_edit', { 'id': entity.id }) }#}">
+                &nbsp;Editar factura
+            </a>
+        </li-->
+        <!--li>
+            <a class="button-eliminar" href="{{ path('infodocumentofinancierocab_delete', { 'id': entity.id }) }}">
+                &nbsp;Eliminar factura
+            </a>
+        </li-->
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+        <li>
+            <a class="listado_ac_tablas" href="{{ path('facturasproporcionales_new') }}">Nueva Factura Proporcional</a>
+        </li>
+        <li>
+            {% if is_granted('ROLE_70-2') %}
+                {% if (intSaldo > 0) %}
+                    {% if (entity.estadoImpresionFact=='Activo' or entity.estadoImpresionFact=='Cerrado') %}
+                        <a class="listado_ac_tablas" 
+                           href="{{ path('infodocumentonotacredito_new', { 'id': entity.id }) }}">Generar N/C</a>
+                    {% endif %}	
+                {% endif %}
+            {% endif %}
+        </li>
+        <li>
+            {% if is_granted('ROLE_242-2') %}
+                {% if (entity.estadoImpresionFact=='Activo' or 
+                       entity.estadoImpresionFact=='Cerrado' or 
+                       entity.estadoImpresionFact=='Courier') %}
+                    <a class="listado_ac_tablas" 
+                       href="{{ path('infodocumentonotacreditointerna_new', { 'id': entity.id }) }}">Generar N/C Interna</a>
+                {% endif %}		
+            {% endif %}
+        </li>
+        <li>
+            {% if is_granted('ROLE_66-2') or is_granted('ROLE_66-3')%}
+                {% if (entity.estadoImpresionFact=='Activo' or 
+                       entity.estadoImpresionFact=='Cerrado' or 
+                       entity.estadoImpresionFact=='Courier') %}
+                    <a class="listado_ac_tablas" 
+                       href="{{ path('infopagocab_new') }}">Generar pago</a>
+                {% endif %}	
+            {% endif %}
+        </li>
+    </ul>
+{% endblock contenido_der %}

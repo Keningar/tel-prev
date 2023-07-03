@@ -1,0 +1,187 @@
+/**
+  * @author Edgar Holguín <eholguin@telconet.ec>
+  * @version 1.0 27-08-2019 Se realizan inserts necesarios para proceso de facturación por cambio de forma de pago.
+  */
+
+INSERT
+INTO DB_COMERCIAL.ADMI_TIPO_SOLICITUD
+  (
+    ID_TIPO_SOLICITUD,
+    DESCRIPCION_SOLICITUD,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO
+  ) 
+VALUES 
+  (
+    DB_COMERCIAL.SEQ_ADMI_TIPO_SOLICITUD.NEXTVAL,
+    'SOLICITUD CAMBIO FORMA PAGO',
+    sysdate,
+    'eholguin',
+    'Activo'
+  );
+
+
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'CAMBIO_FORMA_PAGO',
+    'N',
+    'Activo',
+    SYSDATE,
+    'eholguin',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO (
+    ID_PRODUCTO,
+    EMPRESA_COD,
+    CODIGO_PRODUCTO,
+    DESCRIPCION_PRODUCTO,
+    FUNCION_COSTO,
+    INSTALACION,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    IP_CREACION,
+    CTA_CONTABLE_PROD,
+    CTA_CONTABLE_PROD_NC,
+    ES_PREFERENCIA,
+    ES_ENLACE,
+    REQUIERE_PLANIFICACION,
+    REQUIERE_INFO_TECNICA,
+    NOMBRE_TECNICO,
+    CTA_CONTABLE_DESC,
+    TIPO,
+    ES_CONCENTRADOR,
+    SOPORTE_MASIVO,
+    ESTADO_INICIAL,
+    GRUPO,
+    COMISION_VENTA,
+    COMISION_MANTENIMIENTO,
+    USR_GERENTE,
+    CLASIFICACION,
+    REQUIERE_COMISIONAR,
+    SUBGRUPO,
+    LINEA_NEGOCIO
+) VALUES (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO.NEXTVAL,
+    '18',
+    'SOLCFP',
+    'CAMBIO FORMA PAGO',
+    NULL,
+    0,
+    'Inactivo',
+    SYSDATE,
+    'eholguin',
+    '127.0.0.1',
+    NULL,
+    NULL,
+    'NO',
+    'NO',
+    'NO',
+    'NO',
+    'OTROS',
+    NULL,
+    'S',
+    'NO',
+    NULL,
+    'Pendiente',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'NO',
+    'OTROS',
+    'OTROS'
+);
+
+COMMIT;
+/
+--Bloque anónimo para crear un registro en el parámetro FACTURACION_SOLICITUDES con el 
+--nuevo tipo de solicitud a facturar SOLICITUD CAMBIO FORMA PAGO
+SET SERVEROUTPUT ON
+DECLARE
+  Ln_IdParamCoordElem NUMBER(5,0);
+BEGIN
+
+  SELECT APC.ID_PARAMETRO
+  INTO  Ln_IdParamCoordElem
+  FROM  DB_GENERAL.ADMI_PARAMETRO_CAB APC
+  WHERE APC.NOMBRE_PARAMETRO = 'FACTURACION_SOLICITUDES' 
+  AND   APC.MODULO           = 'FINANCIERO'
+  AND   APC.ESTADO           = 'Activo';
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamCoordElem,
+    'Cambio de Forma de Pago',
+    'SOLICITUD CAMBIO FORMA PAGO',
+    NULL,
+    (SELECT ID_PRODUCTO
+     FROM   DB_COMERCIAL.ADMI_PRODUCTO
+     WHERE  EMPRESA_COD          = '18'
+     AND    CODIGO_PRODUCTO      = 'SOLCFP'
+     AND    DESCRIPCION_PRODUCTO = 'CAMBIO FORMA PAGO'
+     AND    NOMBRE_TECNICO       = 'OTROS'),
+    'Cambio de Forma de Pago',
+    'Activo',
+    'eholguin',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    'telcosCambioFormaPag',
+    '18',
+    'S'
+  );
+
+  SYS.DBMS_OUTPUT.PUT_LINE('Registros insertados correctamente');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+
+/

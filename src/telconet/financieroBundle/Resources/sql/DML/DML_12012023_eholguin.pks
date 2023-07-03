@@ -1,0 +1,559 @@
+SET DEFINE OFF
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'VISUALIZACION LOGS',
+    'CONFIGURA LOS VALORES CORRESPONDIENTES A LA VISUALIZACION DE LOGS DE CONSULTA DE DATOS PERSONALES.',
+    'FINANCIERO',
+    'VISUALIZACION LOGS',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0'
+  );
+  
+  
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'ORIGEN',
+    'registrarLogsClientes',
+     NULL,
+     NULL,
+    'N',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'CONSULTAR CLIENTES'
+  ); 
+  
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verClienteApp',
+    '497',
+    '9017',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'BUSCAR CLIENTE TM COMERCIAL'
+  );
+  
+  
+    
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'buscarLogin',
+    '497',
+    '8997',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'BUSCAR LOGIN GENERAL'
+  );
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'busquedaAvanzada',
+    '497',
+    '8977',
+    'N',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'CONSULTA GENERAL'
+  );
+  
+      INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verDatosPunto',
+    '9',
+    '6',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'DATOS DEL PUNTO'
+  );
+  
+        INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verDatosTecnicos',
+    '151',
+    '8917',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'DATOS TECNICOS'
+  );
+  
+  
+          INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verEstadoCtaPto',
+    '91',
+    '1',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'ESTADO CUENTA PUNTO'
+  );
+
+  INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verCasos',
+    '78',
+    '1',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'CASOS'
+  );   
+    
+          INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verResumen',
+    '151',
+    '8897',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'RESUMEN CLIENTE'
+  );
+  
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verDiagnosticoOss',
+    '151',
+    '8898',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'DIAGNOSTICO OSS'
+  );
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verContrato',
+    NULL,
+    NULL,
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'VER CONTRATO'
+  );  
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'PERFILES_CONSULTA_CLIENTE_APP',
+    'verInfoLogs',
+    '498',
+    '1',
+    'S',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'VER LOGS'
+  ); 
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'VISUALIZACION LOGS'
+      AND MODULO             = 'FINANCIERO'
+      AND ESTADO             = 'Activo'
+    ),
+    'RANGO CONSULTA',
+    '30',
+    '00:00:00',
+    '23:59:59',
+    'Activo',
+    'eholguin',
+    SYSDATE,
+    '127.0.0.0',
+    '18',
+    'Especifica el número de dias como rango permitido para consulta de logs.'
+  ); 
+ 
+  
+COMMIT;
+  /
+  
+    
+  

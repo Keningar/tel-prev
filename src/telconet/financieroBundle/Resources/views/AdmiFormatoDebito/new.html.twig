@@ -1,0 +1,422 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+	{{ parent() }}      
+        <script>
+function mostrarDiv(div){
+    capa = document.getElementById(div);
+    capa.style.display = 'block';    
+}
+function ocultarDiv(div){
+    capa = document.getElementById(div);
+    capa.style.display = 'none';    
+}		
+        url_lista_bancos='{{path('admiformatodebito_getListadoBancos')}}';
+        url_lista_tipos_cuenta='{{path('admiformatodebito_getListadoTiposCuenta')}}';        
+        </script>        
+        
+        <script type="text/javascript" src="{{ asset('./bundles/financiero/js/admiformatodebito/new.js') }}"></script>
+{%endblock javascripts%}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Nuevo Formato de Debito</h1>
+</div> 
+<form action="{{ path('admiformatodebito_create') }}" method="post" {{ form_enctype(form) }} class="formulario" onsubmit="">        
+<div class="body_content">
+<table border='0' width='80%' cellpadding='0' cellspacing='2'>
+<tr>
+<td>         
+                <label>Banco:</label>
+</td>
+<td>				
+                <div id='combo_banco' required="true"></div>            
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td>
+                <label>Tipo Archivo:</label>
+</td>
+<td>
+			<div id='div_error_tipoArchivo' class='errormessage' style='display:none'>El campo tipo de archivo es obligatorio</div>
+            <select id="admiformatodebitoextratype_tipoArchivo" onchange="ocultarDiv('div_error_tipoArchivo')" required='required' name="admiformatodebitoextratype[tipoArchivo]">
+			<option value='' selected='selected'>Seleccion...</option>
+                <option value='txt'>TXT</option>
+				<option value='csv'>CSV</option>
+				<option value='biz'>BIZ</option>
+            </select>		
+
+
+</td>
+</tr>
+<tr>
+<td>
+                <label>Tipo Cuenta:</label>
+</td>
+<td>
+                <div id='combo_tipo_cuenta' required="true"></div>
+</td>
+<td>&nbsp;</td>
+<td>
+
+                <label>Nombre Archivo:</label>
+</td>
+<td>
+<div id='div_error_nombreArchivo' class='errormessage' style='display:none'>El campo Nombre de archivo es obligatorio</div>
+            <input id="admiformatodebitoextratype_nombreArchivo" onchange="ocultarDiv('div_error_nombreArchivo')" type='text' required='required' name="admiformatodebitoextratype[nombreArchivo]">
+</td>
+</tr>
+<tr>
+<td>
+<label>Consultar por:</label>
+</td>
+<td>
+<div id='div_error_consultar_por' class='errormessage' style='display:none'>El campo "consultar por" es obligatorio</div>
+<select id='admiformatodebitoextratype_consultarPor' name='admiformatodebitoextratype[consultarPor]'  required='required'>
+<option id='factura'>Factura</option>
+<option id='cliente' selected='selected'>Cliente</option>
+</select>   
+</td>
+<td>&nbsp;</td>
+<td>
+
+                <label>Separador de Columnas:</label>
+</td>
+<td>
+<div id='div_error_separador' class='errormessage' style='display:none'>El campo Separador de columnas  es obligatorio</div>
+<select id='admiformatodebitoextratype_separadorColumna' name='admiformatodebitoextratype[separadorColumna]'  required='required'>
+<option value='\t'>TABULADOR</option>
+<option value='vacio' selected='selected'>SIN SEPARADOR</option>
+</select>            
+</td>
+</tr>	
+</table>
+</div>
+<div class="body_content">
+{% if error is defined %}
+    <div class='errormessage'>{{ error }}</div>
+{% endif %}
+    <table border='0' align='left' width='100%'>
+    <tr>
+        <td>
+            {{ form_label(form.descripcion) }}
+        </td>
+        <td>
+            {{ form_widget(form.descripcion) }}
+        </td> 
+        <td>
+		            <label>Alineado a la:</label>
+        </td>
+        <td>
+            <select id="admiformatodebitotype_orientacionCaracterRelleno" onchange="" required='required' name="admiformatodebitotype[orientacionCaracterRelleno]">
+                <option value='D' selected='selected'>Derecha</option><option value='I'>Izquierda</option>
+            </select>
+            <input id='admiformatodebitoextratype_bancoId' name='admiformatodebitoextratype[bancoId]' type='hidden' value=''>     
+            <input id='admiformatodebitoextratype_tipoCuentaId' name='admiformatodebitoextratype[tipoCuentaId]' type='hidden' value=''>
+            <input id='admiformatodebitoextratype_detalles' name='admiformatodebitoextratype[detalles]' type='hidden' value=''>
+        </td> 		 
+    </tr>   
+    <tr>
+        <td>
+            {{ form_label(form.longitud) }}
+        </td>
+        <td>
+            {{ form_widget(form.longitud) }}
+        </td> 
+        <td>
+            {{ form_label(form.tipoCampo) }}
+        </td>
+        <td>
+            <select id="admiformatodebitotype_tipoCampo" onchange="presentaVariable()" required='required' name="admiformatodebitotype[tipoCampo]">
+                <option value='F' selected='selected'>Fijo</option>
+				<option value='S'>Secuencial</option>
+				<option value='V'>Variable</option>
+            </select>		
+        </td> 
+    </tr>      
+    <tr>
+        <td>
+            <label>Relleno:</label>
+        </td>
+        <td>
+            <select id="admiformatodebitoextratype_caracterRelleno" onchange="" name="admiformatodebitoextratype[caracterRelleno]">
+                <option value='0' selected='selected'>Cero</option>
+				<option value=''>Sin Relleno</option>
+				<option value=' ' selected='selected'>Espacio en Blanco</option>
+            </select>	
+        </td> 
+        <td>
+		<div id='div_label_variable' style='display:none'>
+           {{ form_label(form.variableFormatoId) }}
+		   </div>
+		<div id='div_label_contenido'>	
+           {{ form_label(form.contenido) }}
+		</div>   
+        </td>
+        <td>
+			<div id='div_input_variable' style='display:none'>
+				<select id="admiformatodebitotype_variableFormatoId" onchange="" name="admiformatodebitotype[variableFormatoId]">
+					<option value=''>Seleccione...</option>
+			{%for variable in variables %}		
+					<option value='{{variable.id}}'>{{variable.descripcion}}</option>
+			{%endfor%}		
+				</select>
+			</div>
+			<div id='div_input_contenido'>			
+            {{ form_widget(form.contenido) }}
+			</div>
+        </td>
+    </tr>   	
+    <tr>
+        <td>
+		<label>Posicion:</label>
+        </td>
+        <td>		
+            <select id="admiformatodebitoextratype_posicion" required='required' name="admiformatodebitoextratype[posicion]">
+                <option value='1' selected='selected'>1</option>
+				<option value='2'>2</option>
+				<option value='3'>3</option>
+				<option value='4'>4</option>
+				<option value='5'>5</option>
+				<option value='6'>6</option>
+				<option value='7'>7</option>
+				<option value='8'>8</option>
+				<option value='9'>9</option>
+				<option value='10'>10</option>
+				<option value='11'>11</option>
+				<option value='12'>12</option>
+				<option value='13'>13</option>
+				<option value='14'>14</option>
+				<option value='15'>15</option>
+				<option value='16'>16</option>
+				<option value='17'>17</option>
+				<option value='18'>18</option>
+				<option value='19'>19</option>
+				<option value='20'>20</option>
+				<option value='21'>21</option>
+				<option value='22'>22</option>
+				<option value='23'>23</option>
+				<option value='24'>24</option>
+				<option value='25'>25</option>
+				<option value='26'>26</option>
+				<option value='27'>27</option>
+				<option value='28'>28</option>
+				<option value='29'>29</option>
+				<option value='30'>31</option>				
+            </select>		
+        </td> 
+        <td>
+		<div id='div_label_validacion' style='display:none'>
+			<label>Requiere Validacion:</label>
+		</div>
+        </td>
+        <td>
+		<div id='div_input_validacion' style='display:none'>
+            <select id="admiformatodebitoextratype_validacion" required='required' name="admiformatodebitoextratype[validacion]">
+                <option value='S'>Si</option>
+				<option value='N' selected='selected'>No</option>
+            </select>
+		</div>		
+        </td>
+    </tr>  	
+    <tr>
+        <td>
+		<label>Tipo Dato:</label>
+        </td>
+        <td>		
+            <select id="admiformatodebitoextratype_tipoDato" required='required' name="admiformatodebitoextratype[tipoDato]">
+                <option value='N' selected='selected'>Numerico</option>
+				<option value='A'>Alfanumerico</option>			
+            </select>		
+        </td> 
+        <td>
+        </td>
+        <td>
+        </td>
+    </tr> 	
+    <tr>
+        <td colspan='4'>
+<div class="buttons">
+                <p>
+                    <button type="button" onclick="agregaDetalle()" class="button-crud">Agregar</button>                                    
+                </p>
+</div>        
+        </td>
+    </tr>    
+    <tr>
+        <td colspan='4'>&nbsp;</td>
+    </tr>    
+    <tr>
+        <td colspan='4'><div id='lista_grid'></div></td>
+    </tr>    
+    </table>
+         {{ form_widget(form._token)}} 
+                <div class="buttons">
+				<p>
+                                    <button type="button" class="button-crud" onclick="if(valida()){grabar();}">Guardar</button>
+					<span class="height20px">
+						&nbsp;&nbsp;
+					</span>
+                                        <span class="height20px">
+                                            <a class="button-crud" href="{{ path('admiformatodebito') }}">Regresar</a>
+                                        </span>                                        
+				</p>
+		</div> 
+
+</div> 
+</form>        
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 1
+        </a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 2
+        </a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 3
+        </a>
+    </li>
+</ul>
+{% endblock contenido_der %}
+{% block javascripts_footer%}
+<script>
+function agregaDetalle(){
+    var variable='';
+    if($('#admiformatodebitotype_descripcion').val() && $('#admiformatodebitotype_longitud').val() 
+        //&&  $('#admiformatodebitotype_caracterRelleno').val() 
+		&& $('#admiformatodebitotype_tipoCampo').val() 
+        &&  $('#admiformatodebitotype_orientacionCaracterRelleno').val()
+		)
+    {
+		if($('#admiformatodebitotype_variableFormatoId').val()){
+		variable=$("select[id='admiformatodebitotype_variableFormatoId'] option:selected").text();
+		}
+        rec = new DetModel({'descripcion':$('#admiformatodebitotype_descripcion').val(),
+            'longitud':$("#admiformatodebitotype_longitud").val(),
+			'caracterRelleno':$("select[id='admiformatodebitoextratype_caracterRelleno'] option:selected").text(),
+            'caracterRellenoId':$('#admiformatodebitoextratype_caracterRelleno').val(),
+            'tipoCampo':$("select[id='admiformatodebitotype_tipoCampo'] option:selected").text(),
+			'tipoCampoId':$("#admiformatodebitotype_tipoCampo").val(),
+			'tipoDato':$("select[id='admiformatodebitoextratype_tipoDato'] option:selected").text(),
+			'tipoDatoId':$("#admiformatodebitoextratype_tipoDato").val(),
+            'contenido':$("#admiformatodebitotype_contenido").val(),
+            'orientacionCaracter':$("select[id='admiformatodebitotype_orientacionCaracterRelleno'] option:selected").text(),
+			'variable':variable,
+			'variableId':$("#admiformatodebitotype_variableFormatoId").val(),
+			'orientacionCaracterId':$("#admiformatodebitotype_orientacionCaracterRelleno").val(),
+			'requiereValidacion':$("#admiformatodebitoextratype_validacion").val(),
+			'posicion':$("#admiformatodebitoextratype_posicion").val()
+			});
+        storeDetalle.add(rec);
+        limpia();
+    }
+    else
+    {
+        Ext.Msg.alert('Alerta ','Faltan datos por ingresar.');
+    }
+}
+
+function limpia(){
+    $('#admiformatodebitotype_descripcion').val('');
+    $('#admiformatodebitotype_longitud').val('');
+    $('#admiformatodebitotype_caracterRelleno').val('');
+    $('#admiformatodebitotype_contenido').val(''); 
+	$('#admiformatodebitotype_variableFormatoId').val(''); 
+}
+
+function valida(){
+    //console.log($('#admiformatodebitoextratype_tipoCuentaId').val());
+    //console.log($('#admiformatodebitoextratype_bancoId').val());
+    if($('#admiformatodebitoextratype_bancoId').val() && $('#admiformatodebitoextratype_tipoCuentaId').val()){
+        if(grid.getStore().getCount()>0){
+		
+			if($('#admiformatodebitoextratype_nombreArchivo').val()=='')
+			{
+				mostrarDiv('div_error_nombreArchivo');
+				return false;
+			}else
+			{
+
+				if($('#admiformatodebitoextratype_tipoArchivo').val()=='')
+				{
+					mostrarDiv('div_error_tipoArchivo');
+					return false;
+				}else
+				{
+					return true;
+				}
+			
+			}
+            
+        }else{
+            Ext.Msg.alert('Alerta ','Debe ingresar al menos 1 detalle.');
+            return false;
+        }
+    }
+    else
+    {
+        Ext.Msg.alert('Alerta ','Seleccione Banco y Tipo Cuenta / Tarjeta');
+        return false;
+    }
+}
+
+function presentaVariable(){
+    var texto=$("select[id='admiformatodebitotype_tipoCampo'] option:selected").text();
+	console.log(texto.toUpperCase());
+    if (texto.toUpperCase()=='FIJO')
+    {                    
+        ocultarDiv('div_label_variable');
+		ocultarDiv('div_input_variable');
+		ocultarDiv('div_label_validacion');
+		ocultarDiv('div_input_validacion');
+        mostrarDiv('div_label_contenido');
+		mostrarDiv('div_input_contenido');		
+    }
+    if(texto.toUpperCase()=='VARIABLE')
+    {
+        mostrarDiv('div_label_variable');
+		mostrarDiv('div_input_variable');
+		mostrarDiv('div_input_validacion');
+        mostrarDiv('div_label_validacion');
+        ocultarDiv('div_label_contenido');
+		ocultarDiv('div_input_contenido');		
+    }
+    if(texto.toUpperCase()=='SECUENCIAL')
+    {
+        ocultarDiv('div_label_variable');
+		ocultarDiv('div_input_variable');
+		ocultarDiv('div_input_validacion');
+        ocultarDiv('div_label_validacion');		
+        mostrarDiv('div_label_contenido');
+		mostrarDiv('div_input_contenido');				
+    }
+}
+
+function grabar(){
+    var array_data = new Array();
+    var variable='';
+    for(var i=0; i < grid.getStore().getCount(); i++){ 
+        variable=grid.getStore().getAt(i).data;
+        for(var key in variable) {
+            var valor = variable[key];
+            array_data.push(valor);
+        }
+        array_data.push('|');
+        //console.log(array_data);
+    }
+    $('#admiformatodebitoextratype_detalles').val(array_data); 
+     document.forms[0].submit();  
+}
+</script>
+{% endblock javascripts_footer %}

@@ -1,0 +1,90 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+	{% for flashMessage in app.session.flashbag.get('notice') %}
+	    <div class="errormessage">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Recaudaciones</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_pagos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_pagos'></div></td>
+            </tr>
+    </table>        
+            
+                 
+        <script>
+        var url_lista_estados='{{ path('inforecaudacion_estados') }}';
+        var url_grid = "{{ path('inforecaudacion_gridRecaudaciones') }}";
+        var boolDescargarFormatoRecaudacion  = '{{ is_granted("ROLE_186-5618") }}';
+        </script>        
+         <script type="text/javascript" src="{{ asset('./bundles/financiero/js/pagos/listRecaudaciones.js?1') }}"></script>
+   </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="acciones_relacionadas">
+    <ul class="listado_acciones_relacionadas">
+        <li>
+            <a class="listado_ac_tablas" href="{{ path('inforecaudacion_new') }}" >
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+                &nbsp;Respuesta Recaudacion
+            </a>
+        </li>
+        <li>
+            {% if is_granted('ROLE_186-5617') %}
+                <a class="listado_ac_tablas" href="{{ path('inforecaudacion_gen') }}" >
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+                    &nbsp;Generar Recaudacion
+                </a>
+            {% endif %}
+        </li>   
+    </ul>       
+</div>   
+    		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+<ul class="listado_acciones_relacionadas">               
+</ul>
+{% endblock contenido_der %}

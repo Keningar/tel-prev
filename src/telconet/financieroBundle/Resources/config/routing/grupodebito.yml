@@ -1,0 +1,23 @@
+grupoDebitoCap:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:GrupoDebito:indexGrupoDebitos" }
+
+grupodebitos_combo_grupo_debitos:
+    pattern:  /comboGrupoDebito
+    defaults: { _controller: "financieroBundle:GrupoDebito:comboGrupoDebito"}
+
+grupodebitos_combo_banco_debitos:
+    pattern:  /getComboBancos
+    defaults: { _controller: "financieroBundle:GrupoDebito:getComboBancos"}
+
+grupodebitos_getListadoTiposCuenta:
+    pattern:  /getListadoTiposCuentaVisibleFormato
+    defaults: { _controller: "financieroBundle:GrupoDebito:getListadoTiposCuenta"}
+
+grupodebitos_crea_grupo:
+    pattern:  /creagrupo
+    defaults: { _controller: "financieroBundle:GrupoDebito:creaGrupo"}
+
+financiero_grupoDebito:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:GrupoDebito:indexGrupoDebitos"}

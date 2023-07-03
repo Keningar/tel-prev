@@ -1,0 +1,8 @@
+/**
+ * @author Ivan Romero <icromero@telconet.ec>
+ * @version 1.0
+ * @since 16-07-2021    
+ * BORRA PAQUETE DB_FINANCIERO.FNKG_INGRESO_BANCO_GRUPOS
+ */
+DROP PACKAGE DB_FINANCIERO.FNKG_INGRESO_BANCO_GRUPOS;
+COMMIT;

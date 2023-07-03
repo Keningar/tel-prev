@@ -1,0 +1,188 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	
+	<style>
+		#table-3 {
+			border: 1px solid #DFDFDF;
+			background-color: #F9F9F9;
+			width: 100%;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			border-radius: 3px;
+		}
+		#table-3 td, #table-3 th {
+			border-top-color: white;
+			border-bottom: 1px solid #DFDFDF;
+		}
+		#table-3 th {
+			font-weight: normal;
+			padding: 7px 7px 8px;
+			text-align: left;
+			line-height: 1.3em;
+			font-size: 14px;
+		}
+		#table-3 td {
+			font-size: 12px;
+			padding: 4px 7px 2px;
+			vertical-align: top;
+		}
+	</style>
+{% endblock %}
+        
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Pago</h1>
+</div>
+<div class="body_content">
+<table  class="record_properties" width='100%'>
+    <tbody>
+        <tr>
+            <td><b>Numero:</b></td>
+            <td>{{ entity.numeroPago }}</td>
+            <td><b>Total:</b></td>
+            <td>{{ entity.valorTotal }}</td>            
+        </tr>        
+        <tr>
+            <td><b>Empresa:</b></td>
+            <td>{{ oficina.empresaId.nombreEmpresa }}</td>
+            <td><b>Estado:</b></td>
+            <td>{{ entity.estadoPago }}</td>            
+        </tr>
+        <tr>
+            <td><b>Punto:</b></td>
+            <td>{{ punto.login }}</td>
+            <td><b>Comentario:</b></td>
+            <td>{{ entity.comentarioPago }}</td>            
+        </tr>
+        <tr>
+            <td><b>Oficina:</b></td>
+            <td>{{ oficina.nombreOficina }}</td>
+            <td><b>Fecha Creacion:</b></td>
+            <td>{{ entity.feCreacion|date('Y-m-d H:i:s') }}</td>            
+        </tr>
+        <tr>
+            <td><b>Cliente:</b></td>
+            {%if punto.personaEmpresaRolId.personaId.razonSocial%}
+            <td>{{ punto.personaEmpresaRolId.personaId.razonSocial }}</td>
+            {%else%}
+            <td>{{ punto.personaEmpresaRolId.personaId.nombres }} {{ punto.personaEmpresaRolId.personaId.apellidos }}</td>
+            {%endif%}
+            <td><b>Usuario Creacion:</b></td>
+            <td>{{ entity.usrCreacion }}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div  class="body_content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_detalles'></div></td>
+            </tr>
+    </table>     
+        <script>
+
+        var url_cliente_delete_ajax='#';
+        var url_cliente_lista_estados='#';
+        var url_grid = "{{ path('infopagocab_getDetallesPago',{'id':entity.id}) }}";
+        </script>      
+    
+    <script type="text/javascript" src="{{ asset('./bundles/financiero/js/pagos/show.js?1') }}"></script>
+         
+</div>  
+  {% if (anticipos|length >0) %}       
+<div class="body_content">
+<div class="secHead">Anticipo generado</div>     
+	<table width='90%' cellspacing='1' cellpadding='4'>
+	{% for anticipo in anticipos %}	
+		<tr>
+			<td width='120'><b>Anticipo generado:</b></td>
+			<td>&nbsp;&nbsp;</td>
+			<td><a href="{{ path('anticipo_show', { 'id': anticipo.id }) }}">{{anticipo.numeroPago}}</a></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td width='70'><b>Valor:</b></td>
+			<td>&nbsp;&nbsp;</td>
+			<td>{{anticipo.valorTotal}}</td>
+			<td width='190'>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td width='80'><b>Total Pago:</b></td>
+			<td>&nbsp;&nbsp;</td>
+			<td>{{anticipo.valorTotal + entity.valorTotal}}</td>			
+		</tr>
+	{% endfor %}		
+	</table>
+</div>
+{% endif %}
+<div class="body_content">        
+<div class="secHead">Historial del Documento</div>      
+<table style="width:900px;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+        <tbody>
+                <tr>
+                        <td><b>Motivo</b></td>
+                        <td><b>Estado</b></td>
+                        <td><b>Fe. Creacion</b></td>
+                        <td><b>Usr. Creacion</b></td>
+                        <td><b>Observacion</b></td>
+                </tr>
+                {% for key, item1 in historial %}
+                        <tr>
+                        {% for key_in, item2 in item1 %}
+                                        <td>{{ item2 }}</td>
+                        {% endfor %}
+                        </tr>
+                {% endfor %}        
+        </tbody>
+</table>
+</div>
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('infopagocab') }}">Regresar</a>
+        </span>
+    </p>
+</div> {% endblock contenido_izq %}
+        
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+		<a href="{{ path('infopagocab_new') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nuevo Pago
+		</a>        
+		</li>
+        <li>
+            &nbsp;
+        </li>
+		{%if entity.estadoPago=='Activo' or entity.estadoPago=='Cerrado' %}
+        <li>
+            <a class="button-editar" href="{{ path('infopagocab_recibo', { 'id': entity.id }) }}">
+                &nbsp;Imprimir Pago
+            </a>
+        </li>
+		{%endif%}
+    </ul>
+	<br />
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+		<ul class="listado_acciones_relacionadas">
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('anticipo') }}">Nuevo Anticipo</a>
+                    </li>
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('anticipo_newsincliente') }}">Nuevo Anticipo sin Cliente</a>
+                    </li>                    
+                    <!--
+			{#% for acc in acc_relaciondas %} 
+				<li>
+					<a class="listado_ac_tablas" href="{{ path(acc.routing,{ 'id_prospecto': entity.id }) }}">{{ acc.descripcionOpcion }}</a>
+				</li>
+			{% endfor %#}
+                    -->
+			<!--li>
+				<a class="listado_ac_tablas" href="{#{ path('precliente_convertir', { 'id_prospecto': entity.id }) }#}">Convertir Prospecto a Cliente</a>
+			</li-->
+		</ul>
+{% endblock contenido_der %}

@@ -1,0 +1,15 @@
+ExcelCourier_list:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:ExcelCourier:index" }
+    
+ExcelCourier_numeracion:
+    pattern:  /ajax_get_numeracion
+    defaults: { _controller: "financieroBundle:ExcelCourier:getNumeracion" }
+    
+ExcelCourier_tipos_documentos:
+    pattern:  /ajax_get_tipo_documentos
+    defaults: { _controller: "financieroBundle:ExcelCourier:getCodigoTipoDocumento" }
+    
+ExcelCourier_procesar:
+    pattern:  /ajax_get_procesar_documento
+    defaults: { _controller: "financieroBundle:ExcelCourier:getProcesar" }

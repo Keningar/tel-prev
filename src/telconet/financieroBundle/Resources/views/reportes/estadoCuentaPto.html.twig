@@ -1,0 +1,95 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+	<style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_store_clientes='{{path('reportes_listar_clientes')}}';        
+        var url_store_grid = "{{ path('reportes_movimientos_pto_cliente') }}";
+        var url_store_pto_clientes = "{{ path('reportes_listado_ptos_cliente') }}";
+        var cliente="{{ cliente }}";
+        var ptocliente="{{ ptocliente }}";
+        var url_store_errores="{{ path('reportes_getListadoErrores') }}";
+    </script>
+    
+    {% if (ptocliente) !="N" %}
+       <script type="text/javascript" src="{{ asset('bundles/financiero/js/reportes/estadoCuentaPorPto.js?3') }}"></script> 
+    {% endif %}
+    
+    <script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/ux/exporter/Exporter-all.js?3')}}"></script>
+    
+{% endblock %}
+
+            
+{% block contenido_central %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Estado de Cuenta por Pto Cliente</h1>
+</div>
+{% if (cliente=='N' or ptocliente=='N') %}
+	<div class="info-error">Debe seleccionar cliente y pto. cliente</div>
+{% else %}
+{% if app.session.get('prefijoEmpresa') == 'MD' %}
+		{% if is_granted('ROLE_91-1') %}
+		<div class="dashboard_content k-content">
+		<div id="example" class="k-content">
+				<table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+						<tr bgcolor='#ffffff'>
+							<td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+						</tr>	
+						<tr bgcolor='#ffffff'>
+							<td bgcolor='#ffffff'><div id='lista_prospectos'></div></td>
+						</tr>
+				</table>      
+			</div>
+		</div>
+		{% else %}
+			<h1>No cuenta con los permisos suficientes</h1>
+		{% endif %}
+	{% else %}
+		<div class="dashboard_content k-content">
+		<div id="example" class="k-content">
+				<table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+						<tr bgcolor='#ffffff'>
+							<td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+						</tr>	
+						<tr bgcolor='#ffffff'>
+							<td bgcolor='#ffffff'><div id='lista_prospectos'></div></td>
+						</tr>
+				</table>      
+			</div>
+		</div>
+	{% endif %}
+{% endif %}
+{% endblock contenido_central %}

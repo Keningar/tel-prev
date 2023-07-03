@@ -1,0 +1,701 @@
+/**
+ * Se crea DML para la parametrización en débitos por Emergencia Sanitaria - Escenario 3.
+ * @author Hector Lozano <hlozano@telconet.ec>
+ * @version 1.0 
+ * @since 17-06-2020
+ */
+
+--PARAMETRO PARA ESCENARIO_3 DE DEBITOS.
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'ESCENARIOS_DEBITOS'
+      AND ESTADO             = 'Activo'
+    ),
+    'PARAMETRO QUE DEFINE EL ESCENARIO 3 PARA GENERACION DE DEBITOS',
+    'ESCENARIO_3',
+    'SELECCIÓN CANTIDAD CUOTA NDI',
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );      
+
+--PARAMETRO PARA CANTIDAD DE CUOTAS DE NDI'S EN ESCENARIO 3.
+INSERT 
+INTO 
+  DB_GENERAL.ADMI_PARAMETRO_CAB 
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  ) 
+  VALUES 
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'CANT_CUOTA_NDI_ESCENARIO_3',
+    'PARAMETRO PARA DEBITAR CUOTAS DE NDI EN LA GENERACION DE DEBITOS',
+    'FINANCIERO',
+    'DEBITOS_EMERGENCIA_SANITARIA',
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '127.0.0.1');
+  
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '1',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );  
+ 
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '2',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );  
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '3',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );     
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '4',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );          
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '5',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );    
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '6',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );   
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '7',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );   
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '8',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );   
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '9',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );   
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '10',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );  
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '11',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );    
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD,
+    VALOR6,
+    VALOR7,
+    OBSERVACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+      WHERE NOMBRE_PARAMETRO = 'CANT_CUOTA_NDI_ESCENARIO_3'
+      AND ESTADO             = 'Activo'
+    ),
+    'CANTIDAD_CUOTA',
+    '12',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'hlozano',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18',
+    NULL,
+    NULL,
+    NULL
+  );   
+
+COMMIT;
+/

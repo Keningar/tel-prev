@@ -1,0 +1,82 @@
+infodeposito:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoDeposito:index" }
+
+infodeposito_procesardeposito:
+    pattern:  /procesardeposito
+    defaults: { _controller: "financieroBundle:InfoDeposito:procesarDeposito" }
+
+infodeposito_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "financieroBundle:InfoDeposito:show" }
+
+infodeposito_new:
+    pattern:  /new
+    defaults: { _controller: "financieroBundle:InfoDeposito:new" }
+
+infodeposito_create:
+    pattern:  /create
+    defaults: { _controller: "financieroBundle:InfoDeposito:create" }
+    requirements: { _method: post }
+
+infodeposito_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "financieroBundle:InfoDeposito:edit" }
+    
+infodeposito_editardeposito:
+    pattern:  /editardeposito
+    defaults: { _controller: "financieroBundle:InfoDeposito:editardeposito" }    
+
+infodeposito_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "financieroBundle:InfoDeposito:update" }
+    requirements: { _method: post }
+
+infodeposito_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "financieroBundle:InfoDeposito:delete" }
+    requirements: { _method: post }
+
+infodeposito_pagosnodepositados:
+    pattern:  /pagosnodepositados
+    defaults: { _controller: "financieroBundle:InfoDeposito:gridPagosNoDepositados" }
+    
+infodeposito_formaspago:
+    pattern:  /formaspago
+    defaults: { _controller: "financieroBundle:InfoDeposito:formasPago" }
+
+infodeposito_formaspagoDepositables:
+    pattern:  /formaspagodepositables
+    defaults: { _controller: "financieroBundle:InfoDeposito:formasPagoDepositables" }
+
+infodeposito_depositar:
+    pattern:  /depositar
+    defaults: { _controller: "financieroBundle:InfoDeposito:depositar_ajax" }
+
+infodeposito_griddepositos:
+    pattern:  /griddepositos
+    defaults: { _controller: "financieroBundle:InfoDeposito:gridDepositos" }
+
+infodeposito_listabancosnaf:
+    pattern:  /listabancosnaf
+    defaults: { _controller: "financieroBundle:InfoDeposito:listaBancosNaf" }
+ 
+infodeposito_listacuentasbanconaf:
+    pattern:  /listacuentasbanconaf
+    defaults: { _controller: "financieroBundle:InfoDeposito:listaCuentasBancoNaf" }
+
+infodeposito_procesar:
+    pattern:  /procesar
+    defaults: { _controller: "financieroBundle:InfoDeposito:procesar_ajax" }
+
+infodeposito_anular:
+    pattern:  /anular
+    defaults: { _controller: "financieroBundle:InfoDeposito:anular_ajax" }
+
+infodeposito_lista_oficinas:
+    pattern:  /listaoficinas
+    defaults: { _controller: "financieroBundle:InfoDeposito:listaOficinasAjax" }
+
+infodeposito_excelpagos_por_deposito:
+    pattern:  /excelpagospordeposito
+    defaults: { _controller: "financieroBundle:InfoDeposito:excelPagosPorDeposito"}    

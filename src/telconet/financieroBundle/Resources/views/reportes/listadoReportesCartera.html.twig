@@ -1,0 +1,36 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_grid = "{{ path('reportes_grid_reportes_cartera') }}";
+        var prefijo = '{{ prefijoEmpresa }}';
+        var puedeDescargaReporteCartera= '{{ is_granted("ROLE_205-1") }}';
+    </script>   
+    <script type="text/javascript" src="{{ asset('bundles/financiero/js/reportes/listadoReportesCartera.js?2') }}"></script>              
+{% endblock %}
+
+            
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Reportes de Cartera</h1>
+</div>
+<div class="dashboard_content k-content">
+    <div id="example" class="k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'><div id='filtro_reportes'></div></td>
+                </tr>	            
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'><div id='lista_reportes'></div></td>
+                </tr>	
+        </table>      
+    </div>
+</div>
+{% endblock contenido_central %}

@@ -1,0 +1,189 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+	{{ parent() }}
+    <style type="text/css">
+        .x-monthpicker-months{width: 125px}
+        .x-monthpicker-years{width: 120px}
+        
+        .x-datepicker{width: 215px !important;}
+        .x-monthpicker{width: 250px !important;}
+    </style>
+{% endblock %}
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Generar Debitos</h1>
+    </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% for flashMessageSubida in app.session.flashbag.get('subida') %}
+        <div class="successmessage">
+            {{flashMessageSubida}}
+        </div>
+    {% endfor %}
+    <div class="body_content k-content">
+        <div id="example" class="k-content">
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='divOficina'></div>
+                    </td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='divCiclos'></div>
+                    </td>
+                    
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                         <div id='divEscenarios'></div>
+                    </td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'>
+                        <div id='divFiltroESCENARIO_1'></div>
+                        <div id='divFiltroESCENARIO_2'></div>
+                        <div id='divFiltroESCENARIO_3'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 10px">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='divArchivoClientes'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 10px">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='divEstadosServicio'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 10px">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='divFechasActivacion'></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 10px">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div id='divMotivosRechazo'></div>
+                    </td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                         <div id='divPlanificado'></div>
+                    </td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td height="10px">&nbsp;</td>
+                </tr>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='lista'>
+                            <div id = "fieldsTabDebitosGenerales"></div>
+                            <div id = "fieldsTabDebitosVisaMastercard"></div>
+                        </div>
+                    </td>
+                </tr>
+            </table>                               
+            <script>
+            var strUrlGrid                  = "{{ path('generardebitos_grid_generar_debitos') }}";
+            var strUrlObtieneCiclos         = '{{ path('admiformatodebito_obtieneCiclosPorEstado') }}';
+            var strUrlObtieneEscenarios     = '{{ path('admiformatodebito_obtieneEscenariosPorEstado') }}';
+            var strUrlObtieneMontosEsc2     = '{{ path('admiformatodebito_obtieneMontosEscenario2') }}';
+            var strUrlObtieneCuotasEsc3     = '{{ path('admiformatodebito_obtieneCuotasEscenario3') }}';
+            var strAplicaCiclosFacturacion  = '{{ strAplicaCiclosFacturacion }}';
+            var boolHiddenTab               = false;
+            var strTabActivo                = "debitosNormales";
+            var strPrefijoEmpresa           = "{{ prefijoEmpresa }}";
+            
+            {% if (prefijoEmpresa=='TN') %}
+                var url_oficinas = "{{ path('infooficinagrupo_getOficinasPrincipalesByPrefijoEmpresaJson') }}"; 
+                boolHiddenTab    = true;
+            {% else %}
+                var url_oficinas = "{{ path('infooficinagrupo_getOficinasByPrefijoEmpresaJson') }}"; 
+            {% endif %}
+                
+            var strUrlGetImpuestos                = "{{ path('admiformatodebito_getImpuestos') }}";    
+            var strUrlGetGrupoDebitosDet          = "{{ path('admiformatodebito_gridGrupoDebitosDet') }}";
+            var strUrlGetInformacionCombosDebitos = "{{ path('admiformatodebito_getInformacionCombosDebitos') }}";
+            var strUrlGetMensajesDebitos          = "{{ path('admiformatodebito_getMensajesDebitos') }}";
+            var strUrlGetParametroFlujoPlanificado= "{{ path('admiformatodebito_getParametroFlujoPlanificado') }}";
+            var strUrlValidadorDebitoExistente    = "{{ path('admiformatodebito_validadorDebitoExistente') }}";
+            var url_lista_ctas_bancarias_empresa  = '{{path('infopagocab_getListadoCuentasBancariasEmpresa')}}';
+            var boolCargaCtaBanc                  = false;
+            var strFlujoGeneracionDebito          = '{{ strFlujoGeneracionDebito }}';
+            var strUrlEstadosServicio             = '{{ path('admiformatodebito_getValorDetParametros') }}';
+            var stUrlGetValorMsjParamDebito       = '{{ path('admiformatodebito_getValorMsjParamDebito') }}';
+            var strUrlMotivosRechazos             = '{{ path('admiformatodebito_getValorDetParametros') }}';
+            </script>        
+            <script type="text/javascript" src="{{ asset('./bundles/financiero/js/admiformatodebito/generarDebitos.js?16') }}"></script>
+        </div>
+    </div>
+    <form action="{{ path('generardebitos_crea_archivo') }}" method="post" {{ form_enctype(form) }} class="formulario" 
+          id='form_genera_debitos' name='form_genera_debitos'>
+        <input id='debitos' name='debitos' type='hidden' value=''/>
+        <input id='oficinaId' name='oficinaId' type='hidden' value />
+        <input id='impuestoId' name='impuestoId' type='hidden' value=''/>
+        <input id='intCicloId' name='intCicloId' type='hidden' value=''/>
+        <input id='intIdGrupoDebitoCab' name='intIdGrupoDebitoCab' type='hidden' value=''/>
+        <input id='strIdsGrupoDebitoDet' name='strIdsGrupoDebitoDet' type='hidden' value=''/>
+        <input id='intIdFormato' name='intIdFormato' type='hidden' value=''/>
+        <input id='strTabActivo' name='strTabActivo' type='hidden' value=''/>
+        <input id='strEscenarioDebito' name='strEscenarioDebito' type='hidden' value=''/>
+        <input id='strFiltroEscenario' name='strFiltroEscenario' type='hidden' value=''/>
+        <input id='strCheckPlanificado' name='strCheckPlanificado' type='hidden' value=''/>
+        <input id='strDatePlanificado' name='strDatePlanificado' type='hidden' value=''/>
+        <input id='strEstadosServicio' name='strEstadosServicio' type='hidden' value=''/>
+        <input id='strFechaActDesde' name='strFechaActDesde' type='hidden' value=''/>
+        <input id='strFechaActHasta' name='strFechaActHasta' type='hidden' value=''/>
+        <input id='strMotivosRechazo' name='strMotivosRechazo' type='hidden' value=''/>
+        <input id='strArchivoClientes' name='strArchivoClientes' type='hidden' value=''/>
+        <input id='strNombreArchivoCl' name='strNombreArchivoCl' type='hidden' value=''/>
+        <div class="buttons">
+            <p>
+                <a class="button-crud" href="#" onClick='procesar()'>Generar</a> 
+            </p>
+        </div>
+    </form>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <br />
+    <ul class="form_actions">
+        <li>
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+        <li>
+            <a class="listado_ac_tablas" href="{{ path('respuestadebitos_list_debitos_general') }}">Debitos Generados</a>
+        </li>  					
+    </ul>
+{% endblock contenido_der %}

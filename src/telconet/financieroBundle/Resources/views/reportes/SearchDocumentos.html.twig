@@ -1,0 +1,79 @@
+{# empty Twig template #}
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+<!--	<link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-gray.css') }}" type="text/css" rel="stylesheet" /> -->
+	<!--<link href="{{ asset('public/css/css_tabla.css') }}" type="text/css" rel="stylesheet" />-->
+        
+    
+{% endblock %}
+        
+{% block javascripts%}
+    {{ parent() }}
+        <script>
+            var urlGenerarReporteFinanciero = '{{path('reportes_exportarConsultaBusquedaFinanciera')}}';
+            var boolPermisoEmpresas         = "{{ boolPermisoEmpresa.PERMISOS_EMPRESA }}";
+        </script>
+        <script type="text/javascript" src="{{ asset('bundles/financiero/js/reportes/busca_financiero.js?12') }}"></script>
+     
+{% endblock %}
+       
+{% block contenido_central %}
+<div id="panel-1035_header" class="x-panel-header x-docked x-panel-header-default x-horizontal x-panel-header-horizontal x-panel-header-default-horizontal x-top x-panel-header-top x-panel-header-default-top x-docked-top x-panel-header-docked-top x-panel-header-default-docked-top x-unselectable x-docked-noborder-top x-docked-noborder-right x-docked-noborder-left" style="-moz-user-select: -moz-none; width: 1264px; position:absolute !important; left: 10px; top:132px; -moz-border-radius:55px; ">
+        <div class="x-panel-header-body x-panel-header-body-default x-panel-header-body-horizontal x-panel-header-body-default-horizontal x-panel-header-body-top x-panel-header-body-default-top x-panel-header-body-collapsed x-panel-header-body-default-collapsed x-panel-header-body-collapsed-top x-panel-header-body-default-collapsed-top x-panel-header-body-docked-top x-panel-header-body-default-docked-top x-panel-header-body-default-horizontal x-panel-header-body-default-top x-panel-header-body-default-collapsed x-panel-header-body-default-collapsed-top x-panel-header-body-default-docked-top x-box-layout-ct" id="panel-1035_header-body" >
+            <div role="presentation" class="x-box-inner " id="panel-1035_header-innerCt" style="width: 1291px; height: 15px;">
+                <div style="width:20000px;left:0px;top:0px;height:1px" id="panel-1035_header-targetEl">
+                    <div id="panel-1035_header_hd" style="text-align: left; left: 0px; top: 0px; margin: 0pt; width: 1268px; -moz-border-radius:55px;" class="x-component x-panel-header-text-container x-box-item x-component-default" >
+                        <span class="x-panel-header-text x-panel-header-text-default" id="panel-1035_header_hd-textEl">Criterios de busqueda</span>
+                    </div>
+                    <div id="tool-1041" style="width: 15px; height: 15px; left: 1240px; top: 0px; margin: 0pt;" class="x-tool x-box-item x-tool-default">
+                        <img role="presentation" class="x-tool-collapse-top" width="25px" src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" id="tool-1041-toolEl" onClick="botonFiltro();">
+                    </div>
+                </div>
+            </div>
+        </div>
+ </div>
+  <input type="hidden" id="banderaFiltro" value="0" />
+   <br/>      
+ 
+        
+<div id='filtroBusqueda'  >
+         
+   <div id="tabstrip"  >
+          <div id="my-tabs">
+			
+              <div id="tab_financiero"   >
+                  <div id="datosfinanciero"   >									
+                                <br/>
+                                   <table width="90%" style="margin-left: 120px;" cellpadding="1" cellspacing='7' border='0'>
+			                <tr>
+                                            <td><div id='filtro_financiero_cab'  ></div></td>
+                                            <td><div id='filtro_financiero'  ></div></td>
+					</tr>
+		                     </table>
+					<br/>	
+                                        <div class="buttons" style="position: absolute; left: 600px; top:190px"  >
+                                            <p>
+                                                <button class="button-crud" type="submit" onClick="generarReporteFinanciero('Consultar');">
+                                                    Buscar
+                                                </button>
+												&nbsp;
+                                                <button class="button-crud" type="submit" name="limpiar" id="limpiar" onClick="limpiarFinanciero();">
+                                                    Limpiar
+                                                </button>
+                                            </p>
+                                        </div>
+                           </div>
+                        
+               </div>
+         </div>
+      
+   </div>
+    
+ </div>
+    <div id="grid"></div>
+    <div id="tr_error"  style=" display:none; position:absolute; left: 830px; top:195px" >
+    <div class="info-error" style="margin: 0 !important;" id="busqueda_error"></div><br/>
+    </div>      
+{% endblock contenido_central %}

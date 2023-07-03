@@ -1,0 +1,75 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		} 
+		.icon_bank {
+			background-image:url('{{ asset('public/images/images_crud/bank.png') }}') !important;
+                }                  
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Generar Depositos</h1>
+</div>
+<div class="body_content k-content">
+    <div id="example" class="k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='filtro_pagos'></div></td>
+            </tr>	
+            <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='lista_pagos'></div></td>
+            </tr>
+
+    </table>        
+                    
+        <link href="{{ asset('public/js/ext-4.1.1/extjs-boxselect-2.0.3/src/BoxSelect.css') }}" type="text/css" rel="stylesheet" />        
+        <script src="{{ asset("public/js/ext-4.1.1/extjs-boxselect-2.0.3/src/BoxSelect.js")}}"></script>                       
+        <script>
+        var url_lista_oficinas                 = '{{path('infodeposito_lista_oficinas')}}';            
+        var url_lista_formaspago               = '{{path('infodeposito_formaspagoDepositables')}}';
+        var url_grid                           = "{{ path('infodeposito_pagosnodepositados') }}";
+        var url_marcar_depositado_ajax         = '{{path('infodeposito_depositar')}}';
+        var url_lista_bancos                   = '{{path('infodeposito_listabancosnaf')}}';    
+		var url_lista_bancos_contables         = '{{path('infopagocab_getListadoBancosContables')}}';
+        var url_lista_cuentas                  = '{{path('infodeposito_listacuentasbanconaf')}}';
+		var url_lista_cuentas_bancos_contables = '{{path('infopagocab_getListadoCuentasBancosContables')}}';
+        var url_lista_ctas_bancarias_empresa   = '{{path('infopagocab_getListadoCuentasBancariasEmpresa')}}';
+        var strPrefijoEmpresa                  = '{{strPrefijoEmpresa}}';
+        </script>        
+         <script type="text/javascript" src="{{ asset('./bundles/financiero/js/infodeposito/index.js?3') }}"></script>              
+
+            </script>
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+<ul class="listado_acciones_relacionadas">
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('infopagocab') }}">Lista de Pagos</a>
+                    </li>
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('infodeposito_procesardeposito') }}">Procesar Deposito</a>
+                    </li>                     
+</ul>
+{% endblock contenido_der %}

@@ -1,0 +1,59 @@
+inforecaudacion:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:InfoPagoCab:listRecaudaciones" }
+
+inforecaudacion_estados:
+    pattern:  /estados
+    defaults: { _controller: "financieroBundle:InfoPagoCab:estadosRecaudacion"}
+
+inforecaudacion_new:
+    pattern:  /newrecaudacion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:recaudacionBancos" }
+
+inforecaudacion_lee_archivo:
+    pattern:  /leearchivorecaudacion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:leeArchivoRecaudacion"}
+    
+inforecaudacion_gen:
+    pattern:  /genrecaudacion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:generarRecaudacion" }  
+    
+inforecaudacion_canales_recaudacion:
+    pattern:  /canalesrecaudacion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:gridCanalesRecaudacion" }
+    
+inforecaudacion_generar_recaudacion:
+    pattern:  /generarRecaudacion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:generarRecaudacionesArchivo" }      
+
+#inforecaudacion_log_recaudaciones:
+#    pattern:  /{fecha}/logrecaudaciones
+#    defaults: { _controller: "financieroBundle:InfoPagoCab:logRecaudaciones"}
+
+inforecaudacion_list_recaudaciones:
+    pattern:  /listrecaudaciones
+    defaults: { _controller: "financieroBundle:InfoPagoCab:listRecaudaciones"}
+
+inforecaudacion_gridRecaudaciones:
+    pattern:  /gridrecaudaciones
+    defaults: { _controller: "financieroBundle:InfoPagoCab:gridRecaudaciones"}
+
+inforecaudacion_list_pagos_recaudacion:
+    pattern:  /{idRec}/listpagosrecaudacion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:listPagosRecaudacion"}
+
+inforecaudacion_contabilizacion_prueba:
+    pattern:  /{idrec}/{idpag}/contabilizacionPrueba
+    defaults: { _controller: "financieroBundle:InfoPagoCab:contabilizarRecaudacionPrueba"}
+
+inforecaudacion_gridPagosRecaudacion:
+    pattern:  /gridPagosRecaudacion
+    defaults: { _controller: "financieroBundle:InfoPagoCab:gridPagosRecaudacion"}
+
+inforecaudacion_download_archivo_recaudacion:
+    pattern:  /downloadarchivorecaudacion/{id}
+    defaults: { _controller: "financieroBundle:InfoPagoCab:downloadArchivoRecaudacion" }
+    
+inforecaudacion_download_formato_envio_recaudacion:
+    pattern:  /downloadformatoenviorecaudacion/{id}
+    defaults: { _controller: "financieroBundle:InfoPagoCab:downloadFormatoEnvioRecaudacion" }    

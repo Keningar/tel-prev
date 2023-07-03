@@ -1,0 +1,19 @@
+cargoReactivacion:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiCargos:administrarCargoReactivacion" }
+    
+cargoReactivacion_getListadoParametrosCabJson:
+    pattern:  /getListadoParametrosCabJson
+    defaults: { _controller: "financieroBundle:AdmiCargos:getListadoParametrosCabAjax" }  
+    
+cargoReactivacion_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "financieroBundle:AdmiCargos:getListadoParametrosDetAjax" }  
+    
+cargoReactivacion_getListadoParametrosHistJson:
+    pattern:  /getListadoParametrosHistJson
+    defaults: { _controller: "financieroBundle:AdmiCargos:getListadoParametrosHistAjax" }      
+    
+cargoReactivacion_activarInactivarCargoReactivacion:
+    pattern:  /activarInactivarCargoReactivacionAjax
+    defaults: { _controller: "financieroBundle:AdmiCargos:activarInactivarCargoReactivacionAjax" } 

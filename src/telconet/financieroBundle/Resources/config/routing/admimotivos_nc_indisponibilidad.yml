@@ -1,0 +1,27 @@
+Motivos_NC_indisponibilidad:
+    pattern:  /
+    defaults: { _controller: "financieroBundle:AdmiMotivosNCIndisponibilidad:administrarMotivosNCIndisponibilidad" }
+    
+Motivos_NC_indisponibilidad_getListadoParametrosCabJson:
+    pattern:  /getListadoParametrosCabJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosNCIndisponibilidad:getListadoParametrosCabAjax" }  
+    
+Motivos_NC_indisponibilidad_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosNCIndisponibilidad:getListadoParametrosDetAjax" }  
+    
+Motivos_NC_indisponibilidad_getListadoParametrosHistJson:
+    pattern:  /getListadoParametrosHistJson
+    defaults: { _controller: "financieroBundle:AdmiMotivosNCIndisponibilidad:getListadoParametrosHistAjax" }
+    
+Motivos_NC_indisponibilidad_creaMotivoParametroDet:
+    pattern:  /creaMotivoParametroDet
+    defaults: { _controller: "financieroBundle:AdmiMotivosNCIndisponibilidad:creaMotivoParametroDetAjax" }  
+    
+Motivos_NC_indisponibilidad_actualizarDet:
+    pattern:  /actualizarDetalle
+    defaults: { _controller: "financieroBundle:AdmiMotivosNCIndisponibilidad:actualizarDetalleAjax" } 
+    
+Motivos_NC_indisponibilidad_deleteDet:
+    pattern:  /deleteDetalleAjax
+    defaults: { _controller: "financieroBundle:AdmiMotivosNCIndisponibilidad:deleteDetalleAjax" }   

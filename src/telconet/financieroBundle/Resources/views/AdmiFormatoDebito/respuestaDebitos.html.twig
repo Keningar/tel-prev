@@ -1,0 +1,180 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Subir Respuesta Debitos</h1>
+</div>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}       
+<link href="{{ asset('public/js/jquery-ui-1.10.3/css/ui-lightness/jquery-ui-1.10.3.custom.css') }}" type="text/css" rel="stylesheet" />	
+<script type="text/javascript" src="{{ asset('public/js/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.js') }}"></script>
+<script type="text/javascript" src="{{ asset('public/js/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min.js') }}"></script>  
+<script>
+    var url_grid                         = "{{ path('generardebitos_grid_generar_debitos') }}";
+    var url_procesa                      = "{{ path('generardebitos_crea_archivo') }}";
+    var url_oficinas                     = "{{ path('infooficinagrupo_getOficinasByPrefijoEmpresaJson') }}";
+    var boolCargaCtaBanc                 = true;
+    var url_lista_ctas_bancarias_empresa = '{{path('infopagocab_getListadoCuentasBancariasEmpresa')}}';
+    var intArchivos                      = 0;
+    var strUrlGetParametroFlujoPlanificado= "{{ path('admiformatodebito_getParametroFlujoPlanificado') }}";
+    function mostrarDiv(div){
+    capa = document.getElementById(div);
+    capa.style.display = 'block';    
+    }
+    function ocultarDiv(div){
+    capa = document.getElementById(div);
+    capa.style.display = 'none';    
+    }
+
+    jQuery(function($){
+    $.datepicker.regional['es'] = {
+        closeText: 'Cerrar',
+        prevText: '&#x3c;Ant',
+        nextText: 'Sig&#x3e;',
+        currentText: 'Hoy',
+        monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio',
+        'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+        monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun',
+        'Jul','Ago','Sep','Oct','Nov','Dic'],
+        dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+        dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+        dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','S&aacute;'],
+        weekHeader: 'Sm',
+        dateFormat: 'yy-mm-dd',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''};
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+    });    
+
+    var strIdDebito = "";
+    $(document).ready(function() {
+    {%for debito in debitosGenSeleccion %}
+    $("#respuestadebitoextratype_fecha{{ debito.idDebitoGeneral|e }}").datepicker();
+    strIdDebito = {{debito.idDebitoGeneral|e}};
+    {%endfor%}      
+    });
+</script>        
+ <script type="text/javascript" src="{{ asset('./bundles/financiero/js/admiformatodebito/generarDebitos.js?6') }}"></script>
+
+ <div class="body_content k-content">
+
+<table border='0' width='80%'>
+<tr>
+<td>
+    <label>Debito General:</label>
+</td>
+<td>
+{%if (fechaDebito is not null)%}
+    <div class="infomessage">Ud Selecciono&#769; el de&#769;bito con la fecha: {{fechaDebito}}</div>
+    {% if strAplicaCiclo == 'S' %}
+        <div class="infomessage">El archivo debe contener el co&#769;digo del ciclo.</div>
+    {%endif%}
+{%if intVariosArchivos > 0%}
+    <div class="infomessage">Puede dar clic en <i>"Agregar archivo"</i> para agregar los archivos necesarios.</div>
+{%endif%}
+{%endif%}
+</td>
+</tr>
+</table>
+ </div>
+<form action="{{ path('respuestadebitos_lee_archivo') }}" method="post" {{ form_enctype(form) }} 
+      class="formulario" id='form_respuesta_debitos' name='form_respuesta_debitos' onsubmit="return cargaMensajeEspera();">
+{%for debito in debitosGenSeleccion %}
+<div class="body_content">
+<table border='0' width='65%' cellpadding='2' cellspacing='1'>	
+<tr>
+    <td colspan='4'>
+        <label>{{ debito.nombreGrupo}}:</label>
+    </td>
+</tr>
+<tr>
+    <td>
+      <label  class='campo-obligatorio'> *Archivo:</label>
+    </td>
+    <td>
+        <input type="file" required='required' id="respuestadebitoextratype_{{ debito.idDebitoGeneral|e }}" 
+            name="respuestadebitoextratype[{{ debito.idDebitoGeneral|e }}][0]" size="40">
+    </td>
+</tr>
+{%if intVariosArchivos > 0%}
+    <tr>
+        <td>
+        </td>
+        <td id="listaArchivos">
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+            <b><a href="#" id="agregar_archivo">Agregar archivo</a></b>
+        </td>
+    </tr>
+    <tr>
+    </tr>
+   <tr>
+{%endif%}
+    <td align='right'>
+      <label class='campo-obligatorio'> *Seleccionar Fecha:</label>
+    </td>
+    <td>  
+      <input type="text" class= "campo-obligatorio" required='required' name="respuestadebitoextratype_fecha{{ debito.idDebitoGeneral|e }}" 
+        id="respuestadebitoextratype_fecha{{ debito.idDebitoGeneral|e }}" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" size="8" />
+    </td>
+    <td align='right'>
+      <label  class='campo-obligatorio'> *Codigo Debito:</label>
+    </td>
+    <td>  
+      <input type="text" class= "campo-obligatorio" required='required' name="respuestadebitoextratype_codigo{{ debito.idDebitoGeneral|e }}" 
+             id="respuestadebitoextratype_codigo{{ debito.idDebitoGeneral|e }}" size="8" maxlength="40"/>
+    </td>
+   </tr>
+   <tr>
+    </tr>
+    <tr>
+    </tr>
+</table>
+    
+    <div id="panel_CuentaEmpresa"></div>
+      <input type="hidden" name="respuestadebitoextratype_CuentaId" 
+             id="respuestadebitoextratype_CuentaId" value="0"/>
+    
+</div>
+{%endfor%}
+
+{%if (debitosGenSeleccion|length > 0)%}
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <button class="button-crud">Procesar</button>			
+            </span>
+        </p>
+    </div>       
+{%endif%}
+</form>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+		<ul class="form_actions">
+			<li>
+			</li>
+		</ul>
+		<div class="titulo-acciones-relacionadas">
+			Acciones Relacionadas
+		</div>
+<ul class="listado_acciones_relacionadas">
+                    <li>
+                        <a class="listado_ac_tablas" href="{{ path('generardebitos') }}">Debitos Generados</a>
+                    </li>                    
+</ul>
+{% endblock contenido_der %}
