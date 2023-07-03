@@ -1,0 +1,1 @@
+CREATE OR REPLACE DIRECTORY DIR_FACTIBILIDAD AS '/backup/reportes/factibilidad';

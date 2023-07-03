@@ -1,0 +1,12 @@
+consultadatosedificio:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:ConsultaDatosEdificio:index" }
+    
+
+consultadatosedificio_ajaxGrid:
+    pattern:  /ajaxGrid
+    defaults: { _controller: "planificacionBundle:ConsultaDatosEdificio:ajaxGrid"}
+
+consultadatosedificio_ajaxProcesaNuevaFactibilidad:
+    pattern: /ajaxProcesaNuevaFactibilidad
+    defaults: { _controller: "planificacionBundle:ConsultaDatosEdificio:ajaxProcesaNuevaFactibilidad"}

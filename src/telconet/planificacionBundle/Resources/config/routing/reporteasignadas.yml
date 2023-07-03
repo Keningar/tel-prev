@@ -1,0 +1,11 @@
+reporteasignadas:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:ReporteAsignadas:index" }
+
+reporteasignadas_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:ReporteAsignadas:grid"}
+
+reporteasignadas_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "planificacionBundle:ReporteAsignadas:exportarConsulta" }

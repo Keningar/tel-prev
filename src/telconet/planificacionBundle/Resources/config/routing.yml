@@ -1,0 +1,16 @@
+planificacionBundle_Factibilidad:
+  resource: "@planificacionBundle/Resources/config/route/factibilidad.yml"
+  prefix: /factibilidad
+  
+planificacionBundle_Planificar:
+  resource: "@planificacionBundle/Resources/config/route/planificar.yml"
+  prefix: /planificar
+  
+planificacionBundle_Instalacion:
+  resource: "@planificacionBundle/Resources/config/route/instalacion.yml"
+  prefix: /instalacion
+  
+planificacionBundle_Reportes:
+  resource: "@planificacionBundle/Resources/config/route/reportes.yml"
+  prefix: /reportes
+

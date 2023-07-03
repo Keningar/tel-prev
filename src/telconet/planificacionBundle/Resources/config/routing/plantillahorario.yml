@@ -1,0 +1,41 @@
+plantillahorario:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:index" }
+
+plantillahorario_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:grid"}
+
+plantillahorario_ajaxGetEncontrados:
+    pattern:  /ajaxGetEncontrados
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:ajaxGetEncontrados" }
+
+plantillahorario_new:
+    pattern:  /new
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:new" }
+
+plantillahorario_detalle:
+    pattern:  /ajaxGetDetallePlantilla
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:ajaxGetDetallePlantilla" }
+
+plantillahorario_save_plantilla_horario:
+    pattern:  /savePlantillaAjax
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:savePlantillaAjax" }
+
+plantillahorario_edit:
+    pattern:  /{intIdPlantilla}/edit
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:edit" }
+
+plantillahorario_cabecera:
+    pattern:  /ajaxGetCabecera
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:ajaxGetCabecera" }
+
+plantillahorario_show:
+    pattern:  /{intIdPlantilla}/show
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:show" }
+
+plantillahorario_generar:
+    pattern:  /{intIdPlantilla}/generar
+    defaults: { _controller: "planificacionBundle:InfoPlantillaHorario:generar" }
+
+

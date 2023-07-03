@@ -1,0 +1,63 @@
+planificacionhal:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:index" }
+    
+planificacionhal_ajaxConsultarIntervalos:
+    pattern:  /ajaxConsultarIntervalos
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxConsultarIntervalos" }   
+    
+planificacionhal_agregarIntervalo:
+    pattern:  /ajaxCrearIntervalo
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxCrearIntervalo" }    
+
+planificacionhal_ajaxGuardarPlanificacionHAL:
+    pattern:  /ajaxGuardarPlanificacionHAL
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxGuardarPlanificacionHAL" }
+    
+planificacionhal_ajaxConsultarPlanificacionAgendaHAL:
+    pattern:  /ajaxConsultarPlanificacionAgendaHAL
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxConsultarPlanificacionAgendaHAL" }
+    
+planificacionhal_ajaxConsultarPlanificacionGeneralHAL:
+    pattern:  /ajaxConsultarPlanificacionGeneralHAL
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxConsultarPlanificacionGeneralHAL" }
+    
+planificacionhal_ajaxGetDetallePlanificacionDiaria:
+    pattern:  /ajaxGetDetallePlanificacionDiaria
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxGetDetallePlanificacionDiaria" }
+    
+planificacionhal_ajaxGetCuadrillasPlanificacionHal:
+    pattern:  /ajaxGetCuadrillasPlanificacionHal
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxGetCuadrillasPlanificacionHal" }
+
+planificacionhal_ajaxGetPreferenciasCuadrillasHal:
+    pattern:  /ajaxGetPreferenciasCuadrillasHal
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxGetPreferenciasCuadrillasHal" }
+
+planificacionhal_ajaxEliminarLiberarPlanificacionHal:
+    pattern:  /ajaxEliminarLiberarPlanificacionHal
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxEliminarLiberarPlanificacionHal" }
+    
+planificacionhal_ajaxLiberarPermisoEvento:
+    pattern:  /ajaxLiberarPermisoEvento
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxLiberarPermisoEvento" }
+
+planificacionhal_ajaxActualizarHorasTrabajoHal:
+    pattern:  /ajaxActualizarHorasTrabajoHal
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxActualizarHorasTrabajoHal" }
+
+planificacionhal_ajaxGetJornadaDeTrabajo:
+    pattern:  /ajaxGetJornadaDeTrabajo
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxGetJornadaDeTrabajo" }
+
+planificacionhal_ajaxValidarFechasPlanificadas:
+    pattern:  /ajaxValidarFechasPlanificadas
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxValidarFechasPlanificadas" }
+
+planificacionhal_ajaxReprogramarPlanficacion:
+    pattern:  /ajaxReprogramarPlanficacion
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxReprogramarPlanficacion" }
+
+planificacionhal_ajaxGetCuadrillasReprogramacionHal:
+    pattern:  /ajaxGetCuadrillasReprogramacionHal
+    defaults: { _controller: "planificacionBundle:PlanificacionHal:ajaxGetCuadrillasReprogramacionHal" }

@@ -1,0 +1,19 @@
+ingresarmateriales:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:IngresarMateriales:index" }
+
+ingresarmateriales_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:IngresarMateriales:grid"}
+
+ingresarmateriales_gridTareasAsignadas:
+    pattern:  /gridTareasAsignadas
+    defaults: { _controller: "planificacionBundle:IngresarMateriales:gridTareasAsignadas"}
+
+ingresarmateriales_gridMaterialesUtilizados:
+    pattern:  /gridMaterialesUtilizados
+    defaults: { _controller: "planificacionBundle:IngresarMateriales:gridMaterialesUtilizados"}
+
+ingresarmateriales_finalizarAjax:
+    pattern:  /finalizarAjax
+    defaults: { _controller: "planificacionBundle:IngresarMateriales:finalizarAjax" }

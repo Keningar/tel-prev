@@ -1,0 +1,7 @@
+verplanificacion:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:VerPlanificacion:index" }
+    
+verplanificacion_getEventos:
+    pattern:  /getEventos
+    defaults: { _controller: planificacionBundle:VerPlanificacion:getEventos }

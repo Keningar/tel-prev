@@ -1,0 +1,24 @@
+coordinar_comercial:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:CoordinarComercial:index" }
+    
+coordinar_comercial_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:CoordinarComercial:grid"}
+    
+coordinar_comercial_getMotivosNoplanificacion:
+    pattern:  /getMotivosNoplanificacion
+    defaults: { _controller: planificacionBundle:CoordinarComercial:getMotivosNoplanificacion }    
+    
+coordinar_programar_ajax_comercial:
+    pattern:  /programar
+    defaults: { _controller: "planificacionBundle:CoordinarComercial:programarAjax" }
+
+
+coordinar_getCronogramaComercial:
+    pattern:  /getCronogramaComercial
+    defaults: { _controller: "planificacionBundle:CoordinarComercial:getCronogramaComercial" }    
+
+coordinar_comercial_getIntervalosHal:
+    pattern:  /getIntervalosHal
+    defaults: { _controller: "planificacionBundle:CoordinarComercial:getIntervalosHal" }    

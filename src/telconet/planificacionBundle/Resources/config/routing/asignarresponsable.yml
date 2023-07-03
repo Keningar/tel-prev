@@ -1,0 +1,66 @@
+asignarresponsable:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:AsignarResponsable:index" }
+
+asignarresponsable_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:AsignarResponsable:grid"}
+
+asignarresponsable_getJsonInterfacesByElemento:
+    pattern:  /getJsonInterfacesByElemento
+    defaults: { _controller: planificacionBundle:AsignarResponsable:ajaxGetJsonInterfacesByElemento }
+
+asignarresponsable_guardaRecursosDeRed:
+    pattern:  /guardaRecursosDeRed
+    defaults: { _controller: planificacionBundle:AsignarResponsable:guardaRecursosDeRed }
+
+asignarresponsable_getEmpleados:
+    pattern:  /getEmpleados
+    defaults: { _controller: planificacionBundle:AsignarResponsable:getEmpleados }
+
+asignarresponsable_getEmpleadosPorEmpresa:
+    pattern:  /getEmpleadosPorEmpresa
+    defaults: { _controller: planificacionBundle:AsignarResponsable:getEmpleadosPorEmpresa }
+
+asignarresponsable_getLiderCuadrilla:
+    pattern:  /getLiderCuadrilla
+    defaults: { _controller: "planificacionBundle:AsignarResponsable:getLiderCuadrilla" }
+    requirements: { _method: post }
+
+asignarresponsable_getCuadrillas:
+    pattern:  /getCuadrillas
+    defaults: { _controller: planificacionBundle:AsignarResponsable:getCuadrillas }
+
+asignarresponsable_getEmpresasExternas:
+    pattern:  /getEmpresasExternas
+    defaults: { _controller: planificacionBundle:AsignarResponsable:getEmpresasExternas }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+asignarresponsable_asignarAjax:
+    pattern:  /asignarAjax
+    defaults: { _controller: "planificacionBundle:AsignarResponsable:asignarAjax" }
+    requirements: { _method: post }
+
+asignarresponsable_asignarIndividualmenteAjax:
+    pattern:  /asignarIndividualmenteAjax
+    defaults: { _controller: "planificacionBundle:AsignarResponsable:asignarIndividualmenteAjax" }
+    requirements: { _method: post }
+
+asignarresponsable_getTecnicos:
+    pattern:  /getTecnicos
+    defaults: { _controller: planificacionBundle:AsignarResponsable:getTecnicos }
+
+asignarresponsable_getCantones:
+    pattern:  /getCantones
+    defaults: { _controller: administracionBundle:AdmiCanton:getCantones }
+
+asignarresponsable_getProcesos:
+    pattern:  /getProcesos
+    defaults: { _controller: "soporteBundle:CallActivity:getProcesos"}
+    
+asignarresponsable_ajaxGetTareasByProceso:
+    pattern:  /ajaxGetTareasByProceso
+    defaults: { _controller: "soporteBundle:CallActivity:ajaxGetTareasByProceso" }
+    

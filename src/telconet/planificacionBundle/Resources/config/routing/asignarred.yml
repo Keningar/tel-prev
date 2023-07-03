@@ -1,0 +1,194 @@
+asignarred:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:AsignarRed:index" }
+
+asignarred_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:AsignarRed:grid"}
+
+asignarred_getJsonInterfacesByElemento:
+    pattern:  /getJsonInterfacesByElemento
+    defaults: { _controller: planificacionBundle:AsignarRed:ajaxGetJsonInterfacesByElemento }
+    
+asignarred_guardaRecursosDeRed:
+    pattern:  /guardaRecursosDeRed
+    defaults: { _controller: planificacionBundle:AsignarRed:guardaRecursosDeRed }
+    
+asignarred_getEmpleados:
+    pattern:  /getEmpleados
+    defaults: { _controller: planificacionBundle:AsignarRed:getEmpleados }
+    
+asignarred_getCuadrillas:
+    pattern:  /getCuadrillas
+    defaults: { _controller: planificacionBundle:AsignarRed:getCuadrillas }
+    
+asignarred_getEmpresasExternas:
+    pattern:  /getEmpresasExternas
+    defaults: { _controller: planificacionBundle:AsignarRed:getEmpresasExternas }
+    
+asignarred_asignarAjax:
+    pattern:  /asignarAjax
+    defaults: { _controller: "planificacionBundle:AsignarRed:asignarAjax" }
+    requirements: { _method: post }   
+    
+asignarred_asignarIndividualmenteAjax:
+    pattern:  /asignarIndividualmenteAjax
+    defaults: { _controller: "planificacionBundle:AsignarRed:asignarIndividualmenteAjax" }
+    requirements: { _method: post }
+
+asignarred_importarRecursosDeRed:
+    pattern:  /importarRecursosDeRed
+    defaults: { _controller: "planificacionBundle:AsignarRed:importarRecursosDeRed" }
+    requirements: { _method: post }
+    
+asignarred_trasladarRecursosDeRed:
+    pattern:  /trasladarRecursosDeRed
+    defaults: { _controller: "planificacionBundle:AsignarRed:trasladarRecursosDeRed" }
+    requirements: { _method: post }
+ 
+asignarred_validarIp:
+    pattern:  /validarIp
+    defaults: { _controller: "planificacionBundle:AsignarRed:validarIp" }
+    requirements: { _method: post } 
+    
+asignarred_getips:
+    pattern:  /{nro}/{id_elemento}/{id_servicio}/{id_punto}/{esPlan}/{id_plan}/{marca_elemento}/getips
+    defaults: { _controller: "planificacionBundle:AsignarRed:getIps"}
+
+asignarred_ajaxAsignarRecursosRedWifi:
+    pattern:  /ajaxAsignarRecursosRedWifi
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxAsignarRecursosRedWifi" }
+    requirements: { _method: post }
+
+asignarred_ajaxGetDetallePlan:
+    pattern:  /ajaxGetDetallePlan
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetDetallePlan" }
+    requirements: { _method: post }
+    
+asignarred_ajaxGetDatosFactibilidad:
+    pattern:  /ajaxGetDatosFactibilidad
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetDatosFactibilidad" }
+    requirements: { _method: post }
+
+asignarred_ajaxGetHilosDisponibles:
+    pattern:  /ajaxGetHilosDisponibles
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetHilosDisponibles" }
+
+asignarred_ajaxAsignarRecursosRedTunel:
+    pattern:  /ajaxAsignarRecursosRedTunel
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxAsignarRecursosRedTunel" }
+
+asignarred_ajaxAsignarRecursosRedInternetDedicado:
+    pattern:  /ajaxAsignarRecursosRedInternetDedicado
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxAsignarRecursosRedInternetDedicado" }
+    
+asignarred_ajaxGetPuertoSwitchByHilo:
+    pattern:  /ajaxGetPuertoSwitchByHilo
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetPuertoSwitchByHilo" }
+    
+asignarred_ajaxJsonPuertoOdfByHilo:
+    pattern:  /ajaxJsonPuertoOdfByHilo
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxJsonPuertoOdfByHilo" }
+
+asignarred_ajaxGetVrfsDisponibles:
+    pattern:  /ajaxGetVrfsDisponibles
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetVrfsDisponibles" }
+    requirements: { _method: post }
+ 
+asignarred_ajaxGetVlansDisponibles:
+    pattern:  /ajaxGetVlansDisponibles
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetVlansDisponibles" }
+    requirements: { _method: post }
+    
+asignarred_ajaxGetVlansDisponiblesPorVrf:
+    pattern:  /ajaxGetVlansDisponiblesPorVrf
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetVlansDisponiblesPorVrf" }
+    requirements: { _method: post }
+
+asignarred_ajaxGetVlansDisponiblesClearCh:
+    pattern:  /ajaxGetVlansDisponiblesClearCh
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetVlansDisponiblesClearCh" }
+    requirements: { _method: post }
+
+asignarred_ajaxGetSubredesL3mplsDisponibles:
+    pattern:  /ajaxGetSubredesL3mplsDisponibles
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetSubredesL3mplsDisponibles" }
+    requirements: { _method: post }
+
+asignarred_ajaxGetInfoBackboneSubredL3mpls:
+    pattern:  /ajaxGetInfoBackboneSubredL3mpls
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetInfoBackboneSubredL3mpls" }
+    requirements: { _method: post }
+
+asignarred_ajaxAsignarRecursosL3mpls:
+    pattern:  /ajaxAsignarRecursosL3mpls
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxAsignarRecursosL3mpls" }
+    
+asignarred_ajaxGetSubredDisponible:
+    pattern:  /ajaxGetSubredDisponible
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetSubredDisponible" }
+    
+asignarred_ajaxGetSubredDisponibleClearChannel:
+    pattern:  /ajaxGetSubredDisponibleClearChannel
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetSubredDisponibleClearChannel" }
+
+asignarred_ajaxAsignarRecursosClearChannel:
+    pattern:  /ajaxAsignarRecursosClearChannel
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxAsignarRecursosClearChannel" }
+
+asignarred_ajaxAsignarRecursosInternetMPLS:
+    pattern:  /ajaxAsignarRecursosInternetMPLS
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxAsignarRecursosInternetMPLS" }
+
+asignarred_ajaxGetVrfInternet:
+    pattern:  /ajaxGetVrfInternet
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetVrfInternet" }
+
+asignarred_ajaxGetObtenerPe:
+    pattern:  /ajaxGetObtenerPe
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetObtenerPe" }
+
+asignarred_ajaxGetObtenerPeCliente:
+    pattern:  /ajaxGetObtenerPeCliente
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetObtenerPeCliente" }
+
+asignarred_ajaxGetVrfInternetClearChannel:
+    pattern:  /ajaxGetVrfInternetClearChannel
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetVrfInternetClearChannel" }
+    
+asignarred_ajaxAsignarRecursosRedInternetDC:
+    pattern:  /ajaxAsignarRecursosRedInternetDC
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxAsignarRecursosRedInternetDC" }
+    
+asignarred_ajaxAsignarRecursosRedDatosDC:
+    pattern:  /ajaxAsignarRecursosRedDatosDC
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxAsignarRecursosRedDatosDC" }    
+    
+asignarred_ajaxGetSubredesDisponiblesInternetDC:
+    pattern:  /ajaxGetSubredesDisponiblesInternetDC
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxGetSubredesDisponiblesInternetDC" }
+    
+asignarred_ajaxValidarSubredPublicaInternetDC:
+    pattern:  /ajaxValidarSubredPublicaInternetDC
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxValidarSubredPublicaInternetDC" }
+    
+asignarred_guardaRecursosDeRedInternetResidencial:
+    pattern:  /guardaRecursosDeRedInternetResidencial
+    defaults: { _controller: "planificacionBundle:AsignarRed:guardaRecursosDeRedInternetResidencial" }
+    
+asignarred_guardaRecursosDeRedInternetLite:
+    pattern:  /guardaRecursosDeRedInternetLite
+    defaults: { _controller: "planificacionBundle:AsignarRed:guardaRecursosDeRedInternetLite" }
+    
+asignarred_guardaRecursosDeRedDatosGpon:
+    pattern:  /guardaRecursosDeRedDatosGpon
+    defaults: { _controller: "planificacionBundle:AsignarRed:guardaRecursosDeRedDatosGpon" }
+    
+asignarred_guardaRecursosDeRedCamaraGpon:
+    pattern:  /guardaRecursosDeRedCamaraGpon
+    defaults: { _controller: "planificacionBundle:AsignarRed:guardaRecursosDeRedCamaraGpon" }
+
+asignarred_ajaxValidarIpAsignadaProvincias:
+    pattern:  /validarIpAsignadaProvincias
+    defaults: { _controller: "planificacionBundle:AsignarRed:ajaxValidarIpAsignadaProvincias" }
+    

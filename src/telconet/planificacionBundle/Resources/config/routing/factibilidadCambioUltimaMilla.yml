@@ -1,0 +1,19 @@
+factibilidadCambioUltimaMilla:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:FactibilidadCambioUltimaMilla:index" }    
+
+factibilidadCambioUltimaMilla_ajaxGrid:
+    pattern:  /ajaxGrid
+    defaults: { _controller: "planificacionBundle:FactibilidadCambioUltimaMilla:ajaxGrid"}  
+    
+factibilidadCambioUltimaMilla_ajaxGenerarFactibilidad:
+    pattern:  /ajaxGenerarFactibilidad
+    defaults: { _controller: "planificacionBundle:FactibilidadCambioUltimaMilla:ajaxGenerarFactibilidad"} 
+    
+factibilidadCambioUltimaMilla_ajaxGetInfoBackboneNuevoUM:
+    pattern:  /ajaxGetInfoBackboneNuevoUM
+    defaults: { _controller: "planificacionBundle:FactibilidadCambioUltimaMilla:ajaxGetInfoBackboneNuevoUM"}     
+
+factibilidadCambioUltimaMilla_comboJurisdicciones:
+  pattern: /ajaxComboJurisdicciones
+  defaults: {_controller: "planificacionBundle:FactibilidadCambioUltimaMilla:ajaxComboJurisdicciones"} 

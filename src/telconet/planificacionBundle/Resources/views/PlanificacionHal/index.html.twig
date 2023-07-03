@@ -1,0 +1,93 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/fullcalendar-3.9.0/fullcalendar.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/fullcalendar-3.9.0/fullcalendar.print.min.css') }}" type="text/css" rel="stylesheet" media='print'/>
+    <style>
+
+        
+        #calendar {
+          max-width: 900px;
+          margin: 0 auto;
+          font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+          font-size: 14px;
+        }
+        
+        .fc-event{
+            cursor: pointer;
+        }
+
+  </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+       var url_zonas                 = "{{path('zonaElemento_getZonasAjax') }}";
+       var urlCrearIntervalo         = '{{ path('planificacionhal_agregarIntervalo') }}';
+       var urlConsultarIntervalo     = '{{ path('planificacionhal_ajaxConsultarIntervalos') }}';
+       var urlGuardarPlanificacion   = '{{ path('planificacionhal_ajaxGuardarPlanificacionHAL') }}';
+       var urlConsultarAgendaHAL     = '{{ path('planificacionhal_ajaxConsultarPlanificacionAgendaHAL') }}';
+       var urlConsultarPlanificacion = '{{ path('planificacionhal_ajaxConsultarPlanificacionGeneralHAL') }}';
+       var urlConsultarCuadrillas    = '{{ path('planificacionhal_ajaxGetCuadrillasPlanificacionHal') }}';
+       var urlConsultarCuadrillasRep = '{{ path('planificacionhal_ajaxGetCuadrillasReprogramacionHal') }}';
+       var urlConsultarPreferencias  = '{{ path('planificacionhal_ajaxGetPreferenciasCuadrillasHal') }}';
+       var urlConsultarPlanifDiaria  = '{{ path('planificacionhal_ajaxGetDetallePlanificacionDiaria') }}';
+       var urlEliminarLiberarPlanif  = '{{ path('planificacionhal_ajaxEliminarLiberarPlanificacionHal') }}';
+       var urlLiberarPermisoEvento   = '{{ path('planificacionhal_ajaxLiberarPermisoEvento') }}';
+       var urlActualizarHorasTrabajo = '{{ path('planificacionhal_ajaxActualizarHorasTrabajoHal') }}';
+       var urlGetJornadaDeTrabajo    = '{{ path('planificacionhal_ajaxGetJornadaDeTrabajo') }}';
+       var urlValidarFechasPlanif    = '{{ path('planificacionhal_ajaxValidarFechasPlanificadas') }}';
+       var urlReprogramarPlanif      = '{{ path('planificacionhal_ajaxReprogramarPlanficacion') }}';
+       var arrayCuadrillas           = '{{arrayCuadrillas|json_encode()|raw}}';
+       var arrayZonas                = '{{arrayZonas|json_encode()|raw}}';
+       var indicadorIntervalo        = '{{intervalo}}';
+
+    </script>    
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/PlanificacionHal/index.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/PlanificacionHal/funciones.js?7') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/PlanificacionHal/Calendar.js?7') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/fullcalendar-3.9.0/lib/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/fullcalendar-3.9.0/fullcalendar.min.js') }}"></script>
+    <script type="text/javascript" src='{{ asset('public/js/fullcalendar-3.9.0/locale-all.js')}}'></script>
+    <script type="text/javascript" src='{{ asset('public/js/fullcalendar-3.9.0/demos/js/theme-chooser.js')}}'></script>
+    
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Planificación Cuadrillas HAL</h1>
+</div>
+<div class="body_content k-content">
+    
+    <div id="planificacion-hal-tabs">
+        <div id="tab1" class="x-hide-display">
+            <br/>
+            <div id="content-filtro" align="center"></div>            
+        </div>            
+        <div id="tab2" class="x-hide-display">
+            <br/>
+            <div id="content-filtro-calendar" align="center"></div><br/>
+            <div class="secHead" align="center"><b>Agenda de Planificación</b></div>
+            <div class="secHead" align="center"><b>Por defecto se mostrará la información por fecha de trabajo desde 15 días atrás en adelante</b></div>
+            <div class="secHead" align="center">
+                <table style="width: 200px">
+                    <tr><th><b>Tareas Abiertas</b></th><th bgcolor="#088a29"></th></tr>
+                    <tr><th><b>Sin Tareas Abiertas</b></th><th bgcolor="#3a87ad"/></tr>
+                    <tr><th><b>Día Libre</b></th><th bgcolor="#adad85" style="width: 70px"/></tr>
+                </table>
+            </div><br/>
+            <div id="calendar"></div>
+        </div>
+        <div id="tab3" class="x-hide-display">
+            <br/>
+            <div id="content-filtro-resumen-planificacion" align="center"></div><br/>
+            <div class="secHead" align="center"><b>Resumen General de Planificaciones</b></div>
+            <div class="secHead" align="center"><b>Por defecto se mostrará la información por fecha de trabajo desde 15 días atrás en adelante</b></div><br/>
+            <div id="content-resumen-planificacion" align="center"></div><br/>
+        </div>
+    </div>    
+</div>
+{% endblock contenido_central %}

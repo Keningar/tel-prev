@@ -1,0 +1,47 @@
+factibilidadNodoCliente_index:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:indexFactibilidadNodoCliente"}
+    
+factibilidadNodoCliente_consulta:
+    pattern:  /ajaxConsultaPlanificacionNodo
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxConsultaPlanificacionNodo"}
+
+factibilidadNodoCliente_rechazo:
+    pattern:  /rechazarSolicitudNodoCliente
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:rechazarSolicitudNodoCliente"}
+    
+factibilidadNodoCliente_factible:
+    pattern:  /factibilidadNodoCliente
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:factibilidadPuntoCliente"}
+    
+factibilidadNodoCliente_fechaFactibilidad:
+    pattern:  /fechaFactibilidad
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:fechaFactibilidad"}
+    
+factibilidadNodoCliente_ajaxComboCajas:
+    pattern:  /ajaxComboCajas
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxComboCajasNodo }
+    
+factibilidadNodoCliente_getElementosPseudoPe:
+    pattern:  /getElementosPseudoPe
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:getElementosPseudoPe }
+    
+factibilidadNodoCliente_factibilidadPseudoPe:
+    pattern:  /factibilidadPseudoPe
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:factibilidadPseudoPe }
+    
+factibilidadNodoCliente_flujoPseudoPe:
+    pattern:  /flujoPseudoPe
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:flujoPseudoPe }
+    
+factibilidadNodoCliente_ajaxGetTercerizadoras:
+    pattern:  /ajaxGetTercerizadoras
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxGetTercerizadoras }
+    
+factibilidadNodoCliente_ajaxGuardarTercerizadora:
+    pattern:  /ajaxGuardarTercerizadora
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxGuardarTercerizadora }    
+
+factibilidadNodoCliente_consultaCombo:
+    pattern:  /ajaxConsultaPlanificacionNodoCombo
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxConsultaPlanificacionNodoCombo"}

@@ -1,0 +1,146 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/planificacion/css/housing.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var urlGetUnidadesRack   = '{{ path('factibilidad_housing_ajaxGetInformacionRack') }}';
+        var urlGuardar           = '{{ path('factibilidad_housing_ajaxGuardarFactibilidadHousing') }}';
+        var urlIndexFactibilidad = '{{ path('factibilidad_housing') }}';
+        var arrayInformacion     = '{{informacion|json_encode()|raw}}';
+        var arrayFilasJaulas     = '{{filasJaulas|json_encode()|raw}}';
+    </script>            
+    <script src="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/factibilidadHousing.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/funciones.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Generaci&oacute;n de Factibilidad F&iacute;sica de Alquier de Espacio ( Housing )</h1>
+</div>
+<div class="body_content k-content">
+    <div class="secHead"><b><i class="fa fa-bookmark" aria-hidden="true">&nbsp;</i>Datos Comerciales</b></div>
+    <br/>    
+    <div id="content-datos-comerciales">
+        <table width="100%">
+            <tr>
+                <td><label><b>Data Center</b></label></td><td><label id="datacenter-label"></label></td>
+            </tr>
+            <tr>
+                <td><label><b>Cliente</b></label></td><td><label id="cliente-label"></label></td>
+                <td><label><b>Login</b></label></td><td><label id="login-label"></label></td>
+            </tr>
+            <tr>
+                <td><label><b>Producto</b></label></td><td><label id="producto-label"></label></td>
+                <td><label><b>Caracter&iacute;stica</b></label></td><td><label id="caracteristica-label"></label></td>
+            </tr>
+            <tr id="td-spinner">
+                <td>
+                    <label><b>Numero Racks:</b></label>
+                </td>
+                <td>
+                    <input id="spinner-numero-racks" name="value" readonly>
+                </td>
+            </tr>
+        </table>
+    </div>    
+    <div class="secHead"><b><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;Selecci&oacute;n y Asignaci&oacute;n de Espacio ( Cuarto IT - Data Center )</b></div>
+    <br/>
+    <div id="content-matriz-it"></div>
+    <br/>
+    <table width="70%">
+        <tr>
+            <td colspan="3"><b><label><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;Filas Designadas para Jaulas:</label></b></td>
+            <td colspan="4"><label id="label-filas-jaulas"></label></td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td><b><i class="fa fa-map" aria-hidden="true"></i>&nbsp;Mapa de colores</b></td><td>&nbsp;</td>
+            <td><i class="fa fa-square identificador-habil" aria-hidden="true"></i>&nbsp;Filas con Racks Seleccionables</td><td>&nbsp;</td>
+            <td><i class="fa fa-square identificador-ocupado" aria-hidden="true"></i>&nbsp;Racks Ocupados ( Jaulas )</td><td>&nbsp;</td>
+            <td><i class="fa fa-square identificador-no-habil" aria-hidden="true"></i>&nbsp;Filas no Habilitadas para Selecci&oacute;n o Desocupadas</td><td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td><i class="fa fa-square identificador-all" aria-hidden="true"></i>&nbsp;Racks con disponibilidad Completa</td><td>&nbsp;</td>
+            <td><i class="fa fa-square identificador-midle" aria-hidden="true"></i>&nbsp;Racks con disponibilidad Media</td><td>&nbsp;</td>
+        </tr>
+    </table>
+    <br/>
+    <div class="secHead"><b><i class="fa fa-bookmark" aria-hidden="true">&nbsp;</i>Resumen de Asignaciones de Espacio</b></div>
+    <br/>
+    <label><b>Cantidad Establecida: </b></label>&nbsp;&nbsp;<label id="cantidad-label"></label><br/>
+    <label><b>Unidades Esperadas: </b></label>&nbsp;&nbsp;<label id="unidades-esperadas-label"></label><br/>
+    <label class="info-jaulas"><b>Racks Esperados: </b></label>&nbsp;&nbsp;<label class="info-jaulas" id="racks-esperados-label"></label><br/><br/>
+    <div id="content-resumen-factibilidad-rack" align="center">
+        <table id="table-content-resumen-factibilidad-rack" class="table-resumen-class" width="80%">
+            <tr>
+                <th>Nombre Rack</th>
+                <th>Ubicaci&oacute;n</th>
+                <th>Unidades Reservadas</th>
+                <th>Unidades Disponibles</th>
+                <th>Acciones</th>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="content-resumen-factibilidad-jaula">
+        
+    </div>
+    <br/><br/>
+    <div align="center">
+        <button id="button-guardar"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;Guardar</button>
+        <button id="button-regresar"><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;Regresar</button>        
+    </div>
+    
+    <!------------------------------------------------------------------------------------------------------------->
+    <!------------------------------ Panel de seleccion de espacios en Racks -------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------->
+    
+    <div id="panel-seleccion-rack" align="center" title="Asignación de Espacio en Rack">
+        <div id="panel-rack" align="center"></div>
+        <div id="divisor-rack">&nbsp;</div>
+        <div id="panel-rack-info">
+            <div class="secHead hr"><i class="fa fa-cube" aria-hidden="true"></i>&nbsp;Detalles</div><br/>
+            <table width="50%">
+                <tr>
+                    <td><label><b><i class="fa fa-share" aria-hidden="true"></i>&nbsp;Disponibles:</b></label></td>
+                    <td><input type="text" id="label-disponibles" class="input-detalle" disabled/></td>
+                </tr>
+                <tr>
+                    <td><label><b><i class="fa fa-share" aria-hidden="true"></i>&nbsp;Reservados:</b></label></td>
+                    <td><input type="text" id="label-reservados" class="input-detalle" disabled/></td>
+                </tr>
+                <tr>
+                    <td><label><b><i class="fa fa-share" aria-hidden="true"></i>&nbsp;Ocupados:</b></label></td>
+                    <td><input type="text" id="label-ocupados" class="input-detalle" disabled/></td>
+                </tr>
+            </table>
+            <br/><div class="secHead hr"><i class="fa fa-cog" aria-hidden="true"></i>&nbsp;Operaciones</div><br/>
+            <fieldset align="center">
+                <label for="radio-marcar"><i class="fa fa-check-square-o" aria-hidden="true"></i>&nbsp;Select All</label>
+                <input type="radio" name="radio-1" id="radio-marcar" class="rdbtn-seleccion-rack">
+                <label for="radio-desmarcar"><i class="fa fa-square-o" aria-hidden="true"></i>&nbsp;Deselect</label>
+                <input type="radio" name="radio-1" id="radio-desmarcar" class="rdbtn-seleccion-rack">
+            </fieldset>
+            <br/><div class="secHead hr"><i class="fa fa-server" aria-hidden="true"></i>&nbsp;Resumen</div><br/>
+            <textarea id="resumen-text" disabled></textarea>
+        </div>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------->
+    
+    <!-- modal waiting form -->
+    <div id="modal-message" class="modal-message" align="center">
+        <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+        <span id="modal-content-message"></span>
+    </div>
+</div>
+{% endblock contenido_central %}

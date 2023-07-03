@@ -1,0 +1,15 @@
+verasignaciones:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:VerAsignaciones:index" }
+
+verasignaciones_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:VerAsignaciones:grid"}
+
+verasignaciones_gridTareasAsignadas:
+    pattern:  /gridTareasAsignadas
+    defaults: { _controller: "planificacionBundle:VerAsignaciones:gridTareasAsignadas"}
+
+verasignaciones_gridHistorialTareasAsignadas:
+    pattern:  /gridHistorialTareasAsignadas
+    defaults: { _controller: "planificacionBundle:VerAsignaciones:gridHistorialTareasAsignadas"}

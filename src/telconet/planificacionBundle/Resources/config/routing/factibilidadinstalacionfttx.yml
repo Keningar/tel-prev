@@ -1,0 +1,27 @@
+factibilidadinstalacionfttx:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacionFttx:index"}
+#    requirements:
+#        _method:  GET
+
+factibilidadinstalacionfttx_ajaxGrid:
+    pattern:  /ajaxGrid
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacionFttx:ajaxGrid"}
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+    
+factibilidadinstalacionfttx_rechazar_ajax:
+    pattern:  /rechazar
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacionFttx:rechazarAjax" }
+    
+factibilidadinstalacionfttx_ajaxGuardaNuevaFactibilidad:
+    pattern:  /ajaxGuardaNuevaFactibilidad
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacionFttx:ajaxGuardaNuevaFactibilidad" }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacionfttx_comboJurisdicciones:
+  pattern: /ajaxComboJurisdicciones
+  defaults: {_controller: "planificacionBundle:FactibilidadInstalacionFttx:ajaxComboJurisdicciones"}

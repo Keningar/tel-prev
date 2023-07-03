@@ -1,0 +1,107 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var prefijoEmpresa                      = '{{ app.session.get('prefijoEmpresa') }}';
+        var asignarRecursosTunel                = '{{ path('asignarred_ajaxAsignarRecursosRedTunel')}}';
+        
+        //FACTIBILIDAD
+        var getDatosFactibilidad                = '{{ path('asignarred_ajaxGetDatosFactibilidad')}}';
+        var getHilosDisponibles                 = '{{ path('asignarred_ajaxGetHilosDisponibles')}}';
+        var ajaxGetPuertoSwitchByHilo           = '{{ path('asignarred_ajaxGetPuertoSwitchByHilo')}}';
+        
+        //L3MPLS
+        var urlAjaxGetVlansDisponibles          = '{{ path('asignarred_ajaxGetVlansDisponibles')}}';
+        var urlAjaxGetVlansDisponiblesPorVrf    = '{{ path('asignarred_ajaxGetVlansDisponiblesPorVrf')}}';
+        var urlAjaxGetVlansDisponiblesClearCh   = '{{ path('asignarred_ajaxGetVlansDisponiblesClearCh')}}';
+        var urlAjaxGetVrfsDisponibles           = '{{ path('asignarred_ajaxGetVrfsDisponibles')}}';
+        var urlAjaxGetAsPrivado                 = '{{ path('servicio_ajaxGetAsPrivado') }}';
+        var urlAjaxGetProtocolosEnrutamiento    = '{{ path('servicio_ajaxGetProtocolosEnrutamiento') }}';
+        var urlAjaxAsignarRecursosL3mpls        = '{{ path('asignarred_ajaxAsignarRecursosL3mpls') }}';
+        var urlAjaxGetSubredesL3mplsDisponibles = '{{ path('asignarred_ajaxGetSubredesL3mplsDisponibles') }}';
+        var urlAjaxGetInfoBackboneSubredL3mpls  = '{{ path('asignarred_ajaxGetInfoBackboneSubredL3mpls') }}';        
+        
+        //INTERNET DEDICADO
+        var asignarRecursosInternetDedicado     = '{{path('asignarred_ajaxAsignarRecursosRedInternetDedicado')}}';
+        var urlValidarIpAsignadaProvincias      = '{{path('asignarred_ajaxValidarIpAsignadaProvincias')}}';
+        
+        // INTERNET MPLS
+        var getSubredDisponible                 = '{{path('asignarred_ajaxGetSubredDisponible')}}';
+        var asignarRecursosInternetMPLS         = '{{path('asignarred_ajaxAsignarRecursosInternetMPLS')}}';
+        var getVrfInternet                      = '{{path('asignarred_ajaxGetVrfInternet')}}';
+
+        //VAR OBTENER PE TELCONET
+        var getObtenerPe                        = '{{path('asignarred_ajaxGetObtenerPe')}}';
+        var getObtenerPeCliente                 = '{{path('asignarred_ajaxGetObtenerPeCliente')}}';
+        var getVrfInternetClearChannel          = '{{path('asignarred_ajaxGetVrfInternetClearChannel')}}';
+        var urlObtenerSubredesElemento          = '{{path('asignarred_ajaxGetSubredDisponibleClearChannel')}}';
+        var asignarRecursosInternetClearChannel = '{{path('asignarred_ajaxAsignarRecursosClearChannel')}}';
+        
+
+        var url_getEmpresasExternas                 = '{{path('asignarresponsable_getEmpresasExternas')}}';
+        var urlInfoSwitch                           = '{{ path("factibilidadinstalacion_ajaxGetInfoPadreRadio") }}';
+        var urlContactoClienteByTipoRolAjax         = '{{ path("contacto_contactoClienteByTipoRolAjax") }}';
+        var url_ajaxComboElementos                  = '{{path('factibilidadinstalacion_ajaxComboElementos')}}';
+        
+        //WIFI
+        var url_guardaRecursosDeRedWifi             = '{{path('asignarred_ajaxAsignarRecursosRedWifi')}}';
+        
+        //Internet DC
+        var urlAjaxAsignarRedInternetDC             = '{{path('asignarred_ajaxAsignarRecursosRedInternetDC')}}';
+        var urlAjaxAsignarRedDatosDC                = '{{path('asignarred_ajaxAsignarRecursosRedDatosDC')}}';
+        var urlAjaxGetInformacionVlansDC            = '{{path('vlan_ajaxGetInformacionVlanDC')}}';
+        var urlAjaxGuardarVlanDC                    = '{{path('vlan_ajaxCrearVlanClienteDC')}}';
+        var urlAjaxGetSubredesDisponiblesIntDc      = '{{path('asignarred_ajaxGetSubredesDisponiblesInternetDC')}}';
+        var urlAjaxValidarSubredPublicaIntDc        = '{{path('asignarred_ajaxValidarSubredPublicaInternetDC')}}';
+        
+        //Clear Channel Punto a Punto
+        var urlAjaxGetInformacionVlansCH            = '{{path('vlan_ajaxGetInformacionVlanCH')}}';
+        var urlAjaxGuardarVlanCH                    = '{{path('vlan_ajaxCrearVlanClienteCH')}}';
+
+        //Internet Small Business
+        var strUrlAjaxComboElementosByPadre     = '{{ path('factibilidadinstalacion_ajaxComboElementosByPadre') }}';
+        var strUrlGuardaRecursosRedInternetLite = '{{ path('asignarred_guardaRecursosDeRedInternetLite') }}';
+        
+        //Internet Residencial TNP
+        var strUrlGuardaRecursosRedInternetResidencial = '{{ path('asignarred_guardaRecursosDeRedInternetResidencial') }}';
+
+        //Datos Safe City
+        var strUrlGuardaRecursosRedDatosGpon = '{{ path('asignarred_guardaRecursosDeRedDatosGpon') }}';
+        var strUrlGuardaRecursosRedCamaraGpon = '{{path('asignarred_guardaRecursosDeRedCamaraGpon')}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/index.js?29') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/tunelIp.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/internetDedicado.js?7') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/l3mpls.js?23') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/internetMPLS.js?15') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/funciones.js?64') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/funciones.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/pseudoPe.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/satelital.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/internetDC.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/internetLite.js?11') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/internetTnp.js?1') }}"></script>    
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/datosDC.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AsignarRed/internetClearChanelPP.js?2') }}"></script>
+
+
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Clientes Pendientes de Asignar Recursos de Red</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td colspan="5"><div id='filtro'></div></td>
+        </tr>
+        <tr>
+            <td colspan="5"><div id="grid"></div></td>
+        </tr>
+    </table> 
+    <input type="hidden" name="escogido_modulo_id" id="escogido_modulo_id" value="0" />
+</div>
+{% endblock contenido_central %}

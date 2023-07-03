@@ -1,0 +1,11 @@
+reportecambioequipo:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:ReporteCambioEquipo:index" }
+
+reportecambioequipo_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:ReporteCambioEquipo:grid" }
+
+reportecambioequipo_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "planificacionBundle:ReporteCambioEquipo:exportarConsulta" }

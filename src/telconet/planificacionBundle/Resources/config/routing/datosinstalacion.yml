@@ -1,0 +1,12 @@
+datosInstalacion:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:DatosInstalacion:index" }
+
+datosInstalacion_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:DatosInstalacion:grid"}
+
+datosInstalacion_getDatosInstalacionPdf:
+    pattern:  /getDatosInstalacionPdf
+    defaults: { _controller: "planificacionBundle:DatosInstalacion:getDatosInstalacionPdf" }
+    requirements: { _method: get } 

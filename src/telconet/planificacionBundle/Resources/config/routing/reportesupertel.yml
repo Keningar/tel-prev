@@ -1,0 +1,15 @@
+reportesupertel:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:ReporteSupertel:index" }
+
+reportesupertel_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:ReporteSupertel:grid"}
+
+reportesupertel_getClientes:
+    pattern:  /getClientes
+    defaults: { _controller: "planificacionBundle:ReporteSupertel:getClientes"}
+
+reportesupertel_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "planificacionBundle:ReporteSupertel:exportarConsulta" }

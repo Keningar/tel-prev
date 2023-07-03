@@ -1,0 +1,67 @@
+SolicitudFacturaAcuController:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:index" }
+
+seguimiento_solicitud:
+    pattern:  /show
+    defaults: { _controller: "comercialBundle:Seguimiento:show" }    
+    
+treegrid:
+    pattern:  /treegrid
+    defaults: { _controller: "comercialBundle:Seguimiento:treegrid" }
+    
+coordinar_grafico_ajax:
+    pattern:  /graficaServicio
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:graficaServicio" }    
+    
+coordinar_getDetalleServicios:
+    pattern:  /getDetallesServicios
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getDetallesServicios" } 
+    
+seguimiento_gridAcciones:
+    pattern:  /seguimiento_gridAcciones
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:grid" }
+    
+coordinar_gridProyectos:
+    pattern:  /coordinar_gridProyectos
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:listarProyecto" }    
+    
+coordinar_getSeguimientoServicio:
+    pattern:  /getListarServicios
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getListarServicios" } 
+    
+coordinar_getHistorialServicio:
+    pattern:  /getHistorialSeguimiento
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getHistorialSeguimiento" }
+    
+estados_articulo_proyecto:
+    pattern:  /getEstados
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getEstados"}
+    
+coordinar_programar_proyecto:
+    pattern:  /programarProyecto
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:programarProyecto" }
+
+coordinar_getTareasClientes_proyecto:
+    pattern:  /getTareasClientes
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getTareasClientes" }
+
+coordinar_validadorExcedenteMaterial_proyecto:
+    pattern:  /getValidadorExcedenteMaterial
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getValidadorExcedenteMaterial" }    
+
+infoservicio_getDocumentosEncontrados_proyecto:
+    pattern: /verDocumentosEncontrados
+    defaults: { _controller: "comercialBundle:InfoPunto:getDocumentosEncontrados"}
+    
+getTareasByProcesoAndTarea:
+    pattern:  /getTareasByProcesoAndTarea
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getTareasByProcesoAndTarea" }
+    
+coordinar_getDocumentos:
+    pattern:  /getDocumentos
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getDocumentos" }
+    
+coordinar_getValidaProyecto:
+    pattern:  /getValidaProyectoAction
+    defaults: { _controller: "planificacionBundle:CoordinarProyecto:getValidaProyecto" }

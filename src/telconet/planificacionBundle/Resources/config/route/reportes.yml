@@ -1,0 +1,19 @@
+planificacionBundle_ReporteGeneral:
+  resource: "@planificacionBundle/Resources/config/routing/reportegeneral.yml"
+  prefix: /reporte_general
+  
+planificacionBundle_ReporteAsignadas:
+  resource: "@planificacionBundle/Resources/config/routing/reporteasignadas.yml"
+  prefix: /reporte_asignadas
+  
+planificacionBundle_ReporteSupertel:
+  resource: "@planificacionBundle/Resources/config/routing/reportesupertel.yml"
+  prefix: /reporte_supertel
+  
+planificacionBundle_ReporteCambioEquipos:
+  resource: "@planificacionBundle/Resources/config/routing/reportecambioequipo.yml"
+  prefix: /reporte_cambio_equipo
+  
+planificacionBundle_ReporteMateriales:
+  resource: "@planificacionBundle/Resources/config/routing/reportemateriales.yml"
+  prefix: /reporte_materiales

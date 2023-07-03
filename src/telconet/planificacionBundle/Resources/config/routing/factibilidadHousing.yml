@@ -1,0 +1,23 @@
+factibilidad_housing:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:indexHousing"}
+    
+factibilidad_housing_ajaxGrid:
+    pattern:  /ajaxGrid
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGrid"}   
+        
+factibilidad_new_housing:
+    pattern:  /{intIdServicio}/new
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:factibilidadHousing"}  
+    
+factibilidad_housing_ajaxGetInformacionRack:
+    pattern:  /ajaxGetInformacionRack
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGetInformacionRack"}  
+    
+factibilidad_housing_ajaxGuardarFactibilidadHousing:
+    pattern:  /ajaxGuardarFactibilidadHousing
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGuardarFactibilidadHousing"}  
+    
+factibilidad_housing_ajaxGetInformacionEspacioHousing:
+    pattern:  /ajaxGetInformacionEspacioHousing
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGetInformacionEspacioHousing"}    

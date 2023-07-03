@@ -1,0 +1,27 @@
+factibilidad_hosting:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:indexHosting"}
+
+factibilidad_hosting_ajaxGetDatosFactibilidadHosting:
+    pattern:  /ajaxGetDatosFactibilidadHosting
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGetDatosFactibilidadHosting"}
+    
+factibilidad_hosting_ajaxGuardarFactibilidadHosting:
+    pattern:  /ajaxGuardarFactibilidadHosting
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGuardarFactibilidadHosting"}    
+    
+factibilidad_hosting_ajaxGetInformacionServidoresAlquiler:
+    pattern:  /ajaxGetInformacionServidoresAlquiler
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGetInformacionServidoresAlquiler"} 
+    
+factibilidad_hosting_ajaxGuardarFactibilidadAlquilerServidores:
+    pattern:  /ajaxGuardarFactibilidadAlquilerServidores
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGuardarFactibilidadAlquilerServidores"} 
+    
+factibilidad_hosting_ajaxGetResumenAlquilerServidores:
+    pattern:  /ajaxGetResumenAlquilerServidores
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGetResumenAlquilerServidores"}  
+    
+factibilidad_hosting_finalizarFactibilidadHostingMV:
+    pattern:  /finalizarFactibilidadHostingMV
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:finalizarFactibilidadHostingMV"}    

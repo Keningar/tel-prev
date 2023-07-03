@@ -1,0 +1,43 @@
+planificacionBundle_Coordinar:
+  resource: "@planificacionBundle/Resources/config/routing/coordinar.yml"
+  prefix: /coordinar
+
+planificacionBundle_VerPlanificacion:
+  resource: "@planificacionBundle/Resources/config/routing/verplanificacion.yml"
+  prefix: /ver_planificacion
+
+planificacionBundle_AsignarRed:
+  resource: "@planificacionBundle/Resources/config/routing/asignarred.yml"
+  prefix: /asignar_red
+
+planificacionBundle_AsignarResponsable:
+  resource: "@planificacionBundle/Resources/config/routing/asignarresponsable.yml"
+  prefix: /asignar_responsable
+
+planificacionBundle_VerAsignaciones:
+  resource: "@planificacionBundle/Resources/config/routing/verasignaciones.yml"
+  prefix: /ver_asignaciones
+
+planificacionBundle_finalizarRetiroEquipo:
+  resource: "@planificacionBundle/Resources/config/routing/retiroequipo.yml"
+  prefix: /finalizar_retiro_equipo
+
+planificacionBundle_planificacionHal:
+  resource: "@planificacionBundle/Resources/config/routing/planificacionhal.yml"
+  prefix: /planificacion_hal
+
+planificacionBundle_plantillaHorario:
+  resource: "@planificacionBundle/Resources/config/routing/plantillahorario.yml"
+  prefix: /plantilla_horarios
+
+planificacionBundle_agendacupo:
+  resource: "@planificacionBundle/Resources/config/routing/agendacupo.yml"
+  prefix: /agenda_cuadrilla
+
+planificacionBundle_CoordinarComercial:
+  resource: "@planificacionBundle/Resources/config/routing/coordinarcomercial.yml"
+  prefix: /coordinarComercial 
+
+planificacionBundle_CoordinarProyecto:
+  resource: "@planificacionBundle/Resources/config/routing/coordinarproyecto.yml"
+  prefix: /coordinarproyecto 

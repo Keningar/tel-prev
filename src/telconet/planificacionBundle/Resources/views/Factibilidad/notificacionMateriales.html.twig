@@ -1,0 +1,198 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+            <img alt=""  src="http://images.telconet.net/others/telcos/logo.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para informarle el estado de la Solicitud de Materiales de Instalaci&oacute;n: 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <strong>Detalle Solicitud # {{ detalleSolicitud.id}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Cliente:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId %}
+						{% if detalleSolicitud.servicioId.puntoId.personaEmpresaRolId %}
+							{% if detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId %}
+								{% if detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId.razonSocial %}
+									{{ detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId.razonSocial }} 
+								{% else %}
+								{{ detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId.nombres ~ ' ' ~ detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId.apellidos }} 
+								{% endif %}	
+							{% endif %}	
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Login:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId %}
+						{% if detalleSolicitud.servicioId.puntoId.login %}
+							{{ detalleSolicitud.servicioId.puntoId.login }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}		
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Jurisdicci&oacute;n:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId.puntoCoberturaId %}
+						{% if detalleSolicitud.servicioId.puntoId.puntoCoberturaId.nombreJurisdiccion %}
+							{{ detalleSolicitud.servicioId.puntoId.puntoCoberturaId.nombreJurisdiccion }}
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Direcci&oacute;n:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId %}
+						{% if detalleSolicitud.servicioId.puntoId.direccion %}
+							{{ detalleSolicitud.servicioId.puntoId.direccion }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			{#<tr>
+              <td>
+                <strong>Jurisdicci&oacute;n:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId.puntoCoberturaId %}
+						{% if detalleSolicitud.servicioId.puntoId.puntoCoberturaId.nombrePuntoCobertura %}
+							{{ detalleSolicitud.servicioId.puntoId.puntoCoberturaId.nombrePuntoCobertura }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>#}
+			<tr>
+              <td>
+                <strong>Servicio / Producto:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.productoId %}
+						{% if detalleSolicitud.servicioId.productoId.descripcionProducto %}
+							{{ detalleSolicitud.servicioId.productoId.descripcionProducto }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.planId %}
+						{% if detalleSolicitud.servicioId.planId.nombrePlan %}
+							{{ detalleSolicitud.servicioId.planId.nombrePlan }}
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha de Solicitud:</strong>
+              </td>
+              <td>{{detalleSolicitud.feCreacion | date("d-M-Y") }} | {{ detalleSolicitud.feCreacion | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario Solicit&oacute;:</strong>
+              </td>
+              <td>{{ detalleSolicitud.usrCreacion}}</td>
+            </tr>
+			{% if detalleSolicitud.feRechazo %}
+            <tr>
+              <td>
+                <strong>Fecha de rechazo:</strong>
+              </td>
+              <td>{{detalleSolicitud.feRechazo | date("d-M-Y") }} | {{ detalleSolicitud.feRechazo | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario que rechaza:</strong>
+              </td>
+              <td>{{ detalleSolicitud.usrRechazo}}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Motivo de rechazo:</strong>
+              </td>
+              <td>{{ motivo.nombreMotivo }}</td>
+            </tr>
+			{% endif %}
+			{% if detalleSolicitud.observacion %}
+				<tr>
+				  <td>
+					<strong>Observacion:</strong>
+				  </td>
+				  <td>{{ detalleSolicitud.observacion }}</td>
+				</tr>
+			{% endif %}
+			<tr>
+              <td>
+                <strong>Estado:</strong>
+              </td>
+              <td><strong><label style="color:red">{{ detalleSolicitud.estado }}</label></strong></td>
+            </tr>
+            <tr>
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+      <tr>
+          <td><strong><font size='2' face='Tahoma'>Telcos + Sistema del Grupo Telconet</font></strong></p>
+          </td>   
+      </tr>  
+    </table>
+  </body>
+</html>

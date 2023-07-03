@@ -1,0 +1,28 @@
+agenda_cuadrilla:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:AgendaCupo:index" }
+
+agenda_cuadrilla_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:AgendaCupo:grid"}
+
+agenda_cuadrilla_edit:
+    pattern:  /{intIdCupo}/edit
+    defaults: { _controller: "planificacionBundle:AgendaCupo:edit" }
+
+agenda_cuadrilla_detalle:
+    pattern:  /detalleCupo
+    defaults: { _controller: "planificacionBundle:AgendaCupo:detalleCupoAjax"}
+
+agenda_cuadrilla_generar_cupos:
+    pattern:  /generarCuposAjax
+    defaults: { _controller: "planificacionBundle:AgendaCupo:generarCuposAjax" }
+
+agenda_cuadrilla_generar_cupo_adicional:
+    pattern:  /generarCuposAdicionalesAjax
+    defaults: { _controller: "planificacionBundle:AgendaCupo:generarCuposAdicionalesAjax" }
+
+agenda_cuadrilla_show:
+    pattern:  /{intIdCupo}/show
+    defaults: { _controller: "planificacionBundle:AgendaCupo:show" }
+

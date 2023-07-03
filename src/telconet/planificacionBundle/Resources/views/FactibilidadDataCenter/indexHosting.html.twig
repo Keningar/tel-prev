@@ -1,0 +1,50 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/tecnico/css/maquinasVirtuales.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var url_ajaxGrid                                    = '{{ path('factibilidad_housing_ajaxGrid')}}';      
+        var urlMotivosRechazo                               = '{{ path("factibilidadinstalacion_getMotivosRechazo") }}';
+        var urlRechazar                                     = '{{ path("factibilidadinstalacion_rechazar_ajax") }}';
+        var urlGetDatosFactibilidadHosting                  = '{{ path("factibilidad_hosting_ajaxGetDatosFactibilidadHosting")}}';
+        var urlGuardarDatosFactibilidadHosting              = '{{ path("factibilidad_hosting_ajaxGuardarFactibilidadHosting")}}';
+        var urlGetServidoresAlquiler                        = '{{ path("factibilidad_hosting_ajaxGetInformacionServidoresAlquiler")}}';
+        var urlGuardarFactibilidadAlquilerServ              = '{{ path("factibilidad_hosting_ajaxGuardarFactibilidadAlquilerServidores")}}';
+        var urlGetInformacionGeneralHosting                 = '{{ path('servicio_ajaxGetInformacionGeneralHosting')}}';
+        var urlAnularRechazarSol                            = '{{ path('infoservicio_ajaxAnularRechazarServiciosSolucion') }}';
+        var urlFinalizarFactibilidadHostingMV               = '{{ path("factibilidad_hosting_finalizarFactibilidadHostingMV")}}';
+        var urlCrearTareaAComercial                         = '{{ path('servicio_ajaxCrearTareaAComercial')}}';
+        var urlGetInformacionSolucion                       = '{{ path('servicio_ajaxGetInformacionSolucion')}}';
+        var urlajaxGetLicencias                             = '{{ path('search_ajaxGetLicencias')}}';
+
+    </script>        
+    <script src="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/indexHosting.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/factibilidadHosting.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/funciones-factibilidad.js?26') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Factibilidad Servicio de Hosting</h1>
+</div>
+<div class="body_content k-content">
+
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_central %}
+

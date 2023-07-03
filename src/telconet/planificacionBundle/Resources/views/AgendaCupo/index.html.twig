@@ -1,0 +1,79 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGetGrid = '{{ path('agenda_cuadrilla_grid') }}';
+
+        var strUrlGetCiudades = "{{ path('asignarresponsable_getCantones') }}";
+        var ajaxGetSectores = "{{ path('coordinar_sectores_ajax') }}";
+        var ajaxGetJurisdiccion = "{{ path('admijurisdiccion_getJurisdicciones') }}";
+
+
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AgendaCupo/FechaClass.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AgendaCupo/ModelClass.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AgendaCupo/StoreClass.js?1') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AgendaCupo/ObjetosClass.js?1') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AgendaCupo/index.js?1') }}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/ext-4.1.1/resources/css/CheckHeader.css') }}" />
+
+    <style>
+        .uncheckedChkbox {
+            height: 13px;
+            width: 13px;
+            background: url('{{ asset('public/images/images_crud/unchecked.png') }}') no-repeat -1px -2px;
+            float: left;
+            margin: 0 5px 0 0;
+        }
+        .x-boundlist-selected .uncheckedChkbox {
+            background: url('{{ asset('public/images/images_crud/checked.png') }}') no-repeat -1px -2px;
+        }
+
+        .sel-all {
+            padding: 3px;
+            padding-left: 10px;
+            cursor: pointer;
+            border: 1px solid gray;
+        }
+
+        .div-center {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+{% endblock %}
+
+
+{% block contenido_central %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Planificaciones Pendientes de Coordinación</h1>
+    </div>
+    <div class="body_content k-content">
+        {% if rolesPermitidos %}
+            {% for rol in rolesPermitidos %}
+                <input type="hidden" name="{{ rol }}" id="{{ rol }}" value="1" />
+            {% endfor %}
+        {% endif %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="errormessage">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtro'></div></td>
+            </tr>
+            <tr>
+                <td><div id="grid"></div></td>
+            </tr>
+        </table>
+    </div>
+{% endblock contenido_central %}

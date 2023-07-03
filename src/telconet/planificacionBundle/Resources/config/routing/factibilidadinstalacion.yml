@@ -1,0 +1,152 @@
+factibilidadinstalacion:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:index",ultimaMilla: "FibraOptica"}
+    requirements:
+        _method:  GET
+
+factibilidadinstalacion_ajaxGrid:
+    pattern:  /ajaxGrid
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxGrid"}
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_gridFactibilidadMateriales:
+    pattern:  /gridFactibilidadMateriales
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:gridFactibilidadMateriales"}
+    
+factibilidadinstalacion_gridMaterialesByTarea:
+    pattern:  /gridMaterialesByTarea
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:gridMaterialesByTarea"}
+
+factibilidadinstalacion_calculaMetrajeEntrePuntoElemento:
+    pattern:  /calculaMetrajeEntrePuntoElemento
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:calculaMetrajeEntrePuntoElemento"}
+
+factibilidadinstalacion_getMotivosRechazo:
+    pattern:  /getMotivosRechazo
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:getMotivosRechazo }
+
+factibilidadinstalacion_ajaxComboTiposMedio:
+    pattern:  /ajaxComboTiposMedio
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxComboTiposMedio }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_getTareasByProcesoAndTareaSinModem:
+    pattern:  /getTareasByProcesoAndTareaSinModem
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:getTareasByProcesoAndTareaSinModem }
+
+factibilidadinstalacion_getTareasByProcesoAndTarea:
+    pattern:  /getTareasByProcesoAndTarea
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:getTareasByProcesoAndTarea }
+    
+factibilidadinstalacion_ajaxComboElementos:
+    pattern:  /ajaxComboElementos
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxComboElementos }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_ajaxGetInfoCaja:
+    pattern:  /ajaxGetInfoCaja
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxGetInfoCaja }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+        
+factibilidadinstalacion_ajaxGetInfoPadreRadio:
+    pattern:  /ajaxGetInfoPadreRadio
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxGetInfoPadreRadio }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_ajaxComboCajas:
+    pattern:  /ajaxComboCajas
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxComboCajas }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_ajaxComboElementosByPadre:
+    pattern:  /ajaxComboElementosByPadre
+    defaults: { _controller: planificacionBundle:FactibilidadInstalacion:ajaxComboElementosByPadre }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_ajaxDisponibilidadElemento:
+    pattern:  /ajaxDisponibilidadElemento
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxDisponibilidadElemento"}
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_rechazar_ajax:
+    pattern:  /rechazar
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:rechazarAjax" }
+    
+factibilidadinstalacion_ajaxGuardaFactibilidadRadioTn:
+    pattern:  /ajaxGuardaFactibilidadRadioTn
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxGuardaFactibilidadRadioTn" }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_ajaxGuardaFactibilidadAnticipadaRadioTn:
+    pattern:  /ajaxGuardaFactibilidadAnticipadaRadioTn
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxGuardaFactibilidadAnticipadaRadioTn" }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+        
+factibilidadinstalacion_ajaxGuardaFactibilidad:
+    pattern:  /ajaxGuardaFactibilidad
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxGuardaFactibilidad" }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_ajaxGuardaNuevaFactibilidad:
+    pattern:  /ajaxGuardaNuevaFactibilidad
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxGuardaNuevaFactibilidad" }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_ajaxGuardaFactibilidadTramo:
+    pattern:  /ajaxGuardaFactibilidadTramo
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxGuardaFactibilidadTramo" }
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+factibilidadinstalacion_guardaFactMateriales_ajax:
+    pattern:  /guardaFactMateriales
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:guardaFactMaterialesAjax" }
+
+factibilidadinstalacion_ajaxInstalacionesMes:
+  pattern: /ajax_instalaciones_mes
+  defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxInstalacionesMes"}
+
+factibilidadinstalacion_ajaxInstalacionesRechazadasMes:
+  pattern: /ajax_instalaciones_rechazadas_mes
+  defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxInstalacionesRechazadasMes"}
+
+factibilidadinstalacion_ajaxInstalacionesAprobadasMes:
+  pattern: /ajax_instalaciones_aprobadas_mes
+  defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxInstalacionesAprobadasMes"}
+  
+factibilidadinstalacion_obtenerTipoMedio:
+  pattern: /obtenerTipoMedio
+  defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:obtenerTipoMedio"}
+  
+factibilidadinstalacion_cambiarTipoMedio:
+  pattern: /cambiarTipoMedio
+  defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:cambiarTipoMedio"}
+
+factibilidadinstalacion_comboJurisdicciones:
+  pattern: /ajaxComboJurisdicciones
+  defaults: {_controller: "planificacionBundle:FactibilidadInstalacion:ajaxComboJurisdicciones"}

@@ -1,0 +1,188 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+            <img alt=""  src="http://images.telconet.net/others/telcos/logo.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para notificarles sobre las Pre Facturas generadas por los Materiales Excedentes de la Instalacion del Cliente: 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Cliente:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId %}
+						{% if detalleSolicitud.servicioId.puntoId.personaEmpresaRolId %}
+							{% if detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId %}
+								{% if detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId.razonSocial %}
+									{{ detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId.razonSocial }} 
+								{% else %}
+								{{ detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId.nombres ~ ' ' ~ detalleSolicitud.servicioId.puntoId.personaEmpresaRolId.personaId.apellidos }} 
+								{% endif %}	
+							{% endif %}	
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Login:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId %}
+						{% if detalleSolicitud.servicioId.puntoId.login %}
+							{{ detalleSolicitud.servicioId.puntoId.login }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}		
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Jurisdicci&oacute;n:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId.puntoCoberturaId %}
+						{% if detalleSolicitud.servicioId.puntoId.puntoCoberturaId.nombreJurisdiccion %}
+							{{ detalleSolicitud.servicioId.puntoId.puntoCoberturaId.nombreJurisdiccion }}
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Direcci&oacute;n:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.puntoId %}
+						{% if detalleSolicitud.servicioId.puntoId.direccion %}
+							{{ detalleSolicitud.servicioId.puntoId.direccion }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Servicio / Producto:</strong>
+              </td>
+              <td>
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.productoId %}
+						{% if detalleSolicitud.servicioId.productoId.descripcionProducto %}
+							{{ detalleSolicitud.servicioId.productoId.descripcionProducto }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+				{% if detalleSolicitud.servicioId %}
+					{% if detalleSolicitud.servicioId.planId %}
+						{% if detalleSolicitud.servicioId.planId.nombrePlan %}
+							{{ detalleSolicitud.servicioId.planId.nombrePlan }}
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha de creacion:</strong>
+              </td>
+              <td>{{detalleSolicitud.feCreacion | date("d-M-Y") }} | {{ detalleSolicitud.feCreacion | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario de creacion:</strong>
+              </td>
+              <td>{{ detalleSolicitud.usrCreacion}}</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+			<tr>
+                <td colspan="2" style="text-align: center;">
+                <strong>Materiales</strong>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Custodio:</strong>
+              </td>
+              <td align="left" >{{ responsable }}</td>
+            </tr>
+			{% if materialesExcedentes %}
+				<table width="80%" cellspacing="0" cellpadding="2">
+				{% for item in materialesExcedentes %}
+					<tr>
+					  <td>
+						<strong>Codigo:</strong>
+					  </td>
+					  <td align="left">{{ item.codigo }}</td>
+					  <td>
+						<strong>Material:</strong>
+					  </td>
+					  <td align="left">{{ item.nombre }}</td>
+					  <td>
+						<strong>Precio:</strong>
+					  </td>
+					  <td align="left">{{ item.precio }}</td>
+					  <td>
+						<strong>Cantidad:</strong>
+					  </td>
+					  <td align="left">{{ item.cantidadFacturada }}</td>
+					  <td>
+						<strong>Valor a Facturar:</strong>
+					  </td>
+					  <td align="left">{{ item.valorCobrado }}</td>
+					</tr>
+				{% endfor %}
+				</table>
+			{% endif %}	
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+      <tr>
+          <td><strong><font size='2' face='Tahoma'>TransTelco S.A.</font></strong></p>
+          </td>   
+      </tr>  
+    </table>
+  </body>
+</html>

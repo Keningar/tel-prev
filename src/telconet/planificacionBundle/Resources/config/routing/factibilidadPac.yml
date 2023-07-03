@@ -1,0 +1,23 @@
+factibilidad_pac:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:indexPac"}
+
+factibilidad_pac_ajaxGetDatosFactibilidadPAC:
+    pattern:  /ajaxGetDatosFactibilidadPAC
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGetDatosFactibilidadPAC"}
+    
+factibilidad_pac_ajaxEditarFechaFactibilidadPAC:
+    pattern:  /ajaxEditarFechaFactibilidadPAC
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxEditarFechaFactibilidadPAC"}
+
+factibilidad_pac_ajaxGuardarFactibilidadPAC:
+    pattern:  /ajaxGuardarFactibilidadPAC
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGuardarFactibilidadPAC"}
+    
+factibilidad_pac_ajaxGetMotivosRechazoPAC:
+    pattern:  /ajaxGetMotivosRechazoPAC
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxGetMotivosRechazo"} 
+    
+factibilidad_pac_ajaxRechazarFactibilidadPAC:
+    pattern:  /ajaxRechazarFactibilidadPAC
+    defaults: { _controller: "planificacionBundle:FactibilidadDataCenter:ajaxRechazarFactibilidadPAC"}    

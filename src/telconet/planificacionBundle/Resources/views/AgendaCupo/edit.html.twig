@@ -1,0 +1,75 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/src/ux/CheckColumn.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/AgendaCupo/edit.js?3') }}"></script>
+    <script>
+
+        var url_detalle_cupo = '{{path('agenda_cuadrilla_detalle')}}';
+        var strUrlIndex = '{{path('agenda_cuadrilla')}}';
+        var strHoraInicio = '{{ strHoraInicio }}';
+        var strHoraFin = '{{ strHoraFin }}';
+        var strHoraIntervalo = '{{ intIntervalo }}';
+        var strDescripcion = '{{ strDescripcion }}';
+        var strJurisdiccion = '{{ strJurisdiccion }}';
+        var boolDefault = '{{ boolDefault }}';
+        var idCabeceraCupo = '{{ intHorarioCabeceraId }}';
+        var strMinimoHoras = '{{ strMinimoHoras}}';
+        var intIntervaloMaximo = '{{ intIntervaloMaximo }}';
+        var intTotalCupos = '{{ intCupoTotal }}';
+        var strFechaPeriodo = '{{ strFechaPeriodo }}';
+        var urlSaveAgenda = '{{path('agenda_cuadrilla_generar_cupo_adicional')}}';
+
+
+    </script>
+
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/ext-4.1.1/resources/css/CheckHeader.css') }}" />
+
+    <style>
+        .uncheckedChkbox {
+            height: 13px;
+            width: 13px;
+            background: url('{{ asset('public/images/images_crud/unchecked.png') }}') no-repeat -1px -2px;
+            float: left;
+            margin: 0 5px 0 0;
+        }
+        .x-boundlist-selected .uncheckedChkbox {
+            background: url('{{ asset('public/images/images_crud/checked.png') }}') no-repeat -1px -2px;
+        }
+
+        .sel-all {
+            padding: 3px;
+            padding-left: 10px;
+            cursor: pointer;
+            border: 1px solid gray;
+        }
+
+        .div-center {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        Editar Agenda de Cupos
+    </div>
+    <div id="Div_Edit_Plantilla_Horario" class="div-center">
+
+    </div>
+
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+{% endblock javascripts_footer%}

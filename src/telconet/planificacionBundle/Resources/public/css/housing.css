@@ -1,0 +1,331 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01/09/2017, 12:15:14 PM
+    Author     : arsuarez
+*/
+
+.hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;/*#1c94c4;     */
+}
+
+
+#table-matriz-it{
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-collapse: collapse;        
+}
+#table-matriz-it tr td{
+    border: inset 1pt #ccc;
+}	
+
+.cabeceras-td
+{
+    font-size:10px;    
+    height:15px;
+    background:#1C94C4;
+    color:white;
+    font-weight:bold;
+}
+
+/* Celdas que no deben ser utilizados*/
+.td-no-class
+{
+    border: 0px !important;
+}
+
+.fila-entre-racks
+{
+    background: #E6EAEE;
+}
+
+/* Filas que contienen Racks posicionados */
+.fila-habilitada
+{
+    border: 1px solid #ccc !important;
+    font-size:9px;
+    text-align:center;
+    cursor: pointer;
+    background: #BEDFB3;
+    font-weight: bold;
+}
+
+.fila-habilitada:hover{
+    background: #7A9D6E;
+    color:white;
+    font-weight: bold;
+}
+
+/*Filas que se encuentren Inactivas*/
+.fila-no-habilitada 
+{
+    font-weight: bold;
+    font-size:9px;
+    text-align:center;
+    border: 1px solid #ccc !important;
+    background:#A4A4A4 !important;
+    color:white;
+}
+
+/*Filas que se encuentren Ocupadas ( jaula )*/
+.fila-ocupada 
+{
+    font-size:10px;
+    text-align:center;
+    border: 1px solid #ccc !important;
+    background:#81BEF7 !important;
+    color:black;
+}
+
+.fila-eliminada
+{
+    font-weight: bold;
+    font-size:9px;
+    text-align:center;
+    border: 1px solid #ccc !important;
+    background:white !important;
+}
+
+.fila-eliminada:hover
+{
+    font-weight: bold;
+    font-size:9px;
+    text-align:center;
+    border: 1px solid #ccc !important;
+    background:white !important;
+    cursor: auto;
+    color:black;
+}
+
+.fila-bloqueada
+{
+    background: #E6EAEE;
+    cursor: auto;
+    color:black;
+    border-width: 2px;
+    border-color: black !important;
+}
+
+.fila-bloqueada:hover
+{
+    background: #E6EAEE !important;
+    cursor: auto;
+    color:black;
+    border-color: black !important;
+}
+
+.rack-completo
+{
+    color:red !important;
+}
+
+
+/*Identificador de color de la tabla de IT*/
+.identificador-habil{
+    color:#BEDFB3;
+}
+.identificador-no-habil{
+    color:#A4A4A4;
+}
+.identificador-ocupado{
+    color:#81BEF7;
+}
+.identificador-reservado{
+    color:#6E8866;
+}
+
+/**********************************************************/
+/*    Estilo para la renderizacion de los racks           */
+/**********************************************************/
+
+.ocupado {
+    background-color: #a7adba;
+}   
+
+.ocupadoEdicion {
+    background-color: #a7adba;
+} 
+
+.ocupadoEdicion:hover{
+    background-color: #4f5b66;
+    cursor:pointer;
+}
+.desocupado{
+    height:10px;
+}
+.desocupado:hover{
+    background-color: #4f5b66;
+    cursor:pointer;
+}
+.seleccionado{
+    background-color: #517b58;
+    cursor:pointer;
+}
+.seleccionado:hover{
+    background-color: #4f5b66;
+}
+.borde{
+    background:#4d4d4d;
+    color:white;
+    font-family:FreeMono;
+    font-weight:bold;
+    text-align: right;
+    font-size:9px;          
+}
+#table-rack{
+    border-collapse: collapse;
+}
+#table-rack tr td{
+    border: inset 1pt;
+}	
+.titulo{
+    font-size:12px;
+}
+
+/*******************************************/
+
+#panel-rack,#panel-rack-info,#divisor-rack
+{
+    float: left;
+    position: relative;
+}
+
+#panel-rack-info
+{
+    text-align: left;
+     width: 300px;
+}
+
+.input-detalle{
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#resumen-text
+{
+    height: 200px;
+    width: 300px;
+}
+
+#resumen-text
+{
+    height: 200px;
+    width: 300px;
+}
+
+.resumen-edicion
+{
+    height: 200px;
+    width: 300px;
+}
+
+#divisor-rack
+{
+    width: 50px;
+}
+
+/* Resumen de factibilidad escogida           */
+/**********************************************/
+
+.eliminar-seleccion
+{
+    cursor: pointer;
+}
+
+.fila-reservada
+{
+    background: #6E8866 !important;
+    color:white;
+    font-weight: bold;
+    cursor: auto;
+}
+
+.table-resumen-class
+{
+    border-collapse: collapse;
+    border: 1px solid #ccc !important;
+    height: 25px;
+    font-family:FreeMono;
+    font-weight: bold;
+}
+
+.table-resumen-class td
+{
+    text-align: center;
+}
+
+.table-resumen-class th
+{
+    background: #1C94C4;
+    color:white;
+    height: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*Resumen de creacion de racks*/
+#table-content-resumen-nuevo-rack th td{
+    text-align: center;
+}
+
+.fila-all
+{
+    background: #0B4C5F;
+    color:white;
+}
+
+.fila-midle
+{
+    background: #088A29;
+    color: white;
+}
+
+.fila-factible
+{
+    border: 1px solid #ccc !important;
+    font-size:9px;
+    text-align:center;
+    cursor: pointer;
+    background: #E3D11E;
+    font-weight: bold;
+}
+
+.fila-factible:hover{
+    background: #908307;
+    color:white;
+    font-weight: bold;
+}
+
+.identificador-factible{
+    color:#E3D11E;
+}
+
+.identificador-lleno{
+    color:red;
+}
+
+.factible{
+    height:10px;
+    background: #E3D11E;
+}
+.factible:hover{
+    background-color: #908307;
+    cursor:pointer;
+}
+
+.identificador-all
+{
+    color:#0B4C5F;
+}
+
+.identificador-midle
+{
+    color:#088A29;
+}

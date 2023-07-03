@@ -1,0 +1,28 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/DatosInstalacion/index.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/DatosInstalacion/funciones.js') }}"></script>
+
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Clientes con Recursos de Red Asignados</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td colspan="5"><div id='filtro'></div></td>
+        </tr>
+        <tr>
+            <td colspan="5"><div id="grid"></div></td>
+        </tr>
+    </table> 
+    <input type="hidden" name="escogido_modulo_id" id="escogido_modulo_id" value="0" />
+</div>
+{% endblock contenido_central %}

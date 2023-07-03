@@ -1,0 +1,19 @@
+retiroequipo:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:RetiroEquipo:index" }
+
+retiroequipo_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:RetiroEquipo:grid"}
+
+retiroequipo_ajaxGetElementosSolicitud:
+    pattern:  /ajaxGetElementosSolicitud
+    defaults: { _controller: "planificacionBundle:RetiroEquipo:ajaxGetElementosSolicitud" }
+
+retiroequipo_ajaxBuscarCpeNaf:
+    pattern:  /ajaxBuscarCpeNaf
+    defaults: { _controller: "planificacionBundle:RetiroEquipo:ajaxBuscarCpeNaf"}
+
+retiroequipo_ajaxFinalizarRetiroEquipo:
+    pattern:  /ajaxFinalizarRetiroEquipo
+    defaults: { _controller: "planificacionBundle:RetiroEquipo:ajaxFinalizarRetiroEquipo" }

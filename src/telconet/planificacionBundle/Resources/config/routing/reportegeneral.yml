@@ -1,0 +1,11 @@
+reportegeneral:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:ReporteGeneral:index" }
+
+reportegeneral_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:ReporteGeneral:grid"}
+
+reportegeneral_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "planificacionBundle:ReporteGeneral:exportarConsulta" }

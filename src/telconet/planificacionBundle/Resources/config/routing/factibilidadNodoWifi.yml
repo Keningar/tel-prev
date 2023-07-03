@@ -1,0 +1,35 @@
+nodoWifi:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:NodoWifi:index" } 
+
+factibilidadNodoWifi_consulta:
+    pattern: /ajaxConsultaPlanificacionNodo
+    defaults: { _controller: "planificacionBundle:NodoWifi:ajaxConsultaPlanificacionNodo"}
+
+factibilidadNodoWifi_rechazo:
+    pattern: /rechazarSolicitudNodoWifi
+    defaults: { _controller: "planificacionBundle:NodoWifi:rechazarSolicitudNodoWifi"}
+
+factibilidadNodoWifi_relacionElemento:
+    pattern: /relacionElemento
+    defaults: { _controller: "planificacionBundle:NodoWifi:relacionElemento"}
+
+factibilidadNodoWifi_fechaFactibilidad:
+    pattern: /fechaFactibilidadNuevoElemento
+    defaults: { _controller: "planificacionBundle:NodoWifi:fechaFactibilidadNuevoElemento"}
+    
+factibilidadNodoWifi_getElementosSinRelacion:
+    pattern: /getElementosSinRelacion
+    defaults: { _controller: "planificacionBundle:NodoWifi:getElementosSinRelacion"}
+
+factibilidadNodoWifi_getElementos:
+    pattern: /getElementos
+    defaults: { _controller: "planificacionBundle:NodoWifi:getElementos"}
+    
+factibilidadNodoWifi_getElementosFactibles:
+    pattern: /getElementosFactibles
+    defaults: { _controller: "planificacionBundle:NodoWifi:getElementosFactibles"}
+    
+factibilidadNodoWifi_asignarFactibilidad:
+    pattern: /asignarFactibilidad
+    defaults: { _controller: "planificacionBundle:NodoWifi:asignarFactibilidad"}

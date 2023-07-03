@@ -1,0 +1,75 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+     <script type="text/javascript">
+    var url_comboJurisdicciones = '{{path("factibilidadinstalacion_comboJurisdicciones")}}';
+	var urlMotivosRechazo               = '{{ path("factibilidadinstalacion_getMotivosRechazo") }}';
+	var urlRechazar                     = '{{ path("factibilidadinstalacion_rechazar_ajax") }}';
+	var urlComboCajas                   = '{{ path("factibilidadinstalacion_ajaxComboCajas") }}';
+	var urlFactibilidadTramo            = '{{ path("factibilidadinstalacion_ajaxGuardaFactibilidadTramo") }}';
+	var urlComboElementosByPadre        = '{{ path("factibilidadinstalacion_ajaxComboElementosByPadre") }}';
+	var urlInfoCaja                     = '{{ path("factibilidadinstalacion_ajaxGetInfoCaja") }}';
+	var urlDisponibilidadElemento       = '{{ path("factibilidadinstalacion_ajaxDisponibilidadElemento") }}';
+	var urlNuevaFactibilidad            = '{{ path("factibilidadinstalacion_ajaxGuardaNuevaFactibilidad") }}';
+    var getHilosDisponibles             = '{{ path('asignarred_ajaxGetHilosDisponibles')}}';
+    var ajaxGetPuertoSwitchByHilo       = '{{ path('asignarred_ajaxGetPuertoSwitchByHilo')}}';
+    
+    var urlContactoClienteByTipoRolAjax = '{{ path("contacto_contactoClienteByTipoRolAjax") }}';
+    var urlGetClaseTipoMedio            = '{{ path("admiclasetipomedio_getEncontrados") }}';
+    var urlInterfacesByElemento         = '{{ path("infointerfaceelemento_getInterfacesByElementoTipoInterface") }}';
+    var urlCalculaMetraje               = '{{ path("factibilidadinstalacion_calculaMetrajeEntrePuntoElemento") }}';
+    var prefijoEmpresa                  = '{{ app.session.get("prefijoEmpresa") }}';
+    var getElementoSwitch               = '{{path('elementoswitch_getEncontradosSwitch')}}';
+    var getInterfacesPorElemento        = '{{path('servicio_getInterfacesPorElemento')}}';
+    var urlObtenerTipoMedio             = '{{path('factibilidadinstalacion_obtenerTipoMedio')}}';
+    var urlCambiarTipoMedio             = '{{path('factibilidadinstalacion_cambiarTipoMedio')}}';
+    var url_ajaxGrid                            = '{{path('factibilidadinstalacion_ajaxGrid')}}';
+    var url_getMotivosRechazo                   = '{{path('factibilidadinstalacion_getMotivosRechazo')}}';
+    var url_rechazar                            = '{{path('factibilidadinstalacion_rechazar_ajax')}}';
+    var url_getEmpresasExternas                 = '{{path('asignarresponsable_getEmpresasExternas')}}';
+    var url_ajaxComboTiposMedio                 = '{{path('factibilidadinstalacion_ajaxComboTiposMedio')}}';
+    var url_ajaxComboElementos                  = '{{path('factibilidadinstalacion_ajaxComboElementos')}}';
+    var url_ajaxComboElementosByPadre           = '{{path('factibilidadinstalacion_ajaxComboElementosByPadre')}}';
+    var url_ajaxDisponibilidadElemento          = '{{path('factibilidadinstalacion_ajaxDisponibilidadElemento')}}';       
+    var url_ajaxGuardaFactibilidad              = '{{path('factibilidadinstalacion_ajaxGuardaFactibilidad')}}';
+    var url_ajaxGuardaFactibilidadRadioTn       = '{{path('factibilidadinstalacion_ajaxGuardaFactibilidadRadioTn')}}';
+    var url_getTareasByProcesoAndTareaSinModem  = '{{path('factibilidadinstalacion_getTareasByProcesoAndTareaSinModem')}}';
+    var url_gridMaterialesByTarea               = '{{path('factibilidadinstalacion_gridMaterialesByTarea')}}';
+    var url_guardaFactMateriales                = '{{path('factibilidadinstalacion_guardaFactMateriales_ajax')}}';
+    var urlInfoSwitch                           = '{{ path("factibilidadinstalacion_ajaxGetInfoPadreRadio") }}';
+    var getInterfaceElemento                        = '{{path('enlace_elemento_buscarInterfacesPorElemento')}}';
+    var url_ajaxGuardaFactibilidadAnticipadaRadioTn = '{{path('factibilidadinstalacion_ajaxGuardaFactibilidadAnticipadaRadioTn')}}';
+    //HOUSING 
+    var urlGetInformacionEspacioHousing         = '{{path("factibilidad_housing_ajaxGetInformacionEspacioHousing")}}';
+    var urlGetServidoresAlquiler                = '{{ path("factibilidad_hosting_ajaxGetInformacionServidoresAlquiler")}}';
+    var urlAnularRechazarSol                    = '{{ path('infoservicio_ajaxAnularRechazarServiciosSolucion') }}';
+    
+    </script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/funcionesRadio.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/index-factibilidad.js?10') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/funciones-factibilidad.js?26') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img alt="logo" src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Respuesta de Factibilidad</h1>
+</div>
+<div class="body_content k-content">
+
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_central %}

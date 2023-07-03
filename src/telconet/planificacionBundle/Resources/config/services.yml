@@ -1,0 +1,53 @@
+parameters:
+#    planificacion.example.class: telconet\planificacionBundle\Example
+
+services:
+   planificacion.Materiales:
+       class: telconet\planificacionBundle\Service\MaterialesService
+       arguments: [@service_container]
+
+   planificacion.RecursosDeRed:
+       class: telconet\planificacionBundle\Service\RecursosDeRedService
+       calls:
+           - [setDependencies, [@tecnico.MigracionHuawei,@tecnico.InfoServicioTecnico,@schema.Util,@service_container]]
+       arguments: ['@service_container']
+
+   planificacion.Coordinar:
+       class: telconet\planificacionBundle\Service\CoordinarService
+       calls:
+            - [setDependencies, [@service_container]]
+
+   planificacion.RetiroEquipo:
+      class: telconet\planificacionBundle\Service\RetiroEquipoService
+      calls:
+          - [setDependencies, [@service_container]]
+
+   planificacion.FactibilidadCambioUltimaMilla:
+        class: telconet\planificacionBundle\Service\FactibilidadCambioUltimaMillaService
+        calls:
+            - [setDependencies, [@service_container]]
+  
+   planificacion.Planificar:
+        class: telconet\planificacionBundle\Service\PlanificarService
+        calls: 
+            - [setDependencies, [@service_container]]
+            
+   planificacion.GestionPyl:
+        class: telconet\planificacionBundle\Service\GestionPylService
+        calls: 
+            - [setDependencies, [@service_container]]
+
+   planificacion.Coordinar2:
+       class: telconet\planificacionBundle\Service\Coordinar2Service
+       calls:
+            - [setDependencies, [@service_container]]
+
+   planificacion.CoordinarInspeccion:
+       class: telconet\planificacionBundle\Service\CoordinarInspeccionService
+       calls:
+            - [setDependencies, [@service_container]]
+
+   planificacion.GestionarInspeccion:
+       class: telconet\planificacionBundle\Service\GestionarInspeccionService
+       calls:
+            - [setDependencies, [@service_container]]

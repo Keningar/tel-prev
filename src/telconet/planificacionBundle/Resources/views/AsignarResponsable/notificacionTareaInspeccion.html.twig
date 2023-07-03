@@ -1,0 +1,194 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>Reporte</title>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table style="text-align: center; width: 100%; padding: 5px; border-collapse: collapse; border-spacing: 0;">
+      <tr>
+        <td style="border:1px solid #6699CC;background-color:#E5F2FF;text-align: center;">
+            <img alt=""  src="http://images.telconet.net/others/telcos/logo.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table style="width: 100%; padding: 5px; border-collapse: collapse; border-spacing: 0;">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para notificarles que se asign&oacute; la siguiente Tarea # {{ numeroTarea }}:
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+
+				{% if punto %}
+            <tr>
+            <td>
+              <strong>Cliente:</strong>
+            </td>
+            <td>
+            {% if punto.personaEmpresaRolId %}
+              {% if punto.personaEmpresaRolId.personaId %}
+                {% if punto.personaEmpresaRolId.personaId.razonSocial %}
+                  {{ punto.personaEmpresaRolId.personaId.razonSocial }} 
+                {% else %}
+                {{ punto.personaEmpresaRolId.personaId.nombres ~ ' ' ~ punto.personaEmpresaRolId.personaId.apellidos }} 
+                {% endif %}	
+              {% endif %}
+            {% endif %}
+            </td>
+            </tr>
+				{% elseif infoNoCliente %}
+            <tr>
+            <td>
+              <strong>Conctacto:</strong>
+            </td>
+            <td>
+            {% if infoNoCliente.strNombresContacto %}
+              {{ infoNoCliente.strNombresContacto }} 
+            {% endif %}
+            </td>
+            </tr>
+				{% endif %}	
+
+
+
+          {% if punto %}
+            <tr>
+            <td>
+              <strong>Login:</strong>
+            </td>
+            <td>
+            {% if punto.login %}
+              {{ punto.login }} 
+            {% endif %}	
+            </td>
+            </tr>
+          {% endif %}
+
+          {% if punto %}
+            {% if punto.puntoCoberturaId %}
+              <tr>
+              <td>
+                <strong>Jurisdicci&oacute;n:</strong>
+              </td>
+              <td>
+              {% if punto.puntoCoberturaId.nombreJurisdiccion %}
+                {{ punto.puntoCoberturaId.nombreJurisdiccion }}
+              {% endif %}
+              </td>
+              </tr>
+            {% endif %}
+				{% endif %}	
+
+		      	<tr>
+              <td>
+                <strong>Direcci&oacute;n:</strong>
+              </td>
+              <td>
+
+					{% if punto %}
+						{% if punto.direccion %}
+							{{ punto.direccion }} 
+						{% endif %}	
+					{% elseif infoNoCliente %}
+						{% if infoNoCliente.strDireccion %}
+							{{ infoNoCliente.strDireccion }} 
+						{% endif %}
+					{% endif %}	
+
+			      </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha de creaci&oacute;n:</strong>
+              </td>
+              <td>{{detalleSolicitudPlanif.feCreacion | date("d-M-Y") }} | {{ detalleSolicitudPlanif.feCreacion | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario de creaci&oacute;n:</strong>
+              </td>
+              <td>{{ detalleSolicitudPlanif.usrCreacion}}</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+			<tr>
+                <td colspan="2" style="text-align: center;">
+                <strong>Tarea: {{ tarea.nombreTarea}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha de asignaci&oacute;n:</strong>
+              </td>
+              <td>{{detalleAsignacion.feCreacion | date("d-M-Y") }} | {{ detalleAsignacion.feCreacion | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario que asigna:</strong>
+              </td>
+              <td>{{ detalleAsignacion.usrCreacion}}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Asignado:</strong>
+              </td>
+              <td>{{detalleAsignacion.asignadoNombre }}{% if(detalleAsignacion.refAsignadoNombre!="")%}-{{detalleAsignacion.refAsignadoNombre}}{%endif%}</td>
+            </tr>
+			{% if detalleAsignacionAnterior %}
+				{% if detalleAsignacionAnterior.feCreacion %}
+					<tr>
+					  <td>
+						<strong>Fecha de &uacute;ltima asignaci&oacute;n:</strong>
+					  </td>
+					  <td>{{ detalleAsignacionAnterior.feCreacion | date("d-M-Y") }} | {{ detalleAsignacionAnterior.feCreacion | date("H:i")  }}</td>
+					</tr>
+					<tr>
+					  <td>
+						<strong>&Uacute;ltimo Usuario que reasigno:</strong>
+					  </td>
+					  <td>{{ detalleAsignacionAnterior.usrCreacion}}</td>
+					</tr>
+					<tr>
+					  <td>
+						<strong>&Uacute;ltimo Asignado:</strong>
+					  </td>
+					  <td>{{detalleAsignacionAnterior.asignadoNombre }}{% if(detalleAsignacionAnterior.refAsignadoNombre!="")%}-{{detalleAsignacionAnterior.refAsignadoNombre}}{%endif%}</td>
+					</tr>
+				{% endif %}
+			{% endif %}
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+      <tr>
+          <td><strong style="font-family:  Helvetica, Arial, Verdana,sans-serif,Tahoma;">
+            Telcos + Sistema del Grupo Telconet
+          </strong></p>
+          </td>   
+      </tr>  
+    </table>
+  </body>
+</html>

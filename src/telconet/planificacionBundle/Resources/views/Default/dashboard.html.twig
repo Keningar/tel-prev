@@ -1,0 +1,39 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+	<script>
+		/*var pathOriginal = window.location.pathname;
+		if(pathOriginal == "/planificacion")
+		{
+			var pathNameProyecto = "/";
+			var pathRutaBusqueda = "planificacion/factibilidad"; 
+			window.location = pathNameProyecto + pathRutaBusqueda;
+		}*/
+	</script>
+{% endblock %} 
+
+{% block contenido_central %}        
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ menu_imagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Dashboard</h1>
+    </div>
+
+    <div class="body_content k-content">
+        <table border="0" cellspacing="3" cellpadding="3" width="84%">
+            <tr>
+                <td colspan="3" width='210'><div  id="instalacionesAprobRechaz"></div></td>
+                <td>&nbsp;</td>
+                <td><div  id="instalacionesRechazadas"></div></td>
+            </tr>
+        </table>
+    </div>
+    <div>			
+        <script>
+            var dsh_bar_instalaciones_aprob_rechazadas_mes = '{{ path('factibilidadinstalacion_ajaxInstalacionesMes') }}';
+            var dsh_pie_instalaciones_rechazadas = '{{ path('factibilidadinstalacion_ajaxInstalacionesRechazadasMes') }}';
+            var dsh_pie_instalaciones_aprobadas = '{{ path('factibilidadinstalacion_ajaxInstalacionesAprobadasMes') }}';
+        </script>
+		<script type="text/javascript" src="{{ asset('./bundles/planificacion/js/dashboard/dsh_bar_instalaciones_aprob_rechazadas_mes.js') }}"></script>		
+    </div>
+{% endblock contenido_central %}

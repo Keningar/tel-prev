@@ -1,0 +1,12 @@
+consultarfactibilidadinstalacion:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:indexConsultar" }
+    requirements:
+        _method:  GET
+
+consultarfactibilidadinstalacion_ajaxGridConsultar:
+    pattern:  /ajaxGridConsultar
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:ajaxGridConsultar"}
+    requirements:
+        _method:  POST
+        _format:  xmlhttp

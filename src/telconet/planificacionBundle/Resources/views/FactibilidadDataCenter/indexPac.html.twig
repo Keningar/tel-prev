@@ -1,0 +1,49 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/planificacion/css/housing.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.css')}}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var url_ajaxGrid                            = '{{ path('factibilidad_housing_ajaxGrid')}}';        
+        var urlRechazar                             = '{{ path("factibilidadinstalacion_rechazar_ajax") }}';
+        var prefijoEmpresa                          = '{{ app.session.get("prefijoEmpresa") }}';
+        var urlContactoClienteByTipoRolAjax         = '{{ path("contacto_contactoClienteByTipoRolAjax") }}';
+        var urlMotivosRechazo                       = '{{ path("factibilidad_pac_ajaxGetMotivosRechazoPAC") }}';
+        var urlFechaFactibilidad                    = '{{ path("factibilidad_pac_ajaxEditarFechaFactibilidadPAC") }}';
+        var urlGuardarFactibilidad                  = '{{ path("factibilidad_pac_ajaxGuardarFactibilidadPAC") }}';
+        var urlGetInformacionEspacioHousing         = '{{ path("factibilidad_housing_ajaxGetInformacionEspacioHousing")}}';
+        var arrayChecklist                          = '{{arrayChecklist|json_encode()|raw}}';
+        var arrayModelosPdus                        = '{{arrayModeloPdu|json_encode()|raw}}';
+        var url_getInformacionRacksDC               = '{{ path('elementorack_ajaxGetInformacionRacksDC')}}';
+        var urlGetUnidadesRack                      = '{{ path('factibilidad_housing_ajaxGetInformacionRack') }}';
+        var urlRechazarFactibilidadPac              = '{{ path('factibilidad_pac_ajaxRechazarFactibilidadPAC')}}';
+    </script>        
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/indexPac.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/factibilidadPac.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/funciones.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/indexServiciosDataCenter.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/funciones.js?3') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Factibilidad Eléctrica PAC</h1>
+</div>
+<div class="body_content k-content">
+
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_central %}

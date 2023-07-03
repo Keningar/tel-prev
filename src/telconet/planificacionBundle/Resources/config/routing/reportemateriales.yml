@@ -1,0 +1,11 @@
+reportemateriales:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:ReporteMateriales:index" }
+
+reportemateriales_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:ReporteMateriales:grid" }
+
+reportemateriales_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "planificacionBundle:ReporteMateriales:exportarConsulta" }

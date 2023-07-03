@@ -1,0 +1,272 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+	<title>Reporte</title>
+  </head>
+  <body>
+    <table  style="text-align: center; width: 100%; padding: 5px; border-collapse: collapse; border-spacing: 0;">
+      <tr>
+        <td style="text-align: center;border:1px solid #6699CC;background-color:#E5F2FF;">
+            <img alt=""  src="http://images.telconet.net/others/telcos/logo.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table style="width: 100%; padding: 5px; border-collapse: collapse; border-spacing: 0;">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para indicarle el Estado de la Solicitud de Inspección: 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <strong>Detalle Solicitud # {{ detalleSolicitud.id}}</strong>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+
+				{% if infoPunto %}
+					<tr>
+					<td>
+						<strong>Cliente:</strong>
+					</td>
+					<td>
+					{% if infoPunto.personaEmpresaRolId %}
+						{% if infoPunto.personaEmpresaRolId.personaId %}
+							{% if infoPunto.personaEmpresaRolId.personaId.razonSocial %}
+								{{ infoPunto.personaEmpresaRolId.personaId.razonSocial }} 
+							{% else %}
+							{{ infoPunto.personaEmpresaRolId.personaId.nombres ~ ' ' ~ infoPunto.personaEmpresaRolId.personaId.apellidos }} 
+							{% endif %}	
+						{% endif %}
+					{% endif %}
+					</td>
+					</tr>
+				{% elseif infoNoCliente %}
+					<tr>
+					<td>
+						<strong>Contacto:</strong>
+					</td>
+					<td>
+					{% if infoNoCliente.strNombresContacto %}
+						{{ infoNoCliente.strNombresContacto }} 
+					{% endif %}
+					</td>
+					</tr>
+				{% endif %}	
+
+				{% if infoPunto %}
+					<tr>
+					<td>
+						<strong>Login:</strong>
+					</td>
+					<td>
+					{% if infoPunto.login %}
+						{{ infoPunto.login }} 
+					{% endif %}	
+					</td>
+					</tr>
+				{% endif %}		
+
+
+				{% if infoPunto %}
+					{% if infoPunto.puntoCoberturaId %}
+						<tr>
+						<td>
+							<strong>Jurisdicci&oacute;n:</strong>
+						</td>
+						<td>
+						{% if infoPunto.puntoCoberturaId.nombreJurisdiccion %}
+							{{ infoPunto.puntoCoberturaId.nombreJurisdiccion }}
+						{% endif %}
+						</td>
+						</tr>
+					{% endif %}	
+				{% endif %}	
+
+			<tr>
+              <td>
+                <strong>Direcci&oacute;n:</strong>
+              </td>
+              <td>
+					{% if infoPunto %}
+						{% if infoPunto.direccion %}
+							{{ infoPunto.direccion }} 
+						{% endif %}
+					{% elseif infoNoCliente %}
+						{% if infoNoCliente.strDireccion %}
+							{{ infoNoCliente.strDireccion }} 
+						{% endif %}
+					{% endif %}	
+			  </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha de creacion:</strong>
+              </td>
+              <td>{{detalleSolicitudPlanif.feCreacion | date("d-M-Y") }} | {{ detalleSolicitudPlanif.feCreacion | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario de creacion:</strong>
+              </td>
+              <td>{{ detalleSolicitudPlanif.usrCreacion}}</td>
+            </tr>
+			{#% if detalleSolicitud.feRechazo %#}
+				
+			{#% endif %#}
+			{% if detalleSolicitudPlanifHist %}
+				{% if detalleSolicitudPlanifHist.feCreacion %}
+					{% if detalleSolicitudPlanifHist.estado == 'Rechazada'%}
+						<tr>
+						  <td>
+							<strong>Fecha de rechazo :</strong>
+						  </td>
+						  <td>{{detalleSolicitudPlanifHist.feCreacion | date("d-M-Y") }} {{ detalleSolicitudPlanifHist.feCreacion | date("H:i")  }} | {{detalleSolicitudPlanifHist.feFinPlan | date("d-M-Y") }} {{ detalleSolicitudPlanifHist.feFinPlan | date("H:i")  }}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Usuario que rechaza:</strong>
+						  </td>
+						  <td>{{ detalleSolicitudPlanifHist.usrCreacion}}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Motivo de rechazo:</strong>
+						  </td>
+						  <td>{{ motivo.nombreMotivo }}</td>
+						</tr>
+					{% endif %}
+					{% if detalleSolicitudPlanifHist.estado == 'Planificada'%}
+						<tr>
+						  <td>
+							<strong>Fecha de Planificaci&oacute;n :</strong>
+						  </td>
+						  <td>{{detalleSolicitudPlanifHist.feIniPlan | date("d-M-Y") }} {{ detalleSolicitudPlanifHist.feIniPlan | date("H:i")  }} | {{detalleSolicitudPlanifHist.feFinPlan | date("d-M-Y") }} {{ detalleSolicitudPlanifHist.feFinPlan | date("H:i")  }}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Usuario que Planific&oacute;:</strong>
+						  </td>
+						  <td>{{ detalleSolicitudPlanifHist.usrCreacion}}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Cuadrilla Asignada:</strong>
+						  </td>
+						  <td>{{ admiCuadrilla is null ? 'Sin cuadrilla' : admiCuadrilla.nombreCuadrilla }}</td>
+						</tr>
+					{% endif %}
+					{% if detalleSolicitudPlanifHist.estado == 'Replanificada'%}
+						<tr>
+						  <td>
+							<strong>Fecha de Replanificaci&oacute;n :</strong>
+						  </td>
+						  <td>{{detalleSolicitudPlanifHist.feIniPlan | date("d-M-Y") }} {{ detalleSolicitudPlanifHist.feIniPlan | date("H:i")  }} | {{detalleSolicitudPlanifHist.feFinPlan | date("d-M-Y") }} {{ detalleSolicitudPlanifHist.feFinPlan | date("H:i")  }}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Usuario que Replanific&oacute;:</strong>
+						  </td>
+						  <td>{{ detalleSolicitudPlanifHist.usrCreacion}}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Motivo de  Replanificaci&oacute;n:</strong>
+						  </td>
+						  <td>{{ motivo.nombreMotivo }}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Cuadrilla Asignada:</strong>
+						  </td>
+						  <td>{{ admiCuadrilla is null ? 'Sin cuadrilla' : admiCuadrilla.nombreCuadrilla }}</td>
+						</tr>
+					{% endif %}
+					{% if detalleSolicitudPlanifHist.estado == 'Detenido'%}
+						<tr>
+						  <td>
+							<strong>Fecha de paralización (Detenido):</strong>
+						  </td>
+						  <td>{{detalleSolicitudPlanifHist.feCreacion | date("d-M-Y") }} | {{ detalleSolicitudPlanifHist.feCreacion | date("H:i")  }}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Usuario que detuvo (Detenido):</strong>
+						  </td>
+						  <td>{{ detalleSolicitudPlanifHist.usrCreacion}}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Motivo de  paralización (Detenido):</strong>
+						  </td>
+						  <td>{{ motivo.nombreMotivo }}</td>
+						</tr>
+					{% endif %}
+					{% if detalleSolicitudPlanifHist.estado == 'Anulada'%}
+						<tr>
+						  <td>
+							<strong>Fecha de anulación (Anulado):</strong>
+						  </td>
+						  <td>{{detalleSolicitudPlanifHist.feCreacion | date("d-M-Y") }} | {{ detalleSolicitudPlanifHist.feCreacion | date("H:i")  }}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Usuario que anulo (Anulado):</strong>
+						  </td>
+						  <td>{{ detalleSolicitudPlanifHist.usrCreacion}}</td>
+						</tr>
+						<tr>
+						  <td>
+							<strong>Motivo de  anulación (Anulado):</strong>
+						  </td>
+						  <td>{{ motivo.nombreMotivo }}</td>
+						</tr>
+					{% endif %}
+				{% endif %}
+			{% endif %}
+			{% if detalleSolicitudPlanifHist.observacion %}
+				<tr>
+				  <td>
+					<strong>Observacion:</strong>
+				  </td>
+				  <td>{{ detalleSolicitudPlanifHist.observacion }}</td>
+				</tr>
+			{% endif %}
+			<tr>
+              <td>
+                <strong>Estado:</strong>
+              </td>
+              <td><strong><label style="color:red">{{ detalleSolicitudPlanif.estado }}</label></strong></td>
+            </tr>
+            <tr>
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+      <tr>
+          <td><strong style="font-family:  Helvetica, Arial, Verdana,sans-serif,Tahoma;">Telcos + Sistema del Grupo Telconet</strong></p>
+          </td>   
+      </tr>  
+    </table>
+  </body>
+</html>

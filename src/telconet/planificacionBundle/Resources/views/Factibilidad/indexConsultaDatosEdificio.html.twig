@@ -1,0 +1,37 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var url_ajaxGrid                    = "{{path('consultadatosedificio_ajaxGrid')}}";
+        var url_procesaNuevaFactibilidad    = "{{path('consultadatosedificio_ajaxProcesaNuevaFactibilidad')}}";
+        var url_getEncontradosNodoCliente   = "{{path('elementoNodoCliente_getEncontrados')}}";
+        var url_modelo                      = "{{path('elementoNodoCliente_modelosPorTipoElemento') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/index-DatosEdificio.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/funciones-DatosEdificios.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/seleccionEdificios.js?3') }}"></script>
+    
+{% endblock %}
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" alt="Consulta Datos Edificio" class="imagen-titulo-content">
+    <h1>Consultar Datos de Edificio </h1>
+</div>
+<div class="dashboard_content k-content">
+
+    <table  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_central %}

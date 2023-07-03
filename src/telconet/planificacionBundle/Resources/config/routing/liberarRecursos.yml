@@ -1,0 +1,19 @@
+liberarRecursos:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:LiberarRecursos:index"}
+    requirements:
+        _method:  GET
+
+liberarRecursos_ajaxGrid:
+    pattern:  /ajaxGrid
+    defaults: { _controller: "planificacionBundle:LiberarRecursos:ajaxGrid"}
+    requirements:
+        _method:  POST
+        _format:  xmlhttp
+
+liberarRecursos_delete_ajax:
+    pattern:  /delete
+    defaults: { _controller: "planificacionBundle:LiberarRecursos:deleteAjax" }
+    requirements: 
+        _method:  post 
+        _format:  xmlhttp

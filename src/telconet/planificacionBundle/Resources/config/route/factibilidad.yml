@@ -1,0 +1,51 @@
+planificacionBundle_FactibilidadInstalacion:
+  resource: "@planificacionBundle/Resources/config/routing/factibilidadinstalacion.yml"
+  prefix: /factibilidad_instalacion
+
+planificacionBundle_FactibilidadInstalacionRadioCobre:
+    pattern:  /factibilidad_instalacion_rc/
+    defaults: { _controller: "planificacionBundle:FactibilidadInstalacion:index",ultimaMilla: "RadioCobre"}
+    requirements:
+        _method:  GET
+
+planificacionBundle_FactibilidadNodoWifi:
+  resource: "@planificacionBundle/Resources/config/routing/factibilidadNodoWifi.yml"
+  prefix: /Factibilidad_Nodo_Wifi
+  
+planificacionBundle_ConsultarFactibilidadInstalacion:
+  resource: "@planificacionBundle/Resources/config/routing/consultarfactibilidadinstalacion.yml"
+  prefix: /consultar-factibilidad-instalacion
+  
+planificacionBundle_LiberarRecursos:
+  resource: "@planificacionBundle/Resources/config/routing/liberarRecursos.yml"
+  prefix: /liberacion-recursos
+
+#Factibilidad Cambio de Ultima Milla
+planificacionBundle_FactibilidadCambioUltimaMilla:
+  resource: "@planificacionBundle/Resources/config/routing/factibilidadCambioUltimaMilla.yml"
+  prefix: /factibilidad_cambio_um
+  
+planificacionBundle_FactibilidadNodoCliente:
+  resource: "@planificacionBundle/Resources/config/routing/factibilidadNodoCliente.yml"
+  prefix: /factibilidad_nodo_cliente
+  
+planificacionBundle_FactibilidadHousing:
+  resource: "@planificacionBundle/Resources/config/routing/factibilidadHousing.yml"
+  prefix: /factibilidad_housing
+  
+planificacionBundle_FactibilidadHosting:
+  resource: "@planificacionBundle/Resources/config/routing/factibilidadHosting.yml"
+  prefix: /factibilidad_hosting  
+  
+planificacionBundle_FactibilidadPac:
+  resource: "@planificacionBundle/Resources/config/routing/factibilidadPac.yml"
+  prefix: /factibilidad_pac 
+
+planificacionBundle_FactibilidadInstalacionFttx:
+  resource: "@planificacionBundle/Resources/config/routing/factibilidadinstalacionfttx.yml"
+  prefix: /factibilidad_instalacion_fttx
+
+planificacionBundle_ConsultaDatosEdificio:
+  resource: "@planificacionBundle/Resources/config/routing/consultadatosedificio.yml"
+  prefix: /consulta_datos_edificio
+

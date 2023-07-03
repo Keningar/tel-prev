@@ -1,0 +1,6 @@
+planificacionBundle_IngresarMateriales:
+  resource: "@planificacionBundle/Resources/config/routing/ingresarmateriales.yml"
+  prefix: /ingresar_materiales
+planificacionBundle_datosInstalacion:
+  resource: "@planificacionBundle/Resources/config/routing/datosinstalacion.yml"
+  prefix: /datos_instalacion

@@ -1,0 +1,120 @@
+DECLARE
+    Lv_NombreParametro VARCHAR2(20) := 'PLANTILLA STANDARD';
+    Lv_NombreParametro2 VARCHAR2(30) := 'PLANTILLA STANDARD QUITO';
+    Lv_FormatoFecha    VARCHAR2(30) := 'yyyy-mm-dd hh24:mi:ss';
+    Lv_FechaCab        VARCHAR2(10) := '2018-01-31';
+    Lv_Usuario         VARCHAR2(10) := 'epin';
+    Lv_Ip              VARCHAR2(10) := '127.0.0.1';
+    Lv_Estado          VARCHAR2(10) := 'Activo';
+    Lv_Empresa         VARCHAR2(10) := '18';
+    Lv_FormatoCorto    VARCHAR2(30) := 'yyyy-mm-dd';
+BEGIN
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_CAB.NEXTVAL,Lv_Empresa,Lv_NombreParametro,'S',to_date(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, Lv_Estado, '54');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro), TO_DATE('2008-01-01 09:00:00', Lv_FormatoFecha), TO_DATE('2008-01-01 10:30:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro), TO_DATE('2008-01-01 10:30:00', Lv_FormatoFecha), TO_DATE('2008-01-01 12:00:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro), TO_DATE('2008-01-01 12:00:00', Lv_FormatoFecha), TO_DATE('2008-01-01 13:00:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'S');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro), TO_DATE('2008-01-01 13:00:00', Lv_FormatoFecha), TO_DATE('2008-01-01 14:30:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro), TO_DATE('2008-01-01 14:30:00', Lv_FormatoFecha), TO_DATE('2008-01-01 16:00:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro), TO_DATE('2008-01-01 16:00:00', Lv_FormatoFecha), TO_DATE('2008-01-01 17:30:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    --- Inserto la plantilla de Quito
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_CAB.NEXTVAL,Lv_Empresa,Lv_NombreParametro2,'S',to_date(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, Lv_Estado, '55');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro2), TO_DATE('2008-01-01 08:00:00', Lv_FormatoFecha), TO_DATE('2008-01-01 09:30:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro2), TO_DATE('2008-01-01 11:00:00', Lv_FormatoFecha), TO_DATE('2008-01-01 12:30:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro2), TO_DATE('2008-01-01 14:00:00', Lv_FormatoFecha), TO_DATE('2008-01-01 15:30:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    INSERT INTO DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_DET
+    VALUES (DB_COMERCIAL.SEQ_ADMI_PLANTILLA_HORARIO_DET.NEXTVAL,
+            (SELECT ID_PLANTILLA_HORARIO
+            FROM DB_COMERCIAL.ADMI_PLANTILLA_HORARIO_CAB
+            WHERE EMPRESA_COD = Lv_Empresa AND
+                  DESCRIPCION = Lv_NombreParametro2), TO_DATE('2008-01-01 17:00:00', Lv_FormatoFecha), TO_DATE('2008-01-01 18:30:00', Lv_FormatoFecha),
+                  TO_DATE(Lv_FechaCab, Lv_FormatoCorto), Lv_Usuario, Lv_Ip, 'N');
+
+    ----------Inserto los parametros necesarios
+    INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+    VALUES (DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL, 'PLANIFICACION EN LINEA', 'PARAMETROS PARA LA PLANIFICACION EN LINEA', 'COMERCIAL', NULL, Lv_Estado, Lv_Usuario, SYSDATE, Lv_Ip, NULL, NULL, NULL);
+
+    INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+    VALUES (DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+            (SELECT ID_PARAMETRO
+             FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+             WHERE NOMBRE_PARAMETRO = 'PLANIFICACION EN LINEA'), 'INTERVALOS','30', '08:00', '19:00', '15', Lv_Estado, Lv_Usuario, SYSDATE, Lv_Ip, NULL, NULL, NULL, SYSDATE + 1, NULL);
+    COMMIT;
+
+    UPDATE DB_INFRAESTRUCTURA.ADMI_JURISDICCION
+       SET CUPO = 45
+    WHERE NOMBRE_JURISDICCION = 'MEGADATOS QUITO';
+
+    UPDATE DB_INFRAESTRUCTURA.ADMI_JURISDICCION
+       SET CUPO = 40
+    WHERE NOMBRE_JURISDICCION = 'MEGADATOS GUAYAQUIL';
+
+
+    COMMIT;
+END;

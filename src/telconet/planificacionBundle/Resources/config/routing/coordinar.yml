@@ -1,0 +1,131 @@
+coordinar:
+    pattern:  /
+    defaults: { _controller: "planificacionBundle:Coordinar:index" }
+    
+coordinar_grid:
+    pattern:  /grid
+    defaults: { _controller: "planificacionBundle:Coordinar:grid"}
+    
+coordinar_getMotivosRechazo:
+    pattern:  /getMotivosRechazo
+    defaults: { _controller: planificacionBundle:Coordinar:getMotivosRechazo }
+    
+coordinar_getMotivosReplanificacion:
+    pattern:  /getMotivosReplanificacion
+    defaults: { _controller: planificacionBundle:Coordinar:getMotivosReplanificacion }
+    
+coordinar_getMotivosDetenido:
+    pattern:  /getMotivosDetenido
+    defaults: { _controller: planificacionBundle:Coordinar:getMotivosDetenido }
+    
+coordinar_getMotivosAnulacion:
+    pattern:  /getMotivosAnulacion
+    defaults: { _controller: planificacionBundle:Coordinar:getMotivosAnulacion }
+
+coordinar_getAsignadosTarea:
+    pattern:  /getAsignadosTarea
+    defaults: { _controller:  planificacionBundle:Coordinar:getAsignadosTarea}
+
+coordinar_programar_ajax:
+    pattern:  /programar
+    defaults: { _controller: "planificacionBundle:Coordinar:programarAjax" }
+
+coordinar_replanificar_ajax:
+    pattern:  /replanificar
+    defaults: { _controller: "planificacionBundle:Coordinar:replanificarAjax" }
+
+coordinar_detener_ajax:
+    pattern:  /detener
+    defaults: { _controller: "planificacionBundle:Coordinar:detenerAjax" }
+
+coordinar_anular_ajax:
+    pattern:  /anular
+    defaults: { _controller: "planificacionBundle:Coordinar:anularAjax" }
+
+coordinar_rechazar_ajax:
+    pattern:  /rechazar
+    defaults: { _controller: "planificacionBundle:Coordinar:rechazarAjax" }
+    
+coordinar_sectores_ajax:
+    pattern:  /ajaxGetSectores
+    defaults: { _controller: "planificacionBundle:Coordinar:ajaxGetSectores" }
+    
+coordinar_exportar_grid:
+    pattern:  /exportarGrid
+    defaults: { _controller: "planificacionBundle:Coordinar:exportarGrid" }
+
+coordinar_ingresarSeguimiento_ajax:
+    pattern:  /ingresarSeguimiento
+    defaults: { _controller: "planificacionBundle:Coordinar:ingresarSeguimientoAjax" }
+
+coodinar_planificarFwa_ajax:
+    pattern:  /planificarFwa
+    defaults: { _controller: "planificacionBundle:Coordinar:planificarFwaAjax" }
+    
+coordinar_verTareasClientes_ajax:
+    pattern:  /verTareasClientes
+    defaults: { _controller: "planificacionBundle:Coordinar:verTareasClientesAjax" } 
+    
+coordinar_pedidosByServicio:
+    pattern:  /pedidosByServicio
+    defaults: { _controller: "planificacionBundle:Coordinar:pedidosByServicio" }    
+
+coordinar_validadorExcedenteMaterial:
+    pattern:  /validadorExcedenteMaterial
+    defaults: { _controller: "planificacionBundle:Coordinar:validadorExcedenteMaterial" }    
+
+coordinar_getInfoSolsGestionSimultanea:
+    pattern:  /getInfoSolsGestionSimultanea
+    defaults: { _controller: "planificacionBundle:Coordinar:getInfoSolsGestionSimultanea"}
+    
+coordinar_ejecutaSolsGestionSimultanea:
+    pattern:  /ejecutaSolsGestionSimultanea
+    defaults: { _controller: "planificacionBundle:Coordinar:ejecutaSolsGestionSimultanea" }
+
+infoservicio_getVerDocumentos:
+    pattern: /verDocumentos
+    defaults: { _controller: "comercialBundle:InfoPunto:getVerDocumentos"}
+
+infoservicio_getDocumentosEncontrados:
+    pattern: /verDocumentosEncontrados
+    defaults: { _controller: "comercialBundle:InfoPunto:getDocumentosEncontrados"}
+
+infoservicio_getDescargaDocumentos:
+    pattern: /descargaDocumentos
+    defaults: { _controller: "comercialBundle:InfoPunto:getDescargaDocumentos"}    
+
+coordinar_getAsignadosSolInspeccion:
+    pattern:  /getAsignadosSolInspeccion
+    defaults: { _controller: "planificacionBundle:Coordinar:getListadoAsignadosSolInspeccion" }
+
+coordinar_getInfoSolicitudInspeccion:
+    pattern:  /getInfoSolicitudInspeccion
+    defaults: { _controller: "planificacionBundle:Coordinar:getInfoSolicitudInspeccion" }
+
+coordinar_programarInspecciones:
+    pattern:  /programarInspecciones
+    defaults: { _controller: "planificacionBundle:Coordinar:programarInspecciones" }
+
+coordinar_replanificarInspeccion:
+    pattern:  /replanificarInspeccion
+    defaults: { _controller: "planificacionBundle:Coordinar:replanificarInspeccion" }
+
+coordinar_gestionarInspeccion:
+    pattern:  /gestionarInspeccion
+    defaults: { _controller: "planificacionBundle:Coordinar:gestionarInspeccion" }
+
+coordinar_getMotivosGestionarInspeccion:
+    pattern:  /getMotivosGestionarInspeccion
+    defaults: { _controller: "planificacionBundle:Coordinar:getMotivosGestionarInspeccion" }
+
+coordinar_getHistorialAsignadosSolInspeccion:
+    pattern:  /getHistorialAsignadosSolInspeccion
+    defaults: { _controller: "planificacionBundle:Coordinar:getHistorialAsignadosSolInspeccion" }
+
+coordinar_getDocumentosSolInspeccion:
+    pattern:  /getDocumentosSolInspeccion
+    defaults: { _controller: "planificacionBundle:Coordinar:getDocumentosSolInspeccion" }
+
+coordinar_rechazarSolInspeccion:
+    pattern:  /rechazarSolInspeccion
+    defaults: { _controller: "planificacionBundle:Coordinar:rechazarSolicitudInspeccion" }

@@ -1,0 +1,46 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var url_comboJurisdicciones = '{{path("factibilidadCambioUltimaMilla_comboJurisdicciones")}}';
+        var url_ajaxGrid                            = '{{path('factibilidadCambioUltimaMilla_ajaxGrid')}}';      
+        var url_ajaxGenerarFactibilidad             = '{{path('factibilidadCambioUltimaMilla_ajaxGenerarFactibilidad')}}'; 
+        var getDatosBackbone                        = '{{path('servicio_getDatosBackbone')}}';
+        var urlComboCajas                           = '{{path("factibilidadinstalacion_ajaxComboCajas") }}';
+        var urlComboElementosByPadre                = '{{path("factibilidadinstalacion_ajaxComboElementosByPadre") }}';
+        var url_getEmpresasExternas                 = '{{path('asignarresponsable_getEmpresasExternas')}}';
+        var url_ajaxComboElementos                  = '{{path('factibilidadinstalacion_ajaxComboElementos')}}';
+        var urlInfoSwitch                           = '{{ path("factibilidadinstalacion_ajaxGetInfoPadreRadio") }}';
+        var getHilosDisponibles                     = '{{path('asignarred_ajaxGetHilosDisponibles')}}';
+        var ajaxGetInfoBackboneUM                   = '{{path('factibilidadCambioUltimaMilla_ajaxGetInfoBackboneNuevoUM')}}';
+        var urlCalculaMetraje                       = '{{path("factibilidadinstalacion_calculaMetrajeEntrePuntoElemento") }}';
+        var getElementoSwitch                       = '{{path('elementoswitch_getEncontradosSwitch')}}';
+        var getInterfacesPorElemento                = '{{path('servicio_getInterfacesPorElemento')}}';
+        var prefijoEmpresa                          = '{{app.session.get("prefijoEmpresa") }}';
+    </script>    
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/index_cambioUM.js?7') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img alt="logo" src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Factibilidad Cambio de Ultima Milla</h1>
+</div>
+<div class="body_content k-content">
+
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_central %}
