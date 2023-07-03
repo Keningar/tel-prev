@@ -1,0 +1,27 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/ReporteServActArcotel/index.js') }}"></script>
+        
+    <script>
+        var url_gridReportesArcotel = "{{ path('reporteServActArcotel_grid') }}";
+    </script>    
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Reportes Servicios Activos para la Arcotel</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_izq %}

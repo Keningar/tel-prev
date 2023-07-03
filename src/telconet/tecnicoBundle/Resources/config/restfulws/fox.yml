@@ -1,0 +1,7 @@
+rs_fox_authentication:
+  pattern:  /authentication
+  defaults: { _controller: telconet\tecnicoBundle\WebService\AuthenticationFoxWSController::procesarAction }
+  
+rs_fox_authorization:
+  pattern:  /authorization
+  defaults: { _controller: telconet\tecnicoBundle\WebService\AuthorizationFoxWSController::procesarAction }

@@ -1,0 +1,360 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+    {{ parent() }} 
+    <script>
+        var url_showDocumentosCaducadosTransporte = "{{ path('elementotransporte_cargarArchivosCaducados', { 'id': medioTransporte.id }) }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTransporte/show.js') }}"></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+    <style>
+        .formulario .label_ficha_contrato{
+            margin: 0px !important;
+            width: 220px !important;
+            text-align: right!important;
+            margin-right: 10px!important;
+            padding-top: 8px!important;
+        }
+    </style>
+        
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Medio de Transporte</h1>
+</div>
+<div class="body_content">
+        <table class="formulario" style="width: 75%" align="center">
+            <tbody>
+                <tr>
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>Empresa:</b></td>
+                    <td width="28%">{{ empresa }}</td>        
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <td width="10%"><b>Estado:</b></td>
+                    <td width="30%">{{ medioTransporte.estado }}</td>        
+                    <td width="1%"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>Modelo:</b></td>
+                    <td width="28%">{{ medioTransporte.modeloElementoId.nombreModeloElemento }}</td>        
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>A&ntilde;o:</b></td>
+                    <td width="28%">{{ detalles.ANIO }}</td>        
+                    <td width="1%"></td>
+                </tr>
+                <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            </tr>
+            <tr>
+                {% if detalles.CHASIS is defined %}
+                    {% if detalles.CHASIS  %}
+                        <td width="8%">&nbsp;</td>
+                        <td width="12%"><b>Chasis:</b></td>
+                        <td width="28%">{{ detalles.CHASIS }}</td>        
+                        <td width="1%">&nbsp;</td>
+                    {% else %}
+                        <td colspan="4">&nbsp;</td>
+                    {% endif %}
+                {% endif %}
+
+                {% if detalles.MOTOR is defined %}
+                    {% if detalles.MOTOR  %}
+                        <td width="8%">&nbsp;</td>
+                        <td width="12%"><b>Motor:</b></td>
+                        <td width="28%">{{ detalles.MOTOR }}</td>        
+                        <td width="1%">&nbsp;</td>
+                    {% else %}
+                        <td colspan="4">&nbsp;</td>
+                    {% endif %}
+                {% endif %}
+            </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>Placa:</b></td>
+                    <td width="28%">{{ medioTransporte.nombreElemento }}</td>        
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>Disco:</b></td>
+                    <td width="28%">{{ detalles.DISCO }}</td>        
+                    <td width="1%"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    {% if detalles.GPS is defined %}
+                        {% if detalles.GPS  %}
+                            <td width="8%">&nbsp;</td>
+                            <td width="12%"><b>Serie GPS:</b></td>
+                            <td width="28%">{{ detalles.GPS }}</td>        
+                            <td width="1%">&nbsp;</td>
+                        {% else %}
+                            <td colspan="4">&nbsp;</td>
+                        {% endif %}
+                    {% endif %}
+
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                   {% if detalles.IMEI is defined %}
+                        {% if detalles.IMEI  %}
+                            <td width="8%">&nbsp;</td>
+                            <td width="12%"><b>IMEI:</b></td>
+                            <td width="28%">{{ detalles.IMEI }}</td>        
+                            <td width="1%">&nbsp;</td>
+                        {% else %}
+                            <td colspan="4">&nbsp;</td>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if detalles.CHIP is defined %}
+                        {% if detalles.CHIP  %}
+                            <td width="8%">&nbsp;</td>
+                            <td width="12%"><b>CHIP:</b></td>
+                            <td width="28%">{{ detalles.CHIP }}</td>        
+                            <td width="1%">&nbsp;</td>
+                        {% else %}
+                            <td colspan="4">&nbsp;</td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="16%">&nbsp;</td>
+                    <td width="24%"><b>Tipo de Veh&iacute;culo:</b></td>
+                    <td width="58%">{% if detalles.TIPO_VEHICULO=='' %}N/A{% else %}{{ detalles.TIPO_VEHICULO }}{% endif %}</td>        
+                    <td width="2%"></td>
+
+                    <td width="16%">&nbsp;</td>
+                    <td width="24%"><b>Es Monitoreado:</b></td>
+                    <td width="58%">
+                        {% if detalles.ES_MONITORIZADO is defined %}
+                            {{ detalles.ES_MONITORIZADO }}
+                        {% else %}
+                            N
+                        {% endif %}
+                    </td>        
+                    <td width="2%"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    {% if detalles.FILIAL is defined %}
+                        {% if detalles.FILIAL  %}
+                            <td width="8%">&nbsp;</td>
+                            <td width="12%"><b>Filial:</b></td>
+                            <td width="28%">{{ detalles.FILIAL }}</td>        
+                            <td width="1%">&nbsp;</td>
+                        {% else %}
+                            <td colspan="4">&nbsp;</td>
+                        {% endif %}
+                    {% endif %}
+
+                    <td colspan="4">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    <br/><br/>
+    <div id="bloqueDinamico">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+        {% endfor %} 
+        {% if detalles.TIPO_VEHICULO == 'EMPRESA' %}
+            <div id="tituloPorTipoVehiculo" class="secHead">Ficha T&eacute;cnica</div>
+            <div id="datosFichaTecnica">
+                <table class="formulario">
+                <tbody>
+                        <tr>
+                            <td width="10%">&nbsp;</td>
+                            <td width="40%"><label class="label_ficha_contrato">Regi&oacute;n:</label></td>
+                            <td width="10%">&nbsp;</td>
+                            <td width="30%">
+                                {% if detalles.REGION=='' %}N/A{% else %}{{ detalles.REGION }}{% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="10%">&nbsp;</td>
+                            <td width="40%"><label  class="label_ficha_contrato">Plan de Mantenimiento:</label></td>
+                            <td width="10%">&nbsp;</td>
+                            <td width="30%">
+                                 {{ nombrePlanMantenimiento }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="10%">&nbsp;</td>
+                            <td width="40%"><label class="label_ficha_contrato">Umbral de Alerta(KM):</label></td>
+                            <td width="10%">&nbsp;</td>
+                            <td width="30%">
+                                {% if detalles.ALERTA_KM=='' %}N/A{% else %}{{ detalles.ALERTA_KM }}{% endif %}
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        {%elseif detalles.TIPO_VEHICULO == 'SUBCONTRATADO'%}
+            {% if contrato is not empty %}
+            <div id="tituloPorTipoVehiculo" class="secHead">Pertenece a</div>
+            <div id="datosContrato" >
+                    <table class="formulario">
+                        <tbody>
+                            <tr>
+                                <td width="10%">&nbsp;</td>
+                                <td width="40%"><label class="label_ficha_contrato">Contratista:</label></td>
+                                <td width="10%">&nbsp;</td>
+                                <td width="30%">
+                                    {% if contrato.personaEmpresaRolId.personaId.nombres != "" 
+                                        and contrato.personaEmpresaRolId.personaId.apellidos != "" %}
+                                        {{ contrato.personaEmpresaRolId.personaId.nombres }} {{ contrato.personaEmpresaRolId.personaId.apellidos }}
+                                    {% else %}
+                                        {{ contrato.personaEmpresaRolId.personaId.razonSocial }}
+                                    {% endif %}
+                                </td>
+                                <td width="10%"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%">&nbsp;</td>
+                                <td width="40%"><label class="label_ficha_contrato">Fecha de Inicio de Contrato:</label></td>
+                                <td width="10%">&nbsp;</td>
+                                <td width="30%">
+                                    {% if contrato.feAprobacion %}{{ contrato.feAprobacion | date("d M Y") }}{% endif %}
+                                </td>
+                                <td width="10%"></td>
+                            </tr>
+                            <tr>
+                                <td width="10%">&nbsp;</td>
+                                <td width="40%"><label class="label_ficha_contrato">Fecha de Fin de Contrato:</label></td>
+                                <td width="10%">&nbsp;</td>
+                                <td width="30%">
+                                    {% if contrato.feFinContrato %}{{ contrato.feFinContrato | date("d M Y") }}{% endif %}
+                                </td>
+                                <td width="10%"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+          {%endif%}     
+        {%endif%}
+        
+        
+    </div>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('elementotransporte') }}">Ver listado de Medios de Transporte</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3">
+                  <img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" />
+              </td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ medioTransporte.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ medioTransporte.feCreacion | date("d M Y") }}</td>
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ medioTransporte.feCreacion | date("H:i:s") }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        {% if is_granted('ROLE_313-2') %}
+            <li>
+                <a class="button-nuevo-registro" href="{{ path('elementotransporte_new') }}">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Nuevo Medio de Transporte
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            &nbsp;
+        </li>
+        {% if is_granted('ROLE_343-1') %}
+            <li>
+                <a class="button-nuevo-registro" href="{{ path('planmantenimiento') }}">
+                    <img src="{{ asset('public/images/catalog.png')}}" width="15" height="15" />
+                    &nbsp;Planes de Mantenimiento
+                </a>
+            </li>
+            <li>
+                &nbsp;
+            </li>
+        {% endif %}
+
+        {% if is_granted('ROLE_313-4') %}
+            <li>
+                <a class="button-editar" href="{{ path('elementotransporte_edit', { 'id': medioTransporte.id }) }}">
+                    &nbsp;Editar Medio de Transporte
+                </a>
+            </li>
+        {% endif %}
+        {% if is_granted('ROLE_313-3857') or is_granted('ROLE_313-3859') %}
+            <li>		
+                <a class="button-editar" href="{{ path('elementotransporte_newArchivoDigital', { 'id': medioTransporte.id }) }}">
+                    &nbsp;Agregar/Eliminar Archivos Digitales
+                </a>		
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script> </script>
+{% endblock javascripts_footer%}
+    

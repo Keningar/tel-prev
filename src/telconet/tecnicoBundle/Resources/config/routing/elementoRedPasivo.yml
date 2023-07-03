@@ -1,0 +1,48 @@
+elementoredpasivo:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:index" }
+
+elementoredpasivo_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:new" }
+
+elementoredpasivo_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:create" }
+    requirements: { _method: POST }
+    
+elementoredpasivo_ajaxDelete:
+    pattern:  /ajaxDelete
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:ajaxDelete" }
+    
+elementoredpasivo_ajaxGetEncontrados:
+    pattern:  /ajaxGetEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:ajaxGetEncontrados" }
+    
+elementoredpasivo_ajaxGetEncontradosPropietario:
+    pattern:  /ajaxGetEncontradosPropietario
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:ajaxGetEncontradosPropietario" }
+
+elementoredpasivo_ajaxGetHistorialElemento:
+    pattern:  /ajaxGetHistorialElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:ajaxGetHistorialElemento" }
+
+elementoredpasivo_getTipoElementoPasivo:
+    pattern:  /getTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:getTipoElementoPasivo" }
+
+elementoredpasivo_ajaxGetParroquiaCanton:
+    pattern:  /ajaxGetParroquiaCanton
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:ajaxGetParroquiaCanton" }
+
+elementoredpasivo_ajaxSave:
+    pattern:  /ajaxSave
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:ajaxSave" }
+    
+elementoredpasivo_ajaxEdit:
+    pattern:  /ajaxEdit
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:ajaxEdit" }
+    
+elementoredpasivo_ajaxCargarElementos:
+    pattern:  /ajaxCargarElementos
+    defaults: { _controller: "tecnicoBundle:InfoElementoRedPasivo:ajaxCargarElementos" }

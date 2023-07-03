@@ -1,0 +1,7 @@
+procesomasivo_asignarIpv4Publico:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:Ipv4PublicoMasivo:index" }
+
+procesomasivo_leerProcesarArchivo:
+    pattern:  /leerProcesarArchivo
+    defaults: { _controller: "tecnicoBundle:Ipv4PublicoMasivo:leerProcesarArchivo" }

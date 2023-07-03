@@ -1,0 +1,68 @@
+
+.ui-progressbar {
+    position: relative;
+    height:20px;
+    width: 400px;
+}
+
+.progress-label {
+    position: absolute;	  
+    left: 40%;
+    font-weight: bold;	  
+    font-size:10px;	  
+    color:black;
+}
+
+#content-recursos
+{
+    position: relative;
+    left:8%;
+    width: 600px;
+}
+
+.ui-widget
+{
+    background : #E9E9E9;
+}
+
+#contenetMV { float: left; width: 90%; height: 18em; border: 1px black; overflow-y: auto; }
+#contenetMV { background : #E9E9E9; padding :1%; border-right: 1px solid;border-color: #EBEBEB;}
+.contenetMV.custom-state-active { background: #eee; }
+.contenetMV li { float: left; width: 100px; padding: 0.4em; margin: 0 0.4em 0.4em 0; text-align: center; }
+.contenetMV li h5 { margin: 0 0 0.4em; cursor: move; font-size:10px;}
+.contenetMV li a { float: right; }
+.contenetMV li a.ui-icon-zoomin{ float: left; }  
+.contenetMV li a.ui-icon-pencil{ float: left; }  
+
+#trash { float: left; width: 9%; height: 7%; padding: 1%;}
+
+.content-resumen
+{
+    width:95px;
+    position:relative !important;
+    color:white;
+    font-weight:bold;
+    font-size:9px;
+    height:15px;
+}
+
+.li-mv
+{
+    width:160px !important;
+}
+
+.li-mv-nueva
+{
+    background:#BDBDBD;
+}
+
+.lbl-resumen
+{
+    font-size:10px;
+    font-weight:bold;
+}	
+
+.info-actual
+{
+    color:green;
+}

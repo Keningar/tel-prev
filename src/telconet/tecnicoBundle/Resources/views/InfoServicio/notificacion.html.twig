@@ -1,0 +1,236 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+            <img alt=""  src="http://images.telconet.net/others/telcos/logo.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para informarle el estado del Servicio: 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <strong>Datos Cliente</strong>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Cliente:</strong>
+              </td>
+              <td>
+				{% if servicio %}
+					{% if servicio.puntoId %}
+						{% if servicio.puntoId.personaEmpresaRolId %}
+							{% if servicio.puntoId.personaEmpresaRolId.personaId %}
+								{% if servicio.puntoId.personaEmpresaRolId.personaId.razonSocial %}
+									{{ servicio.puntoId.personaEmpresaRolId.personaId.razonSocial }} 
+								{% else %}
+								{{ servicio.puntoId.personaEmpresaRolId.personaId.nombres ~ ' ' ~ servicio.puntoId.personaEmpresaRolId.personaId.apellidos }} 
+								{% endif %}	
+							{% endif %}	
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Login:</strong>
+              </td>
+              <td>
+				{% if servicio %}
+					{% if servicio.puntoId %}
+						{% if servicio.puntoId.login %}
+							{{ servicio.puntoId.login }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}		
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Jurisdicci&oacute;n:</strong>
+              </td>
+              <td>
+				{% if servicio %}
+					{% if servicio.puntoId.puntoCoberturaId %}
+						{% if servicio.puntoId.puntoCoberturaId.nombreJurisdiccion %}
+							{{ servicio.puntoId.puntoCoberturaId.nombreJurisdiccion }}
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Direcci&oacute;n:</strong>
+              </td>
+              <td>
+				{% if servicio %}
+					{% if servicio.puntoId %}
+						{% if servicio.puntoId.direccion %}
+							{{ servicio.puntoId.direccion }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+			<tr>
+              <td>
+                <strong>Servicio / Producto:</strong>
+              </td>
+              <td>
+				{% if servicio %}
+					{% if servicio.productoId %}
+						{% if servicio.productoId.descripcionProducto %}
+							{{ servicio.productoId.descripcionProducto }} 
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+				{% if servicio %}
+					{% if servicio.planId %}
+						{% if servicio.planId.nombrePlan %}
+							{{ servicio.planId.nombrePlan }}
+						{% endif %}	
+					{% endif %}	
+				{% endif %}	
+			  </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha Inicio Servicio:</strong>
+              </td>
+              <td>{{ servicio.feCreacion | date("d-M-Y") }} | {{ servicio.feCreacion | date("H:i")  }}</td>
+            </tr>
+            
+	   {% if servicioHistorial %}
+            <tr>
+              <td>
+                <strong>Fecha:</strong>
+              </td>
+              <td>{{ servicioHistorial.feCreacion | date("d-M-Y") }} | {{ servicioHistorial.feCreacion | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario:</strong>
+              </td>
+              <td>{{ servicioHistorial.usrCreacion }}</td>
+            </tr>
+			{% if motivo %}
+            <tr>
+              <td>
+                <strong>Motivo de Cancelaci&oacute;n:</strong>
+              </td>
+              <td>{{ motivo.nombreMotivo }}</td>
+            </tr>
+			{% endif %}
+            {% if servicioHistorial.observacion %}
+		    <tr>
+		      <td>
+			    <strong>Observacion Historial:</strong>
+		      </td>
+		      <td>{{ servicioHistorial.observacion }}</td>
+		    </tr>
+	    {% endif %}
+            {% endif %}
+		{% if servicio.observacion %}
+		    <tr>
+		      <td>
+			    <strong>Observacion del Servicio:</strong>
+		      </td>
+		      <td>{{ servicio.observacion }}</td>
+		    </tr>
+	    {% endif %}	
+	    <tr>
+              <td>
+                <strong>Estado:</strong>
+              </td>
+              <td><strong><label style="color:red">{{ servicio.estado }}</label></strong></td>
+            </tr>
+            <tr>
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+			{% if equipo %}
+				<tr>
+				  <td colspan="2">
+					<hr />
+				  </td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: center;">
+					<strong>Datos T&eacute;cnicos</strong>
+				  </td>
+				</tr>
+				<tr>
+				  <td colspan="2">
+					<hr />
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+					<strong>Equipo:</strong>
+				  </td>
+				  <td>{{ equipo.nombreElemento }}</td>
+				</tr>
+				{% if equipo.ipElemento %}
+					<tr>
+					  <td>
+						<strong>Ip Equipo:</strong>
+					  </td>
+					  <td>{{ equipo.ipElemento }}</td>
+					</tr>
+				{% endif %}
+				{% if equipo.nombreInterfaceElemento %}	
+					<tr>
+					  <td>
+						<strong>Puerto:</strong>
+					  </td>
+					  <td>{{ equipo.nombreInterfaceElemento }}</td>
+					</tr>
+				{% endif %}
+                                {% if equipo.nombreInterfaceElementoAnterior %}	
+					<tr>
+					  <td>
+						<strong>Puerto Anterior:</strong>
+					  </td>
+					  <td>{{ equipo.nombreInterfaceElementoAnterior }}</td>
+					</tr>
+				{% endif %}
+			{% endif %}	
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+      <tr>
+          <td><strong><font size='2' face='Tahoma'>TransTelco S.A.</font></strong></p>
+          </td>   
+      </tr>  
+    </table>
+  </body>
+</html>

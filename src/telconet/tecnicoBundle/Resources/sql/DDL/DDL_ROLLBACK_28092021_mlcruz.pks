@@ -1,0 +1,18 @@
+BEGIN
+  DBMS_SCHEDULER.DROP_JOB(job_name => '"DB_INFRAESTRUCTURA"."JOB_EJECUTA_CORTEMASIVO_XLOTES"',
+                          defer    => false,
+                          force    => true);
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('ERROR AL ELIMINAR JOB_EJECUTA_CORTEMASIVO_XLOTES');
+END;
+/
+BEGIN
+  DBMS_SCHEDULER.DROP_JOB(job_name => '"DB_INFRAESTRUCTURA"."JOB_FINALIZA_CORTEMASIVO_XLOTE"',
+                          defer    => false,
+                          force    => true);
+EXCEPTION
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('ERROR AL ELIMINAR JOB_FINALIZA_CORTEMASIVO_XLOTE');
+END;
+/

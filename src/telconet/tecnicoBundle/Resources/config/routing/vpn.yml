@@ -1,0 +1,41 @@
+vpn:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:Vpn:index" }
+    
+vpn_grid:
+    pattern:  /ajax-grid
+    defaults: { _controller: "tecnicoBundle:Vpn:ajaxGrid" }
+    requirements: { _method: POST }
+vpn_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:Vpn:new" }
+    
+vpn_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:Vpn:create" }
+    requirements: { _method: POST }
+    
+vpn_import_new:
+    pattern:  /new-import
+    defaults: { _controller: "tecnicoBundle:Vpn:newImport" }
+
+vpn_import_grid:
+    pattern:  /ajax-grid-import
+    defaults: { _controller: "tecnicoBundle:Vpn:ajaxGridImport" }
+    requirements: { _method: POST }
+
+vpn_mapearVrfyVlan:
+    pattern:  /mapearVrfyVlan
+    defaults: { _controller: "tecnicoBundle:Vpn:mapearVrfyVlan" }
+    requirements: { _method: POST }
+
+vpn_import_create:
+    pattern:  /create-import
+    defaults: { _controller: "tecnicoBundle:Vpn:createImport" }
+    requirements: { _method: POST }
+
+vpn_buscar_import_grid:
+    pattern:  /ajax-grid-buscar-import
+    defaults: { _controller: "tecnicoBundle:Vpn:ajaxGridBuscarImport" }
+    requirements: { _method: POST }
+    

@@ -1,0 +1,64 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+   
+     <script>
+         var urlOltGridSolAgregarEquipo   = '{{ path('elementoolt_ajaxSolAgregarEquipoGrid') }}';
+         var strEmpresaSesion             = '{{app.session.get('prefijoEmpresa')}}';
+         var urlSolAgregarEquipo          = '{{ path('elementoolt_ajaxSolAgregarEquipo') }}';
+         var urlListadoPlanes             = '{{ path('elementoolt_listadoPlanes') }}';
+         var urlListadoOlt                = '{{ path('elementoolt_listadoOlt') }}';
+         var cantidadMaximaOlts           = '{{ cantidadMaximaOlts }}';
+    </script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoOlt/agregarSolicitudEquipo.js?3') }}"></script>
+
+   
+{% endblock %}
+
+{% block contenido_izq %}
+    
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado para generar solicitudes de Agregar Equipo Masivo</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+        
+        <tr>
+           <td><Br> <h1 id="titulo-secundario bold" style="text-align: left; margin-left: 330px ">Listado de servicios para generar solicitudes 
+                                                                                                  de Agregar Equipo</h1> <Br></td>
+        </tr>
+        
+        <tr>
+            <td><div id="gridAsignaciones"></div></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="buttons">
+                        <button type='submit'class="button-crud" onClick='OltAgregarSolEquipo();'>Generar Solicitud</button>
+                        <a class="button-crud" href="{{ path('elementoolt')}}">Regresar</a>
+                </div>
+            </td>
+        </tr>
+        
+    </table> 
+</div>
+
+{% endblock contenido_izq %}

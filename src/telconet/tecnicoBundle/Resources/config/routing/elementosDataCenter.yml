@@ -1,0 +1,35 @@
+elementosDataCenter:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:index" }
+    
+elementosDataCenter_elementoPasivo:
+    pattern:  /elementoPasivo
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:elementoPasivo" }    
+    
+elementosDataCenter_ajaxGetElementosDataCenter:
+    pattern:  /ajaxGetElementosDataCenter
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:ajaxGetElementosDataCenter" }    
+    
+elementosDataCenter_ajaxGetTiposElementosDataCenter:
+    pattern:  /ajaxGetTiposElementosDataCenter
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:ajaxGetTiposElementosDataCenter" }
+    
+elementosDataCenter_ajaxGetInformacionPorSwitch:
+    pattern:  /ajaxGetInformacionPorSwitch
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:ajaxGetInformacionPorSwitch" }   
+    
+elementosDataCenter_ajaxLiberarSwitchDataCenter:
+    pattern:  /ajaxLiberarSwitchDataCenter
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:ajaxLiberarSwitchDataCenter" }
+    
+elementosDataCenter_ajaxGuardarElementoVirtualDataCenter:
+    pattern:  /ajaxGuardarElementoVirtualDataCenter
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:ajaxGuardarElementoVirtualDataCenter" }  
+    
+elementosDataCenter_ajaxEditarElementoPasivoDataCenter:
+    pattern:  /ajaxEditarElementoPasivoDataCenter
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:ajaxEditarElementoPasivoDataCenter" } 
+    
+elementosDataCenter_ajaxGetInformacionCuartoTi:
+    pattern:  /ajaxGetInformacionCuartoTi
+    defaults: { _controller: "tecnicoBundle:ElementosDataCenter:ajaxGetInformacionCuartoTi" }    

@@ -1,0 +1,84 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+<style scoped="scoped">
+    .category-label
+    {
+        vertical-align: middle;
+        padding-right: .5em;
+    }
+    #category
+    {
+        vertical-align: middle;
+    }
+    .toolbar {
+        float: right;
+        margin-right: .8em;
+    }
+</style>
+
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var url_getMarcasElementosTipo      = '{{path('admimarcaelemento_getMarcasElementosTipo')}}';
+    var url_getModelosElementosPorMarca = '{{path('admimodeloelemento_getModelosElementosPorMarca')}}';
+    var url_getCantones                 = '{{path('admicanton_getCantones')}}';
+    var url_getJurisdicciones           = '{{path('admijurisdiccion_getJurisdicciones')}}';
+    var url_getEncontradosCassette      = '{{path('elementocassette_ajaxGetEncontradosCassette')}}';
+    var url_deleteCassette              = '{{path('elementocassette_deleteCassette')}}';
+    var url_interfaceCassette           = '{{path('infointerfaceelemento_getInterfacesElemento')}}';
+    var url_buscarElementoContenedor    = '{{path('elementosplitter_buscarElementoContenedor')}}';
+    
+</script>  
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoCassette/index.js?1') }}"></script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Cassete</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+    {% if is_granted("ROLE_321-2") %}
+<a class="button-nuevo-registro" href="{{ path('elementocassette_newCassette') }}">
+    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+    &nbsp;Nuevo CASSETTE
+</a>
+    {% endif %}
+
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+
+    </li>	
+</ul>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+<script>
+
+</script>
+{% endblock %}

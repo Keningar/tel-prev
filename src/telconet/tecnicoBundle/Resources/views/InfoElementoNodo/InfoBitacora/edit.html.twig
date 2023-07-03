@@ -1,0 +1,117 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .check-estado-nodo {
+            width: auto;
+        }
+    </style>
+{% endblock %} 
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/InfoBitacora/edit.js?2') }}"></script>
+    <script> 
+        var strUrlGetElementosBitacora= '{{ path('elementonodo_bitacora_listElementosBitacora') }}';
+     </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" alt="imagen" class="imagen-titulo-content">
+        <h1>Cierre de Bitácora Acceso Nodo</h1>
+    </div>
+    
+    {% if error %}
+        <div class="errormessage">
+            {{ mensaje }}
+        </div>
+    {% endif %}
+    
+    <div class="body_content">
+        <form
+            id='form_edit_bitacora_acceso_nodo'
+            class='formulario'
+            action="{{ path('elementonodo_updateBitacora', { 'intId': obj.id }) }}"
+            method="post"
+            {{ form_enctype(edit_form) }}
+            novalidate="novalidate"
+            onsubmit='
+                    Ext.MessageBox.wait("Cerrando Bitácora...");
+                    document.forms[0].submit();
+                    return true;
+            '>
+            <table border="0" class="box-section-content">
+                <tr>
+                    <td>&nbsp;</td>
+                        <td >{{ form_label(edit_form.tareaId) }}</td>
+                        <td >{{ form_widget(edit_form.tareaId, { 'disabled':'disabled' }) }}</td>
+                    <td >&nbsp;</td>
+                        <td>{{ form_label(edit_form.canton) }}</td>
+                        <td >{{ form_widget(edit_form.canton, { 'disabled':'disabled' }) }}</td>
+                    <td>&nbsp;</td>
+                    <td>{{ form_label(edit_form.departamento) }}</td>
+                        <td >{{ form_widget(edit_form.departamento, { 'disabled':'disabled' }) }}</td>
+                    <td >&nbsp;</td>
+                </tr>
+                <tr>
+                    {% if obj.elementoNodoNombre %}
+                        <td >&nbsp;</td>
+                        <td >{{ form_label(edit_form.elementoNodoNombre) }}</td>
+                        <td>{{ form_widget(edit_form.elementoNodoNombre, { 'disabled':'disabled' }) }}</td>
+                    {% else %}
+                        <td >&nbsp;</td>
+                        <td >{{ form_label(edit_form.elementoNodoNombre) }}</td>
+                        <td>{{ form_widget(edit_form.elementoNodoNombre, { 'value' : 'NA','disabled':'disabled' }) }}</td>
+                    {% endif %}
+                    <td>&nbsp;</td>
+                     <td>{{ form_label(edit_form.tecnicoAsignado) }}</td>
+                        <td>{{ form_widget(edit_form.tecnicoAsignado, { 'disabled':'disabled' }) }}</td>
+                    <td>&nbsp;</td>
+                         <td >{{ form_label(edit_form.codigos) }}</td>
+                        <td>{{ form_widget(edit_form.codigos) }}</td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td >&nbsp;</td>
+                    <td >{{ form_label(edit_form.elemento) }}</td>
+                    <td><div id='combo_elemento'></div></td>
+                    <td>&nbsp;</td>
+                     <td >{{ form_label(edit_form.telefono) }}</td>
+                        <td>{{ form_widget(edit_form.telefono, { 'disabled':'disabled' }) }}</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+            <table>
+                <td>&nbsp;</td>
+                    <td>{{ form_label(edit_form.observacion) }}</td>
+                    <td>{{ form_widget(edit_form.observacion) }}</td>
+                <td>&nbsp;</td>
+            </table>
+            <div class="buttons">
+                <p>
+                    <input type='submit' class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('elementonodo_listBitacora') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+            {{ form_widget(edit_form._token) }}
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() {  
+            {% if obj.elemento %}
+                var idElementoRelacionado = "{{ obj.elemento }}";
+                comboElemento.setValue(idElementoRelacionado)
+            {% else %}
+                comboElemento.setValue("NA")
+            {% endif %} 
+        });
+    </script>	
+{% endblock javascripts_footer%}

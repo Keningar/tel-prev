@@ -1,0 +1,114 @@
+--Parámetros que permiten segmentar y clasificar los tipo de elementos y modelos que intervienen en el proceso de data center
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'TIPO ELEMENTOS DE DATACENTER',
+    'TIPO ELEMENTOS DE DATACENTER',
+    'TECNICO',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'TIPO ELEMENTOS DE DATACENTER'),
+    'VIRTUAL',
+    'HYPERVIEW',
+    '0',
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10,
+	NULL,
+	NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'TIPO ELEMENTOS DE DATACENTER'),
+    'VIRTUAL',
+    'VCENTER',
+    '1',
+    'HYPERVIEW',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10,
+	NULL,
+	NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'TIPO ELEMENTOS DE DATACENTER'),
+    'VIRTUAL',
+    'CLUSTER',
+    '3',
+    'VCENTER',
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10,
+	NULL,
+	NULL
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'TIPO ELEMENTOS DE DATACENTER'),
+    'FISICO',
+    'NEXUS',
+    '0',
+    NULL,
+    NULL,
+    'Activo',
+    'arsuarez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10,
+	NULL,
+	NULL
+  );
+
+commit;
+
+/

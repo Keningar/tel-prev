@@ -1,0 +1,64 @@
+elementoposte:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:indexPoste" }
+
+elementoposte_newPoste:
+    pattern:  /newPoste
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:newPoste" }
+
+elementoposte_createPoste:
+    pattern: /createPoste
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:createPoste" }
+    requirements: { _method: POST }
+    
+elementoposte_ajaxDeletePoste:
+    pattern:  /ajaxDeletePoste
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxDeletePoste" }
+    
+elementoposte_ajaxGetEncontradosPoste:
+    pattern:  /ajaxGetEncontradosPoste
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxGetEncontradosPoste" }
+    
+elementoposte_ajaxGetEncontradosPropietario:
+    pattern:  /ajaxGetEncontradosPropietario
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxGetEncontradosPropietario" }
+
+elementoposte_ajaxGetHistorialElemento:
+    pattern:  /ajaxGetHistorialElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxGetHistorialElemento" }
+
+elementoposte_ajaxCargarElementosContenidos:
+    pattern:  /ajaxCargarElementosContenidos
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxCargarElementosContenidos" } 
+    
+elementoposte_ajaxGetCantonJurisdiccion:
+    pattern:  /ajaxGetCantonJurisdiccion
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxGetCantonJurisdiccion" }
+    
+elementoposte_getTipoElemento:
+    pattern:  /getTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:getTipoElemento" }
+
+elementoposte_ajaxGetParroquiaCanton:
+    pattern:  /ajaxGetParroquiaCanton
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxGetParroquiaCanton" }
+
+elementoposte_ajaxSavePoste:
+    pattern:  /ajaxSavePoste
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxSavePoste" }
+    
+elementoposte_ajaxSaveElementosRelacionadosPoste:
+    pattern:  /ajaxSaveElementosRelacionadosPoste
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxSaveElementosRelacionadosPoste" }
+    
+elementoposte_ajaxSaveEliminaRelacionElementoPoste:
+    pattern:  /ajaxSaveEliminaRelacionElementoPoste
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxSaveEliminaRelacionElementoPoste" }
+
+elementoposte_ajaxEditPoste:
+    pattern:  /ajaxEditPoste
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxEditPoste" }
+    
+elementoposte_ajaxCargarElementos:
+    pattern:  /ajaxCargarElementos
+    defaults: { _controller: "tecnicoBundle:InfoElementoPoste:ajaxCargarElementos" }

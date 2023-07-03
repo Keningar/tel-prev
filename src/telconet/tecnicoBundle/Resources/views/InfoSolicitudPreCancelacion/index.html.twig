@@ -1,0 +1,263 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    {% if objPuntoCliente.strPrefijoEmpresa == 'MD' %}
+		<link href="{{ asset('./bundles/tecnico/css/SolicitudPreCancelacion.css') }}" type="text/css" rel="stylesheet"/>
+	{% endif %}
+	{% if objPuntoCliente.strPrefijoEmpresa == 'EN' %}
+		<link href="{{ asset('./bundles/tecnico/css/SolicitudPreCancelacionEn.css') }}" type="text/css" rel="stylesheet"/>
+	{% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script>
+        var url_solicitud_pre_cancelacion_enviarTareaRapida         = "{{ path('solicitud_pre_cancelacion_enviarTareaRapida') }}";
+    </script>
+    <script src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoSolicitudPreCancelacion/index.js?1') }}"></script>
+    <script>
+         var objEquipos = {{ objEquipos|json_encode|raw }};
+            
+            var objCliente = {{ objCliente|json_encode|raw }};
+            
+            var objPuntoCliente = {{ objPuntoCliente|json_encode|raw }};
+
+            var objServiciosPunto = {{ objServiciosPunto|json_encode|raw }};
+
+            var objPuntosFacturacion = {{ objPuntosFacturacion|json_encode|raw }};
+
+            var objValoresFacturar = {{ objValoresFacturar|json_encode|raw }};
+
+            var objEstadoEquiposCancelacion = {{ objEstadoEquiposCancelacion|json_encode|raw }};
+            
+            console.log(objEquipos);
+            console.log(objCliente);
+            console.log(objPuntoCliente);
+            console.log(objServiciosPunto);
+            console.log(objPuntosFacturacion);
+            console.log(objEstadoEquiposCancelacion);
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div  style="float: center; overflow: auto;">
+        <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            <h8>Solicitud de Precancelación</h8>
+        </div>
+    <div class="contenedor">
+        <div class="header-caja" >
+            <div class="bannerCaja" >
+                {% if objPuntoCliente.strPrefijoEmpresa == 'EN' %}
+                    <img class="bannerCancelacion" id="bannerCancelacion"  src="https://images.telconet.net/bannerEcuanetActaInternet.png"
+                      alt= "Banner de cancelacion"></img>
+                {% endif %}
+                {% if objPuntoCliente.strPrefijoEmpresa == 'MD' %}
+                    <img class="bannerCancelacion" id="bannerCancelacion"  src="https://www.netlife.ec/wp-content/uploads/2021/11/top-acta-de-cancelacion.png"
+                       alt= "Banner de cancelacion"></img>
+                {% endif %}
+            </div>
+        </div>
+        <div class="subtitulo">
+            <h5>Agradecemos tu confianza durante este tiempo junto a <br> nosotros y lamentamos que tengas que dejarnos</h5>
+            <h3 id="nombres_cliente">{% if objCliente and  objCliente.nombres %}{{objCliente.nombres}}{% endif %}{% if objCliente and objCliente.razon_social %}{{objCliente.razon_social}}{% endif %}</h3>
+        </div>
+        <div class="barraid">
+            <p>Identificacion: <label  id="id_cliente">{% if objCliente %}{{objCliente.identificacion}}{% endif %}</label></p>
+        </div>
+        <div class="tableDatos">
+            <table><tr><td>
+                        <span class="titulo">Login: </span><label  id="login_cliente">{% if objPuntoCliente %}{{objPuntoCliente.login}}{% endif %}</label>
+                    </td>
+                    <td>
+                        <span class="titulo">No. de Contrato:</span><label  id="contrato_cliente">{% if strContratoId %}{{strContratoId}}{% endif %}</label>
+                    </td>
+                    <td>
+                        <span class="titulo">Categoria: </span><label  id="categoria_cliente">{% if objPuntoCliente %}{{objPuntoCliente.tipo_negocio}}{% endif %}</label>
+                    </td>
+               </tr><tr><td colspan="3">
+                        <span class="titulo">Direccion del punto: </span><label  id="direccion_cliente">{% if objPuntoCliente %}{{objPuntoCliente.direccion}}{% endif %}</label>
+                    </td>
+               </tr><tr><td>
+                        <span class="titulo">Servicios:</span><select name="comboBoxServiciosCancelacion" id="comboBoxServiciosCancelacion">
+                        {% if objServiciosPunto %}
+                        {% for objServicio in objServiciosPunto %}
+                            <option value="{{objServicio.nombre}}">{{objServicio.nombre}}</option>
+                        {% endfor %}</select>
+                        {% endif %}
+                    </td>
+                    <td colspan="2">
+                        <span class="titulo">Valores de deuda:</span><label id="deuda_cliente">{% if objPuntosFacturacion %}{{ objPuntosFacturacion.saldoCliente|number_format(2) }}{% endif %}</label>
+                    </td>
+                </tr><tr><td colspan="3">
+                        <span class="titulo">Entrega de Equipos:</span><label id="entrega_equipos">SI</label>
+                    </td>
+                </tr></table></div>
+        <div class="barraid">
+            <p>DATOS DE EQUPOS</p>
+        </div>
+        <div class="tableDatos2">
+            <table cellspacing="0" cellpadding="0" border="0"><tr style="background:#f7f7f7;"><th>
+                        Equipo
+                    </th>
+                    <th>
+                        Estado Equipo
+                    </th>
+                    <th>
+                        Serial
+                    </th>
+                    <th>
+                        MAC
+                    </th>
+                </tr>
+                {% if objEquipos %}
+                {% for objEquipo in objEquipos %}
+					<tr><td>
+                        {{objEquipo.descripcion}}
+                    </td>
+                    <td>
+                        <select onChange="javascript:calcularValorEquipos(this);" data-descripcion="{{objEquipo.descripcion}}">
+                        {% for objEstado in objEquipo.estados %}
+                            <option value="{{objEstado}}">{{objEstado}}</option>
+                        {% endfor %}</select>
+                        </select>
+                    </td>
+                    <td>
+                       {{objEquipo.serie}}
+                    </td>
+                    <td>
+                       {{objEquipo.mac}} 
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+				</table></div>
+        <div class="foo1">
+            <p>MOTIVO DE CANCELACION: <select name="comboBoxMotivosCancelacion" id="comboBoxMotivosCancelacion">
+            {% if objMotivos %}
+                {% for objMotivo in objMotivos %}
+                    <option value="{{objMotivo.intIdMotivo}}">{{objMotivo.strDescripcion}}</option>
+                {% endfor %}
+            {% endif %}
+            </select></p>
+        </div>
+        <div class="obsr">
+            <p id="parrafoAplicaValores" name="parrafoAplicaValores">
+            Aplica cobro de valores: <span class="recuadro">
+            {% if objValoresFacturar %}
+            Fecha Vigencia: <label id="fecha_vigencia">{{objValoresFacturar.fechaActivacion}}</label> </br>
+            Equipos: <label id="valor_equipos">0.00</label> </br>
+            Instalacion: <label id="valor_instalacion">{{objValoresFacturar.totalInstalacion|number_format(2)}}</label> </br>
+            Promocion: <label id="valor_promocion">{{(objValoresFacturar.totalDctos + objValoresFacturar.totalDctoAdicional)|number_format(2)}}</label> </br>
+            Subtotal Factura: <label id="valor_subtotal_factura">{{(objValoresFacturar.totalInstalacion + objValoresFacturar.totalDctos + objValoresFacturar.totalDctoAdicional)|number_format(2)}}</label>
+            {% else %}
+            Fecha Vigencia: </br>
+            Equipos: <label id="valor_equipos">0.00</label> </br>
+            Instalacion: <label id="valor_instalacion">0.00</label> </br>
+            Promocion: <label id="valor_promocion">0.00</label> </br>
+            Subtotal Factura: <label id="valor_subtotal_factura">0.00</label>
+            {% endif %}</span></p>
+        </div>
+        <div class="obsr">
+            <p>Observaciones: </p>
+            <textarea class="form-control rounded-0" id="observacionesCancelacion" name="observacionesCancelacion" rows="1" > </textarea>
+    
+        </div><br></br>
+        <div class="firma">
+            <span>
+                <label  id="nombres_apellidos_cliente">{% if objCliente and objCliente.nombres %}{{objCliente.nombres}} {{objCliente.apellidos}}{% endif %}{% if objCliente and objCliente.razon_social %}{{objCliente.razon_social}}{% endif %}</label>
+            </span><br><span>
+                {% if objCliente %}<label  id="oficina_cliente">{{objCliente.nombre_oficina}}</label> / <label  id="fecha_actual_cliente">{{strFechaActual}}</label>{% endif %} 
+            </span>
+        </div>
+        <div class="textof">
+            {% if objPuntoCliente.strPrefijoEmpresa == 'EN' %}
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="mailpoet_cols-one"
+                        style="border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;">
+                    <tbody>
+                        <tr>
+                            <td class="mailpoet_image " align="center" valign="top" style="border-collapse:collapse">
+                                <img src="https://images.telconet.net/ecuanefooter.png" width="180px" alt=""
+                                    style="height:auto;max-width:100%;-ms-interpolation-mode:bicubic;border:0;display:block;outline:none;text-align:center;width:180px;margin-left:auto;margin-right:auto;padding-left:0;padding-right:0"></img>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="100%" border="0" cellpadding="0" cellspacing="0"
+                        style="border-collapse:collapse;background-color:#023b9e!important;bgcolor=#023b9e;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0">
+                    <tbody>
+                        <tr>
+                            <td style="border-collapse:collapse;padding-left:0;padding-right:0">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" class="mailpoet_cols-one"
+                                    style="border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0;table-layout:fixed;margin-left:auto;margin-right:auto;padding-left:0;padding-right:0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="mailpoet_text mailpoet_padded_vertical mailpoet_padded_side" valign="top"
+                                                style="border-collapse:collapse;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px;word-break:break-word;word-wrap:break-word">
+                                                <table
+                                                    style="border-collapse:collapse;border-spacing:0;mso-table-lspace:0;mso-table-rspace:0"
+                                                    width="100%" cellpadding="0">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="mailpoet_paragraph"
+                                                                style="border-collapse:collapse;mso-ansi-font-size:16px;color:#000000;font-family:Arial,&#39;Helvetica Neue&#39;,Helvetica,sans-serif;font-size:15px;line-height:24px;mso-line-height-alt:24px;word-break:break-word;word-wrap:break-word;text-align:center">
+                                                                <span style="color: #ffffff;"><strong>Call center: 7201200 |
+                                                                    www.ecuanet.ec</strong></span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            {% endif %}
+            {% if objPuntoCliente.strPrefijoEmpresa == 'MD' %}
+                <p>PUEDES REVISAR NUESTROS CANALES DE PAGO EN <a href="https://www.netlife.ec/">www.netlife.ec</a></p>
+            {% endif %}
+        </div>
+    <div class="modal-footer">
+            {% if objCliente %}<button type="button" class="btn btn-success btn-sm" onClick="javascript:enviarSolicitud();" >Aceptar</button>{% endif %}
+    </div>      
+    </div>
+</div>  
+
+<div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mensaje del Sistema</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>                                       
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+{% endblock contenido_der %}

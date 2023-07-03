@@ -1,0 +1,9 @@
+reporteServActArcotel:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:ReporteServActArcotel:index" }
+
+reporteServActArcotel_grid:
+    pattern:  /grid
+    defaults: { _controller: "tecnicoBundle:ReporteServActArcotel:grid"}
+    
+ 

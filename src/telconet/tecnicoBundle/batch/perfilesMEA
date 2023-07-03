@@ -1,0 +1,3331 @@
+Conectandose a la base Infraestructura...
+
+hostname:dbnaf.telconet.net
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+hostname:dbnaf.telconet.net
+Conexion exitosa...
+
+MIGRACION PERFILES MEA
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+numero:bloqueado
+nombre:bloqueado
+descripcion:bloqueado
+idElemento:2232
+idModelo:542
+perfil:bloqueado
+descripcion:bloqueado
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:bloqueado
+nombre:bloqueado
+descripcion:bloqueado
+idElemento:2232
+idModelo:542
+perfil:bloqueado
+descripcion:bloqueado
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d100u70
+nombre:d100u70
+descripcion:d100u70
+down:100
+up:70
+idElemento:2232
+idModelo:542
+perfil:d100u70
+descripcion:d100u70
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d100u70
+nombre:d100u70
+descripcion:d100u70
+down:100
+up:70
+idElemento:2232
+idModelo:542
+perfil:d100u70
+descripcion:d100u70
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d10208u1024
+nombre:d10208u1024
+descripcion:d10208u1024
+down:10208
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d10208u1024
+descripcion:d10208u1024
+tabla:INFO_DETALLE_ELEMENTO, id:249416
+tabla:INFO_DETALLE_CARACTERISTICA, id:313171
+tabla:INFO_DETALLE_CARACTERISTICA, id:313172
+----
+----
+numero:d10208u1024
+nombre:d10208u1024
+descripcion:d10208u1024
+down:10208
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d10208u1024
+descripcion:d10208u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d10208u2464
+nombre:d10208u2464
+descripcion:d10208u2464
+down:10208
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d10208u2464
+descripcion:d10208u2464
+tabla:INFO_DETALLE_ELEMENTO, id:249417
+tabla:INFO_DETALLE_CARACTERISTICA, id:313173
+tabla:INFO_DETALLE_CARACTERISTICA, id:313174
+----
+----
+numero:d10208u2464
+nombre:d10208u2464
+descripcion:d10208u2464
+down:10208
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d10208u2464
+descripcion:d10208u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d10240u10240
+nombre:d10240u10240
+descripcion:d10240u10240
+down:10240
+up:10240
+idElemento:2232
+idModelo:542
+perfil:d10240u10240
+descripcion:d10240u10240
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d10240u10240
+nombre:d10240u10240
+descripcion:d10240u10240
+down:10240
+up:10240
+idElemento:2232
+idModelo:542
+perfil:d10240u10240
+descripcion:d10240u10240
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d10240u5120
+nombre:d10240u5120
+descripcion:d10240u5120
+down:10240
+up:5120
+idElemento:2232
+idModelo:542
+perfil:d10240u5120
+descripcion:d10240u5120
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d10240u5120
+nombre:d10240u5120
+descripcion:d10240u5120
+down:10240
+up:5120
+idElemento:2232
+idModelo:542
+perfil:d10240u5120
+descripcion:d10240u5120
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d10240u5136
+nombre:d10240u5136
+descripcion:d10240u5136
+down:10240
+up:5136
+idElemento:2232
+idModelo:542
+perfil:d10240u5136
+descripcion:d10240u5136
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d10240u5136
+nombre:d10240u5136
+descripcion:d10240u5136
+down:10240
+up:5136
+idElemento:2232
+idModelo:542
+perfil:d10240u5136
+descripcion:d10240u5136
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1024u1024
+nombre:d1024u1024
+descripcion:d1024u1024
+down:1024
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d1024u1024
+descripcion:d1024u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1024u1024
+nombre:d1024u1024
+descripcion:d1024u1024
+down:1024
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d1024u1024
+descripcion:d1024u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1024u256
+nombre:d1024u256
+descripcion:d1024u256
+down:1024
+up:256
+idElemento:2232
+idModelo:542
+perfil:d1024u256
+descripcion:d1024u256
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1024u256
+nombre:d1024u256
+descripcion:d1024u256
+down:1024
+up:256
+idElemento:2232
+idModelo:542
+perfil:d1024u256
+descripcion:d1024u256
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1024u512
+nombre:d1024u512
+descripcion:d1024u512
+down:1024
+up:512
+idElemento:2232
+idModelo:542
+perfil:d1024u512
+descripcion:d1024u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1024u512
+nombre:d1024u512
+descripcion:d1024u512
+down:1024
+up:512
+idElemento:2232
+idModelo:542
+perfil:d1024u512
+descripcion:d1024u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d10816u1024
+nombre:d10816u1024
+descripcion:d10816u1024
+down:10816
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d10816u1024
+descripcion:d10816u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d10816u1024
+nombre:d10816u1024
+descripcion:d10816u1024
+down:10816
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d10816u1024
+descripcion:d10816u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d10816u2464
+nombre:d10816u2464
+descripcion:d10816u2464
+down:10816
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d10816u2464
+descripcion:d10816u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+numero:d10816u2464
+nombre:d10816u2464
+descripcion:d10816u2464
+down:10816
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d10816u2464
+descripcion:d10816u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d11232u5632
+nombre:d11232u5632
+descripcion:d11232u5632
+down:11232
+up:5632
+idElemento:2232
+idModelo:542
+perfil:d11232u5632
+descripcion:d11232u5632
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d11232u5632
+nombre:d11232u5632
+descripcion:d11232u5632
+down:11232
+up:5632
+idElemento:2232
+idModelo:542
+perfil:d11232u5632
+descripcion:d11232u5632
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1216u1216
+nombre:d1216u1216
+descripcion:d1216u1216
+down:1216
+up:1216
+idElemento:2232
+idModelo:542
+perfil:d1216u1216
+descripcion:d1216u1216
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1216u1216
+nombre:d1216u1216
+descripcion:d1216u1216
+down:1216
+up:1216
+idElemento:2232
+idModelo:542
+perfil:d1216u1216
+descripcion:d1216u1216
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1216u608
+nombre:d1216u608
+descripcion:d1216u608
+down:1216
+up:608
+idElemento:2232
+idModelo:542
+perfil:d1216u608
+descripcion:d1216u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1216u608
+nombre:d1216u608
+descripcion:d1216u608
+down:1216
+up:608
+idElemento:2232
+idModelo:542
+perfil:d1216u608
+descripcion:d1216u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d12288u1024
+nombre:d12288u1024
+descripcion:d12288u1024
+down:12288
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d12288u1024
+descripcion:d12288u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d12288u1024
+nombre:d12288u1024
+descripcion:d12288u1024
+down:12288
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d12288u1024
+descripcion:d12288u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d12288u2464
+nombre:d12288u2464
+descripcion:d12288u2464
+down:12288
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d12288u2464
+descripcion:d12288u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d12288u2464
+nombre:d12288u2464
+descripcion:d12288u2464
+down:12288
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d12288u2464
+descripcion:d12288u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1248u1024
+nombre:d1248u1024
+descripcion:d1248u1024
+down:1248
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d1248u1024
+descripcion:d1248u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1248u1024
+nombre:d1248u1024
+descripcion:d1248u1024
+down:1248
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d1248u1024
+descripcion:d1248u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1248u1248
+nombre:d1248u1248
+descripcion:d1248u1248
+down:1248
+up:1248
+idElemento:2232
+idModelo:542
+perfil:d1248u1248
+descripcion:d1248u1248
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1248u1248
+nombre:d1248u1248
+descripcion:d1248u1248
+down:1248
+up:1248
+idElemento:2232
+idModelo:542
+perfil:d1248u1248
+descripcion:d1248u1248
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1248u512
+nombre:d1248u512
+descripcion:d1248u512
+down:1248
+up:512
+idElemento:2232
+idModelo:542
+perfil:d1248u512
+descripcion:d1248u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+numero:d1248u512
+nombre:d1248u512
+descripcion:d1248u512
+down:1248
+up:512
+idElemento:2232
+idModelo:542
+perfil:d1248u512
+descripcion:d1248u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1248u608
+nombre:d1248u608
+descripcion:d1248u608
+down:1248
+up:608
+idElemento:2232
+idModelo:542
+perfil:d1248u608
+descripcion:d1248u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1248u608
+nombre:d1248u608
+descripcion:d1248u608
+down:1248
+up:608
+idElemento:2232
+idModelo:542
+perfil:d1248u608
+descripcion:d1248u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d128u64
+nombre:d128u64
+descripcion:d128u64
+down:128
+up:64
+idElemento:2232
+idModelo:542
+perfil:d128u64
+descripcion:d128u64
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d128u64
+nombre:d128u64
+descripcion:d128u64
+down:128
+up:64
+idElemento:2232
+idModelo:542
+perfil:d128u64
+descripcion:d128u64
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d13792u13792
+nombre:d13792u13792
+descripcion:d13792u13792
+down:13792
+up:13792
+idElemento:2232
+idModelo:542
+perfil:d13792u13792
+descripcion:d13792u13792
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d13792u13792
+nombre:d13792u13792
+descripcion:d13792u13792
+down:13792
+up:13792
+idElemento:2232
+idModelo:542
+perfil:d13792u13792
+descripcion:d13792u13792
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d14304u7168
+nombre:d14304u7168
+descripcion:d14304u7168
+down:14304
+up:7168
+idElemento:2232
+idModelo:542
+perfil:d14304u7168
+descripcion:d14304u7168
+tabla:INFO_DETALLE_ELEMENTO, id:249418
+tabla:INFO_DETALLE_CARACTERISTICA, id:313175
+tabla:INFO_DETALLE_CARACTERISTICA, id:313176
+----
+----
+numero:d14304u7168
+nombre:d14304u7168
+descripcion:d14304u7168
+down:14304
+up:7168
+idElemento:2232
+idModelo:542
+perfil:d14304u7168
+descripcion:d14304u7168
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d14400u1024
+nombre:d14400u1024
+descripcion:d14400u1024
+down:14400
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d14400u1024
+descripcion:d14400u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d14400u1024
+nombre:d14400u1024
+descripcion:d14400u1024
+down:14400
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d14400u1024
+descripcion:d14400u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d14400u2464
+nombre:d14400u2464
+descripcion:d14400u2464
+down:14400
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d14400u2464
+descripcion:d14400u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d14400u2464
+nombre:d14400u2464
+descripcion:d14400u2464
+down:14400
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d14400u2464
+descripcion:d14400u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1440u736
+nombre:d1440u736
+descripcion:d1440u736
+down:1440
+up:736
+idElemento:2232
+idModelo:542
+perfil:d1440u736
+descripcion:d1440u736
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1440u736
+nombre:d1440u736
+descripcion:d1440u736
+down:1440
+up:736
+idElemento:2232
+idModelo:542
+perfil:d1440u736
+descripcion:d1440u736
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d14752u1024
+nombre:d14752u1024
+descripcion:d14752u1024
+down:14752
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d14752u1024
+descripcion:d14752u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d14752u1024
+nombre:d14752u1024
+descripcion:d14752u1024
+down:14752
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d14752u1024
+descripcion:d14752u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d14784u1024
+nombre:d14784u1024
+descripcion:d14784u1024
+down:14784
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d14784u1024
+descripcion:d14784u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d14784u1024
+nombre:d14784u1024
+descripcion:d14784u1024
+down:14784
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d14784u1024
+descripcion:d14784u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d150u150
+nombre:d150u150
+descripcion:d150u150
+down:150
+up:150
+idElemento:2232
+idModelo:542
+perfil:d150u150
+descripcion:d150u150
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d150u150
+nombre:d150u150
+descripcion:d150u150
+down:150
+up:150
+idElemento:2232
+idModelo:542
+perfil:d150u150
+descripcion:d150u150
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d15328u15328
+nombre:d15328u15328
+descripcion:d15328u15328
+down:15328
+up:15328
+idElemento:2232
+idModelo:542
+perfil:d15328u15328
+descripcion:d15328u15328
+tabla:INFO_DETALLE_ELEMENTO, id:249419
+tabla:INFO_DETALLE_CARACTERISTICA, id:313177
+tabla:INFO_DETALLE_CARACTERISTICA, id:313178
+----
+----
+numero:d15328u15328
+nombre:d15328u15328
+descripcion:d15328u15328
+down:15328
+up:15328
+idElemento:2232
+idModelo:542
+perfil:d15328u15328
+descripcion:d15328u15328
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d15328u7680
+nombre:d15328u7680
+descripcion:d15328u7680
+down:15328
+up:7680
+idElemento:2232
+idModelo:542
+perfil:d15328u7680
+descripcion:d15328u7680
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d15328u7680
+nombre:d15328u7680
+descripcion:d15328u7680
+down:15328
+up:7680
+idElemento:2232
+idModelo:542
+perfil:d15328u7680
+descripcion:d15328u7680
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1536u1024
+nombre:d1536u1024
+descripcion:d1536u1024
+down:1536
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d1536u1024
+descripcion:d1536u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1536u1024
+nombre:d1536u1024
+descripcion:d1536u1024
+down:1536
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d1536u1024
+descripcion:d1536u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1536u768
+nombre:d1536u768
+descripcion:d1536u768
+down:1536
+up:768
+idElemento:2232
+idModelo:542
+perfil:d1536u768
+descripcion:d1536u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1536u768
+nombre:d1536u768
+descripcion:d1536u768
+down:1536
+up:768
+idElemento:2232
+idModelo:542
+perfil:d1536u768
+descripcion:d1536u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d160u160
+nombre:d160u160
+descripcion:d160u160
+down:160
+up:160
+idElemento:2232
+idModelo:542
+perfil:d160u160
+descripcion:d160u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d160u160
+nombre:d160u160
+descripcion:d160u160
+down:160
+up:160
+idElemento:2232
+idModelo:542
+perfil:d160u160
+descripcion:d160u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d160u96
+nombre:d160u96
+descripcion:d160u96
+down:160
+up:96
+idElemento:2232
+idModelo:542
+perfil:d160u96
+descripcion:d160u96
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d160u96
+nombre:d160u96
+descripcion:d160u96
+down:160
+up:96
+idElemento:2232
+idModelo:542
+perfil:d160u96
+descripcion:d160u96
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d16320u8160
+nombre:d16320u8160
+descripcion:d16320u8160
+down:16320
+up:8160
+idElemento:2232
+idModelo:542
+perfil:d16320u8160
+descripcion:d16320u8160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+numero:d16320u8160
+nombre:d16320u8160
+descripcion:d16320u8160
+down:16320
+up:8160
+idElemento:2232
+idModelo:542
+perfil:d16320u8160
+descripcion:d16320u8160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d16800u1024
+nombre:d16800u1024
+descripcion:d16800u1024
+down:16800
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d16800u1024
+descripcion:d16800u1024
+tabla:INFO_DETALLE_ELEMENTO, id:249420
+tabla:INFO_DETALLE_CARACTERISTICA, id:313179
+tabla:INFO_DETALLE_CARACTERISTICA, id:313180
+----
+----
+numero:d16800u1024
+nombre:d16800u1024
+descripcion:d16800u1024
+down:16800
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d16800u1024
+descripcion:d16800u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d16800u2464
+nombre:d16800u2464
+descripcion:d16800u2464
+down:16800
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d16800u2464
+descripcion:d16800u2464
+tabla:INFO_DETALLE_ELEMENTO, id:249421
+tabla:INFO_DETALLE_CARACTERISTICA, id:313181
+tabla:INFO_DETALLE_CARACTERISTICA, id:313182
+----
+----
+numero:d16800u2464
+nombre:d16800u2464
+descripcion:d16800u2464
+down:16800
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d16800u2464
+descripcion:d16800u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d18368u18368
+nombre:d18368u18368
+descripcion:d18368u18368
+down:18368
+up:18368
+idElemento:2232
+idModelo:542
+perfil:d18368u18368
+descripcion:d18368u18368
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d18368u18368
+nombre:d18368u18368
+descripcion:d18368u18368
+down:18368
+up:18368
+idElemento:2232
+idModelo:542
+perfil:d18368u18368
+descripcion:d18368u18368
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d18560u2464
+nombre:d18560u2464
+descripcion:d18560u2464
+down:18560
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d18560u2464
+descripcion:d18560u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d18560u2464
+nombre:d18560u2464
+descripcion:d18560u2464
+down:18560
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d18560u2464
+descripcion:d18560u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1856u1024
+nombre:d1856u1024
+descripcion:d1856u1024
+down:1856
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d1856u1024
+descripcion:d1856u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1856u1024
+nombre:d1856u1024
+descripcion:d1856u1024
+down:1856
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d1856u1024
+descripcion:d1856u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d1856u768
+nombre:d1856u768
+descripcion:d1856u768
+down:1856
+up:768
+idElemento:2232
+idModelo:542
+perfil:d1856u768
+descripcion:d1856u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d1856u768
+nombre:d1856u768
+descripcion:d1856u768
+down:1856
+up:768
+idElemento:2232
+idModelo:542
+perfil:d1856u768
+descripcion:d1856u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d19200u1024
+nombre:d19200u1024
+descripcion:d19200u1024
+down:19200
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d19200u1024
+descripcion:d19200u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d19200u1024
+nombre:d19200u1024
+descripcion:d19200u1024
+down:19200
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d19200u1024
+descripcion:d19200u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d20480u10240
+nombre:d20480u10240
+descripcion:d20480u10240
+down:20480
+up:10240
+idElemento:2232
+idModelo:542
+perfil:d20480u10240
+descripcion:d20480u10240
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+numero:d20480u10240
+nombre:d20480u10240
+descripcion:d20480u10240
+down:20480
+up:10240
+idElemento:2232
+idModelo:542
+perfil:d20480u10240
+descripcion:d20480u10240
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d20480u20480
+nombre:d20480u20480
+descripcion:d20480u20480
+down:20480
+up:20480
+idElemento:2232
+idModelo:542
+perfil:d20480u20480
+descripcion:d20480u20480
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d20480u20480
+nombre:d20480u20480
+descripcion:d20480u20480
+down:20480
+up:20480
+idElemento:2232
+idModelo:542
+perfil:d20480u20480
+descripcion:d20480u20480
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d2048u1024
+nombre:d2048u1024
+descripcion:d2048u1024
+down:2048
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d2048u1024
+descripcion:d2048u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d2048u1024
+nombre:d2048u1024
+descripcion:d2048u1024
+down:2048
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d2048u1024
+descripcion:d2048u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d22464u11232
+nombre:d22464u11232
+descripcion:d22464u11232
+down:22464
+up:11232
+idElemento:2232
+idModelo:542
+perfil:d22464u11232
+descripcion:d22464u11232
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d22464u11232
+nombre:d22464u11232
+descripcion:d22464u11232
+down:22464
+up:11232
+idElemento:2232
+idModelo:542
+perfil:d22464u11232
+descripcion:d22464u11232
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d22464u22464
+nombre:d22464u22464
+descripcion:d22464u22464
+down:22464
+up:22464
+idElemento:2232
+idModelo:542
+perfil:d22464u22464
+descripcion:d22464u22464
+tabla:INFO_DETALLE_ELEMENTO, id:249422
+tabla:INFO_DETALLE_CARACTERISTICA, id:313183
+tabla:INFO_DETALLE_CARACTERISTICA, id:313184
+----
+----
+numero:d22464u22464
+nombre:d22464u22464
+descripcion:d22464u22464
+down:22464
+up:22464
+idElemento:2232
+idModelo:542
+perfil:d22464u22464
+descripcion:d22464u22464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d224u128
+nombre:d224u128
+descripcion:d224u128
+down:224
+up:128
+idElemento:2232
+idModelo:542
+perfil:d224u128
+descripcion:d224u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d224u128
+nombre:d224u128
+descripcion:d224u128
+down:224
+up:128
+idElemento:2232
+idModelo:542
+perfil:d224u128
+descripcion:d224u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d24480u24480
+nombre:d24480u24480
+descripcion:d24480u24480
+down:24480
+up:24480
+idElemento:2232
+idModelo:542
+perfil:d24480u24480
+descripcion:d24480u24480
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d24480u24480
+nombre:d24480u24480
+descripcion:d24480u24480
+down:24480
+up:24480
+idElemento:2232
+idModelo:542
+perfil:d24480u24480
+descripcion:d24480u24480
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d24640u2464
+nombre:d24640u2464
+descripcion:d24640u2464
+down:24640
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d24640u2464
+descripcion:d24640u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d24640u2464
+nombre:d24640u2464
+descripcion:d24640u2464
+down:24640
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d24640u2464
+descripcion:d24640u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d2464u1024
+nombre:d2464u1024
+descripcion:d2464u1024
+down:2464
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d2464u1024
+descripcion:d2464u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d2464u1024
+nombre:d2464u1024
+descripcion:d2464u1024
+down:2464
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d2464u1024
+descripcion:d2464u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d2464u2464
+nombre:d2464u2464
+descripcion:d2464u2464
+down:2464
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d2464u2464
+descripcion:d2464u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d2464u2464
+nombre:d2464u2464
+descripcion:d2464u2464
+down:2464
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d2464u2464
+descripcion:d2464u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d25120u12576
+nombre:d25120u12576
+descripcion:d25120u12576
+down:25120
+up:12576
+idElemento:2232
+idModelo:542
+perfil:d25120u12576
+descripcion:d25120u12576
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d25120u12576
+nombre:d25120u12576
+descripcion:d25120u12576
+down:25120
+up:12576
+idElemento:2232
+idModelo:542
+perfil:d25120u12576
+descripcion:d25120u12576
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d25120u25120
+nombre:d25120u25120
+descripcion:d25120u25120
+down:25120
+up:25120
+idElemento:2232
+idModelo:542
+perfil:d25120u25120
+descripcion:d25120u25120
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d25120u25120
+nombre:d25120u25120
+descripcion:d25120u25120
+down:25120
+up:25120
+idElemento:2232
+idModelo:542
+perfil:d25120u25120
+descripcion:d25120u25120
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d256u128
+nombre:d256u128
+descripcion:d256u128
+down:256
+up:128
+idElemento:2232
+idModelo:542
+perfil:d256u128
+descripcion:d256u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d256u128
+nombre:d256u128
+descripcion:d256u128
+down:256
+up:128
+idElemento:2232
+idModelo:542
+perfil:d256u128
+descripcion:d256u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d256u256
+nombre:d256u256
+descripcion:d256u256
+down:256
+up:256
+idElemento:2232
+idModelo:542
+perfil:d256u256
+descripcion:d256u256
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d256u256
+nombre:d256u256
+descripcion:d256u256
+down:256
+up:256
+idElemento:2232
+idModelo:542
+perfil:d256u256
+descripcion:d256u256
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d2944u1024
+nombre:d2944u1024
+descripcion:d2944u1024
+down:2944
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d2944u1024
+descripcion:d2944u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d2944u1024
+nombre:d2944u1024
+descripcion:d2944u1024
+down:2944
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d2944u1024
+descripcion:d2944u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d3008u2464
+nombre:d3008u2464
+descripcion:d3008u2464
+down:3008
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d3008u2464
+descripcion:d3008u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d3008u2464
+nombre:d3008u2464
+descripcion:d3008u2464
+down:3008
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d3008u2464
+descripcion:d3008u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d30624u15328
+nombre:d30624u15328
+descripcion:d30624u15328
+down:30624
+up:15328
+idElemento:2232
+idModelo:542
+perfil:d30624u15328
+descripcion:d30624u15328
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d30624u15328
+nombre:d30624u15328
+descripcion:d30624u15328
+down:30624
+up:15328
+idElemento:2232
+idModelo:542
+perfil:d30624u15328
+descripcion:d30624u15328
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d3072u1024
+nombre:d3072u1024
+descripcion:d3072u1024
+down:3072
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d3072u1024
+descripcion:d3072u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+numero:d3072u1024
+nombre:d3072u1024
+descripcion:d3072u1024
+down:3072
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d3072u1024
+descripcion:d3072u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d3072u3072
+nombre:d3072u3072
+descripcion:d3072u3072
+down:3072
+up:3072
+idElemento:2232
+idModelo:542
+perfil:d3072u3072
+descripcion:d3072u3072
+tabla:INFO_DETALLE_ELEMENTO, id:249423
+tabla:INFO_DETALLE_CARACTERISTICA, id:313185
+tabla:INFO_DETALLE_CARACTERISTICA, id:313186
+----
+----
+numero:d3072u3072
+nombre:d3072u3072
+descripcion:d3072u3072
+down:3072
+up:3072
+idElemento:2232
+idModelo:542
+perfil:d3072u3072
+descripcion:d3072u3072
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d320u160
+nombre:d320u160
+descripcion:d320u160
+down:320
+up:160
+idElemento:2232
+idModelo:542
+perfil:d320u160
+descripcion:d320u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d320u160
+nombre:d320u160
+descripcion:d320u160
+down:320
+up:160
+idElemento:2232
+idModelo:542
+perfil:d320u160
+descripcion:d320u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d320u320
+nombre:d320u320
+descripcion:d320u320
+down:320
+up:320
+idElemento:2232
+idModelo:542
+perfil:d320u320
+descripcion:d320u320
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d320u320
+nombre:d320u320
+descripcion:d320u320
+down:320
+up:320
+idElemento:2232
+idModelo:542
+perfil:d320u320
+descripcion:d320u320
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d352u160
+nombre:d352u160
+descripcion:d352u160
+down:352
+up:160
+idElemento:2232
+idModelo:542
+perfil:d352u160
+descripcion:d352u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d352u160
+nombre:d352u160
+descripcion:d352u160
+down:352
+up:160
+idElemento:2232
+idModelo:542
+perfil:d352u160
+descripcion:d352u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d3712u1024
+nombre:d3712u1024
+descripcion:d3712u1024
+down:3712
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d3712u1024
+descripcion:d3712u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d3712u1024
+nombre:d3712u1024
+descripcion:d3712u1024
+down:3712
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d3712u1024
+descripcion:d3712u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d3712u1824
+nombre:d3712u1824
+descripcion:d3712u1824
+down:3712
+up:1824
+idElemento:2232
+idModelo:542
+perfil:d3712u1824
+descripcion:d3712u1824
+tabla:INFO_DETALLE_ELEMENTO, id:249424
+tabla:INFO_DETALLE_CARACTERISTICA, id:313187
+tabla:INFO_DETALLE_CARACTERISTICA, id:313188
+----
+----
+numero:d3712u1824
+nombre:d3712u1824
+descripcion:d3712u1824
+down:3712
+up:1824
+idElemento:2232
+idModelo:542
+perfil:d3712u1824
+descripcion:d3712u1824
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d3712u1856
+nombre:d3712u1856
+descripcion:d3712u1856
+down:3712
+up:1856
+idElemento:2232
+idModelo:542
+perfil:d3712u1856
+descripcion:d3712u1856
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d3712u1856
+nombre:d3712u1856
+descripcion:d3712u1856
+down:3712
+up:1856
+idElemento:2232
+idModelo:542
+perfil:d3712u1856
+descripcion:d3712u1856
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d3712u2464
+nombre:d3712u2464
+descripcion:d3712u2464
+down:3712
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d3712u2464
+descripcion:d3712u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+numero:d3712u2464
+nombre:d3712u2464
+descripcion:d3712u2464
+down:3712
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d3712u2464
+descripcion:d3712u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d4096u1024
+nombre:d4096u1024
+descripcion:d4096u1024
+down:4096
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d4096u1024
+descripcion:d4096u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d4096u1024
+nombre:d4096u1024
+descripcion:d4096u1024
+down:4096
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d4096u1024
+descripcion:d4096u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d448u448
+nombre:d448u448
+descripcion:d448u448
+down:448
+up:448
+idElemento:2232
+idModelo:542
+perfil:d448u448
+descripcion:d448u448
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d448u448
+nombre:d448u448
+descripcion:d448u448
+down:448
+up:448
+idElemento:2232
+idModelo:542
+perfil:d448u448
+descripcion:d448u448
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d4608u2304
+nombre:d4608u2304
+descripcion:d4608u2304
+down:4608
+up:2304
+idElemento:2232
+idModelo:542
+perfil:d4608u2304
+descripcion:d4608u2304
+tabla:INFO_DETALLE_ELEMENTO, id:249425
+tabla:INFO_DETALLE_CARACTERISTICA, id:313189
+tabla:INFO_DETALLE_CARACTERISTICA, id:313190
+----
+----
+numero:d4608u2304
+nombre:d4608u2304
+descripcion:d4608u2304
+down:4608
+up:2304
+idElemento:2232
+idModelo:542
+perfil:d4608u2304
+descripcion:d4608u2304
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d4608u4608
+nombre:d4608u4608
+descripcion:d4608u4608
+down:4608
+up:4608
+idElemento:2232
+idModelo:542
+perfil:d4608u4608
+descripcion:d4608u4608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d4608u4608
+nombre:d4608u4608
+descripcion:d4608u4608
+down:4608
+up:4608
+idElemento:2232
+idModelo:542
+perfil:d4608u4608
+descripcion:d4608u4608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d4928u1024
+nombre:d4928u1024
+descripcion:d4928u1024
+down:4928
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d4928u1024
+descripcion:d4928u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d4928u1024
+nombre:d4928u1024
+descripcion:d4928u1024
+down:4928
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d4928u1024
+descripcion:d4928u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d4928u2464
+nombre:d4928u2464
+descripcion:d4928u2464
+down:4928
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d4928u2464
+descripcion:d4928u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d4928u2464
+nombre:d4928u2464
+descripcion:d4928u2464
+down:4928
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d4928u2464
+descripcion:d4928u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d50016u30016
+nombre:d50016u30016
+descripcion:d50016u30016
+down:50016
+up:30016
+idElemento:2232
+idModelo:542
+perfil:d50016u30016
+descripcion:d50016u30016
+tabla:INFO_DETALLE_ELEMENTO, id:249426
+tabla:INFO_DETALLE_CARACTERISTICA, id:313191
+tabla:INFO_DETALLE_CARACTERISTICA, id:313192
+----
+----
+numero:d50016u30016
+nombre:d50016u30016
+descripcion:d50016u30016
+down:50016
+up:30016
+idElemento:2232
+idModelo:542
+perfil:d50016u30016
+descripcion:d50016u30016
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d5120u2560
+nombre:d5120u2560
+descripcion:d5120u2560
+down:5120
+up:2560
+idElemento:2232
+idModelo:542
+perfil:d5120u2560
+descripcion:d5120u2560
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d5120u2560
+nombre:d5120u2560
+descripcion:d5120u2560
+down:5120
+up:2560
+idElemento:2232
+idModelo:542
+perfil:d5120u2560
+descripcion:d5120u2560
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d5120u5120
+nombre:d5120u5120
+descripcion:d5120u5120
+down:5120
+up:5120
+idElemento:2232
+idModelo:542
+perfil:d5120u5120
+descripcion:d5120u5120
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d5120u5120
+nombre:d5120u5120
+descripcion:d5120u5120
+down:5120
+up:5120
+idElemento:2232
+idModelo:542
+perfil:d5120u5120
+descripcion:d5120u5120
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d512u128
+nombre:d512u128
+descripcion:d512u128
+down:512
+up:128
+idElemento:2232
+idModelo:542
+perfil:d512u128
+descripcion:d512u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d512u128
+nombre:d512u128
+descripcion:d512u128
+down:512
+up:128
+idElemento:2232
+idModelo:542
+perfil:d512u128
+descripcion:d512u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d512u256
+nombre:d512u256
+descripcion:d512u256
+down:512
+up:256
+idElemento:2232
+idModelo:542
+perfil:d512u256
+descripcion:d512u256
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d512u256
+nombre:d512u256
+descripcion:d512u256
+down:512
+up:256
+idElemento:2232
+idModelo:542
+perfil:d512u256
+descripcion:d512u256
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d512u512
+nombre:d512u512
+descripcion:d512u512
+down:512
+up:512
+idElemento:2232
+idModelo:542
+perfil:d512u512
+descripcion:d512u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d512u512
+nombre:d512u512
+descripcion:d512u512
+down:512
+up:512
+idElemento:2232
+idModelo:542
+perfil:d512u512
+descripcion:d512u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d5408u1024
+nombre:d5408u1024
+descripcion:d5408u1024
+down:5408
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d5408u1024
+descripcion:d5408u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d5408u1024
+nombre:d5408u1024
+descripcion:d5408u1024
+down:5408
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d5408u1024
+descripcion:d5408u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d5408u2464
+nombre:d5408u2464
+descripcion:d5408u2464
+down:5408
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d5408u2464
+descripcion:d5408u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d5408u2464
+nombre:d5408u2464
+descripcion:d5408u2464
+down:5408
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d5408u2464
+descripcion:d5408u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d608u320
+nombre:d608u320
+descripcion:d608u320
+down:608
+up:320
+idElemento:2232
+idModelo:542
+perfil:d608u320
+descripcion:d608u320
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d608u320
+nombre:d608u320
+descripcion:d608u320
+down:608
+up:320
+idElemento:2232
+idModelo:542
+perfil:d608u320
+descripcion:d608u320
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d608u608
+nombre:d608u608
+descripcion:d608u608
+down:608
+up:608
+idElemento:2232
+idModelo:542
+perfil:d608u608
+descripcion:d608u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d608u608
+nombre:d608u608
+descripcion:d608u608
+down:608
+up:608
+idElemento:2232
+idModelo:542
+perfil:d608u608
+descripcion:d608u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d6144u1024
+nombre:d6144u1024
+descripcion:d6144u1024
+down:6144
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d6144u1024
+descripcion:d6144u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+numero:d6144u1024
+nombre:d6144u1024
+descripcion:d6144u1024
+down:6144
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d6144u1024
+descripcion:d6144u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d6144u2464
+nombre:d6144u2464
+descripcion:d6144u2464
+down:6144
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d6144u2464
+descripcion:d6144u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d6144u2464
+nombre:d6144u2464
+descripcion:d6144u2464
+down:6144
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d6144u2464
+descripcion:d6144u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d6144u6144
+nombre:d6144u6144
+descripcion:d6144u6144
+down:6144
+up:6144
+idElemento:2232
+idModelo:542
+perfil:d6144u6144
+descripcion:d6144u6144
+tabla:INFO_DETALLE_ELEMENTO, id:249427
+tabla:INFO_DETALLE_CARACTERISTICA, id:313193
+tabla:INFO_DETALLE_CARACTERISTICA, id:313194
+----
+----
+numero:d6144u6144
+nombre:d6144u6144
+descripcion:d6144u6144
+down:6144
+up:6144
+idElemento:2232
+idModelo:542
+perfil:d6144u6144
+descripcion:d6144u6144
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d640u640
+nombre:d640u640
+descripcion:d640u640
+down:640
+up:640
+idElemento:2232
+idModelo:542
+perfil:d640u640
+descripcion:d640u640
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d640u640
+nombre:d640u640
+descripcion:d640u640
+down:640
+up:640
+idElemento:2232
+idModelo:542
+perfil:d640u640
+descripcion:d640u640
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d64u64
+nombre:d64u64
+descripcion:d64u64
+down:64
+up:64
+idElemento:2232
+idModelo:542
+perfil:d64u64
+descripcion:d64u64
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d64u64
+nombre:d64u64
+descripcion:d64u64
+down:64
+up:64
+idElemento:2232
+idModelo:542
+perfil:d64u64
+descripcion:d64u64
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d7200u2464
+nombre:d7200u2464
+descripcion:d7200u2464
+down:7200
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d7200u2464
+descripcion:d7200u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d7200u2464
+nombre:d7200u2464
+descripcion:d7200u2464
+down:7200
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d7200u2464
+descripcion:d7200u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d736u384
+nombre:d736u384
+descripcion:d736u384
+down:736
+up:384
+idElemento:2232
+idModelo:542
+perfil:d736u384
+descripcion:d736u384
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d736u384
+nombre:d736u384
+descripcion:d736u384
+down:736
+up:384
+idElemento:2232
+idModelo:542
+perfil:d736u384
+descripcion:d736u384
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d7392u1024
+nombre:d7392u1024
+descripcion:d7392u1024
+down:7392
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d7392u1024
+descripcion:d7392u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d7392u1024
+nombre:d7392u1024
+descripcion:d7392u1024
+down:7392
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d7392u1024
+descripcion:d7392u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d7392u2464
+nombre:d7392u2464
+descripcion:d7392u2464
+down:7392
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d7392u2464
+descripcion:d7392u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+numero:d7392u2464
+nombre:d7392u2464
+descripcion:d7392u2464
+down:7392
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d7392u2464
+descripcion:d7392u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d7680u7680
+nombre:d7680u7680
+descripcion:d7680u7680
+down:7680
+up:7680
+idElemento:2232
+idModelo:542
+perfil:d7680u7680
+descripcion:d7680u7680
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d7680u7680
+nombre:d7680u7680
+descripcion:d7680u7680
+down:7680
+up:7680
+idElemento:2232
+idModelo:542
+perfil:d7680u7680
+descripcion:d7680u7680
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d768u384
+nombre:d768u384
+descripcion:d768u384
+down:768
+up:384
+idElemento:2232
+idModelo:542
+perfil:d768u384
+descripcion:d768u384
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d768u384
+nombre:d768u384
+descripcion:d768u384
+down:768
+up:384
+idElemento:2232
+idModelo:542
+perfil:d768u384
+descripcion:d768u384
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d768u768
+nombre:d768u768
+descripcion:d768u768
+down:768
+up:768
+idElemento:2232
+idModelo:542
+perfil:d768u768
+descripcion:d768u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d768u768
+nombre:d768u768
+descripcion:d768u768
+down:768
+up:768
+idElemento:2232
+idModelo:542
+perfil:d768u768
+descripcion:d768u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d800u800
+nombre:d800u800
+descripcion:d800u800
+down:800
+up:800
+idElemento:2232
+idModelo:542
+perfil:d800u800
+descripcion:d800u800
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d800u800
+nombre:d800u800
+descripcion:d800u800
+down:800
+up:800
+idElemento:2232
+idModelo:542
+perfil:d800u800
+descripcion:d800u800
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d8160u4096
+nombre:d8160u4096
+descripcion:d8160u4096
+down:8160
+up:4096
+idElemento:2232
+idModelo:542
+perfil:d8160u4096
+descripcion:d8160u4096
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d8160u4096
+nombre:d8160u4096
+descripcion:d8160u4096
+down:8160
+up:4096
+idElemento:2232
+idModelo:542
+perfil:d8160u4096
+descripcion:d8160u4096
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d8416u1024
+nombre:d8416u1024
+descripcion:d8416u1024
+down:8416
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d8416u1024
+descripcion:d8416u1024
+tabla:INFO_DETALLE_ELEMENTO, id:249428
+tabla:INFO_DETALLE_CARACTERISTICA, id:313195
+tabla:INFO_DETALLE_CARACTERISTICA, id:313196
+----
+----
+numero:d8416u1024
+nombre:d8416u1024
+descripcion:d8416u1024
+down:8416
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d8416u1024
+descripcion:d8416u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d8608u1024
+nombre:d8608u1024
+descripcion:d8608u1024
+down:8608
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d8608u1024
+descripcion:d8608u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d8608u1024
+nombre:d8608u1024
+descripcion:d8608u1024
+down:8608
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d8608u1024
+descripcion:d8608u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d864u448
+nombre:d864u448
+descripcion:d864u448
+down:864
+up:448
+idElemento:2232
+idModelo:542
+perfil:d864u448
+descripcion:d864u448
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d864u448
+nombre:d864u448
+descripcion:d864u448
+down:864
+up:448
+idElemento:2232
+idModelo:542
+perfil:d864u448
+descripcion:d864u448
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d8672u4352
+nombre:d8672u4352
+descripcion:d8672u4352
+down:8672
+up:4352
+idElemento:2232
+idModelo:542
+perfil:d8672u4352
+descripcion:d8672u4352
+tabla:INFO_DETALLE_ELEMENTO, id:249429
+tabla:INFO_DETALLE_CARACTERISTICA, id:313197
+tabla:INFO_DETALLE_CARACTERISTICA, id:313198
+----
+----
+numero:d8672u4352
+nombre:d8672u4352
+descripcion:d8672u4352
+down:8672
+up:4352
+idElemento:2232
+idModelo:542
+perfil:d8672u4352
+descripcion:d8672u4352
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d928u928
+nombre:d928u928
+descripcion:d928u928
+down:928
+up:928
+idElemento:2232
+idModelo:542
+perfil:d928u928
+descripcion:d928u928
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d928u928
+nombre:d928u928
+descripcion:d928u928
+down:928
+up:928
+idElemento:2232
+idModelo:542
+perfil:d928u928
+descripcion:d928u928
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d9600u1024
+nombre:d9600u1024
+descripcion:d9600u1024
+down:9600
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d9600u1024
+descripcion:d9600u1024
+tabla:INFO_DETALLE_ELEMENTO, id:249430
+tabla:INFO_DETALLE_CARACTERISTICA, id:313199
+tabla:INFO_DETALLE_CARACTERISTICA, id:313200
+----
+----
+numero:d9600u1024
+nombre:d9600u1024
+descripcion:d9600u1024
+down:9600
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d9600u1024
+descripcion:d9600u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d9600u2464
+nombre:d9600u2464
+descripcion:d9600u2464
+down:9600
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d9600u2464
+descripcion:d9600u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d9600u2464
+nombre:d9600u2464
+descripcion:d9600u2464
+down:9600
+up:2464
+idElemento:2232
+idModelo:542
+perfil:d9600u2464
+descripcion:d9600u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d960u480
+nombre:d960u480
+descripcion:d960u480
+down:960
+up:480
+idElemento:2232
+idModelo:542
+perfil:d960u480
+descripcion:d960u480
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d960u480
+nombre:d960u480
+descripcion:d960u480
+down:960
+up:480
+idElemento:2232
+idModelo:542
+perfil:d960u480
+descripcion:d960u480
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d960u960
+nombre:d960u960
+descripcion:d960u960
+down:960
+up:960
+idElemento:2232
+idModelo:542
+perfil:d960u960
+descripcion:d960u960
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d960u960
+nombre:d960u960
+descripcion:d960u960
+down:960
+up:960
+idElemento:2232
+idModelo:542
+perfil:d960u960
+descripcion:d960u960
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+numero:d9856u1024
+nombre:d9856u1024
+descripcion:d9856u1024
+down:9856
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d9856u1024
+descripcion:d9856u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+numero:d9856u1024
+nombre:d9856u1024
+descripcion:d9856u1024
+down:9856
+up:1024
+idElemento:2232
+idModelo:542
+perfil:d9856u1024
+descripcion:d9856u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+{"status":"SE ACTUALIZARON LOS PERFILES","mensaje":"OK"}

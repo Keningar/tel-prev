@@ -1,0 +1,67 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/InfoBitacora/index.js?3') }}"></script>
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/z_Window.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/z_InfoPanel.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/z_IconBrowser.js?2') }}"></script>
+    <script>
+        var urlBitacoraAccesoNodo = '{{path('elementonodo_getBitacoraAccesoNodo')}}';
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content" alt="imagen">
+	<h1>Listado de Bitácora</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table>     
+</div>
+   
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+        <a class="button-nuevo-registro" href="{{ path('elementonodo_newBitacora') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" alt="imagen"/>
+            &nbsp;Nueva Bitácora
+        </a>
+    </ul>
+{% endblock contenido_der %}

@@ -1,0 +1,185 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+            .button-grid-informacionTecnica {
+                margin-left: 5px !important;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+   
+     <script>
+        var mostrarPoolsPorOlt          = '{{path('elementoolt_mostrarPoolsPorOlt')}}';
+        var actualizarPoolIpAjax        = '{{path('elementoolt_actualizarPoolIp')}}';
+        var actualizarCaractAjax        = '{{path('elementoolt_actualizarCaracteristicasHuaweiAjax')}}';
+        var urlGetTags                  = '{{ path('elementoolt_getTagsAjax') }}';
+        var urlGetTipoScope             = '{{ path('elementoolt_getTipoScopeAjax') }}';
+        var urlGetSubred                = '{{ path('elementoolt_getSubredAjax') }}';
+        var urlGetPolicy                = '{{ path('elementoolt_getPolicyAjax') }}';
+        var urlGetNumerosScope          = '{{ path('elementoolt_getNumerosScopeAjax') }}';
+        var urlCrearScope               = '{{ path('elementoolt_crearScopeAjax') }}';
+        var urlGetTipoScopeAjax         = '{{ path('elementoolt_getTipoScopeFromDetalleAjax') }}';
+        var urlActualizaIpScopes        = '{{ path('elementoolt_getActualizaIpInicioFinScopeAjax') }}';
+        var urlEliminarScope            = '{{ path('elementoolt_eliminarScopeAjax') }}';
+        var urlElementoServidor         = '{{ path('elementoolt_getElementoServidorAjax') }}';
+        var urlGetMascaraPermitidaAjax  = '{{ path('elementoolt_getMascaraPermitidaAjax') }}';
+        var urlGetRangoIpsAjax          = '{{ path('elementoolt_getRangoIpsAjax') }}';
+        var url_ReservarIps             = '{{ path('elementoolt_reserverIp')}}';
+        var url_ContarIpsOlt            = '{{ path('elementoolt_contarIpsOlt')}}';
+        var url_QuitarOperatividad      = '{{ path('elementoolt_quitarOperatividad')}}';
+        var url_ReversarOltMigrado      = '{{ path('elementoolt_reversarOltMigrado')}}';
+        var url_elementosOlt            = '{{ path('enlace_elemento_buscarElementoPorTipoElemento')}}';
+        var urlGetStoreScopesOLT        = '{{ path('elementoolt_getScopeOLTAjax')}}';
+        var urlAsignaScope              = '{{ path('elementoolt_asignarScopeAjax')}}';
+        var url_getInterfacesOlt        = '{{ path('elementoolt_getInterfacesOlt') }}';
+        var url_getInterfacesTarjeta    = '{{ path('elementoolt_getJsonInterfacesByTarjeta') }}';
+        var url_agregarPuertosTarjeta   = '{{ path('elementoolt_aumentarCapacidadTarjeta')}}';
+        var url_reducirPuertosTarjeta   = '{{ path('elementoolt_reducirCapacidadTarjeta')}}';
+        var url_agregarTarjeta          = '{{ path('elementoolt_agregarTarjeta')}}';
+        var urlActualizaCaractOLT       = '{{ path('elementoolt_actualizaCaracteristicaOLT')}}';
+        var urlTiposDetallesElemento    = '{{ path('elementoolt_tiposDetallesElemento')}}';
+        var urlDetallesElemento         = '{{ path('elementoolt_detallesElemento')}}';
+        var urlConfigurarIpManual       = '{{ path('elementoolt_configuraIpCnrTellion')}}';
+        var urlVerificaIpReservada      = '{{ path('elementoolt_verificaIpReservada')}}';
+        var strUrlIniciarMigracion      = '{{ path('elementoolt_iniciarMigracion') }}';
+        var strUrlEliminarDetalles      = '{{ path('elementoolt_eliminarDetallesPerfiles') }}';
+        var strEmpresaSesion            = '{{app.session.get('prefijoEmpresa')}}';
+        var urlOltMigraMcafee           = '{{ path('elementoolt_getOltMigracion')}}';
+        var urlGrabaMigracion           = '{{ path('elementoolt_grabaMigracionOlt')}}';
+        var strUrlGetOltsInicioCpm      = '{{ path('elementoolt_getOltsInicioCpm')}}';
+        var strUrlEjecutarCpmOlts       = '{{ path('elementoolt_ejecutarCpmOlts')}}';
+        var url_ingresoMasivo           = '{{path('elementoolt_ingresoMasivoScope')}}';
+        var urlGetTagsByTipoScope       = '{{ path('elementoolt_getTagsByTipoScope') }}';
+        var urlOltMultiplataforma           = '{{ path('elementoolt_ajaxOltMultiplataforma')}}';
+        var urlGetOltNodoMultiplataforma    = '{{ path('elementoolt_ajaxGetOltNodoMultiplataforma')}}';
+        var urlAsignarOltMultiplataforma    = '{{ path('elementoolt_ajaxAsignarOltMultiplataforma')}}';
+        var urlGetPuertosPeMultiplataforma  = '{{ path('elementoolt_ajaxGetPuertosPeMultiplataforma')}}';
+        var urlRecursosOltMultiplataforma   = '{{ path('elementoolt_ajaxRecursosOltMultiplataforma')}}';
+        var urlConfigurarOltMultiplataforma = '{{ path('elementoolt_ajaxConfigurarOltMultiplataforma')}}';
+        var urlReversarOltMultiplataforma   = '{{ path('elementoolt_ajaxReversarOltMultiplataforma')}}';
+        var urlGetDatosOltMultiplataforma   = '{{ path('elementoolt_ajaxGetDatosOltMultiplataforma')}}';
+        var urlBuscarMacEliminarIp          = '{{ path('elementoolt_ajaxBuscarMacDesconfigurarIp')}}';
+        var urlMacEliminarIp                = '{{ path('elementoolt_ajaxMacDesconfigurarIp')}}';
+        var url_getPuertoTarjetaOlt         = '{{ path('elementoolt_getPuertoTarjetaOlt') }}';
+        var idEmpresa                       = '{{idEmpresa}}';
+    </script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoOlt/index.js?79') }}"></script>
+   
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Olts</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+    {% if is_granted("ROLE_227-2") %}
+        <a class="button-nuevo-registro" href="{{ path('elementoolt_newOlt') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nuevo Olt
+        </a>
+    {% endif %}
+    
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+    {% if idEmpresa != 33 %}
+        {% if is_granted('ROLE_227-8017') %}
+            <ul class="listado_acciones_relacionadas">
+                <li>
+                    <a class="button-crud" onclick="listarOltsMultiplataforma();">OLTs Multiplataforma</a>
+                </li>
+            </ul>
+        {% endif %}
+    {% endif %}
+    {% if is_granted('ROLE_227-6957') %}
+        <ul class="listado_acciones_relacionadas">        
+            <li>
+                <a class="button-crud" onclick="listarOltsInicioCambioPlanMasivo();">Ejecuci&oacute;n de Cambio de Plan Masivo</a>
+            </li>            
+        </ul>
+    {% endif %}
+    
+    {% if is_granted('ROLE_227-3497') %}
+        <ul class="listado_acciones_relacionadas">        
+            <li>
+                <a class="button-crud" href="{{ path('elementoolt_monitoreoCambioPlanMasivo')}}">Monitoreo Cambio Plan Masivo</a>
+            </li>            
+        </ul>
+    {% endif %}
+
+    {% if idEmpresa != 33 %}
+        {% if is_granted('ROLE_227-3497') %}
+            <ul class="listado_acciones_relacionadas">        
+                <li>
+                    <a class="button-crud" href="{{ path('elementoolt_migracion')}}">Migración</a>
+                </li>            
+            </ul>
+        {% endif %}
+
+        {% if is_granted('ROLE_227-8877') %}
+            <ul class="listado_acciones_relacionadas">        
+                <li>
+                    <a class="button-crud" href="{{ path('elementoolt_migracion_alta_densidad')}}">Migración Olt Alta Densidad</a>
+                </li>            
+            </ul>
+        {% endif %}
+        
+        {% if is_granted('ROLE_227-7317') %}
+            <ul class="listado_acciones_relacionadas">        
+                <li>
+                    <a class="button-crud" href="{{ path('elementoolt_getAgregarSolicitud')}}">Solicitud de Agregar Equipo Masivo</a>
+                </li>            
+            </ul>
+        {% endif %}
+
+        {% if is_granted('ROLE_227-8377') %}
+            <ul class="listado_acciones_relacionadas">        
+                <li>
+                    <a class="button-crud" onclick="abrirModalMacDesconfigurarIp();">Desconfigurar IP CNR</a>
+                </li>            
+            </ul>
+        {% endif %}
+    {% endif %}
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        
+    </script>
+{% endblock %}

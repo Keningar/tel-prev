@@ -1,0 +1,896 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }} 
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/ext-4.1.1/resources/css/CheckHeader.css') }}" />
+    <link href="{{ asset('./bundles/planificacion/css/housing.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/tecnico/css/maquinasVirtuales.css')}}" type="text/css" rel="stylesheet" /> 
+    <link type="text/css" rel="stylesheet" href="{{ asset('./bundles/comercial/css/seguimiento.css') }}" >
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.js') }}" type="text/javascript"></script>
+    <script>
+		var prefijoEmpresa = '{{ app.session.get("prefijoEmpresa") }}';
+    </script>
+    <script>
+        $(function()
+        {
+            $("#servicios").keypress(function (e) 
+            {
+                if (e.keyCode == 13) 
+                {
+                    buscar();
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/src/ux/CheckColumn.js') }}"></script>
+    <script>
+		//KJ
+		//IP FIJA
+		var activarIpFija = '{{ path('servicio_ajaxActivarIpFija') }}';
+		var cambiarMacIpFija = '{{ path('servicio_ajaxCambiarMacIpFija') }}';
+		var cancelarIpFija = '{{ path('servicio_ajaxCancelarIpFija') }}';
+		
+        //Formulario soporte Paramount/Noggin
+        var crearFormularioL1ParamountNoggin = '{{path('servicio_crearFormularioL1ParamountNoggin')}}';
+        var getValoresLista                  = '{{path('servicio_getValoresLista')}}';
+        //Formulario soporte Ecdf
+        var crearFormulario                  = '{{path('servicio_crearFormularioSoporte')}}';
+        var getUsuarioServicio               = '{{path('servicio_getUsuarioServicio')}}';
+
+        //Formulario soporte GolTv
+        var crearFormularioL2GolTv = '{{path('servicio_crearFormularioL2GolTv')}}';
+        var getValoresProductos    = '{{path('servicio_getValoresProductos')}}';
+
+        //index
+        var getServiciosClientes='{{path('servicio_getServiciosClientes')}}';
+        var getAdminParametersDet='{{path('servicio_getAdminParametersDet')}}';
+        var getListOpcionesNubePublica='{{path('servicio_getListOpcionesNubePublica')}}';
+        var urlUpdateDataTecnicaNGF ='{{path('servicio_updateDataTecnicaNGF')}}';
+        var getNombresClientes ='{{path('servicio_getNombresClientes')}}';
+        var getPlanesPorEstado = '{{path('servicio_getPlanesPorEstado')}}';
+        var getProductosPorEstado = '{{path('servicio_getProductosPorEstado')}}';
+        var getElementosPorEmpresa = '{{path('servicio_getElementosPorEmpresa')}}';
+        var getElementosPorTipo = '{{path('servicio_getElementosPorTipo')}}';
+        var getLiderCuadrilla   = "{{ path('asignarresponsable_getLiderCuadrilla') }}";
+        var urlSetearSdwan            = "{{ path('infoservicio_definirEsquemaSdwanCambioEquipo') }}";
+        var urlGetServicioProdCaract  = "{{ path('infoservicio_getServicioProdCaract') }}";
+        var getUltimaMilla = '{{path('servicio_getUltimaMilla')}}';
+        var getElementosContenedoresPorPuerto = '{{path('servicio_getElementosContenedoresPorPuerto')}}';
+        var getElementosConectorPorElementoContenedor = '{{path('servicio_getElementosConectorPorElementoContenedor')}}';
+        var updateIndiceClienteBoton = '{{path('servicio_updateIndiceCliente')}}';
+        var getTiposElementosBackbone = '{{ path('admitipoelemento_getTiposElementosBackbone')}}';
+        var url_ajaxGridL2            = '{{path('factibilidadNodoWifi_consulta')}}';
+        var urlContactoClienteByTipoRolAjax = '{{ path("contacto_contactoClienteByTipoRolAjax") }}';
+        var url_asignarFactibilidad = '{{path('factibilidadNodoWifi_asignarFactibilidad')}}';
+        var urlAjaxCaracteristicasProductoPorServicio = '{{path('servicio_getAjaxCaracteristicasProductoPorServicio')}}';
+        var getTiposServicios = '{{path('servicio_getAjaxTiposServicios')}}';
+        var getEstadosServicios = '{{path('servicio_getAjaxEstadosServicios')}}';
+        var url_getCaracteristicasServicio  = "{{ path('infopunto_getServicioProductoCaracteristicasAjax') }}";
+        var actualizarCaracteristica        = "{{ path('infopunto_actualizarCaracteristicaAjax')}}";
+        var url_getCamarasEm                = "{{ path('infopunto_getCamarasEmAjax') }}";
+         var url_buscarDatosNaf              = "{{ path('servicio_buscarDatosNaf')}}";
+        var boolNoVisualizacionServTelco        = true;
+        {% if app.session.get('prefijoEmpresa')=="MD" and is_granted('ROLE_151-8457') %}
+            boolNoVisualizacionServTelco        = false;
+        {% endif %}
+
+        //activar puerto
+        var getInterfacesElemento = '{{path('infointerfaceelemento_getInterfacesElemento')}}';
+        var activarClienteBoton = '{{path('servicio_activarCliente')}}';
+        var getInterfacesPorElemento = '{{path('servicio_getInterfacesPorElemento')}}';
+        const crearRouterWifiExistente = '{{ path('servicio_crearRouterWifiExistente') }}';
+        
+        //cambio de puerto
+        var getPops = '{{path('servicio_getPops')}}';
+        var getDslamsPorPop = '{{path('servicio_getDslamsPorPop')}}';
+        var getPuertosPorDslam = '{{path('servicio_getPuertosPorDslam')}}';
+        var cambiarPuertoCliente = '{{path('servicio_cambiarPuertoCliente')}}';
+        var getRadios = '{{path('servicio_getRadios')}}';
+        var getElementosCambioUmProgramada = '{{path('elementoswitch_ajaxGetSwitchesCambioUmProgramada')}}';
+        var cambiarPuertoBotonGpon = '{{path('servicio_cambiarPuertoBotonGpon')}}';
+        
+        //ver logs (historial servicio)
+        var getHistorialServicio = '{{path('servicio_getHistorialServicio')}}';
+        
+        //cambiar estado al servicio
+        var cambiarEstadoCliente = '{{path('servicio_cambiarEstadoCliente')}}';
+        
+        //ver informacion tecnica
+        var getDatosTecnicos = '{{path('servicio_getDatosTecnicos')}}';
+        var getIpPublicas = '{{path('servicio_getIpPublicas')}}';
+        
+        //confirmar servicio
+        var getModelosElemento              = '{{path('servicio_ajaxGetModelosElemento')}}';
+        var getDatosCliente                 = '{{path('servicio_getDatosCliente')}}';
+        var buscarCpeNaf                    = '{{path('servicio_buscarCpeNaf')}}';
+        var buscarCpeHuaweiNaf              = '{{path('servicio_buscarCpeHuaweiNaf')}}';
+        var migrarServicio                  = '{{path('servicio_migrarServicio')}}';
+        var confirmarActivacionBoton        = '{{path('servicio_confirmarActivacion')}}';
+        var reversarSolicitudMigracionBoton = '{{path('servicio_reversarSolicitudMigracion')}}';
+        var ajaxGetElementosClientesPorPunto= '{{path('servicio_ajaxGetElementosClientesPorPunto')}}';
+        //clear channel
+
+        var buscarCSubred                   = '{{path('servicio_buscarCSubred')}}';
+        var buscarInterfaceporserie         = '{{path('servicio_buscarInterfaceporserie')}}';
+        var buscarLoginMonitoreo            = '{{path('servicio_buscarLoginMonitoreo')}}';
+        var buscarSerieEquipo               = '{{path('servicio_buscarSerieEquipo')}}';
+        //confirmar servicio NetHome
+        var getElementosNetHome           = '{{path('servicio_ajaxGetElementosNetHome')}}';
+        var confirmarServicioNetHomeBoton = '{{path('servicio_confirmarServicioNetHome')}}';
+        
+        //confirmar servicio NetFiber
+        var getElementosNetFiber          = '{{path('servicio_ajaxGetElementosNetFiber')}}';
+        
+        //cambio cpe
+        var getDatosCpe                      = '{{path('servicio_getDatosCpeTecnico')}}'; 
+        var cambiarCpeBoton                  = '{{path('servicio_cambiarCpe')}}'; 
+        var getDatosBackbone                 = '{{path('servicio_getDatosBackbone')}}';
+        var getDatosTrasladoNetlifeCam       = '{{path('servicio_getDatosTrasladoNetlifeCam')}}';
+        var getDatosTrasladoExtender         = '{{path('servicio_getDatosTrasladoExtender')}}';
+        var getDatosSincronizarExtender      = '{{path('servicio_getDatosSincronizarExtender')}}';
+        var trasladarExtenderDualBandAjax    = '{{path('servicio_trasladarExtenderDualBand')}}';
+        var sincronizarExtenderDualBandAjax  = '{{path('servicio_sincronizarExtenderDualBand')}}';
+        var trasladarNetlifeCam              = '{{path('servicio_trasladarNetlifeCam')}}';
+        var getElementosPorSolicitud         = '{{path('servicio_getElementosPorSolicitud')}}';
+        var getInterfacesPorModelo           = '{{path('servicio_getInterfacesPorModelo')}}';
+        var getInterfacesCpe                 = '{{path('servicio_ajaxGetInterfacePorCpe')}}';
+        var getDatosWifiAlquiler             = '{{path('servicio_getDatosWifiAlquiler')}}';
+        var getDataCaracteristicas           = '{{path('servicio_getDataCaracteristicas')}}';
+        
+        //SAFE VIDEO ANALYTICS CAM
+        var getInterfacesPoEstadoYElemento  = '{{path('servicio_ajaxGetInterfacesPoEstadoYElemento')}}';
+        var getResolucionCamara             = '{{path('servicio_ajaxGetResolucionCamara')}}';
+        var getResolucionAlternaCamara      = '{{path('servicio_ajaxGetResolucionAlternaCamara')}}';
+        var getCodecCamara                  = '{{path('servicio_ajaxGetCodecCamara')}}';
+        var getFpsCamara                    = '{{path('servicio_ajaxGetFpsCamara')}}';
+        var getIpsControladora              = '{{path('servicio_ajaxGetIpsControladora')}}';
+
+        //grabar parametros iniciales
+        var grabarHistorialBoton = '{{path('servicio_grabarHistorial')}}';
+        
+        //editar informacion tecnica
+        var editarInformacionTecnica = '{{path('servicio_editarInformacionTecnica')}}';
+        
+        //cambio de plan
+        var getMotivos = '{{path('servicio_getMotivos')}}';
+        var getPlanesPorEstado = '{{path('servicio_getPlanesPorEstado')}}';
+        var cambioVelocidad = '{{path('servicio_cambioVelocidad')}}';
+        var consultarEmpresaCambioPlan = '{{path('servicio_consultarEmpresaCambioPlan')}}';
+        var strUrlVerificaServiciosDualBandCambioPlan  = '{{path('servicio_verificaServiciosDualBandCambioPlan')}}';
+        var strUrlVerificaIpWanCambioPlan              = '{{path('servicio_verificaIpWanCambioPlan')}}';
+        var productoPorPlan = '{{path('servicio_productoPorPlan')}}';
+
+        //reconfigurar puerto
+        var reconfigurarPuertoBoton = '{{path('servicio_reconfigurarPuerto')}}';
+        
+        //asignar ipv4 publico
+        var asignarIpv4Publica = '{{path('servicio_asignarIpv4Publica')}}';
+        
+        //cortar cliente
+        var cortarClienteBoton = '{{path('servicio_cortarCliente')}}';                
+        
+        
+        //cortar temporal cliente
+        var cortarTemporalClienteBoton = '{{path('servicio_cortarTemporalCliente')}}';
+        var getMotivosSuspensionTemporal = '{{path('servicio_getMotivosSuspensionTemporal')}}';
+        
+        //cancelar cliente
+        var cancelarClienteBoton = '{{path('servicio_cancelarCliente')}}';
+        var ajaxCancelarServicio = "{{ path('servicio_ajaxCancelarServicio') }}";
+
+        //solicitud de cancelacion cliente
+        var solicitudCancelacionClienteBoton = '{{path('solicitud_cancelacion_enviarTareaRapida')}}';
+
+        //reconectar cliente
+        var reconectarClienteBoton = '{{path('servicio_reconectarCliente')}}';
+        
+        //ver parametros iniciales
+        var getParametrosIniciales = '{{path('servicio_getParametrosIniciales')}}';
+        var getParametrosInicialesMd = '{{path('servicio_getParametrosInicialesMd')}}';
+        
+        //scripts dslams
+        var scriptsDslam = "{{asset('../tecnico/elemento/dslam/')}}";
+        
+        //scripts olts
+        var scriptsOlt = "{{asset('../tecnico/elemento/olt/')}}";
+        
+        //ver dominios
+        var getDominios = '{{path('servicio_getDominios')}}';
+        var getDominiosCorreos = '{{path('servicio_getDominiosCorreos')}}';
+        
+        var confirmarServicioDominioBoton = '{{path('servicio_confirmarServicioDominio')}}';
+        var agregarDominioServicio = '{{path('servicio_agregarDominioServicio')}}';
+        var eliminarDominioBoton = '{{path('servicio_eliminarDominio')}}';
+        var cancelarServicioDominioBoton = '{{path('servicio_cancelarServicioDominio')}}';
+        var reconectarServicioDominioBoton = '{{path('servicio_reconectarServicioDominio')}}';
+        var cortarServicioDominioBoton = '{{path('servicio_cortarServicioDominio')}}';
+        
+        //ver correos
+        var getCorreos = '{{path('servicio_getCorreos')}}';
+        var eliminarCorreoBoton = '{{path('servicio_eliminarCorreo')}}';
+        var getContraseniaDelCorreo = '{{path('servicio_getContraseniaDelCorreo')}}';
+        var agregarCorreoServicio = '{{path('servicio_agregarCorreoServicio')}}';
+        var confirmarServicioCorreoBoton = '{{path('servicio_confirmarServicioCorreo')}}';
+        var cancelarServicioCorreoBoton = '{{path('servicio_cancelarServicioCorreo')}}';
+        var reconectarServicioCorreoBoton = '{{path('servicio_reconectarServicioCorreo')}}';
+        var cortarServicioCorreoBoton = '{{path('servicio_cortarServicioCorreo')}}';
+        var cambiarClaveCorreoBoton = '{{path('servicio_cambiarClaveCorreo')}}'; //jvera
+        
+        //ip publica
+        var confirmarServicioIpPublicaBoton = '{{path('servicio_confirmarServicioIpPublica')}}';
+        var agregarIpPublicaServicio = '{{path('servicio_agregarIpPublicaServicio')}}';
+        var getIpPublica = '{{path('servicio_getIpPublica')}}';
+        var eliminarIpPublicaBoton = '{{path('servicio_eliminarIpPublica')}}';
+        var cancelarServicioIpPublicaBoton = '{{path('servicio_cancelarServicioIp')}}';
+        var reconectarServicioIpPublicaBoton = '{{path('servicio_reconectarServicioIp')}}';
+        var cortarServicioIpPublicaBoton = '{{path('servicio_cortarServicioIp')}}';
+        var migrarIpFijaBoton = '{{path('servicio_migrarIpFija')}}';
+        
+        //antivirus
+        var confirmarServicioAntivirusBoton = '{{path('servicio_confirmarServicioAntivirus')}}';
+        var cancelarServicioAntivirusBoton = '{{path('servicio_cancelarServicioAntivirus')}}';
+        var reconectarServicioAntivirusBoton = '{{path('servicio_reconectarServicioAntivirus')}}';
+        var cortarServicioAntivirusBoton = '{{path('servicio_cortarServicioAntivirus')}}';
+        
+        //equipo protegido
+        var confirmarServicioEquipoProtegidoBoton = '{{path('servicio_confirmarServicioEquipoProtegido')}}';
+        var cancelarServicioEquipoProtegidoBoton = '{{path('servicio_cancelarServicioEquipoProtegido')}}';
+        var reconectarServicioEquipoProtegidoBoton = '{{path('servicio_reconectarServicioEquipoProtegido')}}';
+        var cortarServicioEquipoProtegidoBoton = '{{path('servicio_cortarServicioEquipoProtegido')}}';
+        var getCorreosAntivirus = '{{path('servicio_verMailServicioEquipoProtegido')}}';
+        
+        //cambio linea pon
+        var cambiarLineaPon = '{{path('servicio_cambiarLineaPon')}}';
+        
+        //nodo wifi
+        var activarWifi = '{{path('elementoNodoWifi_activarCliente')}}';
+        var cortarWifiCliente = '{{path('elementoNodoWifi_cortarCliente')}}';
+        var url_reconectarWifi = '{{path('elementoNodoWifi_reconectarCliente')}}';
+        var url_cancelarClienteWifi = '{{path('elementoNodoWifi_cancelarCliente')}}';
+        var url_cambiarEquipoWifi = '{{path('elementoNodoWifi_cambiarElementoCliente')}}';
+        var url_ingresarElemento = '{{path('elementoNodoWifi_ingresarElemento')}}';
+        
+        //otros
+        var confirmarServicioOtrosBoton = '{{path('servicio_confirmarServicioOtros')}}';
+        var cancelarServicioOtrosBoton = '{{path('servicio_cancelarServicioOtros')}}';
+        var reconectarServicioOtrosBoton = '{{path('servicio_reconectarServicioOtros')}}';
+        var cortarServicioOtrosBoton = '{{path('servicio_cortarServicioOtros')}}';
+        var agregarMacAddress = '{{path('servicio_agregarMacAddress')}}'; //jvera
+        var reenviarInformacionClienteOffice = '{{path('servicio_reenviarInformacionOffice')}}';
+        var confirmarServicioPlanBotton = '{{path('servicio_confirmarServicioPlan')}}';
+        var confirmarServicioKonibitBoton = '{{path('servicio_confirmarServicioKonibit')}}';
+        
+        //SOLICITUD CAMBIO EQUIPO POR SOPORTE
+        var crearSolCambioEquipoSoporteBoton = '{{path('servicio_crearSolCambioEquipoSoporte')}}';
+        var CambioLogicoEquipoSoporteBoton = '{{path('servicio_CambioLogicoEquipoSoporte')}}';
+        var puedecrearSolCambioEquipoSoporte = '{{ is_granted("ROLE_151-6497")}}';
+        
+        //SMARTWIFI
+        var confirmarServicioSmartWifiBoton  = '{{path('servicio_confirmarServicioSmartWifi')}}';
+        var agregarEquipoSmartWifiBoton      = '{{path('servicio_agregarEquipoSmartWifi')}}';
+        var cancelarServicioSmartWifiBoton   = '{{path('servicio_cancelarServicioSmartWifi')}}';
+        var reconectarServicioSmartWifiBoton = '{{path('servicio_reconectarServicioSmartWifi')}}';
+        var cortarServicioSmartWifiBoton     = '{{path('servicio_cortarServicioSmartWifi')}}';
+        
+        //APWIFI
+        var confirmarServicioApWifiBoton  = '{{path('servicio_confirmarServicioApWifi')}}';
+        var agregarEquipoApWifiBoton      = '{{path('servicio_agregarEquipoApWifi')}}';
+        var cancelarServicioApWifiBoton   = '{{path('servicio_cancelarServicioApWifi')}}';
+        var reconectarServicioApWifiBoton = '{{path('servicio_reconectarServicioApWifi')}}';
+        var cortarServicioApWifiBoton     = '{{path('servicio_cortarServicioApWifi')}}';
+        
+        //W
+        var strUrlCancelarServicioWBoton    = '{{path('servicio_cancelarServicioW')}}';
+        
+        //W + AP
+        var strUrlCancelarServicioWyApBoton = '{{path('servicio_cancelarServicioWyAp')}}';
+        
+        //netlifeCam
+        var confirmarServicioNetlifeCamBoton = '{{path('servicio_confirmarServicioNetlifeCam')}}';
+        var urlCancelarServicioProdAdicional = '{{path('servicio_cancelarServicioProdAdicional')}}';
+        var reconectarServicioNetlifeCamBoton = '{{path('servicio_reconectarServicioNetlifeCam')}}';
+        var cortarServicioNetlifeCamBoton = '{{path('servicio_cortarServicioNetlifeCam')}}';
+        
+        //Protocolos de Enrutamiento       
+        var urlCrearProtocoloEnrutamiento      = "{{ path('servicio_ajaxCrearProtocoloEnrutamiento') }}";
+        var urlGetProtocolosEnrutamiento       = "{{path('servicio_ajaxGetProtocolosEnrutamientoServicio')}}";
+        var urlEliminarProtocoloEnrutamiento   = "{{path('servicio_ajaxEliminarProtocoloEnrutamiento')}}";
+        
+        var puedeEliminarProtocoloEnrutamiento = "{{ is_granted('ROLE_332-8') }}";
+        var puedeCrearProtocoloEnrutamiento    = '{{ is_granted("ROLE_332-3") }}';
+        
+        //Ldap
+        var VerLdapServicio = '{{path('servicio_verLdapServicio')}}';
+        var ConfigurarLdapServicio = '{{path('servicio_configurarLdapServicio')}}';
+        var EliminarLdapServicio = '{{path('servicio_eliminarLdapServicio')}}';
+        var CrearLdapServicio = '{{path('servicio_crearLdapServicio')}}';
+        
+        //crear Cacti
+        var puedeCrearCacti     = '{{ is_granted("ROLE_151-4197")}}';
+        var urlCrearCacti       = '{{ path('servicio_crearCacti') }}';
+        
+        // Rutas Estaticas
+        var puedeCrearRutaEstatica    = '{{ is_granted("ROLE_324-3")}}';
+        var asignarRutaEstatica       = "{{ path('servicio_ajaxAsignarRutaEstatica') }}";
+
+        // Rutas Automaticas
+        var puedeCrearRutaAutomaticas = '{{ is_granted("ROLE_324-3")}}';   
+        var asignarRutaAutomatica     = '{{path('servicio_ajaxAsignarRutaAutomatica')}}';
+
+        // Rutas Listar
+        var rolMostrarRutas  = '{{ is_granted("ROLE_324-8")}}';  
+        var mostrarRutas     = "{{ path('servicio_ajaxMostrarRutas') }}";
+        var eliminarRuta     = "{{ path('servicio_ajaxEliminarRuta') }}";
+        var verIps           = '{{path('servicio_verIps')}}';
+        var morstrarClearChannelLan = "{{ path('servicio_ajaxMostrarIpClearChannelLan') }}";
+        var morstrarClearChannelWan = "{{ path('servicio_ajaxMostrarIpClearChannelWan') }}"; 
+
+        //ruta de elementos
+        var getTrazabilidadElementos = '{{path('servicio_getTrazabilidadElementos')}}';
+
+        //NetlifeCamStoragePortal
+        var strUrlGetInfoCamNetlifeCamStoragePortal                 = "{{ path('servicio_getInfoCamNetlifeCamStoragePortal') }}";
+        var strUrlGetFormasContactosClienteNetlifeCamStoragePortal  = "{{ path('servicio_getFormasContactoClienteNetlifeCamStoragePortal') }}";
+        var strUrlGuardarConfirmaNetlifeCamStoragePortal            = "{{ path('servicio_guardarConfirmaNetlifeCamStoragePortal') }}";
+        var strUrlTienePortalActivoNetlifeCamStoragePortal          = "{{ path('servicio_tienePortalActivoNetlifeCamStoragePortal') }}";
+        var strUrlGetServiciosCamarasDisponibles                    = "{{ path('servicio_getServiciosCamarasDisponiblesProdsAdicionales') }}";
+        var strUrlGuardarServiciosProdsAdicionales                  = "{{ path('servicio_guardarServiciosProdsAdicionalesNetlifeCam') }}";
+        var strUrlReenviarCodTmpPortalNetlifeCam                    = "{{ path('servicio_reenviarCodTmpPortalNetlifeCam') }}";
+        var strUrlCortarServiciosPortalNetlifeCam                   = "{{ path('servicio_cortarServiciosPortalNetlifeCam') }}";
+        var strUrlReconectarServiciosPortalNetlifeCam               = "{{ path('servicio_reconectarServiciosPortalNetlifeCam') }}";
+        var strUrlCancelarServicioNetlifeCamStorageBoton            = "{{path('servicio_cancelarServicioNetlifeCamStorage')}}";
+
+        var strUrlGetInfoNetlifeCam                         = "{{ path('servicio_getInfoNetlifeCam') }}";
+        var strUrlTieneServicioInternetValido               = "{{ path('servicio_tieneServicioInternetValido') }}";
+        var strUrlGetModelosCamara                          = "{{ path('servicio_ajaxGetModelosElemento') }}";
+        var strUrlBuscarCamNafNetlifeCamStoragePortal       = "{{ path('servicio_buscarCamNafNetlifeCamStoragePortal') }}";
+        var strUrlGuardarConfirmaNetlifeCam                 = "{{ path('servicio_guardarConfirmaNetlifeCam') }}";
+        var strUrlGetFormasContactosClienteNetlifeCam       = "{{ path('servicio_getFormasContactoClienteNetlifeCam') }}";
+        var strUrlCortarServiciosNetlifeCam                 = "{{ path('servicio_cortarServiciosNetlifeCam') }}";
+        var strUrlReconectarServiciosNetlifeCam             = "{{ path('servicio_reconectarServiciosNetlifeCam') }}";
+        var strUrlCancelarServiciosNetlifeCam               = "{{ path('servicio_cancelarServiciosNetlifeCam') }}";
+
+        //TN
+        var urlCortarClienteTN         = "{{ path('servicio_ajaxCortarClienteTN') }}";
+        var urlCancelarClienteTN       = "{{ path('servicio_ajaxCancelarClienteTN') }}";
+        var urlReactivarClienteTN      = "{{ path('servicio_ajaxReactivarClienteTN') }}";
+        var urlGetDatosBackboneL3mpls  = "{{ path('servicio_ajaxGetDatosBackboneL3mpls') }}";
+        var urlRegulaRadioTn           = '{{ path('servicio_ajaxRegulaRadioTn')}}';
+        var urlObtieneServRadioTn      = '{{ path('servicio_ajaxObtieneServiciosRadioTn')}}';
+        var urlObtieneInfoServRadioTn  = '{{ path('servicio_ajaxObtieneInfoServicioRadioTn')}}';
+        var urlConsultarSubredAsignada = "{{ path('servicio_consultarSubredAsignada') }}";
+        var urlLiberarSubredAsignada   = "{{ path('servicio_liberarSubredAsignada') }}";
+        var urlVerificarSubredAsignada = "{{ path('servicio_verificarSubredAsignada') }}";
+        var rolHerramientaRegulaServ   = '{{ is_granted("ROLE_151-4597")}}';
+
+        //cambio ultima milla TN
+        var getElementoSwitchPorAnillo      = '{{path('elementoswitch_getElementosSwitchPorAnillo')}}';
+        var getCajasPorPuertosDisponibles   = '{{path('elementoswitch_getCajasPorPuertosDisponibles')}}';
+        var cambiarUltimaMilla              = '{{path('servicio_ajaxCambiarUltimaMilla')}}';
+        var urlCambiarElementoPasivo        = '{{path('servicio_ajaxCambiarElementoPasivo')}}';
+        var urlgetElementosByPuerto         = '{{path('servicio_ajaxGetElementosByPuerto')}}';
+        var getElementosPorCaja             = '{{path('elementocaja_ajaxGetElementosPorCajaYTipo')}}';   
+        var crearSolicitudMigracionAnillo   = '{{path('servicio_ajaxCrearSolicitudMigracionAnilloTn')}}';   
+        var ejecutaMigracionAnilloEstable   = '{{path('servicio_ajaxEjecutarMigracionAnillo')}}'; 
+        var urlCrearSolicitudCambioUM       = '{{path('servicio_ajaxCrearSolicitudCambioUM')}}';
+        var puedeCambiarUmProgramada        = '{{ is_granted("ROLE_151-3779") }}';
+        var urlReversarSolicitudCambioUM    = '{{path('servicio_ajaxReversarSolicitudCambioUM')}}';
+        var urlReversarSolicitudMigracionAnillo = '{{path('servicio_ajaxReversarSolicitudMigracionAnillo')}}';
+        
+        //NETLIFEZONE
+        var rolGenerarCredencialesNetlifeZone   = '{{ is_granted("ROLE_151-4237") }}';
+        var rolRestablecerContrasenaNetlifeZone = '{{ is_granted("ROLE_151-4257") }}';        
+
+        //migracion tunel ip a mpls
+        var getDatosFactibilidad                = '{{path('asignarred_ajaxGetDatosFactibilidad')}}';
+        var getHilosDisponibles                 = '{{path('asignarred_ajaxGetHilosDisponibles')}}';
+        var ajaxGetPuertoSwitchByHilo           = '{{path('asignarred_ajaxGetPuertoSwitchByHilo')}}';
+        var urlAjaxGetVlansDisponibles          = '{{path('asignarred_ajaxGetVlansDisponibles')}}';
+        var urlAjaxGetVrfsDisponibles           = '{{path('asignarred_ajaxGetVrfsDisponibles')}}';
+        var urlAjaxGetVlansDisponiblesPorVrf    = '{{ path('asignarred_ajaxGetVlansDisponiblesPorVrf')}}';
+        var urlAjaxGetAsPrivado                 = "{{ path('servicio_ajaxGetAsPrivado') }}";
+        var urlAjaxGetProtocolosEnrutamiento    = "{{ path('servicio_ajaxGetProtocolosEnrutamiento') }}";
+        var urlAjaxAsignarRecursosL3mpls        = '{{ path('asignarred_ajaxAsignarRecursosL3mpls') }}';
+        var ajaxMigrarServicioTunelIpADatosMpls = '{{ path('servicio_ajaxMigrarServicioTunelIpADatosMpls') }}';
+        var urlAjaxGetSubredesL3mplsDisponibles = '{{ path('asignarred_ajaxGetSubredesL3mplsDisponibles') }}';
+        var urlAjaxGetInfoBackboneSubredL3mpls  = '{{ path('asignarred_ajaxGetInfoBackboneSubredL3mpls') }}';
+        var ajaxEjecutaMigracionServicioTunelADatosMpls = '{{ path('servicio_ajaxEjecutaMigracionServicioTunelADatosMpls') }}';
+        
+        //Netlife Wifi
+        var ajaxGenerarCredencialesWifi = '{{path('servicio_ajaxGenerarCredencialesWifi')}}';
+        var agregarServicioWifi         = '{{path('servicio_agregarServicioWifi')}}';
+        var ajaxOperacionesNetlifeWifi  = '{{path('servicio_ajaxOperacionesNetlifeWifi')}}';
+        var recuperarCredencialesWifi   = '{{path('servicio_recuperarCredencialesWifi')}}';
+
+        // =======================================================================
+        // 
+        // =======================================================================
+        var getSubredDisponible                 = '{{path('asignarred_ajaxGetSubredDisponible')}}';
+        var asignarRecursosInternetMPLS         = '{{path('asignarred_ajaxAsignarRecursosInternetMPLS')}}';
+        var getVrfInternet                      = '{{path('asignarred_ajaxGetVrfInternet')}}';
+        
+        var getElementosFactibles                   = '{{path('factibilidadNodoWifi_getElementosFactibles')}}';
+        var url_getElementosWifi                    = '{{path('factibilidadNodoWifi_getElementos')}}';
+        var urlComboCajas                           = '{{ path("factibilidadinstalacion_ajaxComboCajas") }}';
+        var urlComboElementosByPadre                = '{{path("factibilidadinstalacion_ajaxComboElementosByPadre") }}';
+        var urlGetClaseTipoMedio                    = '{{ path("admiclasetipomedio_getEncontrados") }}';
+        var urlInterfacesByElemento                 = '{{ path("infointerfaceelemento_getInterfacesByElementoTipoInterface") }}';
+        var urlInfoCaja                             = '{{ path("factibilidadinstalacion_ajaxGetInfoCaja") }}';
+        var url_empleados                           = "{{ path('asignarresponsable_getEmpleados') }}";
+        var url_empleadosPorEmpresa                 = "{{ path('asignarresponsable_getEmpleadosPorEmpresa') }}";
+        var url_cuadrillas                          = "{{ path('admicuadrilla_getCuadrillasActivas') }}";
+        var urlDisponibilidadElemento               = '{{ path("factibilidadinstalacion_ajaxDisponibilidadElemento") }}';
+        var urlCalculaMetraje                       = '{{ path("factibilidadinstalacion_calculaMetrajeEntrePuntoElemento") }}';
+        var ajaxJsonPuertoOdfByHilo                 = '{{ path('asignarred_ajaxJsonPuertoOdfByHilo')}}';
+        var url_getDataWifi                         = '{{ path('elementoNodoWifi_getDataWifi')}}';
+        var url_getDatosLinea                       = '{{ path('elementoLineaNetvoice_getDatosLineas')}}';
+        var url_activarLinea                        = '{{ path('elementoLineaNetvoice_activarLinea')}}';
+        var url_equipoAsignados                     = '{{ path('servicio_obtenerEquiposAsignados')}}';
+        var url_equipoAdicionales                   = '{{ path('servicio_obtenerEquiposAdicionales')}}';
+
+
+        //lineas netvoice
+        var url_cambioNodoWifi                      = '{{ path('elementoNodoWifi_cambioNodoWifi')}}';
+        var url_verLineasTelefonicas                = "{{ path('infopunto_verLineasTelefonicas') }}";
+        var url_gestionarLineasTelefonicas          = "{{ path('servicio_gestionarLineasTelefonicas') }}";
+        
+        //Regularización
+        var getInformacionMacServicio               = '{{ path('servicio_ajaxGetInformacionMac')}}';
+        var urlActualizarMacServicio                = '{{ path('servicio_ajaxActualizarMacServicio')}}';
+        var getEnlacesServicio                      = '{{ path('servicio_ajaxConsultarEnlacesServicio')}}';
+        
+        //Data Tecnica Cpe
+        var getDataTecnicaCpe                       = '{{ path('servicio_getDataTecnicaCpe')}}';
+        var urlActualizacionDataTecnicaCpe             = '{{ path('servicio_actualizarDataTecnicaCpe')}}';
+
+        //Producto Smart Space
+        var getSegmentosPrimerNivel                 = '{{ path('admiParametroCab_getListadoParametrosDetJson') }}';
+        //FOX Premium
+        var rolRestablecerContraseniaFOX            = '{{ is_granted("ROLE_151-5877") }}';
+        var rolClearCacheToolboxFOX                 = '{{ is_granted("ROLE_151-6257") }}';
+        var urlFoxRestableceContrasenia             = '{{ path('foxpremium_restablecer_contrasenia') }}';
+        var urlFoxClearCacheToolbox                 = '{{ path('foxpremium_clear_cache') }}';
+        var urlFoxReenvioContrasenia                = '{{ path('foxpremium_reenviar_contrasenia') }}';
+        var rolReenvioContraseniaFOX                = '{{ is_granted("ROLE_151-6517") }}';
+        
+        //Ingreso de Correo para Producto Paramount y Noggin
+        var urlIngresoCorreoParamNoggin             = '{{ path('paramnoggin_ingresar_correo')  }}';
+        var UrlGridCorreo                           = '{{ path('info_servicio_prod_caract_grid') }}';
+        var rolEliminarContacto                     = '{{ is_granted("ROLE_151-7777") }}';
+        //PARAMOUNT
+        var rolRestablecerContraseniaPARAMOUNT      = '{{ is_granted("ROLE_151-7577") }}';
+        var rolClearCacheToolboxPARAMOUNT           = '{{ is_granted("ROLE_151-7557") }}';
+        var rolReenvioContraseniaPARAMOUNT          = '{{ is_granted("ROLE_151-7558") }}';
+        var rolCorreoPARAMOUNT                      = '{{ is_granted("ROLE_151-7717") }}';
+        //NOGGIN
+        var rolRestablecerContraseniaNOGGIN         = '{{ is_granted("ROLE_151-7579") }}';
+        var rolClearCacheToolboxNOGGIN              = '{{ is_granted("ROLE_151-7578") }}';
+        var rolReenvioContraseniaNOGGIN             = '{{ is_granted("ROLE_151-7559") }}';
+        var rolCorreoNOGGIN                         = '{{ is_granted("ROLE_151-7718") }}';
+        //EL CANAL DEL FUTBOL
+        var url_valida_correo_electronicoECDF       = "{{ path('infoservicio_ajaxValidaCorreoECDF') }}";
+        var url_activa_servicioECDF                 = "{{ path('foxpremium_activa_servicioECDF') }}";
+        var rolRestablecerContraseniaECDF           = '{{ is_granted("ROLE_151-8277") }}';
+        var rolCorreoECDF                           = '{{ is_granted("ROLE_151-8477") }}';
+        var rolReenvioContraseniaECDF               = '{{ is_granted("ROLE_151-8478") }}';
+        //GOL TV
+        var rolReenvioContraseniaGTV                = '{{ is_granted("ROLE_151-8418") }}';
+        var rolRestablecerContraseniaGTV            = '{{ is_granted("ROLE_151-8417") }}';
+        //E-LEARN
+        var rolRestablecerContraseniaELEARN         = '{{ is_granted("ROLE_151-8558") }}';
+        // HBO-MAX
+        var rolRestablecerContraseniaHBOMAX         = '{{ is_granted("ROLE_151-8557") }}';
+
+        //Migrar a pseudoPe
+        var urlMigrarPseudoPe                       = '{{path('servicio_ajaxMigrarAPseudPe')}}';
+        var utlGetElementosPseudoPe                 = '{{path('elementoNodoCliente_ajaxElementoPseudoPe')}}';
+
+        //Administracion Bgp
+        var urlAdministrarEnrutamientoBgp           = '{{ path('servicio_ajaxAdministrarEnrutamientoBgp')}}';
+        var urlGetInformacionEnrutamiento           = '{{ path('servicio_ajaxGetInformacionEnrutamientoBgp')}}';
+        var urlGetPrefixRouteMap                    = '{{ path('servicio_ajaxGetPrefixRouteMap')}}';
+        var urlAddImage                             = '{{ asset('public/images/script_add.png') }}';
+        var urlDeleteImage                          = '{{ asset('public/images/script_delete.png') }}';
+        var verConfiguracionOlt                     = '{{ path('servicio_verConfiguracionOlt')}}';
+        
+        //Cambiar Subredes Publicas/Privadas IntMpls
+        var urlCambiarSubredesIntMpls               = '{{ path('servicio_ajaxCambiarSubredes')}}';
+        
+        //Housing
+        var urlGetInformacionEspacioHousing         = '{{path("factibilidad_housing_ajaxGetInformacionEspacioHousing")}}';
+        var url_getInformacionRacksDC               = '{{ path('elementorack_ajaxGetInformacionRacksDC')}}';
+        var urlGetUnidadesRack                      = '{{ path('factibilidad_housing_ajaxGetInformacionRack') }}';
+        
+        //Hosting
+        var urlGetInformacionGeneralHosting         = '{{ path('servicio_ajaxGetInformacionGeneralHosting')}}';
+        var urlGetDatosFactibilidadHosting          = '{{ path("factibilidad_hosting_ajaxGetDatosFactibilidadHosting")}}';
+        var urlGuardarMaquinasVirtuales             = '{{ path("servicio_ajaxGuardarMaquinasVirtuales")}}';
+        var urlActualizarMaquinasVirtuales          = '{{ path("servicio_ajaxActualizarMaquinaVirtual")}}';
+        var urlGetServidoresAlquiler                = '{{ path("factibilidad_hosting_ajaxGetResumenAlquilerServidores")}}';
+        var urlGetInformacionGeneralCuartoTi        = '{{ path("elementosDataCenter_ajaxGetInformacionCuartoTi")}}';
+        var urlCrearTareaAComercial                 = '{{ path('servicio_ajaxCrearTareaAComercial')}}';
+        var urlGetInformacionSolucion               = '{{ path('servicio_ajaxGetInformacionSolucion')}}';
+        var urlGetCaracteristicas                   = "{{ path('infoplancaracteristicas_listar_caracteristicas') }}";
+        var urlGuardarDatosFactibilidadHosting      = '{{ path("factibilidad_hosting_ajaxGuardarFactibilidadHosting")}}';
+        var urlajaxGetLicencias                     = '{{ path('search_ajaxGetLicencias')}}';
+        
+        //Informacion de migracion de datos de factibilidad ( heredado )
+        var urlGetInformacionServiciosHeredados     = '{{ path("servicio_ajaxGetValoresServicioHeredado")}}';
+        var urlActivarServicioPorFactHeredada       = '{{ path("servicio_ajaxActivarServicioPorFactibilidadHeredada")}}';
+        
+        var strUrlGetCaractProdFuncionPrecio        = '{{ path("admiproducto_getInformacionCaractProdFuncionPrecio")}}';
+        var strUrlGetVelocidadesIsb                 = '{{ path("com_admicaracteristica_getValoresCaracteristicas")}}';
+
+        //Información del servicio FWA - Telefónica
+        var urlGetInformacionServiciosFWA           = '{{ path("servicio_ajaxGetValoresServicioFWA")}}';
+
+        //servicios l2mpls
+        var urlActivacionL2mpls                     = '{{ path("servicio_ajaxActivarServicioL2mpls")}}';
+
+        //Opciones Telcograph
+        var urlCrearMonitoreoTelcograf              = '{{ path("servicio_ajaxCrearMonitoreoTelograf")}}';
+        var urlReintentoCreacionTelcograf           = '{{ path("servicio_ajaxReintentarCreacionTg")}}';
+        var urlReenviarCredencialesTelcograf        = '{{ path("servicio_ajaxReenviarCredencialesTg")}}';
+        var urlCambiarPassTelcograf                 = '{{ path("servicio_ajaxCambiarPassTg")}}';
+        var urlGetTipoContactoPunto                 = '{{ path("servicio_ajaxGetTipoContactoPunto")}}';
+        var urlInformacionTelcograf                 = '{{ path("servicio_ajaxInformacionTg")}}';
+        var urlCambiarUserTelcograf                 = '{{ path("servicio_ajaxCambiarUserTg")}}';
+        var urlRestablecerDatosLdapTg               = '{{ path("servicio_ajaxRestablecerDatosLdapTg")}}';
+        var urlGetContactoActualTg                  = '{{ path("servicio_ajaxContactoActualTg")}}';
+
+        //Roles Telcograph
+        var puedeReenviarCredenciales               = '{{ is_granted("ROLE_414-5957")}}';
+        var puedeReintentarMonitoreo                = '{{ is_granted("ROLE_414-5977")}}';
+        var puedeCambiarPass                        = '{{ is_granted("ROLE_414-5997")}}';
+        var puedeVerInfoTelcoGraph                  = '{{ is_granted("ROLE_414-5997")}}';
+        var emailAdicionalTelcograf                 = '{{ is_granted("ROLE_414-6977")}}';
+        var creaMonitoreoTelcograf                  = '{{ is_granted("ROLE_414-7117")}}';
+        var puedeRestablecerDatosLdapTg             = '{{ is_granted("ROLE_414-7917")}}';
+
+        //NETFIBER
+        var strUrlConfirmarServicioNetfiberBoton    = '{{path('servicio_confirmarServicioNetfiber')}}';
+
+        //Cancelación Anticipada
+        var urlGetProdAdicionalesCV                 = '{{ path("servicio_ajaxGetProdAdicionalesCV")}}';
+        var urlGetPlanProductosClienteCV            = '{{ path("servicio_ajaxGetPlanProductosClienteCV")}}';
+        var urlGetEquiposFacturar                   = '{{ path("servicio_ajaxGetEquiposFacturar")}}';
+        var arrayProdAdicionales                    = [];
+        
+        var urlGetValoresFacturar                   = '{{ path("servicio_ajaxGetValoresFacturar")}}';
+        var urlGetParamFactDetallada                = '{{ path("servicio_ajaxGetParamFactDetallada")}}';        
+        var urlEjecutarCancelacionVoluntaria        = '{{ path("servicio_ajaxEjecutarCancelacionVoluntaria")}}';
+        var urlGetMotivosNc                         = "{{ path("servicio_ajaxGetMotivosNc") }}";
+        var boolCancelacionVoluntaria               = '{{ is_granted("ROLE_151-6017")}}';
+        var urlGetSaldoPorVencerNDI                 = "{{ path("servicio_ajaxGetSaldoPorVencerNDI")}}";
+        var urlGetVigenciaPromocion                 = "{{ path("servicio_ajaxGetVigenciaPromocion")}}";
+        // Solicitud Cancelacion
+        var urlGetParametrosCancelacion             = '{{ path("servicio_ajaxGetParametrosCancelacion")}}';
+
+        //Asignado Tarea
+        var urlGetAsignarTarea                 = "{{ path("servicio_ajaxConfirmarTarea")}}";
+
+        //Asignado Tarea
+        var urlGetAsignarTarea                 = "{{ path("servicio_ajaxConfirmarTarea")}}";
+
+        //Wifi Dual Band
+        var strUrlCambioEquiposDualBand             = '{{ path("servicio_cambioEquiposDualBand")}}';
+        var strUrlModelosCpeOntPorSoporte           = "{{ path('solicitudes_getModelosCpeOntPorSoporte') }}";
+        
+        var strUrlCambioEquipoOntPorSolAgregarEquipo= '{{ path("servicio_cambioEquipoOntPorSolAgregarEquipo")}}';
+        
+        //McAfeeEnPlan
+        var strUrlReintentarActivacionMcAfeeEnPlan  = "{{ path("servicio_reintentarActivacionMcAfeeEnPlan") }}";
+        var puedeActualizarCorreoMcAfee             = '{{ is_granted("ROLE_428-6457")}}';
+        var actualizarCaracteristica                = "{{ path('infopunto_actualizarCaracteristicaAjax')}}";
+        var actualizarCorreoSuscripcionMcAfee       = "{{ path('servicio_ajaxActualizarCorreoSuscripcionMcAfee')}}";
+        
+        //Promociones BW
+        var strUrlReintentarPromoBw                 = "{{ path("servicio_reintentarProcesoPromoBw") }}";
+        
+        //Kaspersky
+        var strUrlReintentarActivacionServicio      = "{{ path("servicio_reintentarActivacionServicio") }}";
+        var permiteRolCancelacionLogica             = "{{ is_granted('ROLE_436-6597') }}";
+        var strUrlCambiarCorreoEnServicioActivo     = "{{ path('servicio_cambiarCorreoEnServicioActivo')}}";
+        var permiteNuevoSuscriber                   = "{{ is_granted('ROLE_415-7598') }}";
+        var strUrlActualizacionCorreo               = "{{ path('servicio_actualizacionCorreo')}}";
+        var puedeReenviarCorreoKaspersky            = '{{ is_granted("ROLE_428-6897")}}';
+        var reenvioCorreoKaspersky                  = "{{ path('servicio_ajaxReenvioCorreo')}}";
+        
+        //Extender Dual Band
+        var strUrlConfirmarServicioExtenderDualBand = '{{ path("servicio_confirmarServicioExtenderDualBand")}}';
+        
+        var strUrlGetModelosEquiposPorTecnologia    = '{{path('servicio_getModelosEquiposPorTecnologia')}}';
+        
+        //Esquema Pe-Hsrp
+        var urlSetearPeHsrp                 = "{{ path('infoservicio_definirEsquemaPeHsrp')}}";
+
+        //Reversar Orden de Trabajo
+        var urlReversarOrdenTrabajo         = "{{ path('infoservicio_reversarOrdenTrabajo')}}";
+
+        var verCodConexionUpStreamTng         = '{{path('servicio_codConexionUpStreamTng')}}';
+        var verDetConexionUpStreamTng         = '{{path('servicio_getInfoConexionUpStream')}}';
+        var verDatosConexionUpStreamTng    = '{{path('servicio_getDatosConexionUpStreamTng')}}';
+        
+        //Roles Cloudpublic
+        var puedeCortarCliente                      = '{{ is_granted("ROLE_151-311") }}';
+        var puedeCancelarCliente                    = '{{ is_granted("ROLE_151-313") }}';
+        var puedeReconectarCliente                  = '{{ is_granted("ROLE_151-315") }}';
+        var puedeCortarClienteWifi                  = '{{ is_granted("ROLE_341-3977") }}';
+        
+        //Fibra y materiales del técnico
+        var getFibraMaterialesTecnico   = '{{path('servicio_getFibraMaterialesTecnico')}}';
+
+        /*Cargar documento.*/
+        var strUrlcargarDocumento = '{{ path('infoservicio_documentos_fileUpload') }}';
+        
+        //Seguimiento Servicios
+        var urlEjecutarSeguimiento          =   '{{path('solicitudes_grafico_ajax')}}';
+        var urlGetDetalleServicios          =   '{{ path('solicitudes_getDetalleServicios') }}';
+        var urlSeguimientoHistorial         =   '{{ path('solicitudes_getSeguimientoServicio') }}';
+        
+        //Seguridad Sdwan
+        var urlAjaxGetEquipoSdwan           = "{{ path('servicio_ajaxGetEquipoSdwan') }}";
+        var urlGuardarEnlaceSeguridad       = "{{ path('servicio_ajaxGuardarEnlaceSdwanSeguridad') }}";
+        var urlAjaxGetSdwanActivos          = "{{ path('servicio_ajaxGetAsPrivado') }}";
+        
+        //SECURE CPE
+        var urlAjaxGetEquipoCpe             = "{{ path('servicio_ajaxGetEquipoCpe') }}";
+        var urlAjaxOpcionesCpe              = "{{ path('servicio_ajaxOpcionesCpe') }}";
+        var urlGuardarEnlaceSeguridadCpe    = "{{ path('servicio_ajaxGuardarEnlaceCpeSeguridad') }}";
+        var urlGuardarEnlaceEditarCpe       = "{{ path('servicio_ajaxGuardarEnlaceCpeEditar') }}";
+        
+        //MIGRAR SECURE NG FIREWALL
+        var urlMigrarSecureNgFirewall       = "{{ path('servicio_ajaxMigrarSecureNgFirewall') }}";
+        var numArchivosSubidos              = 0;
+        var urlAjaxGetMigrarEquipoCpe       = "{{ path('servicio_ajaxGetMigrarEquipoCpe') }}";
+        
+        //Pomociones por codigo
+        var urlValidaCodigoPromocion        = "{{ path('validaCodigoPromocion') }}";
+        var strRolIngresarCodigoPromocion   = '{{ is_granted("ROLE_431-7760") }}';
+        var strIdTipoPromoMens              = "";
+        var strIdTipoPromoBw                = "";
+        
+        var strPermisoActivar               = '{{ is_granted("ROLE_151-8237") }}'; //ROLE_151-8237
+        var strPermisoEditar                = '{{ is_granted("ROLE_151-8238") }}'; //ROLE_151-8238
+        var strPermisoMigraNg               = '{{ is_granted("ROLE_151-8337") }}'; //ROLE_151-8337
+        
+        var gridTradicional                 = '{{path('servicio_verTradicional')}}';
+
+        var urlValidaEleOrigenTraslado      = '{{path('infopunto_ajaxValidaElementosOrigenTraslado')}}';
+
+        var permisoShowDataTecnicaNGF       = '{{ is_granted("ROLE_152-8657") }}';
+        var permisoEditDataTecnicaNGF       = '{{ is_granted("ROLE_152-8677") }}';
+        var permisoActivarServiciotNGF      = '{{ is_granted("ROLE_152-8678") }}';
+
+
+       {# Obtiene la informaciòn de horas soporte #}
+        var urlAjaxGetHorasSoporte          = '{{ path('servicio_ajaxGetHorasSoporte') }}';
+        var urlAjaxGetServiciosSoporte             = '{{ path('servicio_ajaxGetServiciosSoporte') }}';
+       //ver Correo Resumen Compra (Correo Resumen Compra)
+        var setCorreoResumenCompra = '{{path('servicio_setCorreoResumenCompra')}}';
+
+        
+       //ver Correo Cambio de plan (Correo Cambio de plan)
+        var setCambioPlan = '{{path('servicio_setCambioPlan')}}';
+
+
+        //obtiene los elementos de los productos SEG VEHICULO
+        var getElementosSegVehiculo         = '{{path('servicio_getElementosSegVehiculo')}}';
+        // URL PRODUCTOS QUE NO GENERAN CREDENCIALES
+        var url_activa_servicio_sin_credenciales     = "{{ path('foxpremium_activa_servicio_sin_credenciales') }}";
+        var url_reenvia_correo_password              = "{{ path('foxpremium_reenvia_correo_password') }}";
+
+
+        //Ruta para obtener los equipos del producto SAFE ENTRY
+        var getElementosSafeEntry           = '{{path('servicio_getElementosSafeEntry')}}'
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/InternetDedicado/cortar.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Factibilidad/funciones-factibilidad.js?26') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/InternetDedicado/reconectar.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/InternetDedicado/cancelar.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/index.js?68') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/botonesIndex.js?132') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/cacti.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/procesosTn.js?1') }}"></script>
+
+    {# --------- Dispositivos Nodo ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/dispositivosNodo/funciones.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/dispositivosNodo/funcionesSafeCity.js?8') }}"></script>
+
+    {# --------- Datos MPLS ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l3mpls/reactivar.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l3mpls/protocolosEnrutamiento.js?9') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l3mpls/cancelar.js?8') }}"></script>    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l3mpls/cortar.js?5') }}"></script>
+    
+    {# --------- Internet MPLS ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/internetMPLS/activar.js?29') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/internetMPLS/cancelar.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/internetMPLS/cortar.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/internetMPLS/reconectar.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/internetMPLS/reconfigurar.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/internetMPLS/migrarAnillo.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/internetMPLS/cambiarSubredes.js') }}"></script>
+    
+    {# --------- Guatemala ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/internetTng.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/verInformeTng.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/internetCancelarTng.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/internetCorteTng.js?2') }}"></script>
+
+    {# --------- Enrutamientos ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/showRutas.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/rutasEstaticas.js?17') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/rutasAutomaticas.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/showInfoClearChannel.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetActivacion.js?27') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/Multiupload.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexParamountNoggin.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexElCanalDelFutbol.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/indexServiciosDataCenter.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexTelcograph.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetActualizarData.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetCambioElemento.js?30') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetCambioPlan.js?7') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetCambioPuerto.js?28') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetCancelar.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetConfirmacion.js?16') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexAsignarTarea.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetCorte.js?8') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetGrabarParametros.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetMigracionHuawei.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetReactivacion.js?9') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetReconfigurar.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexInternetIpv4Publico.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/InternetDedicado/activacion.js?32') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l3mpls/activacion.js?33') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/tunelIp/migrarMpls.js?8') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/cambioUM.js?9') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/migracionAnillo.js?11') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexConsulta.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexIp.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexCorreo.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexDominio.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexAntivirus.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexEquipoProtegido.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexNetlifeCam.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexOtros.js?15') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexProductoAdicional.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexWifi.js?12') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexLineasTelefonicas.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexLineasFijasActiva.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexLineasFijas.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexSmartWifi.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexApWifi.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/indexIsbCambioPlan.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexLineasNetvoice.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexNetHome.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/funcionesIsbCambioPlan.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexExtenderDualBand.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexWifiDualBand.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexWyAp.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexMcAfee.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/Coordinar/FechaClass.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexKaspersky.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/controlActivos.js?12') }}"></script>
+    {# --------- Internet Netlife Wifi ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexNetlifeWifi.js?3') }}"></script>
+    
+    {# --------- Regularización MAC y Enlaces  ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/regularEnlaces.js?2') }}"></script>
+    
+{# --------- Actualizacion Data Tecnica ELemento ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/actualizarDataTecnica.js') }}"></script>
+
+    {# --------- Migracion de Servicio a PseudoPe  ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l3mpls/migracionPseudoPe.js') }}"></script>
+
+    {# --------- Administracion BGP ----------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l3mpls/administracionEnrutamiento.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l3mpls/funcionesAdminEnrutamiento.js?3') }}"></script>
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexNetlifeCamStoragePortal.js?4') }}"></script>
+    
+    {# ---------- Informacion Tecnica DATACENTER ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/funciones.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/ElementosDataCenter/elementosPasivos.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/indexServiciosDataCenter.js?3') }}"></script>    
+    
+    {# ---------- Administracion de Maquinas Virtuales ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/maquinasVirtuales.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/funcionesMV.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/infoservicio/helpersInfoServicio.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/factibilidadrapida.js') }}"></script>
+
+    
+    {# ---------- Activacion de Servicios que han heredado factibilidad de otro servicio ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/activacionServicioHeredado.js?1') }}"></script>
+    
+    {# ---------- Activacion de Servicios L2mpls ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/l2mpls/activar.js') }}"></script>
+    {#    Fox Premium     #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/FoxPremium.js?6') }}"></script>
+    
+    {# ---------- Activacion de Servicios Netfiber ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/indexNetfiber.js?2') }}"></script>
+
+    {# ---------- Activacion de Servicios FWA - TELEFÓNICA ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/activacionServicioFWA.js?1') }}"></script>
+
+    {#    Cancelación Anticipada     #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/FactCancelacionAnticipada.js?7') }}"></script>    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/CancelacionAnticipada.js?7') }}"></script>
+    
+    {#   Seguimiento Servicios  #}
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/seguimiento/Seguimiento.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/seguimientoServicio.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/seguridadSdwan.js?3') }}"></script>
+
+    {# ---------- Activacion de Servicios SW POE SAFECITY ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/activarSwPoeSafeCity.js?1') }}"></script>
+
+    {# ---------- Activacion de Servicios SEG VEHICULO ---------- #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/activacionSegVehiculo.js?1') }}"></script>
+
+    {# Activacion SAFE ENTRY #}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/tn/activacionSafeEntry.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de los Servicios</h1>
+</div>
+{% if app.session.get('prefijoEmpresa')=="MD" %}
+    {% if is_granted('ROLE_151-8917') %}
+    <div class="dashboard_content k-content" id="servicios">    
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtro'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="grid"></div></td>
+            </tr>
+        </table>     
+    </div>
+    {% else %}
+        <h1>No cuenta con los permisos suficientes</h1>
+    {% endif %}
+{% else %}
+    <div class="dashboard_content k-content" id="servicios">    
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtro'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="grid"></div></td>
+            </tr>
+        </table>     
+    </div>
+{% endif %}
+
+{% endblock contenido_central %}

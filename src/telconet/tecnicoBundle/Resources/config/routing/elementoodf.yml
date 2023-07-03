@@ -1,0 +1,38 @@
+elementoodf:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:indexOdf" }
+    
+elementoodf_ajaxGetEncontradosOdf:
+    pattern:  /ajaxGetEncontradosOdf
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:ajaxGetEncontradosOdf" }
+  
+elementoodf_newOdf:
+    pattern:  /newOdf
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:newOdf" }
+
+elementoodf_createOdf:
+    pattern: /createOdf
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:createOdf" }
+    requirements: { _method: POST }
+       
+elementoodf_showOdf:
+    pattern:  /{id}/showOdf
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:showOdf" }
+    
+elementoodf_editOdf:
+    pattern:  /{id}/editOdf
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:editOdf" }
+
+elementoodf_updateOdf:
+    pattern:  /{id}/updateOdf
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:updateOdf" }
+    requirements: { _method: POST }
+    
+elementoodf_deleteOdf:
+    pattern:  /deleteOdf
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:deleteOdf" }
+    
+elementoodf_deleteAjaxOdf:
+    pattern:  /deleteAjaxOdf
+    defaults: { _controller: "tecnicoBundle:InfoElementoOdf:deleteAjaxOdf" }
+    requirements: { _method: post }

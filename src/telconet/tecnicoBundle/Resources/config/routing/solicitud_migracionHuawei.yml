@@ -1,0 +1,35 @@
+solicitud_migracionHuawei:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionHuawei:index" }
+    
+solicitud_migracionHuawei_getConsulta:
+    pattern:  /getConsulta
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionHuawei:getConsulta" }
+    
+solicitud_migracionHuawei_crearSolicitud:
+    pattern:  /crearSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionHuawei:crearSolicitud" } 
+    
+solicitud_migracionHuawei_getMotivos:
+    pattern:  /getMotivos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getMotivos" }    
+    
+solicitud_migracionHuawei_getSolicitudes:
+    pattern:  /getHistorialSol
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionHuawei:getSolicitudes" }  
+                
+solicitud_migracionHuawei_getHistorialSolicitud:
+    pattern:  /getHistorialSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionHuawei:getHistorialSolicitud" }
+    
+solicitud_migracionHuawei_getSplitterAnterior:
+    pattern:  /getSplitterAnterior
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:getSplitterAnterior" } 
+    
+solicitud_migracionHuawei_getSplitterNuevo:
+    pattern:  /getSplitterNuevo
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:getSplitterNuevo" }       
+
+solicitud_migracionHuawei_anularSolicitud:
+    pattern:  /anularSolicitudAjax
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionHuawei:anularSolicitudAjax" }    

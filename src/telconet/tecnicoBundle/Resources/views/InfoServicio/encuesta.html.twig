@@ -1,0 +1,81 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/jquery.signaturepad.css') }}" />
+    <script type="text/javascript" src="{{ asset('public/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery.signaturepad.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/json2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/encuesta.js') }}"></script>
+    <script>
+        var mensaje = '{% if mensaje != null %}{{mensaje}}{% endif %}';    
+        var pathServicios = '{{path("servicio")}}';
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Encuesta a cerca de nuestro Servicio</h1>
+</div>
+
+<div class="body_content">
+    
+    <form method="post" action="{{ path('servicio_guardarEncuesta', { 'id': servicio.id }) }}" method="post" class="sigPad" onsubmit="guardarFirma();" novalidate="novalidate">
+        <table width="250%" border="0" class="box-section-content" id="tablaEncuesta">
+	      
+            <input type = "hidden" value = "{{ids}}" id="ids" />
+	     
+            {% set counter = 1 %}
+            {% for pregunta in preguntas %}
+                <tr>
+                    <td>
+                        <label class="labelEncuesta">{{counter}} - {{pregunta.pregunta}}</label>
+		    </td> 		   
+		</tr>
+		<tr>
+		    <td>
+                        {% if pregunta.tipoRespuesta == 'TEXTO' %}				   
+                            <textarea name = "{{pregunta.idPregunta}}" rows="4" cols="100"></textarea>
+                        {% else %}						
+                            {% for respuesta in pregunta.respuestas %}					
+                                <input type="radio" name="{{pregunta.idPregunta}}" value="{{respuesta.respuesta}}">{{respuesta.respuesta}}</br></br>
+                            {% endfor%}			
+                        {% endif %}			
+		    </td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		{% set counter = counter + 1 %}
+		{% endfor%}
+		
+		<tr>
+		    <td>
+                        <ul class="sigNav">
+                            <label for="name" class="labelFirma">Favor firme aqui!</label>
+                            <li class="clearButton"><a href="#clear">Limpiar</a></li>
+                        </ul>
+                        <div class="">
+                            <div class=""></div>
+                            <canvas class="pad" width="300%" height="90"></canvas>
+                            <input type="hidden" name="output" class="output">
+                            <input type="hidden" name="firma" id="firma">
+                            <input type="hidden" name="preguntaRespuesta" id="preguntaRespuesta">
+                        </div>
+		    </td>
+		</tr>
+       </table> 
+        
+       <button type="submit" class="button-crud">Guardar</button>  
+        
+    </form>
+
+</div>
+{% endblock contenido_izq %}
+
+
+{% block contenido_der %}
+    
+{% endblock contenido_der %}
+

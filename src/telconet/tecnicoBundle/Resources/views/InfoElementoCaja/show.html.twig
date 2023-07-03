@@ -1,0 +1,161 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoCaja/show.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Caja de Dispersion</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Nombre Elemento:</th>
+                <td width="15%">{{ elemento.nombreElemento }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%"></th>        
+                <td width="15%"></td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Descripci&oacute;n Elemento</th>        
+                <td width="15%">{{ elemento.descripcionElemento }}</td>
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Jurisdiccion:</th>
+                <td width="15%">{{ jurisdiccion.nombreJurisdiccion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Canton:</th>
+                <td width="15%">{{ ubicacion.parroquiaId.cantonId.nombreCanton }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Parroquia:</th>
+                <td width="15%">{{ ubicacion.parroquiaId.nombreParroquia }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Direccion:</th>
+                <td width="15%">{{ ubicacion.direccionUbicacion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Altura Sobre Nivel Mar:</th>
+                <td width="15%">{{ ubicacion.alturaSnm }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Longitud Ubicacion:</th>
+                <td width="15%">{{ ubicacion.longitudUbicacion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Latitud Ubicacion:</th>
+                <td width="15%">{{ ubicacion.latitudUbicacion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Estado:</th>              
+                <td width="15%">{{ elemento.estado }}</td>
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Edificación: </th>
+                <td width="15%">{{ nodoCliente }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Ubicado En:</th>              
+                <td width="15%">{{ strUbicadoEn }}</td>
+                <td width="1%"></td>
+
+                <td width="8%"></td>
+                <th width="25%"></th>
+                <td width="15%"></td>        
+                <td width="1%"></td>
+            </tr>
+
+        </tbody>
+    </table>
+    <br>
+    <div  id="gridElementos"></div>
+    <br>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('elementocaja') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <div class="secHead">Historial del Elemento</div>      
+	<table style="width:100%;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+		<tbody>
+			<tr>
+				<td><b>Estado</b></td>
+				<td><b>Fecha Creacion</b></td>
+				<td><b>Usuario Creacion</b></td>
+				<td><b>Observacion</b></td>
+			</tr>
+			{% for key, item1 in historialElemento %}
+				<tr>
+				{% for key_in, item2 in item1 %}
+                    <td>{{ item2|striptags('<br>')|raw }} </td>
+				{% endfor %}
+				</tr>
+			{% endfor %}   
+		</tbody>
+	</table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            {% if is_granted("ROLE_232-2") %}
+                <a class="button-nuevo-registro" href="{{ path('elementocaja_newCaja') }}">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Nueva Caja
+                </a>
+            {% endif %}
+        </li>
+        <li>
+            &nbsp;
+        </li>
+        <li>
+            {% if is_granted("ROLE_232-5") %}
+            <a class="button-editar" href="{{ path('elementocaja_editCaja', { 'id': elemento.id }) }}">
+                &nbsp;Editar Caja
+            </a>
+            {% endif %}
+        </li>
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

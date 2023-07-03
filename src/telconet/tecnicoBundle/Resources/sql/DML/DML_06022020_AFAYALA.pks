@@ -1,0 +1,75 @@
+SET DEFINE OFF;
+
+-- Crear Característica Instalación Simultánea
+INSERT INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+    )
+VALUES
+    (
+        DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+        'INSTALACION_SIMULTANEA_COU_TELEFONIA_FIJA',
+        'N',
+        'Activo',
+        SYSDATE,
+        'afayala',
+        NULL,
+        NULL,
+        'TECNICA'
+);
+
+-- Crear Relación entre Producto y Característica
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    FE_ULT_MOD,
+    USR_CREACION,
+    USR_ULT_MOD,
+    ESTADO,
+    VISIBLE_COMERCIAL
+    )
+VALUES
+    (
+        DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+        (
+        SELECT
+            ID_PRODUCTO
+        FROM
+            DB_COMERCIAL.ADMI_PRODUCTO
+        WHERE
+            DESCRIPCION_PRODUCTO = 'COU LINEAS TELEFONIA FIJA'
+    ),
+        (
+        SELECT
+            ID_CARACTERISTICA
+        FROM
+            DB_COMERCIAL.ADMI_CARACTERISTICA
+        WHERE
+            DESCRIPCION_CARACTERISTICA = 'INSTALACION_SIMULTANEA_COU_TELEFONIA_FIJA'
+    ),
+        SYSDATE,
+        NULL,
+        'afayala',
+        NULL,
+        'Activo',
+        'SI'
+);
+
+-- Agregar Internet SMB Centros Comercial como servicio tradicional 
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET 
+SET VALOR1 = '236,237,238,242,1155,1241'
+WHERE PARAMETRO_ID = 906;
+   
+COMMIT;
+/

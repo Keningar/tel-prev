@@ -1,0 +1,19 @@
+procesomasivo_cambioPlan:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoServicioCambioPlan:cambioPlan" }
+    
+procesomasivo_getOficinaGrupoPorEmpresa:
+    pattern:  /getOficinaGrupoPorEmpresa
+    defaults: { _controller: "tecnicoBundle:InfoServicioCambioPlan:getOficinaGrupoPorEmpresa" }
+    
+procesomasivo_getPlanes:
+    pattern:  /getPlanes
+    defaults: { _controller: "tecnicoBundle:InfoServicioCambioPlan:getPlanes" }
+    
+procesomasivo_getServiciosCambioPlan:
+    pattern:  /getServiciosCambioPlan
+    defaults: { _controller: "tecnicoBundle:InfoServicioCambioPlan:getServiciosCambioPlan" }
+    
+procesomasivo_cambiarPlanMasivo:
+    pattern:  /cambioPlanMasivo
+    defaults: { _controller: "tecnicoBundle:InfoServicioCambioPlan:cambioPlanMasivo" }

@@ -1,0 +1,150 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+
+<script>
+        var url_getEncontradosNodo = '{{path('elementonodo_getEncontradosNodo')}}';
+        var nombreNodo             = '{{nombreNodo}}';
+        var nombreSwitch           = '{{nombreSwitch}}';
+        var nombreInterfaceSwitch  = '{{nombreInterfaceSwitch}}';
+        var inicio                 = 'SI';
+        var getElementoSwitch      = '{{path('elementoswitch_getEncontradosSwitch')}}';
+        var getInterfaceElemento   = '{{path('enlace_elemento_buscarInterfacesPorElemento')}}';
+        var getRadioInicio         = '{{path('factibilidadinstalacion_ajaxComboElementos')}}';
+        var getNombreRepetidora    = '{{path('elementoradio_generaNombreRepetidora')}}';
+</script>
+
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoRadio/edit.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Radio</h1>
+</div>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<div class="body_content">
+    <form id='form_edit_buffer' action="{{ path('elementoradio_updateRadio', { 'id': radio.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" novalidate="novalidate"
+          onsubmit='if(validacionesForm()){ 
+                                Ext.MessageBox.wait("Actualizando Elemento...");
+                                document.forms[0].submit();
+                                return true;
+                            }
+                            else{
+                                return false;
+                            }'>
+        <table width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.nombreElemento) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.nombreElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.nodoElementoId) }}</td>
+                    <div hidden="true">{{ form_widget(edit_form.nodoElementoId) }}</div>
+                    <td width="10%"><div id='combo_nodos'></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.ipElemento) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.ipElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.tipoElementoRed) }}</td>
+                    <div hidden="true">{{ form_widget(edit_form.tipoElementoRed) }}</div>
+                    <td width="10%"><div id='combo_tipoElementoRed'></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.descripcionElemento) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.descripcionElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.switchElementoId) }}</td>
+                    <div hidden="true">{{ form_widget(edit_form.switchElementoId) }}</div>
+                    <td width="10%"><div id='combo_switch'></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.modeloElementoId) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.modeloElementoId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.interfaceSwitchId) }}</td>
+                    <div hidden="true">{{ form_widget(edit_form.interfaceSwitchId) }}</div>
+                    <td width="10%"> <input type="text" id="idIntSw" value="{{nombreInterfaceSwitch}}" readonly><div id='combo_intSwitch'></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.sid) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.sid) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.macElemento) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.macElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.radioInicioId) }}</td>
+                    <div hidden="true">{{ form_widget(edit_form.radioInicioId) }}</div>
+                    <td width="10%"><div id='combo_radioInicioId'></div></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"></td>
+                    <td width="10%"></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="10%">
+                        <input type="hidden" name="idUbicacion" value="{%if ubicacion %}{{ ubicacion.id }}{%endif%}">
+                        <input type="hidden" name="idIpElemento" value="{%if ipElemento %}{{ ipElemento.id }}{%endif%}">
+                    </td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+            </table>
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('elementoradio') }}">
+                        Cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+<script>
+    
+    function grabar()
+    {
+        document.forms[0].submit();
+    }
+    </script>
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

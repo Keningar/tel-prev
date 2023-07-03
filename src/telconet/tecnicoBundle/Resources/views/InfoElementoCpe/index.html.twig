@@ -1,0 +1,63 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlUpLoadFileSeries        = "{{path('elementocpe_upLoadFileSeries') }}";
+    var url_fileUpload             = "{{path('gestion_documentos_fileUpload') }}";
+    var url_TiposElementos         = "{{path('elementocpe_getTiposElementos') }}";
+    var url_ModelosElementos       = "{{path('elementocpe_getModelosElementos') }}";
+    var url_gridElementos          = "{{path('elementocpe_getElementosAuditoria') }}";
+    var url_gridTrazabilidad       = "{{path('elementocpe_getTrazabilidadElemento') }}";
+    var urlActualizarEstado        = "{{path('elementocpe_actualizarEstado') }}";
+    var urlIngresarTrazabilidad    = "{{path('elementocpe_ingresarTrazabilidad') }}";
+    var urlExportarReporte         = "{{path('elementocpe_exportarReporte') }}";
+    var urlExportarTrazabilidad    = "{{path('elementocpe_exportarTrazabilidad') }}";
+    var strBanderaCargaMasiva      = "{{ strCargaMasiva }}";
+    var url_getOficinas            = "{{path('elementocpe_getOficinas') }}";
+    var url_valor                  = "{{path('elementocpe_getValor') }}";
+    var url_responsable            = "{{path('elementocpe_getResponsable') }}";
+    var url_CambioElementoTransito = "{{path('elementocpe_cambiarElementoAEnTransito') }}";
+</script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoCpe/index.js?6') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Consulta de Elementos</h1>
+</div>
+    <div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_central %}

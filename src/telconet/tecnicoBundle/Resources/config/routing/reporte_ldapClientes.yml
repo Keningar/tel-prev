@@ -1,0 +1,12 @@
+reportes_consultaLdapClientes:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoReportes:index" }
+
+    
+reportes_consulta:
+    pattern:  /getConsulta
+    defaults: { _controller: "tecnicoBundle:InfoReportes:getLdapClientes" }
+    
+reportes_exportarExcel:
+    pattern:  /exportarExcel
+    defaults: { _controller: "tecnicoBundle:InfoReportes:exportLdapClientes" }    

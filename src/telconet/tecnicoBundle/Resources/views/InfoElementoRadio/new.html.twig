@@ -1,0 +1,130 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+        }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script>
+        var url_getEncontradosNodo = '{{path('elementonodo_getEncontradosNodo')}}';
+        var getElementoSwitch      = '{{path('elementoswitch_getEncontradosSwitch')}}';
+        var getInterfaceElemento   = '{{path('enlace_elemento_buscarInterfacesPorElemento')}}';
+        var getRadioInicio         = '{{path('factibilidadinstalacion_ajaxComboElementos')}}';
+        var getNombreRepetidora    = '{{path('elementoradio_generaNombreRepetidora')}}';
+    </script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoRadio/new.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Ingreso de Radios</h1>
+    </div>
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    
+    <div class="body_content">
+        <form id='form_new_elemento_radio' action="{{ path('elementoradio_createRadio') }}" method="post" {{ form_enctype(form) }} class='formulario' novalidate="novalidate"
+              onsubmit='if(validacionesForm()){ 
+                                Ext.MessageBox.wait("Ingresando Elemento...");
+                                document.forms[0].submit();
+                                return true;
+                            }
+                            else{
+                                return false;
+                            }'>
+            <table width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.nombreElemento) }}</td>
+                    <td width="10%">{{ form_widget(form.nombreElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.nodoElementoId) }}</td>
+                    <div hidden="true">{{ form_widget(form.nodoElementoId) }}</div>
+                    <td width="10%"><div id='combo_nodos'></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.ipElemento) }}</td>
+                    <td width="10%">{{ form_widget(form.ipElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.tipoElementoRed) }}</td>
+                    <div hidden="true">{{ form_widget(form.tipoElementoRed) }}</div>
+                    <td width="10%"><div id='combo_tipoElementoRed'></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.descripcionElemento) }}</td>
+                    <td width="10%">{{ form_widget(form.descripcionElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.switchElementoId) }}</td>
+                    <div hidden="true">{{ form_widget(form.switchElementoId) }}</div>
+                    <td width="10%"><div id='combo_switch'></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.modeloElementoId) }}</td>
+                    <td width="10%">{{ form_widget(form.modeloElementoId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.interfaceSwitchId) }}</td>
+                    <div hidden="true">{{ form_widget(form.interfaceSwitchId) }}</div>
+                    <td width="10%"><div id='combo_intSwitch'></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.sid) }}</td>
+                    <td width="10%">{{ form_widget(form.sid) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.macElemento) }}</td>
+                    <td width="10%">{{ form_widget(form.macElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.radioInicioId) }}</td>
+                    <div hidden="true">{{ form_widget(form.radioInicioId) }}</div>
+                    <td width="10%"><div id='combo_radioInicioId'></div></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"></td>
+                    <td width="10%"></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+            </table>
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('elementoradio') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+            {{ form_widget(form._token) }}
+        </form>
+    </div>
+    <div id='windowMap' style='display:none'> 
+    <div id="map_canvas" style="width:500px; height:500px"></div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    
+{% endblock javascripts_footer%}	

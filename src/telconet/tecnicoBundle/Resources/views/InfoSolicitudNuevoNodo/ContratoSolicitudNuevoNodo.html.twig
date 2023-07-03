@@ -1,0 +1,178 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>  
+      <div style="page-break-after:always;display:block;">
+        <h3>Telconet S.A.</h3>
+        <hr>
+        <p align="center"><strong>CONTRATO  DE ARRENDAMIENTO</strong><br />
+            <strong>FOR  JUR 01 Ver 01 08 2013</strong><br />
+            <strong>{{informacionContrato.numeroContrato}}</strong><br /></p>
+        <p align="justify"><br />
+            <strong>PRIMERA:  COMPARECIENTES.-</strong>Comparecen a la celebración del presente, por una parte {{informacionContrato.articuloInicio}}  
+            señor{{informacionContrato.articuloFin}}
+            <strong> {{informacionContrato.nombresContacto}} </strong>,  
+            {% if informacionContrato.tipoPersona == 'NAT'%}
+                  por sus propios derechos
+            {%else%}
+                  por los derechos que representa de la <strong> compañía {{informacionContrato.contactoNodo}}, 
+                  </strong>en su calidad de Representante Legal de la misma
+            {%endif%}
+            en calidad de arrendador{{informacionContrato.articuloFin}}{{informacionContrato.infoContactoFin}} y por otra el 
+            <strong>{{informacionContrato.repLegal}}</strong>,  
+            {% if informacionContrato.boolRepLegal == true %}
+                  por los derechos que representa en su calidad de Gerente Regional-Quito  de la <strong> compañía  Telconet S. A.,</strong> mediante
+                  <strong> poder especial</strong> otorgado por el 
+            {%else%}
+                   en su calidad de Apoderado Especial del 
+            {%endif%}
+
+            <strong>Ing. Marion Tomislav Topic Granados</strong>,<strong> </strong>Gerente General y por tal<strong> </strong>Representante Legal
+            <strong> </strong>de la <strong>compañía  Telconet S.A.</strong>, parte a la cual para los  efectos del presente convenio se la podrá 
+            denominar arrendataria.<strong></strong><br />
+            <strong></strong><br /><br />
+            <strong>SEGUNDA:  ANTECEDENTES.- </strong>La <strong>compañía Telconet S.A.</strong>, es  una empresa nacional, legalmente constituida y 
+            se dedica a la provisión de Servicios de Internet y Transmisión de Datos, manteniendo su oficina matriz en la Urbanización Kennedy 
+            Norte Mz.109 Sl.21, Av. Luis Orrantìa y Av. Victor Hugo Sicouret(atrás de Mi Juguetería)en la ciudad de Guayaquil. Por la naturaleza de 
+            los servicios que presta y para poder dar un mejor servicio a sus clientes, tiene instaladas antenas y equipos de telecomunicaciones en 
+            varios puntos del país. {{informacionContrato.articuloInicio}} arrendador{{informacionContrato.articuloFin}} 
+            {%if informacionContrato.tipoPersona == 'NAT'%}
+              es propietari{{informacionContrato.articuloAdicional}} 
+            {%else%}
+              es Representante Legal de la <strong> compañía {{informacionContrato.contactoNodo}}, </strong>propietaria 
+            {%endif%}          
+            de un inmueble en el que existe un {{informacionContrato.espacioFisico}} y que se encuentra
+               ubicado en {{informacionNodo.direccionUbicacion}},  en el  Cantón {{informacionNodo.nombreCanton|title}} Parroquia 
+            {{informacionNodo.nombreParroquia|title}} Provincia  de {{informacionNodo.nombreProvincia|title}}
+        </p>
+        <p align="justify"><br />
+            <strong>TERCERA:  DE LA COSA ARRENDADA.- </strong>Con los antecedentes expuestos {{informacionContrato.articuloInicio}} 
+            arrendador{{informacionContrato.articuloFin}}  conviene en celebrar con la<strong> compañía  Telconet S.A</strong>, un contrato  de 
+            arrendamiento para que la arrendataria instale en el sitio descrito equipos de telecomunicaciones de las características detalladas 
+            a continuación:
+        </p>
+        <ul>          
+            {%if informacionContrato.tieneTorre == true %}
+                  <li>
+                     Torre sostenida por vientos de alambre galvanizado (autosoportada)
+                  </li>
+                  <li>
+                      Caja(s) de  intemperie
+                  </li>
+                  <li>
+                      Equipos de radio MICROONDAS
+                 </li>
+            {%endif%}
+            <li>
+                Racks de piso
+            </li>
+            <li>
+                Acceso de Cable de Fibra Óptica
+            </li>
+            <li>
+                Equipos de respaldo eléctrico (UPS y Baterías)
+            </li>
+            <li>
+                Acceso 24 x 7 x 365 días.
+            </li>
+            <li>
+                Equipos de telecomunicaciones
+            </li>
+            <li>
+                Obra civil
+            </li>
+        </ul>
+        <p align="justify">
+            <strong>CUARTA:  DEL  CANON DE ARRENDAMIENTO.-</strong> El precio a pagarse  por el arrendamiento, es la suma 
+            de $ {{informacionContrato.entero}}.{{informacionContrato.decimal}} ({{informacionContrato.valorEnteroLetra}} 
+            {{informacionContrato.valorDecimal}} Dólares Mensuales) {{informacionContrato.infoContactoIva}}, 
+            {%if informacionContrato.incremento != ''%}
+                con un incremento anual del {{informacionContrato.incremento}}%,
+            {%endif%}
+            previa presentación de factura; o de ser  
+            el caso de la firma de liquidación por compras, que le remitirá a la firma del  presente contrato la arrendataria. 
+            {{informacionContrato.garantia}}Así mismo Telconet declara que recibe llave del sitio arrendado.
+        </p>
+      </div>
+      <div style="page-break-after:always;display:block;">
+        <h3>Telconet S.A.</h3>
+        <hr>
+        <p align="justify"><br /><br />
+            <strong>QUINTA:  MANTENIMIENTO DE LOS EQUIPOS INSTALADOS.-  </strong>El  arrendador, permitirá que cuando sea  necesario y durante las 24 
+            horas del día, los 7 días de la semana, durante los  365 días del año, personal autorizado de la arrendataria, pueda ingresar al sitio 
+            arrendado, para dar mantenimiento, realizar trabajos o cambios de la estructura, rutinarios o de emergencia, para lo cual deberá dar 
+            instrucciones precisas a demás moradores o arrendatarios del lugar. Para el efecto pone a disposición como medio de comunicación los 
+            siguientes números: {{informacionContrato.contactos}} en caso de que la arrendataria necesite comunicarse.  Así mismo queda aclarado que la arrendataria 
+            aprovisionará  de la energía eléctrica para los equipos instalados con su propio medidor, que solicitará a la empresa eléctrica regional, 
+            como podrá también instalar sus equipos de generación propios, como lo son UPS, Baterias y Generador, quedando comprometido el arrendador 
+            a dar las facilidades y seguridades necesarias bajo su responsabilidad de que en el local no se presentaran cambios fisicos en la 
+            estructura sin conocimiento de la arrendataria ya que estos podrían causar daño o mal funcionamiento en los equipos de respaldo, 
+            todo lo que pudiere producir escape o fuga.
+        </p>
+        <p align="justify"><br />
+            <strong>SEXTA: DEL  TIEMPO DE DURACION DEL CONTRATO.- </strong>El convenio, entrará en vigencia a partir de la  fecha de suscripción y 
+            durará {{informacionContrato.tiempoContrato}} años, y en el caso de que una de las partes  convengan 
+            en darlo por terminado,  deberá  ser mediando su voluntad por escrito con sesenta días de anticipación.
+        </p>
+        <p align="justify"><br />
+            <strong>SEPTIMA: CLAUSULA  ESPECIAL DE PREFERENCIA Y CONFIDENCIALIDAD.-</strong> {{informacionContrato.articuloInicio}} 
+            arrendador{{informacionContrato.articuloFin}} se compromete a informar 
+            a la arrendataria sobre cualquier instalación en el mismo sitio, de equipos de telecomunicaciones de terceros y de ameritarse, por 
+            prelación, a dar por terminado cualquier convenio con éstos, si es que los mismos afecten el servicio de provisión de Telconet S.A; así 
+            mismo Telconet y arrendadora acuerdan que cualquier información confidencial intercambiada, facilitada o creada entre ellas, antes, 
+            durante y en la etapa posterior al proceso de suscribir  el contrato de arrendamiento para la instalación de los equipos requeridos por 
+            Telconet, será mantenida en estricta confidencialidad.
+        </p>
+        <p align="justify"><br />
+            <strong>OCTAVA:</strong> <strong>DECLARACION DE  COMPROMISO.-</strong> {{informacionContrato.articuloInicio}} 
+            arrendador{{informacionContrato.articuloFin}} declara que los equipos instalados 
+            en el local antes descrito, y mencionados en la cláusula tercera; son de propiedad exclusiva de la compañía <strong> TELCONET S.A.</strong>, 
+            y que por ningún motivo podrá retenerlos o apropiarse de ellos si el contrato de arrendamiento se diera por terminado; autorizando  a sus 
+            familiares, dependientes o  su representante de ser el caso, para que en su ausencia formal o fortuita, permita el desmontaje o 
+            desinstalación de los mismos a la mencionada empresa, caso contrario estarían incurriendo tanto el suscrito como los mencionados en el 
+            delito de Apropiación Indebida, quedando ésta en la libertad de acudir a las autoridades competentes.<br /><br />
+        </p>
+      </div>
+      <div style="page-break-after:always;display:block;">
+        <h3>Telconet S.A.</h3>
+        <hr>
+        <p align="justify"><br />
+            <strong>NOVENA: DE LAS CONTROVERSIAS: </strong>La parte arrendataria renuncia al domicilio y fuero, y se sujeta a los jueces competentes 
+            de la parte arrendadora y fija para cualquier citación judicial, la dirección del espacio físico arrendado o la dirección de su oficina 
+            {{informacionContrato.matriz}} <strong>en la ciudad de {{informacionContrato.ciudad}}, &nbsp;
+                situada en {{informacionContrato.direccion}}</strong>
+        </p>
+        <p align="justify"><br />
+            Para constancia, las partes suscriben este instrumento en<strong> {{informacionNodo.nombreCanton|title}}-Provincia  
+                de {{informacionNodo.nombreProvincia|title}} al {{informacionContrato.dia}} de 
+                {{informacionContrato.mes}} del {{informacionContrato.anio}}.</strong>
+            <br />
+        </p><br /><br /><br />
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="50%" align="center" valign="top">
+                    <p align="justify">
+                        <strong>{{informacionContrato.nombresContacto}}</strong><br />
+                        <strong> C.C.  #  {{informacionContrato.cedContactoNodo}}</strong><br />
+                        <strong> Arrendador{{informacionContrato.articuloFin}}</strong><br />
+                        <strong>{{informacionContrato.infoContactoRazones}}</strong>
+                    </p>
+               </td>
+
+                <td align="center" valign="top"><p align="justify">
+                        <strong>p.  Telconet S.A.</strong><br />
+                        <strong>R.U.C. # 0991327371001</strong> <br />
+                        <strong>Arrendataria</strong><br />
+                    </p>
+                    <p align="justify">&nbsp;</p>
+                    <p align="justify"><br />
+                        <strong>{{informacionContrato.repLegal}}</strong><br />
+                        <strong> C.C. No. {{informacionContrato.cedulaRepLegal}}</strong><br />
+                        <strong> Apoderado Especial </strong></p>
+                </td>
+            </tr>
+        </table>  
+      </div>
+  </body>
+</html>

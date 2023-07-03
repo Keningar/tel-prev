@@ -1,0 +1,71 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script>
+        var urlAjaxGetElementos              = '{{path('elementoswitch_ajaxGetElementos')}}';
+        var urlAjaxGetInfoBackboneByElemento = '{{path('elementoswitch_ajaxGetInfoBackboneByElemento')}}';
+        var urlAjaxGetElementosOltGpon       = '{{path('elementoolt_ajaxGetOltMultiplataforma')}}';
+    </script>
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/Vlan/reservar.js?6') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+    {% if app.session.get('prefijoEmpresa') == "TN" %}
+        
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="errormessage">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        
+        {% set clienteSession = app.session.get('cliente') %}
+        
+        {% if clienteSession %}
+            {% if clienteSession.estado == "Activo" %}
+                <div id="titulo_content">
+                    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+                    <h1>Reservar Vlan</h1>
+                </div>
+                
+                <div class="body_content">
+                    <form action="{{ path('vlan_create') }}" method="post" class='formulario' onSubmit="return validate()" >
+                        {% if arrayListaTipoRed %}
+                            <div class="secHead">Escoja el tipo de red</div>
+                            <fieldset id="selector">
+                                <label for="tipoRed">Escoja una Opci&oacute;n</label>
+                                <select id="tipoRed" style="width:125px;" name="tipoRed">
+                                    {% for item in arrayListaTipoRed %}
+                                        <option value="{{ item.strValue }}"{{ item.strSelected == 'SI' ? ' selected' : '' }}>{{ item.strTipo }}</option>
+                                    {% endfor %}
+                                </select>
+                            </fieldset>
+                        {% endif %}
+                        <div class="secHead">Complete los datos t&eacute;cnicos</div>
+                        <div id="panel_reservar_vlan"></div>
+                        
+                        {% if is_granted("ROLE_320-3") %}
+                        <div class="buttons">
+                            <p>
+                                <input type='submit'class="button-crud" value="Reservar" />
+                                <span class="height20px">
+                                    &oacute;&nbsp;
+                                    <a class="cancel-crud" href="{{ path('vlan') }}">Cancelar</a>
+                                </span>
+                            </p>
+                        </div>	
+                        {% endif %}
+                    </form>
+                </div>
+            {% else %}
+                <div class="errormessage">Opcion válida sólo para Clientes Activos</div>
+            {% endif %}
+        {% else %}
+            <div class="errormessage">Debe seleccionar cliente para poder reservar una Vlan</div>
+        {% endif %}
+    {% else %}
+        <div class="errormessage">Opción válida sólo para la Empresa Telconet</div>
+    {% endif %}
+{% endblock contenido_central %}

@@ -1,0 +1,86 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %} 
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoSolicitudNuevoNodo/index.js?17') }}"></script>
+    <script>
+        var url_grid          = '{{path('elementonodo_getEncontradosNodo')}}';
+        var url_autorizarTec  = '{{path('solicitud_ajaxAutorizarTec')}}';
+        var url_autorizarLegal= '{{path('solicitud_ajaxAutorizarLegal')}}';
+        var url_reversarRechazar = '{{path('solicitud_ajaxReversarRechazar')}}';        
+        var url_historialSol  = '{{path('solicitud_ajaxGetHistorialSolicitud')}}';  
+        var url_infoContrato  = '{{path('solicitud_ajaxGetInformacionContrato')}}'; 
+        var url_formaPago     = '{{path('admiformapago_grid')}}';
+        var url_banco         = '{{path('solicitud_ajaxGetBancoPorTipoCuenta')}}';
+        var url_tipoCuenta    = '{{path('admitipocuenta_grid')}}';
+        var url_repLegal      = '{{path('solicitud_ajaxGetInfoRepresentanteLegal')}}';        
+        var url_subirContrato = '{{path('solicitud_ajaxSubirContrato')}}';
+        var url_habilitarNodo = '{{path('solicitud_ajaxHabilitarNodo')}}';
+        var url_contratos     = "{{path('solicitud_ajaxVerContratoNodo') }}";
+        var url_infoXContrato = '{{path('solicitud_ajaxVerInformacionPorContactoNodo')}}';
+        var url_renovarContrato = '{{path('solicitud_ajaxRenovarContrato')}}';
+        var url_infoEditContacto = '{{path('solicitud_ajaxGetTipoContacto')}}';
+        var url_formas_contacto_persona = "{{ path('cliente_formas_contacto_grid') }}";
+        var url_formas_contacto         = "{{path('cliente_lista_formas_contacto')}}";
+        var url_valida_identificacion   = "{{ path('cliente_ajax_valida_identificacion') }}";
+        var url_validar_identificacion_tipo="{{ path('cliente_ajax_validar_identificacion_tipo') }}";
+        var url_getResumenNodo          = "{{path('solicitud_ajaxGetResumenNodo')}}";
+        var url_infoContactoNodo        = "{{path('elementonodo_ajaxGetContactoNodo')}}";
+    </script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Solicitudes Nuevo Nodo</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+    <input type="hidden" id="hdContactoTieneRol" name="hdContactoTieneRol"/>
+    <input type="hidden" id="hdFormasDeContacto" name="hdFormasDeContacto"/>
+    <input type="hidden" id="hdTipoContacto" name="hdTipoContacto"/>
+    <input type="hidden" id="hdIdPersona" name="hdIdPersona" value="0"/>
+    <input type="hidden" id="hdTipoIdentificacion" name="hdTipoIdentificacion"/>
+    <input type="hidden" id="hdIdentificacion" name="hdIdentificacion"/>
+    <input type="hidden" id="hdTipoTributario" name="hdTipoTributario"/>
+    <input type="hidden" id="hdGenero" name="hdGenero"/>
+    <input type="hidden" id="hdNacionalidad" name="hdNacionalidad"/>
+    <input type="hidden" id="hdTitulo" name="hdTitulo"/>
+    <input type="hidden" id="hdNombres" name="hdNombres"/>
+    <input type="hidden" id="hdApellidos" name="hdApellidos"/>
+    <input type="hidden" id="hdRazonSocial" name="hdRazonSocial" value="N/A"/>
+    <input type="hidden" id="hdCambioContacto" name="hdCambioContacto" value="N"/>
+    <input type="hidden" id="hdExiste" name="hdExiste"/>    
+</div>
+
+{% endblock contenido_central %}

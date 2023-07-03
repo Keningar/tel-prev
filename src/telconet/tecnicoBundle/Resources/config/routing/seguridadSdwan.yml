@@ -1,0 +1,35 @@
+servicio_ajaxGetEquipoSdwan:
+    pattern:  /ajaxGetEquipoSdwan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetEquipoSdwan" }
+
+servicio_ajaxGuardarEnlaceSdwanSeguridad:
+    pattern:  /ajaxGuardarEnlaceSdwanSeguridad
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGuardarEnlaceSdwanSeguridad" }
+    
+servicio_ajaxGetEquipoCpe:
+    pattern:  /ajaxGetEquipoCpe
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetEquipoCpe" }
+    
+servicio_ajaxOpcionesCpe:
+    pattern:  /ajaxOpcionesCpe
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxOpcionesCpe" }    
+
+servicio_ajaxGuardarEnlaceCpeSeguridad:
+    pattern:  /ajaxGuardarEnlaceCpeSeguridad
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGuardarEnlaceCpeSeguridad" }
+    
+servicio_ajaxGuardarEnlaceCpeEditar:
+    pattern:  /ajaxGuardarEnlaceCpeEditar
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGuardarEnlaceCpeEditar" }   
+    
+servicio_ajaxMigrarSecureNgFirewall:
+    pattern:  /ajaxMigrarSecureNgFirewall
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxMigrarSecureNgFirewall" }  
+    
+servicio_ajaxGetMigrarEquipoCpe:
+    pattern:  /ajaxGetMigrarEquipoCpe
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetMigrarEquipoCpe" }
+    
+servicio_verTradicional:
+    pattern:  /verTradicional
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verTradicional" } 

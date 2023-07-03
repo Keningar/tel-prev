@@ -1,0 +1,43 @@
+elementoservidor:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:indexServidor" }
+    
+elementoservidor_getEncontradosServidor:
+    pattern:  /getEncontradosServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:getEncontradosServidor" }
+  
+elementoservidor_newServidor:
+    pattern:  /newServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:newServidor" }
+
+elementoservidor_createServidor:
+    pattern: /createServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:createServidor" }
+    requirements: { _method: POST }
+    
+elementoservidor_showServidor:
+    pattern:  /{id}/showServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:showServidor" }
+    
+elementoservidor_editServidor:
+    pattern:  /{id}/editServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:editServidor" }
+
+elementoservidor_updateServidor:
+    pattern:  /{id}/updateServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:updateServidor" }
+    requirements: { _method: POST }
+    
+elementoservidor_cargarDatosServidor:
+    pattern:  /{id}/cargarDatosServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:cargarDatosServidor" }
+    requirements: { _method: POST }
+    
+elementoservidor_deleteServidor:
+    pattern:  /{id}/deleteServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:deleteServidor" }
+    
+elementoservidor_deleteAjaxServidor:
+    pattern:  /deleteAjaxServidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoServidor:deleteAjaxServidor" }
+    requirements: { _method: post }

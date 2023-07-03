@@ -1,0 +1,166 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/index.js?19') }}"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/z_Window.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/z_InfoPanel.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/z_IconBrowser.js?2') }}"></script>
+    <script>
+
+        //Valores en sesión.
+        var strPrefijoEmpresaSession            = '{{strPrefijoEmpresaSession}}';
+        var strIdCantonUsrSession               = '{{intIdCantonUsrSession}}';
+        var strIdDepartamentoUsrSession         = '{{intIdDepartamentoUsrSession}}';
+
+        //Roles
+        var crearSolicitudElementoNodo          = '{{is_granted("ROLE_154-8138")}}';
+        var generarCambioElementoNodo           = '{{is_granted("ROLE_154-8139")}}';
+        var migrarElementoNodo                  = '{{is_granted("ROLE_154-8158")}}';
+
+        var getModelosElemento                  = '{{path('servicio_ajaxGetModelosElemento')}}';
+        var buscarCpeNaf                        = '{{path('servicio_buscarCpeNaf')}}';
+        var url_motivosEquipos                  = '{{path('elementonodo_motivosEquipos')}}';
+        var url_migracionNodo                   = '{{path('elementonodo_migracionNodo')}}';
+        var url_crearSolicitudElementosNodo     = '{{path('elementonodo_crearSolicitudElementosNodo')}}';
+        var url_obtenerSolicitudesElementosNodo = '{{path('elementonodo_obtenerSolicitudesElementosNodo')}}';
+        var url_cambiarElementoNodo             = '{{path('elementonodo_cambiarElementoNodo')}}';
+
+        var url_gridNodos                       = '{{path('elementonodo_getEncontradosNodo')}}';
+        var url_motivos                         = '{{path('elementonodo_ajaxGetMotivos')}}';
+        var url_claseNodos                      = '{{path('elementonodo_ajaxGetClaseNodo')}}';
+        var url_provincias                      = '{{path('admiprovincia_ajaxGetProvinciasPorRegion')}}';
+        var url_cantones                        = '{{path('admicanton_ajaxBuscarCantonesPorProvincia')}}';
+
+        var url_editarNombreNodo                = '{{path('elementonodo_ajaxUpdateNombreNodo')}}';
+        var url_editarMedidor                   = '{{path('elementonodo_ajaxUpdateMedidor')}}';
+
+        var url_claseMedidor                    = '{{path('admiclasemedidor_getClasesMedidores')}}';
+        var url_tipoMedidor                     = '{{path('admitipomedidor_getTiposMedidores')}}';
+        var url_medidorElectrico                = '{{path('admitipomedidor_getMedidoresElectricos')}}';
+
+        var url_deleteNodo                      = '{{path('elementonodo_ajaxDeleteNodo')}}';
+
+        var url_imagenesNodo                    = '{{path('elementonodo_ajaxShowImagenesNodo')}}';
+        var url_getTags                         = '{{path('elementonodo_ajaxGetTags')}}';
+        var url_fileUpload                      = '{{path('elementonodo_ajaxFileUploadNodo')}}';
+        var url_eliminarImagen                  = '{{path('elementonodo_ajaxEliminarImagenNodo')}}';
+        var utl_editarImagen                    = '{{path('elementonodo_ajaxEditarImagenNodo')}}';
+        
+        var url_verContenidos                   = '{{path('elementonodo_ajaxCargarElementosContenidos')}}';
+        var url_verContenedor                   = '{{path('elementonodo_ajaxCargarElementosContenedor')}}';
+        var url_procesos                        = '{{path('callactivity_getProcesos')}}';
+        var url_tareaProceso                    = '{{path('callactivity_ajaxGetTareasByProceso')}}';
+        var url_empleadosDepartamento           = "{{ path('infocaso_getEmpleadosPorDepartamentoCiudad') }}";
+        var url_empresaPorSistema               = '{{path('infocaso_ajaxGetEmpresasPorSistema')}}';
+        var url_getMiembrosCuadrilla            = '{{path('tareas_getMiembrosCuadrilla')}}';
+        var url_admiCuadrilla                   = '{{path('admicuadrilla')}}';
+        var url_integrantesCuadrilla            = "{{ path('infocaso_getCuadrillas') }}";
+        var url_empresasExternas                = "{{path('infocaso_getContratistas') }}";
+        var url_getDepartamentosXEmpresa        = "{{path('infocaso_getDepartamentosPorEmpresaYCiudad')}}";
+        var url_getCiudadesXEmpresa             = "{{path('infocaso_getCiudadesPorEmpresa')}}";
+        var url_obtenerFechaServer              = '{{path('tareas_obtenerHoraServer')}}';
+        var url_crearTareaNodo                  = '{{path('elementonodo_ajaxCrearTareaNodo')}}';
+        var url_verTareaNodo                    = '{{path('elementonodo_ajaxVerTareaNodo')}}';
+        var url_exportarNodos                   = '{{path('elementonodo_exportarNodos')}}';
+        var url_ingresoElemento                 = '{{path('elementonodo_ingresoNuevoElemento')}}';
+        var url_deleteElemento                  = '{{path('elementonodo_ajaxDeleteElemento')}}';
+        var url_ingresoMasivo                   = '{{path('elementonodo_ingresoMasivoElemento')}}';
+
+        var url_realizarMantenimiento           = '{{path('elementonodo_realizarMantenimiento')}}';
+        var url_ingresaInfoMantenimiento        = '{{path('elementonodo_ingresaPeriodoMantenimiento')}}';
+        var url_getCicloMantenimientoNodo       = '{{path('elementonodo_getCicloMantenimientoNodo')}}';
+
+        var url_getElementoSerieAutomatica       = '{{path('elementonodo_getElementoSerieAutomatica')}}';
+        var url_validaElementoSerie              = '{{path('elementonodo_validaElementoSerie')}}';
+        
+        var idElemento;                
+        var comboTags;
+
+        var url_editarNombreElemento            = '{{path('elementonodo_editarNombreElemento')}}';
+        var urlValidarNafTelcos                 = '{{path('servicio_validaNafTelcos')}}';
+        var urlGeneraNombreAutomatico           = '{{path('servicio_generarNombreAutomatico')}}';
+        var url_validarSeriePreInstalacion      = '{{path('elementonodo_validarSeriePreInstlacion')}}';
+        var url_validarTipoElemento             = '{{path('elementonodo_validarTipoElemento')}}';    
+
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content" alt="imagen">
+	<h1>Listado de Nodo</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table>     
+</div>
+   
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+    {% if is_granted('ROLE_154-2197') %}
+    <a class="button-nuevo-registro" href="{{ path('elementonodo_newNodo') }}">
+        <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" alt="imagen" />
+        &nbsp;Nuevo Nodo
+    </a>
+    {%endif%}
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+    <br/>
+    {% if (is_granted('ROLE_154-8597')) %}
+       <a class="button-nuevo-registro" href="{{ path('elementonodo_newBitacora') }}">
+        <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" alt="imagen"/>
+        &nbsp;Nueva Bitácora
+        </a>
+        <br />
+        <br />
+        <br />
+        <a class="button-nuevo-registro" href="{{ path('elementonodo_listBitacora') }}">
+            <img src="{{ asset('public/images/images_crud/ver.png')}}" width="15" height="15" alt="imagen"/>
+            &nbsp;Ver Bitácoras
+        </a>
+    {% endif %}
+
+    
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        
+    </script>
+{% endblock %}

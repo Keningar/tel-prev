@@ -1,0 +1,90 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .alineando
+        {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label
+        {
+            margin: 0px !important;
+            width: 130px !important;
+            text-align: right!important;
+            margin-right: 10px!important;
+            padding-top: 8px!important;
+        }
+        .contenido
+        {
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Tablet</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content" style="text-align: center;">
+        <form id='form_new_proceso' action="{{ path('elementotablet_create') }}" method="post" {{ form_enctype(form) }} class='formulario' >
+            <center>
+                <table class="formulario" style="width: 100%">
+                    <tbody>
+                        <tr>
+                            <td width="20%">&nbsp;</td>
+                            <td width="60%">
+                                {% for flashMessage in app.session.flashbag.get('notice') %}
+                                <div class="errormessage">
+                                    {{ flashMessage }}
+                                </div>
+                                {% endfor %}
+                                {{ form_row(form.modeloElementoId) }}
+                                {{ form_row(form.nombreElemento) }}
+                                {{ form_row(form.serieLogica) }}
+                                {{ form_row(form.serieFisica) }}
+                                <div id="divResponsable"></div>
+                                {{ form_row(form.intIdPerResponsable) }}
+                                <div id="divRegionPerResponsable" style="display: table;">
+                                    <label class="required" for="strRegionPerResponsable">Regi&oacute;n:</label>
+                                    <label id="strRegionPerResponsable" class="required"></label>
+                                </div>
+                                <div id="divCantonPerResponsable" style="display: table;">
+                                    <label class="required" for="strCantonPerResponsable">Cant&oacute;n:</label>
+                                    <label id="strCantonPerResponsable" class="required"></label>
+                                </div>
+                                <div id="divDepartamentoPerResponsable" style="display: table;">
+                                    <label class="required" for="strDepartamentoPerResponsable">Departamento:</label>
+                                    <label id="strDepartamentoPerResponsable" class="required"></label>
+                                </div>
+                            </td> 
+                            <td width="20%">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </center>
+            {{ form_widget(form) }}	
+            <br/><br/>
+            <div class="buttons" style = "text-align = center" >
+                <input type='button' class="button-crud" value="Guardar"  onclick="verificarImeiExistente('guardar');" />
+            </div>	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        var strUrlVerificarImei         = "{{ path('elementotablet_verificarImei') }}";
+        var strUrlGetResponsables       = "{{ path('elementotablet_getResponsables') }}";
+        var strUrlGetInfoPerResponsable = "{{ path('elementotablet_getInfoPerResponsable') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTablet/funcionesGenerales.js?1') }}"></script>	
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTablet/new.js?1') }}"></script>
+{% endblock javascripts_footer%}	

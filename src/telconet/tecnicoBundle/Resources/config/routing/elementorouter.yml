@@ -1,0 +1,42 @@
+elementorouter:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:indexRouter" }
+      
+elementorouter_newRouter:
+    pattern:  /newRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:newRouter" }
+
+elementorouter_createRouter:
+    pattern: /createRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:createRouter" }
+    requirements: { _method: POST }
+    
+elementorouter_editRouter:
+    pattern:  /{id}/editRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:editRouter" }
+
+elementorouter_updateRouter:
+    pattern:  /{id}/updateRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:updateRouter" }
+    requirements: { _method: POST }
+       
+elementorouter_showRouter:
+    pattern:  /{id}/showRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:showRouter" }
+        
+elementorouter_getEncontradosRouter:
+    pattern:  /getEncontradosRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:getEncontradosRouter" }
+    
+elementorouter_cargarDatosRouter:
+    pattern:  /{id}/cargarDatosRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:cargarDatosRouter" }
+    requirements: { _method: POST }
+    
+elementorouter_getElementosPorRouter:
+    pattern:  /{id}/getElementosPorRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:getElementosPorRouter" }
+    
+elementorouter_deleteAjaxRouter:
+    pattern:  /deleteAjaxRouter
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouter:deleteAjaxRouter" }

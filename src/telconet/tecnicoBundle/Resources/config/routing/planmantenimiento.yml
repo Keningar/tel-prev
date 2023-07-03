@@ -1,0 +1,50 @@
+planmantenimiento:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:PlanMantenimiento:index" }
+
+planmantenimiento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:PlanMantenimiento:show" }
+
+planmantenimiento_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:PlanMantenimiento:new" }
+
+planmantenimiento_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:PlanMantenimiento:create" }
+    requirements: { _method: POST }
+    
+planmantenimiento_delete:
+    pattern:  /delete
+    defaults: { _controller: "tecnicoBundle:PlanMantenimiento:delete" }
+    
+planmantenimiento_grid:
+    pattern:  /grid
+    defaults: { _controller: "tecnicoBundle:PlanMantenimiento:grid"}
+    
+planmantenimiento_getTareasPlanMantenimiento:
+    pattern:  /{id}/getTareasPlanMantenimiento
+    defaults: { _controller: "tecnicoBundle:PlanMantenimiento:getTareasPlanMantenimiento"}
+    
+planmantenimiento_actualizarTareaPlan:
+    pattern:  /actualizarTareaPlan
+    defaults: { _controller: tecnicoBundle:PlanMantenimiento:actualizarTareaPlan } 
+    
+planmantenimiento_eliminarTareaPlan:
+    pattern:  /eliminarTareaPlan
+    defaults: { _controller: tecnicoBundle:PlanMantenimiento:eliminarTareaPlan } 
+    
+planmantenimiento_verificarNombrePlan:
+    pattern:  /verificarNombrePlan
+    defaults: { _controller: tecnicoBundle:PlanMantenimiento:verificarNombrePlan }
+
+planmantenimiento_getTareasMantenimientos:
+    pattern:  /getTareasMantenimientos
+    defaults: { _controller: tecnicoBundle:PlanMantenimiento:getTareasMantenimientos }
+    
+planmantenimiento_getTareasMantenimientoAsociadoPlan:
+    pattern:  /getTareasMantenimientoAsociadoPlan
+    defaults: { _controller: tecnicoBundle:PlanMantenimiento:getTareasMantenimientoAsociadoPlan }
+    
+    

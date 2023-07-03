@@ -1,0 +1,60 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+   
+     <script>
+         var urlOltGridMigracion          = '{{ path('elementoolt_ajaxMigracionGrid') }}';
+         var strEmpresaSesion             = '{{app.session.get('prefijoEmpresa')}}';
+         var urlOltMigracion              = '{{ path('elementoolt_ajaxOltMigracion') }}';
+    </script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoOlt/migracion.js?20') }}"></script>
+   
+{% endblock %}
+
+{% block contenido_izq %}
+    
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Migración Tecnología Olt</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+        
+        <tr>
+            <td><Br> <h1 id="titulo-secundario bold" style="text-align: left; margin-left: 330px ">Olt's a migrar</h1> <Br></td>
+        </tr>
+        
+        <tr>
+            <td><div id="gridAsignaciones"></div></td>
+        </tr>
+        
+        <tr>
+            <td>
+                <div class="buttons">
+                        <button type='submit'class="button-crud" onClick='OltMigrar();'>Guardar</button>
+                </div>
+            </td>
+        </tr>
+        
+    </table> 
+</div>
+
+{% endblock contenido_izq %}
+
+

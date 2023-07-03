@@ -1,0 +1,203 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+    
+ 
+<style>  
+    .formulario label {
+        width: 162px!important;
+    }
+    .formulario textarea {
+        margin-left: 0.2em;
+    }
+
+    .divInlineBlock1
+    {
+       display:inline-block; 
+       float:left;
+    }
+    .divInlineBlock2
+    {
+       display:inline-block; 
+       float:right;
+    }
+
+    .divBlock
+    {
+        display:block;
+    }
+
+    .mantenimiento
+    {
+        margin: 0px 40px 0px 40px;
+        padding: 10px 16px 5px 16px
+
+    }
+
+    .div_mantenimiento
+    {
+        border: 1px solid #cacaca;
+        margin: 0px 0px 20px 0px;
+        padding: 0px
+
+    }
+    .titulosMantenimientos
+    {
+        font-weight: normal;
+        font-size: 15px;
+        text-align: center;
+        color: #2d2d2d;
+    }
+
+    .grid_tareas_mantenimiento {
+        margin-bottom: 10px;
+    }
+
+    .btnCerrar
+    {
+        background-color: red;
+        color: white;
+        float: right;
+        font-size: 15px;
+        font-weight: bold;
+        height: 19px;
+        text-align: center;
+        width: 17px;
+    }
+</style>
+
+
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>		
+        var strUrlVerificarNombrePlan   = "{{ path('planmantenimiento_verificarNombrePlan') }}";
+        var numArchivosSubidos          = 0;
+        var url_multipleFileUpload      = "{{path('gestion_documentos_multipleFileUpload') }}";
+    </script> 
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/PlanMantenimiento/new.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/PlanMantenimiento/funcionesGenerales.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Plan de Mantenimiento</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' action="{{ path('planmantenimiento_create') }}" method="post" {{ form_enctype(form) }} 
+              class='formulario' onsubmit="return validarFormulario();" novalidate="novalidate">
+            {{ form_widget(form) }}
+            <input type="hidden" id="numMantenimientosFinal" name="numMantenimientosFinal" value="" />
+            <input type="hidden" id="indicesMantenimientos" name="indicesMantenimientos" value="" />
+            <div class="infomessage">Puedes dar click en <i>"Agregar Mantenimientos"</i> 
+                              para agregar mantenimientos que desees al Plan de Mantenimiento</div>
+            <br/><br/>
+            <div id="mantenimientos_principal">
+                <div id="div_mantenimiento_0" class="div_mantenimiento">
+                    <span id='close' class="btnCerrar" onclick='eliminarMantenimiento(this,0); return false;'>x</span>
+                    <div id="mantenimiento_0" class="mantenimiento">
+                        <input type="hidden" value=""/>
+                        <p id="titulo_mantenimiento_0" class="titulosMantenimientos" ></p>
+                        <div id="div_block_0" class="divBlock">
+                            <div id="div_frecuencia_0" class="divInlineBlock1">
+                                <label>Frecuencia</label>
+                                <select id="mantenimientotype_frecuencias_0" class="campo-obligatorio" name="mantenimientotype[frecuencias][0]"> 
+                                   {% for key,frecuencia in arrayFrecuenciasMantenimiento %}        
+                                     {% if ( key == 1) %}
+                                        <option selected value="{{ key }}" > {{ frecuencia }}</option>
+                                     {% else %}
+                                        <option value="{{ key }}" > {{ frecuencia }}</option>
+                                     {% endif %} 
+                                  {% endfor %}
+                                </select>                              
+                            </div>
+
+                            <div id="div_tipoFrecuencia_0" class="divInlineBlock2">
+                                <label>Unidad de Medida</label>
+                                <select id="mantenimientotype_tiposFrecuencia_0" class="campo-obligatorio" name="mantenimientotype[tiposFrecuencia][0]"> 
+                                   {% for key,tipoFrecuencia in arrayTiposFrecuenciasMantenimiento %}        
+                                     {% if ( key == 1) %}
+                                        <option selected value="{{ key }}" > {{ tipoFrecuencia }}</option>
+                                     {% else %}
+                                        <option value="{{ key }}" > {{ tipoFrecuencia }}</option>
+                                     {% endif %} 
+                                  {% endfor %}
+                                </select>
+
+                            </div>
+
+
+                        </div>
+                        <div id="grid_tareas_mantenimiento_0" class="grid_tareas_mantenimiento">
+                            <div id="div_tareas_0"></div>
+                            <input type="hidden" id="tareas_escogidas_0" name="tareas_escogidas_0" value="" />
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <a href="#" id="agregar_mantenimiento">Agregar Mantenimiento</a>
+            
+            <ul id="tiposFrecuencia-fields-list" 
+                data-prototype="<label>Unidad de medida</label>{{ form_widget(form_mantenimientos.tiposFrecuencia.vars.prototype) | e }}">                                         
+                {% for tiposFrecuenciaField in form_mantenimientos.tiposFrecuencia %}
+                  <li>
+                      {{ form_errors(tiposFrecuenciaField) }}
+                      {{ form_widget(tiposFrecuenciaField) }}
+                  </li>
+                {% endfor %}
+            </ul>
+            
+            <ul id="frecuencias-fields-list" 
+                data-prototype="<label>Frecuencia</label>{{ form_widget(form_mantenimientos.frecuencias.vars.prototype) | e }}">                                         
+                {% for frecuenciaField in form_mantenimientos.frecuencias %}
+                  <li>
+                      {{ form_errors(frecuenciaField) }}
+                      {{ form_widget(frecuenciaField) }}
+                  </li>
+                {% endfor %}
+            </ul>
+            <div id='diverrorident' class='errormessage' style='display:none'></div>
+
+            
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('planmantenimiento') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+        </form>
+    </div>
+{% endblock contenido_izq %}	
+    
+{% block javascripts_footer%}
+<script type="text/javascript">    
+    var mantenimientosCount   = '{{ form_mantenimientos.tiposFrecuencia | length }}';
+        mantenimientosCount++;
+
+</script>
+{% endblock javascripts_footer%}

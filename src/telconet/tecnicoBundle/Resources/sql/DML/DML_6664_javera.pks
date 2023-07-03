@@ -1,0 +1,223 @@
+--se agrega las características al producto para que se puedan gestionar con el web service
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    FE_ULT_MOD,
+    USR_CREACION,
+    USR_ULT_MOD,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    983,
+    1201,
+    SYSDATE,
+    NULL,
+    'javera',
+    NULL,
+    'Activo',
+    'NO'
+  );
+--
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    FE_ULT_MOD,
+    USR_CREACION,
+    USR_ULT_MOD,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    983,
+    1192,
+    SYSDATE,
+    NULL,
+    'javera',
+    NULL,
+    'Activo',
+    'NO'
+  );
+
+
+--nueva caracteristica
+--INGRESO CARACTERISTICA
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'TIPO PLAN',
+    'S',
+    'Activo',
+    SYSDATE,
+    'javera',
+    NULL,
+    NULL,
+    'COMERCIAL'
+  );
+--insert q relaciona la caracteristica
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    FE_ULT_MOD,
+    USR_CREACION,
+    USR_ULT_MOD,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    983,
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.CURRVAL,
+    sysdate,
+    NULL,
+    'javera',
+    NULL,
+    'Activo',
+    'SI'
+  );
+--cabecera parametro
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL ,
+    'PROD_TIPO PLAN',
+    'PROD_TIPO PLAN',
+    'COMERCIAL',
+    '',
+    'Activo',
+    'javera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+--detalle parametro
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL ,
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.CURRVAL,
+    'PROD_TIPO PLAN',
+    'BASICO',
+    'NETBASICO',
+    NULL,
+    NULL,
+    'Activo',
+    'javera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL ,
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.CURRVAL,
+    'PROD_TIPO PLAN',
+    'BASICO COMERCIAL',
+    'NETBAS_COM',
+    NULL,
+    NULL,
+    'Activo',
+    'javera',
+    SYSDATE,
+    '172.17.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  ); 
+  
+
+commit;
+
+/

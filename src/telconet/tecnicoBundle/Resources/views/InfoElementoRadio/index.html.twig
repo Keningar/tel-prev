@@ -1,0 +1,80 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('../bundles/tecnico/css/InfoElemento.css') }}" />
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script>
+        var url_QuitarOperatividad      = '{{ path('elementoradio_quitarOperatividad')}}';
+        var url_AgregarOperatividad     = '{{ path('elementoradio_agregarOperatividad')}}';
+    </script>
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoRadio/index.js?5') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Radio</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+    <a class="button-nuevo-registro" href="{{ path('elementoradio_newRadio') }}">
+        <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+        &nbsp;Nuevo Radio
+    </a>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+        {%if ( is_granted("ROLE_155-7797") and app.session.get('prefijoEmpresa') and app.session.get('prefijoEmpresa') == 'TN' ) %}
+            <li>
+               <a class="listado_ac_tablas" href="{{ path('elementoradio_generarOperatividadMasivoTN') }}">
+                    Generar Operatividad Masiva
+                </a>
+            </li>
+        {%endif%}
+    </ul>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        
+    </script>
+{% endblock %}

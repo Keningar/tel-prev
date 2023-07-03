@@ -1,0 +1,43 @@
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'TAREA SOLICITUD DE RECURSOS DC',
+    '',
+    'SOPORTE',
+    null,
+    'Activo',
+    'kyrodriguez',
+    sysdate,
+    '127.0.0.1',
+    null,
+    null,
+    null
+  );
+
+INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'TAREA SOLICITUD DE RECURSOS DC'),
+    'TAREA A COMERCIAL',
+    'TAREAS VENTAS',
+    'SOLICITUDES VARIAS (INTERNAS)',
+    NULL,
+    NULL,
+    'Activo',
+    'kyrodriguez',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    10,NULL,NULL,NULL
+  );
+
+commit;
+
+/
+

@@ -1,0 +1,67 @@
+solicitud_nuevoNodo:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:index" }
+    
+solicitud_ajaxAutorizarTec:
+    pattern:  /ajaxAutorizarTec
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxAutorizarTec" }
+    
+solicitud_ajaxAutorizarLegal:
+    pattern:  /ajaxAutorizarLegal
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxAutorizarLegal" } 
+    
+solicitud_ajaxReversarRechazar:
+    pattern:  /ajaxReversarRechazar
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxReversarRechazar" }    
+    
+solicitud_ajaxHabilitarNodo:
+    pattern:  /ajaxHabilitarNodo
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxHabilitarNodo" }      
+    
+solicitud_ajaxVerContratoNodo:
+    pattern:  /ajaxVerContratoNodo
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxVerContratoNodo" }   
+    
+solicitud_ajaxVerInformacionPorContactoNodo:
+    pattern:  /ajaxVerInformacionPorContactoNodo
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxVerInformacionPorContactoNodo" }    
+                
+solicitud_ajaxGetHistorialSolicitud:
+    pattern:  /ajaxGetHistorialSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxGetHistorialSolicitud" }
+    
+solicitud_ajaxGetInformacionContrato:
+    pattern:  /ajaxGetInformacionContrato
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxGetInformacionContrato" }    
+
+solicitud_ajaxGetInfoRepresentanteLegal:
+    pattern:  /ajaxGetInfoRepresentanteLegal
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxGetInfoRepresentanteLegal" }
+    
+solicitud_ajaxGenerarContratoPDF:
+    pattern:  /{id}/generarContratoPDF
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:generarContratoPDF" }  
+    
+solicitud_ajaxGetBancoPorTipoCuenta:
+    pattern:  /ajaxGetBancoPorTipoCuenta
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxGetBancoPorTipoCuenta" }    
+    
+solicitud_ajaxRenovarContrato:
+    pattern:  /ajaxRenovarContrato
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxRenovarContrato" } 
+    
+solicitud_ajaxGetTipoContacto:
+    pattern:  /ajaxGetTipoContacto
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxGetTipoContacto" }           
+    
+solicitud_ajaxSubirContrato:
+    pattern:  /ajaxSubirContrato
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxSubirContrato" }
+    
+solicitud_ajaxDescargarContratoFinal:
+    pattern:  /{id}/ajaxDescargarContratoFinal
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxDescargarContratoFinal" }    
+    
+solicitud_ajaxGetResumenNodo:
+    pattern:  /ajaxGetResumenNodo
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudNuevoNodo:ajaxGetResumenNodo" }   

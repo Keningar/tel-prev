@@ -1,0 +1,63 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %} 
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+		var prefijoEmpresa = '{{ app.session.get("prefijoEmpresa") }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/infoLineaPon/index.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Solicitudes</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_central %}
+
+{% block javascripts_footer%}
+    <script>
+        var getDatosBackbone      = '{{path('solicitud_getDatosBackbone')}}';
+        var crearSolicitud        = '{{path('solicitud_crearSolicitud')}}';
+        var aprobarSolicitud      = '{{path('solicitud_aprobarSolicitud')}}';
+        var rechazarSolicitud     = '{{path('solicitud_rechazarSolicitud')}}';
+        var getMotivos            = '{{path('solicitud_getMotivos')}}';
+        var getSolicitudes        = '{{path('solicitud_getSolicitudes')}}';
+        var getHistorialSolicitud = '{{path('solicitud_getHistorialSolicitud')}}';
+        var getCasos              = '{{path('solicitud_getCasos')}}';
+        
+    </script>
+{% endblock %}

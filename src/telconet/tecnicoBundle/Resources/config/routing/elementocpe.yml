@@ -1,0 +1,70 @@
+elementocpe:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:indexCpe" }
+
+elementocpe_showCpe:
+    pattern:  /{id}/showCpe
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:showCpe" }
+    
+elementocpe_getEncontradosCpe:
+    pattern:  /getEncontradosCpe
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getEncontradosCpe" }
+    
+elementocpe_cargarDatosCpe:
+    pattern:  /{id}/cargarDatosCpe
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:cargarDatosCpe" }
+    requirements: { _method: POST }
+
+elementocpe_upLoadFileSeries:
+    pattern:  /upLoadFileSeries
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:upLoadFileSeries" }
+
+elementocpe_getTiposElementos:
+    pattern:  /getTiposElementos
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getTiposElementos" }
+
+elementocpe_getOficinas:
+    pattern:  /getOficinas
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getOficinas" }
+
+elementocpe_getModelosElementos:
+    pattern:  /getModelosElementos
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getModelosElementos" }
+
+elementocpe_getElementosAuditoria:
+    pattern:  /getElementosAuditoria
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getElementosAuditoria" }
+
+elementocpe_getTrazabilidadElemento:
+    pattern:  /getTrazabilidadElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getTrazabilidadElemento" }
+
+elementocpe_actualizarEstado:
+    pattern:  /actualizarEstado
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:actualizarEstado" }
+    requirements: { _method: POST }
+
+elementocpe_ingresarTrazabilidad:
+    pattern:  /ingresarTrazabilidad
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:ingresarTrazabilidad" }
+    requirements: { _method: POST }
+
+elementocpe_exportarReporte:
+    pattern:  /exportarReporte
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:exportarReporte"}
+
+elementocpe_exportarTrazabilidad:
+    pattern:  /exportarTrazabilidad
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:exportarTrazabilidad"}
+
+elementocpe_getValor:
+    pattern:  /getValor
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getValor"}
+
+elementocpe_getResponsable:
+    pattern:  /getResponsable
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getResponsable"}
+
+elementocpe_cambiarElementoAEnTransito:
+    pattern:  /cambiarElementoAEnTransito
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:cambiarElementoAEnTransito" }

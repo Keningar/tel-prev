@@ -1,0 +1,15 @@
+elementosinubicacion:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoSinUbicacion:indexSinUbicacion" }
+      
+elementosinubicacion_grabarUbicacion:
+    pattern:  /grabarUbicacion
+    defaults: { _controller: "tecnicoBundle:InfoElementoSinUbicacion:grabarUbicacion" }
+
+elementosinubicacion_getEncontradosSinUbicacion:
+    pattern:  /getEncontradosSinUbicacion
+    defaults: { _controller: "tecnicoBundle:InfoElementoSinUbicacion:getEncontradosSinUbicacion" }
+
+elementosinubicacion_deleteSinUbicacion:
+    pattern:  /{id}/deleteSinUbicacion
+    defaults: { _controller: "tecnicoBundle:InfoElementoSinUbicacion:deleteSinUbicacion" }

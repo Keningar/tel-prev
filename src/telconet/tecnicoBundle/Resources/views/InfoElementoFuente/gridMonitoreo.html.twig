@@ -1,0 +1,42 @@
+{% if dispositivos %}
+    <ul class="bs-glyphicons">
+        {% for dispositivo in dispositivos %}
+            <li>
+                <span>
+                    <center>
+                        <div class="div-image">
+                            {% if dispositivo.estado == 'connected' %}
+                                <img src="{{ asset('./public/images/ico_connected.png') }}" class="img-responsive">
+                            {% elseif dispositivo.estado == 'notconnected' %}
+                                <img src="{{ asset('./public/images/ico_disconnected.png') }}" class="img-responsive">
+                            {% else %}
+                                <img src="{{ asset('./public/images/ico_disabled_connection.png') }}" class="img-responsive">
+                            {% endif %}
+                        </div>
+                    </center>
+                </span>
+                <span class="glyphicon-class">
+                    {{ dispositivo.switch }}
+                </span>
+                <span class="glyphicon-class">
+                    {{ dispositivo.puerto }}
+                </span>
+                <span {% if dispositivo.estado == 'connected' %} 
+                        class="label label-success" 
+                      {% elseif dispositivo.estado == 'notconnected' %}
+                        class="label label-danger" 
+                      {% else %}
+                        class="label label-warning" 
+                      {% endif %} >
+                    {{ dispositivo.estado }}
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <center>
+        <div style="margin: 20px auto;">
+            No se encontraron fuentes para monitorear
+        </div>
+    </center>
+{% endif %}

@@ -1,0 +1,117 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script>
+        var strUrlGetCiudades         = '{{path('infocaso_getCiudadesPorEmpresa')}}';
+        var strUrlGetDepartamentos    = '{{path('infocaso_getDepartamentosPorEmpresaYCiudad')}}';
+        var strUrlGetEmpleados        = '{{ path('infocaso_getEmpleadosPorDepartamentoCiudad') }}';
+        var strUrlGetTareas           = '{{ path('elementonodo_bitacora_listTarea') }}';
+        var strUrlGetTareaDetalle     = '{{ path('elementonodo_bitacora_listTareaDetalle') }}';
+        var strUrlGetElementosBitacora= '{{ path('elementonodo_bitacora_listElementosBitacora') }}';
+        var strUrlGetEncontradosNodo  = '{{path('elementonodo_getEncontradosNodo')}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/InfoBitacora/new.js?3') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content" alt="imagen">
+        <h1>Apertura de Bitácora Acceso Nodo</h1>
+    </div>
+    
+    {% if error %}
+        <div class="errormessage">
+            {{ mensaje }}
+        </div>
+    {% endif %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+   
+    <div class="body_content">
+        <form
+            id='form_new_bitacora_acceso_nodo'
+            class='formulario'
+            action="{{ path('elementonodo_createBitacora') }}"
+            method="post"
+            {{ form_enctype(form) }}
+            novalidate="novalidate"
+            onsubmit='
+                if (validacionesForm()) { 
+                    Ext.MessageBox.wait("Aperturando Bitácora...");
+                    document.forms[0].submit();
+                    return true;
+                } else {
+                    return false;
+                }
+            '>
+            <table border="0" class="box-section-content">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>{{ form_label(form.tareaId) }}</td>
+                    <div hidden="true">{{ form_widget(form.tareaId) }}</div>
+                    <td><div id='combo_tareas'></div></td>
+                    <td>&nbsp;</td>
+                    <td>{{ form_label(form.canton) }}</td>
+                    <div hidden="true">{{ form_widget(form.canton) }}</div>
+                    <td><div id='combo_ciudades'></div></td>
+                    <td>&nbsp;</td>
+                    <td>{{ form_label(form.departamento) }}</td>
+                    <div hidden="true">{{ form_widget(form.departamento) }}</div>
+                    <td><div id='combo_departamentos'></div></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>{{ form_label(form.tecnicoAsignado) }}</td>
+                    <div hidden="true">{{ form_widget(form.tecnicoAsignado) }}</div>
+                    <td><div id='combo_empleados'></div></td>
+                    <td>&nbsp;</td>
+                    <td>{{ form_label(form.elementoNodoNombre) }}</td>
+                    <div hidden="true">{{ form_widget(form.elementoNodoNombre) }}</div>
+                    <td><div id='combo_nodo'></div></td>
+                    <td>&nbsp;</td>
+                     <td>{{ form_label(form.elemento) }}</td>
+                    <div hidden="true">{{ form_widget(form.elemento) }}</div>
+                    <td><div id='combo_elemento'></div></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>{{ form_label(form.telefono) }}</td>
+                    <td>{{ form_widget(form.telefono) }}</td>
+                    <td>&nbsp;</td>
+                     <td>{{ form_label(form.codigos) }}</td>
+                    <td>{{ form_widget(form.codigos) }}</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>{{ form_label(form.observacion) }}</td>
+                    <td>{{ form_widget(form.observacion) }}</td>
+                    <td>&nbsp;</td>
+                </tr>
+            <table>
+            <div class="buttons">
+                <p>
+                    <input type='submit' class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('elementonodo_listBitacora') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+            {{ form_widget(form._token) }}
+        </form>
+    </div>
+{% endblock contenido_izq %}

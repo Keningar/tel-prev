@@ -1,0 +1,8 @@
+#ws para servicio FoxPremium
+rs_tecnico_foxpremium:
+  pattern:  /restablecerContrasenia
+  defaults: { _controller: telconet\tecnicoBundle\WebService\FoxPremiumWSController::restablecerContraseniaDesdeFoxAction }
+#ws para servicio FoxPremium
+crear_tecnico_foxpremium:
+  pattern:  /createNewPass
+  defaults: { _controller: telconet\tecnicoBundle\WebService\FoxPremiumWSController::crearContraseniaDesdeFoxAction }

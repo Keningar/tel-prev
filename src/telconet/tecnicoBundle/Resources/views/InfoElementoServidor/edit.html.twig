@@ -1,0 +1,126 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+<link href="{{ asset('public/js/kendo2012_1/source/styles/kendo.common.css') }}" type="text/css" rel="stylesheet" />
+<link href="{{ asset('public/js/kendo2012_1/source/styles/kendo.default.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoServidor/edit.js?1') }}"></script>
+    <script>
+        var cargarDatosServidor = '{{ path('elementoservidor_cargarDatosServidor', { 'id': servidor.id }) }}';
+        var buscarCantones      = '{{ path('admicanton_buscarCantones') }}';
+        var buscarParroquias    = '{{ path('admiparroquia_buscarParroquias') }}';
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Editar Servidor</h1>
+    </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="body_content">
+        <form id='form_edit_buffer' action="{{ path('elementoservidor_updateServidor', { 'id': servidor.id }) }}" 
+              method="post" {{ form_enctype(edit_form) }} class="formulario">
+            <table width="100%" border="0" class="box-section-content">
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.nombreElemento) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.nombreElemento) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.ipElemento) }}</td>
+                        <td width="10%"><input name="ipElemento" type="text" value="{{ ipElemento.ip}}"></td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.descripcionElemento) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.descripcionElemento) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.modeloElementoId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.modeloElementoId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.jurisdiccionId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.jurisdiccionId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.cantonId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.cantonId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.parroquiaId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.parroquiaId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.direccionUbicacion) }}</td>
+                        <td width="10%"><input type="text" name="direccionUbicacion" value="{{ubicacion.direccionUbicacion}}"></td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.longitudUbicacion) }}</td>
+                        <td width="10%"><input type="text" name="longitudUbicacion" value="{{ubicacion.longitudUbicacion}}"></td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.latitudUbicacion) }}</td>
+                        <td width="10%"><input type="text" name="latitudUbicacion" value="{{ubicacion.latitudUbicacion}}"></td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.alturaSnm) }}</td>
+                        <td width="10%"><input type="text" name="alturaSnm" value="{{ubicacion.alturaSnm}}"></td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"></td>
+                        <td width="10%">
+                            <input type="hidden" name="idUbicacion" value="{{ ubicacion.id }}">
+                            <input type="hidden" name="idIpElemento" value="{{ ipElemento.id }}"
+                        </td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                </table>
+            <div class="buttons">
+                <p>
+                    <button class="button-crud" type='button' onClick='return grabar();' >Guardar</button>
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('elementoservidor') }}">
+                            Cancelar
+                        </a>
+                    </span>
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+<script>
+    
+    function grabar()
+    {
+        document.forms[0].submit();
+    }
+    </script>
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

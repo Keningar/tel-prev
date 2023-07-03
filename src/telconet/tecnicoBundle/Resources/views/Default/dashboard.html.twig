@@ -1,0 +1,18 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-gray.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./public/js/ext-4.1.1/ext-all.js') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}        
+    <div id="titulo_content">
+    </div>
+    <div class="clearBoth"></div>
+    <div class="dashboard_content">
+    </div>
+{% endblock contenido_central %}

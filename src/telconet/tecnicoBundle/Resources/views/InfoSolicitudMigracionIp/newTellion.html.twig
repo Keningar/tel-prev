@@ -1,0 +1,58 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+        }
+    </style>
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-gray.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoSolicitudMigracionIps/new.js?1') }}"></script>
+    
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Migración Logica Tellion</h1>
+    </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="body_content">
+        <form id='form_new_solicitud' enctype="multipart/form-data" name ="form_new_solicitud" action="{{ path('solicitudMigraIp_create') }}" method="post" class='formulario' >
+            <table width="100%" border="0" class="box-section-content">
+                <td>
+                    <label class="x-field x-form-item x-field-default x-table-form-item"  for="archivo" >Archivo:</label>
+                    <input type="file"   id="archivo" name="archivo" size="40" required>
+
+                </td>
+            </table>
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('solicitudMigraIp') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>
+            <input type="hidden" name="tipoMigracion" id="tipoMigracion" value="TELLION" />
+        </form>
+    </div>
+    <div id='windowMap' style='display:none'> 
+    <div id="map_canvas" style="width:500px; height:500px"></div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    
+{% endblock javascripts_footer%}

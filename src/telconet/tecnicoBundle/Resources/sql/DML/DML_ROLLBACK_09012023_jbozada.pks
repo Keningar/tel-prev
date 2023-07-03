@@ -1,0 +1,8 @@
+SET SERVEROUTPUT ON
+--Eliminación de caracteristica para productos isb zte TN	
+DECLARE
+BEGIN
+  DELETE FROM DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA WHERE USR_CREACION='ReguIsbZte';
+  COMMIT;
+END;
+/

@@ -1,0 +1,44 @@
+enlace_elemento:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:enlace" }
+    
+enlace_elemento_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:getEncontrados" }
+  
+enlace_elemento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:show" }
+
+enlace_elemento_getEnlace:
+    pattern:  /getEnlace
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:getEnlace" }
+
+enlace_elemento_getDerivaciones:
+    pattern:  /getDerivaciones
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:getDerivaciones" }
+
+enlace_elemento_getEnlaceEncontrados:
+    pattern:  /getEnlaceEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:getEnlaceEncontrados" }
+
+enlace_elemento_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:new" }
+    
+enlace_elemento_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:create" }
+    requirements: { _method: POST }
+    
+enlace_elemento_buscarElementoPorTipoElemento:
+    pattern:  /buscarElementoPorTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:buscarElementoPorTipoElemento" }
+    
+enlace_elemento_buscarInterfacesPorElemento:
+    pattern:  /buscarInterfacesPorElemento
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:buscarInterfacesPorElemento" }
+    
+enlace_elemento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoEnlace:deleteAjax" }

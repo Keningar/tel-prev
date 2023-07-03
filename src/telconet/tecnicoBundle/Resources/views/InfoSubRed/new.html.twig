@@ -1,0 +1,125 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<style scoped="scoped">
+    .alineando {
+        left: 42em;
+        position: absolute;
+        top: 44em;
+    }
+    .campo_select, .div_combo, .campo_texto{
+        width: 100% !important;
+
+    }
+   
+     
+    .centrado{
+        text-align: center;
+        margin-left: 10%;
+    }
+    .btn_guardar{
+        width: 85px !important;
+    }
+    .tabla, .buttons{
+        display: flex;        
+        justify-content: left;
+    }
+</style>
+
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoSubRed/new.js') }}"></script>
+    <script>
+        var url_getEncontradosPe = '{{path('elementoPe_getEncontradosPe')}}';
+        var valor                = '{{valorParametroDet}}';
+        var urlGuardarPe         = '{{path('guardarPe')}}';
+        var url_index            = '{{path('subredesPe')}}';
+
+
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ingreso de Subredes por Pe</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_new_elemento_router' method="post"  
+          class='formulario' novalidate="novalidate">
+        <table class="tabla" border="0" class="box-section-content centrado">
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="30%">Subred:</td>
+                <td><input type="text" class="campo_texto" id="subred"></td> 
+                <td width="5%">&nbsp;</td>
+                
+            </tr>  
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="30%">Máscara:</td>               
+                <td><select class="campo_select" name="" id="mascara"  class="campo_select">
+                    <option value="">Seleccione:</option>
+                    {% for mascara in arrayMascaras %}
+                    <option value="{{mascara}}"> {{mascara}}</option>
+                    
+                    {% endfor %}
+                </select></td>
+                <td width="5%">&nbsp;</td>
+            </tr> 
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="30%">Nombre Pe:</td>
+                <td width="15%" class="div_combo"><div  id='combo_pe'></div></td>
+                <td width="5%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="30%">Tipo de red:</td>               
+                <td><select class="campo_select" name="tipo_red" id="tipo_red" required>
+                    <option value="">Seleccione:</option>
+                    {% for tipos in arrayTipos %}
+                    <option value="{{tipos}}"> {{tipos}}</option>
+                    {% endfor %}
+                </select></td>
+                <td width="5%">&nbsp;</td>
+            </tr>
+           
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="30%">Uso:</td>               
+                <td><select class="campo_select" name="" id="uso"  class="campo_select">
+                    <option value="">Seleccione:</option>
+                    {% for uso in arrayUsos %}
+                    <option value="{{uso}}"> {{uso}}</option>
+                    {% endfor %}
+                 <td width="5%">&nbsp;</td>
+                </select></td>
+            </tr>
+             
+        </table>
+        <div class="buttons">
+            <p>
+                
+                <button id="enviar" class="button-crud btn_guardar" type="button" onclick='guardar()'>Guardar</button>
+                <span class="height20px">
+                
+                    <a class="button-crud" href="{{ path('subredesPe') }}">Cancelar</a> 
+                </span>
+            </p>
+        </div>	
+           
+    </form>
+</div>
+<div id='windowMap' style='display:none'> 
+    <div id="map_canvas" style="width:500px; height:500px"></div>
+{% endblock contenido_izq %}
+
+
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}	

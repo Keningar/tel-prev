@@ -1,0 +1,11 @@
+  --Se establecen los estados de naf y telcos
+  update DB_INFRAESTRUCTURA.INFO_ELEMENTO_TRAZABILIDAD a set a.estado_telcos = 'Activo',estado_naf = 'Instalado'
+  where a.estado_activo = 'Activo' and a.observacion = 'La serie no fue encontrada en el Telcos';
+  
+  --Se actualizan las observaciones que la serie no existe
+  update DB_INFRAESTRUCTURA.INFO_ELEMENTO_TRAZABILIDAD a set a.observacion = 'La serie no fue encontrada en el Telcos - Regularizacion estado Naf y Telcos'
+  where a.transaccion = 'Activacion Cliente Movil' and a.observacion = 'La serie no fue encontrada en el Telcos'
+    and upper(a.numero_serie) in (
+  select distinct(b.serie_fisica) from DB_INFRAESTRUCTURA.info_elemento b where upper(b.serie_fisica) in (
+  select upper(c.numero_serie) from DB_INFRAESTRUCTURA.INFO_ELEMENTO_TRAZABILIDAD c
+  where c.transaccion = 'Activacion Cliente Movil' and c.observacion = 'La serie no fue encontrada en el Telcos'));

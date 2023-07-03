@@ -1,0 +1,71 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('./public/css/alertaOpcionNoDisponible.css') }}" type="text/css" rel="stylesheet" />
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="{{ asset('public/js/lz-string/lz-string.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/corteMasivo.js?11') }}"></script>
+    <script>
+        var boolPermisoEmpresas                         = "{{ boolPermisoEmpresa.PERMISOS_EMPRESA }}";
+        var strIdsFormasPagoCuentaTarjetaBancos         = "{{ strIdsFormasPagoCuentaTarjetaBancos }}";
+        var strUrlGetValidarDisponibilidadOpcionPorHora = '{{path('admiParametroCab_validarDisponibilidadOpcionPorHoraAjax')}}';
+        var strUrlGetParametrosAsociadosAServiciosCorte = "{{ path('procesomasivo_getParametrosAsociadosAServiciosCorte') }}";
+        var strUrlGetTiposNegocio                       = "{{ path('procesomasivo_getTipoNegocioPorEmpresa') }}";
+        var strUrlGetUltimaMilla                        = "{{path('procesomasivo_getUltimaMilla')}}";
+        var strUrlGetCiclos                             = "{{path('procesomasivo_getCiclos')}}";
+        var strUrlGetOficinasYFormasPago                = "{{ path('procesomasivo_getOficinasYFormasPago') }}";
+        var strUrlGetTipoCuentaTarjeta                  = "{{ path('cambioCiclosFacturacion_getTipoCuenta') }}";
+        var strUrlGetBancos                             = "{{ path('cambioCiclosFacturacion_getBancos') }}";
+        var strUrlGetServiciosXPadreFacturacion         = "{{ path('procesomasivo_getServiciosXPadreFacturacion') }}";  
+        var strUrlGetPuntosACortar                      = "{{ path('procesomasivo_getPuntosACortar') }}";
+        var strUrlCortarClientesMasivo                  = "{{ path('procesomasivo_cortarClientesMasivo') }}";
+        var strUrlExportarClientesCorteMasivo           = "{{ path('procesomasivo_exportarCsvClientesCorteMasivo') }}";
+        var strUrlCortarClientesMasivoPorLotes          = "{{ path('procesomasivo_cortarClientesMasivoPorLotes') }}";
+        var strUrlGetResumenCorteMasivo                 = "{{ path('procesomasivo_getResumenCorteMasivo') }}";
+
+    </script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de los Clientes</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="0" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+        <tr>
+            <td><div id="mensaje"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_central %}

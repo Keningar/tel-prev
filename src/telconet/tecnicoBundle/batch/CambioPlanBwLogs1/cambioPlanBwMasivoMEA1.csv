@@ -1,0 +1,32 @@
+PLAN,LOGIN,ELEMENTO,MODELO,IP,PUERTO,RESULTADO
+Home ADSL Mixto 4 y 8,uiodehidalg_m,uiobrrlcumbaya1_mea1,MEA1,172.30.252.245,0/25,CAMBIADO
+Home ADSL Mixto 2 y 4,uiolagarcesv1,uioarm2saintdominic1_mea1,MEA1,172.30.249.51,0/1,CAMBIADO
+Home ADSL Mixto 2 y 4,uiordjime_m,uiocipplazalisboa1_mea1,MEA1,172.30.254.117,0/25,CAMBIADO
+Home ADSL Mixto 6 y 12,uiommreal1,uiotndvhacienda1_mea1,MEA1,172.30.251.180,0/22,CAMBIADO
+Home ADSL Mixto 6 y 12,uiomaflor_m,uiotndvhacienda1_mea1,MEA1,172.30.251.180,0/30,CAMBIADO
+Home ADSL Mixto 1 y 2,uioaysarang_m,uiomurcoruna1_mea1,MEA1,172.30.252.58,0/31,CAMBIADO
+Home ADSL Mixto 2 y 4,uiomfdiazp_m,uiomurcoruna1_mea1,MEA1,172.30.252.58,0/7,CAMBIADO
+Home ADSL Mixto 1 y 2,uioapjara_m,uiongv2tmoral1_mea1,MEA1,172.30.254.168,0/26,CAMBIADO
+Home ADSL Mixto 3 y 6,uiolelinaresg1,uiongv2tmoral1_mea1,MEA1,172.30.254.168,0/14,CAMBIADO
+Home ADSL Mixto 6 y 12,uiocbassign2,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/2,CAMBIADO
+Home ADSL Mixto 4 y 8,uioamlope_m,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/10,CAMBIADO
+Home ADSL Mixto 4 y 8,uiomesalg_m,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/29,CAMBIADO
+Home ADSL Mixto 3 y 6,uiojidea_m,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/6,CAMBIADO
+Home ADSL Mixto 3 y 6,uioapolme_m,uioarmcunucbamba1_mea1,MEA1,172.30.251.91,0/30,CAMBIADO
+Home ADSL Mixto 3 y 6,uiosejoff_m,uioarmcunucbamba1_mea1,MEA1,172.30.251.91,0/17,CAMBIADO
+Home ADSL Mixto 3 y 6,uiossmatab_m,uioarmcunucbamba1_mea1,MEA1,172.30.251.91,0/15,CAMBIADO
+Home ADSL Mixto 6 y 12,uiojlchec_m,uioarmcunucbamba1_mea1,MEA1,172.30.251.91,0/28,CAMBIADO
+Home ADSL Mixto 2 y 4,uiogcpere_m,uiongvsonorama1_mea1,MEA1,172.30.254.251,0/18,CAMBIADO
+PyME VDSL 5 y 25,uiopublicidad1,uiongvsonorama1_mea1,MEA1,172.30.254.251,0/24,CAMBIADO
+PyME VDSL 4 y 20,uiocorporacion8,uioccicarolina1_mea1,MEA1,172.30.252.164,0/26,CAMBIADO
+Home ADSL Mixto 512 y 1536,uiojbgome_m,uiongvjipijapa1_mea1,MEA1,172.30.249.7,0/16,CAMBIADO
+Home ADSL Mixto 6 y 12,uiomapare_m,uiongvjipijapa1_mea1,MEA1,172.30.249.7,0/1,CAMBIADO
+Home ADSL Mixto 2 y 4,uiojavela_m,uiongvjipijapa1_mea1,MEA1,172.30.249.7,0/29,CAMBIADO
+PyME VDSL 1 y 5,uiopurifluidos2,uiongvjipijapa1_mea1,MEA1,172.30.249.7,0/6,CAMBIADO
+Home VDSL 1 y 5,uio5356,uiomorberlin1_mea1,MEA1,172.30.252.21,0/5,CAMBIADO
+Home VDSL 1 y 5,uiorrmorillof1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/19,CAMBIADO
+Home VDSL 1 y 5,uiohpperezw2,uiomorberlin1_mea1,MEA1,172.30.252.21,0/20,CAMBIADO
+Home VDSL 1 y 5,uiojbsolanoh1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/16,CAMBIADO
+Home VDSL 1 y 5,uionesamaniegoc1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/18,CAMBIADO
+PyME VDSL 2 y 10,uiodigitalteam2,uiomorberlin1_mea1,MEA1,172.30.252.21,0/8,CAMBIADO
+PyME VDSL 1 y 5,uiogems1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/9,CAMBIADO

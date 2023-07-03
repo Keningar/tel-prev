@@ -1,0 +1,118 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+SELECT SERVICIO.ID_SERVICIO FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO, DB_COMERCIAL.INFO_SERVICIO_TECNICO TECNICO, DB_COMERCIAL.INFO_PUNTO PUNTO, DB_COMERCIAL.INFO_PLAN_CAB PLANC, DB_COMERCIAL.INFO_PLAN_DET PLAND, DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA PC, DB_COMERCIAL.ADMI_CARACTERISTICA CAR, DB_COMERCIAL.INFO_PLAN_PRODUCTO_CARACT PPC, DB_INFRAESTRUCTURA.INFO_ELEMENTO ELEMENTO, DB_INFRAESTRUCTURA.ADMI_MODELO_ELEMENTO MODELO WHERE SERVICIO.ID_SERVICIO = TECNICO.SERVICIO_ID AND SERVICIO.PUNTO_ID = PUNTO.ID_PUNTO AND SERVICIO.ESTADO = 'Activo' AND TECNICO.INTERFACE_ELEMENTO_ID IS NOT NULL AND SERVICIO.PLAN_ID = PLANC.ID_PLAN AND PLANC.ID_PLAN = PLAND.PLAN_ID AND PPC.PLAN_DET_ID = PLAND.ID_ITEM AND PPC.PRODUCTO_CARACTERISITICA_ID = PC.ID_PRODUCTO_CARACTERISITICA AND PC.CARACTERISTICA_ID = CAR.ID_CARACTERISTICA AND CAR.DESCRIPCION_CARACTERISTICA = 'CAPACIDAD-PROM1' AND TECNICO.ELEMENTO_ID = ELEMENTO.ID_ELEMENTO AND ELEMENTO.MODELO_ELEMENTO_ID = MODELO.ID_MODELO_ELEMENTO AND MODELO.NOMBRE_MODELO_ELEMENTO = 'MEA1'
+obteniendo los servicios
+35
+servicios...
+serviciosObj:35
+serviciosObj:32
+serviciosObj:29
+serviciosObj:27
+serviciosObj:22
+serviciosObj:20
+serviciosObj:17
+serviciosObj:13
+serviciosObj:11
+serviciosObj:10
+serviciosObj:9
+EJECUTO modelo:MEA1, ip:172.30.251.180, interface:0/22, login:uiommreal1 , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.251.91, interface:0/15, login:uiossmatab_m , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.164, interface:0/26, login:uiocorporacion8 , perfil:d20480u20480, up:20480, down:20480
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/5, login:uio5356 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.251.180, interface:0/30, login:uiomaflor_m , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.7, interface:0/16, login:uiojbgomezz1 , perfil:d608u320, up:608, down:320
+EJECUTO modelo:MEA1, ip:172.30.254.117, interface:0/25, login:uiordjime_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.51, interface:0/1, login:uiolagarcesv1 , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.58, interface:0/31, login:uioaysarang_m , perfil:d1248u608, up:1248, down:608
+EJECUTO modelo:MEA1, ip:172.30.251.91, interface:0/17, login:uiosejoff_m , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/2, login:uiocbassign2 , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/18, login:uionesamaniegoc1 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.254.168, interface:0/26, login:uioapjara_m , perfil:d1248u608, up:1248, down:608
+EJECUTO modelo:MEA1, ip:172.30.254.251, interface:0/18, login:uiogcpere_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.51, interface:0/29, login:uiopnbelt_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.254.168, interface:0/14, login:uiolelinaresg1 , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.7, interface:0/1, login:uiomapare_m , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/20, login:uiohpperezw2 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/32, login:uioejdavidc1 , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.58, interface:0/7, login:uiomfdiazp_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.251.91, interface:0/30, login:uioapolme_m , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/19, login:uiorrmorillof1 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.249.7, interface:0/6, login:uiopurifluidos2 , perfil:d5120u5120, up:5120, down:5120
+EJECUTO modelo:MEA1, ip:172.30.254.168, interface:0/4, login:uioilcl , perfil:d5120u2560, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.251.91, interface:0/28, login:uiojlchec_m , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/16, login:uiojbsolanoh1 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.252.58, interface:0/15, login:uioapart2 , perfil:d20480u20480, up:20480, down:20480
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/29, login:uiomesalg_m , perfil:d4928u1024, up:4928, down:1024
+EJECUTO modelo:MEA1, ip:172.30.254.251, interface:0/24, login:uiopublicidad1 , perfil:d25120u25120, up:25120, down:25120
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/8, login:uiodigitalteam2 , perfil:, up:10240, down:10240
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/10, login:uioamlope_m , perfil:d4928u1024, up:4928, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/9, login:uiogems1 , perfil:, up:5120, down:5120
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/6, login:uiojidea_m , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/30, login:uiomegavacation1 , perfil:, up:5120, down:5120
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/26, login:uiobmcaceresb1 , perfil:, up:5120, down:5120
+172.30.252.164, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.249.7, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.254.168, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.252.58, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.254.251, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.252.21, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+***********************************
+LISTADO DE SERVICIOS 
+num:35
+Home ADSL Mixto 6 y 12,uiommreal1,uiotndvhacienda1_mea1,MEA1,172.30.251.180,0/22,CAMBIADO
+Home ADSL Mixto 6 y 12,uiomaflor_m,uiotndvhacienda1_mea1,MEA1,172.30.251.180,0/30,CAMBIADO
+Home ADSL Mixto 2 y 4,uiordjime_m,uiocipplazalisboa1_mea1,MEA1,172.30.254.117,0/25,CAMBIADO
+Home ADSL Mixto 2 y 4,uiolagarcesv1,uioarm2saintdominic1_mea1,MEA1,172.30.249.51,0/1,CAMBIADO
+Home ADSL Mixto 2 y 4,uiopnbelt_m,uioarm2saintdominic1_mea1,MEA1,172.30.249.51,0/29,CAMBIADO
+Home ADSL Mixto 3 y 6,uiossmatab_m,uioarmcunucbamba1_mea1,MEA1,172.30.251.91,0/15,CAMBIADO
+Home ADSL Mixto 3 y 6,uiosejoff_m,uioarmcunucbamba1_mea1,MEA1,172.30.251.91,0/17,CAMBIADO
+Home ADSL Mixto 3 y 6,uioapolme_m,uioarmcunucbamba1_mea1,MEA1,172.30.251.91,0/30,CAMBIADO
+Home ADSL Mixto 6 y 12,uiojlchec_m,uioarmcunucbamba1_mea1,MEA1,172.30.251.91,0/28,CAMBIADO
+Home ADSL Mixto 6 y 12,uiocbassign2,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/2,CAMBIADO
+Home ADSL Mixto 6 y 12,uioejdavidc1,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/32,CAMBIADO
+Home ADSL Mixto 4 y 8,uiomesalg_m,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/29,CAMBIADO
+Home ADSL Mixto 4 y 8,uioamlope_m,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/10,CAMBIADO
+Home ADSL Mixto 3 y 6,uiojidea_m,uiogch2sanjuan1_mea1,MEA1,172.30.249.68,0/6,CAMBIADO
+PyME VDSL 4 y 20,uiocorporacion8,uioccicarolina1_mea1,MEA1,172.30.252.164,0/26,CAMBIADO
+Home ADSL Mixto 512 y 1536,uiojbgomezz1,uiongvjipijapa1_mea1,MEA1,172.30.249.7,0/16,CAMBIADO
+Home ADSL Mixto 6 y 12,uiomapare_m,uiongvjipijapa1_mea1,MEA1,172.30.249.7,0/1,CAMBIADO
+PyME VDSL 1 y 5,uiopurifluidos2,uiongvjipijapa1_mea1,MEA1,172.30.249.7,0/6,CAMBIADO
+Home ADSL Mixto 1 y 2,uioapjara_m,uiongv2tmoral1_mea1,MEA1,172.30.254.168,0/26,CAMBIADO
+Home ADSL Mixto 3 y 6,uiolelinaresg1,uiongv2tmoral1_mea1,MEA1,172.30.254.168,0/14,CAMBIADO
+Home VDSL 1 y 5,uioilcl,uiongv2tmoral1_mea1,MEA1,172.30.254.168,0/4,CAMBIADO
+Home ADSL Mixto 1 y 2,uioaysarang_m,uiomurcoruna1_mea1,MEA1,172.30.252.58,0/31,CAMBIADO
+Home ADSL Mixto 2 y 4,uiomfdiazp_m,uiomurcoruna1_mea1,MEA1,172.30.252.58,0/7,CAMBIADO
+PyME VDSL 4 y 20,uioapart2,uiomurcoruna1_mea1,MEA1,172.30.252.58,0/15,CAMBIADO
+Home ADSL Mixto 2 y 4,uiogcpere_m,uiongvsonorama1_mea1,MEA1,172.30.254.251,0/18,CAMBIADO
+PyME VDSL 5 y 25,uiopublicidad1,uiongvsonorama1_mea1,MEA1,172.30.254.251,0/24,CAMBIADO
+Home VDSL 1 y 5,uio5356,uiomorberlin1_mea1,MEA1,172.30.252.21,0/5,CAMBIADO
+Home VDSL 1 y 5,uionesamaniegoc1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/18,CAMBIADO
+Home VDSL 1 y 5,uiohpperezw2,uiomorberlin1_mea1,MEA1,172.30.252.21,0/20,CAMBIADO
+Home VDSL 1 y 5,uiorrmorillof1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/19,CAMBIADO
+Home VDSL 1 y 5,uiojbsolanoh1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/16,CAMBIADO
+PyME VDSL 2 y 10,uiodigitalteam2,uiomorberlin1_mea1,MEA1,172.30.252.21,0/8,CAMBIADO
+PyME VDSL 1 y 5,uiogems1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/9,CAMBIADO
+PyME VDSL 1 y 5,uiomegavacation1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/30,CAMBIADO
+PyME VDSL 1 y 5,uiobmcaceresb1,uiomorberlin1_mea1,MEA1,172.30.252.21,0/26,CAMBIADO
+no:0
+generando archivo...
+Hora Inicio: Mon Sep 09 06:00:02 ECT 2013
+Hora Fin: Mon Sep 09 06:00:35 ECT 2013

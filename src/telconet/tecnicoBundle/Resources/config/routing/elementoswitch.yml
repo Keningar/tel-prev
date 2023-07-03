@@ -1,0 +1,66 @@
+elementoswitch_ajaxGetElementos:
+    pattern:  /ajaxGetElementos
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetElementos" }
+    
+elementoswitch_ajaxGetInfoBackboneByElemento:
+    pattern:  /ajaxGetInfoBackboneByElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetInfoBackboneByElemento" }
+
+elementoswitch:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:indexSwitch" }
+      
+elementoswitch_newSwitch:
+    pattern:  /newSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:newSwitch" }
+
+elementoswitch_createSwitch:
+    pattern: /createSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:createSwitch" }
+    requirements: { _method: POST }
+    
+elementoswitch_editSwitch:
+    pattern:  /{id}/editSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:editSwitch" }
+
+elementoswitch_updateSwitch:
+    pattern:  /{id}/updateSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:updateSwitch" }
+    requirements: { _method: POST }
+       
+elementoswitch_showSwitch:
+    pattern:  /{id}/showSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:showSwitch" }
+        
+elementoswitch_getEncontradosSwitch:
+    pattern:  /getEncontradosSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:getEncontradosSwitch" }
+    
+elementoswitch_cargarDatosSwitch:
+    pattern:  /{id}/cargarDatosSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:cargarDatosSwitch" }
+    requirements: { _method: POST }
+    
+elementoswitch_getElementosPorSwitch:
+    pattern:  /{id}/getElementosPorSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:getElementosPorSwitch" }
+    
+elementoswitch_getElementosSwitchPorAnillo:
+    pattern:  /ajaxGetSwitchesPorAnillo
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetSwitchesPorAnillo" }    
+    
+elementoswitch_ajaxGetSwitchesCambioUmProgramada:
+    pattern:  /ajaxGetSwitchesCambioUmProgramada
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetSwitchesCambioUmProgramada" }    
+
+elementoswitch_getCajasPorPuertosDisponibles:
+    pattern:  /ajaxGetCajasPorPuertosDisponibles
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetCajasPorPuertosDisponibles" } 
+    
+elementosswitch_getHilosDisponibles:    
+    pattern:  /ajaxHilosDisponibles
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxHilosDisponibles" }
+    
+elementoswitch_deleteAjaxSwitch:
+    pattern:  /deleteAjaxSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:deleteAjaxSwitch" }

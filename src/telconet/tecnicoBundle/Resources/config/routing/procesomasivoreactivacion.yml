@@ -1,0 +1,15 @@
+procesomasivo_reactivacionMasivaCliente:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoServicioReactivacion:reactivacionMasivaCliente" }
+    
+procesomasivo_getOficinaGrupoConFormaPagoReactivar:
+    pattern:  /getOficinaGrupoConFormaPagoReactivar
+    defaults: { _controller: "tecnicoBundle:InfoServicioReactivacion:getOficinaGrupoConFormaPagoReactivar" }
+    
+procesomasivo_getServiciosAReactivar:
+    pattern:  /getServiciosAReactivar
+    defaults: { _controller: "tecnicoBundle:InfoServicioReactivacion:getServiciosAReactivar" }
+
+procesomasivo_reactivarClientesMasivo:
+    pattern:  /reactivarClientesMasivo
+    defaults: { _controller: "tecnicoBundle:InfoServicioReactivacion:reactivarClientesMasivo" }

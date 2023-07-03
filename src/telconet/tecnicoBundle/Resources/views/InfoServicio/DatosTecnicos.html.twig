@@ -1,0 +1,1350 @@
+
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" >
+            <img alt=""  width="200" height="70" src="https://telcos.telconet.ec/public/images/logo_transtelco.jpg"/>
+        </td>
+      </tr>
+	  <tr>
+          <td>&nbsp;</td>
+      </tr>
+	  <tr>
+		<td colspan="2">
+			<h4>DATOS TECNICOS</h4>
+			<hr></hr>
+		</td>	
+	  </tr>
+      <tr>
+        <td >
+          <table style="font-size:10px;" width="100%" cellspacing="0" cellpadding="1">
+			<tr>
+              <td>
+                <label>Login:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.login }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Cliente:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.cliente }}</label>
+              </td>
+            </tr>
+		
+	  <tr>
+              <td>
+                <label>Direcci&oacute;n:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.direccion }}</label>
+              </td>
+            </tr>
+			
+           
+			{% if datosTecnicos.contactosCorreos  or datosTecnicos.contactosCorreosPunto %}
+				
+					<tr>
+					  <td>
+						<label>Correo:</label>
+					  </td>
+					  <td colspan="5" align="left">
+						<label>
+                                                   {% set counterVeces = 0 %}  
+                                                   {% set counter = 0 %}
+                                                       {% for item in datosTecnicos.contactosCorreos %}
+                                                         {% if counterVeces < 5  %}  
+                                                             {{ item.valor }}
+                                                              {% set counterVeces = counterVeces+ 1 %}
+                                                        
+                                                                {% set counter = counter+ 1 %}
+                                                                   {% if counterVeces <= (datosTecnicos.contactosCorreos|length -1) and counterVeces < 5  %}
+                                                                     ,
+                                                                    
+                                                                   {% endif %} 
+                                                                {% endif %}      
+                                                                  
+                                                               
+                                                       {% endfor %}
+                                                       
+                                                       {% set counter = 0 %}              
+                                                       {% if datosTecnicos.contactosCorreosPunto %}
+                                                              {% if (datosTecnicos.contactosCorreos)  %}
+                                                                     {% if counterVeces < 5  %}
+                                                                      ,
+                                                                     {% endif %}
+                                                                    
+                                                                   {% endif %} 
+                                                              {% for item2 in datosTecnicos.contactosCorreosPunto %}
+                                                                  {% if counterVeces < 5  %}   
+                                                                     {{ item2.valor }}
+                                                                     {% set counterVeces = counterVeces+ 1 %}
+                                                                     
+                                                                     {% set counter = counter+ 1 %}
+                                                                       {% if counterVeces <= (datosTecnicos.contactosCorreosPunto|length -1) and counterVeces < 5  %}
+                                                                        ,
+                                                                       {% endif %} 
+                                                                       {% endif %}   
+                                                                      
+                                                              {% endfor %}
+                                                       {% endif %}     
+                                                    
+                                                    
+                                                    </label>
+					  </td>
+					</tr>
+				
+			{% endif %}
+                                        
+                                        
+                       
+                        {% if datosTecnicos.contactosTelefonosFijos  or datosTecnicos.contactosTelefonosFijosPunto %}            
+                             <tr>
+                                            
+					     <td>
+						<label>Tel&eacute;fono:</label>
+					     </td>
+                                                
+					     <td colspan="5" align="left">
+                                                  
+						    <label>
+                                                        {% set counterVeces = 0 %}
+                                                       {% set counter = 0 %}
+                                                       {# contactosTelefonosFijos por persona #}      
+                                                     {% for item in datosTecnicos.contactosTelefonosFijos %}
+                                                          {% if counterVeces < 5  %}
+                                                                  {{ item.valor }}
+                                                                  {% set counterVeces = counterVeces +1 %}
+                                                                  {# para agregar la coma#}
+                                                                  {% set counter = counter+ 1 %}
+                                                                   {% if counterVeces < (datosTecnicos.contactosTelefonosFijos|length -1) and counterVeces < 5 %}
+                                                                     ,
+                                                                   {% endif %} 
+                                                                 {# fin para agregar la coma#}    
+                                                               {% endif %}  
+                                                       {% endfor %}
+                                                       {# fin contactosTelefonosFijos por persona #}      
+                                                       
+                                                        {# contactosTelefonosFijos por punto #}                 
+                                                       {% set counter = 0 %}              
+                                                       {% if datosTecnicos.contactosTelefonosFijosPunto %}
+                                                              {% if (datosTecnicos.contactosTelefonosFijos)  %}
+                                                                     {% if counterVeces < 5  %}
+                                                                      ,
+                                                                     {% endif %}
+                                                              {% endif %}
+                                                                     
+                                                              {% for item2 in datosTecnicos.contactosTelefonosFijosPunto %}
+                                                                     {% if counterVeces < 5  %}
+                                                                     {{ item2.valor }}
+                                                                     {% set counterVeces = counterVeces +1 %}
+                                                                     
+                                                                     {% set counter = counter+ 1 %}
+                                                                       {% if counterVeces <= (datosTecnicos.contactosTelefonosFijosPunto|length -1) and counterVeces < 5  %}
+                                                                        ,
+                                                                       {% endif %}  
+                                                                   {% endif %}   
+                                                                      
+                                                              {% endfor %}
+                                                       {% endif %} 
+                                                       {# fin contactosTelefonosFijos por punto #}
+                                                                        
+                                                    </label>
+                                                    
+                                                
+					       </td>
+                                            
+			  </tr>   
+                       {% endif %}
+                                           
+			    
+                          {% if datosTecnicos.contactosTelefonosMovil or datosTecnicos.contactosTelefonoMovilPunto %}
+				
+					<tr>
+					  <td>
+						<label>M&oacute;vil:</label>
+					  </td>
+					  <td colspan="5" align="left">
+                                             
+					    <label>
+                                                 {% set counterVeces = 0 %}
+                                                 {% set counter = 0 %}   
+                                                 {% for item in datosTecnicos.contactosTelefonosMovil %}  
+                                                   {% if counterVeces < 5  %} 
+                                                     {{ item.valor }}
+                                                     {% set counterVeces = counterVeces+ 1 %}     
+                                                    
+                                                             {% set counter = counter+ 1 %}
+                                                             {% if counterVeces <= (datosTecnicos.contactosTelefonosMovil|length -1) and counterVeces < 5  %}
+                                                                     ,
+                                                              {% endif %} 
+                                                    {% endif %}                  
+                                                 {% endfor %}      
+                                                 
+                                                 {% set counter = 0 %}                    
+                                                 {% if datosTecnicos.contactosTelefonoMovilPunto %}
+                                                          {% if  (datosTecnicos.contactosTelefonosMovil)  %}
+                                                                     {% if counterVeces < 5  %}
+                                                                      ,
+                                                                     {% endif %}
+                                                          {% endif %} 
+                                                                     
+                                                          {% for item2 in datosTecnicos.contactosTelefonoMovilPunto %}
+                                                           {% if counterVeces < 5  %}           
+                                                              {{ item2.valor }}
+                                                               {% set counterVeces = counterVeces+ 1 %}    
+                                                                     
+                                                                     {% set counter = counter+ 1 %}
+                                                                     {% if counterVeces <= (datosTecnicos.contactosTelefonoMovilPunto|length -1) and counterVeces < 5  %}
+                                                                     ,
+                                                                     {% endif %} 
+                                                                     
+                                                               {% endif %}       
+                                                           {% endfor %}
+                                                  {% endif %}          
+                                             </label>
+                                                
+					  </td>
+					</tr>
+				
+			{% endif %}                 
+                                        
+			
+                     {% if datosTecnicos.contactosTelefonosMovilClaro  or datosTecnicos.contactosTelefonosMovilClaroPunto %}
+				<tr>
+					  <td>
+						<label>M&oacute;vil Claro:</label>
+					  </td>
+					  <td colspan="5" align="left">
+                                               {% set counterVeces = 0 %}
+                                              {% set counter = 0 %}    
+						{% for item in datosTecnicos.contactosTelefonosMovilClaro %}
+                                                  {% if counterVeces < 5  %} 
+                                                     {{ item.valor }}
+                                                      {% set counterVeces = counterVeces+ 1 %}   
+                                                    
+                                                      {% set counter = counter+ 1 %}
+                                                      {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilClaro|length -1) and counterVeces < 5  %}
+                                                       ,
+                                                      {% endif %}
+                                                    {% endif %}  
+                                                     
+                                                 {% endfor %}      
+                                                  
+                                                      
+                                                  {% set counter = 0 %}       
+                                                 {% if datosTecnicos.contactosTelefonosMovilClaroPunto %}
+                                                       {% if  (datosTecnicos.contactosTelefonosMovilClaro)  %}
+                                                                     {% if counterVeces < 5  %}
+                                                                      ,
+                                                                     {% endif %}
+                                                       {% endif %} 
+                                                          {% for item2 in datosTecnicos.contactosTelefonosMovilClaroPunto %}
+                                                               {% if counterVeces < 5  %}
+                                                                   {{ item2.valor }}
+                                                                   {% set counterVeces = counterVeces+ 1 %} 
+                                                       
+                                                                   {% set counter = counter+ 1 %}
+                                                                   {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilClaroPunto|length -1) and counterVeces < 5 %}
+                                                                   ,
+                                                                   {% endif %}
+                                                               {% endif %}
+                                                           {% endfor %}
+                                                  {% endif %}    
+					  </td>
+					</tr>
+				
+			{% endif %}               
+			
+                        
+			{% if datosTecnicos.contactosTelefonosMovilMovistar or datosTecnicos.contactosTelefonosMovilMovistarPunto  %}
+				
+					<tr>
+					  <td>
+						<label>M&oacute;vil Movistar:</label>
+					  </td>
+					  <td colspan="5" align="left">
+						<label>
+                                                   {% set counterVeces = 0 %}  
+                                                  {% set counter = 0 %}     
+                                                  {% for item in datosTecnicos.contactosTelefonosMovilMovistar %}
+                                                      {% if counterVeces < 5  %}    
+                                                      {{ item.valor }}
+                                                              {% set counter = counter+ 1 %}
+                                                              {% set counterVeces = counterVeces+ 1 %} 
+                                                        
+                                                              {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilMovistar|length -1) and counterVeces < 5 %}
+                                                               ,
+                                                              {% endif %}
+                                                         {% endif %}       
+                                                        
+                                                  {% endfor %} 
+                                                     
+                                                     {% set counter = 0 %}               
+                                                     {% if datosTecnicos.contactosTelefonosMovilMovistarPunto %} 
+                                                             {% if (datosTecnicos.contactosTelefonosMovilMovistar)  %}
+                                                                {% if counterVeces < 5  %}
+                                                                      ,
+                                                                 {% endif %}
+                                                              {% endif %}
+                                                         {% for item2 in datosTecnicos.contactosTelefonosMovilMovistarPunto %}
+                                                             {% if counterVeces < 5  %}    
+                                                               {{ item2.valor }}
+                                                                 {% set counterVeces = counterVeces+ 1 %}
+                                                               
+                                                                 {% set counter = counter+ 1 %}
+                                                                 {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilMovistarPunto|length -1) and counterVeces < 5   %}
+                                                                  ,
+                                                                 {% endif %}
+                                                               {% endif %}
+                                                        
+                                                         {% endfor %} 
+                                                       {% endif %}  
+                                                        
+                                                        
+                                                        
+                                                 </label>
+					  </td>
+					</tr>
+				
+			{% endif %}                
+			
+                         {% if datosTecnicos.contactosTelefonosMovilCnt or datosTecnicos.contactosTelefonosMovilCntPunto %}
+				
+					<tr>
+					  <td>
+						<label>M&oacute;vil CNT:</label>
+					  </td>
+					  <td colspan="5" align="left">
+						<label>
+                                                    {% set counterVeces = 0 %} 
+                                                    {% set counter = 0 %}    
+                                                    {% for item in datosTecnicos.contactosTelefonosMovilCnt %}
+                                                        {% if counterVeces < 5  %}   
+                                                        {{ item.valor }}
+                                                             {% set counter = counter+ 1 %}
+                                                             {% set counterVeces = counterVeces+ 1 %}
+                                                        
+                                                                 {% if counter <= (datosTecnicos.contactosTelefonosMovilCnt|length -1) and counterVeces < 5  %}
+                                                                  ,
+                                                               {% endif %}
+                                                            {% endif %}       
+                                                                  
+                                                      {% endfor %}
+                                                                  
+                                                      {% set counter = 0 %}               
+                                                      {% if datosTecnicos.contactosTelefonosMovilCntPunto %} 
+                                                          {% if (datosTecnicos.contactosTelefonosMovilCnt)  %}
+                                                               {% if counterVeces < 5  %}
+                                                                      ,
+                                                               {% endif %}
+                                                           {% endif %}
+                                                               
+                                                         {% for item2 in datosTecnicos.contactosTelefonosMovilCntPunto %}
+                                                            {% if counterVeces < 5  %}       
+                                                                {{ item2.valor }}
+                                                                {% set counterVeces = counterVeces+ 1 %}    
+                                                                  
+                                                                  {% set counter = counter+ 1 %}
+                                                                  {% if counter <= (datosTecnicos.contactosTelefonosMovilCntPunto|length -1) and counterVeces < 5  %}
+                                                                  ,
+                                                                 {% endif %}
+                                                              {% endif %}    
+                                                        
+                                                         {% endfor %} 
+                                                       {% endif %}  
+                                                                    
+                                                                  
+                                                 </label>
+					  </td>
+					</tr>
+				
+			{% endif %}               
+          <tr>
+              <td>
+                <label>DSLAM:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.elemento }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Puerto:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.nombreInterfaceElemento }}</label>
+              </td>
+            </tr>
+			{% if datosTecnicos.vci %}
+			<tr>
+              <td>
+                <label>VCI:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.vci }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			<tr>
+              <td>
+                <label>Tipo Medio:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.tipoMedio }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Velocidad:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.nombrePlan }}</label>
+              </td>
+            </tr>
+			{% if datosTecnicos.ipWan %}
+			<tr>
+              <td>
+                <label>Ip WAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.ipWan }}</label>
+              </td>
+              <td>
+                <label>M&aacute;scara WAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.mascaraWan }}</label>
+              </td>
+              <td>
+                <label>Gateway WAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.gatewayWan }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			{% if datosTecnicos.ipPublica %}
+			<tr>
+              <td>
+                <label>Ip P&uacute;blica:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.ipPublica }}</label>
+              </td>
+              <td>
+                <label>M&aacute;scara P&uacute;blica:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.mascaraPublica }}</label>
+              </td>
+              <td>
+                <label>Gateway P&uacute;blica:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.gatewayPublica }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			{% if datosTecnicos.ipLan %}
+			<tr>
+              <td>
+                <label>Ip LAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.ipLan }}</label>
+              </td>
+              <td>
+                <label>M&aacute;scara LAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.mascaraLan }}</label>
+              </td>
+              <td>
+                <label>Gateway LAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.gatewayLan }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			{% if datosTecnicos.ipMonitoreo %}
+			<tr>
+              <td>
+                <label>IP Monitoreo:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.ipMonitoreo }}</label>
+              </td>
+              <td>
+                <label>M&aacute;scara Monitoreo:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.mascaraMonitoreo }}</label>
+              </td>
+              <td>
+                <label>Gateway Monitoreo:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.gatewayMonitoreo }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			<tr>
+              <td>
+                <label>Observacion:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.observacion }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Nombre CPE:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.nombreCpe }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>IP CPE:</label>
+              </td>
+              <td colspan="2" align="left">
+                <label>{{ datosTecnicos.ipCpe }}</label>
+              </td>
+			  <td>
+                <label>SSID:</label>
+              </td>
+              <td align="left">
+                <label>{{ datosTecnicos.ssid }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Modelo CPE:</label>
+              </td>
+              <td colspan="2" align="left">
+                <label>{{ datosTecnicos.modeloCpe }}</label>
+              </td>
+			  <td>
+                <label>PASSWD SSID:</label>
+              </td>
+              <td align="left">
+                <label>{{ datosTecnicos.passSsid }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Serie CPE:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.serieCpe }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>MAC CPE:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.macCpe }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label># de PCs:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.numPcs }}</label>
+              </td>
+            </tr>
+			</table>
+			</td>
+			</tr>
+			<tr>
+              <td colspan="2"><hr></hr></td>
+            </tr>
+			<tr>
+			<td>
+				<table style="font-size:12px;" width="100%" cellspacing="0" cellpadding="7">
+					<tr>
+						<td colspan="2">
+							<label>Con la Finalidad de Brindar un mejor servicio, las siguientes caracter&iacute;sticas ser&aacute;n verificadas:</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Cableado Interno (LAN)</label>
+						</td>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Cableado Externo (Trans-Telco)</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Datos de Configuraci&oacute;n originales</label>
+						</td>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Computadora sin virus</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Funcionamiento correcto del CPE</label>
+						</td>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Equipo Protegido</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>Detalle del Problema: ______________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>____________________________________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>Soluci&oacute;n del Problema: ______________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>____________________________________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>Recomendaci&oacute;n del Problema: ______________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>____________________________________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>En caso de persistir el inconveniente por favor escr&iacute;banos a <em><u>sactecnico@trans-telco.com</em></u></label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								Fecha:<br>
+								Hora LLegada:<br>
+								Hora Salida:<br>
+								Visita Facturada:  SI&nbsp;[&nbsp;&nbsp;]&nbsp;&nbsp;NO&nbsp;[&nbsp;&nbsp;]
+							
+							</label>
+						</td>
+						<td>
+							&nbsp;	
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>................................<br>Firma T&eacute;cnico</label>
+						</td>
+						<td>
+							<label>
+								................................<br>
+								Firma Cliente<br>
+								Nombre: ________________<br>
+								CI: ____________________<br>
+								E-Mail: ________________<br>
+							</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			</tr>
+			<tr>
+              <td colspan="2"><hr></hr></td>
+            </tr>
+    </table>
+  </body>
+</html>
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" >
+            <img alt=""  width="200" height="70" src="https://telcos.telconet.ec/public/images/logo_transtelco.jpg"/>
+        </td>
+      </tr>
+	  <tr>
+          <td>&nbsp;</td>
+      </tr>
+	  <tr>
+		<td colspan="2">
+			<h4>DATOS TECNICOS</h4>
+			<hr></hr>
+		</td>	
+	  </tr>
+      <tr>
+        <td >
+          <table style="font-size:10px;" width="100%" cellspacing="0" cellpadding="1">
+			<tr>
+              <td>
+                <label>Login:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.login }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Cliente:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.cliente }}</label>
+              </td>
+            </tr>
+		
+	  <tr>
+              <td>
+                <label>Direcci&oacute;n:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.direccion }}</label>
+              </td>
+            </tr>
+			
+           
+			{% if datosTecnicos.contactosCorreos  or datosTecnicos.contactosCorreosPunto %}
+				
+					<tr>
+					  <td>
+						<label>Correo:</label>
+					  </td>
+					  <td colspan="5" align="left">
+						<label>
+                                                   {% set counterVeces = 0 %}  
+                                                   {% set counter = 0 %}
+                                                       {% for item in datosTecnicos.contactosCorreos %}
+                                                         {% if counterVeces < 5  %}  
+                                                             {{ item.valor }}
+                                                              {% set counterVeces = counterVeces+ 1 %}
+                                                        
+                                                                {% set counter = counter+ 1 %}
+                                                                   {% if counterVeces <= (datosTecnicos.contactosCorreos|length -1)  and counterVeces < 5  %}
+                                                                     ,
+                                                                    
+                                                                   {% endif %} 
+                                                                {% endif %}      
+                                                                  
+                                                               
+                                                       {% endfor %}
+                                                       
+                                                       {% set counter = 0 %}              
+                                                       {% if datosTecnicos.contactosCorreosPunto %}
+                                                              {% if  (datosTecnicos.contactosCorreos)  %}
+                                                                    {% if counterVeces < 5  %}
+                                                                      ,
+                                                                    {% endif %}
+                                                                    
+                                                                   {% endif %} 
+                                                              {% for item2 in datosTecnicos.contactosCorreosPunto %}
+                                                                  {% if counterVeces < 5  %}   
+                                                                     {{ item2.valor }}
+                                                                     {% set counterVeces = counterVeces+ 1 %}
+                                                                     
+                                                                     {% set counter = counter+ 1 %}
+                                                                       {% if counterVeces <= (datosTecnicos.contactosCorreosPunto|length -1)  and counterVeces < 5  %}
+                                                                        ,
+                                                                       {% endif %} 
+                                                                       {% endif %}   
+                                                                      
+                                                              {% endfor %}
+                                                       {% endif %}     
+                                                    
+                                                    
+                                                    </label>
+					  </td>
+					</tr>
+				
+			{% endif %}
+                                        
+                                        
+                       
+                        {% if datosTecnicos.contactosTelefonosFijos  or datosTecnicos.contactosTelefonosFijosPunto %}            
+                             <tr>
+                                            
+					     <td>
+						<label>Tel&eacute;fono:</label>
+					     </td>
+                                                
+					     <td colspan="5" align="left">
+                                                  
+						    <label>
+                                                        {% set counterVeces = 0 %}
+                                                       {% set counter = 0 %}
+                                                       {# contactosTelefonosFijos por persona #}      
+                                                     {% for item in datosTecnicos.contactosTelefonosFijos %}
+                                                          {% if counterVeces < 5  %}
+                                                                  {{ item.valor }}
+                                                                  {% set counterVeces = counterVeces +1 %}
+                                                                  {# para agregar la coma#}
+                                                                  {% set counter = counter+ 1 %}
+                                                                   {% if counterVeces <= (datosTecnicos.contactosTelefonosFijos|length -1)  and counterVeces < 5 %}
+                                                                    ,
+                                                                   {% endif %} 
+                                                                 {# fin para agregar la coma#}    
+                                                               {% endif %}  
+                                                       {% endfor %}
+                                                       {# fin contactosTelefonosFijos por persona #}      
+                                                       
+                                                        {# contactosTelefonosFijos por punto #}                 
+                                                       {% set counter = 0 %}              
+                                                       {% if datosTecnicos.contactosTelefonosFijosPunto %}
+                                                              {% if  (datosTecnicos.contactosTelefonosFijos)  %}
+                                                                     {% if counterVeces < 5  %}
+                                                                      ,
+                                                                    {% endif %}
+                                                               {% endif %} 
+                                                              {% for item2 in datosTecnicos.contactosTelefonosFijosPunto %}
+                                                                     {% if counterVeces < 5  %}
+                                                                     {{ item2.valor }}
+                                                                     {% set counterVeces = counterVeces +1 %}
+                                                                     
+                                                                     {% set counter = counter+ 1 %}
+                                                                       {% if counterVeces <= (datosTecnicos.contactosTelefonosFijosPunto|length -1) and counterVeces < 5 %}
+                                                                         ,
+                                                                       {% endif %}  
+                                                                   {% endif %}   
+                                                                      
+                                                              {% endfor %}
+                                                       {% endif %} 
+                                                       {# fin contactosTelefonosFijos por punto #}
+                                                                        
+                                                    </label>
+                                                    
+                                                
+					       </td>
+                                            
+			  </tr>   
+                       {% endif %}
+                                           
+			    
+                          {% if datosTecnicos.contactosTelefonosMovil or datosTecnicos.contactosTelefonoMovilPunto %}
+				
+					<tr>
+					  <td>
+						<label>M&oacute;vil:</label>
+					  </td>
+					  <td colspan="5" align="left">
+                                             
+					    <label>
+                                                 {% set counterVeces = 0 %}
+                                                 {% set counter = 0 %}   
+                                                 {% for item in datosTecnicos.contactosTelefonosMovil %}  
+                                                   {% if counterVeces < 5  %} 
+                                                     {{ item.valor }}
+                                                     {% set counterVeces = counterVeces+ 1 %}     
+                                                    
+                                                             {% set counter = counter+ 1 %}
+                                                             {% if counterVeces <= (datosTecnicos.contactosTelefonosMovil|length -1) and counterVeces < 5 %}
+                                                                     ,
+                                                              {% endif %} 
+                                                    {% endif %}                  
+                                                 {% endfor %}      
+                                                 
+                                                 {% set counter = 0 %}                    
+                                                 {% if datosTecnicos.contactosTelefonoMovilPunto %}
+                                                          {% if  (datosTecnicos.contactosTelefonoMovil)  %}
+                                                                     {% if counterVeces < 5  %}
+                                                                      ,
+                                                                    {% endif %}
+                                                           {% endif %} 
+                                                          {% for item2 in datosTecnicos.contactosTelefonoMovilPunto %}
+                                                           {% if counterVeces < 5  %}           
+                                                              {{ item2.valor }}
+                                                               {% set counterVeces = counterVeces+ 1 %}    
+                                                                     
+                                                                     {% set counter = counter+ 1 %}
+                                                                     {% if counterVeces <= (datosTecnicos.contactosTelefonoMovilPunto|length -1) and counterVeces < 5 %}
+                                                                     ,
+                                                                     {% endif %} 
+                                                                     
+                                                               {% endif %}       
+                                                           {% endfor %}
+                                                  {% endif %}          
+                                             </label>
+                                                
+					  </td>
+					</tr>
+				
+			{% endif %}                 
+                                        
+			
+                     {% if datosTecnicos.contactosTelefonosMovilClaro  or datosTecnicos.contactosTelefonosMovilClaroPunto %}
+				<tr>
+					  <td>
+						<label>M&oacute;vil Claro:</label>
+					  </td>
+					  <td colspan="5" align="left">
+                                               {% set counterVeces = 0 %}
+                                              {% set counter = 0 %}    
+						{% for item in datosTecnicos.contactosTelefonosMovilClaro %}
+                                                  {% if counterVeces < 5  %} 
+                                                     {{ item.valor }}
+                                                      {% set counterVeces = counterVeces+ 1 %}   
+                                                    
+                                                      {% set counter = counter+ 1 %}
+                                                      {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilClaro|length -1) and counterVeces < 5 %}
+                                                       ,
+                                                      {% endif %}
+                                                    {% endif %}  
+                                                     
+                                                 {% endfor %}      
+                                                  
+                                                      
+                                                  {% set counter = 0 %}       
+                                                 {% if datosTecnicos.contactosTelefonosMovilClaroPunto %}
+                                                      {% if  (datosTecnicos.contactosTelefonosMovilClaro)  %}
+                                                                    {% if counterVeces < 5  %}
+                                                                      ,
+                                                                    {% endif %}
+                                                      {% endif %} 
+                                                          {% for item2 in datosTecnicos.contactosTelefonosMovilClaroPunto %}
+                                                               {% if counterVeces < 5  %}
+                                                                   {{ item2.valor }}
+                                                                   {% set counterVeces = counterVeces+ 1 %} 
+                                                       
+                                                                   {% set counter = counter+ 1 %}
+                                                                   {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilClaroPunto|length -1) and counterVeces < 5  %}
+                                                                   ,
+                                                                   {% endif %}
+                                                               {% endif %}
+                                                           {% endfor %}
+                                                  {% endif %}    
+					  </td>
+					</tr>
+				
+			{% endif %}               
+			
+                        
+			{% if datosTecnicos.contactosTelefonosMovilMovistar or datosTecnicos.contactosTelefonosMovilMovistarPunto  %}
+				
+					<tr>
+					  <td>
+						<label>M&oacute;vil Movistar:</label>
+					  </td>
+					  <td colspan="5" align="left">
+						<label>
+                                                   {% set counterVeces = 0 %}  
+                                                  {% set counter = 0 %}     
+                                                  {% for item in datosTecnicos.contactosTelefonosMovilMovistar %}
+                                                      {% if counterVeces < 5  %}    
+                                                      {{ item.valor }}
+                                                              {% set counter = counter+ 1 %}
+                                                              {% set counterVeces = counterVeces+ 1 %} 
+                                                        
+                                                              {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilMovistar|length -1) and counterVeces < 5 %}
+                                                               ,
+                                                              {% endif %}
+                                                         {% endif %}       
+                                                        
+                                                  {% endfor %} 
+                                                     
+                                                     {% set counter = 0 %}               
+                                                     {% if datosTecnicos.contactosTelefonosMovilMovistarPunto %} 
+                                                             {% if (datosTecnicos.contactosTelefonosMovilMovistar)  %}
+                                                               {% if counterVeces < 5  %}
+                                                                      ,
+                                                                {% endif %}
+                                                            {% endif %}
+                                                         {% for item2 in datosTecnicos.contactosTelefonosMovilMovistarPunto %}
+                                                             {% if counterVeces < 5  %}    
+                                                               {{ item2.valor }}
+                                                                 {% set counterVeces = counterVeces+ 1 %}
+                                                               
+                                                                 {% set counter = counter+ 1 %}
+                                                                 {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilMovistarPunto|length -1) and counterVeces < 5 %}
+                                                                  ,
+                                                                 {% endif %}
+                                                               {% endif %}
+                                                        
+                                                         {% endfor %} 
+                                                       {% endif %}  
+                                                        
+                                                        
+                                                        
+                                                 </label>
+					  </td>
+					</tr>
+				
+			{% endif %}                
+			
+                         {% if datosTecnicos.contactosTelefonosMovilCnt or datosTecnicos.contactosTelefonosMovilCntPunto %}
+				
+					<tr>
+					  <td>
+						<label>M&oacute;vil CNT:</label>
+					  </td>
+					  <td colspan="5" align="left">
+						<label>
+                                                    {% set counterVeces = 0 %} 
+                                                    {% set counter = 0 %}    
+                                                    {% for item in datosTecnicos.contactosTelefonosMovilCnt %}
+                                                        {% if counterVeces < 5  %}   
+                                                        {{ item.valor }}
+                                                             {% set counter = counter+ 1 %}
+                                                             {% set counterVeces = counterVeces+ 1 %}
+                                                        
+                                                                 {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilCnt|length -1) and counterVeces < 5 %}
+                                                                  ,
+                                                               {% endif %}
+                                                            {% endif %}       
+                                                                  
+                                                      {% endfor %}
+                                                                  
+                                                      {% set counter = 0 %}               
+                                                      {% if datosTecnicos.contactosTelefonosMovilCntPunto %} 
+                                                          {% if (datosTecnicos.contactosTelefonosMovilCnt)  %}
+                                                               {% if counterVeces < 5  %}
+                                                                      ,
+                                                                {% endif %}
+                                                            {% endif %}
+                                                         {% for item2 in datosTecnicos.contactosTelefonosMovilCntPunto %}
+                                                            {% if counterVeces < 5  %}       
+                                                                {{ item2.valor }}
+                                                                {% set counterVeces = counterVeces+ 1 %}    
+                                                                  
+                                                                  {% set counter = counter+ 1 %}
+                                                                  {% if counterVeces <= (datosTecnicos.contactosTelefonosMovilCntPunto|length -1) and counterVeces < 5 %}
+                                                                  ,
+                                                                 {% endif %}
+                                                              {% endif %}    
+                                                        
+                                                         {% endfor %} 
+                                                       {% endif %}  
+                                                                    
+                                                                  
+                                                 </label>
+					  </td>
+					</tr>
+				
+			{% endif %}               
+          <tr>
+              <td>
+                <label>DSLAM:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.elemento }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Puerto:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.nombreInterfaceElemento }}</label>
+              </td>
+            </tr>
+			{% if datosTecnicos.vci %}
+			<tr>
+              <td>
+                <label>VCI:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.vci }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			<tr>
+              <td>
+                <label>Tipo Medio:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.tipoMedio }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Velocidad:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.nombrePlan }}</label>
+              </td>
+            </tr>
+			{% if datosTecnicos.ipWan %}
+			<tr>
+              <td>
+                <label>Ip WAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.ipWan }}</label>
+              </td>
+              <td>
+                <label>M&aacute;scara WAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.mascaraWan }}</label>
+              </td>
+              <td>
+                <label>Gateway WAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.gatewayWan }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			{% if datosTecnicos.ipPublica %}
+			<tr>
+              <td>
+                <label>Ip P&uacute;blica:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.ipPublica }}</label>
+              </td>
+              <td>
+                <label>M&aacute;scara P&uacute;blica:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.mascaraPublica }}</label>
+              </td>
+              <td>
+                <label>Gateway P&uacute;blica:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.gatewayPublica }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			{% if datosTecnicos.ipLan %}
+			<tr>
+              <td>
+                <label>Ip LAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.ipLan }}</label>
+              </td>
+              <td>
+                <label>M&aacute;scara LAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.mascaraLan }}</label>
+              </td>
+              <td>
+                <label>Gateway LAN:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.gatewayLan }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			{% if datosTecnicos.ipMonitoreo %}
+			<tr>
+              <td>
+                <label>IP Monitoreo:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.ipMonitoreo }}</label>
+              </td>
+              <td>
+                <label>M&aacute;scara Monitoreo:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.mascaraMonitoreo }}</label>
+              </td>
+              <td>
+                <label>Gateway Monitoreo:</label>
+              </td>
+              <td>
+                <label>{{ datosTecnicos.gatewayMonitoreo }}</label>
+              </td>
+            </tr>
+			{% endif %}
+			<tr>
+              <td>
+                <label>Observacion:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.observacion }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Nombre CPE:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.nombreCpe }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>IP CPE:</label>
+              </td>
+              <td colspan="2" align="left">
+                <label>{{ datosTecnicos.ipCpe }}</label>
+              </td>
+			  <td>
+                <label>SSID:</label>
+              </td>
+              <td align="left">
+                <label>{{ datosTecnicos.ssid }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Modelo CPE:</label>
+              </td>
+              <td colspan="2" align="left">
+                <label>{{ datosTecnicos.modeloCpe }}</label>
+              </td>
+			  <td>
+                <label>PASSWD SSID:</label>
+              </td>
+              <td align="left">
+                <label>{{ datosTecnicos.passSsid }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>Serie CPE:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.serieCpe }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label>MAC CPE:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.macCpe }}</label>
+              </td>
+            </tr>
+			<tr>
+              <td>
+                <label># de PCs:</label>
+              </td>
+              <td colspan="5" align="left">
+                <label>{{ datosTecnicos.numPcs }}</label>
+              </td>
+            </tr>
+			</table>
+			</td>
+			</tr>
+			<tr>
+              <td colspan="2"><hr></hr></td>
+            </tr>
+			<tr>
+			<td>
+				<table style="font-size:12px;" width="100%" cellspacing="0" cellpadding="7">
+					<tr>
+						<td colspan="2">
+							<label>Con la Finalidad de Brindar un mejor servicio, las siguientes caracter&iacute;sticas ser&aacute;n verificadas:</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Cableado Interno (LAN)</label>
+						</td>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Cableado Externo (Trans-Telco)</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Datos de Configuraci&oacute;n originales</label>
+						</td>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Computadora sin virus</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Funcionamiento correcto del CPE</label>
+						</td>
+						<td>
+							<label>[&nbsp;&nbsp;]&nbsp;Equipo Protegido</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>Detalle del Problema: ______________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>____________________________________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>Soluci&oacute;n del Problema: ______________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>____________________________________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>Recomendaci&oacute;n del Problema: ______________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>____________________________________________________________________________________________</label>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<label>En caso de persistir el inconveniente por favor escr&iacute;banos a <em><u>sactecnico@trans-telco.com</em></u></label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>
+								Fecha:<br>
+								Hora LLegada:<br>
+								Hora Salida:<br>
+								Visita Facturada:  SI&nbsp;[&nbsp;&nbsp;]&nbsp;&nbsp;NO&nbsp;[&nbsp;&nbsp;]
+							
+							</label>
+						</td>
+						<td>
+							&nbsp;	
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label>................................<br>Firma T&eacute;cnico</label>
+						</td>
+						<td>
+							<label>
+								................................<br>
+								Firma Cliente<br>
+								Nombre: ________________<br>
+								CI: ____________________<br>
+								E-Mail: ________________<br>
+							</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			</tr>
+			<tr>
+              <td colspan="2"><hr></hr></td>
+            </tr>
+    </table>
+  </body>
+</html>

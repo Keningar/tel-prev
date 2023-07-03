@@ -1,0 +1,46 @@
+elementocaja:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:indexCaja" }
+      
+elementocaja_newCaja:
+    pattern:  /newCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:newCaja" }
+
+elementocaja_createCaja:
+    pattern: /createCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:createCaja" }
+    requirements: { _method: POST }
+    
+elementocaja_editCaja:
+    pattern:  /{id}/editCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:editCaja" }
+
+elementocaja_updateCaja:
+    pattern:  /{id}/updateCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:updateCaja" }
+    requirements: { _method: POST }
+       
+elementocaja_showCaja:
+    pattern:  /{id}/showCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:showCaja" }
+        
+elementocaja_getEncontradosCaja:
+    pattern:  /getEncontradosCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:getEncontradosCaja" }
+    
+elementocaja_cargarDatosCaja:
+    pattern:  /{id}/cargarDatosCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:cargarDatosCaja" }
+    requirements: { _method: POST }
+    
+elementocaja_getElementosPorCaja:
+    pattern:  /{id}/getElementosPorCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:getElementosPorCaja" }
+    
+elementocaja_ajaxGetElementosPorCajaYTipo:
+    pattern:  /ajaxGetElementosPorCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:ajaxGetElementosPorCaja" }    
+    
+elementocaja_deleteAjaxCaja:
+    pattern:  /deleteAjaxCaja
+    defaults: { _controller: "tecnicoBundle:InfoElementoCaja:deleteAjaxCaja" }

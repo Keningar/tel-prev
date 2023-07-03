@@ -1,0 +1,174 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Radio</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="15%"> Nombre Elemento:</th>
+                <td width="25%">{{ elemento.nombreElemento }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="15%">Descripci&oacute;n Elemento</th>        
+                <td width="25%">{{ elemento.descripcionElemento }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Ip:</th>
+                <td width="25%">{{ ipElemento.ip}}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Jurisdiccion:</th>
+                <td width="25%">{{ jurisdiccion.nombreJurisdiccion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Canton:</th>
+                <td width="25%">{{ ubicacion.parroquiaId.cantonId.nombreCanton }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Parroquia:</th>
+                <td width="25%">{{ ubicacion.parroquiaId.nombreParroquia }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Direccion:</th>
+                <td width="25%">{{ ubicacion.direccionUbicacion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Altura Sobre Nivel Mar:</th>
+                <td width="25%">{{ ubicacion.alturaSnm }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Longitud Ubicacion:</th>
+                <td width="25%">{{ ubicacion.longitudUbicacion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Latitud Ubicacion:</th>
+                <td width="25%">{{ ubicacion.latitudUbicacion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Sid:</th>              
+                <td width="25%">{{ elemento.sid }}</td>
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Mac:</th>              
+                <td width="25%">{{ elemento.macElemento }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                {% if elemento.switchElementoId !="" %}
+                    <td width="8%">&nbsp;</td>
+                    <th width="15%">Switch:</th>              
+                    <td width="25%">{{ elemento.switchElementoId }}</td>
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <th width="15%">Puerto:</th>              
+                    <td width="25%">{{ elemento.interfaceSwitchId }}</td>
+                    <td width="1%"></td>
+                {% else %}
+                    <td width="8%">&nbsp;</td>
+                    <th width="15%">Elemento Padre:</th>              
+                    <td width="25%">{{ elemento.radioInicioId }}</td>
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <th width="15%">&nbsp;</th>              
+                    <td width="25%">&nbsp;</td>
+                    <td width="1%">&nbsp;</td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="15%">Estado:</th>              
+                <td width="25%">{{ elemento.estado }}</td>
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="15%">&nbsp;</th>              
+                <td width="25%">&nbsp;</td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('elementoradio') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <div class="secHead">Historial del Elemento</div>      
+	<table style="width:100%;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+		<tbody>
+			<tr>
+				<td><b>Estado</b></td>
+				<td><b>Fecha Creacion</b></td>
+				<td><b>Usuario Creacion</b></td>
+				<td><b>Observacion</b></td>
+			</tr>
+			{% for key, item1 in historialElemento %}
+				<tr>
+				{% for key_in, item2 in item1 %}
+                    <td>{{ item2|striptags('<br>')|raw }} </td>
+				{% endfor %}
+				</tr>
+			{% endfor %}   
+		</tbody>
+	</table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('elementoradio_newRadio') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Radio
+            </a>
+        </li>
+        <li>
+            &nbsp;
+        </li>
+        <li>
+            <a class="button-editar" href="{{ path('elementoradio_editRadio', { 'id': elemento.id }) }}">
+                
+                &nbsp;Editar Radio
+            </a>
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+        {%if (is_granted("ROLE_151-7797") and prefijoEmpresa == 'TN') %}
+        <li>
+            <a class="listado_ac_tablas" href="{{ path('elementoradio_generarOperatividadMasivoTN') }}">
+                Generar Operatividad Masiva
+            </a>
+        </li>
+        {%endif%}
+    </ul>
+{% endblock contenido_der %}
+

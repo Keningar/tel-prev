@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+            <img alt=""  src="http://images.telconet.net/others/sit/notificaciones/logo.png"/>
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para indicarle que existen inconvenientes en la capacidad máxima de la interface:
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong>Login del Servicio:</strong>
+              </td>
+              <td>{{ strLogin }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Login Auxiliar del Servicio:</strong>
+              </td>
+              <td>{{ strLoginAux }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Nombre del Elemento:</strong>
+              </td>
+              <td>{{ strNombreElemento }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Nombre de la Interface del Elemento:</strong>
+              </td>
+              <td>{{ strNombreInterface }}</td>
+            </tr>
+            {% if strLoginAuxExtremo|length > 1 %}
+            <tr>
+              <td>
+                <strong>Login Auxiliar del Extremo:</strong>
+              </td>
+              <td>{{ strLoginAuxExtremo }}</td>
+            </tr>
+            {% endif %}
+            {% if strCapacidadExtremo|length > 1 %}
+            <tr>
+              <td>
+                <strong>Capacidad del Extremo:</strong>
+              </td>
+              <td>{{ strCapacidadExtremo }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+              <td>
+                <strong>Acción:</strong>
+              </td>
+              <td>{{ strAccion }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Mensaje:</strong>
+              </td>
+              <td>{{ strMensaje|raw }}</td>
+            </tr>
+
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+    </table>
+  </body>
+</html>

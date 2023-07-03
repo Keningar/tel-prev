@@ -1,0 +1,86 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/planificacion/css/housing.css')}}" type="text/css" rel="stylesheet" />
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+		var arrayDataCenters              = {{arrayDataCenters|json_encode()|raw}};
+        var arrayPosicionesGye            = {{arrayPosicionesGye|json_encode()|raw}};
+        var arrayPosicionesUio            = {{arrayPosicionesUio|json_encode()|raw}};
+        var arrayFilasJaulasGye           = {{arrayFilasJaulasGye|json_encode()|raw}};
+        var arrayFilasJaulasUio           = {{arrayFilasJaulasUio|json_encode()|raw}};
+        var urlEditarElementosPasivosDC   = '{{ path('elementosDataCenter_ajaxEditarElementoPasivoDataCenter')}}';
+        var urlGetUnidadesRack            = '{{ path('factibilidad_housing_ajaxGetInformacionRack') }}';
+    </script>
+    <script src="{{ asset('public/js/jquery-ui-1.12.1/jquery-ui.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/planificacion/js/FactibilidadDataCenter/funciones.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/ElementosDataCenter/elementosPasivos.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Gestión de Información de Racks</h1>
+    </div>        
+    
+    <div class="body_content k-content">
+        
+        <table width="25%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"><b>Data Center:</b></td>
+                    <td width="10%"><select id="cmbDataCenter" name="cmbDataCenter" onchange="obtenerMatrizGrid()"></select></td>                   
+                </tr>                                
+        </table>           
+        <br/><div class="secHead">Piso TI</div><br/>
+        <div id="content-matriz-it"></div>
+        <br/>
+        <table width="70%">
+            <tr>
+                <td colspan="3"><b><label><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;Filas Designadas para Jaulas:</label></b></td>
+                <td colspan="4"><label id="label-filas-jaulas"></label></td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td><b><i class="fa fa-map" aria-hidden="true"></i>&nbsp;Mapa de colores</b></td><td>&nbsp;</td>
+                <td><i class="fa fa-square identificador-habil" aria-hidden="true"></i>&nbsp;Filas con Racks Seleccionables</td><td>&nbsp;</td>
+                <td><i class="fa fa-square identificador-ocupado" aria-hidden="true"></i>&nbsp;Racks Ocupados ( Jaulas )</td><td>&nbsp;</td>
+                <td><i class="fa fa-square identificador-no-habil" aria-hidden="true"></i>&nbsp;Filas no Habilitadas para Selecci&oacute;n o Desocupadas</td><td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td><i class="fa fa-square identificador-all" aria-hidden="true"></i>&nbsp;Racks con disponibilidad Completa</td><td>&nbsp;</td>
+                <td><i class="fa fa-square identificador-midle" aria-hidden="true"></i>&nbsp;Racks con disponibilidad Media</td><td>&nbsp;</td>
+            </tr>
+        </table>
+        
+        <div id="panel-seleccion-rack" align="center" title="Edición de Espacio en Racks">
+            <div id="panel-rack" align="center"></div>
+            <div id="divisor-rack">&nbsp;</div>
+            <div id="panel-rack-info">                
+                <br/><div class="secHead hr"><i class="fa fa-server" aria-hidden="true"></i>&nbsp;Unidades de Rack nuevas</div><br/>
+                <textarea id="resumen-text-nuevos" class="resumen-edicion" disabled></textarea><br/>
+                <br/><div class="secHead hr"><i class="fa fa-server" aria-hidden="true"></i>&nbsp;Unidades de Rack liberadas</div><br/>
+                <textarea id="resumen-text-liberados" class="resumen-edicion" disabled></textarea>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <p>                
+                <span class="height20px">                    
+                    <a class="button-crud" href="{{ path('elementosDataCenter') }}">Regresar</a>
+                </span>
+            </p>
+        </div>
+                
+    </div>
+    
+{% endblock contenido_central %}

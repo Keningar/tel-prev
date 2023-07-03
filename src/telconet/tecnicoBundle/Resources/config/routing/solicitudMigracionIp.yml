@@ -1,0 +1,29 @@
+solicitudMigraIp:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionIps:index" }
+    
+solicitudMigraIp_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionIps:getEncontrados" }
+  
+solicitudMigraIp_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionIps:new" }
+    
+solicitudMigraIp_newTellion:
+    pattern:  /newTellion
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionIps:newTellion" }
+
+solicitudMigraIp_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionIps:create" }
+    requirements: { _method: POST }
+    
+solicitudMigraIp_showSolicitudPadre:
+    pattern:  /showSolicitudPadre
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionIps:showSolicitudPadre" }
+    
+solicitudMigraIp_creaSolicitudesCpm:
+    pattern: /creaSolicitudesCpm
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudMigracionIps:creaSolicitudesCpm" }
+    requirements: { _method: POST }

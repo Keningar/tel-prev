@@ -1,0 +1,36 @@
+infoempresaelemento:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:index" }
+
+infoempresaelemento_gridElementosEmpresa:
+    pattern:  /gridElementosEmpresa
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:gridElementosEmpresa" }
+    
+infoempresaelemento_asignarEmpresaElementos:
+    pattern:  /asignarEmpresaElementos
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:asignarEmpresaElementos" }
+    
+infoempresaelemento_getAjaxComboTiposElemento:
+    pattern:  /getAjaxComboTiposElemento
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:getAjaxComboTiposElemento" }
+
+infoempresaelemento_getAjaxComboMarcasElemento:
+    pattern:  /getAjaxComboMarcasElemento
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:getAjaxComboMarcasElemento" }
+
+infoempresaelemento_getAjaxComboCantones:
+    pattern:  /getAjaxComboCantones
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:getAjaxComboCantones" }
+
+infoempresaelemento_getAjaxComboModelosElemento:
+    pattern:  /getAjaxComboModelosElemento
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:getAjaxComboModelosElemento" }
+
+infoempresaelemento_getAjaxComboJurisdicciones:
+    pattern:  /getAjaxComboJurisdicciones
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:getAjaxComboJurisdicciones" }
+
+infoempresaelemento_getAjaxComboEmpresas:
+    pattern:  /getAjaxComboEmpresas
+    defaults: { _controller: "tecnicoBundle:InfoEmpresaElemento:getAjaxComboEmpresas" }
+  

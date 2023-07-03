@@ -1,0 +1,12 @@
+elementoLineaNetvoice:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:index" }
+
+elementoLineaNetvoice_getDatosLineas:
+    pattern:  /getDatosLineas
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosLineas" }
+    
+elementoLineaNetvoice_activarLinea:
+    pattern:  /activarLinea
+    defaults: { _controller: "tecnicoBundle:InfoServicio:activarLinea" } 
+      

@@ -1,0 +1,42 @@
+--=======================================================================
+-- Reverso el tipo de solicitud RPA licencia
+-- Reverso de la característica para la licencia Fortigate
+-- Reverso del producto característica para la licencia Fortigate
+-- Reverso los detalles de parámetros de los id de las marcas de los elementos para los productos que requieran licenciamiento por el RPA
+--=======================================================================
+
+-- REVERSO EL TIPO DE SOLICITUD DE 'SOLICITUD RPA LICENCIA'
+DELETE DB_COMERCIAL.ADMI_TIPO_SOLICITUD
+WHERE
+    DESCRIPCION_SOLICITUD = 'SOLICITUD RPA LICENCIA';
+
+-- REVERSO DEL PRODUCTO CARACTERISTICA PARA DE LA LICENCIA FORTIGATE
+DELETE DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+WHERE
+    CARACTERISTICA_ID = (
+        SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+        WHERE DESCRIPCION_CARACTERISTICA = 'LICENCIA_FORTIGATE'
+    );
+
+-- REVERSO DE LA CARACTERISTICA PARA LA LICENCIA FORTIGATE
+DELETE DB_COMERCIAL.ADMI_CARACTERISTICA
+WHERE
+    DESCRIPCION_CARACTERISTICA = 'LICENCIA_FORTIGATE';
+
+-- REVERSO DE LA CABECERA DE PARAMETROS DE 'RPA_MARCA_ELEMENTOS_LICENCIA'
+DELETE DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE
+    PARAMETRO_ID = (
+        SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'RPA_MARCA_ELEMENTOS_LICENCIA'
+    );
+DELETE DB_GENERAL.ADMI_PARAMETRO_CAB
+WHERE
+    NOMBRE_PARAMETRO = 'RPA_MARCA_ELEMENTOS_LICENCIA';
+
+COMMIT;
+/

@@ -1,0 +1,47 @@
+declare
+
+cursor cu_series_activa is
+select aa.numero_serie,aa.rowid regid from DB_INFRAESTRUCTURA.info_elemento_trazabilidad aa where aa.estado_activo = 'Activo' and aa.ubicacion = 'Cliente';
+
+cursor cu_obtiene_cedula(var_serie varchar2) is
+select dd.cedula from NAF47_TNET.in_articulos_instalacion dd where dd.rowid = (
+select max(cc.rowid) from NAF47_TNET.in_articulos_instalacion cc where upper(cc.numero_serie) = upper(var_serie))
+and dd.cedula is not null;
+
+
+cursor cu_obtiene_nombre(var_identificacion varchar2) is
+select ee.nombres||' '||ee.apellidos nombres from db_comercial.info_persona ee where ee.rowid = (
+select max(ee1.rowid) from db_comercial.info_persona ee1 where ee1.identificacion_cliente = var_identificacion);
+
+var_cedula  varchar2(50);
+var_nombres varchar2(100);
+contador    number:=0;
+
+begin
+
+
+for i in cu_series_activa loop
+
+open cu_obtiene_cedula(i.numero_serie);
+fetch cu_obtiene_cedula into var_cedula;
+close cu_obtiene_cedula;
+
+open cu_obtiene_nombre(var_cedula);
+fetch cu_obtiene_nombre into var_nombres;
+close cu_obtiene_nombre;
+
+update db_infraestructura.info_elemento_trazabilidad hh set hh.responsable = var_nombres where hh.rowid = i.regid;
+
+dbms_output.put_line('Serie: '||i.numero_serie);
+
+contador := contador + 1;
+end loop;
+dbms_output.put_line(' ');
+dbms_output.put_line('Total: '||contador);
+
+exception
+when others then
+rollback;
+dbms_output.put_line('Error: '||sqlerrm);
+
+end;

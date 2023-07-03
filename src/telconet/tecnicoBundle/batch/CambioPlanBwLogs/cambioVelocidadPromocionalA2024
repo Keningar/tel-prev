@@ -1,0 +1,2222 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+SELECT SERVICIO.ID_SERVICIO FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO, DB_COMERCIAL.INFO_SERVICIO_TECNICO TECNICO, DB_COMERCIAL.INFO_PUNTO PUNTO, DB_COMERCIAL.INFO_PLAN_CAB PLANC, DB_COMERCIAL.INFO_PLAN_DET PLAND, DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA PC, DB_COMERCIAL.ADMI_CARACTERISTICA CAR, DB_COMERCIAL.INFO_PLAN_PRODUCTO_CARACT PPC, DB_INFRAESTRUCTURA.INFO_ELEMENTO ELEMENTO, DB_INFRAESTRUCTURA.ADMI_MODELO_ELEMENTO MODELO WHERE SERVICIO.ID_SERVICIO = TECNICO.SERVICIO_ID AND SERVICIO.PUNTO_ID = PUNTO.ID_PUNTO AND SERVICIO.ESTADO = 'Activo' AND TECNICO.INTERFACE_ELEMENTO_ID IS NOT NULL AND SERVICIO.PLAN_ID = PLANC.ID_PLAN AND PLANC.ID_PLAN = PLAND.PLAN_ID AND PPC.PLAN_DET_ID = PLAND.ID_ITEM AND PPC.PRODUCTO_CARACTERISITICA_ID = PC.ID_PRODUCTO_CARACTERISITICA AND PC.CARACTERISTICA_ID = CAR.ID_CARACTERISTICA AND CAR.DESCRIPCION_CARACTERISTICA = 'CAPACIDAD-PROM1' AND TECNICO.ELEMENTO_ID = ELEMENTO.ID_ELEMENTO AND ELEMENTO.MODELO_ELEMENTO_ID = MODELO.ID_MODELO_ELEMENTO AND MODELO.NOMBRE_MODELO_ELEMENTO = 'A2024'
+obteniendo los servicios
+1021
+servicios...
+serviciosObj:1021
+serviciosObj:1012
+serviciosObj:1001
+serviciosObj:999
+serviciosObj:991
+serviciosObj:987
+serviciosObj:981
+serviciosObj:977
+serviciosObj:969
+serviciosObj:963
+serviciosObj:958
+serviciosObj:948
+serviciosObj:943
+serviciosObj:922
+serviciosObj:913
+serviciosObj:906
+serviciosObj:901
+serviciosObj:885
+serviciosObj:868
+serviciosObj:852
+serviciosObj:846
+serviciosObj:832
+serviciosObj:811
+serviciosObj:794
+serviciosObj:787
+serviciosObj:768
+serviciosObj:764
+serviciosObj:754
+serviciosObj:748
+serviciosObj:735
+serviciosObj:726
+serviciosObj:716
+serviciosObj:711
+serviciosObj:706
+serviciosObj:704
+serviciosObj:695
+serviciosObj:686
+serviciosObj:677
+serviciosObj:673
+serviciosObj:662
+serviciosObj:661
+serviciosObj:648
+serviciosObj:646
+serviciosObj:643
+serviciosObj:642
+serviciosObj:639
+serviciosObj:632
+serviciosObj:617
+serviciosObj:602
+serviciosObj:597
+serviciosObj:584
+serviciosObj:572
+serviciosObj:571
+serviciosObj:559
+serviciosObj:547
+serviciosObj:541
+serviciosObj:531
+serviciosObj:518
+serviciosObj:505
+serviciosObj:491
+serviciosObj:485
+serviciosObj:468
+serviciosObj:457
+serviciosObj:453
+serviciosObj:448
+serviciosObj:445
+serviciosObj:439
+serviciosObj:436
+serviciosObj:433
+serviciosObj:427
+serviciosObj:426
+serviciosObj:404
+serviciosObj:385
+serviciosObj:381
+serviciosObj:377
+serviciosObj:374
+serviciosObj:359
+serviciosObj:350
+serviciosObj:343
+serviciosObj:342
+serviciosObj:338
+serviciosObj:326
+serviciosObj:320
+serviciosObj:311
+serviciosObj:305
+serviciosObj:302
+serviciosObj:296
+serviciosObj:291
+serviciosObj:284
+serviciosObj:276
+serviciosObj:273
+serviciosObj:269
+serviciosObj:267
+serviciosObj:264
+serviciosObj:260
+serviciosObj:258
+serviciosObj:257
+serviciosObj:251
+serviciosObj:244
+serviciosObj:237
+serviciosObj:230
+serviciosObj:229
+serviciosObj:223
+serviciosObj:220
+serviciosObj:208
+serviciosObj:200
+serviciosObj:194
+serviciosObj:188
+serviciosObj:182
+serviciosObj:177
+serviciosObj:171
+serviciosObj:164
+serviciosObj:155
+serviciosObj:144
+serviciosObj:143
+serviciosObj:128
+serviciosObj:113
+serviciosObj:99
+serviciosObj:86
+serviciosObj:79
+serviciosObj:75
+serviciosObj:74
+serviciosObj:72
+serviciosObj:69
+serviciosObj:67
+serviciosObj:65
+serviciosObj:64
+serviciosObj:60
+serviciosObj:55
+serviciosObj:53
+serviciosObj:49
+serviciosObj:40
+serviciosObj:36
+serviciosObj:33
+serviciosObj:29
+serviciosObj:28
+serviciosObj:23
+serviciosObj:21
+serviciosObj:18
+serviciosObj:17
+serviciosObj:13
+serviciosObj:12
+serviciosObj:10
+serviciosObj:9
+serviciosObj:8
+serviciosObj:7
+serviciosObj:5
+serviciosObj:4
+serviciosObj:1
+EJECUTO modelo:A2024, ip:172.29.74.254, interface:xdsl 1, login:porzcvele_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.71, interface:xdsl 7, login:uionmalbant2 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.167.254, interface:xdsl 2, login:porbrloorc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.253, interface:xdsl 2, login:porrdlinz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.86.252, interface:xdsl 24, login:pormmluca_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 21, login:bbhfgtorr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.26.5.254, interface:xdsl 23, login:balcatino_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 19, login:durcjpazr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.184, interface:xdsl 3, login:uiorjjaramillov1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.27.216.254, interface:xdsl 22, login:gyepagall_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.29.30.253, interface:xdsl 23, login:porchargu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.150, interface:xdsl 17, login:uiomeneses , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.90.252, interface:xdsl 12, login:porlmpioncem_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.72, interface:xdsl 13, login:uiohpperezw1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.113.2.254, interface:xdsl 3, login:plemdsanchezs2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.2.253, interface:xdsl 10, login:trocfcriolloh_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.11.254, interface:xdsl 10, login:vindgmira_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 13, login:trojalita_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.87, interface:xdsl 4, login:uiojlreascosd , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.21.35.253, interface:xdsl 2, login:jipemponc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.254.218, interface:xdsl 9, login:uioschavez_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 16, login:pineaajil_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.74.254, interface:xdsl 3, login:porcimaci_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.99, interface:xdsl 16, login:stdijfajard_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 1, login:stdcfbeni_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 1, login:gyelsordonezl1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 11, login:gyelrintriagoa1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.57.254, interface:xdsl 20, login:stlcacgsa2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.4.253, interface:xdsl 6, login:vinlicoel2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 23, login:blsjcsanc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.99, interface:xdsl 6, login:uiolhharoz , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.107.254, interface:xdsl 5, login:yagddluqu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.33.254, interface:xdsl 23, login:porrdcede_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 20, login:maneglarr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.26.253, interface:xdsl 23, login:jipfigonzale_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.252, interface:xdsl 1, login:pornymeram , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 22, login:maneaconfor_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.62.254, interface:xdsl 8, login:stlfmbeit2_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 15, login:liblsa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.252, interface:xdsl 23, login:porrcsanchezi1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 15, login:gyemgpanc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.166.254, interface:xdsl 4, login:porrmdelga_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.27.99.253, interface:xdsl 4, login:gyeseafman2 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.128.254, interface:xdsl 4, login:porjaveram_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.100.254, interface:xdsl 2, login:gyemycede_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.101, interface:xdsl 24, login:stdfcmend_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.7.254, interface:xdsl 24, login:palgurami_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.86, interface:xdsl 12, login:uiojmisleq , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.76.254, interface:xdsl 5, login:ptvgjsari_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 6, login:ptvmmcarr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.47.254, interface:xdsl 17, login:bnfhrveram , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.99, interface:xdsl 24, login:uioafguac_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.46.254, interface:xdsl 13, login:placpsa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.58.253, interface:xdsl 6, login:quewabozac_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 17, login:quemtbaquerizop1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.86.252, interface:xdsl 11, login:porjeloora_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 5, login:stdchang_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 17, login:salaxverg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.83, interface:xdsl 4, login:stdgmvillav_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.115, interface:xdsl 19, login:stdaeluqu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.74.254, interface:xdsl 1, login:ptvlfenri2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.247, interface:xdsl 5, login:milbplopezm_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.30.249.87, interface:xdsl 5, login:uioaeruizp1 , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.109, interface:xdsl 4, login:uioadec_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.126, interface:xdsl 8, login:uioomnune_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.22.69.254, interface:xdsl 23, login:quegdpenav_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.113.2.254, interface:xdsl 20, login:pleveesco_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 7, login:milamandag_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.31.254, interface:xdsl 12, login:stlnmreyg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 5, login:pinemrome_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.27.216.254, interface:xdsl 23, login:gyebalzo , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.22.33.253, interface:xdsl 5, login:queortova_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.122.254, interface:xdsl 12, login:gyeaoauca_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.184, interface:xdsl 15, login:uiodfandraded1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.44.254, interface:xdsl 12, login:macsmasen_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.21.252, interface:xdsl 23, login:porcmormazaz1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.254.91, interface:xdsl 2, login:uiolavelar_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.42.254, interface:xdsl 3, login:macbigarc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.94.254, interface:xdsl 3, login:pormcandra_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.103.254, interface:xdsl 5, login:manmffloresv_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.29.252, interface:xdsl 10, login:jipamvill_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 8, login:durdjpera_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 23, login:pingdaria_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 16, login:miloasala_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.90.252, interface:xdsl 4, login:porglzambra_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.72, interface:xdsl 12, login:uiojsbola_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 19, login:placacede_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.247, interface:xdsl 11, login:milfipereza1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.24.72.254, interface:xdsl 5, login:ptvpvarev_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 2, login:macmasant_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.149, interface:xdsl 6, login:uiosteranp1 , up:9856, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 8, login:trovnrodr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 13, login:pinepmata_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 11, login:uiojoburb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.115, interface:xdsl 18, login:stdnslemac_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.83, interface:xdsl 10, login:stdqwang_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.26.3.253, interface:xdsl 3, login:baleeholg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.148, interface:xdsl 9, login:stdmmdelgad , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.8.253, interface:xdsl 10, login:paldmloza_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 15, login:saldczapa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.99, interface:xdsl 14, login:stdmaverd_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.86.252, interface:xdsl 3, login:porjemont_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 10, login:stdgdcottor1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.102, interface:xdsl 20, login:stdggsonob_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.47.254, interface:xdsl 19, login:bnfraberm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.65.254, interface:xdsl 7, login:salgicobo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.53.254, interface:xdsl 3, login:strarcelyr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 21, login:milsfmato_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 18, login:triadgome_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 17, login:milamgaiborv_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 18, login:milamizquier_n , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.166.254, interface:xdsl 5, login:porygchavezl1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 4, login:macmbsarangos_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.252, interface:xdsl 22, login:porpoperaltam1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 5, login:libmereye2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 1, login:miljcsigc_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 5, login:mandpina_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.62.254, interface:xdsl 7, login:stlfprizz_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 20, login:gyeofdalg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.166.254, interface:xdsl 7, login:porclvelezi1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 3, login:saldaurdi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.100.254, interface:xdsl 3, login:gyentcepedat1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.86, interface:xdsl 14, login:uiogehidalg2 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 14, login:libaehern_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 10, login:blsjggarc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.37, interface:xdsl 11, login:uiosamandak_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.18.57.254, interface:xdsl 19, login:stlcacgsa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 3, login:gyemmguznayg1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 16, login:quemkcarrenoc1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 9, login:stdjlleivac1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.115, interface:xdsl 13, login:stdlgtene_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 8, login:pinevmora_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 13, login:bbhjjdizb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 20, login:macmfespi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.35.253, interface:xdsl 1, login:jipjmolve_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.148, interface:xdsl 23, login:uiodterana_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 7, login:triaaagui_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.109, interface:xdsl 13, login:uioroordonezj1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 10, login:plagomites_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.254.23, interface:xdsl 1, login:uiorlochoaf1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.26, interface:xdsl 1, login:uioxeminov , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 10, login:milrjhurtadon_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 23, login:milrchavarri_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.41.254, interface:xdsl 15, login:porcdargu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.30.253, interface:xdsl 1, login:porjwpachays1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.25.6.253, interface:xdsl 1, login:vincjmosqueram1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.48.254, interface:xdsl 5, login:machjgala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.184, interface:xdsl 1, login:uioactivate_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 6, login:durcjdavi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 15, login:bbhjepazm2_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.25.9.254, interface:xdsl 19, login:vinmvloorm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.44.254, interface:xdsl 24, login:macxasala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.3.253, interface:xdsl 8, login:vinejmendoz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.52, interface:xdsl 12, login:mchpcvelozc , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.30.254, interface:xdsl 6, login:quemebohorquezo1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.30.252.91, interface:xdsl 1, login:rmhbnalvarador1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.21.252, interface:xdsl 22, login:porlzhuang1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.102.253, interface:xdsl 21, login:pormjoviedoj1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.25.9.254, interface:xdsl 17, login:vinreverac_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.20.254, interface:xdsl 4, login:plaealope_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.10.254, interface:xdsl 10, login:vingnalav_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 1, login:durelmore_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 24, login:durfrcast_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.47.61, interface:xdsl 24, login:gyekizamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 20, login:saleedelp_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.38.254, interface:xdsl 4, login:bbhelmorab_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.120.254, interface:xdsl 24, login:milzsleona_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 17, login:pinikroma_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.90.252, interface:xdsl 18, login:porgdloorg_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.27.34.252, interface:xdsl 12, login:gyejduenasz_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.254.23, interface:xdsl 14, login:uiocmhidalgoq1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.69.254, interface:xdsl 18, login:queprmora_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.34, interface:xdsl 17, login:uiodafreilec1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.72.254, interface:xdsl 3, login:ptvddjara_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.35.253, interface:xdsl 7, login:jipaetoala1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.22.73.254, interface:xdsl 14, login:queorburg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.149, interface:xdsl 15, login:uioreteranm1 , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 12, login:uiobechir_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.19, interface:xdsl 22, login:uioaxserranon1 , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.102, interface:xdsl 23, login:stdwvvele_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 9, login:milymtorr_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.30.254.246, interface:xdsl 3, login:uioestacionnav , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.21.21.252, interface:xdsl 20, login:jipmaosej_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.33.254, interface:xdsl 17, login:porlkmaci_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.76.254, interface:xdsl 6, login:ptvjcroma_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 18, login:bbhepburb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.26.253, interface:xdsl 8, login:jipjmgara_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.27.99.253, interface:xdsl 1, login:gyeseafman1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.62.254, interface:xdsl 4, login:stlcondomi_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.29.102.254, interface:xdsl 22, login:porhesosac_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 11, login:narcvzuri_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 1, login:libmereye3_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.71, interface:xdsl 6, login:uioinmobiliaria1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 21, login:mancazuri_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 14, login:macmevalverd_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.102.254, interface:xdsl 20, login:poreediazq_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 13, login:milamvale2_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 17, login:bbhffayal_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.76.254, interface:xdsl 23, login:pvlepromanl1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.53.254, interface:xdsl 6, login:strjjapol_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.107.254, interface:xdsl 20, login:yagerbaid_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.79.254, interface:xdsl 7, login:narejgala_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.30.252.244, interface:xdsl 1, login:uiosahidalgoc , up:7392, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 1, login:blskiflor_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.46.254, interface:xdsl 2, login:plairdiazc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.253, interface:xdsl 14, login:porreadrianl_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 12, login:gyewareyess1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.86.252, interface:xdsl 21, login:porlaveram2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.14.254, interface:xdsl 22, login:troycrome_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 21, login:uiomtvargasc1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.115, interface:xdsl 20, login:stdcicupuerana1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 18, login:milrwacos_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 20, login:bbhjlnagu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 21, login:trocibajanal_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.11.254, interface:xdsl 13, login:vingfesco_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.34, interface:xdsl 4, login:uiojcnaranjol , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.22.69.254, interface:xdsl 12, login:queiarizo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.254.23, interface:xdsl 11, login:uiofamisl_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.25.5.253, interface:xdsl 5, login:vinnmgarc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.2.253, interface:xdsl 7, login:trocsberm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.109, interface:xdsl 14, login:uiorjromerov1 , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 22, login:plajequir_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.90.252, interface:xdsl 19, login:porvhmacasl , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.26, interface:xdsl 8, login:uiohairigoyen1 , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 6, login:stlregonz_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 13, login:milzmboderog_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.31.254, interface:xdsl 7, login:stlpjpalmaf_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 14, login:miljralci_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 12, login:milkdrey_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.120.254, interface:xdsl 23, login:milemgomezb_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 22, login:pinshsotoo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 4, login:porjcvier_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.29.252, interface:xdsl 21, login:jipalermar_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 24, login:dureezamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.123.254, interface:xdsl 2, login:milpvcerc_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.103.254, interface:xdsl 4, login:manoocanol_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.94.254, interface:xdsl 13, login:poraksornoz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.126.254, interface:xdsl 7, login:pormgpera_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.254.91, interface:xdsl 24, login:uioladavi_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.44.254, interface:xdsl 21, login:macyemend_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.3.253, interface:xdsl 21, login:vinizveray_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.48.254, interface:xdsl 7, login:machpbarr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.52.254, interface:xdsl 24, login:macajfrei_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.122.254, interface:xdsl 9, login:gyecfbrit , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.33.253, interface:xdsl 6, login:quervmart_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 11, login:durmazamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.30.253, interface:xdsl 20, login:porjalopezp2 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 20, login:pinsjruizg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.120.254, interface:xdsl 20, login:milmoperaltac1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 6, login:millasanche_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.113.3.254, interface:xdsl 14, login:plecapalm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.90.252, interface:xdsl 14, login:porampincaye , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 23, login:plaluquir_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.109, interface:xdsl 10, login:uiopjfalconim1 , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 22, login:bbhmetorr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 4, login:tricmvelo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 8, login:milwjgome_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.74.254, interface:xdsl 2, login:pormazamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.8.253, interface:xdsl 14, login:palalmunozz_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.29.86.252, interface:xdsl 7, login:pormaponc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 2, login:stdphinah_m2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.99, interface:xdsl 23, login:stdfacaza_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 9, login:gyehamatac1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.57.254, interface:xdsl 1, login:stlrromanz_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.244, interface:xdsl 17, login:uiodehidalg_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.30.254.26, interface:xdsl 22, login:uiogpcastilloe1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 3, login:ptvmvsala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 14, login:manaebrav_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 24, login:triawmeji_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 9, login:libfggonz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 3, login:milldcampo_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.167.254, interface:xdsl 22, login:porjlmerab1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.29.128.254, interface:xdsl 19, login:porjralci_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 9, login:milmaguev_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.30.253.101, interface:xdsl 10, login:stdffjach_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.26.253, interface:xdsl 19, login:jiprapidr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 22, login:mananmore , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 20, login:salalpinov_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 24, login:manlealviaa2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 7, login:libmereye4_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.40.60, interface:xdsl 13, login:manaomag_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.62.254, interface:xdsl 1, login:stlmbakerm , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 8, login:manvralejandr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.101, interface:xdsl 8, login:stdxhzheng , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.128.254, interface:xdsl 12, login:pordimaci , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 14, login:gyehyvill_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 9, login:saljjfrie_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 1, login:miljeverg_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 2, login:ptvrdponc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.254.26, interface:xdsl 24, login:uioagmorenov1 , up:0, down:0
+EJECUTO modelo:A2024, ip:172.22.47.254, interface:xdsl 20, login:bnfrialon_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.53.254, interface:xdsl 2, login:strjrloai_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.244, interface:xdsl 18, login:uiojwbakk_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.210, interface:xdsl 10, login:uioaperil , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.16.79.254, interface:xdsl 2, login:narjechun_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.42.62, interface:xdsl 7, login:mandjlope_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 18, login:saleazamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.26.3.253, interface:xdsl 11, login:baljsgarc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 2, login:gyevccruzc1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 17, login:querrgarzong1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.30.253.83, interface:xdsl 2, login:stdadmoram2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 21, login:uiomtvargasc1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.149, interface:xdsl 1, login:uiorlcord_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.69, interface:xdsl 1, login:stdjcortesv1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.26, interface:xdsl 2, login:uioajorti , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 12, login:milketosc_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.41.254, interface:xdsl 7, login:pormmmore_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.120.254, interface:xdsl 19, login:milrgmora_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 5, login:durrilita_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.29.252, interface:xdsl 20, login:jiprmchilani2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.44.254, interface:xdsl 6, login:macfxalbanb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.21.252, interface:xdsl 24, login:porjazambranof1 , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.91, interface:xdsl 21, login:aearguellom1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 3, login:durjagagu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 5, login:porslnava_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.30.254, interface:xdsl 24, login:quejosanchezm1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.10.254, interface:xdsl 13, login:vinjmcube_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.30.253, interface:xdsl 9, login:porpmintriagos1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.23.38.254, interface:xdsl 7, login:bbhjdburb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 7, login:pinvhgran_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 22, login:pinjccabr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.31.254, interface:xdsl 8, login:stlejmite_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 4, login:macmrvint_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.72.254, interface:xdsl 4, login:ptvshsotoo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.115, interface:xdsl 21, login:stdjamoreirab1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 19, login:pinwaniqu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.14.254, interface:xdsl 2, login:trodmbrav_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.46.254, interface:xdsl 24, login:plareguer_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.86, interface:xdsl 3, login:uiocrgarzonm1 , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.254, interface:xdsl 22, login:porcagalarz , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 10, login:libmereye5_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 15, login:mileechiflag_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 10, login:mancdbaz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 3, login:saljlsala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 15, login:manychen , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.101, interface:xdsl 7, login:stdwchen3 , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.29.128.254, interface:xdsl 1, login:porjspicom , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 8, login:bbhjcleonm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.76.254, interface:xdsl 7, login:pvljachicayr1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.53.254, interface:xdsl 1, login:strmcmald_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 13, login:mileesala_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.57.254, interface:xdsl 7, login:stltorrecent_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.102, interface:xdsl 14, login:stdcrmend_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.99, interface:xdsl 18, login:stdtquint_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 4, login:gyermmoranm1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 13, login:stdcacedenob1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 7, login:quefajara_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 9, login:pingmjarrinj_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.72.254, interface:xdsl 14, login:pvlcuripambamining1 , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.22.73.254, interface:xdsl 5, login:quefvvill_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.83, interface:xdsl 5, login:stdmdcornejoc1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 23, login:macmycubi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.74.254, interface:xdsl 2, login:ptvmaramo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.247, interface:xdsl 21, login:milsbmart2_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 17, login:bbhpmsipi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.109, interface:xdsl 7, login:uiomgborj_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 11, login:plammconc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.2.253, interface:xdsl 1, login:trogmmaya_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.113.3.254, interface:xdsl 16, login:pleebrend_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 7, login:stlyefrancor_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 13, login:pinjerome_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 22, login:mildgfran_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 19, login:millalozanoq_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.25.10.254, interface:xdsl 3, login:vinscmoram_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.47.61, interface:xdsl 16, login:gyejetutivenv1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.33.253, interface:xdsl 4, login:quevgvinsac_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 1, login:durtwverat_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 3, login:durgeriosv_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 22, login:durjwmosq_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 4, login:bbhganobo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.29.252, interface:xdsl 18, login:jipcooperativa1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.94.254, interface:xdsl 4, login:porezmolinac_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.42.254, interface:xdsl 11, login:macjamoch_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.44.254, interface:xdsl 22, login:macjjaria_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.103.254, interface:xdsl 1, login:manseandr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 7, login:bbhdmroj_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.48.254, interface:xdsl 6, login:macircres_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.33.253, interface:xdsl 7, login:quejfmore_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.52.254, interface:xdsl 3, login:maccapont_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 9, login:poradalayg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 15, login:salehdelp_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.30.254, interface:xdsl 2, login:queviargu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 24, login:macwasand_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 1, login:milesalva_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 22, login:quegediazc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 22, login:quehjcarpiot1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.118.253, interface:xdsl 7, login:porjecortezn1 , up:9856, down:1024
+EJECUTO modelo:A2024, ip:10.114.14.254, interface:xdsl 23, login:trojcvill_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.53.254, interface:xdsl 11, login:strrfreyt_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.46.254, interface:xdsl 22, login:plarmzamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 11, login:stdejvillacresd1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.65.254, interface:xdsl 6, login:salccmt_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.107.254, interface:xdsl 23, login:yaggjpalm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.47.254, interface:xdsl 5, login:bnfjlcede_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 5, login:ptvlemend_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.86, interface:xdsl 19, login:uiojeuquillasm1 , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.101, interface:xdsl 3, login:stdyajime , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.28.40.60, interface:xdsl 14, login:manarteagav_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 17, login:manlgzambrano_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 24, login:macsialva_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 8, login:miljsfloress_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 14, login:manlesala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 7, login:narjivela_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 12, login:libmereye6_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.27.99.253, interface:xdsl 24, login:gyecjandrad_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 2, login:salmigomez_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.102.254, interface:xdsl 7, login:porcecede_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 6, login:salmctera_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 13, login:gyeplcrio_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 7, login:milrerami_m6 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.33.254, interface:xdsl 7, login:porelmerov , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.18.46.254, interface:xdsl 15, login:plasmyamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.244, interface:xdsl 15, login:uiojlgonzal_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 19, login:milrpbarahonaa1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 24, login:quejpcrio_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.42.62, interface:xdsl 21, login:manejbedo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.102, interface:xdsl 10, login:stdcrmendo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 1, login:salhfescob_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.99, interface:xdsl 6, login:stdecchun_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.26.3.253, interface:xdsl 8, login:balmrmutr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 6, login:gyepachalenl1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 2, login:quegmguan_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.73.254, interface:xdsl 24, login:queyimore_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.74.254, interface:xdsl 3, login:pvlmsmingay1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.11.254, interface:xdsl 11, login:vinspnive_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.5.253, interface:xdsl 23, login:vinfjmosqueram2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.252.109, interface:xdsl 12, login:uiosps.a._m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:10.114.2.253, interface:xdsl 23, login:trojiverab_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.113.3.254, interface:xdsl 24, login:plegasala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 2, login:pinjgdiazo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 3, login:mildlleonb_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.20.52.254, interface:xdsl 2, login:machdastudi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 13, login:durwecarc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 4, login:durjrrued_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.52, interface:xdsl 1, login:mejmcecheverriap1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.126.254, interface:xdsl 2, login:pornaalva_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.94.254, interface:xdsl 11, login:porfaintr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.42.254, interface:xdsl 4, login:macjvfern , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 5, login:bbhjlchap_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.3.253, interface:xdsl 19, login:vinjquint_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.9.254, interface:xdsl 18, login:vinsprive_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.41.254, interface:xdsl 5, login:porhiguil_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.38.254, interface:xdsl 6, login:bbhlapazm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 19, login:pinmeloay2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.11.254, interface:xdsl 15, login:vincearia_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.73.254, interface:xdsl 22, login:quemaburg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 14, login:pingrpine_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.74.254, interface:xdsl 11, login:porrmchingm_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.26.3.253, interface:xdsl 10, login:baloatriv_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.42.62, interface:xdsl 2, login:manarescando_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.79.254, interface:xdsl 3, login:narlapere_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 22, login:milremuno_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.53.254, interface:xdsl 23, login:strlvfalc_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 1, login:bbhjfpazminoa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.33.254, interface:xdsl 10, login:porcfvelizr1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.16.107.254, interface:xdsl 11, login:yagmealva_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 7, login:salmjbald_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 15, login:stdmjbustamantez1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 8, login:manmafalc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 15, login:narmvalle_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 13, login:milmftorresb_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 21, login:macaqmasach_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.71, interface:xdsl 1, login:uiobmcevallosr1 , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.254, interface:xdsl 11, login:porrecaballe_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 8, login:salmmac_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 14, login:manbjarte_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 19, login:milfafiguer_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 10, login:salrequin_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.167.254, interface:xdsl 23, login:porcmpatinog1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 8, login:pvlmocontentoe1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 2, login:tribcmari_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.107.254, interface:xdsl 17, login:yagspcolc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 24, login:manlpalac_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.65.254, interface:xdsl 2, login:salhsalti_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.14.254, interface:xdsl 24, login:trolrmora_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 8, login:milrmriosp_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 7, login:gyeoalozadav1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.253, interface:xdsl 4, login:porwrintr_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.16.79.254, interface:xdsl 10, login:nartemunozn_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.42.62, interface:xdsl 16, login:manjcasa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.210, interface:xdsl 17, login:uiohmcorr_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.29.74.254, interface:xdsl 20, login:porjvcorr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 5, login:pinjaatie_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 5, login:gyeiapintos1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.73.254, interface:xdsl 21, login:quedjzamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 15, login:macaeriofrior_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 23, login:quevahazq_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 15, login:trikrzamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 9, login:trodaverdugob_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 14, login:bbhrecontre_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 16, login:planjmendoz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.5.253, interface:xdsl 16, login:vinjxsoto_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 8, login:pinmerome_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 17, login:stlcmedin_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.22.30.254, interface:xdsl 5, login:quemfreza_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 11, login:milmvriva_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.122.254, interface:xdsl 15, login:gyejkcort_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.10.254, interface:xdsl 14, login:vinwesuar_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.33.253, interface:xdsl 1, login:queckolve_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 3, login:durxvmora_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.21.29.252, interface:xdsl 16, login:jipjmvillafuertep1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.44.254, interface:xdsl 1, login:macvdmolinap_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.28.103.254, interface:xdsl 2, login:manwscapam_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 22, login:durkaacos_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 16, login:bbhlocade_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.48.254, interface:xdsl 24, login:macjaocho_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.10.254, interface:xdsl 15, login:vinracarriell1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 10, login:porjvmora_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 8, login:saleybalonp_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.41.254, interface:xdsl 4, login:porjmvelizr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 21, login:pinjmmanz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.31.254, interface:xdsl 5, login:stljamate_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 24, login:bbhtarive_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.11.254, interface:xdsl 24, login:vinmdjacomeg1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 12, login:quejeoliv_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.247, interface:xdsl 9, login:milcooper_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.210, interface:xdsl 15, login:uiojequin_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 11, login:blspmapol_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 20, login:milfnmosque_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.76.254, interface:xdsl 2, login:ptvzmespi_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 21, login:millehigue_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 6, login:libfmugun_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 23, login:milltbail_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 15, login:manmmfloresl_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 4, login:milamayong_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 8, login:macarmartin_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 16, login:libmldelaag_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 2, login:mangaalvarezp_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.102.254, interface:xdsl 9, login:porvlgarciav , up:2944, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 22, login:tricgcaba_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.76.254, interface:xdsl 24, login:pvlhdcarrione1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.65.254, interface:xdsl 24, login:saljcucal_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.14.254, interface:xdsl 21, login:tromaprad_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.210, interface:xdsl 16, login:uiofsa_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.26.3.253, interface:xdsl 9, login:balapquij_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.102, interface:xdsl 13, login:stdniavil_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.99, interface:xdsl 13, login:stdjechiliquingai2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 23, login:uiorcvivent1 , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.25.11.254, interface:xdsl 23, login:vinpajarap2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 8, login:stlcomreivic_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 3, login:porapullo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.122.254, interface:xdsl 21, login:gyecmvacacelaa1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 21, login:milmafran_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.25.9.254, interface:xdsl 16, login:vinvjubil_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 14, login:bbhmhmore_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.47.61, interface:xdsl 22, login:gyecvcedeno , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 7, login:durlwpetr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 10, login:durlazamb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 15, login:durlaura1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.123.254, interface:xdsl 6, login:mildapare_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 20, login:durpmrodriguezd1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.52, interface:xdsl 9, login:mejjcnaranjol1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 8, login:durmerome_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 16, login:bbhfaespa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.52.254, interface:xdsl 23, login:maciltorr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 19, login:mileerodr_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.41.254, interface:xdsl 10, login:porlesalas_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 23, login:stllps_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.113.3.254, interface:xdsl 23, login:plemmmend_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.38.254, interface:xdsl 10, login:bbhlmbarr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 4, login:plaonyagu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 22, login:trodcsald_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 15, login:bbhvbhinostro_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.69.254, interface:xdsl 13, login:quevebarr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.72.254, interface:xdsl 2, login:ptvfeleli_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 4, login:sallamend_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 2, login:quemjbosq_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.42.62, interface:xdsl 9, login:mangumaci_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.65.254, interface:xdsl 1, login:salrhchav_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 10, login:gyesgbaidale1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 6, login:blspmroma_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 24, login:bbhjmsolisr2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.107.254, interface:xdsl 22, login:yagykcard_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.40.60, interface:xdsl 18, login:manjlalar_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 2, login:mannjtacu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 3, login:narafjac_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.71, interface:xdsl 2, login:uiojbavilal_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 22, login:milmavasq_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.118.254, interface:xdsl 20, login:porvmroblesr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 16, login:stdjvchachal1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 16, login:gyemacast_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 7, login:pvlcecastror1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 7, login:milfillas_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 12, login:bbhmlburb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 19, login:milfmacia_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 10, login:mansechri_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.46.254, interface:xdsl 9, login:plaace_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.76.254, interface:xdsl 3, login:ptvramend_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 11, login:sallatacu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.74.254, interface:xdsl 6, login:porkjgile , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 6, login:milakjime_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.73.254, interface:xdsl 23, login:queeaguer_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.99, interface:xdsl 20, login:stdampinai2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 8, login:bbhahbedo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 15, login:pinmvbust_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.26, interface:xdsl 24, login:uiofjmisl_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.29.41.254, interface:xdsl 3, login:pormbbairdl1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 20, login:milalcoellob_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 3, login:milaaalvarad_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.48.254, interface:xdsl 4, login:macjfcane_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.122.254, interface:xdsl 20, login:gyemejarrinp1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 15, login:milscbajanaf_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 24, login:bbhvhgaib_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.105.253, interface:xdsl 15, login:durppsamaniegoc1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 5, login:durrgcord_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.9.254, interface:xdsl 14, login:vinaraspi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.3.253, interface:xdsl 14, login:vinjrzambran_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 13, login:miljdarev_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.74.254, interface:xdsl 24, login:pormiamenr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.22.69.254, interface:xdsl 20, login:quejjmaci_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 23, login:gyebdbazana1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.102, interface:xdsl 6, login:stdjfrivadeneiraa1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.247, interface:xdsl 4, login:mildrrodrig_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 13, login:salmbnara_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 3, login:pinkyruiz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 3, login:quedxmosq_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.42.62, interface:xdsl 23, login:mancpherm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.65.254, interface:xdsl 4, login:saljmaltg_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.24.76.254, interface:xdsl 4, login:ptvlfenri_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 6, login:gyesfcamachov1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 11, login:milmrmoroch_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 12, login:blsrebm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 11, login:saljmyacelgac1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.107.254, interface:xdsl 13, login:yageevill_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 23, login:manjealci_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 17, login:macdrmaridue_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 9, login:manpbmuri_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 10, login:milmjsoli_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 15, login:salmoron_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 22, login:libmmpicor_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 4, login:ptvjmrome_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 5, login:milgamuri_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 8, login:blslmroja_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 5, login:manjlpere_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.46.254, interface:xdsl 7, login:plafperottic_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 23, login:salmvvale_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.14.254, interface:xdsl 13, login:tromccast_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.72.254, interface:xdsl 1, login:ptvgudaoa_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 24, login:gyellordonezm1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 9, login:quejeortegaa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 14, login:macapmosquer_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 14, login:trimncast_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 17, login:plarrzambra_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.38.254, interface:xdsl 23, login:bbhmdpare_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.31.254, interface:xdsl 9, login:stlkeulloav_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 12, login:stltamsat_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:10.113.3.254, interface:xdsl 21, login:plemdcalderona1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.2.253, interface:xdsl 14, login:trotelopezc1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 2, login:milklmaci , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.94.254, interface:xdsl 5, login:porfddelgadom1 , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 5, login:durapvald_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.47.61, interface:xdsl 4, login:gyejrreng_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 15, login:bbhvjmurill_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.9.254, interface:xdsl 21, login:vinatubillal1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.10.254, interface:xdsl 12, login:vinilanch_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.30.251.26, interface:xdsl 10, login:uioavisoria_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 8, login:pinjrsisa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 12, login:machocall_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 24, login:trodmpenar_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.99, interface:xdsl 8, login:stdloort_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.79.254, interface:xdsl 5, login:mileaocanan_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.65.254, interface:xdsl 3, login:salic_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 24, login:milmxveras_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 9, login:milmschavezf_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 7, login:libpgonza_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.249.71, interface:xdsl 3, login:uiopaccl_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 16, login:manjhvele_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.40.60, interface:xdsl 3, login:manxmteja_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 15, login:macdyvall_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 4, login:milhavale_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 2, login:gyerialarconc1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 3, login:triemherr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 11, login:pinlmgrand_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.69.254, interface:xdsl 22, login:quelrparr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 5, login:milrmcantosm_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 8, login:mackisara_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 20, login:quempcani_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.44.254, interface:xdsl 12, login:plavfmitec_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.31.254, interface:xdsl 11, login:stlmelarag_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 1, login:stlaagarz_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:10.114.2.253, interface:xdsl 15, login:trofafalc_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.22.30.254, interface:xdsl 1, login:quesssand_m , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.17.134.254, interface:xdsl 24, login:durmrcruzg2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 23, login:durmezuni_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 1, login:millecabe_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.94.254, interface:xdsl 14, login:porskvizu , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.16.123.254, interface:xdsl 7, login:miltmmogr_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.20.52.254, interface:xdsl 5, login:macjegonz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.48.254, interface:xdsl 23, login:maccooperativa1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 1, login:milannava_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 17, login:salgwgual_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 24, login:stlbmitch_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 16, login:mildpleonc_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.113.3.254, interface:xdsl 9, login:pleramati_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.25.10.254, interface:xdsl 2, login:vinmvlindho_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 9, login:trimrmoraz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 8, login:gyemlmoraf1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 3, login:uioamelai2 , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 3, login:salpvlavaye_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 1, login:quefaandr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 13, login:gyebjharoh2 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 1, login:ptvvcagui_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 24, login:milfmbarr_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.29.118.254, interface:xdsl 5, login:porfjmora_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 16, login:nargmmoli_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 17, login:manslcede_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 5, login:mancschanc_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 20, login:milmvchav_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 4, login:gyeaachicac1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 14, login:gyecrcabezasb1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 13, login:blslsriof_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 16, login:uiodwreal_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 19, login:triorteg_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 3, login:milcrestr_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.3.253, interface:xdsl 11, login:vinlaagui_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 9, login:milbeat_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.17.122.254, interface:xdsl 19, login:gyemmguevarap1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 16, login:porcvzeva_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.94.254, interface:xdsl 6, login:porcavelezb1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 15, login:porjacard_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.123.254, interface:xdsl 1, login:milgjboni_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.23.38.254, interface:xdsl 2, login:bbhrmbazu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.44.253, interface:xdsl 24, login:quefjlibe_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 6, login:pinaftorr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 21, login:maclmchic_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.247, interface:xdsl 1, login:milwvgavi_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 3, login:manjpflor_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 5, login:gyelenavarreteb1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 11, login:bbhpnmais_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 1, login:milnralme_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 2, login:milhdcoel_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 9, login:liboepanc_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.118.254, interface:xdsl 18, login:porwlquimisc_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 23, login:manvmolina2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 13, login:narcagutierr_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 11, login:manwlpalm_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 11, login:milnvagua_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 14, login:libraprados_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 23, login:milfrcont_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 15, login:libsapossov_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 7, login:macfpsobarzoa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 3, login:milhgtorr_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 17, login:manjlintriag_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 7, login:salregalisa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 17, login:mileaperezg2 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 22, login:salgjparr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 12, login:trilcjarag_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 16, login:manfsm_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 22, login:pinmacabr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 15, login:uiomxpared_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 24, login:trimfriofrioc1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 19, login:bbhahocho_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 16, login:pinnybust_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 20, login:pinmaruizt_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 9, login:mildepena_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.35.254, interface:xdsl 22, login:stlnsa_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.16.123.254, interface:xdsl 8, login:miljemolinam2 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 23, login:saliarica_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.25.3.253, interface:xdsl 18, login:vinmemora_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.130.254, interface:xdsl 1, login:durnjmoral_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 24, login:bbhgisala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 9, login:milsotama_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 21, login:bbhvrcast_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.52.254, interface:xdsl 1, login:maclacastil , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 1, login:saljlynnf_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.123.254, interface:xdsl 3, login:milcgjaram_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 17, login:pinpaluzuria_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 10, login:pinmapont_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.14.254, interface:xdsl 4, login:troraastudi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 7, login:troerandr_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 21, login:blsadloayzah1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 8, login:gyedecaamanoc1 , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 15, login:milpjcald_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 21, login:quemsguanotu_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.75.254, interface:xdsl 24, login:pvlcdcondom1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 7, login:gyesedelat1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 17, login:milresalgadoh1 , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 13, login:milremoli_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.30.253.62, interface:xdsl 8, login:stdmbvasquezb1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 15, login:milnmsal_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 18, login:libjs.a.n_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 20, login:milajpere_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 9, login:mankvcevallos_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 12, login:salweramirezl1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 22, login:milaaordone_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 20, login:bbhssv_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 23, login:quecaosorioa1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.79.254, interface:xdsl 1, login:mileoparrag_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.247, interface:xdsl 23, login:milmjpera_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 5, login:sallapalateg , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.11.253, interface:xdsl 18, login:tricepalmae1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 6, login:bbhajfran_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 11, login:pindccaminor_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 11, login:milmiplua_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 13, login:salmljack_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 24, login:milmcsoriaa_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 10, login:miljlmazo_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 6, login:porcjnava_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.30.251.126, interface:xdsl 8, login:uiohacali_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 7, login:gyejdreyese1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.14.254, interface:xdsl 18, login:troeeorozcoy1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 22, login:blslamacaos1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 21, login:saldaromerop1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 8, login:salcemati_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 22, login:macfrquirolap_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 3, login:liblapalate2_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 1, login:gyejgortizr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 20, login:gyezzproanom1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 1, login:triremend_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 20, login:pinmtromero_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 4, login:pinmazambrano_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 1, login:bbhvvbaza_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 8, login:pormmsanc_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 19, login:salnwroca_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 2, login:milcmbals_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.25.3.253, interface:xdsl 7, login:vinmelopezc_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 7, login:porerzamb_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 14, login:pinmmvala2_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 10, login:milfxcast_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.38.254, interface:xdsl 1, login:bbhasmira_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 14, login:milmavalare_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 23, login:pinmvloay_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.22.69.254, interface:xdsl 17, login:quebvcede_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 16, login:macepapol_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 21, login:triuecruzj_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 21, login:gyecfpillcou1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 21, login:salmamosq_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 3, login:trommmaca_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 18, login:miljepaguay_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 9, login:bbhapalva_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 10, login:miljasoledis_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 23, login:salamanza_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 18, login:libgmpintod1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 6, login:manwfchir_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 18, login:macjgalvarezn_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 4, login:salcmacd_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 6, login:salccoronel_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 18, login:milcjpilo_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 9, login:gyepanarvaezc1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.84.254, interface:xdsl 4, login:gyeljmain_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 6, login:trommeraz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.17.120.253, interface:xdsl 19, login:gyernorellanao1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 17, login:trizdsumb_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 12, login:manmlbrionesa , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.17.122.254, interface:xdsl 8, login:gyemaping_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 16, login:milevposlig_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 12, login:pinmmvala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 21, login:pinrmagui_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 7, login:bbhjmquin_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 24, login:milmrasana_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 24, login:milkgmoraa_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 19, login:bbhcguo_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 13, login:libmbarzolas1_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 5, login:millmpenafie_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 7, login:milavtorr_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 1, login:nargmgutierre_m , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 13, login:manbhfrancoq_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 16, login:salfarinsa_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 7, login:maneicede_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 20, login:manimport_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.22.67.253, interface:xdsl 20, login:quedhtanguilag1 , up:2944, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 3, login:bbhbaalva_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 24, login:salmralva_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 2, login:pinamrive_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 12, login:pinitapoloc1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 11, login:pinmsloay_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 8, login:bbhamgonz_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 11, login:bbhjeceva_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 19, login:bbhcefran_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 13, login:porgealva_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 22, login:millaguer_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 23, login:trirbpullap1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 11, login:miljcegasc_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 11, login:milejfran_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 5, login:salrroble_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 4, login:libcalozadam1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 2, login:milmlosor_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 7, login:mandintriagos_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.17.71.62, interface:xdsl 18, login:gyeefsigu_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.46.254, interface:xdsl 1, login:macjpespi_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 20, login:troepmoralest1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 1, login:pinnmagui_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 14, login:salrjestr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 15, login:milrevacaa_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 2, login:pinveloayzar1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.29.32.254, interface:xdsl 12, login:porobveras_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 12, login:millnherm_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 24, login:salsvsuar_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 6, login:bbhaocoel_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 3, login:milecvizu_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 11, login:tromaanilemac1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 5, login:bbhbemont_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 24, login:milgfbrionesf1 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 7, login:blsacjara_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 7, login:bbhhrcabr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 6, login:bbhkayepe_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 21, login:miljkfrei_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 19, login:libjrclem_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 14, login:milbapare_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 17, login:salitl_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 10, login:milsecastrot1 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 17, login:bbhiacifuentesv1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 24, login:milrgenca_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 6, login:manrmmoralesp_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 4, login:millumatu_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 24, login:pinmtsala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 23, login:bbhrncast_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.28.61.254, interface:xdsl 6, login:manjapazs1_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 10, login:mileatene_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 6, login:macjvpala_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 2, login:salsgt_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 11, login:mildnsanchez_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 14, login:nariaguer_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:10.111.4.254, interface:xdsl 14, login:blscgflor_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 6, login:libkpguti_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 20, login:mannprodr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.253, interface:xdsl 10, login:bbhbdamor_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.15.254, interface:xdsl 16, login:trijwmore_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 20, login:mileeplua_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.61.254, interface:xdsl 9, login:salcdhall_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 9, login:saljmthomps_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 3, login:pinjariosl_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 2, login:milmapadi_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 23, login:milmfrome_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 6, login:pinbrarmi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 17, login:bbhbmjaco_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 13, login:manevreye_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 24, login:libgnsuar_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.20.22.250, interface:xdsl 1, login:macctpceo_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 4, login:bbhrbguer_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 4, login:miljmabadl_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 22, login:miljpzurita_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.23.21.254, interface:xdsl 9, login:bbhjlromeror_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 15, login:pinochere_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 8, login:milfdhida_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.80.254, interface:xdsl 15, login:milsmmerelos_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.17.122.254, interface:xdsl 6, login:gyesping_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 4, login:pinmeagui2_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 1, login:salmcordo_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 5, login:tromnsoli_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 23, login:miljlvinu_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.39.253, interface:xdsl 23, login:libcaandr_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 1, login:milcejimen_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.77.254, interface:xdsl 8, login:narlerojasl_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 13, login:millrzamb_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 24, login:salweronq_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 18, login:bbhdcespa_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 5, login:sallfreyesd_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 9, login:manrvdelg_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 17, login:milgesala_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 7, login:milmjaria_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 1, login:pindmrami_m , up:1248, down:608
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 5, login:milsjagua_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.69.254, interface:xdsl 12, login:manwmsaldarr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 4, login:salrelani_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.54.254, interface:xdsl 1, login:pinpfdavi_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:10.114.5.252, interface:xdsl 23, login:tromlsotom_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 10, login:bbhdmquin_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 3, login:miljmpinob_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 22, login:salextorresj1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 22, login:milcquirozn_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 11, login:libmprodr_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 16, login:milaanava_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.28.55.254, interface:xdsl 18, login:manlesala2_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 4, login:milgmsali_m4 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 3, login:milvjzald_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 11, login:salmesoledi_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 10, login:milerescob_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.54.253, interface:xdsl 23, login:salmnchanguinc1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 16, login:libndyaguall_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 4, login:miljocalderonj1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 10, login:milkmjura_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.23.24.253, interface:xdsl 13, login:bbhhrquin_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 24, login:pinemgala_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 7, login:pincanazco_m , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.23.37.251, interface:xdsl 5, login:bbhrncastill_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.82.254, interface:xdsl 6, login:milmgcarp_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 2, login:milmatellor_m3 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.59.254, interface:xdsl 14, login:salcadelp_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 12, login:milnkbrio_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.51.253, interface:xdsl 13, login:pinrbleonl_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 17, login:manxabasu_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 6, login:milisolisp_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 24, login:saljjfran_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 21, login:milmeferr_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 7, login:mangtschulten_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 14, login:milatlemac_m8 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 2, login:milvmbaja_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 20, login:milpfsantil_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.96.254, interface:xdsl 16, login:milaenegr_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.38.254, interface:xdsl 22, login:salfcl_m , up:14784, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 14, login:mildczaldu_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 11, login:miljgzamo_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 6, login:pinneloayzag1 , up:2464, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 15, login:milhirodr_m8 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 8, login:milvralva_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.28.73.254, interface:xdsl 19, login:manmnlop_m , up:9856, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 5, login:milmmcast_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 18, login:pinmgespina4_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.75.254, interface:xdsl 4, login:milmlrodrig_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 10, login:libseatec_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 16, login:milprvill_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.72.254, interface:xdsl 16, login:milfprodri2_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 24, login:pinrounuz_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 21, login:milfamag_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 12, login:milhhflor_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 3, login:milrbpinas_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 2, login:libvivanzisa_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.24.249, interface:xdsl 23, login:milclvinu_m8 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.20.252, interface:xdsl 5, login:milnerami_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 4, login:pinjgvalarezor1 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 6, login:milcagarc_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.16.95.254, interface:xdsl 16, login:milgmvilelan_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 20, login:libzliu_m , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.24.32.252, interface:xdsl 17, login:pinkjloai_m3 , up:1856, down:768
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 18, login:milferend_m6 , up:3712, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 22, login:libgerodr_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.18.49.254, interface:xdsl 8, login:libjdarevalor_m , up:7392, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 2, login:miljachicai_m8 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 12, login:miltcvicu_m8 , up:4928, down:1024
+EJECUTO modelo:A2024, ip:172.16.69.254, interface:xdsl 21, login:milmmagui_m3 , up:1856, down:768
+***********************************
+LISTADO DE SERVICIOS 
+num:1021
+Home ADSL Mixto 1 y 2,balcatino_m,balbalciruelos1,A2024,172.26.5.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,uiomeneses,uiolbsrealalto1,A2024,172.30.249.150,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,vinlicoel2_m,vinvinaquilesc2,A2024,172.25.4.253,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,palgurami_m,palpaleloya1,A2024,172.25.7.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,quewabozac_m,quequevenus2,A2024,172.22.58.253,xdsl 6,CAMBIADO
+Home ADSL Mixto 4 y 8,uiojlreascosd,uiontutumbaco1,A2024,172.30.249.87,xdsl 4,CAMBIADO
+Home ADSL Mixto 4 y 8,uioaeruizp1,uiontutumbaco1,A2024,172.30.249.87,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,plemdsanchezs2,pleple16dejunio1,A2024,10.113.2.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,pleveesco_m,pleple16dejunio1,A2024,10.113.2.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 2 y 4,uioschavez_m,uiokedlaluz1,A2024,172.30.254.218,xdsl 9,CAMBIADO
+Home ADSL Mixto 3 y 6,gyepagall_m,gyemapceibosd2,A2024,172.27.216.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 2 y 4,gyebalzo,gyemapceibosd2,A2024,172.27.216.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 3 y 6,uioomnune_m,uiopamjardinespampa1,A2024,172.30.252.126,xdsl 8,CAMBIADO
+Home ADSL Mixto 2 y 4,uiohpperezw1,uiogch2miravalleII1,A2024,172.30.249.72,xdsl 13,CAMBIADO
+Home ADSL Mixto 3 y 6,uiojsbola_m,uiogch2miravalleII1,A2024,172.30.249.72,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,uiolhharoz,uionlucondornan1,A2024,172.30.249.99,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,uioafguac_m,uionlucondornan1,A2024,172.30.249.99,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,stdmmdelgad,stdsdhliberacion2,A2024,172.30.253.148,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,porrmdelga_m,pornorlafuente1,A2024,172.29.166.254,xdsl 4,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porygchavezl1,pornorlafuente1,A2024,172.29.166.254,xdsl 5,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porclvelezi1,pornorlafuente1,A2024,172.29.166.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,gyemycede_m,gyeeuriseyco1,A2024,172.17.100.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,gyentcepedat1,gyeeuriseyco1,A2024,172.17.100.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,pornymeram,porpormamey3,A2024,172.29.118.252,xdsl 1,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porrcsanchezi1,porpormamey3,A2024,172.29.118.252,xdsl 23,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porpoperaltam1,porpormamey3,A2024,172.29.118.252,xdsl 22,CAMBIADO
+Home ADSL Mixto 3 y 6,uiosamandak_m,uiocrcbarreto2,A2024,172.30.252.37,xdsl 11,CAMBIADO
+Home ADSL Mixto 3 y 6,uiodterana_m,uiolbshvalles1,A2024,172.30.249.148,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,vincjmosqueram1,vinvinvirgenetapados2,A2024,172.25.6.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,uiorjjaramillov1,uiotndhuairaloma1,A2024,172.30.251.184,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,uiodfandraded1,uiotndhuairaloma1,A2024,172.30.251.184,xdsl 15,CAMBIADO
+Home ADSL Mixto 2 y 4,uioactivate_m,uiotndhuairaloma1,A2024,172.30.251.184,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,plaealope_m,plaplaplayasuno1,A2024,172.18.20.254,xdsl 4,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,pormjoviedoj1,porporfundacion2,A2024,172.29.102.253,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,jipemponc_m,jipjipricaurte2,A2024,172.21.35.253,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,jipjmolve_m,jipjipricaurte2,A2024,172.21.35.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 0.512 y 1,jipaetoala1,jipjipricaurte2,A2024,172.21.35.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,gyejduenasz_m,gyeatagarzotadosa1,A2024,172.27.34.252,xdsl 12,CAMBIADO
+Home ADSL Mixto 4 y 8,uioaxserranon1,uiomdn2santaines1,A2024,172.30.251.19,xdsl 22,CAMBIADO
+Home ADSL Mixto 3 y 6,uioestacionnav,uiongvbellavista2,A2024,172.30.254.246,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,uiorlochoaf1,uiogoscarvajal1,A2024,172.30.254.23,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,uiocmhidalgoq1,uiogoscarvajal1,A2024,172.30.254.23,xdsl 14,CAMBIADO
+Home ADSL Mixto 6 y 12,uiofamisl_m,uiogoscarvajal1,A2024,172.30.254.23,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,uiodafreilec1,uioprsnaranjos1,A2024,172.30.249.34,xdsl 17,CAMBIADO
+Home ADSL Mixto 2 y 4,uiojcnaranjol,uioprsnaranjos1,A2024,172.30.249.34,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,jipmaosej_m,jipjipjipijapa3,A2024,172.21.21.252,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,porlmpioncem_m,porpormercado3,A2024,172.29.90.252,xdsl 12,CAMBIADO
+Home ADSL Mixto 2 y 4,porglzambra_m,porpormercado3,A2024,172.29.90.252,xdsl 4,CAMBIADO
+Home ADSL Mixto 2 y 4,porgdloorg_m,porpormercado3,A2024,172.29.90.252,xdsl 18,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 6.1,porvhmacasl,porpormercado3,A2024,172.29.90.252,xdsl 19,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 6.1,porampincaye,porpormercado3,A2024,172.29.90.252,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,paldmloza_m,palpalmocache2,A2024,172.25.8.253,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 1536,palalmunozz_m3,palpalmocache2,A2024,172.25.8.253,xdsl 14,CAMBIADO
+Home ADSL Mixto 512 y 1024,pormmluca_m,porpor24deseptiembre3,A2024,172.29.86.252,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,porjeloora_m,porpor24deseptiembre3,A2024,172.29.86.252,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,porjemont_m,porpor24deseptiembre3,A2024,172.29.86.252,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,porlaveram2_m,porpor24deseptiembre3,A2024,172.29.86.252,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,pormaponc_m,porpor24deseptiembre3,A2024,172.29.86.252,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,jipfigonzale_m,jipjip3demayo2,A2024,172.21.26.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,jipjmgara_m,jipjip3demayo2,A2024,172.21.26.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,jiprapidr_m,jipjip3demayo2,A2024,172.21.26.253,xdsl 19,CAMBIADO
+Home ADSL Mixto 2 y 4,stlfmbeit2_m,salsalpuntablanca1,A2024,172.18.62.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 2 y 4,stlfprizz_m,salsalpuntablanca1,A2024,172.18.62.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 3 y 6,stlcondomi_m,salsalpuntablanca1,A2024,172.18.62.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 6 y 12,stlmbakerm,salsalpuntablanca1,A2024,172.18.62.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 2 y 4,uiolavelar_m,uiodizsgabriel1,A2024,172.30.254.91,xdsl 2,CAMBIADO
+Home ADSL Mixto 2 y 4,uioladavi_m,uiodizsgabriel1,A2024,172.30.254.91,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,uiogpcastilloe1,uiogosgosseal1,A2024,172.30.254.26,xdsl 22,CAMBIADO
+Internet PyME ADSL2+ Estandar 2,uioagmorenov1,uiogosgosseal1,A2024,172.30.254.26,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjcortesv1,stdmtlautolandia1,A2024,172.30.253.69,xdsl 1,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 4.0,porcmormazaz1,porporinteractive3,A2024,172.29.21.252,xdsl 23,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 4.0,porlzhuang1,porporinteractive3,A2024,172.29.21.252,xdsl 22,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 8.1,porjazambranof1,porporinteractive3,A2024,172.29.21.252,xdsl 24,CAMBIADO
+Home ADSL Mixto 4 y 8,uiosteranp1,uiolbsmalaga1,A2024,172.30.249.149,xdsl 6,CAMBIADO
+Home ADSL Mixto 4 y 8,uioreteranm1,uiolbsmalaga1,A2024,172.30.249.149,xdsl 15,CAMBIADO
+Home ADSL Mixto 6 y 12,uiorlcord_m,uiolbsmalaga1,A2024,172.30.249.149,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,rmhbnalvarador1,uiosnlurbfranciscoB1,A2024,172.30.252.91,xdsl 1,CAMBIADO
+Home ADSL Mixto 2 y 4,aearguellom1,uiosnlurbfranciscoB1,A2024,172.30.252.91,xdsl 21,CAMBIADO
+Home ADSL Mixto 512 y 1024,milzsleona_m,milmillasamericas1,A2024,172.16.120.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 1024,milemgomezb_m,milmillasamericas1,A2024,172.16.120.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 512 y 1024,milmoperaltac1,milmillasamericas1,A2024,172.16.120.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 512 y 2048,milrgmora_m4,milmillasamericas1,A2024,172.16.120.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,porchargu_m,porporprimeromayo2,A2024,172.29.30.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,porjwpachays1,porporprimeromayo2,A2024,172.29.30.253,xdsl 1,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 4.0,porjalopezp2,porporprimeromayo2,A2024,172.29.30.253,xdsl 20,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porpmintriagos1,porporprimeromayo2,A2024,172.29.30.253,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,stdaeluqu_m,stdclnmicuchito1,A2024,172.30.253.115,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,stdnslemac_m,stdclnmicuchito1,A2024,172.30.253.115,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,stdlgtene_m,stdclnmicuchito1,A2024,172.30.253.115,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,stdcicupuerana1,stdclnmicuchito1,A2024,172.30.253.115,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjamoreirab1,stdclnmicuchito1,A2024,172.30.253.115,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,porjaveram_m,porporseminario1,A2024,172.29.128.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,porjralci_m,porporseminario1,A2024,172.29.128.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,pordimaci,porporseminario1,A2024,172.29.128.254,xdsl 12,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porjspicom,porporseminario1,A2024,172.29.128.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,stlcacgsa2_m,salsalpcentinela1,A2024,172.18.57.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,stlcacgsa_m,salsalpcentinela1,A2024,172.18.57.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 2 y 4,stlrromanz_m,salsalpcentinela1,A2024,172.18.57.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 2 y 4,stltorrecent_m,salsalpcentinela1,A2024,172.18.57.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,stdgmvillav_m,stdtrbtribuna2,A2024,172.30.253.83,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,stdqwang_m,stdtrbtribuna2,A2024,172.30.253.83,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,stdadmoram2,stdtrbtribuna2,A2024,172.30.253.83,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,stdmdcornejoc1,stdtrbtribuna2,A2024,172.30.253.83,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,bnfhrveram,bnfbnfoficina1,A2024,172.22.47.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,bnfraberm_m,bnfbnfoficina1,A2024,172.22.47.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 2 y 4,bnfrialon_m,bnfbnfoficina1,A2024,172.22.47.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 512 y 1536,bnfjlcede_m3,bnfbnfoficina1,A2024,172.22.47.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,stdfcmend_m,stdsdhpupusa1,A2024,172.30.253.101,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,stdffjach_m,stdsdhpupusa1,A2024,172.30.253.101,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,stdxhzheng,stdsdhpupusa1,A2024,172.30.253.101,xdsl 8,CAMBIADO
+Home ADSL Mixto 3 y 6,stdwchen3,stdsdhpupusa1,A2024,172.30.253.101,xdsl 7,CAMBIADO
+Home ADSL Mixto 3 y 6,stdyajime,stdsdhpupusa1,A2024,172.30.253.101,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,uiojmisleq,uioarmcunucbamba2,A2024,172.30.251.86,xdsl 12,CAMBIADO
+Home ADSL Mixto 2 y 4,uiogehidalg2,uioarmcunucbamba2,A2024,172.30.251.86,xdsl 14,CAMBIADO
+Home ADSL Mixto 6 y 12,uiocrgarzonm1,uioarmcunucbamba2,A2024,172.30.251.86,xdsl 3,CAMBIADO
+Home ADSL Mixto 6 y 12,uiojeuquillasm1,uioarmcunucbamba2,A2024,172.30.251.86,xdsl 19,CAMBIADO
+Home ADSL Mixto 2 y 4,gyeseafman2,gyeurdurdesanorte1,A2024,172.27.99.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 2 y 4,gyeseafman1,gyeurdurdesanorte1,A2024,172.27.99.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 2 y 4,gyecjandrad_m,gyeurdurdesanorte1,A2024,172.27.99.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 3 y 6,uiosahidalgoc,uiobrrlcumbaya2,A2024,172.30.252.244,xdsl 1,CAMBIADO
+Home ADSL Mixto 4 y 8,uiodehidalg_m,uiobrrlcumbaya2,A2024,172.30.252.244,xdsl 17,CAMBIADO
+Home ADSL Mixto 6 y 12,uiojwbakk_m,uiobrrlcumbaya2,A2024,172.30.252.244,xdsl 18,CAMBIADO
+Home ADSL Mixto 2 y 4,uiojlgonzal_m,uiobrrlcumbaya2,A2024,172.30.252.244,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvlfenri2_m,ptvzar13demayo1,A2024,172.24.74.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvmaramo_m,ptvzar13demayo1,A2024,172.24.74.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,pvlmsmingay1,ptvzar13demayo1,A2024,172.24.74.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,uioadec_m,uioarmlaescondida2,A2024,172.30.252.109,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,uioroordonezj1,uioarmlaescondida2,A2024,172.30.252.109,xdsl 13,CAMBIADO
+Home ADSL Mixto 3 y 6,uiorjromerov1,uioarmlaescondida2,A2024,172.30.252.109,xdsl 14,CAMBIADO
+Home ADSL Mixto 4 y 8,uiopjfalconim1,uioarmlaescondida2,A2024,172.30.252.109,xdsl 10,CAMBIADO
+Home ADSL Mixto 3 y 6,uiomgborj_m,uioarmlaescondida2,A2024,172.30.252.109,xdsl 7,CAMBIADO
+Home ADSL Mixto 6 y 12,uiosps.a._m,uioarmlaescondida2,A2024,172.30.252.109,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,macbigarc_m,macmac2baires1,A2024,172.20.42.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,macjamoch_m,macmac2baires1,A2024,172.20.42.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,macjvfern,macmac2baires1,A2024,172.20.42.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,pormgpera_m,porpascomercio1,A2024,172.29.126.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,pornaalva_m,porpascomercio1,A2024,172.29.126.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,strarcelyr_m,strstrabdoncalderon1,A2024,172.20.53.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,strjjapol_m,strstrabdoncalderon1,A2024,172.20.53.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,strjrloai_m,strstrabdoncalderon1,A2024,172.20.53.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,strmcmald_m,strstrabdoncalderon1,A2024,172.20.53.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,strrfreyt_m,strstrabdoncalderon1,A2024,172.20.53.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 2 y 4,strlvfalc_m,strstrabdoncalderon1,A2024,172.20.53.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,porrdcede_m,porporcayambe1,A2024,172.29.33.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,porlkmaci_m,porporcayambe1,A2024,172.29.33.254,xdsl 17,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porelmerov,porporcayambe1,A2024,172.29.33.254,xdsl 7,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porcfvelizr1,porporcayambe1,A2024,172.29.33.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,porrdlinz_m,porpormamey2,A2024,172.29.118.253,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,porreadrianl_m,porpormamey2,A2024,172.29.118.253,xdsl 14,CAMBIADO
+Home ADSL Mixto 4 y 8,porjecortezn1,porpormamey2,A2024,172.29.118.253,xdsl 7,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 6.1,porwrintr_m,porpormamey2,A2024,172.29.118.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,porbrloorc_m,porpasmiduvi1,A2024,172.29.167.254,xdsl 2,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porjlmerab1,porpasmiduvi1,A2024,172.29.167.254,xdsl 22,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porcmpatinog1,porpasmiduvi1,A2024,172.29.167.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,vinnmgarc_m,vinvinvirgenetapauno2,A2024,172.25.5.253,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,vinfjmosqueram2,vinvinvirgenetapauno2,A2024,172.25.5.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,vinjxsoto_m,vinvinvirgenetapauno2,A2024,172.25.5.253,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,queortova_m,quedepdsegunda2,A2024,172.22.33.253,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,quervmart_m,quedepdsegunda2,A2024,172.22.33.253,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,quevgvinsac_m,quedepdsegunda2,A2024,172.22.33.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,quejfmore_m,quedepdsegunda2,A2024,172.22.33.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,queckolve_m,quedepdsegunda2,A2024,172.22.33.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,macsmasen_m,macmac2miraflores1,A2024,172.20.44.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,macxasala_m,macmac2miraflores1,A2024,172.20.44.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,macyemend_m,macmac2miraflores1,A2024,172.20.44.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,macfxalbanb_m,macmac2miraflores1,A2024,172.20.44.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,macjjaria_m,macmac2miraflores1,A2024,172.20.44.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 1536,macvdmolinap_m3,macmac2miraflores1,A2024,172.20.44.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,jipamvill_m,jipjiplafae3,A2024,172.21.29.252,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,jipalermar_m,jipjiplafae3,A2024,172.21.29.252,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,jiprmchilani2,jipjiplafae3,A2024,172.21.29.252,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,jipcooperativa1,jipjiplafae3,A2024,172.21.29.252,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,jipjmvillafuertep1,jipjiplafae3,A2024,172.21.29.252,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,manmffloresv_m,mntulealamos1,A2024,172.28.103.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 2 y 4,manoocanol_m,mntulealamos1,A2024,172.28.103.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 2 y 4,manseandr_m,mntulealamos1,A2024,172.28.103.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 2 y 4,manwscapam_m,mntulealamos1,A2024,172.28.103.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,porhesosac_m,porporfundacion1,A2024,172.29.102.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,poreediazq_m,porporfundacion1,A2024,172.29.102.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 2 y 4,porcecede_m,porporfundacion1,A2024,172.29.102.254,xdsl 7,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porvlgarciav,porporfundacion1,A2024,172.29.102.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,baleeholg_m,balbalbarrioco2,A2024,172.26.3.253,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,baljsgarc_m,balbalbarrioco2,A2024,172.26.3.253,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,balmrmutr_m,balbalbarrioco2,A2024,172.26.3.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,baloatriv_m,balbalbarrioco2,A2024,172.26.3.253,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,balapquij_m,balbalbarrioco2,A2024,172.26.3.253,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,vindgmira_m,vinvinnicaragua1,A2024,172.25.11.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,vingfesco_m,vinvinnicaragua1,A2024,172.25.11.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,vinspnive_m,vinvinnicaragua1,A2024,172.25.11.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,vincearia_m,vinvinnicaragua1,A2024,172.25.11.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,vinmdjacomeg1,vinvinnicaragua1,A2024,172.25.11.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,vinpajarap2,vinvinnicaragua1,A2024,172.25.11.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,mchpcvelozc,mchmchatahuachi1,A2024,172.30.253.52,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,mejmcecheverriap1,mchmchatahuachi1,A2024,172.30.253.52,xdsl 1,CAMBIADO
+Home ADSL Mixto 2 y 4,mejjcnaranjol1,mchmchatahuachi1,A2024,172.30.253.52,xdsl 9,CAMBIADO
+Home ADSL Mixto 6 y 12,uioaperil,uiobrr2florencia1,A2024,172.30.249.210,xdsl 10,CAMBIADO
+Home ADSL Mixto 4 y 8,uiohmcorr_m,uiobrr2florencia1,A2024,172.30.249.210,xdsl 17,CAMBIADO
+Home ADSL Mixto 4 y 8,uiojequin_m,uiobrr2florencia1,A2024,172.30.249.210,xdsl 15,CAMBIADO
+Home ADSL Mixto 4 y 8,uiofsa_m,uiobrr2florencia1,A2024,172.30.249.210,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,porcdargu_m,porporpablozamora1,A2024,172.29.41.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,pormmmore_m,porporpablozamora1,A2024,172.29.41.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,porhiguil_m,porporpablozamora1,A2024,172.29.41.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 2 y 4,porjmvelizr_m,porporpablozamora1,A2024,172.29.41.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 2 y 4,porlesalas_m,porporpablozamora1,A2024,172.29.41.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 2 y 4,pormbbairdl1,porporpablozamora1,A2024,172.29.41.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,queorburg_m,quescacentro1,A2024,172.22.73.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,quefvvill_m,quescacentro1,A2024,172.22.73.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,queyimore_m,quescacentro1,A2024,172.22.73.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,quemaburg_m,quescacentro1,A2024,172.22.73.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,quedjzamb_m,quescacentro1,A2024,172.22.73.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 2 y 4,queeaguer_m,quescacentro1,A2024,172.22.73.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,durdjpera_m,durduragilbertdos2,A2024,172.17.105.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,durfrcast_m,durduragilbertdos2,A2024,172.17.105.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,durmazamb_m,durduragilbertdos2,A2024,172.17.105.253,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,durrilita_m,durduragilbertdos2,A2024,172.17.105.253,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,durtwverat_m,durduragilbertdos2,A2024,172.17.105.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,durwecarc_m,durduragilbertdos2,A2024,172.17.105.253,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,durxvmora_m,durduragilbertdos2,A2024,172.17.105.253,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,durpmrodriguezd1,durduragilbertdos2,A2024,172.17.105.253,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,durppsamaniegoc1,durduragilbertdos2,A2024,172.17.105.253,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,stdggsonob_m,stdsdhpambiles1,A2024,172.30.253.102,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,stdwvvele_m,stdsdhpambiles1,A2024,172.30.253.102,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,stdcrmend_m,stdsdhpambiles1,A2024,172.30.253.102,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,stdcrmendo_m,stdsdhpambiles1,A2024,172.30.253.102,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,stdniavil_m,stdsdhpambiles1,A2024,172.30.253.102,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjfrivadeneiraa1,stdsdhpambiles1,A2024,172.30.253.102,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvgjsari_m,ptvzarjoseaguilera1,A2024,172.24.76.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvjcroma_m,ptvzarjoseaguilera1,A2024,172.24.76.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,pvlepromanl1,ptvzarjoseaguilera1,A2024,172.24.76.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,pvljachicayr1,ptvzarjoseaguilera1,A2024,172.24.76.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,ptvzmespi_m,ptvzarjoseaguilera1,A2024,172.24.76.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 2 y 4,pvlhdcarrione1,ptvzarjoseaguilera1,A2024,172.24.76.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 3 y 6,ptvramend_m,ptvzarjoseaguilera1,A2024,172.24.76.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 3 y 6,ptvlfenri_m,ptvzarjoseaguilera1,A2024,172.24.76.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,mandjlope_m,mntvilvillasseguro1,A2024,172.28.42.62,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,manejbedo_m,mntvilvillasseguro1,A2024,172.28.42.62,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,manarescando_m,mntvilvillasseguro1,A2024,172.28.42.62,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,manjcasa_m,mntvilvillasseguro1,A2024,172.28.42.62,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,mangumaci_m,mntvilvillasseguro1,A2024,172.28.42.62,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,mancpherm_m,mntvilvillasseguro1,A2024,172.28.42.62,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,porzcvele_m,porporcasapropia1,A2024,172.29.74.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,porcimaci_m,porporcasapropia1,A2024,172.29.74.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,pormazamb_m,porporcasapropia1,A2024,172.29.74.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 2 y 4,porrmchingm_m,porporcasapropia1,A2024,172.29.74.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 2 y 4,porjvcorr_m,porporcasapropia1,A2024,172.29.74.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 2 y 4,porkjgile,porporcasapropia1,A2024,172.29.74.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,pormiamenr_m,porporcasapropia1,A2024,172.29.74.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvpvarev_m,ptvpinelpache1,A2024,172.24.72.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvddjara_m,ptvpinelpache1,A2024,172.24.72.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvshsotoo_m,ptvpinelpache1,A2024,172.24.72.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 3 y 6,pvlcuripambamining1,ptvpinelpache1,A2024,172.24.72.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 4 y 8,ptvfeleli_m,ptvpinelpache1,A2024,172.24.72.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 4 y 8,ptvgudaoa_m,ptvpinelpache1,A2024,172.24.72.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,yagddluqu_m,yagyagpedrojmontero1,A2024,172.16.107.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,yagerbaid_m,yagyagpedrojmontero1,A2024,172.16.107.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,yaggjpalm_m,yagyagpedrojmontero1,A2024,172.16.107.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,yagmealva_m,yagyagpedrojmontero1,A2024,172.16.107.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,yagspcolc_m,yagyagpedrojmontero1,A2024,172.16.107.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,yagykcard_m,yagyagpedrojmontero1,A2024,172.16.107.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 2 y 4,yageevill_m,yagyagpedrojmontero1,A2024,172.16.107.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,placpsa_m,plaplamarbella1,A2024,172.18.46.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,plairdiazc_m,plaplamarbella1,A2024,172.18.46.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,plareguer_m,plaplamarbella1,A2024,172.18.46.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,plarmzamb_m,plaplamarbella1,A2024,172.18.46.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,plasmyamb_m,plaplamarbella1,A2024,172.18.46.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 2 y 4,plaace_m,plaplamarbella1,A2024,172.18.46.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 2 y 4,plafperottic_m,plaplamarbella1,A2024,172.18.46.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,gyekizamb_m,gyecalmontebellodos1,A2024,172.17.47.61,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,gyejetutivenv1,gyecalmontebellodos1,A2024,172.17.47.61,xdsl 16,CAMBIADO
+Home ADSL Mixto 2 y 4,gyecvcedeno,gyecalmontebellodos1,A2024,172.17.47.61,xdsl 22,CAMBIADO
+Home ADSL Mixto 2 y 4,gyejrreng_m,gyecalmontebellodos1,A2024,172.17.47.61,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,vinmvloorm_m,vinvinaquilescetapados1,A2024,172.25.9.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,vinreverac_m,vinvinaquilescetapados1,A2024,172.25.9.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,vinsprive_m,vinvinaquilescetapados1,A2024,172.25.9.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,vinvjubil_m,vinvinaquilescetapados1,A2024,172.25.9.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,vinaraspi_m,vinvinaquilescetapados1,A2024,172.25.9.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,vinatubillal1,vinvinaquilescetapados1,A2024,172.25.9.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 4 y 8,uioxeminov,uiomdn2mpallares1,A2024,172.30.251.26,xdsl 1,CAMBIADO
+Home ADSL Mixto 6 y 12,uiohairigoyen1,uiomdn2mpallares1,A2024,172.30.251.26,xdsl 8,CAMBIADO
+Home ADSL Mixto 6 y 12,uioajorti,uiomdn2mpallares1,A2024,172.30.251.26,xdsl 2,CAMBIADO
+Home ADSL Mixto 6 y 12,uiofjmisl_m,uiomdn2mpallares1,A2024,172.30.251.26,xdsl 24,CAMBIADO
+Home ADSL Mixto 6 y 12,uioavisoria_m,uiomdn2mpallares1,A2024,172.30.251.26,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,manaomag_m,mntuleciudadsoldos1,A2024,172.28.40.60,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,manarteagav_m,mntuleciudadsoldos1,A2024,172.28.40.60,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,manjlalar_m,mntuleciudadsoldos1,A2024,172.28.40.60,xdsl 18,CAMBIADO
+Home ADSL Mixto 2 y 4,manxmteja_m,mntuleciudadsoldos1,A2024,172.28.40.60,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,uionmalbant2,uiogch2vgrande1,A2024,172.30.249.71,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,uioinmobiliaria1,uiogch2vgrande1,A2024,172.30.249.71,xdsl 6,CAMBIADO
+Home ADSL Mixto 6 y 12,uiobmcevallosr1,uiogch2vgrande1,A2024,172.30.249.71,xdsl 1,CAMBIADO
+Home ADSL Mixto 3 y 6,uiojbavilal_m,uiogch2vgrande1,A2024,172.30.249.71,xdsl 2,CAMBIADO
+Home ADSL Mixto 6 y 12,uiopaccl_m,uiogch2vgrande1,A2024,172.30.249.71,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,salgicobo_m,salsancasamagna1,A2024,172.18.65.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,salccmt_m,salsancasamagna1,A2024,172.18.65.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,salhsalti_m,salsancasamagna1,A2024,172.18.65.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 2 y 4,saljcucal_m,salsancasamagna1,A2024,172.18.65.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 2 y 4,salrhchav_m,salsancasamagna1,A2024,172.18.65.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 3 y 6,saljmaltg_m,salsancasamagna1,A2024,172.18.65.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 6 y 12,salic_m,salsancasamagna1,A2024,172.18.65.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,stdijfajard_m,stdsdhpioxii1,A2024,172.30.253.99,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,stdmaverd_m,stdsdhpioxii1,A2024,172.30.253.99,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,stdfacaza_m,stdsdhpioxii1,A2024,172.30.253.99,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,stdtquint_m,stdsdhpioxii1,A2024,172.30.253.99,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,stdecchun_m,stdsdhpioxii1,A2024,172.30.253.99,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjechiliquingai2,stdsdhpioxii1,A2024,172.30.253.99,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,stdampinai2,stdsdhpioxii1,A2024,172.30.253.99,xdsl 20,CAMBIADO
+Home ADSL Mixto 2 y 4,stdloort_m,stdsdhpioxii1,A2024,172.30.253.99,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,stlnmreyg_m,salancfenix1,A2024,172.18.31.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,stlpjpalmaf_m,salancfenix1,A2024,172.18.31.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,stlejmite_m,salancfenix1,A2024,172.18.31.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,stljamate_m,salancfenix1,A2024,172.18.31.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,stlkeulloav_m,salancfenix1,A2024,172.18.31.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,stlmelarag_m,salancfenix1,A2024,172.18.31.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,trocfcriolloh_m,trotrotroncal2,A2024,10.114.2.253,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,trocsberm_m,trotrotroncal2,A2024,10.114.2.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,trogmmaya_m,trotrotroncal2,A2024,10.114.2.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,trojiverab_m,trotrotroncal2,A2024,10.114.2.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,trotelopezc1,trotrotroncal2,A2024,10.114.2.253,xdsl 14,CAMBIADO
+Home ADSL Mixto 2 y 4,trofafalc_m,trotrotroncal2,A2024,10.114.2.253,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,durcjpazr_m,durdnipontondos1,A2024,172.17.134.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,durelmore_m,durdnipontondos1,A2024,172.17.134.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,durgeriosv_m,durdnipontondos1,A2024,172.17.134.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,durjrrued_m,durdnipontondos1,A2024,172.17.134.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,durkaacos_m,durdnipontondos1,A2024,172.17.134.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,durlwpetr_m,durdnipontondos1,A2024,172.17.134.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,durmerome_m,durdnipontondos1,A2024,172.17.134.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,durrgcord_m,durdnipontondos1,A2024,172.17.134.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,durmrcruzg2,durdnipontondos1,A2024,172.17.134.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 1024,quemebohorquezo1,que7occolegiosietedeoctubre1,A2024,172.22.30.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 512 y 2048,quejosanchezm1,que7occolegiosietedeoctubre1,A2024,172.22.30.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,queviargu_m,que7occolegiosietedeoctubre1,A2024,172.22.30.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,quemfreza_m,que7occolegiosietedeoctubre1,A2024,172.22.30.254,xdsl 5,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,quesssand_m,que7occolegiosietedeoctubre1,A2024,172.22.30.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,machjgala_m,macmackfranco1,A2024,172.20.48.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,machpbarr_m,macmackfranco1,A2024,172.20.48.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,macircres_m,macmackfranco1,A2024,172.20.48.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,macjaocho_m,macmackfranco1,A2024,172.20.48.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,macjfcane_m,macmackfranco1,A2024,172.20.48.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,maccooperativa1,macmackfranco1,A2024,172.20.48.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,placacede_m,plapla15agosto1,A2024,172.18.44.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,plagomites_m,plapla15agosto1,A2024,172.18.44.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,plajequir_m,plapla15agosto1,A2024,172.18.44.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,plaluquir_m,plapla15agosto1,A2024,172.18.44.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,plammconc_m,plapla15agosto1,A2024,172.18.44.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,planjmendoz_m,plapla15agosto1,A2024,172.18.44.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,plaonyagu_m,plapla15agosto1,A2024,172.18.44.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,plarrzambra_m,plapla15agosto1,A2024,172.18.44.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,plavfmitec_m,plapla15agosto1,A2024,172.18.44.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,vingnalav_m,vinvinbdevinces1,A2024,172.25.10.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,vinjmcube_m,vinvinbdevinces1,A2024,172.25.10.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,vinscmoram_m,vinvinbdevinces1,A2024,172.25.10.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,vinwesuar_m,vinvinbdevinces1,A2024,172.25.10.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,vinracarriell1,vinvinbdevinces1,A2024,172.25.10.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 0.512 y 1,vinilanch_m,vinvinbdevinces1,A2024,172.25.10.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 0.512 y 1,vinmvlindho_m,vinvinbdevinces1,A2024,172.25.10.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,plecapalm_m,pleplemanuelrendon1,A2024,10.113.3.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,pleebrend_m,pleplemanuelrendon1,A2024,10.113.3.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,plegasala_m,pleplemanuelrendon1,A2024,10.113.3.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,plemmmend_m,pleplemanuelrendon1,A2024,10.113.3.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,plemdcalderona1,pleplemanuelrendon1,A2024,10.113.3.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 2 y 4,pleramati_m,pleplemanuelrendon1,A2024,10.113.3.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 1024,pormcandra_m,porporlosbosques1,A2024,172.29.94.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,poraksornoz_m,porporlosbosques1,A2024,172.29.94.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 2 y 4,porezmolinac_m,porporlosbosques1,A2024,172.29.94.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 2 y 4,porfaintr_m,porporlosbosques1,A2024,172.29.94.254,xdsl 11,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 6.1,porfddelgadom1,porporlosbosques1,A2024,172.29.94.254,xdsl 5,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porskvizu,porporlosbosques1,A2024,172.29.94.254,xdsl 14,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,porcavelezb1,porporlosbosques1,A2024,172.29.94.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 512 y 1024,quemkcarrenoc1,quedepsanjose2,A2024,172.22.44.253,xdsl 16,CAMBIADO
+Home ADSL Mixto 512 y 1024,querrgarzong1,quedepsanjose2,A2024,172.22.44.253,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,quefajara_m,quedepsanjose2,A2024,172.22.44.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,quegediazc_m,quedepsanjose2,A2024,172.22.44.253,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,quegmguan_m,quedepsanjose2,A2024,172.22.44.253,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,quevahazq_m,quedepsanjose2,A2024,172.22.44.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,quejeoliv_m,quedepsanjose2,A2024,172.22.44.253,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,quejeortegaa_m,quedepsanjose2,A2024,172.22.44.253,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,quempcani_m,quedepsanjose2,A2024,172.22.44.253,xdsl 20,CAMBIADO
+Home ADSL Mixto 2 y 4,quefjlibe_m,quedepsanjose2,A2024,172.22.44.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 2048,porcagalarz,porpormamey1,A2024,172.29.118.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,porrecaballe_m,porpormamey1,A2024,172.29.118.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,porvmroblesr_m,porpormamey1,A2024,172.29.118.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,porfjmora_m,porpormamey1,A2024,172.29.118.254,xdsl 5,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 4.0,porwlquimisc_m,porpormamey1,A2024,172.29.118.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 2 y 4,stlregonz_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,stlyefrancor_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,stlcmedin_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 2 y 4,stlcomreivic_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 2 y 4,stllps_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 3 y 6,stltamsat_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 3 y 6,stlaagarz_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 4 y 8,stlbmitch_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 6 y 12,stlnsa_m,salsalpbarandua1,A2024,172.18.35.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,macajfrei_m,macmac9deoctubre1,A2024,172.20.52.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,maccapont_m,macmac9deoctubre1,A2024,172.20.52.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,machdastudi_m,macmac9deoctubre1,A2024,172.20.52.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,maciltorr_m,macmac9deoctubre1,A2024,172.20.52.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,macjegonz_m,macmac9deoctubre1,A2024,172.20.52.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,maclacastil,macmac9deoctubre1,A2024,172.20.52.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,durcjdavi_m,durprihelechos1,A2024,172.17.130.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,dureezamb_m,durprihelechos1,A2024,172.17.130.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,durjagagu_m,durprihelechos1,A2024,172.17.130.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,durjwmosq_m,durprihelechos1,A2024,172.17.130.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,durlazamb_m,durprihelechos1,A2024,172.17.130.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,durlaura1,durprihelechos1,A2024,172.17.130.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 2 y 4,durapvald_m,durprihelechos1,A2024,172.17.130.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 2 y 4,durmezuni_m,durprihelechos1,A2024,172.17.130.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,durnjmoral_m,durprihelechos1,A2024,172.17.130.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 1024,milpvcerc_m,milmiljuanwiesnet1,A2024,172.16.123.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 1024,mildapare_m,milmiljuanwiesnet1,A2024,172.16.123.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 512 y 1024,miltmmogr_m,milmiljuanwiesnet1,A2024,172.16.123.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 512 y 1024,milgjboni_m,milmiljuanwiesnet1,A2024,172.16.123.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 1024,miljemolinam2,milmiljuanwiesnet1,A2024,172.16.123.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 512 y 3072,milcgjaram_m6,milmiljuanwiesnet1,A2024,172.16.123.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,stdcfbeni_m,stdbobalborada2,A2024,172.30.253.62,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,stdchang_m,stdbobalborada2,A2024,172.30.253.62,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,stdgdcottor1,stdbobalborada2,A2024,172.30.253.62,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjlleivac1,stdbobalborada2,A2024,172.30.253.62,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,stdphinah_m2,stdbobalborada2,A2024,172.30.253.62,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,stdcacedenob1,stdbobalborada2,A2024,172.30.253.62,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,stdejvillacresd1,stdbobalborada2,A2024,172.30.253.62,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,stdmjbustamantez1,stdbobalborada2,A2024,172.30.253.62,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjvchachal1,stdbobalborada2,A2024,172.30.253.62,xdsl 16,CAMBIADO
+Home ADSL Mixto 2 y 4,stdmbvasquezb1,stdbobalborada2,A2024,172.30.253.62,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvmmcarr_m,ptvzarcanas1,A2024,172.24.75.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvmvsala_m,ptvzarcanas1,A2024,172.24.75.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvrdponc_m,ptvzarcanas1,A2024,172.24.75.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,ptvlemend_m,ptvzarcanas1,A2024,172.24.75.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,pvlmocontentoe1,ptvzarcanas1,A2024,172.24.75.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,pvlcecastror1,ptvzarcanas1,A2024,172.24.75.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,ptvjmrome_m,ptvzarcanas1,A2024,172.24.75.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 3 y 6,ptvvcagui_m,ptvzarcanas1,A2024,172.24.75.254,xdsl 1,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,pvlcdcondom1,ptvzarcanas1,A2024,172.24.75.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 1024,narejgala_m,narnarnorte1,A2024,172.16.79.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 512 y 1024,narjechun_m,narnarnorte1,A2024,172.16.79.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 1024,narlapere_m,narnarnorte1,A2024,172.16.79.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 1024,nartemunozn_m,narnarnorte1,A2024,172.16.79.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 1024,mileaocanan_m,narnarnorte1,A2024,172.16.79.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 512 y 3072,mileoparrag_m6,narnarnorte1,A2024,172.16.79.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,trojalita_m,tritri8deabril2,A2024,10.114.11.253,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,triaaagui_m,tritri8deabril2,A2024,10.114.11.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,tricmvelo_m,tritri8deabril2,A2024,10.114.11.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,trikrzamb_m,tritri8deabril2,A2024,10.114.11.253,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,trimncast_m,tritri8deabril2,A2024,10.114.11.253,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,trimrmoraz_m,tritri8deabril2,A2024,10.114.11.253,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,triorteg_m,tritri8deabril2,A2024,10.114.11.253,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,trimfriofrioc1,tritri8deabril2,A2024,10.114.11.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,tricepalmae1,tritri8deabril2,A2024,10.114.11.253,xdsl 18,CAMBIADO
+Home ADSL Mixto 512 y 1024,milbplopezm_m,milmilquintap2,A2024,172.16.20.247,xdsl 5,CAMBIADO
+Home ADSL Mixto 512 y 1024,milfipereza1,milmilquintap2,A2024,172.16.20.247,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 3072,milsbmart2_m6,milmilquintap2,A2024,172.16.20.247,xdsl 21,CAMBIADO
+Home ADSL Mixto 512 y 3072,milcooper_m6,milmilquintap2,A2024,172.16.20.247,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 3072,mildrrodrig_m6,milmilquintap2,A2024,172.16.20.247,xdsl 4,CAMBIADO
+Home ADSL Mixto 512 y 3072,milwvgavi_m6,milmilquintap2,A2024,172.16.20.247,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmjpera_m6,milmilquintap2,A2024,172.16.20.247,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,troycrome_m,trotropaquisha1,A2024,10.114.14.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,trodmbrav_m,trotropaquisha1,A2024,10.114.14.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,trojcvill_m,trotropaquisha1,A2024,10.114.14.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,trolrmora_m,trotropaquisha1,A2024,10.114.14.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,tromaprad_m,trotropaquisha1,A2024,10.114.14.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,tromccast_m,trotropaquisha1,A2024,10.114.14.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,troraastudi_m,trotropaquisha1,A2024,10.114.14.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,troeeorozcoy1,trotropaquisha1,A2024,10.114.14.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,vinejmendoz_m,vinvincuenca2,A2024,172.25.3.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,vinizveray_m,vinvincuenca2,A2024,172.25.3.253,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,vinjquint_m,vinvincuenca2,A2024,172.25.3.253,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,vinjrzambran_m,vinvincuenca2,A2024,172.25.3.253,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,vinlaagui_m,vinvincuenca2,A2024,172.25.3.253,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,vinmemora_m,vinvincuenca2,A2024,172.25.3.253,xdsl 18,CAMBIADO
+Home ADSL Mixto 2 y 4,vinmelopezc_m,vinvincuenca2,A2024,172.25.3.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhelmorab_m,bbhbbhlosperales1,A2024,172.23.38.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhjdburb_m,bbhbbhlosperales1,A2024,172.23.38.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhlapazm_m,bbhbbhlosperales1,A2024,172.23.38.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhlmbarr_m,bbhbbhlosperales1,A2024,172.23.38.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhmdpare_m,bbhbbhlosperales1,A2024,172.23.38.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhrmbazu_m,bbhbbhlosperales1,A2024,172.23.38.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhasmira_m,bbhbbhlosperales1,A2024,172.23.38.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,quegdpenav_m,quecrestamaria1,A2024,172.22.69.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,queprmora_m,quecrestamaria1,A2024,172.22.69.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,queiarizo_m,quecrestamaria1,A2024,172.22.69.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,quevebarr_m,quecrestamaria1,A2024,172.22.69.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,quejjmaci_m,quecrestamaria1,A2024,172.22.69.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,quelrparr_m,quecrestamaria1,A2024,172.22.69.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 1536,quebvcede_m3,quecrestamaria1,A2024,172.22.69.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,gyelrintriagoa1,gyematmatices1,A2024,172.17.84.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,gyewareyess1,gyematmatices1,A2024,172.17.84.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,gyehamatac1,gyematmatices1,A2024,172.17.84.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 2 y 4,gyeoalozadav1,gyematmatices1,A2024,172.17.84.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,gyesgbaidale1,gyematmatices1,A2024,172.17.84.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 2 y 4,gyesfcamachov1,gyematmatices1,A2024,172.17.84.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,gyebjharoh2,gyematmatices1,A2024,172.17.84.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 2 y 4,gyecrcabezasb1,gyematmatices1,A2024,172.17.84.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 3 y 6,gyedecaamanoc1,gyematmatices1,A2024,172.17.84.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 2 y 4,gyejgortizr_m,gyematmatices1,A2024,172.17.84.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 2 y 4,gyeljmain_m,gyematmatices1,A2024,172.17.84.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,gyelsordonezl1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,gyemmguznayg1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,gyevccruzc1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,gyermmoranm1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,gyepachalenl1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeiapintos1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,gyebdbazana1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,gyellordonezm1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,gyemlmoraf1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,gyejdreyese1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,gyezzproanom1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,gyecfpillcou1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,gyernorellanao1,gyepazjardinesdelsalado2,A2024,172.17.120.253,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,uiojoburb_m,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,uiobechir_m,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 12,CAMBIADO
+Home ADSL Mixto 2 y 4,uiomtvargasc1,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 21,CAMBIADO
+Home ADSL Mixto 2 y 4,uiomtvargasc1,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 21,CAMBIADO
+Home ADSL Mixto 3 y 6,uiorcvivent1,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 23,CAMBIADO
+Home ADSL Mixto 6 y 12,uioamelai2,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 3,CAMBIADO
+Home ADSL Mixto 4 y 8,uiodwreal_m,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 16,CAMBIADO
+Home ADSL Mixto 3 y 6,uiomxpared_m,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 15,CAMBIADO
+Home ADSL Mixto 2 y 4,uiohacali_m,uiotnd2pradosdetanda2,A2024,172.30.251.126,xdsl 8,CAMBIADO
+Home ADSL Mixto 512 y 1024,quemtbaquerizop1,queque2patrianueva2,A2024,172.22.67.253,xdsl 17,CAMBIADO
+Home ADSL Mixto 512 y 1024,quehjcarpiot1,queque2patrianueva2,A2024,172.22.67.253,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,quejpcrio_m,queque2patrianueva2,A2024,172.22.67.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,quemjbosq_m,queque2patrianueva2,A2024,172.22.67.253,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,quedxmosq_m,queque2patrianueva2,A2024,172.22.67.253,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,quefaandr_m,queque2patrianueva2,A2024,172.22.67.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,quemsguanotu_m,queque2patrianueva2,A2024,172.22.67.253,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,quecaosorioa1,queque2patrianueva2,A2024,172.22.67.253,xdsl 23,CAMBIADO
+Internet Home ADSL Mixto 0.5 y 2.5,quedhtanguilag1,queque2patrianueva2,A2024,172.22.67.253,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,macmasant_m,macmac2nmera1,A2024,172.20.46.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,macmfespi_m,macmac2nmera1,A2024,172.20.46.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,macmrvint_m,macmac2nmera1,A2024,172.20.46.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,macmycubi_m,macmac2nmera1,A2024,172.20.46.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,macwasand_m,macmac2nmera1,A2024,172.20.46.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,macaeriofrior_m,macmac2nmera1,A2024,172.20.46.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,macapmosquer_m,macmac2nmera1,A2024,172.20.46.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,machocall_m,macmac2nmera1,A2024,172.20.46.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,mackisara_m,macmac2nmera1,A2024,172.20.46.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,maclmchic_m,macmac2nmera1,A2024,172.20.46.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 2 y 4,macepapol_m,macmac2nmera1,A2024,172.20.46.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 2 y 4,macjpespi_m,macmac2nmera1,A2024,172.20.46.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,gyemgpanc_m,gyeflobasesur1,A2024,172.17.71.62,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeofdalg_m,gyeflobasesur1,A2024,172.17.71.62,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,gyehyvill_m,gyeflobasesur1,A2024,172.17.71.62,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeplcrio_m,gyeflobasesur1,A2024,172.17.71.62,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,gyemacast_m,gyeflobasesur1,A2024,172.17.71.62,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,gyerialarconc1,gyeflobasesur1,A2024,172.17.71.62,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeaachicac1,gyeflobasesur1,A2024,172.17.71.62,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,gyelenavarreteb1,gyeflobasesur1,A2024,172.17.71.62,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,gyesedelat1,gyeflobasesur1,A2024,172.17.71.62,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,gyepanarvaezc1,gyeflobasesur1,A2024,172.17.71.62,xdsl 9,CAMBIADO
+Home ADSL Mixto 2 y 4,gyeefsigu_m,gyeflobasesur1,A2024,172.17.71.62,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,porjcvier_m,pornoraltavista1,A2024,172.29.32.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,porslnava_m,pornoraltavista1,A2024,172.29.32.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,poradalayg_m,pornoraltavista1,A2024,172.29.32.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,porjvmora_m,pornoraltavista1,A2024,172.29.32.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,porapullo_m,pornoraltavista1,A2024,172.29.32.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,porcvzeva_m,pornoraltavista1,A2024,172.29.32.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 2 y 4,porjacard_m,pornoraltavista1,A2024,172.29.32.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 2 y 4,porcjnava_m,pornoraltavista1,A2024,172.29.32.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,pormmsanc_m,pornoraltavista1,A2024,172.29.32.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 2 y 4,porerzamb_m,pornoraltavista1,A2024,172.29.32.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,porgealva_m,pornoraltavista1,A2024,172.29.32.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 2 y 4,porobveras_m,pornoraltavista1,A2024,172.29.32.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,blsjcsanc_m,blsbls10deagosto1,A2024,10.111.4.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,blsjggarc_m,blsbls10deagosto1,A2024,10.111.4.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,blskiflor_m,blsbls10deagosto1,A2024,10.111.4.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,blspmapol_m,blsbls10deagosto1,A2024,10.111.4.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,blspmroma_m,blsbls10deagosto1,A2024,10.111.4.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,blsrebm_m,blsbls10deagosto1,A2024,10.111.4.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,blslmroja_m,blsbls10deagosto1,A2024,10.111.4.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,blslsriof_m,blsbls10deagosto1,A2024,10.111.4.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,blsadloayzah1,blsbls10deagosto1,A2024,10.111.4.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,blslamacaos1,blsbls10deagosto1,A2024,10.111.4.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 0.512 y 1.54,blsacjara_m3,blsbls10deagosto1,A2024,10.111.4.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 0.512 y 1.54,blscgflor_m3,blsbls10deagosto1,A2024,10.111.4.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,mananmore,mntcabtia1,A2024,172.28.61.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,manvralejandr_m,mntcabtia1,A2024,172.28.61.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,manychen,mntcabtia1,A2024,172.28.61.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 2 y 4,manbjarte_m,mntcabtia1,A2024,172.28.61.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 2 y 4,mangaalvarezp_m,mntcabtia1,A2024,172.28.61.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 2 y 4,manjealci_m,mntcabtia1,A2024,172.28.61.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,mancschanc_m,mntcabtia1,A2024,172.28.61.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 2 y 4,manjlintriag_m,mntcabtia1,A2024,172.28.61.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 2 y 4,manimport_m,mntcabtia1,A2024,172.28.61.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 3 y 6,mandintriagos_m,mntcabtia1,A2024,172.28.61.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 4 y 8,manjapazs1_m,mntcabtia1,A2024,172.28.61.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,salaxverg_m,salsaldunas1,A2024,172.18.61.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,saldczapa_m,salsaldunas1,A2024,172.18.61.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,saleazamb_m,salsaldunas1,A2024,172.18.61.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,salhfescob_m,salsaldunas1,A2024,172.18.61.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,sallamend_m,salsaldunas1,A2024,172.18.61.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,sallatacu_m,salsaldunas1,A2024,172.18.61.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,salmbnara_m,salsaldunas1,A2024,172.18.61.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,salmvvale_m,salsaldunas1,A2024,172.18.61.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,salpvlavaye_m,salsaldunas1,A2024,172.18.61.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,salgjparr_m,salsaldunas1,A2024,172.18.61.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 2 y 4,sallapalateg,salsaldunas1,A2024,172.18.61.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 2 y 4,salmamosq_m,salsaldunas1,A2024,172.18.61.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 2 y 4,salmralva_m,salsaldunas1,A2024,172.18.61.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 2 y 4,salrjestr_m,salsaldunas1,A2024,172.18.61.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 6 y 12,salcdhall_m,salsaldunas1,A2024,172.18.61.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhganobo_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhjlchap_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhlocade_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhmhmore_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhvhgaib_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhvjmurill_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhvrcast_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhvvbaza_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhamgonz_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhcefran_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhiacifuentesv1,bbhbbhkdos1,A2024,172.23.37.253,xdsl 17,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhrncast_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhbdamor_m,bbhbbhkdos1,A2024,172.23.37.253,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,triadgome_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,triawmeji_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,tribcmari_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,tricgcaba_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,triemherr_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,trilcjarag_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,triremend_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,triuecruzj_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,trizdsumb_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,trirbpullap1,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,trijwmore_m,tritrijuliojaramillo1,A2024,10.114.15.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,macmbsarangos_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,macmevalverd_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,macsialva_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,macaqmasach_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,macarmartin_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,macdrmaridue_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,macdyvall_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,macfpsobarzoa_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,macfrquirolap_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,macjgalvarezn_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,macjvpala_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,macctpceo_m,macmac10deagosto2,A2024,172.20.22.250,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeaoauca_m,gyebat26G1,A2024,172.17.122.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,gyecfbrit,gyebat26G1,A2024,172.17.122.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,gyejkcort_m,gyebat26G1,A2024,172.17.122.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,gyecmvacacelaa1,gyebat26G1,A2024,172.17.122.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,gyemejarrinp1,gyebat26G1,A2024,172.17.122.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 2 y 4,gyemmguevarap1,gyebat26G1,A2024,172.17.122.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 2 y 4,gyemaping_m,gyebat26G1,A2024,172.17.122.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 2 y 4,gyesping_m,gyebat26G1,A2024,172.17.122.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhfgtorr_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhjjdizb_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhjlnagu_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhmetorr_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhpmsipi_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhrecontre_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhtarive_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhvbhinostro_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhahbedo_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhahocho_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhajfran_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhjmquin_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhbaalva_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhbemont_m,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 512 y 1536,bbhjlromeror_m3,bbhbbhvillegas1,A2024,172.23.21.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 1024,milsfmato_m,milmil22denoviembre1,A2024,172.16.80.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 512 y 1024,milldcampo_m,milmil22denoviembre1,A2024,172.16.80.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 1024,milltbail_m,milmil22denoviembre1,A2024,172.16.80.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 512 y 1024,milmavasq_m,milmil22denoviembre1,A2024,172.16.80.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 1024,milhavale_m,milmil22denoviembre1,A2024,172.16.80.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 512 y 1024,milnralme_m,milmil22denoviembre1,A2024,172.16.80.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 3072,milremoli_m6,milmil22denoviembre1,A2024,172.16.80.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 3072,milcjpilo_m6,milmil22denoviembre1,A2024,172.16.80.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 512 y 3072,milejfran_m6,milmil22denoviembre1,A2024,172.16.80.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmlosor_m6,milmil22denoviembre1,A2024,172.16.80.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 3072,milgfbrionesf1,milmil22denoviembre1,A2024,172.16.80.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 3072,milsecastrot1,milmil22denoviembre1,A2024,172.16.80.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 0.512 y 1.54,milsmmerelos_m3,milmil22denoviembre1,A2024,172.16.80.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 512 y 1024,narcvzuri_m,narnarcentro1,A2024,172.16.77.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 1024,narjivela_m,narnarcentro1,A2024,172.16.77.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 512 y 1024,narmvalle_m,narnarcentro1,A2024,172.16.77.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 512 y 2048,milamayong_m4,narnarcentro1,A2024,172.16.77.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 512 y 2048,narafjac_m4,narnarcentro1,A2024,172.16.77.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 2048,nargmmoli_m4,narnarcentro1,A2024,172.16.77.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 512 y 3072,narcagutierr_m6,narnarcentro1,A2024,172.16.77.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 3072,nargmgutierre_m,narnarcentro1,A2024,172.16.77.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 3072,nariaguer_m6,narnarcentro1,A2024,172.16.77.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 512 y 3072,narlerojasl_m6,narnarcentro1,A2024,172.16.77.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,liblsa_m,salptolavoz2,A2024,172.18.39.253,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,libmereye2_m,salptolavoz2,A2024,172.18.39.253,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,libmereye3_m,salptolavoz2,A2024,172.18.39.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,libmereye4_m,salptolavoz2,A2024,172.18.39.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,libmereye5_m,salptolavoz2,A2024,172.18.39.253,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,libmereye6_m,salptolavoz2,A2024,172.18.39.253,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,libmldelaag_m,salptolavoz2,A2024,172.18.39.253,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,libmmpicor_m,salptolavoz2,A2024,172.18.39.253,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,liboepanc_m,salptolavoz2,A2024,172.18.39.253,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,libraprados_m,salptolavoz2,A2024,172.18.39.253,xdsl 14,CAMBIADO
+Home ADSL Mixto 2 y 4,libjs.a.n_m,salptolavoz2,A2024,172.18.39.253,xdsl 18,CAMBIADO
+Home ADSL Mixto 2 y 4,liblapalate2_m,salptolavoz2,A2024,172.18.39.253,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,libmbarzolas1_m,salptolavoz2,A2024,172.18.39.253,xdsl 13,CAMBIADO
+Home ADSL Mixto 2 y 4,libcalozadam1,salptolavoz2,A2024,172.18.39.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 3 y 6,libjrclem_m,salptolavoz2,A2024,172.18.39.253,xdsl 19,CAMBIADO
+Home ADSL Mixto 4 y 8,libkpguti_m,salptolavoz2,A2024,172.18.39.253,xdsl 6,CAMBIADO
+Home ADSL Mixto 6 y 12,libcaandr_m,salptolavoz2,A2024,172.18.39.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,maneaconfor_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,mancazuri_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,mancdbaz_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,manlgzambrano_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,manmafalc_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,mannjtacu_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,manpbmuri_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,manjhvele_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,manvmolina2_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,manwfchir_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,manbhfrancoq_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 2 y 4,mannprodr_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 2 y 4,manwmsaldarr_m,mntvilbrisas1,A2024,172.28.69.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,pingdaria_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,pinikroma_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,pinjccabr_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,pinjerome_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,pinjgdiazo_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,pinjmmanz_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,pinjrsisa_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmaruizt_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmazambrano_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmmvala2_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmmvala_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmsloay_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmtsala_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,pinbrarmi_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,pinpfdavi_m,pinpinkennedy1,A2024,172.24.54.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,trovnrodr_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,trocibajanal_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,trodaverdugob_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,trodcsald_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,trodmpenar_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,troerandr_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,trommmaca_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,trommeraz_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,troepmoralest1,trotroelmaestro3,A2024,10.114.5.252,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,tromaanilemac1,trotroelmaestro3,A2024,10.114.5.252,xdsl 11,CAMBIADO
+Home ADSL Mixto 2 y 4,tromnsoli_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 5,CAMBIADO
+Home ADSL Mixto 2 y 4,tromlsotom_m,trotroelmaestro3,A2024,10.114.5.252,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,mandpina_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,manlealviaa2_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,manlesala_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,manmmfloresl_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,manslcede_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,manwlpalm_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,mankvcevallos_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 2 y 4,maneicede_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,manevreye_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 2 y 4,manlesala2_m,mntuleelectricos1,A2024,172.28.55.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhepburb_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 18,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhffayal_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhjcleonm_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhjfpazminoa_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhjmsolisr2,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhmlburb_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhpnmais_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhssv_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhapalva_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhcguo_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 19,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhhrcabr_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhkayepe_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhrbguer_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 3 y 6,bbhdmquin_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 10,CAMBIADO
+Home ADSL Mixto 3 y 6,bbhhrquin_m,bbhbbhpichincha2,A2024,172.23.24.253,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 1024,bbhjepazm2_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhdmroj_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhfaespa_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhgisala_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhjeceva_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhaocoel_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhbmjaco_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,bbhdcespa_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 18,CAMBIADO
+Home ADSL Mixto 2 y 4,bbhrncastill_m,bbhbbhkdos2,A2024,172.23.37.251,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,saldaurdi_m,salhcorubira2,A2024,172.18.54.253,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,saljjfrie_m,salhcorubira2,A2024,172.18.54.253,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,salmctera_m,salhcorubira2,A2024,172.18.54.253,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,salmjbald_m,salhcorubira2,A2024,172.18.54.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,salrequin_m,salhcorubira2,A2024,172.18.54.253,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,saljmyacelgac1,salhcorubira2,A2024,172.18.54.253,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,salweramirezl1,salhcorubira2,A2024,172.18.54.253,xdsl 12,CAMBIADO
+Home ADSL Mixto 2 y 4,salcemati_m,salhcorubira2,A2024,172.18.54.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 2 y 4,salcmacd_m,salhcorubira2,A2024,172.18.54.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 2 y 4,salrroble_m,salhcorubira2,A2024,172.18.54.253,xdsl 5,CAMBIADO
+Home ADSL Mixto 2 y 4,salsgt_m,salhcorubira2,A2024,172.18.54.253,xdsl 2,CAMBIADO
+Home ADSL Mixto 2 y 4,salweronq_m,salhcorubira2,A2024,172.18.54.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 2 y 4,salextorresj1,salhcorubira2,A2024,172.18.54.253,xdsl 22,CAMBIADO
+Home ADSL Mixto 2 y 4,salmnchanguinc1,salhcorubira2,A2024,172.18.54.253,xdsl 23,CAMBIADO
+Home ADSL Mixto 512 y 1024,milamandag_m,milmilpraderauno1,A2024,172.16.82.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 512 y 1024,milrjhurtadon_m,milmilpraderauno1,A2024,172.16.82.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 1024,miljralci_m,milmilpraderauno1,A2024,172.16.82.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 512 y 1024,milketosc_m,milmilpraderauno1,A2024,172.16.82.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 512 y 1024,millalozanoq_m,milmilpraderauno1,A2024,172.16.82.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 512 y 1024,milmafran_m,milmilpraderauno1,A2024,172.16.82.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 512 y 2048,milscbajanaf_m4,milmilpraderauno1,A2024,172.16.82.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 512 y 2048,milklmaci,milmilpraderauno1,A2024,172.16.82.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 2048,millecabe_m4,milmilpraderauno1,A2024,172.16.82.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 2048,milsotama_m4,milmilpraderauno1,A2024,172.16.82.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmcsoriaa_m4,milmilpraderauno1,A2024,172.16.82.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 2048,milevposlig_m4,milmilpraderauno1,A2024,172.16.82.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 512 y 3072,millaguer_m6,milmilpraderauno1,A2024,172.16.82.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 3072,milecvizu_m6,milmilpraderauno1,A2024,172.16.82.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 3072,mileeplua_m6,milmilpraderauno1,A2024,172.16.82.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmfrome_m6,milmilpraderauno1,A2024,172.16.82.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmgcarp_m6,milmilpraderauno1,A2024,172.16.82.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,pinemrome_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,pinshsotoo_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,pinsjruizg_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,pinvhgran_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmeloay2_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmerome_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmvbust_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,pinaftorr_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,pinnybust_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,pinpaluzuria_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,pindccaminor_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,pinrmagui_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,pinitapoloc1,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 12,CAMBIADO
+Home ADSL Mixto 1 y 2,pinveloayzar1,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 2,CAMBIADO
+Home ADSL Mixto 2 y 4,pinjariosl_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,pinmeagui2_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 4,CAMBIADO
+Home ADSL Mixto 0.512 y 1,pindmrami_m,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 1,CAMBIADO
+Home ADSL Mixto 0.512 y 1.54,pinemgala_m3,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 24,CAMBIADO
+Home ADSL Mixto 0.512 y 1.54,pinrbleonl_m3,pinpin8denoviembre2,A2024,172.24.51.253,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,saleedelp_m,salcarmuey1,A2024,172.18.59.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,salehdelp_m,salcarmuey1,A2024,172.18.59.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,saleybalonp_m,salcarmuey1,A2024,172.18.59.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,salgwgual_m,salcarmuey1,A2024,172.18.59.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 1 y 2,saliarica_m,salcarmuey1,A2024,172.18.59.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,saljlynnf_m,salcarmuey1,A2024,172.18.59.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,salmljack_m,salcarmuey1,A2024,172.18.59.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,salnwroca_m,salcarmuey1,A2024,172.18.59.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,salsvsuar_m,salcarmuey1,A2024,172.18.59.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 2 y 4,saljmthomps_m,salcarmuey1,A2024,172.18.59.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 2 y 4,sallfreyesd_m,salcarmuey1,A2024,172.18.59.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 2 y 4,salmesoledi_m,salcarmuey1,A2024,172.18.59.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 6 y 12,salcadelp_m,salcarmuey1,A2024,172.18.59.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 512 y 1024,milrwacos_m,milmilsoma1,A2024,172.16.96.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 512 y 1024,milwjgome_m,milmilsoma1,A2024,172.16.96.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 512 y 1024,milesalva_m,milmilsoma1,A2024,172.16.96.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 2048,milakjime_m4,milmilsoma1,A2024,172.16.96.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 512 y 2048,miljdarev_m4,milmilsoma1,A2024,172.16.96.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 2048,milrmcantosm_m4,milmilsoma1,A2024,172.16.96.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 512 y 2048,milcrestr_m4,milmilsoma1,A2024,172.16.96.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 2048,mildepena_m4,milmilsoma1,A2024,172.16.96.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmiplua_m4,milmilsoma1,A2024,172.16.96.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 2048,milfxcast_m4,milmilsoma1,A2024,172.16.96.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 3072,milrevacaa_m6,milmilsoma1,A2024,172.16.96.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 512 y 3072,milrgenca_m6,milmilsoma1,A2024,172.16.96.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 3072,millumatu_m6,milmilsoma1,A2024,172.16.96.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmapadi_m6,milmilsoma1,A2024,172.16.96.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmjaria_m6,milmilsoma1,A2024,172.16.96.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 512 y 3072,milnkbrio_m6,milmilsoma1,A2024,172.16.96.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 512 y 3072,milaenegr_m6,milmilsoma1,A2024,172.16.96.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,salalpinov_m,salhcosantorini1,A2024,172.18.38.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,saljlsala_m,salhcosantorini1,A2024,172.18.38.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,salmigomez_m,salhcosantorini1,A2024,172.18.38.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,salmmac_m,salhcosantorini1,A2024,172.18.38.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,salmoron_m,salhcosantorini1,A2024,172.18.38.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,salregalisa_m,salhcosantorini1,A2024,172.18.38.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,saldaromerop1,salhcosantorini1,A2024,172.18.38.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 2 y 4,salamanza_m,salhcosantorini1,A2024,172.18.38.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 2 y 4,salccoronel_m,salhcosantorini1,A2024,172.18.38.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,salfarinsa_m,salhcosantorini1,A2024,172.18.38.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 2 y 4,salitl_m,salhcosantorini1,A2024,172.18.38.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 2 y 4,salmcordo_m,salhcosantorini1,A2024,172.18.38.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 2 y 4,salrelani_m,salhcosantorini1,A2024,172.18.38.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 4 y 8,saljjfran_m,salhcosantorini1,A2024,172.18.38.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 6 y 12,salfcl_m,salhcosantorini1,A2024,172.18.38.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 1024,miljcsigc_m,milmilmnorte1,A2024,172.16.72.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 1024,mileechiflag_m,milmilmnorte1,A2024,172.16.72.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 512 y 2048,miljsfloress_m4,milmilmnorte1,A2024,172.16.72.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmftorresb_m4,milmilmnorte1,A2024,172.16.72.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmjsoli_m4,milmilmnorte1,A2024,172.16.72.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 3072,milnvagua_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 3072,milajpere_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 512 y 3072,milavtorr_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljkfrei_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljmabadl_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljpzurita_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 3072,milsjagua_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 512 y 3072,milvjzald_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 3072,milvmbaja_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 3072,mildczaldu_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 512 y 3072,milfprodri2_m6,milmilmnorte1,A2024,172.16.72.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 512 y 1024,milrchavarri_m,milmilquintap1,A2024,172.16.20.252,xdsl 23,CAMBIADO
+Home ADSL Mixto 512 y 1024,milkdrey_m,milmilquintap1,A2024,172.16.20.252,xdsl 12,CAMBIADO
+Home ADSL Mixto 512 y 1024,mildlleonb_m,milmilquintap1,A2024,172.16.20.252,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 1024,mileerodr_m,milmilquintap1,A2024,172.16.20.252,xdsl 19,CAMBIADO
+Home ADSL Mixto 512 y 2048,milalcoellob_m4,milmilquintap1,A2024,172.16.20.252,xdsl 20,CAMBIADO
+Home ADSL Mixto 512 y 2048,mildpleonc_m4,milmilquintap1,A2024,172.16.20.252,xdsl 16,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmavalare_m4,milmilquintap1,A2024,172.16.20.252,xdsl 14,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmrasana_m4,milmilquintap1,A2024,172.16.20.252,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljcegasc_m6,milmilquintap1,A2024,172.16.20.252,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 3072,milcejimen_m6,milmilquintap1,A2024,172.16.20.252,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 3072,milcquirozn_m6,milmilquintap1,A2024,172.16.20.252,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 3072,milerescob_m6,milmilquintap1,A2024,172.16.20.252,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 3072,milfamag_m6,milmilquintap1,A2024,172.16.20.252,xdsl 21,CAMBIADO
+Home ADSL Mixto 512 y 3072,milnerami_m6,milmilquintap1,A2024,172.16.20.252,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,maneglarr_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,manaebrav_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,manlpalac_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 1 y 2,mansechri_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,manjlpere_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,manjpflor_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 2 y 4,manfsm_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 2 y 4,manmlbrionesa,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 2 y 4,manrmmoralesp_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,manrvdelg_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 2 y 4,manxabasu_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 4 y 8,mangtschulten_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 4 y 8,manmnlop_m,mntuleuniversitaria1,A2024,172.28.73.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 512 y 1024,miloasala_m,milmilsanmiguel2,A2024,172.16.75.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 512 y 1024,milzmboderog_m,milmilsanmiguel2,A2024,172.16.75.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 2048,millasanche_m4,milmilsanmiguel2,A2024,172.16.75.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 512 y 2048,mildgfran_m4,milmilsanmiguel2,A2024,172.16.75.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmvriva_m4,milmilsanmiguel2,A2024,172.16.75.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 2048,milaaalvarad_m4,milmilsanmiguel2,A2024,172.16.75.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 3072,milannava_m6,milmilsanmiguel2,A2024,172.16.75.254,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 3072,milbeat_m6,milmilsanmiguel2,A2024,172.16.75.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljlmazo_m6,milmilsanmiguel2,A2024,172.16.75.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 3072,milcmbals_m6,milmilsanmiguel2,A2024,172.16.75.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 3072,millnherm_m6,milmilsanmiguel2,A2024,172.16.75.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 512 y 3072,milfdhida_m6,milmilsanmiguel2,A2024,172.16.75.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 512 y 3072,milgesala_m6,milmilsanmiguel2,A2024,172.16.75.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 512 y 4096,milatlemac_m8,milmilsanmiguel2,A2024,172.16.75.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 512 y 4096,milhirodr_m8,milmilsanmiguel2,A2024,172.16.75.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 0.512 y 1.54,milmlrodrig_m3,milmilsanmiguel2,A2024,172.16.75.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 1 y 2,pineaajil_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 16,CAMBIADO
+Home ADSL Mixto 1 y 2,pinepmata_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 13,CAMBIADO
+Home ADSL Mixto 1 y 2,pinevmora_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 8,CAMBIADO
+Home ADSL Mixto 1 y 2,pinwaniqu_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 19,CAMBIADO
+Home ADSL Mixto 1 y 2,pingmjarrinj_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,pingrpine_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,pinjaatie_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 5,CAMBIADO
+Home ADSL Mixto 1 y 2,pinkyruiz_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 3,CAMBIADO
+Home ADSL Mixto 1 y 2,pinlmgrand_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 11,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmacabr_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 22,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmapont_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 10,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmtromero_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 20,CAMBIADO
+Home ADSL Mixto 1 y 2,pinmvloay_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 23,CAMBIADO
+Home ADSL Mixto 1 y 2,pinamrive_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 2,CAMBIADO
+Home ADSL Mixto 1 y 2,pinnmagui_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 1,CAMBIADO
+Home ADSL Mixto 1 y 2,pinochere_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,pincanazco_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,pinneloayzag1,pinpinasalvador3,A2024,172.24.32.252,xdsl 6,CAMBIADO
+Home ADSL Mixto 2 y 4,pinmgespina4_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 18,CAMBIADO
+Home ADSL Mixto 2 y 4,pinrounuz_m,pinpinasalvador3,A2024,172.24.32.252,xdsl 24,CAMBIADO
+Home ADSL Mixto 2 y 4,pinjgvalarezor1,pinpinasalvador3,A2024,172.24.32.252,xdsl 4,CAMBIADO
+Home ADSL Mixto 0.512 y 1.54,pinkjloai_m3,pinpinasalvador3,A2024,172.24.32.252,xdsl 17,CAMBIADO
+Home ADSL Mixto 512 y 1024,milymtorr_m,milmilbellavistas1,A2024,172.16.95.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 1024,mileesala_m,milmilbellavistas1,A2024,172.16.95.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 1024,milrpbarahonaa1,milmilbellavistas1,A2024,172.16.95.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 512 y 2048,milremuno_m4,milmilbellavistas1,A2024,172.16.95.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 2048,milrmriosp_m4,milmilbellavistas1,A2024,172.16.95.254,xdsl 8,CAMBIADO
+Home ADSL Mixto 512 y 2048,milfnmosque_m4,milmilbellavistas1,A2024,172.16.95.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmrmoroch_m4,milmilbellavistas1,A2024,172.16.95.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 2048,milmxveras_m4,milmilbellavistas1,A2024,172.16.95.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 2048,mileaperezg2,milmilbellavistas1,A2024,172.16.95.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 512 y 3072,milpjcald_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljepaguay_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 512 y 3072,milbapare_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljlvinu_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljmpinob_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 3072,milkmjura_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmatellor_m3,milmilbellavistas1,A2024,172.16.95.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmeferr_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 512 y 3072,milmmcast_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 512 y 3072,milgmvilelan_m6,milmilbellavistas1,A2024,172.16.95.254,xdsl 16,CAMBIADO
+Home ADSL Nocturno 1024,milamizquier_n,milmilcristoc2,A2024,172.16.24.249,xdsl 18,CAMBIADO
+Home ADSL Mixto 512 y 1024,milamvale2_m,milmilcristoc2,A2024,172.16.24.249,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 1024,miljeverg_m,milmilcristoc2,A2024,172.16.24.249,xdsl 1,CAMBIADO
+Home ADSL Mixto 512 y 1024,milrerami_m6,milmilcristoc2,A2024,172.16.24.249,xdsl 7,CAMBIADO
+Home ADSL Mixto 512 y 1024,millehigue_m,milmilcristoc2,A2024,172.16.24.249,xdsl 21,CAMBIADO
+Home ADSL Mixto 512 y 1024,milfmacia_m,milmilcristoc2,A2024,172.16.24.249,xdsl 19,CAMBIADO
+Home ADSL Mixto 512 y 1024,milgamuri_m,milmilcristoc2,A2024,172.16.24.249,xdsl 5,CAMBIADO
+Home ADSL Mixto 512 y 1024,milmschavezf_m,milmilcristoc2,A2024,172.16.24.249,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 1024,milmvchav_m,milmilcristoc2,A2024,172.16.24.249,xdsl 20,CAMBIADO
+Home ADSL Mixto 512 y 1024,milhdcoel_m,milmilcristoc2,A2024,172.16.24.249,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 1024,milhgtorr_m,milmilcristoc2,A2024,172.16.24.249,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 1024,milresalgadoh1,milmilcristoc2,A2024,172.16.24.249,xdsl 17,CAMBIADO
+Home ADSL Mixto 512 y 2048,milkgmoraa_m4,milmilcristoc2,A2024,172.16.24.249,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 2048,mileatene_m4,milmilcristoc2,A2024,172.16.24.249,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 2048,milaanava_m4,milmilcristoc2,A2024,172.16.24.249,xdsl 16,CAMBIADO
+Home ADSL Mixto 512 y 2048,miljocalderonj1,milmilcristoc2,A2024,172.16.24.249,xdsl 4,CAMBIADO
+Home ADSL Mixto 512 y 3072,milisolisp_m6,milmilcristoc2,A2024,172.16.24.249,xdsl 6,CAMBIADO
+Home ADSL Mixto 512 y 3072,miljgzamo_m6,milmilcristoc2,A2024,172.16.24.249,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 3072,milvralva_m6,milmilcristoc2,A2024,172.16.24.249,xdsl 8,CAMBIADO
+Home ADSL Mixto 512 y 3072,milhhflor_m6,milmilcristoc2,A2024,172.16.24.249,xdsl 12,CAMBIADO
+Home ADSL Mixto 512 y 4096,milclvinu_m8,milmilcristoc2,A2024,172.16.24.249,xdsl 23,CAMBIADO
+Home ADSL Mixto 512 y 1024,milamgaiborv_m,milmillister1,A2024,172.16.69.254,xdsl 17,CAMBIADO
+Home ADSL Mixto 512 y 1024,milmaguev_m,milmillister1,A2024,172.16.69.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 512 y 1024,milfafiguer_m,milmillister1,A2024,172.16.69.254,xdsl 19,CAMBIADO
+Home ADSL Mixto 512 y 1024,milfillas_m,milmillister1,A2024,172.16.69.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 512 y 1024,milfmbarr_m,milmillister1,A2024,172.16.69.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 512 y 1024,milfrcont_m,milmillister1,A2024,172.16.69.254,xdsl 23,CAMBIADO
+Home ADSL Mixto 512 y 1024,milnmsal_m,milmillister1,A2024,172.16.69.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 512 y 1024,milaaordone_m,milmillister1,A2024,172.16.69.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 512 y 2048,miljasoledis_m4,milmillister1,A2024,172.16.69.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 512 y 2048,millmpenafie_m4,milmillister1,A2024,172.16.69.254,xdsl 5,CAMBIADO
+Home ADSL Mixto 512 y 2048,mildnsanchez_m4,milmillister1,A2024,172.16.69.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 512 y 2048,millrzamb_m4,milmillister1,A2024,172.16.69.254,xdsl 13,CAMBIADO
+Home ADSL Mixto 512 y 2048,milgmsali_m4,milmillister1,A2024,172.16.69.254,xdsl 4,CAMBIADO
+Home ADSL Mixto 512 y 3072,milpfsantil_m6,milmillister1,A2024,172.16.69.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 512 y 3072,milprvill_m6,milmillister1,A2024,172.16.69.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 512 y 3072,milrbpinas_m6,milmillister1,A2024,172.16.69.254,xdsl 3,CAMBIADO
+Home ADSL Mixto 512 y 3072,milcagarc_m6,milmillister1,A2024,172.16.69.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 512 y 3072,milferend_m6,milmillister1,A2024,172.16.69.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 512 y 4096,miljachicai_m8,milmillister1,A2024,172.16.69.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 512 y 4096,miltcvicu_m8,milmillister1,A2024,172.16.69.254,xdsl 12,CAMBIADO
+Home ADSL Mixto 512 y 1536,milmmagui_m3,milmillister1,A2024,172.16.69.254,xdsl 21,CAMBIADO
+Home ADSL Mixto 1 y 2,libaehern_m,sallibcalderon1,A2024,172.18.49.254,xdsl 14,CAMBIADO
+Home ADSL Mixto 1 y 2,libfggonz_m,sallibcalderon1,A2024,172.18.49.254,xdsl 9,CAMBIADO
+Home ADSL Mixto 1 y 2,libfmugun_m,sallibcalderon1,A2024,172.18.49.254,xdsl 6,CAMBIADO
+Home ADSL Mixto 1 y 2,libpgonza_m,sallibcalderon1,A2024,172.18.49.254,xdsl 7,CAMBIADO
+Home ADSL Mixto 1 y 2,libsapossov_m,sallibcalderon1,A2024,172.18.49.254,xdsl 15,CAMBIADO
+Home ADSL Mixto 1 y 2,libgmpintod1,sallibcalderon1,A2024,172.18.49.254,xdsl 18,CAMBIADO
+Home ADSL Mixto 2 y 4,libgnsuar_m,sallibcalderon1,A2024,172.18.49.254,xdsl 24,CAMBIADO
+Home ADSL Mixto 2 y 4,libmprodr_m,sallibcalderon1,A2024,172.18.49.254,xdsl 11,CAMBIADO
+Home ADSL Mixto 2 y 4,libndyaguall_m,sallibcalderon1,A2024,172.18.49.254,xdsl 16,CAMBIADO
+Home ADSL Mixto 2 y 4,libseatec_m,sallibcalderon1,A2024,172.18.49.254,xdsl 10,CAMBIADO
+Home ADSL Mixto 2 y 4,libvivanzisa_m,sallibcalderon1,A2024,172.18.49.254,xdsl 2,CAMBIADO
+Home ADSL Mixto 2 y 4,libzliu_m,sallibcalderon1,A2024,172.18.49.254,xdsl 20,CAMBIADO
+Home ADSL Mixto 3 y 6,libgerodr_m,sallibcalderon1,A2024,172.18.49.254,xdsl 22,CAMBIADO
+Home ADSL Mixto 3 y 6,libjdarevalor_m,sallibcalderon1,A2024,172.18.49.254,xdsl 8,CAMBIADO
+no:0
+generando archivo...
+Hora Inicio: Fri Sep 06 18:00:02 ECT 2013
+Hora Fin: Fri Sep 06 18:06:28 ECT 2013

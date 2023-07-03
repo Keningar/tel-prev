@@ -1,0 +1,161 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+obteniendo los servicios
+servicios...
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/10, login:manychav_m8 , up:608, down:320
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/7, login:gyeweminod_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/13, login:manjgpicof_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/30, login:uioedarizaa_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/37, login:durlnvarg_m , up:608, down:320
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/19, login:manldanch_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/27, login:riojomunozt1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/5, login:manhsa_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/28, login:uiopfnovo_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/14, login:gyewecalip_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/18, login:durcrvergarav1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/33, login:riobpacat1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/9, login:rioselumaniar1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/11, login:manmsflore_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/23, login:mancazuas_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/30, login:uiocagalarzaz1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/46, login:durwecamp_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/18, login:gyemacarr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/6, login:riojaarma , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/1, login:manvaanchu_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/25, login:riolbravom1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/3, login:manebchavezs_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/3, login:gyemcboni_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/13, login:uioalsuquinaguaf1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/32, login:riojrbarbanchor1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/42, login:durvmarve_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/24, login:manrbeniteza_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/26, login:manlrchav_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/1, login:gyewoflor_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/26, login:uiojcsantillans1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/4, login:riolvgalloa1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/7, login:riohfmend_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/32, login:dursrmore_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/2, login:mandmdelgadot_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/12, login:gyedmveram_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/11, login:manpromarsanc_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/18, login:rioeasadobaya1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/41, login:rioadcastrom1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/39, login:durpvgonz_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/17, login:gyeryadri_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/29, login:mandamaci_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/2, login:manjpartea1_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/20, login:riodmmalana1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/16, login:riosfmarting1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/35, login:durmjsanc_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/7, login:manjlrite_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/23, login:mangepicof_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/26, login:riotdcabreras2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/27, login:rioprfial_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/30, login:durmemore_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/4, login:gyejgherr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/31, login:mandalopezh_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/22, login:mandpbedoyac , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/1, login:riomcpilcoy1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/38, login:durmefaja_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/15, login:gyejgcarr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/31, login:manmnanch_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/40, login:maneszeto_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/33, login:durmarti_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/16, login:gyedavill_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/12, login:riolatenesacat2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/24, login:manimgutier_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/45, login:manemsierra_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/41, login:durjlbaja_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/2, login:gyeirdelg_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/10, login:riojerivaso1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/27, login:manbjgor_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/46, login:manmarc_m , up:4928, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/30, login:manevieram2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/11, login:gyejemaca_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/25, login:durictorr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/22, login:riofmrodriguezl1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/12, login:mandamac_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/10, login:gyecavale_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/27, login:durfparra_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/15, login:riomslopezt1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/13, login:manajhan_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/6, login:gyehvtumb_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/29, login:durfmreye_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/13, login:riomalemachea1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/30, login:manfpbuch_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/9, login:gyeammuno_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/40, login:durcrpinl_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/24, login:rioaaabarcaa1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/30, login:manevieram2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/7, login:manrphilc_m , up:7392, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/26, login:durbdpach_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/13, login:gyemmloorm_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/23, login:riojrmorenoc1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/4, login:manjeanch_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/44, login:durascort_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/29, login:gyeipespanar1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/17, login:riolmfrutosr1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/45, login:mancagome_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/7, login:durremedinam1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/28, login:gyegmrojasp1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/16, login:riojegarciaa1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/1, login:durllvill_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/21, login:gyekapilosoc1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/14, login:riojjyautibugg1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/20, login:gyelfjimeneza1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/19, login:durochoas_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/2, login:riosfguamantaquia1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/22, login:gyelacordovas1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/6, login:durmemedi_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/8, login:riocpajitimbay1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/23, login:gyecmlitardop1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/23, login:durfryepe_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/7, login:riogsilvab1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/3, login:dureyanta_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/24, login:gyeeazunigac1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/6, login:rioccantunas1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/24, login:dureacarr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/5, login:gyefdguti_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/5, login:durmanarv_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/5, login:rioagsamaniegoh1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/8, login:gyeryocho_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/21, login:riopvaguagallop1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/19, login:rioagduchip1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/38, login:manjacorr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/29, login:manjhdelgadom_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/23, login:manegcisne_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/36, login:manmchiri_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/7, login:manjigonzal_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/25, login:mandepesantesb , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/14, login:manajmarch_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/40, login:mancityclima_m , up:3712, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.134.254, interface:2/24, login:durmrcruzg2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.134.254, interface:2/1, login:durelmore_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.134.254, interface:2/19, login:durcjpazr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.134.254, interface:2/5, login:durrgcord_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.134.254, interface:2/7, login:durlwpetr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.134.254, interface:2/4, login:durjrrued_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.134.254, interface:2/3, login:durgeriosv_m , up:1248, down:608
+***********************************
+LISTADO DE SERVICIOS 
+generando archivo...
+Hora Inicio: Wed Aug 21 06:00:01 ECT 2013
+Hora Fin: Wed Aug 21 06:02:20 ECT 2013

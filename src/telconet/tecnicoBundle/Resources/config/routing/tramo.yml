@@ -1,0 +1,3 @@
+infotramo_getTramos:
+    pattern:  /getTramos
+    defaults: { _controller: "tecnicoBundle:InfoTramo:getTramos" }

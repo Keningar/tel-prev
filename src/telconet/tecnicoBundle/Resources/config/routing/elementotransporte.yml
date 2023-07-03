@@ -1,0 +1,90 @@
+elementotransporte:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:index" }
+
+elementotransporte_grid:
+    pattern:  /grid
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:grid"}
+
+elementotransporte_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:new" }
+    
+elementotransporte_getModelosPorTipoMedioTransporte:
+    pattern:  /getModelosPorTipoMedioTransporte
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:getModelosPorTipoMedioTransporte" }  
+
+elementotransporte_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:create" }
+    requirements: { _method: POST }
+
+elementotransporte_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:show" }
+    
+elementotransporte_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:edit" }
+    
+elementotransporte_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:update" }
+    requirements: { _method: POST }
+    
+elementotransporte_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:deleteAjax" }
+    requirements: { _method: post }
+    
+elementotransporte_getModelosMedioTransporte:
+    pattern:  /getModelosMedioTransporte
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:getModelosMedioTransporte" }  
+
+elementotransporte_verificarPlaca:
+    pattern:  /verificarPlaca
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:verificarPlaca" }    
+    requirements: { _method: post }  
+
+elementotransporte_verificarElementosAEliminar:
+    pattern:  /verificarElementosAEliminar
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:verificarElementosAEliminar" }
+    requirements: { _method: post }  
+    
+elementotransporte_showDocumentosTransporte:
+    pattern:  /{id}/showDocumentosTransporte
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:showDocumentosTransporte" } 
+
+elementotransporte_descargarDocumento:
+    pattern:  /descargarDocumento/{id}
+    defaults: { _controller: tecnicoBundle:InfoElementoTransporte:descargarDocumento }
+    
+elementotransporte_newArchivoDigital:
+    pattern:  /{id}/newArchivoDigital
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:newArchivoDigital" }
+    
+elementotransporte_eliminarDocumentoAjax:
+    pattern:  /eliminarDocumentoAjax
+    defaults: { _controller: tecnicoBundle:InfoElementoTransporte:eliminarDocumentoAjax } 
+    
+elementotransporte_guardarArchivoDigital:
+    pattern:  /{id}/guardarArchivoDigital
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:guardarArchivoDigital" }
+    requirements: { _method: post }
+    
+elementotransporte_validar_documentos_obligatorios:
+    pattern:  /validarDocumentosObligatoriosAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:validarDocumentosObligatoriosAjax"}
+    
+elementotransporte_cargarArchivosCaducados:
+    pattern:  /{id}/getArchivosCaducados
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:getArchivosCaducados"}
+    
+elementotransporte_getPlanesMantenimiento:
+    pattern:  /getPlanesMantenimiento
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:getPlanesMantenimiento"}
+    
+elementotransporte_getRegionesVehiculos:
+    pattern:  /getRegionesVehiculos
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransporte:getRegionesVehiculos"}
+    

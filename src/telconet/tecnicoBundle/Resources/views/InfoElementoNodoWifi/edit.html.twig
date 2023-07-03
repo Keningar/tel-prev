@@ -1,0 +1,133 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodoWifi/map.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodoWifi/new.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodoWifi/edit.js?1') }}"></script>
+<script>
+
+    var url_getCantones = '{{path("admicanton_buscarCantones") }}';
+    var url_getParroquias = '{{path("admiparroquia_buscarParroquias") }}';
+
+</script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar</h1>
+</div>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+
+<div class="body_content">
+    <form id='form_edit_NodoWifi' action="{{ path('elementoNodoWifi_update', { 'id': caja.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" novalidate="novalidate" 
+                onsubmit='if(validacionesEditForm()){ 
+                                Ext.MessageBox.wait("Ingresando Elemento...");
+                                document.forms[0].submit();
+                                return true;
+                            }
+                            else{
+                                return false;
+                            }'>
+        <table width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.nombreElemento) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.nombreElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"></td>
+                    <td width="10%"></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.descripcionElemento) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.descripcionElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.modeloElementoId) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.modeloElementoId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.jurisdiccionId) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.jurisdiccionId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.cantonId) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.cantonId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.parroquiaId) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.parroquiaId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.direccionUbicacion) }}</td>
+                    <td width="10%"><input type="text" id ='direccionUbicacion' name="direccionUbicacion" value="{{ubicacion.direccionUbicacion}}"></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.longitudUbicacion) }}</td>
+                    <td width="10%"><input type="text" id ='longitudUbicacion' name="longitudUbicacion" value="{{ubicacion.longitudUbicacion}}" onkeypress='return validador(event,"numeros")'></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.latitudUbicacion) }}</td>
+                    <td width="10%"><input type="text" id = 'latitudUbicacion' name="latitudUbicacion" value="{{ubicacion.latitudUbicacion}}" onkeypress='return validador(event,"numeros")'></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.alturaSnm) }}</td>
+                    <td width="10%"><input type="text" id ="alturaSnm" name="alturaSnm" onKeyPress="return soloNumeros(event)" value="{{ubicacion.alturaSnm}}"></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="24%"></td>
+                    <td width="10%">
+                    <input type="hidden" name="idUbicacion" value="{{ ubicacion.id }}">
+                    </td>
+                </tr>
+            </table>
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('elementoNodoWifi') }}">
+                        Cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

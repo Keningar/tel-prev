@@ -1,0 +1,39 @@
+controlBwMasivo_index:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:indexControlBwMasivo" }
+
+controlBwMasivo_ajaxGetEjecuciones:
+    pattern:  /ajaxGetEjecuciones
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetListaControlBwMasivo" }
+
+controlBwMasivo_view:
+    pattern:  /{intIdEjecucion}/view
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:viewControlBwMasivo" }
+
+controlBwMasivo_ajaxGetDetalles:
+    pattern:  /ajaxGetDetalles
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetDetallesControlBwMasivo" }
+
+controlBwMasivo_generar:
+    pattern:  /generar
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:generarControlBwMasivo" }
+
+controlBwMasivo_ajaxGenerar:
+    pattern:  /ajaxGenerar
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGenerarControlBwMasivo" }
+
+controlBwMasivo_ajaxValidate:
+    pattern:  /ajaxValidate
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxValidateControlBwMasivo" }
+
+controlBwMasivo_ajaxGetSwitch:
+    pattern:  /ajaxGetSwitch
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetSwitchControlBwMasivo" }
+
+controlBwMasivo_ajaxGetDiasNoPermitidos:
+    pattern:  /ajaxGetDiasNoPermitidos
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetDiasNoPermitidosBwMasivo" }
+
+controlBwMasivo_ajaxGetInterface:
+    pattern:  /ajaxGetInterface
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitch:ajaxGetInterfaceControlBwMasivo" }

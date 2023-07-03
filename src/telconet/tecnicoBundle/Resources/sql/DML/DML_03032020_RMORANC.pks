@@ -1,0 +1,590 @@
+--SE CREA NUEVO PROGRESO PARA EL REGISTRO DE FIBRA
+INSERT INTO
+"DB_SOPORTE"."ADMI_TIPO_PROGRESO"
+(
+ID_TIPO_PROGRESO,
+CODIGO,
+NOMBRE_TIPO_PROGRESO,
+DESCRIPCION,
+ESTADO,
+USR_CREACION,
+FE_CREACION,
+IP_CREACION,
+USR_ULT_MOD,
+FE_ULT_MOD
+)
+VALUES 
+(
+DB_SOPORTE.SEQ_ADMI_TIPO_PROGRESO.NEXTVAL, 
+'INGRESO_FIBRA', 
+'Ingreso de fibra', 
+null,
+'Activo', 
+'admin', 
+SYSDATE, 
+'127.0.0.1',
+null,
+null
+);
+
+
+--INGRESANDO PROGRESO DE INGRESO DE FIBRA PARA LA EMPRESA MD
+INSERT INTO "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+(
+ID_PROGRESO_PORCENTAJE, 
+PORCENTAJE, 
+TIPO_PROGRESO_ID, 
+TAREA_ID, 
+ESTADO, 
+USR_CREACION, 
+FE_CREACION, 
+IP_CREACION,
+USR_ULT_MOD, 
+FE_ULT_MOD, 
+ORDEN, 
+EMPRESA_ID
+)
+VALUES 
+(
+DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+'5', 
+(select ID_TIPO_PROGRESO from DB_SOPORTE.ADMI_TIPO_PROGRESO where CODIGO = 'INGRESO_FIBRA'),
+'849', 
+'Activo', 
+'admin', 
+SYSDATE, 
+'127.0.0.1',
+NULL,
+SYSDATE, 
+'11', 
+'18'
+);
+
+
+--INGRESANDO PROGRESO DE INGRESO DE FIBRA PARA LA EMPRESA TN
+INSERT INTO "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+(
+ID_PROGRESO_PORCENTAJE, 
+PORCENTAJE, 
+TIPO_PROGRESO_ID, 
+TAREA_ID, 
+ESTADO, 
+USR_CREACION, 
+FE_CREACION, 
+IP_CREACION,
+USR_ULT_MOD, 
+FE_ULT_MOD, 
+ORDEN, 
+EMPRESA_ID
+)
+VALUES 
+(
+DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+'5', 
+(select ID_TIPO_PROGRESO from DB_SOPORTE.ADMI_TIPO_PROGRESO where CODIGO = 'INGRESO_FIBRA'),
+'849', 
+'Activo', 
+'admin', 
+SYSDATE, 
+'127.0.0.1',
+NULL,
+SYSDATE, 
+'12', 
+'10'
+);
+
+
+--SE ACTUALIZA PROGRESO PARA QUE LA SUMA DE 100 EMPRESA MD TAREA 849 
+UPDATE "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+SET 
+PORCENTAJE = '15' 
+WHERE 
+ID_PROGRESO_PORCENTAJE = 5;
+
+--SE ACTUALIZA PROGRESO PARA QUE LA SUMA DE 100 EMPRESA TN TAREA 849
+UPDATE "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+SET 
+PORCENTAJE = '10' 
+WHERE 
+ID_PROGRESO_PORCENTAJE = 25;
+
+
+
+
+
+--INGRESANDO PROGRESO DE INGRESO DE FIBRA PARA LA EMPRESA TN 850
+INSERT INTO "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+(
+ID_PROGRESO_PORCENTAJE, 
+PORCENTAJE, 
+TIPO_PROGRESO_ID, 
+TAREA_ID, 
+ESTADO, 
+USR_CREACION, 
+FE_CREACION, 
+IP_CREACION,
+USR_ULT_MOD, 
+FE_ULT_MOD, 
+ORDEN, 
+EMPRESA_ID
+)
+VALUES 
+(
+DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+'5', 
+(select ID_TIPO_PROGRESO from DB_SOPORTE.ADMI_TIPO_PROGRESO where CODIGO = 'INGRESO_FIBRA'),
+'850', 
+'Activo', 
+'admin', 
+SYSDATE, 
+'127.0.0.1',
+NULL,
+SYSDATE, 
+'12', 
+'10'
+);
+
+--SE ACTUALIZA PROGRESO PARA QUE LA SUMA DE 100 EMPRESA TN TAREA 849
+UPDATE "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+SET 
+PORCENTAJE = '15' 
+WHERE 
+ID_PROGRESO_PORCENTAJE = 58;
+
+
+
+
+
+--INGRESANDO PROGRESO DE INGRESO DE FIBRA PARA LA EMPRESA MD -1
+INSERT INTO "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+(
+ID_PROGRESO_PORCENTAJE, 
+PORCENTAJE, 
+TIPO_PROGRESO_ID, 
+TAREA_ID, 
+ESTADO, 
+USR_CREACION, 
+FE_CREACION, 
+IP_CREACION,
+USR_ULT_MOD, 
+FE_ULT_MOD, 
+ORDEN, 
+EMPRESA_ID
+)
+VALUES 
+(
+DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+'10', 
+(select ID_TIPO_PROGRESO from DB_SOPORTE.ADMI_TIPO_PROGRESO where CODIGO = 'INGRESO_FIBRA'),
+'-1', 
+'Activo', 
+'admin', 
+SYSDATE, 
+'127.0.0.1',
+NULL,
+SYSDATE, 
+'6', 
+'18'
+);
+
+
+
+--SE ACTUALIZA PROGRESO PARA QUE LA SUMA DE 100 EMPRESA MD
+UPDATE "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+SET 
+PORCENTAJE = '30' 
+WHERE 
+ID_PROGRESO_PORCENTAJE = 23;
+
+
+
+
+--INGRESANDO PROGRESO DE INGRESO DE FIBRA PARA LA EMPRESA TN -1
+INSERT INTO "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+(
+ID_PROGRESO_PORCENTAJE, 
+PORCENTAJE, 
+TIPO_PROGRESO_ID, 
+TAREA_ID, 
+ESTADO, 
+USR_CREACION, 
+FE_CREACION, 
+IP_CREACION,
+USR_ULT_MOD, 
+FE_ULT_MOD, 
+ORDEN, 
+EMPRESA_ID
+)
+VALUES 
+(
+DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+'10', 
+(select ID_TIPO_PROGRESO from DB_SOPORTE.ADMI_TIPO_PROGRESO where CODIGO = 'INGRESO_FIBRA'),
+'-1', 
+'Activo', 
+'admin', 
+SYSDATE, 
+'127.0.0.1',
+NULL,
+SYSDATE, 
+'6', 
+'10'
+);
+
+
+
+--SE ACTUALIZA PROGRESO PARA QUE LA SUMA DE 100 EMPRESA TN
+UPDATE "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE"
+SET
+PORCENTAJE = '30'
+WHERE 
+ID_PROGRESO_PORCENTAJE = 42;
+
+
+
+
+--INGRESANDO PROGRESO DE INGRESO DE FIBRA PARA LA EMPRESA MD 0
+INSERT INTO "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+(
+ID_PROGRESO_PORCENTAJE, 
+PORCENTAJE, 
+TIPO_PROGRESO_ID, 
+TAREA_ID, 
+ESTADO, 
+USR_CREACION, 
+FE_CREACION, 
+IP_CREACION,
+USR_ULT_MOD, 
+FE_ULT_MOD, 
+ORDEN, 
+EMPRESA_ID
+)
+VALUES 
+(
+DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+'5', 
+(select ID_TIPO_PROGRESO from DB_SOPORTE.ADMI_TIPO_PROGRESO where CODIGO = 'INGRESO_FIBRA'),
+'0', 
+'Activo', 
+'admin', 
+SYSDATE, 
+'127.0.0.1',
+NULL,
+SYSDATE, 
+'8', 
+'18'
+);
+
+
+
+--SE ACTUALIZA PROGRESO PARA QUE LA SUMA DE 100 EMPRESA MD
+UPDATE "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE"
+SET
+PORCENTAJE = '40'
+WHERE 
+ID_PROGRESO_PORCENTAJE = 17;
+
+	
+--INGRESANDO PROGRESO DE INGRESO DE FIBRA PARA LA EMPRESA TN 0
+INSERT INTO "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE" 
+(
+ID_PROGRESO_PORCENTAJE, 
+PORCENTAJE, 
+TIPO_PROGRESO_ID, 
+TAREA_ID, 
+ESTADO, 
+USR_CREACION, 
+FE_CREACION, 
+IP_CREACION,
+USR_ULT_MOD, 
+FE_ULT_MOD, 
+ORDEN, 
+EMPRESA_ID
+)
+VALUES 
+(
+DB_SOPORTE.SEQ_INFO_PROGRESO_PORCENTAJE.NEXTVAL, 
+'5', 
+(select ID_TIPO_PROGRESO from DB_SOPORTE.ADMI_TIPO_PROGRESO where CODIGO = 'INGRESO_FIBRA'),
+'0', 
+'Activo', 
+'admin', 
+SYSDATE, 
+'127.0.0.1',
+NULL,
+SYSDATE, 
+'9', 
+'10'
+);
+
+
+
+--SE ACTUALIZA PROGRESO PARA QUE LA SUMA DE 100 EMPRESA TN
+UPDATE "DB_SOPORTE"."INFO_PROGRESO_PORCENTAJE"
+SET
+PORCENTAJE = '40'
+WHERE 
+ID_PROGRESO_PORCENTAJE = 45;
+
+
+	
+--IDs de progresos de FIBRA para tareas de soporte MD
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET
+values         
+(
+                DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+                (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='IDS_PROGRESOS_TAREAS'),
+                'IDs de progresos de fibra para tareas de soporte MD',
+                'PROG_SOPORTE_MD_FIBRA',
+				'92,94',
+				NULL,
+				NULL,
+				'Activo',
+				'rmoranc',
+				SYSDATE,
+				'127.0.0.1',
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL
+);
+
+
+--IDs de progresos de FIBRA para tareas de soporte TN
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET
+values         
+(
+                DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+                (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='IDS_PROGRESOS_TAREAS'),
+                'IDs de progresos de fibra para tareas de soporte TN',
+                'PROG_SOPORTE_TN_FIBRA',
+				'93,95',
+				NULL,
+				NULL,
+				'Activo',
+				'rmoranc',
+				SYSDATE,
+				'127.0.0.1',
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL
+);
+
+
+
+
+
+--Cabecera para ids de tareas que no requieren registro de activos 
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_CAB
+values         
+(
+                DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+                'IDS_TAREAS_NO_REG_ACTIVOS',
+                'IDs de las tareas que no requieren registro de activos',
+                'SOPORTE',
+				'IDS_TAREAS_NO_REG_ACTIVOS',
+				'Activo',
+				'rmoranc',
+				SYSDATE,
+				'127.0.0.1',
+				null,
+				null,
+				null
+);
+
+
+
+
+
+--Detalle de los ids de tareas que no requieren registro de activos al finalizar
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET
+values         
+(
+                DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+                (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='IDS_TAREAS_NO_REG_ACTIVOS'),
+                'IDs de las tareas que no requieren registro de activos al finalizar la tarea',
+                '36,333,313,849,5151,674,2790,2898,2985,4239,6004,4864,4863',
+				'',
+				NULL,
+				NULL,
+				'Activo',
+				'rmoranc',
+				SYSDATE,
+				'127.0.0.1',
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL,
+				NULL
+);
+
+
+
+--CREACION DE PARAMETRO PARA EL ORIGEN DE UNA ACCION DESDE EL MÓVIL
+INSERT INTO db_general.admi_parametro_cab VALUES 
+(
+    db_general.SEQ_ADMI_PARAMETRO_CAB.nextval,
+    'ORIGEN_MOVIL',
+    'PARAMETRO PARA EL ORIGEN DE UNA ACCION DESDE EL MÓVIL',
+    'WEB',
+    NULL,
+    'Activo',
+    'rmoranc',
+    SYSDATE,
+    '192.168.1.1',
+    NULL,
+    NULL,
+    NULL
+);
+
+INSERT INTO db_general.admi_parametro_det VALUES 
+(
+    db_general.seq_admi_parametro_det.NEXTVAL,
+            (
+                SELECT
+                    id_parametro
+                FROM
+                    db_general.admi_parametro_cab
+                WHERE
+                    nombre_parametro = 'ORIGEN_MOVIL'
+            ),
+    'PARAMETRO PARA EL ORIGEN DE UNA ACCION DESDE EL MÓVIL',
+    'MOVIL',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'rmoranc',
+    SYSDATE,
+    '192.168.1.1', 
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+);
+
+
+--CREACION DE PARAMETRO CON EL NOMBRE DE CATEGORIA ADMINISTRATIVO
+INSERT INTO db_general.admi_parametro_cab VALUES 
+(
+    db_general.SEQ_ADMI_PARAMETRO_CAB.nextval,
+    'CATEGORIA_NO_MOVIL',
+    'CATEGORIA QUE NO SE VISUALIZARÁ DESDE EL MÓVIL',
+    'WEB',
+    NULL,
+    'Activo',
+    'rmoranc',
+    SYSDATE,
+    '192.168.1.1',
+    NULL,
+    NULL,
+    NULL
+);
+
+INSERT INTO db_general.admi_parametro_det VALUES 
+(
+    db_general.seq_admi_parametro_det.NEXTVAL,
+            (
+                SELECT
+                    id_parametro
+                FROM
+                    db_general.admi_parametro_cab
+                WHERE
+                    nombre_parametro = 'CATEGORIA_NO_MOVIL'
+            ),
+    'CATEGORIA QUE NO SE VISUALIZARÁ DESDE EL MÓVIL',
+    'ADMINISTRATIVO',
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'rmoranc',
+    SYSDATE,
+    '192.168.1.1', 
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+);
+
+
+--Parámetro con ID de progreso de fibra para tareas de instalación MD
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+                DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+                (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='IDS_PROGRESOS_TAREAS'),
+                'IDs de progresos de fibra para tareas de instalación MD',
+                'PROG_INSTALACION_MD_FIBRA',
+        '89',
+        NULL,
+        NULL,
+        'Activo',
+        'rmoranc',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL
+);
+
+--Parámetro con ID de progreso de fibra para tareas de instalación TN
+Insert 
+into DB_GENERAL.ADMI_PARAMETRO_DET 
+values         
+(
+                DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+                (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO='IDS_PROGRESOS_TAREAS'),
+                'IDs de progresos de fibra para tareas de instalación TN',
+                'PROG_INSTALACION_TN_FIBRA',
+        '90,91',
+        NULL,
+        NULL,
+        'Activo',
+        'rmoranc',
+        SYSDATE,
+        '127.0.0.1',
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL,
+        NULL
+);
+
+
+
+COMMIT;
+

@@ -1,0 +1,58 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+obteniendo los servicios
+servicios...
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/5, login:uio5356 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.251.180, interface:0/22, login:uiommreal1 , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.7, interface:0/16, login:uiojbgome_m , perfil:d608u320, up:608, down:320
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/2, login:uiocbassign2 , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.51, interface:0/1, login:uiolagarcesv1 , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.254.117, interface:0/25, login:uiordjime_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.254.251, interface:0/18, login:uiogcpere_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.245, interface:0/25, login:uiodehidalg_m , perfil:d4928u1024, up:4928, down:1024
+EJECUTO modelo:MEA1, ip:172.30.254.168, interface:0/26, login:uioapjara_m , perfil:d1248u608, up:1248, down:608
+EJECUTO modelo:MEA1, ip:172.30.251.91, interface:0/30, login:uioapolme_m , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.58, interface:0/31, login:uioaysarang_m , perfil:d1248u608, up:1248, down:608
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/19, login:uiorrmorillof1 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.249.7, interface:0/1, login:uiomapare_m , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.164, interface:0/26, login:uiocorporacion8 , perfil:d20480u20480, up:20480, down:20480
+EJECUTO modelo:MEA1, ip:172.30.254.251, interface:0/24, login:uiopublicidad1 , perfil:d25120u25120, up:25120, down:25120
+EJECUTO modelo:MEA1, ip:172.30.251.180, interface:0/30, login:uiomaflor_m , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/10, login:uioamlope_m , perfil:d4928u1024, up:4928, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/20, login:uiohpperezw2 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.252.58, interface:0/7, login:uiomfdiazp_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.251.91, interface:0/17, login:uiosejoff_m , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.254.168, interface:0/14, login:uiolelinaresg1 , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.249.7, interface:0/29, login:uiojavela_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/16, login:uiojbsolanoh1 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.249.7, interface:0/6, login:uiopurifluidos2 , perfil:d5120u5120, up:5120, down:5120
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/29, login:uiomesalg_m , perfil:d4928u1024, up:4928, down:1024
+EJECUTO modelo:MEA1, ip:172.30.251.91, interface:0/15, login:uiossmatab_m , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/18, login:uionesamaniegoc1 , perfil:, up:5120, down:2560
+EJECUTO modelo:MEA1, ip:172.30.249.68, interface:0/6, login:uiojidea_m , perfil:d3712u1024, up:3712, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/8, login:uiodigitalteam2 , perfil:, up:10240, down:10240
+EJECUTO modelo:MEA1, ip:172.30.251.91, interface:0/28, login:uiojlchec_m , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA1, ip:172.30.252.21, interface:0/9, login:uiogems1 , perfil:, up:5120, down:5120
+***********************************
+LISTADO DE SERVICIOS 
+generando archivo...
+Hora Inicio: Wed Aug 21 06:00:01 ECT 2013
+Hora Fin: Wed Aug 21 06:00:36 ECT 2013

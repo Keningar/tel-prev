@@ -1,0 +1,16 @@
+elementoTransceiver:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransceiver:indexTransceiver" }
+
+elementoTransceiver_showTransceiver:
+    pattern:  /{id}/showTransceiver
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransceiver:showTransceiver" }
+    
+elementoTransceiver_getEncontradosTransceiver:
+    pattern:  /getEncontradosTransceiver
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransceiver:getEncontradosTransceiver" }
+    
+elementoTransceiver_cargarDatosTransceiver:
+    pattern:  /{id}/cargarDatosTransceiver
+    defaults: { _controller: "tecnicoBundle:InfoElementoTransceiver:cargarDatosTransceiver" }
+    requirements: { _method: POST }

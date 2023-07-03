@@ -1,0 +1,37 @@
+vlan:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:Vlan:index" }
+    
+vlan_grid:
+    pattern:  /ajax-grid
+    defaults: { _controller: "tecnicoBundle:Vlan:ajaxGrid" }
+    requirements: { _method: POST }
+vlan_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:Vlan:new" }
+    
+vlan_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:Vlan:create" }
+    requirements: { _method: POST }
+    
+vlan_delete:
+    pattern:  /ajax-delete
+    defaults: { _controller: "tecnicoBundle:Vlan:ajaxDelete" }
+    requirements: { _method: POST }
+    
+vlan_ajaxGetInformacionVlanDC:
+    pattern:  /ajaxGetInformacionReservarVlansDC
+    defaults: { _controller: "tecnicoBundle:Vlan:ajaxGetInformacionReservarVlansDC" }
+
+vlan_ajaxGetInformacionVlanCH:
+    pattern:  /ajaxGetInformacionReservarVlansCH
+    defaults: { _controller: "tecnicoBundle:Vlan:ajaxGetInformacionReservarVlansCH" }
+
+vlan_ajaxCrearVlanClienteCH:
+    pattern:  /ajaxCrearVlanClienteCH
+    defaults: { _controller: "tecnicoBundle:Vlan:ajaxCrearVlanClienteCH" }
+    
+vlan_ajaxCrearVlanClienteDC:
+    pattern:  /ajaxCrearVlanClienteDC
+    defaults: { _controller: "tecnicoBundle:Vlan:ajaxCrearVlanClienteDC" }

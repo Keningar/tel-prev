@@ -1,0 +1,83 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGridInstalaciones = '{{ path('resumeninstalaciones_grid') }}';
+        var strUrlGetInstalaciones  = '{{ path('resumeninstalaciones_getInstalacionesGroupByEstados') }}';
+        var arrayCantones           = []; 
+        var intCont                 = 0;
+        var intHeight               = 63;
+        var intMaxHeight            = 263;
+    </script>
+    {% if data.cantones is defined %}
+        {% for canton in data.cantones %}
+            <script> 
+                arrayCantones[intCont] = "{{canton}}";
+                
+                intCont++;
+                
+                intHeight = intHeight + 10;
+                
+                if( intHeight > 263 )
+                {
+                    intHeight = intMaxHeight;
+                }
+            </script>
+        {% endfor %}
+    {% endif %}  
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/ResumenInstalaciones/index.js?1') }}"></script>    
+{% endblock %}
+
+{% block contenido_izq %}    
+
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Resumen de Instalaciones</h1>
+	</div>
+	<div class="body_content k-content">
+	    <table width="900" cellpadding="1" cellspacing='0'  border='0'>
+	        <tr>
+	            <td colspan="2">
+                        <div id='filtroInstalacionesFinalizadas'></div>
+                    </td>
+	        </tr>	
+	        <tr>
+	            <td colspan="2">
+                        <div id="gridInstalacionesFinalizadas"></div>
+                    </td>
+	        </tr>
+	        <tr>
+	            <td colspan="2" style="height: 30px;">&nbsp;</td>
+	        </tr>
+                {% if data.cantones is defined %}
+                    {% set count = 1 %}
+                    
+                    {% for canton in data.cantones %}
+                        {% if count == 1 %}
+                            <tr>
+                                <td>
+                                    <div id="gridPastelInstalaciones{{canton}}"></div>
+                                </td>
+                            {% set count = count + 1 %}
+                        {% elseif count == 2 %}
+                                <td>
+                                    <div id="gridPastelInstalaciones{{canton}}" align="right"></div>
+                                </td>
+                            </tr>
+                            {% set count = 1 %}
+                        {% endif %}
+                    {% endfor %}
+                            
+                    {% if count == 2 %}
+                        </tr>
+                    {% endif %}
+                {% endif %}
+	    </table> 
+	</div>
+	
+{% endblock contenido_izq %}

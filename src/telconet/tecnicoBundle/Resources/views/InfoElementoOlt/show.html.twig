@@ -1,0 +1,219 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Olt</h1>
+</div>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"><b>Nombre Elemento:</b></th>
+                <td width="15%">{{ elemento.nombreElemento }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%"><b>Descripci&oacute;n Elemento</b></th>        
+                <td width="15%">{{ elemento.descripcionElemento }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height: 5px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Ip:</b></th>
+                <td width="15%">{{ ipElemento.ip}}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Jurisdiccion:</b></th>
+                <td width="15%">{{ jurisdiccion.nombreJurisdiccion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height: 5px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Canton:</b></th>
+                <td width="15%">{{ ubicacion.parroquiaId.cantonId.nombreCanton }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Parroquia:</b></th>
+                <td width="15%">{{ ubicacion.parroquiaId.nombreParroquia }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height: 5px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Direccion:</b></th>
+                <td width="15%">{{ ubicacion.direccionUbicacion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Altura Sobre Nivel Mar:</b></th>
+                <td width="15%">{{ ubicacion.alturaSnm }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height: 5px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Longitud Ubicacion:</b></th>
+                <td width="15%">{{ ubicacion.longitudUbicacion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Latitud Ubicacion:</b></th>
+                <td width="15%">{{ ubicacion.latitudUbicacion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height: 5px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Modelo Elemento:</b></th>              
+                <td width="15%">{{ elemento.modeloElementoId.nombreModeloElemento}}</td>
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Tipo Aprovisionamiento:</b></th>
+                <td width="15%">{{ aprovisionamientoIp }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height: 5px;">&nbsp;</td>
+            </tr>
+            <tr>
+                
+                 <td width="8%">&nbsp;</td>
+                <th width="25%"><b>OLT Operativo:</b></th>
+                <td width="15%">{{ operatividad }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Estado:</b></th>              
+                <td width="15%">{{ elemento.estado}}</td>
+                <td width="1%"></td>
+
+               
+            </tr>
+            {% if operatividad != "SI" and elemento.estado!= "Eliminado"   %}
+             <tr>
+                <td colspan="8" style="height: 5px;">&nbsp;</td>
+            </tr>
+            <tr>
+                
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>No Operativo desde:</b></th>
+                <td width="15%">{{fechaOperatividad}}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b></b></th>              
+                <td width="15%"></td>
+                <td width="1%"></td>
+
+               
+            </tr>
+            {% endif %}
+
+            <tr>
+                <td colspan="8" style="height: 5px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Es Multiplataforma:</b></th>
+                <td width="15%">{{strOltMultiplataforma}}</td>
+                <td width="1%"></td>
+
+                {% if strOltMultiplataforma == "SI" %}
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>PE Asignado:</b></th>
+                <td width="15%">{{strNombrePeMulti}}</td>
+                <td width="1%"></td>
+                {% else %}
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b></b></th>
+                <td width="15%"></td>
+                <td width="1%"></td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('elementoolt') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    
+    <div class="secHead">Historial del Elemento</div>      
+	<table style="width:100%;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+		<tbody>
+			<tr>
+				<td><b>Estado</b></td>
+				<td><b>Fecha Creacion</b></td>
+				<td><b>Usuario Creacion</b></td>
+				<td><b>Observacion</b></td>
+			</tr>
+			{% for key, item1 in historialElemento %}
+				<tr>
+				{% for key_in, item2 in item1 %}
+                    <td>{{ item2|striptags('<br>')|raw }} </td>
+				{% endfor %}
+				</tr>
+			{% endfor %}   
+		</tbody>
+	</table>
+    
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            {% if is_granted("ROLE_227-2") %}
+                <a class="button-nuevo-registro" href="{{ path('elementoolt_newOlt') }}">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Nuevo Olt
+                </a>
+            {% endif %}
+        </li>
+        <li>
+            &nbsp;
+        </li>
+        <li>
+            {% if is_granted("ROLE_227-4") %}
+                <a class="button-editar" href="{{ path('elementoolt_editOlt', { 'id': elemento.id }) }}">
+                    &nbsp;Editar Olt
+                </a>
+            {% endif %}
+        </li>
+        <li>
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

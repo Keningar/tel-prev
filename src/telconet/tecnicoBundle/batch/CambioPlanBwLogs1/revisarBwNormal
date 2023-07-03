@@ -1,0 +1,685 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+obteniendo los servicios
+servicios...
+172.27.164.254,13,54951,capacidad up en elemento:1024
+172.27.164.254,13,54951,capacidad down en elemento:3712
+172.16.92.254,23,61657,capacidad up en elemento:320
+172.16.92.254,23,61657,capacidad down en elemento:608
+172.22.24.254,22,53184,capacidad up en elemento:608
+172.22.24.254,22,53184,capacidad down en elemento:1248
+172.23.37.252,24,52730,capacidad up en elemento:608
+172.23.37.252,24,52730,capacidad down en elemento:1248
+172.24.52.253,23,62569,capacidad up en elemento:320
+172.24.52.253,23,62569,capacidad down en elemento:608
+172.30.252.67,23,68449,capacidad up en elemento:608
+172.30.252.67,23,68449,capacidad down en elemento:1248
+172.24.67.254,10,70708,capacidad up en elemento:608
+172.24.67.254,10,70708,capacidad down en elemento:1248
+172.28.86.245,21,56543,capacidad up en elemento:608
+172.28.86.245,21,56543,capacidad down en elemento:1248
+172.16.92.254,23,61657,capacidad up en base:320
+172.16.92.254,23,61657,capacidad down en base:608
+172.29.26.254,24,62810,capacidad up en elemento:608
+172.29.26.254,24,62810,capacidad down en elemento:1248
+172.16.92.254,12,61646,capacidad up en elemento:320
+172.16.92.254,12,61646,capacidad down en elemento:608
+172.29.122.253,10,92530,capacidad up en elemento:256
+172.29.122.253,10,92530,capacidad down en elemento:512
+172.18.60.254,16,73990,capacidad up en elemento:608
+172.18.60.254,16,73990,capacidad down en elemento:1248
+172.30.254.54,10,68940,capacidad up en elemento:608
+172.30.254.54,10,68940,capacidad down en elemento:1248
+172.30.252.92,23,69265,capacidad up en elemento:608
+172.30.252.92,23,69265,capacidad down en elemento:1248
+172.30.251.2,18,68020,capacidad up en elemento:608
+172.30.251.2,18,68020,capacidad down en elemento:1248
+172.30.252.106,24,64362,capacidad up en elemento:1024
+172.30.252.106,24,64362,capacidad down en elemento:2464
+172.28.112.252,21,56183,capacidad up en elemento:608
+172.28.112.252,21,56183,capacidad down en elemento:1248
+172.30.251.90,23,64553,capacidad up en elemento:608
+172.30.251.90,23,64553,capacidad down en elemento:1248
+172.28.86.249,12,56318,capacidad up en elemento:1024
+172.28.86.249,12,56318,capacidad down en elemento:2464
+172.30.253.149,11,74345,capacidad up en elemento:608
+172.30.253.149,11,74345,capacidad down en elemento:1248
+172.30.253.153,12,74394,capacidad up en elemento:608
+172.30.253.153,12,74394,capacidad down en elemento:1248
+172.23.37.252,24,52730,capacidad up en base:608
+172.23.37.252,24,52730,capacidad down en base:1248
+172.23.37.252,11,52717,capacidad up en elemento:608
+172.23.37.252,11,52717,capacidad down en elemento:1248
+172.30.253.66,15,57425,capacidad up en elemento:608
+172.30.253.66,15,57425,capacidad down en elemento:1248
+172.28.107.254,15,57137,capacidad up en elemento:608
+172.28.107.254,15,57137,capacidad down en elemento:1248
+172.30.251.92,13,64639,capacidad up en elemento:608
+172.30.251.92,13,64639,capacidad down en elemento:1248
+172.30.249.250,13,52215,capacidad up en elemento:608
+172.30.249.250,13,52215,capacidad down en elemento:1248
+172.30.253.6,10,53628,capacidad up en elemento:608
+172.30.253.6,10,53628,capacidad down en elemento:1248
+172.30.253.149,11,74345,capacidad up en base:608
+172.30.253.149,11,74345,capacidad down en base:1248
+172.31.200.36,23,73277,capacidad up en elemento:608
+172.31.200.36,23,73277,capacidad down en elemento:1248
+172.30.253.149,16,74350,capacidad up en elemento:608
+172.30.253.149,16,74350,capacidad down en elemento:1248
+172.31.200.4,10,73408,capacidad up en elemento:608
+172.31.200.4,10,73408,capacidad down en elemento:1248
+172.30.250.5,11,53869,capacidad up en elemento:1024
+172.30.250.5,11,53869,capacidad down en elemento:2464
+172.28.86.249,12,56318,capacidad up en base:1024
+172.28.86.249,12,56318,capacidad down en base:2464
+172.31.200.35,23,73301,capacidad up en elemento:608
+172.31.200.35,23,73301,capacidad down en elemento:1248
+172.30.253.60,15,53249,capacidad up en elemento:608
+172.30.253.60,15,53249,capacidad down en elemento:1248
+172.31.200.19,11,73337,capacidad up en elemento:608
+172.31.200.19,11,73337,capacidad down en elemento:1248
+172.30.252.106,24,64362,capacidad up en base:1024
+172.30.252.106,24,64362,capacidad down en base:2464
+172.30.252.106,15,64353,capacidad up en elemento:1024
+172.30.252.106,15,64353,capacidad down en elemento:3712
+172.30.253.58,15,53321,capacidad up en elemento:608
+172.30.253.58,15,53321,capacidad down en elemento:1248
+172.28.86.245,15,56537,capacidad up en elemento:608
+172.28.86.245,15,56537,capacidad down en elemento:1248
+172.30.252.67,23,68449,capacidad up en base:608
+172.30.252.67,23,68449,capacidad down en base:1248
+172.24.67.254,10,70708,capacidad up en base:608
+172.24.67.254,10,70708,capacidad down en base:1248
+172.24.67.254,20,70718,capacidad up en elemento:608
+172.24.67.254,20,70718,capacidad down en elemento:1248
+172.30.252.67,24,68450,capacidad up en elemento:1024
+172.30.252.67,24,68450,capacidad down en elemento:2464
+172.30.254.54,10,68940,capacidad up en base:608
+172.30.254.54,10,68940,capacidad down en base:1248
+172.30.254.54,22,68952,capacidad up en elemento:608
+172.30.254.54,22,68952,capacidad down en elemento:1248
+172.30.252.92,23,69265,capacidad up en base:608
+172.30.252.92,23,69265,capacidad down en base:1248
+172.30.252.92,17,69259,capacidad up en elemento:1024
+172.30.252.92,17,69259,capacidad down en elemento:2464
+172.31.200.35,24,73302,capacidad up en elemento:608
+172.31.200.35,24,73302,capacidad down en elemento:1248
+172.30.253.6,23,53641,capacidad up en elemento:608
+172.30.253.6,23,53641,capacidad down en elemento:1248
+172.30.249.250,13,52215,capacidad up en base:608
+172.30.249.250,13,52215,capacidad down en base:1248
+172.30.249.250,15,52217,capacidad up en elemento:608
+172.30.249.250,15,52217,capacidad down en elemento:1248
+172.30.253.153,12,74394,capacidad up en base:608
+172.30.253.153,12,74394,capacidad down en base:1248
+172.30.253.153,11,74393,capacidad up en elemento:608
+172.30.253.153,11,74393,capacidad down en elemento:1248
+172.27.164.254,13,54951,capacidad up en base:1024
+172.27.164.254,13,54951,capacidad down en base:3712
+172.27.164.254,23,54961,capacidad up en elemento:1024
+172.27.164.254,23,54961,capacidad down en elemento:2464
+172.30.253.66,15,57425,capacidad up en base:608
+172.30.253.66,15,57425,capacidad down en base:1248
+172.28.107.254,15,57137,capacidad up en base:608
+172.28.107.254,15,57137,capacidad down en base:1248
+172.28.107.254,22,57144,capacidad up en elemento:608
+172.28.107.254,22,57144,capacidad down en elemento:1248
+172.31.200.36,23,73277,capacidad up en base:608
+172.31.200.36,23,73277,capacidad down en base:1248
+172.30.253.149,16,74350,capacidad up en base:608
+172.30.253.149,16,74350,capacidad down en base:1248
+172.31.200.4,10,73408,capacidad up en base:608
+172.31.200.4,10,73408,capacidad down en base:1248
+172.30.250.5,11,53869,capacidad up en base:1024
+172.30.250.5,11,53869,capacidad down en base:2464
+172.31.200.36,12,73266,capacidad up en elemento:608
+172.31.200.36,12,73266,capacidad down en elemento:1248
+172.30.251.90,23,64553,capacidad up en base:608
+172.30.251.90,23,64553,capacidad down en base:1248
+172.31.200.4,11,73409,capacidad up en elemento:608
+172.31.200.4,11,73409,capacidad down en elemento:1248
+172.30.253.6,13,53631,capacidad up en elemento:608
+172.30.253.6,13,53631,capacidad down en elemento:1248
+172.28.112.252,21,56183,capacidad up en base:608
+172.28.112.252,21,56183,capacidad down en base:1248
+172.28.112.252,23,56185,capacidad up en elemento:608
+172.28.112.252,23,56185,capacidad down en elemento:1248
+172.30.252.106,15,64353,capacidad up en base:1024
+172.30.252.106,15,64353,capacidad down en base:3712
+172.30.251.2,18,68020,capacidad up en base:608
+172.30.251.2,18,68020,capacidad down en base:1248
+172.30.253.60,24,53258,capacidad up en elemento:608
+172.30.253.60,24,53258,capacidad down en elemento:1248
+172.30.251.2,11,68013,capacidad up en elemento:1024
+172.30.251.2,11,68013,capacidad down en elemento:3712
+172.18.60.254,16,73990,capacidad up en base:608
+172.18.60.254,16,73990,capacidad down en base:1248
+172.30.253.58,23,53329,capacidad up en elemento:608
+172.30.253.58,23,53329,capacidad down en elemento:1248
+172.18.60.254,11,73985,capacidad up en elemento:608
+172.18.60.254,11,73985,capacidad down en elemento:1248
+172.24.67.254,20,70718,capacidad up en base:608
+172.24.67.254,20,70718,capacidad down en base:1248
+172.24.67.254,23,70721,capacidad up en elemento:608
+172.24.67.254,23,70721,capacidad down en elemento:1248
+172.30.252.67,24,68450,capacidad up en base:1024
+172.30.252.67,24,68450,capacidad down en base:2464
+172.29.26.254,24,62810,capacidad up en base:608
+172.29.26.254,24,62810,capacidad down en base:1248
+172.16.92.254,12,61646,capacidad up en base:320
+172.16.92.254,12,61646,capacidad down en base:608
+172.29.26.254,15,62801,capacidad up en elemento:608
+172.29.26.254,15,62801,capacidad down en elemento:1248
+172.16.92.254,19,61653,capacidad up en elemento:320
+172.16.92.254,19,61653,capacidad down en elemento:608
+172.18.60.254,11,73985,capacidad up en base:608
+172.18.60.254,11,73985,capacidad down en base:1248
+172.18.60.254,10,73984,capacidad up en elemento:608
+172.18.60.254,10,73984,capacidad down en elemento:1248
+172.30.254.54,22,68952,capacidad up en base:608
+172.30.254.54,22,68952,capacidad down en base:1248
+172.30.254.54,11,68941,capacidad up en elemento:608
+172.30.254.54,11,68941,capacidad down en elemento:1248
+172.30.251.2,11,68013,capacidad up en base:1024
+172.30.251.2,11,68013,capacidad down en base:3712
+172.30.253.60,24,53258,capacidad up en base:608
+172.30.253.60,24,53258,capacidad down en base:1248
+172.30.253.60,23,53257,capacidad up en elemento:608
+172.30.253.60,23,53257,capacidad down en elemento:1248
+172.31.200.19,11,73337,capacidad up en base:608
+172.31.200.19,11,73337,capacidad down en base:1248
+172.31.200.19,21,73347,capacidad up en elemento:608
+172.31.200.19,21,73347,capacidad down en elemento:1248
+172.31.200.35,22,73300,capacidad up en elemento:1024
+172.31.200.35,22,73300,capacidad down en elemento:2464
+172.31.200.36,12,73266,capacidad up en base:608
+172.31.200.36,12,73266,capacidad down en base:1248
+172.31.200.36,14,73268,capacidad up en elemento:608
+172.31.200.36,14,73268,capacidad down en elemento:1248
+172.30.249.250,15,52217,capacidad up en base:608
+172.30.249.250,15,52217,capacidad down en base:1248
+172.30.251.92,13,64639,capacidad up en base:608
+172.30.251.92,13,64639,capacidad down en base:1248
+172.30.249.250,10,52212,capacidad up en elemento:608
+172.30.249.250,10,52212,capacidad down en elemento:1248
+172.30.251.92,17,64643,capacidad up en elemento:608
+172.30.251.92,17,64643,capacidad down en elemento:1248
+172.30.253.153,11,74393,capacidad up en base:608
+172.30.253.153,11,74393,capacidad down en base:1248
+172.23.37.252,11,52717,capacidad up en base:608
+172.23.37.252,11,52717,capacidad down en base:1248
+172.30.253.153,14,74396,capacidad up en elemento:608
+172.30.253.153,14,74396,capacidad down en elemento:1248
+172.23.37.252,18,52724,capacidad up en elemento:608
+172.23.37.252,18,52724,capacidad down en elemento:1248
+172.30.251.92,17,64643,capacidad up en base:608
+172.30.251.92,17,64643,capacidad down en base:1248
+172.30.251.92,16,64642,capacidad up en elemento:608
+172.30.251.92,16,64642,capacidad down en elemento:1248
+172.28.107.254,22,57144,capacidad up en base:608
+172.28.107.254,22,57144,capacidad down en base:1248
+172.31.200.4,11,73409,capacidad up en base:608
+172.31.200.4,11,73409,capacidad down en base:1248
+172.28.107.254,23,57145,capacidad up en elemento:608
+172.28.107.254,23,57145,capacidad down en elemento:1248
+172.31.200.4,13,73411,capacidad up en elemento:1024
+172.31.200.4,13,73411,capacidad down en elemento:2464
+172.31.200.35,22,73300,capacidad up en base:1024
+172.31.200.35,22,73300,capacidad down en base:2464
+172.31.200.35,16,73294,capacidad up en elemento:1024
+172.31.200.35,16,73294,capacidad down en elemento:2464
+172.31.200.19,21,73347,capacidad up en base:608
+172.31.200.19,21,73347,capacidad down en base:1248
+172.31.200.19,19,73345,capacidad up en elemento:1024
+172.31.200.19,19,73345,capacidad down en elemento:3712
+172.30.252.92,17,69259,capacidad up en base:1024
+172.30.252.92,17,69259,capacidad down en base:2464
+172.30.252.92,19,69261,capacidad up en elemento:1024
+172.30.252.92,19,69261,capacidad down en elemento:2464
+172.30.254.54,11,68941,capacidad up en base:608
+172.30.254.54,11,68941,capacidad down en base:1248
+172.30.253.58,12,53318,capacidad up en elemento:608
+172.30.253.58,12,53318,capacidad down en elemento:1248
+172.29.122.253,10,92530,capacidad up en base:256
+172.29.122.253,10,92530,capacidad down en base:512
+172.30.254.54,24,68954,capacidad up en elemento:608
+172.30.254.54,24,68954,capacidad down en elemento:1248
+172.28.86.245,15,56537,capacidad up en base:608
+172.28.86.245,15,56537,capacidad down en base:1248
+172.28.86.245,23,56545,capacidad up en elemento:608
+172.28.86.245,23,56545,capacidad down en elemento:1248
+172.30.253.58,19,53325,capacidad up en elemento:608
+172.30.253.58,19,53325,capacidad down en elemento:1248
+172.16.92.254,19,61653,capacidad up en base:320
+172.16.92.254,19,61653,capacidad down en base:608
+172.16.92.254,14,61648,capacidad up en elemento:320
+172.16.92.254,14,61648,capacidad down en elemento:608
+172.30.252.92,19,69261,capacidad up en base:1024
+172.30.252.92,19,69261,capacidad down en base:2464
+172.31.200.19,19,73345,capacidad up en base:1024
+172.31.200.19,19,73345,capacidad down en base:3712
+172.30.253.6,13,53631,capacidad up en base:608
+172.30.253.6,13,53631,capacidad down en base:1248
+172.30.253.6,11,53629,capacidad up en elemento:1024
+172.30.253.6,11,53629,capacidad down en elemento:2464
+172.31.200.4,13,73411,capacidad up en base:1024
+172.31.200.4,13,73411,capacidad down en base:2464
+172.31.200.4,12,73410,capacidad up en elemento:1024
+172.31.200.4,12,73410,capacidad down en elemento:3712
+172.31.200.36,14,73268,capacidad up en base:608
+172.31.200.36,14,73268,capacidad down en base:1248
+172.31.200.36,11,73265,capacidad up en elemento:1024
+172.31.200.36,11,73265,capacidad down en elemento:2464
+172.30.249.250,10,52212,capacidad up en base:608
+172.30.249.250,10,52212,capacidad down en base:1248
+172.30.249.250,14,52216,capacidad up en elemento:608
+172.30.249.250,14,52216,capacidad down en elemento:1248
+172.23.37.252,18,52724,capacidad up en base:608
+172.23.37.252,18,52724,capacidad down en base:1248
+172.23.37.252,19,52725,capacidad up en elemento:608
+172.23.37.252,19,52725,capacidad down en elemento:1248
+172.30.253.153,14,74396,capacidad up en base:608
+172.30.253.153,14,74396,capacidad down en base:1248
+172.30.253.153,13,74395,capacidad up en elemento:608
+172.30.253.153,13,74395,capacidad down en elemento:1248
+172.28.107.254,23,57145,capacidad up en base:608
+172.28.107.254,23,57145,capacidad down en base:1248
+172.28.107.254,13,57135,capacidad up en elemento:608
+172.28.107.254,13,57135,capacidad down en elemento:1248
+172.30.253.60,23,53257,capacidad up en base:608
+172.30.253.60,23,53257,capacidad down en base:1248
+172.16.92.254,14,61648,capacidad up en base:320
+172.16.92.254,14,61648,capacidad down en base:608
+172.16.92.254,13,61647,capacidad up en elemento:320
+172.16.92.254,13,61647,capacidad down en elemento:608
+172.30.253.58,19,53325,capacidad up en base:608
+172.30.253.58,19,53325,capacidad down en base:1248
+172.30.253.58,24,53330,capacidad up en elemento:608
+172.30.253.58,24,53330,capacidad down en elemento:1248
+172.18.60.254,10,73984,capacidad up en base:608
+172.18.60.254,10,73984,capacidad down en base:1248
+172.18.60.254,24,73998,capacidad up en elemento:608
+172.18.60.254,24,73998,capacidad down en elemento:1248
+172.30.254.54,24,68954,capacidad up en base:608
+172.30.254.54,24,68954,capacidad down en base:1248
+172.30.254.54,12,68942,capacidad up en elemento:608
+172.30.254.54,12,68942,capacidad down en elemento:1248
+172.24.52.253,23,62569,capacidad up en base:320
+172.24.52.253,23,62569,capacidad down en base:608
+172.24.52.253,17,62563,capacidad up en elemento:608
+172.24.52.253,17,62563,capacidad down en elemento:1248
+172.24.67.254,21,70719,capacidad up en elemento:608
+172.24.67.254,21,70719,capacidad down en elemento:1248
+172.30.254.54,12,68942,capacidad up en base:608
+172.30.254.54,12,68942,capacidad down en base:1248
+172.30.254.54,14,68944,capacidad up en elemento:1024
+172.30.254.54,14,68944,capacidad down en elemento:2464
+172.18.60.254,24,73998,capacidad up en base:608
+172.18.60.254,24,73998,capacidad down en base:1248
+172.18.60.254,23,73997,capacidad up en elemento:1024
+172.18.60.254,23,73997,capacidad down en elemento:2464
+172.30.253.58,24,53330,capacidad up en base:608
+172.30.253.58,24,53330,capacidad down en base:1248
+172.30.253.58,11,53317,capacidad up en elemento:160
+172.30.253.58,11,53317,capacidad down en elemento:320
+172.28.112.252,23,56185,capacidad up en base:608
+172.28.112.252,23,56185,capacidad down en base:1248
+172.28.112.252,19,56181,capacidad up en elemento:608
+172.28.112.252,19,56181,capacidad down en elemento:1248
+172.31.200.4,12,73410,capacidad up en base:1024
+172.31.200.4,12,73410,capacidad down en base:3712
+172.28.107.254,13,57135,capacidad up en base:608
+172.28.107.254,13,57135,capacidad down en base:1248
+172.28.107.254,18,57140,capacidad up en elemento:608
+172.28.107.254,18,57140,capacidad down en elemento:1248
+172.31.200.36,11,73265,capacidad up en base:1024
+172.31.200.36,11,73265,capacidad down en base:2464
+172.31.200.36,24,73278,capacidad up en elemento:1024
+172.31.200.36,24,73278,capacidad down en elemento:2464
+172.30.249.250,14,52216,capacidad up en base:608
+172.30.249.250,14,52216,capacidad down en base:1248
+172.30.249.250,16,52218,capacidad up en elemento:608
+172.30.249.250,16,52218,capacidad down en elemento:1248
+172.30.253.153,13,74395,capacidad up en base:608
+172.30.253.153,13,74395,capacidad down en base:1248
+172.27.164.254,23,54961,capacidad up en base:1024
+172.27.164.254,23,54961,capacidad down en base:2464
+172.23.37.252,19,52725,capacidad up en base:608
+172.23.37.252,19,52725,capacidad down en base:1248
+172.23.37.252,22,52728,capacidad up en elemento:608
+172.23.37.252,22,52728,capacidad down en elemento:1248
+172.30.249.250,16,52218,capacidad up en base:608
+172.30.249.250,16,52218,capacidad down en base:1248
+172.30.249.250,24,52226,capacidad up en elemento:608
+172.30.249.250,24,52226,capacidad down en elemento:1248
+172.31.200.36,24,73278,capacidad up en base:1024
+172.31.200.36,24,73278,capacidad down en base:2464
+172.16.92.254,13,61647,capacidad up en base:320
+172.16.92.254,13,61647,capacidad down en base:608
+172.16.92.254,17,61651,capacidad up en elemento:320
+172.16.92.254,17,61651,capacidad down en elemento:608
+172.30.253.58,11,53317,capacidad up en base:160
+172.30.253.58,11,53317,capacidad down en base:320
+172.29.26.254,15,62801,capacidad up en base:608
+172.29.26.254,15,62801,capacidad down en base:1248
+172.29.26.254,21,62807,capacidad up en elemento:1024
+172.29.26.254,21,62807,capacidad down en elemento:3712
+172.24.52.253,17,62563,capacidad up en base:608
+172.24.52.253,17,62563,capacidad down en base:1248
+172.24.52.253,10,62556,capacidad up en elemento:608
+172.24.52.253,10,62556,capacidad down en elemento:1248
+172.24.67.254,21,70719,capacidad up en base:608
+172.24.67.254,21,70719,capacidad down en base:1248
+172.24.67.254,12,70710,capacidad up en elemento:608
+172.24.67.254,12,70710,capacidad down en elemento:1248
+172.28.86.245,23,56545,capacidad up en base:608
+172.28.86.245,23,56545,capacidad down en base:1248
+172.28.86.245,13,56535,capacidad up en elemento:608
+172.28.86.245,13,56535,capacidad down en elemento:1248
+172.18.60.254,23,73997,capacidad up en base:1024
+172.18.60.254,23,73997,capacidad down en base:2464
+172.28.112.252,18,56180,capacidad up en elemento:1024
+172.28.112.252,18,56180,capacidad down en elemento:2464
+172.28.107.254,18,57140,capacidad up en base:608
+172.28.107.254,18,57140,capacidad down en base:1248
+172.28.107.254,24,57146,capacidad up en elemento:608
+172.28.107.254,24,57146,capacidad down en elemento:1248
+172.30.251.92,16,64642,capacidad up en base:608
+172.30.251.92,16,64642,capacidad down en base:1248
+172.30.251.92,10,64636,capacidad up en elemento:1024
+172.30.251.92,10,64636,capacidad down en elemento:2464
+172.23.37.252,22,52728,capacidad up en base:608
+172.23.37.252,22,52728,capacidad down en base:1248
+172.23.37.252,16,52722,capacidad up en elemento:608
+172.23.37.252,16,52722,capacidad down en elemento:1248
+172.30.249.250,24,52226,capacidad up en base:608
+172.30.249.250,24,52226,capacidad down en base:1248
+172.30.249.250,17,52219,capacidad up en elemento:608
+172.30.249.250,17,52219,capacidad down en elemento:1248
+172.28.112.252,18,56180,capacidad up en base:1024
+172.28.112.252,18,56180,capacidad down en base:2464
+172.16.92.254,17,61651,capacidad up en base:320
+172.16.92.254,17,61651,capacidad down en base:608
+172.28.112.252,24,56186,capacidad up en elemento:1024
+172.28.112.252,24,56186,capacidad down en elemento:2464
+172.16.92.254,20,61654,capacidad up en elemento:320
+172.16.92.254,20,61654,capacidad down en elemento:608
+172.28.86.245,13,56535,capacidad up en base:608
+172.28.86.245,13,56535,capacidad down en base:1248
+172.28.86.245,17,56539,capacidad up en elemento:608
+172.28.86.245,17,56539,capacidad down en elemento:1248
+172.30.254.54,14,68944,capacidad up en base:1024
+172.30.254.54,14,68944,capacidad down en base:2464
+172.30.254.54,23,68953,capacidad up en elemento:1024
+172.30.254.54,23,68953,capacidad down en elemento:2464
+172.24.52.253,10,62556,capacidad up en base:608
+172.24.52.253,10,62556,capacidad down en base:1248
+172.24.52.253,24,62570,capacidad up en elemento:608
+172.24.52.253,24,62570,capacidad down en elemento:1248
+172.29.26.254,21,62807,capacidad up en base:1024
+172.29.26.254,21,62807,capacidad down en base:3712
+172.30.254.54,23,68953,capacidad up en base:1024
+172.30.254.54,23,68953,capacidad down en base:2464
+172.24.67.254,12,70710,capacidad up en base:608
+172.24.67.254,12,70710,capacidad down en base:1248
+172.24.67.254,18,70716,capacidad up en elemento:608
+172.24.67.254,18,70716,capacidad down en elemento:1248
+172.28.86.245,17,56539,capacidad up en base:608
+172.28.86.245,17,56539,capacidad down en base:1248
+172.28.86.245,10,56532,capacidad up en elemento:608
+172.28.86.245,10,56532,capacidad down en elemento:1248
+172.16.92.254,20,61654,capacidad up en base:320
+172.16.92.254,20,61654,capacidad down en base:608
+172.16.92.254,18,61652,capacidad up en elemento:320
+172.16.92.254,18,61652,capacidad down en elemento:608
+172.28.112.252,24,56186,capacidad up en base:1024
+172.28.112.252,24,56186,capacidad down en base:2464
+172.28.112.252,16,56178,capacidad up en elemento:1024
+172.28.112.252,16,56178,capacidad down en elemento:3712
+172.28.107.254,24,57146,capacidad up en base:608
+172.28.107.254,24,57146,capacidad down en base:1248
+172.28.107.254,16,57138,capacidad up en elemento:608
+172.28.107.254,16,57138,capacidad down en elemento:1248
+172.30.249.250,17,52219,capacidad up en base:608
+172.30.249.250,17,52219,capacidad down en base:1248
+172.30.249.250,23,52225,capacidad up en elemento:1024
+172.30.249.250,23,52225,capacidad down en elemento:2464
+172.23.37.252,16,52722,capacidad up en base:608
+172.23.37.252,16,52722,capacidad down en base:1248
+172.23.37.252,12,52718,capacidad up en elemento:608
+172.23.37.252,12,52718,capacidad down en elemento:1248
+172.30.251.92,10,64636,capacidad up en base:1024
+172.30.251.92,10,64636,capacidad down en base:2464
+172.30.251.92,11,64637,capacidad up en elemento:1024
+172.30.251.92,11,64637,capacidad down en elemento:2464
+172.28.107.254,16,57138,capacidad up en base:608
+172.28.107.254,16,57138,capacidad down en base:1248
+172.28.107.254,17,57139,capacidad up en elemento:608
+172.28.107.254,17,57139,capacidad down en elemento:1248
+172.28.112.252,16,56178,capacidad up en base:1024
+172.28.112.252,16,56178,capacidad down en base:3712
+172.28.112.252,22,56184,capacidad up en elemento:1024
+172.28.112.252,22,56184,capacidad down en elemento:3712
+172.24.52.253,24,62570,capacidad up en base:608
+172.24.52.253,24,62570,capacidad down en base:1248
+172.24.52.253,22,62568,capacidad up en elemento:608
+172.24.52.253,22,62568,capacidad down en elemento:1248
+172.16.92.254,18,61652,capacidad up en base:320
+172.16.92.254,18,61652,capacidad down en base:608
+172.28.86.245,24,56546,capacidad up en elemento:608
+172.28.86.245,24,56546,capacidad down en elemento:1248
+172.16.92.254,11,61645,capacidad up en elemento:320
+172.16.92.254,11,61645,capacidad down en elemento:608
+172.28.107.254,17,57139,capacidad up en base:608
+172.28.107.254,17,57139,capacidad down en base:1248
+172.28.107.254,11,57133,capacidad up en elemento:1024
+172.28.107.254,11,57133,capacidad down en elemento:2464
+172.30.251.92,11,64637,capacidad up en base:1024
+172.30.251.92,11,64637,capacidad down en base:2464
+172.23.37.252,12,52718,capacidad up en base:608
+172.23.37.252,12,52718,capacidad down en base:1248
+172.23.37.252,20,52726,capacidad up en elemento:608
+172.23.37.252,20,52726,capacidad down en elemento:1248
+172.28.112.252,22,56184,capacidad up en base:1024
+172.28.112.252,22,56184,capacidad down en base:3712
+172.28.112.252,10,56172,capacidad up en elemento:1024
+172.28.112.252,10,56172,capacidad down en elemento:3712
+172.24.52.253,22,62568,capacidad up en base:608
+172.24.52.253,22,62568,capacidad down en base:1248
+172.24.52.253,20,62566,capacidad up en elemento:1024
+172.24.52.253,20,62566,capacidad down en elemento:2464
+172.24.67.254,18,70716,capacidad up en base:608
+172.24.67.254,18,70716,capacidad down en base:1248
+172.24.67.254,22,70720,capacidad up en elemento:608
+172.24.67.254,22,70720,capacidad down en elemento:1248
+172.28.86.245,24,56546,capacidad up en base:608
+172.28.86.245,24,56546,capacidad down en base:1248
+172.28.86.245,20,56542,capacidad up en elemento:608
+172.28.86.245,20,56542,capacidad down en elemento:1248
+172.16.92.254,11,61645,capacidad up en base:320
+172.16.92.254,11,61645,capacidad down en base:608
+172.16.92.254,24,61658,capacidad up en elemento:320
+172.16.92.254,24,61658,capacidad down en elemento:608
+172.28.112.252,10,56172,capacidad up en base:1024
+172.28.112.252,10,56172,capacidad down en base:3712
+172.28.112.252,11,56173,capacidad up en elemento:1024
+172.28.112.252,11,56173,capacidad down en elemento:7392
+172.23.37.252,20,52726,capacidad up en base:608
+172.23.37.252,20,52726,capacidad down en base:1248
+172.23.37.252,13,52719,capacidad up en elemento:608
+172.23.37.252,13,52719,capacidad down en elemento:1248
+172.28.107.254,11,57133,capacidad up en base:1024
+172.28.107.254,11,57133,capacidad down en base:2464
+172.24.67.254,22,70720,capacidad up en base:608
+172.24.67.254,22,70720,capacidad down en base:1248
+172.24.52.253,20,62566,capacidad up en base:1024
+172.24.52.253,20,62566,capacidad down en base:2464
+172.28.86.245,20,56542,capacidad up en base:608
+172.28.86.245,20,56542,capacidad down en base:1248
+172.28.86.245,22,56544,capacidad up en elemento:608
+172.28.86.245,22,56544,capacidad down en elemento:1248
+172.16.92.254,24,61658,capacidad up en base:320
+172.16.92.254,24,61658,capacidad down en base:608
+172.30.249.250,23,52225,capacidad up en base:1024
+172.30.249.250,23,52225,capacidad down en base:2464
+172.30.249.250,12,52214,capacidad up en elemento:1024
+172.30.249.250,12,52214,capacidad down en elemento:2464
+172.23.37.252,13,52719,capacidad up en base:608
+172.23.37.252,13,52719,capacidad down en base:1248
+172.23.37.252,14,52720,capacidad up en elemento:608
+172.23.37.252,14,52720,capacidad down en elemento:1248
+172.28.112.252,11,56173,capacidad up en base:1024
+172.28.112.252,11,56173,capacidad down en base:7392
+172.28.86.245,22,56544,capacidad up en base:608
+172.28.86.245,22,56544,capacidad down en base:1248
+172.28.86.245,16,56538,capacidad up en elemento:1024
+172.28.86.245,16,56538,capacidad down en elemento:2464
+172.30.249.250,12,52214,capacidad up en base:1024
+172.30.249.250,12,52214,capacidad down en base:2464
+172.23.37.252,14,52720,capacidad up en base:608
+172.23.37.252,14,52720,capacidad down en base:1248
+172.23.37.252,17,52723,capacidad up en elemento:1024
+172.23.37.252,17,52723,capacidad down en elemento:2464
+172.28.86.245,16,56538,capacidad up en base:1024
+172.28.86.245,16,56538,capacidad down en base:2464
+172.23.37.252,17,52723,capacidad up en base:1024
+172.23.37.252,17,52723,capacidad down en base:2464
+172.20.55.254,21,74643,capacidad up en elemento:608
+172.20.55.254,21,74643,capacidad down en elemento:1248
+172.20.55.254,21,74643,capacidad up en base:608
+172.20.55.254,21,74643,capacidad down en base:1248
+172.20.55.254,11,74633,capacidad up en elemento:608
+172.20.55.254,11,74633,capacidad down en elemento:1248
+172.20.55.254,11,74633,capacidad up en base:608
+172.20.55.254,11,74633,capacidad down en base:1248
+172.20.58.254,23,74525,capacidad up en elemento:608
+172.20.58.254,23,74525,capacidad down en elemento:1248
+172.20.34.254,22,60072,capacidad up en elemento:608
+172.20.34.254,22,60072,capacidad down en elemento:1248
+172.20.55.254,12,74634,capacidad up en elemento:608
+172.20.55.254,12,74634,capacidad down en elemento:1248
+172.20.34.254,22,60072,capacidad up en base:608
+172.20.34.254,22,60072,capacidad down en base:1248
+172.20.34.254,14,60064,capacidad up en elemento:608
+172.20.34.254,14,60064,capacidad down en elemento:1248
+172.20.58.254,23,74525,capacidad up en base:608
+172.20.58.254,23,74525,capacidad down en base:1248
+172.20.58.254,24,74526,capacidad up en elemento:608
+172.20.58.254,24,74526,capacidad down en elemento:1248
+172.20.58.254,24,74526,capacidad up en base:608
+172.20.58.254,24,74526,capacidad down en base:1248
+172.20.58.254,21,74523,capacidad up en elemento:608
+172.20.58.254,21,74523,capacidad down en elemento:1248
+172.20.34.254,14,60064,capacidad up en base:608
+172.20.34.254,14,60064,capacidad down en base:1248
+172.20.34.254,23,60073,capacidad up en elemento:608
+172.20.34.254,23,60073,capacidad down en elemento:1248
+172.20.58.254,21,74523,capacidad up en base:608
+172.20.58.254,21,74523,capacidad down en base:1248
+172.20.34.254,23,60073,capacidad up en base:608
+172.20.34.254,23,60073,capacidad down en base:1248
+172.20.34.254,11,60061,capacidad up en elemento:608
+172.20.34.254,11,60061,capacidad down en elemento:1248
+172.20.55.254,12,74634,capacidad up en base:608
+172.20.55.254,12,74634,capacidad down en base:1248
+172.20.55.254,13,74635,capacidad up en elemento:608
+172.20.55.254,13,74635,capacidad down en elemento:1248
+172.20.34.254,11,60061,capacidad up en base:608
+172.20.34.254,11,60061,capacidad down en base:1248
+172.20.34.254,19,60069,capacidad up en elemento:608
+172.20.34.254,19,60069,capacidad down en elemento:1248
+172.20.55.254,13,74635,capacidad up en base:608
+172.20.55.254,13,74635,capacidad down en base:1248
+172.20.55.254,24,74646,capacidad up en elemento:608
+172.20.55.254,24,74646,capacidad down en elemento:1248
+172.20.55.254,24,74646,capacidad up en base:608
+172.20.55.254,24,74646,capacidad down en base:1248
+172.20.34.254,19,60069,capacidad up en base:608
+172.20.34.254,19,60069,capacidad down en base:1248
+172.20.34.254,13,60063,capacidad up en elemento:608
+172.20.34.254,13,60063,capacidad down en elemento:1248
+172.20.34.254,13,60063,capacidad up en base:608
+172.20.34.254,13,60063,capacidad down en base:1248
+172.20.34.254,24,60074,capacidad up en elemento:608
+172.20.34.254,24,60074,capacidad down en elemento:1248
+172.20.34.254,24,60074,capacidad up en base:608
+172.20.34.254,24,60074,capacidad down en base:1248
+172.20.34.254,18,60068,capacidad up en elemento:608
+172.20.34.254,18,60068,capacidad down en elemento:1248
+172.20.34.254,18,60068,capacidad up en base:608
+172.20.34.254,18,60068,capacidad down en base:1248
+172.20.34.254,10,60060,capacidad up en elemento:1024
+172.20.34.254,10,60060,capacidad down en elemento:2464
+172.20.34.254,10,60060,capacidad up en base:1024
+172.20.34.254,10,60060,capacidad down en base:2464
+172.20.34.254,20,60070,capacidad up en elemento:1024
+172.20.34.254,20,60070,capacidad down en elemento:3712
+172.20.34.254,20,60070,capacidad up en base:1024
+172.20.34.254,20,60070,capacidad down en base:3712
+172.17.136.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.16.94.253, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.86.244, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.16.60.253, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.22.106.253, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.22.24.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.253.118, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.86.249, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.253.152, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.253.66, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.251.90, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.253.149, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.250.5, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.252.106, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.252.67, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.251.2, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.29.122.253, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.252.92, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.31.200.19, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.253.6, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.31.200.35, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.253.60, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.27.164.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.31.200.4, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.253.153, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.31.200.36, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.253.58, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.18.60.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.29.26.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.254.54, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.251.92, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.107.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.24.67.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.24.52.253, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.16.92.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.112.252, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.249.250, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.86.245, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.23.37.252, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.20.55.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.20.34.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.20.58.254, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.86.244, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.86.244, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.86.244, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.28.86.244, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+error 6524:172.27.34.251|java.net.ConnectException: Connection timed out
+Hora Inicio: Thu Aug 22 17:12:56 ECT 2013
+Hora Fin: Thu Aug 22 17:14:03 ECT 2013

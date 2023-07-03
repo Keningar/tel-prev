@@ -1,0 +1,89 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<style scoped="scoped">
+    .alineando {
+        left: 42em;
+        position: absolute;
+        top: 44em;
+    }
+    .campo_select, .div_combo, .campo_texto{
+        width: 100% !important;
+
+    }
+   
+     
+    .centrado{
+        text-align: center;
+        margin-left: 10%;
+    }
+    .btn_guardar{
+        width: 85px !important;
+    }
+    .tabla, .buttons{
+        display: flex;        
+        justify-content: left;
+    }
+</style>
+
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoSubRed/index.js') }}"></script>
+    <script>
+       
+       
+        var url_getEncontradosGrid      = '{{path("elementoPe_getEncontradosGrid") }}';
+        var url_getUsosSubred           = '{{path("elementoPe_getUsosPe") }}';
+        var url_getTipoSubred           = '{{path("elementoPe_getTipoSubred") }}';
+        var url_getEncontradosEstados   = '{{path("elementoPe_getEstados") }}';
+
+
+
+
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Subredes</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+            
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+            
+        </tr>
+    </table> 
+</div>
+
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>    
+    {% if is_granted("ROLE_468-8399") %}
+        
+       
+        <a class="button-nuevo-registro" href="{{ path('subredesPe_createSubred') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nueva Subred
+        </a>        
+  
+     {% endif %}
+
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}	

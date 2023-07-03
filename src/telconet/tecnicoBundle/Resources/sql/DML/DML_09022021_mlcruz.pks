@@ -1,0 +1,57 @@
+SET SERVEROUTPUT ON
+--Creación de parámetros con coordenadas por país
+DECLARE
+  Ln_IdParamServiciosFact NUMBER(5,0);
+BEGIN
+  SELECT ID_PARAMETRO
+  INTO Ln_IdParamServiciosFact
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO='SERVICIOS_ADICIONALES_FACTURAR';
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamServiciosFact,
+    'NOMBRE_TECNICO',
+    NULL,
+    'WDB_Y_EDB',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se agrega correctamente el producto con nombre técnico WDB_Y_EDB');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);  
+  ROLLBACK;
+END;
+/

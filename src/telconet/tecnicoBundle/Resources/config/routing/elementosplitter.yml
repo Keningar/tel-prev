@@ -1,0 +1,59 @@
+elementosplitter:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:indexSplitter" }
+      
+elementosplitter_newSplitter:
+    pattern:  /newSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:newSplitter" }
+
+elementosplitter_createSplitter:
+    pattern: /createSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:createSplitter" }
+    requirements: { _method: POST }
+    
+elementosplitter_editSplitter:
+    pattern:  /{id}/editSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:editSplitter" }
+
+elementosplitter_updateSplitter:
+    pattern:  /{id}/updateSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:updateSplitter" }
+    requirements: { _method: POST }
+       
+elementosplitter_showSplitter:
+    pattern:  /{id}/showSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:showSplitter" }
+    
+elementosplitter_buscarElementoContenedor:
+    pattern:  /buscarElementoContenedor
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:buscarElementoContenedor" }
+    
+elementosplitter_getEncontradosSplitter:
+    pattern:  /getEncontradosSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:getEncontradosSplitter" }
+    
+elementosplitter_cargarDatosSplitter:
+    pattern:  /{id}/cargarDatosSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:cargarDatosSplitter" }
+    requirements: { _method: POST }
+    
+elementosplitter_deleteAjaxSplitter:
+    pattern:  /deleteAjaxSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:deleteAjaxSplitter" }
+    
+elementosplitter_administrarPuertos:
+    pattern:  /administrarPuertos
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:administrarPuertos" }
+    
+elementosplitter_getSplitterPorNivel:
+    pattern:  /getSplitterPorNivel
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:getSplitterPorNivel" }
+    
+elementosplitter_clonarSplitter:
+    pattern:  /clonarSplitter
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:clonarSplitter" }  
+    
+elementosplitter_getSplitterEnlaceOlt:
+    pattern:  /getSplitterEnlaceOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoSplitter:getSplitterEnlaceOlt" }
+    

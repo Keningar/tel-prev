@@ -1,0 +1,613 @@
+SET SERVEROUTPUT ON
+--Plantilla usada para notificar internamente un error al actualizar la información del corte tomada en cuenta en la cancelación masiva de MD
+DECLARE
+  Ln_IdPlantilla NUMBER(5,0);
+BEGIN
+  INSERT
+  INTO DB_COMUNICACION.ADMI_PLANTILLA
+    (
+      ID_PLANTILLA,
+      NOMBRE_PLANTILLA,
+      CODIGO,
+      MODULO,
+      PLANTILLA,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION
+    )
+    VALUES
+    (
+      DB_COMUNICACION.SEQ_ADMI_PLANTILLA.NEXTVAL,
+      'NOTIFICACIÓN AUTOMÁTICA EN CASO DE ERROR AL ACTUALIZAR LA INFORMACIÓN DE CORTE DE UN SERVICIO',
+      'ERRORCORTCANCEL',
+      'TECNICO',
+      '<html>
+
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+    <style type="text/css">
+        table.cssTable {
+            font-family: verdana, arial, sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+        }
+        
+        table.cssTable th {
+            background-color: #c3dde0;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+        
+        table.cssTable tr {
+            background-color: #d4e3e5;
+        }
+        
+        table.cssTable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+        
+        table.cssTblPrincipal {
+            font-family: verdana, arial, sans-serif;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="cssTblPrincipal" align="center" width="100%" cellspacing="0" cellpadding="5">
+        <tr>
+            <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;"><img alt="" 
+            src="http://images.telconet.net/others/sit/notificaciones/logo.png" /></td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #6699CC;">
+                <table width="100%" cellspacing="0" cellpadding="5">
+                    <tr>
+                        <td colspan="2">Estimado personal,</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">El presente correo es para indicarle que no se ha podido actualizar la información de corte para  
+                            el servicio {{ID_SERVICIO}} del login {{LOGIN}}. <br>Revisar el error en la INFO_ERROR 
+                            con el proceso P_ACTUALIZA_INFORMACION_CORTE</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p><strong><font size="2" face="Tahoma">Telcos + Sistema del Grupo Telconet</font></strong></p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>',
+      'Activo',
+      CURRENT_TIMESTAMP,
+      'mlcruz'
+    );
+  SELECT ID_PLANTILLA
+  INTO Ln_IdPlantilla
+  FROM DB_COMUNICACION.ADMI_PLANTILLA
+  WHERE CODIGO='ERRORCORTCANCEL';
+
+  INSERT
+  INTO DB_COMUNICACION.INFO_ALIAS_PLANTILLA
+    (
+      ID_ALIAS_PLANTILLA,
+      ALIAS_ID,
+      PLANTILLA_ID,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      ES_COPIA
+    )
+    VALUES
+    (
+      DB_COMUNICACION.SEQ_INFO_ALIAS_PLANTILLA.NEXTVAL,
+      139,--vrodriguez@telconet.ec
+      Ln_IdPlantilla,
+      'Activo',
+      SYSDATE,
+      'mlcruz',
+      'NO'
+    );
+  INSERT
+  INTO DB_COMUNICACION.INFO_ALIAS_PLANTILLA
+    (
+      ID_ALIAS_PLANTILLA,
+      ALIAS_ID,
+      PLANTILLA_ID,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      ES_COPIA
+    )
+    VALUES
+    (
+      DB_COMUNICACION.SEQ_INFO_ALIAS_PLANTILLA.NEXTVAL,
+      363,--mlcruz@telconet.ec
+      Ln_IdPlantilla,
+      'Activo',
+      SYSDATE,
+      'mlcruz',
+      'NO'
+    );
+  INSERT
+  INTO DB_COMUNICACION.INFO_ALIAS_PLANTILLA
+    (
+      ID_ALIAS_PLANTILLA,
+      ALIAS_ID,
+      PLANTILLA_ID,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      ES_COPIA
+    )
+    VALUES
+    (
+      DB_COMUNICACION.SEQ_INFO_ALIAS_PLANTILLA.NEXTVAL,
+      239,--sistemas-soporte@telconet.ec
+      Ln_IdPlantilla,
+      'Activo',
+      SYSDATE,
+      'mlcruz',
+      'NO'
+    );
+  INSERT
+  INTO DB_COMUNICACION.INFO_ALIAS_PLANTILLA
+    (
+      ID_ALIAS_PLANTILLA,
+      ALIAS_ID,
+      PLANTILLA_ID,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      ES_COPIA
+    )
+    VALUES
+    (
+      DB_COMUNICACION.SEQ_INFO_ALIAS_PLANTILLA.NEXTVAL,
+      341,--fbermeo@telconet.ec
+      Ln_IdPlantilla,
+      'Activo',
+      SYSDATE,
+      'mlcruz',
+      'NO'
+    );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se creó la plantilla correctamente ERRORCORTCANCEL');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK || ' - ERROR_BACKTRACE: ' 
+                            || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/
+--Se inserta nueva característica para guardar el id del historial que debe ser considerado para la cancelación masiva de MD
+INSERT
+INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    FE_ULT_MOD,
+    USR_ULT_MOD,
+    TIPO
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL,
+    'ID_ULTIMO_HISTO_IN_CORTE',
+    'N',
+    'Activo',
+    SYSDATE,
+    'mlcruz',
+    NULL,
+    NULL,
+    'TECNICA'
+  );
+COMMIT;
+/
+--Script de regularización para los servicios que actualmente se encuentran In-Corte
+DECLARE
+  Ln_IdCaractIdUltHistoInCorte NUMBER;
+  CURSOR Lc_GetCaracteristica(Cv_DescripcionCaracteristica VARCHAR2)
+  IS
+    SELECT ID_CARACTERISTICA
+    FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+    WHERE DESCRIPCION_CARACTERISTICA=Cv_DescripcionCaracteristica;
+  CURSOR Lc_ServiciosRegulaHisto
+  IS
+  WITH SERVICIOS_A_REVISAR AS
+    ( SELECT DISTINCT SERVICIO.ID_SERVICIO
+    FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO
+    INNER JOIN DB_COMERCIAL.INFO_PLAN_CAB PLAN_CAB
+    ON PLAN_CAB.ID_PLAN = SERVICIO.PLAN_ID
+    INNER JOIN DB_COMERCIAL.INFO_PLAN_DET PLAN_DET
+    ON PLAN_DET.PLAN_ID = PLAN_CAB.ID_PLAN
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PRODUCTO
+    ON PRODUCTO.ID_PRODUCTO = PLAN_DET.PRODUCTO_ID
+    INNER JOIN DB_COMERCIAL.INFO_PUNTO PUNTO
+    ON PUNTO.ID_PUNTO = SERVICIO.PUNTO_ID
+    INNER JOIN DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL PER
+    ON PER.ID_PERSONA_ROL = PUNTO.PERSONA_EMPRESA_ROL_ID
+    INNER JOIN DB_COMERCIAL.INFO_OFICINA_GRUPO OFICINA_GRUPO
+    ON OFICINA_GRUPO.ID_OFICINA = PER.OFICINA_ID
+    INNER JOIN DB_COMERCIAL.INFO_EMPRESA_GRUPO EMPRESA_GRUPO
+    ON EMPRESA_GRUPO.COD_EMPRESA = OFICINA_GRUPO.EMPRESA_ID
+    WHERE SERVICIO.ESTADO = 'In-Corte'
+    AND PRODUCTO.NOMBRE_TECNICO = 'INTERNET'
+    AND EMPRESA_GRUPO.PREFIJO = 'MD' 
+    ),
+  SERVICIOS_ULT_FECHA_CORTE AS
+  ( SELECT DISTINCT SERVICIO.ID_SERVICIO,
+    MAX(SERVICIO_HISTO.ID_SERVICIO_HISTORIAL) AS MAX_ID_HISTO
+  FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO
+  INNER JOIN DB_COMERCIAL.INFO_SERVICIO_HISTORIAL SERVICIO_HISTO
+  ON SERVICIO_HISTO.SERVICIO_ID                                                                          = SERVICIO.ID_SERVICIO
+  WHERE SERVICIO.ESTADO                                                                                  = 'In-Corte'
+  AND SERVICIO_HISTO.ESTADO                                                                              = 'In-Corte'
+  AND ( SERVICIO_HISTO.USR_CREACION                                                                      = 'procesosmasivos'
+  OR SERVICIO_HISTO.ACCION                                                                               = 'cortarCliente'
+  OR DBMS_LOB.COMPARE(SERVICIO_HISTO.OBSERVACION, 'Se enviaron parametros para el Corte - CORTE MASIVO') = 0)
+  GROUP BY SERVICIO.ID_SERVICIO
+  )
+SELECT DISTINCT SERVICIOS_IN_CORTE.ID_SERVICIO,
+  SERVICIO_HISTORIAL.ID_SERVICIO_HISTORIAL
+FROM SERVICIOS_A_REVISAR SERVICIOS_IN_CORTE
+LEFT JOIN SERVICIOS_ULT_FECHA_CORTE HISTO_ULT_FE_CORTE
+ON HISTO_ULT_FE_CORTE.ID_SERVICIO = SERVICIOS_IN_CORTE.ID_SERVICIO
+INNER JOIN DB_COMERCIAL.INFO_SERVICIO_HISTORIAL SERVICIO_HISTORIAL
+ON SERVICIO_HISTORIAL.ID_SERVICIO_HISTORIAL = HISTO_ULT_FE_CORTE.MAX_ID_HISTO;
+TYPE Lt_FetchArray
+IS
+  TABLE OF Lc_ServiciosRegulaHisto%ROWTYPE;
+  Lt_ServiciosRegulaHisto Lt_FetchArray;
+  Le_BulkErrors EXCEPTION;
+  PRAGMA EXCEPTION_INIT(Le_BulkErrors, -24381);
+BEGIN
+  IF Lc_GetCaracteristica%ISOPEN THEN
+    CLOSE Lc_GetCaracteristica;
+  END IF;
+  OPEN Lc_GetCaracteristica('ID_ULTIMO_HISTO_IN_CORTE');
+  FETCH Lc_GetCaracteristica INTO Ln_IdCaractIdUltHistoInCorte;
+  CLOSE Lc_GetCaracteristica;
+  IF Lc_ServiciosRegulaHisto%ISOPEN THEN
+    CLOSE Lc_ServiciosRegulaHisto;
+  END IF;
+  OPEN Lc_ServiciosRegulaHisto;
+  LOOP
+    FETCH Lc_ServiciosRegulaHisto BULK COLLECT
+    INTO Lt_ServiciosRegulaHisto LIMIT 1000;
+    FORALL Ln_Index IN 1..Lt_ServiciosRegulaHisto.COUNT SAVE EXCEPTIONS
+    UPDATE DB_COMERCIAL.INFO_SERVICIO_CARACTERISTICA
+    SET ESTADO            = 'Inactivo',
+      USR_ULT_MOD         = 'reguHistInCorte',
+      IP_ULT_MOD          = '127.0.0.1',
+      FE_ULT_MOD          = SYSDATE
+    WHERE SERVICIO_ID     = Lt_ServiciosRegulaHisto(Ln_Index).ID_SERVICIO
+    AND CARACTERISTICA_ID = Ln_IdCaractIdUltHistoInCorte;
+    FORALL Ln_Index IN 1..Lt_ServiciosRegulaHisto.COUNT SAVE EXCEPTIONS
+    INSERT
+    INTO DB_COMERCIAL.INFO_SERVICIO_CARACTERISTICA
+      (
+        ID_SERVICIO_CARACTERISTICA,
+        SERVICIO_ID,
+        CARACTERISTICA_ID,
+        VALOR,
+        ESTADO,
+        OBSERVACION,
+        USR_CREACION,
+        IP_CREACION,
+        FE_CREACION
+      )
+      VALUES
+      (
+        DB_COMERCIAL.SEQ_INFO_SERVICIO_CARAC.NEXTVAL,
+        Lt_ServiciosRegulaHisto(Ln_Index).ID_SERVICIO,
+        Ln_IdCaractIdUltHistoInCorte,
+        Lt_ServiciosRegulaHisto(Ln_Index).ID_SERVICIO_HISTORIAL,
+        'Activo',
+        'Característica ingresada por regularización con el último historial In-Corte válido para la cancelación masiva',
+        'reguHistInCorte',
+        '127.0.0.1',
+        SYSDATE
+      );
+    EXIT
+  WHEN Lc_ServiciosRegulaHisto%NOTFOUND;
+  END LOOP;
+  CLOSE Lc_ServiciosRegulaHisto;
+  COMMIT;
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han insertado las características con el último id del servicio historial válido para servicios In-Corte');
+EXCEPTION
+WHEN Le_BulkErrors THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK || ' - ERROR_BACKTRACE: ' 
+                            || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK || ' - ERROR_BACKTRACE: ' 
+                            || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/
+--Script de regularización para las características de Internet Protegido en un traslado
+DECLARE
+  CURSOR Lc_ServiciosRegulaIProtegido
+  IS
+SELECT DISTINCT SERVICIOS_REGULARIZAR.*
+FROM
+  (SELECT SERVICIO.ID_SERVICIO,
+    PLAN.NOMBRE_PLAN,
+    PUNTO.LOGIN,
+    SPC_TRASLADO_SERVICIO.ID_SERVICIO_PROD_CARACT         AS ID_SPC_TRASLADO,
+    SPC_TRASLADO_SERVICIO.VALOR                           AS ID_SERVICIO_ORIGEN,
+    SPC_SUSCRIBER_SERVICIO_ORIGEN.ID_SERVICIO_PROD_CARACT AS ID_SPC_SUSCRIBER_ORIGEN,
+    SPC_SUSCRIBER_SERVICIO_ORIGEN.VALOR                   AS SUSCRIBER,
+    SPC_SUSCRIBER_SERVICIO_ORIGEN.USR_CREACION            AS USR_CREACION_SUCRIBER,
+    SPC_SUSCRIBER_SERVICIO_ORIGEN.FE_CREACION             AS FE_CREACION_SUSCRIBER,
+    SPC_NUM_REINT_SERVICIO_ORIGEN.ID_SERVICIO_PROD_CARACT AS ID_SPC_NUM_REINTENTOS_ORIGEN,
+    SPC_NUM_REINT_SERVICIO_ORIGEN.VALOR                   AS NUMERO_REINTENTOS,
+    SPC_NUM_REINT_SERVICIO_ORIGEN.USR_CREACION            AS USR_CREACION_NUM_REINTENTOS,
+    SPC_NUM_REINT_SERVICIO_ORIGEN.FE_CREACION             AS FE_CREACION_NUM_REINTENTOS
+  FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO
+  INNER JOIN DB_COMERCIAL.INFO_PUNTO PUNTO
+  ON PUNTO.ID_PUNTO = SERVICIO.PUNTO_ID
+  INNER JOIN DB_COMERCIAL.INFO_PLAN_CAB PLAN
+  ON PLAN.ID_PLAN = SERVICIO.PLAN_ID
+  INNER JOIN DB_COMERCIAL.INFO_PLAN_DET PLAN_DET
+  ON PLAN_DET.PLAN_ID = PLAN.ID_PLAN
+  INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PRODUCTO
+  ON PRODUCTO.ID_PRODUCTO = PLAN_DET.PRODUCTO_ID
+  INNER JOIN
+    (SELECT SPC_TRASLADO.SERVICIO_ID,
+      MAX(SPC_TRASLADO.ID_SERVICIO_PROD_CARACT) AS ID_MAX_SPC_TRASLADO
+    FROM DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_TRASLADO
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC_TRASLADO.PRODUCTO_CARACTERISITICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_CARACTERISTICA CARACT
+    ON CARACT.ID_CARACTERISTICA = APC.CARACTERISTICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PRODUCTO
+    ON PRODUCTO.ID_PRODUCTO                 = APC.PRODUCTO_ID
+    WHERE CARACT.DESCRIPCION_CARACTERISTICA = 'TRASLADO'
+    AND SPC_TRASLADO.ESTADO                 = 'Eliminado'
+    GROUP BY SPC_TRASLADO.SERVICIO_ID
+    ) SPC_ULTIMO_TRASLADO ON SPC_ULTIMO_TRASLADO.SERVICIO_ID = SERVICIO.ID_SERVICIO
+  INNER JOIN DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_TRASLADO_SERVICIO
+  ON SPC_TRASLADO_SERVICIO.ID_SERVICIO_PROD_CARACT = SPC_ULTIMO_TRASLADO.ID_MAX_SPC_TRASLADO
+  INNER JOIN DB_COMERCIAL.INFO_SERVICIO SERVICIO_ORIGEN
+  ON SERVICIO_ORIGEN.ID_SERVICIO = COALESCE(TO_NUMBER(REGEXP_SUBSTR(SPC_TRASLADO_SERVICIO.VALOR,'^\d+')),0)
+  LEFT JOIN
+    (SELECT SPC_SUSCRIBER.SERVICIO_ID,
+      MAX(SPC_SUSCRIBER.ID_SERVICIO_PROD_CARACT) AS ID_MAX_SPC_SUSCRIBER
+    FROM DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_SUSCRIBER
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC_SUSCRIBER.PRODUCTO_CARACTERISITICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_CARACTERISTICA CARACT
+    ON CARACT.ID_CARACTERISTICA = APC.CARACTERISTICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PRODUCTO
+    ON PRODUCTO.ID_PRODUCTO                 = APC.PRODUCTO_ID
+    WHERE CARACT.DESCRIPCION_CARACTERISTICA = 'SUSCRIBER_ID'
+    AND SPC_SUSCRIBER.ESTADO                = 'Eliminado'
+    GROUP BY SPC_SUSCRIBER.SERVICIO_ID
+    ) SPC_ULTIMO_SUSCRIBER_ORIGEN ON SPC_ULTIMO_SUSCRIBER_ORIGEN.SERVICIO_ID = SERVICIO_ORIGEN.ID_SERVICIO
+  LEFT JOIN DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_SUSCRIBER_SERVICIO_ORIGEN
+  ON SPC_SUSCRIBER_SERVICIO_ORIGEN.ID_SERVICIO_PROD_CARACT = SPC_ULTIMO_SUSCRIBER_ORIGEN.ID_MAX_SPC_SUSCRIBER
+  LEFT JOIN
+    (SELECT SPC_NUMERO_REINTENTOS.SERVICIO_ID,
+      MAX(SPC_NUMERO_REINTENTOS.ID_SERVICIO_PROD_CARACT) AS ID_MAX_SPC_NUM_REINTENTO
+    FROM DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_NUMERO_REINTENTOS
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC_NUMERO_REINTENTOS.PRODUCTO_CARACTERISITICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_CARACTERISTICA CARACT
+    ON CARACT.ID_CARACTERISTICA = APC.CARACTERISTICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PRODUCTO
+    ON PRODUCTO.ID_PRODUCTO                 = APC.PRODUCTO_ID
+    WHERE CARACT.DESCRIPCION_CARACTERISTICA = 'NUMERO REINTENTOS'
+    AND SPC_NUMERO_REINTENTOS.ESTADO        = 'Eliminado'
+    GROUP BY SPC_NUMERO_REINTENTOS.SERVICIO_ID
+    ) SPC_ULTIMO_NUM_REINT_ORIGEN ON SPC_ULTIMO_NUM_REINT_ORIGEN.SERVICIO_ID = SERVICIO_ORIGEN.ID_SERVICIO
+  LEFT JOIN DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_NUM_REINT_SERVICIO_ORIGEN
+  ON SPC_NUM_REINT_SERVICIO_ORIGEN.ID_SERVICIO_PROD_CARACT = SPC_ULTIMO_NUM_REINT_ORIGEN.ID_MAX_SPC_NUM_REINTENTO
+  WHERE SERVICIO.ESTADO                                    = 'Activo'
+  AND PRODUCTO.ID_PRODUCTO                                 = 210
+  AND SERVICIO.TIPO_ORDEN                                  = 'T'
+  AND NOT EXISTS
+    (SELECT SPC_SUSCRIBER_ID.ID_SERVICIO_PROD_CARACT
+    FROM DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_SUSCRIBER_ID
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC_SUSCRIBER_ID.PRODUCTO_CARACTERISITICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_CARACTERISTICA CARACT
+    ON CARACT.ID_CARACTERISTICA = APC.CARACTERISTICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PRODUCTO
+    ON PRODUCTO.ID_PRODUCTO                 = APC.PRODUCTO_ID
+    WHERE CARACT.DESCRIPCION_CARACTERISTICA = 'SUSCRIBER_ID'
+    AND SPC_SUSCRIBER_ID.SERVICIO_ID        = SERVICIO.ID_SERVICIO
+    AND SPC_SUSCRIBER_ID.ESTADO             = 'Activo'
+    )
+  AND NOT EXISTS
+    (SELECT SPC_NUM_REINTENTOS.ID_SERVICIO_PROD_CARACT
+    FROM DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_NUM_REINTENTOS
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC_NUM_REINTENTOS.PRODUCTO_CARACTERISITICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_CARACTERISTICA CARACT
+    ON CARACT.ID_CARACTERISTICA = APC.CARACTERISTICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PRODUCTO
+    ON PRODUCTO.ID_PRODUCTO                   = APC.PRODUCTO_ID
+    WHERE CARACT.DESCRIPCION_CARACTERISTICA   = 'NUMERO REINTENTOS'
+    AND SPC_NUM_REINTENTOS.SERVICIO_ID        = SERVICIO.ID_SERVICIO
+    AND SPC_NUM_REINTENTOS.ESTADO             = 'Activo'
+    )
+  AND EXISTS
+    (SELECT SPC_CORREO_ELECTRONICO.ID_SERVICIO_PROD_CARACT
+    FROM DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC_CORREO_ELECTRONICO
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC_CORREO_ELECTRONICO.PRODUCTO_CARACTERISITICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_CARACTERISTICA CARACT
+    ON CARACT.ID_CARACTERISTICA = APC.CARACTERISTICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PRODUCTO
+    ON PRODUCTO.ID_PRODUCTO                 = APC.PRODUCTO_ID
+    WHERE CARACT.DESCRIPCION_CARACTERISTICA = 'CORREO ELECTRONICO'
+    AND SPC_CORREO_ELECTRONICO.SERVICIO_ID  = SERVICIO.ID_SERVICIO
+    AND SPC_CORREO_ELECTRONICO.ESTADO       = 'Activo'
+    AND (SPC_CORREO_ELECTRONICO.VALOR      IS NOT NULL
+    AND SPC_CORREO_ELECTRONICO.VALOR       <> 'SIN CORREO')
+    )
+  ) SERVICIOS_REGULARIZAR
+WHERE (SERVICIOS_REGULARIZAR.ID_SPC_SUSCRIBER_ORIGEN  IS NOT NULL
+OR SERVICIOS_REGULARIZAR.ID_SPC_NUM_REINTENTOS_ORIGEN IS NOT NULL);
+BEGIN
+  FOR I_ServiciosRegulaIProtegido IN Lc_ServiciosRegulaIProtegido
+  LOOP
+    IF I_ServiciosRegulaIProtegido.ID_SPC_SUSCRIBER_ORIGEN IS NOT NULL THEN
+      INSERT
+      INTO DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT
+        (
+          ID_SERVICIO_PROD_CARACT,
+          SERVICIO_ID,
+          PRODUCTO_CARACTERISITICA_ID,
+          VALOR,
+          FE_CREACION,
+          FE_ULT_MOD,
+          USR_CREACION,
+          USR_ULT_MOD,
+          ESTADO
+        )
+        VALUES
+        (
+          DB_COMERCIAL.SEQ_INFO_SERVICIO_PROD_CARACT.NEXTVAL,
+          I_ServiciosRegulaIProtegido.ID_SERVICIO,
+          11607,--SUSCRIBER_ID
+          I_ServiciosRegulaIProtegido.SUSCRIBER,
+          I_ServiciosRegulaIProtegido.FE_CREACION_SUSCRIBER,
+          CURRENT_TIMESTAMP,
+          I_ServiciosRegulaIProtegido.USR_CREACION_SUCRIBER,
+          'regCaracIProteg',
+          'Activo'
+        );
+      INSERT
+      INTO DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT
+        (
+          ID_SERVICIO_PROD_CARACT,
+          SERVICIO_ID,
+          PRODUCTO_CARACTERISITICA_ID,
+          VALOR,
+          FE_CREACION,
+          FE_ULT_MOD,
+          USR_CREACION,
+          USR_ULT_MOD,
+          ESTADO
+        )
+        VALUES
+        (
+          DB_COMERCIAL.SEQ_INFO_SERVICIO_PROD_CARACT.NEXTVAL,
+          I_ServiciosRegulaIProtegido.ID_SERVICIO,
+          11606,--ANTIVIRUS
+          'KASPERSKY',
+          I_ServiciosRegulaIProtegido.FE_CREACION_SUSCRIBER,
+          CURRENT_TIMESTAMP,
+          I_ServiciosRegulaIProtegido.USR_CREACION_SUCRIBER,
+          'regCaracIProteg',
+          'Activo'
+        );
+      INSERT
+      INTO DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT
+        (
+          ID_SERVICIO_PROD_CARACT,
+          SERVICIO_ID,
+          PRODUCTO_CARACTERISITICA_ID,
+          VALOR,
+          FE_CREACION,
+          FE_ULT_MOD,
+          USR_CREACION,
+          USR_ULT_MOD,
+          ESTADO
+        )
+        VALUES
+        (
+          DB_COMERCIAL.SEQ_INFO_SERVICIO_PROD_CARACT.NEXTVAL,
+          I_ServiciosRegulaIProtegido.ID_SERVICIO,
+          11612,--CODIGO_PRODUCTO
+          'KISMD',
+          I_ServiciosRegulaIProtegido.FE_CREACION_SUSCRIBER,
+          CURRENT_TIMESTAMP,
+          I_ServiciosRegulaIProtegido.USR_CREACION_SUCRIBER,
+          'regCaracIProteg',
+          'Activo'
+        );
+    ELSIF I_ServiciosRegulaIProtegido.ID_SPC_NUM_REINTENTOS_ORIGEN IS NOT NULL THEN
+      INSERT
+      INTO DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT
+        (
+          ID_SERVICIO_PROD_CARACT,
+          SERVICIO_ID,
+          PRODUCTO_CARACTERISITICA_ID,
+          VALOR,
+          FE_CREACION,
+          FE_ULT_MOD,
+          USR_CREACION,
+          USR_ULT_MOD,
+          ESTADO
+        )
+        VALUES
+        (
+          DB_COMERCIAL.SEQ_INFO_SERVICIO_PROD_CARACT.NEXTVAL,
+          I_ServiciosRegulaIProtegido.ID_SERVICIO,
+          11398,--NUMERO REINTENTOS
+          I_ServiciosRegulaIProtegido.NUMERO_REINTENTOS,
+          I_ServiciosRegulaIProtegido.FE_CREACION_NUM_REINTENTOS,
+          CURRENT_TIMESTAMP,
+          I_ServiciosRegulaIProtegido.USR_CREACION_NUM_REINTENTOS,
+          'regCaracIProteg',
+          'Activo'
+        );
+      INSERT
+      INTO DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT
+        (
+          ID_SERVICIO_PROD_CARACT,
+          SERVICIO_ID,
+          PRODUCTO_CARACTERISITICA_ID,
+          VALOR,
+          FE_CREACION,
+          FE_ULT_MOD,
+          USR_CREACION,
+          USR_ULT_MOD,
+          ESTADO
+        )
+        VALUES
+        (
+          DB_COMERCIAL.SEQ_INFO_SERVICIO_PROD_CARACT.NEXTVAL,
+          I_ServiciosRegulaIProtegido.ID_SERVICIO,
+          11606,--ANTIVIRUS
+          'KASPERSKY',
+          I_ServiciosRegulaIProtegido.FE_CREACION_NUM_REINTENTOS,
+          CURRENT_TIMESTAMP,
+          I_ServiciosRegulaIProtegido.USR_CREACION_NUM_REINTENTOS,
+          'regCaracIProteg',
+          'Activo'
+        );
+    END IF;
+  END LOOP;
+  COMMIT;
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han regularizado las características de Internet Protegido en los traslados');
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK || ' - ERROR_BACKTRACE: ' 
+                            || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/

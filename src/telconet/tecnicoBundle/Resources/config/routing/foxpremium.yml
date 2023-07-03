@@ -1,0 +1,35 @@
+# FOX-PARAMOUNT-NOGGIN
+foxpremium_restablecer_contrasenia:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:FoxPremium:restablecerContrasenia" }
+
+foxpremium_clear_cache:
+    pattern:  /clearCacheToolbox
+    defaults: { _controller: "tecnicoBundle:FoxPremium:clearCacheToolbox" }
+    
+foxpremium_reenviar_contrasenia:
+    pattern:  /reenviarContraseniaFox
+    defaults: { _controller: "tecnicoBundle:FoxPremium:reenviarContrasenia" }
+
+#INGRESO DE CONTACTO
+paramnoggin_ingresar_correo:
+    pattern:  /ingresarContacto
+    defaults: { _controller: "tecnicoBundle:FoxPremium:ingresarContacto" }
+
+info_servicio_prod_caract_grid:
+    pattern:  /obtenerCaractCorreo
+    defaults: { _controller: "tecnicoBundle:FoxPremium:caractCorreo"}
+
+# EL CANAL DEL FUTBOL 
+foxpremium_activa_servicioECDF:
+    pattern:  /activaServicioECDF
+    defaults: { _controller: "tecnicoBundle:FoxPremium:activaServicioECDF" }
+
+# PRODUCTOS QUE NO GENERAN CREDENCIALES 
+foxpremium_activa_servicio_sin_credenciales:
+    pattern:  /activaServicioSinCredenciales
+    defaults: { _controller: "tecnicoBundle:FoxPremium:activaServicioSinCredenciales" }
+
+foxpremium_reenvia_correo_password:
+    pattern:  /reenviarCorreoPassword
+    defaults: { _controller: "tecnicoBundle:FoxPremium:reenviarCorreoPassword" }

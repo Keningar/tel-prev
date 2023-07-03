@@ -1,0 +1,65 @@
+elementoRouterCliente:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:index" }
+      
+elementoRouterCliente_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:new" }
+    
+elementoRouterCliente_existente:
+    pattern:  /existente
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:existente" }
+    
+elementoRouterCliente_createExistente:
+    pattern:  /createExistente
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:createExistente" }    
+
+elementoRouterCliente_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:create" }
+    requirements: { _method: POST }
+    
+elementoRouterCliente_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:edit" }
+
+elementoRouterCliente_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:update" }
+    
+elementoRouterCliente_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:show" }
+        
+elementoRouterCliente_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:getEncontrados" }
+    
+elementoRouterCliente_cargarDatos:
+    pattern:  /{id}/cargarDatos
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:cargarDatos" }
+    requirements: { _method: POST }
+    
+elementoRouterCliente_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:deleteAjax" }
+    
+elementoRouterCliente_modelosPorTipoElemento:
+    pattern:  /modelosPorTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:getModelosPorTipoElemento" }
+    
+elementoRouterCliente_getIps:
+    pattern:  /getIps
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:getIps" }
+    
+elementoRouterCliente_agregarIp:
+    pattern:  /agregarIp
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:agregarIp" }
+    
+elementoRouterCliente_deleteIp:
+    pattern:  /deleteIp
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:deleteIp" }
+    
+elementoRouterCliente_getServicios:
+    pattern:  /getServicios
+    defaults: { _controller: "tecnicoBundle:InfoElementoRouterCliente:getServicios" }    

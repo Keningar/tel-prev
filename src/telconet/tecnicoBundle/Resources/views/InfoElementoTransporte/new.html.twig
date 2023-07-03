@@ -1,0 +1,251 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %} 
+    {{ parent() }}
+    <style>
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 130px !important;
+            text-align: right!important;
+            margin-right: 10px!important;
+            padding-top: 8px!important;
+        }
+        .formulario .label_ficha_contrato{
+            margin: 0px !important;
+            width: 190px !important;
+            text-align: right!important;
+            margin-right: 10px!important;
+            padding-top: 8px!important;
+        }
+        .contenido
+        {
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+        #bloqueDinamico
+        {
+            margin:0px 75px;
+            
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+   {{ parent() }}
+    <script>
+		var url_contratistas                 = "{{ path('contratista_grid') }}";
+	</script> 
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTransporte/new.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contratista/seleccionContratista.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Medio de Transporte</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' action="{{ path('elementotransporte_create') }}" method="post" class='formulario'
+              onSubmit="return validarFormulario();" >
+            <center>
+                <table class="formulario" style="width: 100%">
+                    <tbody>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="45%">
+                                <div id="campoModeloElemento">  
+                                    <label>* Modelo Elemento</label>
+                                    <div id="selectModeloElementos">
+                                        <select required id="modeloElementoId" name="modeloElementoId" onChange="cambioModeloTransporte()">
+                                            {% for modelo in modelosElemento %}
+                                                <option value="{{ modelo.id }}">{{ modelo.nombreModeloElemento }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="campoPlaca">
+                                    <label>* Placa</label>
+                                    <input required maxlength="3" style="width: 60px" autocomplete="off" minlength="2" type="text" name="letraPlaca" 
+                                           title="3 letras mínimo" id="letraPlaca" onkeyPress="return validarSoloLetras(event);" 
+                                           onKeyUp="convertirTextoEnMayusculas('letraPlaca');" onPaste="return true;"/>
+                                    -
+                                    <input required style="width: 80px;" minlength="3" maxlength="4" autocomplete="off" type="text" 
+                                           pattern="^\d{3}[a-zA-Z]{1}$" name="numeroPlaca" title="3 números mínimo y una letra al final" 
+                                           id="numeroPlaca" onKeyUp="convertirTextoEnMayusculas('numeroPlaca');" onPaste="return true;" />
+                                </div>
+                            </td> 
+                            <td width="45%">
+                                <div id="campoGPS">
+                                    <label>Serie GPS</label>
+                                    <input maxlength="12" type="text" name="gps" id="gps" 
+                                           onkeyPress="return validarSoloNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoIMEI">
+                                    <label>* Número IMEI</label>
+                                    <input maxlength="20" type="text" name="imei" id="imei" 
+                                           onkeyPress="return validarSoloNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoCHIP">
+                                    <label>* Número CHIP</label>
+                                    <input maxlength="20" type="text" name="chip" id="chip" 
+                                           onkeyPress="return validarSoloNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoChasis">
+                                    <label>* Chasis</label>
+                                    <input required type="text" name="chasis" id="chasis" 
+                                           onkeyPress="return validarLetrasYNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoMotor">
+                                    <label>* # de Motor</label>
+                                    <input required type="text" name="motor" id="motor" 
+                                           onkeyPress="return validarLetrasYNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoDISCO">
+                                    <label>* Disco</label>
+                                    <input required maxlength="4" type="text" name="disco" id="disco" 
+                                           onkeyPress="return validarSoloNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoANIO">
+                                    <label>* A&ntilde;o</label>
+                                    <input required maxlength="4" type="text" name="anio" id="anio" 
+                                           onkeyPress="return validarSoloNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="esMonitorizado">
+                                    <input type="checkbox" id="esM" name="chk" checked>
+                                    <label for="chk">*Es Monitoreado</label><br>                                    
+                                </div>
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&nbsp;</td>
+                            <td colspan="3">
+                                <div id="campoTipoVehiculo">
+                                    <label>* Tipo de veh&iacute;culo</label>
+                                    <div id="div_rb_tipo_vehiculo" style="margin:3px 15px;"></div>
+                                    <input type="hidden" id="rb_tipo_vehiculo" name="rb_tipo_vehiculo" value="" />
+                                </div>
+                            </td>                          
+                        </tr>
+                        <tr>
+                            <td colspan="1">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&nbsp;</td>
+                            <td colspan="3">
+                                <div>
+                                    <label>* Filial</label>
+                                    <div id='combo_filial'></div>
+                                </div> 
+                            </td>                           
+                        </tr>
+                    </tbody>
+                </table> 
+            </center>	
+            <br/><br/>
+            <div id="bloqueDinamico">
+                <div id="tituloPorTipoVehiculo" class="secHead">Ficha T&eacute;cnica</div>
+                <div id="formularioFichaTecnica" style="display:block;">
+                    <table class="formulario">
+                    <tbody>
+                            <tr>
+                                <td width="5%">&nbsp;</td>
+                                <td width="24%"><label  class="label_region">* Regi&oacute;n:</label></td>
+                                <td width="10%">
+                                     <div id='combo_region'></div>
+                                </td>
+                            </tr>                            
+                            <tr>
+                                <td width="5%">&nbsp;</td>
+                                <td width="24%"><label  class="label_ficha_contrato">  Plan de Mantenimiento:</label></td>
+                                <td width="10%">
+                                     <div id='combo_proceso'></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="5%">&nbsp;</td>
+                                <td width="24%"><label class="label_ficha_contrato">* Umbral de Alerta(KM):</label></td>
+                                <td width="10%">
+                                    <input type="text" id="alertaKM" name="alertaKM" value="500" onkeyPress="return validarSoloNumeros(event);"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="formularioContrato" style="display:none;" >
+                    <table class="formulario">
+                        <tbody>
+                            <tr>
+                                <td width="5%">&nbsp;</td>
+                                <td width="24%"><label  class="label_ficha_contrato">* Contratista:</label></td>
+                                <td width="10%">
+                                    <input class='campo-obligatorio' type='text' id="infocontratoextratype_contratista" 
+                                           name="infocontratoextratype_contratista" 
+                                           value=''/>
+                                    <input type='text' style='display:none' id='infocontratoextratype_idcontratista' 
+                                           name='infocontratoextratype_idcontratista' 
+                                           value=''/>
+                                    <input type='text' style='display:none' id='infocontratoextratype_personaEmpresaRolId' 
+                                           name='infocontratoextratype_personaEmpresaRolId' value=''/>
+                                    <a href='#' 
+                                       onclick="showContratistas('#infocontratoextratype_contratista','#infocontratoextratype_idcontratista',
+                                                   '#infocontratoextratype_personaEmpresaRolId','Contratistas','contratistas');">
+                                        <img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" />
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="5%">&nbsp;</td>
+                                <td width="24%"><label class="label_ficha_contrato">* Fecha de Inicio de Contrato:</label></td>
+                                <td width="10%">
+                                    <div id="div_fe_inicio_contrato"></div>
+                                    <input type="hidden" id="fecha_inicio_contrato" name="fecha_inicio_contrato" value="" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="5%">&nbsp;</td>
+                                <td width="24%"><label class="label_ficha_contrato">* Fecha de Fin de Contrato:</label></td>
+                                <td width="10%">
+                                    <div id="div_fe_fin_contrato"></div>
+                                    <input type="hidden" id="fecha_fin_contrato" name="fecha_fin_contrato" value="" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+           </div>
+            <input type="hidden" name="escogida_region_value" id="escogida_region_value" value="" />
+            <input type="hidden" name="escogida_filial_value" id="escogida_filial_value" value="" />
+            <input type="hidden" name="escogido_proceso_id" id="escogido_proceso_id" value="0" />
+            <input type="hidden" name="escogido_tipo_vehiculo" id="escogido_tipo_vehiculo" value="EMPRESA" />
+            <input type="hidden" name="escogido_es_monitoreado" id="escogido_es_monitoreado" value="S" />
+            <div class="buttons">
+                <p>
+                    <input type='submit' class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('elementotransporte') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>
+            <input type="hidden" id="tipoTransporte" name="tipoTransporte" value="{{strTipoTransporte}}" />
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        var strUrlGetModelosPorTipoMedioTransporte = "{{ path('elementotransporte_getModelosPorTipoMedioTransporte') }}";
+        var strUrlVerificarPlaca                   = "{{ path('elementotransporte_verificarPlaca') }}";
+        var strTipoTransporte                      = "{{ strTipoTransporte }}";
+        var strUrlGetOficinas                      = "{{ path('search_ajaxGetOficinas') }}"; 
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTransporte/funcionesGenerales.js?2') }}"></script>		
+{% endblock javascripts_footer%}

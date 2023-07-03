@@ -1,0 +1,1703 @@
+Conectandose a la base Infraestructura...
+
+hostname:dbnaf.telconet.net
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+hostname:dbnaf.telconet.net
+Conexion exitosa...
+
+MIGRACION PERFILES A20
+ip:172.30.251.183
+IP:172.30.254.151
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+linea:	service name "bloqueado"|
+numero:2
+nombre:"bloqueado"
+descripcion:bloqueado
+idElemento:2228
+idModelo:297
+perfil:2
+descripcion:bloqueado
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d800u800"|
+numero:3
+nombre:"d800u800"
+descripcion:d800u800
+down:800
+up:800
+idElemento:2228
+idModelo:297
+perfil:3
+descripcion:d800u800
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d320u320"|
+numero:4
+nombre:"d320u320"
+descripcion:d320u320
+down:320
+up:320
+idElemento:2228
+idModelo:297
+perfil:4
+descripcion:d320u320
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d64u64"|
+numero:5
+nombre:"d64u64"
+descripcion:d64u64
+down:64
+up:64
+idElemento:2228
+idModelo:297
+perfil:5
+descripcion:d64u64
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+----
+linea:	service name "d864u448"|
+numero:6
+nombre:"d864u448"
+descripcion:d864u448
+down:864
+up:448
+idElemento:2228
+idModelo:297
+perfil:6
+descripcion:d864u448
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d128u128"|
+numero:7
+nombre:"d128u128"
+descripcion:d128u128
+down:128
+up:128
+idElemento:2228
+idModelo:297
+perfil:7
+descripcion:d128u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+linea:	service name "d608u608"|
+numero:8
+nombre:"d608u608"
+descripcion:d608u608
+down:608
+up:608
+idElemento:2228
+idModelo:297
+perfil:8
+descripcion:d608u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1024u256"|
+numero:9
+nombre:"d1024u256"
+descripcion:d1024u256
+down:1024
+up:256
+idElemento:2228
+idModelo:297
+perfil:9
+descripcion:d1024u256
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+linea:	service name "d14400u1024"|
+numero:10
+nombre:"d14400u1024"
+descripcion:d14400u1024
+down:14400
+up:1024
+idElemento:2228
+idModelo:297
+perfil:10
+descripcion:d14400u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d608u320"|
+numero:11
+nombre:"d608u320"
+descripcion:d608u320
+down:608
+up:320
+idElemento:2228
+idModelo:297
+perfil:11
+descripcion:d608u320
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d736u384"|
+numero:12
+nombre:"d736u384"
+descripcion:d736u384
+down:736
+up:384
+idElemento:2228
+idModelo:297
+perfil:12
+descripcion:d736u384
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d160u160"|
+numero:13
+nombre:"d160u160"
+descripcion:d160u160
+down:160
+up:160
+idElemento:2228
+idModelo:297
+perfil:13
+descripcion:d160u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1024u512"|
+numero:14
+nombre:"d1024u512"
+descripcion:d1024u512
+down:1024
+up:512
+idElemento:2228
+idModelo:297
+perfil:14
+descripcion:d1024u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+linea:	service name "d1216u608"|
+numero:15
+nombre:"d1216u608"
+descripcion:d1216u608
+down:1216
+up:608
+idElemento:2228
+idModelo:297
+perfil:15
+descripcion:d1216u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d128u64"|
+numero:16
+nombre:"d128u64"
+descripcion:d128u64
+down:128
+up:64
+idElemento:2228
+idModelo:297
+perfil:16
+descripcion:d128u64
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1216u1216"|
+numero:17
+nombre:"d1216u1216"
+descripcion:d1216u1216
+down:1216
+up:1216
+idElemento:2228
+idModelo:297
+perfil:17
+descripcion:d1216u1216
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d3712u1856"|
+numero:18
+nombre:"d3712u1856"
+descripcion:d3712u1856
+down:3712
+up:1856
+idElemento:2228
+idModelo:297
+perfil:18
+descripcion:d3712u1856
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d4928u2464"|
+numero:19
+nombre:"d4928u2464"
+descripcion:d4928u2464
+down:4928
+up:2464
+idElemento:2228
+idModelo:297
+perfil:19
+descripcion:d4928u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d224u128"|
+numero:20
+nombre:"d224u128"
+descripcion:d224u128
+down:224
+up:128
+idElemento:2228
+idModelo:297
+perfil:20
+descripcion:d224u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+linea:	service name "d18560u2464"|
+numero:21
+nombre:"d18560u2464"
+descripcion:d18560u2464
+down:18560
+up:2464
+idElemento:2228
+idModelo:297
+perfil:21
+descripcion:d18560u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d256u128"|
+numero:22
+nombre:"d256u128"
+descripcion:d256u128
+down:256
+up:128
+idElemento:2228
+idModelo:297
+perfil:22
+descripcion:d256u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+linea:	service name "d320u160"|
+numero:23
+nombre:"d320u160"
+descripcion:d320u160
+down:320
+up:160
+idElemento:2228
+idModelo:297
+perfil:23
+descripcion:d320u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d24640u2464"|
+numero:24
+nombre:"d24640u2464"
+descripcion:d24640u2464
+down:24640
+up:2464
+idElemento:2228
+idModelo:297
+perfil:24
+descripcion:d24640u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d960u480"|
+numero:25
+nombre:"d960u480"
+descripcion:d960u480
+down:960
+up:480
+idElemento:2228
+idModelo:297
+perfil:25
+descripcion:d960u480
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d960u960"|
+numero:26
+nombre:"d960u960"
+descripcion:d960u960
+down:960
+up:960
+idElemento:2228
+idModelo:297
+perfil:26
+descripcion:d960u960
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d160u96"|
+numero:28
+nombre:"d160u96"
+descripcion:d160u96
+down:160
+up:96
+idElemento:2228
+idModelo:297
+perfil:28
+descripcion:d160u96
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d6144u2464"|
+numero:29
+nombre:"d6144u2464"
+descripcion:d6144u2464
+down:6144
+up:2464
+idElemento:2228
+idModelo:297
+perfil:29
+descripcion:d6144u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d448u448"|
+numero:30
+nombre:"d448u448"
+descripcion:d448u448
+down:448
+up:448
+idElemento:2228
+idModelo:297
+perfil:30
+descripcion:d448u448
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d3712u2464"|
+numero:31
+nombre:"d3712u2464"
+descripcion:d3712u2464
+down:3712
+up:2464
+idElemento:2228
+idModelo:297
+perfil:31
+descripcion:d3712u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1248u512"|
+numero:32
+nombre:"d1248u512"
+descripcion:d1248u512
+down:1248
+up:512
+idElemento:2228
+idModelo:297
+perfil:32
+descripcion:d1248u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d160u96"|
+numero:33
+nombre:"d160u96"
+descripcion:d160u96
+down:160
+up:96
+idElemento:2228
+idModelo:297
+perfil:33
+descripcion:d160u96
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d2464u2464"|
+numero:34
+nombre:"d2464u2464"
+descripcion:d2464u2464
+down:2464
+up:2464
+idElemento:2228
+idModelo:297
+perfil:34
+descripcion:d2464u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1440u736"|
+numero:35
+nombre:"d1440u736"
+descripcion:d1440u736
+down:1440
+up:736
+idElemento:2228
+idModelo:297
+perfil:35
+descripcion:d1440u736
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d2944u1024"|
+numero:36
+nombre:"d2944u1024"
+descripcion:d2944u1024
+down:2944
+up:1024
+idElemento:2228
+idModelo:297
+perfil:36
+descripcion:d2944u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d512u256"|
+numero:37
+nombre:"d512u256"
+descripcion:d512u256
+down:512
+up:256
+idElemento:2228
+idModelo:297
+perfil:37
+descripcion:d512u256
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d5408u1024"|
+numero:38
+nombre:"d5408u1024"
+descripcion:d5408u1024
+down:5408
+up:1024
+idElemento:2228
+idModelo:297
+perfil:38
+descripcion:d5408u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d10816u1024"|
+numero:39
+nombre:"d10816u1024"
+descripcion:d10816u1024
+down:10816
+up:1024
+idElemento:2228
+idModelo:297
+perfil:39
+descripcion:d10816u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d19200u1024"|
+numero:40
+nombre:"d19200u1024"
+descripcion:d19200u1024
+down:19200
+up:1024
+idElemento:2228
+idModelo:297
+perfil:40
+descripcion:d19200u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d7392u2464"|
+numero:41
+nombre:"d7392u2464"
+descripcion:d7392u2464
+down:7392
+up:2464
+idElemento:2228
+idModelo:297
+perfil:41
+descripcion:d7392u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d5408u2464"|
+numero:42
+nombre:"d5408u2464"
+descripcion:d5408u2464
+down:5408
+up:2464
+idElemento:2228
+idModelo:297
+perfil:42
+descripcion:d5408u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d352u160"|
+numero:43
+nombre:"d352u160"
+descripcion:d352u160
+down:352
+up:160
+idElemento:2228
+idModelo:297
+perfil:43
+descripcion:d352u160
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d10816u2464"|
+numero:44
+nombre:"d10816u2464"
+descripcion:d10816u2464
+down:10816
+up:2464
+idElemento:2228
+idModelo:297
+perfil:44
+descripcion:d10816u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d7200u2464"|
+numero:45
+nombre:"d7200u2464"
+descripcion:d7200u2464
+down:7200
+up:2464
+idElemento:2228
+idModelo:297
+perfil:45
+descripcion:d7200u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d14400u2464"|
+numero:46
+nombre:"d14400u2464"
+descripcion:d14400u2464
+down:14400
+up:2464
+idElemento:2228
+idModelo:297
+perfil:46
+descripcion:d14400u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d3008u2464"|
+numero:47
+nombre:"d3008u2464"
+descripcion:d3008u2464
+down:3008
+up:2464
+idElemento:2228
+idModelo:297
+perfil:47
+descripcion:d3008u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d9600u2464"|
+numero:48
+nombre:"d9600u2464"
+descripcion:d9600u2464
+down:9600
+up:2464
+idElemento:2228
+idModelo:297
+perfil:48
+descripcion:d9600u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d512u128"|
+numero:49
+nombre:"d512u128"
+descripcion:d512u128
+down:512
+up:128
+idElemento:2228
+idModelo:297
+perfil:49
+descripcion:d512u128
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+linea:	service name "d768u384"|
+numero:50
+nombre:"d768u384"
+descripcion:d768u384
+down:768
+up:384
+idElemento:2228
+idModelo:297
+perfil:50
+descripcion:d768u384
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1248u608"|
+numero:51
+nombre:"d1248u608"
+descripcion:d1248u608
+down:1248
+up:608
+idElemento:2228
+idModelo:297
+perfil:51
+descripcion:d1248u608
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1856u768"|
+numero:52
+nombre:"d1856u768"
+descripcion:d1856u768
+down:1856
+up:768
+idElemento:2228
+idModelo:297
+perfil:52
+descripcion:d1856u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1536u768"|
+numero:53
+nombre:"d1536u768"
+descripcion:d1536u768
+down:1536
+up:768
+idElemento:2228
+idModelo:297
+perfil:53
+descripcion:d1536u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d2464u1024"|
+numero:54
+nombre:"d2464u1024"
+descripcion:d2464u1024
+down:2464
+up:1024
+idElemento:2228
+idModelo:297
+perfil:54
+descripcion:d2464u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d2048u1024"|
+numero:55
+nombre:"d2048u1024"
+descripcion:d2048u1024
+down:2048
+up:1024
+idElemento:2228
+idModelo:297
+perfil:55
+descripcion:d2048u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d3712u1024"|
+numero:56
+nombre:"d3712u1024"
+descripcion:d3712u1024
+down:3712
+up:1024
+idElemento:2228
+idModelo:297
+perfil:56
+descripcion:d3712u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d3072u1024"|
+numero:57
+nombre:"d3072u1024"
+descripcion:d3072u1024
+down:3072
+up:1024
+idElemento:2228
+idModelo:297
+perfil:57
+descripcion:d3072u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d4928u1024"|
+numero:58
+nombre:"d4928u1024"
+descripcion:d4928u1024
+down:4928
+up:1024
+idElemento:2228
+idModelo:297
+perfil:58
+descripcion:d4928u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d4096u1024"|
+numero:59
+nombre:"d4096u1024"
+descripcion:d4096u1024
+down:4096
+up:1024
+idElemento:2228
+idModelo:297
+perfil:59
+descripcion:d4096u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d7392u1024"|
+numero:60
+nombre:"d7392u1024"
+descripcion:d7392u1024
+down:7392
+up:1024
+idElemento:2228
+idModelo:297
+perfil:60
+descripcion:d7392u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d6144u1024"|
+numero:61
+nombre:"d6144u1024"
+descripcion:d6144u1024
+down:6144
+up:1024
+idElemento:2228
+idModelo:297
+perfil:61
+descripcion:d6144u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d640u640"|
+numero:62
+nombre:"d640u640"
+descripcion:d640u640
+down:640
+up:640
+idElemento:2228
+idModelo:297
+perfil:62
+descripcion:d640u640
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d512u512"|
+numero:63
+nombre:"d512u512"
+descripcion:d512u512
+down:512
+up:512
+idElemento:2228
+idModelo:297
+perfil:63
+descripcion:d512u512
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d928u928"|
+numero:64
+nombre:"d928u928"
+descripcion:d928u928
+down:928
+up:928
+idElemento:2228
+idModelo:297
+perfil:64
+descripcion:d928u928
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d768u768"|
+numero:65
+nombre:"d768u768"
+descripcion:d768u768
+down:768
+up:768
+idElemento:2228
+idModelo:297
+perfil:65
+descripcion:d768u768
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1248u1024"|
+numero:66
+nombre:"d1248u1024"
+descripcion:d1248u1024
+down:1248
+up:1024
+idElemento:2228
+idModelo:297
+perfil:66
+descripcion:d1248u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1024u1024"|
+numero:67
+nombre:"d1024u1024"
+descripcion:d1024u1024
+down:1024
+up:1024
+idElemento:2228
+idModelo:297
+perfil:67
+descripcion:d1024u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+linea:	service name "d1856u1024"|
+numero:68
+nombre:"d1856u1024"
+descripcion:d1856u1024
+down:1856
+up:1024
+idElemento:2228
+idModelo:297
+perfil:68
+descripcion:d1856u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d1536u1024"|
+numero:69
+nombre:"d1536u1024"
+descripcion:d1536u1024
+down:1536
+up:1024
+idElemento:2228
+idModelo:297
+perfil:69
+descripcion:d1536u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d9856u1024"|
+numero:70
+nombre:"d9856u1024"
+descripcion:d9856u1024
+down:9856
+up:1024
+idElemento:2228
+idModelo:297
+perfil:70
+descripcion:d9856u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d2048u1024"|
+numero:71
+nombre:"d2048u1024"
+descripcion:d2048u1024
+down:2048
+up:1024
+idElemento:2228
+idModelo:297
+perfil:71
+descripcion:d2048u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d14784u1024"|
+numero:72
+nombre:"d14784u1024"
+descripcion:d14784u1024
+down:14784
+up:1024
+idElemento:2228
+idModelo:297
+perfil:72
+descripcion:d14784u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d12288u614"|
+numero:73
+nombre:"d12288u614"
+descripcion:d12288u614
+down:12288
+up:614
+idElemento:2228
+idModelo:297
+perfil:73
+descripcion:d12288u614
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d9600u1024"|
+numero:74
+nombre:"d9600u1024"
+descripcion:d9600u1024
+down:9600
+up:1024
+idElemento:2228
+idModelo:297
+perfil:74
+descripcion:d9600u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d10208u1024"|
+numero:75
+nombre:"d10208u1024"
+descripcion:d10208u1024
+down:10208
+up:1024
+idElemento:2228
+idModelo:297
+perfil:75
+descripcion:d10208u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d8608u1024"|
+numero:76
+nombre:"d8608u1024"
+descripcion:d8608u1024
+down:8608
+up:1024
+idElemento:2228
+idModelo:297
+perfil:76
+descripcion:d8608u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d16800u2464"|
+numero:77
+nombre:"d16800u2464"
+descripcion:d16800u2464
+down:16800
+up:2464
+idElemento:2228
+idModelo:297
+perfil:77
+descripcion:d16800u2464
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d16800u1024"|
+numero:78
+nombre:"d16800u1024"
+descripcion:d16800u1024
+down:16800
+up:1024
+idElemento:2228
+idModelo:297
+perfil:78
+descripcion:d16800u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+linea:	service name "d8416u1024"|
+numero:79
+nombre:"d8416u1024"
+descripcion:d8416u1024
+down:8416
+up:1024
+idElemento:2228
+idModelo:297
+perfil:79
+descripcion:d8416u1024
+Se actualizo 1 fila
+Se actualizo 1 fila
+Se actualizo 1 fila
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+----
+{"status":"SE ACTUALIZARON LOS PERFILES","mensaje":"OK"}

@@ -1,0 +1,312 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+SELECT SERVICIO.ID_SERVICIO FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO, DB_COMERCIAL.INFO_SERVICIO_TECNICO TECNICO, DB_COMERCIAL.INFO_PUNTO PUNTO, DB_COMERCIAL.INFO_PLAN_CAB PLANC, DB_COMERCIAL.INFO_PLAN_DET PLAND, DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA PC, DB_COMERCIAL.ADMI_CARACTERISTICA CAR, DB_COMERCIAL.INFO_PLAN_PRODUCTO_CARACT PPC, DB_INFRAESTRUCTURA.INFO_ELEMENTO ELEMENTO, DB_INFRAESTRUCTURA.ADMI_MODELO_ELEMENTO MODELO WHERE SERVICIO.ID_SERVICIO = TECNICO.SERVICIO_ID AND SERVICIO.PUNTO_ID = PUNTO.ID_PUNTO AND SERVICIO.ESTADO = 'Activo' AND TECNICO.INTERFACE_ELEMENTO_ID IS NOT NULL AND SERVICIO.PLAN_ID = PLANC.ID_PLAN AND PLANC.ID_PLAN = PLAND.PLAN_ID AND PPC.PLAN_DET_ID = PLAND.ID_ITEM AND PPC.PRODUCTO_CARACTERISITICA_ID = PC.ID_PRODUCTO_CARACTERISITICA AND PC.CARACTERISTICA_ID = CAR.ID_CARACTERISTICA AND CAR.DESCRIPCION_CARACTERISTICA = 'CAPACIDAD-PROM1' AND TECNICO.ELEMENTO_ID = ELEMENTO.ID_ELEMENTO AND ELEMENTO.MODELO_ELEMENTO_ID = MODELO.ID_MODELO_ELEMENTO AND MODELO.NOMBRE_MODELO_ELEMENTO = 'R1AD48A'
+obteniendo los servicios
+136
+servicios...
+serviciosObj:136
+serviciosObj:105
+serviciosObj:101
+serviciosObj:70
+serviciosObj:54
+serviciosObj:31
+serviciosObj:23
+serviciosObj:12
+serviciosObj:1
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/9, login:gyeammuno_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/3, login:manebchavezs_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/30, login:uioedarizaa_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/37, login:durlnvarg_m , up:608, down:320
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/10, login:manychav_m8 , up:608, down:320
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/5, login:manhsa_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/6, login:gyehvtumb_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/6, login:riojaarma , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/28, login:uiopfnovo_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/20, login:riodmmalana1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/44, login:durascort_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/30, login:manevieram2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/23, login:mancazuas_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/29, login:mandamaci_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/12, login:riovhpombosap1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/10, login:gyecavale_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/30, login:manevieram2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/26, login:durbdpach_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/32, login:riojrbarbanchor1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/11, login:gyejemaca_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/40, login:durcrpinl_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/18, login:rioeasadobaya1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/38, login:manjacorr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/13, login:manjgpicof_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/4, login:riolvgalloa1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/2, login:gyeirdelg_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/13, login:uioalsuquinaguaf1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/2, login:mandmdelgadot_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/16, login:riojegarciaa1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/24, login:dureacarr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/31, login:mandalopezh_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/16, login:riosfmarting1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/22, login:mandpbedoyac , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/17, login:riolmfrutosr1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/7, login:riohfmend_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.30.252.42, interface:2/47, login:uiojcsantillans1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/23, login:mangepicof_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/40, login:maneszeto_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/15, login:gyejgcarr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/26, login:manlrchav_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/3, login:dureyanta_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/11, login:manpromarsanc_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/11, login:manmsflore_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/41, login:rioadcastrom1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/23, login:riojrmorenoc1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/31, login:durfmreye_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/24, login:rioaaabarcaa1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/24, login:manrbeniteza_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/45, login:mancagome_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/17, login:gyeryadri_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/7, login:manjlrite_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/13, login:riomalemachea1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/27, login:durfparra_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/4, login:manjeanch_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/15, login:riomslopezt1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/21, login:riojealvarad_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/12, login:gyedmveram_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/1, login:manvaanchu_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/23, login:durfryepe_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/25, login:mandepesantesb , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/1, login:gyewoflor_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/2, login:manjpartea1_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/23, login:manegcisne_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.34, interface:2/27, login:rioprfial_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/22, login:riofmrodriguezl1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/14, login:manajmarch_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/25, login:durictorr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/3, login:gyemcboni_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/19, login:manldanch_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/29, login:durjemigu_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.241, interface:2/46, login:manmarc_m , up:4928, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/36, login:manmchiri_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/18, login:gyemacarr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/12, login:mandamac_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/41, login:durjlbaja_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/12, login:riolatenesacat2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/24, login:manimgutier_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/29, login:manjhdelgadom_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/14, login:gyewecalip_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/5, login:rioagsamaniegoh1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/7, login:gyeweminod_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/2, login:durlachoc_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/13, login:manajhan_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/16, login:gyedavill_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/7, login:manjigonzal_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/1, login:durllvill_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/27, login:manbjgor_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/6, login:rioccantunas1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.112.254, interface:2/40, login:mancityclima_m , up:3712, down:1024
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/30, login:manfpbuch_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/7, login:riogsilvab1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/31, login:manmnanch_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/16, login:durlmrose_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/24, login:gyeeazunigac1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/33, login:durmarti_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/8, login:riocpajitimbay1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/20, login:gyelfjimeneza1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.28.86.246, interface:2/7, login:manrphilc_m , up:7392, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/38, login:durmefaja_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/2, login:riosfguamantaquia1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/6, login:durmemedi_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/22, login:gyelacordovas1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/1, login:riomcpilcoy1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/30, login:durmemore_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/23, login:gyecmlitardop1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/35, login:durmjsanc_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/26, login:riotdcabreras2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/19, login:durochoas_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/21, login:gyekapilosoc1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/25, login:riolbravom1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/39, login:durpvgonz_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/26, login:gyedemorejonp1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/45, login:durrpvele_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/27, login:riojomunozt1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/25, login:gyembleonc1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/10, login:riorguagchap1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/33, login:gyesamacass1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/32, login:dursrmore_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/28, login:gyegmrojasp1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/42, login:durvmarve_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/19, login:rioagduchip1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/32, login:gyejvmunozm1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.31.200.42, interface:2/21, login:riopvaguagallop1 , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/46, login:durwecamp_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/27, login:gyelgmendozam1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/43, login:durjrherr_m , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/29, login:gyeipespanar1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/7, login:durremedinam1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/18, login:durcrvergarav1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/34, login:gyeweminod2 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/5, login:durmanarv_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/35, login:gyeweminod3 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.133.252, interface:2/28, login:durymvill_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/36, login:gyeheiturraldeb1 , up:1248, down:608
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/8, login:gyeryocho_m , up:2464, down:1024
+EJECUTO modelo:R1AD48A, ip:172.17.127.253, interface:2/5, login:gyefdguti_m , up:2464, down:1024
+***********************************
+LISTADO DE SERVICIOS 
+num:136
+Home ADSL Mixto 1 y 2,manevieram2,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/30,CAMBIADO
+Home ADSL Mixto 1 y 2,uioedarizaa_m,uiopampomasqui1,R1AD48A,172.30.252.42,2/30,CAMBIADO
+Home ADSL Mixto 1 y 2,uiopfnovo_m,uiopampomasqui1,R1AD48A,172.30.252.42,2/28,CAMBIADO
+Home ADSL Mixto 1 y 2,uioalsuquinaguaf1,uiopampomasqui1,R1AD48A,172.30.252.42,2/13,CAMBIADO
+Home ADSL Mixto 2 y 4,uiojcsantillans1,uiopampomasqui1,R1AD48A,172.30.252.42,2/47,CAMBIADO
+Home ADSL Mixto 1 y 2,manevieram2,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/30,CAMBIADO
+Home ADSL Mixto 1 y 2,manjacorr_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/38,CAMBIADO
+Home ADSL Mixto 1 y 2,mancagome_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/45,CAMBIADO
+Home ADSL Mixto 1 y 2,manjeanch_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/4,CAMBIADO
+Home ADSL Mixto 2 y 4,mandepesantesb,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/25,CAMBIADO
+Home ADSL Mixto 2 y 4,manegcisne_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/23,CAMBIADO
+Home ADSL Mixto 2 y 4,manajmarch_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/14,CAMBIADO
+Home ADSL Mixto 2 y 4,manmchiri_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/36,CAMBIADO
+Home ADSL Mixto 2 y 4,manjhdelgadom_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/29,CAMBIADO
+Home ADSL Mixto 2 y 4,manjigonzal_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/7,CAMBIADO
+Home ADSL Mixto 3 y 6,mancityclima_m,mnttelcjuniordos1,R1AD48A,172.28.112.254,2/40,CAMBIADO
+Home ADSL Mixto 1 y 2,riojaarma,rioimpcondamine1,R1AD48A,172.31.200.34,2/6,CAMBIADO
+Home ADSL Mixto 1 y 2,riovhpombosap1,rioimpcondamine1,R1AD48A,172.31.200.34,2/12,CAMBIADO
+Home ADSL Mixto 2 y 4,riojrbarbanchor1,rioimpcondamine1,R1AD48A,172.31.200.34,2/32,CAMBIADO
+Home ADSL Mixto 2 y 4,riosfmarting1,rioimpcondamine1,R1AD48A,172.31.200.34,2/16,CAMBIADO
+Home ADSL Mixto 2 y 4,riohfmend_m,rioimpcondamine1,R1AD48A,172.31.200.34,2/7,CAMBIADO
+Home ADSL Mixto 2 y 4,rioadcastrom1,rioimpcondamine1,R1AD48A,172.31.200.34,2/41,CAMBIADO
+Home ADSL Mixto 2 y 4,riojealvarad_m,rioimpcondamine1,R1AD48A,172.31.200.34,2/21,CAMBIADO
+Home ADSL Mixto 2 y 4,rioprfial_m,rioimpcondamine1,R1AD48A,172.31.200.34,2/27,CAMBIADO
+Home ADSL Mixto 1 y 2,manebchavezs_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/3,CAMBIADO
+Home ADSL Mixto 1 y 2,manhsa_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/5,CAMBIADO
+Home ADSL Mixto 1 y 2,mancazuas_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/23,CAMBIADO
+Home ADSL Mixto 1 y 2,manjgpicof_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/13,CAMBIADO
+Home ADSL Mixto 2 y 4,mandalopezh_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/31,CAMBIADO
+Home ADSL Mixto 2 y 4,maneszeto_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/40,CAMBIADO
+Home ADSL Mixto 2 y 4,manpromarsanc_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/11,CAMBIADO
+Home ADSL Mixto 2 y 4,manrbeniteza_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/24,CAMBIADO
+Home ADSL Mixto 2 y 4,manjlrite_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/7,CAMBIADO
+Home ADSL Mixto 2 y 4,manjpartea1_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/2,CAMBIADO
+Home ADSL Mixto 4 y 8,manmarc_m,mnttelfreyes2,R1AD48A,172.28.112.241,2/46,CAMBIADO
+Home ADSL Mixto 512 y 3072,manychav_m8,mnttelursa1,R1AD48A,172.28.86.246,2/10,CAMBIADO
+Home ADSL Mixto 1 y 2,mandamaci_m,mnttelursa1,R1AD48A,172.28.86.246,2/29,CAMBIADO
+Home ADSL Mixto 1 y 2,mandmdelgadot_m,mnttelursa1,R1AD48A,172.28.86.246,2/2,CAMBIADO
+Home ADSL Mixto 1 y 2,mandpbedoyac,mnttelursa1,R1AD48A,172.28.86.246,2/22,CAMBIADO
+Home ADSL Mixto 1 y 2,mangepicof_m,mnttelursa1,R1AD48A,172.28.86.246,2/23,CAMBIADO
+Home ADSL Mixto 1 y 2,manlrchav_m,mnttelursa1,R1AD48A,172.28.86.246,2/26,CAMBIADO
+Home ADSL Mixto 1 y 2,manmsflore_m,mnttelursa1,R1AD48A,172.28.86.246,2/11,CAMBIADO
+Home ADSL Mixto 1 y 2,manvaanchu_m,mnttelursa1,R1AD48A,172.28.86.246,2/1,CAMBIADO
+Home ADSL Mixto 1 y 2,manldanch_m,mnttelursa1,R1AD48A,172.28.86.246,2/19,CAMBIADO
+Home ADSL Mixto 2 y 4,mandamac_m,mnttelursa1,R1AD48A,172.28.86.246,2/12,CAMBIADO
+Home ADSL Mixto 2 y 4,manimgutier_m,mnttelursa1,R1AD48A,172.28.86.246,2/24,CAMBIADO
+Home ADSL Mixto 2 y 4,manajhan_m,mnttelursa1,R1AD48A,172.28.86.246,2/13,CAMBIADO
+Home ADSL Mixto 2 y 4,manbjgor_m,mnttelursa1,R1AD48A,172.28.86.246,2/27,CAMBIADO
+Home ADSL Mixto 2 y 4,manfpbuch_m,mnttelursa1,R1AD48A,172.28.86.246,2/30,CAMBIADO
+Home ADSL Mixto 2 y 4,manmnanch_m,mnttelursa1,R1AD48A,172.28.86.246,2/31,CAMBIADO
+Home ADSL Mixto 6 y 12,manrphilc_m,mnttelursa1,R1AD48A,172.28.86.246,2/7,CAMBIADO
+Home ADSL Mixto 1 y 2,riodmmalana1,rioriosolca1,R1AD48A,172.31.200.42,2/20,CAMBIADO
+Home ADSL Mixto 1 y 2,rioeasadobaya1,rioriosolca1,R1AD48A,172.31.200.42,2/18,CAMBIADO
+Home ADSL Mixto 1 y 2,riolvgalloa1,rioriosolca1,R1AD48A,172.31.200.42,2/4,CAMBIADO
+Home ADSL Mixto 1 y 2,riojegarciaa1,rioriosolca1,R1AD48A,172.31.200.42,2/16,CAMBIADO
+Home ADSL Mixto 1 y 2,riolmfrutosr1,rioriosolca1,R1AD48A,172.31.200.42,2/17,CAMBIADO
+Home ADSL Mixto 1 y 2,riojrmorenoc1,rioriosolca1,R1AD48A,172.31.200.42,2/23,CAMBIADO
+Home ADSL Mixto 1 y 2,rioaaabarcaa1,rioriosolca1,R1AD48A,172.31.200.42,2/24,CAMBIADO
+Home ADSL Mixto 1 y 2,riomalemachea1,rioriosolca1,R1AD48A,172.31.200.42,2/13,CAMBIADO
+Home ADSL Mixto 1 y 2,riomslopezt1,rioriosolca1,R1AD48A,172.31.200.42,2/15,CAMBIADO
+Home ADSL Mixto 1 y 2,riofmrodriguezl1,rioriosolca1,R1AD48A,172.31.200.42,2/22,CAMBIADO
+Home ADSL Mixto 1 y 2,riolatenesacat2,rioriosolca1,R1AD48A,172.31.200.42,2/12,CAMBIADO
+Home ADSL Mixto 1 y 2,rioagsamaniegoh1,rioriosolca1,R1AD48A,172.31.200.42,2/5,CAMBIADO
+Home ADSL Mixto 1 y 2,rioccantunas1,rioriosolca1,R1AD48A,172.31.200.42,2/6,CAMBIADO
+Home ADSL Mixto 1 y 2,riogsilvab1,rioriosolca1,R1AD48A,172.31.200.42,2/7,CAMBIADO
+Home ADSL Mixto 1 y 2,riocpajitimbay1,rioriosolca1,R1AD48A,172.31.200.42,2/8,CAMBIADO
+Home ADSL Mixto 1 y 2,riosfguamantaquia1,rioriosolca1,R1AD48A,172.31.200.42,2/2,CAMBIADO
+Home ADSL Mixto 1 y 2,riomcpilcoy1,rioriosolca1,R1AD48A,172.31.200.42,2/1,CAMBIADO
+Home ADSL Mixto 1 y 2,riotdcabreras2,rioriosolca1,R1AD48A,172.31.200.42,2/26,CAMBIADO
+Home ADSL Mixto 1 y 2,riolbravom1,rioriosolca1,R1AD48A,172.31.200.42,2/25,CAMBIADO
+Home ADSL Mixto 1 y 2,riojomunozt1,rioriosolca1,R1AD48A,172.31.200.42,2/27,CAMBIADO
+Home ADSL Mixto 1 y 2,riorguagchap1,rioriosolca1,R1AD48A,172.31.200.42,2/10,CAMBIADO
+Home ADSL Mixto 2 y 4,rioagduchip1,rioriosolca1,R1AD48A,172.31.200.42,2/19,CAMBIADO
+Home ADSL Mixto 2 y 4,riopvaguagallop1,rioriosolca1,R1AD48A,172.31.200.42,2/21,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeammuno_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/9,CAMBIADO
+Home ADSL Mixto 1 y 2,gyehvtumb_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/6,CAMBIADO
+Home ADSL Mixto 1 y 2,gyecavale_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/10,CAMBIADO
+Home ADSL Mixto 1 y 2,gyejemaca_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/11,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeirdelg_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/2,CAMBIADO
+Home ADSL Mixto 1 y 2,gyejgcarr_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/15,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeryadri_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/17,CAMBIADO
+Home ADSL Mixto 1 y 2,gyedmveram_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/12,CAMBIADO
+Home ADSL Mixto 1 y 2,gyewoflor_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/1,CAMBIADO
+Home ADSL Mixto 1 y 2,gyemcboni_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/3,CAMBIADO
+Home ADSL Mixto 1 y 2,gyemacarr_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/18,CAMBIADO
+Home ADSL Mixto 1 y 2,gyewecalip_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/14,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeweminod_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/7,CAMBIADO
+Home ADSL Mixto 1 y 2,gyedavill_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/16,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeeazunigac1,gyeestfertiza2,R1AD48A,172.17.127.253,2/24,CAMBIADO
+Home ADSL Mixto 1 y 2,gyelfjimeneza1,gyeestfertiza2,R1AD48A,172.17.127.253,2/20,CAMBIADO
+Home ADSL Mixto 1 y 2,gyelacordovas1,gyeestfertiza2,R1AD48A,172.17.127.253,2/22,CAMBIADO
+Home ADSL Mixto 1 y 2,gyecmlitardop1,gyeestfertiza2,R1AD48A,172.17.127.253,2/23,CAMBIADO
+Home ADSL Mixto 1 y 2,gyekapilosoc1,gyeestfertiza2,R1AD48A,172.17.127.253,2/21,CAMBIADO
+Home ADSL Mixto 1 y 2,gyedemorejonp1,gyeestfertiza2,R1AD48A,172.17.127.253,2/26,CAMBIADO
+Home ADSL Mixto 1 y 2,gyembleonc1,gyeestfertiza2,R1AD48A,172.17.127.253,2/25,CAMBIADO
+Home ADSL Mixto 1 y 2,gyesamacass1,gyeestfertiza2,R1AD48A,172.17.127.253,2/33,CAMBIADO
+Home ADSL Mixto 1 y 2,gyegmrojasp1,gyeestfertiza2,R1AD48A,172.17.127.253,2/28,CAMBIADO
+Home ADSL Mixto 1 y 2,gyejvmunozm1,gyeestfertiza2,R1AD48A,172.17.127.253,2/32,CAMBIADO
+Home ADSL Mixto 1 y 2,gyelgmendozam1,gyeestfertiza2,R1AD48A,172.17.127.253,2/27,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeipespanar1,gyeestfertiza2,R1AD48A,172.17.127.253,2/29,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeweminod2,gyeestfertiza2,R1AD48A,172.17.127.253,2/34,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeweminod3,gyeestfertiza2,R1AD48A,172.17.127.253,2/35,CAMBIADO
+Home ADSL Mixto 1 y 2,gyeheiturraldeb1,gyeestfertiza2,R1AD48A,172.17.127.253,2/36,CAMBIADO
+Home ADSL Mixto 2 y 4,gyeryocho_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/8,CAMBIADO
+Home ADSL Mixto 2 y 4,gyefdguti_m,gyeestfertiza2,R1AD48A,172.17.127.253,2/5,CAMBIADO
+Home ADSL Mixto 512 y 1024,durlnvarg_m,durltubellavista3,R1AD48A,172.17.133.252,2/37,CAMBIADO
+Home ADSL Mixto 1 y 2,durascort_m,durltubellavista3,R1AD48A,172.17.133.252,2/44,CAMBIADO
+Home ADSL Mixto 1 y 2,durbdpach_m,durltubellavista3,R1AD48A,172.17.133.252,2/26,CAMBIADO
+Home ADSL Mixto 1 y 2,durcrpinl_m,durltubellavista3,R1AD48A,172.17.133.252,2/40,CAMBIADO
+Home ADSL Mixto 1 y 2,dureacarr_m,durltubellavista3,R1AD48A,172.17.133.252,2/24,CAMBIADO
+Home ADSL Mixto 1 y 2,dureyanta_m,durltubellavista3,R1AD48A,172.17.133.252,2/3,CAMBIADO
+Home ADSL Mixto 1 y 2,durfmreye_m,durltubellavista3,R1AD48A,172.17.133.252,2/31,CAMBIADO
+Home ADSL Mixto 1 y 2,durfparra_m,durltubellavista3,R1AD48A,172.17.133.252,2/27,CAMBIADO
+Home ADSL Mixto 1 y 2,durfryepe_m,durltubellavista3,R1AD48A,172.17.133.252,2/23,CAMBIADO
+Home ADSL Mixto 1 y 2,durictorr_m,durltubellavista3,R1AD48A,172.17.133.252,2/25,CAMBIADO
+Home ADSL Mixto 1 y 2,durjemigu_m,durltubellavista3,R1AD48A,172.17.133.252,2/29,CAMBIADO
+Home ADSL Mixto 1 y 2,durjlbaja_m,durltubellavista3,R1AD48A,172.17.133.252,2/41,CAMBIADO
+Home ADSL Mixto 1 y 2,durlachoc_m,durltubellavista3,R1AD48A,172.17.133.252,2/2,CAMBIADO
+Home ADSL Mixto 1 y 2,durllvill_m,durltubellavista3,R1AD48A,172.17.133.252,2/1,CAMBIADO
+Home ADSL Mixto 1 y 2,durlmrose_m,durltubellavista3,R1AD48A,172.17.133.252,2/16,CAMBIADO
+Home ADSL Mixto 1 y 2,durmarti_m,durltubellavista3,R1AD48A,172.17.133.252,2/33,CAMBIADO
+Home ADSL Mixto 1 y 2,durmefaja_m,durltubellavista3,R1AD48A,172.17.133.252,2/38,CAMBIADO
+Home ADSL Mixto 1 y 2,durmemedi_m,durltubellavista3,R1AD48A,172.17.133.252,2/6,CAMBIADO
+Home ADSL Mixto 1 y 2,durmemore_m,durltubellavista3,R1AD48A,172.17.133.252,2/30,CAMBIADO
+Home ADSL Mixto 1 y 2,durmjsanc_m,durltubellavista3,R1AD48A,172.17.133.252,2/35,CAMBIADO
+Home ADSL Mixto 1 y 2,durochoas_m,durltubellavista3,R1AD48A,172.17.133.252,2/19,CAMBIADO
+Home ADSL Mixto 1 y 2,durpvgonz_m,durltubellavista3,R1AD48A,172.17.133.252,2/39,CAMBIADO
+Home ADSL Mixto 1 y 2,durrpvele_m,durltubellavista3,R1AD48A,172.17.133.252,2/45,CAMBIADO
+Home ADSL Mixto 1 y 2,dursrmore_m,durltubellavista3,R1AD48A,172.17.133.252,2/32,CAMBIADO
+Home ADSL Mixto 1 y 2,durvmarve_m,durltubellavista3,R1AD48A,172.17.133.252,2/42,CAMBIADO
+Home ADSL Mixto 1 y 2,durwecamp_m,durltubellavista3,R1AD48A,172.17.133.252,2/46,CAMBIADO
+Home ADSL Mixto 1 y 2,durjrherr_m,durltubellavista3,R1AD48A,172.17.133.252,2/43,CAMBIADO
+Home ADSL Mixto 1 y 2,durremedinam1,durltubellavista3,R1AD48A,172.17.133.252,2/7,CAMBIADO
+Home ADSL Mixto 1 y 2,durcrvergarav1,durltubellavista3,R1AD48A,172.17.133.252,2/18,CAMBIADO
+Home ADSL Mixto 2 y 4,durmanarv_m,durltubellavista3,R1AD48A,172.17.133.252,2/5,CAMBIADO
+Home ADSL Mixto 2 y 4,durymvill_m,durltubellavista3,R1AD48A,172.17.133.252,2/28,CAMBIADO
+no:0
+generando archivo...
+Hora Inicio: Mon Sep 09 06:00:02 ECT 2013
+Hora Fin: Mon Sep 09 06:01:07 ECT 2013

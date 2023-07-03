@@ -1,0 +1,72 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGridFuente       = "{{ path('elementofuente_grid') }}";
+        var strUrlEliminarFuente   = "{{ path('elementofuente_deleteAjax') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoFuente/index.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoFuente/funcionesGenerales.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Fuentes</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="listado_acciones_relacionadas">
+        {% if is_granted("ROLE_329-2") %}
+            <li>
+                <a class="button-nuevo-registro" href="{{ path('elementofuente_new') }}">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Nueva Fuente
+                </a>
+            </li>
+        {% endif %}
+            
+        {% if is_granted("ROLE_329-3457") %}
+            <li style="margin-top: 20px;">
+                <a class="button-nuevo-registro" href="{{ path('elementofuente_gridMonitoreo') }}">
+                    &nbsp;Monitoreo Fuente
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}

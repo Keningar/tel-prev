@@ -1,0 +1,133 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+        }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoEnlace/new.js?6') }}"></script>
+    <script>
+        var url_claseTipoMedio     =  '{{path('admiclasetipomedio_getEncontrados')}}';
+        var url_hilosPorBuffer      =  '{{path('admihilo_getHilosPorBuffer')}}';
+        var url_bufferHiloTipoMedio =  '{{path('admibuffer_ajaxGetBuffersPorTipoMedio')}}';
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Ingreso de Enlace</h1>
+    </div>
+    <div class="body_content">
+        <form id='form_new_elemento_dslam' action="{{ path('enlace_elemento_create') }}" method="post" {{ form_enctype(form) }} class='formulario' novalidate="novalidate" onsubmit="return validarFormulario();">
+            <table width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.tipoElementoIdA) }}</td>
+                    <td width="10%">{{ form_widget(form.tipoElementoIdA) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.tipoElementoIdB) }}</td>
+                    <td width="10%">{{ form_widget(form.tipoElementoIdB) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.elementoIdA) }}</td>
+                    <td width="5%"><div id='comboElementoA' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.elementoIdB) }}</td>
+                    <td width="10%"><div id='comboElementoB' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.interfaceElementoIdA) }}</td>
+                    <td width="10%"><div id='comboInterfaceA' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.interfaceElementoIdB) }}</td>
+                    <td width="10%"><div id='comboInterfaceB' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.tipoMedioId) }}</td>
+                    <td width="10%">{{ form_widget(form.tipoMedioId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.tipoEnlace) }}</td>
+                    <td width="10%">{{ form_widget(form.tipoEnlace) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.claseTipoMedioId) }}</td>
+                    <td width="10%">{{ form_widget(form.claseTipoMedioId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"></td>
+                    <td width="10%"></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.bufferId) }}</td>
+                    <td width="10%">{{ form_widget(form.bufferId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.hiloId) }}</td>
+                    <td width="10%">{{ form_widget(form.hiloId) }}</td>                    
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.capacidadInput) }}</td>
+                    <td width="10%">{{ form_widget(form.capacidadInput) }}</td>
+                    <td width="10%">{{ form_widget(form.unidadMedidaInput) }}</td>
+
+                    <td width="1%">{{ form_label(form.capacidadOutput) }}</td>
+                    <td width="10%">{{ form_widget(form.capacidadOutput) }}</td>
+                    <td width="10%">{{ form_widget(form.unidadMedidaOutput) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.capacidadIniFin) }}</td>
+                    <td width="10%">{{ form_widget(form.capacidadIniFin) }}</td>
+                    <td width="10%">{{ form_widget(form.unidadMedidaUp) }}</td>
+
+                    <td width="1%">{{ form_label(form.capacidadFinIni) }}</td>
+                    <td width="10%">{{ form_widget(form.capacidadFinIni) }}</td>
+                    <td width="10%">{{ form_widget(form.unidadMedidaDown) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="10%">{{ form_widget(form.interfaceElementoIdA) }}</td>
+                    <td width="10%">{{ form_widget(form.interfaceElementoIdB) }}</td>
+                </tr>
+                
+                
+            </table>
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('enlace_elemento') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+            {{ form_widget(form._token) }}
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    
+{% endblock javascripts_footer%}	

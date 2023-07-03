@@ -1,0 +1,103 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+<style scoped="scoped">
+    .category-label
+    {
+        vertical-align: middle;
+        padding-right: .5em;
+    }
+    #category
+    {
+        vertical-align: middle;
+    }
+    .toolbar {
+        float: right;
+        margin-right: .8em;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var url_getCantones                = '{{path('admicanton_getCantones')}}';
+    var url_getPropietarios            = '{{path('elementoposte_ajaxGetEncontradosPropietario')}}';
+    var url_getEncontradosPostes       = '{{path('elementoposte_ajaxGetEncontradosPoste')}}';
+    var url_verContenidos              = '{{path('elementoposte_ajaxCargarElementosContenidos')}}';
+    var url_getElementoB               = '{{path('elementoposte_ajaxCargarElementos')}}';
+    var url_getHistorialElementos      = '{{path('elementoposte_ajaxGetHistorialElemento')}}';
+    var url_getTipoElemento            = '{{path('elementoposte_getTipoElemento')}}';
+    var strUrlGetPropietarios          = '{{path('elementoposte_ajaxGetEncontradosPropietario')}}';
+    var urlGetJurisdiccion             = '{{path('admijurisdiccion_getEncontrados')}}';
+    var urlGetCantonJurisdiccion       = '{{path('elementoposte_ajaxGetCantonJurisdiccion')}}';
+    var urlGetParroquiaCanton          = '{{path('elementoposte_ajaxGetParroquiaCanton')}}';
+    var iconMap                        = '{{asset('public/images/images_crud/gmaps.png')}}' ;
+    var urlSavePoste                   = '{{path('elementoposte_ajaxSavePoste')}}';
+    var urlEditPoste                   = '{{path('elementoposte_ajaxEditPoste')}}';
+    var urlElementoRelacionadoSave     = '{{path('elementoposte_ajaxSaveElementosRelacionadosPoste')}}';
+    var urlEliminaRelacionElementoSave = '{{path('elementoposte_ajaxSaveEliminaRelacionElementoPoste')}}';
+    var urlDeletePoste                 = '{{path('elementoposte_ajaxDeletePoste')}}';
+    var strUrlGetModelo                = '{{path('admimodeloelemento_getModelosElementosPorMarca')}}';
+    var strUrlIndex                    = '{{path('elementoposte')}}';
+    var boolPermisoAdminPoste          = '{{is_granted("ROLE_373-5177")}}'; 
+    var strNombreElemento              = '{{strNombreElemento}}'
+    var strLimiteLatitudNorte          = '{{ app.session.get("strLimiteLatitudNorte") }}';
+    var strLimiteLatitudSur            = '{{ app.session.get("strLimiteLatitudSur") }}';
+    var strLimiteLongitudEste          = '{{ app.session.get("strLimiteLongitudEste") }}';
+    var strLimiteLongitudOeste         = '{{ app.session.get("strLimiteLongitudOeste") }}';
+    var strRangoPais                   = '{{ app.session.get("strRangoPais") }}';
+</script>          
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoPoste/index.js?2') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoPoste/map.js?2') }}"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElemento/validacionesGenerales.js') }}"></script>
+
+{% endblock javascripts %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Postes</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr> 
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+<div id='map_canvas' style='width:575px; height:450px'></div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+{% if 'boolPermisoAdminPoste' %}
+<a class="button-nuevo-registro" href="{{ path('elementoposte_newPoste') }}">
+    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+    &nbsp;Nuevo POSTE
+</a>
+    {% endif %}
+
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+
+    </li>	
+</ul>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+<script>
+
+</script>
+{% endblock %}

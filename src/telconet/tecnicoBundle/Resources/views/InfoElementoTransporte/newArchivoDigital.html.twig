@@ -1,0 +1,211 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+        <style scoped="scoped">
+            .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+            }
+            .formulario label{
+                margin:0px !important;
+                width: 155px !important;
+            }
+            .contenido{
+                background-color: #F9F9F9;
+                border: 2px solid #F9F9F9;
+                border-radius: 13px 13px 13px 13px;
+                padding: 13px;
+            }
+        </style>
+{% endblock %}
+        
+{% block javascripts%}
+    {{ parent() }}
+    <script>		
+        var url_eliminar                     = "{{ path('elementotransporte_eliminarDocumentoAjax') }}";
+        var urlValidarDocumentosObligatorios = "{{ path('elementotransporte_validar_documentos_obligatorios') }}";
+    </script> 
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTransporte/quitarArchivosDigitales.js?2') }}"></script>
+    <script>
+        Ext.onReady(function () {
+            var tabs = new Ext.TabPanel({
+                height: 450,
+                renderTo: 'my-tabs',
+                activeTab: 0,
+                items:[                    
+                    {contentEl:'tab1', title:'Eliminar Archivos'},
+                    {contentEl:'tab2', title:'Agregar Archivos'}                    
+                    ],
+                defaults:{autoScroll:true},
+                listeners: {
+                    tabchange: function(tabPanel, tab) {
+                        var activeTab = tabPanel.getActiveTab();
+                        var activeTabIndex = tabPanel.items.findIndex('id', activeTab.id);
+                        if(activeTabIndex==0)
+                        {
+                            document.getElementById("opcionGuardarArchivo").style.display = "none";
+                        }
+                        else if(activeTabIndex==1)
+                        {
+                            document.getElementById("opcionGuardarArchivo").style.display = "";
+                        }
+                    }
+                }
+            });  
+        });
+    </script>
+     
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Agregar/Eliminar Archivos al Transporte </h1>
+    </div>
+	
+   {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% set prefijoEmpresa = app.session.get('prefijoEmpresa') %}	
+    <div class="body_content">
+        <form id="form-Imgs" action="{{ path('elementotransporte_guardarArchivoDigital', { 'id': objMedioTransporte.id }) }}" method="post" 
+                {{ form_enctype(form_documentos) }} class='formulario'>            
+            <input type="hidden" id="idMedioTransporte" value="{{objMedioTransporte.id}}" />
+            <div id="my-tabs"> 
+                <div id="tab1" class="x-hide-display">    
+                    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>                       	
+                    <tr bgcolor='#ffffff'>
+                     <td bgcolor='#ffffff'><div id='listado'></div></td>
+                    </tr>
+                    </table>                        
+                </div>     
+                <div id="tab2" class="x-hide-display">     
+                    <table border='0' cellpadding='1' cellspacing='1' width='100%'>
+                         <tr>
+                            <td colspan='2'>&nbsp;</td>
+                        </tr>
+                         <tr>
+                            <td colspan='2'>
+                               <div class="infomessage">
+                               Puedes dar click en <i>"Agregar m&aacute;s Achivos"</i> para agregar m&aacute;s archivos que desees al transporte
+                               </div>
+                            </td>
+                        </tr>   
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td colspan='2'>  
+                             <table border='0' cellpadding='1' cellspacing='1' width='100%'>
+                             <tr>
+                                <td>
+                                    <div style="margin:10px;font-weight:bold;">Archivo</div>
+                                </td>
+                                <td>
+                                    <div style="margin:10px;font-weight:bold;">Tipo de documento</div>
+                                </td>
+                                <td>
+                                    <div style="margin:10px;font-weight:bold;">Fecha de Caducidad</div>
+                                </td>
+                             </tr>
+                             <tr>
+                             <td>
+                                 <input type='text' style='display:none' required='required' 
+                                  id='infoelementotransporteextratype_infoElementoTransporteId' 
+                                  name='infoelementotransporteextratype[infoElementoTransporteId]' value='{{objMedioTransporte.id}}'/>
+                                 <div>                                    
+                                 <input id="infodocumentotype_imagenes_0" class="campo-obligatorio" type="file" 
+                                        name="infodocumentotype[imagenes][0]">                                   
+                                 <ul id="imagenes-fields-list" data-prototype="{{ form_widget(form_documentos.imagenes.vars.prototype) | e }}">   
+                                 {% for imagenesField in form_documentos.imagenes %}
+                                   <li>
+                                       {{ form_errors(imagenesField) }}
+                                       {{ form_widget(imagenesField) }}
+                                   </li>
+                                 {% endfor %}
+                                 </ul>	                                   
+                                 </div>   
+                             </td>
+                              <td>
+                                 <div>   
+                                 <select id="infodocumentotype_tipos_0" class="campo-obligatorio" name="infodocumentotype[tipos][0]"> 
+                                    {% for key, tipo in arrayTipoDocumentos %}        
+                                      {% if ( key == 1) %}
+                                         <option selected value="{{ key }}" > {{ tipo }}</option>
+                                      {% else %}
+                                         <option value="{{ key }}" > {{ tipo }}</option>
+                                      {% endif %} 
+                                   {% endfor %}
+                                 </select>
+                                 <ul id="tipos-fields-list" data-prototype="{{ form_widget(form_documentos.tipos.vars.prototype) | e }}">                                         
+                                 {% for tiposField in form_documentos.tipos %}
+                                   <li>
+                                       {{ form_errors(tiposField) }}
+                                       {{ form_widget(tiposField) }}
+                                   </li>
+                                 {% endfor %}
+                                 </ul>	                                   
+                                 </div>        
+                              </td>
+                              <td>
+                                  <div>
+                                       <ul id="fechasPublicacionHasta-fields-list" 
+                                           data-prototype="{{ form_widget(form_documentos.fechasPublicacionHasta.vars.prototype) | e }}">   
+                                       {% for fechasPublicacionHastaField in form_documentos.fechasPublicacionHasta %}
+                                         <li>
+                                             {{ form_errors(fechasPublicacionHastaField) }}
+                                             {{ form_widget(fechasPublicacionHastaField) }}
+                                         </li>
+                                       {% endfor %}
+                                       </ul>
+                                  </div>
+                             </td>
+                              </tr></table>
+
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <a href="#" id="agregar_imagen">Agregar m&aacute;s Archivos</a>
+                            </td>
+                        </tr>    
+                        <tr><td>&nbsp;</td></tr>
+                       </table>
+                    <div id='diverrorident' class='errormessage' style='display:none'></div>
+                 </div> 
+
+            </div>
+
+            <input type="hidden" size="100" name="valores" id="valores" /> 
+
+            <div class="buttons">
+                <p>
+                    <button id="opcionGuardarArchivo" style="display:none;" type='button' class="button-crud" onclick="validarDocumentosObligatoriosTransporte();" >Guardar</button>
+                    <span class="height20px">                           
+                        <a class="button-crud" href="{{ path('elementotransporte_show', { 'id': objMedioTransporte.id }) }}"> Regresar </a>                          
+                    </span>
+                </p>
+            </div>
+        </form>	
+    </div>
+{% endblock contenido_izq %}
+        
+{% block javascripts_footer%}
+<script type="text/javascript">    
+    var imagenesCount                   = '{{ form_documentos.imagenes | length }}';       
+    var tiposCount                      = '{{ form_documentos.tipos | length }}';
+    var fechasPublicacionHastaCount     = '{{ form_documentos.fechasPublicacionHasta | length }}';
+    
+    imagenesCount++;
+    tiposCount++;
+    fechasPublicacionHastaCount++;
+    
+</script>
+
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTransporte/validarDocumentos.js?1') }}"></script>
+ {% endblock javascripts_footer%}

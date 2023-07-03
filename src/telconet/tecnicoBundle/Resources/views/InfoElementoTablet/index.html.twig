@@ -1,0 +1,77 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGridTablets                 = "{{ path('elementotablet_grid') }}";
+        var strUrlEliminarTablets             = "{{ path('elementotablet_deleteAjax') }}";
+        var strUrlVerificarElementosAEliminar = "{{ path('elementotablet_verificarElementosAEliminar') }}";
+        var strUrlGetMotivos                  = "{{ path('elementotablet_getMotivos') }}";
+        var strUrlReactivarTablet             = "{{ path('elementotablet_reactivar') }}";
+        var strUrlInactivarTablet             = "{{ path('elementotablet_inactivar') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTablet/index.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTablet/funcionesGenerales.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Tablets</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro' align="center"></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid" align="center"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+    {% if is_granted("ROLE_314-2") %}
+        <a class="button-nuevo-registro" href="{{ path('elementotablet_new') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nueva Tablet
+        </a>
+    {% endif %}
+    {% if is_granted("ROLE_314-3457") %}
+        <li style="margin-top: 20px;">
+            <a class="button-nuevo-registro" href="{{ path('elementotablet_gridMonitoreo') }}">
+                &nbsp;Monitoreo Tablets
+            </a>
+        </li>
+    {% endif %}
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        
+    </script>
+{% endblock %}

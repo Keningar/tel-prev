@@ -1,0 +1,420 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+<style scoped="scoped">
+        .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+    <script>
+		var strLimiteLatitudNorte   = '{{ app.session.get("strLimiteLatitudNorte") }}';
+        var strLimiteLatitudSur     = '{{ app.session.get("strLimiteLatitudSur") }}';
+        var strLimiteLongitudEste   = '{{ app.session.get("strLimiteLongitudEste") }}';
+        var strLimiteLongitudOeste  = '{{ app.session.get("strLimiteLongitudOeste") }}';
+        var strRangoPais            = '{{ app.session.get("strRangoPais") }}';
+    </script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/general.js?10') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/edit.js?11') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoNodo/map.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElemento/validacionesGenerales.js') }}"></script>
+
+<script>
+    url_buscarParroquia   ="{{ path('admiparroquia_buscarParroquias') }}";
+    url_buscarCanton      ="{{ path('admicanton_ajaxBuscarCantonesPorProvincia') }}";
+    url_buscarProvincia   ="{{ path('admiprovincia_ajaxGetProvinciasPorRegion') }}";
+    url_buscarRegiones    ="{{ path('admiprovincia_getRegiones') }}"; 
+    url_getMotivos        ="{{ path('elementonodo_ajaxGetMotivos')}}";
+    url_cargarDatosNodo   ="{{ path('elementonodo_ajaxCargarDatosNodo')}}";        
+    url_infoEspacioNodo   ='{{path('elementonodo_ajaxGetInfoEspacioNodo')}}';
+    url_admitipoespacio   ='{{path('admitipoespacio_getEncontrados')}}';
+    url_deleteEspacioFisico = '{{path('elementonodo_ajaxDeleteEspacioFisico')}}';
+    
+    //Editar Forma de Contacto de los Nodos
+    url_infoContactoNodo  ='{{path('elementonodo_ajaxGetContactoNodo')}}';    
+    url_formas_contacto   ="{{path('cliente_lista_formas_contacto')}}";
+    url_formas_contacto_persona = "{{ path('cliente_formas_contacto_grid') }}";
+    url_actualizarFormaContacto = "{{ path('elementonodo_ajaxActualizarFormaContactoNodo') }}";
+    url_actualizarContactoNodo  = "{{ path('elementonodo_ajaxActualizarInformacionContactoNodo')}}";
+    url_getRolesContactoNodo    = "{{ path('elementonodo_ajaxGetPersonaContactoRoles')}}";
+    url_valida_identificacion   = "{{ path('cliente_ajax_valida_identificacion') }}";
+    url_validar_identificacion_tipo="{{ path('cliente_ajax_validar_identificacion_tipo') }}";
+    
+    idNodo                ="{{idNodo}}";
+    tipoMedidor           ='{% if tipoMedidorNodo %}{{tipoMedidorNodo.id}}{% else %}{{null}}{%endif %}';
+    medidorElectrico      ="{% if medidorElectricoNodo %}{{medidorElectricoNodo}}{% else %}{{null}}{%endif %}";
+    claseMedidor          ='{% if claseMedidorNodo %}{{claseMedidorNodo.id}}{% else %}{{null}}{%endif %}'; 
+    motivo                ="{% if motivo %}{{motivo.id}}{% else %}{{null}}{%endif %}";
+    claseNodo             ="{% if clase %}{{clase}}{% else %}{{null}}{%endif %}";    
+    esFactibleTorre       ="{% if esFactibleTorre %}{{esFactibleTorre}}{% else %}{{null}}{%endif %}";    
+    tipoNodo              ="{% if tipoNodo %}{{tipoNodo}}{% else %}{{null}}{%endif %}";    
+    alturaMaxima          ='{% if alturaMaxima %}{{alturaMaxima}}{% else %}{{""}}{%endif %}';
+    fechaMantenimiento    ='{% if fechaMantenimiento %}{{fechaMantenimiento}}{% else %}{{""}}{%endif %}';
+    newNodo               = false;
+    
+</script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Nodo</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_buffer' action="{{ path('elementonodo_updateNodo', { 'id': nodo.id }) }}" method="post" {{ form_enctype(edit_form) }} 
+          class="formulario" novalidate="novalidate" onsubmit='if (validarFormulario()) {
+                                      Ext.MessageBox.wait("Grabando Datos...", "Por favor espere");
+                                      document.forms[0].submit();
+                                      return true;
+                                  }
+                                  else {
+                                      return false;
+                                  }'>
+        
+        
+        <div id="nodos-tabs-editar">
+            
+            <div id="tab1" class="x-hide-display">
+                <br />
+                <table width="100%" border="0" class="box-section-content">
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_formMotivo.nombreMotivo) }}</td>
+                        <td width="10%">{{ form_widget(edit_formMotivo.nombreMotivo) }}</td>
+                        <td width="5%">&nbsp;</td>                        
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.nombreElemento) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.nombreElemento) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.modeloElementoId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.modeloElementoId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>                        
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.observacion) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.observacion) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>    
+                    
+                    <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="5%">&nbsp;</td>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label>* Tipo de Nodo</label></td>
+                            <td width="10%">
+                                  {% for medio in tipoMedio %}
+                                        <input type="checkbox" name="chk_tipo_medio" id="{{ medio.nombreTipoMedio }}" 
+                                               value="{{ medio.nombreTipoMedio }}" style='width:5em'/>{{ medio.nombreTipoMedio }}<br />
+                                  {% endfor %}
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label>* Es Factible Torre</label></td>
+                            <td width="10%">
+                                <select id="cmb_es_edificio" name="cmb_es_edificio" onchange="verAlturaMaxima(this);">
+                                    <option id="Seleccione">Seleccione</option>
+                                    <option id="SI">SI</option>
+                                    <option id="NO">NO</option>                                                                        
+                                </select>                                
+                            </td>   
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%" class="altMax"><label>* Altura Maxima</label></td>
+                            <td width="24%" class="altMax">
+                                <input type="text" id="txt_altura_maxima" onkeypress="return isNumeric(event)" name="txt_altura_maxima" 
+                                       value="{% if alturaMaxima %}{{alturaMaxima}}{% else %}{{""}}{%endif %}"/>
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label>* Clase de Nodo</label></td>
+                            <td width="10%">
+                                <select id="cmb_clase_nodo" name="cmb_clase_nodo">
+                                    <option value="Seleccione">Seleccione</option>
+                                    {% for clase in claseNodo %}
+                                        <option value="{{ clase.id }}">{{clase.nombreDetalle}}</option>
+                                  {% endfor %}                                                                      
+                                </select>                                
+                            </td>   
+                            <td width="5%">&nbsp;</td>
+                            <td width="5%"  class='altMax'><label>* Proximo Mantenimiento</label></td>
+                            <td width="10%"  class='altMax'>
+                                <input type="date" id="txt_fecha_mantenimiento" name="txt_fecha_mantenimiento"
+                                       value="{% if fechaMantenimiento %}{{fechaMantenimiento}}{% else %}{{""}}{%endif %}"
+                                       min="{{fechaActual}}"/>          
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td width="5%">&nbsp;</td>                                                      
+                        </tr>
+                        
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="15%">
+                            <div class='infomessage'>Medidor</div>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td width="5%">&nbsp;</td>                                                      
+                        </tr>
+                        
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label>* Numero Medidor</label></td>
+                            <td width="24%">
+                                <input type="text" id="txt_numero_medidor" name="txt_numero_medidor" value="{{medidor.numeroMedidor}}"/>
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label>Medidor Eléctrico</label></td>
+                            <td width="10%">
+                                <select id="cmb_medidor_electrico" name="cmb_medidor_electrico">
+                                    <option value="Seleccione">Seleccione</option>
+                                    {% for medidor in medidorElectrico %}
+                                        <option value="{{ medidor.valor1 }}">{{medidor.valor1}}</option>
+                                    {% endfor %}    
+                                </select>                                
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                            <td width="10%"></td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label>* Clase Medidor</label></td>
+                            <td width="10%">
+                                <select id="cmb_clase_medidor" name="cmb_clase_medidor">
+                                    <option value="Seleccione">Seleccione</option>
+                                    {% for clase in claseMedidor %}
+                                        <option value="{{ clase.id }}">{{clase.nombreClaseMedidor}}</option>
+                                  {% endfor %}                                                                      
+                                </select>                                
+                            </td>   
+                            <td width="5%">&nbsp;</td>  
+                            <td width="24%"><label>* Tipo Medidor</label></td>
+                            <td width="10%">
+                                <select id="cmb_tipo_medidor" name="cmb_tipo_medidor">
+                                    <option value="Seleccione">Seleccione</option>
+                                    {% for tipo in tipoMedidor %}
+                                        <option value="{{ tipo.id }}">{{tipo.nombreTipoMedidor}}</option>
+                                  {% endfor %}                                                                      
+                                </select>                                
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><input type="hidden" id="hd_info_tipoMedio" name="hd_info_tipoMedio"/></td>                            
+                        </tr> 
+
+                    
+                </table>
+                
+            </div>
+            
+            <div id="tab2" class="x-hide-display">
+                <br />
+                <table width="100%" border="0" class="box-section-content">
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.regionId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.regionId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.provinciaId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.provinciaId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.cantonId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.cantonId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.parroquiaId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.parroquiaId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>                        
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.direccionUbicacion) }}</td>
+                        <td width="10%"><input type="text" name="direccionUbicacion" id="direccionUbicacion" value="{{ubicacion.direccionUbicacion}}"></td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"><label>* Longitud :</label></td>
+                        <td width="10%"><input type="text" id="longitudUbicacion" name="longitudUbicacion" value="{{ubicacion.longitudUbicacion}}"></td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"><label>* Latitud :</label></td>
+                        <td width="10%"><input type="text" id="latitudUbicacion" name="latitudUbicacion" value="{{ubicacion.latitudUbicacion}}"></td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    
+                    <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label>* Editar Coordenadas</label></td>
+                            <td width="10%">
+                                <a href="javascript:muestraMapaEdit({{ubicacion.latitudUbicacion}},{{ubicacion.longitudUbicacion}})" class="">
+                                    <img src="{{ asset('public/images/images_crud/gmaps.png')}}" title="Seleccionar desde Mapa" class="button-crud">
+                                </a>
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                    </tr>
+                    
+                    <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%">
+                                {{ form_label(edit_form.latitudUbicacion) }}
+                            </td>
+                            <td width="10%">
+                                <div>
+                                    <input type="text" onkeyup="validarGrados(this.value,1)" class="coordenadas-field"   id="grados_la" name="grados_la">
+                                    &deg;<input type="text" onkeyup="validarMinutos(this.value,1)" class="coordenadas-field"  maxlength="2" id="minutos_la" name="minutos_la">
+                                    '<input type="text" onkeyup="validarSegundos(this.value,1)" class="coordenadas-field"  maxlength="2" id="segundos_la" name="segundos_la">
+                                    .<input type="text" onkeyup="validarDecimasSegundos(this.value,1)" class="coordenadas-field"  maxlength="2" id="decimas_segundos_la" name="decimas_segundos_la">
+                                    &quot;
+                                    <select onchange="validaInspeccion(1)" class="text-field" id="latitud" name="latitud">
+                                        <option value="T">Seleccione...</option>
+                                        <option value="N">Norte</option>
+                                        <option value="S">Sur</option>
+                                    </select>                  
+                                </div>                                                
+                            </td>
+                            <td width="5%">&nbsp;</td>
+
+                            <td width="24%">
+                                {{ form_label(edit_form.longitudUbicacion) }}
+                            </td>
+                            <td width="10%">
+                                <div>
+                                    <input type="text" onkeyup="validarGrados(this.value,0)" class="coordenadas-field"    id="grados_lo" name="grados_lo">
+                                    &deg;<input type="text" onkeyup="validarMinutos(this.value,0)" class="coordenadas-field"  maxlength="2"  id="minutos_lo" name="minutos_lo">
+                                    '<input type="text" onkeyup="validarSegundos(this.value,0)" class="coordenadas-field"  maxlength="2"  id="segundos_lo" name="segundos_lo">
+                                    .<input type="text" onkeyup="validarDecimasSegundos(this.value,0)" class="coordenadas-field"  maxlength="2"  id="decimas_segundos_lo" name="decimas_segundos_lo">
+                                    &quot;
+                                    <select onchange="validaInspeccion(0)" class="text-field" id="longitud" name="longitud">
+                                        <option value="T">Seleccione...</option>
+                                        <option value="E">Este</option>
+                                        <option value="O">Oeste</option>
+                                    </select>
+                                </div>
+                            </td>                          
+                            <td width="5%">&nbsp;</td>
+                        </tr> 
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.alturaSnm) }}</td>
+                        <td width="10%"><input type="text" name="alturaSnm" id="alturaSnm" value="{{ubicacion.alturaSnm}}"></td>
+                         <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.accesoPermanente) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.accesoPermanente) }}</td>
+                        <td width="5%">&nbsp;</td>                                                
+                    </tr>                                   
+                     <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.descripcionElemento) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.descripcionElemento) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"></td>
+                        <td width="10%"></td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="24%"></td>
+                        <td width="10%">
+                            <input type="hidden" name="idUbicacion" value="{{ ubicacion.id }}">
+                        </td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"><input type="hidden" id="hd_info_espacio" name="hd_info_espacio"/></td>                            
+                    </tr> 
+                </table>
+                
+                <table border='0' align='center'>
+                        
+                        <tr>
+                            <td>
+                                <div id='informacionEspacioEditar'></div>                             
+                            </td>
+                            
+                        </tr>   
+                    </table>
+                
+            </div>
+            
+            <div id="tab3" class="x-hide-display">
+                <br />
+                <table border='0' align='center'>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            <div id="contactoNodo"></div>
+                        </td>
+
+                    </tr>                   
+                </table>
+            </div>
+                        
+        </div>
+               
+        <div class="buttons">
+            <p>
+                <input type='submit' class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('elementonodo') }}">
+                        Cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+<div id='windowMap' style='display:none'> 
+<div id="map_canvas" style="width:500px; height:500px"></div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+<script>
+    
+    function grabar()
+    {
+        document.forms[0].submit();
+    }
+    </script>
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

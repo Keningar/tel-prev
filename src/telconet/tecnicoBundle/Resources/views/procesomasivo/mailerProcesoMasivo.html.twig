@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+            <img alt=""  src="http://images.telconet.net/others/sit/notificaciones/logo.png"/>
+            {#<img alt=""  src="https://telcos.telconet.ec/public/images/logo.png"/>#}
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para indicarle existen inconvenientes en el Proceso Masivo: 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <strong>Proceso Masivo # {{ procesoMasivo.id }}</strong>
+              </td>
+            </tr>
+            
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            
+            <tr>
+              <td>
+                <strong>Mensaje:</strong>
+              </td>
+              <td>{{ mensaje }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Tipo:</strong>
+              </td>
+              <td>{{ procesoMasivo.tipoProceso }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Fecha de creación:</strong>
+              </td>
+              <td>{{ procesoMasivo.feCreacion | date("d-M-Y") }} | {{ procesoMasivo.feCreacion | date("H:i") }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario:</strong>
+              </td>
+              <td>{{ procesoMasivo.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Estado:</strong>
+              </td>
+              <td>{{ procesoMasivo.estado }}</td>
+            </tr>
+            
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            
+            <tr>
+              <td colspan="2">
+                <strong>Respuesta desde el servidor de Procesos Masivos:</strong>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Result:</strong>
+              </td>
+              <td>{{ result }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Status:</strong>
+              </td>
+              <td>{{ status }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Error:</strong>
+              </td>
+              <td>{{ error }}</td>
+            </tr>
+            
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+
+      <tr>
+	  {% if empresa == 'TTCO' %}
+          <td><strong><font size='2' face='Tahoma'>TransTelco S.A.</font></strong></p>
+          {% elseif empresa == 'MD' %}
+          <td><strong><font size='2' face='Tahoma'>MegaDatos S.A.</font></strong></p>
+          {% else %}
+          <td><strong><font size='2' face='Tahoma'>Telconet S.A.</font></strong></p>
+          {% endif %}
+          </td>   
+      </tr>  
+    </table>
+  </body>
+</html>

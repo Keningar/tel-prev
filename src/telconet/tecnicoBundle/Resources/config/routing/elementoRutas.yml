@@ -1,0 +1,55 @@
+elementoRutas:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:index" }
+
+elementoRutas_ajaxDelete:
+    pattern:  /ajaxDelete
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ajaxDelete" }
+    
+elementoRutas_ajaxGetEncontrados:
+    pattern:  /ajaxGetEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ajaxGetEncontrados" }
+
+elementoRutas_getTipoElementoPasivo:
+    pattern:  /getTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:getTipoElementoPasivo" }
+
+elementoRutas_ajaxSave:
+    pattern:  /ajaxSave
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ajaxSaveRuta" }
+    
+elementoRutas_ajaxEdit:
+    pattern:  /ajaxEdit
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ajaxEdit" }
+    
+elementoRutas_ajaxCargarElementos:
+    pattern:  /ajaxCargarElementos
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ajaxCargarElementos" }
+    
+elementoRutas_ajaxBuscarElemento:
+    pattern:  /buscarElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:buscarElemento" }
+    
+elementoRutas_getTramos:
+    pattern:  /getTramos
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:getTramos" }    
+    
+elementoRutas_ajaxEditTramo:
+    pattern:  /ajaxEditTramo
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ajaxEditTramo" }
+    
+elementoRutas_ajaxAddTramo:
+    pattern:  /ajaxAddTramo
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ajaxAddTramo" }
+    
+elementoRutas_getTipoElementoRuta:
+    pattern:  /getTipoElementoRuta
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:getTipoElementoRuta" } 
+    
+elementoRutas_ingresoMasivoRuta:
+    pattern:  /ingresoMasivoRuta
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ingresoMasivoRuta"}
+    
+elementoRutas_ajaxEliminarTramo:
+    pattern:  /ajaxEliminarTramo
+    defaults: { _controller: "tecnicoBundle:InfoElementoRuta:ajaxEliminarTramo" }

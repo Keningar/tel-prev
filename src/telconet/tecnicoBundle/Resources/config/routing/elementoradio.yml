@@ -1,0 +1,84 @@
+elementoradio:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:indexRadio" }
+    
+elementoradio_getEncontradosRadio:
+    pattern:  /getEncontradosRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:getEncontradosRadio" }
+  
+elementoradio_newRadio:
+    pattern:  /newRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:newRadio" }
+
+elementoradio_createRadio:
+    pattern: /createRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:createRadio" }
+    requirements: { _method: POST }
+    
+elementoradio_buscarInterfaces:
+    pattern:  /buscarInterfaces
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:buscarInterfaces" }
+    
+elementoradio_showRadio:
+    pattern:  /{id}/showRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:showRadio" }
+    
+elementoradio_editRadio:
+    pattern:  /{id}/editRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:editRadio" }
+
+elementoradio_updateRadio:
+    pattern:  /{id}/updateRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:updateRadio" }
+    requirements: { _method: POST }
+    
+elementoradio_cargarDatosRadio:
+    pattern:  /{id}/cargarDatosRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:cargarDatosRadio" }
+    requirements: { _method: POST }
+    
+elementoradio_deleteRadio:
+    pattern:  /{id}/deleteRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:deleteRadio" }
+    
+elementoradio_quitarOperatividad:
+    pattern:  /quitarOperatividad
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:quitarOperatividad" }
+    
+elementoradio_generaNombreRepetidora:
+    pattern:  /generaNombreRepetidora
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:generaNombreRepetidora" }
+    
+elementoradio_deleteAjaxRadio:
+    pattern:  /deleteAjaxRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:deleteAjaxRadio" }
+    requirements: { _method: post }
+    
+elementoradio_mostrarMacsRadio:
+    pattern:  /mostrarMacsRadio
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:mostrarMacsRadio" }
+    requirements: { _method: post }
+    
+elementoradio_agregarOperatividad:
+    pattern:  /agregarOperatividad
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:agregarOperatividad" }
+    
+elementoradio_generarOperatividadMasivoTN:
+    pattern:  /generarOperatividadMasivoTN
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:generarOperatividadMasivoTN" }
+    
+elementoradio_getAjaxServiciosPorClienteTN:
+    pattern:  /getAjaxServiciosPorClienteTN
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:getAjaxServiciosPorClienteTN" }
+
+elementoradio_getAjaxComboRazonSocial:
+    pattern:  /getAjaxComboRazonSocial
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:getAjaxComboRazonSocial" }
+
+elementoradio_getAjaxLoginsPorRazonSocial:
+    pattern:  /getAjaxLoginsPorRazonSocial
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:getAjaxLoginsPorRazonSocial" }
+    
+elementoradio_ejecutarOperatividadMasivoTN:
+    pattern:  /ejecutarOperatividadMasivoTN
+    defaults: { _controller: "tecnicoBundle:InfoElementoRadio:ejecutarOperatividadMasivoTN" }

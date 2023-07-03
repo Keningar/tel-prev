@@ -1,0 +1,100 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content" alt="imagen">
+        <h4>Ver Bitácora Acceso Nodo</h4>
+    </div>
+
+    <div class="body_content">
+        <table border="0" class="table table-striped compact" id="tabla" class="display">
+            <tr>
+                <td>&nbsp;</td>
+                <td><strong>Cantón:</strong></td>
+                <td>{{ obj.canton }}</td>
+                <td>&nbsp;</td>
+                <td><strong>Tarea:</strong></td>
+                <td>{{ obj.tareaId }}</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><strong>Departamento:</strong></td>
+                <td>{{ obj.departamento }}</td>
+                <td>&nbsp;</td>
+                <td><strong>Nodo:</strong></td>
+                {% if obj.elementoNodo %}
+                    <td>{{ obj.elementoNodo }}</td>
+                {% else %}
+                <td>NA</td>
+                {% endif %}
+                <td>&nbsp;</td>
+                
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><strong>Técnico:</strong></td>
+                <td>{{ obj.tecnicoAsignado }}</td>
+                <td>&nbsp;</td>
+                <td><strong>Nombre Tarea:</strong></td>
+                <td>{{ obj.motivo }}</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                {% if obj.codigos %}
+                    <td><strong>Llave Acsys:</strong></td>
+                    <td>{{ obj.codigos }}</td>
+                    <td>&nbsp;</td>
+                {% endif %}      
+                <td><strong>Elemento Relacionado:</strong></td>
+                {% if obj.elemento %}
+                   <td>{{ obj.elemento }}</td>
+                {% else %}
+                    <td>NA</td>
+                {% endif %}    
+            </tr>
+            <tr>
+                {% if obj.telefono %}
+                    <td>&nbsp;</td>
+                    <td><strong>Teléfono:</strong></td>
+                    <td>{{ obj.telefono }}</td>
+                {% endif %}
+                {% if obj.observacion %}
+                    <td>&nbsp;</td>
+                    <td><strong>Observación:</strong></td>
+                    <td>{{ obj.observacion }}</td>
+                    <td>&nbsp;</td>
+                {% endif %}
+            </tr>
+            
+        </table>
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('elementonodo_listBitacora') }}">Regresar</a>
+                </span>
+            </p>
+        </div>
+    </div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    {% if obj.estado == 'Abierta'  %}
+        <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+        </div>
+        <ul class="listado_acciones_relacionadas">
+            <a class="button-nuevo-registro" href="{{ path('elementonodo_editBitacora', { 'intId': obj.id }) }}">
+                <img src="{{ asset('public/images/images_crud/password.png')}}" width="30" height="30" class="img-align-button" alt="imagen" />
+                &nbsp;Cerrar Bitácora
+            </a>
+        </ul>
+    {%endif%}
+{% endblock contenido_der %}

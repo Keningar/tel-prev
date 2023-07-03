@@ -1,0 +1,240 @@
+--EJECUTAR EN DB_GENERAL
+--Ingreso de la caracteristica ANALITICA_CONSUMO_WS
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PARAMETROS PROYECTO GPON SAFECITY'
+    AND ESTADO             = 'Activo'
+    ),
+    'ANALITICA_CONSUMO_WS',
+    'N',
+    'Activo',
+    'lemero',
+    SYSDATE,
+    '127.0.0.1',
+    (SELECT COD_EMPRESA
+            FROM DB_COMERCIAL.INFO_EMPRESA_GRUPO
+            WHERE PREFIJO = 'TN'
+            AND ESTADO    = 'Activo')
+  );
+
+--Ingreso de la caracteristica ANALITICA_TAREA_AUTOMATICA
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PARAMETROS PROYECTO GPON SAFECITY'
+    AND ESTADO             = 'Activo'
+    ),
+    'ANALITICA_TAREA_AUTOMATICA',
+    'S',
+    'Activo',
+    'lemero',
+    SYSDATE,
+    '127.0.0.1',
+    (SELECT COD_EMPRESA
+            FROM DB_COMERCIAL.INFO_EMPRESA_GRUPO
+            WHERE PREFIJO = 'TN'
+            AND ESTADO    = 'Activo')
+  );
+
+--Ingreso de la caracteristica ANALITICA_WS_PARAMETROS
+ INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PARAMETROS PROYECTO GPON SAFECITY'
+    AND ESTADO             = 'Activo'
+    ),
+    'ANALITICA_WS_PARAMETROS',
+    'http://test-apps3-bld6.telconet.ec/api/',
+    'WS-analytics',
+    'analitica/camaras',
+    'tokenanalitica/camaras',
+    'T51c0$TNsis',
+    'Activo',
+    'lemero',
+    SYSDATE,
+    '127.0.0.1',
+    (SELECT COD_EMPRESA
+            FROM DB_COMERCIAL.INFO_EMPRESA_GRUPO
+            WHERE PREFIJO = 'TN'
+            AND ESTADO    = 'Activo')
+  ); 
+ 
+--Ingreso de la caracteristica TIPO_CAMARA BULLET
+ INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PARAMETROS PROYECTO GPON SAFECITY'
+    AND ESTADO             = 'Activo'
+    ),
+    'TIPO_CAMARA',
+    'BULLET',
+    'Activo',
+    'lemero',
+    SYSDATE,
+    '127.0.0.1',
+    (SELECT COD_EMPRESA
+            FROM DB_COMERCIAL.INFO_EMPRESA_GRUPO
+            WHERE PREFIJO = 'TN'
+            AND ESTADO    = 'Activo')
+  );
+
+--Ingreso de la caracteristica TIPO_CAMARA PTZ
+ INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PARAMETROS PROYECTO GPON SAFECITY'
+    AND ESTADO             = 'Activo'
+    ),
+    'TIPO_CAMARA',
+    'PTZ',
+    'Activo',
+    'lemero',
+    SYSDATE,
+    '127.0.0.1',
+    (SELECT COD_EMPRESA
+            FROM DB_COMERCIAL.INFO_EMPRESA_GRUPO
+            WHERE PREFIJO = 'TN'
+            AND ESTADO    = 'Activo')
+  );
+
+--Ingreso de la caracteristica TIPO_CAMARA DOMO
+ INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PARAMETROS PROYECTO GPON SAFECITY'
+    AND ESTADO             = 'Activo'
+    ),
+    'TIPO_CAMARA',
+    'DOMO',
+    'Activo',
+    'lemero',
+    SYSDATE,
+    '127.0.0.1',
+    (SELECT COD_EMPRESA
+            FROM DB_COMERCIAL.INFO_EMPRESA_GRUPO
+            WHERE PREFIJO = 'TN'
+            AND ESTADO    = 'Activo')
+  );
+
+--Ingreso de la resolucion alterna de 720P Se va a hacer un update a los que ya estan
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR2             = 1280,
+  VALOR3               = 720
+WHERE ID_PARAMETRO_DET =
+  (SELECT ID_PARAMETRO_DET
+  FROM DB_GENERAL.ADMI_PARAMETRO_DET
+  WHERE DESCRIPCION ='RESOLUCION_CAMARA'
+  AND VALOR1        = '720p'
+  AND ESTADO        = 'Activo'
+  );
+
+--Ingreso de la resolucion alterna de 1080P Se va a hacer un update a los que ya estan
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR2             = 1920,
+  VALOR3               = 1080
+WHERE ID_PARAMETRO_DET =
+  (SELECT ID_PARAMETRO_DET
+  FROM DB_GENERAL.ADMI_PARAMETRO_DET
+  WHERE DESCRIPCION ='RESOLUCION_CAMARA'
+  AND VALOR1        = '1080p'
+  AND ESTADO        = 'Activo'
+  );
+  
+COMMIT;
+/
+

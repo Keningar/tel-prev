@@ -1,0 +1,70 @@
+elementoups:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:index" }
+
+elementoups_grid:
+    pattern:  /grid
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:grid"}
+
+elementoups_exportarInformacionUps:
+    pattern:  /exportarInformacionUps
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:exportarInformacionUps" }
+
+elementoups_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:new" }
+
+elementoups_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:create" }
+    requirements: { _method: POST }
+
+elementoups_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:show" }
+    
+elementoups_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:edit" }
+    
+elementoups_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:update" }
+    requirements: { _method: POST }
+    
+elementoups_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:deleteAjax" }
+    requirements: { _method: post }
+
+elementoups_getParametrosDet:
+    pattern:  /getParametrosDet/{strNombreParametroCab}
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:getParametrosDet" }  
+
+elementoups_getSwitches:
+    pattern:  /getSwitches
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:getSwitches" }
+
+elementoups_verificarData:
+    pattern:  /verificarData
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:verificarData" }
+
+elementoups_gridBaterias:
+    pattern:  /gridBaterias
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:gridBaterias"}
+
+elementoups_gridMonitoreo:
+    pattern:  /gridMonitoreo
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:gridMonitoreo" }
+
+elementoups_buscarDispositivos:
+    pattern:  /buscarDispositivos
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:buscarDispositivos" }
+
+elementoups_exportarReporteMonitoreo:
+    pattern:  /exportarReporteMonitoreo
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:exportarReporteMonitoreo" }
+
+elementoups_asignarTarea:
+    pattern:  /asignarTarea
+    defaults: { _controller: "tecnicoBundle:InfoElementoUps:asignarTarea" }

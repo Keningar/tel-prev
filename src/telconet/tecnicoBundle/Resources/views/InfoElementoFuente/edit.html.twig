@@ -1,0 +1,107 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 130px !important;
+            text-align: right!important;
+            margin-right: 10px!important;
+            padding-top: 8px!important;
+        }
+        .contenido
+        {
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Editar Fuente</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' action="{{ path('elementofuente_update', {'id': entity.id}) }}" method="post" class='formulario'
+              onSubmit="return verificarData();" >
+            
+            <input type="hidden" id="intIdDispositivo" name="intIdDispositivo" />
+            <input type="hidden" id="intIdPuerto" name="intIdPuerto" />
+            <input type="hidden" id="dateFechaInstalacion" name="dateFechaInstalacion" />
+            
+            <table width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.modeloElementoId) }}</td>
+                    <td width="10%">{{ form_widget(form.modeloElementoId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"><label>* Dispositivo:</label></td>
+                    <td width="15%"><div id="dispositivo"></div></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"><label>* Puerto:</label></td>
+                    <td width="15%"><div id="puerto"></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.nombreElemento) }}</td>
+                    <td width="10%">{{ form_widget(form.nombreElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"><label>* Fecha de Instalaci&oacute;n:</label></td>
+                    <td width="15%"><div id="fechaInstalacion"></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.observacion) }}</td>
+                    <td width="10%">{{ form_widget(form.observacion) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+            </table>
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('elementofuente') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+                {{ form_widget(form._token) }}
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        var strUrlGetDispositivos   = "{{ path('elementoups_getSwitches') }}";
+        var strUrlGetPuertos        = "{{ path('infointerfaceelemento_getPuertos') }}";
+        var strUrlVerificarData     = "{{ path('elementofuente_verificarData') }}";
+        var intIdPuerto             = "{{ puerto }}";
+        var intIdSwitch             = "{{ switch }}";
+        var dateFechaInstalacion    = "{{ detalles.FECHA_INSTALACION }}";
+        var intIdFuente             = "{{ entity.id }}";
+    </script>
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoFuente/funcionesGenerales.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoFuente/edit.js') }}"></script>
+{% endblock javascripts_footer%}

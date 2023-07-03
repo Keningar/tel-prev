@@ -1,0 +1,47 @@
+elementorack:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:indexRack" }
+    
+elementorack_getEncontradosRack:
+    pattern:  /getEncontradosRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:getEncontradosRack" }
+  
+elementorack_newRack:
+    pattern:  /newRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:newRack" }
+
+elementorack_createRack:
+    pattern: /createRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:createRack" }
+    requirements: { _method: POST }
+       
+elementorack_showRack:
+    pattern:  /{id}/showRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:showRack" }
+    
+elementorack_editRack:
+    pattern:  /{id}/editRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:editRack" }
+
+elementorack_updateRack:
+    pattern:  /{id}/updateRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:updateRack" }
+    requirements: { _method: POST }
+    
+elementorack_deleteRack:
+    pattern:  /deleteRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:deleteRack" }
+    
+elementorack_deleteAjaxRack:
+    pattern:  /deleteAjaxRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:deleteAjaxRack" }
+    requirements: { _method: post }
+
+elementorack_obtenerDatosRack:
+    pattern:  /obtenerDatosRack
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:obtenerDatosRack" }
+    requirements: { _method: POST }
+    
+elementorack_ajaxGetInformacionRacksDC:
+    pattern:  /ajaxGetInformacionRacksDC
+    defaults: { _controller: "tecnicoBundle:InfoElementoRack:ajaxGetInformacionRacksDC" }   

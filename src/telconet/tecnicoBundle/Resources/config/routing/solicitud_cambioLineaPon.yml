@@ -1,0 +1,39 @@
+solicitud_cambioLineaPon:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudCambioLineaPon:solicitudCambioLineaPon" }
+    
+solicitud_cambioLineaPon_getConsulta:
+    pattern:  /getConsulta
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudCambioLineaPon:getConsulta" }
+    
+solicitud_getDatosBackbone:
+    pattern:  /getDatosBackbone
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosBackbone" }
+    
+solicitud_crearSolicitud:
+    pattern:  /crearSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudCambioLineaPon:crearSolicitud" } 
+    
+solicitud_getMotivos:
+    pattern:  /getMotivos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getMotivos" }    
+
+solicitud_aprobarSolicitud:
+    pattern:  /aprobarSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudCambioLineaPon:aprobarSolicitud" }  
+
+solicitud_rechazarSolicitud:
+    pattern:  /rechazarSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudCambioLineaPon:rechazarSolicitud" }  
+    
+solicitud_getSolicitudes:
+    pattern:  /getHistorialSol
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudCambioLineaPon:getSolicitudes" }  
+                
+solicitud_getHistorialSolicitud:
+    pattern:  /getHistorialSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudCambioLineaPon:getHistorialSolicitud" }
+    
+solicitud_getCasos:
+    pattern:  /getCasos
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudCambioLineaPon:getCasosPorUsuario" }    

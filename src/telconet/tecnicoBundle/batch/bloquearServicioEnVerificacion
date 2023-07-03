@@ -1,0 +1,46 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+fecha:2013-10-19 05:10
+fecha y hora:2013-53-30 12:53
+mes menor y dia menor
+fecha:2013-10-31 09:10
+fecha y hora:2013-53-30 12:53
+fecha:2013-10-23 11:10
+fecha y hora:2013-53-30 12:53
+mes menor y dia menor
+fecha:2013-10-30 05:10
+fecha y hora:2013-53-30 12:53
+fecha:2013-10-31 10:10
+fecha y hora:2013-53-30 12:53
+fecha:2013-10-30 04:10
+fecha y hora:2013-53-30 12:53
+fecha:2013-10-30 05:10
+fecha y hora:2013-53-30 12:53
+crear historial
+sql:SELECT PUNTO.LOGIN AS LOGIN FROM INFO_SERVICIO SERVICIO, INFO_PUNTO PUNTO WHERE SERVICIO.PUNTO_ID = PUNTO.ID_PUNTO AND SERVICIO.ID_SERVICIO = '54489'
+crear historial
+sql:SELECT PUNTO.LOGIN AS LOGIN FROM INFO_SERVICIO SERVICIO, INFO_PUNTO PUNTO WHERE SERVICIO.PUNTO_ID = PUNTO.ID_PUNTO AND SERVICIO.ID_SERVICIO = '55614'
+Servidor SMTP: 250 2.1.0 <notificaciones_telcos@telconet.ec>... Sender ok
+
+Envia: notificaciones_telcos@telconet.ec
+Enviado
+Hora Inicio: Wed Oct 30 12:53:40 ECT 2013
+Hora Fin: Wed Oct 30 12:53:41 ECT 2013

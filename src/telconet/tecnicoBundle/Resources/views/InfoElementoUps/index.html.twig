@@ -1,0 +1,79 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGridUps       = "{{ path('elementoups_grid') }}";
+        var strUrlEliminarUps   = "{{ path('elementoups_deleteAjax') }}";
+        var strUrlGetModelosUps = "{{ path('admimodeloelemento_getModelosElementosPorMarca') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoUps/index.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoUps/funcionesGenerales.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de UPS</h1>
+</div>
+<div class="dashboard_content k-content">
+    
+    <form action="{{ path('elementoups_exportarInformacionUps') }}" method="post" class="form-horizontal">
+        <input type="hidden" id="strNombreUps" name="strNombreUps" />
+        <input type="hidden" id="intIdModeloUps" name="intIdModeloUps" />
+        <input type="hidden" id="strModeloUps" name="strModeloUps" />
+        <input type="hidden" id="strIpUps" name="strIpUps" />
+        <input type="hidden" id="strFechaInstalacion" name="strFechaInstalacion" />
+    </form>
+    
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+    {% if is_granted("ROLE_326-2") %}
+        <a class="button-nuevo-registro" href="{{ path('elementoups_new') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nuevo UPS
+        </a>
+    {% endif %}
+    
+    {% if is_granted("ROLE_326-3457") %}
+        <li style="margin-top: 20px;">
+            <a class="button-nuevo-registro" href="{{ path('elementoups_gridMonitoreo') }}">
+                &nbsp;Monitoreo UPS
+            </a>
+        </li>
+    {% endif %}
+
+{% endblock contenido_der %}

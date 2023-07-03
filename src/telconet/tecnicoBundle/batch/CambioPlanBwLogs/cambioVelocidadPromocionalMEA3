@@ -1,0 +1,65 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+SELECT SERVICIO.ID_SERVICIO FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO, DB_COMERCIAL.INFO_SERVICIO_TECNICO TECNICO, DB_COMERCIAL.INFO_PUNTO PUNTO, DB_COMERCIAL.INFO_PLAN_CAB PLANC, DB_COMERCIAL.INFO_PLAN_DET PLAND, DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA PC, DB_COMERCIAL.ADMI_CARACTERISTICA CAR, DB_COMERCIAL.INFO_PLAN_PRODUCTO_CARACT PPC, DB_INFRAESTRUCTURA.INFO_ELEMENTO ELEMENTO, DB_INFRAESTRUCTURA.ADMI_MODELO_ELEMENTO MODELO WHERE SERVICIO.ID_SERVICIO = TECNICO.SERVICIO_ID AND SERVICIO.PUNTO_ID = PUNTO.ID_PUNTO AND SERVICIO.ESTADO = 'Activo' AND TECNICO.INTERFACE_ELEMENTO_ID IS NOT NULL AND SERVICIO.PLAN_ID = PLANC.ID_PLAN AND PLANC.ID_PLAN = PLAND.PLAN_ID AND PPC.PLAN_DET_ID = PLAND.ID_ITEM AND PPC.PRODUCTO_CARACTERISITICA_ID = PC.ID_PRODUCTO_CARACTERISITICA AND PC.CARACTERISTICA_ID = CAR.ID_CARACTERISTICA AND CAR.DESCRIPCION_CARACTERISTICA = 'CAPACIDAD-PROM1' AND TECNICO.ELEMENTO_ID = ELEMENTO.ID_ELEMENTO AND ELEMENTO.MODELO_ELEMENTO_ID = MODELO.ID_MODELO_ELEMENTO AND MODELO.NOMBRE_MODELO_ELEMENTO = 'MEA3'
+obteniendo los servicios
+12
+servicios...
+serviciosObj:12
+serviciosObj:10
+serviciosObj:8
+serviciosObj:5
+serviciosObj:3
+serviciosObj:2
+EJECUTO modelo:MEA3, ip:172.30.254.196, interface:0/26, login:dfjimenezb_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA3, ip:172.30.249.6, interface:0/20, login:uiopecamachof_m , perfil:d9856u1024, up:9856, down:1024
+EJECUTO modelo:MEA3, ip:172.30.254.119, interface:0/12, login:uioasisleg1 , perfil:, up:0, down:0
+EJECUTO modelo:MEA3, ip:172.30.254.2, interface:0/1, login:uioppzald_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA3, ip:172.30.249.5, interface:0/11, login:uiosfsanche_m , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA3, ip:172.30.254.3, interface:0/24, login:uiopinietob , perfil:d2464u1024, up:2464, down:1024
+EJECUTO modelo:MEA3, ip:172.30.254.196, interface:0/27, login:uiojimen_m , perfil:d14784u1024, up:14784, down:1024
+EJECUTO modelo:MEA3, ip:172.30.254.119, interface:0/11, login:uioegvillaizand1 , perfil:, up:0, down:0
+EJECUTO modelo:MEA3, ip:172.30.254.2, interface:0/25, login:uioedificio1 , perfil:, up:0, down:0
+EJECUTO modelo:MEA3, ip:172.30.249.5, interface:0/17, login:uioprintsoft1 , perfil:d7392u1024, up:7392, down:1024
+EJECUTO modelo:MEA3, ip:172.30.254.3, interface:0/31, login:uioedificio1 , perfil:, up:0, down:0
+EJECUTO modelo:MEA3, ip:172.30.254.2, interface:0/4, login:uioedificio1 , perfil:, up:0, down:0
+172.30.254.119, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.249.5, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.254.3, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.254.2, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+***********************************
+LISTADO DE SERVICIOS 
+num:12
+Home ADSL Mixto 4 y 8,uiopecamachof_m,uiongvrenazzo1b_mea3,MEA3,172.30.249.6,0/20,CAMBIADO
+Home ADSL Mixto 1 y 2,dfjimenezb_m,uionswswisshotel1b_mea3,MEA3,172.30.254.196,0/26,CAMBIADO
+Home ADSL Mixto 6 y 12,uiojimen_m,uionswswisshotel1b_mea3,MEA3,172.30.254.196,0/27,CAMBIADO
+PyME VDSL 4 y 20,uioasisleg1,uiocipalmagro1b_mea3,MEA3,172.30.254.119,0/12,CAMBIADO
+Home VDSL 1 y 5,uioegvillaizand1,uiocipalmagro1b_mea3,MEA3,172.30.254.119,0/11,CAMBIADO
+Home ADSL Mixto 1 y 2,uiosfsanche_m,uiongvrenazzo1a_mea3,MEA3,172.30.249.5,0/11,CAMBIADO
+Home ADSL Mixto 3 y 6,uioprintsoft1,uiongvrenazzo1a_mea3,MEA3,172.30.249.5,0/17,CAMBIADO
+Home ADSL Mixto 1 y 2,uiopinietob,uiointxerox1b_mea3,MEA3,172.30.254.3,0/24,CAMBIADO
+PyME VDSL 2 y 10,uioedificio1,uiointxerox1b_mea3,MEA3,172.30.254.3,0/31,CAMBIADO
+Home ADSL Mixto 1 y 2,uioppzald_m,uiointxerox1a_mea3,MEA3,172.30.254.2,0/1,CAMBIADO
+PyME VDSL 2 y 10,uioedificio1,uiointxerox1a_mea3,MEA3,172.30.254.2,0/25,CAMBIADO
+PyME VDSL 2 y 10,uioedificio1,uiointxerox1a_mea3,MEA3,172.30.254.2,0/4,CAMBIADO
+no:0
+generando archivo...
+Hora Inicio: Fri Sep 06 18:00:02 ECT 2013
+Hora Fin: Fri Sep 06 18:00:26 ECT 2013

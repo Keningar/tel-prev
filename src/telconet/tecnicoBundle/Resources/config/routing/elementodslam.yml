@@ -1,0 +1,409 @@
+elementodslam:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:indexDslam" }
+    
+elementodslam_actualizarPerfiles:
+    pattern:  /actualizarPerfiles
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:actualizarPerfiles" }
+
+elementodslam_getEncontradosDslam:
+    pattern:  /getEncontradosDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:getEncontradosDslam" }
+  
+elementodslam_newDslam:
+    pattern:  /newDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:newDslam" }
+
+elementodslam_createDslam:
+    pattern: /createDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:createDslam" }
+    requirements: { _method: POST }
+    
+elementodslam_quitarOperatividad:
+    pattern:  /quitarOperatividad
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:quitarOperatividad" }
+    
+elementodslam_buscarInterfaces:
+    pattern:  /buscarInterfaces
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:buscarInterfaces" }
+    
+elementodslam_showDslam:
+    pattern:  /{id}/showDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:showDslam" }
+    
+elementodslam_editDslam:
+    pattern:  /{id}/editDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:editDslam" }
+
+elementodslam_updateDslam:
+    pattern:  /{id}/updateDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:updateDslam" }
+    requirements: { _method: POST }
+    
+elementodslam_cargarDatosDslam:
+    pattern:  /{id}/cargarDatosDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:cargarDatosDslam" }
+    requirements: { _method: POST }
+    
+elementodslam_deleteDslam:
+    pattern:  /{id}/deleteDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:deleteDslam" }
+    
+elementodslam_deleteAjaxDslam:
+    pattern:  /deleteAjaxDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:deleteAjaxDslam" }
+    requirements: { _method: post }
+    
+elementodslam_getDocumentoPorModelo:
+    pattern:  /getDocumentoPorModelo
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:getDocumentoPorModelo" }
+    
+elementodslam_administrarPuertos:
+    pattern:  /administrarPuertos
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:administrarPuertos" }
+    
+#DSLAM A20
+    
+elementodslam_mostrarConfiguracionDslamA2024:
+    pattern:  /mostrarConfiguracionDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionDslamA2024" }
+    
+elementodslam_mostrarTodosPuertosDslamA2024:
+    pattern:  /mostrarTodosPuertosDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarTodosPuertosDslamA2024" }
+    
+elementodslam_mostrarMacsDslamA2024:
+    pattern:  /mostrarMacsDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacsDslamA2024" }
+    
+elementodslam_mostrarRendimientoDslamA2024:
+    pattern:  /mostrarRendimientoDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarRendimientoDslamA2024" }
+
+elementodslam_mostrarTemperaturaDslamA2024:
+    pattern:  /mostrarTemperaturaDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarTemperaturaDslamA2024" }
+
+elementodslam_mostrarConfiguracionInterfaceDslamA2024:
+    pattern:  /mostrarConfiguracionInterfaceDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionInterfaceDslamA2024" }
+    
+elementodslam_mostrarVelocidadRealDslamA2024:
+    pattern:  /mostrarVelocidadRealDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarVelocidadRealDslamA2024" }
+    
+elementodslam_mostrarNivelesSenalExtremoLejanoDslamA2024:
+    pattern:  /mostrarNivelesSenalExtremoLejanoDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarNivelesSenalExtremoLejanoDslamA2024" }
+    
+elementodslam_mostrarNivelesSenalExtremoCercanoDslamA2024:
+    pattern:  /mostrarNivelesSenalExtremoCercanoDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarNivelesSenalExtremoCercanoDslamA2024" }
+    
+elementodslam_mostrarConfiguracionBridgeDslamA2024:
+    pattern:  /mostrarConfiguracionBridgeDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionBridgeDslamA2024" }
+    
+elementodslam_mostrarCircuitoVirtualDslamA2024:
+    pattern:  /mostrarCircuitoVirtualDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarCircuitoVirtualDslamA2024" }
+    
+elementodslam_mostrarContadoresDslamA2024:
+    pattern:  /mostrarContadoresDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarContadoresDslamA2024" }
+   
+elementodslam_mostrarDesempenoPuertoDiarioDslamA2024:
+    pattern:  /mostrarDesempenoPuertoDiarioDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarDesempenoPuertoDiarioDslamA2024" }
+    
+elementodslam_mostrarDesempenoPuertoIntervaloDslamA2024:
+    pattern:  /mostrarDesempenoPuertoIntervaloDslamA2024
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarDesempenoPuertoIntervaloDslamA2024" }
+    
+elementodslam_resetearPuertoDslamA20:
+    pattern:  /resetearPuertoDslamA20
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:resetearPuertoDslamA20" }
+    
+#DSLAM R1
+    
+elementodslam_mostrarConfiguracionDslamR1:
+    pattern:  /mostrarConfiguracionDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionDslamR1" }
+    
+elementodslam_mostrarMacsDslamR1:
+    pattern:  /mostrarMacsDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacsDslamR1" }
+    
+elementodslam_mostrarTodosPuertosDslamR1:
+    pattern:  /mostrarTodosPuertosDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarTodosPuertosDslamR1" }
+    
+elementodslam_mostrarInterfaceDslamR1:
+    pattern:  /mostrarInterfaceDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarInterfaceDslamR1" }
+    
+elementodslam_mostrarRendimientoDslamR1:
+    pattern:  /mostrarRendimientoDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarRendimientoDslamR1" }
+    
+elementodslam_mostrarTemperaturaDslamR1:
+    pattern:  /mostrarTemperaturaDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarTemperaturaDslamR1" }
+        
+elementodslam_mostrarLogsDslamR1:
+    pattern:  /mostrarLogsDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarLogsDslamR1" }
+    
+elementodslam_mostrarConfiguracionInterfaceDslamR1:
+    pattern:  /mostrarConfiguracionInterfaceDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionInterfaceDslamR1" }
+    
+elementodslam_mostrarMacsPuertosDslamR1:
+    pattern:  /mostrarMacsPuertosDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacsPuertosDslamR1" }
+    
+elementodslam_mostrarVelocidadRealDslamR1:
+    pattern:  /mostrarVelocidadRealDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarVelocidadRealDslamR1" }
+    
+elementodslam_mostrarMonitoreoPuertoDataIDslamR1:
+    pattern:  /mostrarMonitoreoPuertoDataIDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMonitoreoPuertoDataIDslamR1" }
+    
+elementodslam_mostrarMonitoreoPuertoDataIIDslamR1:
+    pattern:  /mostrarMonitoreoPuertoDataIIDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMonitoreoPuertoDataIIDslamR1" }
+    
+elementodslam_mostrarStatusPuertoDslamR1:
+    pattern:  /mostrarStatusPuertoDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarStatusPuertoDslamR1" }
+    
+elementodslam_mostrarCodificacionDslamR1:
+    pattern:  /mostrarCodificacionDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarCodificacionDslamR1" }
+    
+elementodslam_resetearPuertoDslamR1:
+    pattern:  /resetearPuertoDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:resetearPuertoDslamR1" }
+    
+elementodslam_cambiarCodificacionPuertoDslamR1:
+    pattern:  /cambiarCodificacionPuertoDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:cambiarCodificacionPuertoDslamR1" }
+    
+elementodslam_limpiarContadoresPuertoDslamR1:
+    pattern:  /limpiarContadoresPuertoDslamR1
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:limpiarContadoresPuertoDslamR1" }
+    
+#7224
+
+elementodslam_mostrarConfiguracionDslam7224:
+    pattern:  /mostrarConfiguracionDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionDslam7224" }
+    
+elementodslam_mostrarMacsDslam7224:
+    pattern:  /mostrarMacsDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacsDslam7224" }
+    
+elementodslam_mostrarTodosPuertosDslam7224:
+    pattern:  /mostrarTodosPuertosDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarTodosPuertosDslam7224" }
+    
+elementodslam_mostrarRendimientoDslam7224:
+    pattern:  /mostrarRendimientoDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarRendimientoDslam7224" }
+    
+elementodslam_mostrarLogsDslam7224:
+    pattern:  /mostrarLogsDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarLogsDslam7224" }
+    
+elementodslam_mostrarInterfaceDslam7224:
+    pattern:  /mostrarInterfaceDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarInterfaceDslam7224" }
+    
+elementodslam_mostrarConfiguracionInterfaceDslam7224:
+    pattern:  /mostrarConfiguracionInterfaceDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionInterfaceDslam7224" }
+    
+elementodslam_mostrarMacsPuertoDslam7224:
+    pattern:  /mostrarMacsPuertoDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacsPuertoDslam7224" }
+    
+elementodslam_mostrarVelocidadSeteadaDslam7224:
+    pattern:  /mostrarVelocidadSeteadaDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarVelocidadSeteadaDslam7224" }
+    
+elementodslam_mostrarMonitorearPuertoDslam7224:
+    pattern:  /mostrarMonitorearPuertoDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMonitorearPuertoDslam7224" }
+    
+elementodslam_mostrarParametrosLineaDslam7224:
+    pattern:  /mostrarParametrosLineaDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarParametrosLineaDslam7224" }
+    
+elementodslam_mostrarCodificacionLineaDslam7224:
+    pattern:  /mostrarCodificacionLineaDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarCodificacionLineaDslam7224" }
+    
+elementodslam_resetearPuertoDslam7224:
+    pattern:  /resetearPuertoDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:resetearPuertoDslam7224" }
+    
+elementodslam_cambiarCodificacionPuertoDslam7224:
+    pattern:  /cambiarCodificacionPuertoDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:cambiarCodificacionPuertoDslam7224" }
+    
+elementodslam_limpiarContadoresPuertoDslam7224:
+    pattern:  /limpiarContadoresPuertoDslam7224
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:limpiarContadoresPuertoDslam7224" }
+    
+# 6524
+
+elementodslam_mostrarConfiguracionDslam6524:
+    pattern:  /mostrarConfiguracionDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionDslam6524" }
+    
+elementodslam_mostrarMacsDslam6524:
+    pattern:  /mostrarMacsDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacsDslam6524" }
+    
+elementodslam_mostrarLogsDslam6524:
+    pattern:  /mostrarLogsDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarLogsDslam6524" }
+    
+elementodslam_mostrarMacsPuertoDslam6524:
+    pattern:  /mostrarMacsPuertoDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacsPuertoDslam6524" }
+    
+elementodslam_mostrarVelocidadSeteadaDslam6524:
+    pattern:  /mostrarVelocidadSeteadaDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarVelocidadSeteadaDslam6524" }
+    
+elementodslam_mostrarVelocidadRealDslam6524:
+    pattern:  /mostrarVelocidadRealDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarVelocidadRealDslam6524" }
+    
+elementodslam_mostrarMonitorearPuertoDslam6524:
+    pattern:  /mostrarMonitorearPuertoDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMonitorearPuertoDslam6524" }
+    
+elementodslam_mostrarNombrePuertoDslam6524:
+    pattern:  /mostrarNombrePuertoDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarNombrePuertoDslam6524" }
+    
+elementodslam_mostrarCrcDslam6524:
+    pattern:  /mostrarCrcDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarCrcDslam6524" }
+    
+elementodslam_mostrarSenalRuidoDslam6524:
+    pattern:  /mostrarSenalRuidoDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarSenalRuidoDslam6524" }
+    
+elementodslam_mostrarAtenuacionDslam6524:
+    pattern:  /mostrarAtenuacionDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarAtenuacionDslam6524" }
+    
+elementodslam_mostrarCodificacionDslam6524:
+    pattern:  /mostrarCodificacionDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarCodificacionDslam6524" }
+    
+elementodslam_mostrarRestriccionIpDslam6524:
+    pattern:  /mostrarRestriccionIpDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarRestriccionIpDslam6524" }
+
+elementodslam_resetearPuertoDslam6524:
+    pattern:  /resetearPuertoDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:resetearPuertoDslam6524" }
+    
+elementodslam_cambiarCodificacionPuertoDslam6524:
+    pattern:  /cambiarCodificacionPuertoDslam6524
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:cambiarCodificacionPuertoDslam6524" }
+
+# MEA
+
+elementodslam_mostrarConfiguracionDslamMea:
+    pattern:  /mostrarConfiguracionDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionDslamMea" }
+    
+elementodslam_mostrarMacsDslamMea:
+    pattern:  /mostrarMacsDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacsDslamMea" }
+    
+elementodslam_mostrarInterfaceVirtualEth1DslamMea:
+    pattern:  /mostrarInterfaceVirtualEth1DslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarInterfaceVirtualEth1DslamMea" }
+    
+elementodslam_mostrarPuertosConectadosDslamMea:
+    pattern:  /mostrarPuertosConectadosDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarPuertosConectadosDslamMea" }
+    
+elementodslam_mostrarInterfaceVirtualEth2DslamMea:
+    pattern:  /mostrarInterfaceVirtualEth2DslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarInterfaceVirtualEth2DslamMea" }
+
+elementodslam_mostrarProcesamientoDslamMea:
+    pattern:  /mostrarProcesamientoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarProcesamientoDslamMea" }
+
+elementodslam_mostrarDiscoDslamMea:
+    pattern:  /mostrarDiscoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarDiscoDslamMea" }
+
+elementodslam_mostrarMemoriaDslamMea:
+    pattern:  /mostrarMemoriaDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMemoriaDslamMea" }
+
+elementodslam_mostrarTiempoActividadDslamMea:
+    pattern:  /mostrarTiempoActividadDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarTiempoActividadDslamMea" }
+    
+elementodslam_mostrarTemperaturaDslamMea:
+    pattern:  /mostrarTemperaturaDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarTemperaturaDslamMea" }
+    
+elementodslam_limpiarContadoresPuertoDslamMea:
+    pattern:  /limpiarContadoresPuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:limpiarContadoresPuertoDslamMea" }
+
+elementodslam_resetearPuertoDslamMea:
+    pattern:  /resetearPuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:resetearPuertoDslamMea" }
+    
+elementodslam_mostrarMacPuertoDslamMea:
+    pattern:  /mostrarMacPuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarMacPuertoDslamMea" }
+
+elementodslam_mostrarConfiguracionPuertoDslamMea:
+    pattern:  /mostrarConfiguracionPuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarConfiguracionPuertoDslamMea" }
+
+elementodslam_mostrarDesempenoPuertoDiarioDslamMea:
+    pattern:  /mostrarDesempenoPuertoDiarioDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarDesempenoPuertoDiarioDslamMea" }
+
+elementodslam_mostrarDesempenoPuertoIntervaloDslamMea:
+    pattern:  /mostrarDesempenoPuertoIntervaloDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarDesempenoPuertoIntervaloDslamMea" }
+
+elementodslam_mostrarErroresPuertoDslamMea:
+    pattern:  /mostrarErroresPuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarErroresPuertoDslamMea" }
+
+elementodslam_mostrarEstadoPuertoDslamMea:
+    pattern:  /mostrarEstadoPuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarEstadoPuertoDslamMea" }
+
+elementodslam_mostrarInterfacePuertoDslamMea:
+    pattern:  /mostrarInterfacePuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarInterfacePuertoDslamMea" }
+
+elementodslam_mostrarVciPuertoDslamMea:
+    pattern:  /mostrarVciPuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarVciPuertoDslamMea" }
+
+elementodslam_mostrarTiempoActividadPuertoDslamMea:
+    pattern:  /mostrarTiempoActividadPuertoDslamMea
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:mostrarTiempoActividadPuertoDslamMea" }
+elementodslam_actualizarPerfilesDslam:
+    pattern:  /{id}/actualizarPerfilesDslam
+    defaults: { _controller: "tecnicoBundle:InfoElementoDslam:actualizarPerfilesDslam" }
+ 

@@ -1,0 +1,13 @@
+PLAN,LOGIN,ELEMENTO,MODELO,IP,PUERTO,RESULTADO
+Home ADSL Mixto 4 y 8,uiopecamachof_m,uiongvrenazzo1b_mea3,MEA3,172.30.249.6,0/20,CAMBIADO
+Home ADSL Mixto 1 y 2,dfjimenezb_m,uionswswisshotel1b_mea3,MEA3,172.30.254.196,0/26,CAMBIADO
+Home ADSL Mixto 6 y 12,uiojimen_m,uionswswisshotel1b_mea3,MEA3,172.30.254.196,0/27,CAMBIADO
+PyME VDSL 4 y 20,uioasisleg1,uiocipalmagro1b_mea3,MEA3,172.30.254.119,0/12,CAMBIADO
+Home VDSL 1 y 5,uioegvillaizand1,uiocipalmagro1b_mea3,MEA3,172.30.254.119,0/11,CAMBIADO
+Home ADSL Mixto 1 y 2,uiosfsanche_m,uiongvrenazzo1a_mea3,MEA3,172.30.249.5,0/11,CAMBIADO
+Home ADSL Mixto 3 y 6,uioprintsoft1,uiongvrenazzo1a_mea3,MEA3,172.30.249.5,0/17,CAMBIADO
+Home ADSL Mixto 1 y 2,uiopinietob,uiointxerox1b_mea3,MEA3,172.30.254.3,0/24,CAMBIADO
+PyME VDSL 2 y 10,uioedificio1,uiointxerox1b_mea3,MEA3,172.30.254.3,0/31,CAMBIADO
+Home ADSL Mixto 1 y 2,uioppzald_m,uiointxerox1a_mea3,MEA3,172.30.254.2,0/1,CAMBIADO
+PyME VDSL 2 y 10,uioedificio1,uiointxerox1a_mea3,MEA3,172.30.254.2,0/25,CAMBIADO
+PyME VDSL 2 y 10,uioedificio1,uiointxerox1a_mea3,MEA3,172.30.254.2,0/4,CAMBIADO

@@ -1,0 +1,7 @@
+procesomasivo_cargaDataGis:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:CargaInfoGis:index" }
+
+procesomasivo_upLoadFile:
+    pattern:  /upLoadFile
+    defaults: { _controller: "tecnicoBundle:CargaInfoGis:upLoadFile" }

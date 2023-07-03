@@ -1,0 +1,42 @@
+elementocassette:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:indexCassette" }
+    
+elementocassette_ajaxGetEncontradosCassette:
+    pattern:  /ajaxGetEncontradosCassette
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:ajaxGetEncontradosCassette" }
+  
+elementocassette_newCassette:
+    pattern:  /newCassette
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:newCassette" }
+
+elementocassette_createCassette:
+    pattern: /createCassette
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:createCassette" }
+    requirements: { _method: POST }
+       
+elementocassette_showCassette:
+    pattern:  /{id}/showCassette
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:showCassette" }
+    
+elementocassette_editCassette:
+    pattern:  /{id}/editCassette
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:editCassette" }
+
+elementocassette_updateCassette:
+    pattern:  /{id}/updateCassette
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:updateCassette" }
+    requirements: { _method: POST }
+    
+elementocassette_deleteCassette:
+    pattern:  /deleteCassette
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:deleteCassette" }
+    
+elementocassette_deleteAjaxCassette:
+    pattern:  /deleteAjaxCassette
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:deleteAjaxCassette" }
+    requirements: { _method: post }
+    
+elementocassette_ajaxGetEncontradosContenidos:
+    pattern:  /ajaxGetEncontradosContenidos
+    defaults: { _controller: "tecnicoBundle:InfoElementoCassette:ajaxGetEncontradosContenidos" }

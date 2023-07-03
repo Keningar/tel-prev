@@ -1,0 +1,44 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenido_central %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ menu_imagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Opciones {{ menu_title}}</h1>
+    </div>
+    <div class="clearBoth"></div>
+    <div class="dashboard_content">
+        <div class="content_submenu_menu">
+            <div class="formSubmenu_menu" style="padding-bottom:0px;">
+                <div class="tableRow" align="center" style="padding:0px;">
+                    <table id="submenu_menu_table" width="97%" cellspacing="0" cellpadding="0" border="0" align="center">
+                        <tbody>
+                            {% for item in app.session.get('submenu_modulo') %}
+                            <tr>
+                                <td class="colorBorderTop" width="55" valign="top">
+                                    <a href="{{ item.href }}">
+                                        <img class="imgOpcionSubmenu" border="0" src="{{ asset('public/images/'~ item.img | default('tools1.png') ~ '') }}" width= "50" height="50" title="">
+                                    </a>
+                                </td>
+                                <td class="colorBorderTop" valign="top">
+                                    <div class="paddingBottom5">
+                                        <a class="tituloSubmenu" href="{{ item.href }}">{{ item.tituloHTML}}</a>
+                                    </div>
+                                    <span class="f11">{{ item.descripcionSubOpcion | default('sin descripcion') }}</span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido_central %}

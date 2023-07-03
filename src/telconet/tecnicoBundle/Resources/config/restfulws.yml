@@ -1,0 +1,20 @@
+# URL habilitada para peticiones desde la aplicación "Fox" de Telconet.
+rs_tecnico_webServices_fox:
+    resource: restfulws/foxpremium.yml
+    defaults: { _format: json }
+    requirements: { _method: post, _format: json }
+    prefix: /ws/fox
+
+# RESTful Web Services: anidados en /rs/tecnico
+rs_tecnico_webServices:
+    resource: restfulws/tecnico.yml
+    defaults: { _format: json }
+    requirements: { _method: post, _format: json }
+    prefix: /ws/rest
+    
+# URL habilitada para peticiones desde Toolbox (FOX)
+rs_fox_webServices:
+    resource: restfulws/fox.yml
+    defaults: { _format: json }
+    requirements: { _method: post, _format: json }
+    prefix: /api

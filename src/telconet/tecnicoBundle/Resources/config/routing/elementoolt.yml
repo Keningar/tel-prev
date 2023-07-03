@@ -1,0 +1,346 @@
+elementoolt:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:indexOlt" }
+    
+elementoolt_getEncontradosOlt:
+    pattern:  /getEncontradosOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getEncontradosOlt" }
+
+elementoolt_newOlt:
+    pattern:  /newOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:newOlt" }
+
+elementoolt_createOlt:
+    pattern: /createOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:createOlt" }
+    requirements: { _method: POST }
+       
+elementoolt_showOlt:
+    pattern:  /{id}/showOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:showOlt" }
+    
+elementoolt_editOlt:
+    pattern:  /{id}/editOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:editOlt" }
+
+elementoolt_updateOlt:
+    pattern:  /{id}/updateOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:updateOlt" }
+    requirements: { _method: POST }
+    
+elementoolt_deleteOlt:
+    pattern:  /{id}/deleteOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:deleteOlt" }
+    
+elementoolt_deleteAjaxOlt:
+    pattern:  /deleteAjaxOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:deleteAjaxOlt" }
+    requirements: { _method: post }
+    
+elementoolt_mostrarSubscriberOlt:
+    pattern:  /mostrarSubscriberOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:mostrarSubscriberOlt" }
+    requirements: { _method: post }
+    
+elementoolt_mostrarpool:
+    pattern:  /showPoolIP/{idElemento}
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:showPoolIP" }
+    
+elementoolt_getPerfiles:
+    pattern:  /{idElemento}/getPerfiles
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getPerfiles" }
+    
+elementoolt_getPaquetes:
+    pattern:  /getPaquetes
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getPaquetes" }
+    
+elementoolt_updatePool:
+    pattern:  /{idElemento}/updatePool
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:updatePool" }
+    
+elementoolt_deletePool:
+    pattern:  /{idSubred}/deletePool
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:deletePool" }
+ 
+elementoolt_poolValid:
+    pattern:  /{idSubred}/{ipInicial}/{ipFinal}/validaCruceIp
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:validaCruceIp" }
+    
+elementoolt_cargarDatosOlt:
+    pattern:  /{id}/cargarDatosOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:cargarDatosOlt" }
+    requirements: { _method: POST }
+
+elementoolt_eliminarDobleLineaPon:
+    pattern:  /eliminarDobleLineaPon
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:eliminarDobleLineaPon" }
+    
+elementoolt_mostrarMacsConectadasOlt:
+    pattern:  /mostrarMacsConectadasOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:mostrarMacsConectadasOlt" }
+    
+elementoolt_mostrarSubscriberConectadosOlt:
+    pattern:  /mostrarSubscriberConectadosOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:mostrarSubscriberConectadosOlt" }
+    
+elementoolt_verificarServicioOlt:
+    pattern:  /verificarServicioOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:verificarServicioOlt" }
+    
+elementoolt_mostrarPoolsPorOlt:
+    pattern:  /mostrarPoolsPorOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:mostrarPoolsPorOlt" }
+    
+elementoolt_desconfigurarIpFija:
+    pattern:  /desconfigurarIpFija
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:desconfigurarIpFija" }
+    
+elementoolt_mostrarTablaMacsConectadasOlt:
+    pattern:  /mostrarTablaMacsConectadasOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:mostrarTablaMacsConectadasOlt" }
+    
+elementoolt_actualizarPoolIp:
+    pattern:  /actualizarPoolIp
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:actualizarPoolIp" }
+    
+elementoolt_actualizarCaracteristicasHuaweiAjax:
+    pattern:  /actualizarCaracteristicasHuaweiAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:actualizarCaracteristicasHuaweiAjax" }
+    
+elementoolt_getTagsAjax:
+    pattern:  /getTagsAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getTagsAjax" }
+elementoolt_getMascaraPermitidaAjax:
+    pattern:  /getMascaraPermitidaAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getMascaraPermitidaAjax" }
+elementoolt_getRangoIpsAjax:
+    pattern:  /getRangoIpsAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getRangoIpsAjax" }
+elementoolt_reserverIp:
+    pattern:  /reservarIpsOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:reservarIpsOlt" }
+elementoolt_contarIpsOlt:
+    pattern:  /contarIpsOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:contarIpsOlt" }
+elementoolt_quitarOperatividad:
+    pattern:  /quitarOperatividad
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:quitarOperatividad" }
+elementoolt_reversarOltMigrado:
+    pattern:  /reversarOltMigrado
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:reversarOltMigrado" }
+elementoolt_getTipoScopeAjax:
+    pattern:  /getTipoScopeAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getTipoScopeAjax" }
+elementoolt_getSubredAjax:
+    pattern:  /getSubredAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getSubredAjax" }
+elementoolt_getPolicyAjax:
+    pattern:  /getPolicyAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getPolicyAjax" }
+elementoolt_getElementoServidorAjax:
+    pattern:  /getElementoServidorAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getElementoServidorAjax" }
+elementoolt_getNumerosScopeAjax:
+    pattern:  /getNumerosScopeAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getNumerosScopeAjax" }
+elementoolt_crearScopeAjax:
+    pattern:  /crearScopeAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:crearScopeAjax" }
+elementoolt_getTipoScopeFromDetalleAjax:
+    pattern:  /getTipoScopeFromDetalleAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getTipoScopeFromDetalleAjax" }
+elementoolt_getActualizaIpInicioFinScopeAjax:
+    pattern:  /getActualizaIpInicioFinScopeAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getActualizaIpInicioFinScopeAjax" }
+elementoolt_eliminarScopeAjax:
+    pattern:  /eliminarScopeAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:eliminarScopeAjax" }
+elementoolt_getScopeOLTAjax:
+    pattern:  /getScopeOLTAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getScopesByNombreElementoAjax" }
+elementoolt_asignarScopeAjax:
+    pattern:  /asignarScopeAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:asignarScopeAjax" }
+elementoolt_getInterfacesOlt:
+    pattern:  /getInterfacesOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getInterfacesOlt" }
+    
+elementoolt_getJsonInterfacesByTarjeta:
+    pattern:  /ajaxGetJsonInterfacesByTarjeta
+    defaults: { _controller: tecnicoBundle:InfoElementoOlt:ajaxGetJsonInterfacesByTarjeta }
+    
+elementoolt_aumentarCapacidadTarjeta:
+    pattern:  /aumentarCapacidadTarjeta
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:aumentarCapacidadTarjeta" }
+    
+elementoolt_reducirCapacidadTarjeta:
+    pattern:  /reducirCapacidadTarjeta
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:reducirCapacidadTarjeta" }
+    
+elementoolt_agregarTarjeta:
+    pattern:  /agregarTarjeta
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:agregarTarjeta" }
+    
+elementoolt_tiposDetallesElemento:
+    pattern:  /getTiposDetalleElementoAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getTiposDetalleElementoAjax" }
+    
+elementoolt_detallesElemento:
+    pattern:  /getDetallesElementoAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getDetallesElementoAjax" }
+
+elementoolt_actualizaCaracteristicaOLT:
+    pattern:  /actualizaCaracteristicaOLT
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:actualizaCaracteristicaOLT" }
+
+elementoolt_configuraIpCnrTellion:
+    pattern:  /configuraIpCnrTellion
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:configuraIpCnrTellion" }
+
+elementoolt_verificaIpReservada:
+    pattern:  /verificaIpReservada
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:verificaIpReservada" }
+
+elementoolt_getOpcionesAprovisionamientoIp:
+    pattern:  /getOpcionesAprovisionamientoIp
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getOpcionesAprovisionamientoIp" }
+    
+elementoolt_monitoreoCambioPlanMasivo:
+    pattern:  /monitoreoCambioPlan
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:monitoreoCambioPlan" }    
+    
+elementoolt_ajaxMonitoreoGrid:
+    pattern:  /monitoreoCambioPlan/ajaxMonitoreoGrid
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxMonitoreoGrid" }
+    
+elementoolt_ajaxAccionesMonitoreoOlt:
+    pattern:  /monitoreoCambioPlan/ajaxAccionesMonitoreoOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxAccionesMonitoreoOlt" }    
+    
+elementoolt_iniciarMigracion:
+    pattern:  /iniciarMigracion
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:iniciarMigracion" }
+
+elementoolt_eliminarDetallesPerfiles:
+    pattern:  /eliminarDetallesPerfiles
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:eliminarDetallesPerfiles" }
+
+elementoolt_migracion:
+    pattern:  /migracion
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:migracion" }
+
+elementoolt_migracion_alta_densidad:
+    pattern:  /migracionOltAltaDensidad
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:migracionOltAltaDensidad" }
+
+elementoolt_ejecuta_migracion_olt:
+    pattern:  /ejecutarMigracionOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ejecutarMigracionOlt"}
+
+elementoolt_reporte_migracion_olt:
+    pattern:  /reporteMigracionOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:reporteMigracionOlt"}
+
+elementoolt_validar_migracion_olt:
+    pattern:  /validarMigracionOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:validarMigracionOlt"}
+    
+elementoolt_ajaxMigracionGrid:
+    pattern:  /getOltMigracionGrid
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getOltMigracionGrid" }    
+    
+elementoolt_ajaxOltMigracion:
+    pattern:  /ajaxOltMigracion
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxOltSelectMigracion"}
+    
+elementoolt_getOltMigracion:
+    pattern:  /getOltMigracion
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getOltMigracion" }    
+    
+elementoolt_grabaMigracionOlt:
+    pattern:  /grabaMigracionOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:grabaMigracionOlt" }
+    
+elementoolt_getOltsInicioCpm:
+    pattern:  /getOltsInicioCpm
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getOltsInicioCpm" }       
+    
+elementoolt_ejecutarCpmOlts:
+    pattern:  /ejecutarCpmOlts
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ejecutarCpmOlts" }    
+    
+elementoolt_getAgregarSolicitud:
+    pattern:  /getAgregarSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getAgregarSolicitud" }  
+    
+elementoolt_ajaxSolAgregarEquipoGrid:
+    pattern:  /getOltSolAgregarEquipoGrid
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getOltSolAgregarEquipoGrid" }    
+    
+elementoolt_listadoPlanes:
+    pattern:  /listadoPlanes
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:listadoPlanes" }  
+    
+elementoolt_listadoOlt:
+    pattern:  /listadoOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:listadoOlt" }    
+    
+elementoolt_ajaxSolAgregarEquipo:
+    pattern:  /ajaxSolAgregarEquipo
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxSolAgregarEquipo"}   
+    
+elementoolt_ingresoMasivoScope:
+    pattern:  /ingresoMasivoScope
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ingresoMasivoScope"}
+    
+elementoolt_ajaxOltMultiplataforma:
+    pattern:  /ajaxOltMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxOltMultiplataforma"}
+    
+elementoolt_ajaxGetOltNodoMultiplataforma:
+    pattern:  /ajaxGetOltNodoMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxGetOltNodoMultiplataforma"}
+    
+elementoolt_ajaxAsignarOltMultiplataforma:
+    pattern:  /ajaxAsignarOltMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxAsignarOltMultiplataforma"}
+    
+elementoolt_ajaxGetPuertosPeMultiplataforma:
+    pattern:  /ajaxGetPuertosPeMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxGetPuertosPeMultiplataforma"}
+    
+elementoolt_ajaxRecursosOltMultiplataforma:
+    pattern:  /ajaxRecursosOltMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxRecursosOltMultiplataforma"}
+    
+elementoolt_ajaxConfigurarOltMultiplataforma:
+    pattern:  /ajaxConfigurarOltMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxConfigurarOltMultiplataforma"}
+    
+elementoolt_ajaxReversarOltMultiplataforma:
+    pattern:  /ajaxReversarOltMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxReversarOltMultiplataforma"}
+    
+elementoolt_ajaxGetDatosOltMultiplataforma:
+    pattern:  /ajaxGetDatosOltMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxGetDatosOltMultiplataforma"}
+    
+elementoolt_ajaxGetOltMultiplataforma:
+    pattern:  /ajaxGetOltMultiplataforma
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxGetOltMultiplataforma"}
+   
+elementoolt_getTagsByTipoScope:
+    pattern:  /getTagsByTipoScope
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getTagsByTipoScope"}
+
+elementoolt_ajaxBuscarMacDesconfigurarIp:
+    pattern:  /ajaxBuscarMacDesconfigurarIp
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxBuscarMacDesconfigurarIp"}
+
+elementoolt_ajaxMacDesconfigurarIp:
+    pattern:  /ajaxMacDesconfigurarIp
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:ajaxMacDesconfigurarIp"}
+
+elementoolt_getPuertoTarjetaOlt:
+    pattern:  /getPuertoTarjetaOlt
+    defaults: { _controller: "tecnicoBundle:InfoElementoOlt:getPuertoTarjetaOlt" }

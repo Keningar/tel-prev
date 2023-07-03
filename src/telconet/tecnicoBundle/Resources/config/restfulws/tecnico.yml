@@ -1,0 +1,46 @@
+# RESTful Web Services: anidados en /rs/tecnico/ws/rest
+
+#ws para procesar las peticiones del flujo de activacion
+rs_tecnico_procesar:
+  pattern:  /procesar
+  defaults: { _controller: telconet\tecnicoBundle\WebService\TecnicoWSController::procesarAction }
+  
+#ws para grabar imagenes de manera asincrona
+rs_tecnico_procesarImagenes:
+  pattern:  /procesarImagenes
+  defaults: { _controller: telconet\tecnicoBundle\WebService\ProcesarImagenesWSController::procesarAction }
+  
+#ws para procesos masivos ( ejecucion sobre equipos de tn )
+rs_tecnico_procesosMasivos:
+  pattern:  /procesosMasivos
+  defaults: { _controller: telconet\tecnicoBundle\WebService\ProcesosMasivosWSController::procesarAction }
+  
+#ws para creacion de SWITCH/ROUTERS para uso de Networking
+rs_tecnico_administrarDispositivos:
+ pattern: /administrarDispositivos
+ defaults: { _controller: telconet\tecnicoBundle\WebService\AdministrarDispositivosWSController::procesarAction }
+  
+#ws para creacion de SWITCH/ROUTERS para uso de Networking
+rs_tecnico_administrarDispositivos:
+  pattern:  /administrarDispositivos
+  defaults: { _controller: telconet\tecnicoBundle\WebService\AdministrarDispositivosWSController::procesarAction }  
+  
+#ws para servicio NetlifeCam
+rs_tecnico_netlifecam:
+  pattern:  /netlifecam
+  defaults: { _controller: telconet\tecnicoBundle\WebService\NetlifecamWSController::procesarAction }
+  
+#ws para servicio NetlifeCam
+rs_tecnico_netlifezone:
+  pattern:  /netlifezone
+  defaults: { _controller: telconet\tecnicoBundle\WebService\NetlifezoneWSController::procesarAction }
+
+#ws para guardar consumo de recursos desde plataforma de cloudform
+rs_tecnico_consumos_cloudforms:
+  pattern:  /procesar/cloudForms
+  defaults: { _controller: telconet\tecnicoBundle\WebService\CloudFormsWSController::procesarAction }
+  
+#ws para servicios de Internet Protegido que no deben realizar los procesos lógicos de corte, reactivación, cambio de plan y cancelación
+rs_tecnico_internetProtegido:
+  pattern:  /internetProtegido
+  defaults: { _controller: telconet\tecnicoBundle\WebService\InternetProtegidoWSController::procesarAction }

@@ -1,0 +1,12 @@
+procesomasivo_consultaProcesoMasivo:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoProcesoMasivo:index" }
+
+    
+procesomasivo_consulta:
+    pattern:  /getConsulta
+    defaults: { _controller: "tecnicoBundle:InfoProcesoMasivo:getConsultaProcesoMasivo" }
+    
+procesomasivo_ejecuta:
+    pattern:  /ejecutaCambioPlanMasivo
+    defaults: { _controller: "tecnicoBundle:InfoProcesoMasivo:ejecutaCambioPlanMasivo" }

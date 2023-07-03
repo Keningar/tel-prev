@@ -1,0 +1,67 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var getEjecucionesControlBwMasivo = '{{path('controlBwMasivo_ajaxGetEjecuciones')}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoSwitch/indexControlBwMasivo.js') }}"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Vista Control BW Automático</h1>
+</div>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    {% if is_granted("ROLE_315-7638") %}
+        <a class="button-nuevo-registro" href="{{ path('controlBwMasivo_generar') }}">
+            <img src="{{ asset('public/images/procesosmasivos.png')}}" width="15" height="15" />
+            &nbsp;Generar Control BW Automático
+        </a>
+     {% endif %}
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        
+    </script>
+{% endblock %}

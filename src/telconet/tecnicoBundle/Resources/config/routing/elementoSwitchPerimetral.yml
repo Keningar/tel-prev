@@ -1,0 +1,45 @@
+elementoSwitchPerimetral:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:index" }
+      
+elementoSwitchPerimetral_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:new" }
+
+elementoSwitchPerimetral_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:create" }
+    requirements: { _method: POST }
+    
+elementoSwitchPerimetral_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:edit" }
+
+elementoSwitchPerimetral_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:update" }
+    
+elementoSwitchPerimetral_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:show" }
+        
+elementoSwitchPerimetral_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:getEncontrados" }
+    
+elementoSwitchPerimetral_cargarDatos:
+    pattern:  /{id}/cargarDatos
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:cargarDatos" }
+    requirements: { _method: POST }
+    
+elementoSwitchPerimetral_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:deleteAjax" }
+    
+elementoSwitchPerimetral_modelosPorTipoElemento:
+    pattern:  /modelosPorTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:getModelosPorTipoElemento" }
+    
+elementoSwitchPerimetral_getElementoPorTipo:
+    pattern:  /getElementoPorTipo
+    defaults: { _controller: "tecnicoBundle:InfoElementoSwitchPerimetral:getElementoPorTipo" }

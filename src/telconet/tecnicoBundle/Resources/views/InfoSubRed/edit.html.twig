@@ -1,0 +1,154 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+<style scoped="scoped">
+    
+    .alineando {
+        left: 42em;
+        position: absolute;
+        top: 44em;
+    }
+    .campo_select, .div_combo, .campo_texto{
+        width: 100% !important;
+
+    }
+   
+     
+    .centrado{
+        text-align: center;
+        margin-left: 10%;
+    }
+    .btn_guardar{
+        width: 85px !important;
+    }
+    .tabla, .buttons{
+        display: flex;        
+        justify-content: left;
+    }
+    .x-tool-close{
+        display: none;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoSubRed/edit.js') }}"></script>
+
+<script> 
+
+    
+    var buscarTipos = '{{path('elementoPe_getTipoSubred') }}';
+    var url_getEncontradosTipos = '{{path('elementoPe_getTipoSubred')}}';
+    var url_getEncontradosUsos = '{{path('elementoPe_getUsosPe')}}';
+    var url_getEncontradosPe = '{{path('elementoPe_getEncontradosPe')}}';
+    var url_getEncontradosEstados = '{{path('elementoPe_getEstados')}}';
+    var url_updateAjax = '{{ path('subredesPe_update') }}' ;
+    var url_redirectGrid = '{{ path('subredesPe') }}' ;
+
+
+
+</script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar datos de Subred</h1>
+</div>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %} 
+
+<div class="body_content"> 
+    <form id='form_edit_elemento'  method="post" {{ form_enctype(edit_form) }} class="formulario" novalidate="novalidate" 
+                >
+        <input type="hidden" id="tipo_set" name="tipo_set" value="{{ objElemento.tipo }}" />
+        <input type="hidden" id="uso_set" name="uso_set" value="{{ objElemento.uso }}" />
+        <input type="hidden" id="estado_set" name="estado_set" value="{{ objElemento.estado }}" />
+        <input type="hidden"  id="pe_set" name="pe_set" value="{{ objElemento.elementoId }}" />
+        <input type="hidden"  id="idPe_set" name="idPe_set" value="{{ intIdElemento }}" />
+        <input type="hidden" id="subred_completa" name="subred_completa" value="{{ objElemento.subred }}" />
+
+
+
+        
+
+
+
+        <table width="" border="0" class="box-section-content tabla">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="20%">Pe:</td>
+                    <td width=""><div id='comboPe' required="true" name="comboPe"></td>
+                    <td width="5%">&nbsp;</td> 
+                
+                </tr>   
+               
+                 <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="20%">{{ form_label(edit_form.subred) }}</td>
+                    <td width="">{{ form_widget(edit_form.subred) }}</td>
+                    <td width="5%">&nbsp;</td>
+                   
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="20%">{{ form_label(edit_form.tipo) }}</td>                 
+                    <td width=""><div id='comboTipos' required="true" name="comboTipos"></td> 
+                    <td width="5%">&nbsp;</td>
+                   
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="20%">{{ form_label(edit_form.uso) }}</td>
+                    <td width=""><div id='comboUsos' required="true" name="comboUsos"></td>
+                    <td width="5%">&nbsp;</td>
+                   
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="20%">{{ form_label(edit_form.estado) }}</td>
+                    <td width=""><div id='comboEstados' required="true" name="comboEstados"></td> 
+                    <td width="5%">&nbsp;</td>
+                   
+                </tr>
+              
+               
+            
+            </table>
+        <div class="buttons">
+            <p>
+                <button id="enviar" class="button-crud btn_guardar" type="button" onclick="confirmarForm({{ objElemento.id }})">Guardar</button>
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('subredesPe') }}">
+                        Cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+   
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

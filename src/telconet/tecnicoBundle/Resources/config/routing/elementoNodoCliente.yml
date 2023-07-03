@@ -1,0 +1,49 @@
+elementoNodoCliente:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:indexNodoCliente" }
+      
+elementoNodoCliente_new:
+    pattern:  /newNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:newNodoCliente" }
+
+elementoNodoCliente_create:
+    pattern: /createNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:createNodoCliente" }
+    requirements: { _method: POST }
+    
+elementoNodoCliente_edit:
+    pattern:  /{id}/editNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:editNodoCliente" }
+
+elementoNodoCliente_update:
+    pattern:  /{id}/updateNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:updateNodoCliente" }
+    
+elementoNodoCliente_show:
+    pattern:  /{id}/showNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:showNodoCliente" }
+        
+elementoNodoCliente_getEncontrados:
+    pattern:  /getEncontradosNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:getEncontradosNodoCliente" }
+    
+elementoNodoCliente_cargarDatos:
+    pattern:  /{id}/cargarDatosNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:cargarDatosNodoCliente" }
+    requirements: { _method: POST }
+    
+elementoNodoCliente_getElementosPorNodo:
+    pattern:  /{id}/getElementosPorNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:getElementosPorNodoCliente" }
+    
+elementoNodoCliente_deleteAjax:
+    pattern:  /deleteAjaxNodoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:deleteAjaxNodoCliente" }
+    
+elementoNodoCliente_modelosPorTipoElemento:
+    pattern:  /modelosPorTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:getModelosPorTipoElemento" }   
+    
+elementoNodoCliente_ajaxElementoPseudoPe:
+    pattern:  /ajaxGetElementosPseudoPe
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoCliente:ajaxGetElementosPseudoPe" }

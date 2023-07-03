@@ -1,0 +1,898 @@
+SET SERVEROUTPUT ON
+--Asociación de nuevas características para PROMOCIONES BW
+DECLARE
+  Ln_IdProducto        NUMBER(5,0) := 63;
+  Ln_IdCaractSeq       NUMBER(5,0);
+  Lv_EstadoActivo      VARCHAR2(6) := 'Activo';
+BEGIN
+  Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+  INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+      ID_CARACTERISTICA,
+      DESCRIPCION_CARACTERISTICA,
+      TIPO_INGRESO,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      FE_ULT_MOD,
+      USR_ULT_MOD,
+      TIPO
+    )
+    VALUES
+    (
+      Ln_IdCaractSeq,
+      'PERFIL-PROMO',
+      'T',
+      'Activo',
+      SYSDATE,
+      'jbozada',
+      NULL,
+      NULL,
+      'TECNICO'
+    );
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+      ID_CARACTERISTICA,
+      DESCRIPCION_CARACTERISTICA,
+      TIPO_INGRESO,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      FE_ULT_MOD,
+      USR_ULT_MOD,
+      TIPO
+    )
+    VALUES
+    (
+      Ln_IdCaractSeq,
+      'TRAFFIC-TABLE-PROMO',
+      'T',
+      'Activo',
+      SYSDATE,
+      'jbozada',
+      NULL,
+      NULL,
+      'TECNICO'
+    );
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+      ID_CARACTERISTICA,
+      DESCRIPCION_CARACTERISTICA,
+      TIPO_INGRESO,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      FE_ULT_MOD,
+      USR_ULT_MOD,
+      TIPO
+    )
+    VALUES
+    (
+      Ln_IdCaractSeq,
+      'GEM-PORT-PROMO',
+      'T',
+      'Activo',
+      SYSDATE,
+      'jbozada',
+      NULL,
+      NULL,
+      'TECNICO'
+    );
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+      ID_CARACTERISTICA,
+      DESCRIPCION_CARACTERISTICA,
+      TIPO_INGRESO,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      FE_ULT_MOD,
+      USR_ULT_MOD,
+      TIPO
+    )
+    VALUES
+    (
+      Ln_IdCaractSeq,
+      'LINE-PROFILE-NAME-PROMO',
+      'T',
+      'Activo',
+      SYSDATE,
+      'jbozada',
+      NULL,
+      NULL,
+      'TECNICO'
+    );
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+      ID_CARACTERISTICA,
+      DESCRIPCION_CARACTERISTICA,
+      TIPO_INGRESO,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      FE_ULT_MOD,
+      USR_ULT_MOD,
+      TIPO
+    )
+    VALUES
+    (
+      Ln_IdCaractSeq,
+      'CAPACIDAD1-PROMO',
+      'T',
+      'Activo',
+      SYSDATE,
+      'jbozada',
+      NULL,
+      NULL,
+      'TECNICO'
+    );
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+    (
+      ID_CARACTERISTICA,
+      DESCRIPCION_CARACTERISTICA,
+      TIPO_INGRESO,
+      ESTADO,
+      FE_CREACION,
+      USR_CREACION,
+      FE_ULT_MOD,
+      USR_ULT_MOD,
+      TIPO
+    )
+    VALUES
+    (
+      Ln_IdCaractSeq,
+      'CAPACIDAD2-PROMO',
+      'T',
+      'Activo',
+      SYSDATE,
+      'jbozada',
+      NULL,
+      NULL,
+      'TECNICO'
+    );
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+  Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+  INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO
+  )
+  VALUES
+  (
+    Ln_IdCaractSeq,
+    'AB-PROMO',
+    'N',
+    'Activo',
+    SYSDATE,
+    'jbozada',
+    'TECNICA'
+  );
+
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+  Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+  INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO
+  )
+  VALUES
+  (
+    Ln_IdCaractSeq,
+    'REINTENTO-PROMO',
+    'N',
+    'Activo',
+    SYSDATE,
+    'jbozada',
+    'TECNICA'
+  );
+
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+  Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+  INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO
+  )
+  VALUES
+  (
+    Ln_IdCaractSeq,
+    'PROCESO-PROMO',
+    'N',
+    'Activo',
+    SYSDATE,
+    'jbozada',
+    'TECNICA'
+  );
+
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+  Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+  INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO
+  )
+  VALUES
+  (
+    Ln_IdCaractSeq,
+    'CONFIGURA-PROMO',
+    'N',
+    'Activo',
+    SYSDATE,
+    'jbozada',
+    'TECNICA'
+  );
+
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+  Ln_IdCaractSeq := DB_COMERCIAL.SEQ_ADMI_CARACTERISTICA.NEXTVAL;
+  INSERT
+  INTO DB_COMERCIAL.ADMI_CARACTERISTICA
+  (
+    ID_CARACTERISTICA,
+    DESCRIPCION_CARACTERISTICA,
+    TIPO_INGRESO,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION,
+    TIPO
+  )
+  VALUES
+  (
+    Ln_IdCaractSeq,
+    'VALOR-PROMO',
+    'N',
+    'Activo',
+    SYSDATE,
+    'jbozada',
+    'TECNICA'
+  );
+
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProducto,
+      Ln_IdCaractSeq,
+      CURRENT_TIMESTAMP,
+      'jbozada',
+      Lv_EstadoActivo,
+      'NO'
+    );
+
+  SYS.DBMS_OUTPUT.PUT_LINE('Creación correctamente de la asociación de producto y la características para promociones');
+
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/
+--Bloque anónimo para crear un nuevo proceso con una nueva tarea para la asignación de tarea a IPPCL2 por reintento de proceso de promoción BW
+DECLARE
+  Ln_IdProceso NUMBER(5,0);
+BEGIN
+  INSERT
+  INTO DB_SOPORTE.ADMI_PROCESO
+    (
+      ID_PROCESO,
+      NOMBRE_PROCESO,
+      DESCRIPCION_PROCESO,
+      ESTADO,
+      USR_CREACION,
+      USR_ULT_MOD,
+      FE_CREACION,
+      FE_ULT_MOD,
+      VISIBLE
+    )
+    VALUES
+    (
+      DB_SOPORTE.SEQ_ADMI_PROCESO.NEXTVAL,
+      'TAREAS DE IP CONTACT CENTER - Reintento Promo BW',
+      'TAREAS DE IP CONTACT CENTER - Reintento Promo BW',
+      'Activo',
+      'jbozada',
+      'jbozada',
+      SYSDATE,
+      SYSDATE,
+      'NO'
+    );
+  SELECT ID_PROCESO
+  INTO Ln_IdProceso
+  FROM DB_SOPORTE.ADMI_PROCESO
+  WHERE NOMBRE_PROCESO='TAREAS DE IP CONTACT CENTER - Reintento Promo BW';
+  INSERT
+  INTO DB_SOPORTE.ADMI_TAREA
+    (
+      ID_TAREA,
+      PROCESO_ID,
+      NOMBRE_TAREA,
+      DESCRIPCION_TAREA,
+      ESTADO,
+      USR_CREACION,
+      USR_ULT_MOD,
+      FE_CREACION,
+      FE_ULT_MOD
+    )
+    VALUES
+    (
+      DB_SOPORTE.SEQ_ADMI_TAREA.NEXTVAL,
+      Ln_IdProceso,
+      'EJECUTAR REINTENTO PROMOCIÓN BW',
+      'Tarea para la ejecución del reintento del proceso de promoción BW',
+      'Activo',
+      'jbozada',
+      'jbozada',
+      SYSDATE,
+      SYSDATE
+    );
+  INSERT
+  INTO DB_SOPORTE.ADMI_PROCESO_EMPRESA
+    (
+      ID_PROCESO_EMPRESA,
+      PROCESO_ID,
+      EMPRESA_COD,
+      ESTADO,
+      USR_CREACION,
+      FE_CREACION
+    )
+    VALUES
+    (
+      DB_SOPORTE.SEQ_ADMI_PROCESO_EMPRESA.NEXTVAL,
+      Ln_IdProceso,
+      '18',
+      'Activo',
+      'jbozada',
+      SYSDATE
+    );
+  SYS.DBMS_OUTPUT.PUT_LINE('Registros de proceso y tarea ingresados correctamente');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/
+DECLARE
+  Ln_IdParamNotifIp NUMBER(5,0);
+BEGIN
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+    (
+      ID_PARAMETRO,
+      NOMBRE_PARAMETRO,
+      DESCRIPCION,
+      ESTADO,
+      USR_CREACION,
+      FE_CREACION,
+      IP_CREACION
+    )
+    VALUES
+    (
+      DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+      'NOTIF_PROMO_BW',
+      'Información general de notificación que se enviará en reintento de proceso promoción BW',
+      'Activo',
+      'jbozada',
+      CURRENT_TIMESTAMP,
+      '127.0.0.1'
+    );
+
+  SELECT ID_PARAMETRO
+  INTO Ln_IdParamNotifIp
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO='NOTIF_PROMO_BW'
+  AND ESTADO = 'Activo';
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamNotifIp,
+    'Parámetro con departamento y tarea que se asignará en reintento de proceso de promoción',
+    'Activo',
+    'Ip Contact Center',
+    'EJECUTAR REINTENTO PROMOCIÓN BW',
+    NULL,
+    'Activo',
+    'jbozada',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se creó correctamente el detalle del parámetro NOTIF_PROMO_BW');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);  
+  ROLLBACK;
+END;
+/
+--Bloque para crear roles de jefes ipcc de MD para asignación de tarea de reintento de promoción BW
+DECLARE
+  Ln_IdParamNotifIp NUMBER(5,0);
+BEGIN
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'ASIGNAR_TAREA_JEFES_IPCC_MD',
+    'ASIGNAR TAREAS A LOS JEFES DEPARTAMENTALES IPCC',
+    'COMERCIAL',
+    NULL,
+    'Activo',
+    'jbozada',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+
+ SELECT ID_PARAMETRO
+  INTO Ln_IdParamNotifIp
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO='ASIGNAR_TAREA_JEFES_IPCC_MD'
+  AND ESTADO = 'Activo';
+
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1, --DEPARTAMENTO
+    VALOR2, --REGION
+    VALOR3, --CARGO
+    VALOR4, --PERSONA_EMPRESA_ROL_ID
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamNotifIp,
+    'ASIGNAR TAREA A JEFE DEPARTAMENTAL R1 IPCC MD',
+    'R1',
+    'Ip Contact Center',
+    (SELECT ADMR.DESCRIPCION_ROL
+    FROM DB_COMERCIAL.INFO_PERSONA INFP,
+      DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL IPER,
+      DB_COMERCIAL.INFO_OFICINA_GRUPO IOGR,
+      DB_COMERCIAL.ADMI_CANTON ADMC,
+      DB_COMERCIAL.ADMI_DEPARTAMENTO ADDE,
+      DB_COMERCIAL.INFO_EMPRESA_ROL IEMR,
+      DB_GENERAL.ADMI_ROL ADMR
+    WHERE INFP.ID_PERSONA        = IPER.PERSONA_ID
+    AND IPER.OFICINA_ID          = IOGR.ID_OFICINA
+    AND IOGR.CANTON_ID           = ADMC.ID_CANTON
+    AND IPER.DEPARTAMENTO_ID     = ADDE.ID_DEPARTAMENTO
+    AND IPER.EMPRESA_ROL_ID      = IEMR.ID_EMPRESA_ROL
+    AND IEMR.ROL_ID              = ADMR.ID_ROL
+    AND IOGR.EMPRESA_ID          = 18
+    AND INFP.LOGIN               = 'dcamacho'
+    AND ADDE.NOMBRE_DEPARTAMENTO = 'Ip Contact Center'
+    AND ADMR.DESCRIPCION_ROL     = 'Jefe Departamental'
+    ),
+    (SELECT IPER.ID_PERSONA_ROL
+    FROM DB_COMERCIAL.INFO_PERSONA INFP,
+      DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL IPER,
+      DB_COMERCIAL.INFO_OFICINA_GRUPO IOGR,
+      DB_COMERCIAL.ADMI_CANTON ADMC,
+      DB_COMERCIAL.ADMI_DEPARTAMENTO ADDE,
+      DB_COMERCIAL.INFO_EMPRESA_ROL IEMR,
+      DB_GENERAL.ADMI_ROL ADMR
+    WHERE INFP.ID_PERSONA        = IPER.PERSONA_ID
+    AND IPER.OFICINA_ID          = IOGR.ID_OFICINA
+    AND IOGR.CANTON_ID           = ADMC.ID_CANTON
+    AND IPER.DEPARTAMENTO_ID     = ADDE.ID_DEPARTAMENTO
+    AND IPER.EMPRESA_ROL_ID      = IEMR.ID_EMPRESA_ROL
+    AND IEMR.ROL_ID              = ADMR.ID_ROL
+    AND IOGR.EMPRESA_ID          = 18
+    AND INFP.LOGIN               = 'dcamacho'
+    AND ADDE.NOMBRE_DEPARTAMENTO = 'Ip Contact Center'
+    AND ADMR.DESCRIPCION_ROL     = 'Jefe Departamental'
+    ),
+    'Activo',
+    'jbozada',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+
+--
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1, --DEPARTAMENTO
+    VALOR2, --REGION
+    VALOR3, --CARGO
+    VALOR4, --PERSONA_EMPRESA_ROL_ID
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamNotifIp,
+    'ASIGNAR TAREA A JEFE DEPARTAMENTAL R2 IPCC MD',
+    'R2',
+    'Ip Contact Center',
+    (SELECT ADMR.DESCRIPCION_ROL
+    FROM DB_COMERCIAL.INFO_PERSONA INFP,
+      DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL IPER,
+      DB_COMERCIAL.INFO_OFICINA_GRUPO IOGR,
+      DB_COMERCIAL.ADMI_CANTON ADMC,
+      DB_COMERCIAL.ADMI_DEPARTAMENTO ADDE,
+      DB_COMERCIAL.INFO_EMPRESA_ROL IEMR,
+      DB_GENERAL.ADMI_ROL ADMR
+    WHERE INFP.ID_PERSONA        = IPER.PERSONA_ID
+    AND IPER.OFICINA_ID          = IOGR.ID_OFICINA
+    AND IOGR.CANTON_ID           = ADMC.ID_CANTON
+    AND IPER.DEPARTAMENTO_ID     = ADDE.ID_DEPARTAMENTO
+    AND IPER.EMPRESA_ROL_ID      = IEMR.ID_EMPRESA_ROL
+    AND IEMR.ROL_ID              = ADMR.ID_ROL
+    AND IOGR.EMPRESA_ID          = 18
+    AND INFP.LOGIN               = 'rronquillo'
+    AND ADDE.NOMBRE_DEPARTAMENTO = 'Ip Contact Center'
+    AND ADMR.DESCRIPCION_ROL     = 'Jefe Departamental'
+    ),
+    (SELECT IPER.ID_PERSONA_ROL
+    FROM DB_COMERCIAL.INFO_PERSONA INFP,
+      DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL IPER,
+      DB_COMERCIAL.INFO_OFICINA_GRUPO IOGR,
+      DB_COMERCIAL.ADMI_CANTON ADMC,
+      DB_COMERCIAL.ADMI_DEPARTAMENTO ADDE,
+      DB_COMERCIAL.INFO_EMPRESA_ROL IEMR,
+      DB_GENERAL.ADMI_ROL ADMR
+    WHERE INFP.ID_PERSONA        = IPER.PERSONA_ID
+    AND IPER.OFICINA_ID          = IOGR.ID_OFICINA
+    AND IOGR.CANTON_ID           = ADMC.ID_CANTON
+    AND IPER.DEPARTAMENTO_ID     = ADDE.ID_DEPARTAMENTO
+    AND IPER.EMPRESA_ROL_ID      = IEMR.ID_EMPRESA_ROL
+    AND IEMR.ROL_ID              = ADMR.ID_ROL
+    AND IOGR.EMPRESA_ID          = 18
+    AND INFP.LOGIN               = 'rronquillo'
+    AND ADDE.NOMBRE_DEPARTAMENTO = 'Ip Contact Center'
+    AND ADMR.DESCRIPCION_ROL     = 'Jefe Departamental'
+    ),
+    'Activo',
+    'jbozada',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+
+SYS.DBMS_OUTPUT.PUT_LINE('Se creó correctamente el detalle del parámetro ASIGNAR_TAREA_JEFES_IPCC_MD');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);  
+  ROLLBACK;
+END;
+/

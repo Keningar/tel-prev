@@ -1,0 +1,220 @@
+-----------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1632147,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1632147;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1632148,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1632148;
+------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1791601,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1791601;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1791602,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1791602;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1855483,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1855483;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1855484,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1855484;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1871005,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1871005;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1871021,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1871021;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1871000,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1871000;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1914743,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1914743;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1920992,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1920992;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1924963,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1924963;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1925586,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1925586;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1928008,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1928008;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1928598,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1928598;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1928556,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1928556;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1928542,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1928542;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1930704,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1930704;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1928612,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1928612;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1931006,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1931006;
+-------------------------------------------------------------
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1936839,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1936839;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1939497,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1939497;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1939541,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1939541;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1940201,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1940201;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1952665,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1952665;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1953027,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1953027;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1971359,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1971359;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1977304,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1977304;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1979590,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1979590;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1981065,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1981065;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1991219,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1991219;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1992073,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1992073;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1992217,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1992217;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1993933,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1993933;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1993912,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1993912;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1993682,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1993682;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,1996855,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 1996855;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,2002448,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 2002448;
+-------------------------------------------------------------  
+------------------------------------------------------------
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,2054555,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 2054555;
+
+insert into db_comercial.INFO_DETALLE_SOL_HIST values (db_comercial.SEQ_INFO_DETALLE_SOL_HIST.nextval,2089270,
+'Finalizada',null,null,'Se finaliza solicitud por regularizacion','rcabrera',sysdate,'127.0.0.1',null);
+
+update db_comercial.INFO_DETALLE_SOLICITUD set estado = 'Finalizada' where id_detalle_solicitud = 2089270;
+-------------------------------------------------------------  

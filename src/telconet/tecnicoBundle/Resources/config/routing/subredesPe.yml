@@ -1,0 +1,44 @@
+subredesPe:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:index" }
+
+elementoPe_getEncontradosPe:
+    pattern:  /getEncontradosPe
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:getEncontradosPe" }  
+
+subredesPe_createSubred:
+    pattern: /new
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:createSubred" }
+    
+
+guardarPe:
+    pattern:  /guardarPe
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:guardarPe"}
+
+elementoPe_getUsosPe:
+    pattern:  /getUsosSubred
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:getUsosSubred" } 
+
+elementoPe_getTipoSubred:
+    pattern:  /getTipoSubred
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:getTipoSubred" }
+
+elementoPe_getEstados:
+    pattern:  /getEstados
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:getEstados" }
+
+elementoPe_getEncontradosGrid:
+    pattern:  /getEncontradosGrid
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:getEncontradosGrid" }
+
+elementoPe_edit:
+    pattern:  /{intId}/edit
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:edit" }
+
+subredesPe_update:
+    pattern:  /update
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:update" }
+
+subredesPe_buscarTipos:
+    pattern:  /buscarTipos
+    defaults: { _controller: "tecnicoBundle:InfoSubredesPe:buscarTipos" }

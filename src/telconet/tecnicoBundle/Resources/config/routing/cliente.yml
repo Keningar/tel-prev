@@ -1,0 +1,1277 @@
+servicio:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoServicio:clientes" }
+
+servicio_getDatosTecnicosPdf:
+    pattern:  /getDatosTecnicosPdf
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosTecnicosPdf" }
+    requirements: { _method: get } 
+    
+servicio_getServiciosClientes:
+    pattern:  /getServiciosClientes
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getServiciosClientes" }
+    
+servicio_createInformacionTecnica:
+    pattern:  /createInformacionTecnica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:createInformacionTecnica" }
+    
+servicio_activarCliente:
+    pattern:  /activarCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:activarCliente" }
+
+servicio_cambiarPuertoBotonGpon:
+    pattern:  /cambiarPuertoGpon
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambiarPuertoBotonGpon" }
+
+servicio_crearRouterWifiExistente:
+    pattern:  /createRouterWifiExistente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:createRouterWifiExistente" }
+    
+servicio_getPeByCiudad:
+    pattern:  /getPeByCiudad
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getPeByCiudad"}
+
+servicio_confirmarActivacion:
+    pattern:  /confirmarActivacion
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarActivacion" }
+    
+servicio_cortarCliente:
+    pattern:  /cortarCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarCliente" }
+    
+servicio_crearFormularioL1ParamountNoggin:
+    pattern:  /crearFormularioL1ParamountNoggin
+    defaults: { _controller: "tecnicoBundle:InfoServicio:crearFormularioL1ParamountNoggin" }
+
+servicio_crearFormularioSoporte:
+    pattern:  /crearFormularioSoporte
+    defaults: { _controller: "tecnicoBundle:InfoServicio:crearFormularioSoporte" }
+
+servicio_crearFormularioL2GolTv:
+    pattern:  /crearFormularioL2GolTv
+    defaults: { _controller: "tecnicoBundle:InfoServicio:crearFormularioL2GolTv" }
+
+servicio_getValoresLista:
+    pattern:  /getValoresLista
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getValoresLista" }
+
+servicio_getUsuarioServicio:
+    pattern:  /getUsuarioServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getUsuarioServicio" }
+
+servicio_getValoresProductos:
+    pattern:  /getValoresProductos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getValoresProductos" }
+
+servicio_cortarTemporalCliente:
+    pattern:  /cortarTemporalCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarTemporalCliente" }
+
+servicio_obtenerEquiposAsignados:
+    pattern:  /obtenerEquiposAsignados
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxObtenerEquiposAsignados"}
+
+servicio_obtenerEquiposAdicionales:
+    pattern:  /getElementosAdicionalesClienteNodo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetElementosAdicionalesClienteNodo"}
+
+servicio_cancelarCliente:
+    pattern:  /cancelarCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarCliente" }
+
+solicitud_cancelacion_enviarTareaRapida:
+    pattern:  /enviarTareaCancelacionRapida
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudPreCancelacion:enviarTareaCancelacionRapida" }
+    
+servicio_reconectarCliente:
+    pattern:  /reconectarCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarCliente" }
+    
+servicio_getDatosTecnicos:
+    pattern:  /getDatosTecnicos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosTecnicos" }
+    
+servicio_getDatosBackbone:
+    pattern:  /getDatosBackbone
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosBackbone" }
+
+servicio_getDatosTrasladoNetlifeCam:
+    pattern:  /getDatosTrasladoNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosTrasladoNetlifeCam" }
+
+servicio_getDatosWifiAlquiler:
+    pattern:  /getDatosWifiAlquiler
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosWifiAlquiler" }
+
+servicio_getDataCaracteristicas:
+    pattern:  /getDataCaracteristicas
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDataCaracteristicas" }
+    
+servicio_getDatosTrasladoExtender:
+    pattern:  /getDatosTrasladoExtender
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosTrasladoExtender" }
+    
+servicio_getDatosSincronizarExtender:
+    pattern:  /getDatosSincronizarExtender
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosSincronizarExtender" }
+    
+servicio_trasladarExtenderDualBand:
+    pattern:  /trasladarExtenderDualBand
+    defaults: { _controller: "tecnicoBundle:InfoServicio:trasladarExtenderDualBand" }
+
+servicio_sincronizarExtenderDualBand:
+    pattern:  /sincronizarExtenderDualBand
+    defaults: { _controller: "tecnicoBundle:InfoServicio:sincronizarExtenderDualBand" }
+
+servicio_trasladarNetlifeCam:
+    pattern:  /trasladarNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:trasladarNetlifeCam" }
+    
+servicio_corteMasivosCliente:
+    pattern:  /corteMasivosCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:corteMasivosCliente" }
+    
+servicio_getProductosPorEstado:
+    pattern:  /getProductosPorEstado
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getProductosPorEstado" }
+    
+servicio_getAjaxCaracteristicasProductoPorServicio:
+    pattern:  /getAjaxCaracteristicasProductoPorServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getAjaxCaracteristicasProductoPorServicio" }
+    
+servicio_getAjaxTiposServicios:
+    pattern:  /getAjaxTiposServicios
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getAjaxTiposServicios" }
+    
+servicio_getAjaxEstadosServicios:
+    pattern:  /getAjaxEstadosServicios
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getAjaxEstadosServicios" }
+    
+servicio_getPlanesPorEstado:
+    pattern:  /getPlanesPorEstado
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getPlanesPorEstado" }
+    
+servicio_grabarHistorial:
+    pattern:  /grabarHistorial
+    defaults: { _controller: "tecnicoBundle:InfoServicio:grabarHistorial" }
+    
+servicio_getIpPublicas:
+    pattern:  /getIpPublicas
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getIpPublicas" }
+    
+servicio_buscarCpeNaf:
+    pattern:  /buscarCpeNaf
+    defaults: { _controller: "tecnicoBundle:InfoServicio:buscarCpeNaf" }
+
+servicio_buscarCSubred:
+    pattern:  /buscarCSubred
+    defaults: { _controller: "tecnicoBundle:InfoServicio:buscarCSubred" }
+
+servicio_buscarLoginMonitoreo:
+    pattern:  /buscarLoginMonitoreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:buscarLoginMonitoreo" }
+    
+servicio_buscarSerieEquipo:
+    pattern:  /buscarSerieEquipo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:buscarSerieEquipo" }
+
+servicio_buscarInterfaceporserie:
+    pattern:  /buscarInterfaceporserie
+    defaults: { _controller: "tecnicoBundle:InfoServicio:buscarInterfaceporserie" }
+
+servicio_buscarDatosNaf:
+    pattern:  /buscarDatosNaf
+    defaults: { _controller: "tecnicoBundle:InfoServicio:buscarDatosNaf" }
+
+servicio_activarZeroTouch:
+    pattern: /activarZeroTouch
+    defaults: { _controller: "tecnicoBundle:InfoServicio:activarZeroTouch" }
+
+servicio_putPruebasConectividad:
+    pattern: /putPruebasConectividad
+    defaults: { _controller: "tecnicoBundle:InfoServicio:putPruebasConectividad" }
+    
+servicio_buscarCpeHuaweiNaf:
+    pattern:  /buscarCpeHuaweiNaf
+    defaults: { _controller: "tecnicoBundle:InfoServicio:buscarCpeNaf" }
+
+servicio_ajaxMigrarServicioTunelIpADatosMpls:
+    pattern:  /ajaxMigrarServicioTunelIpADatosMpls
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxMigrarServicioTunelIpADatosMpls" }
+
+servicio_ajaxEjecutaMigracionServicioTunelADatosMpls:
+    pattern:  /ajaxEjecutaMigracionServicioTunelADatosMpls
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxEjecutaMigracionServicioTunelADatosMpls" }
+    
+servicio_migrarServicio:
+    pattern:  /migrarServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:migrarServicio" }
+    
+servicio_crearCacti:
+    pattern:  /crearCacti
+    defaults: { _controller: "tecnicoBundle:InfoServicio:crearCacti" }
+    
+servicio_reversarSolicitudMigracion:
+    pattern:  /reversarSolicitudMigra
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reversarSolicitudMigra" }
+    
+servicio_getInterfacesPorModelo:
+    pattern:  /getInterfacesPorModelo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getInterfacesPorModelo" }    
+
+servicio_ajaxGetAsPrivado:
+    pattern:  /ajaxGetAsPrivado
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetAsPrivado" }
+
+servicio_ajaxGetElementosClientesPorPunto:
+    pattern:  /ajaxGetElementosClientesPorPunto
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetElementosClientesPorPunto" }
+
+servicio_ajaxGetProtocolosEnrutamiento:
+    pattern:  /ajaxGetProtocolosEnrutamiento
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetProtocolosEnrutamiento" }
+    
+servicio_ajaxGetProtocolosEnrutamientoServicio:
+    pattern:  /ajaxGetProtocolosEnrutamientoServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetProtocolosEnrutamientoServicio" }
+
+servicio_ajaxCrearProtocoloEnrutamiento:
+    pattern:  /ajaxCrearProtocoloEnrutamiento
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCrearProtocoloEnrutamiento" }
+    
+servicio_ajaxEliminarProtocoloEnrutamiento:
+    pattern:  /ajaxEliminarProtocoloEnrutamiento
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxEliminarProtocoloEnrutamiento" }
+    
+servicio_ajaxReenviarCredencialesTg:
+    pattern:  /ajaxReenviarCredencialesTg
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxReenviarCredencialesTg" }
+    
+servicio_ajaxReintentarCreacionTg:
+    pattern:  /ajaxReintentarCreacionTg
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxReintentarCreacionTg" }
+    
+servicio_ajaxCrearMonitoreoTelograf:
+    pattern:  /ajaxCrearMonitoreoTelograf
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCrearMonitoreoTelograf"}
+
+servicio_ajaxCambiarPassTg:
+    pattern:  /ajaxCambiarPassTg
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCambiarPassTg" }
+
+servicio_ajaxRestablecerDatosLdapTg:
+    pattern:  /ajaxRestablecerDatosLdapTg
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxRestablecerDatosLdapTg"}
+
+servicio_ajaxCambiarUserTg:
+    pattern:  /ajaxCambiarUserTg
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCambiarUserTg" }
+
+servicio_ajaxContactoActualTg:
+    pattern:  /ajaxContactoActualTg
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxContactoActualTg" }
+
+servicio_ajaxGetTipoContactoPunto:
+    pattern:  /ajaxGetTipoContactoPunto
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetTipoContactoPunto" }
+
+servicio_ajaxInformacionTg:
+    pattern:  /ajaxInformacionTg
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxInformacionTg" }
+
+servicio_ajaxActualizarCorreoSuscripcionMcAfee:
+    pattern:  /ajaxActualizarCorreoSuscripcionMcAfee
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxActualizarCorreoSuscripcionMcAfee" }
+    
+servicio_ajaxReenvioCorreo:
+    pattern:  /ajaxReenvioCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxReenvioCorreo" }    
+
+servicio_getMotivos:
+    pattern:  /getMotivos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getMotivos" }
+    
+servicio_getMotivosSuspensionTemporal:
+    pattern:  /getMotivosSuspensionTemporal
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getMotivosSuspensionTemporal" }
+    
+servicio_getNombresClientes:
+    pattern:  /getNombresClientes
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getNombresClientes" }
+    
+servicio_cambiarEstadoCliente:
+    pattern:  /cambiarEstadoCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambiarEstadoCliente" }
+    
+servicio_cambiarPuertoCliente:
+    pattern:  /cambiarPuertoCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambiarPuertoCliente" }
+    
+servicio_getPops:
+    pattern:  /getPops
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getPops" }
+    
+servicio_getRadios:
+    pattern:  /getRadios
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getRadios" }
+    
+servicio_getDslamsPorPop:
+    pattern:  /getDslamsPorPop
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDslamsPorPop" }
+    
+servicio_getPuertosPorDslam:
+    pattern:  /getPuertosPorDslam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getPuertosPorDslam" }
+    
+servicio_cambioVelocidad:
+    pattern:  /cambioVelocidad
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambioVelocidad" }
+
+servicio_consultarEmpresaCambioPlan:
+    pattern:  /consultarEmpresaCambioPlan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:consultarEmpresaCambioPlan" }
+    
+servicio_editarInformacionTecnica:
+    pattern:  /editarInformacionTecnica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:editarInformacionTecnica" }
+    
+servicio_getHistorialServicio:
+    pattern:  /getHistorialServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getHistorialServicio" }
+    
+servicio_getDatosCliente:
+    pattern:  /getDatosCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosCliente" }
+        
+servicio_ajaxGetModelosElemento:
+    pattern:  /ajaxGetModelosElemento
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetModelosElemento" }
+    
+servicio_ajaxGetElementosNetHome:
+    pattern:  /ajaxGetElementosNetHome
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetElementosNetHome" }
+    
+servicio_ajaxGetElementosNetFiber:
+    pattern:  /ajaxGetElementosNetFiber
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetElementosNetFiber" }
+    
+servicio_getParametrosIniciales:
+    pattern:  /getParametrosIniciales
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getParametrosIniciales" }
+    
+servicio_getParametrosInicialesMd:
+    pattern:  /getParametrosInicialesMd
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getParametrosInicialesMd" }
+    
+servicio_getElementosPorEmpresa:
+    pattern:  /getElementosPorEmpresa
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getElementosPorEmpresa" }
+    
+servicio_getElementosPorTipo:
+    pattern:  /getElementosPorTipo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getElementosPorTipo" }
+    
+servicio_getElementosContenedoresPorPuerto:
+    pattern:  /getElementosContenedoresPorPuerto
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getElementosContenedoresPorPuerto" }
+    
+servicio_getElementosConectorPorElementoContenedor:
+    pattern:  /getElementosConectorPorElementoContenedor
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getElementosConectorPorElementoContenedor" }
+    
+servicio_getDatosCpeTecnico:
+    pattern:  /getDatosCpeTecnico
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosCpeTecnico" }
+    
+servicio_cambiarCpe:
+    pattern:  /cambiarCpe
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambiarCpe" }
+
+servicio_getDataTecnicaCpe:
+    pattern:  /getDataTecnicaCpe
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:getDataTecnicaCpe" }
+
+servicio_actualizarDataTecnicaCpe:
+    pattern:  /actualizarDataTecnicaCpe
+    defaults: { _controller: "tecnicoBundle:InfoElementoCpe:actualizarDataTecnicaCpe" }
+
+servicio_getUltimaMilla:
+    pattern:  /getUltimaMilla
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getUltimaMilla" }
+    
+servicio_getUltimaMillaCambioMedio:
+    pattern:  /getUltimaMillaCambioMedio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getUltimaMillaCambioMedio" }
+    
+servicio_reconfigurarPuerto:
+    pattern:  /reconfigurarPuerto
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconfigurarPuerto" }
+
+servicio_asignarIpv4Publica:
+    pattern:  /asignarIpv4Publica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:asignarIpv4Publica" }
+    
+servicio_showServicio:
+    pattern:  /{id}/showServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:showServicio" }
+    
+servicio_verConfiguracionOlt:
+    pattern:  /verConfiguracionOlt
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verConfiguracionOlt" }
+    
+servicio_getInterfacesPorElemento:
+    pattern:  /getInterfacesPorElemento
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getInterfacesPorElemento" }
+    
+servicio_getElementosPorSolicitud:
+    pattern:  /getElementosPorSolicitud
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getElementosPorSolicitud" }
+    
+servicio_verIps:
+    pattern:  /verIps
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verIps" }
+    
+servicio_verConcentradorExtremosServicio:
+    pattern:  /verConcentradorExtremosServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verConcentradorExtremosServicio" }
+    
+servicio_updateIndiceCliente:
+    pattern:  /updateIndiceCliente
+    defaults: { _controller: "tecnicoBundle:InfoServicio:updateIndiceCliente" }
+    
+servicio_getTipoRedPorProducto:
+    pattern:  /ajaxGetTipoRedPorProducto
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetTipoRedPorProducto" }
+
+#DOCUMENTOS RELACIONADOS
+servicio_subirActaRecepcion:
+    pattern:  /subirActaRecepcion
+    defaults: { _controller: "tecnicoBundle:InfoServicio:subirActaRecepcion" }
+
+servicio_encuesta:
+    pattern:  /{id}/encuesta
+    defaults: { _controller: "tecnicoBundle:InfoServicio:encuesta" }
+    
+servicio_guardarEncuesta:
+    pattern:  /{id}/guardarEncuesta
+    defaults: { _controller: "tecnicoBundle:InfoServicio:guardarEncuesta" }
+
+###DOMINIO
+servicio_getDominios:
+    pattern:  /getDominios
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDominios" }
+    
+servicio_getDominiosCorreos:
+    pattern:  /getDominiosCorreos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDominiosCorreos" }
+
+servicio_confirmarServicioDominio:
+    pattern:  /confirmarServicioDominio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioDominio" }
+    
+servicio_agregarDominioServicio:
+    pattern:  /agregarDominioServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:agregarDominioServicio" }
+    
+servicio_eliminarDominio:
+    pattern:  /eliminarDominio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:eliminarDominio" }
+
+servicio_cancelarServicioDominio:
+    pattern:  /cancelarServicioDominio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioDominio" }
+    
+servicio_cortarServicioDominio:
+    pattern:  /cortarServicioDominio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioDominio" }
+    
+servicio_reconectarServicioDominio:
+    pattern:  /reconectarServicioDominio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioDominio" }
+
+###CORREO
+servicio_getCorreos:
+    pattern:  /getCorreos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getCorreos" }
+    
+servicio_getContraseniaDelCorreo:
+    pattern:  /getContraseniaDelCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getContraseniaDelCorreo" }
+
+servicio_agregarCorreoServicio:
+    pattern:  /agregarCorreoServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:agregarCorreoServicio" }
+    
+servicio_eliminarCorreo:
+    pattern:  /eliminarCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:eliminarCorreo" }
+    
+servicio_confirmarServicioCorreo:
+    pattern:  /confirmarServicioCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioCorreo" }
+    
+servicio_cancelarServicioCorreo:
+    pattern:  /cancelarServicioCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioCorreo" }
+    
+servicio_cortarServicioCorreo:
+    pattern:  /cortarServicioCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioCorreo" }
+    
+servicio_reconectarServicioCorreo:
+    pattern:  /reconectarServicioCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioCorreo" }
+
+###IP PUBLICA
+servicio_confirmarServicioIpPublica:
+    pattern:  /confirmarServicioIpPublica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioIpPublica" }
+    
+servicio_agregarIpPublicaServicio:
+    pattern:  /agregarIpPublicaServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:agregarIpPublicaServicio" }
+    
+servicio_getIpPublica:
+    pattern:  /getIpPublica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getIpPublica" }
+    
+servicio_eliminarIpPublica:
+    pattern:  /eliminarIpPublica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:eliminarIpPublica" }
+    
+servicio_cancelarServicioIp:
+    pattern:  /cancelarServicioIp
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioIp" }
+    
+servicio_cortarServicioIp:
+    pattern:  /cortarServicioIp
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioIp" }
+    
+servicio_reconectarServicioIp:
+    pattern:  /reconectarServicioIp
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioIp" }
+    
+servicio_migrarIpFija:
+    pattern:  /migrarIpFija
+    defaults: { _controller: "tecnicoBundle:InfoServicio:migrarIpFija" }
+    
+###ANTIVIRUS
+servicio_confirmarServicioAntivirus:
+    pattern:  /confirmarServicioAntivirus
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioAntivirus" }
+    
+servicio_cancelarServicioAntivirus:
+    pattern:  /cancelarServicioAntivirus
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioAntivirus" }
+    
+servicio_cortarServicioAntivirus:
+    pattern:  /cortarServicioAntivirus
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioAntivirus" }
+    
+servicio_reconectarServicioAntivirus:
+    pattern:  /reconectarServicioAntivirus
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioAntivirus" }
+
+###EQUIPO PROTEGIDO
+servicio_confirmarServicioEquipoProtegido:
+    pattern:  /confirmarServicioEquipoProtegido
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioEquipoProtegido" }
+    
+servicio_cancelarServicioEquipoProtegido:
+    pattern:  /cancelarServicioEquipoProtegido
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioEquipoProtegido" }
+    
+servicio_cortarServicioEquipoProtegido:
+    pattern:  /cortarServicioEquipoProtegido
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioEquipoProtegido" }
+    
+servicio_reconectarServicioEquipoProtegido:
+    pattern:  /reconectarServicioEquipoProtegido
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioEquipoProtegido" }
+    
+servicio_verMailServicioEquipoProtegido:
+    pattern:  /verMailServicioEquipoProtegido
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verMailServicioEquipoProtegido" }
+
+###OTROS
+servicio_confirmarServicioOtros:
+    pattern:  /confirmarServicioOtros
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioOtros" }
+
+servicio_confirmarServicioKonibit:
+    pattern:  /confirmarServicioKonibit
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioKonibit" }
+    
+servicio_cancelarServicioOtros:
+    pattern:  /cancelarServicioOtros
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioOtros" }
+    
+servicio_cortarServicioOtros:
+    pattern:  /cortarServicioOtros
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioOtros" }
+    
+servicio_reconectarServicioOtros:
+    pattern:  /reconectarServicioOtros
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioOtros" }
+    
+servicio_reenviarInformacionOffice:    
+    pattern:  /reenviarInformacionOffice
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reenviarInformacionOffice" }
+    
+servicio_confirmarServicioPlan:
+    pattern:  /confirmarServicioPlan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioPlan" }    
+
+###NETHOME
+servicio_confirmarServicioNetHome:
+    pattern:  /confirmarServicioNetHome
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioNetHome" }
+    
+###SMARTWIFI
+servicio_confirmarServicioSmartWifi:
+    pattern:  /confirmarServicioSmartWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioSmartWifi" }
+    
+servicio_cancelarServicioSmartWifi:
+    pattern:  /cancelarServicioSmartWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioSmartWifi" }
+    
+servicio_cortarServicioSmartWifi:
+    pattern:  /cortarServicioSmartWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioSmartWifi" }
+    
+servicio_reconectarServicioSmartWifi:
+    pattern:  /reconectarServicioSmartWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioSmartWifi" }
+    
+servicio_agregarEquipoSmartWifi:
+    pattern:  /agregarEquipoSmartWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:agregarEquipoSmartWifi" }
+    
+###SOLICITUDCAMBIOEQUIPOPORSOPORTE
+servicio_crearSolCambioEquipoSoporte:
+    pattern:  /crearSolCambioEquipoSoporte
+    defaults: { _controller: "tecnicoBundle:InfoServicio:crearSolCambioEquipoSoporte" }
+
+    
+servicio_CambioLogicoEquipoSoporte:
+    pattern:  /cambioLogicoEquipoSoporte
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambioLogicoEquipoSoporte" }
+
+###APWIFI
+servicio_confirmarServicioApWifi:
+    pattern:  /confirmarServicioApWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioApWifi" }
+    
+servicio_cancelarServicioApWifi:
+    pattern:  /cancelarServicioApWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioApWifi" }
+    
+servicio_cortarServicioApWifi:
+    pattern:  /cortarServicioApWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioApWifi" }
+    
+servicio_reconectarServicioApWifi:
+    pattern:  /reconectarServicioApWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioApWifi" }
+    
+servicio_agregarEquipoApWifi:
+    pattern:  /agregarEquipoApWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:agregarEquipoApWifi" }
+    
+###NETLIFECAM
+servicio_confirmarServicioNetlifeCam:
+    pattern:  /confirmarServicioNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioNetlifeCam" }
+    
+servicio_cancelarServicioProdAdicional:
+    pattern:  /cancelarServicioProdAdicional
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioProdAdicional" }
+    
+servicio_cortarServicioNetlifeCam:
+    pattern:  /cortarServicioNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServicioNetlifeCam" }
+    
+servicio_reconectarServicioNetlifeCam:
+    pattern:  /reconectarServicioNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServicioNetlifeCam" }
+    
+#KJ
+servicio_ajaxActivarIpFija:
+    pattern:  /ajaxActivarIpFija
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxActivarIpFija" }
+servicio_ajaxCambiarMacIpFija:
+    pattern:  /ajaxCambiarMacIpFija
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCambiarMacIpFija" }
+servicio_ajaxCancelarIpFija:
+    pattern:  /ajaxCancelarIpFija
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCancelarIpFija" }
+    
+#jvera    
+servicio_agregarMacAddress:
+    pattern:  /agregarMacAddress
+    defaults: { _controller: "tecnicoBundle:InfoServicio:agregarMacAddress" }    
+    
+#jvera    
+servicio_cambiarClaveCorreo:
+    pattern:  /cambiarClaveCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambiarClaveCorreo" }      
+
+#jvera    
+servicio_cambiarLineaPon:
+    pattern:  /cambiarLineaPon
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambiarLineaPon" }
+
+#jvera    
+servicio_verLdapServicio:
+    pattern:  /verLdapServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verLdapServicio" }
+    
+#jvera    
+servicio_configurarLdapServicio:
+    pattern:  /configurarLdapServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:configurarLdapServicio" }
+    
+#jvera    
+servicio_eliminarLdapServicio:
+    pattern:  /eliminarLdapServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:eliminaLdapServicio" }
+    
+#jvera    
+servicio_crearLdapServicio:
+    pattern:  /crearLdapServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:crearLdapServicio" }   
+
+servicio_generarActaEntregaRecepcionPdf:
+    pattern:  /generarActaEntregaRecepcionPdf
+    defaults: { _controller: "tecnicoBundle:InfoServicio:generarActaEntregaRecepcionPdf" }
+    requirements: { _method: get }
+
+#jvera    
+servicio_getTrazabilidadElementos:
+    pattern:  /getTrazabilidadElementos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getTrazabilidadInterfaceElemento" }
+    
+#jbozada
+servicio_ajaxRegulaRadioTn:
+    pattern:  /ajaxRegulaRadioTn
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxRegulaRadioTn" }   
+    
+#jbozada
+servicio_ajaxObtieneServiciosRadioTn:
+    pattern:  /ajaxObtieneServiciosRadioTn
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxObtieneServiciosRadioTn" }   
+
+#jbozada
+servicio_ajaxObtieneInfoServicioRadioTn:
+    pattern:  /ajaxObtieneInfoServicioRadioTn
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxObtieneInfoServicioRadioTn" }  
+    
+#arsuarez
+servicio_ajaxCambiarUltimaMilla:
+    pattern:  /ajaxCambiarUltimaMilla
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCambiarUltimaMilla" }
+    
+servicio_ajaxCambiarElementoPasivo:
+    pattern:  /ajaxCambiarElementoPasivo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCambiarElementoPasivo" }
+    
+servicio_consultarSubredAsignada:
+    pattern:  /consultarSubredAsignada
+    defaults: { _controller: "tecnicoBundle:InfoServicio:consultarSubredAsignada" }
+    requirements: { _method: post }
+    
+servicio_liberarSubredAsignada:
+    pattern:  /liberarSubredAsignada
+    defaults: { _controller: "tecnicoBundle:InfoServicio:liberarSubredAsignada" }
+    requirements: { _method: post }
+
+servicio_verificarSubredAsignada:
+    pattern:  /verificarSubredAsignada
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verificarSubredAsignada" }
+    requirements: { _method: post }
+
+servicio_ajaxGetElementosByPuerto:
+    pattern:  /ajaxGetElementosByPuerto
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetElementosByPuerto" }   
+
+servicio_ajaxCrearSolicitudMigracionAnilloTn:
+    pattern:  /ajaxCrearSolicitudMigracionAnilloTn
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCrearSolicitudMigracionAnilloTn" }
+
+servicio_ajaxEjecutarMigracionAnillo:
+    pattern:  /ajaxEjecutarMigracionAnillo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxEjecutarMigracionAnillo" }
+
+servicio_ajaxCrearSolicitudCambioUM:
+    pattern:  /ajaxCrearSolicitudCambioUM
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCrearSolicitudCambioUM" }
+
+servicio_ajaxReversarSolicitudCambioUM:
+    pattern:  /ajaxReversarSolicitudCambioUM
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxReversarSolicitudCambioUM" }
+    
+servicio_ajaxReversarSolicitudMigracionAnillo:
+    pattern:  /ajaxReversarSolicitudMigracionAnillo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxReversarSolicitudMigracionAnillo" }
+    
+servicio_ajaxGetInterfacePorCpe:
+    pattern:  /ajaxGetInterfacePorCpe
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetInterfacePorCpe" }    
+    
+servicio_ajaxGetInterfacesPoEstadoYElemento:
+    pattern:  /ajaxGetInterfacesPoEstadoYElemento
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetInterfacesPoEstadoYElemento" }
+    
+servicio_ajaxGetResolucionCamara:
+    pattern:  /ajaxGetResolucionCamara
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetResolucionCamara" }
+    
+servicio_ajaxGetCodecCamara:
+    pattern:  /ajaxGetCodecCamara
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetCodecCamara" }
+    
+servicio_ajaxGetFpsCamara:
+    pattern:  /ajaxGetFpsCamara
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetFpsCamara" }      
+
+#Servicios TN reactivacion/corte/cancelacion
+servicio_ajaxCortarClienteTN:
+    pattern:  /ajaxCortarClienteTN
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCortarClienteTN" }
+
+servicio_ajaxCancelarClienteTN:
+    pattern:  /ajaxCancelarClienteTN
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCancelarClienteTN" }
+
+servicio_ajaxReactivarClienteTN:
+    pattern:  /ajaxReactivarClienteTN
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxReactivarClienteTN" }
+#Servicios TN reactivacion/corte/cancelacion
+
+servicio_ajaxGetDatosBackboneL3mpls:
+    pattern:  /ajaxGetDatosBackboneL3mpls
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetDatosBackboneL3mpls" }
+
+servicio_ajaxAsignarRutaAutomatica:
+    pattern:  /ajaxAsignarRutaAutomatica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxAsignarRutaAutomatica" }
+
+servicio_ajaxAsignarRutaEstatica:
+    pattern:  /ajaxAsignarRutaEstatica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxAsignarRutaEstatica" }
+
+servicio_ajaxMostrarRutas:
+    pattern:  /ajaxMostrarRutas
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxMostrarRutas" }
+
+servicio_ajaxEliminarRuta:
+    pattern:  /ajaxEliminarRuta
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxEliminarRuta" }
+
+servicio_ajaxCancelarServicio:
+    pattern:  /ajaxCancelarServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCancelarServicio" }
+#aoflores
+servicio_activarCorreosTelconet:
+    pattern:  /activarCorreosTelconet
+    defaults: { _controller: "tecnicoBundle:InfoServicio:activarCorreosTelconet" }
+    
+servicio_agregarServicioWifi:
+    pattern:  /agregarServicioWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:agregarServicioWifi" }
+    
+servicio_ajaxGenerarCredencialesWifi:
+    pattern:  /ajaxGenerarCredencialesWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGenerarCredencialesWifi" }
+    
+servicio_cancelarServicioWifi:
+    pattern:  /cancelarServicioWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioWifi" }
+
+servicio_recuperarCredencialesWifi:
+    pattern:  /recuperarCredencialesWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:recuperarCredencialesWifi" }
+    
+servicio_ajaxOperacionesNetlifeWifi:
+    pattern:  /ajaxOperacionesNetlifeWifi
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxOperacionesNetlifeWifi" }
+
+#Actualizacion de la MAC del Servicio
+########################################################################################
+servicio_ajaxGetInformacionMac:
+    pattern:  /ajaxGetInformacionMac
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetInformacionMac" } 
+    
+servicio_ajaxActualizarMacServicio:
+    pattern:  /ajaxActualizarMacServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxActualizarMacServicio" } 
+    
+servicio_ajaxConsultarEnlacesServicio:
+    pattern:  /ajaxConsultarEnlacesServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxConsultarEnlacesServicio" }         
+    
+#Migracion de Servicio a Esquema de PseudoPe
+servicio_ajaxMigrarAPseudPe:
+    pattern:  /ajaxMigrarAPseudPe
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxMigrarAPseudPe" }    
+    
+#Enrutamiento BGP
+servicio_ajaxAdministrarEnrutamientoBgp:
+    pattern:  /ajaxAdministrarEnrutamientoBgp
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxAdministrarEnrutamientoBgp" } 
+    requirements: { _method: POST }
+
+servicio_ajaxGetInformacionEnrutamientoBgp:
+    pattern:  /ajaxGetInformacionEnrutamientoBgp
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetInformacionEnrutamientoBgp" } 
+    requirements: { _method: POST }
+    
+servicio_ajaxGetPrefixRouteMap:
+    pattern:  /ajaxGetPrefixRouteMap
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetPrefixRouteMap" }   
+    
+#Cambiar Subredes IntMpls
+servicio_ajaxCambiarSubredes:
+    pattern:  /ajaxCambiarSubredes
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCambiarSubredes" }
+    
+#Lineas telefonicas
+servicio_gestionarLineasTelefonicas:
+    pattern:  /gestionarLineasTelefonicas
+    defaults: { _controller: "tecnicoBundle:InfoServicio:gestionarLineasTelefonicas" }
+
+###NetlifeCam3dEYE
+servicio_getInfoNetlifeCam:
+    pattern:  /getInfoNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getInfoNetlifeCam" }
+
+servicio_guardarConfirmaNetlifeCam:
+    pattern:  /guardarConfirmaNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:guardarConfirmaNetlifeCam" }
+
+servicio_cortarServiciosNetlifeCam:
+    pattern:  /cortarServiciosNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServiciosNetlifeCam" }
+
+servicio_reconectarServiciosNetlifeCam:
+    pattern:  /reconectarServiciosNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServiciosNetlifeCam" }
+
+servicio_cancelarServiciosNetlifeCam:
+    pattern:  /cancelarServiciosNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServiciosNetlifeCam" }
+
+###NetlifeCamStoragePortal
+servicio_getInfoCamNetlifeCamStoragePortal:
+    pattern:  /getInfoCamNetlifeCamStoragePortal
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getInfoCamNetlifeCamStoragePortal" }
+    
+servicio_buscarCamNafNetlifeCamStoragePortal:
+    pattern:  /buscarCamNafNetlifeCamStoragePortal
+    defaults: { _controller: "tecnicoBundle:InfoServicio:buscarCamNafNetlifeCamStoragePortal" }
+    
+servicio_guardarConfirmaNetlifeCamStoragePortal:
+    pattern:  /guardarConfirmaNetlifeCamStoragePortal
+    defaults: { _controller: "tecnicoBundle:InfoServicio:guardarConfirmaNetlifeCamStoragePortal" }
+        
+servicio_getFormasContactoClienteNetlifeCamStoragePortal:
+    pattern:  /getFormasContactoClienteNetlifeCamStoragePortal
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getFormasContactoClienteNetlifeCamStoragePortal" }
+
+servicio_getFormasContactoClienteNetlifeCam:
+    pattern:  /getFormasContactoClienteNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getFormasContactoClienteNetlifeCam" }
+
+servicio_tienePortalActivoNetlifeCamStoragePortal:
+    pattern:  /tienePortalActivoNetlifeCamStoragePortal
+    defaults: { _controller: "tecnicoBundle:InfoServicio:tienePortalActivoNetlifeCamStoragePortal" }
+    
+servicio_tieneServicioInternetValido:
+    pattern:  /tieneServicioInternetValido
+    defaults: { _controller: "tecnicoBundle:InfoServicio:tieneServicioInternetValido" }
+    
+servicio_getServiciosCamarasDisponiblesProdsAdicionales:
+    pattern:  /getServiciosCamarasDisponiblesProdsAdicionales
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getServiciosCamarasDisponiblesProdsAdicionales" }
+    
+servicio_guardarServiciosProdsAdicionalesNetlifeCam:
+    pattern:  /guardarServiciosProdsAdicionalesNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:guardarServiciosProdsAdicionalesNetlifeCam" }
+    
+servicio_reenviarCodTmpPortalNetlifeCam:
+    pattern:  /reenviarCodTmpPortalNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reenviarCodTmpPortalNetlifeCam" }
+    
+servicio_cortarServiciosPortalNetlifeCam:
+    pattern:  /cortarServiciosPortalNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cortarServiciosPortalNetlifeCam" }
+
+servicio_reconectarServiciosPortalNetlifeCam:
+    pattern:  /reconectarServiciosPortalNetlifeCam
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reconectarServiciosPortalNetlifeCam" }
+
+servicio_cancelarServicioNetlifeCamStorage:
+    pattern:  /cancelarServicioNetlifeCamStorage
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioNetlifeCamStorage" }
+    
+servicio_ajaxGetInformacionGeneralHosting:
+    pattern:  /ajaxGetInformacionGeneralHosting
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetInformacionGeneralHosting" }
+    
+servicio_ajaxCrearTareaAComercial:
+    pattern:  /ajaxCrearTareaAComercial
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxCrearTareaAComercial" }
+    
+servicio_ajaxGetInformacionSolucion:
+    pattern:  /ajaxGetInformacionSolucion
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetInformacionSolucion" }
+    
+servicio_ajaxGuardarMaquinasVirtuales:
+    pattern:  /ajaxGuardarMaquinasVirtuales
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGuardarMaquinasVirtuales" }
+
+servicio_ajaxActualizarMaquinaVirtual:
+    pattern:  /ajaxActualizarMaquinaVirtual
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxActualizarMaquinaVirtual" }
+    
+servicio_ajaxActivarServicioL2mpls:
+    pattern:  /ajaxActivarServicioL2mpl
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxActivarServicioL2mpls" }
+
+#Servicios Heredados
+servicio_ajaxGetValoresServicioHeredado:
+    pattern:  /ajaxGetValoresServicioHeredado
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetValoresServicioHeredado" }
+    
+servicio_ajaxActivarServicioPorFactibilidadHeredada:
+    pattern:  /ajaxActivarServicioPorFactibilidadHeredada
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxActivarServicioPorFactibilidadHeredada" }
+
+###NETFIBER
+servicio_confirmarServicioNetfiber:
+    pattern:  /confirmarServicioNetfiber
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioNetfiber" }
+
+servicio_ajaxGetProdAdicionalesCV:
+    pattern:  /ajaxGetProdAdicionalesCV
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetProdAdicionalesCV" } 
+    
+servicio_ajaxGetPlanProductosClienteCV:
+    pattern:  /ajaxGetPlanProductosClienteCV
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetPlanProductosClienteCV" } 
+    
+servicio_ajaxGetEquiposFacturar:
+    pattern:  /ajaxGetEquiposFacturar
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetEquiposFacturar" } 
+    
+servicio_ajaxGetVigenciaPromocion:
+    pattern:  /ajaxGetVigenciaPromocion
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetVigenciaPromocion" } 
+         
+servicio_ajaxGetValoresFacturar:
+    pattern:  /ajaxGetValoresFacturar
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetValoresFacturar" }    
+
+servicio_ajaxEjecutarCancelacionVoluntaria:
+    pattern:  /ajaxEjecutarCancelacionVoluntaria
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxEjecutarCancelacionVoluntaria" }   
+    
+servicio_ajaxGetParamFactDetallada:
+    pattern:  /ajaxGetParamFactDetallada
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetParamFactDetallada" }
+    
+servicio_ajaxGetMotivosNc:
+    pattern:  /ajaxGetMotivosNc
+    defaults: { _controller: "financieroBundle:InfoDocumentoFinancieroCab:getMotivosCancelacionAdmin" }    
+
+#WIFI DUAL BAND
+servicio_cambioEquiposDualBand:
+    pattern:  /cambioEquiposDualBand
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambioEquiposDualBand" }
+
+#EXTENDER DUAL BAND
+servicio_confirmarServicioExtenderDualBand:
+    pattern:  /confirmarServicioExtenderDualBand
+    defaults: { _controller: "tecnicoBundle:InfoServicio:confirmarServicioExtenderDualBand" }
+    
+#CAMBIO ONT POR SOLICITUD AGREGAR EQUIPO
+servicio_cambioEquipoOntPorSolAgregarEquipo:
+    pattern:  /cambioEquipoOntPorSolAgregarEquipo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambioEquipoOntPorSolAgregarEquipo" }
+    
+#Datos de TNG cab
+servicio_codConexionUpStreamTng:
+    pattern:  /codConexionUpStreamTng
+    defaults: { _controller: "tecnicoBundle:InfoServicio:codConexionUpStreamTng" }
+
+#Datos de TNG det
+servicio_getInfoConexionUpStream:
+    pattern:  /getInfoConexionUpStream
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getInfoConexionUpStream" }
+
+
+#Datos de TNG 
+servicio_getDatosConexionUpStreamTng:
+    pattern:  /getDatosConexionUpStreamTng
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getDatosConexionUpStreamTng" }
+
+#Reintento Servicio McAfee en plan
+servicio_reintentarActivacionMcAfeeEnPlan:
+    pattern:  /reintentarActivacionMcAfeeEnPlan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reintentarActivacionMcAfeeEnPlan" }
+    
+#Reintento Servicio McAfee en plan
+servicio_reintentarProcesoPromoBw:
+    pattern:  /reintentarProcesoPromoBw
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reintentarProcesoPromoBw" }
+
+#GENERAR ACTA
+servicio_acta:
+    pattern:  /{intIdServicio}/acta
+    defaults: { _controller: "tecnicoBundle:InfoServicio:acta" }
+
+#GUARDAR ACTA
+servicio_guardarActa:
+    pattern:  /{intIdServicio}/guardarActa
+    defaults: { _controller: "tecnicoBundle:InfoServicio:guardarActa" }
+    
+servicio_cambiarCorreoEnServicioActivo:
+    pattern:  /cambiarCorreoEnServicioActivo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cambiarCorreoEnServicioActivo" }
+
+servicio_actualizacionCorreo:
+    pattern:  /actualizacionCorreo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:actualizacionCorreo" }   
+
+servicio_reintentarActivacionServicio:
+    pattern:  /reintentarActivacionServicio
+    defaults: { _controller: "tecnicoBundle:InfoServicio:reintentarActivacionServicio" }
+    
+servicio_getFibraMaterialesTecnico:
+    pattern:  /getFibraMaterialesTecnico
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getFibraMaterialesTecnico" }
+
+#Servicios FWA información
+servicio_ajaxGetValoresServicioFWA:
+    pattern:  /ajaxGetValoresServicioFWA
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetValoresServicioFWA" }
+    
+#NDI por diferido saldo por generarse
+servicio_ajaxGetSaldoPorVencerNDI:
+    pattern:  /ajaxGetSaldoPorVencerNDI
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetSaldoPorVencerNDI" }
+
+ #Cambiar Estado AsignadoTarea Clear a Channel
+servicio_ajaxConfirmarTarea:
+    pattern:  /ajaxConfirmarTarea
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxConfirmarTarea" }
+
+
+servicio_getModelosEquiposPorTecnologia:
+    pattern:  /getModelosEquiposPorTecnologia
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getModelosEquiposPorTecnologia" }
+   
+#W + AP
+servicio_cancelarServicioWyAp:
+    pattern:  /cancelarServicioWyAp
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioWyAp" }
+   
+#W
+servicio_cancelarServicioW:
+    pattern:  /cancelarServicioW
+    defaults: { _controller: "tecnicoBundle:InfoServicio:cancelarServicioW" }
+    
+#Verificación de servicios dual band automáticos
+servicio_verificaServiciosDualBandCambioPlan:
+    pattern:  /verificaServiciosDualBandCambioPlan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verificaServiciosDualBandCambioPlan" }
+
+#Verificación de Ip Wan en planes
+servicio_verificaIpWanCambioPlan:
+    pattern:  /verificaIpWanCambioPlan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:verificaIpWanCambioPlan" }
+
+# Verificar si tiene cableado el nuevo plan
+servicio_productoPorPlan:
+    pattern:  /productoPorPlan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:productoPorPlan" }
+
+validaCodigoPromocion:
+    pattern:  /validaCodigoPromocion
+    defaults: { _controller: "comercialBundle:Promocion:validaCodigoPromocion" }
+
+# Obtiene parametros de Solicitud Cancelacion
+servicio_ajaxGetParametrosCancelacion:
+    pattern:  /ajaxGetParametrosCancelacion
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudPreCancelacion:ajaxGetParametrosCancelacion" }
+
+# Obtiene valores de parametros CAB y DET via AJAX
+servicio_getAdminParametersDet:
+    pattern:  /ajaxGetAdminParameters
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetAdminParameters" }
+
+# Obtiene listado de opciones de NUBE PUBLICA de PRODUCTO NG FIREWALL via AJAX
+servicio_getListOpcionesNubePublica:
+    pattern:  /ajaxGetListOpcionesNubePublica
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetListOpcionesNGFirewall" }
+
+# Actualziación de características de PRODUCTO NG FIREWALL via AJAX
+servicio_updateDataTecnicaNGF:
+    pattern:  /ajaxUpdateDataNGF
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxUpdateDataTecnicaNGF" }
+
+servicio_ajaxGetResolucionAlternaCamara:
+    pattern:  /ajaxGetResolucionAlternaCamara
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetResolucionAlternaCamara" }
+
+servicio_ajaxGetIpsControladora:
+    pattern:  /ajaxGetIpsControladora
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetIpsControladora" }
+
+servicio_setCorreoResumenCompra:
+   pattern:  /setCorreoResumenCompra
+   defaults: { _controller: "tecnicoBundle:InfoServicio:setCorreoResumenCompra" }
+
+
+servicio_setCambioPlan:
+   pattern:  /setCambioPlan
+   defaults: { _controller: "tecnicoBundle:InfoServicio:setCambioPlan" }
+
+servicio_getElementosSegVehiculo:
+    pattern:  /getElementosSegVehiculo
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getElementosSegVehiculo" }
+  
+# Obtienes las Ip Asociada a Servicios Clear Channel WAN
+servicio_ajaxMostrarIpClearChannelWan:
+    pattern:  /ajaxMostrarIpClearChannelWan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxMostrarIpClearChannelWan" }
+
+# Obtienes las Ip Asociada a Servicios Clear Channel LAN
+servicio_ajaxMostrarIpClearChannelLan:
+    pattern:  /ajaxMostrarIpClearChannelLan
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxMostrarIpClearChannelLan" }
+
+# Valida el numero de serie en Naf y Telcos, se verifica que el tipo de elemento concuerde con la serie
+servicio_validaNafTelcos:
+    pattern:  /validaNafTelcos
+    defaults: { _controller: "tecnicoBundle:InfoServicio:validaNafTelcos" }
+
+# Genera el nombre automatico de los elementos a ingresar en el Nodo
+servicio_generarNombreAutomatico:
+    pattern:  /generarNombreAutomatico
+    defaults: { _controller: "tecnicoBundle:InfoServicio:generarNombreAutomatico" }    
+
+# Obtencion de los elementos del producto SafeEntry
+servicio_getElementosSafeEntry:
+    pattern:  /getElementosSafeEntry
+    defaults: { _controller: "tecnicoBundle:InfoServicio:getElementosSafeEntry" }
+
+# Obtiene la informaciòn de las horas soporte
+servicio_ajaxGetHorasSoporte:
+    pattern:  /ajaxGetHorasSoporte
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetHorasSoporte" }
+    
+servicio_ajaxGetServiciosSoporte:
+    pattern:  /ajaxGetServiciosSoporte
+    defaults: { _controller: "tecnicoBundle:InfoServicio:ajaxGetServiciosSoporte" }

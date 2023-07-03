@@ -1,0 +1,38 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlGridElementosEmpresa    = '{{path('infoempresaelemento_gridElementosEmpresa')}}';
+    var urlAsignarEmpresaElementos = '{{path('infoempresaelemento_asignarEmpresaElementos')}}';
+    var urlCargarTiposElemento     = '{{path('infoempresaelemento_getAjaxComboTiposElemento')}}';
+    var urlCargarMarcasElemento    = '{{path('infoempresaelemento_getAjaxComboMarcasElemento')}}';
+    var urlCargarCantones          = '{{path('infoempresaelemento_getAjaxComboCantones')}}';
+    var urlCargarModelosElemento   = '{{path('infoempresaelemento_getAjaxComboModelosElemento')}}';
+    var urlCargarJurisdicciones    = '{{path('infoempresaelemento_getAjaxComboJurisdicciones')}}';
+    var urlCargarEmpresas          = '{{path('infoempresaelemento_getAjaxComboEmpresas')}}';
+    var empresa                    = '{{ empresa }}';
+    var tipoDefault                = '{{ tipoDefault }}';
+    var jurisdiccionDefault        = '{{ jurisdiccionDefault }}';
+</script>
+<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoEmpresaElemento/index.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+     <h1>Listado de Elementos - Asignación a Empresa</h1>
+    </div>
+    <div class="dashboard_content k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtrosBusqueda'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="gridEmpresaElemento"></div></td>
+            </tr>
+        </table> 
+    </div>
+
+{% endblock contenido_central %}

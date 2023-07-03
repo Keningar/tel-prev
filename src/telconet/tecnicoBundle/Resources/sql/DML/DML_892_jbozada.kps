@@ -1,0 +1,7 @@
+UPDATE db_infraestructura.info_ruta_elemento
+SET TIPO = 'Ruta Estática'
+WHERE SUBRED_ID IS NULL;
+
+UPDATE db_infraestructura.info_ruta_elemento
+SET TIPO = 'Ruta Automática'
+WHERE SUBRED_ID IS NOT NULL;

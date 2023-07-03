@@ -1,0 +1,313 @@
+/* 
+    Document   : InfoCaso
+    Created on : 14/11/2012, 02:56:25 PM
+    Author     : manuel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.box-section-subcontent {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+}
+.titulo-secundario{
+    border-bottom: 1px dotted #D0D0D0;
+}
+.x-trigger-cell{
+    padding-top: 2px;
+}
+#div_fe_apertura, #div_hora_apertura{
+    padding-top: 4px;
+}
+.bold{
+    font-weight: bold;
+    color: #000;
+}
+.box-detalle {
+    background-color: #F0F0F0;
+    border: 1px solid #CCCCCC;
+    display: block;
+    margin: 2px;
+    padding: 2px;
+}
+
+.button-grid-agregarSintoma {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/agregar_sintoma.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-agregarHipotesis {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/agregar_hipotesis.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-agregarTarea {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/agregar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-afectados {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/afectados.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-asignarResponsable {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/asignar_responsable.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.btn-asignar-empresa
+{
+    background-image: url("/public/images/asignarEmpresa.png");
+    background-size: 16px;
+}
+
+.button-grid-btnMigracion
+{
+    background-color: #E3E3E3;
+    background-image: url("/public/images/btnMigracion.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.thumb-wrap
+{
+    height: 230px;
+    width: 230px;
+    border-style: double; 
+    border-width: 4px;
+    margin: 1%;        
+    border-color: #EEEEEE;
+}
+.thumb-wrap:hover { 
+    background-color: #EFEFEF;
+    border-color: #CCCCCC;
+    cursor: pointer;
+}
+.thumb
+{
+    position: relative;
+    top:10%;
+}
+
+.imageNodo
+{
+    border-style: double;
+    border-width: 2px;
+    border-color: #CCCCCC;
+}
+
+.details-info
+{
+/*    border-style: dotted;
+    border-color: #CCCCCC;
+    margin: 2%;
+    padding: 1%;
+    height: 170px;*/
+}
+
+.gridText
+{
+    background-color: #E3E3E3;
+    height: 15px;
+    width: 90px;
+}
+.gridText:hover
+{
+    background-color: #BDBDBD;
+}
+
+.estadoAlta
+{
+    background-color: #FF6666;
+}
+
+.estadoDesastre
+{
+    background-color: #dd4b39;
+}
+
+.estadoMedia
+{
+    background-color: #FF6633;
+}
+
+.estadoInformativo
+{
+    background-color: #CCFFFF;
+}
+
+.estadoPrecaucion
+{
+    background-color: #FFFF99;
+}
+
+.btn-asignar-empresa
+{
+    background-image: url("/public/images/asignarEmpresa.png");
+    background-size: 16px;
+}
+
+.estadoMonitoreoTabletCONUBICACIONACTUALIZADA
+{
+    background-color: #5cb85c;
+    font-weight: bold;
+    color: #fff;
+}
+
+.estadoMonitoreoTabletCONUBICACIONDESACTUALIZADA
+{
+    background-color: #5bc0de;
+    font-weight: bold;
+    color: #fff;
+}
+
+.estadoMonitoreoTabletSINUBICACION
+{
+    background-color: #f0ad4e;
+    font-weight: bold;
+    color: #fff;
+}
+
+.estadoMonitoreoTabletSININFORMACION
+{
+    background-color: #d9534f;
+    font-weight: bold;
+    color: #fff;
+}
+
+.button-grid-reactivarTablet:hover
+{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reactivarTablet
+{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/OK.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-inactivarTablet:hover
+{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-inactivarTablet
+{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/darBaja.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}

@@ -1,0 +1,44 @@
+/**
+ *
+ * Se crea script de rollback para el proyecto: de almacenamiento NFS
+ *	 
+ * @author Jonathan Mazon <jmazon@telconet.ec>
+ * @version 1.0 10-03-2021
+ */
+
+--TN
+DELETE FROM DB_GENERAL.ADMI_GESTION_DIRECTORIOS
+  WHERE  CODIGO_APP = 4
+    AND  CODIGO_PATH= 5
+    AND  APLICACION = 'TelcosWeb'
+    AND  PAIS='593'
+    AND  EMPRESA='TN'
+    AND  MODULO='Tecnico'
+    AND  SUBMODULO='Activaciones'
+    AND  ESTADO='Activo';
+--MD
+DELETE  FROM DB_GENERAL.ADMI_GESTION_DIRECTORIOS
+WHERE    CODIGO_APP = 4
+    AND  CODIGO_PATH= 6
+    AND  APLICACION = 'TelcosWeb'
+    AND  PAIS='593'
+    AND  EMPRESA='MD'
+    AND  MODULO='Tecnico'
+    AND  SUBMODULO='Activaciones'
+    AND  ESTADO='Activo';
+
+--PARAMETRO-DET
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE PARAMETRO_ID = (SELECT CAB.ID_PARAMETRO
+                      FROM  DB_GENERAL.ADMI_PARAMETRO_CAB CAB
+                      WHERE CAB.NOMBRE_PARAMETRO = 'GESTION_DIRECTORIOS' 
+                      AND   CAB.ESTADO           = 'Activo' );
+--PARAMETRO-CAB
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+WHERE NOMBRE_PARAMETRO = 'GESTION_DIRECTORIOS' 
+AND MODULO = 'TECNICO' 
+AND ESTADO = 'Activo';
+
+COMMIT;
+
+/

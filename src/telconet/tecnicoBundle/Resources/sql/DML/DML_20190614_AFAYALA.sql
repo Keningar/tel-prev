@@ -1,0 +1,1183 @@
+-- INSERTAR EN TABLA ADMI_BANCO BANCO DEL BARRIO
+INSERT
+INTO DB_GENERAL.ADMI_BANCO
+  (
+    ID_BANCO,
+    DESCRIPCION_BANCO,
+    REQUIERE_NUMERO_DEBITO,
+    GENERA_DEBITO_BANCARIO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    CTA_CONTABLE,
+    NO_CTA,
+    CODIGO,
+    PAIS_ID
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO.nextval,
+    'BANCO DEL BARRIO',
+    'S',
+    'S',
+    'Activo',
+    'afayala',
+    sysdate,
+    '1110103001',
+    '623769-0',
+    17,
+    1
+  );
+
+-- INSERTAR EN TABLA ADMI_BANCO BANCO MI VECINO
+INSERT
+INTO DB_GENERAL.ADMI_BANCO
+  (
+    ID_BANCO,
+    DESCRIPCION_BANCO,
+    REQUIERE_NUMERO_DEBITO,
+    GENERA_DEBITO_BANCARIO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    CTA_CONTABLE,
+    NO_CTA,
+    CODIGO,
+    PAIS_ID
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO.nextval,
+    'BANCO MI VECINO',
+    'S',
+    'S',
+    'Activo',
+    'afayala',
+    sysdate,
+    '1110103002',
+    '3087973104',
+    10,
+    1
+  );
+
+-- INSERTAR EN TABLA ADMI_BANCO_TIPO_CUENTA BANCO DEL BARRIO
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO DEL BARRIO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='AHORRO'
+    ),
+    10,
+    NULL,
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'N',
+    'NDE',
+    'txt',
+    'vacio',
+    'Factura',
+    NULL,
+    NULL,
+    NULL,
+    'PAG-DEB,PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO DEL BARRIO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='TARJETA AMERICAN'
+    ),
+    NULL,
+    NULL,
+    NULL,
+    'Inactivo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'S',
+    NULL,
+    NULL,
+    'vacio',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'CON,'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO DEL BARRIO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='CORRIENTE'
+    ),
+    10,
+    NULL,
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'N',
+    NULL,
+    NULL,
+    'vacio',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'PAG-DEB,PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO DEL BARRIO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='TARJETA VISA'
+    ),
+    16,
+    3,
+    '4',
+    'Activo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'S',
+    NULL,
+    'txt',
+    'vacio',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO DEL BARRIO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='TARJETA MASTERCARD'
+    ),
+    16,
+    3,
+    '5',
+    'Activo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'S',
+    NULL,
+    'txt',
+    'vacio',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO DEL BARRIO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='TARJETA AMERICAN'
+    ),
+    16,
+    3,
+    '5',
+    'Inactivo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'S',
+    NULL,
+    'txt',
+    'vacio',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'CON,'
+  );
+
+-- INSERTAR EN TABLA ADMI_BANCO_TIPO_CUENTA BANCO MI VECINO
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO MI VECINO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='CORRIENTE'
+    ),
+    10,
+    NULL,
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'N',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'PAG-DEB,PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO MI VECINO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='AHORRO'
+    ),
+    10,
+    NULL,
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'N',
+    'Pichincha',
+    'txt',
+    '\t',
+    'Factura',
+    NULL,
+    NULL,
+    NULL,
+    'PAG-DEB,PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO MI VECINO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='CORRIENTE AGN'
+    ),
+    NULL,
+    NULL,
+    NULL,
+    'Inactivo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'N',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'PAG-DEB,PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO MI VECINO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='TARJETA VISA'
+    ),
+    16,
+    3,
+    '4',
+    'Activo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'S',
+    NULL,
+    'txt',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO MI VECINO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='TARJETA MASTERCARD'
+    ),
+    16,
+    3,
+    '5',
+    'Activo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'S',
+    NULL,
+    'txt',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'PAG-TARJ,PAG-CHEQ,PAG-DEP,CON'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO MI VECINO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='TARJETA DINERS'
+    ),
+    16,
+    3,
+    '5',
+    'Inactivo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'S',
+    NULL,
+    'txt',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'CON,'
+  );
+
+INSERT
+INTO DB_GENERAL.ADMI_BANCO_TIPO_CUENTA
+  (
+    ID_BANCO_TIPO_CUENTA,
+    BANCO_ID,
+    TIPO_CUENTA_ID,
+    TOTAL_CARACTERES,
+    TOTAL_CODSEGURIDAD,
+    CARACTER_EMPIEZA,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    ES_TARJETA,
+    NOMBRE_ARCHIVO_FORMATO,
+    TIPO_ARCHIVO_FORMATO,
+    SEPARADOR_COLUMNA,
+    CONSULTAR_POR,
+    TOTAL_CARACTERES_MINIMO,
+    CARACTER_NO_EMPIEZA,
+    FORMATO_COD_SEGURIDAD,
+    VISIBLE_EN
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_BANCO_TIPO_CUENTA.nextval,
+    (SELECT ID_BANCO
+    FROM DB_GENERAL.ADMI_BANCO
+    WHERE DESCRIPCION_BANCO='BANCO MI VECINO'
+    ),
+    (SELECT ID_TIPO_CUENTA
+    FROM DB_GENERAL.ADMI_TIPO_CUENTA
+    WHERE DESCRIPCION_CUENTA='TARJETA DISCOVER'
+    ),
+    16,
+    3,
+    '5',
+    'Inactivo',
+    'afayala',
+    sysdate,
+    NULL,
+    NULL,
+    'S',
+    NULL,
+    'txt',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    'CON'
+  );
+
+-- Cambiar de estado Eliminado a INTERURBANO
+UPDATE DB_INFRAESTRUCTURA.ADMI_DETALLE
+SET ESTADO           = 'Eliminado'
+WHERE NOMBRE_DETALLE = 'INTERURBANO' ;
+
+-- Cambiar de estado Eliminado a TECHO, LOSA y GOOGLE EARTH
+UPDATE DB_COMUNICACION.ADMI_TAG_DOCUMENTO
+SET ESTADO          = 'Eliminado'
+WHERE TAG_DOCUMENTO = 'TECHO';
+UPDATE DB_COMUNICACION.ADMI_TAG_DOCUMENTO
+SET ESTADO          = 'Eliminado'
+WHERE TAG_DOCUMENTO = 'LOSA';
+UPDATE DB_COMUNICACION.ADMI_TAG_DOCUMENTO
+SET ESTADO          = 'Eliminado'
+WHERE TAG_DOCUMENTO = 'GOOGLE EARTH';
+UPDATE DB_COMUNICACION.ADMI_TAG_DOCUMENTO
+SET TAG_DOCUMENTO   = 'MEDIDOR'
+WHERE TAG_DOCUMENTO = 'TABLERO MEDIDOR';
+UPDATE DB_COMUNICACION.ADMI_TAG_DOCUMENTO
+SET TAG_DOCUMENTO   = 'ACCESOS F.O.'
+WHERE TAG_DOCUMENTO = 'ACCESOS';
+
+-- Insertar en la tabla ADMI_PARAMETRO_CAB
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PROYECTO NODO',
+    'PARAMETROS UTILIZADOS EN EL PROYECTO NODO',
+    'TECNICO',
+    'MEDIDOR ELECTRICO',
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL
+  );
+-- Insertar en la tabla ADMI_PARAMETRO_DET
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PROYECTO NODO'
+    ),
+    'TIPO_MEDIDOR_1',  -- descripcion
+    'CUENTA CONTRATO', --valor 1
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PROYECTO NODO'
+    ),
+    'TIPO_MEDIDOR_2', -- descripcion
+    'CUEN',           --valor 1
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PROYECTO NODO'
+    ),
+    'TIPO_MEDIDOR_3', -- descripcion
+    'SUMINISTROS',    --valor 1
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'PROYECTO NODO'
+    ),
+    'TIPO_MEDIDOR_4', -- descripcion
+    'CUENTAS',        --valor 1
+    NULL,
+    NULL,
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  );
+
+-- Insertar plantilla para subida de elementos masivos
+INSERT
+INTO DB_COMUNICACION.ADMI_PLANTILLA
+  (
+    ID_PLANTILLA,
+    NOMBRE_PLANTILLA,
+    CODIGO,
+    MODULO,
+    PLANTILLA,
+    ESTADO,
+    FE_CREACION,
+    USR_CREACION
+  )
+  VALUES
+  (
+    DB_COMUNICACION.SEQ_ADMI_PLANTILLA.NEXTVAL,
+    'Elementos Masivos No Ingresados',
+    'ELEMENT_NI',
+    'TECNICO',
+    TO_CLOB(
+    '<html>   
+<head>      
+<meta http-equiv=Content-Type content="text/html; charset=UTF-8">      
+<style type="text/css">table.cssTable { font-family: verdana,arial,sans-serif;font-size:11px;color:#333333;border-width: 1px;border-color: #999999;border-collapse: collapse;}table.cssTable th {background-color:#c3dde0;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9c6c9;}table.cssTable tr {background-color:#d4e3e5;}table.cssTable td {border-width: 1px;padding: 8px;border-style: solid;border-color: #a9c6c9;}table.cssTblPrincipal{font-family: verdana,arial,sans-serif;font-size:12px;}</style>   
+</head>   
+<body>      
+<table class = "cssTblPrincipal" align="center" width="100%" cellspacing="0" cellpadding="5">         
+<tr>            
+<td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;"><img alt=""  src="http://images.telconet.net/others/sit/notificaciones/logo.png"/></td>         
+</tr>         
+<tr>            
+<td style="border:1px solid #6699CC;">               
+<table width="100%" cellspacing="0" cellpadding="5">                  
+<tr>                     
+<td colspan="2">Estimado personal,</td>                  
+</tr>                  
+<tr>                     
+<td colspan="2">Se adjunta el reporte de los elementos no ingresados de forma masiva.</td>                  
+</tr>                  
+<tr>                      
+<td colspan="2">Por favor tomar en cuenta para los fines consiguientes.</td>                  
+</tr>                  
+<tr>                     
+<td colspan="2">                        
+<hr />                     
+</td>                  
+</tr>               
+</table>            
+</td>         
+</tr>         
+<tr>            
+<td></td>         
+</tr>      
+</table>   
+</body>
+</html>'
+    ),
+    'Activo',
+    SYSDATE,
+    'afayala'
+  );
+
+--INSERTAR CABECERA DE ELEMENTOS DE UN NODO
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.nextval,
+    'ELEMENTOS NODOS',
+    'IDENTIFICA TODOS LOS ELEMENTOS QUE SE ENCUENTRAN EN UN NODO',
+    'TECNICO',
+    'NODO',
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1'
+  );
+
+--INSERTAR DETALLE DE ELEMENTOS DE UN NODO
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.nextval,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'ELEMENTOS NODOS'
+    ),
+    'IDENTIFICA AL RACK',
+    'RACK',
+    NULL,
+    'Eliminado',
+    'afayala',
+    sysdate,
+    '127.0.0.1'
+  );
+
+--INSERTAR DETALLE DE ELEMENTOS DE UN NODO
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.nextval,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'ELEMENTOS NODOS'
+    ),
+    'IDENTIFICA AL SWITCH',
+    'SWITCH',
+    'RACK',
+    'Eliminado',
+    'afayala',
+    sysdate,
+    '127.0.0.1'
+  );
+
+--INSERTAR DETALLE DE ELEMENTOS DE UN NODO
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.nextval,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'ELEMENTOS NODOS'
+    ),
+    'IDENTIFICA A LA TARJETA',
+    'TARJETA',
+    'SWITCH',
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1'
+  );
+
+--INSERTAR DETALLE DE ELEMENTOS DE UN NODO
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.nextval,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'ELEMENTOS NODOS'
+    ),
+    'IDENTIFICA AL ODF',
+    'ODF',
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1'
+  );
+
+--INSERTAR DETALLE DE ELEMENTOS DE UN NODO
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.nextval,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'ELEMENTOS NODOS'
+    ),
+    'IDENTIFICA AL UPS',
+    'UPS',
+    NULL,
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1'
+  );
+
+--INSERTAR DETALLE DE ELEMENTOS DE UN NODO
+INSERT
+INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.nextval,
+    (SELECT ID_PARAMETRO
+    FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+    WHERE NOMBRE_PARAMETRO = 'ELEMENTOS NODOS'
+    ),
+    'IDENTIFICA A LA BATERIA',
+    'BATERIA',
+    'UPS',
+    'Activo',
+    'afayala',
+    sysdate,
+    '127.0.0.1'
+  );
+COMMIT;
+/
+
+

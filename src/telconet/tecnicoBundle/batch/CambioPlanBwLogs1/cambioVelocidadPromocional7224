@@ -1,0 +1,75 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+obteniendo los servicios
+servicios...
+EJECUTO modelo:7224, ip:172.30.253.146, interface:2/18, login:stdcpcaba_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.252.45, interface:2/8, login:uiohmsala_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/12, login:stdjechil_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.117, interface:2/17, login:stdcvpinargotez1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/24, login:stdnmcand_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.146, interface:2/4, login:stdjmeliz_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/22, login:stdjgorma_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.252.45, interface:2/12, login:uioljaneiro_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/19, login:rioaeguadalupeo1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/11, login:stdlavegam_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.117, interface:2/20, login:stdjmmedinaq1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/13, login:stdffvida_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.146, interface:2/5, login:stdsdsantosc1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/4, login:stdeecontrer_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/18, login:rionyjacomec1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/16, login:stdjivill_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.117, interface:2/24, login:stdrigarciaz2 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/18, login:stdgggavi_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.146, interface:2/2, login:stdjdcarbo_m , up:4928, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/1, login:stdpprema_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/17, login:rioliverap2 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/8, login:stdrmmend_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.117, interface:2/14, login:stdgacastillot1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/22, login:stdmccede_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/20, login:rioydlluguinm1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/2, login:stdalmaci_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/14, login:stdqli_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/21, login:rionazambranom3 , up:4928, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/20, login:stdlmsuarezd1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/22, login:stdhcongy_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/12, login:stdaflore_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/2, login:riobvicarioli1 , up:4928, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/21, login:stdmomoro , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/18, login:stdmatoap_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/3, login:stdlogomezm_m , up:608, down:320
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/12, login:rioffpazo_m , up:7392, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/5, login:stdjrmorochor1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/1, login:stdjdmeri_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/14, login:riomvsanc_m , up:4928, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/9, login:stdammendoz , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/7, login:stdgedelgadob1 , up:4928, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/15, login:riompball_m , up:4928, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/13, login:stdgwapoloc1 , up:4928, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/3, login:stdmpmanobandaa1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/10, login:stdmipach_m , up:1856, down:768
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/11, login:stdmamendezc_m , up:608, down:320
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/12, login:stdjmpadi_m , up:608, down:320
+NO EJECUTO modelo:7224, ip:172.16.107.253, login:[yagfbronq_m] 
+***********************************
+LISTADO DE SERVICIOS 
+generando archivo...
+Hora Inicio: Tue Aug 20 18:00:02 ECT 2013
+Hora Fin: Tue Aug 20 18:01:46 ECT 2013

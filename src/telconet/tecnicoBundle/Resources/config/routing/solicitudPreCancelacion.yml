@@ -1,0 +1,8 @@
+solicitud_pre_cancelacion:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudPreCancelacion:index" }
+
+solicitud_pre_cancelacion_enviarTareaRapida:
+    pattern:  /enviarTareaRapida
+    defaults: { _controller: "tecnicoBundle:InfoSolicitudPreCancelacion:enviarTareaRapida" } 
+

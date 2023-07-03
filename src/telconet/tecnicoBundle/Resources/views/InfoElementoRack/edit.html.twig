@@ -1,0 +1,101 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+<script>
+        var url_getEncontradosNodo='{{path('elementonodo_getEncontradosNodo')}}';
+        var url_obtenerDatosRack='{{path('elementorack_obtenerDatosRack')}}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoRack/edit.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Rack</h1>
+</div>
+
+{% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="errormessage">
+        {{ flashMessage }}
+</div>
+{% endfor %}
+
+<div class="body_content">
+    <form id='form_edit_rack_buffer' action="{{ path('elementorack_updateRack', { 'id': rack.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" novalidate="novalidate"
+          onsubmit='if (validacionesForm()) {
+                     Ext.MessageBox.wait("Editando Elemento...");
+                     document.forms[0].submit();
+                     return true;
+                 }
+                 else {
+                     return false;
+                 }'>
+        <table width="100%" border="0" class="box-section-content">
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(edit_form.nombreElemento) }}</td>
+                <td width="10%">{{ form_widget(edit_form.nombreElemento) }}</td>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(edit_form.descripcionElemento) }}</td>
+                <td width="10%">{{ form_widget(edit_form.descripcionElemento) }}</td>
+                <td width="5%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(edit_form.nodoElementoId) }}</td>
+                <div hidden="true">{{ form_widget(edit_form.nodoElementoId) }}</div>
+                <td width="15%"><div id='combo_nodos'></div></td>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(edit_form.modeloElementoId) }}</td>
+                <td width="10%">{{ form_widget(edit_form.modeloElementoId) }}</td>
+                <td width="5%">&nbsp;</td>
+            </tr>
+            <tr>
+
+                <td width="10%">
+                    <input type="hidden" name="idUbicacion" value="{{ ubicacion.id }}">
+                </td>
+                <td width="5%">&nbsp;</td>
+            </tr>
+        </table>
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('elementorack') }}">
+                        Cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+<script>
+
+    function grabar()
+    {
+        document.forms[0].submit();
+    }
+</script>
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+<ul class="form_actions">
+    <li>
+
+    </li>
+</ul>
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+
+{% endblock contenido_der %}

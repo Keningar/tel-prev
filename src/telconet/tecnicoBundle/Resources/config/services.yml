@@ -1,0 +1,247 @@
+parameters:
+  ws_proceso_masivo: http://192.168.100.104:8080/ws/procesosmasivos/soap/procesar?wsdl
+  ws_proceso_masivo_rest: https://apps.telconet.ec/ws/procesosmasivos/rest/procesar.json
+  ruta_upload_documentos: telcos/web/public/uploads/documentos/          
+
+services:
+
+  tecnico.ProcesoMasivo:
+      class: telconet\tecnicoBundle\Service\ProcesoMasivoService     
+      calls:
+            - [setDependencies, [@service_container]]
+            
+  tecnico.InfoTelefonia:
+      class: telconet\tecnicoBundle\Service\InfoTelefoniaService
+      calls: 
+          - [setDependencies, [@service_container]]
+      arguments: ['@service_container']            
+
+  tecnico.InfoServicioTecnico:
+      class: telconet\tecnicoBundle\Service\InfoServicioTecnicoService
+      calls: 
+          - [setDependencies, [@service_container]]
+      arguments: ['@service_container']
+
+  tecnico.ReubicacionNetlife:
+    class: telconet\tecnicoBundle\Service\ReubicacionNetlifeService
+    calls:
+      - [ setDependencies, [ @service_container ] ]
+    arguments: [ '@service_container' ]
+
+  tecnico.MigracionHuawei:
+      class: telconet\tecnicoBundle\Service\MigracionHuaweiService
+      calls: 
+          - [setDependencies, [@service_container]]
+      
+  tecnico.MigracionTunelIpAL3mpls:
+      class: telconet\tecnicoBundle\Service\MigracionTunelIpAL3mpls
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico,@planificacion.RecursosDeRed,@tecnico.NetworkingScripts]]
+      arguments: ['@service_container']
+          
+  tecnico.InfoActivarPuerto:
+      class: telconet\tecnicoBundle\Service\InfoActivarPuertoService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico,@tecnico.InfoCancelarServicio,@tecnico.LicenciasMcAfee,@tecnico.NetworkingScripts,@tecnico.RedAccesoMiddleware,@service_container,@planificacion.RecursosDeRed, @tecnico.InfoTelefonia]]
+      arguments: ['@service_container']
+
+  tecnico.InfoElementoWifi:
+      class: telconet\tecnicoBundle\Service\InfoElementoWifiService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico, @tecnico.InfoCancelarServicio, @tecnico.NetworkingScripts, @schema.Util, @tecnico.InfoCambioElemento]]
+      arguments: ['@service_container']   
+      
+  tecnico.InfoActivarProducto:
+      class: telconet\tecnicoBundle\Service\InfoActivarProductoService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico]]
+      arguments: ['@service_container']
+      
+  tecnico.DataTecnica:
+      class: telconet\tecnicoBundle\Service\DataTecnicaService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico]]
+      arguments: ['@service_container']
+      
+  tecnico.ActaEntrega:
+        class: telconet\tecnicoBundle\Service\ActaEntregaService
+        calls:
+            - [setDependencies, [@service_container]]
+      
+  tecnico.Encuesta:
+      class: telconet\tecnicoBundle\Service\EncuestaService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico,@tecnico.ProcesarImagenes]]
+      arguments: ['@service_container']
+
+  tecnico.ProcesarImagenes:
+        class: telconet\tecnicoBundle\Service\ProcesarImagenesService
+        calls:
+            - [setDependencies, [@service_container]]
+      
+  tecnico.InfoGrabarHistorial:
+      class: telconet\tecnicoBundle\Service\InfoGrabarHistorialService
+      calls: 
+          - [setDependencies, [@service_container]]
+          
+  tecnico.InfoReconfigurarPuerto:
+      class: telconet\tecnicoBundle\Service\InfoReconfigurarPuertoService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico,@tecnico.InfoActivarPuerto]]
+      arguments: ['@service_container']
+      
+  tecnico.AsignarIpv4Publica:
+      class: telconet\tecnicoBundle\Service\AsignarIpv4PublicaService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico,@tecnico.RedAccesoMiddleware]]
+      arguments: ['@service_container']
+          
+  tecnico.InfoConfirmarServicio:
+      class: telconet\tecnicoBundle\Service\InfoConfirmarServicioService
+      calls:
+            - [setDependencies, [@service_container]]
+          
+  tecnico.InfoCancelarServicio:
+      class: telconet\tecnicoBundle\Service\InfoCancelarServicioService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico,@tecnico.InfoActivarPuerto,@tecnico.MigracionHuawei,@tecnico.LicenciasMcAfee,@tecnico.NetworkingScripts,@service_container,@tecnico.RedAccesoMiddleware]]
+      arguments: ['@service_container']
+      
+  tecnico.InfoCortarServicio:
+      class: telconet\tecnicoBundle\Service\InfoCortarServicioService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico,@tecnico.InfoCancelarServicio,@tecnico.InfoActivarPuerto,@tecnico.InfoReconectarServicio,@tecnico.InfoCambiarPuerto,@tecnico.LicenciasMcAfee,@tecnico.NetworkingScripts,@tecnico.Wifi,@service_container,@tecnico.RedAccesoMiddleware]]
+      arguments: ['@service_container']
+
+  tecnico.InfoCambiarPuerto:
+      class: telconet\tecnicoBundle\Service\InfoCambiarPuertoService
+      calls: 
+          - [setDependencies, [@service_container]]
+      
+  tecnico.InfoReconectarServicio:
+      class: telconet\tecnicoBundle\Service\InfoReconectarServicioService
+      calls: 
+          - [setDependencies, [@tecnico.InfoServicioTecnico,@tecnico.InfoCancelarServicio,@tecnico.InfoActivarPuerto,@tecnico.InfoCortarServicio,@tecnico.InfoCambiarPuerto,@tecnico.LicenciasMcAfee,@tecnico.NetworkingScripts,@tecnico.Wifi,@service_container,@tecnico.RedAccesoMiddleware]]
+      arguments: ['@service_container']
+      
+  tecnico.InfoCambiarPlan:
+      class: telconet\tecnicoBundle\Service\InfoCambiarPlanService
+      calls:
+          - [setDependencies, [@service_container]]
+
+  tecnico.InfoCambioElemento:
+      class: telconet\tecnicoBundle\Service\InfoCambioElementoService
+      calls: 
+          - [setDependencies, [@service_container]]
+      
+  tecnico.ConvertirJsonEnImagen:
+      class: telconet\tecnicoBundle\Service\ConvertirJsonEnImagenService
+      arguments: ['@service_container']
+      
+  tecnico.InfoInterfaceElemento:
+      class: telconet\tecnicoBundle\Service\InfoInterfaceElementoService
+      calls: 
+          - [setDependencies, [@service_container]]
+      
+  tecnico.InfoElemento:
+      class: telconet\tecnicoBundle\Service\InfoElementoService
+      calls: 
+          - [setDependencies, [@service_container]]
+
+  tecnico.InfoBitacoraAccesoNodo:
+      class: telconet\tecnicoBundle\Service\InfoBitacoraAccesoNodoService
+      calls: 
+          - [setDependencies, [@service_container]]
+
+  tecnico.LicenciasMcAfee:
+      class: telconet\tecnicoBundle\Service\LicenciasMcAfeeService
+      calls: 
+          - [setDependencies, [@service_container]]
+      
+  tecnico.LicenciasOffice365:
+      class: telconet\tecnicoBundle\Service\LicenciasOffice365Service
+      calls: 
+          - [setDependencies, [@service_container]]
+
+  #Service encargado de llamar a los metodos via rest proveidos por networking para ejecucion de scripts
+  #sobre equipos de TN
+  tecnico.NetworkingScripts:
+        class: telconet\tecnicoBundle\Service\NetworkingScriptsService           
+        arguments: ['@service_container']
+
+  tecnico.RedAccesoMiddleware:
+        class: telconet\tecnicoBundle\Service\RedAccesoMiddlewareService           
+        calls: 
+          - [setDependencies, [@service_container]] 
+
+  tecnico.Promociones:
+        class: telconet\tecnicoBundle\Service\PromocionesService
+        calls:
+            - [setDependencies,[@service_container]]
+
+  tecnico.FoxPremium:
+        class: telconet\tecnicoBundle\Service\FoxPremiumService
+        calls:
+            - [setDependencies,[@service_container]]
+
+  tecnico.CallGeneralWeb:
+        class: telconet\tecnicoBundle\Service\CallGeneralWebService           
+        arguments: ['@service_container']
+        
+  tecnico.wifi:
+        class: telconet\tecnicoBundle\Service\WifiService
+        calls:
+            - [setDependencies, [@service_container]]
+            
+  tecnico.TelcoGraph:
+        class: telconet\tecnicoBundle\Service\TelcoGraphService           
+        calls:
+            - [setDependencies, [@service_container]]
+            
+  tecnico.PortalNetlifeCamService:
+        class: telconet\tecnicoBundle\Service\PortalNetlifeCamService       
+        calls:
+            - [setDependencies, [@service_container]]
+
+  tecnico.PortalNetlifeCam3dEYEService:
+      class: telconet\tecnicoBundle\Service\PortalNetlifeCam3dEYEService
+      calls:
+        - [setDependencies, [@service_container]]
+
+  tecnico.AuthenticationFox:
+        class: telconet\tecnicoBundle\Service\AuthenticationFoxService    
+        calls:
+            - [setDependencies, [@service_container]]
+            
+  tecnico.AuthorizationFox:
+        class: telconet\tecnicoBundle\Service\AuthorizationFoxService       
+        calls:
+            - [setDependencies, [@service_container]]    
+            
+  tecnico.CloudFormsService:
+        class: telconet\tecnicoBundle\Service\CloudFormsService           
+        arguments: ['@service_container']                     
+            
+  tecnico.EcucertService:
+      class: telconet\tecnicoBundle\Service\EcucertService
+      calls:
+            - [setDependencies, [@service_container]]
+            
+  tecnico.LicenciasKaspersky:
+      class: telconet\tecnicoBundle\Service\LicenciasKasperskyService
+      calls: 
+          - [setDependencies, [@service_container]]
+
+  tecnico.LicenciasKasperskyWs:
+      class: telconet\tecnicoBundle\Service\LicenciasKasperskyWsService
+      calls: 
+          - [setDependencies, [@service_container]]
+          
+  tecnico.InternetProtegido:
+      class: telconet\tecnicoBundle\Service\InternetProtegidoService
+      calls: 
+          - [setDependencies, [@service_container]]
+  tecnico.InvestigacionDesarrolloWs:
+      class: telconet\tecnicoBundle\Service\InvestigacionDesarrolloWsService
+      calls: 
+          - [setDependencies, [@service_container]]

@@ -1,0 +1,108 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoRouterCliente/edit.js') }}"></script>
+<script>
+
+    var url_getCantones = '{{path("admicanton_buscarCantones") }}';
+    var url_getParroquias = '{{path("admiparroquia_buscarParroquias") }}';
+
+</script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar</h1>
+</div>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %} 
+
+<div class="body_content">
+    <form id='form_edit_NodoWifi' action="{{ path('elementoRouterCliente_update', { 'id': objElemento.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" novalidate="novalidate" 
+                onsubmit='if(validacionesEditForm()){ 
+                                Ext.MessageBox.wait("Procesando Datos...");
+                                document.forms[0].submit();
+                                return true;
+                            }
+                            else{
+                                return false;
+                            }'>
+        <table width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.nombreElemento) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.nombreElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.nodoElementoId) }}</td>
+                    <td width="10%">{{ nombreElementoContenedor }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.descripcionElemento) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.descripcionElemento) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.modeloElementoId) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.modeloElementoId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.serieFisica) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.serieFisica) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(edit_form.versionOs) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.versionOs) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr> 
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"><label for="capacidad">* Capacidad(Kb):</label></td>
+                    <td width="10%"><input type="number" name="capacidad" id="capacidad" value = "{{ capacidad }}"></td>   
+                    <td width="5%">&nbsp;</td>
+                
+                    <td width="5%">&nbsp;</td>
+                </tr>                  
+            </table>
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('elementoRouterCliente') }}">
+                        Cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

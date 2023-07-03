@@ -1,0 +1,7 @@
+resumeninstalaciones_grid:
+    pattern:  /grid
+    defaults: { _controller: "tecnicoBundle:ResumenInstalaciones:grid" }
+
+resumeninstalaciones_getInstalacionesGroupByEstados:
+    pattern: /getInstalacionesGroupByEstados
+    defaults: { _controller: "tecnicoBundle:ResumenInstalaciones:getInstalacionesGroupByEstados" }

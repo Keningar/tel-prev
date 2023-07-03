@@ -1,0 +1,11 @@
+infointerfaceelemento_getInterfacesByElementoTipoInterface:
+    pattern:  /getInterfacesByElementoTipoInterface
+    defaults: { _controller: "tecnicoBundle:InfoInterfaceElemento:getInterfacesByElementoTipoInterface" }
+
+infointerfaceelemento_getInterfacesElemento:
+    pattern:  /getInterfacesElemento
+    defaults: { _controller: "tecnicoBundle:InfoInterfaceElemento:getInterfacesElemento" }  
+
+infointerfaceelemento_getPuertos:
+    pattern:  /getPuertos
+    defaults: { _controller: "tecnicoBundle:InfoInterfaceElemento:getPuertos" }

@@ -1,0 +1,81 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var url_ajaxGetElementosDataCenter          = '{{ path('elementosDataCenter_ajaxGetElementosDataCenter')}}';           
+        var url_ajaxGetTiposElementosDataCenter     = '{{ path('elementosDataCenter_ajaxGetTiposElementosDataCenter')}}';
+        var url_ajaxGetInformacionPuertosDataCenter = '{{ path('elementosDataCenter_ajaxGetInformacionPorSwitch')}}';
+        var url_ajaxActualizarPuertosDataCenter     = '{{ path('elementosDataCenter_ajaxLiberarSwitchDataCenter')}}';
+        var url_ajaxGuardarElementoVirtual          = '{{ path('elementosDataCenter_ajaxGuardarElementoVirtualDataCenter')}}';
+        var arrayDataCenters                        = {{arrayDataCenters|json_encode()|raw}};
+        
+        //Roles
+        var boolPermisoEditarElementoDCVirtual  = '{{is_granted("ROLE_422-6197")}}'; 
+        var boolPermisoEditarElementoDCActivo   = '{{is_granted("ROLE_422-6198")}}'; 
+        var boolPermisoEditarElementoDCPasivo   = '{{is_granted("ROLE_422-6199")}}';
+    </script> 
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/ElementosDataCenter/index.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/ElementosDataCenter/newElementoVirtual.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Elementos para <b>Data Center</b> ( Virtuales/Activos )</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+         {% if (is_granted("ROLE_422-6199"))  %}
+            <li>
+                <a  href="{{ path('elementosDataCenter_elementoPasivo') }}"><i class="fa fa-server" aria-hidden="true"></i>Gestión Elemento Pasivo</a>
+            </li>         
+        {% endif %}
+    </ul>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer %}
+    <script>
+        
+    </script>
+{% endblock %}

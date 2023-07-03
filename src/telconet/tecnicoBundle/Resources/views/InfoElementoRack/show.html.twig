@@ -1,0 +1,159 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Rack</h1>
+</div>
+  <style type="text/css">table.cssTable { font-family: verdana,arial,sans-serif;font-size:11px;color:#333333;border-width: 1px;border-color: #999999;border-collapse: collapse;}table.cssTable th {background-color:#c3dde0;border-width: 1px;padding: 8px;border-style: solid;border-color: #a9c6c9;}table.cssTable tr {background-color:#d4e3e5;}table.cssTable td {border-width: 1px;padding: 8px;border-style: solid;border-color: #a9c6c9;}table.cssTblPrincipal{font-family: verdana,arial,sans-serif;font-size:12px;}</style>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Nombre Elemento:</th>
+                <td width="15%">{{ elemento.nombreElemento }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Descripci&oacute;n Elemento</th>        
+                <td width="15%">{{ elemento.descripcionElemento }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Jurisdiccion:</th>
+                <td width="15%">{{ jurisdiccion.nombreJurisdiccion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Canton:</th>
+                <td width="15%">{{ ubicacion.parroquiaId.cantonId.nombreCanton }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Parroquia:</th>
+                <td width="15%">{{ ubicacion.parroquiaId.nombreParroquia }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Direccion:</th>
+                <td width="15%">{{ ubicacion.direccionUbicacion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Altura Sobre Nivel Mar:</th>
+                <td width="15%">{{ ubicacion.alturaSnm }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Longitud Ubicacion:</th>
+                <td width="15%">{{ ubicacion.longitudUbicacion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Latitud Ubicacion:</th>
+                <td width="15%">{{ ubicacion.latitudUbicacion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Estado:</th>              
+                <td width="15%">{{ elemento.estado}}</td>
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"></th>
+                <td width="15%"></td>        
+                <td width="1%"></td>
+            </tr>
+
+        </tbody>
+    </table>
+    </br>
+    </br>
+    <center>
+    <table class = "cssTable" >
+        <tr>
+            <th colspan="3" style='text-align:center'>UNIDADES DE RACK</th>
+        </tr>
+        <tr>
+          <th style='text-align:center'>RANGO DE UNIDAD</th>
+          <th style='text-align:center'>ELEMENTO CONTENIDO EN UNIDAD</th>
+          <th style='text-align:center'>TIPO ELEMENTO</th>
+        </tr>
+        {% for itemU in unidadesRack %}
+        <tr>
+             <td style='text-align:center'>{{ itemU.numeroUnidad}} </td>
+             <td>{{ itemU.nombreElemento}} </td>
+             <td>{{ itemU.tipoElemento}} </td>
+        </tr>
+        {% endfor %}   
+    </table>
+   </center>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('elementorack') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    
+    <div class="secHead">Historial del Elemento</div>      
+	<table style="width:100%;height:15px;margin-top:5px;" class="cabecera" id="table-3">
+		<tbody>
+			<tr>
+				<td><b>Estado</b></td>
+				<td><b>Fecha Creacion</b></td>
+				<td><b>Usuario Creacion</b></td>
+				<td><b>Observacion</b></td>
+			</tr>
+			{% for key, item1 in historialElemento %}
+				<tr>
+				{% for key_in, item2 in item1 %}
+                    <td>{{ item2|striptags('<br>')|raw }} </td>
+				{% endfor %}
+				</tr>
+			{% endfor %}   
+		</tbody>
+	</table>
+    
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        {% if elemento.estado != 'Eliminado'%}
+            <li>
+                {% if is_granted("ROLE_273-2") %}
+                    <a class="button-nuevo-registro" href="{{ path('elementorack_newRack') }}">
+                        <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                        &nbsp;Nuevo Rack
+                    </a>
+                {% endif %}
+            </li>
+            <li>
+                &nbsp;
+            </li>
+            <li>
+                {% if is_granted("ROLE_273-4") %}
+                    <a class="button-editar" href="{{ path('elementorack_editRack', { 'id': elemento.id }) }}">
+                        &nbsp;Editar Rack
+                    </a>
+                {% endif %}
+            </li>
+            <li>
+            </li>
+        {% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

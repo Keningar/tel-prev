@@ -1,0 +1,1571 @@
+SET SERVEROUTPUT ON
+--Creación de parámetros para estados válidos para solicitudes
+DECLARE
+  Ln_IdParamsServiciosMd    NUMBER;
+BEGIN
+  SELECT ID_PARAMETRO
+  INTO Ln_IdParamsServiciosMd
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO='PARAMETROS_ASOCIADOS_A_SERVICIOS_MD';
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'Anulado',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'Cancel',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'Eliminada',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'Eliminado',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'Eliminado-Migra',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'Inactivo',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'MigradoOnnet',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'Rechazada',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'Trasladado',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un NOT IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_NOT_IN',
+    'INTERNET',
+    'migracion_ttco',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los estados NOT IN para INTERNET');
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WIFI_DUAL_BAND',
+    'Pendiente',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WIFI_DUAL_BAND',
+    'PrePlanificada',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WIFI_DUAL_BAND',
+    'Detenido',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WIFI_DUAL_BAND',
+    'Detenida',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WIFI_DUAL_BAND',
+    'AsignadoTarea',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WIFI_DUAL_BAND',
+    'Asignada',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WIFI_DUAL_BAND',
+    'Activo',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WIFI_DUAL_BAND',
+    'In-Corte',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los estados IN para WIFI_DUAL_BAND');
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'EXTENDER_DUAL_BAND',
+    'Pendiente',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'EXTENDER_DUAL_BAND',
+    'PrePlanificada',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'EXTENDER_DUAL_BAND',
+    'Detenido',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'EXTENDER_DUAL_BAND',
+    'Detenida',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'EXTENDER_DUAL_BAND',
+    'AsignadoTarea',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'EXTENDER_DUAL_BAND',
+    'Asignada',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'EXTENDER_DUAL_BAND',
+    'Activo',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'EXTENDER_DUAL_BAND',
+    'In-Corte',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los estados IN para EXTENDER_DUAL_BAND');
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'Pendiente',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'PrePlanificada',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'Detenido',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'Detenida',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'AsignadoTarea',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'Asignada',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'Activo',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'In-Corte',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Estados de servicio para consultar en un IN de acuerdo al nombre técnico de un producto',
+    'ESTADOS_SERVICIOS_IN',
+    'WDB_Y_EDB',
+    'PendienteAp',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los estados IN para WDB_Y_EDB');
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Número máximo de servicios adicionales de acuerdo al nombre técnico del producto',
+    'NUM_MAX_SERVICIOS_ADICIONALES_X_PUNTO',
+    'EXTENDER_DUAL_BAND',
+    '3',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente el número máximo de Extenders por punto');
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Modelos parametrizados por tecnología y por equipo usados en la activación de un servicio',
+    'MODELOS_EQUIPOS_ACTIVACION',
+    'HUAWEI',
+    'MA5608T',
+    'WIFI DUAL BAND',
+    'HS8M8245WG04',
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Modelos parametrizados por tecnología y por equipo usados en la activación de un servicio',
+    'MODELOS_EQUIPOS_ACTIVACION',
+    'HUAWEI',
+    'MA5608T',
+    'WIFI DUAL BAND',
+    'HS8M8245WG06',
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los modelos de ont Wifi dual band para la activación');
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Modelos parametrizados por tecnología y por equipo usados en la activación de un servicio',
+    'MODELOS_EQUIPOS_ACTIVACION',
+    'HUAWEI',
+    'MA5608T',
+    'EXTENDER DUAL BAND',
+    'WA8M8011VW09',
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Modelos parametrizados por tecnología y por equipo usados en la activación de un servicio',
+    'MODELOS_EQUIPOS_ACTIVACION',
+    'HUAWEI',
+    'MA5608T',
+    'EXTENDER DUAL BAND',
+    'WA8011V',
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los modelos del Extender dual band para la activación');
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Nombres técnicos de productos restringidos para ser agregados a planes',
+    'NOMBRES_TECNICOS_PRODS_RESTRINGIDOS_EN_PLAN',
+    'WDB_Y_EDB',
+    '',
+    '',
+    '',
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los nombres técnicos de productos restringidos para formar parte de un plan');
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Motivos de las solicitudes de cambio de módem inmediato generadas por cancelación de un servicio',
+    'MOTIVOS_CAMBIO_MODEM_INMEDIATO_AUTOMATICO',
+    'WDB_Y_EDB',
+    'CANCELACION',
+    'CANCELACIÓN DEL PRODUCTO ADICIONAL W+AP',
+    '',
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsServiciosMd,
+    'Motivos de las solicitudes de cambio de módem inmediato generadas por cancelación de un servicio',
+    'MOTIVOS_CAMBIO_MODEM_INMEDIATO_AUTOMATICO',
+    'WIFI_DUAL_BAND',
+    'CANCELACION',
+    'CANCELACIÓN DEL PRODUCTO ADICIONAL W',
+    '',
+    'Activo',
+    'mlcruz',
+    sysdate,
+    '127.0.0.1',
+    '18'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los motivos de creación de solicitudes de cambio de módem inmediato');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);  
+  ROLLBACK;
+END;
+/
+--Creación de la asociación de características al producto W+AP
+DECLARE
+  Ln_IdCaractMac                NUMBER(5,0);
+  Ln_IdProdWyAp        NUMBER(5,0);
+BEGIN
+  SELECT ID_CARACTERISTICA
+  INTO Ln_IdCaractMac
+  FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+  WHERE DESCRIPCION_CARACTERISTICA='MAC';
+  SELECT ID_PRODUCTO
+  INTO Ln_IdProdWyAp
+  FROM DB_COMERCIAL.ADMI_PRODUCTO
+  WHERE NOMBRE_TECNICO='WDB_Y_EDB';
+
+  INSERT
+  INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+    (
+      ID_PRODUCTO_CARACTERISITICA,
+      PRODUCTO_ID,
+      CARACTERISTICA_ID,
+      FE_CREACION,
+      USR_CREACION,
+      ESTADO,
+      VISIBLE_COMERCIAL
+    )
+    VALUES
+    (
+      DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+      Ln_IdProdWyAp,
+      Ln_IdCaractMac,
+      CURRENT_TIMESTAMP,
+      'mlcruz',
+      'Activo',
+      'NO'
+    );
+  SYS.DBMS_OUTPUT.PUT_LINE('Creacion correctamente de registro Producto W+AP Caracteristica MAC');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);  
+  ROLLBACK;
+END;
+/
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET DESCRIPCION = 'Tipos de solicitudes que gestionan un CPE ONT'
+WHERE PARAMETRO_ID = 
+  (SELECT ID_PARAMETRO
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO = 'PARAMETROS_ASOCIADOS_A_SERVICIOS_MD'
+  )
+AND VALOR1 = 'TIPOS_SOLICITUDES_GENERALES_GESTIONAN_ONT';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET DESCRIPCION = 'Estados válidos de solicitudes de acuerdo a su descripción'
+WHERE PARAMETRO_ID = 
+  (SELECT ID_PARAMETRO
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO = 'PARAMETROS_ASOCIADOS_A_SERVICIOS_MD'
+  )
+AND VALOR1 = 'ESTADOS_SOLICITUDES_ABIERTAS';
+INSERT
+INTO DB_GENERAL.ADMI_MOTIVO
+  (
+    ID_MOTIVO,
+    RELACION_SISTEMA_ID,
+    NOMBRE_MOTIVO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    CTA_CONTABLE,
+    REF_MOTIVO_ID
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_MOTIVO.NEXTVAL,
+    2681,
+    'CANCELACIÓN DEL PRODUCTO ADICIONAL W',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    'mlcruz',
+    SYSDATE,
+    NULL,
+    NULL
+  );
+INSERT
+INTO DB_GENERAL.ADMI_MOTIVO
+  (
+    ID_MOTIVO,
+    RELACION_SISTEMA_ID,
+    NOMBRE_MOTIVO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    CTA_CONTABLE,
+    REF_MOTIVO_ID
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_MOTIVO.NEXTVAL,
+    2681,
+    'CANCELACIÓN DEL PRODUCTO ADICIONAL W+AP',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    'mlcruz',
+    SYSDATE,
+    NULL,
+    NULL
+  );
+COMMIT;
+/

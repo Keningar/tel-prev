@@ -1,0 +1,65 @@
+procesomasivo_corteMasivoCliente:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:corteMasivoCliente" }
+    
+procesomasivo_getOficinaGrupoConFormaPago:
+    pattern:  /getOficinaGrupoConFormaPago
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getOficinaGrupoConFormaPago" }
+    
+procesomasivo_getOficinasYFormasPago:
+    pattern:  /getOficinasYFormasPago
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getOficinasYFormasPago" }
+    
+procesomasivo_getPuntosACortar:
+    pattern:  /getPuntosACortar
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getPuntosACortar" }
+
+procesomasivo_cortarClientesMasivo:
+    pattern:  /cortarClientesMasivo
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:cortarClientesMasivo" }
+procesomasivo_getTipoNegocio:
+    pattern:  /getTipoNegocio
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getTipoNegocio" }
+procesomasivo_getBancosTarjetas:
+    pattern:  /getBancosTarjetas
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getBancosTarjetas" }
+    
+procesomasivo_getServiciosXPadreFacturacion:
+    pattern:  /getServiciosXPadreFacturacion
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getServiciosXPadreFacturacion" }    
+procesomasivo_getTipoNegocioPorEmpresa:
+    pattern:  /getTipoNegocioPorEmpresa
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getTipoNegocioPorEmpresa" }
+    
+procesomasivo_getUltimaMilla:
+    pattern:  /getUltimaMilla
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getUltimaMilla" }
+
+procesomasivo_getCiclos:
+    pattern:  /getCiclos
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getCiclos" }
+
+procesomasivo_generarCorteReactivacionTelcoHome:
+    pattern:  /generarCorteReactivacionTelcoHome
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:generarCorteReactivacionTelcoHome" }
+    
+procesomasivo_exportarCsvClientesCorteMasivo:
+    pattern:  /exportarCsvClientesCorteMasivo
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:exportarCsvClientesCorteMasivo" }
+    
+procesomasivo_descargarCsvProcesoMasivo:
+    pattern:  /{intIdDocumento}/descargarCsvProcesoMasivo
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:descargarCsvProcesoMasivo"}
+    
+procesomasivo_getResumenCorteMasivo:
+    pattern:  /getResumenCorteMasivo
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getResumenCorteMasivo" }
+    
+procesomasivo_getParametrosAsociadosAServiciosCorte:
+    pattern:  /getParametrosAsociadosAServiciosCorte
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:getParametrosAsociadosAServiciosCorte" }
+    
+procesomasivo_cortarClientesMasivoPorLotes:
+    pattern:  /cortarClientesMasivoPorLotes
+    defaults: { _controller: "tecnicoBundle:InfoServicioCorte:cortarClientesMasivoPorLotes" }
+    

@@ -1,0 +1,19 @@
+relacionelemento:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoRelacionElemento:index" }
+
+relacionelemento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoRelacionElemento:show" }
+        
+relacionelemento_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoRelacionElemento:getEncontrados" }
+        
+relacionelemento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoRelacionElemento:deleteAjax" }
+    
+relacionelemento_ajaxUnidadesElementosByPadre:
+    pattern:  /ajaxUnidadesElementosByPadre
+    defaults: { _controller: "tecnicoBundle:InfoRelacionElemento:ajaxUnidadesElementosByPadre" }

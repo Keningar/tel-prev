@@ -1,0 +1,1497 @@
+SET SERVEROUTPUT ON
+--Creación de parámetros para productos Small Business
+DECLARE
+  Ln_IdParamsProdsTnGpon NUMBER(5,0);
+BEGIN
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+    (
+      ID_PARAMETRO,
+      NOMBRE_PARAMETRO,
+      DESCRIPCION,
+      ESTADO,
+      USR_CREACION,
+      FE_CREACION,
+      IP_CREACION
+    )
+    VALUES
+    (
+      DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+      'PARAMS_PRODS_TN_GPON',
+      'Parámetro usado para la reestructuración de servicios de TN en la red de GPON',
+      'Activo',
+      'mlcruz',
+      CURRENT_TIMESTAMP,
+      '127.0.0.1'
+    );
+  SELECT ID_PARAMETRO
+  INTO Ln_IdParamsProdsTnGpon
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB
+  WHERE NOMBRE_PARAMETRO='PARAMS_PRODS_TN_GPON';
+  --VALOR1 PRODUCTOS_RELACIONADOS_INTERNET_IP
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids del producto principal con el producto relacionado',
+    'PRODUCTOS_RELACIONADOS_INTERNET_IP',
+    '1155',
+    '1188',
+    '3',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids del producto principal con el producto relacionado',
+    'PRODUCTOS_RELACIONADOS_INTERNET_IP',
+    '1234',
+    '1235',
+    '3',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids del producto principal con el producto relacionado',
+    'PRODUCTOS_RELACIONADOS_INTERNET_IP',
+    '1241',
+    '1242',
+    '3',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids del producto principal con el producto relacionado',
+    'PRODUCTOS_RELACIONADOS_INTERNET_IP',
+    '1247',
+    '1248',
+    '3',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids del producto principal con el producto relacionado',
+    'PRODUCTOS_RELACIONADOS_INTERNET_IP',
+    '1271',
+    '1272',
+    '3',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids del producto principal con el producto relacionado',
+    'PRODUCTOS_RELACIONADOS_INTERNET_IP',
+    '1273',
+    '1274',
+    '3',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+
+  --VALOR1 DESCRIPCION_CARACT_VELOCIDAD_X_NOMBRE_TECNICO
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con la relación del nombre técnico y la característica de velocidad',
+    'DESCRIPCION_CARACT_VELOCIDAD_X_NOMBRE_TECNICO',
+    'INTERNET SMALL BUSINESS',
+    'VELOCIDAD',
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con la relación del nombre técnico y la característica de velocidad',
+    'DESCRIPCION_CARACT_VELOCIDAD_X_NOMBRE_TECNICO',
+    'IPSB',
+    'VELOCIDAD',
+    'SI',
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con la relación del nombre técnico y la característica de velocidad',
+    'DESCRIPCION_CARACT_VELOCIDAD_X_NOMBRE_TECNICO',
+    'TELCOHOME',
+    'VELOCIDAD_TELCOHOME',
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+
+  --VALOR1 DESCRIPCION_CARACT_VELOCIDAD_X_NOMBRE_TECNICO
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos que deben verificar la razón social',
+    'PRODUCTOS_VERIFICA_RAZON_SOCIAL',
+    '1247',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos que deben verificar la razón social',
+    'PRODUCTOS_VERIFICA_RAZON_SOCIAL',
+    '1248',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+
+  --VALOR1 PRODUCTOS_VERIFICA_UM_TERCERIZADA
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos que deben verificar la última milla tercerizada',
+    'PRODUCTOS_VERIFICA_UM_TERCERIZADA',
+    '1241',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos que deben verificar la última milla tercerizada',
+    'PRODUCTOS_VERIFICA_UM_TERCERIZADA',
+    '1247',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+
+  --VALOR1 PRODUCTOS_VERIFICA_COU_FIJA_SMB
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos al verifica servicio Netvoice',
+    'PRODUCTOS_VERIFICA_COU_FIJA_SMB',
+    '1155',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos al verifica servicio Netvoice',
+    'PRODUCTOS_VERIFICA_COU_FIJA_SMB',
+    '1241',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+
+  --VALOR1 PRODUCTOS_VERIFICA_FACTIB_CC
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos que verifican factibilidad en Centros Comerciales',
+    'PRODUCTOS_VERIFICA_FACTIB_CC',
+    '1241',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+
+  --VALOR1 PRODUCTOS_VERIFICA_VELOCIDAD
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos que se deben verificar las velocidades',
+    'PRODUCTOS_VERIFICA_VELOCIDAD',
+    '1241',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos que se deben verificar las velocidades',
+    'PRODUCTOS_VERIFICA_VELOCIDAD',
+    '1271',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos que se deben verificar las velocidades',
+    'PRODUCTOS_VERIFICA_VELOCIDAD',
+    '1273',
+    NULL,
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+
+  --VALOR1 PRODUCTOS_VERIFICA_VELOCIDADES_DISPONIBLES
+  --VALOR2 Internet SMB Centros Comercial
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos y sus velocidades disponibles',
+    'PRODUCTOS_VERIFICA_VELOCIDADES_DISPONIBLES',
+    '1241',
+    '10',
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+
+  --VALOR2 TELEWORKER
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos y sus velocidades disponibles',
+    'PRODUCTOS_VERIFICA_VELOCIDADES_DISPONIBLES',
+    '1271',
+    '5',
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos y sus velocidades disponibles',
+    'PRODUCTOS_VERIFICA_VELOCIDADES_DISPONIBLES',
+    '1271',
+    '10',
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos y sus velocidades disponibles',
+    'PRODUCTOS_VERIFICA_VELOCIDADES_DISPONIBLES',
+    '1271',
+    '20',
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  --VALOR2 TELCOTEACHER
+  INSERT
+  INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  ( 
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    USR_ULT_MOD,
+    FE_ULT_MOD,
+    IP_ULT_MOD,
+    VALOR5,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    Ln_IdParamsProdsTnGpon,
+    'Parámetro con los ids de los productos y sus velocidades disponibles',
+    'PRODUCTOS_VERIFICA_VELOCIDADES_DISPONIBLES',
+    '1273',
+    '10',
+    NULL,
+    'Activo',
+    'mlcruz',
+    SYSDATE,
+    '127.0.0.1',
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    '10'
+  );
+  SYS.DBMS_OUTPUT.PUT_LINE('Se han ingresado correctamente los parámetros para productos Tn en la red de Gepon');
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK 
+                           || ' - ERROR_BACKTRACE: ' || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);  
+  ROLLBACK;
+END;
+/
+--Se inactiva el producto IP-TELCOHOME, ya que es un producto que no tiene flujo y que se mantenía en estado Activo por errores de servicios
+--Small Business
+UPDATE DB_COMERCIAL.ADMI_PRODUCTO
+SET ESTADO        = 'Inactivo'
+WHERE ID_PRODUCTO =1237;
+
+--PROD_VELOCIDAD
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '1'
+WHERE PARAMETRO_ID = 754
+AND VALOR1 = '5'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '2'
+WHERE PARAMETRO_ID = 754
+AND VALOR1 = '10'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '3'
+WHERE PARAMETRO_ID = 754
+AND VALOR1 = '20'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '4'
+WHERE PARAMETRO_ID = 754
+AND VALOR1 = '35'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '5'
+WHERE PARAMETRO_ID = 754
+AND VALOR1 = '50'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '6'
+WHERE PARAMETRO_ID = 754
+AND VALOR1 = '75'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '7'
+WHERE PARAMETRO_ID = 754
+AND VALOR1 = '100'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR5 = NULL
+WHERE PARAMETRO_ID = 754
+AND VALOR1 = '10'
+AND ESTADO = 'Activo';
+
+--PROD_VELOCIDAD_TELCOHOME
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '1'
+WHERE PARAMETRO_ID = 895
+AND VALOR1 = '10'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '2'
+WHERE PARAMETRO_ID = 895
+AND VALOR1 = '20'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '3'
+WHERE PARAMETRO_ID = 895
+AND VALOR1 = '50'
+AND ESTADO = 'Activo';
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET
+SET VALOR7 = '4'
+WHERE PARAMETRO_ID = 895
+AND VALOR1 = '75'
+AND ESTADO = 'Activo';
+
+--Relación de características faltantes en productos Small Business, TelcoHome e Ips Small Business
+--TELCOTEACHER - CAPACIDAD1
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1273,
+    1,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'NO'
+  );
+--TELCOTEACHER - CAPACIDAD2
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1273,
+    2,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'NO'
+  );
+--Internet Small Business Razón Social - INTERFACE ELEMENTO TELLION
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1247,
+    647,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'NO'
+  );
+--TELCOTEACHER - INTERFACE ELEMENTO TELLION
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1273,
+    647,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'NO'
+  );
+--Internet Small Business Razón Social - TIPO_FACTIBILIDAD
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1247,
+    816,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'SI'
+  );
+--TELCOTEACHER - TIPO_FACTIBILIDAD
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1273,
+    816,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'SI'
+  );
+--TELCOTEACHER - CLIENT CLASS
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1273,
+    1188,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'SI'
+  );
+--TELCOTEACHER - PACKAGE ID
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1273,
+    1189,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'SI'
+  );
+
+--IP Small Business Razón Social - MIGRADO
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1248,
+    640,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'NO'
+  );
+--IP TELCOTEACHER - MIGRADO
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1274,
+    640,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'NO'
+  );
+--IP Small Business Razón Social - INTERFACE ELEMENTO TELLION
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1248,
+    647,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'NO'
+  );
+--IP TELCOTEACHER - INTERFACE ELEMENTO TELLION
+INSERT
+INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA
+  (
+    ID_PRODUCTO_CARACTERISITICA,
+    PRODUCTO_ID,
+    CARACTERISTICA_ID,
+    FE_CREACION,
+    USR_CREACION,
+    ESTADO,
+    VISIBLE_COMERCIAL
+  )
+  VALUES
+  (
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    1274,
+    647,
+    SYSDATE,
+    'mlcruz',
+    'Activo',
+    'NO'
+  );
+COMMIT;
+/
+--Script para regularizar los PRODUCTO_CARACTERISITICA_ID de la INFO_SERVICIO_PROD_CARACT que no consuerdan con el producto Small Business  
+--o TelcoHome asociado al servicio
+DECLARE
+  CURSOR Lc_GetRegulaSpcSb
+  IS
+    SELECT SPC.ID_SERVICIO_PROD_CARACT,
+      APC.ID_PRODUCTO_CARACTERISITICA AS ID_APC_ACTUAL,
+      (SELECT APC_CORRECTO.ID_PRODUCTO_CARACTERISITICA
+      FROM DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC_CORRECTO
+      WHERE APC_CORRECTO.PRODUCTO_ID     = PROD.ID_PRODUCTO
+      AND APC_CORRECTO.CARACTERISTICA_ID = APC.CARACTERISTICA_ID
+      AND APC_CORRECTO.ESTADO            = 'Activo'
+      AND ROWNUM                         = 1
+      ) AS ID_APC_CORRECTO
+    FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PROD
+    ON PROD.ID_PRODUCTO = SERVICIO.PRODUCTO_ID
+    INNER JOIN DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC
+    ON SPC.SERVICIO_ID = SERVICIO.ID_SERVICIO
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC.PRODUCTO_CARACTERISITICA_ID
+    WHERE (PROD.NOMBRE_TECNICO         = 'INTERNET SMALL BUSINESS'
+    OR PROD.NOMBRE_TECNICO             = 'TELCOHOME')
+    AND SPC.ESTADO                     = 'Activo'
+    AND PROD.EMPRESA_COD               = '10'
+    AND PROD.ID_PRODUCTO              <> APC.PRODUCTO_ID;
+BEGIN
+  SYS.DBMS_OUTPUT.PUT_LINE('***REGULARIZACIÓN DE SPC SMALL BUSINESS Y TELCOHOME***');
+  IF Lc_GetRegulaSpcSb%ISOPEN THEN
+    CLOSE Lc_GetRegulaSpcSb;
+  END IF;
+  FOR I_GetRegulaSpcSb IN Lc_GetRegulaSpcSb
+  LOOP
+    UPDATE DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT
+    SET PRODUCTO_CARACTERISITICA_ID = I_GetRegulaSpcSb.ID_APC_CORRECTO,
+    FE_ULT_MOD = SYSDATE,
+    USR_ULT_MOD = 'regulaIdApcSb'
+    WHERE ID_SERVICIO_PROD_CARACT = I_GetRegulaSpcSb.ID_SERVICIO_PROD_CARACT;
+    SYS.DBMS_OUTPUT.PUT_LINE('ID_SERVICIO_PROD_CARACT: ' || I_GetRegulaSpcSb.ID_SERVICIO_PROD_CARACT ||
+                             ' ID_APC_ACTUAL: ' || I_GetRegulaSpcSb.ID_APC_ACTUAL || ' ID_APC_CORRECTO: ' || I_GetRegulaSpcSb.ID_APC_CORRECTO);
+  END LOOP;
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK || ' - ERROR_BACKTRACE: ' 
+                            || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/
+DECLARE
+  CURSOR Lc_GetRegulaSpcIpSb
+  IS
+    SELECT SPC.ID_SERVICIO_PROD_CARACT,
+      APC.ID_PRODUCTO_CARACTERISITICA AS ID_APC_ACTUAL,
+      (SELECT APC_CORRECTO.ID_PRODUCTO_CARACTERISITICA
+      FROM DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC_CORRECTO
+      WHERE APC_CORRECTO.PRODUCTO_ID     = PROD.ID_PRODUCTO
+      AND APC_CORRECTO.CARACTERISTICA_ID = APC.CARACTERISTICA_ID
+      AND APC_CORRECTO.ESTADO            = 'Activo'
+      AND ROWNUM                         = 1
+      ) AS ID_APC_CORRECTO
+    FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PROD
+    ON PROD.ID_PRODUCTO = SERVICIO.PRODUCTO_ID
+    INNER JOIN DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC
+    ON SPC.SERVICIO_ID = SERVICIO.ID_SERVICIO
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC.PRODUCTO_CARACTERISITICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_CARACTERISTICA CARACT
+    ON CARACT.ID_CARACTERISTICA            = APC.CARACTERISTICA_ID
+    WHERE PROD.NOMBRE_TECNICO              = 'IPSB'
+    AND SPC.ESTADO                         = 'Activo'
+    AND PROD.EMPRESA_COD                   = '10'
+    AND CARACT.DESCRIPCION_CARACTERISTICA IN ('TRASLADO', 'SCOPE', 'MIGRADO', 'INTERFACE ELEMENTO TELLION', 
+                                              'REGISTRO_UNITARIO', 'CATEGORIA 1', 'VELOCIDAD', 'NO_TRADICIONAL_FLUJO', 
+                                              'FACTURACION_UNICA', 'RENTA_MENSUAL')
+    AND PROD.ID_PRODUCTO                  <> APC.PRODUCTO_ID;
+BEGIN
+  SYS.DBMS_OUTPUT.PUT_LINE('***REGULARIZACIÓN DE SPC IP SMALL BUSINESS***');
+  IF Lc_GetRegulaSpcIpSb%ISOPEN THEN
+    CLOSE Lc_GetRegulaSpcIpSb;
+  END IF;
+  FOR I_GetRegulaSpcIpSb IN Lc_GetRegulaSpcIpSb
+  LOOP
+    UPDATE DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT
+    SET PRODUCTO_CARACTERISITICA_ID = I_GetRegulaSpcIpSb.ID_APC_CORRECTO,
+    FE_ULT_MOD = SYSDATE,
+    USR_ULT_MOD = 'regulaIdApcIpSb'
+    WHERE ID_SERVICIO_PROD_CARACT = I_GetRegulaSpcIpSb.ID_SERVICIO_PROD_CARACT;
+    SYS.DBMS_OUTPUT.PUT_LINE('ID_SERVICIO_PROD_CARACT: ' || I_GetRegulaSpcIpSb.ID_SERVICIO_PROD_CARACT ||
+                             ' ID_APC_ACTUAL: ' || I_GetRegulaSpcIpSb.ID_APC_ACTUAL || ' ID_APC_CORRECTO: ' || I_GetRegulaSpcIpSb.ID_APC_CORRECTO);
+  END LOOP;
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK || ' - ERROR_BACKTRACE: ' 
+                            || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/
+DECLARE
+  CURSOR Lc_GetRegulaSpcIpSb
+  IS
+    SELECT SPC.ID_SERVICIO_PROD_CARACT,
+      APC.ID_PRODUCTO_CARACTERISITICA AS ID_APC_ACTUAL,
+      (SELECT APC_CORRECTO.ID_PRODUCTO_CARACTERISITICA
+      FROM DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC_CORRECTO
+      WHERE APC_CORRECTO.PRODUCTO_ID     = MAPEO_INTERNET_IP.ID_PROD_INTERNET
+      AND APC_CORRECTO.CARACTERISTICA_ID = APC.CARACTERISTICA_ID
+      AND APC_CORRECTO.ESTADO            = 'Activo'
+      AND ROWNUM                         = 1
+      ) AS ID_APC_CORRECTO
+    FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PROD
+    ON PROD.ID_PRODUCTO = SERVICIO.PRODUCTO_ID
+    INNER JOIN
+      (SELECT PROD_PRINCIPAL.ID_PRODUCTO AS ID_PROD_INTERNET,
+        PROD_IP.ID_PRODUCTO              AS ID_PROD_IP
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB PARAM
+      INNER JOIN DB_GENERAL.ADMI_PARAMETRO_DET PARAM_DET
+      ON PARAM_DET.PARAMETRO_ID = PARAM.ID_PARAMETRO
+      INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PROD_PRINCIPAL
+      ON PROD_PRINCIPAL.ID_PRODUCTO = COALESCE(TO_NUMBER(REGEXP_SUBSTR(PARAM_DET.VALOR2,'^\d+')),0)
+      INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO PROD_IP
+      ON PROD_IP.ID_PRODUCTO                              = COALESCE(TO_NUMBER(REGEXP_SUBSTR(PARAM_DET.VALOR3,'^\d+')),0)
+      WHERE PARAM.NOMBRE_PARAMETRO                        = 'PARAMS_PRODS_TN_GPON'
+      AND PARAM_DET.VALOR1                                = 'PRODUCTOS_RELACIONADOS_INTERNET_IP'
+      AND PARAM.ESTADO                                    = 'Activo'
+      AND PARAM_DET.ESTADO                                = 'Activo'
+      AND PARAM_DET.EMPRESA_COD                           = '10'
+      ) MAPEO_INTERNET_IP ON MAPEO_INTERNET_IP.ID_PROD_IP = PROD.ID_PRODUCTO
+    INNER JOIN DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT SPC
+    ON SPC.SERVICIO_ID = SERVICIO.ID_SERVICIO
+    INNER JOIN DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA APC
+    ON APC.ID_PRODUCTO_CARACTERISITICA = SPC.PRODUCTO_CARACTERISITICA_ID
+    INNER JOIN DB_COMERCIAL.ADMI_CARACTERISTICA CARACT
+    ON CARACT.ID_CARACTERISTICA             = APC.CARACTERISTICA_ID
+    WHERE PROD.NOMBRE_TECNICO               = 'IPSB'
+    AND SPC.ESTADO                          = 'Activo'
+    AND PROD.EMPRESA_COD                    = '10'
+    AND CARACT.DESCRIPCION_CARACTERISTICA  IN ('MAC', 'PERFIL')
+    AND MAPEO_INTERNET_IP.ID_PROD_INTERNET <> APC.PRODUCTO_ID;
+BEGIN
+  SYS.DBMS_OUTPUT.PUT_LINE('***REGULARIZACIÓN DE SPC IP SMALL BUSINESS CON PRODUCTO SMALL BUSINESS***');
+  IF Lc_GetRegulaSpcIpSb%ISOPEN THEN
+    CLOSE Lc_GetRegulaSpcIpSb;
+  END IF;
+  FOR I_GetRegulaSpcIpSb IN Lc_GetRegulaSpcIpSb
+  LOOP
+    UPDATE DB_COMERCIAL.INFO_SERVICIO_PROD_CARACT
+    SET PRODUCTO_CARACTERISITICA_ID = I_GetRegulaSpcIpSb.ID_APC_CORRECTO,
+    FE_ULT_MOD = SYSDATE,
+    USR_ULT_MOD = 'regulaApcIpIsb'
+    WHERE ID_SERVICIO_PROD_CARACT = I_GetRegulaSpcIpSb.ID_SERVICIO_PROD_CARACT;
+    SYS.DBMS_OUTPUT.PUT_LINE('ID_SERVICIO_PROD_CARACT: ' || I_GetRegulaSpcIpSb.ID_SERVICIO_PROD_CARACT ||
+                             '  ID_APC_ACTUAL: ' || I_GetRegulaSpcIpSb.ID_APC_ACTUAL || 'ID_APC_CORRECTO: ' || I_GetRegulaSpcIpSb.ID_APC_CORRECTO);
+  END LOOP;
+  COMMIT;
+EXCEPTION
+WHEN OTHERS THEN
+  SYS.DBMS_OUTPUT.PUT_LINE('Error: '|| SQLCODE || ' - ERROR_STACK: ' || DBMS_UTILITY.FORMAT_ERROR_STACK || ' - ERROR_BACKTRACE: ' 
+                            || DBMS_UTILITY.FORMAT_ERROR_BACKTRACE);
+  ROLLBACK;
+END;
+/

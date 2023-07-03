@@ -1,0 +1,111 @@
+elementotablet:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:index" }
+
+elementotablet_grid:
+    pattern:  /grid
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:grid"}
+
+elementotablet_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:new" }
+
+elementotablet_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:create" }
+    requirements: { _method: POST }
+
+elementotablet_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:show" }
+    
+elementotablet_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:edit" }
+    
+elementotablet_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:update" }
+    requirements: { _method: POST }
+    
+elementotablet_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:deleteAjax" }
+    requirements: { _method: post }
+
+elementotablet_verificarImei:
+    pattern:  /verificarImei
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:verificarImei" }
+    requirements: { _method: post }
+
+elementotablet_verificarElementosAEliminar:
+    pattern:  /verificarElementosAEliminar
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:verificarElementosAEliminar" }
+    requirements: { _method: post }
+
+elementotablet_getModelosTablet:
+    pattern:  /getModelosTablet
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getModelosTablet"}
+    
+elementotablet_gridMonitoreo:
+    pattern:  /gridMonitoreo
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:gridMonitoreo" }
+    
+elementotablet_buscarTablets:
+    pattern:  /buscarTablets
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:buscarTablets" }
+    requirements: { _method: post }
+    
+elementotablet_getZonas:
+    pattern:  /getZonas
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getZonas" }
+    
+elementotablet_getDepartamentos:
+    pattern:  /getDepartamentos
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getDepartamentos" }
+    
+elementotablet_getCantones:
+    pattern:  /getCantones
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getCantones" }
+    
+elementotablet_getEstadosMonitoreo:
+    pattern:  /getEstadosMonitoreo
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getEstadosMonitoreo" }
+    
+elementotablet_getLideresCuadrilla:
+    pattern:  /getLideresCuadrilla
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getLideresCuadrilla" }
+    
+elementotablet_reactivar:
+    pattern:  /reactivar
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:reactivar" }
+    requirements: { _method: post }
+    
+elementotablet_inactivar:
+    pattern:  /inactivar
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:inactivar" }
+    requirements: { _method: post }
+    
+elementotablet_getMotivos:
+    pattern:  /getMotivos
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getMotivos" }
+    
+elementotablet_getResponsables:
+    pattern:  /getResponsables
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getResponsables" }
+    
+elementotablet_generarReporteGeneral:
+    pattern:  /generarReporteGeneral
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:generarReporteGeneral" }
+    requirements: { _method: post }
+    
+elementotablet_getInfoPerResponsable:
+    pattern:  /getInfoPerResponsable
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:getInfoPerResponsable" }
+    requirements: { _method: post }
+    
+elementotablet_exportarResumenesMonitoreo:
+    pattern:  /exportarResumenesMonitoreo
+    defaults: { _controller: "tecnicoBundle:InfoElementoTablet:exportarResumenesMonitoreo" }
+    requirements: { _method: post }
+    

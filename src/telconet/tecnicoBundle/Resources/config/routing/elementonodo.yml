@@ -1,0 +1,248 @@
+elementonodo:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:indexNodo" }
+    
+elementonodo_getEncontradosNodo:
+    pattern:  /getEncontradosNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:getEncontradosNodo" }
+
+elementonodo_migracionNodo:
+    pattern:  /migracionNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:migracionNodo"}
+
+elementonodo_motivosEquipos:
+    pattern:  /motivosEquipos
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:motivosEquipos"}
+
+elementonodo_crearSolicitudElementosNodo:
+    pattern:  /crearSolicitudElementosNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:crearSolicitudElementosNodo"}
+
+elementonodo_obtenerSolicitudesElementosNodo:
+    pattern:  /obtenerSolicitudesElementosNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:obtenerSolicitudesElementosNodo"}
+
+elementonodo_cambiarElementoNodo:
+    pattern:  /cambiarElementoNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:cambiarElementoNodo"}
+
+elementonodo_newNodo:
+    pattern:  /newNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:newNodo" }
+
+elementonodo_createNodo:
+    pattern: /createNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:createNodo" }
+    requirements: { _method: POST }
+
+elementonodo_buscarInterfaces:
+    pattern:  /buscarInterfaces
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:buscarInterfaces" }
+    
+elementonodo_showNodo:
+    pattern:  /{id}/showNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:showNodo" }
+    
+elementonodo_ajaxGetMotivos:
+    pattern:  /ajaxGetMotivos
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxGetMotivos" }   
+    
+elementonodo_ajaxGetClaseNodo:
+    pattern:  /ajaxGetClaseNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxGetClaseNodo" }       
+    
+elementonodo_editNodo:
+    pattern:  /{id}/editNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:editNodo" }
+
+elementonodo_updateNodo:
+    pattern:  /{id}/updateNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:updateNodo" }
+    requirements: { _method: POST }
+    
+elementonodo_ajaxUpdateNombreNodo:
+    pattern:  /ajaxUpdateNombreNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxUpdateNombreNodo" }
+    requirements: { _method: POST }  
+    
+elementonodo_ajaxUpdateMedidor:
+    pattern:  /ajaxUpdateMedidor
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxUpdateMedidor" }
+    requirements: { _method: POST }     
+    
+elementonodo_ajaxCargarDatosNodo:
+    pattern:  /ajaxCargarDatosNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxCargarDatosNodo" }
+    requirements: { _method: POST }
+    
+elementonodo_deleteNodo:
+    pattern:  /{id}/deleteNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:deleteNodo" }
+    
+elementonodo_ajaxGetInfoEspacioNodo:
+    pattern:  /ajaxGetInfoEspacioNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxGetInfoEspacioNodo" } 
+
+elementonodo_ajaxDeleteEspacioFisico:
+    pattern:  /ajaxDeleteEspacioFisico
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxDeleteEspacioFisico" } 
+    
+elementonodo_ajaxGetContactoNodo:
+    pattern:  /ajaxGetContactoNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxGetContactoNodo" }   
+    
+elementonodo_ajaxGetFormaContactoPorContactoNodo:
+    pattern:  /ajaxGetFormaContactoPorContactoNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxGetFormaContactoPorContactoNodo" } 
+    
+elementonodo_ajaxShowImagenesNodo:
+    pattern:  /ajaxShowImagenesNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxShowImagenesNodo" }    
+    
+elementonodo_ajaxGetTags:
+    pattern:  /ajaxGetTags
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxGetTags" }
+    
+elementonodo_ajaxFileUploadNodo:
+    pattern:  /ajaxFileUploadNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxFileUploadNodo" }
+    
+elementonodo_ajaxEliminarImagenNodo:
+    pattern:  /ajaxEliminarImagenNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxEliminarImagenNodo" } 
+    
+elementonodo_ajaxEditarImagenNodo:
+    pattern:  /ajaxEditarImagenNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxEditarImagenNodo" }    
+    
+elementonodo_ajaxGetEstadoSolicitudNodo:
+    pattern:  /ajaxGetEstadoSolicitudNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxGetEstadoSolicitudNodo" } 
+    
+elementonodo_ajaxCargarElementosContenidos:
+    pattern:  /ajaxCargarElementosContenidos
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxCargarElementosContenidos" } 
+    
+elementonodo_ajaxCrearTareaNodo:
+    pattern:  /ajaxCrearTareaNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxCrearTareaNodo" }    
+    
+elementonodo_ajaxVerTareaNodo:
+    pattern:  /ajaxVerTareaNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxVerTareaNodo" } 
+    
+elementonodo_exportarNodos:
+    pattern:  /exportarNodos
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:exportarNodos"}    
+    
+elementonodo_ingresoNuevoElemento:
+    pattern:  /ingresoNuevoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ingresoNuevoElemento"}        
+    
+elementonodo_ajaxDeleteNodo:
+    pattern:  /ajaxDeleteNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxDeleteNodo" }
+    requirements: { _method: post }
+    
+elementonodo_ingresoMasivoElemento:
+    pattern:  /ingresoMasivoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ingresoMasivoElemento"}           
+    
+elementonodo_ajaxDeleteElemento:
+    pattern:  /ajaxDeleteElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxDeleteElemento" }
+    requirements: { _method: post }    
+    
+elementonodo_ajaxActualizarFormaContactoNodo:
+    pattern:  /ajaxActualizarFormaContactoNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxActualizarFormaContactoNodo" }
+    requirements: { _method: post }   
+    
+elementonodo_ajaxActualizarInformacionContactoNodo:
+    pattern:  /ajaxActualizarInformacionContactoNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxActualizarInformacionContactoNodo" }
+    requirements: { _method: post }     
+    
+elementonodo_ajaxGetPersonaContactoRoles:
+    pattern:  /ajaxGetPersonaContactoRoles
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxGetPersonaContactoRoles" }  
+    
+elementonodo_ajaxCargarElementosContenedor:
+    pattern:  /ajaxCargarElementosContenedor
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ajaxCargarElementosContenedor" }    
+
+elementonodo_realizarMantenimiento:
+    pattern:  /realizarMantenimiento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:realizarMantenimiento" }
+    requirements: { _method: post }
+
+elementonodo_ingresaPeriodoMantenimiento:
+    pattern:  /ingresaInfoMantenimiento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:ingresaInfoMantenimiento" }
+    requirements: { _method: post }
+
+elementonodo_getCicloMantenimientoNodo:
+    pattern:  /getCicloMantenimientoNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:getCicloMantenimientoNodo" }
+
+elementonodo_getElementoSerieAutomatica:
+    pattern:  /getElementoSerieAutomatica
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:getElementoSerieAutomatica" }
+
+elementonodo_validaElementoSerie:
+    pattern:  /validaElementoSerie
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:validaElementoSerie" }
+
+elementonodo_newBitacora:
+    pattern:  /bitacora/newBitacora
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:newBitacora" }
+
+elementonodo_createBitacora:
+    pattern: /bitacora/createBitacora
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:createBitacora" }
+    requirements: { _method: POST }
+
+elementonodo_editBitacora:
+    pattern:  /bitacora/{intId}/editBitacora
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:editBitacora" }
+
+elementonodo_updateBitacora:
+    pattern:  /bitacora/{intId}/updateBitacora
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:updateBitacora" }
+    requirements: { _method: POST }
+
+elementonodo_showBitacora:
+    pattern:  /bitacora/{intId}/showBitacora
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:showBitacora" }
+
+elementonodo_getBitacoraAccesoNodo:
+    pattern:  /bitacora/getAccesosNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:getBitacorasAccesoNodo" }
+
+elementonodo_bitacora_listTarea:
+    pattern:  /bitacora/getTareas
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:getTarea" }
+
+elementonodo_bitacora_listTareaDetalle:
+    pattern:  /bitacora/getTareaDetalle
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:getTareaDetalle" }
+
+elementonodo_bitacora_listElementosBitacora:
+    pattern:  /bitacora/getElementosBitacora
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:getElementosBitacora" }
+
+elementonodo_listBitacora:
+    pattern:  /bitacora
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:indexBitacora" }
+
+elementonodo_editarNombreElemento:
+    pattern:  /editarNombreElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:editarNombreElemento"}      
+
+elementonodo_validarSeriePreInstlacion:
+    pattern:  /validarSeriePreInstlacion
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:validarSeriePreInstlacion"}   
+
+elementonodo_validarTipoElemento:
+    pattern:  /validarTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodo:validarTipoElemento"}

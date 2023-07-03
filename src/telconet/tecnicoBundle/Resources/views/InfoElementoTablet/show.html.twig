@@ -1,0 +1,158 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando 
+        {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label
+        {
+            margin: 0px !important;
+            width: 130px !important;
+            text-align: right!important;
+            margin-right: 10px!important;
+            padding-top: 8px!important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Tablet</h1>
+</div>
+<div class="body_content">
+    <table class="formulario" style="width: 90%" align="center">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="10%"><b>Empresa:</b></td>
+                <td width="30%">{{ empresa }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <td width="11%"><b>Estado:</b></td>
+                <td>{{ tablet.estado }}</td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="10%"><b>Modelo:</b></td>
+                <td width="30%">{{ tablet.modeloElementoId.nombreModeloElemento }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <td width="11%"><b>IMEI:</b></td>
+                <td width="30%">{{ tablet.nombreElemento }}</td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="10%"><b>Serie F&iacute;sica:</b></td>
+                <td width="30%">{{ tablet.serieFisica }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <td width="11%"><b>PUBLISH ID:</b></td>
+                <td width="30%">{{ tablet.serieLogica }}</td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="10%"><b>Regi&oacute;n de Responsable:</b></td>
+                <td width="30%">{{ strRegionResponsableTablet }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <td width="11%"><b>Ciudad de Responsable:</b></td>
+                <td width="30%">{{ strCantonResponsableTablet }}</td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="10%"><b>Departamento de Responsable:</b></td>
+                <td width="30%">{{ strDepartamentoResponsableTablet }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <td width="11%"><b>RESPONSABLE:</b></td>
+                <td width="30%">{{ strResponsable }}</td>
+
+                <td width="8%">&nbsp;</td>
+                <td width="11%"><b></b></td>
+                <td width="30%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>  
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('elementotablet') }}">Ver listado de Tablets</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ tablet.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ tablet.feCreacion | date("d M Y") }}</td>
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ tablet.feCreacion | date("H:i:s") }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        {% if is_granted('ROLE_313-2') %}
+            <li>
+                <a class="button-nuevo-registro" href="{{ path('elementotablet_new') }}">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Nueva Tablet
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            &nbsp;
+        </li>
+        {% if is_granted('ROLE_313-4') %}
+            <li>
+                <a class="button-editar" href="{{ path('elementotablet_edit', { 'id': tablet.id }) }}">
+                    &nbsp;Editar Tablet
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}
+
+
+{% block javascripts_footer%}
+    <script> </script>
+{% endblock javascripts_footer%}

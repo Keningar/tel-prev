@@ -1,0 +1,258 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var urlAjaxGrid = '{{path('vpn_buscar_import_grid')}}';
+        var sm = new Ext.selection.CheckboxModel({
+            mode: 'SINGLE'
+        });
+        Ext.onReady(function () {
+            store = new Ext.data.Store({
+                autoLoad: true,
+                pageSize: 10,
+                total: 'total',
+                proxy: {
+                    type: 'ajax',
+                    url: urlAjaxGrid,
+                    reader: {
+                        type: 'json',
+                        totalProperty: 'total',
+                        root: 'data'
+                    },
+                    extraParams: {
+                        nombre: '',
+                        flag: 'cliente'
+                    },
+                    actionMethods: {
+                        create: 'POST', read: 'POST', update: 'POST', destroy: 'POST'
+                    },
+                },
+                fields:
+                    [
+                        {name: 'id', mapping: 'id'},
+                        {name: 'strTipoRed', mapping: 'strTipoRed'},
+                        {name: 'vpn', mapping: 'nombre_vpn'},
+                        {name: 'vrf', mapping: 'vrf'},
+                        {name: 'rd_id', mapping: 'rd_id'},
+                        {name: 'fe_creacion', mapping: 'fe_creacion'},
+                        {name: 'usr_creacion', mapping: 'usr_creacion'},
+                        {name: 'cliente', mapping: 'cliente'},
+                    ],
+            });
+
+            grid = Ext.create('Ext.grid.Panel', {
+                width: 1000,
+                height: 200,
+                frame: true,
+                title: 'VPNs a Importar',
+                selModel: sm,
+                store: store,
+                multiSelect: false,
+                loadMask: true,
+                viewConfig: {enableTextSelection: true},
+                columns: [
+                    {
+                        id: 'id',
+                        header: 'ID',
+                        dataIndex: 'id',
+                        hidden: true,
+                    },
+                    {
+                        header: 'Cliente',
+                        dataIndex: 'cliente',
+                        sortable: true,
+                        width: 200,
+                    },
+                    {
+                        header: 'TIPO RED',
+                        dataIndex: 'strTipoRed',
+                        sortable: true,
+                        width: 150,
+                    },
+                    {
+                        header: 'VPN',
+                        dataIndex: 'vpn',
+                        sortable: true,
+                        width: 150,
+                    },
+                    {
+                        header: 'VRF',
+                        dataIndex: 'vrf',
+                        sortable: true,
+                        width: 150,
+                    },
+                    {
+                        header: 'RD ID',
+                        dataIndex: 'rd_id',
+                        sortable: true
+                    },
+                    {
+                        header: 'USR CREACION',
+                        dataIndex: 'usr_creacion',
+                        sortable: true,
+                        width: 120,
+                    },
+                    {
+                        header: 'FECHA CREACION',
+                        dataIndex: 'fe_creacion',
+                        sortable: true,
+                        width: 120,
+                    },
+                ],
+                bbar: Ext.create('Ext.PagingToolbar', {
+                    store: store,
+                    displayInfo: true,
+                    displayMsg: 'Mostrando {0} - {1} de {2}',
+                    emptyMsg: "No hay datos que mostrar."
+                }),
+                renderTo: 'grid'
+            });
+
+            var filterPanel = Ext.create('Ext.panel.Panel', {
+                bodyPadding: 7,
+                border: false,
+                buttonAlign: 'center',
+                layout: {
+                    type: 'table',
+                    columns: 7,
+                    align: 'stretch'
+                },
+                bodyStyle: {
+                    background: '#fff'
+                },
+                collapsible: false,
+                collapsed: false,
+                width: 600,
+                buttons: [
+                    {
+                        text: 'Buscar',
+                        iconCls: "icon_search",
+                        handler: function () {
+                            buscar();
+                        }
+                    },
+                    {
+                        text: 'Limpiar',
+                        iconCls: "icon_limpiar",
+                        handler: function () {
+                            limpiar();
+                        }
+                    }
+
+                ],
+                items: [
+                    {
+                        xtype: 'textfield',
+                        id: 'txtRazonSocial',
+                        fieldLabel: 'Cliente',
+                        value: '',
+                        width: '30%'
+                    },
+                    {
+                        xtype: 'textfield',
+                        id: 'txtNombre',
+                        fieldLabel: 'Nombre VPN',
+                        value: '',
+                        width: '30%'
+                    },
+                ],
+                renderTo: 'filtro'
+            });
+
+        });
+
+        function buscar() {
+            store.getProxy().extraParams.cliente = Ext.getCmp('txtRazonSocial').value;
+            store.getProxy().extraParams.nombre = Ext.getCmp('txtNombre').value;
+            store.load();
+        }
+
+        function limpiar() {
+            Ext.getCmp('txtRazonSocial').value = "";
+            Ext.getCmp('txtRazonSocial').setRawValue("");
+            Ext.getCmp('txtNombre').value = "";
+            Ext.getCmp('txtNombre').setRawValue("");
+            store.load({params: {
+                    cliente: Ext.getCmp('txtRazonSocial').value,
+                    nombre: Ext.getCmp('txtNombre').value
+                }});
+        }
+
+        function importarVpn() {
+            if (sm.getSelection().length > 0)
+            {
+                var idVpn = 0;
+                for (var i = 0; i < sm.getSelection().length; ++i)
+                {
+                     idVpn =  sm.getSelection()[i].data.id;
+                }
+                document.getElementById("idVpn").setAttribute("value",idVpn);
+                document.forms[0].submit();
+                Ext.MessageBox.wait('Importando datos...');
+            } else
+            {
+                alert('Seleccione por lo menos un registro de la lista');
+            }
+        }
+    </script>
+{% endblock %}
+
+{% block contenido_central %}
+    {% if app.session.get('prefijoEmpresa') == "TN" %}
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="errormessage">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% set clienteSession = app.session.get('cliente') %}
+
+        {% if clienteSession %}
+            {% if clienteSession.estado == "Activo" %}
+                <div id="titulo_content">
+                    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+                    <h1>Importar Vpn</h1>
+                </div>
+
+                <div class="body_content">
+                    <form action="{{ path('vpn_import_create') }}" method="post" class='formulario' onSubmit="Ext.MessageBox.wait('Importando datos...');" >
+                        <input id="idVpn" type="hidden" name="idVpn" />
+                        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                            <tr>
+                                <td><div id='filtro'></div></td>
+                            </tr>   
+                            <tr>
+                                <td><br/><br/></td>
+                            </tr>
+                            <tr>
+                                <td><div id="grid"></div></td>
+                            </tr>
+                            <tr>
+                                <td><br/><br/></td>
+                            </tr>
+                        </table>
+                        {% if is_granted("ROLE_319-3297") %}
+                            <div class="buttons">
+                                <p>
+                                    <button type='button' class="button-crud" onclick="importarVpn();">Guardar</button>
+                                    <span class="height20px">
+                                        &oacute;&nbsp;
+                                        <a class="cancel-crud" href="{{ path('vpn') }}">Cancelar</a>
+                                    </span>
+                                </p>
+                            </div>	
+                        {% endif %}    
+                    </form>
+                </div>
+            {% else %}
+                <div class="errormessage">Opcion válida sólo para Clientes Activos</div>
+            {% endif %}
+        {% else %}
+            <div class="errormessage">Debe seleccionar cliente para poder importar una VPN</div>
+        {% endif %}
+    {% else %}
+        <div class="errormessage">Opción válida sólo para la Empresa Telconet</div>
+    {% endif %}
+{% endblock contenido_central %}

@@ -1,0 +1,2213 @@
+{% extends "::layout_completo.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    .x-grid-row-principal
+    {
+        color: green;
+    }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/showServicio.js?15') }}"></script>
+    <script>    
+    
+        var verConfiguracionOlt = '{{path('servicio_verConfiguracionOlt')}}';
+        var verIps              = '{{path('servicio_verIps')}}';
+        var verConcentradorExtr = '{{path('servicio_verConcentradorExtremosServicio')}}';
+        var prefijoEmpresa      = '{{ prefijoEmpresa }}';
+        var booleanTipoRedGpon  = '{{ booleanTipoRedGpon }}';
+        var ultimaMilla         = "{{ tipoMedio!=null ? tipoMedio.getNombreTipoMedio : '' }}";
+        var esDataCenter        = '{{ esDataCenter }}';
+        var booleanSegVehiculo  = '{{ booleanSegVehiculo }}';
+        var booleanSafeEntry    = '{{ booleanSafeEntry }}';
+        
+    </script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Informacion Tecnica Completa</h1>
+</div>
+
+<!-- INICIALIZACION DE VARIABLES -->
+{% if esDataCenter == 'SI' %}
+    {% set objModeloElemento = null %} 
+    {% set objMarcaElemento = null %}
+    {% set objElemento       = elemento %} <!-- Se toma el valor directo del elemento enviado como parametro -->
+    {% if(objElemento!=null) %}
+        {% set objModeloElemento = objElemento.getModeloElementoId %}
+        {% set objMarcaElemento  = objModeloElemento.getMarcaElementoId %}
+    {% endif %}
+{% else %}
+    {% if(interfaceElemento!=null) %}
+        {% set objElemento       = interfaceElemento.getElementoId %}
+        {% set objModeloElemento = objElemento.getModeloElementoId %}
+        {% set objMarcaElemento  = objModeloElemento.getMarcaElementoId %}
+    {% else %}
+        {% set objElemento       = null %}
+        {% set objModeloElemento = null %}
+        {% set objMarcaElemento = null %}
+    {% endif %}
+{% endif %}
+
+{% if(bufferHilo!=null) %}
+    {% set objBuffer         = bufferHilo.getBufferId %}
+    {% set objHilo           = bufferHilo.getHiloId %}
+{% endif %}
+
+{% if(elementoCliente) %}
+    {% set objModeloElementoCliente = elementoCliente.getModeloElementoId %}
+{% else %}
+    {% set objModeloElementoCliente = null %}
+{% endif %}
+
+{% if(elementoClienteWifi!=null) %}
+    {% set obtModeloClienteWifi     = elementoClienteWifi.getModeloElementoId %}
+{% endif %}
+
+{% if(elementoRoseta) %}
+    {% set objModeloElementoRoseta = elementoRoseta.getModeloElementoId %}
+{% else %}
+    {% set objModeloElementoRoseta = null %}
+{% endif %}
+
+{% if(elementoTransceiver) %}
+    {% set objModeloElementoTransceiver = elementoTransceiver.getModeloElementoId %}
+{% else %}
+    {% set objModeloElementoTransceiver = null %}
+{% endif %}
+
+{% if(elementoCpe) %}
+    {% set objModeloElementoCpe = elementoCpe.getModeloElementoId %}
+{% else %}
+    {% set objModeloElementoCpe = null %}
+{% endif %}
+
+{% if(elementoOnt) %}
+    {% set objModeloElementoOnt = elementoOnt.getModeloElementoId %}
+{% else %}
+    {% set objModeloElementoOnt = null %}
+{% endif %}
+    
+{% set strNombreTipoElementoOnt = "Ont" %}
+{% if(objModeloElementoOnt and objModeloElementoOnt.getTipoElementoId.getNombreTipoElemento == "SWITCH") %}
+    {% set strNombreTipoElementoOnt = "Switch" %}
+{% endif %}
+<div class="body_content">
+    <div class="secHead">Datos de Backbone</div>
+    <table id="tablaBackbone" class="formulario">
+        <tbody>
+            <!-- 1 LINEA -->
+            <tr>
+                {% if (booleanSegVehiculo == false) and (booleanSafeEntry == false) %}
+                    <!--NOMBRE ELEMENTO-->
+                    <td width="5%">&nbsp;</td>
+                    <th width="10%"> <b>Nombre Elemento:</b></th>
+                    {% if(objElemento!=null) %}
+                    <td width="25%">{{ objElemento.getNombreElemento }}{%if esElementoAdicional == 'SI'%}
+                        <b>&nbsp;{{ nombreElementoAdicional }}</b>{%endif%}</td>        
+                    {% else %}
+                        <td width="25%">S/N</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                {% else %}
+                    <td style="width:5%;">&nbsp;</td>
+                    <th style="width:10%;font-weight:bold;">Login Auxiliar:</th>
+                    {% if(servicio.id!=null) %}
+                        <td style="width:25%;">{{ servicio.getLoginAux}}</td>
+                    {% else %}
+                        <td style="width:25%;">N/A</td>
+                    {% endif %}
+                    <td style="width:1%;">&nbsp;</td>
+                {% endif %}
+                
+                <!--LOGIN-->
+                <td width="5%">&nbsp;</td>
+                <th width="10%"><b>Login:</b></th>
+                {% if(servicio.id!=null) %}
+                    <td width="25%">{{ servicio.getPuntoId.getLogin}}</td>
+                {% else %}
+                    <td width="25%">N/A</td>
+                {% endif %}
+                <td width="1%">&nbsp;</td>
+                
+                <!--TRAFFIC TABLE / VCI-->
+                <td width="5%">&nbsp;</td>
+                {% if(prefijoEmpresa=="TN") %}
+                    <th width="10%"><b>Producto:</b></th>
+                    {% if(producto!=null) %}
+                    <td width="25%">{{ producto.descripcionProducto}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                {% endif %}
+                {% if(objMarcaElemento!=null) %}
+                    <!-- SE AGREGÓ VALIDACIÓN POR EL TIPO DE ELEMENTO PARA QUE SE VISUALICE SOLO SI ES OLT-->
+                    {% if(objMarcaElemento.getNombreMarcaElemento=="HUAWEI" and objModeloElemento.getTipoElementoId.getNombreTipoElemento== "OLT" and booleanTipoRedGpon == false) %}
+                        <th width="10%"><b>Traffic-Table:</b></th>
+                        {% if(trafficTable!=null) %}
+                            <td width="25%">{{ trafficTable.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% elseif(objMarcaElemento.getNombreMarcaElemento=="ZTE" and booleanTipoRedGpon == false) %}
+                        <th width="10%"><b>Vlan:</b></th>
+                        {% if(vlan!=null) %}
+                            <td width="25%">{{ vlan }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if(tipoMedio!=null) %}
+                    {% if(tipoMedio.getNombreTipoMedio=="Cobre" or tipoMedio.getNombreTipoMedio=="Radio") %}
+                        <th width="10%"><b>Vci:</b></th>
+                        {% if(vci!=null) %}
+                        <td width="25%">{{ vci.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+
+            {% if(booleanSegVehiculo == true) %}
+            <tr>
+                <td style="width:5%;">&nbsp;</td>
+                <th style="width:10%;font-weight:bold;">Cooperativa:</th>
+                {% if(cooperativa!=null) %}
+                    <td style="width:25%;">{{ cooperativa}}</td>
+                {% else %}
+                    <td style="width:25%;">N/A</td>
+                {% endif %}
+                <td style="width:1%;">&nbsp;</td>
+
+                <td style="width:5%;">&nbsp;</td>
+                <th style="width:10%;font-weight:bold;">Tipo Transporte:</th>
+                {% if(tipoTransporte!=null) %}
+                    <td style="width:25%;">{{tipoTransporte}}</td>
+                {% else %}
+                    <td style="width:25%;">N/A</td>
+                {% endif %}
+                <td style="width:1%;">&nbsp;</td>
+
+                <td style="width:5%;">&nbsp;</td>
+                <th style="width:10%;font-weight:bold;">Placa:</th>
+                {% if(placa!=null) %}
+                <td style="width:25%;">{{ placa}}</td>
+                {% else %}
+                <td style="width:25%;">N/A</td>
+                {% endif %}
+            </tr>
+            <tr><td style="width:1%;">&nbsp;</td></tr>
+            {% endif %}
+
+            {% if (booleanSegVehiculo == false) and (booleanSafeEntry == false) %}
+            
+                <!-- 2 LINEA -->
+                <tr>
+                    <!--MODELO ELEMENTO-->
+                    <td width="5%">&nbsp;</td>
+                    <th width="10%"><b>Modelo Elemento:</b></th>        
+                    {% if(objModeloElemento!=null) %}
+                        <td width="25%">{{ objModeloElemento.getNombreModeloElemento }}</td>
+                    {% else %}
+                        <td width="25%">S/N</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!--INDICE CLIENTE / ONT ID / CAPACIDAD 1-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(objMarcaElemento!=null) %}
+                        {% if(objMarcaElemento.getNombreMarcaElemento=="TELLION" and booleanTipoRedGpon == false) %}
+                            <th width="10%"><b>Indice Cliente:</b></th>
+                            {% if(indiceCliente!=null) %}
+                            <td width="25%">{{ indiceCliente.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        <!-- SE AGREGÓ VALIDACIÓN POR EL TIPO DE ELEMENTO PARA QUE SE VISUALICE SOLO SI ES OLT-->    
+                        {% elseif((objMarcaElemento.getNombreMarcaElemento=="HUAWEI" or objMarcaElemento.getNombreMarcaElemento=="ZTE") 
+                               and objModeloElemento.getTipoElementoId.getNombreTipoElemento== "OLT" and booleanTipoRedGpon == false) %}
+                            <th width="10%"><b>Ont Id:</b></th>
+                            {% if(indiceCliente!=null) %}
+                            <td width="25%">{{ indiceCliente.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% else %}
+                            <th width="10%"><b>Capacidad 1:</b></th>
+                            {% if(capacidad1!='') %}
+                            <td width="25%">{{ capacidad1 }}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                        <th width="10%"><b>Capacidad 1:</b></th>
+                        {% if(capacidad1!='') %}
+                        <td width="25%">{{ capacidad1 }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!--VLAN-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(objMarcaElemento!=null) %}
+                        <!-- SE AGREGÓ VALIDACIÓN POR EL TIPO DE ELEMENTO PARA QUE SE VISUALICE SOLO SI ES OLT-->
+                        {% if(objMarcaElemento.getNombreMarcaElemento=="HUAWEI" and objModeloElemento.getTipoElementoId.getNombreTipoElemento== "OLT" and booleanTipoRedGpon == false) %}
+                            <th width="10%"><b>Vlan:</b></th>
+                            {% if(vlan!=null) %}
+                                <td width="25%">{{ vlan }}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% elseif(objMarcaElemento.getNombreMarcaElemento=="ZTE" and booleanTipoRedGpon == false) %}
+                            <th width="10%"> <b>Aprovisionamiento Ip Elemento:</b></th>
+                            <td width="25%">{{ aprovisionamientoIp }} </td>        
+                        {% endif %}
+                    {% endif %}
+                    {% if(prefijoEmpresa=="TN") %}
+                        {% if(producto!=null and producto.nombreTecnico == 'SAFECITYWIFI') %}
+                        <th width="10%"  style="width: 15%; font-weight: bold; ">Vlan SSID:</th>
+                        {% else %}
+                        <th width="10%"  style="width: 15%; font-weight: bold; ">Vlan:</th>
+                        {% endif %}
+                        {% if(vlan!=null) %}
+                            <td width="25%">{{ vlan }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+
+                <!-- 3 LINEA -->
+                <tr>
+                    <!--MARCA ELEMENTO-->
+                    <td width="5%">&nbsp;</td>
+                    <th width="10%"><b>Marca Elemento:</b></th>        
+                    {% if(objModeloElemento!=null) %}
+                        <td width="25%">{{ objModeloElemento.getMarcaElementoId.getNombreMarcaElemento }}</td>
+                    {% else %}
+                        <td width="25%">S/N</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!--PERFIL / LINE PROFILE NAME / CAPACIDAD2-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(objMarcaElemento!=null) %}
+                        {% if(objMarcaElemento.getNombreMarcaElemento=="TELLION" and booleanTipoRedGpon == false) %}
+                            <th width="10%"><b>Perfil:</b></th>
+                            {% if(perfilCliente!=null) %}
+                                <td width="25%">{{ perfilCliente.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        <!-- SE AGREGÓ VALIDACIÓN POR EL TIPO DE ELEMENTO PARA QUE SE VISUALICE SOLO SI ES OLT-->    
+                        {% elseif((objMarcaElemento.getNombreMarcaElemento=="HUAWEI" or objMarcaElemento.getNombreMarcaElemento=="ZTE")
+                                and objModeloElemento.getTipoElementoId.getNombreTipoElemento== "OLT" and booleanTipoRedGpon == false) %}
+                            <th width="10%"><b>Line Profile:</b></th>
+                            {% if(lineProfileName!=null) %}
+                            <td width="25%">{{ lineProfileName.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% else %}
+                            <th width="10%"><b>Capacidad 2:</b></th>
+                            {% if(capacidad2!='') %}
+                            <td width="25%">{{ capacidad2 }}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% endif %}
+                    {% else %}
+                        <th width="10%"><b>Capacidad 2:</b></th>
+                        {% if(capacidad2!='') %}
+                        <td width="25%">{{ capacidad2 }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!-- APROVISIONAMIENTO IP POR MARCA-->
+                    {% if(objMarcaElemento!=null) %}
+                        <!-- SE AGREGÓ VALIDACIÓN POR EL TIPO DE ELEMENTO PARA QUE SE VISUALICE SOLO SI ES OLT-->
+                        {% if(objMarcaElemento.getNombreMarcaElemento=="HUAWEI" and objModeloElemento.getTipoElementoId.getNombreTipoElemento== "OLT" and booleanTipoRedGpon == false) %}
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"> <b>Aprovisionamiento Ip Elemento:</b></th>
+                            <td width="25%">{{ aprovisionamientoIp }} </td>        
+                            <td width="1%">&nbsp;</td>
+                        {% elseif(prefijoEmpresa=="MD" and objMarcaElemento.getNombreMarcaElemento=="ZTE" and booleanTipoRedGpon == false)  %}
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"><b>Capacidad 1:</b></th>
+                            {% if(capacidad1!='') %}
+                            <td width="25%">{{ capacidad1 }}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                            <td width="1%">&nbsp;</td>
+                        {% endif %}
+                        {% if(objMarcaElemento.getNombreMarcaElemento=="TELLION" and booleanTipoRedGpon == false) %}
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"> <b>Aprovisionamiento Ip Elemento:</b></th>
+                            <td width="25%">{{ aprovisionamientoIp }} </td>        
+                            <td width="1%">&nbsp;</td>
+                        {% endif %}
+                    {% endif %}
+
+                    <!--VRF-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN") %}
+                         {% if(producto!=null and producto.nombreTecnico == 'SAFECITYWIFI') %}
+                        <th width="10%"  style="width: 15%; font-weight: bold; ">Vrf SSID:</th>
+                        {% else %}
+                        <th width="10%"  style="width: 15%; font-weight: bold; ">Vrf:</th>
+                        {% endif %}
+                        {% if(vrf!='') %}
+                        <td width="25%">{{ vrf }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+
+                <!-- 4 LINEA -->
+                <tr>
+                    <!--IP ELEMENTO-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN" and booleanTipoRedGpon == false) %}
+                        <th width="10%">&nbsp;</th>        
+                        <td width="25%">&nbsp;</td>
+                    {% else %}
+                        <th width="10%"><b>Ip</b></th>        
+                        {% if(ip!=null) %}
+                            <td width="25%">{{ ip.getIp }}</td>
+                        {% else %}
+                            <td width="25%">S/N</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>                
+
+                    <!--SERVICE PORT ID / CAPACIDAD-PROM1 / PROTOCOLO_ENRUTAMIENTO-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(objMarcaElemento!=null) %}
+                        <!-- SE AGREGÓ VALIDACIÓN POR EL TIPO DE ELEMENTO PARA QUE SE VISUALICE SOLO SI ES OLT-->
+                        {% if((objMarcaElemento.getNombreMarcaElemento=="HUAWEI" or objMarcaElemento.getNombreMarcaElemento=="ZTE")
+                            and objModeloElemento.getTipoElementoId.getNombreTipoElemento== "OLT" and booleanTipoRedGpon == false) %}
+                            <th width="10%"><b>Service-Port-Id:</b></th>
+                            {% if(spid!=null) %}
+                            <td width="25%">{{ spid.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</std>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    {% if(tipoMedio!=null) %}
+                        {% if((tipoMedio.getNombreTipoMedio=="Cobre" or tipoMedio.getNombreTipoMedio=="Radio")and (prefijoEmpresa!="TN")) %}
+                            <th width="10%"><b>Capacidad-Prom1:</b></th>
+                            {% if(capacidadProm1!=null) %}
+                            <td width="25%">{{ capacidadProm1.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% elseif(prefijoEmpresa=="MD" and objMarcaElemento.getNombreMarcaElemento=="ZTE" and booleanTipoRedGpon == false)  %}
+                            <td width="5%">&nbsp;</td>
+                            <td width="1%">&nbsp;</td>
+                            <th width="10%"><b>Capacidad 2:</b></th>
+                            {% if(capacidad2!='') %}
+                            <td width="25%">{{ capacidad2 }}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>Protocolo Enrutamiento:</b></th>
+                        {% if(protocoloEnrutamiento!=null) %}
+                        <td width="25%">{{ protocoloEnrutamiento.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!--AS PRIVADO-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>AS Privado:</b></th>
+                        {% if(asPrivado!=null) %}
+                        <td width="25%">{{ asPrivado.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+
+                <!-- 5 LINEA -->
+                <tr>
+                    <!--INTERFACE ELEMENTO-->
+                    <td width="5%">&nbsp;</td>
+                    <th width="10%"><b>Interface Elemento:</b></th>
+                    {% if(interfaceElemento!=null) %}
+                        <td width="25%">{{ interfaceElemento.getNombreInterfaceElemento }}</td>
+                    {% else %}
+                        <td width="25%">S/N</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!--GEM PORT / CAPACIDAD-PROM2 / DEFAULT GATEWAY-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(objMarcaElemento!=null) %}
+                        <!-- SE AGREGÓ VALIDACIÓN POR EL TIPO DE ELEMENTO PARA QUE SE VISUALICE SOLO SI ES OLT-->
+                        {% if(objMarcaElemento.getNombreMarcaElemento=="HUAWEI" and objModeloElemento.getTipoElementoId.getNombreTipoElemento== "OLT" and booleanTipoRedGpon == false ) %}
+                            <th width="10%"><b>Gem-Port:</b></th>
+                            {% if(gemPort!=null) %}
+                            <td width="25%">{{ gemPort.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    {% if(tipoMedio!=null) %}
+                        {% if((tipoMedio.getNombreTipoMedio=="Cobre" or tipoMedio.getNombreTipoMedio=="Radio") and (prefijoEmpresa!="TN")) %}
+                            <th width="10%"><b>Capacidad-Prom2:</b></th>
+                            {% if(capacidadProm2!=null) %}
+                            <td width="25%">{{ capacidadProm2.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>Default Gateway:</b></th>
+                        {% if(defaultGateway!=null) %}
+                        <td width="25%">{{ defaultGateway.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!--ZONA-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>Vpn:</b></th>
+                        {% if(vpn!=null) %}
+                        <td width="25%">{{ vpn.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+
+                <!-- 6 LINEA -->
+                <tr>
+                    <!--PE ELEMENTO-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>Nombre PE:</b></th>
+                        {% if(elementoRouter!="") %}
+                            <td width="25%">{{ elementoRouter}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!--ZONA-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>Zona:</b></th>
+                        {% if(zona!=null) %}
+                        <td width="25%">{{ zona.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <!--RDID-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>Rd-Id:</b></th>
+                        {% if(rdId!=null) %}
+                        <td width="25%">{{ rdId.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+
+                <!-- 7 LINEA -->
+                {% if(booleanTipoRedGpon == false) %}
+                <tr>
+                    <!--ZONA-->
+                    <td width="5%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>Anillo #:</b></th>
+                        {% if(anillo!=null) %}
+                        <td width="25%">{{ anillo.getDetalleValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="1%">&nbsp;</td>
+                    {% if(prefijoEmpresa=="TN") %}
+                        <th width="10%"><b>Edificio:</b></th>                    
+                        <td width="25%">{{ nombreEdificio }}</td>                    
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>                             
+
+                </tr>
+                {% else %}
+                <tr>
+                    <!--EDIFICIO-->
+                    <td width="1%">&nbsp;</td>
+                        <th width="10%"><b>Edificio:</b></th>
+                        <td width="25%">{{ nombreEdificio }}</td>
+                    <td width="1%">&nbsp;</td>
+                    <!--ONT ID-->
+                    <td width="1%">&nbsp;</td>
+                        <th width="10%"><b>Ont Id:</b></th>
+                        {% if(indiceCliente!=null) %}
+                        <td width="25%">{{ indiceCliente.getValor}}</td>
+                        {% else %}
+                        <td width="25%">N/A</td>
+                        {% endif %}
+                    <td width="1%">&nbsp;</td>
+                    <!--TRAFFIC-TABLE-->
+                    <td width="1%">&nbsp;</td>
+                        <th width="10%"><b>Traffic-Table:</b></th>
+                        {% if(trafficTable!=null) %}
+                        <td width="25%">{{ trafficTable.getValor}}</td>
+                        {% else %}
+                        <td width="25%">N/A</td>
+                        {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                {% endif %}
+
+                <tr><td width="1%">&nbsp;</td></tr>
+
+                {% if(prefijoEmpresa=="TN") %}
+                <tr>
+                    <td width="1%">&nbsp;</td>
+                    <th width="10%"><b>Tercerizadora:</b></th>                    
+                    <td width="25%">{{ tercerizadora }}</td>
+                    <td width="1%">&nbsp;</td>
+                    {% if(booleanTipoRedGpon) %}
+                        <!--LINE-PROFILE-->
+                        <td width="1%">&nbsp;</td>
+                            <th width="10%"><b>Line Profile:</b></th>
+                            {% if(lineProfileName!=null) %}
+                            <td width="25%">{{ lineProfileName.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        <td width="1%">&nbsp;</td>
+                        <!--GEM-PORT-->
+                        <td width="1%">&nbsp;</td>
+                            <th width="10%"  style="width: 15%; font-weight: bold; ">Gem-Port:</th>
+                            {% if(gemPort!=null) %}
+                            <td width="25%">{{ gemPort.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    {% endif %}
+                </tr>
+                {% endif %}
+
+                <tr><td width="1%">&nbsp;</td></tr>
+
+                {% if(prefijoEmpresa=="TN" and booleanTipoRedGpon) %}
+                <tr>
+                    <!--T-CONT-->
+                    <td width="1%">&nbsp;</td>
+                    <th width="10%"><b>T-CONT:</b></th>
+                    {% if(objTCont!=null) %}
+                        <td width="25%">{{ objTCont.getValor}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                    <!--SERVICE-PORT-->
+                    <td width="1%">&nbsp;</td>
+                        <th width="10%"><b>Service-Port-Id:</b></th>
+                        {% if(spid!=null) %}
+                        <td width="25%">{{ spid.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</std>
+                        {% endif %}
+                    <td width="1%">&nbsp;</td>
+                    {% if(producto!=null and producto.nombreTecnico == 'SAFECITYWIFI') %}
+                    <!--IF WIFI-->
+                    <!--Vlan ADMIN-->
+                    <td width="1%">&nbsp;</td>
+                        <th width="10%"  style="width: 15%; font-weight: bold; ">Vlan ADMIN:</th>
+                        {% if(vlanAdmin!=null) %}
+                        <td width="25%">{{ vlanAdmin }}</td>
+                        {% else %}
+                            <td width="25%">N/A</std>
+                        {% endif %}
+                    <td width="1%">&nbsp;</td>
+                    {% endif %}
+                    <!--END IF WIFI-->
+                </tr>
+                {% if(producto!=null and producto.nombreTecnico == 'SAFECITYWIFI') %}
+                <!--IF WIFI-->
+                <tr><td width="1%">&nbsp;</td></tr
+                <tr>
+                    <!---->
+                    <td width="1%">&nbsp;</td>
+                    <th width="10%"></th>
+                    <td width="25%"></td>
+                    <td width="1%">&nbsp;</td>
+                    <!--Ip Controladora-->
+                    <<td width="1%">&nbsp;</td>
+                        <th width="10%"  style="width: 15%; font-weight: bold; ">Ip Controladora:</th>
+                        {% if(ipControladoraWifiGpon!='IP CONTROLADORA') %}
+                        <td width="25%">{{ ipControladoraWifiGpon }}</td>
+                        {% else %}
+                            <td width="25%">N/A</std>
+                        {% endif %}
+                    <td width="1%">&nbsp;</td>
+                    <!--SERVICE-PORT-->
+                    <td width="1%">&nbsp;</td>
+                        <th width="10%"  style="width: 15%; font-weight: bold; ">Vrf ADMIN:</th>
+                        {% if(vrfAdmin!=null) %}
+                        <td width="25%">{{ vrfAdmin }}</td>
+                        {% else %}
+                            <td width="25%">N/A</std>
+                        {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <!--END IF WIFI-->
+                {% endif %}
+                {% endif %}
+
+                {% if(prefijoEmpresa=="TN" and esDataCenter == 'SI' and producto.nombreTecnico != 'L2MPLS' and booleanTipoRedGpon == false) %}
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td colspan="5">
+                                <div class="secHead">
+                                    <i class="fa fa-tags" aria-hidden="true"></i>&nbsp;Datos de Recursos {{ producto.descripcionProducto}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td width="1%">&nbsp;</td></tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"><b>Tipo de Recurso:</b></th>                           
+                            <td width="25%">{{ tipoRecursos }}</td>
+                            <td width="1%">&nbsp;</td>
+
+                            <!--FIREWALL-->
+                            <td width="5%">&nbsp;</td>                        
+                            <th width="10%"><b>Firewall DC:</b></th>                            
+                            <td width="25%">{{ firewallDC }}</td>
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+                        <tr><td width="1%">&nbsp;</td></tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"><b>Vlan Lan:</b></th>                           
+                            <td width="25%">{{ vlanLan }}</td>
+                            <td width="1%">&nbsp;</td>
+
+                            <td width="5%">&nbsp;</td>                        
+                            <th width="10%"><b>Vlan Wan:</b></th>                            
+                            <td width="25%">{{ vlanWan }}</td>
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+
+                {% endif %}
+
+                {% if(prefijoEmpresa=="TN" and producto.nombreTecnico == 'L2MPLS' and booleanTipoRedGpon == false) %}
+
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="10%"><b>Virtual Connect:</b></th>                           
+                        <td width="25%">{{ virtualConnect }}</td>
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+
+                {% endif %}
+            
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% if(datosWifi!=null) %}
+
+    <div class='body_content'>
+    <div class='secHead'>Datos de Nodo Wifi</div>
+    <table class='formulario'>
+        <tbody>
+            <tr>
+                <td width='5%'>&nbsp;</td>
+                <th width='20%'> <b>Tipo Nodo Wifi:</b></th>
+                    <td width='61%'> {{datosWifi['strModeloElementoNodo']}} </td>
+                <td width='1%'></td>
+            </tr>
+            <tr><td width='1%'>&nbsp;</td></tr>
+            <tr>
+                <td width='5%'>&nbsp;</td>
+                <th width='20%'> <b>Nombre Nodo Wifi:</b></th>
+                    <td width='61%'> {{datosWifi['strElementoNodo']}} </td>
+                <td width='1%'></td>
+            </tr>
+            <tr><td width='1%'>&nbsp;</td></tr>
+            <tr>
+                <td width='5%'>&nbsp;</td>
+                <th width='20%'> <b>Modelo Router Wifi:</b></th>
+                <td width='61%'>{{datosWifi['strModeloRouter']}}  </td>
+                <td width='1%'></td>
+            </tr>
+            <tr><td width='1%'>&nbsp;</td></tr>
+            <tr>
+                <td width='5%'>&nbsp;</td>
+                <th width='20%'> <b>Nombre Router Wifi:</b></th>
+                <td width='61%'>{{datosWifi['strRouterWifi']}} </td>
+                <td width='1%'></td>
+            </tr>
+            <tr><td width='1%'>&nbsp;</td></tr>
+            <tr>
+                <td width='5%'>&nbsp;</td>
+                <th width='20%'> <b>Interface Router Wifi:</b></th>
+                <td width='61%'>{{datosWifi['strInterfaceRouterWifi']}}  </td>
+                <td width='1%'></td>
+            </tr>     
+            <tr><td width='1%'>&nbsp;</td></tr>
+            <tr>
+                <td width='5%'>&nbsp;</td>
+                <th width='20%'> <b>Modelo Switch Wifi:</b></th>
+                <td width='61%'>{{datosWifi['strModeloSwWifi']}} </td>
+                <td width='1%'></td>
+            </tr>                                                    
+            <tr><td width='1%'>&nbsp;</td></tr>
+            <tr>
+                <td width='5%'>&nbsp;</td>
+                <th width='20%'> <b>Nombre Switch Wifi:</b></th>
+                <td width='61%'>{{datosWifi['strSwWifi']}}</td>
+                <td width='1%'></td>
+            </tr>
+            <tr><td width='1%'>&nbsp;</td></tr>
+            <tr>
+                <td width='5%'>&nbsp;</td>
+                <th width='20%'> <b>Interface Switch Wifi:</b></th>
+                <td width='61%'>{{datosWifi['strInterfaceSwWifi']}} </td>
+                <td width='1%'></td>
+            </tr>                                                       
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% if booleanSegVehiculo == false and booleanSafeEntry == false  %}
+<div class="body_content">
+    <div class="secHead">Datos de Distribucion Gis</div>
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"> <b>Ultima Milla:</b></th>
+                {% if(tipoMedio!=null) %}
+                    <td width="61%">{{ tipoMedio.getNombreTipoMedio }}</td>
+                {% else %}
+                    <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            {% if(tipoMedio.getNombreTipoMedio!="Radio" or prefijoEmpresa=="MD") %}
+            <tr><td width="1%">&nbsp;</td></tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"> <b>Nombre Elemento Contenedor:</b></th>
+                {% if(elementoContenedor!=null) %}
+                    <td width="61%">{{ elementoContenedor.getNombreElemento }}</td>
+                {% else %}
+                    <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            {% endif %}
+            <tr><td width="1%">&nbsp;</td></tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"> <b>Nombre Elemento Conector:</b></th>
+                {% if(interfaceElementoConector!=null) %}
+                    <td width="21%">{{ interfaceElementoConector.getElementoId.getNombreElemento }}</td>
+                {% else %}
+                    <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+            {% if ( prefijoEmpresa =="TN" and tipoMedio.getNombreTipoMedio != "Radio" and booleanTipoRedGpon == false) %}
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"> <b>Ip Elemento Conector:</b></th>
+                {% if(ipElementoConector!=null) %}
+                <td width="21%">{{ ipElementoConector.getIp }}</td>
+                {% else %}
+                <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"> <b>Mac Elemento Conector:</b></th>
+                {% if(detalleElementoMac!=null) %}
+                <td width="21%">{{ detalleElementoMac.getDetalleValor }}</td>
+                {% else %}
+                <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+            {% endif %}
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"><b>Interface Elemento Conector:</b></th>
+                {% if(interfaceElementoConector!=null) %}
+                    <td width="21%">{{ interfaceElementoConector.getNombreInterfaceElemento }}</td>
+                {% else %}
+                    <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+            {% if(ipRadioBackbone!=null) %}
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"><b>Ip Elemento Conector:</b></th>
+                <td width="21%">{{ ipRadioBackbone }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+            {% endif %}
+            {% if(tipoMedio.getNombreTipoMedio!="Radio") %}
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"><b>Buffer:</b></th>
+                {% if(bufferHilo!=null) %}
+                    <td width="21%">{{ objBuffer.getNumeroBuffer }}, {{ objBuffer.getColorBuffer}}</td>
+                {% else %}
+                    <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"><b>Hilo:</b></th>
+                {% if(bufferHilo!=null) %}
+                    <td width="21%">{{ objHilo.getNumeroHilo }}, {{ objHilo.getColorHilo }}</td>
+                {% else %}
+                    <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"><b>Clase Tipo Medio:</b></th>
+                {% if(bufferHilo!=null) %}
+                    <td width="21%">{{ objHilo.getClaseTipoMedioId.getNombreClaseTipoMedio }}</td>
+                {% else %}
+                    <td width="21%">N/A</td>
+                {% endif %}
+                <td width="1%"></td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% if (booleanSegVehiculo == false) and ( booleanSafeEntry == false) %}
+{% if prefijoEmpresa == "TN" and booleanTipoRedGpon == false %}
+    <!-- ROSETA -->
+    <div class="body_content">
+        {% if(tipoMedio!=null) %}
+            {% if(tipoMedio.getNombreTipoMedio=='Radio') %}
+                <div class="secHead">Datos de la Radio del Cliente</div>
+            {% else %}
+                <div class="secHead">Datos de la Roseta del Cliente</div>
+            {% endif %}
+        {% else %}
+            <div class="secHead">Datos de la Roseta del Cliente</div>
+        {% endif %}
+
+        <table id="datosCliente" class="formulario">
+            <tbody>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Nombre Elemento:</b></th>
+                    {% if(elementoRoseta!=null) %}
+                        <td width="25%">{{ elementoRoseta.getNombreElemento }}</td> 
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Modelo Elemento:</b></th>
+                    {% if(objModeloElementoRoseta!=null) %}
+                        <td width="25%">{{ objModeloElementoRoseta.getNombreModeloElemento }}</td>      
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Marca Elemento:</b></th>
+                    {% if(objModeloElementoRoseta!=null) %}
+                        <td width="25%">{{ objModeloElementoRoseta.getMarcaElementoId.getNombreMarcaElemento }}</td>  
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Tipo Elemento:</b></th>    
+                    {% if(objModeloElementoRoseta!=null) %}
+                        <td width="25%">{{ objModeloElementoRoseta.getTipoElementoId.getNombreTipoElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Serie Elemento:</b></th>
+                    {% if(elementoRoseta!=null) %}
+                        <td width="25%">{{ elementoRoseta.serieFisica}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Mac:</b></th>
+                    {% if(macRadio!=null and tipoMedio.getNombreTipoMedio=="Radio") %}
+                        <td width="25%">{{ macRadio }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%">&nbsp;</th>
+                    <td width="25%">&nbsp;</td>
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Interface Elemento:</b></th>
+                    {% if(interfaceElementoCliente!=null) %}
+                        <td width="25%">{{ interfaceElementoCliente.getNombreInterfaceElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- TRANSCEIVER -->
+    <div class="body_content">
+        <div class="secHead">Datos de Transceiver del Cliente</div>
+        <table id="datosCliente" class="formulario">
+            <tbody>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Nombre Elemento:</b></th>
+                    {% if(elementoTransceiver!=null) %}
+                        <td width="25%">{{ elementoTransceiver.getNombreElemento }}</td> 
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Modelo Elemento:</b></th>
+                    {% if(objModeloElementoTransceiver!=null) %}
+                        <td width="25%">{{ objModeloElementoTransceiver.getNombreModeloElemento }}</td>      
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Marca Elemento:</b></th>
+                    {% if(objModeloElementoTransceiver!=null) %}
+                        <td width="25%">{{ objModeloElementoTransceiver.getMarcaElementoId.getNombreMarcaElemento }}</td>  
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Tipo Elemento:</b></th>    
+                    {% if(objModeloElementoTransceiver!=null) %}
+                        <td width="25%">{{ objModeloElementoTransceiver.getTipoElementoId.getNombreTipoElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Serie Elemento:</b></th>
+                    {% if(elementoTransceiver!=null) %}
+                        <td width="25%">{{ elementoTransceiver.serieFisica}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%">&nbsp;</th>
+                    <td width="25%">&nbsp;</td>
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Interface Elemento:</b></th>
+                    {% if(interfaceTrans!=null) %}
+                        <td width="25%">{{ interfaceTrans.getNombreInterfaceElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- CPE -->
+    <div class="body_content">
+        <div class="secHead">Datos de Cpe del Cliente</div>
+        <table id="datosCpe" class="formulario">
+            <tbody>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Nombre Elemento:</b></th>
+                    {% if(elementoCpe!=null) %}
+                        <td width="25%">{{ elementoCpe.getNombreElemento }}</td> 
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Modelo Elemento:</b></th>
+                    {% if(objModeloElementoCpe!=null) %}
+                        <td width="25%">{{ objModeloElementoCpe.getNombreModeloElemento }}</td>      
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    {% if(intNumLicencia!=null) %}
+                        <th width="15%"><b>Número Licencia:</b></th>
+                        <td width="25%">{{ intNumLicencia }}</td>
+                        <td width="1%">&nbsp;</td>
+                    {% endif %}    
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Marca Elemento:</b></th>
+                    {% if(objModeloElementoCpe!=null) %}
+                        <td width="25%">{{ objModeloElementoCpe.getMarcaElementoId.getNombreMarcaElemento }}</td>  
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Tipo Elemento:</b></th>    
+                    {% if(objModeloElementoCpe!=null) %}
+                        <td width="25%">{{ objModeloElementoCpe.getTipoElementoId.getNombreTipoElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    {% if(strFechaCaducidad!=null) %}
+                        <th width="15%"><b>Fecha caducidad:</b></th>
+                        <td width="25%">{{ strFechaCaducidad }}</td>
+                        <td width="1%">&nbsp;</td>
+                    {% endif %}
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Serie Elemento:</b></th>
+                    {% if(elementoCpe!=null) %}
+                        <td width="25%">{{ elementoCpe.serieFisica}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Mac Cpe:</b></th>
+                    {% if(macCpe!="") %}
+                        <td width="25%">{{ macCpe }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Interface Elemento:</b></th>
+                    {% if(interfaceCpeNombre!=null) %}
+                        <td width="25%">{{ interfaceCpeNombre }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                        <td width="1%">&nbsp;</td>
+                        {% if(prefijoEmpresa=="TN") %}
+                            <td width="5%">&nbsp;</td>
+                            <th width="15%"><b>Ip Elemento:</b></th>
+                            {% if(IpCpe!=null) %}
+                            <td width="25%">{{ IpCpe.getIp }}</td>
+                            {% else %}
+                            <td width="25%">N/A</td>
+                            {% endif %}
+                            <td width="1%">&nbsp;</td>
+                        {% endif %}                     
+                </tr>
+                {% if(prefijoEmpresa=="TN") %}
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Propiedad De:</b></th>
+                        <td width="25%">{{ propiedadCpe }}</td>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Adminstrado Por:</b></th>
+                        <td width="25%">{{ administraCpe }}</td>
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    {% if(esDataCenter == 'SI')%}
+                        <tr><td width="1%">&nbsp;</td></tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <th width="15%"><b>Descripción Equipo:</b></th>
+                            {% if(elementoCpe!=null) %}
+                                <td width="25%">{{ elementoCpe.descripcionElemento }}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+                    {% endif %}
+                {% endif %} 
+            </tbody>
+        </table>
+    </div>
+{% elseif booleanTipoRedGpon %}
+    {% if(elementoOnt==null) %}
+    <!-- CPE ONT -->
+    <div class="body_content">
+        <div class="secHead">Datos de Cpe del Cliente</div>
+        <table id="datosCliente" class="formulario">
+            <tbody>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Nombre Elemento Cliente:</b></th>
+                    {% if(elementoCliente!=null) %}
+                        <td width="25%">{{ elementoCliente.getNombreElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Modelo Elemento Cliente:</b></th>
+                    {% if(objModeloElementoCliente!=null) %}
+                        <td width="25%">{{ objModeloElementoCliente.getNombreModeloElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Marca Elemento Cliente:</b></th>
+                    {% if(objModeloElementoCliente!=null) %}
+                        <td width="25%">{{ objModeloElementoCliente.getMarcaElementoId.getNombreMarcaElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Tipo Elemento Cliente:</b></th>
+                    {% if(objModeloElementoCliente!=null) %}
+                        <td width="25%">{{ objModeloElementoCliente.getTipoElementoId.getNombreTipoElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Serie Elemento Cliente:</b></th>
+                    {% if(elementoCliente!=null) %}
+                        <td width="25%">{{ elementoCliente.serieFisica}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Mac Cliente:</b></th>
+                    {% if(macCliente!=null) %}
+                        <td width="25%">{{ macCliente.getValor}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Interface Elemento Cliente:</b></th>
+                    {% if(interfaceElementoCliente!=null) %}
+                        <td width="25%">{{ interfaceElementoCliente.getNombreInterfaceElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <!-- CPE -->
+    <div class="body_content">
+        <div class="secHead">Datos de Cpe del Cliente</div>
+        <table id="datosCpe" class="formulario">
+            <tbody>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Nombre Elemento:</b></th>
+                    {% if(elementoCpe!=null) %}
+                        <td width="25%">{{ elementoCpe.getNombreElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Modelo Elemento:</b></th>
+                    {% if(objModeloElementoCpe!=null) %}
+                        <td width="25%">{{ objModeloElementoCpe.getNombreModeloElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Marca Elemento:</b></th>
+                    {% if(objModeloElementoCpe!=null) %}
+                        <td width="25%">{{ objModeloElementoCpe.getMarcaElementoId.getNombreMarcaElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Tipo Elemento:</b></th>
+                    {% if(objModeloElementoCpe!=null) %}
+                        <td width="25%">{{ objModeloElementoCpe.getTipoElementoId.getNombreTipoElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Serie Elemento:</b></th>
+                    {% if(elementoCpe!=null) %}
+                        <td width="25%">{{ elementoCpe.serieFisica}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Mac Cpe:</b></th>
+                    {% if(macCpe!="") %}
+                        <td width="25%">{{ macCpe }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Interface Elemento:</b></th>
+                    {% if(interfaceCpeNombre!=null) %}
+                        <td width="25%">{{ interfaceCpeNombre }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Ip Elemento:</b></th>
+                    {% if(IpCpe!=null) %}
+                    <td width="25%">{{ IpCpe.getIp }}</td>
+                    {% else %}
+                    <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Propiedad De:</b></th>
+                    <td width="25%">{{ propiedadCpe }}</td>
+                    <td width="1%">&nbsp;</td>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Adminstrado Por:</b></th>
+                    <td width="25%">{{ administraCpe }}</td>
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                {% if(esDataCenter == 'SI')%}
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Descripción Equipo:</b></th>
+                        {% if(elementoCpe!=null) %}
+                            <td width="25%">{{ elementoCpe.descripcionElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <!-- CPE ONT -->
+    <div class="body_content">
+        <div class="secHead">Datos de {{ strNombreTipoElementoOnt }} del Cliente</div>
+        <table id="datosCliente" class="formulario">
+            <tbody>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Nombre Elemento:</b></th>
+                    {% if(elementoOnt!=null) %}
+                        <td width="25%">{{ elementoOnt.getNombreElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Modelo Elemento:</b></th>
+                    {% if(objModeloElementoOnt!=null) %}
+                        <td width="25%">{{ objModeloElementoOnt.getNombreModeloElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Marca Elemento:</b></th>
+                    {% if(objModeloElementoOnt!=null) %}
+                        <td width="25%">{{ objModeloElementoOnt.getMarcaElementoId.getNombreMarcaElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Tipo Elemento:</b></th>    
+                    {% if(objModeloElementoOnt!=null) %}
+                        <td width="25%">{{ objModeloElementoOnt.getTipoElementoId.getNombreTipoElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Serie Elemento:</b></th>
+                    {% if(elementoOnt!=null) %}
+                        <td width="25%">{{ elementoOnt.serieFisica}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Mac:</b></th>
+                    {% if(macCliente!=null) %}
+                        <td width="25%">{{ macCliente.getValor}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Interface Elemento:</b></th>
+                    {% if(interfaceOnt!=null) %}
+                        <td width="25%">{{ interfaceOnt.getNombreInterfaceElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+{% else %}
+    <!-- ELEMENTO CPE/ONT -->
+    <div class="body_content">
+        <div class="secHead">Datos de Cpe del Cliente</div>
+        <table id="datosCliente" class="formulario">
+            <tbody>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Nombre Elemento Cliente:</b></th>
+                    {% if(elementoCliente!=null) %}
+                        <td width="25%">{{ elementoCliente.getNombreElemento }}</td> 
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Modelo Elemento Cliente:</b></th>
+                    {% if(objModeloElementoCliente!=null) %}
+                        <td width="25%">{{ objModeloElementoCliente.getNombreModeloElemento }}</td>      
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b> Marca Elemento Cliente:</b></th>
+                    {% if(objModeloElementoCliente!=null) %}
+                        <td width="25%">{{ objModeloElementoCliente.getMarcaElementoId.getNombreMarcaElemento }}</td>  
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Tipo Elemento Cliente:</b></th>    
+                    {% if(objModeloElementoCliente!=null) %}
+                        <td width="25%">{{ objModeloElementoCliente.getTipoElementoId.getNombreTipoElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Serie Elemento Cliente:</b></th>
+                    {% if(elementoCliente!=null) %}
+                        <td width="25%">{{ elementoCliente.serieFisica}}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Mac Cliente:</b></th>
+                    {% if(tipoMedio.getNombreTipoMedio=="Cobre") %}
+                        {% if(macCpe!=null) %}
+                            <td width="25%">{{ macCpe.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                    {% elseif(tipoMedio.getNombreTipoMedio=="Fibra Optica" or tipoMedio.getNombreTipoMedio=="FTTx") %}  
+                        {% if(prefijoEmpresa == "TN") %}
+                            {% if(macCpe!=null) %}
+                                <td width="25%">{{ macCpe.getDetalleValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% else %}
+                            {% if(macCliente!=null) %}
+                                <td width="25%">{{ macCliente.getValor}}</td>
+                            {% else %}
+                                <td width="25%">N/A</td>
+                            {% endif %}
+                        {% endif %}
+
+                    {% endif %}
+
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr><td width="1%">&nbsp;</td></tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <th width="15%"><b>Interface Elemento Cliente:</b></th>
+                    {% if(interfaceElementoCliente!=null) %}
+                        <td width="25%">{{ interfaceElementoCliente.getNombreInterfaceElemento }}</td>
+                    {% else %}
+                        <td width="25%">N/A</td>
+                    {% endif %}
+                    <td width="1%">&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ELEMENTO WIFI -->
+    {% if(objMarcaElemento.getNombreMarcaElemento=="TELLION" or elementoClienteWifi!=null) %}
+        <div class="body_content">
+            <div class="secHead">Datos de Cpe Wifi del Cliente</div>
+            <table class="formulario">
+                <tbody>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Nombre Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteWifi!=null) %}
+                            <td width="25%">{{ elementoClienteWifi.getNombreElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Modelo Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteWifi!=null) %}
+                            <td width="25%">{{ obtModeloClienteWifi.getNombreModeloElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Marca Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteWifi!=null) %}
+                            <td width="25%">{{ obtModeloClienteWifi.getMarcaElementoId.getNombreMarcaElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Tipo Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteWifi!=null) %}
+                            <td width="25%">{{ obtModeloClienteWifi.getTipoElementoId.getNombreTipoElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Serie Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteWifi!=null) %}
+                            <td width="25%">{{ elementoClienteWifi.serieFisica }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Mac Cliente Wifi:</b></th>
+                        {% if(macClienteWifi!=null) %}
+                            <td width="25%">{{ macClienteWifi.getValor}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Interface Elemento Cliente Wifi:</b></th>
+                        {% if(interfaceElementoClienteWifi!=null) %}
+                            <td width="25%">{{ interfaceElementoClienteWifi.getNombreInterfaceElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+    {% endif %}
+
+    <!-- ELEMENTOS SMART WIFI -->
+    {% for elementoClienteSmartWifi in arrayElementosSmartWifi %}
+        <div class="body_content">
+            <div class="secHead">Datos de Cpe SmartWifi del Cliente</div>
+            <table class="formulario">
+                <tbody>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Nombre Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteSmartWifi!=null) %}
+                            <td width="25%">{{ elementoClienteSmartWifi.getNombreElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Modelo Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteSmartWifi!=null) %}
+                            <td width="25%">{{ elementoClienteSmartWifi.getModeloElementoId.getNombreModeloElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Marca Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteSmartWifi!=null) %}
+                            <td width="25%">{{ elementoClienteSmartWifi.getModeloElementoId.getMarcaElementoId.getNombreMarcaElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Tipo Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteSmartWifi!=null) %}
+                            <td width="25%">{{ elementoClienteSmartWifi.getModeloElementoId.getTipoElementoId.getNombreTipoElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Serie Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteSmartWifi!=null) %}
+                            <td width="25%">{{ elementoClienteSmartWifi.serieFisica }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Mac Cliente SmartWifi:</b></th>
+                        {% if(elementoClienteSmartWifi.macElemento!=null) %}
+                            <td width="25%">{{ elementoClienteSmartWifi.macElemento}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>   
+    {% endfor %}
+
+    <!-- ELEMENTOS AP WIFI -->
+    {% for elementoClienteApWifi in arrayElementosApWifi %}
+        <div class="body_content">
+            <div class="secHead">Datos de Cpe ApWifi del Cliente</div>
+            <table class="formulario">
+                <tbody>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Nombre Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteApWifi!=null) %}
+                            <td width="25%">{{ elementoClienteApWifi.getNombreElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Modelo Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteApWifi!=null) %}
+                            <td width="25%">{{ elementoClienteApWifi.getModeloElementoId.getNombreModeloElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Marca Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteApWifi!=null) %}
+                            <td width="25%">{{ elementoClienteApWifi.getModeloElementoId.getMarcaElementoId.getNombreMarcaElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Tipo Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteApWifi!=null) %}
+                            <td width="25%">{{ elementoClienteApWifi.getModeloElementoId.getTipoElementoId.getNombreTipoElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Serie Elemento Cliente Wifi:</b></th>
+                        {% if(elementoClienteApWifi!=null) %}
+                            <td width="25%">{{ elementoClienteApWifi.serieFisica }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Mac Cliente SmartWifi:</b></th>
+                        {% if(elementoClienteApWifi.macElemento!=null) %}
+                            <td width="25%">{{ elementoClienteApWifi.macElemento}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>   
+    {% endfor %}
+
+    <!-- ELEMENTOS EXTENDER DUAL BAND -->
+    {% for elementoClienteExtenderDualBand in arrayElementosExtenderDualBand %}
+        <div class="body_content">
+            <div class="secHead">Datos de Extender Dual Band del Cliente</div>
+            <table class="formulario">
+                <tbody>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Nombre Elemento Extender Dual Band:</b></th>
+                        {% if(elementoClienteExtenderDualBand!=null) %}
+                            <td width="25%">{{ elementoClienteExtenderDualBand.getNombreElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Modelo Elemento Extender Dual Band:</b></th>
+                        {% if(elementoClienteExtenderDualBand!=null) %}
+                            <td width="25%">{{ elementoClienteExtenderDualBand.getModeloElementoId.getNombreModeloElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b> Marca Elemento Extender Dual Band:</b></th>
+                        {% if(elementoClienteExtenderDualBand!=null) %}
+                            <td width="25%">{{ elementoClienteExtenderDualBand.getModeloElementoId.getMarcaElementoId.getNombreMarcaElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Tipo Elemento Cliente Extender Dual Band:</b></th>
+                        {% if(elementoClienteExtenderDualBand!=null) %}
+                            <td width="25%">{{ elementoClienteExtenderDualBand.getModeloElementoId.getTipoElementoId.getNombreTipoElemento }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Serie Elemento Cliente Extender Dual Band:</b></th>
+                        {% if(elementoClienteExtenderDualBand!=null) %}
+                            <td width="25%">{{ elementoClienteExtenderDualBand.serieFisica }}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+
+                        <td width="5%">&nbsp;</td>
+                        <th width="15%"><b>Mac Cliente Extender Dual Band:</b></th>
+                        {% if(elementoClienteExtenderDualBand.macElemento!=null) %}
+                            <td width="25%">{{ elementoClienteExtenderDualBand.macElemento}}</td>
+                        {% else %}
+                            <td width="25%">N/A</td>
+                        {% endif %}
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    <tr><td width="1%">&nbsp;</td></tr>
+                </tbody>
+            </table>
+        </div>   
+    {% endfor %}
+
+    {% if arrayElementosCamaras|length > 0 %} 
+        <!-- CÁMARAS ASOCIADAS A PLANES NETLIFECAM -->
+        <div class="body_content">
+            <div class="secHead">Datos de las Cámaras</div>
+            <table class="formulario">
+                <tbody>
+                    {% for elementoCamara in arrayElementosCamaras %}
+                        <tr>
+                            <!--Nombre de cámara para el usuario-->
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"> <b>Nombre:</b></th>
+                            <td width="25%">{{ elementoCamara.nombre }}</td>        
+                            <td width="1%">&nbsp;</td>
+
+                            <td width="5%">&nbsp;</td>
+                            <th width="12%"><b>DDNS:</b></th>
+                            <td width="23%">{{ elementoCamara.ddns }}</td>
+                            <td width="1%">&nbsp;</td>
+
+                            <td width="5%">&nbsp;</td>
+                            <th width="12%"><b>MAC:</b></th>
+                            <td width="23%">{{ elementoCamara.mac}}</td>
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"></th>
+                            <td width="25%"></td>        
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"> <b>Modelo:</b></th>
+                            <td width="25%">{{ elementoCamara.modelo}}</td>        
+                            <td width="1%">&nbsp;</td>
+
+                            <td width="5%">&nbsp;</td>
+                            <th width="12%"><b>IP:</b></th>
+                            <td width="23%">{{ elementoCamara.ipCam}}</td>
+                            <td width="1%">&nbsp;</td>
+
+                            <td width="5%">&nbsp;</td>
+                            <th width="12%"><b>Serie:</b></th>
+                            <td width="23%">{{ elementoCamara.serie}}</td>
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"></th>
+                            <td width="25%"></td>        
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"></th>
+                            <td width="25%"></td>        
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <th width="10%"></th>
+                            <td width="25%"></td>        
+                            <td width="1%">&nbsp;</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+
+    <!-- ELEMENTOS NETHOME -->
+    {% for arrayServicioNetHome in arrayServiciosNetHome %}
+        <div class="body_content">
+            <div class="secHead">Datos del servicio {{arrayServicioNetHome.strProductoNetHome}} del Cliente</div>
+            <table class="formulario">
+                <tbody>
+                        <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="35%"><b> Nombre Elemento</b></th>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <th width="25%"><b> Serie Elemento</b></th>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <th width="25%"><b> Modelo Elemento</b></th>
+                        <td width="1%">&nbsp;</td>
+                        </tr>
+                    {% for elementoClienteNetHome in arrayServicioNetHome.arrayElementosNetHome %}
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="35%">{{ elementoClienteNetHome.getNombreElemento }}</td>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="25%">{{ elementoClienteNetHome.getSerieFisica }}</td>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="25%">{{ elementoClienteNetHome.getModeloElementoId.getNombreModeloElemento }}</td>
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>   
+    {% endfor %}
+
+    <!-- ELEMENTOS NETFIBER -->
+    {% for arrayServicioNetFiber in arrayServiciosNetFiber %}
+        <div class="body_content">
+            <div class="secHead">Datos del servicio {{arrayServicioNetFiber.strProductoNetFiber}} del Cliente</div>
+            <table class="formulario">
+                <tbody>
+                        <tr>
+                        <td width="5%">&nbsp;</td>
+                        <th width="35%"><b> Nombre Elemento</b></th>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <th width="25%"><b> Serie Elemento</b></th>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <th width="25%"><b> Modelo Elemento</b></th>
+                        <td width="1%">&nbsp;</td>
+                        </tr>
+                    {% for elementoClienteNetFiber in arrayServicioNetFiber.arrayElementosNetFiber %}
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="35%">{{ elementoClienteNetFiber.getNombreElemento }}</td>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="25%">{{ elementoClienteNetFiber.getSerieFisica }}</td>
+                        <td width="1%">&nbsp;</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="25%">{{ elementoClienteNetFiber.getModeloElementoId.getNombreModeloElemento }}</td>
+                        <td width="1%">&nbsp;</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>   
+    {% endfor %}
+{% endif %}
+{% endif %}
+    
+{% if (booleanSegVehiculo == false) and (booleanSafeEntry == false)  %}
+<div class="body_content">
+    <div class="secHead">Datos Internos del Cliente</div>
+    <table id="datosCliente" class="formulario">
+        <tbody>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="15%"><b>SSID:</b></th>
+                {% if(ssid!=null) %}
+                    <td width="25%">{{ ssid.getValor}}</td>
+                {% else %}
+                    <td width="25%">N/A</td>
+                {% endif %}    
+                <td width="1%">&nbsp;</td>
+
+                <td width="5%">&nbsp;</td>
+                <th width="15%"><b>Password SSID:</b></th>
+                {% if(passwordSsid!=null) %}
+                    <td width="25%">{{ passwordSsid.getValor}}</td>
+                {% else %}
+                    <td width="25%">N/A</td>
+                {% endif %}       
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr><td width="1%">&nbsp;</td></tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="15%"><b>Numero PC:</b></th>
+                {% if(numeroPc!=null) %}
+                    <td width="25%">{{ numeroPc.getValor}}</td>
+                {% else %}
+                    <td width="25%">N/A</td>
+                {% endif %}           
+                <td width="1%">&nbsp;</td>
+
+                <td width="5%">&nbsp;</td>
+                <th width="15%"><b>Modo Operacion:</b></th>
+                {% if(modoOperacion!=null) %}
+                    <td width="25%">{{ modoOperacion.getValor}}</td>
+                {% else %}
+                    <td width="25%">N/A</td>
+                {% endif %}           
+                <td width="1%">&nbsp;</td>
+            </tr>
+            {% if prefijoEmpresa == "TN" %}
+            <tr><td width="1%">&nbsp;</td></tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="15%"><b>Vlan:</b></th>
+                {% if(vlanWifi!=null) %}
+                    <td width="25%">{{ vlanWifi.getValor }}</td>
+                {% else %}
+                    <td width="25%">N/A</td>
+                {% endif %}
+                    <td width="1%">&nbsp;</td>
+           </tr>
+           {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+{% if (booleanSegVehiculo == true) or (booleanSafeEntry == true)  %}
+    {% for dispositivo in arrayEquipos %}
+        <!-- Elemento -->
+        <div class="body_content">
+            <div class="secHead">Datos de {{ dispositivo.titulo }}</div>
+            <table id="datosCliente" class="formulario">
+                <tbody>
+                    <tr>
+                        <td style="width:5%;">&nbsp;</td>
+                        <th style="width:15%;font-weight:bold;">Nombre Elemento Cliente:</th>
+                        <td style="width:25%;">{{ dispositivo.nombre }}</td>
+                        <td style="width:1%;">&nbsp;</td>
+
+                        <td style="width:5%;">&nbsp;</td>
+                        <th style="width:15%;font-weight:bold;">Modelo Elemento Cliente:</th>
+                        <td style="width:25%;">{{ dispositivo.modelo }}</td>
+                        <td style="width:1%;">&nbsp;</td>
+                    </tr>
+                    <tr><td style="width:1%;">&nbsp;</td></tr>
+                    <tr>
+                        <td style="width:5%;">&nbsp;</td>
+                        <th style="width:15%;font-weight:bold;">Marca Elemento Cliente:</th>
+                        <td style="width:25%;">{{ dispositivo.marca }}</td>
+                        <td style="width:1%;">&nbsp;</td>
+
+                        <td style="width:5%;">&nbsp;</td>
+                        <th style="width:15%;font-weight:bold;">Tipo Elemento Cliente:</th>
+                        <td style="width:25%;">{{ dispositivo.tipo }}</td>
+                        <td style="width:1%;">&nbsp;</td>
+                    </tr>
+                    <tr><td style="width:1%;">&nbsp;</td></tr>
+                    <tr>
+                        <td style="width:5%;">&nbsp;</td>
+                        <th style="width:15%;font-weight:bold;">Serie Elemento Cliente:</th>
+                        <td style="width:25%;">{{ dispositivo.serie }}</td>
+                        <td style="width:1%;">&nbsp;</td>
+
+                        <td style="width:5%;">&nbsp;</td>
+                        <th style="width:15%;font-weight:bold;">Mac Cliente:</th>
+                        {% if(dispositivo.mac != null) %}
+                        <td style="width:25%;">{{ dispositivo.mac }}</td>
+                        {% else %}
+                        <td style="width:25%;">N/A</td>
+                        {% endif %}
+                        <td style="width:1%;">&nbsp;</td>
+                    </tr>
+                    <tr><td style="width:1%;">&nbsp;</td></tr>
+                    <tr>
+                        <td style="width:5%;">&nbsp;</td>
+                        <th style="width:15%;font-weight:bold;">Interface Elemento Cliente:</th>
+                        {% if(dispositivo.interface != null) %}
+                        <td style="width:25%;">{{ dispositivo.interface }}</td>
+                        {% else %}
+                        <td style="width:25%;">N/A</td>
+                        {% endif %}
+                        <td style="width:1%;">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+{% endif %}
+    
+{% if prefijoEmpresa == "TN" and booleanTipoRedGpon == false and booleanSegVehiculo == false and booleanSafeEntry == false %}
+    <div class="body_content"  id="gridConcentradorExtremos">
+         <div class="secHead">Datos de Concentrador y Extremos</div>   
+         <div>
+             <p>** Sólo se sumarizan las capacidades de los logines <b> EXTREMO </b> que 
+                 se muestren con color negro <b> ( Servicios que ya fueron Activados )</b>.</p>
+         </div><br> 
+    </div>       
+{% endif %}
+
+{% if (booleanSegVehiculo == false) and (booleanSafeEntry == false)  %}
+<div class="body_content"  id="gridIps">
+    <div class="secHead">Datos de Ips</div>
+</div>
+
+<div class="body_content"  id="configuracion">
+    <div class="secHead">Datos de Configuracion</div>
+</div>
+{% endif %}
+    
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('servicio') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+    
+<div class="body_content">
+    
+</div>
+{% endblock contenido_central %}

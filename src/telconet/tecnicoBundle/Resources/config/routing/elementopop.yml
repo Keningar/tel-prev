@@ -1,0 +1,51 @@
+elementopop:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:indexPop" }
+    
+elementopop_getEncontradosPop:
+    pattern:  /getEncontradosPop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:getEncontradosPop" }
+  
+elementopop_newPop:
+    pattern:  /newPop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:newPop" }
+
+elementopop_createPop:
+    pattern: /createPop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:createPop" }
+    requirements: { _method: POST }
+    
+elementopop_buscarInterfaces:
+    pattern:  /buscarInterfaces
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:buscarInterfaces" }
+    
+elementopop_showPop:
+    pattern:  /{id}/showPop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:showPop" }
+    
+elementopop_editPop:
+    pattern:  /{id}/editPop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:editPop" }
+
+elementopop_updatePop:
+    pattern:  /{id}/updatePop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:updatePop" }
+    requirements: { _method: POST }
+    
+elementopop_cargarDatosPop:
+    pattern:  /{id}/cargarDatosPop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:cargarDatosPop" }
+    requirements: { _method: POST }
+    
+elementopop_deletePop:
+    pattern:  /{id}/deletePop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:deletePop" }
+    
+elementopop_deleteAjaxPop:
+    pattern:  /deleteAjaxPop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:deleteAjaxPop" }
+    requirements: { _method: post }
+    
+elementopop_getElementosPorPop:
+    pattern:  /{id}/getElementosPorPop
+    defaults: { _controller: "tecnicoBundle:InfoElementoPop:getElementosPorPop" }

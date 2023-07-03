@@ -1,0 +1,68 @@
+{#
+ twig que llama al script de consulta de procesos masivos para presentarlos
+ 
+ @author John Vera         <javera@telconet.ec>
+ @version 1.0 04-12-2014
+ #} 
+
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+    </style>
+    
+{% endblock %} 
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script>
+        var arrayListaTipoProceso   = JSON.parse('{{ arrayListaTipoProceso | json_encode | raw }}');
+        var arrayListaEstadosPmDet  = JSON.parse('{{ arrayListaEstadosPmDet | json_encode | raw }}');
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/ConsultaProcesoMasivo.js?5') }}"></script>
+    
+    <script>
+        var getUltimaMilla='{{path('procesomasivo_getUltimaMilla')}}';
+        var ejecutaCambioPlanMasivo ='{{path('procesomasivo_ejecuta')}}';
+        var getElementosPorTipo = '{{ path('servicio_getElementosPorTipo') }}';
+    </script>
+{% endblock %} 
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Consulta de Procesos Masivos</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+
+{% endblock contenido_central %}
+
+{% block javascripts_footer%}
+
+{% endblock %}

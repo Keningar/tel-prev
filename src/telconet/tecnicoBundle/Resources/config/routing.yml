@@ -1,0 +1,227 @@
+tecnicoBundle_InfoServicioReactivacion:
+  resource: "@tecnicoBundle/Resources/config/routing/procesomasivoreactivacion.yml"
+  prefix: /procesomasivo/reactivacion
+  
+tecnicoBundle_InfoElementoFuente:
+  resource: "@tecnicoBundle/Resources/config/routing/elementofuente.yml"
+  prefix: /elemento/fuentes
+
+tecnicoBundle_InfoServicioCorte:
+  resource: "@tecnicoBundle/Resources/config/routing/procesomasivo.yml"
+  prefix: /procesomasivo/corte
+  
+tecnicoBundle_InfoServicioCambioPlan:
+  resource: "@tecnicoBundle/Resources/config/routing/procesomasivocambioplan.yml"
+  prefix: /procesomasivo/cambioplan
+  
+tecnicoBundle_InfoServicio:
+  resource: "@tecnicoBundle/Resources/config/routing/cliente.yml"
+  prefix: /clientes
+
+tecnicoBundle_vpn:
+  resource: "@tecnicoBundle/Resources/config/routing/vpn.yml"
+  prefix: /elemento/vpn
+
+tecnicoBundle_InfoElementoDslam:
+  resource: "@tecnicoBundle/Resources/config/routing/elementodslam.yml"
+  prefix: /elemento/dslam
+  
+tecnicoBundle_InfoElementoPop:
+  resource: "@tecnicoBundle/Resources/config/routing/elementopop.yml"
+  prefix: /elemento/pop
+  
+tecnicoBundle_InfoElementoNodo:
+  resource: "@tecnicoBundle/Resources/config/routing/elementonodo.yml"
+  prefix: /elemento/nodo
+  
+tecnicoBundle_InfoElementoRadio:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoradio.yml"
+  prefix: /elemento/radio
+  
+tecnicoBundle_InfoElementoServidor:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoservidor.yml"
+  prefix: /elemento/servidor
+
+tecnicoBundle_vlan:
+  resource: "@tecnicoBundle/Resources/config/routing/vlan.yml"
+  prefix: /elemento/vlan
+
+tecnicoBundle_InfoElementoTransporte:
+  resource: "@tecnicoBundle/Resources/config/routing/elementotransporte.yml"
+  prefix: /elemento/transporte
+
+tecnicoBundle_PlanMantenimiento:
+  resource: "@tecnicoBundle/Resources/config/routing/planmantenimiento.yml"
+  prefix: /elemento/transporte/plan_mantenimiento
+
+tecnicoBundle_InfoElementoSwitch:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoswitch.yml"
+  prefix: /elemento/switch
+
+tecnicoBundle_InfoTramo:
+  resource: "@tecnicoBundle/Resources/config/routing/tramo.yml"
+  prefix: /tramo
+  
+tecnicoBundle_InfoEnlace:
+  resource: "@tecnicoBundle/Resources/config/routing/enlace.yml"
+  prefix: /enlace/enlace_elemento
+  
+tecnicoBundle_InfoInterfaceElemento:
+  resource: "@tecnicoBundle/Resources/config/routing/interfaceelemento.yml"
+  prefix: /interface_elemento
+  
+tecnicoBundle_InfoElementoOlt:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoolt.yml"
+  prefix: /elemento/olt
+  
+tecnicoBundle_InfoElementoRack:
+  resource: "@tecnicoBundle/Resources/config/routing/elementorack.yml"
+  prefix: /elemento/rack
+
+tecnicoBundle_InfoElementoSplitter:
+  resource: "@tecnicoBundle/Resources/config/routing/elementosplitter.yml"
+  prefix: /elemento/splitter
+  
+tecnicoBundle_InfoElementoOdf:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoodf.yml"
+  prefix: /elemento/odf
+  
+tecnicoBundle_InfoElementoCassette:
+  resource: "@tecnicoBundle/Resources/config/routing/elementocassette.yml"
+  prefix: /elemento/cassette
+  
+tecnicoBundle_InfoElementoCaja:
+  resource: "@tecnicoBundle/Resources/config/routing/elementocaja.yml"
+  prefix: /elemento/caja
+  
+tecnicoBundle_InfoElementoRouter:
+  resource: "@tecnicoBundle/Resources/config/routing/elementorouter.yml"
+  prefix: /elemento/router
+  
+tecnicoBundle_InfoElementoSwitch:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoswitch.yml"
+  prefix: /elemento/switch
+
+tecnicoBundle_InfoElementoTablet:
+  resource: "@tecnicoBundle/Resources/config/routing/elementotablet.yml"
+  prefix: /elemento/tablet
+
+tecnicoBundle_InfoElementoUps:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoups.yml"
+  prefix: /elemento/ups
+  
+tecnicoBundle_InfoElementoSinUbicacion:
+  resource: "@tecnicoBundle/Resources/config/routing/elementosinubicacion.yml"
+  prefix: /elemento/elementos_sin_ubicacion
+  
+tecnicoBundle_InfoSolicitudCambioPon:
+  resource: "@tecnicoBundle/Resources/config/routing/solicitud_cambioLineaPon.yml"
+  prefix: /solicitudes/solicitud_cambio_linea_pon
+  
+tecnicoBundle_InfoSolicitudNuevoNodo:
+  resource: "@tecnicoBundle/Resources/config/routing/solicitud_nuevonodo.yml"
+  prefix: /solicitudes/solicitud_nuevo_nodo
+
+tecnicoBundle_InfoSolicitudMigracionHuawei:
+  resource: "@tecnicoBundle/Resources/config/routing/solicitud_migracionHuawei.yml"
+  prefix: /solicitudes/solicitud_migracion
+
+tecnicoBundle_InfoElementoCpe:
+  resource: "@tecnicoBundle/Resources/config/routing/elementocpe.yml"
+  prefix: /elemento/cpe
+
+tecnicoBundle_InfoRelacionElemento:
+  resource: "@tecnicoBundle/Resources/config/routing/relacionelemento.yml"
+  prefix: /elemento/relacion_elemento
+  
+tecnicoBundle_InfoProcesoMasivo:
+  resource: "@tecnicoBundle/Resources/config/routing/procesomasivoConsulta.yml"
+  prefix: /procesomasivo/consultar_procesos_masivos 
+
+tecnicoBundle_CargaInformacionGis:
+  resource: "@tecnicoBundle/Resources/config/routing/procesomasivoCargaInfoGis.yml"
+  prefix: /procesomasivo/cargaInformacionGis
+  
+tecnicoBundle_AsignarIpv4PublicoMasivo:
+  resource: "@tecnicoBundle/Resources/config/routing/procesomasivoAsignarIpv4Publico.yml"
+  prefix: /procesomasivo/asignarIpv4PublicoMasivo
+
+tecnicoBundle_nodosWifi:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoNodoWifi.yml"
+  prefix: /elemento/nodos_wifi
+  
+tecnicoBundle_lineaNetvoice:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoLineaNetvoice.yml"
+  prefix: /elemento/elementoLineaNetvoice
+  
+tecnicoBundle_InfoSolicitudMigracionIp:
+  resource: "@tecnicoBundle/Resources/config/routing/solicitudMigracionIp.yml"
+  prefix: /solicitudes/SolicitudMigracionIps 
+
+tecnicoBundle_RouterCliente:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoRouterCliente.yml"
+  prefix: /elemento/router_cliente
+
+tecnicoBundle_NodoCliente:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoNodoCliente.yml"
+  prefix: /elemento/administracion_nodo_cliente
+  
+tecnicoBundle_SwitchPerimetral:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoSwitchPerimetral.yml"
+  prefix: /elemento/switch_perimetral
+
+tecnicoBundle_ResumenInstalaciones:
+  resource: "@tecnicoBundle/Resources/config/routing/resumen_instalaciones.yml"
+  prefix: /resumen_instalaciones
+  
+tecnicoBundle_ConsultaLdapClientes:
+  resource: "@tecnicoBundle/Resources/config/routing/reporte_ldapClientes.yml"
+  prefix: /reportes_tecnico/consulta_ldap_clientes
+  
+tecnicoBundle_ConsultaServiciosActivosArcotel:
+  resource: "@tecnicoBundle/Resources/config/routing/reporte_servActivosArcotel.yml"
+  prefix: /reportes_tecnico/consulta_servicios_arcotel
+
+tecnicoBundle_InfoAsignacionEmpresaElemento:
+  resource: "@tecnicoBundle/Resources/config/routing/empresaElemento.yml"
+  prefix: /procesomasivo/info_empresa_elemento
+  
+tecnicoBundle_InfoElementoRedPasivo:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoRedPasivo.yml"
+  prefix: /elemento/elementos_pasivo_red
+  
+tecnicoBundle_FoxPremium:
+  resource: "@tecnicoBundle/Resources/config/routing/foxpremium.yml"
+  prefix: /servicio/fox_premium
+
+tecnicoBundle_InfoRutasGis:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoRutas.yml"
+  prefix: /elemento/rutas    
+
+tecnicoBundle_InfoElementoTransceiver:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoTransceiver.yml"
+  prefix: /elemento/transceiver
+
+tecnicoBundle_InfoElementoPoste:
+  resource: "@tecnicoBundle/Resources/config/routing/elementoPoste.yml"
+  prefix: /elemento/poste
+  
+tecnicoBundle_ElementosDataCenter:
+  resource: "@tecnicoBundle/Resources/config/routing/elementosDataCenter.yml"
+  prefix: /elemento/elementos_dataCenter  
+
+tecnicoBundle_InfoServicioSeguridad:
+  resource: "@tecnicoBundle/Resources/config/routing/seguridadSdwan.yml"
+  prefix: /seguridad
+
+tecnicoBundle_ControlBwMasivo:
+  resource: "@tecnicoBundle/Resources/config/routing/controlBwMasivo.yml"
+  prefix: /elemento/control_bw_automatico
+
+tecnicoBundle_SubRedesPe:
+  resource: "@tecnicoBundle/Resources/config/routing/subredesPe.yml"
+  prefix: /elemento/subredesPe
+
+tecnicoBundle_SolicitudPreCancelacion:
+  resource: "@tecnicoBundle/Resources/config/routing/solicitudPreCancelacion.yml"
+  prefix: /solicitudes/solicitud_pre_cancelacion

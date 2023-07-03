@@ -1,0 +1,54 @@
+elementofuente:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:index" }
+
+elementofuente_grid:
+    pattern:  /grid
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:grid"}
+
+elementofuente_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:new" }
+
+elementofuente_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:create" }
+    requirements: { _method: POST }
+
+elementofuente_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:show" }
+    
+elementofuente_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:edit" }
+    
+elementofuente_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:update" }
+    requirements: { _method: POST }
+    
+elementofuente_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:deleteAjax" }
+    requirements: { _method: post }
+
+elementofuente_getParametrosDet:
+    pattern:  /getParametrosDet/{strNombreParametroCab}
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:getParametrosDet" }
+
+elementofuente_verificarData:
+    pattern:  /verificarData
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:verificarData" }
+
+elementofuente_gridMonitoreo:
+    pattern:  /gridMonitoreo
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:gridMonitoreo" }
+
+elementofuente_buscarDispositivos:
+    pattern:  /buscarDispositivos
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:buscarDispositivos" }
+
+elementofuente_exportarReporteMonitoreoFuentes:
+    pattern:  /exportarReporteMonitoreoFuentes
+    defaults: { _controller: "tecnicoBundle:InfoElementoFuente:exportarReporteMonitoreoFuentes" }

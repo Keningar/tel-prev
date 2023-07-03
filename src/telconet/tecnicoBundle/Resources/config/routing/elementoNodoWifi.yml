@@ -1,0 +1,81 @@
+elementoNodoWifi:
+    pattern:  /
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:index" }
+      
+elementoNodoWifi_new:
+    pattern:  /new
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:new" }
+
+elementoNodoWifi_create:
+    pattern: /create
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:create" }
+    requirements: { _method: POST }
+    
+elementoNodoWifi_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:edit" }
+
+elementoNodoWifi_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:update" }
+    
+elementoNodoWifi_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:show" }
+        
+elementoNodoWifi_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:getEncontrados" }
+    
+elementoNodoWifi_cargarDatos:
+    pattern:  /{id}/cargarDatos
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:cargarDatos" }
+    requirements: { _method: POST }
+    
+elementoNodoWifi_getElementosPorNodo:
+    pattern:  /{id}/getElementosPorElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:getElementosPorElemento" }
+    
+elementoNodoWifi_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:deleteAjax" }
+    
+elementoNodoWifi_modelosPorTipoElemento:
+    pattern:  /modelosPorTipoElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:getModelosPorTipoElemento" }
+    
+elementoNodoWifi_activarCliente:
+    pattern:  /activarCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:activarCliente" }
+    
+elementoNodoWifi_cortarCliente:
+    pattern:  /cortarCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:cortarCliente" }
+    
+elementoNodoWifi_reconectarCliente:
+    pattern:  /reconectarCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:reconectarCliente" }
+    
+elementoNodoWifi_cancelarCliente:
+    pattern:  /cancelarCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:cancelarCliente" }
+    
+elementoNodoWifi_cambiarElementoCliente:
+    pattern:  /cambiarElementoCliente
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:cambiarElementoCliente" }
+    
+elementoNodoWifi_ingresarElemento:
+    pattern:  /ingresarElemento
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:ingresarElemento" }
+    
+elementoNodoWifi_cambioNodoWifi:
+    pattern:  /cambioNodoWifi
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:cambioNodoWifi" }
+
+elementoNodoWifi_getDataWifi:
+    pattern:  /getDataWifi
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:getDataWifi" }
+    
+elementoNodoWifi_getLoginPorNodo:
+    pattern:  /getLoginPorNodo
+    defaults: { _controller: "tecnicoBundle:InfoElementoNodoWifi:getLoginPorNodo" }

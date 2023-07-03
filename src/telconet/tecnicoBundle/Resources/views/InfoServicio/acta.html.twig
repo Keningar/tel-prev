@@ -1,0 +1,145 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/jquery.signaturepad.css') }}" />
+    <script type="text/javascript" src="{{ asset('public/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery.signaturepad.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/json2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/acta.js') }}"></script>
+    <script>
+        var mensaje = '{% if mensaje != null %}{{mensaje}}{% endif %}';    
+        var pathServicios = '{{path("servicio")}}';
+    </script>
+    
+    <style type="text/css">
+        
+        #equipos{
+            border-collapse: collapse;
+            width: 100%;
+        }
+       
+
+        #equipos th, #equipos td{
+           text-align: left;
+           padding: 8px;
+           width:20%;
+         }
+
+        #equipos tr:nth-child(even){
+            background-color: #f2f2f2;
+                width:20%;
+        }
+
+        #equipos th {
+           background-color: #00579a;
+           color: white;
+           width: 20%;
+         }
+
+ 
+
+    </style>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Acta de Instalación de Servicio</h1>
+</div>
+
+<div class="body_content">
+    
+    <!-- EQUIPOS -->           
+    <div>    
+        <label class="labelEncuesta">Equipos</label>
+        <br>
+        <p class="c12"><span class="c17 c45"></span></p>
+
+        <table id="equipos" >
+                <th>Tipo</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Serie</th>
+                <th>Mac</th>
+                {% for elemento in equiposEntregado %}
+                    <tr>
+                        <td>{{ elemento['tipo'] }}</td>
+                        <td>{{ elemento['modelo'] }}</td>
+                        <td>{{ elemento['marca'] }}</td>
+                        <td>{{ elemento['serie'] }}</td>
+                        <td>{{ elemento['mac'] }}</td>
+                    </tr>
+                {% endfor %}
+        </table>
+        <br>
+        <br>   
+    </div>
+     
+    
+    <form method="post" action="{{ path('servicio_guardarActa', { 'intIdServicio': servicio.id }) }}" method="post" class="sigPad" onsubmit="return validarActa();" novalidate="novalidate">
+        
+        <table width="250%" border="0" class="box-section-content" id="tablaEncuesta">
+              
+            <input type = "hidden" value = "{{ids}}" id="ids" />
+	     
+            {% set counter = 1 %}
+               
+                {% for pregunta in preguntas %}
+                    <tr>
+                        <td>
+                            <label class="labelEncuesta">{{counter}} - {{pregunta.pregunta}}</label>
+                            <br>
+                        </td> 		   
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            
+                            {% if pregunta.tipoRespuesta == 'TEXTO' %}				   
+                                <textarea name = "{{pregunta.idPregunta}}" rows="4" cols="100"></textarea>
+                            {% endif %}	
+                            
+                            {% if pregunta.tipoRespuesta == 'MULTIPLE' %}				   
+                                {% for respuesta in pregunta.respuestas %}					
+                                    <input type="checkbox" name="{{pregunta.idPregunta}}" value="{{respuesta.respuesta}}">{{respuesta.respuesta}}</br></br>
+                                {% endfor%}	
+                            {% endif %}	
+                            
+                            {% if pregunta.tipoRespuesta == 'OPCION'%}						
+                                {% for respuesta in pregunta.respuestas %}					
+                                    <input type="radio" name="{{pregunta.idPregunta}}" value="{{respuesta.respuesta}}">{{respuesta.respuesta}}</br></br>
+                                {% endfor%}			
+                            {% endif %}			
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    {% set counter = counter + 1 %}
+		{% endfor%}
+		
+		<tr>
+		    <td>
+                       
+                        <div class="">
+                            <div class=""></div>
+                            <input type="hidden" name="preguntaRespuesta" id="preguntaRespuesta">
+                        </div>
+		    </td>
+		</tr>
+       </table> 
+        
+       <button type="submit" class="button-crud">Guardar</button>  
+        
+    </form>
+
+</div>
+{% endblock contenido_izq %}
+
+
+{% block contenido_der %}
+    
+{% endblock contenido_der %}
+

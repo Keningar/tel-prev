@@ -1,0 +1,105 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+<style scoped="scoped">
+    .category-label
+    {
+        vertical-align: middle;
+        padding-right: .5em;
+    }
+    #category
+    {
+        vertical-align: middle;
+    }
+    .toolbar {
+        float: right;
+        margin-right: .8em;
+    }
+</style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    
+    var urlTipoElementos            = '{{path('elementoredpasivo_getTipoElementoPasivo')}}';
+    var strUrlGetModelo             = '{{path('admimodeloelemento_getModelosElementosPorMarca')}}';    
+    var url_getEncontrados          = '{{path('elementoRutas_ajaxGetEncontrados')}}';    
+    var url_getHistorialElementos   = '{{path('elementoposte_ajaxGetHistorialElemento')}}';
+    var urlEdit                     = '{{path('elementoRutas_ajaxEdit')}}';
+    var urlSaveRuta                 = '{{path('elementoRutas_ajaxSave')}}';
+    var urlDeletePoste              = '{{path('elementoRutas_ajaxDelete')}}';
+    var urlEliminarTramo            = '{{path('elementoRutas_ajaxEliminarTramo')}}';
+    var boolPermisoAdminPoste       = '{{is_granted("ROLE_373-5177")}}'; 
+    var urlBuscarElemento           = '{{path('elementoRutas_ajaxBuscarElemento')}}';
+    var url_getElementoB            = '{{path('elementoposte_ajaxCargarElementos')}}';
+    var url_getTramos               = '{{path('elementoRutas_getTramos')}}';
+    var url_EditTramo               = '{{path('elementoRutas_ajaxEditTramo')}}';
+    var url_addTramo                = '{{path('elementoRutas_ajaxAddTramo')}}';
+    var url_claseTipoMedio          = '{{path('admiclasetipomedio_getEncontrados')}}';
+    var strUrlGetCantones           = '{{path("admicanton_grid") }}';
+    var strUrlGetTipoRuta           = '{{path('admitipoelemento_getTiposElementosRuta')}}';
+    var urlTipoElementosRuta        = '{{path('elementoRutas_getTipoElementoRuta')}}';
+    
+    /*Cargar documento.*/
+    var strUrlcargarDocumento       = '{{ path('infoservicio_documentos_fileUpload') }}';
+    
+    var boolPermisoEditar           = '{{is_granted("ROLE_400-5500")}}';
+    var boolPermisoEliminar         = '{{is_granted("ROLE_400-5501")}}';
+    var boolPermisoEditarTramo      = '{{is_granted("ROLE_400-5503")}}';
+    var boolPermisoAgregarTramo     = '{{is_granted("ROLE_400-5504")}}';
+
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoRuta/index.js?3') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoRuta/map.js') }}"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+
+{% endblock javascripts %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Rutas</h1>
+</div>
+<div class="dashboard_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr> 
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+<div id='map_canvas' style='width:575px; height:450px'></div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+{% if is_granted("ROLE_400-5502") %}
+<a class="button-nuevo-registro" href='#' onClick="nuevaRuta()">
+    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+    &nbsp;Nuevo 
+   
+</a>
+    {% endif %}
+
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+
+    </li>	
+</ul>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+<script>
+
+</script>
+{% endblock %}

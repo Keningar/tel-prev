@@ -1,0 +1,69 @@
+
+--INSERT ADMI_PRODUCTO_CARACTERISTICA 'VELOCIDAD' AL PRODUCTO 'SAFE VIDEO ANALYTICS CAM'
+INSERT INTO DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA VALUES
+(
+    DB_COMERCIAL.SEQ_ADMI_PRODUCTO_CARAC.NEXTVAL,
+    ( SELECT ID_PRODUCTO FROM DB_COMERCIAL.ADMI_PRODUCTO
+      WHERE NOMBRE_TECNICO = 'SAFECITYDATOS' AND ESTADO = 'Activo' ),
+    ( SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA
+      WHERE DESCRIPCION_CARACTERISTICA = 'VELOCIDAD' AND ESTADO = 'Activo' ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    'Activo',
+    'NO'
+);
+
+--Se ingresa la caracteristicas de la vpn, vrf y rd para servicios 'DATOS GPON VIDEO ANALYTICS CAM' 
+INSERT INTO DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL_CARAC VALUES (
+    DB_COMERCIAL.SEQ_INFO_PERSONA_EMP_ROL_CARAC.nextval, 
+    665890, --PERSONA_EMPRESA_ROL_ID
+    (SELECT id_caracteristica FROM db_comercial.admi_caracteristica WHERE descripcion_caracteristica = 'VPN'),
+    'vrf_gpon',
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    '127.0.0.1',
+    'Activo',
+    NULL
+);
+INSERT INTO DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL_CARAC VALUES (
+    DB_COMERCIAL.SEQ_INFO_PERSONA_EMP_ROL_CARAC.nextval, 
+    665890, --PERSONA_EMPRESA_ROL_ID
+    (SELECT id_caracteristica FROM db_comercial.admi_caracteristica WHERE descripcion_caracteristica = 'VRF'),
+    'vrf_gpon',
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    '127.0.0.1',
+    'Activo',
+    ( SELECT ID_PERSONA_EMPRESA_ROL_CARACT FROM DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL_CARAC
+      WHERE CARACTERISTICA_ID = (SELECT id_caracteristica FROM db_comercial.admi_caracteristica WHERE descripcion_caracteristica = 'VPN')
+      AND PERSONA_EMPRESA_ROL_ID = '665890' AND VALOR = 'vrf_gpon' )
+);
+INSERT INTO DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL_CARAC VALUES (
+    DB_COMERCIAL.SEQ_INFO_PERSONA_EMP_ROL_CARAC.nextval, 
+    665890, --PERSONA_EMPRESA_ROL_ID
+    (SELECT id_caracteristica FROM db_comercial.admi_caracteristica WHERE descripcion_caracteristica = 'RD_ID'),
+    ( SELECT '27947:' || ID_PERSONA_EMPRESA_ROL_CARACT FROM DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL_CARAC
+      WHERE CARACTERISTICA_ID = (SELECT id_caracteristica FROM db_comercial.admi_caracteristica WHERE descripcion_caracteristica = 'VPN')
+      AND PERSONA_EMPRESA_ROL_ID = '665890' AND VALOR = 'vrf_gpon' ),
+    SYSDATE,
+    NULL,
+    'facaicedo',
+    NULL,
+    '127.0.0.1',
+    'Activo',
+    ( SELECT ID_PERSONA_EMPRESA_ROL_CARACT FROM DB_COMERCIAL.INFO_PERSONA_EMPRESA_ROL_CARAC
+      WHERE CARACTERISTICA_ID = (SELECT id_caracteristica FROM db_comercial.admi_caracteristica WHERE descripcion_caracteristica = 'VPN')
+      AND PERSONA_EMPRESA_ROL_ID = '665890' AND VALOR = 'vrf_gpon' )
+);
+
+--ACTUALIZAR LA VRF DEL PRODUCTO 'DATOS GPON VIDEO ANALYTICS CAM'
+UPDATE DB_GENERAL.ADMI_PARAMETRO_DET SET VALOR2 = 'vrf_gpon' WHERE ID_PARAMETRO_DET = 17822;
+
+COMMIT;
+/

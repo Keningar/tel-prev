@@ -1,0 +1,316 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 130px !important;
+            text-align: right!important;
+            margin-right: 10px!important;
+            padding-top: 8px!important;
+        }
+        .formulario .label_ficha_contrato{
+            margin: 0px !important;
+            width: 220px !important;
+            text-align: right!important;
+            margin-right: 10px!important;
+            padding-top: 8px!important;
+        }
+        .contenido
+        {
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+   {{ parent() }}
+    <script>
+		var url_contratistas        = "{{ path('contratista_grid') }}";
+        var tipoVehiculo            = "{{ detalles.TIPO_VEHICULO }}";
+        
+        var valueRegion             = "{% if region is defined %}{{ region }}{% else %}{% endif %}";
+        
+        var nombrePlanMantenimiento = "{% if nombrePlanMantenimiento is defined %}{{ nombrePlanMantenimiento }}{% else %}{% endif %}";
+
+        
+	</script> 
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTransporte/edit.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/comercial/js/contratista/seleccionContratista.js') }}"></script>
+{% endblock %}
+        
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Editar Medio de Transporte</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' action="{{ path('elementotransporte_update', {'id': medioTransporte.id}) }}" method="post" class='formulario' 
+              onSubmit="return validarFormulario();">
+            <center>
+                <table class="formulario" style="width: 100%">
+                    <tbody>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="45%">
+                                <div id="campoModeloElemento">
+                                    <label>* Modelo Elemento</label>
+                                    <div id="selectModeloElementos">
+                                        <select required id="modeloElementoId" name="modeloElementoId" onChange="cambioModeloTransporte()">
+                                            {% for modelo in modelosElemento %}
+                                                {% if medioTransporte.modeloElementoId == modelo.nombreModeloElemento %} 
+                                                    <option selected="selected" value="{{ modelo.id }}">{{ modelo.nombreModeloElemento }}</option>
+                                                {% else %}
+                                                    <option value="{{ modelo.id }}">{{ modelo.nombreModeloElemento }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select> 
+                                    </div>
+                                </div>
+                                <div id="campoPlaca">
+                                    <label>* Placa</label>
+                                    <input required maxlength="3" style="width: 60px" minlength="2" pattern=".{2,}" type="text" name="letraPlaca" 
+                                           title="3 letras mínimo" id="letraPlaca" onkeyPress="return validarSoloLetras(event);" 
+                                           onKeyUp="convertirTextoEnMayusculas('letraPlaca');" value="{{ letrasPlaca }}" onPaste="return true;" />
+                                    -
+                                    <input required style="width: 80px;" minlength="3" maxlength="4" autocomplete="off" type="text" 
+                                           pattern="^\d{3}[a-zA-Z]{1}$" name="numeroPlaca" title="3 números mínimo y una letra al final" 
+                                           id="numeroPlaca" onKeyUp="convertirTextoEnMayusculas('numeroPlaca');" onPaste="return true;" 
+                                           value="{{ numerosPlaca }}"/>
+                                </div>
+                            </td> 
+                            <td width="45%">
+                                <div id="campoGPS">
+                                    <label> Serie GPS</label>
+                                    <input maxlength="13" type="text" name="gps" id="gps" onkeyPress="return validarSoloNumeros(event);"
+                                           value="{{ detalles.GPS }}" onPaste="return true;" />
+                                </div>
+                                <div id="campoIMEI">
+                                    <label>* Número IMEI</label>
+                                    <input maxlength="20" type="text" name="imei" id="imei" value="{{ detalles.IMEI }}"
+                                           onkeyPress="return validarSoloNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoCHIP">
+                                    <label>* Número CHIP</label>
+                                    <input maxlength="20" type="text" name="chip" id="chip" value="{{ detalles.CHIP }}"
+                                           onkeyPress="return validarSoloNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoChasis">
+                                    <label>* # de Chasis</label>
+                                    <input required type="text" name="chasis" id="chasis" 
+                                           value="{{ detalles.CHASIS }}" onkeyPress="return validarLetrasYNumeros(event);" onPaste="return true;" />
+                                </div>
+                                <div id="campoMotor">
+                                    <label>* # de Motor</label>
+                                    <input required type="text" name="motor" id="motor" onkeyPress="return validarLetrasYNumeros(event);" 
+                                           value="{{ detalles.MOTOR }}" onPaste="return true;" />
+                                </div>
+                                <div id="campoDISCO">
+                                    <label>* Disco</label>
+                                    <input required maxlength="4" type="text" name="disco" id="disco" onkeyPress="return validarSoloNumeros(event);"
+                                           value="{{ detalles.DISCO }}" onPaste="return true;" />
+                                </div>
+                                <div id="campoANIO">
+                                    <label>* A&ntilde;o</label>
+                                    <input required maxlength="4" type="text" name="anio" id="anio" onkeyPress="return validarSoloNumeros(event);"
+                                           value="{{ detalles.ANIO }}" onPaste="return true;" />
+                                </div>
+                                <div id="esMonitorizado">
+                                    <input type="checkbox" id="esM" name="chk">
+                                    <label for="chk">*Es Monitoreado</label><br>                                    
+                                </div>
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&nbsp;</td>
+                            <td colspan="3">
+                                <div id="campoTipoVehiculo">
+                                    <label>* Tipo de veh&iacute;culo</label>
+                                    <div id="div_rb_tipo_vehiculo" style="margin:3px 15px;"></div>
+                                    <input type="hidden" id="rb_tipo_vehiculo" name="rb_tipo_vehiculo" 
+                                           value="{% if detalles.TIPO_VEHICULO is defined %}{{ detalles.TIPO_VEHICULO }}{% endif %}" />
+                                </div>
+                            </td>
+                          
+                        </tr>
+                        <tr>
+                            <td colspan="1">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td colspan="1">&nbsp;</td>
+                            <td colspan="3">
+                                <div>
+                                    <label>* Filial</label>
+                                    <div id='combo_filial'></div>
+                                </div> 
+                            </td>                           
+                        </tr>
+                    </tbody>
+                </table> 
+            </center>
+            <br/><br/>
+            
+            
+            <div id="tituloPorTipoVehiculo" class="secHead"></div>
+            <div id="formularioFichaTecnica">
+                <table class="formulario">
+                <tbody>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label  class="label_region">* Regi&oacute;n:</label></td>
+                            <td width="10%">
+                                 <div id='combo_region'></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label  class="label_ficha_contrato"> Plan de Mantenimiento:</label></td>
+                            <td width="10%">
+                                 <div id='combo_proceso'></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label class="label_ficha_contrato">* Umbral de Alerta(KM):</label></td>
+                            <td width="10%">
+                                <input type="text" id="alertaKM" name="alertaKM" 
+                                       value="{% if detalles.ALERTA_KM is defined %}{{ detalles.ALERTA_KM }}{%else%}500{% endif %}" 
+                                       onkeyPress="return validarSoloNumeros(event);"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="formularioContrato">
+                <table class="formulario">
+                    <tbody>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label  class="label_ficha_contrato">* Contratista:</label></td>
+                            <td width="10%">
+                                <input class='campo-obligatorio' type='text' id="infocontratoextratype_contratista" 
+                                       name="infocontratoextratype_contratista" 
+                                       value='{% if contrato.nombreContratista is defined %}{{ contrato.nombreContratista }}{%endif%}'/>
+                                <input type='text' style='display:none' id='infocontratoextratype_idcontratista' 
+                                       name='infocontratoextratype_idcontratista' 
+                                       value='{% if contrato.idPersonaContratista is defined %}{{contrato.idPersonaContratista}}{% endif %}'/>
+                                <input type='text' style='display:none' id='infocontratoextratype_personaEmpresaRolId' 
+                                       name='infocontratoextratype_personaEmpresaRolId' 
+                                       value='{% if contrato.idPersonaEmpresaRolContratista is defined %}
+                                                {{contrato.idPersonaEmpresaRolContratista}}
+                                              {% endif %}'/>
+                                <a href='#' 
+                                   onclick="showContratistas('#infocontratoextratype_contratista','#infocontratoextratype_idcontratista',
+                                                   '#infocontratoextratype_personaEmpresaRolId','Contratistas','contratistas');">
+                                    <img src="{{ asset('public/images/images_crud/search.png')}}" width="11" height="11" />
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label class="label_ficha_contrato">* Fecha de Inicio de Contrato:</label></td>
+                            <td width="10%">
+                                <div id="div_fe_inicio_contrato"></div>
+                                <input type="hidden" id="fecha_inicio_contrato" name="fecha_inicio_contrato" 
+                                       value="{% if contrato.fechaInicio is defined %}
+                                                {% if contrato.fechaInicio %}{{ contrato.fechaInicio  | date("Y-m-d")}}{% endif %}
+                                            {% endif %}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><label class="label_ficha_contrato">* Fecha de Fin de Contrato:</label></td>
+                            <td width="10%">
+                                <div id="div_fe_fin_contrato"></div>
+                                <input type="hidden" id="fecha_fin_contrato" name="fecha_fin_contrato" 
+                                       value="{% if contrato.fechaFin is defined %}
+                                                {% if contrato.fechaFin %}{{ contrato.fechaFin  | date("Y-m-d")}}{% endif %}
+                                            {% endif %}" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <input type="hidden" name="escogida_region_value" id="escogida_region_value" 
+                   value="{% if region is defined %}{{ region }}{% else %}{% endif %}" />
+            <input type="hidden" name="escogido_proceso_id" id="escogido_proceso_id" 
+                   value="{% if idPlanMantenimiento is defined %}{{ idPlanMantenimiento }}{% else %}{% endif %}" />
+            <input type="hidden" name="escogido_tipo_vehiculo" id="escogido_tipo_vehiculo" 
+                   value="{% if detalles.TIPO_VEHICULO!='' %}{{ detalles.TIPO_VEHICULO }}{% endif %}" />
+            <input type="hidden" name="escogido_es_monitoreado" id="escogido_es_monitoreado" 
+                   value="{% if detalles.ES_MONITORIZADO!='' %}{{ detalles.ES_MONITORIZADO }}{% endif %}" />
+            <input type="hidden" name="escogida_filial_value" id="escogida_filial_value" 
+                   value="{% if detalles.FILIAL!='' %}{{ detalles.FILIAL }}{% endif %}" />
+            <div class="buttons">
+                <p>
+                    <input type='submit' class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('elementotransporte') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>
+            <input type="hidden" id="tipoTransporte" name="tipoTransporte" value="{{strTipoTransporte}}" />	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        var intIdMedioTransporte                   = "{{ medioTransporte.id }}";
+        var strUrlGetModelosPorTipoMedioTransporte = "{{ path('elementotransporte_getModelosPorTipoMedioTransporte') }}";
+        var strUrlVerificarPlaca                   = "{{ path('elementotransporte_verificarPlaca') }}";
+        var strTipoTransporte                      = "{{ strTipoTransporte }}";
+        var esMonitoreado                          = "{{ detalles.ES_MONITORIZADO }}";
+        var idFilial                               = "{{ detalles.FILIAL }}";
+        var nombreFilial                           = "{{ detalles.FILIAL_NOMBRE }}";
+        var strUrlGetOficinas                      = "{{ path('search_ajaxGetOficinas') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoTransporte/funcionesGenerales.js?3') }}"></script>
+    <script>
+        Ext.onReady(function() { 
+
+            
+			//storeProcesos.load();
+            //combo_procesos.setRawValue(nombrePlanMantenimiento);
+            
+            
+            
+            
+            
+            {% if detalles.TIPO_VEHICULO!='' %}
+                {% if detalles.TIPO_VEHICULO == 'EMPRESA' %}
+                    document.getElementById('formularioFichaTecnica').style.display = 'block';
+                    document.getElementById('formularioContrato').style.display     = 'none';
+                    document.getElementById('tituloPorTipoVehiculo').innerHTML      = 'Ficha T&eacute;cnica';
+                {% elseif detalles.TIPO_VEHICULO == 'SUBCONTRATADO' %}
+                    document.getElementById('formularioContrato').style.display     = 'block';
+                    document.getElementById('formularioFichaTecnica').style.display = 'none';
+                    document.getElementById('tituloPorTipoVehiculo').innerHTML      = 'Pertenece a';
+                {% else %}
+                    document.getElementById('formularioFichaTecnica').style.display = 'none';
+                    document.getElementById('formularioContrato').style.display     = 'none';
+                    document.getElementById('tituloPorTipoVehiculo').innerHTML      = 'Datos Adicionales';
+                {% endif %}
+            {% else %}
+                document.getElementById('formularioFichaTecnica').style.display = 'none';
+                document.getElementById('formularioContrato').style.display     = 'none';
+                document.getElementById('tituloPorTipoVehiculo').style.display  = 'none';
+            {% endif %}
+            
+
+        });
+    </script>
+{% endblock javascripts_footer%}	

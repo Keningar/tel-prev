@@ -1,0 +1,120 @@
+Conectandose a la base Infraestructura...
+
+Conexion exitosa...
+
+Conectandose a la base General...
+
+Conexion exitosa...
+
+Conectandose a la base Soporte...
+
+Conexion exitosa...
+
+Conectandose a la base Comunicacion...
+
+Conexion exitosa...
+
+Conectandose a la base Comercial...
+
+Conexion exitosa...
+
+SELECT SERVICIO.ID_SERVICIO FROM DB_COMERCIAL.INFO_SERVICIO SERVICIO, DB_COMERCIAL.INFO_SERVICIO_TECNICO TECNICO, DB_COMERCIAL.INFO_PUNTO PUNTO, DB_COMERCIAL.INFO_PLAN_CAB PLANC, DB_COMERCIAL.INFO_PLAN_DET PLAND, DB_COMERCIAL.ADMI_PRODUCTO_CARACTERISTICA PC, DB_COMERCIAL.ADMI_CARACTERISTICA CAR, DB_COMERCIAL.INFO_PLAN_PRODUCTO_CARACT PPC, DB_INFRAESTRUCTURA.INFO_ELEMENTO ELEMENTO, DB_INFRAESTRUCTURA.ADMI_MODELO_ELEMENTO MODELO WHERE SERVICIO.ID_SERVICIO = TECNICO.SERVICIO_ID AND SERVICIO.PUNTO_ID = PUNTO.ID_PUNTO AND SERVICIO.ESTADO = 'Activo' AND TECNICO.INTERFACE_ELEMENTO_ID IS NOT NULL AND SERVICIO.PLAN_ID = PLANC.ID_PLAN AND PLANC.ID_PLAN = PLAND.PLAN_ID AND PPC.PLAN_DET_ID = PLAND.ID_ITEM AND PPC.PRODUCTO_CARACTERISITICA_ID = PC.ID_PRODUCTO_CARACTERISITICA AND PC.CARACTERISTICA_ID = CAR.ID_CARACTERISTICA AND CAR.DESCRIPCION_CARACTERISTICA = 'CAPACIDAD-PROM1' AND TECNICO.ELEMENTO_ID = ELEMENTO.ID_ELEMENTO AND ELEMENTO.MODELO_ELEMENTO_ID = MODELO.ID_MODELO_ELEMENTO AND MODELO.NOMBRE_MODELO_ELEMENTO = '7224'
+obteniendo los servicios
+40
+servicios...
+serviciosObj:40
+serviciosObj:38
+serviciosObj:27
+serviciosObj:17
+serviciosObj:14
+serviciosObj:12
+serviciosObj:3
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/19, login:rioaeguadalupeo1 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/18, login:stdgggavi_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.146, interface:2/18, login:stdcpcaba_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/1, login:stdjdmeri_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.117, interface:2/24, login:stdrigarciaz2 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/20, login:stdjcorte_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.146, interface:2/2, login:stdjdcarbo_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.252.45, interface:2/8, login:uiohmsala_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/12, login:stdjechil_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.117, interface:2/17, login:stdcvpinargotez1 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/22, login:stdmccede_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/17, login:rioliverap2 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/2, login:stdalmaci_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/20, login:rioydlluguinm1 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.117, interface:2/20, login:stdjmmedinaq1 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.116, interface:2/3, login:stdlogomezm_m , up:320, down:160
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/22, login:stdhcongy_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/4, login:stdeecontrer_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.252.45, interface:2/12, login:uioljaneiro_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/18, login:rionyjacomec1 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/18, login:stdmatoap_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/22, login:stdjgorma_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/2, login:riobvicarioli1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/14, login:stdqli_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/5, login:stdjrmorochor1 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/21, login:rionazambranom3 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/11, login:stdlavegam_m , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/3, login:stdmpmanobandaa1 , up:1248, down:608
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/12, login:rioffpazo_m , up:3712, down:1024
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/13, login:stdgwapoloc1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/9, login:stdammendoz , up:1248, down:608
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/15, login:riompball_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/21, login:stdmomoro , up:1248, down:608
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/9, login:stddgandinoc5 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.31.200.3, interface:2/14, login:riomvsanc_m , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/12, login:stdjmpadi_m , up:320, down:160
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/7, login:stdgedelgadob1 , up:2464, down:1024
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/12, login:stdjmpadi_m , up:320, down:160
+EJECUTO modelo:7224, ip:172.30.253.9, interface:2/10, login:stdmipach_m , up:608, down:320
+EJECUTO modelo:7224, ip:172.30.253.100, interface:2/11, login:stdmamendezc_m , up:320, down:160
+172.30.252.45, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+172.30.252.45, ERROR LECTURA:java.net.SocketTimeoutException: Read timed out
+***********************************
+LISTADO DE SERVICIOS 
+num:40
+Home ADSL Mixto 1 y 2,stdcpcaba_m,stdsdhcenteno1,7224,172.30.253.146,2/18,CAMBIADO
+Home ADSL Mixto 2 y 4,stdjdcarbo_m,stdsdhcenteno1,7224,172.30.253.146,2/2,CAMBIADO
+Home ADSL Mixto 1 y 2,stdrigarciaz2,stdclnjmontalvo2,7224,172.30.253.117,2/24,CAMBIADO
+Home ADSL Mixto 1 y 2,stdcvpinargotez1,stdclnjmontalvo2,7224,172.30.253.117,2/17,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjmmedinaq1,stdclnjmontalvo2,7224,172.30.253.117,2/20,CAMBIADO
+Home ADSL Mixto 1 y 2,stdgggavi_m,stdcln30dejulio1,7224,172.30.253.116,2/18,CAMBIADO
+Home ADSL Mixto 1 y 2,stdmccede_m,stdcln30dejulio1,7224,172.30.253.116,2/22,CAMBIADO
+Home ADSL Mixto 256 y 512,stdlogomezm_m,stdcln30dejulio1,7224,172.30.253.116,2/3,CAMBIADO
+Home ADSL Mixto 1 y 2,rioaeguadalupeo1,riotrmestadio2,7224,172.31.200.3,2/19,CAMBIADO
+Home ADSL Mixto 1 y 2,rioliverap2,riotrmestadio2,7224,172.31.200.3,2/17,CAMBIADO
+Home ADSL Mixto 1 y 2,rioydlluguinm1,riotrmestadio2,7224,172.31.200.3,2/20,CAMBIADO
+Home ADSL Mixto 1 y 2,rionyjacomec1,riotrmestadio2,7224,172.31.200.3,2/18,CAMBIADO
+Home ADSL Mixto 2 y 4,riobvicarioli1,riotrmestadio2,7224,172.31.200.3,2/2,CAMBIADO
+Home ADSL Mixto 2 y 4,rionazambranom3,riotrmestadio2,7224,172.31.200.3,2/21,CAMBIADO
+Home ADSL Mixto 3 y 6,rioffpazo_m,riotrmestadio2,7224,172.31.200.3,2/12,CAMBIADO
+Home ADSL Mixto 2 y 4,riompball_m,riotrmestadio2,7224,172.31.200.3,2/15,CAMBIADO
+Home ADSL Mixto 2 y 4,riomvsanc_m,riotrmestadio2,7224,172.31.200.3,2/14,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjdmeri_m,stdctctoachi6,7224,172.30.253.9,2/1,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjechil_m,stdctctoachi6,7224,172.30.253.9,2/12,CAMBIADO
+Home ADSL Mixto 1 y 2,stdhcongy_m,stdctctoachi6,7224,172.30.253.9,2/22,CAMBIADO
+Home ADSL Mixto 1 y 2,stdmatoap_m,stdctctoachi6,7224,172.30.253.9,2/18,CAMBIADO
+Home ADSL Mixto 1 y 2,stdqli_m,stdctctoachi6,7224,172.30.253.9,2/14,CAMBIADO
+Home ADSL Mixto 1 y 2,stdlavegam_m,stdctctoachi6,7224,172.30.253.9,2/11,CAMBIADO
+Home ADSL Mixto 2 y 4,stdgwapoloc1,stdctctoachi6,7224,172.30.253.9,2/13,CAMBIADO
+Home ADSL Mixto 2 y 4,stddgandinoc5,stdctctoachi6,7224,172.30.253.9,2/9,CAMBIADO
+Home ADSL Mixto 2 y 4,stdgedelgadob1,stdctctoachi6,7224,172.30.253.9,2/7,CAMBIADO
+Home ADSL Mixto 512 y 1536,stdmipach_m,stdctctoachi6,7224,172.30.253.9,2/10,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjcorte_m,stdsdhnuevosdomingo1,7224,172.30.253.100,2/20,CAMBIADO
+Home ADSL Mixto 1 y 2,stdalmaci_m,stdsdhnuevosdomingo1,7224,172.30.253.100,2/2,CAMBIADO
+Home ADSL Mixto 1 y 2,stdeecontrer_m,stdsdhnuevosdomingo1,7224,172.30.253.100,2/4,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjgorma_m,stdsdhnuevosdomingo1,7224,172.30.253.100,2/22,CAMBIADO
+Home ADSL Mixto 1 y 2,stdjrmorochor1,stdsdhnuevosdomingo1,7224,172.30.253.100,2/5,CAMBIADO
+Home ADSL Mixto 1 y 2,stdmpmanobandaa1,stdsdhnuevosdomingo1,7224,172.30.253.100,2/3,CAMBIADO
+Home ADSL Mixto 1 y 2,stdammendoz,stdsdhnuevosdomingo1,7224,172.30.253.100,2/9,CAMBIADO
+Home ADSL Mixto 1 y 2,stdmomoro,stdsdhnuevosdomingo1,7224,172.30.253.100,2/21,CAMBIADO
+Home ADSL Mixto 256 y 512,stdjmpadi_m,stdsdhnuevosdomingo1,7224,172.30.253.100,2/12,CAMBIADO
+Home ADSL Mixto 256 y 512,stdjmpadi_m,stdsdhnuevosdomingo1,7224,172.30.253.100,2/12,CAMBIADO
+Home ADSL Mixto 256 y 512,stdmamendezc_m,stdsdhnuevosdomingo1,7224,172.30.253.100,2/11,CAMBIADO
+Home ADSL Mixto 1 y 2,uiohmsala_m,uiopamsolII1,7224,172.30.252.45,2/8,CAMBIADO
+Home ADSL Mixto 1 y 2,uioljaneiro_m,uiopamsolII1,7224,172.30.252.45,2/12,CAMBIADO
+no:0
+generando archivo...
+Hora Inicio: Mon Sep 09 06:00:02 ECT 2013
+Hora Fin: Mon Sep 09 06:00:41 ECT 2013

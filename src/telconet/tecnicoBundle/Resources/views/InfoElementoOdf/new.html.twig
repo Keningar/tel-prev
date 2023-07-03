@@ -1,0 +1,107 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+<style scoped="scoped">
+    .alineando {
+        left: 42em;
+        position: absolute;
+        top: 44em;
+    }
+</style>
+
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var url_getEncontradosNodo  = '{{path('elementonodo_getEncontradosNodo')}}';
+    var url_getEncontradosRack  = '{{path('elementorack_getEncontradosRack')}}';
+    var url_getUnidadesElemento = '{{path('relacionelemento_ajaxUnidadesElementosByPadre')}}';
+</script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoOdf/new.js?3') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ingreso de Odf</h1>
+</div>
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+<div class="errormessage">
+            {{ flashMessage }}
+</div>
+    {% endfor %}
+
+<div class="body_content">
+    <form id='form_new_elemento_rack' action="{{ path('elementoodf_createOdf') }}" method="post" {{ form_enctype(form) }} class='formulario' novalidate="novalidate" 
+          onsubmit='if (validacionesForm()) {
+                      Ext.MessageBox.wait("Ingresando Elemento...");
+                      document.forms[0].submit();
+                      return true;
+                  }
+                  else {
+                      return false;
+                  }'>
+        <table width="100%" border="0" class="box-section-content">
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(form.nombreElemento) }}</td>
+                <td width="10%">{{ form_widget(form.nombreElemento) }}</td>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(form.nodoElementoId) }}</td>
+            <div hidden="true">{{ form_widget(form.nodoElementoId) }}</div>
+            <td width="15%"><div id='combo_nodos'></div></td>
+            <td width="5%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(form.descripcionElemento) }}</td>
+                <td width="10%">{{ form_widget(form.descripcionElemento) }}</td>
+                <td width="5%">&nbsp;</td>
+                <td width="24%" class="contenidoRack">{{ form_label(form.rackElementoId) }}</td>
+            <div hidden="true">{{ form_widget(form.rackElementoId) }}</div>
+            <td width="15%" class="contenidoRack"><div id='combo_rack'></div></td>
+            <td width="5%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(form.modeloElementoId) }}</td>
+                <td width="10%">{{ form_widget(form.modeloElementoId) }}</td>
+                <td width="5%">&nbsp;</td>
+                <td width="24%" class="contenidoRack">{{ form_label(form.unidadRack) }}</td>
+            <div hidden="true">{{ form_widget(form.unidadRack) }}</div>
+            <td width="15%" class="contenidoRack"><div id='combo_unidades'></div></td>
+            <td width="5%">&nbsp;</td>
+            </tr>   
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(form.claseTipoMedioId) }}</td>
+                <td width="10%">{{ form_widget(form.claseTipoMedioId) }}</td>
+                <td width="5%">&nbsp;</td>
+                <td width="24%">{{ form_label(form.factibilidadAutomatica) }}</td>
+                <td width="10%">{{ form_widget(form.factibilidadAutomatica) }}</td>
+                <td width="5%">&nbsp;</td>
+            </tr>    
+        </table>
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('elementoodf') }}">Cancelar</a>
+                </span>
+            </p>
+        </div>	
+            {{ form_widget(form._token) }}
+    </form>
+</div>
+<div id='windowMap' style='display:none'> 
+    <div id="map_canvas" style="width:500px; height:500px"></div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}	

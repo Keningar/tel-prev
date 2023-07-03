@@ -1,0 +1,54 @@
+--=======================================================================
+-- Reverso de parametros para mostrar las características del producto
+-- en el grid del modulo técnico
+-- Reverso de parametros para los estados de los servicios en el grid técnico
+-- Reverso de parametros para los tipos de servicios en el grid técnico
+--=======================================================================
+
+-- REVERSO DE LA CABECERA DE PARAMETRO DE LA CARACTERISTICAS DEL PRODUCTO
+DELETE DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE
+    PARAMETRO_ID = (
+        SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'NOMBRES_CARACTERISTICAS_PRODUCTO_GRID_TECNICO'
+    );
+DELETE DB_GENERAL.ADMI_PARAMETRO_CAB
+WHERE
+    NOMBRE_PARAMETRO = 'NOMBRES_CARACTERISTICAS_PRODUCTO_GRID_TECNICO';
+
+-- REVERSO DE LA CABECERA DE PARAMETRO DE LOS ESTADOS DE LOS SERVICIOS DEL GRID TECNICO
+DELETE DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE
+    PARAMETRO_ID = (
+        SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'ESTADOS_SERVICIOS_GRID_TECNICO'
+    );
+DELETE DB_GENERAL.ADMI_PARAMETRO_CAB
+WHERE
+    NOMBRE_PARAMETRO = 'ESTADOS_SERVICIOS_GRID_TECNICO';
+
+-- REVERSO DE LA CABECERA DE PARAMETRO DE LOS ESTADOS DE LOS SERVICIOS DEL GRID TECNICO
+DELETE DB_GENERAL.ADMI_PARAMETRO_DET
+WHERE
+    PARAMETRO_ID = (
+        SELECT
+            ID_PARAMETRO
+        FROM
+            DB_GENERAL.ADMI_PARAMETRO_CAB
+        WHERE
+            NOMBRE_PARAMETRO = 'TIPOS_SERVICIOS_GRID_TECNICO'
+    );
+DELETE DB_GENERAL.ADMI_PARAMETRO_CAB
+WHERE
+    NOMBRE_PARAMETRO = 'TIPOS_SERVICIOS_GRID_TECNICO';
+
+COMMIT;
+/

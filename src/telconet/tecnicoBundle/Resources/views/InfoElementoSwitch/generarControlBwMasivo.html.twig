@@ -1,0 +1,160 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/tecnico/css/InfoElemento.css') }}" />
+    <style scoped="scoped">
+            .category-label
+            {
+                    vertical-align: middle;
+                    padding-right: .5em;
+            }
+            #category
+            {
+                    vertical-align: middle;
+            }
+            .toolbar {
+                    float: right;
+                    margin-right: .8em;
+            }
+            #archivo-browseButtonWrap .x-btn-default-small-disabled {
+                background-image: -moz-linear-gradient(top,#f4f4f4,#4aa1ee) !important;
+            }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strTipoSwInterfaces             = 'SW';
+        var arrayDatosSwInterfaces          = [];
+        var url_GenerarControlBwMasivo      = '{{path('controlBwMasivo_ajaxGenerar')}}';
+        var url_validateControlBwMasivo     = '{{path('controlBwMasivo_ajaxValidate')}}';
+        var url_GetSwitchControlBwMasivo    = '{{path('controlBwMasivo_ajaxGetSwitch')}}';
+        var url_GetDiasNoPermitidosBwMasivo = '{{path('controlBwMasivo_ajaxGetDiasNoPermitidos')}}';
+        var url_GetInterfaceControlBwMasivo = '{{path('controlBwMasivo_ajaxGetInterface')}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoElementoSwitch/generarControlBwMasivo.js?2') }}"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Generar Control BW Automático</h1>
+</div>
+{% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="errormessage">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+<div>
+    <table width='85%'>
+        <tr height="20px"></tr>
+        <tr>
+            <td></td>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td width="25%">
+                            <div class="secHead"><b>Escoja la Fecha Ejecuci&oacute;n</b><br><b>(AAAA-MM-DD)</b></div>
+                        </td>
+                        <td width="25%">
+                            <div class="secHead"><b>Escoja el Tipo Ejecución</b></div>
+                        </td>
+                        <td width="25%">
+                            <div class="secHead"><b>Adjuntar el archivo CSV</b></div>
+                        </td>
+                        <td width="25%">
+                            <div class="secHead">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id='label_add_sw_int'>Agregar item de forma individual</b></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="25%">
+                            <fieldset id="selector">
+                                <div id='picker_fecha' required='required'></div>
+                            </fieldset>
+                        </td>
+                        <td width="25%">
+                            <fieldset id="selector">
+                                <div id='combo_tipo_masivo' required='required'></div>
+                            </fieldset>
+                        </td>
+                        <td width="25%">
+                            <div id='upload_file'></div>
+                        </td>
+                        <td width="25%">
+                            <fieldset id="selector">
+                                <div style="margin-left:20px;" id='btn_add_sw_int'></div>
+                            </fieldset>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <table width="100%">
+                    <tr>
+                        <td width="15%">
+                            <div id='btn_limpiar'></div>
+                        </td>
+                        <td width="85%">
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr height="5px"></tr>
+        <tr>
+            <td></td>
+            <td>
+                <br/>
+                <label id='label_count_sw_int' style="font-size: 15px !important;"></label><label id='div_count_sw_int'></label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <br/>
+                <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                    <tr bgcolor='#ffffff'>
+                        <td bgcolor='#ffffff'><div id='grid_generar_control_bw_masivo'></div></td>
+                    </tr>                        
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <br/>
+                <table width="100%">
+                    <tr>
+                        <td width="80%">
+                        </td>
+                        <td width="20%">
+                            <div id='btn_generar_masivo'></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr height="5px"></tr>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    {% if is_granted("ROLE_315-7657") %}
+        <a class="button-nuevo-registro" href="{{ path('controlBwMasivo_index') }}">
+            <img src="{{ asset('public/images/verInfo.png')}}" width="15" height="15" />
+            &nbsp;Vista Control BW Automático
+        </a>
+     {% endif %}
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        
+    </script>
+{% endblock %}
