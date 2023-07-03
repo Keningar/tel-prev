@@ -1,0 +1,21 @@
+/* 
+    Document   : ext-all-personalizado
+    Created on : 17/01/2013, 08:25:06 PM
+    Author     : vobazurto
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.x-grid-row .custom-azul { 
+    color: blue; 
+    font-weight: bold; 
+}
+
+.x-grid-row .custom-rojo { 
+    color: red; 
+    font-weight: bold; 
+}
+
+.x-grid-row .custom-verde{ 
+    color: green; 
+    font-weight: bold; 
+}

@@ -1,0 +1,59 @@
+/*
+* Kendo UI v2011.3.1129 (http://kendoui.com)
+* Copyright 2011 Telerik AD. All rights reserved.
+*
+* Kendo UI commercial licenses may be obtained at http://kendoui.com/license.
+* If you do not own a commercial license, this file shall be governed by the
+* GNU General Public License (GPL) version 3. For GPL requirements, please
+* review: http://www.gnu.org/copyleft/gpl.html
+*/
+
+.k-widget{
+	background-color:#eaeaec
+}
+.k-widget,
+.k-input,
+.k-textbox,
+.k-group,
+.k-content,
+.k-header,
+.k-editable-area,
+.k-separator,
+.k-colorpicker .k-arrow-down,
+.k-autocomplete,
+.k-dropdown-wrap,
+.k-toolbar,
+.k-grouping-header,
+.k-grid-pager,
+.k-group-footer td,
+.k-grid-footer,
+.k-footer-template td,
+.k-state-default,
+.k-state-default .k-select,
+.k-state-disabled,
+.k-panelbar .k-link,
+.k-grid-header-wrap,
+.k-grid-header,
+.k-grid td,
+.k-grid-footer-wrap,
+.k-grid-pager,
+.k-grouping-header,
+.k-grouping-header .k-group-indicator,
+.k-dropdown-wrap,
+.k-autocomplete,
+.k-panelbar .k-link,
+.k-panelbar .k-group,
+.k-panelbar .k-content,
+.k-calendar th,
+.k-slider-track,
+.k-splitbar,
+.k-dropzone-active,
+.k-upload-files,
+.k-tiles,
+.k-toolbar,
+.k-dropdown-wrap,
+.k-tooltip,
+.k-progress{
+	border-color:#dbdbde
+}
+

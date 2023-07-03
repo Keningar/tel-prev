@@ -1,0 +1,82 @@
+fieldset {
+	border: 1px solid black; padding: 8px; margin: 8px 0;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: white;
+}
+
+#main { padding: 1em; }
+#banner { padding: 15px; background-color: #06b; color: white; font-size: large; border-bottom: 1px solid #ccc;
+    background: url(bg.gif) repeat-x; text-align: center }
+#banner a { color: white; }
+legend { font-weight: bold; }
+
+button { padding: 0 6px; margin: 0; }
+
+pre, code { white-space: pre; font-family: "Courier New"; }
+pre { margin: 8px 0; }
+p { margin: 1em 0; }
+strong { font-weight: bolder; }
+em { font-style: italic; }
+
+.jscom, .mix htcom   { color: #4040c2; }
+.com      { color: green; }
+.regexp   { color: maroon; }
+.string   { color: teal; }
+.keywords { color: blue; }
+.global   { color: #008; }
+.numbers  { color: #880; }
+.comm     { color: green; }
+.tag      { color: blue; }
+.entity   { color: blue; }
+.string   { color: teal; }
+.aname    { color: maroon; }
+.avalue   { color: maroon; }
+.jquery   { color: #00a; }
+.plugin   { color: red; }
+
+#tooltip.pretty {
+	border: none;
+	width: 210px;
+	padding:20px;
+	height: 135px;
+	opacity: 2;
+	background: url('');
+}
+
+#tooltip.pretty div { width: 220px; text-align: left; }
+
+#tooltip.fancy {
+	background: url('shadow2.png');
+	padding-top: 5em;
+	height: 100px;
+}
+#tooltip.fancy.viewport-right {
+	background: url('shadow2-reverse.png');
+}
+
+#extended { margin: 2em 0; }
+#extended label { text-decoration: underline; }
+#yahoo { width: 7em; }
+#right, #right2 { text-align: right; }
+#tooltip.right { width: 250px; }
+#fancy2 { float: right; }
+
+#tooltiptable{
+font-family: Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+font-weight:normal;
+text-align: left;
+padding: 8px;
+margin: 5px;
+}
+
+#tooltiptable td{
+padding: 6px;
+}
