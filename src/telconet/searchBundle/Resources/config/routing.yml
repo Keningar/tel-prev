@@ -1,0 +1,70 @@
+search_ajaxSearch:
+    pattern:  /ajaxSearch
+    defaults: { _controller: searchBundle:search:ajaxSearch }
+search_ajaxGetDatosGenerales:
+    pattern:  /ajaxGetDatosGenerales
+    defaults: { _controller: searchBundle:search:ajaxGetDatosGenerales }
+search_ajaxGetServiciosPunto:
+    pattern:  /ajaxGetServiciosPunto
+    defaults: { _controller: searchBundle:search:ajaxGetServiciosPunto }
+search_ajaxSetPuntoSession:
+    pattern:  /ajaxSetPuntoSession
+    defaults: { _controller: searchBundle:search:ajaxSetPuntoSession }
+search_ajaxGetEstadosPunto:
+    pattern:  /ajaxGetEstadosPunto
+    defaults: { _controller: searchBundle:combos:ajaxGetEstadosPunto }
+search_ajaxGetTiposDocumentosComerciales:
+    pattern:  /ajaxGetTiposDocumentosComerciales
+    defaults: { _controller: searchBundle:combos:ajaxGetTiposDocumentosComerciales }
+search_ajaxGetLicencias:
+    pattern:  /ajaxGetLicencias
+    defaults: { _controller: searchBundle:combos:ajaxGetLicencias }
+search_ajaxGetFormasPago:
+    pattern:  /ajaxGetFormasPagosContrato
+    defaults: { _controller: searchBundle:combos:ajaxGetFormasPagosContrato }
+search_ajaxGetEstadosTiposDocumentosComerciales:
+    pattern:  /ajaxGetEstadosTiposDocumentosComerciales
+    defaults: { _controller: searchBundle:combos:ajaxGetEstadosTiposDocumentosComerciales }
+search_ajaxGetListadoServiciosPor:
+    pattern:  /ajaxGetListadoServiciosPor
+    defaults: { _controller: searchBundle:combos:ajaxGetListadoServiciosPor }
+search_ajaxGetEstadoServicios:
+    pattern:  /ajaxGetEstadoServicios
+    defaults: { _controller: searchBundle:combos:ajaxGetEstadoServicios }
+search_ajaxGetFormasContacto:
+    pattern:  /ajaxGetFormasContacto
+    defaults: { _controller: searchBundle:combos:ajaxGetFormasContacto }
+search_ajaxGetOficinas:
+    pattern:  /ajaxGetOficinas
+    defaults: { _controller: searchBundle:combos:ajaxGetOficinas }
+search_ajaxGetTiposNegocio:
+    pattern:  /ajaxGetTiposNegocio
+    defaults: { _controller: searchBundle:combos:ajaxGetTiposNegocio }
+search_ajaxGetTiposUbicacion:
+    pattern:  /ajaxGetTiposUbicacion
+    defaults: { _controller: searchBundle:combos:ajaxGetTiposUbicacion }
+search_ajaxGetVendedores:
+    pattern:  /ajaxGetVendedores
+    defaults: { _controller: searchBundle:combos:ajaxGetVendedores }
+search_ajaxGetTiposElementos:
+    pattern:  /ajaxGetTiposElementos
+    defaults: { _controller: searchBundle:combos:ajaxGetTiposElementos }
+search_ajaxGetModelosElementos:
+    pattern:  /ajaxGetModelosElementos
+    defaults: { _controller: searchBundle:combos:ajaxGetModelosElementos }
+search_ajaxGetElementos:
+    pattern:  /ajaxGetElementos
+    defaults: { _controller: searchBundle:combos:ajaxGetElementos }
+search_ajaxGetTiposMedios:
+    pattern:  /ajaxGetTiposMedios
+    defaults: { _controller: searchBundle:combos:ajaxGetTiposMedios }
+search_ajaxGetInterfacesElemento:
+    pattern:  /ajaxGetInterfacesElemento
+    defaults: { _controller: searchBundle:combos:ajaxGetInterfacesElemento }
+search_ajaxSetVerContrato:
+    pattern:  /ajaxSetPuntoSession
+    defaults: { _controller: searchBundle:search:ajaxSetPuntoSession }
+search_ajaxGuardarLog:
+    pattern:  /ajaxGuardarLog
+    defaults: { _controller: searchBundle:search:ajaxGuardarLog }    
+    

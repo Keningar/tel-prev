@@ -1,0 +1,7 @@
+parameters:
+#    search.example.class: telconet\searchBundle\Example
+
+services:
+#    search.example:
+#        class: %search.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
