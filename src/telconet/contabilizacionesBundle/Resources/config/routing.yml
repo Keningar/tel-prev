@@ -1,0 +1,15 @@
+contabilizaciones_masiva:
+    pattern:  /c_masivo/
+    defaults: { _controller: contabilizacionesBundle:ContabilizarMasivamente:index }
+
+contabilizaciones_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: contabilizacionesBundle:Default:index }
+    
+contabilizaciones_factura:
+    pattern:  /{id_factura}
+    defaults: { _controller: contabilizacionesBundle:Default:contabilizarFactura }
+    
+contabilizaciones_nc:
+    pattern:  /{id_factura}
+    defaults: { _controller: contabilizacionesBundle:NotaCredito:contabilizarNotaCredito }

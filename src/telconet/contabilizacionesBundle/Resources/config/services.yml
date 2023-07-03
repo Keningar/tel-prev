@@ -1,0 +1,7 @@
+parameters:
+#    contabilizaciones.example.class: telconet\contabilizacionesBundle\Example
+
+services:
+#    contabilizaciones.example:
+#        class: %contabilizaciones.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
