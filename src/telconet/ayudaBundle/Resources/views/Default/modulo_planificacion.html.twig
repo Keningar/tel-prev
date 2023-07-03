@@ -1,0 +1,165 @@
+    <img src="{{asset('public/images/calendar.png')}}" height="50" class="img_titulo">
+	<div class="div_titulo_planificacion">
+      Módulo planificación
+    </div></br>
+	
+	<p class="texto_manual">Para el Módulo Planificación, se sigue el siguiente flujo:</p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/proceso_planificacion.png')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/proceso_planificacion.png')}}"
+	   height="140"/> 
+	  </a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	
+	<img src="{{asset('./bundles/ayuda/img/descarga_planificacion.png')}}" height="40" class="descarga">
+	<div class="div_descarga_planificacion" >
+	  <a href="{{asset('./bundles/ayuda/archivos/ProcesoPlanificacionyLogisticaTELCOS+.pdf')}}" target="_blank">Descargar Proceso: Planificación y Logística </a>
+    </div></br></br>
+	
+    <p class="texto_manual">Esta sección le permitirá aprender a usar todas las funcionalidades 
+	referente al módulo planificación.</p></br>
+	
+	<!----------- Imagen modulo planificacion----------->
+	<!-------------------------------------------------->
+    <div class="img_center">
+	  <a class="example-image-link" href="{{asset('./bundles/ayuda/img/modulo_planificacion.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/modulo_planificacion.jpg')}}"
+	   height="150"/>
+	  </a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	
+	<p class="texto_manual">El módulo planificación posee un filtro, que nos permite
+	hacer una búsqueda rápida, ingresando ciertos parametros. Para habilitar o 
+	deshabilitar esta opción damos click en las flechas dobles en dirección hacia
+	abajo.</p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/busqueda_planificacion.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/busqueda_planificacion.jpg')}}"
+	   height="130"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	<!-------------------------------------------------->
+	<!--
+    <p class="texto_manual">En el menú localizado en la parte de abajo Ud.
+	puede realizar las siguientes acciones:</p></br>
+	
+	<p class="texto_manual">
+	<span class="bold">Factibilidad -></span> Consultar la cobertura, visualizar
+	el croquis, autorizar factibilidad.</br>
+	
+	<span class="bold">Planificar -></span> Coordinar planificación, consultar
+	planificacion, asignar responsables, asignar recursos de red, finalizar 
+	retiro de equipos, Consultar asignaciones.</br>
+	
+	<span class="bold">Instalación -></span> Ingresar materiales, consultar
+	datos de instalación.</br>
+	
+	<span class="bold">Reportes -></span> Consultar reporte general, reportes
+	asignados, reportes supertel.</p></br>-->
+	
+	<p class="texto_manual">EL módulo planificación posee un submódulo con
+	sus respectivas funcionalidades, a continuación se decribe las acciones
+	que se pueden ejecutar.</p></br>
+	
+    
+	<!--Menú que se encuntra dentro del modulo planificacion-->
+	<!-------------------------------------------------------->
+    <div class="submenu_modulos" id="planificacion">
+      <ul>
+		 
+         <li><a href="#factibilidad" id="link_factibilidadp">
+		 <img src="{{asset('public/images/factibilidad.png')}}" align="left" height="25">
+		 |Factibilidad|</a></li>
+		 
+		 
+         <li><a href="#planificacion2" id="link_planificarp">
+		 <img src="{{asset('public/images/order.png')}}" align="left" height="25">
+		 |Planificar|</a></li>
+		 
+		 
+         <li><a href="#instalacion" id="link_instalacionp">
+		 <img src="{{asset('public/images/tools.png')}}" align="left" height="25">
+		 |Instalación|</a></li>
+		 
+		 
+         <li><a href="#reportes" id="link_reportesp">
+		 <img src="{{asset('public/images/chart.png')}}" align="left" height="25">
+		 |Reportes|</a></li>
+		 
+      </ul>
+    </div>  
+    <!----------------------------------------------------------->
+    <div id="load_planificacion">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	
+	<!------Div donde se carga el contenido planificacion-------->
+	<!----------------------------------------------------------->
+	<div id="contenido_planificacion"></div>
+	<!----------------------------------------------------------->
+ 
+    <!-------Script que carga el contenido por medio de ajax (modulo planificacion)-------->
+	<!------------------------------------------------------------------------------------->
+    <script>
+		
+		$('#link_factibilidadp').click(function(){
+			$("#load_planificacion").css("display", "inline");
+			$("#contenido_planificacion").empty();
+			$('#contenido_planificacion').load('{{ path('planificacion_factibilidad') }}', function(){
+			$("#load_planificacion").css("display", "none");});
+			
+			$('#link_factibilidadp').addClass('pre_planificacion');
+			$('#link_planificarp').removeClass('pre_planificacion');
+			$('#link_instalacionp').removeClass('pre_planificacion');
+			$('#link_reportesp').removeClass('pre_planificacion');
+			
+			
+			
+		});
+		$('#link_planificarp').click(function(){
+			$("#load_planificacion").css("display", "inline");
+			$("#contenido_planificacion").empty();
+			$('#contenido_planificacion').load('{{ path('planificacion_plan') }}', function(){
+			$("#load_planificacion").css("display", "none");});
+			
+			$('#link_planificarp').addClass('pre_planificacion');
+			$('#link_factibilidadp').removeClass('pre_planificacion');
+			$('#link_instalacionp').removeClass('pre_planificacion');
+			$('#link_reportesp').removeClass('pre_planificacion');
+			
+			
+		});
+		$('#link_instalacionp').click(function(){
+			$("#load_planificacion").css("display", "inline");
+			$("#contenido_planificacion").empty();
+			$('#contenido_planificacion').load('{{ path('planificacion_instalacion') }}', function(){
+			$("#load_planificacion").css("display", "none");});
+			
+			$('#link_instalacionp').addClass('pre_planificacion');
+			$('#link_planificarp').removeClass('pre_planificacion');
+			$('#link_factibilidadp').removeClass('pre_planificacion');
+			$('#link_reportesp').removeClass('pre_planificacion');
+			
+		});
+		$('#link_reportesp').click(function(){
+			$("#load_planificacion").css("display", "inline");
+			$("#contenido_planificacion").empty();
+			$('#contenido_planificacion').load('{{ path('planificacion_reportes') }}', function(){
+			$("#load_planificacion").css("display", "none");});
+			
+			$('#link_reportesp').addClass('pre_planificacion');
+			$('#link_instalacionp').removeClass('pre_planificacion');
+			$('#link_planificarp').removeClass('pre_planificacion');
+			$('#link_factibilidadp').removeClass('pre_planificacion');
+			
+		});
+				
+    </script>
+	<!--------------------------------------------------------------->

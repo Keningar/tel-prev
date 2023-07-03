@@ -1,0 +1,51 @@
+<!---Imagen del icono autorizaciones (modulo financiero)---->
+<!---------------------------------------------------------->
+<img src="{{asset('public/images/com-autoriza.png')}}" height="50" class="img_titulo_financiero">
+<!---------------------------------------------------------->  
+	
+    <div class="div_titulo_financiero">
+      Autorización
+    </div></br>
+	
+	<!-------------Imagen de la sección autorizaciones (módulo financiero)------------->
+	<!--------------------------------------------------------------------------------->
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/financiero_autorizaciones.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/financiero_autorizaciones_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+    </div></br>
+	<!-------------------------------------------------------------------------------->
+     <div id="contenido_autorizaciones"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los tipos de autorizaciones,
+    encontramos los siguientes links.</p></br>
+	<!-------------Menú de las acciones en la sección autorizaciones (modulo financiero)--------------->
+	<!------------------------------------------------------------------------------------------------->
+    <div class="submenu_modulos" id="autorizaciones">
+	  <ul>
+         <li><a href="#financiero" id="link_credito">|Autorización nota de crédito|</a></li>
+         <li><a href="#financiero" id="link_debito">|Autorización nota de débito|</a></li>
+      </ul>
+    </div>
+	<!-------------------------------------------------------------------------------------------------->
+	<div id="load_sub_financiero">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<script>
+		$('#link_credito').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_autorizaciones").empty();
+			$('#contenido_autorizaciones').load('{{ path('financiero_autorizacion_credito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_debito').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_autorizaciones").empty();
+			$('#contenido_autorizaciones').load('{{ path('financiero_autorizacion_debito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+				
+	</script>

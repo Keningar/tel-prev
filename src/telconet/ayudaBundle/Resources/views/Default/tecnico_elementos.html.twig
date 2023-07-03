@@ -1,0 +1,94 @@
+<!-------------Imagen del icono elemento (modulo tecnico)---------->
+<!----------------------------------------------------------------->
+    <img src="{{asset('public/images/network.png')}}" height="50" class="img_titulo3">   
+	
+    <div class="div_titulo_tecnico">
+      Elementos
+    </div></br>
+	
+	<p class="texto_manual">Esta opción se muestra un listado de los elemntos existentes.</p></br>
+	<!-------imagen de la seccion elemento (modulo tecnico)----->
+	<!---------------------------------------------------------->
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/tecnico_elemento.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/tecnico_elemento.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	<!----------------------------------------------------------->
+	
+	<div id="contenido_elementos"></div>
+	
+	<p class="texto_manual">Para consultar más acerca de los elementos existentes,
+    encontramos los siguientes links.</p></br>
+	
+	<!-------Menú que se encuntra en la seccion elemento (modulo tecnico)----------->
+	<!------------------------------------------------------------------------------>
+    <div class="submenu_modulos" id="elementos">
+      <ul>
+         <li><a href="#sub_tecnico" id="link_dslam">|Dslam|</a></li>
+         <li><a href="#sub_tecnico" id="link_olt">|Olt|</a></li>
+		 <li><a href="#sub_tecnico" id="link_pop">|Pop|</a></li>
+		 <li><a href="#sub_tecnico" id="link_nodo">|Nodo|</a></li>
+		 <li><a href="#sub_tecnico" id="link_radio">|Radio|</a></li>
+		 <li><a href="#sub_tecnico" id="link_servidor">|Servidor|</a></li>
+       </ul>
+    </div>
+    <!------------------------------------------------------------------------------->	
+	
+	<div id="load_sub_tecnico">
+	 <img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	
+	<script>
+	  $('#link_dslam').click(function(){
+			
+		$("#load_sub_tecnico").css("display", "inline");
+		$("#contenido_elementos").empty();
+		$('#contenido_elementos').load('{{ path('tecnico_dslam') }}', function(){
+			$("#load_sub_tecnico").css("display", "none");});
+	   });
+	   
+	   $('#link_olt').click(function(){
+			
+		$("#load_sub_tecnico").css("display", "inline");
+		$("#contenido_elementos").empty();
+		$('#contenido_elementos').load('{{ path('tecnico_olt') }}', function(){
+			$("#load_sub_tecnico").css("display", "none");});
+	   });
+	   
+	   $('#link_pop').click(function(){
+			
+		$("#load_sub_tecnico").css("display", "inline");
+		$("#contenido_elementos").empty();
+		$('#contenido_elementos').load('{{ path('tecnico_pop') }}', function(){
+			$("#load_sub_tecnico").css("display", "none");});
+	   });
+	   
+	   $('#link_nodo').click(function(){
+			
+		$("#load_sub_tecnico").css("display", "inline");
+		$("#contenido_elementos").empty();
+		$('#contenido_elementos').load('{{ path('tecnico_nodo') }}', function(){
+			$("#load_sub_tecnico").css("display", "none");});
+	   });
+	   
+	   $('#link_radio').click(function(){
+			
+		$("#load_sub_tecnico").css("display", "inline");
+		$("#contenido_elementos").empty();
+		$('#contenido_elementos').load('{{ path('tecnico_radio') }}', function(){
+			$("#load_sub_tecnico").css("display", "none");});
+	   });
+	   
+	   $('#link_servidor').click(function(){
+			
+		$("#load_sub_tecnico").css("display", "inline");
+		$("#contenido_elementos").empty();
+		$('#contenido_elementos').load('{{ path('tecnico_servidor') }}', function(){
+			$("#load_sub_tecnico").css("display", "none");});
+	   });
+	  
+    </script> 

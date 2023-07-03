@@ -1,0 +1,152 @@
+<!---------------------Menu creado para cada modulo-------------------->
+<!--------------------------------------------------------------------->
+<div id="cssmenu">
+  <ul class="buttons">
+    <li><a class="menu_int"  id="link_introduccion" href="#introduccion" >INTRODUCCIÓN</a></li>
+    <li><a class="menu_inicio" id="link_modulo_inicio" href="#inicio">INICIO</a></li>
+    <li><a class="menu_comercial" id="link_modulo_comercial" href="#comercial">COMERCIAL</a></li>
+    <li><a class="menu_planificacion" id="link_modulo_planificacion" href='#planificacion'>PLANIFICACIÓN</a></li>
+    <li><a class="menu_tecnico" id="link_modulo_tecnico" href='#tecnico'>TÉCNICO</a></li>
+    <li><a class="menu_financiero" id="link_modulo_financiero" href='#financiero'>FINANCIERO</a></li>
+    <li><a class="menu_soporte" id="link_modulo_soporte" href='#soporte'>SOPORTE</span></a></li>
+    <!--<li><a class="menu_administracion" id="link_modulo_administracion" href='#'>ADMINISTRACIÓN</a></li>-->
+  </ul>
+</div>
+<!----------------------------------------------------------------------->
+	 <div id="load_modulos">
+		<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	 </div>
+	 
+{% block javascripts %}
+    <script>
+     $(document).ready(function(){
+        $('#link_introduccion').click(function(){
+          $("#load_modulos").css("display", "inline");
+		  
+		  $('#contenido_modulos').load('{{ path('introduccion') }}', function(){
+			$("#load_modulos").css("display", "none");});
+			
+          $('#link_introduccion').addClass('menu_int');
+          $('#link_modulo_inicio').removeClass('menu_ini');
+          $('#link_modulo_comercial').removeClass('menu_come');
+          $('#link_modulo_financiero').removeClass('menu_finan');
+          $('#link_modulo_tecnico').removeClass('menu_tecn');
+          $('#link_modulo_planificacion').removeClass('menu_plan');
+          $('#link_modulo_soporte').removeClass('menu_soport');
+          $('#link_modulo_administracion').removeClass('menu_admin');
+        });
+        $('#link_modulo_inicio').click(function(){
+            $("#load_modulos").css("display", "inline");
+			
+			$('#contenido_modulos').load('{{ path('modulo_inicio') }}', function(){
+			$("#load_modulos").css("display", "none");});
+			
+			$('#link_introduccion').removeClass('menu_int');
+			$('#link_introduccion').addClass('menu_intro');
+			$('#link_modulo_inicio').addClass('menu_ini');
+			$('#link_modulo_comercial').removeClass('menu_come');
+			$('#link_modulo_financiero').removeClass('menu_finan');
+			$('#link_modulo_tecnico').removeClass('menu_tecn');
+			$('#link_modulo_planificacion').removeClass('menu_plan');
+			$('#link_modulo_soporte').removeClass('menu_soport');
+			$('#link_modulo_administracion').removeClass('menu_admin');
+		});
+		$('#link_modulo_comercial').click(function(){
+			$("#load_modulos").css("display", "inline");
+			
+			$('#contenido_modulos').load('{{ path('modulo_comercial') }}', function(){
+			$("#load_modulos").css("display", "none");});
+			
+			$('#link_introduccion').removeClass('menu_int');
+			$('#link_introduccion').addClass('menu_intro');
+			$('#link_modulo_inicio').removeClass('menu_ini');
+			$('#link_modulo_comercial').addClass('menu_come');
+			$('#link_modulo_financiero').removeClass('menu_finan');
+			$('#link_modulo_tecnico').removeClass('menu_tecn');
+			$('#link_modulo_planificacion').removeClass('menu_plan');
+			$('#link_modulo_soporte').removeClass('menu_soport');
+			$('#link_modulo_administracion').removeClass('menu_admin');
+		});
+		$('#link_modulo_financiero').click(function(){
+			$("#load_modulos").css("display", "inline");
+			
+			$('#contenido_modulos').load('{{ path('modulo_financiero') }}', function(){
+			$("#load_modulos").css("display", "none");});
+			
+			$('#link_introduccion').removeClass('menu_int');
+			$('#link_introduccion').addClass('menu_intro');
+			$('#link_modulo_inicio').removeClass('menu_ini');
+			$('#link_modulo_comercial').removeClass('menu_come');
+			$('#link_modulo_financiero').addClass('menu_finan');
+			$('#link_modulo_tecnico').removeClass('menu_tecn');
+			$('#link_modulo_planificacion').removeClass('menu_plan');
+			$('#link_modulo_soporte').removeClass('menu_soport');
+			$('#link_modulo_administracion').removeClass('menu_admin');
+		});
+		$('#link_modulo_tecnico').click(function(){
+			$("#load_modulos").css("display", "inline");
+			
+			$('#contenido_modulos').load('{{ path('modulo_tecnico') }}', function(){
+			$("#load_modulos").css("display", "none");});
+			
+			$('#link_introduccion').removeClass('menu_int');
+			$('#link_introduccion').addClass('menu_intro');
+			$('#link_modulo_inicio').removeClass('menu_ini');
+			$('#link_modulo_comercial').removeClass('menu_come');
+			$('#link_modulo_financiero').removeClass('menu_finan');
+			$('#link_modulo_tecnico').addClass('menu_tecn');
+			$('#link_modulo_planificacion').removeClass('menu_plan');
+			$('#link_modulo_soporte').removeClass('menu_soport');
+			$('#link_modulo_administracion').removeClass('menu_admin');
+		});
+		$('#link_modulo_planificacion').click(function(){
+			$("#load_modulos").css("display", "inline");
+			
+			$('#contenido_modulos').load('{{ path('modulo_planificacion') }}', function(){
+			$("#load_modulos").css("display", "none");});
+			
+			$('#link_introduccion').removeClass('menu_int');
+			$('#link_introduccion').addClass('menu_intro');
+			$('#link_modulo_inicio').removeClass('menu_ini');
+			$('#link_modulo_comercial').removeClass('menu_come');
+			$('#link_modulo_financiero').removeClass('menu_finan');
+			$('#link_modulo_tecnico').removeClass('menu_tecn');
+			$('#link_modulo_planificacion').addClass('menu_plan');
+			$('#link_modulo_soporte').removeClass('menu_soport');
+			$('#link_modulo_administracion').removeClass('menu_admin');
+		});
+		$('#link_modulo_soporte').click(function(){
+			$("#load_modulos").css("display", "inline");
+			
+			$('#contenido_modulos').load('{{ path('modulo_soporte') }}', function(){
+			$("#load_modulos").css("display", "none");});
+			
+			$('#link_introduccion').removeClass('menu_int');
+			$('#link_introduccion').addClass('menu_intro');
+			$('#link_modulo_inicio').removeClass('menu_ini');
+			$('#link_modulo_comercial').removeClass('menu_come');
+			$('#link_modulo_financiero').removeClass('menu_finan');
+			$('#link_modulo_tecnico').removeClass('menu_tecn');
+			$('#link_modulo_planificacion').removeClass('menu_plan');
+			$('#link_modulo_soporte').addClass('menu_soport');
+			$('#link_modulo_administracion').removeClass('menu_admin');
+		});
+		$('#link_modulo_administracion').click(function(){
+			$("#load_modulos").css("display", "inline");
+			
+			$('#contenido_modulos').load('{{ path('modulo_administracion') }}', function(){
+			$("#load_modulos").css("display", "none");});
+			
+			$('#link_introduccion').removeClass('menu_int');
+			$('#link_introduccion').addClass('menu_intro');
+			$('#link_modulo_inicio').removeClass('menu_ini');
+			$('#link_modulo_comercial').removeClass('menu_come');
+			$('#link_modulo_financiero').removeClass('menu_finan');
+			$('#link_modulo_tecnico').removeClass('menu_tecn');
+			$('#link_modulo_planificacion').removeClass('menu_plan');
+			$('#link_modulo_soporte').removeClass('menu_soport');
+			$('#link_modulo_administracion').addClass('menu_admin');
+		});
+    });
+    </script>
+{% endblock %}

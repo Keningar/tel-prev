@@ -1,0 +1,63 @@
+<!------Imagen del icono instalacion (modulo planificacion)-------->
+<!----------------------------------------------------------------->
+   <img src="{{asset('public/images/tools.png')}}" height="50" class="img_titulo3"> 
+	
+    <div class="div_titulo_planificacion">
+      Instalación
+    </div></br>
+
+    <p class="texto_manual">Esta opción muestra lo relacionado a una isntalación, <em>Ingresar 
+	 materiales</em> - <em>Datos de instalación</em></p></br>
+	
+	<!-------Imagen de la seccion instalar (modulo planificacion)------->
+	<!------------------------------------------------------------------>
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/planificacion_instalar.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/planificacion_instalar_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+    </div></br>
+	<!----------------------------------------------------------------->
+	
+	<!--Div donde se carga el contenido de la session instalacion(modulo planificacon)-->
+    <!---------------------------------------------------------------------------------->
+	<div id="planificacion_instalacion"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de instalaciones,
+    encontramos los siguientes links.</p></br>
+	<!---------------------------------------------------------------------------------->
+	
+	<!------------------------------------------------------------------>
+	
+	<!-----Menú que se encuntra en la seccion materiales (modulo planificacion)----->
+	<!------------------------------------------------------------------------------>
+	<div class="submenu_modulos" id="instalacion">
+      <ul>
+         <li><a href="#planificacion" id="link_ingreso_materiales">|Ingresar materiales|</a></li>
+         <li><a href="#planificacion" id="link_datos_instalacion">|Datos de instalación|</a></li>
+      </ul>
+    </div> 
+	<!-------------------------------------------------------------------------------->
+	<div id="load_sub_planificacion">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<!----------Script que carga el contenido mediante ajax------------>
+	<!------------------------------------------------------------------>
+	<script>
+		$('#link_ingreso_materiales').click(function(){
+			$("#load_sub_planificacion").css("display", "inline");
+			$("#planificacion_instalacion").empty();
+			$('#planificacion_instalacion').load('{{ path('planificacion_ingreso_material') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+		});
+		$('#link_datos_instalacion').click(function(){
+			$("#load_sub_planificacion").css("display", "inline");
+			$("#planificacion_instalacion").empty();
+			$('#planificacion_instalacion').load('{{ path('planificacion_datos_instalacion') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+		});
+				
+    </script>
+	<!------------------------------------------------------------------>

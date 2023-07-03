@@ -1,0 +1,78 @@
+<!------Imagen del icono reportes (modulo financiero)------------->
+<!---------------------------------------------------------------->
+
+	<img src="{{asset('public/images/chart.png')}}" height="50" class="img_titulo_financiero">
+    <div class="div_titulo_financiero">
+      Reportes
+    </div></br>    
+	
+	<!-------------------Imagen de la sección reportes (módulo financiero)------------------->
+	<!--------------------------------------------------------------------------------------->
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/financiero_reportes.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/financiero_reportes_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+    </div></br>
+	<div id="contenido_reportes_financieros"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los tipos de reportes,
+    encontramos los siguientes links.</p></br>
+	<!-------------Menú de las acciones en la sección reportes (módulo financiero)------------>
+	<!---------------------------------------------------------------------------------------->
+    <div class="submenu_modulos" id="reportes">
+      <ul>
+         <li><a href="#financiero" id="link_estado">|Estado de cuenta|</a></li>
+         <li><a href="#financiero" id="link_estado_punto">|Estado de cuenta por punto|</a></li>
+         <li><a href="#financiero" id="link_anticipo">|Reporte anticipo cruzados|</a></li>
+         <li><a href="#financiero" id="link_cartera">|Reporte cartera|</a></li>
+         <li><a href="#financiero" id="link_cierre">|Reporte cierre de caja|</a></li>
+		 <li><a href="#financiero" id="link_documentos">|Documentos financieros|</a></li>
+      </ul>
+    </div>
+	<!----------------------------------------------------------------------------------------->
+	<div id="load_sub_financiero">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<script>
+		$('#link_estado').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_reportes_financieros").empty();
+			$('#contenido_reportes_financieros').load('{{ path('financiero_estado') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_estado_punto').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_reportes_financieros").empty();
+			$('#contenido_reportes_financieros').load('{{ path('financiero_estado_punto') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_anticipo').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_reportes_financieros").empty();
+			$('#contenido_reportes_financieros').load('{{ path('financiero_anticipo_cruzado') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_cartera').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_reportes_financieros").empty();
+			$('#contenido_reportes_financieros').load('{{ path('financiero_cartera') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_cierre').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_reportes_financieros").empty();
+			$('#contenido_reportes_financieros').load('{{ path('financiero_cierre') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_documentos').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_reportes_financieros").empty();
+			$('#contenido_reportes_financieros').load('{{ path('financiero_documentos') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		
+		
+	</script>

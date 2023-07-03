@@ -1,0 +1,187 @@
+    <img src="{{asset('public/images/shopping_cart.png')}}" height="50" class="img_titulo">
+	<div class="div_titulo_comercial" >
+	  Módulo Comercial
+    </div></br>
+	
+	<p class="texto_manual">Para el Módulo Comercial, se sigue el siguiente proceso:</p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/proceso_comercial.png')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/proceso_comercial.png')}}"
+	   height="150"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	
+	<img src="{{asset('./bundles/ayuda/img/descarga.png')}}" height="40" class="descarga">
+	<div class="div_descarga_comercial" >
+	  <a href="{{asset('./bundles/ayuda/archivos/ProcesoComercialTELCOS+.pdf')}}" target="_blank">Descargar Proceso: Comercial </a>
+    </div></br></br>
+		
+    <p class="texto_manual">Esta sección le permitirá aprender a usar todas las funcionalidades referente
+	 al módulo comercial.</p></br>
+	 
+	<!----------- Imagen modulo comercial----------->
+	<!---------------------------------------------->
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/modulo_comercial.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/modulo_comercial.jpg')}}"
+	   height="150"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	
+	<p class="texto_manual">El módulo comercial posee un filtro, que nos permite
+	hacer una búsqueda rápida, ingresando ciertos parametros. Para habilitar o 
+	deshabilitar esta opción damos click en las flechas dobles en dirección hacia
+	abajo.</p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/busqueda_comercial.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/busqueda_comercial.jpg')}}"
+	   height="130"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	
+	
+	<!---------------------------------------------->
+	<p class="texto_manual">El módulo comercial posee un submódulo con
+	sus respectivas funcionalidades, a continuación se decribe las acciones
+	que se pueden ejecutar.</p></br>
+	   
+	
+	<!--Menú que se encuntra dentro del modulo comercial-->
+	<!---------------------------------------------------->
+	<div class="submenu_modulos" id="prospecto">
+      <ul>
+	     
+         <li><a href="#prospectos" id="link_prospectos">
+		 <img src="{{asset('public/images/users.png')}}" align="left" height="25">|Prospectos|</a>
+		 </li>
+		 
+         <li><a href="#cliente" id="link_clientes">
+		 <img src="{{asset('public/images/clients.png')}}" align="left" height="25">|Clientes|</a>
+		 </li>
+         
+		 <li><a href="#documentos" id="link_documentos">
+		 <img src="{{asset('public/images/folder.png')}}" align="left" height="25">|Documentos|</a>
+		 </li>
+		 
+         <li><a href="#solicitudes" id="link_solicitudes">
+		 <img src="{{asset('public/images/solicitudcorvent.png')}}" align="left" height="25">|Solicitudes|</a>
+		 </li>
+         
+		 <li><a href="#autorizaciones" id="link_autorizaciones">
+		 <img src="{{asset('public/images/com-autoriza.png')}}" align="left" height="25">|Autorizaciones|</a>
+		 </li>
+         
+		 <li><a href="#reportes" id="link_reportes">
+		 <img src="{{asset('public/images/chart.png')}}" align="left" height="25">|Reportes|</a>
+		 </li>
+      </ul>
+    </div></br>  
+	
+    <!---------------------------------------------------->
+		
+	<div id="load_comercial">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	
+	<!--Div donde se aloja el contenido del modulo comercial-->
+	<!---------------------------------------------------->
+    <div id="contenido_prospecto">
+	
+	</div>
+		
+	<!---------------------------------------------------->
+	
+	
+	<!--Script que carga el contenido del modulo comercial-->
+    <!------------------------------------------------------>
+	<script>
+		$('#link_prospectos').click(function(){
+			$("#load_comercial").css("display", "inline");
+			$("#contenido_prospecto").empty();
+			$('#contenido_prospecto').load('{{ path('comercial_prospecto') }}', function(){
+			$("#load_comercial").css("display", "none");});
+			
+			$('#link_prospectos').addClass('pre_cliente');
+			$('#link_clientes').removeClass('pre_cliente');
+			$('#link_documentos').removeClass('pre_cliente');
+			$('#link_solicitudes').removeClass('pre_cliente');
+			$('#link_autorizaciones').removeClass('pre_cliente');
+			$('#link_reportes').removeClass('pre_cliente');
+		});
+		
+		$('#link_clientes').click(function(){
+			$("#load_comercial").css("display", "inline");
+			$("#contenido_prospecto").empty();
+			$('#contenido_prospecto').load('{{ path('comercial_cliente') }}', function(){
+			$("#load_comercial").css("display", "none");});
+			
+			$('#link_prospectos').removeClass('pre_cliente');
+			$('#link_clientes').addClass('pre_cliente');
+			$('#link_documentos').removeClass('pre_cliente');
+			$('#link_solicitudes').removeClass('pre_cliente');
+			$('#link_autorizaciones').removeClass('pre_cliente');
+			$('#link_reportes').removeClass('pre_cliente');
+		});
+		
+		$('#link_documentos').click(function(){
+			$("#load_comercial").css("display", "inline");
+			$("#contenido_prospecto").empty();
+			$('#contenido_prospecto').load('{{ path('comercial_documento') }}', function(){
+			$("#load_comercial").css("display", "none");});
+			
+			$('#link_prospectos').removeClass('pre_cliente');
+			$('#link_clientes').removeClass('pre_cliente');
+			$('#link_documentos').addClass('pre_cliente');
+			$('#link_solicitudes').removeClass('pre_cliente');
+			$('#link_autorizaciones').removeClass('pre_cliente');
+			$('#link_reportes').removeClass('pre_cliente');
+		});
+		
+		$('#link_solicitudes').click(function(){
+			$("#load_comercial").css("display", "inline");
+			$("#contenido_prospecto").empty();
+			$('#contenido_prospecto').load('{{ path('comercial_solicitud') }}', function(){
+			$("#load_comercial").css("display", "none");});
+			
+			$('#link_prospectos').removeClass('pre_cliente');
+			$('#link_clientes').removeClass('pre_cliente');
+			$('#link_documentos').removeClass('pre_cliente');
+			$('#link_solicitudes').addClass('pre_cliente');
+			$('#link_autorizaciones').removeClass('pre_cliente');
+			$('#link_reportes').removeClass('pre_cliente');
+		});
+		
+		$('#link_autorizaciones').click(function(){
+			$("#load_comercial").css("display", "inline");
+			$("#contenido_prospecto").empty();
+			$('#contenido_prospecto').load('{{ path('comercial_autorizacion') }}', function(){
+			$("#load_comercial").css("display", "none");});
+			
+			$('#link_prospectos').removeClass('pre_cliente');
+			$('#link_clientes').removeClass('pre_cliente');
+			$('#link_documentos').removeClass('pre_cliente');
+			$('#link_solicitudes').removeClass('pre_cliente');
+			$('#link_autorizaciones').addClass('pre_cliente');
+			$('#link_reportes').removeClass('pre_cliente');
+		});
+		
+		$('#link_reportes').click(function(){
+			$("#load_comercial").css("display", "inline");
+			$("#contenido_prospecto").empty();
+			$('#contenido_prospecto').load('{{ path('comercial_reportes') }}', function(){
+			$("#load_comercial").css("display", "none");});
+			
+			$('#link_prospectos').removeClass('pre_cliente');
+			$('#link_clientes').removeClass('pre_cliente');
+			$('#link_documentos').removeClass('pre_cliente');
+			$('#link_solicitudes').removeClass('pre_cliente');
+			$('#link_autorizaciones').removeClass('pre_cliente');
+			$('#link_reportes').addClass('pre_cliente');
+		});
+    </script>
+	<!---------------------------------------------------->

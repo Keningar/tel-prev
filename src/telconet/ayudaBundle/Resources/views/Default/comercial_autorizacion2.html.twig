@@ -1,0 +1,83 @@
+
+    <img src="{{asset('public/images/com-autoriza.png')}}" height="50" class="img_titulo2">	
+    <div class="div_titulo_comercial">
+      Autorizaciones
+    </div></br>
+  
+    <p class="texto_manual">Aquí encontrará las autorizaciones de acuerdo a la solicitud realizada.
+	 <em>Autorizar contrato</em> - <em>Autorización descuento</em> - <em>Autorizar
+	 excedente de materiales</em> - <em>Autorización solicitud de cancelación</em>
+	 - <em>Autorización solicitud suspensión temporal</em> - <em>Autorización 
+	 solicitud cambio equipo</em> - <em>Autorización cambio documento</em>.
+    </p></br>
+   
+    <!----Imagen de la sección autorización (módulo comercial)---->
+	<!------------------------------------------------------------>
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/comercial_autorizacion2.jpg')}}"
+	  data-lightbox="example-1">
+      <img class="example-image" src="{{asset('./bundles/ayuda/img/comercial_autorizacion2.jpg')}}"
+	  height="150"/></a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	<!------------------------------------------------------------>
+    <div id="contenido_autorizar"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los tipos de autorizaciones,
+    encontramos los siguientes links.</p></br>
+	
+    <div class="submenu_modulos" id="autorizacion">
+      <ul>
+	     <li><a href="#prospecto" id="link_contrato2">|Contrato|</a></li>
+         <li><a href="#prospecto" id="link_descuento2">|Descuento|</a></li>
+         <li><a href="#prospecto" id="link_excedente">|Exc. de materiales|</a></li>
+         <li><a href="#prospecto" id="link_cancelacion2">|S. de cancelación|</a></li>
+         <li><a href="#prospecto" id="link_suspension">|S. susp. temporal|</a></li>
+         <li><a href="#prospecto" id="link_cambio">|C. documento|</a></li>
+      </ul>
+    </div> 
+    <!------------------------------------------------------------>	
+	<div id="load_comercial_documento">
+	 <img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<script>
+       
+	   $('#link_contrato2').click(function(){
+	   $("#load_comercial_documento").css("display", "inline");
+	   $("#contenido_autorizar").empty();
+          $('#contenido_autorizar').load('{{ path('comercial_autorizar_contrato') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+        });
+		$('#link_descuento2').click(function(){
+		$("#load_comercial_documento").css("display", "inline");
+		$("#contenido_autorizar").empty();
+          $('#contenido_autorizar').load('{{ path('comercial_autorizar_descuento') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+        });
+		$('#link_excedente').click(function(){
+		$("#load_comercial_documento").css("display", "inline");
+		$("#contenido_autorizar").empty();
+          $('#contenido_autorizar').load('{{ path('comercial_autorizar_excedente') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+        });
+		$('#link_cancelacion2').click(function(){
+		$("#load_comercial_documento").css("display", "inline");
+		$("#contenido_autorizar").empty();
+          $('#contenido_autorizar').load('{{ path('comercial_autorizar_cancelacion') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+        });
+		$('#link_suspension').click(function(){
+		$("#load_comercial_documento").css("display", "inline");
+		$("#contenido_autorizar").empty();
+          $('#contenido_autorizar').load('{{ path('comercial_autorizar_suspension') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+        });
+		$('#link_cambio').click(function(){
+		$("#load_comercial_documento").css("display", "inline");
+		$("#contenido_autorizar").empty();
+          $('#contenido_autorizar').load('{{ path('comercial_autorizar_cambio') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+        });
+		      				
+    </script>

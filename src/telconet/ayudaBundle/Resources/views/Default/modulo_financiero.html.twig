@@ -1,0 +1,207 @@
+    <img src="{{asset('public/images/profit.png')}}" height="50" class="img_titulo">
+	<div class="div_titulo_financiero" >
+      Módulo financiero
+    </div></br>
+	
+    <p class="texto_manual">Esta sección le permitirá aprender a usar 
+	todas las funcionalidades referente al módulo financiero.</p></br>
+	
+	<!----------- Imagen modulo financiero----------->
+	<!----------------------------------------------->
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/modulo_financiero.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/modulo_financiero_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	
+	<img src="{{asset('./bundles/ayuda/img/descarga_financiero.png')}}" height="40" class="descarga">
+	<div class="div_descarga_financiero" >
+	  <a href="{{asset('./bundles/ayuda/archivos/ProcesodeFacturacionTELCOS+.pdf')}}" target="_blank">Descargar Proceso: Facturación y Cobranzas </a>
+    </div></br></br>
+	
+	
+	<p class="texto_manual">El módulo financiero posee un filtro, que nos permite
+	hacer una búsqueda rápida, ingresando ciertos parametros. Para habilitar o 
+	deshabilitar esta opción damos click en las flechas dobles en dirección hacia
+	abajo.</p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/busqueda_financiera.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/busqueda_financiera.jpg')}}"
+	   height="110"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	<!----------------------------------------------->
+	<!----------------------------------------------->
+	<!--
+    <p class="texto_manual">En el menú localizado en la parte de abajo Ud. puede 
+	realizar las siguientes acciones:</p></br>
+    
+	<p class="texto_manual">
+	<span class="bold">Documentos -></span> Podrá visualizar Facturas, Facturas
+	proporcionales, Notas de Crédito, Notas de Débitos interna.<br>
+	<span class="bold">Pagos: -></span> Podrá visualizar Formas de Pago, Pagos, Anticipos,
+	Anticipo sin cliente, Dépositos, Cruce de anticipos.<br>
+	<span class="bold">Debitos: -> </span> Podrá visualizar débitos, generar débitos.<br>
+	<span class="bold">Reportes: -> </span>Podrá generar reportes<br>
+	<span class="bold">Autorizaciones Financieras: -> </span> Podrá aprobar documentos
+	financieros.<br>
+    </p>-->
+	
+	<p class="texto_manual">EL módulo financiero posee un submódulo con
+	sus respectivas funcionalidades, a continuación se decribe las acciones
+	que se pueden ejecutar.</p></br>
+    
+	<!--Menú que se encuntra dentro del modulo financiero-->
+	<!----------------------------------------------------->
+    <div class="submenu_modulos" id="financiero">
+      <ul>
+		 
+         <li><a id="link_documentosf" href="#documentos">
+		 <img src="{{asset('public/images/factura.png')}}" align="left" height="25">
+		 |Documentos|</a></li>
+		 
+         <li><a id="link_pagosf" href="#pagos">
+		 <img src="{{asset('public/images/money.png')}}" align="left" height="25">
+		 |Pagos|</a></li>
+		 
+         
+		 <li><a id="link_debitosf" href="#debitos">
+		 <img src="{{asset('public/images/masivo.png')}}" align="left" height="25">
+		 |Debitos|</a></li>
+		 
+         <!--<img src="{{asset('public/images/comisiones.png')}}" align="left" height="25">
+		 <li><a id="link_comisionesf" href="#comisiones">|Comisiones|</a></li>-->
+        
+		
+		 <li><a id="link_reportesf" href="#reportes">
+		 <img src="{{asset('public/images/chart.png')}}" align="left" height="25">
+		 |Reportes|</a></li>
+		 
+         
+		 <li><a id="link_autorizacionesf" href="#autorizaciones">
+		 <img src="{{asset('public/images/com-autoriza.png')}}" align="left" height="25">
+		 |Autorizaciones F.|</a></li>
+		 
+      </ul>
+    </div> 
+	
+	<div id="load_financiero">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+    <!---------------------------------------------------------->
+	<!---------------------------------------------------------->	
+    
+	<!--DIv donde se carga el contenido del modulo financiero--->
+    <div id="contenido_financiero"></div>
+	<!---------------------------------------------------------->
+	
+	<!-----Script que carga los contenidos por medio de ajax------>
+	<!------------------------------------------------------------>
+    <script>
+		$('#link_documentosf').click(function(){
+			$("#load_financiero").css("display", "inline");
+			$("#contenido_financiero").empty();
+			$('#contenido_financiero').load('{{ path('financiero_documento') }}', function(){
+			$("#load_financiero").css("display", "none");});
+			
+			$('#link_documentosf').addClass('pre_financiero');
+			$('#link_pagosf').removeClass('pre_financiero');
+			$('#link_debitosf').removeClass('pre_financiero');
+			$('#link_comisionesf').removeClass('pre_financiero');
+			$('#link_reportesf').removeClass('pre_financiero');
+			$('#link_procesosf').removeClass('pre_financiero');
+			$('#link_autorizacionesf').removeClass('pre_financiero');
+		});
+		$('#link_pagosf').click(function(){
+			$("#load_financiero").css("display", "inline");
+			$("#contenido_financiero").empty();
+			$('#contenido_financiero').load('{{ path('financiero_pagos') }}', function(){
+			$("#load_financiero").css("display", "none");});
+			
+			$('#link_pagosf').addClass('pre_financiero');
+			$('#link_documentosf').removeClass('pre_financiero');
+			$('#link_debitosf').removeClass('pre_financiero');
+			$('#link_comisionesf').removeClass('pre_financiero');
+			$('#link_reportesf').removeClass('pre_financiero');
+			$('#link_procesosf').removeClass('pre_financiero');
+			$('#link_autorizacionesf').removeClass('pre_financiero');
+		});
+		$('#link_debitosf').click(function(){
+			$("#load_financiero").css("display", "inline");
+			$("#contenido_financiero").empty();
+			$('#contenido_financiero').load('{{ path('financiero_debitos') }}', function(){
+			$("#load_financiero").css("display", "none");});
+			
+			$('#link_debitosf').addClass('pre_financiero');
+			$('#link_pagosf').removeClass('pre_financiero');
+			$('#link_documentosf').removeClass('pre_financiero');
+			$('#link_comisionesf').removeClass('pre_financiero');
+			$('#link_reportesf').removeClass('pre_financiero');
+			$('#link_procesosf').removeClass('pre_financiero');
+			$('#link_autorizacionesf').removeClass('pre_financiero');
+		});
+		$('#link_comisionesf').click(function(){
+			$("#load_financiero").css("display", "inline");
+			$("#contenido_financiero").empty();
+			$('#contenido_financiero').load('{{ path('financiero_comisiones') }}', function(){
+			$("#load_financiero").css("display", "none");});
+			
+			$('#link_comisionesf').addClass('pre_financiero');
+			$('#link_debitosf').removeClass('pre_financiero');
+			$('#link_pagosf').removeClass('pre_financiero');
+			$('#link_documentosf').removeClass('pre_financiero');
+			$('#link_reportesf').removeClass('pre_financiero');
+			$('#link_procesosf').removeClass('pre_financiero');
+			$('#link_autorizacionesf').removeClass('pre_financiero');
+		});
+		$('#link_reportesf').click(function(){
+			$("#load_financiero").css("display", "inline");
+			$("#contenido_financiero").empty();
+			$('#contenido_financiero').load('{{ path('financiero_reportes') }}', function(){
+			$("#load_financiero").css("display", "none");});
+			
+			$('#link_reportesf').addClass('pre_financiero');
+			$('#link_comisionesf').removeClass('pre_financiero');
+			$('#link_debitosf').removeClass('pre_financiero');
+			$('#link_pagosf').removeClass('pre_financiero');
+			$('#link_documentosf').removeClass('pre_financiero');
+			$('#link_procesosf').removeClass('pre_financiero');
+			$('#link_autorizacionesf').removeClass('pre_financiero');
+		});
+		$('#link_procesosf').click(function(){
+			$("#load_financiero").css("display", "inline");
+			$("#contenido_financiero").empty();
+			$('#contenido_financiero').load('{{ path('financiero_procesos') }}', function(){
+			$("#load_financiero").css("display", "none");});
+			
+			
+			$('#link_procesosf').addClass('pre_financiero');
+			$('#link_reportesf').removeClass('pre_financiero');
+			$('#link_comisionesf').removeClass('pre_financiero');
+			$('#link_debitosf').removeClass('pre_financiero');
+			$('#link_pagosf').removeClass('pre_financiero');
+			$('#link_documentosf').removeClass('pre_financiero');
+			$('#link_autorizacionesf').removeClass('pre_financiero');
+		});
+		$('#link_autorizacionesf').click(function(){
+			$("#load_financiero").css("display", "inline");
+			$("#contenido_financiero").empty();
+			$('#contenido_financiero').load('{{ path('financiero_autorizaciones') }}', function(){
+			$("#load_financiero").css("display", "none");});
+			
+			$('#link_autorizacionesf').addClass('pre_financiero');
+			$('#link_procesosf').removeClass('pre_financiero');
+			$('#link_reportesf').removeClass('pre_financiero');
+			$('#link_comisionesf').removeClass('pre_financiero');
+			$('#link_debitosf').removeClass('pre_financiero');
+			$('#link_pagosf').removeClass('pre_financiero');
+			$('#link_documentosf').removeClass('pre_financiero');
+			
+		});		
+    </script>
+	<!------------------------------------------------------------------>

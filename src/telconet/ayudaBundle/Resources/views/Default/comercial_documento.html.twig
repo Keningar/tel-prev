@@ -1,0 +1,61 @@
+   <img src="{{asset('public/images/folder.png')}}" height="50" class="img_titulo2">
+   <div class="div_titulo_comercial">
+      Tipos de documentos
+    </div></br>
+	
+    <p class="texto_manual">En el módulo comercial encontramos dos tipos de
+	documentos <em>Contrato</em> y <em>Orden de trabajo.</em></p></br>
+	
+	<!------Imagen de la sección documentos comerciales (módulo comercial)------>
+	<!-------------------------------------------------------------------------->
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('bundles/ayuda/img/documentos_comercial.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/documentos_comercial_thumb.jpg')}}"
+	   height="150"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	<!-------------------------------------------------------------------------->
+   
+    
+	
+	<!--Div donde se aloja el contenido de la sección documentos (modulo comercial)-->
+	<!------------------------------------------------------------------------------->
+	<div id="contenido_documento"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los tipos de documentos,
+    encontramos los siguientes links.</p></br>	
+    <!----Menú de acciones dentro de la sección documentos (modulo comercial)---->
+	<!--------------------------------------------------------------------------->
+	<div class="submenu_modulos" id="doc">
+      <ul>
+        <li><a href="#prospecto" id="link_contrato">|Contrato|</a></li>
+        <li><a href="#prospecto" id="link_orden_trabajo">|Orden de trabajo|</a></li>
+      </ul>
+    </div>
+	<!------------------------------------------------------------->
+	<div id="load_comercial_documento">
+	 <img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<!--Script que carga el contenido del modulo comercial-->
+    <!------------------------------------------------------>
+    <script>
+       
+	   $('#link_contrato').click(function(){
+          $("#load_comercial_documento").css("display", "inline");
+		  $("#contenido_documento").empty();
+		  $('#contenido_documento').load('{{ path('comercial_contrato') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+		  
+        });
+       $('#link_orden_trabajo').click(function(){
+          $("#load_comercial_documento").css("display", "inline");
+		  $("#contenido_documento").empty();
+		  $('#contenido_documento').load('{{ path('comercial_orden_trabajo') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+		  
+        });
+				
+    </script>
+	<!------------------------------------------------------->

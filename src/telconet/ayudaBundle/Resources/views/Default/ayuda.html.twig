@@ -1,0 +1,70 @@
+{% extends '::layout_completo.html.twig' %}
+ 
+ {% block stylesheets %}
+	   	<!---------------Estilos agregados a layout_completo-------------->
+        <!---------------------------------------------------------------->
+		<link rel="stylesheet" href="{{ asset('./bundles/ayuda/css/lightbox.css')}}" />
+		<link rel="stylesheet" href="{{ asset('./bundles/ayuda/css/menus.css') }}" />
+	    <link rel="stylesheet" href="{{ asset('./bundles/ayuda/css/estilo.css') }}" />
+		{{ parent() }}
+		<!--------------------------------------------------------------->
+	{% endblock %}
+	
+		
+{% block contenido_central %}
+
+    <div class="body_content k-content">
+    <!------------Inserción del menu por módulos-------------->
+    <!--------------------------------------------------------->	
+     {{ include('ayudaBundle:Default:menu.html.twig') }}
+	<!---------------------------------------------------------> 
+		
+	<!---Div donde se aloja el contenido de los módulos--->
+	<!---------------------------------------------------->
+       <div id="contenido_modulos">
+         
+		 
+         
+		 <div class="div_titulo_intro">
+          Introducción al TELCOS+
+         </div></br>
+
+         <p class="texto_manual">
+		 Telcos+ es un sistema desarrollado, pensando en 
+		 unificar los procesos de varias empresas, buscando estandarizar dichos 
+		 procesos.</br></br> Empresas integradas: Telconet, Megadatos, Transtelco.
+
+         </p></br>
+         
+    <!------------------Imagen de ingreso (módulo comercial)------------------>
+	<!------------------------------------------------------------------------>		 
+        <div class="img_center">
+         <a class="example-image-link" href="{{asset('./bundles/ayuda/img/ingreso.jpg')}}"
+		 data-lightbox="example-1">
+         <img class="example-image" src="{{asset('./bundles/ayuda/img/ingreso_thumb.jpg')}}"
+		 height="150"/></a>
+		 <p class="zoom">Dar click en la imagen para hacer zoom</p>
+		 
+        </div></br>
+	
+	<!------------------------------------------------------------------------>	 
+
+         <p class="texto_manual">Para ingresar al sistema, debemos autenticarnos por medio de un usuario
+	      y contraseña (las mismas con que ingresaban al antiguo sistema). Una vez validado el usuario 
+	      y contraseña podra acceder a cada uno de los módulos, de acuerdo a los 
+	      permisos asignados.
+         </p></br>
+
+         
+		 <div id="nota_comercial">
+		 <img src="{{asset('./bundles/ayuda/img/nota.png')}}" height="30"align="left"/>
+            <p class="texto_nota">Para acceder a la guía de ayuda de cada uno de los
+			módulos, seleccionar el correspondiente módulo, en el menú localizado a su 
+		    izquierda.</p>
+	       
+         </div>
+		 
+		</div>
+	<!------------------------------------------------------------------------>
+    </div>
+{% endblock %}

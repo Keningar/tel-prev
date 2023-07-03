@@ -1,0 +1,116 @@
+<!-------------Imagen del icono prospecto (modulo comercial)------------>
+<!---------------------------------------------------------------------->
+<img src="{{asset('public/images/tools1.png')}}" height="50" class="img_titulo2"/></br>
+<!---------------------------------------------------------------------->
+    <div class="div_titulo_comercial">
+	  Crear un contrato
+	</div></br>
+	<p class="texto_manual">Una vez que se haya determinado la existencia de 
+	caja de instalación, que se realizo mediante el paso antrior al solicitar
+	factibilidad, se procede a crear el contrato.</p></br>
+
+	
+    <div class="pasos_comercial">
+	  <p class="pasos">Paso 1</p>
+	</div></br>
+	
+	<p class="texto_manual">En la vista del prospecto, damos click en la opción <em>Contrato</em>,
+	que se encuntra en la parte derecha, en la seccion <em>Acciones realizadas</em></p></br>
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/contrato.jpg')}}" data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/contrato.jpg')}}" height="150"/>
+	  </a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br></br>
+	
+	<div class="pasos_comercial">
+	  <p class="pasos">Paso 2</p>
+	</div></br>
+	
+	<p class="texto_manual">Luego del paso anterior se nos mostrará la siguiente vista:</em></p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/nuevo_contrato.jpg')}}" data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/nuevo_contrato.jpg')}}" height="150"/>
+	  </a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br></br>
+	
+	<p class="texto_manual">Llenamos todos los campos, recordar que los campos 
+	con * son de caracter obligatirio. En tipo de empresa debemos seleccionar la
+	correspondiente.
+	</p></br>
+	
+	<div class="img_center">
+      
+      <img class="example-image" src="{{asset('./bundles/ayuda/img/tipo_contrato.jpg')}}" height="80"/>
+	
+    </div></br></br>
+	
+	
+	<p class="texto_manual">En el siguiente campo, debemos subir el archivo
+	digital del contrato, es decir, se tomará una foto o escanear el documento
+	y luego subirlo al sistema.
+	</p></br>
+	
+	<div class="img_center">
+      
+      <img class="example-image" src="{{asset('./bundles/ayuda/img/archivo_digital.jpg')}}" height="35"/>
+	
+    </div></br></br>
+	
+	<p class="texto_manual">Una vez llenado todos los campos, damos click 
+	en <em>guardar</em>, y se nos 	mostrará una vista con la información
+	del prospecto y la información del contrato creado.
+	</p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/contrato_creado.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/contrato_creado.jpg')}}"
+	   height="150"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br></br>
+	
+	 <div id="nota_comercial">
+       <img src="{{asset('./bundles/ayuda/img/nota.png')}}" height="30"align="left"/>
+       <p class="texto_nota">El contrato deberá ser aprobado por la persona asignada,
+	   para poder continuar con el proceso.
+
+	  </p>
+    </div></br>
+	<img src="{{asset('public/images/video.png')}}" height="50" class="img_titulo">	
+	 <div class="div_titulo_comercial">
+      Ver video guía
+     </div></br>
+	
+    <p class="texto_manual">En el siguiente video se puede apreciar la creación de un contrato, con los pasos
+	anteriormente descritos.</p>
+  
+    <div class="img_center">
+      <video src="{{asset('./bundles/ayuda/videos/crear_contrato.mp4')}}" width="400" height="308" controls></video>
+    </div></br>
+	
+	
+   <div class="submenu_modulos">
+      <ul>
+        <li><a href="#prospecto" id='nuevo_punto'><< Nuevo Punto / Agregar Servicio |</a></li>
+		
+      </ul>
+    </div>
+	<!------------------------------------------------------------------------------------------------------------>
+   		
+	<!--Script que carga el contenido del nuevo punto (modulo comercial)-->
+    <!-------------------------------------------------------------------->
+    <script>
+      
+	   $('#nuevo_punto').click(function(){
+         $("#load_comercial").css("display", "inline");
+		 $("#contenido_prospecto").empty();
+		 $('#contenido_prospecto').load('{{ path('comercial_nuevo_punto') }}', function(){
+			$("#load_comercial").css("display", "none");});
+       });
+       
+    </script>	
+	
+	

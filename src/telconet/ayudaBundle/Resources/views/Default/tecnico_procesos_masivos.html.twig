@@ -1,0 +1,69 @@
+<!-------------Imagen del icono proceso masivo (modulo tecnico)---------->
+<!----------------------------------------------------------------------->
+    <img src="{{asset('public/images/procesosmasivos.png')}}" height="50" class="img_titulo3">  
+<!----------------------------------------------------------------------->
+
+    <div class="div_titulo_tecnico">
+      Procesos masivos
+    </div></br>
+
+    <p class="texto_manual">Aquí podrá realizar el corte masivo de servicios de clientes
+	 registrados previamente en el sistema Telcos+. Tiene las siguiente opciones:
+	 <em>Reactivacióm masiva </em>(a) - <em>Corte masivo </em>(b) - <em>Cambio plan masivo </em>(c)</p></br>
+	 
+	<!-------imagen de la seccion proceso masivo (modulo tecnico)------->
+	<!------------------------------------------------------------------>
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/tecnico_proceso_masivo.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/tecnico_proceso_masivo_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+    </div></br>
+	<!------------------------------------------------------------------>
+    
+		
+	<!--Div donde se carga el contenido del proceso masivo (modulo tecnico)-->
+	<div id="contenido_proceso_masivo"></div></br>
+	<!----------------------------------------------------------------------->
+     <p class="texto_manual">Para consultar más acerca de los procesos masivos,
+    encontramos los siguientes links.</p></br>
+	
+	<!-----Menú que se encuntra en la seccion proceso masivo (modulo tecnico)------->
+	<!------------------------------------------------------------------------------>
+    <div class="submenu_modulos" id="procesos">
+      <ul>
+         <li><a href="#sub_tecnico" id="link_reactivacion_masiva">|Reactivación masiva|</a></li>
+         <li><a href="#sub_tecnico" id="link_corte_masivo">|Corte masivo|</a></li>
+         <li><a href="#sub_tecnico" id="link_cambio_plan">|Cambio plan masivo|</a></li>
+	  </ul>
+    </div>
+	<!------------------------------------------------------------------------------->
+      <div id="load_sub_tecnico">
+	    <img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	  </div>
+	<!--script que carga los contenidos por medio de ajax-->
+	<!----------------------------------------------------->
+    <script>
+        $('#link_corte_masivo').click(function(){
+			$("#load_sub_tecnico").css("display", "inline");
+			$("#contenido_proceso_masivo").empty();
+            $('#contenido_proceso_masivo').load('{{ path('cortes_masivos') }}', function(){
+			 $("#load_sub_tecnico").css("display", "none");});
+        });
+		
+        $('#link_reactivacion_masiva').click(function(){
+			$("#load_sub_tecnico").css("display", "inline");
+			$("#contenido_proceso_masivo").empty();
+            $('#contenido_proceso_masivo').load('{{ path('reactivacion_masiva') }}', function(){
+			 $("#load_sub_tecnico").css("display", "none");});
+        });	
+		
+        $('#link_cambio_plan').click(function(){
+            $("#load_sub_tecnico").css("display", "inline");
+			$("#contenido_proceso_masivo").empty();
+			$('#contenido_proceso_masivo').load('{{ path('cambio_plan_masivo') }}', function(){
+			 $("#load_sub_tecnico").css("display", "none");});
+	    });		
+	</script>
+	<!------------------------------------------------------>

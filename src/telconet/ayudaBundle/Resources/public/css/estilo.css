@@ -1,0 +1,841 @@
+
+/***************************************
+****Contenedor de todos los modulos*****
+****************************************/
+#contenido_modulos {
+    width: 800px;
+    margin-left:300px;
+    min-height: 1px;
+    line-height: 1em;
+    vertical-align: middle;
+	/*background-color:#CCC;*/
+	
+}
+#load_comercial{
+	position:relative;
+	left:-365px;
+	top:20px;
+	display:none;
+	
+}
+#load_comercial_documento{
+	position:relative;
+	left:350px;
+	top:20px;
+	display:none;
+	
+	}
+#load_planificacion{
+	position:relative;
+	left:-100px;
+	top:35px;
+	display:none;
+	
+}
+#load_soporte{
+	position:relative;
+	left:-40px;
+	top:35px;
+	display:none;
+	
+}
+#load_sub_planificacion{
+	position:relative;
+	left:330px;
+	top:20px;
+	display:none;
+	
+	}
+
+#load_financiero{
+	position:relative;
+	left:-200px;
+	top:35px;
+	display:none;
+	
+}
+#load_sub_financiero{
+	position:relative;
+	left:350px;
+	top:20px;
+	display:none;
+	
+	}
+#load_tecnico{
+	position:relative;
+	left:-80px;
+	top:35px;
+	display:none;
+	
+}
+#load_sub_tecnico{
+	position:relative;
+	left:350px;
+	top:20px;
+	display:none;
+	
+}
+#load_modulos{
+	position: fixed;
+	top: 450px;
+	left:175px;
+	
+	display:none;
+	
+}
+/**************************************
+***************************************/
+
+/**************************************
+********Texto de cada titulo***********
+***************************************/
+.titulo_modulos{
+	
+    font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-weight: normal;
+    font-size:15px;
+    color:#FFF;
+	
+	}
+/**************************************
+***************************************/
+.texto_manual{
+	font-size:12px;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	color:#666;
+	margin-left:15px;
+	margin-right:15px;
+	
+}
+/**************************************
+***********Css de imagenes*************
+***************************************/
+.img_center{
+	text-align: center; 
+}
+
+.example-image{
+    box-shadow: 5px 5px 3px #999;
+    -webkit-box-shadow: 5px 5px 3px #999;
+    -moz-box-shadow: 5px 5px 3px #999;
+	margin: 0 auto;
+}
+.img-fx{
+   box-shadow: 2px 3px 3px #999;
+}
+.zoom{
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+    color:#999;
+	text-align:center;
+	
+	}
+/*************************************
+**************************************/
+
+/*************************************
+******Títulos para cada módulo********
+**************************************/
+.div_titulo_intro{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:22px;
+    width:300px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-weight: normal;
+    font-size:16px;
+    color:#FFF;
+    background-color:#539FB9;
+	box-shadow: 2px 3px 3px #aaa;
+}
+.div_titulo_comercial{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:22px;
+    width:300px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:16px;
+    color:#FFF;
+    background: #1496DB;
+	box-shadow: 2px 3px 3px #aaa;
+}
+.div_descarga_comercial{
+    
+    height:20px;
+    width:320px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+    color:#FFF;
+	background: #1496DB;
+	border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+	
+}
+.div_descarga_financiero{
+    
+    height:20px;
+    width:350px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+    color:#FFF;
+	background: #009900;
+	border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+	
+}
+.div_descarga_planificacion{
+    
+    height:20px;
+    width:350px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+    color:#FFF;
+	background: #FFAD08;
+	border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+	
+}
+.div_descarga_soporte{
+    
+    height:20px;
+    width:320px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+    color:#FFF;
+	background: #006666;
+	border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+	
+}
+.div_descarga_tecnico{
+    
+    height:20px;
+    width:350px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+    color:#FFF;
+	background: #D62231;
+	border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+	
+}
+.descarga{
+	position:relative;
+	top:22px;
+}
+
+.div_descarga_comercial a{
+	color:#FFF;
+	
+}
+.div_descarga_financiero a{
+	color:#FFF;
+}
+.div_descarga_planificacion a{
+	color:#FFF;
+}
+.div_descarga_soporte a{
+	color:#FFF;
+}
+.div_descarga_tecnico a{
+	color:#FFF;
+}	
+.div_titulo_financiero{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:22px;
+    width:300px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:16px;
+    color:#FFF;
+    background:#009900;
+	box-shadow: 2px 3px 3px #aaa;
+}
+
+.div_titulo_tecnico{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:22px;
+    width:300px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:16px;
+    color:#FFF;
+    background:#D62231;	
+	box-shadow: 2px 3px 3px #aaa;
+}
+
+.div_titulo_inicio{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:22px;
+    width:300px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:16px;
+    color:#FFF;
+    background:#FF6600;
+	box-shadow: 2px 3px 3px #aaa;
+}
+
+.div_titulo_soporte{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:22px;
+    width:300px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:16px;
+    color:#FFF;
+    background:#006666;
+	box-shadow: 2px 3px 3px #aaa;	
+}
+
+.div_titulo_administracion{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:22px;
+    width:300px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:16px;
+    color:#FFF;
+    background:#8A2908;
+	box-shadow: 2px 3px 3px #aaa;	
+}
+
+.div_titulo_planificacion{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:22px;
+    width:300px;
+	text-align:center;
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:16px;
+    color:#FFF;
+    background:#FFAD08;	
+	box-shadow: 2px 3px 3px #aaa;
+}
+
+/*****************************************
+******************************************/
+
+/*****************************************
+*************Div de los pasos*************
+******************************************/
+.pasos_comercial{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:25px;
+    width:85px;
+    background: #1496DB;
+	box-shadow: 2px 3px 3px #aaa; 
+}
+.pasos_financiero{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:25px;
+    width:85px;
+    background: #009900;
+	box-shadow: 2px 3px 3px #aaa; 
+}
+.pasos_tecnico{
+    border-radius: 3px;
+    box-shadow: 0 0 15px #ddd;
+    height:25px;
+    width:85px;
+    background:#D62231;
+	box-shadow: 2px 3px 3px #aaa; 
+}
+.pasos{
+    margin: 0;
+    font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+    font-weight: normal;
+    font-size:15px;
+    margin-left:0.5em;
+    color:#FFF;
+}
+/*****************************************
+******************************************/
+
+/*****************************************
+******Submenu de para cada modulo*********
+******************************************/
+#contenido{
+    position:relative;
+	left:5px;
+	width:730px;
+    height:30px;
+    
+}
+
+#instalacion{
+    position:relative;
+	left:220px;
+	width:304px;
+    height:30px;
+    background-color:#FFF;
+    border-top:1px solid #FFAD08;
+    border-bottom:1px solid #FFAD08;
+}
+#reporte{
+    position:relative;
+	left:205px;
+	width:415px;
+    height:30px;
+    background-color:#FFF;
+	border-top:1px solid #FFAD08;
+    border-bottom:1px solid #FFAD08;
+}
+#documentos{
+    position:relative;
+	left:130px;
+	width:516px;
+    height:30px;
+    background-color:#FFF;
+	border-top:1px solid #009900;
+    border-bottom:1px solid #009900;
+}
+#pagos{
+    position:relative;
+	left:70px;
+	width:673px;
+    height:30px;
+    background-color:#FFF;
+	border-top:1px solid #009900;
+    border-bottom:1px solid #009900;
+}
+#debitos{
+    position:relative;
+	left:130px;
+	width:570px;
+    height:30px;
+    background-color:#FFF;
+	border-top:1px solid #009900;
+    border-bottom:1px solid #009900;
+}
+#coordinar{
+    position:relative;
+	left:-35px;
+	background-color:#FFF;
+    width:875px;
+    height:30px;
+	background-color:#FFF;
+    border-top:1px solid #FFAD08;
+    border-bottom:1px solid #FFAD08;
+   
+}
+#autorizaciones{
+    position:relative;
+	left:202px;
+	border-top:1px solid #009900;
+    border-bottom:1px solid #009900;
+    width:408px;
+    height:30px;
+    background-color:#FFF;
+}
+
+#reportes{
+	position:relative;
+	left:-95px;
+	border-top:1px solid #009900;
+    border-bottom:1px solid #009900;
+    width:1010px;
+    height:30px;
+    background-color:#FFF;
+	
+}
+#sub_tecnico{
+    position:relative;
+	left:175px;
+	
+}
+#contenido_tecnico{
+	
+	position:relative;
+	top:35px;
+	background-color:#F9F9F9;
+	
+	}
+#contenido_soporte{
+	
+	position:relative;
+	top:20px;
+	background-color:#F9F9F9;
+	
+	}
+#elementos{
+	position:relative;
+	left:225px;
+	border-top:1px solid #D62231;
+    border-bottom:1px solid #D62231;
+    width:357px;
+    height:30px;
+    background-color:#FFF;
+	
+}
+
+#procesos{
+	position:relative;
+	left:190px;
+	border-top:1px solid #D62231;
+    border-bottom:1px solid #D62231;
+    width:415px;
+    height:30px;
+    background-color:#FFF;
+	
+}
+#financiero{
+    position:relative;
+	left:112px;
+	
+}
+
+#sub_soporte{
+    position:relative;
+	left:200px;
+	    
+}
+
+.miga_pan ul li{
+	display:inline;
+	margin-top:30px;
+	}
+.miga_pan a:hover{
+    color:#666;
+			
+}
+.miga_pan a{
+    float:left;
+    text-decoration:none;
+    padding:0.2em 0.6em;
+    font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;	
+    font-size:13px;	
+    color:#999;
+	
+}
+	
+.submenu_modulos ul li{
+    display:inline;
+	margin-top:30px;
+}
+
+.submenu_modulos a:hover{
+    color:#666;
+	text-decoration:underline;
+		
+}
+
+
+#prospecto ul .pre_cliente{
+    background: #f6f6f6;
+    border-top:2px solid #1496DB;
+    border-bottom:2px solid #1496DB;
+}
+#planificacion ul .pre_planificacion{
+    background: #f6f6f6;
+    border-top:2px solid #FFAD08;
+    border-bottom:2px solid #FFAD08;
+}
+
+#sub_tecnico ul .pre_tecnico{
+    background: #f6f6f6;
+    border-top:2px solid #D62231;
+    border-bottom:2px solid #D62231;
+}
+
+#financiero ul .pre_financiero{
+    background: #f6f6f6;
+    border-top:2px solid #009900;
+    border-bottom:2px solid #009900;
+}
+
+#sub_soporte ul .pre_soporte{
+    background: #f6f6f6;
+    border-top:2px solid #006666;
+    border-bottom:2px solid #006666;
+}
+
+#prospecto{
+   position:relative;
+   left:40px;
+}
+#doc{
+   position:relative;
+   left:300px;
+   height:30px;
+   width:220px;
+   background-color:#FFF;
+   border-top:1px solid #1496DB;
+   border-bottom:1px solid #1496DB;
+   
+}
+#report{
+   position:relative;
+   left:210px;
+   height:30px;
+   width:380px;
+   background-color:#FFF;
+   border-top:1px solid #1496DB;
+   border-bottom:1px solid #1496DB;
+}
+#descuento{
+   position:relative;
+   left:55px;
+   height:30px;
+   width:695px;
+   background-color:#FFF;
+   border-top:1px solid #1496DB;
+   border-bottom:1px solid #1496DB;
+   
+}
+#autorizacion{
+   position:relative;
+   left:50px;
+   height:30px;
+   width:710px;
+   background-color:#FFF;
+   border-top:1px solid #1496DB;
+   border-bottom:1px solid #1496DB;
+}
+#planificacion{
+    position:relative;
+	left:180px;
+       
+}
+
+#contenido_prospecto{
+	position:relative;
+	top:22px;
+	
+	background-color:#F9F9F9;
+	
+}
+
+#contenido_planificacion{
+	position:relative;
+	top:35px;
+	background-color:#F9F9F9;
+}
+#contenido_financiero{
+	position:relative;
+	top:35px;
+	background-color:#F9F9F9;
+}
+#link_nuevo_punto{
+	position:relative;
+    left:290px;
+}
+
+#crear_prospecto{
+	position:relative;
+    left:190px;
+}
+#crear_contrato{
+	position:relative;
+    left:190px;
+}
+#crear_contrato2{
+	position:relative;
+    left:150px;
+}
+#convertir_orden2{
+	position:relative;
+    left:160px;
+	}
+#convertir_orden{
+	position:relative;
+    left:150px;
+	}
+#nuevo_punto{
+	position:relative;
+    left:170px;
+}
+#padre_factura{
+	position:relative;
+    left:160px;
+	}
+#padre_factura2{
+	position:relative;
+    left:250px;
+	}
+
+
+
+.submenu_modulos a{
+    float:left;
+    text-decoration:none;
+    padding:0.2em 0.6em;
+    font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;	
+    font-size:13px;	
+    color:#999;
+	
+}
+.submenu a{
+    float:left;
+    text-decoration:none;
+    padding:0.2em 0.6em;
+    font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;	
+    font-size:13px;	
+    color:#999;
+	
+}
+#contenido_submenu{
+    position:relative;
+    top:30px;
+}
+/*************************************
+**************************************/
+
+/*************************************
+***************Notas******************
+**************************************/
+#nota_comercial{
+    position:relative;
+    left:100px;
+    background-color:#F5F5F5;
+    height: 70px;
+    width: 550px;
+    padding: 10px;
+	text-align:center;
+	/*para Firefox*/
+    -moz-border-radius: 15px 15px 15px 15px;
+    /*para Safari y Chrome*/
+    -webkit-border-radius: 15px 15px 15px 15px;
+    /* para Opera */
+    border-radius: 15px 15px 15px 15px;
+	box-shadow: 2px 3px 3px #aaa;
+}
+#nota_punto{
+    position:relative;
+    left:100px;
+    background-color:#F5F5F5;
+    height: 100px;
+    width: 550px;
+    padding: 10px;
+	text-align:center;
+	/*para Firefox*/
+    -moz-border-radius: 15px 15px 15px 15px;
+    /*para Safari y Chrome*/
+    -webkit-border-radius: 15px 15px 15px 15px;
+    /* para Opera */
+    border-radius: 15px 15px 15px 15px;
+	box-shadow: 2px 3px 3px #aaa;
+}
+.img_nota{
+position:relative;
+box-shadow: 2px 3px 3px #aaa;
+	
+}
+.texto_nota{
+	font-family: "Lucida Sans Unicode","Lucida Grande",Verdana,Arial,Helvetica,sans-serif;
+	font-size:12px;
+	color:#666;
+}
+/************************************
+*************************************/
+.ul_acciones{
+	list-style:none;
+	
+}
+.ul_acciones li{
+	margin-left:20px;
+	
+	}
+.img_titulo{
+	position:relative;
+	top:22px;
+	}
+.img_titulo2{
+	position:relative;
+	left:-720px;
+	top:20px;
+	}
+.img_titulo3{
+	position:relative;
+	left:-450px;
+	top:20px;
+	}
+.img_titulo4{
+	position:relative;
+	left:-400px;
+	top:20px;
+	}
+	.img_titulo5{
+	position:relative;
+	left:-370px;
+	top:20px;
+	}
+.img_titulo_financiero{
+	position:relative;
+	left:-565px;
+	top:20px;
+	}
+.bold{
+	font-weight:bold;
+	
+	}
+#color_inicio{
+	float:left;
+	margin-right:10px;
+	height:20px;
+	width:50px;
+	background:#FF6600;
+	
+	}
+#color_comercial{
+    float:left;
+	margin-right:10px;
+	height:20px;
+	width:50px;
+	background: #1496DB;
+	
+	}
+#color_planificacion{
+    float:left;
+	margin-right:10px;
+	height:20px;
+	width:50px;
+	background:#FFAD08;
+	
+	}
+#color_tecnico{
+    float:left;
+	margin-right:10px;
+	height:20px;
+	width:50px;
+	background:#D62231;	
+	
+	}
+#color_financiero{
+    float:left;
+	margin-right:10px;
+	height:20px;
+	width:50px;
+	background:#009900;
+	
+	}
+#color_soporte{
+    float:left;
+	margin-right:10px;
+	height:20px;
+	width:50px;
+	background:#006666;
+	
+	}
+#color_administracion{
+    float:left;
+	margin-right:10px;
+	height:20px;
+	width:50px;
+	 background:#8A2908;
+	
+	}

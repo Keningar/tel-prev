@@ -1,0 +1,66 @@
+<!------Imagen del icono debitos (modulo financiero)-------->
+<!---------------------------------------------------------->
+<img src="{{asset('public/images/masivo.png')}}" height="50" class="img_titulo_financiero"/>
+<!---------------------------------------------------------->	
+    <div class="div_titulo_financiero">
+      Débitos
+    </div></br>
+	
+	<!----------------Imagen de la sección debitos (módulo financiero)----------------->
+	<!--------------------------------------------------------------------------------->
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/financiero_debitos.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/financiero_debitos_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+    </div></br>
+	<!--------------------------------------------------------------------------------->
+	
+	<div id="contenido_debitos"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los débitos,
+    encontramos los siguientes links.</p></br>
+	
+	<!-------------Menú de las acciones en la sección debitos (modulo financiero)--------------->
+	<!------------------------------------------------------------------------------------------>	
+    <div class="submenu_modulos" id="debitos">
+      <ul>
+         <li><a href="#financiero" id="link_tarjeta">|Tipo cta./Tarjeta|</a></li>
+         <li><a href="#financiero" id="link_formato">|Formato de débito|</a></li>
+         <li><a href="#financiero" id="link_respuesta">|Respuesta de débito|</a></li>
+         <li><a href="#financiero" id="link_generar">|Generar débitos|</a></li>
+      </ul>
+    </div> 
+    <!-------------------------------------------------------------------------------------------->	
+	<div id="load_sub_financiero">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<script>
+		$('#link_tarjeta').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_debitos").empty();
+			$('#contenido_debitos').load('{{ path('financiero_tarjeta') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_formato').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_debitos").empty();
+			$('#contenido_debitos').load('{{ path('financiero_formato_debito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_respuesta').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_debitos").empty();
+			$('#contenido_debitos').load('{{ path('financiero_subir_respuesta') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_generar').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#contenido_debitos").empty();
+			$('#contenido_debitos').load('{{ path('financiero_generar_debito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		
+	</script>

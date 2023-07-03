@@ -1,0 +1,149 @@
+	<img src="{{asset('public/images/control_panel.png')}}" height="50" class="img_titulo">
+	<div class="div_titulo_soporte">
+      Módulo soporte
+	</div></br>
+	<p class="texto_manual">Para el Módulo Soporte, se sigue el siguiente flujo:</p></br>
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/proceso_casos.png')}}"
+	  data-lightbox="example-1">
+	   <img class="example-image" src="{{asset('./bundles/ayuda/img/proceso_casos.png')}}"
+	   height="150"/>
+	  </a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+	</div></br>
+	
+	<img src="{{asset('./bundles/ayuda/img/descarga_soporte.png')}}" height="40" class="descarga">
+	<div class="div_descarga_soporte" >
+	  <a href="{{asset('./bundles/ayuda/archivos/SoporteIPPCCL1TELCOS+.pdf')}}" target="_blank">Descargar Proceso: Soporte IPPCC L1</a>
+    </div></br></br>
+	
+	<p class="texto_manual">Esta sección le permitirá aprender a usar todas las funcionalidades
+	 referente al módulo soporte.</p></br>
+	
+	<!-------------- Imagen modulo soporte-------------->
+	<!-------------------------------------------------->
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/modulo_soporte.jpg')}}"
+	  data-lightbox="example-1">
+	   <img class="example-image" src="{{asset('./bundles/ayuda/img/modulo_soporte.jpg')}}"
+	   height="150"/>
+	  </a>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+	</div></br>
+	<!-------------------------------------------------->
+	
+	<!--
+	<p class="texto_manual">En el menú localizado en la parte de abajo Ud. 
+	puede realizar las siguientes acciones:</p></br>
+	
+	<p class="texto_manual">
+	<span class="bold">Casos -></span></br>
+	<span class="bold">Actividades -></span></br>
+	<span class="bold">Agenda -></span></br>
+	<span class="bold">Notificaciones -></span></br>
+	<span class="bold">Tareas -></span></br>
+	</p></br>  -->
+	
+	<p class="texto_manual">EL módulo soporte posee un submódulo con
+	sus respectivas funcionalidades, a continuación se decribe las acciones
+	que se pueden ejecutar.</p></br>
+	
+	<!-----Menú que se encuntra dentro del modulo soporte----->
+	<!-------------------------------------------------------->
+    <div class="submenu_modulos" id="sub_soporte">
+      <ul>
+	    <li><a href="#sub_soporte" id="link_casos">
+		 <img src="{{asset('public/images/tag_blue.png')}}" align="left" height="25">
+		 |Casos|</a></li>
+		 
+         <li><a href="#sub_soporte" id="link_actividades">
+		 <img src="{{asset('public/images/receptionist.png')}}" align="left" height="25">
+		 |Actividades|</a></li>
+         
+		 <li><a href="#sub_soporte" id="link_agenda"><img src="{{asset('public/images/calendar.png')}}" align="left" height="25">
+		 |Agenda|</a></li>
+		 
+         <!--<li><a href="#sub_soporte" id="link_notificaciones"><img src="{{asset('public/images/notificaciones.png')}}" align="left" height="25">
+		 |Notificaciones|</a></li>-->
+         
+		 <li><a href="#sub_soporte" id="link_tareas"><img src="{{asset('public/images/clipboard_tareas.png')}}" align="left" height="25">
+		 |Tareas|</a></li>
+      </ul>
+    </div></br>
+    <!--------------------------------------------------------->
+	<div id="load_soporte">
+	 <img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<!--Div donde se carga el contenido del modulo soporte --->
+    <!-------------------------------------------------------->
+    <div id="contenido_soporte"></div>
+	<!-------------------------------------------------------->
+	
+	<!-------Script que carga el contenido por medio de ajax (modulo soporte)-------->
+	<!------------------------------------------------------------------------------->
+    <script>
+	$('#link_casos').click(function(){
+			$("#load_soporte").css("display", "inline");
+			$("#contenido_soporte").empty();
+			$('#contenido_soporte').load('{{ path('soporte_casos') }}', function(){
+			$("#load_soporte").css("display", "none");});
+			
+			$("#link_casos").addClass('pre_soporte');
+			$("#link_actividades").removeClass('pre_soporte');
+			$("#link_agenda").removeClass('pre_soporte');
+			$("#link_notificaciones").removeClass('pre_soporte');
+			$("#link_tareas").removeClass('pre_soporte');
+		});
+	$('#link_actividades').click(function(){
+			$("#load_soporte").css("display", "inline");
+			$("#contenido_soporte").empty();
+			$('#contenido_soporte').load('{{ path('soporte_actividades') }}', function(){
+			$("#load_soporte").css("display", "none");});
+			
+			$("#link_casos").removeClass('pre_soporte');
+			$("#link_actividades").addClass('pre_soporte');
+			$("#link_agenda").removeClass('pre_soporte');
+			$("#link_notificaciones").removeClass('pre_soporte');
+			$("#link_tareas").removeClass('pre_soporte');
+		});
+	$('#link_agenda').click(function(){
+			$("#load_soporte").css("display", "inline");
+			$("#contenido_soporte").empty();
+			$('#contenido_soporte').load('{{ path('soporte_agenda') }}', function(){
+			$("#load_soporte").css("display", "none");});
+			
+			$("#link_casos").removeClass('pre_soporte');
+			$("#link_actividades").removeClass('pre_soporte');
+			$("#link_agenda").addClass('pre_soporte');
+			$("#link_notificaciones").removeClass('pre_soporte');
+			$("#link_tareas").removeClass('pre_soporte');
+		});
+	$('#link_notificaciones').click(function(){
+			$("#load_soporte").css("display", "inline");
+			$("#contenido_soporte").empty();
+			$('#contenido_soporte').load('{{ path('soporte_notificaciones') }}', function(){
+			$("#load_soporte").css("display", "none");});
+			
+			$("#link_casos").removeClass('pre_soporte');
+			$("#link_actividades").removeClass('pre_soporte');
+			$("#link_agenda").removeClass('pre_soporte');
+			$("#link_notificaciones").addClass('pre_soporte');
+			$("#link_tareas").removeClass('pre_soporte');			
+			
+		});
+	$('#link_tareas').click(function(){
+			$("#load_soporte").css("display", "inline");
+			$("#contenido_soporte").empty();
+			$('#contenido_soporte').load('{{ path('soporte_tareas') }}', function(){
+			$("#load_soporte").css("display", "none");});
+			
+			$("#link_casos").removeClass('pre_soporte');
+			$("#link_actividades").removeClass('pre_soporte');
+			$("#link_agenda").removeClass('pre_soporte');
+			$("#link_notificaciones").removeClass('pre_soporte');
+			$("#link_tareas").addClass('pre_soporte');			
+			
+		});
+    </script>
+	<!----------------------------------------------------------------->
+ 

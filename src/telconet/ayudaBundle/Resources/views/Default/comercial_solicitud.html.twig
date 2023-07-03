@@ -1,0 +1,88 @@
+
+    <img src="{{asset('public/images/solicitudcorvent.png')}}" height="50" class="img_titulo2">	
+    <div class="div_titulo_comercial">
+      Solicitudes
+    </div></br>
+	
+    <p class="texto_manual">Aquí encontrará todo lo relacionado a las solicitudes, <em>Solicitud de
+	 descuento</em> - <em>Solicitud cambio de documento</em> - <em>Consulta de 
+	 solicitudes</em> - <em>Solicitud cancelación</em> - <em>Solicitud suspensión
+	 temporal</em> - <em>Solicitud cambio de equipo</em>.
+    </p></br>
+	
+	<!-------------Imagen de la sección solicitud (módulo comercial)------------->
+	<!--------------------------------------------------------------------------->
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/solicitud.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/solicitud_thumb.jpg')}}"
+	   height="150"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br>
+	
+	<div id="nota_comercial">
+	   <img src="{{asset('./bundles/ayuda/img/nota.png')}}" height="30"align="left"/>
+         <p class="texto_nota">Para realizar las siguientes acciones 
+		 descritas en la parte de abajo, se debe seleccionar el login del cliente. 
+	   </p>
+
+    </div></br></br>
+	
+	
+    <!--------------------------------------------------------------------------->
+	<div id="contenido_solicitudes"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los tipos de solicitudes,
+    encontramos los siguientes links.</p></br>
+	
+	<div class="submenu_modulos" id="descuento">
+	 <ul>
+         <li><a href="#prospecto" id="link_descuento">|Descuento|</a></li>
+         <li><a href="#prospecto" id="link_cambio2">|Cambio de documento|</a></li>
+         <li><a href="#prospecto" id="link_consulta_solicitud">|Consulta de solicitudes|</a></li>
+         <li><a href="#prospecto" id="link_cancelacion">|Cancelación|</a></li>
+         <li><a href="#prospecto" id="link_suspension_temporal">|Suspensión temporal|</a></li>
+         
+      </ul>
+    </div>  
+	<div id="load_comercial_documento">
+	 <img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<!----------------------------------------------------------------------------------->
+	<!--Script que carga el contenido del nuevo punto (modulo comercial)-->
+    <!-------------------------------------------------------------------->
+    <script>
+       $('#link_descuento').click(function(){
+          $("#load_comercial_documento").css("display", "inline");
+		  $("#contenido_solicitudes").empty();
+		  $('#contenido_solicitudes').load('{{ path('comercial_solicitud_descuento') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+       });
+	   $('#link_cambio2').click(function(){
+          $("#load_comercial_documento").css("display", "inline");
+		  $("#contenido_solicitudes").empty();
+		  $('#contenido_solicitudes').load('{{ path('comercial_cambio_documento') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+       });
+	   $('#link_consulta_solicitud').click(function(){
+          $("#load_comercial_documento").css("display", "inline");
+		  $("#contenido_solicitudes").empty();
+		  $('#contenido_solicitudes').load('{{ path('comercial_consulta_solicitud') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+       });
+	   $('#link_cancelacion').click(function(){
+          $("#load_comercial_documento").css("display", "inline");
+		  $("#contenido_solicitudes").empty();
+		  $('#contenido_solicitudes').load('{{ path('comercial_cancelacion') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+       });
+	   $('#link_suspension_temporal').click(function(){
+          $("#load_comercial_documento").css("display", "inline");
+		  $("#contenido_solicitudes").empty();
+		  $('#contenido_solicitudes').load('{{ path('comercial_suspension_temporal') }}', function(){
+			$("#load_comercial_documento").css("display", "none");});
+       });
+       
+    </script>	
+	<!-------------------------------------------------------------------->

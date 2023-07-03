@@ -1,0 +1,67 @@
+<!---------Imagen del icono reporte (modulo planificacion)--------->
+<!----------------------------------------------------------------->
+<img src="{{asset('public/images/chart.png')}}" height="50" class="img_titulo3"> 
+<!----------------------------------------------------------------->	
+    <div class="div_titulo_planificacion">
+     Reportes
+    </div></br>
+	
+    <p class="texto_manual">Esta opción muestra lo relacionado a los reportes,
+	<em>Reporte general</em> - <em>Reportes aginados</em> - <em>Reportes 
+	supertel.</em></p></br>
+	<!----imagen de la seccion reportes (modulo planificacion) ---->
+	<!------------------------------------------------------------->
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/planificacion_reportes.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/planificacion_reportes_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+    </div></br>
+	<!-------------------------------------------------------------->
+    
+	<!--Div donde se carga el contenido de la session reportes(modulo planificacion)-->
+	<div id="contenido_reportes"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los tipos de reportes,
+    encontramos los siguientes links.</p></br>
+    <!-------------------------------------------------------------------------------->
+	
+	<!-----Menú que se encuntra en la seccion reportes (modulo planificacion)----->
+	<!--------------------------------------------------------------------------------->
+    <div class="submenu_modulos" id="reporte">
+      <ul>
+         <li><a href="#planificacion" id="link_reporte_general">|Reporte general|</a></li>
+         <li><a href="#planificacion" id="link_reporte_asignado">|Reportes asignados|</a></li>
+		 <li><a href="#planificacion" id="link_reporte_supertel">|Reporte supertel|</a></li>
+        </ul>
+    </div>
+	<!---------------------------------------------------------------------------------->
+    <div id="load_sub_planificacion">
+	 <img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<!----------Script que carga el contenido mediante ajax------------->
+	<!------------------------------------------------------------------>
+	<script>
+		$('#link_reporte_general').click(function(){
+			$("#load_sub_planificacion").css("display", "inline");
+			$("#contenido_reportes").empty();
+			$('#contenido_reportes').load('{{ path('planificacion_reporte_general') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+		});
+		$('#link_reporte_asignado').click(function(){
+			$("#load_sub_planificacion").css("display", "inline");
+			$("#contenido_reportes").empty();
+			$('#contenido_reportes').load('{{ path('planificacion_reporte_asignado') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+		});
+		$('#link_reporte_supertel').click(function(){
+			$("#load_sub_planificacion").css("display", "inline");
+			$("#contenido_reportes").empty();
+			$('#contenido_reportes').load('{{ path('planificacion_reporte_supertel') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+		});
+				
+    </script>
+    <!------------------------------------------------------------------>	

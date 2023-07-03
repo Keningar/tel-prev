@@ -1,0 +1,84 @@
+    <img src="{{asset('public/images/chart.png')}}" height="50" class="img_titulo3">	
+    <div class="div_titulo_planificacion">
+      Planificación
+    </div> </br>
+	
+    <p class="texto_manual">Esta opción me muestra todo lo relacionado con
+	la planificación, <em>Coordinar</em> - <em>Ver planificación</em> - 
+	<em>Asignar responsable</em> - <em>Asignar recursos red</em> - 
+     <em>Finalizar retiro equipos</em> - <em>Ver asignaciones</em></p></br>
+    <!-------Imagen de la seccion planificacion (modulo planificacion)------->
+	<!----------------------------------------------------------------------->
+    <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/planificacion_plan.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/planificacion_plan_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  <p class="zoom">Dar click en la imagen para hacer zoom</p>
+	  </a>
+    </div></br>
+	
+	<!--Div donde se aloja el contenido de la sección documentos (modulo comercial)-->
+	<!------------------------------------------------------------------------------->
+	<div id="contenido_planificar"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de las planificaciones y asignaciones,
+    encontramos los siguientes links.</p></br>
+    <!----Menú de acciones dentro de la sección documentos (modulo comercial)---->
+	<!--------------------------------------------------------------------------->
+	<div class="submenu_modulos" id="coordinar">
+      <ul>
+        <li><a href="#planificacion" id="link_coordinar">|Coordinar|</a></li>
+		<li><a href="#planificacion" id="link_ver_planificacion">|Ver planificación|</a></li>
+		<li><a href="#planificacion" id="link_asignar_responsable">|Asignar responsable|</a></li>
+		<li><a href="#planificacion" id="link_recursos_red">|Asignar recursos de red|</a></li>
+		<li><a href="#planificacion" id="link_retiro_equipo">|Finalizar retiro de equipo|</a></li>
+		<li><a href="#planificacion" id="link_ver_asignacion">|Ver asignaciones|</a></li>
+      </ul>
+    </div>
+	<!------------------------------------------------------------->
+	<div id="load_sub_planificacion">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<script>
+       
+	   $('#link_coordinar').click(function(){
+          $("#load_sub_planificacion").css("display", "inline");
+		  $("#contenido_planificar").empty();
+		  $('#contenido_planificar').load('{{ path('planificacion_coordinar') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+        });
+		$('#link_ver_planificacion').click(function(){
+          $("#load_sub_planificacion").css("display", "inline");
+		  $("#contenido_planificar").empty();
+		  $('#contenido_planificar').load('{{ path('planificacion_ver') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+        });
+		$('#link_asignar_responsable').click(function(){
+         $("#load_sub_planificacion").css("display", "inline");
+		 $("#contenido_planificar").empty();
+		 $('#contenido_planificar').load('{{ path('planificacion_asignar') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+        });
+		$('#link_recursos_red').click(function(){
+         $("#load_sub_planificacion").css("display", "inline");
+		 $("#contenido_planificar").empty();
+		 $('#contenido_planificar').load('{{ path('planificacion_recursos') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+        });
+		$('#link_retiro_equipo').click(function(){
+          $("#load_sub_planificacion").css("display", "inline");
+		  $("#contenido_planificar").empty();
+		  $('#contenido_planificar').load('{{ path('planificacion_retiro') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+        });
+		$('#link_ver_asignacion').click(function(){
+          $("#load_sub_planificacion").css("display", "inline");
+		  $("#contenido_planificar").empty();
+		  $('#contenido_planificar').load('{{ path('planificacion_ver_asignacion') }}', function(){
+			$("#load_sub_planificacion").css("display", "none");});
+        });
+       				
+    </script>
+	

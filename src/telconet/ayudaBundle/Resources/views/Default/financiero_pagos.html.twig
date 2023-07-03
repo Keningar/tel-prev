@@ -1,0 +1,80 @@
+<!------Imagen del icono pagos (modulo financiero)------------->
+<!------------------------------------------------------------->
+<img src="{{asset('public/images/money.png')}}" height="50" class="img_titulo_financiero">
+<!------------------------------------------------------------->
+	
+    <div class="div_titulo_financiero">
+      Pagos
+    </div></br>  
+	
+	<!-------------------Imagen de la sección pagos (módulo financiero)------------------->
+	<!------------------------------------------------------------------------------------>
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/financiero_pagos.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/financiero_pagos_thumb.jpg')}}"
+	   height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+    </div>
+	<!------------------------------------------------------------------------------------->
+	
+	<div id="financiero_pago" ></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los pagos y anticipos,
+    encontramos los siguientes links.</p></br>
+	
+	<!-------------Menú de las acciones en la sección pagos (módulo financiero)------------>
+	<!------------------------------------------------------------------------------------->
+	<div class="submenu_modulos" id="pagos">
+      <ul>
+         <li><a href="#financiero" id="link_pagos">|Pagos|</a></li>
+         <li><a href="#financiero" id="link_anticipo">|Anticipo|</a></li>
+         <li><a href="#financiero" id="link_ant">|Anticipo sin cliente|</a></li>
+         <li><a href="#financiero" id="link_deposito">|Generar depósitos|</a></li>
+         <li><a href="#financiero" id="link_procesar">|Procesar depósito|</a></li>
+         <li><a href="#financiero" id="link_recaudacion">|Recaudación|</a></li>
+      </ul>
+    </div>	
+	<!------------------------------------------------------------------------------------->
+	<div id="load_sub_financiero">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<script>
+		$('#link_pagos').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_pago").empty();
+			$('#financiero_pago').load('{{ path('financiero_pago') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_anticipo').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_pago").empty();
+			$('#financiero_pago').load('{{ path('financiero_anticipo') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_ant').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_pago").empty();
+			$('#financiero_pago').load('{{ path('financiero_anticipo_cliente') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_deposito').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_pago").empty();
+			$('#financiero_pago').load('{{ path('financiero_genera_deposito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_procesar').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_pago").empty();
+			$('#financiero_pago').load('{{ path('financiero_procesar_deposito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+		$('#link_recaudacion').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_pago").empty();
+			$('#financiero_pago').load('{{ path('financiero_recaudacion') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+		});
+	</script>

@@ -1,0 +1,137 @@
+<!-------------Imagen del icono prospecto (modulo comercial)------------>
+<!---------------------------------------------------------------------->
+<img src="{{asset('public/images/tools1.png')}}" height="50" class="img_titulo2"/></br>
+<!---------------------------------------------------------------------->
+    <div class="div_titulo_comercial">
+	  Padre de Facturación
+	</div></br>
+	<p class="texto_manual">Un cliente puede tener varios puntos, y a su vez
+	varios servicios, es por eso que el cliente puede elegir un punto para 
+	que se genere las facturas de dichos servicios, asi, los servicios de 
+	otros puntos del mismo cliente, se convierten en hijos del punto asignado
+	como padre.</p></br>
+	
+	<div class="div_titulo_comercial">
+	  Agregar Padre de Facturación
+	</div></br>
+	
+	<div class="pasos_comercial">
+	  <p class="pasos">Paso 1</p>
+	</div></br>
+	
+	<p class="texto_manual">Una vez que se haya convertido a CLIENTE, se procede
+	a agregar un padre de facturación. En la vista del cliente, damos click en
+	la opción <em>Agregar Padre de Facturación</em>, que se encuentra en la parte
+	derecha, en la seccion <em>Acciones realizadas</em></p></br>
+     
+	 <div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/agregar_padreFactura.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/agregar_padreFactura.jpg')}}"
+	   height="150"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br></br>
+	
+	<div class="pasos_comercial">
+	  <p class="pasos">Paso 2</p>
+	</div></br>
+	
+	<p class="texto_manual">Se nos mostrará la siguiente vista, donde se nos listará, los puntos
+	que tiene el cliente, con sus respectivos servicios.</p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/factura.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/factura.jpg')}}"
+	   height="200"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br></br>
+	
+	<p class="texto_manual">Seleccionamos el punto que deseamos convertir en
+	<em>Padre de Facturación</em> (a), y luego hacemos click, en la opción 
+	<em>Agregar</em> (b), en el caso de que ya haya un Padre de facturación
+	y queremos que deje de serlo, seleccinamos el punto, y luego hacemos click,
+	en la opción <em>Eliminar</em> (c). </br></br>Al dar click en agregar, se 
+	nos muestra un mensaje de confirmación.</p></br>
+	
+	<div class="img_center">
+      <img class="example-image" src="{{asset('./bundles/ayuda/img/mensaje.jpg')}}" height="100"/>
+	</div></br></br>
+	
+	<p class="texto_manual">Como podemos notar, cuando seleccionamos, a un punto
+	como padre, el texto cambia a color verde para denotar que fué asignado.</p>
+	
+	<div class="pasos_comercial">
+	  <p class="pasos">Paso 3</p>
+	</div></br>
+	
+	<p class="texto_manual"> En la parte de abajo se muestran todos los servicios,
+	denominados hijos, a los cuales debemos asignarle un padre.</br> Seleccionamos
+	el servico, luego, seleccionamos quien va hacer el padre, y por último, damos
+	click en la opción <em>asignar</em></p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/asignar_padre.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/asignar_padre.jpg')}}"
+	   height="200"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br></br>
+	
+	<p class="texto_manual">El sistema nos mostrará un mensaje de confirmación. A 
+	lo cual, si estamos de acuerdo confirmamos la asignación.</p></br>
+	
+	<div class="img_center">
+      <img class="example-image" src="{{asset('./bundles/ayuda/img/mensaje2.jpg')}}" height="100"/>
+	</div></br></br>
+	
+	<p class="texto_manual">En la siguiente vista podemos ver que el servicio, 
+	cambia a color verde, indicador que el servicio queda asignado a un padre.</p></br>
+	
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/padre_hijo.jpg')}}"
+	  data-lightbox="example-1">
+       <img class="example-image" src="{{asset('./bundles/ayuda/img/padre_hijo.jpg')}}"
+	   height="200"/></a>
+	   <p class="zoom">Dar click en la imagen para hacer zoom</p>
+    </div></br></br>
+	
+	<img src="{{asset('public/images/video.png')}}" height="50" class="img_titulo">	
+	<div class="div_titulo_comercial">
+      Ver video guía
+    </div></br>
+
+    <p class="texto_manual">En el siguiente video se puede apreciar como agregar un Padre
+	de facturación, y asignarle sus hijos, con los pasos anteriormente descritos.</p></br>
+
+    <div class="img_center">
+      <video src="{{asset('./bundles/ayuda/videos/crearPuntoAgregarServicio.mp4')}}"
+	  width="400" height="308" controls></video>
+    </div></br>
+	
+	<div class="submenu_modulos">
+      <ul>
+	    <li><a href="#prospecto" id='crear_contrato2'><< Crear Contrato / Convertir a Cliente |</a></li>
+        <li><a href="#prospecto" id='convertir_orden2'>| Crear Orden de Trabajo >></a></li>
+      </ul>
+    </div>
+	<script>
+       
+	   $('#convertir_orden2').click(function(){
+          $("#load_comercial").css("display", "inline");
+		  $("#contenido_prospecto").empty();
+		  $('#contenido_prospecto').load('{{ path('comercial_convertir_orden') }}', function(){
+			$("#load_comercial").css("display", "none");});
+       });
+	   $('#crear_contrato2').click(function(){
+          $("#load_comercial").css("display", "inline");
+		  $("#contenido_prospecto").empty();
+		  $('#contenido_prospecto').load('{{ path('comercial_crear_contrato') }}', function(){
+			$("#load_comercial").css("display", "none");});
+       });
+       
+    </script>
+    
+	
+	
+	

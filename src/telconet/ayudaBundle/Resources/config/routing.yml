@@ -1,0 +1,439 @@
+ayuda:
+    pattern:  /
+    defaults: { _controller: ayudaBundle:Default:ayuda }
+
+ayuda_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ayudaBundle:Default:index }
+
+introduccion:
+  pattern:  /introduccion
+  defaults: { _controller: ayudaBundle:Default:introduccion }
+
+modulo_inicio:
+  pattern:  /modulo-inicio
+  defaults: { _controller: ayudaBundle:Default:modulo_inicio }
+
+modulo_tecnico:
+  pattern:  /modulo_tecnico
+  defaults: { _controller: ayudaBundle:Default:modulo_tecnico }
+
+tecnico_clientes:
+  pattern:  /tecnico_clientes
+  defaults: { _controller: ayudaBundle:Default:tecnico_clientes }
+
+tecnico_elementos:
+  pattern:  /tecnico_elementos
+  defaults: { _controller: ayudaBundle:Default:tecnico_elementos }
+
+tecnico_enlace:
+  pattern:  /tecnico_enlace
+  defaults: { _controller: ayudaBundle:Default:tecnico_enlace }
+
+tecnico_procesos_masivos:
+  pattern:  /cambio_plan_masivo
+  defaults: { _controller: ayudaBundle:Default:tecnico_procesos_masivos }
+
+tecnico_dslam:
+  pattern:  /tecnico_dslam
+  defaults: { _controller: ayudaBundle:Default:tecnico_dslam }
+  
+tecnico_olt:
+  pattern:  /tecnico_olt
+  defaults: { _controller: ayudaBundle:Default:tecnico_olt }
+
+tecnico_pop:
+  pattern:  /tecnico_pop
+  defaults: { _controller: ayudaBundle:Default:tecnico_pop }
+  
+tecnico_radio:
+  pattern:  /tecnico_radio
+  defaults: { _controller: ayudaBundle:Default:tecnico_radio }
+  
+tecnico_servidor:
+  pattern:  /tecnico_servidor
+  defaults: { _controller: ayudaBundle:Default:tecnico_servidor }
+
+tecnico_nodo:
+  pattern:  /tecnico_nodo
+  defaults: { _controller: ayudaBundle:Default:tecnico_nodo }
+
+cambio_plan_masivo:
+  pattern:  /cambio_plan masivo
+  defaults: { _controller: ayudaBundle:Default:cambio_plan_masivo}
+
+cortes_masivos:
+  pattern:  /cortes_masivos
+  defaults: { _controller: ayudaBundle:Default:cortes_masivos }
+
+reactivacion_masiva:
+  pattern:  /reactivacion_masiva
+  defaults: { _controller: ayudaBundle:Default:reactivacion_masiva }
+
+modulo_planificacion:
+  pattern:  /modulo_planificacion
+  defaults: { _controller: ayudaBundle:Default:modulo_planificacion }
+
+planificacion_factibilidad:
+  pattern:  /planificacion_factibilidad
+  defaults: { _controller: ayudaBundle:Default:planificacion_factibilidad }
+
+planificacion_factibilidad2:
+  pattern:  /planificacion_factibilidad2
+  defaults: { _controller: ayudaBundle:Default:planificacion_factibilidad2 }
+
+planificacion_plan:
+  pattern:  /planificacion_plan
+  defaults: { _controller: ayudaBundle:Default:planificacion_plan }
+
+planificacion_plan2:
+  pattern:  /planificacion_plan2
+  defaults: { _controller: ayudaBundle:Default:planificacion_plan2 }
+
+planificacion_instalacion:
+  pattern:  /planificacion_instalacion
+  defaults: { _controller: ayudaBundle:Default:planificacion_instalacion }
+
+planificacion_ingreso_material:
+  pattern:  /planificacion_ingreso_material
+  defaults: { _controller: ayudaBundle:Default:planificacion_ingreso_material }
+
+planificacion_datos_instalacion:
+  pattern:  /planificacion_datos_instalacion:
+  defaults: { _controller: ayudaBundle:Default:planificacion_datos_instalacion }
+
+planificacion_reportes:
+  pattern:  /planificacion_reportes
+  defaults: { _controller: ayudaBundle:Default:planificacion_reportes }
+
+planificacion_reporte_general:
+  pattern:  /planificacion_reporte_general
+  defaults: { _controller: ayudaBundle:Default:planificacion_reporte_general }
+
+planificacion_reporte_asignado:
+  pattern:  /planificacion_reporte_asignado
+  defaults: { _controller: ayudaBundle:Default:planificacion_reporte_asignado }
+
+planificacion_reporte_supertel:
+  pattern:  /planificacion_reporte_supertel
+  defaults: { _controller: ayudaBundle:Default:planificacion_reporte_supertel }
+
+planificacion_coordinar:
+  pattern:  /planificacion_coordinar
+  defaults: { _controller: ayudaBundle:Default:planificacion_coordinar }
+  
+planificacion_coordinar2:
+  pattern:  /planificacion_coordinar2
+  defaults: { _controller: ayudaBundle:Default:planificacion_coordinar2 }
+ 
+planificacion_ver:
+  pattern:  /planificacion_ver
+  defaults: { _controller: ayudaBundle:Default:planificacion_ver }
+
+planificacion_ver2:
+  pattern:  /planificacion_ver2
+  defaults: { _controller: ayudaBundle:Default:planificacion_ver2 }
+
+planificacion_asignar:
+  pattern:  /planificacion_asignar
+  defaults: { _controller: ayudaBundle:Default:planificacion_asignar }
+
+planificacion_asignar2:
+  pattern:  /planificacion_asignar2
+  defaults: { _controller: ayudaBundle:Default:planificacion_asignar2 }
+
+planificacion_recursos:
+  pattern:  /planificacion_recursos
+  defaults: { _controller: ayudaBundle:Default:planificacion_recursos }
+  
+planificacion_recursos2:
+  pattern:  /planificacion_recursos2
+  defaults: { _controller: ayudaBundle:Default:planificacion_recursos2 }
+
+planificacion_retiro:
+  pattern:  /planificacion_retiro
+  defaults: { _controller: ayudaBundle:Default:planificacion_retiro }
+
+planificacion_ver_asignacion:
+  pattern:  /planificacion_ver_asignacion
+  defaults: { _controller: ayudaBundle:Default:planificacion_ver_asignacion }
+
+modulo_soporte:
+  pattern:  /modulo_soporte
+  defaults: { _controller: ayudaBundle:Default:modulo_soporte }
+
+soporte_casos:
+  pattern:  /soporte_casos
+  defaults: { _controller: ayudaBundle:Default:soporte_casos }
+
+soporte_actividades:
+  pattern:  /soporte_actividades
+  defaults: { _controller: ayudaBundle:Default:soporte_actividades }
+
+soporte_agenda:
+  pattern:  /soporte_agenda
+  defaults: { _controller: ayudaBundle:Default:soporte_agenda }
+
+soporte_notificaciones:
+  pattern:  /soporte_notificaciones
+  defaults: { _controller: ayudaBundle:Default:soporte_notificaciones }
+
+soporte_tareas:
+  pattern:  /soporte_tareas
+  defaults: { _controller: ayudaBundle:Default:soporte_tareas }
+
+modulo_administracion:
+  pattern:  /modulo_administracion
+  defaults: { _controller: ayudaBundle:Default:modulo_administracion }
+
+modulo_comercial:
+  pattern:  /modulo_comercial
+  defaults: { _controller: ayudaBundle:Default:modulo_comercial }
+
+modulo_comercial2:
+  pattern:  /modulo_comercial2
+  defaults: { _controller: ayudaBundle:Default:modulo_comercial2 }
+
+comercial_prospecto:
+  pattern:  /comercial_prospecto
+  defaults: { _controller: ayudaBundle:Default:comercial_prospecto }
+  
+comercial_prospecto2:
+  pattern:  /comercial_prospecto2
+  defaults: { _controller: ayudaBundle:Default:comercial_prospecto2 }
+  
+comercial_crearContrato:
+  pattern:  /comercial_crearContrato
+  defaults: { _controller: ayudaBundle:Default:comercial_crearContrato }
+
+comercial_cliente:
+  pattern:  /comercial_cliente
+  defaults: { _controller: ayudaBundle:Default:comercial_cliente }
+
+comercial_documento:
+  pattern:  /comercial_documento
+  defaults: { _controller: ayudaBundle:Default:comercial_documento }
+
+factura:
+  pattern:  /factura
+  defaults: { _controller: ayudaBundle:Default:factura }
+
+comercial_solicitud:
+  pattern:  /comercial_solicitud
+  defaults: { _controller: ayudaBundle:Default:comercial_solicitud }
+
+comercial_autorizacion:
+  pattern:  /comercial_autorizacion
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizacion }
+
+comercial_autorizacion2:
+  pattern:  /comercial_autorizacion2
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizacion2 }
+  
+comercial_reportes:
+  pattern:  /comercial_reportes
+  defaults: { _controller: ayudaBundle:Default:comercial_reportes }
+  
+comercial_padre_factura:
+  pattern:  /comercial_padre_factura
+  defaults: { _controller: ayudaBundle:Default:comercial_padre_factura }
+
+comercial_convertir_orden:
+  pattern:  /comercial_convertir_orden
+  defaults: { _controller: ayudaBundle:Default:comercial_convertir_orden }
+
+comercial_contrato:
+  pattern:  /comercial_contrato
+  defaults: { _controller: ayudaBundle:Default:comercial_contrato }
+  
+comercial_crear_contrato:
+  pattern:  /comercial_crear_contrato
+  defaults: { _controller: ayudaBundle:Default:comercial_crear_contrato }
+
+comercial_orden_trabajo:
+  pattern:  /comercial_orden_trabajo
+  defaults: { _controller: ayudaBundle:Default:comercial_orden_trabajo }
+
+comercial_referido:
+  pattern:  /comercial_referido
+  defaults: { _controller: ayudaBundle:Default:comercial_referido }
+
+comercial_cl_primeras_facturas:
+  pattern:  /comercial_cl_primeras_facturas
+  defaults: { _controller: ayudaBundle:Default:comercial_cl_primeras_facturas }
+
+comercial_nuevo_punto:
+  pattern:  /comercial_nuevo_punto
+  defaults: { _controller: ayudaBundle:Default:comercial_nuevo_punto }
+
+comercial_nuevo_punto2:
+  pattern:  /comercial_nuevo_punto2
+  defaults: { _controller: ayudaBundle:Default:comercial_nuevo_punto2 }
+  
+comercial_autorizar_contrato:
+  pattern:  /comercial_autorizar_contrato
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizar_contrato }
+
+comercial_autorizar_contrato2:
+  pattern:  /comercial_autorizar_contrato2
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizar_contrato2 }
+
+comercial_consulta_solicitud:
+  pattern:  /comercial_consulta_solicitud
+  defaults: { _controller: ayudaBundle:Default:comercial_consulta_solicitud }
+  
+comercial_solicitud_descuento:
+  pattern:  /comercial_solicitud_descuento
+  defaults: { _controller: ayudaBundle:Default:comercial_solicitud_descuento }
+  
+comercial_cambio_documento:
+  pattern:  /comercial_cambio_documento
+  defaults: { _controller: ayudaBundle:Default:comercial_cambio_documento }
+
+comercial_cancelacion:
+  pattern:  /comercial_cancelacion
+  defaults: { _controller: ayudaBundle:Default:comercial_cancelacion }
+  
+comercial_suspension_temporal:
+  pattern:  /comercial_suspension_temporal
+  defaults: { _controller: ayudaBundle:Default:comercial_suspension_temporal }
+ 
+comercial_autorizar_descuento:
+  pattern:  /comercial_autorizar_descuento
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizar_descuento }
+
+comercial_autorizar_excedente:
+  pattern:  /comercial_autorizar_excedente
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizar_excedente }
+
+comercial_autorizar_cancelacion:
+  pattern:  /comercial_autorizar_cancelacion
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizar_cancelacion }
+
+comercial_autorizar_suspension:
+  pattern:  /comercial_autorizar_suspension
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizar_suspension }
+  
+comercial_autorizar_cambio:
+  pattern:  /comercial_autorizar_cambio
+  defaults: { _controller: ayudaBundle:Default:comercial_autorizar_cambio }
+
+modulo_financiero:
+  pattern:  /modulo_financiero
+  defaults: { _controller: ayudaBundle:Default:modulo_financiero }
+
+financiero_documento:
+  pattern:  /financiero_documento
+  defaults: { _controller: ayudaBundle:Default:financiero_documento }
+
+financiero_pagos:
+  pattern:  /financiero_pagos
+  defaults: { _controller: ayudaBundle:Default:financiero_pagos }
+
+financiero_debitos:
+  pattern:  /financiero_debitos
+  defaults: { _controller: ayudaBundle:Default:financiero_debitos }
+
+financiero_comisiones:
+  pattern:  /financiero_comisiones
+  defaults: { _controller: ayudaBundle:Default:financiero_comisiones }
+
+financiero_reportes:
+  pattern:  /financiero_reportes
+  defaults: { _controller: ayudaBundle:Default:financiero_reportes }
+
+financiero_procesos:
+  pattern:  /financiero_procesos
+  defaults: { _controller: ayudaBundle:Default:financiero_procesos }
+
+financiero_autorizaciones:
+  pattern:  /financiero_autorizaciones
+  defaults: { _controller: ayudaBundle:Default:financiero_autorizaciones }
+
+financiero_facturas:
+  pattern:  /financiero_facturas
+  defaults: { _controller: ayudaBundle:Default:financiero_facturas }
+
+financiero_facturas_proporcional:
+  pattern:  /financiero_facturas_proporcional
+  defaults: { _controller: ayudaBundle:Default:financiero_facturas_proporcional }
+
+financiero_notas_credito:
+  pattern:  /financiero_notas_credito
+  defaults: { _controller: ayudaBundle:Default:financiero_notas_credito }
+
+financiero_notas_debito:
+  pattern:  /financiero_notas_debito
+  defaults: { _controller: ayudaBundle:Default:financiero_notas_debito }
+
+financiero_pago:
+  pattern:  /financiero_pago
+  defaults: { _controller: ayudaBundle:Default:financiero_pago }
+
+financiero_anticipo:
+  pattern:  /financiero_anticipo
+  defaults: { _controller: ayudaBundle:Default:financiero_anticipo }
+
+financiero_anticipo_cliente:
+  pattern:  /financiero_anticipo_cliente
+  defaults: { _controller: ayudaBundle:Default:financiero_anticipo_cliente }
+  
+financiero_genera_deposito:
+  pattern:  /financiero_genera_deposito
+  defaults: { _controller: ayudaBundle:Default:financiero_genera_deposito }
+
+financiero_procesar_deposito:
+  pattern:  /financiero_procesar_deposito
+  defaults: { _controller: ayudaBundle:Default:financiero_procesar_deposito }
+
+financiero_recaudacion:
+  pattern:  /financiero_recaudacion
+  defaults: { _controller: ayudaBundle:Default:financiero_recaudacion }
+
+financiero_tarjeta:
+  pattern:  /financiero_tarjeta
+  defaults: { _controller: ayudaBundle:Default:financiero_tarjeta }
+
+financiero_formato_debito:
+  pattern:  /financiero_formato_debito
+  defaults: { _controller: ayudaBundle:Default:financiero_formato_debito }
+
+financiero_subir_respuesta:
+  pattern:  /financiero_subir_respuesta
+  defaults: { _controller: ayudaBundle:Default:financiero_subir_respuesta }
+
+financiero_generar_debito:
+  pattern:  /financiero_generar_debito
+  defaults: { _controller: ayudaBundle:Default:financiero_generar_debito }
+
+financiero_autorizacion_debito:
+  pattern:  /financiero_autorizacion_debito
+  defaults: { _controller: ayudaBundle:Default:financiero_autorizacion_debito } 
+
+financiero_autorizacion_credito:
+  pattern:  /financiero_autorizacion_credito
+  defaults: { _controller: ayudaBundle:Default:financiero_autorizacion_credito }
+
+financiero_estado:
+  pattern:  /financiero_estado
+  defaults: { _controller: ayudaBundle:Default:financiero_estado }
+
+financiero_estado_punto:
+  pattern:  /financiero_estado_punto
+  defaults: { _controller: ayudaBundle:Default:financiero_estado_punto }  
+
+financiero_anticipo_cruzado:
+  pattern:  /financiero_anticipo_cruzado
+  defaults: { _controller: ayudaBundle:Default:financiero_anticipo_cruzado }
+
+financiero_cartera:
+  pattern:  /financiero_cartera
+  defaults: { _controller: ayudaBundle:Default:financiero_cartera }
+  
+financiero_cierre:
+  pattern:  /financiero_cierre
+  defaults: { _controller: ayudaBundle:Default:financiero_cierre }
+
+financiero_documentos:
+  pattern:  /financiero_documentos
+  defaults: { _controller: ayudaBundle:Default:financiero_documentos }     

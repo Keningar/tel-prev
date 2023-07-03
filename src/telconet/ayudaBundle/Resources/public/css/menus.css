@@ -1,0 +1,197 @@
+@charset "utf-8";
+/* CSS Document */
+/*********************************
+******CSS del menu vertical*******
+**********************************/
+
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#cssmenu ul {
+    position: relative;
+    z-index: 597;
+    float: left;
+}
+
+#cssmenu ul li {
+    float: left;
+    min-height: 1px;
+    line-height: 1em;
+    vertical-align: middle;
+}
+
+#cssmenu ul li.hover,
+#cssmenu ul li:hover {
+    position: relative;
+    z-index: 599;
+    cursor: default;
+}
+
+#cssmenu ul li {
+    float: none;
+}
+/*
+float: left;
+
+*/
+
+#cssmenu {
+    
+    font-size: 13px;
+    position: fixed;
+	top: 200px;
+	left:120px;
+    width: 150px;
+    height:238px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -moz-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.15);
+}
+
+#cssmenu ul a,
+#cssmenu ul a:link,
+#cssmenu ul a:visited {
+    display: block;
+    color:#666;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+#cssmenu ul {
+    float: none;
+}
+
+#cssmenu ul li {
+    border-left: 2px solid #d7d8da;
+}
+
+#cssmenu ul li a {
+    padding: 10px 20px;
+}
+
+#cssmenu ul .menu_intro:hover {
+    background: #f6f6f6;
+    border-top:4px solid #539FB9;
+    border-right:1px solid #539FB9;
+    border-bottom:1px solid #539FB9;
+}
+
+#cssmenu ul .menu_int{
+    background: #f6f6f6;
+    border-top:4px solid #539FB9;
+    border-right:1px solid #539FB9;
+    border-bottom:1px solid #539FB9;
+}
+
+#cssmenu ul .menu_inicio:hover {
+    background: #f6f6f6;
+    border-top:4px solid #FF6600;
+    border-right:1px solid #FF6600;
+    border-bottom:1px solid #FF6600;
+}
+
+#cssmenu ul .menu_ini{
+    background: #f6f6f6;
+    border-top:4px solid #FF6600;
+    border-right:1px solid #FF6600;
+    border-bottom:1px solid #FF6600;
+}
+
+#cssmenu ul .menu_comercial:hover {
+    background: #f6f6f6;
+    border-top:4px solid #1496DB;
+    border-right:1px solid #1496DB;
+    border-bottom:1px solid #1496DB;
+}
+
+#cssmenu ul .menu_come{
+    background: #f6f6f6;
+    border-top:4px solid #1496DB;
+    border-right:1px solid #1496DB;
+    border-bottom:1px solid #1496DB;
+}
+
+#cssmenu ul .menu_financiero:hover {
+    background: #f6f6f6;
+    border-top:4px solid #009900;
+    border-right:1px solid #009900;
+    border-bottom:1px solid #009900;
+}
+
+#cssmenu ul .menu_finan {
+    background: #f6f6f6;
+    border-top:4px solid #009900;
+    border-right:1px solid #009900;
+    border-bottom:1px solid #009900;
+}
+
+#cssmenu ul .menu_tecnico:hover {
+    background: #f6f6f6;
+    border-top:4px solid #D62231;
+    border-right:1px solid #D62231;
+    border-bottom:1px solid #D62231;
+}
+
+#cssmenu ul .menu_tecn{
+    background: #f6f6f6;
+    border-top:4px solid #D62231;
+    border-right:1px solid #D62231;
+    border-bottom:1px solid #D62231;
+}
+
+#cssmenu ul .menu_planificacion:hover {
+    background: #f6f6f6;
+    border-top:4px solid #FFAD08;
+    border-right:1px solid #FFAD08;
+    border-bottom:1px solid #FFAD08;
+}
+
+#cssmenu ul .menu_plan{
+    background: #f6f6f6;
+    border-top:4px solid #FFAD08;
+    border-right:1px solid #FFAD08;
+    border-bottom:1px solid #FFAD08;
+}
+
+#cssmenu ul .menu_soporte:hover {
+    background: #f6f6f6;
+    border-top:4px solid #006666;
+    border-right:1px solid #006666;
+    border-bottom:1px solid #006666;
+}
+
+#cssmenu ul .menu_soport{
+    background: #f6f6f6;
+    border-top:4px solid #006666;
+    border-right:1px solid #006666;
+    border-bottom:1px solid #006666;
+}
+
+#cssmenu ul .menu_administracion:hover {
+    background: #f6f6f6;
+    border-top:4px solid #8A2908;
+    border-right:1px solid #8A2908;
+    border-bottom:1px solid #8A2908;
+}
+
+#cssmenu ul .menu_admin {
+    background: #f6f6f6;
+    border-top:4px solid #8A2908;
+    border-right:1px solid #8A2908;
+    border-bottom:1px solid #8A2908;
+}
+/**************************************
+***************************************/

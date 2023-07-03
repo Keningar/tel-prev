@@ -1,0 +1,79 @@
+<!------Imagen del icono documentos (modulo financiero)-------->
+<!------------------------------------------------------------->
+<img src="{{asset('public/images/factura.png')}}" height="50" class="img_titulo_financiero">
+<!------------------------------------------------------------->
+	
+    <div class="div_titulo_financiero">
+      Documentos
+    </div></br>
+	
+	<!----------------Imagen de la sección documentos (módulo financiero)----------------->
+	<!------------------------------------------------------------------------------------>
+	<div class="img_center">
+      <a class="example-image-link" href="{{asset('./bundles/ayuda/img/financiero_documentos.jpg')}}"
+	  data-lightbox="example-1">
+      <img class="example-image" src="{{asset('./bundles/ayuda/img/financiero_documentos_thumb.jpg')}}"
+	  height="150" title="Para visualizar mejor la imagen, dar click"/>
+	  </a>
+    </div></br>
+	<!------------------------------------------------------------------------------------>
+	
+	<!--Div donde se aloja el contenido de la sección documentos (modulo comercial)-->
+	<!------------------------------------------------------------------------------->
+	<div id="financiero_documento"></div></br>
+	<!------------------------------------------------------------->
+	
+    <p class="texto_manual">Para consultar más acerca de los tipos de documentos,
+    encontramos los siguientes links.</p></br>
+	
+	<!-------------Menú de las acciones en la sección documento (modulo financiero)------------->
+	<!------------------------------------------------------------------------------------------>
+	<div class="submenu_modulos" id="documentos">
+      <ul>
+         <li><a href="#financiero" id="link_facturas">|Facturas|</a></li>
+         <li><a href="#financiero" id="link_facturas_proporcional">
+		 |Facturas proporcionales|</a></li>
+		 <li><a href="#financiero" id="link_notas_credito">|Notas de crédito|</a></li>
+		 <li><a href="#financiero" id="link_notas_debito">|Notas de débito|</a></li>
+		 <!--<li><a href="#financiero" id="link_imprimir">|Imprimir facturas|</a></li>-->
+      </ul>
+    </div>
+	<!------------------------------------------------------------------------------------------->
+    <div id="load_sub_financiero">
+	<img src="{{asset('public/images/images_crud/ajax-loader.gif')}}"/>
+	</div>
+	<!--Script que carga el contenido de la sección documentos (modulo financiero)-->
+    <!------------------------------------------------------------------------------>
+	<script>
+	  $('#link_facturas').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_documento").empty();
+			$('#financiero_documento').load('{{ path('financiero_facturas') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+	   });
+	  $('#link_facturas_proporcional').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_documento").empty();
+			$('#financiero_documento').load('{{ path('financiero_facturas_proporcional') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+	   });
+	   $('#link_notas_credito').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_documento").empty();
+			$('#financiero_documento').load('{{ path('financiero_notas_credito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+	   });
+	   $('#link_notas_debito').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_documento").empty();
+			$('#financiero_documento').load('{{ path('financiero_notas_debito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+	   });
+	   $('#link_imprimir').click(function(){
+			$("#load_sub_financiero").css("display", "inline");
+			$("#financiero_documento").empty();
+			$('#financiero_documento').load('{{ path('financiero_notas_debito') }}', function(){
+			$("#load_sub_financiero").css("display", "none");});
+	   });
+    </script> 
+    <!----------------------------------------------------------------------->	
