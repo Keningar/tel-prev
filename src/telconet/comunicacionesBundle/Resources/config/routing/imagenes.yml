@@ -1,0 +1,19 @@
+comunicacionesimagenes_index:
+    pattern:  /
+    defaults: { _controller: comunicacionesBundle:Imagenes:index }
+
+comunicacionesimagenes_ajaxBuscarImagenes:
+    pattern:  /ajax/buscar/imagenes
+    defaults: { _controller: comunicacionesBundle:Imagenes:ajaxBuscarImagenes }
+
+comunicacionesimagenes_descargarImagenes:
+    pattern:  /descargar/imagenes
+    defaults: { _controller: comunicacionesBundle:Imagenes:descargarImagenes }
+    
+comunicacionesimagenes_iniciarEvaluacionImagenes:
+    pattern:  /iniciarEvaluacion/imagenes
+    defaults: { _controller: comunicacionesBundle:Imagenes:iniciarEvaluacionImagenes }
+
+comunicacionesimagenes_guardarEvaluacionImagenes:
+    pattern:  /guardarEvaluacion/imagenes
+    defaults: { _controller: comunicacionesBundle:Imagenes:guardarEvaluacionImagenes }

@@ -1,0 +1,91 @@
+/**
+ * DEBE EJECUTARSE EN DB_COMUNICACION
+ * Script para crear plantilla para bus de pagos de TN
+ * @author David De La Cruz <ddelacruz@telconet.ec>
+ * @version 1.0 
+ * @since 11-04-2022 - Versión Inicial.
+ */
+
+ INSERT INTO DB_COMUNICACION.ADMI_PLANTILLA
+(
+  ID_PLANTILLA, NOMBRE_PLANTILLA, CODIGO, MODULO, PLANTILLA, ESTADO,
+  FE_CREACION, USR_CREACION, FE_ULT_MOD, USR_ULT_MOD, EMPRESA_COD
+)
+VALUES 
+(
+    DB_COMUNICACION.SEQ_ADMI_PLANTILLA.NEXTVAL,
+    'Notificacion por pago en linea desde canal Extranet','PAL-EXTRANET','SOPORTE',
+    '<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+    <style type="text/css">
+        table.cssTable {
+            font-family: verdana, arial, sans-serif;
+            font-size: 11px;
+            color: #333333;
+            border-width: 1px;
+            border-color: #999999;
+            border-collapse: collapse;
+        }
+
+        table.cssTable th {
+            background-color: #c3dde0;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+
+        table.cssTable tr {
+            background-color: #d4e3e5;
+        }
+
+        table.cssTable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+
+        table.cssTblPrincipal {
+            font-family: verdana, arial, sans-serif;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <table class="cssTblPrincipal" align="center" width="100%" cellspacing="0" cellpadding="5">
+        <tr>
+            <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+                <img alt="" src="http://images.telconet.net/others/sit/notificaciones/logo.png" />
+            </td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #6699CC;">
+                <table width="100%" cellspacing="0" cellpadding="5">
+                    <tr>
+                        <td colspan="2">Estimados,</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            El presente email es para indicar que el cliente {{nombreCliente}} ha realizado el pago No. {{secuencialRecaudador}} por el valor de ${{valorPago}} utilizando el servicio de DATAFAST.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</body>
+</html>',
+    'Activo',sysdate,'ddelacruz',null,null,10
+);
+
+COMMIT;

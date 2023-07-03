@@ -1,0 +1,21 @@
+/**
+ * Documentación para eliminar plantilla RPT_SECURE
+ *
+ * @author Antonio Ayala <afayala@telconet.ec>
+ * @version 1.0 10-09-2021
+ */
+
+SET DEFINE OFF;
+
+-- Eliminar en la tabla INFO_ALIAS_PLANTILLA
+DELETE FROM DB_COMUNICACION.INFO_ALIAS_PLANTILLA
+WHERE PLANTILLA_ID = (SELECT ID_PLANTILLA FROM DB_COMUNICACION.ADMI_PLANTILLA WHERE NOMBRE_PLANTILLA = 'Reporte Secure Cpe'
+       AND CODIGO = 'RPT_SECURE');
+
+-- Eliminar en la tabla ADMI_PLANTILLA
+DELETE FROM DB_COMUNICACION.ADMI_PLANTILLA
+WHERE CODIGO = 'RPT_SECURE';
+
+COMMIT;
+
+/

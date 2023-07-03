@@ -1,0 +1,16 @@
+parameters:
+#    comunicaciones.example.class: telconet\comunicacionesBundle\Example
+
+services:
+    comunicaciones.InfoDocumento:
+        class: telconet\comunicacionesBundle\Service\InfoDocumentoService    
+#        arguments: [@service_id, "plain_value", %parameter%]
+    comunicaciones.SMS:
+        class: telconet\comunicacionesBundle\Service\SMSService
+        calls:
+            - [setDependencies, [@service_container]]
+            
+    comunicaciones.NotifMasivaService:
+        class: telconet\comunicacionesBundle\Service\NotifMasivaService       
+        calls:
+            - [setDependencies, [@service_container]]

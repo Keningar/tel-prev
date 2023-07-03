@@ -1,0 +1,7 @@
+-- Eliminar Plantilla de para formulario de soporte
+DELETE FROM DB_COMUNICACION.ADMI_PLANTILLA
+WHERE CODIGO = 'GOLTV-FORML2'
+AND MODULO = 'TECNICO' AND USR_CREACION = 'djreyes';
+
+COMMIT;
+/

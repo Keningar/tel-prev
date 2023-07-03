@@ -1,0 +1,11 @@
+comunicaciones_opcion:
+    pattern:  /{strOpcionMenu}
+    defaults: { _controller: comercialBundle:Default:menu, strOpcionMenu: "dashboard"}
+
+comunicaciones_imagenes:
+    resource: "@comunicacionesBundle/Resources/config/routing/imagenes.yml"
+    prefix:   /documentos_imagenes/imagenes
+
+comunicaciones_visorDocumentosTecnico:
+    resource: "@comunicacionesBundle/Resources/config/routing/visor_documentos_tecnico.yml"
+    prefix:   /documentos_imagenes/visor_documentos_tecnico

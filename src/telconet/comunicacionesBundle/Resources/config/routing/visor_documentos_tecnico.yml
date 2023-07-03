@@ -1,0 +1,8 @@
+visor_documentos_tecnico:
+    pattern:  /indexDocumentosTecnico
+    defaults: { _controller: "soporteBundle:GestionDocumentos:index" , modulo:tecnico }
+
+visor_documentos_tecnico_new:
+    pattern:  /new
+    defaults: { _controller: "soporteBundle:GestionDocumentos:new", modulo:tecnico }
+    
