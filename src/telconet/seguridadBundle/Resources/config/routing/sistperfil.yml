@@ -1,0 +1,54 @@
+istperfil_estado_listar:
+    pattern:  /estado_listar
+    defaults: { _controller: "seguridadBundle:SistPerfil:combo" }
+
+sistperfil:
+    pattern:  /
+    defaults: { _controller: "seguridadBundle:SistPerfil:index" }
+
+sistperfil_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "seguridadBundle:SistPerfil:show" }
+
+sistperfil_new:
+    pattern:  /new
+    defaults: { _controller: "seguridadBundle:SistPerfil:new" }
+
+sistperfil_create:
+    pattern:  /create
+    defaults: { _controller: "seguridadBundle:SistPerfil:create" }
+    requirements: { _method: post }
+
+sistperfil_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "seguridadBundle:SistPerfil:edit" }
+
+sistperfil_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "seguridadBundle:SistPerfil:update" }
+    requirements: { _method: post }
+
+sistperfil_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "seguridadBundle:SistPerfil:delete" }
+    requirements: { _method: post }
+
+sistperfil_grid:
+    pattern:  /grid
+    defaults: { _controller: "seguridadBundle:SistPerfil:grid"}
+    
+sistperfil_gridAcciones:
+    pattern:  /gridAcciones
+    defaults: { _controller: "seguridadBundle:SistPerfil:gridAcciones"}
+    
+sistperfil_gridAsignaciones:
+    pattern:  /{id}/gridAsignaciones
+    defaults: { _controller: "seguridadBundle:SistPerfil:gridAsignaciones"}
+    
+sistperfil_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "seguridadBundle:SistPerfil:deleteAjax" }
+    requirements: { _method: post }
+
+
+

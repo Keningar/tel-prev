@@ -1,0 +1,80 @@
+
+{% block stylesheets %}
+     <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/css/sso/sso.css') }}" />
+{% endblock %}
+{% block contenido %}
+<div id="wrapper">
+	
+
+    <!-- PAGE HEADER  -->
+    <div id="header">
+		<!-- Logo SSO-->
+        <h1> 
+            
+        </h1>
+    </div>
+
+
+    <!-- PAGE CONTENT  -->
+    <div class="clearfix" id="content">
+		<img alt="user logo" style="position: relative; float:left; top:145px; left: 10px;" src="{{ asset('public/images/sso/img_main_login.png') }}">
+        
+
+
+
+
+
+        <div id="authentication">
+{% if error %}
+        <div class="message error"><p>{{ error.message }}</p></div>
+    {% endif %}
+                
+
+                <div id="subwrapper">
+
+                    <div class="main">
+                        <h2>Autenticación del usuario</h2>
+
+                        <p>Por favor, ingrese su usuario y contraseña.</p>
+
+    <form action="{{ path("login_check") }}" method="post" id="login">
+        <fieldset>
+        <div>
+            <label for="username">Usuario:</label>
+            <input class="text" type="text" id="username" name="_username" value="{{ last_username }}" />
+        </div>
+
+        <div>
+            <label for="password">Contrase&ntilde;a:</label>
+            <input class="text" type="password" id="password" name="_password" />
+        </div>
+</fieldset>
+        <div><input type="submit" value="Login" class="button indent"></div>
+    </form>
+                        <div class="highlight">
+                            <h3 class="help">Ayuda</h3>
+
+                            <p>Información ? <b>Telconet Single Sign On</b> es el nuevo esquema de autentificación para las aplicaciones de telconet, el cual provee al usuario el ingreso de sus credenciales una sola vez para acceder a todas las aplicaciones.</p>
+
+                            <div class="footer"></div>
+
+                        </div>
+                        <!-- /highlight -->
+
+                    </div>
+                    <!-- /main -->
+                </div>
+
+            </div> <!-- /authentication -->
+        
+    </div>
+
+
+
+    <div id="footer">
+        <p>Copyright &copy; 2000-2013. Telconet SA.</p>
+    </div>
+
+</div>
+  {% endblock %}

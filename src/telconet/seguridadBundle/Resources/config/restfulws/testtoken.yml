@@ -1,0 +1,13 @@
+# RESTful Web Services: anidados en /rs/seguridad/testtoken
+
+rs_seguridad_testtoken_testlogin:
+  pattern:  /testlogin
+  defaults: { _controller: telconet\seguridadBundle\WebService\TestTokenWSController::testLoginAction }
+
+rs_seguridad_testtoken_testprocess:
+  pattern:  /testprocess
+  defaults: { _controller: telconet\seguridadBundle\WebService\TestTokenWSController::testProcessAction }
+
+rs_seguridad_testtoken_testprocessgenerate:
+  pattern:  /testprocessgenerate
+  defaults: { _controller: telconet\seguridadBundle\WebService\TestTokenWSController::testProcessGenerateAction }

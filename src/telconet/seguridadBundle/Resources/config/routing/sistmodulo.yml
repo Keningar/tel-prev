@@ -1,0 +1,57 @@
+sistmodulo_estado_listar:
+    pattern:  /estado_listar
+    defaults: { _controller: "seguridadBundle:SistModulo:combo" }
+
+sistmodulo:
+    pattern:  /
+    defaults: { _controller: "seguridadBundle:SistModulo:index" }
+
+sistmodulo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "seguridadBundle:SistModulo:show" }
+
+sistmodulo_new:
+    pattern:  /new
+    defaults: { _controller: "seguridadBundle:SistModulo:new" }
+
+sistmodulo_create:
+    pattern:  /create
+    defaults: { _controller: "seguridadBundle:SistModulo:create" }
+    requirements: { _method: post }
+
+sistmodulo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "seguridadBundle:SistModulo:edit" }
+
+sistmodulo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "seguridadBundle:SistModulo:update" }
+    requirements: { _method: post }
+
+sistmodulo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "seguridadBundle:SistModulo:delete" }
+    requirements: { _method: post }
+
+sistmodulo_grid:
+    pattern:  /grid
+    defaults: { _controller: "seguridadBundle:SistModulo:grid"}
+    
+sistmodulo_gridRelaciones:
+    pattern:  /{id}/gridRelaciones
+    defaults: { _controller: "seguridadBundle:SistModulo:gridRelaciones"}
+
+sistmodulo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "seguridadBundle:SistModulo:deleteAjax" }
+    requirements: { _method: post }
+    
+sistmodulo_getTareas:
+    pattern:  /getTareas
+    defaults: { _controller: "seguridadBundle:SistModulo:getTareas"}
+
+
+sistmodulo_validaUnicoModuloAjax:
+    pattern:  /validaUnicoModuloAjax
+    defaults: { _controller: "seguridadBundle:SistModulo:validaUnicoModuloAjax" }
+    requirements: { _method: post }

@@ -1,0 +1,45 @@
+sistaccion_estado_listar:
+    pattern:  /estado_listar
+    defaults: { _controller: "seguridadBundle:SistAccion:combo" }
+
+sistaccion:
+    pattern:  /
+    defaults: { _controller: "seguridadBundle:SistAccion:index" }
+
+sistaccion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "seguridadBundle:SistAccion:show" }
+
+sistaccion_new:
+    pattern:  /new
+    defaults: { _controller: "seguridadBundle:SistAccion:new" }
+
+sistaccion_create:
+    pattern:  /create
+    defaults: { _controller: "seguridadBundle:SistAccion:create" }
+    requirements: { _method: post }
+
+sistaccion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "seguridadBundle:SistAccion:edit" }
+
+sistaccion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "seguridadBundle:SistAccion:update" }
+    requirements: { _method: post }
+
+sistaccion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "seguridadBundle:SistAccion:delete" }
+    requirements: { _method: post }
+
+sistaccion_grid:
+    pattern:  /grid
+    defaults: { _controller: "seguridadBundle:SistAccion:grid"}
+    
+sistaccion_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "seguridadBundle:SistAccion:deleteAjax" }
+    requirements: { _method: post }
+
+

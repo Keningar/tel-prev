@@ -1,0 +1,106 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <style scoped="scoped">
+        .category-label
+        {
+            vertical-align: middle;
+            padding-right: .5em;
+        }
+        #category
+        {
+            vertical-align: middle;
+        }
+        .toolbar {
+            float: right;
+            margin-right: .8em;
+        }
+        #map_canvas { height: 100% }
+        
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+	
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/seguridad/js/SeguPerfilPersona/new.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content" class="titulo_interno">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Nuevo Perfil Persona</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+
+<div class="body_content">
+{% if error is defined %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+<form action="{{ path('seguperfilpersona_create') }}" method="post" {{ form_enctype(form) }} id="frm_segu_perfil_persona" name="frm_segu_perfil_persona" class="formulario filtro-content"  onsubmit="return validarFormulario();" >
+    {{ form_widget(form) }}
+        
+    <div>
+        <label>* Persona:</label>
+        <div id='div_cmbPersona' required="true"></div>
+        <input type='hidden' value='' id='cmbPersonaId' name='cmbPersonaId' /> 
+    </div>
+    <br/><br/>
+    <div>
+        <table width="100%">
+            <tr>
+                <td width="44%" valign="top"><div id='filtroPerfiles'></div><br/><div id="gridPerfiles"></div></td>
+                <td width="2%">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td width="8%"><input name="btn1" type="button" value="Agregar" class="button-crud" id="agregar" onClick="ingresarAsignacion()" style="width: 12em !important;"/></td>
+                <td width="2%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td width="44%" valign="top"><div id="gridAsignaciones"></div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="buttons">
+        <p>
+            <button class="button-crud" >Guardar</button>
+            <span class="height20px">
+                &oacute;&nbsp;
+                <a class="button-crud" href="{{ path('seguperfilpersona') }}">
+                    cancelar
+                </a>
+            </span>
+        </p>
+    </div>
+
+    <div id="resultP"></div>
+
+    <input type="hidden" name="perfiles_asignados" id="perfiles_asignados" value="" />
+</form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="acciones_relacionadas">
+        <a class="button-nuevo-registro" href="{{ path('seguperfilpersona_new') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nuevo Perfil Persona
+        </a>
+    </div>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        //SCRIPT FOOTER
+    </script>
+{% endblock javascripts_footer%}

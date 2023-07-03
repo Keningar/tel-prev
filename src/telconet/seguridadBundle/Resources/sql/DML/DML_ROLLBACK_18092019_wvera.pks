@@ -1,0 +1,4 @@
+
+DELETE FROM DB_SEGURIDAD.sist_perfil WHERE NOMBRE_PERFIL = 'TMO Fiscalizar';
+
+COMMIT;

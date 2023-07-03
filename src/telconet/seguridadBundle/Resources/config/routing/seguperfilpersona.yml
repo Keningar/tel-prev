@@ -1,0 +1,122 @@
+seguperfilpersona:
+    pattern:  /
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:index" }
+
+seguperfilpersona_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:show" }
+
+seguperfilpersona_new:
+    pattern:  /new
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:new" }
+    
+seguperfilpersona_asignacionMasiva:
+    pattern:  /asignacionMasiva
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:asignacionMasiva" }
+
+seguperfilpersona_create:
+    pattern:  /create
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:create" }
+    requirements: { _method: post }
+    
+seguperfilpersona_createAsignacionMasiva:
+    pattern:  /createAsignacionMasiva
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:createAsignacionMasiva" }
+    requirements: { _method: post }
+
+seguperfilpersona_edit:
+    pattern:  /{id}/{intIdEmpresa}/edit
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:edit" }
+
+seguperfilpersona_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:update" }
+    requirements: { _method: post }
+
+seguperfilpersona_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:delete" }
+    requirements: { _method: post }
+
+seguperfilpersona_grid:
+    pattern:  /grid
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:grid"}
+    
+seguperfilpersona_gridPerfiles:
+    pattern:  /gridPerfiles
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:gridPerfiles"}
+    
+seguperfilpersona_gridAsignaciones:
+    pattern:  /{id}/gridAsignaciones
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:gridAsignaciones"}
+    
+seguperfilpersona_gridAsignacionesPopUp:
+    pattern:  /gridAsignaciones
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:gridAsignacionesPopUp"}    
+    
+seguperfilpersona_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:deleteAjax" }
+    requirements: { _method: post }
+    
+seguperfilpersona_deletePerfilPersonaAjax:
+    pattern:  /deletePerfilPersonaAjax
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:deletePerfilPersonaAjax" }
+    requirements: { _method: post }
+    
+seguperfilpersona_agregarPerfilesPersonaAjax:
+    pattern:  /agregarPerfilesPersonaAjax
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:agregarPerfilesPersonaAjax" }
+    requirements: { _method: post }
+    
+seguperfilpersona_ajax_list_perfiles:
+    pattern:  /ajax_list_perfiles
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:ajaxListPerfiles" }
+    requirements: { _method: post }
+    
+seguperfilpersona_getEmpleados:
+    pattern:  /getEmpleados
+    defaults: { _controller: seguridadBundle:SeguPerfilPersona:getEmpleados }
+    
+dashboardCambiarClave_resetear:
+    pattern:  /inicio
+    defaults: { _controller: "adminBundle:inicio:resetearClave" }
+
+###############################################################################
+#              INICIO DE CAMBIO
+#              @autor   : Allan Suárez <arsuarez@telconet.ec>
+#              @version : 1.0 29-05-2014
+###############################################################################
+
+seguperfilpersona_verPerfil:
+    pattern:  /verPerfil
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:verPerfil" }
+    
+seguperfilpersona_getDepartamentosByEmpresaYNombre:
+    pattern:  /getDepartamentosByEmpresaYNombre
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:getDepartamentosByEmpresaYNombre" }
+    
+seguperfilpersona_getRolesEmpleados:
+    pattern:  /getRolesEmpleados
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:getRolesEmpleados" }
+    
+seguperfilpersona_actualizarPersonaRol:
+    pattern:  /actualizarPersonaRol
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:actualizarPersonaRol" }
+    
+seguperfilpersona_eliminarRol:
+    pattern:  /eliminarRol
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:eliminarRol" }
+    
+seguperfilpersona_gridPerfilesPersona:
+    pattern:  /gridPerfilesPersona
+    defaults: { _controller: "seguridadBundle:SeguPerfilPersona:gridPerfilesPersona" }
+
+##se agregan routings para configuracion de combos de ciudades y departamentos en pantalla Perfil Persona
+seguperfilpersona_getCiudadesPorEmpresa:
+    pattern:  /getCiudadesPorEmpresa
+    defaults: { _controller: "soporteBundle:InfoCaso:getCiudadesPorEmpresa" }
+    
+seguperfilpersona_getDepartamentosPorEmpresaYCiudad:
+    pattern:  /getDepartamentosPorEmpresaYCiudad
+    defaults: { _controller: "soporteBundle:InfoCaso:getDepartamentosPorEmpresaYCiudad" }    

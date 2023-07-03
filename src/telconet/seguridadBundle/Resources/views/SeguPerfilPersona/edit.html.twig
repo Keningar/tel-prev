@@ -1,0 +1,92 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .category-label
+        {
+            vertical-align: middle;
+            padding-right: .5em;
+        }
+        #category
+        {
+            vertical-align: middle;
+        }
+        .toolbar {
+            float: right;
+            margin-right: .8em;
+        }
+        #map_canvas { height: 100% }
+    </style>
+{% endblock %}
+	
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var personaIdentificador    = '{{ intIdPersona }}';
+        var urlDeletePerfilPersona  = '{{ path("seguperfilpersona_deletePerfilPersonaAjax") }}';
+        var urlAsignarPerfilPersona = '{{ path("seguperfilpersona_agregarPerfilesPersonaAjax") }}';
+        var intIdEmpresa            = '{{ intIdEmpresa }}';
+        var strUrlGridAsignaciones  = '{{ path('seguperfilpersona_gridAsignaciones', {'id': intIdPersona}) }}';
+        var strUrlGridPerfiles      = '{{ path('seguperfilpersona_gridPerfiles') }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/seguridad/js/SeguPerfilPersona/edit.js?2') }}"></script>
+{% endblock %}
+
+
+{% block contenido_izq %}
+<div id="titulo_content" class="titulo_interno">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Modificar Perfil Persona</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+
+<div class="body_content">
+    {% if error is defined %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+        
+    <div id="telconet_schemaBundle_seguperfilpersonatype">
+        <div>
+            <label class="required" for="telconet_schemaBundle_seguperfilpersonatype_personaNombre">Persona:</label>
+            <label style="color:black; font-weight:normal; width: 400;" width="400">
+                {{ nombre_persona }}
+            </label>
+        </div>
+    <br/>
+    </div>
+        
+    <br/><br/>
+    <div>
+        <table width="100%">
+            <tr>
+                <td width="44%" valign="top"><div id='filtroPerfiles'></div><br/><div id="gridPerfiles"></div></td>
+                <td width="2%">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td width="8%"><input name="btn1" type="button" value="Agregar" class="button-crud" id="agregar" 
+                                      onClick="ingresarAsignacion()" style="width: 12em !important;"/></td>
+                <td width="2%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td width="44%" valign="top"><div id='filtroPerfilesAsignacion'></div><br/><div id="gridAsignaciones"></div></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="button-crud" href="{{ path('seguperfilpersona') }}">
+                    Regresar
+                </a>
+            </span>
+        </p>
+    </div>
+    <div id="resultP"></div>
+
+    <input type="hidden" name="perfiles_asignados" id="perfiles_asignados" value="" />
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        //SCRIPT FOOTER
+    </script>
+{% endblock javascripts_footer%}

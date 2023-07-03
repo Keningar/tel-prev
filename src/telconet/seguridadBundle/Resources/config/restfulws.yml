@@ -1,0 +1,25 @@
+# RESTful Web Services: anidados en /rs/seguridad
+
+rs_seguridad_notoken:
+  resource: restfulws/notoken.yml
+  defaults: { _format: json }
+  requirements: { _method: post, _format: json }
+  prefix: /notoken
+
+rs_seguridad_testtoken:
+  resource: restfulws/testtoken.yml
+  defaults: { _format: json }
+  requirements: { _method: post, _format: json }
+  prefix: /testtoken
+
+rs_seguridad_webServices:
+  resource: restfulws/seguridad.yml
+  defaults: { _format: json }
+  requirements: { _method: post, _format: json }
+  prefix: /ws/rest
+  
+rs_seguridad_extranet_webServices:
+  resource: restfulws/extranet.yml
+  defaults: { _format: json }
+  requirements: { _method: post, _format: json }
+  prefix: /extranet/ws/rest

@@ -1,0 +1,45 @@
+sistitemmenu_estado_listar:
+    pattern:  /estado_listar
+    defaults: { _controller: "seguridadBundle:SistItemMenu:combo" }
+
+sistitemmenu:
+    pattern:  /
+    defaults: { _controller: "seguridadBundle:SistItemMenu:index" }
+
+sistitemmenu_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "seguridadBundle:SistItemMenu:show" }
+
+sistitemmenu_new:
+    pattern:  /new
+    defaults: { _controller: "seguridadBundle:SistItemMenu:new" }
+
+sistitemmenu_create:
+    pattern:  /create
+    defaults: { _controller: "seguridadBundle:SistItemMenu:create" }
+    requirements: { _method: post }
+
+sistitemmenu_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "seguridadBundle:SistItemMenu:edit" }
+
+sistitemmenu_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "seguridadBundle:SistItemMenu:update" }
+    requirements: { _method: post }
+
+sistitemmenu_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "seguridadBundle:SistItemMenu:delete" }
+    requirements: { _method: post }
+
+sistitemmenu_grid:
+    pattern:  /grid
+    defaults: { _controller: "seguridadBundle:SistItemMenu:grid"}
+    
+sistitemmenu_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "seguridadBundle:SistItemMenu:deleteAjax" }
+    requirements: { _method: post }
+
+

@@ -1,0 +1,13 @@
+# RESTful Web Services: anidados en /rs/seguridad/notoken
+
+rs_seguridad_notoken_nogenerate:
+  pattern:  /nogenerate
+  defaults: { _controller: telconet\seguridadBundle\WebService\NoTokenWSController::noGenerateAction }
+
+rs_seguridad_notoken_novalidate:
+  pattern:  /novalidate
+  defaults: { _controller: telconet\seguridadBundle\WebService\NoTokenWSController::noValidateAction }
+
+rs_seguridad_notoken_novalidategenerate:
+  pattern:  /novalidategenerate
+  defaults: { _controller: telconet\seguridadBundle\WebService\NoTokenWSController::noValidateGenerateAction }

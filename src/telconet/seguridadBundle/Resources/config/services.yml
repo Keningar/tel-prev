@@ -1,0 +1,37 @@
+parameters:
+#    seguridad.example.class: telcos\seguridadBundle\Example
+
+services:
+#    seguridad.example:
+#        class: %seguridad.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    seguridad.TokenValidator:
+        class: telconet\seguridadBundle\Service\TokenValidatorService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    seguridad.crypt:
+        class: telconet\seguridadBundle\Service\CryptService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    seguridad.InfoTransacciones:
+        class: telconet\seguridadBundle\Service\InfoTransaccionesService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    seguridad.Seguridad:
+        class: telconet\seguridadBundle\Service\SeguridadService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    seguridad.Extranet:
+        class: telconet\seguridadBundle\Service\ExtranetService
+        calls:
+            - [setDependencies, [@service_container]]
+
+    seguridad.TokenCas:
+        class: telconet\seguridadBundle\Service\TokenCasService
+        calls:
+            - [setDependencies, [@service_container]]

@@ -1,0 +1,124 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+
+<style scoped = "scoped">
+.category-label
+{
+vertical-align: middle;
+padding-right: .5em;
+}
+#category
+{
+vertical-align: middle;
+}
+.toolbar {
+float: right;
+margin-right: .8em;
+}
+#map_canvas { height: 100% }
+
+.alineando {
+left: 42em;
+position: absolute;
+top: 44em;
+}
+.contenido{
+background-color: #F9F9F9;
+border: 2px solid #F9F9F9;
+border-radius: 13px 13px 13px 13px;
+padding: 13px;
+}
+</style>
+{% endblock %}
+
+{% block javascripts%}
+{{ parent() }}
+<script type = "text/javascript" src = "{{ asset('./bundles/seguridad/js/SeguPerfilPersona/asignacionMasiva.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content" class="titulo_interno">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Asignacion Masiva de Perfiles/Persona</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+
+<div class="body_content">
+{% if error is defined %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+
+    <form action="{{ path('seguperfilpersona_createAsignacionMasiva') }}" method="post" id="frm_segu_perfil_persona" 
+          name="frm_segu_perfil_persona" class="formulario filtro-content"  onsubmit="return validarFormulario();" >
+
+        <center>
+            <table>
+                <tr><td>
+                        <h1>Empleados:</h1>
+                        <br/>
+                        <div>
+                            <table>
+                                <tr>
+                                    <td><div id='filtroEmpleados'></div><br/><div id="gridEmpleados"></div></td>
+                                </tr> <tr>    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                </tr> <tr>    <td><center><input name="btn2" type="button" value="Agregar" class="button-crud" id="agregar" 
+                                                                 onClick="ingresarEmpleado()" style="width: 12em !important;"/></center></td>
+                            </tr> <tr>    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        </tr> <tr>    <td><div id="gridEmpleadosSeleccionados"></div></td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        <br/><br/>
+        <td width="5%">
+        </td>
+        <td>
+            <h1>Perfiles:</h1>
+            <br/>
+            <div>
+                <table>
+                    <tr>
+                        <td><div id='filtroPerfiles'></div><br/><div id="gridPerfiles"></div></td>
+                    </tr> <tr>   <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr> <tr>    <td><center><input name="btn1" type="button" value="Agregar" class="button-crud" id="agregar" 
+                                                     onClick="ingresarAsignacion()" style="width: 12em !important;"/></center></td>
+                </tr> <tr>    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            </tr> <tr>    <td><div id="gridAsignaciones"></div></td>
+            </tr>
+        </table>
+    </div>
+</td>
+</tr>
+
+</table>
+</center>
+<br/><br/>
+
+<center>
+    <div class="buttons">
+        <p>
+            <button class="button-crud" >Guardar</button>
+            <span class="height20px">
+                &oacute;&nbsp;
+                <a class="button-crud" href="{{ path('seguperfilpersona') }}">
+                    cancelar
+                </a>
+            </span>
+        </p>
+    </div>
+</center>
+
+<div id="resultP"></div>
+
+<input type="hidden" name="perfiles_asignados" id="perfiles_asignados" value="" />
+<input type="hidden" name="empleados_seleccionados" id="empleados_seleccionados" value="" />
+</form>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+{% endblock contenido_der %}

@@ -1,0 +1,26 @@
+# RESTful Web Services: anidados en /rs/seguridad/extranet/ws/rest/
+
+rs_seguridad_extranet_procesar:
+  pattern:  /procesar
+  defaults: { _controller: telconet\seguridadBundle\WebService\ExtranetWSController::procesarAction }
+  
+rs_seguridad_extranet_authentication:
+  pattern:  /authentication
+  defaults: { _controller: telconet\seguridadBundle\WebService\ExtranetWSController::authenticationAction }
+  
+rs_seguridad_extranet_recuperar_acceso:
+  pattern:  /recuperarAcceso
+  defaults: { _controller: telconet\seguridadBundle\WebService\ExtranetWSController::recuperarAccesoAction }
+
+rs_seguridad_extranet_generar_pin:
+  pattern:  /generarPin
+  defaults: { _controller: telconet\seguridadBundle\WebService\ExtranetWSController::generarPinSecurityAction }
+
+rs_seguridad_extranet_validar_pin:
+  pattern:  /validarPin
+  defaults: { _controller: telconet\seguridadBundle\WebService\ExtranetWSController::validarPinSecurityAction }
+  
+rs_seguridad_extranet_verificar_dispositivo:
+  pattern:  /verificarDispositivo
+  defaults: { _controller: telconet\seguridadBundle\WebService\ExtranetWSController::verificarDispositivoAction }
+
