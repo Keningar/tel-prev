@@ -1,0 +1,59 @@
+
+.paging,
+.paging2{
+	list-style: none !important;
+	margin-left: -3.5em;
+}
+
+#external-events ul .paging li,
+#external-events ul .paging2 li {
+    padding: 10px;
+    background: #83bd63;
+    font-family: georgia;
+    font-size: 24px;
+    color: #fff;
+    width: 180px;
+    margin-bottom: 1px;
+}
+
+#external-events ul.red {
+	outline:10px solid red;
+}
+
+#external-events ul.simplePagerNav li{
+    display:block;
+    floaT: left;
+    padding: 3px;
+    margin-bottom: 10px;
+    font-family: georgia;
+}
+
+#external-events ul.simplePagerNav li a{
+    color: #333;
+    text-decoration: none;
+}
+
+#external-events li.currentPage {
+	background: red;
+        background: #83bd63;	
+}
+
+#external-events ul.simplePagerNav li.currentPage a {
+	color: #fff;	
+}
+
+#external-events table.pageme {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}  
+
+#external-events table.pageme td {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}      
+
+#external-events ul.paging  li.sticky {
+	background-color: red !important;
+	display: block !important
+}
+
