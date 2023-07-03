@@ -1,0 +1,70 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+   
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    {% if modulo == 'soporte' %}
+	  <script type="text/javascript" src="{{ asset('./bundles/soporte/js/GestionDocumentos/index.js?2') }}"></script>
+    {% elseif modulo == 'comercial' %}
+      <script>var url_guardarLog = "{{ path('infocontrato_guardarLog') }}";	</script>
+	  <script type="text/javascript" src="{{ asset('./bundles/comercial/js/VisorDocumentos/index.js') }}"></script>
+    {% elseif modulo == 'financiero' %}
+	  <script type="text/javascript" src="{{ asset('./bundles/financiero/js/VisorDocumentos/index.js') }}"></script>
+    {% elseif modulo == 'tecnico' %}
+        <script>
+            var strUrlDocumentosAgregadosGrid = '{{ path('gestion_documentos_grid') }}';
+            var strUrlGetClientes             = '{{ path('tareas_getClientes') }}';
+            var strUrlGetTipoDocumentoGeneral = '{{ path('gestion_documentos_getTipoDocumentoGeneral') }}';
+            var strUrlGetTipoDocumento        = '{{ path('gestion_documentos_getTipoDocumento') }}';
+            var strUrlGetTipoElementos        = '{{ path('infocaso_getTiposElementos') }}';
+            var strUrlGetModeloElementos      = '{{ path('gestion_documentos_getModeloElementos') }}';
+            var strUrlGetElementos            = '{{ path('gestion_documentos_getElementos') }}';
+            var strUrlDeleteAjax              = '{{ path('gestion_documentos_deleteAjax') }}';
+            var strModulo                     = '{{ modulo | upper }}';
+        </script>
+        <script type="text/javascript" src="{{ asset('./bundles/comunicaciones/js/VisorDocumentosTecnicos/index.js?1') }}"></script>
+    {% endif %}
+    
+{% endblock %}
+
+{% block contenido_izq %}   
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Documentos Agregados</h1>
+    </div>
+    <div class="body_content k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtro'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="grid"></div></td>
+            </tr>
+        </table> 
+    </div>
+	
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="acciones_relacionadas">
+        {% if esVisible == true %}
+            {% if modulo == 'soporte' %}
+                <a class="button-nuevo-registro" href="{{ path('gestion_documentos_new') }}">
+            {% elseif modulo == 'comercial' %}
+                <a class="button-nuevo-registro" href="{{ path('visor_documentos_comercial_new') }}">
+            {% elseif modulo == 'financiero' %}
+                <a class="button-nuevo-registro" href="{{ path('visor_documentos_financiero_new') }}">
+            {% elseif modulo == 'tecnico' %}
+                <a class="button-nuevo-registro" href="{{ path('visor_documentos_tecnico_new') }}">
+            {% endif %}
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Nuevo Documento
+                </a>
+        {% endif %}
+    </div>
+{% endblock contenido_der %}

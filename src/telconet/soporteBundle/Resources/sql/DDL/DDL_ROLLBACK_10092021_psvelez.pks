@@ -1,0 +1,13 @@
+/**
+ * DEBE EJECUTARSE EN DB_SOPORTE
+ * @author Pedro Velez <psvelez@telconet.ec>
+ * @version 1.0
+ * @since 07-09-2021
+ * Script para eliminar tabla  DB_SOPORTE.INFO_TRACKING_MAP_HIST y secuencia 
+ * DB_SOPORTE.SEQ_INFO_TRACKING_MAP_HIST
+ */
+
+DROP TABLE DB_SOPORTE.INFO_TRACKING_MAP_HIST;
+DROP SEQUENCE DB_SOPORTE.SEQ_INFO_TRACKING_MAP_HIST;
+
+/

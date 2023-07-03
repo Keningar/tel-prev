@@ -1,0 +1,563 @@
+/* 
+    Document   : InfoCaso
+    Created on : 14/11/2012, 02:56:25 PM
+    Author     : manuel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.box-section-subcontent {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+}
+.titulo-secundario{
+    border-bottom: 1px dotted #D0D0D0;
+}
+.x-trigger-cell{
+    padding-top: 2px;
+}
+#div_fe_apertura, #div_hora_apertura{
+    padding-top: 4px;
+}
+.bold{
+    font-weight: bold;
+    color: #000;
+}
+.box-detalle {
+    background-color: #F0F0F0;
+    border: 1px solid #CCCCCC;
+    display: block;
+    margin: 2px;
+    padding: 2px;
+}
+.button-grid-VerAfectadoCaso:hover{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+.button-grid-VerAfectadoCaso {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/verAfectados.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.button-grid-VerCasosClientes:hover{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+.button-grid-VerCasosClientes {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/buscarCasosAp.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.button-grid-agregarSintoma {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/agregar_sintoma.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-verSeguimientoTareasCaso:hover{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verSeguimientoTareasCaso {
+    background-color: #E3E3E3;
+    background-image: url(/public/images/task.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-cerrarCaso {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/cerrar_caso.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-agregarHipotesis {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/agregar_hipotesis.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-agregarTarea {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/agregar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-administrarTareas {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/administrar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-agregarSeguimiento {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/agregar_seguimiento.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-finalizarTarea {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/finalizar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-afectados {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/afectados.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-afectados-movilizacion {
+    background-color: #E3E3E3;
+    background-image: url("/public/images/ico_vehiculo.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.button-grid-afectados-cliente-empleado{
+    background-color: #E3E3E3;
+    background-image: url("/public/images/Boss.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-afectados-seguridad-monitoreo{
+    background-color: #E3E3E3;
+    background-image: url("/public/images/Computer.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.button-grid-afectados-proveedores{
+    background-color: #E3E3E3;
+    background-image: url("/public/images/proveedor.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.button-grid-verAsignado{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/ver_asignado.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-aceptarTarea{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/aceptar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-iniciarTarea{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/iniciar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-pausarTarea{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/pausar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-reanudarTarea{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/reanudar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-detenerTarea{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/detener_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-rechazarTarea{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/rechazar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-reprogramarTarea{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/reprogramar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-asignarResponsable {
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/asignar_responsable.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+#dashboard{
+    width: 1110px;
+}
+.formulario input {
+    border: 1px solid #ACD2E7 !important;
+    margin-bottom: 0.3em;
+    margin-left: 0.2em;
+    width: 10em;
+}
+.x-form-item-body{
+    float: none;
+}
+
+
+	
+.upload-icon {    
+    background: url("/bundles/soporte/images/iconos/16/image_add.png") no-repeat scroll 0 0 transparent !important;
+}
+#fi-button-msg {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 2px solid #CCCCCC;
+    float: left;
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+.msg_floating
+{
+    position: absolute !important;
+    z-index: 30001 !important;
+}
+
+.button-grid-anularTarea{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/anular_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.margenInfoAdicional
+{
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+}
+
+.input-form{
+    width: 60%;
+}
+
+.custom-grid-detail .x-grid-row>td{
+    padding-bottom: 10px;
+}
+
+.custom-grid-detail-tarea .x-grid-row>td{
+    padding-bottom: 0px;
+}
+
+.fieldsHeaderDatosContacto > .x-fieldset-header {
+        padding: 12px 0px 10px;
+        font: 13px/14px bold tahoma,arial,verdana,sans-serif;
+
+}
+
+#divTitleDatosContacto{
+        font-size: 14px;
+        padding-top: 12px;
+        padding-bottom: 10px;
+}

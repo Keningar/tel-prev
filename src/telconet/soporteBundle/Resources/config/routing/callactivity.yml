@@ -1,0 +1,108 @@
+callactivity:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:CallActivity:index" }
+    
+callactivity_ajaxGetTareasByProceso:
+    pattern:  /ajaxGetTareasByProceso
+    defaults: { _controller: "soporteBundle:CallActivity:ajaxGetTareasByProceso" }
+    
+callactivity_new:
+    pattern:  /new
+    defaults: { _controller: "soporteBundle:CallActivity:new" }
+
+callactivity_create:
+    pattern:  /create
+    defaults: { _controller: "soporteBundle:CallActivity:create" }
+    requirements: { _method: post }
+
+callactivity_getClientes:
+    pattern:  /getClientes
+    defaults: { _controller: "soporteBundle:CallActivity:getClientes" }
+    
+callactivity_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "soporteBundle:CallActivity:show" }
+    
+callactivity_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:CallActivity:grid" }
+    
+callactivity_getSubtareas:
+    pattern:  /getSubtareas
+    defaults: { _controller: "soporteBundle:CallActivity:getSubtareas" }
+    
+callactivity_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "soporteBundle:CallActivity:delete" }
+    
+callactivity_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "soporteBundle:CallActivity:deleteAjax" }
+    requirements: { _method: post }
+    
+callactivity_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "soporteBundle:CallActivity:edit" }
+
+callactivity_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "soporteBundle:CallActivity:update" }
+    requirements: { _method: post }
+    
+callactivity_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "soporteBundle:CallActivity:exportarConsulta" }
+callactivity_getLoginClientes:
+    pattern:  /getLoginClientes
+    defaults: { _controller: "soporteBundle:CallActivity:getLoginClientes" }
+
+callactivity_getNombreClientesConLoginActivos:
+    pattern:  /getNombreClientesConLoginActivos
+    defaults: { _controller: "soporteBundle:CallActivity:getNombreClientesConLoginActivos" }
+
+callactivity_getEmpleadosXDepartamento:
+    pattern:  /getEmpleadosXDepartamento
+    defaults: { _controller: "soporteBundle:CallActivity:getEmpleadosXDepartamento" }
+callactivity_ponerSesionPunto:
+    pattern:  /ponerSesionPunto
+    defaults: { _controller: "soporteBundle:CallActivity:ponerSesionPunto" }
+callactivity_getProcesos:
+    pattern:  /getProcesos
+    defaults: { _controller: "soporteBundle:CallActivity:getProcesos" }
+
+callactivity_getEmpresasDiferente:
+    pattern:  /getEmpresasDiferente
+    defaults: { _controller: "soporteBundle:CallActivity:getEmpresasDiferente" }
+    
+callactivity_getEmpleados:
+    pattern:  /getEmpleados
+    defaults: { _controller: "soporteBundle:CallActivity:getEmpleados" }  
+        
+callactivity_getPorcentajesNc:
+    pattern:  /getPorcentajesNc
+    defaults: { _controller: "soporteBundle:CallActivity:getPorcentajesNc" }
+    
+callactivity_getMotivosNc:
+    pattern:  /getMotivosNc
+    defaults: { _controller: "soporteBundle:CallActivity:getMotivosNc" }
+    
+callactivity_getPersonalAutorizadoNc:
+    pattern:  /getPersonalAutorizadoNc
+    defaults: { _controller: "soporteBundle:CallActivity:getPersonalAutorizadoNc" }
+    
+callactivity_validaAplicaNotaCredito:
+    pattern:  /validaAplicaNotaCredito
+    defaults: { _controller: "soporteBundle:CallActivity:validaAplicaNotaCredito" }
+    
+callactivity_ejecutarNcReubicacion:
+    pattern:  /ejecutarNcReubicacion
+    defaults: { _controller: "soporteBundle:CallActivity:ejecutarNcReubicacion" }
+    
+callactivity_ajaxGetComboPuntoAtencion:
+    pattern:  /ajaxGetComboPuntoAtencion
+    defaults: { _controller: "soporteBundle:CallActivity:ajaxGetComboPuntoAtencion" }
+    
+callactivity_ajaxGetObtenerNombreOrigen:
+    pattern:  /ajaxGetObtenerNombreOrigen
+    defaults: { _controller: "soporteBundle:CallActivity:ajaxGetObtenerNombreOrigen" }
+    

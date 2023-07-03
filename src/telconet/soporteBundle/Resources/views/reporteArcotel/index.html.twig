@@ -1,0 +1,51 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" /> 
+{% endblock %}
+               
+{% block javascripts%}
+    {{ parent() }}  
+    <script>
+        var urlGenerarReporteArcotel = '{{ path("reporteArcotel_generar") }}';
+    </script>  
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/ReporteArcotel/index.js') }}"></script>
+{% endblock %}
+    
+{% block contenido_izq %}
+    
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Generación de Reporte de Casos para la Arcotel</h1>
+               
+	</div>
+    <div class="body_content">
+        <div id="contenedor_principal">
+            <div id="datos_generales">
+                <table width="100%" border="0" class="box-section-content">
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="14%"><label>Fecha Inicio:</label></td>
+                        <td width="20%">
+                            <div id="div_fe_inicio"></div>
+                        </td>
+                        <td width="15%">&nbsp; </td>
+                        <td width="14%"><label>Fecha Fin:</label></td>
+                        <td width="20%">
+                            <div id="div_fe_fin"></div>
+                        </td>
+                        <td width="5%">&nbsp;</td>
+                    </tr> 
+                </table>       
+            </div>
+        </div>    
+        <div class="buttons">
+            <p>
+                <button id="btnGenerar" name="btnGenerar" type="button" class="button-crud" onclick="validarFormulario();">
+                    Generar
+                </button>
+            </p>
+        </div>
+    </div>
+{% endblock contenido_izq %}

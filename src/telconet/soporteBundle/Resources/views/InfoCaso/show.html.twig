@@ -1,0 +1,528 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ext-all-custom.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css?2') }}" type="text/css" rel="stylesheet" />
+                  
+{% endblock %}   
+    
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript">
+		var url_admiHipotesisArbolGrid           = '{{path('admihipotesis_grid')}}';
+		var strBuscaPorArbolHipotesis            = '{{ buscaPorArbolHipotesis }}';
+        var permisoVerSeguimientosCerrarCaso     = '{{ is_granted("ROLE_197-38") }}';
+        var boolPermisoVerSeguimientosCerrarCaso = (typeof permisoVerSeguimientosCerrarCaso === 'undefined') ? false : 
+                                                   (permisoVerSeguimientosCerrarCaso ? true : false);
+
+        var permisoAsignarTareaHal     = '{{ is_granted("ROLE_78-5822") }}';
+        var boolPermisoAsignarTareaHal = (typeof permisoAsignarTareaHal === 'undefined') ? false : (permisoAsignarTareaHal ? true : false);
+		var permisoEditarCasosExtranet = '{{ is_granted("ROLE_78-8518") }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/general.js?14') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funcionesShow/funciones_tareas.js?18') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/show.js?10') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funcionesShow/funciones_generales.js?1') }}"></script>    
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funciones/funciones_sintomas.js?8') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funcionesShow/funciones_hipotesis.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funcionesShow/funciones_casos.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/map.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funciones_casos_generales.js') }}"></script>
+
+    <script>
+	    var url_getServiciosPorCliente  = "{{path('infocaso_getServiciosPorClienteSesion') }}";
+	    var url_getArbolHipotesis  = '{{path('admitarea_getArbolHipotesis')}}';
+        var url_getClientesAfectados  = '{{path('admitarea_getClientesAfectados')}}';
+        var url_verificarRolTap  = '{{path('admitarea_verificarRolTap')}}';
+        var url_getElementosConectorPorElementoContenedor    = '{{path('admitarea_getElementosConectorPorElementoContenedor')}}';   
+        var url_getElementosContenedoresPorPuerto    = '{{path('admitarea_getElementosContenedoresPorPuerto')}}';   
+        var url_getInterfacesPorElemento      = '{{path('admitarea_getInterfacesPorElemento')}}';   
+        var url_getElementosPorTipo           = '{{path('admitarea_getElementosPorTipo')}}';    
+        var url_empresaIndisponibilidadTarea  = '{{path('admitarea_getEmpresaIndisponibilidad')}}';
+        var url_getTiempoAfectacionIndisponibilidadCaso  = '{{path('admitarea_getTiempoAfectacionIndisponibilidadCaso')}}';
+		
+        var url_tabletPorCuadrilla      = "{{path('asignarresponsable_getLiderCuadrilla') }}";
+        var url_integrantesCuadrilla    = "{{ path('infocaso_getCuadrillas') }}";        
+        var url_empleadosDepartamento   = "{{ path('infocaso_getEmpleadosPorDepartamentoCiudad') }}";
+        var url_finalizarTarea          = "{{ path('infocaso_finalizarTarea') }}";
+        var url_gridTarea               = '{{path('admitarea_grid')}}';
+        var url_obtenerFechaServer      = '{{path('tareas_obtenerHoraServer')}}';
+        var url_detalles_tareas_TN      = "{{path('infocaso_ajaxGetDetallesTareasTN')}}";
+        var url_guardar_tareas_solucion_TN  = "{{ path('infocaso_ajaxGuardarTareasEsSolucionTN')}}";
+        var url_obtenerDatosCierre      = '{{path('infocaso_obtenerDatosCasosCierre')}}';
+        var url_admiHipotesisGrid       = '{{path('admihipotesis_grid')}}';
+        var url_cerrarCaso              = '{{path('infocaso_cerrarCaso')}}';
+        var url_empresaPorSistema       = '{{path('infocaso_ajaxGetEmpresasPorSistema')}}';
+        var strUrlCiudadesEmpresa       = '{{path("infocaso_getCiudadesPorEmpresa")}}';
+        var strUrlElementosTipoEmpresa  = '{{path("infocaso_getElementosPorCiudadYTipoYEmpresa")}}';
+        var strUrlGetAnillos            = '{{path("infocaso_getAnillos")}}';
+        var url_bandera_cerrar_caso     = '{{path('infocaso_getBanderaPresentarCerrarCaso')}}';
+        var url_getMiembrosCuadrilla    = '{{path('tareas_getMiembrosCuadrilla')}}';
+        var url_empresasExternas        = "{{path('infocaso_getContratistas') }}";
+        var url_admiCuadrilla           = '{{path('admicuadrilla')}}';          
+        var url_getSintomasPorCaso      = '{{path('infocaso_getSintomasXCaso')}}';
+        var url_admisintomaGrid         = '{{path('admisintoma_grid')}}';
+        var url_actualizarSintoma       = '{{path('infocaso_actualizarSintomas')}}';              
+        var url_getTipoElementos        = "{{ path('infocaso_getTiposElementos')}}";
+        var url_getElementos            = "{{ path('infocaso_getElementos')}}";
+        var url_getEncontrados          = "{{ path('infocaso_getEncontrados')}}";
+        var url_agregarAfectados        = "{{ path('infocaso_ajaxAgregarAfectados')}}";
+        var tipoCaso                    = '{{tipoCaso}}';
+        var cantidadCasosAp             = '{{cantidadCasosAp}}';
+        var url_ver_seguimiento_tarea   = "{{ path('infocaso_verSeguimiento')}}";
+        var strPrefijoEmpresaSession    = '{{ empresa }}';
+        var strIdCantonUsrSession       = '{{ intIdCantonSesion }}';
+        var strIdDepartamentoUsrSession = '{{ intIdDepartamentoSesion }}';
+        var url_confirmarReservaHal     = "{{ path('infocaso_confirmarReservaHal')}}";
+        var url_getIntervalosHal        = "{{ path('infocaso_getIntervalosHal')}}";
+        var url_getCasosAperturados     = "{{path('infocaso_getCasosAperturados')}}";
+		var url_getDetalleTarea         = "{{path('tareas_getDetalleTarea')}}";
+		var ulr_revisar_soluciones      = "{{path('infocaso_revisarSoluciones')}}";
+		var fechaDetTareas              = '{{(fechaDetTareas is defined and fechaDetTareas is not empty)?fechaDetTareas:"now"|date("d-m-Y")}}';
+    </script>
+
+{% endblock %}   
+    
+{% block contenido_izq %}
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Ver Caso</h1>
+	</div>
+	<div class="body_content">
+	    <form action="{{ path('infocaso_updateDate') }}" method="post" class="formulario" onsubmit="return setearFecha();" novalidate="novalidate">
+		
+		  <div id="contenedor_principal" >
+	        <div id="datos_generales">
+				<table width="100%" border="0" class="box-section-content">
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+                    {% if(casoMigracion==true)%}
+                    <tr>	                       
+                        <td width="15%" colspan="4">
+                            <div class='infomessage'>Caso creado por Cliente Migrado</div>
+                        </td>
+                    </tr>
+                    {%endif%}
+                    <tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="4%">&nbsp;</td>
+						<td width="18%"><b>Numero Caso:</b></td>
+						<td width="25%">{{ entity.numeroCaso }}</td>
+						<td width="5%">&nbsp;</td>
+						<td width="18%"><b>Tipo Caso:</b></td>
+						<td width="17%">{{ entity.tipoCasoId }}</td>
+						<td width="13%">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Tipo Notificacion:</b></td>
+						<td>{{ notificacion }}</td>
+						<td>&nbsp;</td>
+						<td><b>Nivel de criticidad:</b></td>
+						<td>{{ entity.nivelCriticidadId }}</td>
+						<td>&nbsp;</td>
+					</tr>
+                    <tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+                    <tr>
+						<td>&nbsp;</td>
+						<td><b>Tipo Afectacion:</b></td>
+						<td>{{ entity.tipoAfectacion }}</td>
+						<td>&nbsp;</td>
+					{% if entity.tipoCasoId == 'Backbone' and empresa == 'TN' %}
+						<td><b>Tipo Backbone:</b></td>
+						<td>{{ entity.tipoBackbone }}</td>
+					{% endif %}
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Titulo Inicial:</b></td>
+						<td colspan="4">{{ entity.tituloIni }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Version Inicial:</b></td>
+						<td colspan="5">{{ entity.versionIni }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Usuario de apertura:</b></td>
+						<td>{{ usuarioApertura }}</td>
+						<td>&nbsp;</td>
+						<td><b>Fecha y Hora de apertura:</b></td>
+						<td>{{ entity.feApertura | date("Y-m-d") }}  {{ entity.feApertura | date("H:i:s") }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					
+					{% if ultimo_estado == 'Cerrado' %}
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Usuario de cierre:</b></td>
+						<td>{{ usuarioCierre}} </td>
+						<td>&nbsp;</td>
+						<td><b>Fecha y Hora de cierre:</b></td>
+						<td>{{ entity.feCierre | date("Y-m-d") }}  {{ entity.feCierre | date("H:i:s") }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					{% if empresa is defined and empresa == 'TN' and solucionesTareas is defined and solucionesTareas is not empty%}
+					<tr>
+						<td>&nbsp;</td>
+						<td style="vertical-align: top"><b>Soluciones:</b></td>
+						<td>
+							<ul>
+								{% for solucion in solucionesTareas %}
+									<li>{{solucion.nombreTarea}}</li>
+								{% endfor %}
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					{% endif %}
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Titulo Final:</b></td>
+						<td colspan="4">{{ tituloFin }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Version Final:</b></td>
+						<td colspan="4">{{ entity.versionFin }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					{% endif %}
+					{% if ultimo_estado != 'Cerrado' %}
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					{% endif %}
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Empresa Creación:</b></td>
+						<td colspan="4">{{ empresa_creadora }}</td>
+						<td>&nbsp;</td>
+					</tr>
+
+					{% if ultimo_estado != 'Creado' %}
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Empresa Asignada:</b></td>
+						<td >{{ empresa_asignada }}</td>
+						<td>&nbsp;</td>
+						<td><b>Oficina Asignada:</b></td>
+						<td>{{ oficina_asignada }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Departamento Asignado:</b></td>
+						<td >{{ departamento_asignado }}</td>
+						<td>&nbsp;</td>
+						<td><b>Empleado Asignado:</b></td>
+						<td>{{ empleado_asignado }}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Asignado Por:</b></td>
+						<td >{{ asignado_por }}</td>
+						<td>&nbsp;</td>
+						<td><b>Fecha y Hora de Asignación:</b>
+						{% if ultimo_estado != 'Cerrado' and (band == 'S') %}
+						<td><div id="div_fe_ejecucion"></div></td>
+						<td><div id="div_hora_ejecucion"></div></td>
+						{% else %}
+						<td>{% if(fecha_asignacionCaso != "" and fecha_asignacionCaso != 'N/A') %}{{ fecha_asignacionCaso | date("Y-m-d H:i:s") }}{% else %}{{ fecha_asignacionCaso }}{% endif %}</td>
+						{% endif %}
+						<td><input type="hidden" id="hora_apertura" name="hora_apertura"
+						value="{% if(entity.feApertura != "" and entity.feApertura != 'N/A') %}{{ entity.feApertura | date("H:i") }}
+						{% else %}{{ "N/A" }}{% endif %}"/></td>
+						<td><input type="hidden" id="fecha_apertura" name="fecha_apertura"
+						value="{% if(entity.feApertura != "" and entity.feApertura != 'N/A') %}{{ entity.feApertura | date("Y-m-d") }}
+						{% else %}{{ "N/A" }}{% endif %}"/></td>
+						<td><input type="hidden" id="fecha_asignacion" name="fecha_asignacion" value=""/></td>
+						<td><input type="hidden" id="hora_asignacion" name="hora_asignacion" value=""/></td>
+						<td><input type="hidden" id="fecha_actual" name="fecha_actual" value="{{ date | date("Y-m-d") }}"/></td>
+						<td><input type="hidden" id="hora_actual" name="hora_actual" value="{{ date | date("H:i") }}"/></td>
+						<td><input type="hidden" id="idCaso" name="idCaso" value="{{ entity.id }}"/></td>
+						<td><input type="hidden" id="ultimo_estado" name="ultimo_estado" value="{{ ultimo_estado }}"/></td>
+						<td><input type="hidden" id="bandera" name="bandera" value="{{ band }}"/></td>
+                        <td><input type="hidden" id="tipoCaso" name="tipoCaso" value="{{ tipoCaso }}"/></td>                   
+						<td>&nbsp;</td>
+					</tr>
+					{% endif %}
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Ultimo Estado:</b></td>
+						<td>{{ ultimo_estado }}</td>
+						<td>&nbsp;</td>
+						<td><b>Tareas Creadas:</b></td>
+						<td >{% if flagTareasTodas %}SI{% else %}NO{% endif %}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><b>Tareas Abiertas:</b></td>
+						<td >{% if flagTareasAbiertas %}NO{% else %}SI{% endif %}</td>
+						<td>&nbsp;</td>
+						<td><b>Tareas (Es Solucion):</b></td>
+						<td >{% if flagTareasSolucionadas %}NO{% else %}SI{% endif %}</td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+					<tr>
+						<td colspan="7">&nbsp;</td>
+					</tr>
+
+					{% if ultimo_estado == 'Cerrado' %}
+                                            <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td><b>Tiempo Total Caso:</b></td>
+                                                    <td >{{tiempoTotalCierre}}</td>
+                                                    <td>&nbsp;</td>
+                                                    <td><b>Tiempo Total Incidencia:</b></td>
+                                                    <td >{{tiempoIncidencia}}</td>
+                                                    <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                    <td colspan="7">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                    <td>&nbsp;</td>
+                                                    <td><b>Tiempo Total Empresa:</b></td>
+                                                    <td >{{tiempoEmpresa}}</td>
+                                                    <td>&nbsp;</td>
+                                                    <td><b>Tiempo Total Cliente:</b></td>
+                                                    <td >{{tiempoCliente}}</td>
+                                                    <td>&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                    <td colspan="7">&nbsp;</td>
+                                            </tr>
+					{% endif %}
+					{% if mantenimientoProgramado == 'S' %}
+											
+							<tr>
+									<td>&nbsp;</td>
+									<td><strong>Fecha Inicio Mantenimiento Programado:</strong></td>
+									<td >{{ fechaInicioMT | date("Y-m-d") }}  {{ fechaInicioMT | date("H:i:s") }}</td>
+									<td>&nbsp;</td>
+									<td><strong>Fecha Fin Mantenimiento Programado:</strong></td>
+									<td >{{ fechaFinMT | date("Y-m-d") }}  {{ fechaFinMT | date("H:i:s") }}</td>
+									<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="7">&nbsp;</td>
+							</tr>
+							<tr>
+									<td>&nbsp;</td>
+									<td><strong>Tiempo de Afectación:</strong></td>
+									<td >{{tiempoAfectacionMT}}</td>
+									<td>&nbsp;</td>
+									<td><strong>Tipo Afectación:</strong></td>
+									<td >{{tipoAfectacion}}</td>
+									<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="7">&nbsp;</td>
+							</tr>
+							<tr>
+									<td>&nbsp;</td>
+									<td><strong>Tipo Notificación:</strong></td>
+									<td >{{tipoNotificacion}}</td>
+									<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td colspan="7">&nbsp;</td>
+							</tr>
+					{% endif %}
+				</table>
+			</div>
+		<div id="datos_afectados">
+			<table width="100%" border="0" class="box-section-content">
+				<tr style="height:200px">
+					<td colspan="3"><div id="criterios_show"></div><input type="hidden" id="caso_criterios" name="caso_criterios" value="" /></td>
+				</tr>
+				<tr style="height:200px">
+					<td colspan="3"><div id="afectados_show"></div><input type="hidden" id="caso_afectados" name="caso_afectados" value="" /></td>
+				</tr>
+			</table>
+	       </div>    
+	       <div id="datos_sintomas_hipotesis">
+		      <table width="100%" border="0" class="box-section-content">
+			      <tr style="height:200px">
+				      <td colspan="3"><div id="sintomas_show"></div></td>
+			      </tr>
+			      <tr style="height:200px">
+				      <td colspan="3"><div id="hipotesis_show"></div></td>
+			      </tr>
+		      </table>
+	       </div>    
+	       <div id="datos_detalles">
+			<table width="100%" border="0" class="box-section-content">
+				<tr style="height:200px">
+					<td colspan="3"><div id="detalles_show"></div></td>
+				</tr>
+			</table>
+			<table width="100%" border="0" class="box-section-content">
+				<tr style="height:200px">
+					<td colspan="3"><div id="seguimiento"></div></td>
+				</tr>
+			</table>
+	     </div>   
+
+			<input type="hidden" id="id_caso" name="id_caso" value="{{ entity.id }}" />
+			<input type="hidden" id="numero_caso" name="numero_caso" value="{{ entity.numeroCaso }}" />
+			<input type="hidden" id="fecha_apertura" name="fecha_apertura" value="{{ entity.feApertura | date("d-m-Y") }}" />
+			<input type="hidden" id="hora_apertura" name="hora_apertura" value="{{ entity.feApertura | date("H:i:s") }}" />
+			<input type="hidden" id="titulo_ini" name="titulo_ini" value="{{ entity.tituloIni }}" />
+			<input type="hidden" id="version_ini" name="version_ini" value="{{ entity.versionIni }}" />
+			<td><input type="hidden" id="tipo_afectacion" name="tipo_afectacion" value="{{ entity.tipoAfectacion }}"/></td>
+			
+                    <input type="hidden" id="flag1" name="flag1" value="{{ flag1 }}" />
+                    <input type="hidden" id="flag2" name="flag2" value="{{ flag2 }}" />
+                    <input type="hidden" id="flag3" name="flag3" value="{{ flag3 }}" />
+                    <input type="hidden" id="flag4" name="flag4" value="{{ flag4 }}" />
+                    <input type="hidden" id="flagCerrarCasoTN" name="flagCerrarCasoTN" value="{{ flagCerrarCasoTN }}" />
+			<input type="hidden" id="tiempo_total" name="tiempo_total" value="{{ tiempo_total }}" />
+			
+			<input type="hidden" id="elementoAfectado" name="elementoAfectado" value="{{ elementoAfectado }}" />
+			<input type="hidden" id="hipotesisIniciales" name="hipotesisIniciales" value="{{ hipotesisIniciales }}" />
+					
+			<input type="hidden" id="empresa" name="empresa" value="{{ empresa }}" />
+            <input type="hidden" id="intIdCantonSesion" name="" value="{{ intIdCantonSesion }}" />
+            <input type="hidden" id="intIdDepartamentoSesion" name="" value="{{ intIdDepartamentoSesion }}" />
+			<input type="hidden" id="flagCreador" name="flagCreador" value="{{ flagCreador }}" />
+			<input type="hidden" id="flagBoolAsignado" name="flagBoolAsignado" value="{{ flagBoolAsignado }}" />
+			<input type="hidden" id="flagAsignado" name="flagAsignado" value="{{ flagAsignado }}" />
+			<input type="hidden" id="flagTareasTodas" name="flagTareasTodas" value="{{ flagTareasTodas }}" />
+            <input type="hidden" id="flagTareasTodasCanceladas" name="flagTareasTodasCanceladas" value="{{ flagTareasTodasCanceladas }}" />
+			<input type="hidden" id="flagTareasAbiertas" name="flagTareasAbiertas" value="{{ flagTareasAbiertas }}" />
+			<input type="hidden" id="flagTareasSolucionadas" name="flagTareasSolucionadas" value="{{ flagTareasSolucionadas }}" />
+			<input type="hidden" id="ultimo_estado" name="ultimo_estado" value="{{ ultimo_estado }}" />
+			<input type="hidden" id="fechaFin" name="fechaFin" value="{{ fechaFin }}" />
+			<input type="hidden" id="horaFin" name="horaFin" value="{{ horaFin }}" />
+			<input type="hidden" id="esDepartamento" name="esDepartamento" value="{{ esDepartamento }}" />
+			<input type="hidden" id="mostrarHipotesis" name="mostrarHipotesis" value="{{ mostrarHipotesis }}" />
+			<input type="hidden" id="date" name="date" value="{{ date }}" />
+			<input type="hidden" id="hid_grados_la" name="hid_grados_la">
+			<input type="hidden" id="hid_minutos_la" name="hid_minutos_la">
+			<input type="hidden" id="hid_segundos_la" name="hid_segundos_la">
+			<input type="hidden" id="hid_decimas_segundos_la" name="hid_decimas_segundos_la">
+			<input type="hidden" id="hid_latitud" name="hid_latitud">
+			<input type="hidden" id="hid_grados_lo" name="hid_grados_lo">
+			<input type="hidden" id="hid_minutos_lo" name="hid_minutos_lo">
+			<input type="hidden" id="hid_segundos_lo" name="hid_segundos_lo">
+			<input type="hidden" id="hid_decimas_segundos_lo" name="hid_decimas_segundos_lo">
+			<input type="hidden" id="hid_longitud" name="hid_longitud">
+			<input type="hidden" id="esCasoNuevoEsquema" name="esCasoNuevoEsquema" value="{{ nuevo_esquema }}">
+			<input type="hidden" id="tiempoTotalCaso" name="tiempoTotalCaso" value="{{ tiempo_total_caso }}">
+			<input type="hidden" id="idNivelCriticidad" name="idNivelCriticidad" value="{{ entity.nivelCriticidadId.id }}">
+			<input type="hidden" id="nivelCriticidad" name="nivelCriticidad" value="{{ entity.nivelCriticidadId.nombreNivelCriticidad }}">
+			<input type="hidden" id="origen" name="origen" value="{{ entity.origen }}">
+		</div>    
+		  <div class="buttons">
+		    <p>
+                {% if (ultimo_estado != 'Cerrado') and (ultimo_estado != 'Creado') and (band == 'S')%}
+		        <button type="submit" class="button-crud">Actualizar</button>
+                {% endif %}
+		        <span class="height20px">
+                    {% if (ultimo_estado != 'Cerrado') and (ultimo_estado != 'Creado') and (band == 'S')%}
+		            &oacute;&nbsp;
+                    {% endif %}
+		            <a class="cancel-crud" href="{{ path('infocaso') }}">
+		                    Regresar
+		            </a>
+		        </span>
+		    </p>
+		</div>
+		</form>
+		<form id="formExportar" action="{{ path('infocaso_exportarConsultaAfectados') }}" method="post">
+		  
+		  <input type='hidden' name='hid_id_caso' id='hid_id_caso' value='' />
+		
+		</form>
+	</div>
+
+    <div id="map_canvasIncidente" style="width:500px; height:500px"></div>
+    <div id="map_canvasManga1" style="width:500px; height:500px"></div>
+    <div id="map_canvasManga2" style="width:500px; height:500px"></div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+	<div class="acciones_relacionadas">
+		<a href="{{ path('infocaso_new') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nuevo Caso
+		</a>
+	</div>
+	<br />
+{% endblock contenido_der %}

@@ -1,0 +1,130 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+   
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ux-all.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/chooser.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/Plantilla/edit.js?3') }}"></script>
+	<script>
+		url_listaArchivos = "{{ path('notificaciones_plantilla_listarArchivos') }}";
+		url_fileUpload = "{{ path('notificaciones_plantilla_fileUpload') }}";	
+				
+		idClaseDoc = "{{documento.claseDocumentoId.id}}";					
+		console.log(idClaseDoc);
+		
+	</script>
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Modificar Plantilla</h1>
+	</div>
+	<span class="campos-requeridos">* Campos requeridos</span>
+	<div class="body_content">
+	    <form action="{{ path('plantilla_update', { 'id': documento.id }) }}" method="post" {{ form_enctype(form) }} class="formulario" onsubmit="return validarFormulario();" novalidate="novalidate"  enctype="multipart/form-data" >
+	        <div id="contenedor_principal" >
+	            <div id="datos_generales">
+	                <table width="100%" border="0" class="box-section-content">
+	                    <tr>
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%">{{ form_label(form.nombrePlantilla) }}</td>
+	                        <td width="75%">{{ form_widget(form.nombrePlantilla, { 'attr': {'style': 'width:600px;'} }) }}
+				    <input type="hidden" id="plantillaNombre" value="{{documento.nombreDocumento}}"/> </td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+
+	                    <tr>
+	                        <td width="5%" colspan='4'>&nbsp;</td>
+	                    </tr>
+	                    
+	                     <!-- **********************PlantillaSMS********************* -->	                   
+	                     <tr>
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%">{{ form_label(form.tipo) }}</td>
+	                        <td width="75%">{{ form_widget(form.tipo, { 'attr': {'style': 'width:500px;'} }) }}</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+	                    <tr>
+	                        <td width="5%" colspan='4'>&nbsp;</td>	                       
+	                    </tr>
+	                    <!-- **********************PlantillaSMS********************* -->
+	                    
+	                    
+	                    <tr class="emailWidgets">
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%"><label>Imagen a subir: </label></td>
+	                        <td width="75%">
+					<div id="fi-form"></div>
+				</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+	                    <tr class="emailWidgets">
+	                        <td width="5%" colspan='4'>&nbsp;</td>
+	                    </tr>
+	                    <tr class="emailWidgets">
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%"><label>Boton Imagen</label></td>
+	                        <td width="75%">
+				    <div id="buttons2" name="buttons2"></div> 
+				    Nota: Escoja la imagen que desee atacharla a la plantilla. (Se insertara donde tenga el cursor dentro de la plantilla).
+				</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+	                    <tr class="emailWidgets">
+	                        <td width="5%" colspan='4'>&nbsp;</td>
+	                    </tr>
+	                    
+	                    
+	                    <tr class="emailWidgets">
+	                        <td width="5%">&nbsp;</td>
+	                        <td  colspan="2">	                       
+					   <div id="plantilla_mail"></div>
+					   <input type="hidden" id="plantillaValorCorreo" value="{{documento.mensaje}}"/>
+					   {{ form_widget(form.plantilla_mail) }}				
+				</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+	                    
+	                    
+	                    <!-- **********************PlantillaSMS********************* -->
+	                    <tr class="smsWidgets">
+	                        <td width="5%">&nbsp;</td>
+	                        <td colspan="2">
+				    <div id="plantilla_sms" ></div>
+				    <input type="hidden" id="plantillaValorSms" value="{{documento.mensaje}}"/>
+				    {{ form_widget(form.plantilla_sms) }}
+				</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+	                     <!-- **********************PlantillaSMS********************* -->
+	                </table>
+	            </div>
+	        </div>    
+	        <div class="buttons">
+	            <p>
+	                <button type="submit" class="button-crud">Guardar</button>
+	                <span class="height20px">
+	                    &oacute;&nbsp;
+	                    <a class="button-crud" href="{{ path('plantilla') }}">Cancelar</a>
+	                </span>
+	            </p>
+	        </div>
+	    {{ form_widget(form._token) }}
+	    </form>
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+	<div class="titulo-acciones-relacionadas">
+		Acciones Relacionadas
+	</div>
+	<ul class="listado_acciones_relacionadas">
+	</ul>
+{% endblock contenido_der %}

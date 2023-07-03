@@ -1,0 +1,8 @@
+reporteTareasTrace:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:ReporteTareasTrace:index" }
+
+reporteTareasTrace_generar:
+    pattern:  /generar
+    defaults: { _controller: "soporteBundle:ReporteTareasTrace:generar" }
+    requirements: { _method: post }

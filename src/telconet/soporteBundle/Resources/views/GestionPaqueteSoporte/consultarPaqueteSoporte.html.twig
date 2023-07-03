@@ -1,0 +1,55 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}
+
+    
+	<script type="text/javascript" src="{{ asset('./bundles/soporte/js/GestionPaqueteSoporte/consultarPaqueteSoporte.js?1') }}"></script>
+
+	<script>
+		var url_getSoportesPaqSoporte = '{{ path("gestionPaqueteSoporte_getSoportesPaqSoporte") }}';
+		var url_putSolAjusteTiempoSoporte = '{{ path("gestionPaqueteSoporte_putSolAjusteTiempoSoporte") }}';
+
+		var strPersonaEmpresaRolId = '{{id}}';
+		var strIdServicio = '{{idServicio}}';
+		var strUser = '{{user}}';
+	</script>
+
+
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img alt="titulo" src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Consultar tareas de paquete de horas de soporte</h1>
+	</div>
+	<div class="body_content k-content">
+		<table border='0'>
+            <tr>
+            <strong>Criterios de consulta</strong>
+            </tr>
+			<tr>
+				<td>
+					<div id="filtro"></div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<br/>
+					<div id='button-consultar' style='text-align:center'></div>
+				</td>
+			</tr>
+		</table>
+        <br>
+        <table border='0'>
+            <tr>
+            <strong>Listado de soportes realizados</strong>
+            </tr>
+			<tr>
+				<td>
+					<div id="grid"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+{% endblock contenido_izq %}

@@ -1,0 +1,67 @@
+--SE INSERTAN LOS ID_TAREA QUE REQUIEREN RUTA_FIBRA
+--
+SET serveroutput ON
+
+BEGIN
+  FOR SOMEONE IN 
+  (
+    SELECT COLUMN_VALUE AS ID_TAREA FROM TABLE
+    (
+      SYS.ODCIVARCHAR2LIST
+      (
+        2594,
+        2603,
+        2611,
+        2662,
+        3219,
+        3875,
+        3877,
+        3878,
+        3879,
+        3905,
+        3948,
+        3949,
+        3950,
+        1026
+      )
+    )
+  )
+  LOOP
+    INSERT INTO DB_SOPORTE.INFO_TAREA_CARACTERISTICA
+    (
+      ID_TAREA_CARACTERISTICA,
+      TAREA_ID,
+      DETALLE_ID,
+      CARACTERISTICA_ID,
+      VALOR,
+      FE_CREACION,
+      USR_CREACION,
+      IP_CREACION,
+      FE_MODIFICACION,
+      USR_MODIFICACION,
+      IP_MODIFICACION,
+      ESTADO
+    ) 
+    VALUES 
+    (
+      DB_SOPORTE.SEQ_INFO_TAREA_CARACTERISTICA.NEXTVAL,
+      SOMEONE.ID_TAREA,
+      null,
+      (SELECT ID_CARACTERISTICA FROM DB_COMERCIAL.ADMI_CARACTERISTICA WHERE DESCRIPCION_CARACTERISTICA = 'REQUIERE_RUTA_FIBRA'),
+      'S',
+      SYSDATE,
+      'jnazareno',
+      '172.24.4.23',
+      null,
+      null,
+      null,
+      'Activo'
+    );
+    DBMS_OUTPUT.PUT_LINE('INSERT EXITOSO REQUIERE_RUTA_FIBRA ' || SOMEONE.ID_TAREA);
+  END LOOP;
+
+END;
+/
+COMMIT;
+
+/

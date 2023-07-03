@@ -1,0 +1,72 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css?2') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var permisoVerSeguimientosCerrarCaso        = '{{ is_granted("ROLE_197-38") }}';
+        var boolPermisoVerSeguimientosCerrarCaso    = (typeof permisoVerSeguimientosCerrarCaso === 'undefined') ? false : 
+                                                      (permisoVerSeguimientosCerrarCaso ? true : false);
+        var numArchivosSubidos                      = 0;
+        var url_multipleFileUpload                  = "{{path('gestion_documentos_multipleFileUpload') }}";
+        var url_tabletPorCuadrilla                  = "{{path('asignarresponsable_getLiderCuadrilla') }}";
+        var urlExportarCasos                        = "{{path('infocaso_exportarConsulta')}}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/Multiupload.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/index.js?22') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funciones/funciones_generales.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funciones/funciones_sintomas.js?6') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funciones/funciones_hipotesis.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funciones/funciones_tareas.js?21') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funciones/funciones_casos.js?2') }}"></script>
+	
+	<script>
+        var url_grid = "{{ path('infocaso_grid') }}";        
+	</script>    
+{% endblock %}
+
+{% block contenido_izq %}	
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Listado de Casos</h1>
+	</div>
+	<div class="body_content k-content">
+		<form action="{{ path('infocaso_exportarConsulta') }}" method="post">
+		
+			<input type='hidden' name='hid_sltEstado' id='hid_sltEstado' value='' />
+			<input type='hidden' name='hid_comboHipotesis' id='hid_comboHipotesis' value='' />
+			<input type='hidden' name='hid_comboTipoCaso' id='hid_comboTipoCaso' value='' />
+			<input type='hidden' name='hid_comboNivelCriticidad' id='hid_comboNivelCriticidad' value='' />
+			<input type='hidden' name='hid_comboFilial' id='hid_comboFilial' value='' />
+			<input type='hidden' name='hid_comboArea' id='hid_comboArea' value='ee' />
+			<input type='hidden' name='hid_comboDepartamento' id='hid_comboDepartamento' value='' />
+			<input type='hidden' name='hid_comboEmpleado' id='hid_comboEmpleado' value='' />
+			<input type='hidden' name='hid_comboCiudad' id='hid_comboCiudad' value='' />
+			<input type='hidden' name='hid_usrCreacion' id='hid_usrCreacion' value='' />
+			<input type='hidden' name='hid_usrCierre' id='hid_usrCierre' value='' />
+						
+			
+			<table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+				<tr>
+					<td><div id='filtro'></div></td>
+				</tr>	
+				<tr>
+					<td><div id="grid"></div></td>
+				</tr>
+			</table> 
+		</form>
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+	<div class="acciones_relacionadas">
+		<a href="{{ path('infocaso_new') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nuevo Caso
+		</a>
+	</div>
+{% endblock contenido_der %}

@@ -1,0 +1,27 @@
+notificaciones:
+    pattern:  /index
+    defaults: { _controller: "soporteBundle:notificaciones:index" }
+    
+soporteBundle_Plantilla:
+  resource: "@soporteBundle/Resources/config/routing/notificaciones_plantilla.yml"
+  prefix: /plantilla
+  
+soporteBundle_EstadoEnvios:
+  resource: "@soporteBundle/Resources/config/routing/estado_envios.yml"
+  prefix: /estado_envios
+    
+soporteBundle_EnvioPlantilla:
+  resource: "@soporteBundle/Resources/config/routing/notificaciones_envioplantilla.yml"
+  prefix: /envio_plantilla
+  
+soporteBundle_Noticias:
+  resource: "@soporteBundle/Resources/config/routing/notificaciones_noticias.yml"
+  prefix: /noticias 
+
+soporteBundle_EnvioMasivo:
+  resource: "@soporteBundle/Resources/config/routing/envio_masivo.yml"
+  prefix: /envio_masivo
+  
+soporteBundle_EstadoEnviosMasivos:
+  resource: "@soporteBundle/Resources/config/routing/estado_envios_masivos.yml"
+  prefix: /estado_envios_masivos

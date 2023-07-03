@@ -1,0 +1,67 @@
+envioplantilla:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:index" }
+
+envioplantilla_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:grid"}
+    
+envioplantilla_getElementos:
+    pattern:  /getElementos
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getElementos" }
+    
+envioplantilla_getClientes:
+    pattern:  /getClientes
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getClientes" }
+    
+envioplantilla_getOficinas:
+    pattern:  /getOficinas
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getOficinas" }
+    
+envioplantilla_getCiclosFacturacion:
+    pattern:  /getCiclosFacturacion
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getCiclosFacturacion" }
+    
+envioplantilla_getPlantillas:
+    pattern:  /getPlantillas
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getPlantillas" }
+    
+envioplantilla_getElementosPorTipo:
+    pattern:  /getElementosPorTipo
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getElementosPorTipo" }
+    
+envioplantilla_enviarAjax:
+    pattern:  /enviarAjax
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:enviarAjax" }
+    requirements: { _method: post }
+    
+envioplantilla_enviarMasivoAjax:
+    pattern:  /enviarMasivosAjax
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:enviarMasivosAjax" }
+    requirements: { _method: post }
+###################################################################################
+#
+#                       @author : arsuarez@telconet.ec
+#                       $version: 1.0 11/06/2014
+#
+###################################################################################
+envioplantilla_getPuntosANotificar:
+    pattern:  /getPuntosANotificar
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getPuntosANotificar" }
+###################################################################################
+#
+#                       @author : arsuarez@telconet.ec
+#                       $version: 1.0 13/06/2014
+#
+################################################################################### 
+envioplantilla_getPuntosANotificarPorSoporte:
+    pattern:  /getPuntosANotificarPorSoporte
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getPuntosANotificarPorSoporte" }
+    
+envioplantilla_plantilla_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:exportarConsulta"}
+
+procesomasivo_getCiclos:
+    pattern:  /getCiclos
+    defaults: { _controller: "soporteBundle:EnvioPlantilla:getCiclos"}

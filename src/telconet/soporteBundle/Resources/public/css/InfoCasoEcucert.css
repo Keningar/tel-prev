@@ -1,0 +1,118 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07-mar-2019, 17:33:57
+    Author     : nnaulal
+*/
+
+
+.button-grid-vulnerabilidad{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/vulnerable.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+
+.button-grid-bloqueoIp{
+    background-color: #E3E3E3;
+    background-image: url("/bundles/soporte/images/iconos/16/bloqueoIp.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+
+
+.button-grid-cambioEstadoNotif{
+    background-color: #E3E3E3;
+    background-image: url("/public/images/notificacion.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+
+#button_report{
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 13px;
+    height: 40px;
+    text-align: center;
+    color: #444;
+    cursor:pointer;
+}
+
+#button_report:active {
+  background-color: #C5C5C5;
+  box-shadow: 0 1px #666;
+  transform: translateY(1px);
+}
+
+#button_contenedor{
+    background: none repeat scroll 0 0 #FFFFFF;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin-left: 10px;
+    padding: 10px;
+    float: right;
+    cursor:pointer;
+}
+
+.body_content_ecucert {
+    margin: 0 25px 30px;
+    text-align: left;
+    background: #FFFFFF;
+    padding: 25px;
+}
+
+.color1-row .x-grid-cell {
+    color: #ff1e1e;
+}
+
+.color2-row .x-grid-cell {
+    color: #000000;
+}

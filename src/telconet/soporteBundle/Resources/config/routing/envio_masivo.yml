@@ -1,0 +1,43 @@
+enviomasivo:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:EnvioMasivo:index" }
+
+enviomasivo_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:EnvioMasivo:grid"}
+    
+enviomasivo_getSwitchesEnNodo:
+    pattern:  /getSwitchesEnNodo
+    defaults: { _controller: "soporteBundle:EnvioMasivo:getSwitchesEnNodo" }
+
+enviomasivo_getPlantillas:
+    pattern:  /getPlantillas
+    defaults: { _controller: "soporteBundle:EnvioMasivo:getPlantillas" }
+ 
+enviomasivo_getPeriodicidades:
+    pattern:  /getPeriodicidades
+    defaults: { _controller: "soporteBundle:EnvioMasivo:getPeriodicidades" }
+    
+enviomasivo_getEstadosFiltros:
+    pattern:  /getEstadosFiltros
+    defaults: { _controller: "soporteBundle:EnvioMasivo:getEstadosFiltros" } 
+
+enviomasivo_guardarEnvio:
+    pattern:  /guardarEnvio
+    defaults: { _controller: "soporteBundle:EnvioMasivo:guardarEnvio" }
+    
+enviomasivo_validacion:
+    pattern:  /validarGuardarEnvioMasivo
+    defaults: { _controller: "soporteBundle:EnvioMasivo:validarGuardarEnvioMasivo" }
+    
+enviomasivo_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "soporteBundle:EnvioMasivo:exportarConsulta" }
+    
+enviomasivo_verPlantilla:
+    pattern:  /verPlantilla
+    defaults: { _controller: "soporteBundle:EnvioMasivo:verPlantilla" }
+    
+enviomasivo_getTiposFacturaFiltros:
+    pattern:  /getTiposFacturaFiltros
+    defaults: { _controller: "soporteBundle:EnvioMasivo:getTiposFacturaFiltros" } 

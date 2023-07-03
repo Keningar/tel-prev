@@ -1,0 +1,31 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var strUrlGridNotifMasivas          = "{{ path('estado_envios_masivos_grid') }}";
+    var strUrlGetPlantillasEnvioMasivo  = "{{ path('enviomasivo_getPlantillas') }}";
+    var strUrlEliminarEnvioMasivo       = "{{ path('estado_envios_masivos_eliminar') }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/EstadoEnviosMasivos/index.js') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ objItem.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Estado Env&iacute;os Masivos</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='divFiltrosBusqueda'></div></td>
+        </tr>
+        <tr>
+            <td><div id="grid"></div></td>	            
+        </tr>
+    </table>
+</div>
+{% endblock contenido_central %}

@@ -1,0 +1,53 @@
+plantilla:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:Plantilla:index" }
+
+plantilla_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "soporteBundle:Plantilla:show" }
+
+plantilla_new:
+    pattern:  /new
+    defaults: { _controller: "soporteBundle:Plantilla:new" }
+
+plantilla_create:
+    pattern:  /create
+    defaults: { _controller: "soporteBundle:Plantilla:create" }
+    requirements: { _method: post }
+
+plantilla_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "soporteBundle:Plantilla:edit" }
+
+plantilla_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "soporteBundle:Plantilla:update" }
+    requirements: { _method: post }
+
+plantilla_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "soporteBundle:Plantilla:delete" }
+    requirements: { _method: post }
+
+plantilla_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "soporteBundle:Plantilla:deleteAjax" }
+    requirements: { _method: post }
+
+plantilla_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:Plantilla:grid"}
+
+notificaciones_plantilla_listarArchivos:
+    pattern:  /listarArchivos
+    defaults: { _controller: "soporteBundle:Plantilla:listarArchivos"}
+    
+notificaciones_plantilla_fileUpload:
+    pattern:  /fileUpload
+    defaults: { _controller: "soporteBundle:Plantilla:fileUpload" }
+    requirements: { _method: post }
+      
+#cargar tipos de plantillas
+notificaciones_plantilla_getTipoPlantilla:
+    pattern:  /getTipoPlantilla
+    defaults: { _controller: "soporteBundle:Plantilla:getTipoPlantilla"}

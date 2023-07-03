@@ -1,0 +1,216 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+   
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+   
+{% endblock %}
+
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Ver Documentodddddd</h1>
+    </div>
+    <div class="body_content">
+        <div id="contenedor_principal" >
+            <table width="100%" border="0" class="box-section-content">
+                <tr>                
+                    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Nombre:</b></label></td>
+                    <td width="30%" >{{documento.nombreDocumento}}</td>
+                    <td width="6%">&nbsp;</td>
+                    
+                    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Archivo:</b></label></td>
+                    <!--<td width="30%" ><a href="{{ asset('public/uploads/documentos/'~ documento.ubicacionLogicaDocumento ~ '') }}">{{documento.ubicacionLogicaDocumento}}</a></td>-->
+                    <td width="30%" ><a>{{documento.ubicacionLogicaDocumento}}</a></td>
+                    <td width="6%">&nbsp;</td>                                                
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Descripcion :</b></label></td>
+                    <td width="30%" >{{documento.mensaje}}</td>
+                    <td width="6%">&nbsp;</td>
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>                                    
+                 <tr>                                                       
+                    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Tipo:</b></label></td>                   
+                    <td width="30%" ><a>{{tipoDocGeneral.descripcionTipoDocumento}}</a></td>
+                    <td width="6%">&nbsp;</td>   
+                    
+                    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Extension:</b></label></td>
+                    <td width="30%" >{{documento.tipoDocumentoId}}</td>
+                    <td width="6%">&nbsp;</td>              
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>         
+		    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Modulo:</b></label></td>                   
+                    <td width="30%" ><a>{{documento.modulo}}</a></td>
+                    <td width="6%">&nbsp;</td>  
+                    
+                    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Estado:</b></label></td>                   
+                    <td width="30%" ><a>{{documento.estado}}</a></td>
+                    <td width="6%">&nbsp;</td>  
+                </tr> 
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+		    <td colspan="2" width="15%">
+			<div class='infomessage'>Referencia Comercial/Financiera</div>
+		    </td>
+		</tr>
+		 <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Login:</b></label></td>
+                    <td width="30%" >{{puntoCliente}}</td>
+                    <td width="6%">&nbsp;</td>                        
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Numero Doc. :</b></label></td>
+                    <td width="30%" >{% if(contrato) %}
+					  {{ contrato.numeroContrato }}
+				     {% elseif(docFinan) %}
+					  {{ docFinan.numeroFacturaSri }}
+				     {%else%}
+					  N/A
+				     {%endif%}
+		    </td>
+                    <td width="6%">&nbsp;</td>                        
+                </tr>                
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+		    <td colspan="2" width="15%">
+			<div class='infomessage'>Referencia Tecnica</div>
+		    </td>
+		</tr>
+		 <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Tipo Elemento:</b></label></td>
+                    <td width="30%" >{{tipoElemento}}</td>
+                    <td width="6%">&nbsp;</td>                        
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Modelo Elemento:</b></label></td>
+                    <td width="30%" >{{modeloElemento}}</td>
+                    <td width="6%">&nbsp;</td>                        
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                    <td width="12%"><label><b>Elemento:</b></label></td>
+                    <td width="30%" >{{elemento}}</td>
+                    <td width="6%">&nbsp;</td>                        
+                </tr>
+                <tr>
+		    <td width="5%">&nbsp;</td>
+                </tr>
+            </table> 			
+        </div>    
+    </div>    
+    <div class="buttons">
+        <p>
+            <span class="height:20px">
+                {% if modulo == 'SOPORTE' %}
+                <a class="button-crud" href="{{ path('gestion_documentos') }}">Regresar</a>
+                {% else %}
+                <a class="button-crud" href="{{ path('visor_documentos_tecnico') }}">Regresar</a>
+                {% endif %}
+            </span>
+        </p>
+    </div>
+    <div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ documento.usrCreacion }}</td>                         
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ documento.feCreacion | date("d M Y") }}</td>             
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ documento.feCreacion | date("H:i:s") }}</td>             
+            </tr>
+
+        </tbody>
+    </table>
+    </div>
+    <br/><br/>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_84-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('gestion_documentos_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Documento
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_84-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('gestion_documentos_edit', { 'id': documento.id }) }}">
+                &nbsp;Editar Documento
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_84-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('gestion_documentos_delete', { 'id': documento.id }) }}">
+                &nbsp;Eliminar Documento
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

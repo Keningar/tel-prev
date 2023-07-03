@@ -1,0 +1,1383 @@
+{% extends "::layout_completo.html.twig" %}
+{# {% set permiteIngresoTareaNuevaAsignacion = is_granted('ROLE_416-6057') %} #}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/hint.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/daterangepicker.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/font-awesome-4.7.0/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('public/css/tareas.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedHeader.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/daterangepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/push.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/howler.core.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/vfs_fonts.js') }}"></script>
+    <script  type="text/javascript" src="{{ asset('bundles/soporte/js/GestionPendientes/autocompletar.js') }}"></script>
+
+    <script src="{{ asset('./public/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('./public/js/jquery-ui.min.js') }}" type="text/javascript"></script>
+
+    <script>
+
+        var url_getClientesAfectados  = "{{path('admitarea_getClientesAfectados')}}";
+        var url_verificarRolTap  = "{{path('admitarea_verificarRolTap')}}";
+        var url_getElementosConectorPorElementoContenedor    = "{{path('admitarea_getElementosConectorPorElementoContenedor')}}";   
+        var url_getElementosContenedoresPorPuerto    = "{{path('admitarea_getElementosContenedoresPorPuerto')}}";   
+        var url_getInterfacesPorElemento      = "{{path('admitarea_getInterfacesPorElemento')}}";   
+        var url_getElementosPorTipo           = "{{path('admitarea_getElementosPorTipo')}}";    
+        var url_empresaIndisponibilidadTarea  = "{{path('admitarea_getEmpresaIndisponibilidad')}}";
+        var url_getTiempoAfectacionIndisponibilidadTarea  = "{{path('admitarea_getTiempoAfectacionIndisponibilidadTarea')}}";
+        var url_finalizarTarea                = "{{path('tareas_finalizarTarea')}}";
+        var url_gridTarea                     = "{{path('admitarea_grid')}}";
+        var url_gridMotivosCategoriaTareas    = "{{path('tarea_getMotivosCategoriaTareas')}}";
+        var url_ciudadPorEmpresa              = "{{path('infocaso_getCiudadesPorEmpresa')}}";
+        var url_empleadoPorDepartamentoCiudad = "{{path('infocaso_getEmpleadosPorDepartamentoCiudad')}}";
+        var url_integrantesCuadrilla          = "{{path('infocaso_getCuadrillas')}}";
+        var url_procesos                      = "{{path('callactivity_getProcesos')}}";
+        var url_tareaProceso                  = "{{path('callactivity_ajaxGetTareasByProceso')}}";
+        var url_crearSubTarea                 = "{{path('elementonodo_ajaxCrearTareaNodo')}}";
+        var url_departamentoPorEmpresaCiudad  = "{{path('infocaso_getDepartamentosPorEmpresaYCiudad')}}";
+        var url_cuadrillas                    = "{{path('admicuadrilla_getCuadrillasActivas')}}";
+        var url_obtenerFechaServer            = "{{path('tareas_obtenerHoraServer')}}";
+        var url_getTareasAbiertas             = "{{path('tareas_getTareasAbiertas')}}";
+        var url_ejecutarPausarTareas          = "{{path('tareas_ejecutarPausarTareas')}}";        
+        var url_obtenerDatosCierre            = "{{path('infocaso_obtenerDatosCasosCierre')}}";
+        var url_admiCuadrilla                 = "{{path('admicuadrilla')}}";
+        var url_fileUpload                    = "{{path('gestion_documentos_fileUpload') }}";
+        var url_documentosCaso                = "{{path('infocaso_getDocumentosCaso') }}";
+        var url_datosRespuestaTarea           = "{{path('tareas_getDatosRespuestaAutomatica') }}";
+        var url_verifica_casos                = "{{path('infocaso_getDocumentosCasoEncontrados') }}";
+        var url_getMiembrosCuadrilla          = "{{path('tareas_getMiembrosCuadrilla')}}";
+        var url_empresasExternas              = "{{path('infocaso_getContratistas') }}";
+        var url_estadosTareas                 = "{{path('tareas_getEstados') }}";
+        var url_validarTabletPorCuadrilla     = "{{path('asignarresponsable_getLiderCuadrilla') }}";
+
+        //Variables que seran usadoas por el script general.js
+        var url_admiHipotesisArbolGrid        = "{{path('admihipotesis_grid')}}";
+        var url_admiHipotesisGrid             = "{{path('admihipotesis_grid')}}";
+        var url_cerrarCaso                    = "{{path('infocaso_cerrarCaso')}}";
+        var url_motivosPausarTarea            = "{{path('infocaso_getMotivosPausarTarea')}}";
+        var url_empresaPorSistema             = "{{path('tarea_ajaxGetEmpresasHabilitadas')}}";
+        var strPuntoPersonaSession            = '{{ puntoPersonaSession }}';
+        var strPrefijoEmpresaSession          = '{{ strPrefijoEmpresaSession }}';
+        var strIdCantonUsrSession             = '{{ intIdCantonUsrSession }}';
+        var strIdDepartamentoUsrSession       = '{{ intIdDepartamentoUsrSession }}';
+        var strDepartamentoSession            = '{{ departamentoSession }}';
+        var strOrigen                         = '{{ strOrigen }}';
+        var intNumeroActividad                = '{{ intNumeroActividad }}';
+        var strUrlCancelarTarea               = "{{ path('tareas_cancelarTarea') }}";
+        var numArchivosSubidos                = 0;
+        var url_multipleFileUpload            = "{{path('gestion_documentos_multipleFileUpload') }}";
+        var url_eliminar_adjunto              = "{{ path('gestion_documentos_eliminarDocumentoRegistroYArchivo') }}";
+        var intPersonaEmpresaRolId            = "{{ app.session.get('idPersonaEmpresaRol') }}";
+        var url_indicadorTareas               = "{{ path('tareas_getIndicadorTareas') }}";
+        var urlSetPtoSessionByLogin           = "{{ path('tareas_ajaxSetPuntoSessionLogin')}}";
+        var urlGetPrefijosTelefono            = "{{ path('infocaso_getPrefijosTelefono')}}";
+        var urlGetSoporteProcesar             = "{{ path('rs_soporte_procesar')}}";
+        var boolPermisoRenaudarPausar         = false;
+        var boolNoVisualizacionECUCERT        = true;
+        var strBuscaPorArbolHipotesis         = "{{ buscaPorArbolHipotesis }}";
+        {% if is_granted('ROLE_434-1') == true %}
+            boolNoVisualizacionECUCERT        = false;
+        {% endif %}
+        {% if is_granted('ROLE_197-1237') == true %}
+            var boolPermisoRenaudarPausar = true;
+        {% endif %}
+        var url_confirmarReservaHal           = "{{ path('infocaso_confirmarReservaHal')}}";
+        var url_getIntervalosHal              = "{{ path('infocaso_getIntervalosHal')}}";
+        var url_confirmarSugerenciaHal        = "{{ path('tareas_confirmarSugerenciaHal')}}";
+        var urlNotificarCancelarHal           = "{{ path('tarea_ajaxNotificarCancelarSugerenciasHal')}}";
+        var boolOcultarColumnaEmpresa     = true;
+        var urlTareasExportar            = "{{ path('tareas_exportarConsulta')}}";
+        //Se consulta si la persona en sesion tiene la credencial: verTareasTodasEmpresas (ROLE_197_6157) 
+        {% if (is_granted('ROLE_197-6157') == true) and (strPrefijoEmpresaSession == 'TN') %}
+            var boolOcultarColumnaEmpresa = false;
+        {% endif %}
+        var urlAjaxReintentoTareaSysCloud    = "{{ path('tarea_ajaxReintentoTareaSysCloud')}}";
+        //Confirmar enlace ip de servicio en tarea de  soporte 
+        var urlConfirmarIpServicioSoporteAction = "{{path('tarea_confirmarIpServicioSoporte')}}";
+         //Validar enlace en tarea de  soporte 
+        var urlValidarServicioSoporteAction = "{{path('tarea_validarServicioSoporte')}}";
+         //Permite crear KML 
+        var urlPermiteCrearKmlAction = "{{path('tarea_permiteCrearKml')}}";
+        var boolPermisoCrearKml      = "{%if is_granted("ROLE_197-7677")%}S{%else%}N{%endif%}";
+
+        var url_getArbolHipotesis  = "{{path('admitarea_getArbolHipotesis')}}"; 
+        var url_getTiempoAfectacionIndisponibilidadCaso  = "{{path('admitarea_getTiempoAfectacionIndisponibilidadCaso')}}";        
+
+    </script>
+    
+
+{% endblock %}
+
+{% block contenido_central %}
+
+                                
+	<div class="body_content k-content" style="padding: 0px; margin-top: 0px">
+            
+    <!--VISTA TAREAS -->
+    <div id="divListadoTareas" style="width: 100%">
+        <div class="row">
+          <div class="col-lg-12" style="background-color: #ffffff;padding: 0;">
+              
+                <h4><b><u>Tareas</u></b></h4>
+                <div class="col-xs-6">
+                  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding-left:0px;">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <button id="btn_filtros" type="button" class="btn btn-outline-info collapsed" data-toggle="collapse" aria-expanded="false" 
+                                        data-target="#contenedor_busqueda" style="color: #17a2b8;border-color: #17a2b8;">Criterios de Búsqueda <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span></button>   
+                            </li>
+                        </ul>
+                    </div>
+                  </nav>
+                </div>
+                <div class="col-xs-6" style="text-align: right;">
+                  <button type="button" class="btn btn-success" onclick="validarExportarExcel();"><span class="glyphicon glyphicon-open-file"></span>&nbsp; Exportar Tareas</button>
+                </div>
+          </div>
+          <!--FILTROS-->
+          <div id="contenedor_busqueda" class="collapse col-lg-12" style="background-color: #ffffff;padding: 0;">
+              <div class="col-lg-8">  
+                <form>
+                    <div class="form-group row">
+                        <div id="div_cmb_cliente" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                          <label for="cmb_cliente" class="control-label">Login:</label>
+                          <div class="input-group div_imput_group">
+                            <input id="name_cmb_cliente" type="hidden">
+                            <input id="cmb_cliente" type="hidden">
+                            <input autocomplete="off" id="txt_cmb_cliente" type="text" name="txt_cmb_cliente" class="form-control form-control-sm"
+                            placeholder="Buscar cliente" onkeyup="searchCliente('cmb_cliente')">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn_cmb_cliente">
+                                <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                              </button>
+                              <ul id="ul_cmb_cliente" class="dropdown-menu pull-right ul-drw-list">
+                                <li></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="div_cmb_tarea" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                          <label for="cmb_tarea" class="control-label">Nombre Tarea:</label>
+                          <div class="input-group div_imput_group">
+                            <input id="name_cmb_tarea" type="hidden">
+                            <input id="cmb_tarea" type="hidden">
+                            <input autocomplete="off" id="txt_cmb_tarea" type="text" name="txt_cmb_tarea" class="form-control form-control-sm"
+                            placeholder="Buscar tarea" onkeyup="getTareas('cmb_tarea')">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn_cmb_tarea" onclick="getTareas('cmb_tarea','S')">
+                                <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                              </button>
+                              <ul id="ul_cmb_tarea" class="dropdown-menu pull-right ul-drw-list">
+                                <li></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="div_txtAsignado" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                            <label for="txtAsignado" class="control-label">Asignado:</label>
+                            <input type="text" class="form-control form-control-sm" id="txtAsignado" name="txtAsignado" 
+                                  placeholder="Ingresar asignado">
+                        </div>
+                        <div id="div_cmb_estadosTareas" class="form-group col-md-3 div_filter" style="margin-bottom: 14px;">
+                          <label for="txt_cmb_estadosTareas" class="control-label">Estado:</label>
+                          <input type="hidden" id="cmb_estadosTareas" value="">
+                          <input type="text" class="form-control form-control-sm" id="txt_cmb_estadosTareas" name="txt_cmb_estadosTareas" 
+                                placeholder="Seleccione estado" data-toggle="popover" readonly disabled>
+                          <button id="btn_cmb_estadosTareas" type="button" onclick="dropDownEstados('txt_cmb_estadosTareas','show');" disabled>
+                            <span id="span_cmb_estadosTareas" style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                          </button>
+                        </div>
+
+                        <div id="div_feSolicitada" class="form-group col-md-3 div_filter" style="margin-bottom: 14px;">
+                          <label for="feSolicitada" class="control-label">Fecha solicitada:</label>
+                          <input autocomplete="off" type="text" class="form-control form-control-sm" id="feSolicitada" name="feSolicitada" 
+                                placeholder="Seleccione fecha">
+                        </div>
+
+                        <div id="div_feFinalizada" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px">
+                          <label for="feFinalizada" class="control-label">Fecha estado:</label>
+                          <input autocomplete="off" type="text" class="form-control form-control-sm" id="feFinalizada" name="feFinalizada" 
+                                placeholder="Seleccione fecha">
+                        </div>
+
+                        <div id="div_txtActividad" class="form-group col-md-3 div_filter" style="margin-bottom: 14px;">
+                          <label for="txtActividad" class="control-label">Número tarea:</label>
+                          <input autocomplete="off" type="text" class="form-control form-control-sm width_txtActividad" id="txtActividad" name="txtActividad" 
+                                placeholder="Ingresar tarea" onkeypress="if(isNaN(String.fromCharCode(event.keyCode))) return false;" maxlength="20">
+                        </div>
+                        <div id="div_txtCaso" class="form-group col-md-3 div_filter" style="margin-bottom: 14px;">
+                          <label for="txtCaso" class="control-label">Número caso:</label>
+                          <input autocomplete="off" type="text" class="form-control form-control-sm" id="txtCaso" name="txtCaso" 
+                                placeholder="Ingresar caso">
+                        </div>
+                        <div id="div_cmbEmpresaBusqueda" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                          <label for="cmbEmpresaBusqueda" class="control-label">Empresa:</label>
+                          <div class="input-group div_imput_group">
+                            <input id="name_cmbEmpresaBusqueda" type="hidden">
+                            <input id="cmbEmpresaBusqueda" class="changeInput" type="hidden">
+                            <input autocomplete="off" id="txt_cmbEmpresaBusqueda" type="text" name="txt_cmbEmpresaBusqueda" class="form-control form-control-sm"
+                            placeholder="Buscar empresa" onkeyup="getEmpresas('cmbEmpresaBusqueda')">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn_cmbEmpresaBusqueda" onclick="getEmpresas('cmbEmpresaBusqueda','S')">
+                                <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                              </button>
+                              <ul id="ul_cmbEmpresaBusqueda" class="dropdown-menu pull-right ul-drw-list">
+                                <li></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="div_cmbCiudadDestino" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                          <label for="cmbCiudadDestino" class="control-label">Ciudad:</label>
+                          <div class="input-group div_imput_group">
+                            <input id="name_cmbCiudadDestino" type="hidden">
+                            <input id="cmbCiudadDestino" type="hidden">
+                            <input autocomplete="off" id="txt_cmbCiudadDestino" type="text" name="txt_cmbCiudadDestino" class="form-control form-control-sm"
+                            placeholder="Buscar ciudad" onkeyup="getCiudades('cmbCiudadDestino')">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn_cmbCiudadDestino" onclick="getCiudades('cmbCiudadDestino','S')">
+                                <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                              </button>
+                              <ul id="ul_cmbCiudadDestino" class="dropdown-menu pull-right ul-drw-list">
+                                <li></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="div_cmb_departamento" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                          <label for="cmb_departamento" class="control-label">Departamento:</label>
+                          <div class="input-group div_imput_group">
+                            <input id="name_cmb_departamento" type="hidden">
+                            <input id="cmb_departamento" type="hidden">
+                            <input autocomplete="off" id="txt_cmb_departamento" type="text" name="txt_cmb_departamento" class="form-control form-control-sm"
+                            placeholder="Buscar departamento" onkeyup="getDepartamento('cmb_departamento')" disabled>
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn_cmb_departamento" disabled onclick="getDepartamento('cmb_departamento','S')">
+                                <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                              </button>
+                              <ul id="ul_cmb_departamento" class="dropdown-menu pull-right ul-drw-list">
+                                <li></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="div_cmb_cuadrillas" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px">
+                          <label for="txt_cmb_cuadrillas" class="control-label">Cuadrillas:</label>
+                          <input type="hidden" id="cmb_cuadrillas" value="">
+                          <input type="text" class="form-control form-control-sm" id="txt_cmb_cuadrillas" name="txt_cmb_cuadrillas" 
+                                placeholder="Selecione cuadrilla" readonly>
+                          <button id="btn_cmb_cuadrillas" type="button" onclick="cargarSeleccionCuadrilla();"><i class="fa fa-search" style="margin-left: 0px;"></i></button>
+                        </div>
+                        <div id="div_cmbCiudadOrigen" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                          <label for="cmbCiudadOrigen" class="control-label">Ciudad Origen:</label>
+                          <div class="input-group div_imput_group">
+                            <input id="name_cmbCiudadOrigen" type="hidden">
+                            <input id="cmbCiudadOrigen" type="hidden">
+                            <input autocomplete="off" id="txt_cmbCiudadOrigen" type="text" name="txt_cmbCiudadOrigen" class="form-control form-control-sm"
+                            placeholder="Buscar ciudad" onkeyup="getCiudadesOrigen('cmbCiudadOrigen')">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn_cmbCiudadOrigen" onclick="getCiudadesOrigen('cmbCiudadOrigen','S')">
+                                <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                              </button>
+                              <ul id="ul_cmbCiudadOrigen" class="dropdown-menu pull-right ul-drw-list">
+                                <li></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="div_cmb_departamentoOrigen" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                          <label for="cmb_departamentoOrigen" class="control-label">Departamento Origen:</label>
+                          <div class="input-group div_imput_group">
+                            <input id="name_cmb_departamentoOrigen" type="hidden">
+                            <input id="cmb_departamentoOrigen" type="hidden">
+                            <input autocomplete="off" id="txt_cmb_departamentoOrigen" type="text" name="txt_cmb_departamentoOrigen" class="form-control form-control-sm"
+                            placeholder="Buscar departamento" onkeyup="getDepartamentoOrigen('cmb_departamentoOrigen')">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn_cmb_departamentoOrigen" onclick="getDepartamentoOrigen('cmb_departamentoOrigen','S')">
+                                <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                              </button>
+                              <ul id="ul_cmb_departamentoOrigen" class="dropdown-menu pull-right ul-drw-list">
+                                <li></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div id="div_txtTareaPadre" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px">
+                          <label for="txtTareaPadre" class="control-label">Número Tarea Padre:</label>
+                          <input autocomplete="off" type="text" class="form-control form-control-sm" id="txtTareaPadre" name="txtTareaPadre" 
+                                placeholder="Ingresar tarea" onkeypress="if(isNaN(String.fromCharCode(event.keyCode))) return false;" maxlength="20">
+                        </div>
+                        <div id="div_cmb_listaProcesos" class="form-group col-md-3 div_filter" style="display: none; margin-bottom: 14px;">
+                          <label for="cmb_listaProcesos" class="control-label">Proceso:</label>
+                          <div class="input-group div_imput_group">
+                            <input id="name_cmb_listaProcesos" type="hidden">
+                            <input id="cmb_listaProcesos" type="hidden">
+                            <input autocomplete="off" id="txt_cmb_listaProcesos" type="text" name="txt_cmb_listaProcesos" class="form-control form-control-sm"
+                            placeholder="Buscar proceso" onkeyup="getListaProcesos('cmb_listaProcesos')">
+                            <div class="input-group-btn">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="btn_cmb_listaProcesos" onclick="getListaProcesos('cmb_listaProcesos','S')">
+                                <span style="font-size: 10px;" class="glyphicon glyphicon-menu-down"></span>
+                              </button>
+                              <ul id="ul_cmb_listaProcesos" class="dropdown-menu pull-right ul-drw-list">
+                                <li></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </form>
+              </div>
+              <div class="col-lg-4" style="text-align: right;">
+                <span class="hint--bottom-left hint--default hint--medium hint--rounded btnAddFilter" aria-label="Agregar filtros">
+                  <button id="btnAddFilter" type="button" class="btn btn-primary" onclick="javascript: seleccionarFiltros();"><span class="glyphicon glyphicon-plus"></span></button>
+                </span>
+                <span class="hint--bottom-left hint--default hint--medium hint--rounded btnResetFilter" aria-label="Resetear filtros">
+                  <button id="btnResetFilter" type="button" class="btn btn-danger" onclick="resetearFiltros();"><span class="glyphicon glyphicon-repeat"></span></button>
+                </span>
+              </div>
+              <div class="col-lg-12">
+                <div id="div_checkboxECUCERT" class="col-lg-2">
+                    <label><b>Tareas Ecucert</b></label>&nbsp;<input autocomplete="off" type="checkbox" id="checkboxECUCERT">
+
+                </div>
+                <div class="col-lg-8" style="text-align: center;">
+                  <button type="button" class="btn btn-primary" onclick="buscar();"><span class="glyphicon glyphicon-search"></span>&nbsp;Consultar</button>
+                  <button type="button" class="btn btn-warning" onclick="limpiarFiltros();"><span class="glyphicon glyphicon-erase"></span>&nbsp;Limpiar</button>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12" style="background-color: #ffffff;">    
+                      <div class="loaderDet" id="divLoaderDetalleTareas" style="display:none;"></div>
+          </div>
+        </div>
+        </br>
+        
+        <!-- Funcionalidad de vista legado-->
+        <form action="{{ path('tareas_exportarConsulta') }}" method="post">
+          <input type='hidden' name='hid_cliente' id='hid_cliente' value='' />
+          <input type='hidden' name='hid_tarea' id='hid_tarea' value='' />
+          <input type='hidden' name='hid_asignado' id='hid_asignado' value='' />
+          <input type='hidden' name='hid_estado' id='hid_estado' value='' />			
+          <input type='hidden' name='hid_numeroTarea' id='hid_numeroTarea' value='' />
+          <input type='hidden' name='hid_numeroCaso' id='hid_numeroCaso' value='' />
+          <input type='hidden' name='hid_departamento' id='hid_departamento' value='' />
+          <input type='hidden' name='hid_opcion_busqueda' id='hid_opcion_busqueda' value='N' />
+          <input type='hidden' name='hid_empresa' id='hid_empresa' value='' />
+          <input type='hidden' name='hid_cuadrilla' id='hid_cuadrilla' value='' />
+          <input type="hidden" id="hid_grados_la" name="hid_grados_la">
+          <input type="hidden" id="hid_minutos_la" name="hid_minutos_la">
+          <input type="hidden" id="hid_segundos_la" name="hid_segundos_la">
+          <input type="hidden" id="hid_decimas_segundos_la" name="hid_decimas_segundos_la">
+          <input type="hidden" id="hid_latitud" name="hid_latitud">
+          <input type="hidden" id="hid_grados_lo" name="hid_grados_lo">
+          <input type="hidden" id="hid_minutos_lo" name="hid_minutos_lo">
+          <input type="hidden" id="hid_segundos_lo" name="hid_segundos_lo">
+          <input type="hidden" id="hid_decimas_segundos_lo" name="hid_decimas_segundos_lo">
+          <input type="hidden" id="hid_longitud" name="hid_longitud">
+          <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id="div_fe_apertura" style="display:none;"></div></td>
+                <td><div id="div_hora_apertura" style="display:none;"></div></td>
+            </tr>	
+          </table>
+          </br> 
+          
+          <!--GRID DE TAREAS-->
+          <div class="row">
+            <div class="col-lg-12" style="background-color: #ffffff;padding: 0;">    
+              <table id="gridTareas" class="table table-striped table-bordered compact hover" style="width:100%;">
+                  <thead>
+                        <tr id="filterboxrow">
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Acciones</th>
+                          <th class="cabeceraGrid">Emp</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Pto. Cliente</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Numero Caso</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Estado del Caso</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Nombre Proceso</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>No. Tarea Padre</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>No. Tarea</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Tarea</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Observacion</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Responsable Asignado</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Fecha Ejecucion</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Actualizado Por</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Fecha Estado</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Estado</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Se Factura</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Es Hal</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Atender Antes</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Tiempo<br/>Transcurrido</th>
+                        </tr>
+                        <tr>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">acciones</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">strEmpresaTarea</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">clientes</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">numero_caso</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">estado_caso</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">nombre_proceso</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">numero_tarea_Padre</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">numero_tarea</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">nombre_tarea</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">observacion</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">ref_asignado_nombre</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">feSolicitada</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">actualizadoPor</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">feTareaHistorial</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">estado</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">seFactura</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">esHal</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">atenderAntes</th>
+                            <th class="cabeceraGrid" style="vertical-align: inherit;">duracionTarea</th>
+                        </tr>
+                  </thead>
+              </table>
+            </div>
+          </div>
+
+        </form>	       
+      </div>
+   
+    </div>
+    <div id="map_canvasIncidente" style="width:500px; height:500px"></div>
+    <div id="map_canvasManga1" style="width:500px; height:500px"></div>
+    <div id="map_canvasManga2" style="width:500px; height:500px"></div>
+
+  </div>
+
+  <!-- Modal Agregar fitros de busquedas-->
+  <div class="modal fade" id="modalAgresgarFiltros" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Agregar filtro de búsqueda</h4>
+        </div>
+        <div class="modal-body">
+          <form >  
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="alert alert-info" role="alert">
+                  <span class="glyphicon glyphicon-info-sign"></span> Seleccione los filtros que desea agregar al formulario para la consulta de tareas.
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <label><input name="chbxAllFiltros" type="checkbox" id="chbxAllFiltros"><b>&nbsp; SELECCIONAR TODO</b></label>
+              </div>
+            </div>
+          </br>
+            <div class="row">
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxLoguin" value="cmb_cliente"><b>&nbsp; Login</b></label>
+              </div>
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros"  name="chbxFiltros" type="checkbox" id="chbxNombreTarea" value="cmb_tarea"><b>&nbsp; Nombre tarea</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxAsignado" value="txtAsignado"><b>&nbsp; Asignado</b></label>
+              </div>
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxEstado" value="cmb_estadosTareas" checked><b>&nbsp;Estado</b></label>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxFeSolicitada" value="feSolicitada" checked><b>&nbsp; Fecha solicitada</b></label>
+              </div>
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxFeEstado" value="feFinalizada"><b>&nbsp;Fecha estado</b></label>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxNumeroTarea" value="txtActividad" checked><b>&nbsp; Número tarea</b></label>
+              </div>
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxNumeroCaso" value="txtCaso" checked><b>&nbsp; Número caso</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxEmpresa" value="cmbEmpresaBusqueda"><b>&nbsp; Empresa</b></label>
+              </div>
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxCiudad" value="cmbCiudadDestino"><b>&nbsp; Ciudad</b></label>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxDepartamento" value="cmb_departamento"><b>&nbsp; Departamento</b></label>
+              </div>
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxCuadrilla" value="cmb_cuadrillas"><b>&nbsp; Cuadrilla</b></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxCiudadOrigen" value="cmbCiudadOrigen"><b>&nbsp; Ciudad Origen</b></label>
+              </div>
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxDepartamentoOrigin" value="cmb_departamentoOrigen"><b>&nbsp; Departamento Origen</b></label>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxNumeroTareaPadre" value="txtTareaPadre"><b>&nbsp; Número Tarea Padre</b></label>
+              </div>
+              <div class="col-xs-6">
+                <label><input class="chbxFiltros" name="chbxFiltros" type="checkbox" id="chbxProceso" value="cmb_listaProcesos"><b>&nbsp; Proceso</b></label>
+              </div>
+            </div> 
+            <br/>
+            <div class="alert alert-danger" id="alertaValidaFiltros" role="alert" style="display:none;" >
+              <strong></strong>
+            </div>
+            <br/>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarFiltros" onclick="agregarFiltros();">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalValidaTareasAbiertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+           <h4 class="modal-title"> Mensaje </h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info" role="alert">
+            <i class="fa fa-spinner fa-spin"></i> VALIDANDO TAREA...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalMensajeTareas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="tittelMessage" > Mensaje </h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger" role="alert" style="display:none;" id="alertaMensajeTareasDiv">
+              <strong  id="alertaMensajeTareas"></strong>
+          </div>
+          <div class="alert alert-success"  role="alert" style="display:none;" id="successMensajeTareasDiv">
+              <strong id="successMensajeTareas"></strong>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarMensajeTarea">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalEjecucionTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="accionTareaTitle"></h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaEjecucionTarea" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+
+                <div id="divtxtTarea" class="col-md-6">
+                  <label for="txtTarea" class="control-label">Tarea:</label>
+                  <label id="txtTarea"></label>
+                  <input id="txtDetalleTarea" class="inputtxt" type="text" name="detalle" maxlength="50" hidden>
+                  <input id="txtTiempo" class="inputtxt" type="text" name="tiempo" maxlength="50" hidden>
+                  <input id="txtPersonaEmpresaRol" class="inputtxt" type="text" name="persona" maxlength="50" hidden>
+                  <input id="txtNumeroTarea" class="inputtxt" type="text" name="numeroTarea" maxlength="50" hidden>
+                  <input id="txtNombreProceso" class="inputtxt" type="text" name="nombreProceso" maxlength="50" hidden>
+                  <input id="txtUsrAsignado" class="inputtxt" type="text" name="usrAsignado" maxlength="50" hidden>
+                  <input id="txtDeptAsignado" class="inputtxt" type="text" name="deptAsignado" maxlength="50" hidden>
+                  <input id="txtDetalleHist" class="inputtxt" type="text" name="detalleHist" maxlength="50"hidden>
+                  <input id="txtOrigen" class="inputtxt" type="text" name="origen" maxlength="50" hidden>
+                  <input id="txtNombreUsrAsignado" class="inputtxt" type="text" name="nombre" maxlength="50" hidden>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtaMotivoPausa" class="col-xs-12">
+                  <label for="cmbMotivoPausa" class="control-label">Motivo Pausa<font size="3" color="red">*</font>:</label>
+                  <select class="form-control" id="cmbMotivoPausa">
+                      <option value='' selected>Seleccione...</option>
+                  </select>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <div id="divtxtaDetalleTarea" class="col-xs-12">
+                  <label for="txtaDetalleTarea" class="control-label">Observaci&oacute;n<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtObservacionTarea" maxlength="4000"></textarea>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarEjecucionTarea">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarEjecucionTarea"><span class="text-btn">Aceptar</span></button>
+          <button id="btnLoadingGrabarAsigLote" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modalConfirmaTareaEjecucion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="accionTareaTitle">Alerta</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaNuevaAsignacionLote" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtTarea" class="col-md-6">
+                  <label for="txtTarea" class="control-label">Actualmente posee la tarea #<span aria-hidden="true" id="txtNumeroTareaConfirma"></span> en ejecución, ¿Desea pausarla?</label>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarConfirmaTareaEjecucion">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnConfirmaTareaEjecucion"><span class="text-btn">Aceptar</span></button>
+          <button id="btnLoadingConfirmaTareaEjecucion" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalIngresoSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="">Ingresar Seguimiento</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaIngresoSeguimiento" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtTarea" class="col-md-6">
+                  <label for="txtTarea" class="control-label">Tarea:</label>
+                  <label id="txtTareaSeg"></label>
+                  <input id="txtDetalleTareaSeg" class="inputtxt" type="text" name="detalle" maxlength="50" hidden>
+                  <input id="txtIdCaso" class="inputtxt" type="text" name="idCaso" maxlength="100" hidden>
+                  <input id="txtSeguimientoInterno" class="inputtxt" type="text" name="seguimientoInterno" maxlength="10" hidden>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtaDetalleTarea" class="col-xs-12">
+                  <label for="" class="control-label">Seguimiento<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtSeguimientoTarea" maxlength="4000"></textarea>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <div id="divtxtaRegistroInterno" class="col-xs-12" style="display: none;">
+                  <label for="cmbRegistroInterno" class="control-label">Registro Interno<font size="3" color="red">*</font>:</label>
+                  <select class="form-control" id="cmbRegistroInterno">
+                      <option value='N'>No</option>
+                      <option value='S'>Si</option>
+                  </select>
+                </div>
+                <br/>
+            </div>
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarIngresoSeguimiento">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnIngresoSeguimiento">Guardar</button>
+          <button id="btnLoadingIngresoSeguimiento" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalMostrarSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-edit-content" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="accionTareaTitle">Seguimiento Tareas</h4>
+        </div>
+        <div class="modal-body">
+          <div id="detalleSeguimiento" style="overflow: auto;max-height: 450px;">
+            <table class="table table-striped table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th class="bg-header-titlle" style="position: sticky;top: 0;z-index: 1;"><strong>Observación</strong></th>
+                  <th class="bg-header-titlle" style="position: sticky;top: 0;z-index: 1;"><strong>Ejecutante</strong></th>
+                  <th class="bg-header-titlle" style="position: sticky;top: 0;z-index: 1;"><strong>Departamento</strong></th>
+                  <th class="bg-header-titlle" style="position: sticky;top: 0;z-index: 1;"><strong>Fecha Observación</strong></th>
+                </tr>
+              </thead>
+              <tbody id="tbodyMostrarSeguimiento">
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Finalizar Tarea -->
+  <div class="modal fade" id="modalFinalizarTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="">Finalizar Tarea</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaFinalizaTarea" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtTareaFinaliza" class="col-md-8">
+                  <label for="txtTareaInicial" class="control-label">Tarea Inicial:</label>
+                  <label id="txtTareaInicial"></label>
+                </div> 
+                <div id="divchxFinalTareaHereda" style="display: none;" class="col-md-4">
+                  <label>
+                    <input id="chxFinalTareaHereda" type="checkbox"> Hereda tarea anterior</input>
+                  </label>
+                </div> 
+            </div>
+            <div id="divcmbTareaFinal" class="row" >
+                <div class="divcmbTareaFinal col-xs-6" >
+                  <label for="cmbTareaFinal" class="control-label lbtoppadding">Tarea Final<font size="3" color="red">*</font>:</label>
+                  <select class="form-control" id="cmbTareaFinal">
+                      <option value='-1' selected>Seleccionar fin de tarea</option>
+                  </select>
+                </div>
+                <div class="col-xs-6"></div>
+            </div>
+            <div id="divtxtTareaFinalHereda" class="row" style="display: none;">
+                <div class="divtxtTareaFinalHereda col-xs-6">
+                 <label for="txtTareaFinalHereda" class="control-label lbtoppadding">Tarea Final:</label>
+                  <label id="txtTareaFinalHereda" class="lbtoppadding"></label>
+                  <input type="hidden" id="txtTareaFinalHereda-name">
+                  <input type="hidden" id="txtTareaFinalHereda-id" value="-1">
+                </div>
+            </div>
+
+            <div class="row" id="divIdArboltarea" style="display: none;">
+                <div id="divdrwTareaFinal" class="divdrwTareaFinal col-xs-6 dropdown">
+                    <label for="drwTareaFinal" class="control-label lbtoppadding">Tarea Final<font size="3" color="red">*</font>:</label>
+                    <button id="drwTareaFinal" class="btn btn-default btn-sm btn-block dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 7px 10px; text-align:left"><span id="spnTareaFinal">Seleccionar fin de tarea</span> &nbsp;&nbsp;<span style="float: right; margin-top: 7px;" class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" style="margin-left: 15px;" id="drwArbolTarea">
+                      <!-- load arbol de tarea -->
+                    </ul>
+                    <input type="hidden" id="drwArbolTarea-name">
+                    <input type="hidden" id="drwArbolTarea-namel1">
+                    <input type="hidden" id="drwArbolTarea-namel2">
+                    <input type="hidden" id="drwArbolTarea-id" value="-1">
+                    <input type="hidden" id="drwArbolTarea-RequiereMaterial" value="-1">
+                    <input type="hidden" id="drwArbolTarea-RequiereFibra" value="-1">
+                    <input type="hidden" id="drwArbolTarea-RequiereRutaFibra" value="-1">
+                    <input type="hidden" id="drwArbolTarea-RequiereEquipo" value="-1">
+                </div>
+                <div id="divcmbMotivoTareaFinal" class="divcmbMotivoTareaFinal col-xs-6">
+                  <label for="cmbMotivoTareaFinal" class="control-label lbtoppadding">Motivo<font size="3" color="red">*</font>:</label>
+                  <select class="form-control" id="cmbMotivoTareaFinal" disabled >
+                      <option value='-1' selected>Seleccione motivo</option>
+                  </select>
+                </div>
+            </div>           
+            <div class="row">
+                <div id="divtxtaObsTareaFinal" class="col-xs-12">
+                  <label for="txtaObsTareaFinal" class="control-label lbtoppadding">Observación<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtaObsTareaFinal" maxlength="500"></textarea>
+                </div>
+            </div>
+            <div id="divrbObsTareaFinal" class="row" style="display: none;">
+              <div class="divrbObsTareaFinal col-xs-12">
+                <label for="txtaObsTareaFinal" class="control-label lbtoppadding">Es Solución<font size="3" color="red">*</font>:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                Si <input type="radio" name="esSolucion" id="radio1" value="S">&nbsp;&nbsp;
+                No <input type="radio" name="esSolucion" id="radio2" value="N">
+              </div>
+            </div>          
+            <div class="row">
+                <div id="divtxtFechaInicio" class="col-xs-6">
+                  <label for="txtFechaInicio" class="control-label lbtoppadding">Fecha De Inicio:</label> 
+                  <input type="text" class="form-control" id="txtFechaInicio" readonly maxlength="50">
+                </div>
+                <div id="divtxtHoraInicio" class="col-xs-6">
+                  <label for="txtHoraInicio" class="control-label lbtoppadding">Hora Inicial Tarea:</label> 
+                  <input type="text" class="form-control" id="txtHoraInicio" readonly maxlength="50">
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtFechCierre" class="col-xs-6">
+                  <label for="txtFechaCierre" class="control-label lbtoppadding">Fecha De Cierre:</label> 
+                  <input type="text" class="form-control" id="txtFechaCierre" readonly maxlength="50">
+                </div>
+                <div id="divtxtHoraCierre" class="col-xs-6">
+                  <label for="txtHoraCierre" class="control-label lbtoppadding">Hora De Cierre:</label> 
+                  <input type="text" class="form-control" id="txtHoraCierre" readonly maxlength="50">
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtTiempoTotal" class="col-xs-6">
+                  <label for="txtTiempoTotal" class="control-label lbtoppadding">Tiempo Total Tarea (minutos) index:</label> 
+                  <input type="text" class="form-control" id="txtTiempoTotal" readonly maxlength="50">
+                </div>
+                <div class="col-xs-6"></div>
+            </div>
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarFinalizaTarea">Grabar</button>
+          <button id="btnLoadingGrabarFinalizaTarea" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Reasignar Tarea -->
+<div class="modal fade" id="modalReasignarTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="">Reasignar Tarea</h4>
+      </div>
+      <ul class="nav nav-tabs" id="tab_manual_hal" style="display: none;">
+        <li id="li_tarea_manual" class="active"><a data-toggle="tab" href="#tarea_manual">Manual</a></li>
+        <li id="li_tarea_hal"><a data-toggle="tab" href="#tarea_hal">Hal</a></li>
+      </ul>
+      <div class="tab-content">
+      <div id="tarea_manual" class="tab-pane fade in active">
+      <div class="modal-body"> 
+        <div id="tittle_tareaHal" style="margin-bottom: 6px; display:none;">Información - <b style="color:red;margin-bottom: 16px;">Tarea HAL</b></div>
+        <form>
+          <div class="alert alert-danger" id="alertaValidaReasignaTarea" role="alert" style="display:none;" >
+              <strong></strong>
+          </div>
+          <div class="row">
+              <div id="divtxtTareaReasigna" class="col-md-8">
+                <label for="txtTareaInicialReasigna" class="control-label">Tarea:</label>
+                <label id="txtTareaInicialReasigna"></label>
+              </div> 
+              <div id="divchxRespuestaInmediata" class="col-md-4">
+                <label>
+                  <input id="chxRespuestaInmediata" type="checkbox"> Respuesta Inmediata</input>
+                  <input type="hidden" value="" id="intIdDetalleReasigna">
+                </label>
+              </div> 
+          </div>
+          <div class="row" id="divIdArboltareaReasig" style="display: none;">
+              <div id="divdrwTareaFinalReasig" class="divdrwTareaFinalReasig col-xs-6 dropdown">
+                  <label for="drwTareaFinalReasig" class="control-label lbtoppadding">Tarea Final<font size="3" color="red">*</font>:</label>
+                  <button id="drwTareaFinalReasig" class="btn btn-default btn-sm btn-block dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 7px 10px; text-align:left"><span id="spnTareaFinalReasig">Seleccionar fin de tarea</span> &nbsp;&nbsp;<span style="float: right; margin-top: 7px;" class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" style="margin-left: 15px;" id="drwArbolTareaReasig">
+                    <!-- load arbol de tarea -->
+                  </ul>
+                  <input type="hidden" id="drwArbolTareaReasig-name">
+                  <input type="hidden" id="drwArbolTareaReasig-namel1">
+                  <input type="hidden" id="drwArbolTareaReasig-namel2">
+                  <input type="hidden" id="drwArbolTareaReasig-id" value="-1">
+                  <input type="hidden" id="drwArbolTareaReasig-RequiereMaterial" value="-1">
+                  <input type="hidden" id="drwArbolTareaReasig-RequiereFibra" value="-1">
+                  <input type="hidden" id="drwArbolTareaReasig-RequiereRutaFibra" value="-1">
+                  <input type="hidden" id="drwArbolTareaReasig-RequiereEquipo" value="-1">
+              </div>
+              <div id="divcmbMotivoTareaFinalReasig" class="divcmbMotivoTareaFinalReasig col-xs-6">
+                <label for="cmbMotivoTareaFinalReasig" class="control-label lbtoppadding">Motivo<font size="3" color="red">*</font>:</label>
+                <select class="form-control" id="cmbMotivoTareaFinalReasig" disabled >
+                    <option value='-1' selected>Seleccione motivo</option>
+                </select>
+              </div>
+          </div> 
+          <div class="row" >
+              <div id="divcmbEmpresaReasigna" class="divcmbEmpresaReasigna col-xs-6" >
+                <label for="cmbEmpresaReasigna" class="control-label lbtoppadding">Empresa<font size="3" color="red">*</font>:</label>
+                <select class="form-control" id="cmbEmpresaReasigna">
+                    <option value='-1' selected>Seleccionar empresa</option>
+                </select>
+              </div>
+              <div id="divcmbCiudadReasigna" class="divcmbCiudadReasigna col-xs-6" >
+                <label for="cmbCiudadReasigna" class="control-label lbtoppadding">Ciudad<font size="3" color="red">*</font>:</label>
+                <input id="cmbCiudadReasigna" type="hidden" value="">
+                <input autocomplete="off" id="txtCiudad" class="form-control inputtxt" type="text" name="txtCiudad" placeholder="Buscar Ciudad" disabled>
+              </div>
+          </div> 
+          <div class="row" >
+            <div class="col-xs-6" >
+            
+            </div>
+            <div id="divrdoTipoEmpleado" class="divrdoTipoEmpleado col-xs-6" style="padding-top: 10px;">
+              <label class="radio-inline">
+                <input type="radio" name="rdoTipoEmpleado" id="radio_empleado" value="Empleado" checked><label>Empleado</label>
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="rdoTipoEmpleado" id="radio_cuadrilla" value="Cuadrilla"><label>Cuadrilla</label>
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="rdoTipoEmpleado" id="radio_contratista" value="Contratista"><label>Contratista</label>
+              </label>
+            </div>
+          </div>
+          <div class="row" >
+            <div id="divcmbDepartReasigna" class="divcmbDepartReasigna col-xs-6" >
+              <label for="cmbDepartReasigna" class="control-label lbtoppadding">Departamento<font size="3" color="red">*</font>:</label>
+              <input id="cmbDepartReasigna" type="hidden" value="">
+              <input autocomplete="off" id="txtDepartment" class="form-control inputtxt" type="text" name="txtDepartment" placeholder="Buscar Departamento" disabled>
+            </div>
+            <div id="divcmbEmpleadoReasigna" class="divcmbResponsable col-xs-6" >
+              <label for="cmbEmpleadoReasigna" class="control-label lbtoppadding">Empleado<font size="3" color="red">*</font>:</label>
+              <input class="smsErrorEmpleado" type="hidden" value="">
+              <input id="cmbEmpleadoReasigna" type="hidden" value="">
+              <input autocomplete="off" id="txtEmpleado" class="form-control inputtxt" type="text" name="txtEmpleado" placeholder="Buscar Empleado" disabled>
+            </div>
+            <div id="divcmbCuadrillaReasigna" class="divcmbResponsable col-xs-6" style="display: none;">
+              <label for="cmbCuadrillaReasigna" class="control-label lbtoppadding">Cuadrilla<font size="3" color="red">*</font>:</label>
+              <input class="smsErrorCuadrilla" type="hidden" value="">
+              <input id="cmbCuadrillaReasigna" type="hidden" value="">
+              <input autocomplete="off" id="txtCuadrilla" class="form-control inputtxt" type="text" name="txtCuadrilla" placeholder="Buscar Cuadrilla" disabled>
+            </div>
+            <div id="divcmbContratistaReasigna" class="divcmbResponsable col-xs-6" style="display: none;">
+              <label for="cmbContratistaReasigna" class="control-label lbtoppadding">Contratista<font size="3" color="red">*</font>:</label>
+              <input class="smsErrorContratista" type="hidden" value="">
+              <input id="cmbContratistaReasigna" type="hidden" value="">
+              <input autocomplete="off" id="txtContratista" class="form-control inputtxt" type="text" name="txtContratista" placeholder="Buscar Contratista" disabled>
+            </div>
+          </div>
+          <div class="row" >
+            <div id="divcmbdDateEjecReasigna" class="divdatetimepickerEjecReasigna col-xs-6">
+                <label for="datetimepickerEjecReasigna" class="control-label lbtoppadding">Fecha de ejecución<font size="3" color="red">*</font>:</label>
+                <div class='input-group date' id='datetimepickerEjecReasigna'> 
+                    <input type='text' class='form-control' id='txtDatetimepickerEjecReasigna' value = ''/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div id="divcmbHourEjecReasigna" class="divcmbHourEjecReasigna col-xs-6" >
+              <label for="cmbHourEjecReasigna" class="control-label lbtoppadding">Hora de ejecución<font size="3" color="red">*</font>:</label>
+              <select class="form-control" id="cmbHourEjecReasigna">
+                  <option value='-1' selected>Seleccionar hora de ejecución</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+              <div id="divtxtaObsTareaFinalReasigna" class="col-xs-12">
+                <label for="txtaObsTareaFinalReasigna" class="control-label lbtoppadding">Observación<font size="3" color="red">*</font>:</label>
+                <textarea class="form-control" id="txtaObsTareaFinalReasigna" maxlength="4000"></textarea>
+              </div>
+          </div>
+          
+          <div class="row">
+              <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+          </div>
+          <div id="formDatosContacto">
+              <div id="divTitleDatosContacto" class="col-xs-12 lbtoppadding">
+                <i class="fa fa-user" aria-hidden="true"></i>&nbsp;<strong>Registro de Contacto del Cliente</strong>
+              </div>
+              <div class="row">
+                <div id="divtxtNombreContacto" class="col-xs-6">
+                  <label class="control-label lbtoppadding" for="txtNombreContacto">Nombre y Apellido:</label>
+                  <input class="form-control" type="text" value="" name="txtNombreContacto" id="txtNombreContacto" maxlength="50" onkeyup="validateContactNombre();">
+                  <span id="lblErrorTxtNombreContacto" style="color: red"></span>
+                </div>
+                <div id="divtxtCelularContacto" class="col-xs-6">
+                  <label class="control-label lbtoppadding" for="txtCelularContacto">Celular:</label>
+                  <input class="form-control" type="text" value="" name="txtCelularContacto" id="txtCelularContacto" maxlength="10" onkeyup="validateContactCelular();">
+                  <span id="lblErrorTxtCelularContacto" style="color: red"></span>
+                </div>
+              </div>         
+
+              <div class="row">
+                <div id="divtxtCargoContacto" class="col-xs-6">
+                  <label class="control-label lbtoppadding" for="txtCargoContacto">Cargo/Área:</label>
+                  <input class="form-control" type="text" value="" name="txtCargoContacto" id="txtCargoContacto" maxlength="50" onkeyup="validateContactCargo();">
+                  <span id="lblErrorTxtCargoContacto" style="color: red"></span>
+                </div>
+                <div  id="divtxtCorreoContacto" class="col-xs-6">
+                  <label class="control-label lbtoppadding" for="txtCorreoContacto">Correo:</label>
+                  <input class="form-control" type="text" value="" name="txtCorreoContacto" id="txtCorreoContacto" onkeyup="validateContactEmail();">
+                  <span id="lblErrorTxtCorreoContacto" style="color: red"></span>
+                </div>
+              </div>  
+
+              <div class="row">
+                <div  id="divtxtConvencionalContacto" class="col-xs-6">
+                  <label class="control-label lbtoppadding" for="txtCorreoContacto1">Convencional:</label>
+                  <div class="row">
+                    <div id="divcmbPrefijoTelefono" class="divcmbEmpresaReasigna col-xs-4" >                    
+                      <select class="form-control" id="cmbPrefijoTelefono">
+                          
+                      </select>
+                    </div>
+                    <div id="divtxtConvencional" class="col-xs-8">
+                      <input class="form-control" type="text" value="" name="txtConvencional" id="txtConvencional" maxlength="7" onkeyup="validateContactConvencional();">
+                      <span id="lblErrorTxtConvencional" style="color: red"></span>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+          
+
+          
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="btnGrabarReasignaTarea"><span class="text-btn">Guardar</span></button>
+        <button id="btnLoadingGrabarReasignaTarea" class="btn btn-primary" style="display: none;">
+            <i class="fa fa-spinner fa-spin"></i>Loading
+        </button>
+      </div>
+      </div>
+      <div id="tarea_hal" class="tab-pane fade">
+        <div id="reasignarHal-tarea">
+        
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Reprogramar Tarea (no hal)-->
+<div class="modal fade" id="modalReprogramarTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="">Reprogramar Tarea</h4>
+      </div>
+      <div id="reprogramar-tarea" style="display: block;">
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaReprogramarTarea" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtTareaReprogramar" class="col-xs-6">
+                  <label for="txtTareaInicialReprogramar" class="control-label">Tarea:</label>
+                  <label id="txtTareaInicialReprogramar"></label>
+                </div>  
+            </div>
+            <div  class="row">
+              <div id="divcmbMotivoReprogramar" class="divcmbMotivoReprogramar col-xs-6" style="display: none;">
+                <label for="cmbMotivoReprogramar" class="control-label lbtoppadding">Motivo<font size="3" color="red">*</font>:</label>
+                <select class="form-control" id="cmbMotivoReprogramar">
+                    <option value='-1' selected>Seleccionar motivo</option>
+                    <option value='C'>Cliente Solicita Reprogramar</option>
+                    <option value='T'>Técnico Solicita Reprogramar</option>
+                </select>
+              </div>
+            </div>
+            <div class="row" >
+              <div id="divcmbdDateEjecReprogramar" class="divdatetimepickerEjecReprogramar col-xs-6">
+                  <label for="datetimepickerEjecReprogramar" class="control-label lbtoppadding">Fecha de ejecución<font size="3" color="red">*</font>:</label>
+                  <div class='input-group date' id='datetimepickerEjecReprogramar'> 
+                      <input type='text' class='form-control' id='txtDatetimepickerEjecReprogramar' value = ''/>
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+              </div>
+              <div id="divcmbHourEjecReprogramar" class="divcmbHourEjecReprogramar col-xs-6" >
+                <label for="cmbHourEjecReprogramar" class="control-label lbtoppadding">Hora de ejecución<font size="3" color="red">*</font>:</label>
+                <select class="form-control" id="cmbHourEjecReprogramar">
+                    <option value='-1' selected>Seleccionar hora de ejecución</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+                <div id="divtxtaObsReprogramar" class="col-xs-12">
+                  <label for="txtaObsReprogramar" class="control-label lbtoppadding">Observación<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtaObsReprogramar" maxlength="4000"></textarea>
+                </div>
+            </div>
+            
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarReprogramarTarea"><span class="text-btn">Guardar</span></button>
+        </div>
+      </div>
+      <div id="reprogramarHal-tarea" style="display: block;">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cargar Archivo Tarea -->
+<div class="modal fade" id="modalCagarArchivos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="">Subir Archivos Tareas</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" id="alertaValidaCargarArchivo" role="alert" style="display:none;" >
+          <strong></strong>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Seleccionar Archivos</div>
+          <div class="panel-body">
+            <form id="formFileTarea">
+              <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                          <div id="divInputFiles" class="controls">
+                            <!-- Content input files-->
+                          </div>
+                    </div>
+                    <input id="IdTarea" name="IdTarea" value="" type="hidden">
+                    <input id="origenTarea" name="origenTarea" value="S" type="hidden">
+                    <input id="subirEnMsNfs" name="subirEnMsNfs" value="S" type="hidden">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="btnCargarArchivo">Subir</button>
+        <button id="btnLoadingCargarArchivo" class="btn btn-primary" style="display: none;">
+            <i class="fa fa-spinner fa-spin"></i>Loading
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ver Archivo Tarea -->
+<div class="modal fade" id="modalVerArchivos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="accionTareaTitle">Documentos Cargados</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" id="alertaValidaEliminarArchivo" role="alert" style="display:none;" >
+          <strong></strong>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="bg-header-titlle" style="width: 250px;"><strong>Nombre Archivo</strong></th>
+              <th class="bg-header-titlle"><strong>Usr. Creación</strong></th>
+              <th class="bg-header-titlle"><strong>Fecha de Carga</strong></th>
+              <th class="bg-header-titlle"><strong>Acciones</strong></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyMostrarArchivos">
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal cancelar tarea-->
+<div class="modal fade" id="modalCancelarTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="accionCancelaTitle"></h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="alert alert-danger" id="alertaValidaCancelaTarea" role="alert" style="display:none;" >
+              <strong></strong>
+          </div>
+          <div class="row">
+
+              <div id="divtxtTarea" class="col-xs-12">
+                <label for="txtTarea" class="control-label">Tarea:</label>
+                <label id="txtTareaCancela"></label>
+              </div>
+          </div>
+          <div class="row">
+              <div id="divtxtaObsTareaCanc" class="col-xs-12">
+                <label for="txtaObsTareaCanc" class="control-label">Observaci&oacute;n:</label>
+                <textarea class="form-control" id="txtaObsTareaCanc" maxlength="500"></textarea>
+              </div>
+              <br/>
+              <br/>
+          </div>
+          <!--div class="row">
+              <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+          </div-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarEjecucionTarea">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="btnGrabarCancelaTarea"><span class="text-btn">Guardar</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalFinTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h4 class="modal-title" id="tittelMensajeFinTarea" > Mensaje </h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" role="alert" style="display:none;" id="alertaMensajeFinTareasDiv">
+            <strong  id="alertaMensajeFinTareas"></strong>
+        </div>
+        <div class="alert alert-success"  role="alert" style="display:none;" id="successMensajeFinTareasDiv">
+            <strong id="successMensajeFinTareas"></strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMensajeFinTarea">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para mensaje de confirmación exportar tarea-->
+<div class="modal fade" id="modalConfirmaExportar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h4 class="modal-title" id="titleConfirmaExportar">Mensaje</h4>
+      </div>
+      <div class="modal-body" style="padding: 0px 15px">
+        <div class="alert alert-info" role="alert" id="alertaConfirmaExportar">
+            <strong  id="alertaConfirmaExportar">¿Está seguro de generar el <b>Reporte de Tareas</b></strong>
+        </div>
+        <div>
+          <div class="radio">
+            <label class="radio-inline">
+              <input type="radio" name="rd_opcionReporte" id="rd_filtro" value="chk_filtro" checked>
+              Reporte con filtros selecionados
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="rd_opcionReporte" id="rd_todo" value="chk_todo">
+              Todos los registros
+            </label>
+          </div>
+        </div>
+      </br>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id= "btnConfirmaExportarCancel"><span class="text-btn">No</span></button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnConfirmaExportarOk"><span class="text-btn">Si</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para mensajes personalizados-->
+<div class="modal fade" id="modalSmsCustom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h4 class="modal-title" id="tittelSmsCustom" >Mensaje</h4>
+      </div>
+      <div class="modal-body" style="padding: 0px 15px">
+        <div class="alert " role="alert" style="display:none;" id="alertaSmsCustomDiv">
+            <strong  id="alertaSmsCustom"></strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id= "btnSmsCustomCancel" style="display:none;"><span class="text-btn">Cerrar</span></button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnSmsCustomOk"><span class="text-btn">OK</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/map.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/Multiupload.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/Tareas/tareas.js?14') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/Tareas/autocomplete.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/general.js?14') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/tecnico/js/InfoServicio/controlActivos.js') }}"></script>
+    
+{% endblock contenido_central %}

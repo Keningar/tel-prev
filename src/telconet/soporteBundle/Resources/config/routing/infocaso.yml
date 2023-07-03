@@ -1,0 +1,361 @@
+infocaso:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:InfoCaso:index" }
+    
+infocaso_new:
+    pattern:  /new
+    defaults: { _controller: "soporteBundle:InfoCaso:new" }
+
+infocaso_create:
+    pattern:  /create
+    defaults: { _controller: "soporteBundle:InfoCaso:create" }
+    requirements: { _method: post }
+    
+infocaso_updateDate:
+    pattern:  /updateDate
+    defaults: { _controller: "soporteBundle:InfoCaso:updateDate" }
+    requirements: { _method: post }
+
+infocaso_getTiposElementos:
+    pattern:  /getTiposElementos
+    defaults: { _controller: "soporteBundle:InfoCaso:getTiposElementos" }
+
+infocaso_getElementos:
+    pattern:  /getElementos
+    defaults: { _controller: "soporteBundle:InfoCaso:getElementos" }
+    
+infocaso_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: "soporteBundle:InfoCaso:getEncontrados" }
+    
+infocaso_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "soporteBundle:InfoCaso:show" }
+    
+infocaso_getDetalles:
+    pattern:  /{id}/getDetalles
+    defaults: { _controller: "soporteBundle:InfoCaso:getDetalles" }
+    
+infocaso_getDocumentosCaso:
+    pattern:  /getDocumentosCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:getDocumentosCaso" }
+
+infocaso_getDocumentosCasoEncontrados:
+    pattern:  /getDocumentosCasoEncontrados
+    defaults: { _controller: "soporteBundle:InfoCaso:getDocumentosCasoEncontrados" }
+    requirements: { _method: post }
+
+infocaso_getCriterios:
+    pattern:  /{id}/getCriterios
+    defaults: { _controller: "soporteBundle:InfoCaso:getCriterios" }
+    
+infocaso_getAfectados:
+    pattern:  /{id}/getAfectados
+    defaults: { _controller: "soporteBundle:InfoCaso:getAfectados" }
+    
+infocaso_getCriterios2:
+    pattern:  /getCriterios2
+    defaults: { _controller: "soporteBundle:InfoCaso:getCriterios2" }
+    
+infocaso_getAfectados2:
+    pattern:  /getAfectados2
+    defaults: { _controller: "soporteBundle:InfoCaso:getAfectados2" }
+    
+infocaso_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:InfoCaso:grid" }
+    
+infocaso_getEmpleados:
+    pattern:  /getEmpleados
+    defaults: { _controller: "soporteBundle:InfoCaso:getEmpleados" }
+    
+infocaso_actualizarSintomas:
+    pattern:  /actualizarSintomas
+    defaults: { _controller: "soporteBundle:InfoCaso:actualizarSintomas" }
+    
+infocaso_getBanderaPanel:
+    pattern:  /getBanderaPanel
+    defaults: { _controller: "soporteBundle:InfoCaso:getBanderaPanel" }
+    requirements: { _method: post }
+
+infocaso_getSintomasXCaso:
+    pattern:  /getSintomasXCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:getSintomasXCaso" }
+    
+infocaso_actualizarHipotesis:
+    pattern:  /actualizarHipotesis
+    defaults: { _controller: "soporteBundle:InfoCaso:actualizarHipotesis" }
+    
+infocaso_getHipotesisXCaso:
+    pattern:  /getHipotesisXCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:getHipotesisXCaso" }
+    
+infocaso_getIntervalosHal:
+    pattern:  /getIntervalosHal
+    defaults: { _controller: "soporteBundle:InfoCaso:getIntervalosHal" }
+
+infocaso_confirmarReservaHal:
+    pattern:  /confirmarReservaHal
+    defaults: { _controller: "soporteBundle:InfoCaso:confirmarReservaHal" }
+
+infocaso_getTramos:
+    pattern:  /getTramos
+    defaults: { _controller: "soporteBundle:InfoCaso:getTramos" }
+    
+infocaso_getTipos:
+    pattern:  /getTipos
+    defaults: { _controller: "soporteBundle:InfoCaso:getTipos" }
+    
+infocaso_getAreas:
+    pattern:  /getAreas
+    defaults: { _controller: "soporteBundle:InfoCaso:getAreas" }
+    
+infocaso_getDepartamentos:
+    pattern:  /getDepartamentos
+    defaults: { _controller: "soporteBundle:InfoCaso:getDepartamentos" }
+
+infocaso_getEmpleadosXDepartamento:
+    pattern:  /getEmpleadosXDepartamento
+    defaults: { _controller: "soporteBundle:InfoCaso:getEmpleadosXDepartamento" }
+
+infocaso_getEmpleadosAllXDepartamento:
+    pattern:  /getEmpleadosAllXDepartamento
+    defaults: { _controller: "soporteBundle:InfoCaso:getEmpleadosAllXDepartamento" }
+    
+infocaso_actualizarTareas:
+    pattern:  /actualizarTareas
+    defaults: { _controller: "soporteBundle:InfoCaso:actualizarTareas" }
+    
+infocaso_getTareasXCaso:
+    pattern:  /getTareasXCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:getTareasXCaso" }
+    
+infocaso_ingresarSeguimiento:
+    pattern:  /ingresarSeguimiento
+    defaults: { _controller: "soporteBundle:InfoCaso:ingresarSeguimiento" }
+    requirements: { _method: post }
+ 
+infocaso_verSeguimiento:
+    pattern:  /verSeguimientoTarea
+    defaults: { _controller: "soporteBundle:InfoCaso:verSeguimientoTarea" }
+    requirements: { _method: get }
+    
+infocaso_getMateriales:
+    pattern:  /getMateriales
+    defaults: { _controller: "soporteBundle:InfoCaso:getMateriales" }
+    
+infocaso_getMaterialesByTarea:
+    pattern:  /getMaterialesByTarea
+    defaults: { _controller: "soporteBundle:InfoCaso:getMaterialesByTarea" }
+    
+infocaso_finalizarTarea:
+    pattern:  /finalizarTarea
+    defaults: { _controller: "soporteBundle:InfoCaso:finalizarTarea" }
+    requirements: { _method: post }
+    
+infocaso_asignarCaso:
+    pattern:  /asignarCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:asignarCaso" }
+    requirements: { _method: post }
+    
+infocaso_cerrarCaso:
+    pattern:  /cerrarCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:cerrarCaso" }
+    requirements: { _method: post }
+    
+infocaso_administrarTareaAsignada:
+    pattern:  /administrarTareaAsignada
+    defaults: { _controller: "soporteBundle:InfoCaso:administrarTareaAsignada" }
+    requirements: { _method: post }
+
+infocaso_administrarTareaAsignadaGrid:
+    pattern:  /administrarTareaAsignadaGrid
+    defaults: { _controller: "soporteBundle:InfoCaso:administrarTareaAsignadaGrid" }
+    requirements: { _method: post }
+    
+infocaso_getTareaAsignado:
+    pattern:  /getTareaAsignado
+    defaults: { _controller: "soporteBundle:InfoCaso:getTareaAsignado" }
+    
+infocaso_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "soporteBundle:InfoCaso:exportarConsulta" }
+    requirements: { _method: post }
+    
+infocaso_exportarConsultaAfectados:
+    pattern:  /exportarExcelAfectados
+    defaults: { _controller: "soporteBundle:InfoCaso:exportarExcelAfectados" }
+    requirements: { _method: post }    
+           
+infocaso_getClientes:
+    pattern:  /getClientes
+    defaults: { _controller: "soporteBundle:InfoCaso:getClientes" }
+    
+infocaso_getSegmentos:
+    pattern:  /getSegmentos
+    defaults: { _controller: "soporteBundle:InfoCaso:getSegmentos" }
+    
+infocaso_getProductos:
+    pattern:  /getProductos
+    defaults: { _controller: "soporteBundle:InfoCaso:getProductos" }
+
+infocaso_getOficinas:
+    pattern:  /getOficinas
+    defaults: { _controller: "soporteBundle:InfoCaso:getOficinas" }
+
+infocaso_reprogramarTareas:
+    pattern:  /reprogramarTarea
+    defaults: { _controller: "soporteBundle:InfoCaso:reprogramarTarea" }
+
+infocaso_getMotivosReprogramacion:
+    pattern:  /getMotivosReprogramacion
+    defaults: { _controller: "soporteBundle:InfoCaso:getMotivosReprogramacion" }
+    
+infocaso_obtenerDatosCasosCierre:
+    pattern:  /obtenerDatosCasosCierre
+    defaults: { _controller: "soporteBundle:InfoCaso:obtenerDatosCasosCierre" }
+
+infocaso_getCiudadesPorEmpresa:
+    pattern:  /getCiudadesPorEmpresa
+    defaults: { _controller: "soporteBundle:InfoCaso:getCiudadesPorEmpresa" }
+    
+infocaso_getPrefijosTelefono:
+    pattern:  /getPrefijosTelefono
+    defaults: { _controller: "soporteBundle:InfoCaso:getPrefijosTelefono" }
+
+infocaso_getDepartamentosPorEmpresaYCiudad:
+    pattern:  /getDepartamentosPorEmpresaYCiudad
+    defaults: { _controller: "soporteBundle:InfoCaso:getDepartamentosPorEmpresaYCiudad" }
+    
+infocaso_getEmpleadosPorDepartamentoCiudad:
+    pattern:  /getEmpleadosPorDepartamentoCiudad
+    defaults: { _controller: "soporteBundle:InfoCaso:getEmpleadosPorDepartamentoCiudad" }
+
+infocaso_getPersonaPorLogin:
+    pattern:  /getPersonaPorLogin
+    defaults: { _controller: "soporteBundle:InfoCaso:getPersonaPorLogin" }
+    
+infocaso_getCuadrillas:
+    pattern:  /getCuadrillas
+    defaults: { _controller: "soporteBundle:InfoCaso:getCuadrillas" }
+
+infocaso_getContratistas:
+    pattern:  /getContratistas
+    defaults: { _controller: "soporteBundle:InfoCaso:getContratistas" }
+
+infocaso_getBanderaPresentarCerrarCaso:
+    pattern:  /getBanderaPresentarCerrarCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:getBanderaPresentarCerrarCaso" }
+
+infocaso_ajaxGetEmpresasPorSistema:
+    pattern:  /ajaxGetEmpresasPorSistema
+    defaults: { _controller: "soporteBundle:InfoCaso:ajaxGetEmpresasPorSistema" }
+
+infocaso_getMotivosPausarTarea:
+    pattern:  /getMotivosPausaTarea
+    defaults: { _controller: "soporteBundle:InfoCaso:getMotivosPausarTarea" }
+ 
+infocaso_getElementosAfectadosXDetalle:
+    pattern:  /getElementoAfectadoXDetalle
+    defaults: { _controller: "soporteBundle:InfoCaso:getElementoAfectadoXDetalle" }
+    
+infocaso_getServiciosPorClienteSesion:
+    pattern:  /ajaxGetServiciosPorClienteSesion
+    defaults: { _controller: "soporteBundle:InfoCaso:ajaxGetServiciosPorClienteSesion" }   
+    
+infocaso_getPlanesProductosCaso:
+    pattern:  /ajaxGetPlanesProductosCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:ajaxGetPlanesProductosCaso" } 
+    
+#Agregar afectados post creacion de casos de Backbone
+infocaso_ajaxAgregarAfectados:
+    pattern:  /ajaxAgregarAfectados
+    defaults: { _controller: "soporteBundle:InfoCaso:ajaxAgregarAfectados" }
+
+infocaso_getElementosPorCiudadYTipoYEmpresa:
+    pattern:  /getElementosPorCiudadYTipoYEmpresa
+    defaults: { _controller: "soporteBundle:InfoCaso:getElementosPorCiudadYTipoYEmpresa" }
+
+infocaso_getAnillos:
+    pattern:  /getAnillos
+    defaults: { _controller: "soporteBundle:InfoCaso:getAnillos" }
+ 
+infocaso_get_casos_dashboard:
+    pattern:  /get/casos/dashboard/{strFiltro}
+    defaults: { _controller: "soporteBundle:InfoCaso:getCasosDashboard" }
+
+infocaso_ajaxGetDetallesTareasTN:
+    pattern:  /ajaxGetDetallesTareasTN
+    defaults: { _controller: "soporteBundle:InfoCaso:ajaxGetDetallesTareasTN" }
+    
+infocaso_ajaxGuardarTareasEsSolucionTN:
+    pattern:  /ajaxGuardarTareasEsSolucionTN
+    defaults: { _controller: "soporteBundle:InfoCaso:ajaxGuardarTareasEsSolucionTN" }    
+    
+infocaso_verSeguimientoTareasXCaso:
+    pattern:  /verSeguimientoTareasXCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:verSeguimientoTareasXCaso" }    
+
+infocaso_ajaxGenerarInformeEjecutivo:
+    pattern:  /ajaxGenerarInformeEjecutivo
+    defaults: { _controller: "soporteBundle:InfoCaso:solicitarInformeEjecutivo" }
+    
+infocaso_ajaxEditarInformeEjecutivo:
+    pattern:  /ajaxEditarInformeEjecutivo
+    defaults: { _controller: "soporteBundle:InfoCaso:editarInformeEjecutivo" }
+    
+infocaso_ajaxGetInformeEjecutivo:
+    pattern:  /ajaxGetInformeEjecutivo
+    defaults: { _controller: "soporteBundle:InfoCaso:getInformeEjecutivo" }
+
+infocaso_putServicioAfectado:
+    pattern:  /putServicioAfectado
+    defaults: { _controller: "soporteBundle:InfoCaso:putServicioAfectado" }
+
+infocaso_ajaxGenerarPdfInformeEjecutivo:
+    pattern:  /ajaxGenerarPdfInformeEjecutivo
+    defaults: { _controller: "soporteBundle:InfoCaso:generarPdfInformeEjecutivo" }
+    
+infocaso_ajaxReasignarInformeEjecutivo:
+    pattern:  /ajaxReasignarInformeEjecutivo
+    defaults: { _controller: "soporteBundle:InfoCaso:ajaxReasignarInformeEjecutivo" }    
+
+infocaso_getCasosMovil:
+    pattern:  /getCasosMovil
+    defaults: { _controller: "soporteBundle:InfoCaso:getCasosMovil" }
+
+infocaso_getCasosAperturados:
+    pattern:  /getCasosAperturados
+    defaults: { _controller: "soporteBundle:InfoCaso:getCasosAperturados" }
+
+infocaso_revisarSoluciones:
+    pattern:  /revisarSoluciones
+    defaults: { _controller: "soporteBundle:InfoCaso:revisarSoluciones" }
+
+infocaso_getActividadesPuntoAfectado:
+    pattern:  /getActividadesPuntoAfectado
+    defaults: { _controller: "soporteBundle:InfoCaso:getActividadesPuntoAfectado" }
+
+infocaso_getNivelesCriticidad:
+    pattern:  /getNivelesCriticidad
+    defaults: { _controller: "soporteBundle:InfoCaso:getNivelesCriticidad" }
+
+infocaso_actualiza:
+    pattern:  /actualizar
+    defaults: { _controller: "soporteBundle:InfoCaso:actualizar" }   
+
+infocaso_getCantidadCasosExtranet:
+    pattern:  /getCantidadCasosExtranet
+    defaults: { _controller: "soporteBundle:InfoCaso:getCantidadCasosExtranet" }
+
+infocaso_getTipoAfectacion:
+    pattern:  /getTipoAfectacion
+    defaults: { _controller: "soporteBundle:InfoCaso:getTipoAfectacion" }
+
+infocaso_getTipoNotificacion:
+    pattern:  /getTipoNotificacion
+    defaults: { _controller: "soporteBundle:InfoCaso:getTipoNotificacion" }
+
+infocaso_getJurisdiccionesPe:
+    pattern:  /getJurisdiccionesPe
+    defaults: { _controller: "soporteBundle:InfoCaso:getJurisdiccionesPe" }

@@ -1,0 +1,24 @@
+reporteSla:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:ReporteSla:index" }
+    
+reporteSla_grid:
+    pattern:  /ajaxGrid
+    defaults: { _controller: "soporteBundle:ReporteSla:ajaxGrid"}
+
+reporteSla_getProductos:
+    pattern:  /ajaxGetProductos
+    defaults: { _controller: "soporteBundle:ReporteSla:ajaxGetProductos"}
+    
+reporteSla_getServiciosAfectados:
+    pattern:  /ajaxGetServiciosAfectados
+    defaults: { _controller: "soporteBundle:ReporteSla:ajaxGetServiciosAfectados"}    
+
+reporteSla_infoSla:
+    pattern:  /ajaxGetInfoSla
+    defaults: { _controller: "soporteBundle:ReporteSla:ajaxGetInfoSla"}      
+    
+reporteSla_descargarSla:
+    pattern:  /descargarSla
+    defaults: { _controller: "soporteBundle:ReporteSla:descargarSla"}    
+    

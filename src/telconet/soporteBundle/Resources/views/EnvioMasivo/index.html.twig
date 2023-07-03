@@ -1,0 +1,83 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .imgVerPlantilla{
+            width:11px!important; height:11px!important;
+            background-image: url('/public/images/images_crud/search.png') !important; background-color: #ffffff; border:none
+        }
+        .verContenidoPlantilla
+        {
+            background-color: white;
+            margin: 5px;
+            padding: 5px;
+        }
+        
+    </style>
+    
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var strUrlGetTiposNegocio           = "{{ path('procesomasivo_getTipoNegocioPorEmpresa') }}";
+    var strUrlGetBancosTarjetas         = "{{ path('procesomasivo_getBancosTarjetas') }}";
+    var strUrlGetOficinasYFormasPago    = "{{ path('procesomasivo_getOficinaGrupoConFormaPago') }}";
+    var strUrlGetElementos              = "{{ path('envioplantilla_getElementos') }}";
+    var strUrlGetSwitchesEnNodo         = "{{ path('enviomasivo_getSwitchesEnNodo') }}";
+    var strUrlGetGruposProductos        = "{{ path('admiproducto_listadoGruposByParams') }}";
+    var strUrlGetSubgruposProductos     = "{{ path('admiproducto_listadoSubgruposByParams') }}";
+    var strUrlGridServicios             = "{{ path('enviomasivo_grid') }}";
+    var strUrlGetPlantillasEnvioMasivo  = "{{ path('enviomasivo_getPlantillas') }}";
+    var strUrlGetAdmiRolbyTipoRol       = "{{ path('admitiporol_getAdmiRolbyTipoRol') }}";
+    var strUrlGetPeriodicidades         = "{{ path('enviomasivo_getPeriodicidades') }}";
+    var strUrlGuardarEnvioMasivo        = "{{ path('enviomasivo_guardarEnvio') }}";
+    var strUrlGetEstadosFiltros         = "{{ path('enviomasivo_getEstadosFiltros')}}";
+    var strUrlValidacionEnvioMasivo     = "{{ path('enviomasivo_validacion')}}";
+    var strUrlGetContenidoPlantilla     = "{{ path('enviomasivo_verPlantilla')}}";
+    var strUrlGetTiposFactura           = "{{ path('enviomasivo_getTiposFacturaFiltros')}}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/EnvioMasivo/DatetimeField.js') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/EnvioMasivo/index.js') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ objItem.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Env&iacute;o Masivo</h1>
+</div>
+<div class="body_content k-content">
+
+    <form action="{{ path('enviomasivo_exportarConsulta') }}" method="post">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='divFiltrosBusqueda'></div></td>
+            </tr>
+            <tr>
+                <td><div id="grid"></div></td>	            
+            </tr>
+        </table>
+        <input type='hidden' name='grupoExcel' id='grupoExcel' value='' />
+        <input type='hidden' name='subgrupoExcel' id='subgrupoExcel' value='' />
+        <input type='hidden' name='idElementoNodoExcel' id='idElementoNodoExcel' value='' />
+        <input type='hidden' name='idElementoSwitchExcel' id='idElementoSwitchExcel' value='' />
+        <input type='hidden' name='estadoServicioExcel' id='estadoServicioExcel' value='' />
+        <input type='hidden' name='estadoPuntoExcel' id='estadoPuntoExcel' value='' />
+        <input type='hidden' name='estadoClienteExcel' id='estadoClienteExcel' value='' />
+        <input type='hidden' name='clientesVIPExcel' id='clientesVIPExcel' value='' />
+        <input type='hidden' name='usrCreacionFacturaExcel' id='usrCreacionFacturaExcel' value='' />
+        <input type='hidden' name='numFacturasAbiertasExcel' id='numFacturasAbiertasExcel' value='' />
+        <input type='hidden' name='puntosFacturacionExcel' id='puntosFacturacionExcel' value='' />
+        <input type='hidden' name='idsTiposNegocioExcel' id='idsTiposNegocioExcel' value='' />
+        <input type='hidden' name='idsOficinasExcel' id='idsOficinasExcel' value='' />
+        <input type='hidden' name='idFormaPagoExcel' id='idFormaPagoExcel' value='' />
+        <input type='hidden' name='idsBancosTarjetasExcel' id='idsBancosTarjetasExcel' value='' />
+        <input type='hidden' name='fechaDesdeFacturaExcel' id='fechaDesdeFacturaExcel' value='' />
+        <input type='hidden' name='fechaHastaFacturaExcel' id='fechaHastaFacturaExcel' value='' />
+        <input type='hidden' name='saldoPendientePagoExcel' id='saldoPendientePagoExcel' value='' />
+        <input type='hidden' name='valorSaldoPendientePagoExcel' id='valorSaldoPendientePagoExcel' value='' />
+        <input type='hidden' name='filtrosSeleccionadosExcel' id='filtrosSeleccionadosExcel' value='' />
+    </form>	   
+</div>
+{% endblock contenido_central %}

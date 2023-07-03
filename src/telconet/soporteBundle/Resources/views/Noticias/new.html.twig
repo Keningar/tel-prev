@@ -1,0 +1,119 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ux-all.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/chooser.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+		url_listaArchivos = "{{ path('notificaciones_noticias_listarArchivos') }}";
+		url_fileUpload = "{{ path('notificaciones_noticias_fileUpload') }}";
+        var_host ="{{ asset('./public/uploads/imagesPlantilla/')}}";
+	</script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/Noticias/new.js?1') }}"></script>
+	
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Nueva Noticia</h1>
+	</div>
+	<span class="campos-requeridos">* Campos requeridos</span>
+	<div class="body_content">
+	    <form action="{{ path('noticias_create') }}" method="post" {{ form_enctype(form) }} class="formulario" onsubmit="return validarFormulario();" novalidate="novalidate"  enctype="multipart/form-data" >
+	        <div id="contenedor_principal">
+	            <div id="datos_generales">
+	                <table width="100%" border="0" class="box-section-content">
+	                    <tr>
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%">{{ form_label(form.nombrePlantilla) }}</td>
+	                        <td width="75%">{{ form_widget(form.nombrePlantilla, { 'attr': {'style': 'width:600px;'} }) }}</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+                            <tr>
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%">{{ form_label(form.fecha_desde) }}</td>
+                                <td width="75%"><div id="fecha_inicio"></div>{{ form_widget(form.fecha_desde) }}</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+                            <tr>
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%">{{ form_label(form.fecha_hasta) }}</td>
+                                <td width="75%"><div id="fecha_fin"></div>{{ form_widget(form.fecha_hasta) }}</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+                            
+	                    <tr>
+	                        <td width="5%" colspan='4'>&nbsp;</td>	                       
+	                    </tr>
+	                    
+	                    <tr class="emailWidgets">
+			      <td width="5%">&nbsp;</td>
+			      <td width="15%"></td>
+			      <td width="75%"></td>
+			      <td width="5%">&nbsp;</td>
+	                    </tr>	                    
+	                    <tr class="emailWidgets">
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%"><label>Imagen a subir: </label></td>
+	                        <td width="75%">
+				    <div id="fi-form"></div>
+				</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+	                    <tr class="emailWidgets">
+	                        <td width="5%" colspan='4'>&nbsp;</td>
+	                    </tr>
+	                    <tr class="emailWidgets">
+	                        <td width="5%">&nbsp;</td>
+	                        <td width="15%"><label>Boton Imagen</label></td>
+	                        <td width="75%">
+				  <div id="buttons2" name="buttons2"></div> 
+				  Nota: Escoja la imagen que desee atacharla a la noticia. (Se insertara donde tenga el cursor dentro de la noticia).
+				</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>
+	                    <tr class="emailWidgets">
+	                        <td width="5%" colspan='4'>&nbsp;</td>
+	                    </tr>	                    
+	                    <tr class="emailWidgets">
+	                        <td width="5%">&nbsp;</td>
+	                        <td colspan="2">
+				    <div id="plantilla_mail"></div>
+				    {{ form_widget(form.plantilla_mail) }}
+				</td>
+	                        <td width="5%">&nbsp;</td>
+	                    </tr>	                    	                  	                    
+	                    <tr class="emailWidgets">
+	                        <td width="5%" colspan='4'>&nbsp;</td>
+	                    </tr>
+	                   
+	                </table>
+	            </div>   
+	        </div>
+	        <div class="buttons">
+	            <p>
+	                <button type="submit" class="button-crud">Guardar</button>
+	                <span class="height:20px">
+	                    &oacute;&nbsp;
+	                    <a class="button-crud" href="{{ path('noticias_principal') }}">Cancelar</a>
+	                </span>
+	            </p>
+	        </div>
+	    {{ form_widget(form._token) }}
+	    </form>
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+	<div class="titulo-acciones-relacionadas">
+		Acciones Relacionadas
+	</div>
+	<ul class="listado_acciones_relacionadas">
+	</ul>
+{% endblock contenido_der %}

@@ -1,0 +1,37 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('public/js/ExtJsCalendar/resources/css/extensible-all.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }} 
+    
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/Agenda/Calendar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/Agenda/index.js?2') }}"></script>
+    
+     <script>
+        var url_getAfectados = "{{ path('agenda_getAfectados') }}";
+        var url_getCriterios = "{{ path('agenda_getCriterios') }}";
+    </script> 
+    
+{% endblock %}
+
+{% block contenido_central %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Ver Agenda</h1>
+	</div>
+	<div class="body_content k-content">
+	    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+	        <tr>
+	            <td>
+	                <div id="filtro" class="sample-ct"></div>
+			<div id="calendar1" class="sample-ct"></div>
+		    </td>
+	        </tr>
+	    </table>
+	</div>
+{% endblock contenido_central %}

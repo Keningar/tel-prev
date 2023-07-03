@@ -1,0 +1,18 @@
+Insert into DB_GENERAL.ADMI_PARAMETRO_CAB (ID_PARAMETRO,NOMBRE_PARAMETRO,DESCRIPCION,MODULO,PROCESO,ESTADO,
+USR_CREACION,FE_CREACION,IP_CREACION,USR_ULT_MOD,FE_ULT_MOD,IP_ULT_MOD) 
+values ((DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.nextval),'remitente','parametrizacion de correo remitente',null,null,'Activo','SYS',
+to_date('29/03/2018','DD/MM/RRRR'),'0.0.0.0',null,null,null);
+
+Insert into DB_GENERAL.ADMI_PARAMETRO_DET (ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,
+VALOR4,ESTADO,USR_CREACION,FE_CREACION,IP_CREACION,USR_ULT_MOD,FE_ULT_MOD,IP_ULT_MOD,VALOR5,EMPRESA_COD) 
+values ((DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.nextval),(select ID_PARAMETRO from DB_GENERAL.ADMI_PARAMETRO_CAB where NOMBRE_PARAMETRO = 'remitente'),
+'remitente telconet','notificaciones_telcos@telconet.ec',null,null,null,
+'Activo','jdvinueza',to_date('29/03/2018','DD/MM/RRRR'),'0.0.0.0',null,null,null,null,'10');
+
+Insert into DB_GENERAL.ADMI_PARAMETRO_DET (ID_PARAMETRO_DET,PARAMETRO_ID,DESCRIPCION,VALOR1,VALOR2,VALOR3,
+VALOR4,ESTADO,USR_CREACION,FE_CREACION,IP_CREACION,USR_ULT_MOD,FE_ULT_MOD,IP_ULT_MOD,VALOR5,EMPRESA_COD) 
+values ((DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.nextval),(select ID_PARAMETRO from DB_GENERAL.ADMI_PARAMETRO_CAB where NOMBRE_PARAMETRO = 'remitente'),
+'remitente netlife','notificacionesnetlife@netlife.info.ec',null,null,null,
+'Activo','jdvinueza',to_date('29/03/2018','DD/MM/RRRR'),'0.0.0.0',null,null,null,null,'18');
+
+commit;

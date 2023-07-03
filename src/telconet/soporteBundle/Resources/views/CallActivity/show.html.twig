@@ -1,0 +1,394 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" /> 
+    <!-- <link href="{ asset('./bundles/soporte/css/callactivity.css') }}" type="text/css" rel="stylesheet" /> -->
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <style>
+
+        #modal-loading .modal-dialog{
+            display: table;
+            position: relative;
+            margin: 0 auto;
+            top: calc(50% - 24px);
+        }
+
+        #modal-loading .modal-dialog .modal-content{
+            background-color: transparent;
+            border: none;
+        }
+
+        .borderless td, .borderless th {
+            border: none;
+        }
+
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script> var strUrlGetSubtareas         = "{{ path('callactivity_getSubtareas') }}"; </script>
+    <script> var urlGetPorcentajesNc        = "{{ path('callactivity_getPorcentajesNc') }}";</script>
+    <script> var urlGetMotivosNc            = "{{ path('callactivity_getMotivosNc') }}";</script>
+    <script> var urlGetPersonalAutorizadoNc = "{{ path('callactivity_getPersonalAutorizadoNc') }}";</script>
+    <script> var urlValidaAplicaNc          = "{{ path('callactivity_validaAplicaNotaCredito') }}";</script> 
+    <script> var urlEjecutarNcReubicacion   = "{{ path('callactivity_ejecutarNcReubicacion') }}";</script> 
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}"> </script>   
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CallActivity/reubicacion.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CallActivity/SubTareas/show.js') }}"></script>
+    <script>
+        Ext.onReady(function(){
+            $('#textoObservacion').keyup(function () {
+                var maxCaracteres = 250;
+                var numCaracteresObs = $(this).val().length;
+                if (numCaracteresObs >= maxCaracteres)
+                {
+                    $('#numCaracteresObs').text('Has llegado al límite de caracteres.');         
+                } 
+                else 
+                {
+                    var totalCaracteres = maxCaracteres - numCaracteresObs;
+                    $('#numCaracteresObs').text(totalCaracteres + ' caracteres restantes.');            
+                }
+            });  
+        }); 
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h5>Ver Actividad</h5>
+    </div>
+	<div class="body_content">
+		<div id="contenedor_principal" >
+            <div id="datos_generales">
+                <table width="100%" border="0" class="box-section-content" cellspacing='3' cellpadding='3'>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        {% if(strPuntoAtencion!="") %}
+                            <td width="24%"><b><label>Punto Atención: </label></b></td>
+                            <td width="10%">{{ strPuntoAtencion }}</td>
+                        {% endif %}
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"></label></b></td>
+                        <td width="10%"></td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"><b><label>Origen:</label></b></td>
+                        <td width="10%">{{forma}}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"><b><label>Clase:</label></b></td>
+                        <td width="10%">{{clase}}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"><b><label>Fecha:</label></b></td>
+                        <td width="10%">{{ entity.fechaComunicacion | date("Y-m-d") }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"><b><label>Hora:</label></b></td>
+                        <td width="10%">{{ entity.fechaComunicacion | date("H:i:s") }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%"><b><label>Cliente:</label></b></td>
+                        <td width="10%">{{entity.remitenteNombre}}</td>
+                        <td width="5%">&nbsp;</td>
+                        {% if(origenGenera=="Tarea") %}
+                            <td width="24%"><b><label>Estado Tarea: </label></b></td>
+                            <td width="10%">{{ estadoTarea }}</td>
+                        {% endif %}
+                        {% if(origenGenera=="Caso") %}
+                            <td width="24%">
+                                <b><label>Estado Caso: </label></b>
+                            </td>
+                            <td width="10%">{{ estadoCaso }}</td>
+                        {% endif %}
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="16%"><b><label>Genera:</label></b></td>
+                        <td width="30%">{{ origenGenera }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">
+                            <b>
+                                <label>
+                                    {% if(origenGenera=="Caso") %}
+                                        Numero de Caso:
+                                    {% elseif(origenGenera=="Tarea") %}
+                                        Nombre Tarea: 
+                                    {%endif%}
+                                </label>
+                            </b>
+                        </td>
+                        <td width="25%">
+                            {% if strUrlShowCaso %}
+                                <a href="#" onClick="window.open('{{ strUrlShowCaso }}');" />
+                                {{ numero }}
+                                </a>
+                            {%endif%}
+
+                            {% if(nombreTarea!="") %}
+                                {{ nombreTarea }}
+                            {%endif%}
+                        </td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    {% if boolEsFacturable %}
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="16%"><b><label>Es facturable:</label></b></td>
+                            <td width="30%">SI</td>
+                            <td width="5%">&nbsp;</td>
+                            <td width="15%"><b><label>Valor a Facturar:</label></b></td>
+                            <td width="25%">$ {{ floatValorAFacturar }}</td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                    {% endif %}
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="16%"><b><label>Observacion:</label></b></td>
+                        <td width="30%">{{documento.mensaje}}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%"><b><label>{% if(origenGenera=="Tarea") %}Numero de Tarea:{%endif%}</label></b></td>
+                        <td width="25%" >{% if(origenGenera=="Tarea") %}{{numeroTarea}}{%endif%}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    {% if(origenGenera=="Tarea") %}
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="16%"><b><label>Departamento Asignado:</label></b></td>
+                            <td width="30%">{{departamento}}</td>
+                            <td width="5%">&nbsp;</td>
+                            <td width="15%"><b><label>{% if(nombreElemento!="") %}Elemento Relacionado:{%endif%}</label></b></td>
+                            <td width="25%" >{% if(nombreElemento!="") %}{{nombreElemento}}{%endif%}</td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="16%"><b><label>Empleado Asignado:</label></b></td>
+                            <td width="30%" colspan="4" >{{empleado}}</td>	
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="24%"><b><label>Empleado Creador:</label></b></td>
+                            <td width="10%" colspan="4" >{{creador}}</td>	
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        {% if(cantidadTareas > 0) %}
+                            <tr>
+                                <td width="100%" colspan="6"><br><br><br></td>
+                            </tr>
+                            <tr>
+                                <td width="100%" colspan="6"><div id="grid_Subtareas"><div></td>
+                            </tr>
+                        {% endif %}
+                    {% endif %}
+                </table>
+            </div>
+	        <div id="datos_afectados">
+		        <table width="100%" border="0" class="box-section-content">
+					<tr style="height:200px">
+						<td colspan="3"><div id="criterios"></div><input type="hidden" id="caso_criterios" name="caso_criterios" value="" /></td>
+						<td colspan="3"><div id="afectados"></div><input type="hidden" id="caso_afectados" name="caso_afectados" value="" /></td>
+						<input type="hidden" id="numeroTarea" name="numeroTarea" value="{% if(origenGenera=="Tarea") %}{{numeroTarea}}{%endif%}" />
+						<input type="hidden" id="cantidadTareas" name="cantidadTareas" value="{{cantidadTareas}}" />
+					</tr>
+		        </table>
+			</div>    
+	    </div>
+                    
+        <div class="modal" id="solicitudModal" tabindex="-1" role="dialog">
+            <input type="hidden" id="idTareaReub" value="{{numeroTarea}}">
+            <input type="hidden" id="strCumpleReqNc" value="">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="formNcReubicacion" class="formNcReubicacion" novalidate onsubmit="return false;" method="POST">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel">
+                                Solicitar emisi&oacute;n de Nota de Cr&eacute;dito por Reubicaci&oacute;n
+                            </h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="modalContenido">
+
+                            <div class="form-group row">
+                                <div class="form-group col-md-6">
+                                    <label for="labelAplicaNc">Desea generar Nota de Cr&eacute;dito: </label>       
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="radio">
+                                        <input type="radio" name="radio_nc"  id="radioNcS" value="S" > SI&nbsp;
+                                    </label>
+                                    <label class="radio">
+                                        <input type="radio" name="radio_nc" id="radioNcN" value="N" checked=""> NO&nbsp; &nbsp;
+                                        <i class="fa fa-spinner fa-spin fa-2x spinnerAplicaNc" hidden="true" ></i>
+                                    </label>        
+                                </div>
+                            </div> 
+
+                            <div role="alert" id="divMensaje" style="display: none">
+                                <i class="fa fa-info-circle"></i> 
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="form-group col-md-12">
+                                    <div id="divRequisitos">
+
+                                        <div class="form-group col-md-12">
+                                            <label for="lblAutorizar" class="col-sm-12 col-form-label">Autorizado por:</label>
+
+                                            <div class="col-sm-12">
+                                                <select class="form-control" id="nombreAutorizado"  name="nombreAutorizado"  required >    
+                                                    <option></option>   
+                                                </select> 
+                                                <div class="invalid-feedback"> Campo requerido.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="lblMotivo" class="col-sm-12 col-form-label">Motivo por:</label>
+
+                                            <div class="col-sm-12">
+                                                <select class="form-control" id="nombreMotivo"  name="nombreMotivo"  required >    
+                                                    <option></option>   
+                                                </select> 
+                                                <div class="invalid-feedback"> Campo requerido.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="lblPorcentajes" class="col-sm-12 col-form-label">Porcentaje:</label>
+
+                                            <div class="col-sm-12">
+                                                <select class="form-control" name="porcentajeNc" id="porcentajeNc" required >
+                                                    <option></option>   
+                                                </select> 
+                                                <div class="invalid-feedback"> Campo requerido.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-12">
+                                            <label for="aprobacionObserv" class="col-sm-12 col-form-label">Observaci&oacute;n:</label>
+
+                                            <div class="col-sm-12">
+                                                <textarea class="form-control" id="textoObservacion" maxlength="250" required></textarea>
+                                                <span class="help-block">
+                                                    <p id="numCaracteresObs" class="help-block">250 caracteres restantes.</p>
+                                                </span>
+                                                <div class="invalid-feedback"> Campo requerido.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-info" id="btnEjecutaNcReubicacion">Guardar</button>
+                            <button type="button" class="btn btn-secondary limpiarDatos" data-dismiss="modal">Cancelar</button>                        
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> 
+         
+        <div class="modal" id="confirmModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title">Confirmar emisi&oacute;n de solicitud NC </h6>
+                    </div>
+                    <div class="modal-body">
+                        <h6>¿Est&aacute; seguro de guardar los cambios?</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnConfirmNcReubicacion" class="btn-sm btn-info">Aceptar</button>
+                        <button type="button" class="btn-sm btn-secondary limpiarDatos" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="modal" id="modal-loading" data-backdrop="static" data-keyboard="false" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="d-flex justify-content-center">
+                        <div class="spinner-border" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="modal-mensaje" tabindex="-1" data-keyboard="false" data-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Emisi&oacute;n de solicitud NC</h5>
+                        <div class="clearfix" id="loading-mensaje" style="display: none">
+                            <div class="spinner-border float-right" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-body"> </div>
+                    <div class="modal-footer">
+                        <a class="btn-sm btn-info" id="btnMensajeNCReub" href="#" role="button">Aceptar</a>
+                    </div>
+                </div>
+            </div>
+        </div>            
+              
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="cancel-crud" href="{{ path('callactivity') }}"> Regresar  </a>
+                </span>
+            </p>
+        </div>
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="acciones_relacionadas">
+        {% if is_granted('ROLE_80-2') %}
+            <a href="{{ path('callactivity_new') }}" class="button-nuevo-registro">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+                &nbsp;Nueva Actividad
+            </a>
+
+            {% if (strSolicitaNCReub == "S") and is_granted('ROLE_80-7617') %}
+                <br /><br /> <br />
+                <a href="" class="button-nuevo-registro" data-toggle="modal" data-target="#solicitudModal">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+                    &nbsp;Solicitud NC
+                </a>    
+            {% endif %}    
+
+        {% endif %}
+    </div>
+    <br />
+    {% if (entity.estado != "Eliminado") %}
+        <ul class="form_actions">
+            {% if is_granted('ROLE_80-8') %}
+                <li></li>
+                {% endif %}
+        </ul>
+    {% endif %}
+    <br />
+{% endblock contenido_der %}

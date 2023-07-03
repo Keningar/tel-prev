@@ -1,0 +1,11 @@
+//Update a la tabla de eventos
+
+ALTER TABLE DB_SOPORTE.INFO_EVENTO ADD VERSION VARCHAR2(12); 
+
+COMMENT ON COLUMN "DB_SOPORTE"."INFO_EVENTO"."VERSION" IS 'Indica la versión del aplicativo móvil';
+
+UPDATE DB_SOPORTE.INFO_EVENTO IV
+  SET IV.VERSION = '0.0.0' 
+  WHERE IV.VERSION is null;
+
+commit;

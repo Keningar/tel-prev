@@ -1,0 +1,49 @@
+gestionPendientes:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:GestionPendientes:index" }
+
+gestionPendientes_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:GestionPendientes:grid" }
+
+gestionPendientes_grid_seguimientos:
+    pattern:  /gridSeguimientos
+    defaults: { _controller: "soporteBundle:GestionPendientes:gridSeguimientos" }
+
+gestionPendientes_ajax_crear_seguimiento:
+    pattern: /ajaxCrearSeguimiento
+    defaults: { _controller: "soporteBundle:GestionPendientes:ajaxCreaSeguimiento"}
+    requirements: { _method: post }
+
+gestionPendientes_obtener_datos_tarea:
+    pattern:  /ajaxObtenerDatosTarea
+    defaults: { _controller: "soporteBundle:GestionPendientes:ajaxObtenerDatosTarea" }
+
+gestionPendientes_obtener_parametros:
+    pattern:  /ajaxObtenerParametros
+    defaults: { _controller: "soporteBundle:GestionPendientes:ajaxObtenerParametros" }
+
+gestionPendientes_ajax_agregar_tramo:
+    pattern: /ajaxAgregarTramo
+    defaults: { _controller: "soporteBundle:GestionPendientes:ajaxAgregarTramo"}
+    requirements: { _method: post }
+
+gestionPendientes_ajax_crear_tarea_informe:
+    pattern: /ajaxCrearTareaInforme
+    defaults: { _controller: "soporteBundle:GestionPendientes:ajaxCrearTareaInforme"}
+    requirements: { _method: post }
+
+gestionPendientes_ajax_crear_envio_notificacion:
+    pattern: /ajaxCrearEnvioNotificacion
+    defaults: { _controller: "soporteBundle:GestionPendientes:ajaxCrearEnvioNotificacion"}
+    requirements: { _method: post }
+
+gestionPendientes_ajax_enviar_listado_pendientes:
+    pattern: /ajaxEnviarListadoPendientes
+    defaults: { _controller: "soporteBundle:GestionPendientes:ajaxEnviarListadoPendientes"}
+    requirements: { _method: post }
+
+gestionPendientes_ajax_enviar_reporte_labores_diarias:
+    pattern: /ajaxEnviarReporteLaboresDiarias
+    defaults: { _controller: "soporteBundle:GestionPendientes:ajaxEnviarReporteLabores"}
+    requirements: { _method: post }

@@ -1,0 +1,58 @@
+soporteBundle_InfoCaso:
+  resource: "@soporteBundle/Resources/config/routing/infocaso.yml"
+  prefix: /info_caso
+  
+soporteBundle_CallActivity:
+  resource: "@soporteBundle/Resources/config/routing/callactivity.yml"
+  prefix: /call_activity
+
+soporteBundle_Agenda:
+  resource: "@soporteBundle/Resources/config/routing/agenda.yml"
+  prefix: /agenda
+
+soporteBundle_Notificaciones:
+  resource: "@soporteBundle/Resources/config/routing/notificaciones.yml"
+  prefix: /notificaciones
+  
+soporteBundle_GestionDocumentos:
+  resource: "@soporteBundle/Resources/config/routing/gestion_documentos.yml"
+  prefix: /gestion_documentos/
+
+soporteBundle_MisTareas:
+  resource: "@soporteBundle/Resources/config/routing/tareas.yml"
+  prefix: /tareas
+  
+soporteBundle_Reportes: 
+  resource: "@soporteBundle/Resources/config/routing/reporte_sla.yml"
+  prefix: /reporteria/sla
+  
+soporteBundle_Arcotel: 
+  resource: "@soporteBundle/Resources/config/routing/reporte_arcotel.yml"
+  prefix: /reporteria/consulta_casos_arcotel  
+
+soporteBundle_Trace:
+  resource: "@soporteBundle/Resources/config/routing/reporte_trace.yml"
+  prefix: /reporteria/consulta_tareas_trace
+
+soporteBundle_Inicio:
+  pattern:  /inicio
+  defaults: { _controller: "soporteBundle:Default:inicio" }
+
+soporteBundle_Agente:
+  resource: "@soporteBundle/Resources/config/routing/agente.yml"
+  prefix: /agente
+
+
+soporteBundle_CasosEcucert: 
+  resource: "@soporteBundle/Resources/config/routing/casos_ecucert.yml"
+  prefix: /reporteria/consulta_casos_ecucert
+
+
+soporteBundle_gestionPendientes:
+  resource: "@soporteBundle/Resources/config/routing/gestionPendientes.yml"
+  prefix: /gestionpendientes
+
+soporteBundle_GestionPaqueteSoporte:
+  resource: "@soporteBundle/Resources/config/routing/gestionPaqueteSoporte.yml"
+  prefix: /gestionPaqueteSoporte
+  

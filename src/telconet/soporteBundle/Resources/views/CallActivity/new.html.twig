@@ -1,0 +1,371 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" /> 
+{% endblock %}
+               
+{% block javascripts%}
+    {{ parent() }}  
+    <script>
+        var idCliente                        = '{{idCliente }}';
+        var nombresCliente                   = '{{nombresCliente }}';
+        var idPunto                          = '{{idPunto }}';
+        var loginPunto                       = '{{loginPunto }}';
+        var fechaBase                        = '{{fecha}}';
+        var horaBase                         = '{{hora}}';
+        var strUrlFilial                     = '{{ path("infooficinagrupo_grid") }}';
+        var url_Depart                       = '{{ path("infocaso_getDepartamentos") }}';
+        var url_empl                         = '{{ path("infocaso_getEmpleadosXDepartamento") }}';
+        var strUrlCiudadesEmpresa            = '{{ path("infocaso_getCiudadesPorEmpresa") }}';
+        var strUrlEmpresaPorSistema          = '{{ path('tarea_ajaxGetEmpresasHabilitadas') }}';
+        var url_Areas                        = '{{ path("infocaso_getAreas") }}';
+        var url_empl                         = '{{ path("callactivity_getEmpleadosXDepartamento") }}';
+        var url_empresasDiferentes           = '{{ path('callactivity_getEmpresasDiferente') }}';
+        var strUrlDepartamentosEmpresaCiudad = '{{ path("infocaso_getDepartamentosPorEmpresaYCiudad") }}';
+        var strUrlEmpleadosDepartamentCiudad = '{{ path("infocaso_getEmpleadosPorDepartamentoCiudad") }}';
+        var strUrlGetTareasByProcesos        = '{{ path("callactivity_ajaxGetTareasByProceso") }}';
+        var strUrlGetProcesos                = '{{ path("callactivity_getProcesos") }}';
+        var strUrlSintomasGrid               = '{{ path("admisintoma_grid") }}';
+        var strUrlGetNombreLoginClientes     = '{{ path("callactivity_getNombreClientesConLoginActivos") }}';
+        var strUrlGetLoginClientes           = '{{ path("callactivity_getLoginClientes") }}';
+        var strUrlTipoElementos              = '{{ path('infocaso_getTiposElementos') }}';
+        var strUrlElementos                  = '{{ path('infocaso_getElementos') }}';
+        var strRequerimientosClientes        = '{{ requerimientoClientes }}';
+        var numArchivosSubidos               = 0;
+        var strPrefijoEmpresaSession         = '{{ strPrefijoEmpresaSession }}';
+        var strIdCantonUsrSession            = '{{ intIdCantonUsrSession }}';
+        var strIdDepartamentoUsrSession      = '{{ intIdDepartamentoUsrSession }}';
+        var urlComboPuntosAtencion           = '{{ path('callactivity_ajaxGetComboPuntoAtencion') }}';
+        var urlObtenerNombreOrigen           = '{{ path('callactivity_ajaxGetObtenerNombreOrigen') }}';
+    </script>  
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/Multiupload.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CallActivity/new.js?15') }}"></script>
+    <script type="text/javascript" src="{{ asset('./public/js/JqueryMaskMoney/jquery.maskMoney.min.js') }}"></script>
+{% endblock %}
+    
+{% block contenido_izq %}
+    {% for flashMessage in app.session.flashbag.get('error') %}
+	    <div class="errormessage">
+	        {{ flashMessage }}
+	    </div>
+	{% endfor %}
+    
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Nueva Actividad  {{ idCliente }}   </h1>
+               
+	</div>
+	<span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content" >
+        <form action="{{ path('callactivity_create') }}" method="post" enctype="multipart/form-data" class="formulario" novalidate="novalidate"> 
+            <div id="contenedor_principal"   >
+                <div id="datos_generales" >
+                    <table width="100%" border="0" class='table-form' style='margin-left:-0.2em!important;'>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="25%"><label for="telconet_schemabundle_callactivitytype_tipo">*Origen:</label></td>
+                            <td width="20%">{{ form_widget(form.tipo) }}</td>
+                            <td width="2%">&nbsp;</td>
+                            <td width="14%"><label class="required" for="telconet_schemabundle_callactivitytype_clase">* Clase:</label></td>
+                            <td width="20%">{{ form_widget(form.claseDocumento) }}</td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%"></td>
+                            <td width="14%"></td>
+                            <td width="20%"></td>
+                            <td width="2%"></td>
+                            <td width="5%">
+                                <label id="label_empresas"></label>
+                            </td>
+                            <td width="5%">
+                                <div id="combo_empresas" ></div>
+                            </td>
+                            <td width="5%"></td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="14%">&nbsp;</td>
+                            <td width="20%">&nbsp;</td>
+                            <td width="2%">&nbsp;</td>
+                            <td width="5%">&nbsp;<label id="label_procesos"></label></td>
+                            <td width="5%">
+                                <div id="combo_procesos" ></div>
+                                <input type="hidden" id="procesos" name="procesos" value="" />
+                            </td>
+                        </tr>
+                        <tr>
+							<td width="5%">&nbsp;</td>
+							<td width="14%"></td>
+							<td width="20%"><input type="hidden" id="tipoGeneraActividad" name="tipoGeneraActividad" value="T" /></td>
+                            <td width="2%">&nbsp;</td>
+                            <td width="14%">
+                                <label id="label_tarea_sintoma"></label>
+                            </td>
+                            <td width="20%">
+                                <div id="combo_tarea_sintoma" ></div>
+                                <input type="hidden" id="tarea" name="tarea" value="" />
+                                <input type="hidden" id="sintoma" name="sintoma" value="" />
+                            </td>
+                            <td width="5%">
+                                &nbsp; <input type="hidden" id="presentaAsignacion" name="presentaAsignacion" value="S" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="14%"><label id="label_cliente"> *Cliente:  </label></td>
+                            <td width="20%"style="margin:0px"  >
+                                <div id="cliente_combo"></div>
+                                {% if idCliente==''  %}
+                                    <input type="hidden" id="cliente" name="cliente" value="" />
+                                {% else %}
+                                    <input  type="hidden" id="cliente" name="cliente" value="{{idCliente}}" />
+                                {% endif %}
+                                <div id="nota_cliente" >
+                                    <label id="nota_busqueda" style="width: 100% !important;margin-top:-0.5em;"></label>
+                                </div>
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                            <td width="2%"><label>* Fecha y hora:</label></td>
+                            <td width="20%">
+                                <table border='0' width='100%'>    
+                                <tr>
+                                    <td>
+                                        <div id="div_fe_apertura"></div>
+                                        <input type="hidden" id="fecha_apertura" name="fecha_apertura" value="" />
+                                    </td>
+                                    <td>
+                                        <div id="div_hora_apertura"></div>
+                                        <input type="hidden" id="hora_apertura" name="hora_apertura" value="" />
+                                    </td>
+                                </tr>
+                                </table>
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                        </tr> 
+                        <tr>
+                           <td width="5%"></td>
+                           <td width="14%"></td>
+                           <td width="20%"></td>
+                           <td width="2%"></td>
+                           <td width="14%"></td>
+                           <td width="20%"></td>
+                           <td width="5%"></td>
+                        </tr>
+			            <tr>
+			                <td>&nbsp;</td>
+			                <td title="Información para el paquete de horas soporte"><label>Login Auxiliar:</label></td>
+			                <td colspan="4"><input type="text" readonly id="descripcion_producto" name="descripcion_producto" value="" /></td>
+			                <td colspan="4"><input type="hidden" id="tipo_soporte" name="tipo_soporte" value="" /></td>
+			                <td colspan="4"><input type="hidden" id="bool_paqueteSoporte" name="bool_paqueteSoporte" value="" /></td>
+			            </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="14%"><label id="label_login"></label></td>
+                            <td width="20%">
+                                <div id="login_combo"></div>
+                                <input type="hidden" id="login_cliente"   name="login_cliente" value="" />
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                            <td  id="strLabel">
+                                <label>Cierre Inmediato:</label>
+                            </td>
+                            <td width="34%">
+                                <table border='0' width='100%'>
+                                <tr>
+                                <td width='5%' id="strLabel2">
+                                    <input type="checkbox" id="cboxTareaRapida" name="cboxTareaRapida" value="S">
+                                </td>
+                                <td>
+                                    <label id="esFacturableCheckbox" style='width:6em;'>Se factura:</label>
+                                </td>
+                                <td width='5%'>
+                                    <div style="clear:both;">
+                                        <input type="checkbox" id="esFacturable" name="esFacturable" style="width: 15px;" value="SI"
+                                            onchange="checkFactura();" />
+                                    </div>
+                                </td>
+                                <td width='45%'>
+                                    <div style="clear:both;">
+                                        <input style='margin-top:1em;' type="text" id="valorAFacturar" name="valorAFacturar" />
+                                    </div>
+                                </td>
+                                </tr>
+                                </table>
+                            </td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="14%"><label id="label_login"></label></td>
+                            <td width="20%">&nbsp;</td>
+                            <td width="2%" >
+                                &nbsp; &nbsp; &nbsp;<label id="nota_login" style="width: 100% !important; margin-left:20px"></label> 
+                            </td>
+                            <td width="2%">
+                                <label id="radioLabel"> Asignar Tarea: </label>
+                            </td>
+                            <td width="34%">
+                            <table border='0' style="width: 100%">
+                            <td>
+                                <input type="radio" id="asignar_radio" name="asignar_radio"  onchange="mostrarAsignarTarea(this)" style=" margin:auto; width: 1rem; height: 1rem;"
+                                       title="Asignar Tarea" />
+                            </td>
+                                <td width='45%'>
+                                    <div>
+                                        <div id="empleado_combo"></div>
+                                        <input type="hidden" id="empleado" name="empleado" value="" />
+                                    </div>
+                                </td>
+                            </table>
+                            </td>
+                            <td width="5%" style="width: 15px">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td width="5%"></td>
+                            <td width="14%">
+                                <label id="radioLabel">Seleccionar Elemento: </label></td>
+                            <td width="20%">
+                                <table width='50%' border='0'>
+                                    <tr>
+                                        <td width="5%">&nbsp;</td>
+                                        <td width="5%">&nbsp;</td>
+                                        <td>
+                                            <label style='width:1em;'>Si</label>
+                                        </td>
+                                        <td>
+                                            <input type="radio" id="mostrar_elementos" name="asignar_afectado_elemento" 
+                                                   onchange="mostrarAfectadoElemento('1')" title="Si" style="width: 1rem; height: 1rem; margin:auto;" />
+                                        </td>
+                                        <td>
+                                            <label style='width:1em;'>No</label>
+                                        </td>
+                                        <td>
+                                            <input type="radio" id="no_mostrar_elementos" name="asignar_afectado_elemento"
+                                                   onchange="mostrarAfectadoElemento('2')" title="No" checked="true" style=" margin:auto; width: 1rem; height: 1rem;"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                            {% if arrayAsignaciones|length > 0 %}
+                                <td width="5%"><label>Asignaci&oacute;n:</label></td>
+                                <td width="5%">
+                                    <select id="asignacionSolicitud" name="asignacionSolicitud">
+                                        <option value="">Escoja una opcion</option>
+                                        {% for asignacion in arrayAsignaciones %}
+                                            <option value = "{{asignacion.id}}">
+                                                {{asignacion.referenciaCliente}}/{{asignacion.origen}}/
+                                                {{asignacion.tipoProblema}}/{{asignacion.feCreacion|date('Y-m-d H:m:i')}}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {%else%}
+                                <td width="5%"></td>
+                                
+                                <td width="5%"></td>
+                            {% endif %}
+                            <td width="5%"></td>
+                        </tr>
+                        {% if strPrefijoEmpresaSession == 'MD' %}
+                        <tr style="display: none" id="bloquePuntoAtencion">
+                           <td width="5%"></td>
+                           <td width="14%"><label style="margin-top: 30px">Punto de atención:</label></td>
+                           <td width="20%">
+                               <select id="intPuntoAtencion" class="form-control intPuntoAtencion" name="intPuntoAtencion" style="width: 240px;height: 29px;margin-top: 30px;color:#777777;font-weight: 600 ">
+                               </select>
+                           </td>
+                           <td width="2%"></td>
+                           <td width="14%"></td>
+                           <td width="20%"></td>
+                           <td width="5%"></td>
+                        </tr>
+                        {% endif %}
+                        {% if strPrefijoEmpresaSession == 'EN'%}
+                        <tr style="display: none" id="bloquePuntoAtencion">
+                           <td width="5%"></td>
+                           <td width="14%"><label style="margin-top: 30px">Punto de atención:</label></td>
+                           <td width="20%">
+                               <select id="intPuntoAtencion" class="form-control intPuntoAtencion" name="intPuntoAtencion" style="width: 240px;height: 29px;margin-top: 30px;color:#777777;font-weight: 600 ">
+                               </select>
+                           </td>
+                           <td width="2%"></td>
+                           <td width="14%"></td>
+                           <td width="20%"></td>
+                           <td width="5%"></td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <td width="5%"></td>
+                            <td width="14%"><label id="label_tipoElementos"></label></td>
+                            <td width="20%"><div id="combo_tipo_elementos" ></div></td>
+                            <td width="5%"colspan='3'>
+                                <table border='0' width='90%'>
+                                <tr>
+                                    <td>
+                                    &nbsp;
+                                    </td>
+                                    <td>
+                                    &nbsp;
+                                    </td>
+                                    <td>
+                                        <label  style='width:6em;' id="label_Elementos"></label>
+                                    </td>
+                                    <td>
+                                        <div id="combo_elementos" ></div>
+                                        <input type="hidden" id="idElemento" name="idElemento" value="" />
+                                    </td>
+
+                                    <td>
+                                        <div style='margin-bottom:10px;' id='div_boton_agregar_elemento'></div>
+                                    </td>
+                                </tr>
+                                </table>
+                            </td>
+                            <td width="5%"></td>
+                        </tr>
+                        <tr>
+                            <td width="5%"></td>
+                            <td width="5%"></td>
+                            <td width="59%" colspan="5"><div id="divGridElementos" name="divGridElementos"></div></td>
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <input type="hidden" id="departamento_asignado" name="departamento_asignado" value="" />
+                            <td width="14%" style='margin-top:5px;'><label>* Observacion:</label></td>
+                            <td width="59%" colspan="4">
+                                {{ form_widget(form.observacion) }}
+                                <div id="observacion_cont"></div>
+                                <input type="hidden" id="observacion_contenido" name="observacion_contenido" value="" />
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                            <input type="hidden" id="departamento_asignado_nombre" name="departamento_asignado_nombre" value="" />
+                        </tr>
+                        <tr>
+                            <td width="5%">&nbsp;</td>
+                            <td width="14%"><label>Subida de Archivos:</label></td>
+                            <td width="59%" colspan="4"><div id="div_archivos_subir" name="div_archivos_subir"></div></td>
+                            <td width="5%">&nbsp;</td>
+                        </tr>
+			        </table>       
+				</div>
+			</div>    
+            <div class="buttons">
+                <p>
+                    <button id="btnGuardar" name="btnGuardar" type="button" class="button-crud" onclick="validarFormulario();">
+                        Guardar
+                    </button>
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('callactivity') }}">
+                            Cancelar
+                        </a>
+                    </span>
+                </p>
+            </div>
+            {{ form_widget(form._token) }}
+        </form>
+    </div>
+{% endblock contenido_izq %}

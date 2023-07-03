@@ -1,0 +1,192 @@
+agente:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:Agente:index" }
+
+seleccionar_vista:
+    pattern:  /{vista}/vistasoporte
+    defaults: { _controller: "soporteBundle:Agente:seleccionarVista" }
+    requirements: { _method: get }
+
+asignaciones_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:Agente:grid" }
+
+asignaciones_cabecera_grafico:
+    pattern:  /cabecera_grafico
+    defaults: { _controller: "soporteBundle:Agente:cabeceraGraficoAsignaciones" }
+
+asignaciones_grid_grafico:
+    pattern:  /grid_grafico
+    defaults: { _controller: "soporteBundle:Agente:gridGraficoAsignaciones" }
+
+asignaciones_ajax_crear_asignacion:
+    pattern: /ajaxCrearAsignacion
+    defaults: { _controller: "soporteBundle:Agente:ajaxAsignarSolicitud"}
+    requirements: { _method: post }
+
+asignaciones_obtiene_info_asignacion:
+    pattern:  /obtieneInfoAsignacion
+    defaults: { _controller: "soporteBundle:Agente:obtieneInformacionAsignacion" }
+
+asignaciones_grid_seguimientos:
+    pattern:  /gridSeguimientos
+    defaults: { _controller: "soporteBundle:Agente:gridSeguimientos" }
+
+asignaciones_ajax_crear_seguimiento:
+    pattern: /ajaxCrearSeguimiento
+    defaults: { _controller: "soporteBundle:Agente:ajaxCreaSeguimiento"}
+    requirements: { _method: post }
+
+asignaciones_ajax_graba_numero_tarea:
+    pattern: /ajaxGrabaNumeroTarea
+    defaults: { _controller: "soporteBundle:Agente:ajaxAgregarNumeroTarea"}
+    requirements: { _method: post }
+
+asignaciones_ajax_marcar_cambio_turno:
+    pattern: /ajaxMarcarCambioTurno
+    defaults: { _controller: "soporteBundle:Agente:ajaxMarcarCambioTurno"}
+    requirements: { _method: post }
+
+asignaciones_ajax_graba_cambio_turno:
+    pattern: /ajaxGrabaCambioTurno
+    defaults: { _controller: "soporteBundle:Agente:ajaxGrabaCambioTurno"}
+    requirements: { _method: post }
+
+asignaciones_grid_cambio_turno:
+    pattern:  /gridCambioTurno
+    defaults: { _controller: "soporteBundle:Agente:gridCambioTurno" }
+
+asignaciones_ajax_asignar_seguimiento:
+    pattern: /ajaxAsignarSeguimiento
+    defaults: { _controller: "soporteBundle:Agente:ajaxAsignarSeguimiento"}
+    requirements: { _method: post }
+
+asignaciones_ajax_busca_pendientes:
+    pattern: /ajaxAsignacionesPendientes
+    defaults: { _controller: "soporteBundle:Agente:ajaxAsignacionesPendientes"}
+    
+asignaciones_cambio_turno_automatico:
+    pattern: /cambioTurnoAutomatico
+    defaults: { _controller: "soporteBundle:Agente:cambioTurnoAutomatico"}
+
+asignaciones_ajax_resp_asignar_seguimiento:
+    pattern: /ajaxResponderAsignarSeguimiento
+    defaults: { _controller: "soporteBundle:Agente:ajaxResponderAsignarSeguimiento"}
+    requirements: { _method: post }
+
+asignaciones_ajax_eliminar_asignacion:
+    pattern: /ajaxEliminarAsignacion
+    defaults: { _controller: "soporteBundle:Agente:ajaxEliminarAsignacion"}
+    requirements: { _method: post }
+
+asignaciones_ajax_eliminar_seguimiento:
+    pattern: /ajaxEliminarSeguimiento
+    defaults: { _controller: "soporteBundle:Agente:ajaxEliminarSeguimiento"}
+    requirements: { _method: post }
+
+asignaciones_seguimientos_pendientes_usr:
+    pattern:  /ajaxSeguimientosPendientesUsr
+    defaults: { _controller: "soporteBundle:Agente:ajaxSeguimientosPendientes" }
+
+asignaciones_grid_grafico_usr:
+    pattern:  /gridGraficoUsr
+    defaults: { _controller: "soporteBundle:Agente:gridGraficoAsignacionesUsr" }
+
+asignaciones_obtener_tipos_problema:
+    pattern:  /ajaxObtenerTiposProblema
+    defaults: { _controller: "soporteBundle:Agente:ajaxObtenerTiposProblema" }
+
+asignaciones_obtiene_info_tecnica_caso:
+    pattern:  /obtieneInfoTecnicaCaso
+    defaults: { _controller: "soporteBundle:Agente:obtieneInfoTecnicaCaso" }
+
+asignaciones_obtiene_info_adicional_tarea:
+    pattern:  /obtieneInfoAdicionalTarea
+    defaults: { _controller: "soporteBundle:Agente:obtieneInfoAdicionalTarea" }
+
+asignaciones_obtiene_info_tecnica_tarea:
+    pattern:  /obtieneInfoTecnicaTarea
+    defaults: { _controller: "soporteBundle:Agente:obtieneInfoTecnicaTarea" }
+
+asignaciones_grid_historial:
+    pattern:  /gridHistorialAsignacion
+    defaults: { _controller: "soporteBundle:Agente:gridHistorialAsignacion" }
+
+asignaciones_obtiene_total_seguimientos_usr:
+    pattern:  /obtieneTotalSeguimientosUsr
+    defaults: { _controller: "soporteBundle:Agente:obtieneSeguimientosTotalizadoPorUsr" }
+
+asignaciones_obtiene_total_asignaciones:
+    pattern:  /obtieneTotalAsignaciones
+    defaults: { _controller: "soporteBundle:Agente:obtieneAsignacionesTotalizado" }
+
+asignaciones_obtiene_total_estado_asignaciones:
+    pattern:  /obtieneTotalEstadoAsignaciones
+    defaults: { _controller: "soporteBundle:Agente:obtieneAsignacionesTotalizadoPorEstado" }
+
+asignaciones_obtiene_top_logins:
+    pattern:  /obtieneTopLogins
+    defaults: { _controller: "soporteBundle:Agente:obtieneTopLogins" }
+
+asignaciones_actualiza_estado_conexion:
+    pattern:  /actualizaEstadoConexion
+    defaults: { _controller: "soporteBundle:Agente:ajaxActualizaEstadoConexion" }
+
+asignaciones_actualiza_extension:
+    pattern:  /actualizaExtension
+    defaults: { _controller: "soporteBundle:Agente:ajaxActualizaExtension" }
+
+asignaciones_obtener_estado_conexion:
+    pattern:  /obtenerEstadoConexion
+    defaults: { _controller: "soporteBundle:Agente:ajaxObtenerEstadoConexion" }
+
+asignaciones_obtener_ultimo_agente_asignado:
+    pattern:  /obtenerUltimoAgenteAsignado
+    defaults: { _controller: "soporteBundle:Agente:ajaxObtenerUltimoAgenteAsignado" }
+
+asignaciones_grid_tareas_pendientes_dep:
+    pattern:  /gridTareasPendientesDep
+    defaults: { _controller: "soporteBundle:Agente:gridTareasPendientesDepartamento" }
+
+asignaciones_ajax_modificar_asignacion:
+    pattern: /ajaxModificarAsignacion
+    defaults: { _controller: "soporteBundle:Agente:ajaxModificarAsignacion"}
+    requirements: { _method: post }
+
+asignaciones_relaciona_Asignacion_Hija_Padre:
+    pattern: /relacionaAsignacionHijaPadre
+    defaults: { _controller: "soporteBundle:Agente:relacionaAsignacionHijaPadre"}
+    requirements: { _method: post }
+    
+asignaciones_seguimientoAsignacion:
+    pattern: /ajaxGetSeguimiento
+    defaults: { _controller: "soporteBundle:Agente:ajaxGetSeguimiento"}
+    requirements: { _method: post }
+
+asignaciones_ajax_envia_reporte_pendientes:
+    pattern:  /ajaxEnviaReportePendientes
+    defaults: { _controller: "soporteBundle:Agente:ajaxEnviaReporteAsignacionesPend" }
+
+asignaciones_obtener_parametros:
+    pattern:  /ajaxObtenerParametros
+    defaults: { _controller: "soporteBundle:Agente:ajaxObtenerParametros" }
+
+asignaciones_actualiza_admin_tipo_problema:
+    pattern:  /ajaxActualizaTipoProblemaParametrizado
+    defaults: { _controller: "soporteBundle:Agente:ajaxActualizaTipoProblemaParametrizado" }
+
+asignaciones_obtener_total_asignaciones_sin_numero:
+    pattern:  /ajaxObtenerTotalAsigSinNumero
+    defaults: { _controller: "soporteBundle:Agente:ajaxObtenerTotalAsignacionesSinNumero" }
+
+asignaciones_obtener_registros_conexion_usr:
+    pattern:  /ajaxObtenerRegistrosConexionUsr
+    defaults: { _controller: "soporteBundle:Agente:ajaxObtenerRegistrosConexionUsr" }
+
+asignaciones_actualiza_caracteristica_agente:
+    pattern:  /ajaxActualizaCaracteristicaAgente
+    defaults: { _controller: "soporteBundle:Agente:ajaxActualizaCaracteristicaAgente" }
+
+asignaciones_poner_quitar_asignacion_standby:
+    pattern:  /ajaxPonerQuitarAsignacionAstandby
+    defaults: { _controller: "soporteBundle:Agente:ajaxPonerAsignacionStandby" }

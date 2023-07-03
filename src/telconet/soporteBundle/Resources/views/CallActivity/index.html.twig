@@ -1,0 +1,64 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var clienteSesion      = "{{clienteSesion}}";
+        var url_finalizarTarea = "{{ path('infocaso_finalizarTarea') }}";
+        var strUrlDeleteAjax   = "{{ path('callactivity_deleteAjax') }}";
+		var strPrefijoEmpresaSession        = '{{ strPrefijoEmpresaSession }}';
+		var url_getActividadesPuntoAfectado = "{{path('infocaso_getActividadesPuntoAfectado')}}";
+		var boolPuedeVerGridActividades     = '{{ is_granted("ROLE_78-8317") }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CallActivity/index.js?8') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}    
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Listado de Actividades</h1>
+	</div>
+	<div class="body_content k-content">
+	    <form action="{{ path('callactivity_exportarConsulta') }}" method="post">
+			<input type='hidden' name='hid_login' id='hid_login' value='' />
+			<input type='hidden' name='hid_tipoGenera' id='hid_tipoGenera' value='' />
+			<input type='hidden' name='hid_claseDocumento' id='hid_claseDocumento' value='' />						
+			<input type='hidden' name='hid_feDesde' id='hid_feDesde' value='' />
+			<input type='hidden' name='hid_feHasta' id='hid_feHasta' value='' />
+			<input type='hidden' name='hid_asignado' id='hid_asignado' value='' />			
+			<input type='hidden' name='hid_actividad' id='hid_actividad' value='' />
+			
+			<table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+			{% if ((strPrefijoEmpresaSession == 'TN') and is_granted("ROLE_78-8317")) %}
+				<tr>
+                    <td><div id='actividadesPuntoAfectado'></div></td>
+                </tr>
+                <tr><td><br/></td></tr>
+            {% endif %}
+				<tr>
+					<td><div id='filtro'></div></td>
+				</tr>	
+				<tr>
+					<td><div id="grid"></div></td>
+				</tr>
+			</table> 
+		</form>	  
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+	<div class="acciones_relacionadas">
+		{% if is_granted('ROLE_80-2') %}
+		<a href="{{ path('callactivity_new') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nueva Actividad
+		</a>
+		{% endif %}
+	</div>
+	
+{% endblock contenido_der %}

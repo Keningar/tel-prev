@@ -1,0 +1,36 @@
+estado_envios:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:EstadoEnvios:index" }
+    
+estado_envios_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:EstadoEnvios:grid"}
+
+estado_envios_exportar_noEnviados:
+    pattern:  /exportar
+    defaults: { _controller: "soporteBundle:EstadoEnvios:exportarNoEnviados" }
+
+estado_envios_reenviar:
+    pattern:  /reenviar
+    defaults: { _controller: "soporteBundle:EstadoEnvios:reenviar" }
+    requirements: { _method: post }
+
+estado_envios_cancelar:
+    pattern:  /cancelar
+    defaults: { _controller: "soporteBundle:EstadoEnvios:cancelarEnvio" }
+    requirements: { _method: post }
+    
+estado_envios_cambiar_estado:
+    pattern:  /cambiar_estado
+    defaults: { _controller: "soporteBundle:EstadoEnvios:cambiarEstado" }
+    requirements: { _method: post }
+    
+estado_envios_desconectar:
+    pattern:  /desconectar_equipo
+    defaults: { _controller: "soporteBundle:EstadoEnvios:desconectarEquipo" }
+    requirements: { _method: post }
+
+estado_envios_logs:
+    pattern:  /consultar_log
+    defaults: { _controller: "soporteBundle:EstadoEnvios:ajaxConsultarLogEjecucion" }
+    requirements: { _method: post }

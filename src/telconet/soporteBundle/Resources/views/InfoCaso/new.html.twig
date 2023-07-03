@@ -1,0 +1,165 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/new.js?3') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/funciones/funciones_sintomas.js?8') }}"></script>
+    <script>
+        var url_bandera_Panel         = "{{ path('infocaso_getBanderaPanel') }}";
+        var url_empleadosDepartamento = "{{ path('infocaso_getEmpleadosPorDepartamentoCiudad') }}";
+        var url_empresaPorSistema     = '{{ path('infocaso_ajaxGetEmpresasPorSistema') }}';
+        var strUrlCiudadesEmpresa     = '{{ path("infocaso_getCiudadesPorEmpresa")}}';
+        var url_sintomaGrid           = "{{ path('admisintoma_grid')}}";
+        var url_getServiciosPorCliente= "{{ path('infocaso_getServiciosPorClienteSesion')}}";
+        var url_getPlanesProductos    = "{{ path('infocaso_getPlanesProductosCaso')}}";
+        var url_getProveedores        = "{{ path('infocaso_getContratistas')}}";
+        var url_getTipoElementos      = "{{ path('infocaso_getTiposElementos')}}";
+        var url_getElementos          = "{{ path('infocaso_getElementos')}}";
+		var url_getTipoAfectacion     = "{{ path('infocaso_getTipoAfectacion')}}";
+		var url_getTipoNotificacion   = "{{ path('infocaso_getTipoNotificacion')}}";
+        var url_getEncontrados        = "{{ path('infocaso_getEncontrados')}}";
+        var url_agregarAfectados      = "{{ path('infocaso_ajaxAgregarAfectados')}}";
+        var devuelveError             = '{% if(mensaje) %}{{mensaje}}{% endif %}';	//Devuele mensaje de error o null desde controlador
+        var empresa                   = "{{empresa}}";  
+        var strMsgCliente             = "{% if(errorSesion) is defined %}{{errorSesion}}{% endif%}";
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}   
+    
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Nuevo Caso</h1>
+	</div>
+	<span class="campos-requeridos">* Campos requeridos</span>
+	<div class="body_content">
+	    <form action="{{ path('infocaso_create', { 'idSolicitud': idSolicitud }) }}" method="post" {{ form_enctype(form) }} class="formulario"            
+               novalidate="novalidate">
+			<div id="contenedor_principal" >				
+				<div id="datos_generales">
+					<table width="100%" border="0" class="box-section-content">
+			            <tr>
+			                <td width="5%">&nbsp;</td>
+			                <td width="24%">{{ form_label(form.tipoCasoId) }}</td>
+			                <td width="10%">{{ form_widget(form.tipoCasoId) }}</td>
+			                <td width="5%">&nbsp;</td>
+			                <td width="24%">{{ form_label(form.tipoNotificacionId) }}</td>
+			                <td width="10%">{{ form_widget(form.tipoNotificacionId) }}</td>
+			                <td width="5%">&nbsp;</td>
+			            </tr>
+			            <tr>
+			                <td width="5%">&nbsp;</td>
+			                <td width="24%">{{ form_label(form.nivelCriticidadId) }}</td>
+			                <td width="10%">{{ form_widget(form.nivelCriticidadId) }}</td>
+			                <td width="5%">&nbsp;</td>			                 
+			                <td width="24%">{{ form_label(form.tipoAfectacion) }}</td>
+			                <td width="10%">{{ form_widget(form.tipoAfectacion) }}</td>
+			                <td width="5%">&nbsp;</td>
+			            </tr>
+			            <tr>
+			                <td width="5%">&nbsp;</td>
+			                <td width="24%"><label>* Fecha de apertura:</label></td>
+			                <td width="10%"><div id="div_fe_apertura"></div><input type="hidden" id="fecha_apertura" name="fecha_apertura" value="" /></td>
+			                <td width="5%">&nbsp;</td>
+			                <td width="24%"><label>* Hora de apertura:</label></td>
+			                <td width="10%"><div id="div_hora_apertura"></div><input type="hidden" id="hora_apertura" name="hora_apertura" value="" /></td>
+			                <td width="5%">&nbsp;</td>
+			            </tr>
+			            <tr>
+			                <td>&nbsp;</td>
+			                <td title="Información para el paquete de horas soporte"><label>Login Auxiliar:</label></td>
+			                <td colspan="4"><input type="text" readonly id="descripcion_producto" name="descripcion_producto" value="" /></td>
+			                <td colspan="4"><input type="hidden" id="tipo_soporte" name="tipo_soporte" value="" /></td>
+			                <td colspan="4"><input type="hidden" id="bool_paqueteSoporte" name="bool_paqueteSoporte" value="" /></td>
+			            </tr>
+			            <tr>
+                            <td width="5%">&nbsp;</td>
+			                <td width="24%"><label> Fecha Creacion:</label></td>
+			                <td width="10%"><input readonly diabled type="text" value="{{ fechaActual }}"/></td>
+			                <td width="5%">&nbsp;</td>
+			                <td width="24%">
+			                    <label id="label_tipo_backbone"></label>
+			                </td>
+			                <td width="10%">
+			                    <div id="combo_tipo_backbone" ></div>
+			                </td>
+			                <td width="5%">&nbsp;</td>
+			            </tr>
+			            <tr>
+			                <td width="5%">&nbsp;</td>
+			                <td width="24%"><label>* Titulo Inicial:</label></td>
+							<td>{{ form_widget(form.tituloIni) }}</td>
+							<td>&nbsp;</td>
+							<td>
+			                    <label id="label_mante_programado" style="display:none;">Mantenimiento Programado</label>
+			                </td>
+			                <td>
+			                    <input id = "check_mante_programado" type="checkbox" name="check_mante_programado" 
+								value="N" style="display:none;">
+			                </td>	
+
+			            </tr>
+                                    {% if arrayAsignaciones is defined %}
+                                        {% if arrayAsignaciones|length > 0 %}
+                                            <tr>
+                                                <td width="5%">&nbsp;</td>
+                                                <td width="24%"><label>Asignaci&oacute;n:</label></td>
+                                                <td width="10%" colspan="4">
+                                                    <select id="asignacionSolicitud" name="asignacionSolicitud">
+                                                        <option value="">Escoja una opcion</option>
+                                                        {% for asignacion in arrayAsignaciones %}
+                                                            <option value = "{{asignacion.id}}">
+                                                                {{asignacion.feCreacion|date('Y-m-d H:i:s')}}/{{asignacion.referenciaCliente}}/
+                                                                {{asignacion.origen}}/{{asignacion.tipoProblema}}
+                                                            </option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endif %}
+			            <tr>
+			                <td width="5%">&nbsp;</td>
+			                <td width="24%"><label>* Version Inicial:</label></td>
+			                <td width="10%" colspan="4">{{ form_widget(form.versionIni) }}</td>
+			            </tr>
+			            <tr>
+			                <td width="5%">&nbsp;</td>
+			                <td colspan="5">&nbsp;</td>
+			            </tr>
+			            <tr>
+			                <td width="5%">&nbsp;</td>
+			                <td colspan="5">
+                                <div id="div_sintomas"></div>                                
+                                <input type="hidden" id="sintomas_escogidos" name="sintomas_escogidos" value="{{jsonSintoma}}" />
+                                <input type="hidden" id="cliente" name="cliente" value="{{cliente}}" />
+                                <input type="hidden" id="empresa" name="empresa" value="{{ empresa }}" />
+								<input type="hidden" id="mantProgramado" name="mantProgramado" value="" />
+                            </td>                            
+			            </tr>
+			        </table>
+				</div>	            
+			</div>    
+			
+			<div class="buttons">
+                            <p>
+                                <button id="btnGuardar" name="btnGuardar" type="button" class="button-crud" onclick="validarDatosFormulario()">
+                                    Guardar
+                                </button>
+                                <span class="height20px">
+                                        &oacute;&nbsp;
+                                        <a class="cancel-crud" href="{{ path('infocaso') }}">
+                                            cancelar
+                                        </a>
+                                </span>
+                            </p>
+			</div>
+		{{ form_widget(form._token) }}
+		</form>
+	</div>
+{% endblock contenido_izq %}

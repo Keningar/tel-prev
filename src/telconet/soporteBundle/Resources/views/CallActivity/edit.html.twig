@@ -1,0 +1,74 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CallActivity/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Nueva Llamada</h1>
+	</div>
+	<span class="campos-requeridos">* Campos requeridos</span>
+	<div class="body_content">
+		<form action="{{ path('callactivity_update', { 'id': comunicacion.id }) }}" method="post" {{ form_enctype(form) }} class="formulario" onsubmit="return validarFormulario();" novalidate="novalidate">
+			<div id="contenedor_principal" >
+				<div id="datos_generales">
+					<table width="100%" border="0" class="box-section-content">
+						<tr>
+							<td width="5%">&nbsp;</td>
+							<td width="24%">{{ form_label(form.tipo) }}</td>
+							<td width="10%">{{ form_widget(form.tipo) }}<input type="hidden" id="formaContacto" value="{{formaContacto}}"/></td>
+							<td width="5%">&nbsp;</td>
+							<td width="24%"><label class="required" for="telconet_schemabundle_callactivitytype_clase">* Clase:</label></td>
+							<td width="10%"><input id="telconet_schemabundle_callactivitytype_clase" type="text" value="Recibido" disabled="disabled" size="10" ></td>
+							<td width="5%">&nbsp;</td>
+						</tr>
+						<tr>
+							<td width="5%">&nbsp;</td>
+							<td width="24%"><label>* Fecha de apertura:</label></td>
+							<td width="10%"><div id="div_fe_apertura"></div><input type="hidden" id="fecha_apertura" name="fecha_apertura" value="{{ fecha  | date("Y-m-d")}}" /></td>
+							<td width="5%">&nbsp;</td>
+							<td width="24%"><label>* Hora de apertura:</label></td>
+							<td width="10%"><div id="div_hora_apertura"></div><input type="hidden" id="hora_apertura" name="hora_apertura" value="{{ fecha  | date("H:i")}}" /></td>
+							<td width="5%">&nbsp;</td>
+						</tr>
+						<tr>
+							<td width="5%">&nbsp;</td>
+							<td width="24%"><label>* Cliente:</label></td>
+							<td width="10%"><div id="cliente_combo"></div><input type="hidden" id="cliente" name="cliente" value="" /><input type="hidden" id="clienteId" name="clienteId" value="{{comunicacion.remitenteId}}" /><input type="hidden" id="clienteNombre" name="clienteNombre" value="{{comunicacion.remitenteNombre}}" /></td>
+							<td width="5%">&nbsp;</td>
+							<td width="24%"><label>* Detalle Adicional:</label></td>
+							<td width="10%">{{ form_widget(form.claseDocumento) }}<input type="hidden" id="detalle" value="{{detalle}}"/></td>
+							<td width="5%">&nbsp;</td>
+						</tr>
+						<tr>
+							<td width="5%">&nbsp;</td>
+							<td width="24%"><label>* Observacion:</label></td>
+							<td width="10%" colspan="4">{{ form_widget(form.observacion) }}<input type="hidden" id="observacion" value="{{observacion}}"/></td>
+						</tr>
+					</table>
+				</div>	
+			</div>    
+			<div class="buttons">
+				<p>
+					<button type="submit" class="button-crud">Guardar</button>
+					<span class="height20px">
+						&oacute;&nbsp;
+						<a class="cancel-crud" href="{{ path('callactivity') }}">
+								cancelar
+						</a>
+					</span>
+				</p>
+			</div>
+		{{ form_widget(form._token) }}
+		</form>
+	</div>
+{% endblock contenido_izq %}

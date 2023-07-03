@@ -1,0 +1,36 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }} 
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('./public/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script>        var url_agente     = "{{path('agente')}}"; </script>
+{% endblock %}
+
+{% block contenido_central %}
+{%if vistaSoporte is not sameas('no seleccionada') %}
+
+    <script>window.location.href = url_agente;</script>
+    
+{%endif%}
+    <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            <h4>Seleccione tipo de vista</h4>
+    </div>
+    <div class="body_content k-content">
+            <div class="dropdown" id="dropDownVistaSoporteInicial">
+              <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" id="vistaSoporteInicial">Vista {{vistaSoporte}}
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu"  id="ulDropDownVistaSoporteInicial">
+                  <li><a href='{{ path('seleccionar_vista', {'vista': 'Administrador'}) }}'>Administrador</a></li>
+                  <li><a href='{{ path('seleccionar_vista', {'vista': 'Agente'}) }}'>Agente</a></li>
+              </ul>
+            </div>
+    </div> 
+{% endblock contenido_central %}

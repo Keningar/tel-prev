@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <style type="text/css"> 
+       
+        table{
+            border: 3px solid #015191;
+            height: 970px;
+            margin: auto;
+        }
+
+        table tr p{
+            max-width: 80%;
+            text-align: center;
+            margin: auto;
+        }
+
+        indice{
+            height: 970px;
+            margin: auto;
+            color: black;
+        }
+
+        
+        
+        espace {text-indent: 4cm} 
+        
+        </style> 
+        <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+    </head>
+    <body  class="pdf">
+    <table>
+    <tbody>
+        <tr>
+            <td>
+                <div >
+                    <h1 style="text-align: center;"><strong>AVISO DE CONFIDENCIALIDAD</strong></h1>
+                    <p style="text-align: center;">&ldquo;<em>El presente documento es de car&aacute;cter confidencial. Ha sido construido especialmente para el uso exclusivo de la persona o entidad a la que es dirigido. No se autoriza la distribución o publicación sin autorización de Telconet S.A.&rdquo;</em></p>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>    
+       
+    <div class = "indice" >
+        <h2 style="text-align:center;"><strong>ÍNDICE</strong></h3>
+
+        {%for registro in  arrayPreguntasInforme%}
+
+            <h4><a href="#{{registro.numero}}">{{registro.numero}}.&nbsp;&nbsp;{{registro.pregunta}}</a> </h4>
+
+        {%endfor%} 
+    </div>
+       
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {%for registro in  arrayPreguntasInforme%}
+
+        <h3 id="{{registro.numero}}">{{registro.numero}}.&nbsp;&nbsp;{{registro.pregunta}}</h3> 
+        {{registro.respuesta | raw }}
+        <br>
+
+    {%endfor%} 
+ <h2 style="text-align:center;"><strong>FIN DEL DOCUMENTO</strong></h3>
+
+</body>
+</html>

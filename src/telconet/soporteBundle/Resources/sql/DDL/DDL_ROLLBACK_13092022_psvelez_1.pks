@@ -1,0 +1,13 @@
+/**
+ * DEBE EJECUTARSE EN DB_SOPORTE
+ * rollback del archivo DDL_13092022_psvelez_1.pks
+ * @author Pedro Velez <psvelez@telconet.ec>
+ * @version 1.0 10-09-2022 - Versión Inicial.
+ */
+
+ALTER TABLE DB_SOPORTE.INFO_TRACKING_MAP_HIST 
+DROP COLUMN CODIGO_TRABAJO;
+ALTER TABLE DB_SOPORTE.INFO_TRACKING_MAP_HIST 
+DROP COLUMN CEDULA_TECNICO;
+
+/

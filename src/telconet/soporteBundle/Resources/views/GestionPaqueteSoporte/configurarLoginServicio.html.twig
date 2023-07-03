@@ -1,0 +1,105 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block stylesheets %}
+    {{ parent() }} 
+    
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/ext-4.1.1/resources/css/CheckHeader.css') }}" />
+
+{% endblock %}
+
+
+{% block javascripts%}
+	{{ parent() }}
+
+
+	<script type="text/javascript" src="{{ asset('./bundles/soporte/js/GestionPaqueteSoporte/configurarLoginServicio.js?1') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/src/ux/CheckColumn.js') }}"></script>
+	<script>
+		var url_getPuntosCliente = '{{ path("gestionPaqueteSoporte_getPuntosCliente") }}';
+		var url_getServiciosByPunto = '{{ path("gestionPaqueteSoporte_getServiciosByPunto") }}';
+		var url_putServiciosPaqueteSoporte = '{{ path("gestionPaqueteSoporte_putServiciosPaqueteSoporte") }}';
+
+		var strRazonSocial = '{{razonSocial}}';
+		var strNombre = '{{nombre}}';
+		var strRol = '{{rol}}';
+		var strIdCliente = '{{idCliente}}';
+		var strCliente = '{{cliente}}';
+		var strEsPadre = '{{esPadre}}'; 
+		var strIdPunto = '{{idPunto}}';
+
+		var strIdServicio = '{{id}}'
+	</script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img alt="titulo" src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Configuración logines y servicios</h1>
+	</div>
+	<div class="body_content k-content">
+        <table style="width: 110%;">
+            <tr>
+				<td>
+					<p><strong>Razón social:</strong>
+					{{razonSocial}}</p>
+				</td>
+				<td>
+					<p><strong>Cliente:</strong>
+					{{cliente}}</p>
+				</td>
+			</tr>
+        </table>
+        <br>
+		<table border='0'>
+            <tr>
+            <p><strong>Listado de logines del cliente</strong></p>
+            </tr>
+			<tr>
+				<td>
+					<div id="gridLogines"></div>
+				</td>
+			</tr>
+		</table>
+        <br>
+        <table border='0'>
+            <tr>
+            <p><strong>Servicios por login</strong></p>
+            </tr>
+			<tr>
+				<td>
+					<div id="gridServicios"></div>
+				</td>
+			</tr>
+		</table>
+        <br>
+        <table border='0'>
+            <tr>
+                <table style="width: 98%;">
+                <td>
+                    <p><strong>Servicios agregados</strong></p>
+                </td>
+                <td>
+                    <div id='button-agregar' style='text-align:center'></div>
+                </td>
+                </table>
+            </tr>
+			<tr>
+				<td>
+					<div id="gridServiciosA"></div>
+				</td>
+			</tr>
+		</table>
+        <br>
+        <table border = '0' style="width: 110%;">
+            <tr>
+                <td style = "width: 100%; display: flex; justify-content: center; align-items: center;">
+                    <div id='button-guardar' style="width: fit-content;" ></div>  
+                    <div id='button-cancelar' style="width: fit-content; margin-left: 2%;"></div>
+                    <div id='button-regresar' style="width: fit-content; margin-left: 3%;"></div>
+                </td>
+            </tr>
+        </table>
+	</div>
+{% endblock contenido_izq %}

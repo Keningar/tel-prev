@@ -1,0 +1,11 @@
+notificaciones_externas:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:Notificaciones:index" }
+    
+soporteBundle_Plantilla:
+  resource: "@soporteBundle/Resources/config/routing/notificaciones_plantilla.yml"
+  prefix: /plantilla
+    
+soporteBundle_EnvioPlantilla:
+  resource: "@soporteBundle/Resources/config/routing/notificaciones_envioplantilla.yml"
+  prefix: /envio_plantilla 

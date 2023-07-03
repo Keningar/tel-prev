@@ -1,0 +1,32 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+
+{% endblock %}
+
+
+
+
+{% block contenido_central %}
+<div class="body_content k-content">
+    <center><div class="opcion-titulo-noticia">{{ documento.nombreDocumento }}</div></center>
+    <br/>
+    <br/>
+    <div>{{documento.mensaje|raw}}</div>
+
+
+</div>
+<div class="buttons">
+    <p>
+        <span class="height:20px">
+            <a class="button-crud" href="{{ path('noticias_principal') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<br/><br/>
+{% endblock contenido_central %}

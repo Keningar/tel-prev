@@ -1,0 +1,66 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/EnvioPlantilla/index.js?5') }}"></script>
+    <script>
+	var tipoElementos =  "{{path('infocaso_getTiposElementos')}}";
+	var elementos     =  "{{path('infocaso_getElementos')}}";    
+	var empresa       =  "{{empresa}}";
+	var getCiclos     =  '{{path('procesomasivo_getCiclos')}}';
+	var boolPermisoEmpresas = "{{ boolPermisoEmpresa.PERMISOS_EMPRESA }}";
+	var ajaxCiudad          =  "{{path('infocaso_getCiudadesPorEmpresa')}}";
+	var getProductos        =  "{{path('infoservicio_getProductosServicios')}}";
+	var urlGetPeByCiudad    =  "{{path('servicio_getPeByCiudad')}}";
+	var ajaxDepartamento    =  "{{path('infocaso_getDepartamentosPorEmpresaYCiudad')}}";
+	var urlGetJurisdiccionesPe = "{{path('infocaso_getJurisdiccionesPe')}}";
+    </script>
+{% endblock %}
+
+{% block contenido_central %}
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	    <h1>Envio Notificaciones</h1>
+	</div>
+	<div class="body_content k-content">
+	   
+	    <form action="{{ path('envioplantilla_plantilla_exportarConsulta') }}" method="post">
+	    			
+			<input type='hidden' name='hid_facturas' id='hid_facturas' value='' />
+			<input type='hidden' name='hid_cartera' id='hid_cartera' value='' />
+			<input type='hidden' name='hid_tipo_negocio' id='hid_tipo_negocio' value='' />			
+			<input type='hidden' name='hid_estado_servicio' id='hid_estado_servicio' value='' />
+			<input type='hidden' name='hid_feActivacion' id='hid_feActivacion' value='' />
+			<input type='hidden' name='hid_oficinas' id='hid_oficinas' value='' />
+			<input type='hidden' name='hid_forma_pago' id='hid_forma_pago' value='' />
+			<input type='hidden' name='hid_bancos' id='hid_bancos' value='' />
+                        <input type='hidden' name='hid_ciclos' id='hid_ciclos' value='' />
+			
+			 <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+			      <tr>
+				  <td><div id='tipo'></div></td>
+			      </tr>
+			      <tr>
+				  <td><div id='filtro'></div></td>
+			      </tr>
+			      <tr>
+				  <td><div id='filtroFinanciero'></div></td>
+			      </tr>
+			      <tr>
+				  <td><div id="grid"></div></td>	            
+			      </tr>
+			      <tr>
+				  <td><div id="gridFinanciero"></div></td>
+			      </tr>
+                  <tr>
+				  <td><div id="gridSoporte"></div></td>
+			      </tr>
+			  </table>
+		</form>	   
+	</div>
+{% endblock contenido_central %}

@@ -1,0 +1,141 @@
+casosEcucert:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:CasoEcucert:index" } 
+    
+casosEcucert_buscar:
+    pattern:  /buscarCasosEcucert
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarCasosEcucert" }
+    
+casosEcucert_verificar:
+    pattern:  /verificarVulnerabilidadEcucert
+    defaults: { _controller: "soporteBundle:CasoEcucert:verificarVulnerabilidadEcucert" }
+    
+casosEcucert_buscarEstados:
+    pattern:  /buscarEstadoIncidencia
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarEstadoIncidencia" }
+
+casosEcucert_verSeguimientoTarea:
+    pattern:  /verSeguimientoTarea
+    defaults: { _controller: "soporteBundle:InfoCaso:verSeguimientoTarea" }   
+    
+casosEcucert_ingresarSeguimiento:
+    pattern:  /ingresarSeguimiento
+    defaults: { _controller: "soporteBundle:InfoCaso:ingresarSeguimiento" }    
+    
+casosEcucert_cerrarCasosEcucert:
+    pattern:  /cerrarCasosEcucert
+    defaults: { _controller: "soporteBundle:CasoEcucert:cerrarCasosEcucert" }    
+    
+casosEcucert_contenerIp:
+    pattern:  /contenerIp
+    defaults: { _controller: "soporteBundle:CasoEcucert:contenerIp" } 
+    
+casosEcucert_verNotificaciones:
+    pattern:  /verNotificaciones
+    defaults: { _controller: "soporteBundle:CasoEcucert:verNotificaciones" }     
+    
+casosEcucert_enviarCorreoCliente:
+    pattern:  /enviarCorreoCliente
+    defaults: { _controller: "soporteBundle:CasoEcucert:enviarCorreoCliente"  }   
+
+casosEcucert_generarReporte:
+    pattern:  /generarReporte
+    defaults: { _controller: "soporteBundle:CasoEcucert:generarReporte"  }  
+    
+casosEcucert_reprocesarIP:
+    pattern:  /reprocesarIP
+    defaults: { _controller: "soporteBundle:CasoEcucert:reprocesarIP"  }  
+    
+casosEcucert_buscarSubEstadoIncidencia:
+    pattern:  /buscarSubEstadoIncidencia
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarSubEstadoIncidencia"  } 
+    
+casosEcucert_buscarPrioridadIncidencia:
+    pattern:  /buscarPrioridadIncidencia
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarPrioridadIncidencia"  } 
+    
+casosEcucert_buscarEstadoGestion:
+    pattern:  /buscarEstadoGestion
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarEstadoGestion"  } 
+    
+casosEcucert_buscarEstadoNotificacion:
+    pattern:  /buscarEstadoNotificacion
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarEstadoNotificacion"  } 
+
+casosEcucert_buscarCategoriaIncidencia:
+    pattern:  /buscarCategoriaIncidencia
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarCategoriaIncidencia"  }   
+
+casosEcucert_buscarCanton:
+    pattern:  /buscarCanton
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarCanton"  }     
+
+casosEcucert_buscarTipoEvento:
+    pattern:  /buscarTipoEvento
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarTipoEvento"  }  
+   
+casosEcucert_buscarLogin:
+    pattern:  /buscarLogin
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarLogin"  }  
+    
+casosEcucert_cambiarEstadoGestion:
+    pattern:  /cambiarEstadoGestion
+    defaults: { _controller: "soporteBundle:CasoEcucert:cambiarEstadoGestion"  } 
+
+casosEcucert_buscarTipoCliente:
+    pattern:  /buscarTipoCliente
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarTipoCliente"  }  
+
+gestion_documentos_multipleFileUpload_ecucert:
+    pattern:  /multipleFileUploadECUCERT
+    defaults: { _controller: "soporteBundle:GestionDocumentos:multipleFileUpload"}
+
+infocaso_getDocumentosCaso_ecucert:
+    pattern:  /getDocumentosCaso
+    defaults: { _controller: "soporteBundle:InfoCaso:getDocumentosCaso" }
+
+infocaso_getDocumentosCasoEncontrados_ecucert:
+    pattern:  /getDocumentosCasoEncontrados
+    defaults: { _controller: "soporteBundle:InfoCaso:getDocumentosCasoEncontrados" }
+    requirements: { _method: post }
+
+casosEcucert_cambiarEstadoNotificacion:
+    pattern:  /cambiarEstadoNotificacion
+    defaults: { _controller: "soporteBundle:CasoEcucert:cambiarEstadoNotificacion"  }  
+
+casosEcucert_buscarOpcionesSeguimientos:
+    pattern:  /buscarOpcionesSeguimientos
+    defaults: { _controller: "soporteBundle:CasoEcucert:buscarOpcionesSeguimientos"  }  
+
+gestion_documentos_eliminarDocumentoRegistroYArchivo_ecucert:
+    pattern:  /eliminarDocumentoRegistroYArchivo
+    defaults: { _controller: "soporteBundle:GestionDocumentos:eliminarDocumentoRegistroYArchivo"}
+
+casosEcucert_obtenerCategoria:
+    pattern:  /obtenerCategoria
+    defaults: { _controller: "soporteBundle:CasoEcucert:obtenerCategoria"  }    
+   
+casosEcucert_subirArchivoCSV:
+    pattern:  /subirArchivoCSV
+    defaults: { _controller: "soporteBundle:CasoEcucert:subirArchivoCSV"  }    
+    
+casosEcucert_guardar_categoria:
+    pattern:  /guardarCategoria
+    defaults: { _controller: "soporteBundle:CasoEcucert:guardarCategoria"  }      
+    
+casosEcucert_remover_categoria:
+    pattern:  /removerCategoria
+    defaults: { _controller: "soporteBundle:CasoEcucert:removerCategoria"  } 
+
+casosEcucert_redireccionar_plantilla:
+    pattern:  /redireccionarPlantilla
+    defaults: { _controller: "soporteBundle:CasoEcucert:redireccionarPlantilla"  } 
+
+admiplantilla_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:edit" }
+
+admiplantilla_new:
+    pattern:  /new/{codigo}
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:new" }
+    

@@ -1,0 +1,26 @@
+{% extends "::layout_completo.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+    
+	<script>
+		/*var pathOriginal = window.location.pathname;
+		if(pathOriginal == "/soporte")
+		{
+			var pathNameProyecto = "/";
+			var pathRutaBusqueda = "soporte/info_caso"; 
+			window.location = pathNameProyecto + pathRutaBusqueda;
+		}*/
+	</script>
+{% endblock %}
+
+{% block contenido_central %}        
+    <div id="titulo_content">
+    </div>
+    
+	<div class="clearBoth"></div>
+    
+	<div class="dashboard_content">
+    </div>
+{% endblock contenido_central %}

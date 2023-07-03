@@ -1,0 +1,16 @@
+/**
+ * DEBE EJECUTARSE EN DB_SSO.
+ * @author Andrés Montero <amontero@telconet.ec>
+ * @version 1.0 20-07-2020 - Versión Inicial.
+ */
+
+/* Trigger auditoria tabla INFO_TAREA **/
+CREATE OR REPLACE TRIGGER DB_SOPORTE.BEFORE_INFO_TAREA
+  BEFORE UPDATE ON DB_SOPORTE.INFO_TAREA FOR EACH ROW
+
+BEGIN
+  :NEW.USR_ULT_MOD := NVL(:NEW.USR_ULT_MOD,NVL(SYS_CONTEXT('USERENV','OS_USER'),USER));
+  :NEW.FE_ULT_MOD  := NVL(:NEW.FE_ULT_MOD,SYSDATE);
+END;
+
+/

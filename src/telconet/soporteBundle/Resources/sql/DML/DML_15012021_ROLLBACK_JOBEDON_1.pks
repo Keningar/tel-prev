@@ -1,0 +1,24 @@
+/**
+ * DEBE EJECUTARSE EN DB_GENERAL
+ * Rollback para parametros controlar creacion de casos
+ * @author José Bedón Sánchez <jobedon@telconet.ec>
+ * @version 1.0 15-01-2021 - Versión Inicial.
+ */
+DELETE
+FROM DB_GENERAL.ADMI_PARAMETRO_DET B
+WHERE B.PARAMETRO_ID =
+  (SELECT A.ID_PARAMETRO
+  FROM DB_GENERAL.ADMI_PARAMETRO_CAB A
+  WHERE A.NOMBRE_PARAMETRO = 'PARAMETROS_CIERRE_CASO'
+  AND A.MODULO             = 'SOPORTE'
+  AND A.PROCESO            = 'CIERRE_CASO'
+  );
+
+DELETE
+FROM DB_GENERAL.ADMI_PARAMETRO_CAB A
+WHERE A.NOMBRE_PARAMETRO = 'PARAMETROS_CIERRE_CASO'
+AND A.MODULO             = 'SOPORTE'
+AND A.PROCESO            = 'CIERRE_CASO';
+
+COMMIT;
+/

@@ -1,0 +1,23 @@
+estado_envios_masivos:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:EstadoEnviosMasivos:index" }
+    
+estado_envios_masivos_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:EstadoEnviosMasivos:grid"}
+    
+estado_envios_masivos_info:
+    pattern:  /{intIdNotifMasiva}/showInfoEnvioMasivo
+    defaults: { _controller: "soporteBundle:EstadoEnviosMasivos:showInfoEnvioMasivo" }
+    
+estado_envios_masivos_logs:
+    pattern:  /showGridLogsEnviosMasivos
+    defaults: { _controller: "soporteBundle:EstadoEnviosMasivos:showGridLogsEnviosMasivos" }
+    
+estado_envios_masivos_logs_dets:
+    pattern:  /showGridLogsDetsEnviosMasivos
+    defaults: { _controller: "soporteBundle:EstadoEnviosMasivos:showGridLogsDetsEnviosMasivos" }
+    
+estado_envios_masivos_eliminar:
+    pattern:  /eliminarEnvioMasivo
+    defaults: { _controller: "soporteBundle:EstadoEnviosMasivos:eliminarEnvioMasivo" }

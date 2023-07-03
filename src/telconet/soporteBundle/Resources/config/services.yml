@@ -1,0 +1,56 @@
+parameters:
+  
+
+services:
+  
+  soporte.EnvioPlantilla:
+      class: telconet\soporteBundle\Service\EnvioPlantillaService
+      arguments: ['@service_container']
+
+   
+  soporte.SoporteService:
+      class: telconet\soporteBundle\Service\SoporteService
+      calls:
+            - [setDependencies, [@service_container]]
+            
+  soporte.ListaPlantilla:
+        class: telconet\soporteBundle\Service\PlantillaService
+        calls:
+            - [setDependencies, [@service_container]]
+
+  soporte.ProcesoService:
+      class: telconet\soporteBundle\Service\ProcesoService
+      calls:
+            - [setDependencies, [@service_container]]
+
+  soporte.SysCloudService:
+      class: telconet\soporteBundle\Service\SysCloudService
+      calls:
+            - [setDependencies, [@service_container]]
+
+  soporte.SoporteProcesos:
+      class: telconet\soporteBundle\Service\SoporteProcesosService
+      calls:
+            - [setDependencies, [@service_container]]
+            - [setDependencies, [@service_container]] 
+                       
+  tecnico.ProcesarImagenes:
+      class: telconet\tecnicoBundle\Service\ProcesarImagenesService
+      calls: 
+          - [setDependencies, [@tecnico.ConvertirJsonEnImagen]]
+      arguments: ['@service_container']           
+
+  tecnico.EcucertService:
+      class: telconet\tecnicoBundle\Service\EcucertService
+      calls:
+            - [setDependencies, [@service_container]]
+
+  soporte.SoporteSDService:
+      class: telconet\soporteBundle\Service\SoporteSDService
+      calls:
+            - [setDependencies, [@service_container]]
+
+  soporte.GestionPaqueteSoporte:
+      class: telconet\soporteBundle\Service\GestionPaqueteSoporteService
+      calls:
+            - [setDependencies, [@service_container]]

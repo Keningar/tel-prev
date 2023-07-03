@@ -1,0 +1,20 @@
+
+/**
+ * DEBE EJECUTARSE EN DB_GENERAL
+ * Script para eliminar parametro creado
+ * @author Fernando López <filopez@telconet.ec>
+ * @version 1.0 28-07-2022 - Versión Inicial.
+ */
+
+
+DELETE FROM DB_GENERAL.ADMI_PARAMETRO_DET ap 
+WHERE ap.PARAMETRO_ID = (SELECT apc.ID_PARAMETRO  FROM DB_GENERAL.ADMI_PARAMETRO_CAB apc WHERE apc.NOMBRE_PARAMETRO = 'LIMITE_CONSULTA_TAREAS')
+AND ap.USR_CREACION = 'filopez';
+
+
+DELETE  FROM DB_GENERAL.ADMI_PARAMETRO_CAB apc WHERE apc.NOMBRE_PARAMETRO = 'LIMITE_CONSULTA_TAREAS'
+AND apc.MODULO = 'SOPORTE'
+AND USR_CREACION  = 'filopez';
+
+commit;
+/

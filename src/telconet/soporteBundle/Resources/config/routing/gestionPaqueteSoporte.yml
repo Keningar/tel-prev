@@ -1,0 +1,31 @@
+gestionPaqueteSoporte_configurarLoginServicio:
+  pattern: /{strId}/configurarLoginServicio
+  defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:configurarLoginServicio" }
+
+gestionPaqueteSoporte_consultarPaqueteSoporte:
+  pattern: /{strId}/consultarPaqueteSoporte
+  defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:consultarPaqueteSoporte" } 
+
+gestionPaqueteSoporte_redirigir:
+  pattern:  /redirigir
+  defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:redirigir" }
+
+gestionPaqueteSoporte_getPuntosCliente:
+  pattern: /getPuntosCliente
+  defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:getPuntosCliente" }
+
+gestionPaqueteSoporte_getServiciosByPunto:
+  pattern: /getServiciosByPunto
+  defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:getServiciosByPunto" }
+
+gestionPaqueteSoporte_putServiciosPaqueteSoporte:
+  pattern: /putServiciosPaqueteSoporte
+  defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:putServiciosPaqueteSoporte" }
+
+gestionPaqueteSoporte_getSoportesPaqSoporte:
+  pattern: /getSoportesPaqSoporte
+  defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:getSoportesPaqSoporte" }
+
+gestionPaqueteSoporte_putSolAjusteTiempoSoporte:
+  pattern: /putSolAjusteTiempoSoporte
+  defaults: { _controller: "soporteBundle:GestionPaqueteSoporte:putSolAjusteTiempoSoporte" }

@@ -1,0 +1,121 @@
+tareas:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:Tareas:index" }
+
+tareasDepartamentales:
+    pattern:  /tareasPorDepartamento
+    defaults: { _controller: "soporteBundle:Tareas:indexTareasPorDepartamento" }
+
+tareas_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:Tareas:grid"}
+    
+tareas_getClientes:
+    pattern:  /getClientes
+    defaults: { _controller: "soporteBundle:Tareas:getClientes" }
+    
+tareas_getEstados:
+    pattern:  /getEstados
+    defaults: { _controller: "soporteBundle:Tareas:getEstados" }
+
+tareas_ajaxGetTareasByProceso:
+    pattern:  /ajaxGetTareasByProceso
+    defaults: { _controller: "soporteBundle:Tareas:ajaxGetTareasByProceso" }
+
+tareas_reprogramarTarea:
+    pattern:  /reprogramarTarea
+    defaults: { _controller: "soporteBundle:Tareas:reprogramarTarea" }
+
+tareas_cancelarTarea:
+    pattern:  /cancelarTarea
+    defaults: { _controller: "soporteBundle:Tareas:cancelarTarea" }
+    
+tareas_getMiembrosCuadrilla:
+    pattern:  /ajaxGetMiembrosCuadrilla
+    defaults: { _controller: "soporteBundle:Tareas:ajaxGetMiembrosCuadrilla" }    
+    
+tareas_obtenerHoraServer:
+    pattern:  /obtenerHoraServer
+    defaults: { _controller: "soporteBundle:Tareas:obtenerHoraServer" }    
+
+tareas_finalizarTarea:
+    pattern:  /finalizarTarea
+    defaults: { _controller: "soporteBundle:Tareas:finalizarTarea" }
+tareas_reasignarTarea:
+    pattern:  /reasignarTarea
+    defaults: { _controller: "soporteBundle:Tareas:reasignarTarea" }    
+tareas_getHistorialTareas:
+    pattern:  /getHistorialTareas
+    defaults: { _controller: "soporteBundle:Tareas:getHistorialTareas" }   
+    
+tareas_administrarTareaAsignada:
+    pattern:  /administrarTareaAsignada
+    defaults: { _controller: "soporteBundle:Tareas:administrarTareaAsignada" }  
+
+tareas_getTareasAbiertas:
+    pattern:  /getTareasAbiertas
+    defaults: { _controller: "soporteBundle:Tareas:getTareasAbiertas" }
+    requirements: { _method: post }
+
+tareas_getDatosRespuestaAutomatica:
+    pattern:  /getDatosRespuestaAutomatica
+    defaults: { _controller: "soporteBundle:Tareas:getDatosRespuestaAutomatica" }
+    requirements: { _method: post }
+
+tareas_getIndicadorTareas:
+    pattern:  /getIndicadorTareas
+    defaults: { _controller: "soporteBundle:Tareas:getIndicadorTareas" }
+    requirements: { _method: post }
+
+tareas_ejecutarPausarTareas:
+    pattern:  /ejecutarPausarTareas
+    defaults: { _controller: "soporteBundle:Tareas:ejecutarPausarTareas" }
+    requirements: { _method: post }
+
+tareas_exportarConsulta:
+    pattern:  /exportarConsulta
+    defaults: { _controller: "soporteBundle:Tareas:exportarConsulta" }  
+
+tareas_get_dashboard:
+    pattern:  /get/dashboard/{strFiltro}
+    defaults: { _controller: "soporteBundle:Tareas:getDashboard" }
+
+tareas_ajaxSetPuntoSessionLogin:
+    pattern:  /ajaxSetPuntoSessionLogin
+    defaults: { _controller: "soporteBundle:Tareas:ajaxSetPuntoSessionLogin" }    
+
+tareas_confirmarSugerenciaHal:
+    pattern:  /confirmarSugerenciaHal
+    defaults: { _controller: "soporteBundle:Tareas:confirmarSugerenciaHal" }
+
+tarea_ajaxGetEmpresasHabilitadas:
+    pattern:  /ajaxGetEmpresasHabilitadas
+    defaults: { _controller: "soporteBundle:Tareas:ajaxGetEmpresasHabilitadas" }
+
+tarea_ajaxReintentoTareaSysCloud:
+    pattern:  /ajaxReintentoTareaSysCloud
+    defaults: { _controller: "soporteBundle:Tareas:ajaxReintentoTareaSysCloud" }
+    
+tarea_confirmarIpServicioSoporte:
+    pattern:  /confirmarIpServicioSoporte
+    defaults: { _controller: "soporteBundle:Tareas:confirmarIpServicioSoporte" }
+
+tarea_validarServicioSoporte:
+    pattern:  /validarServicioSoporte
+    defaults: { _controller: "soporteBundle:Tareas:validarServicioSoporte" }
+
+tarea_permiteCrearKml:
+    pattern:  /permiteCrearKml
+    defaults: { _controller: "soporteBundle:Tareas:permiteCrearKml" }
+
+tarea_getMotivosCategoriaTareas:
+    pattern:  /getMotivosCategoriaTareas
+    defaults: { _controller: "soporteBundle:Tareas:getMotivosCategoriaTareas" }
+
+tarea_ajaxNotificarCancelarSugerenciasHal:
+    pattern:  /ajaxNotificarCancelarSugerenciasHal
+    defaults: { _controller: "soporteBundle:Tareas:ajaxNotificarCancelarSugerenciasHal" }
+
+tareas_getDetalleTarea:
+    pattern: /getDetalleTarea
+    defaults: { _controller: "soporteBundle:Tareas:getDetalleTarea" }

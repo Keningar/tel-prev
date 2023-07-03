@@ -1,0 +1,164 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ux-all.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/chooser.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGetClientes        = '{{ path('tareas_getClientes') }}';
+        var strUrlGetTipoElementos   = '{{ path('infocaso_getTiposElementos') }}';
+        var strUrlGetModeloElementos = '{{ path('gestion_documentos_getModeloElementos') }}';
+        var strUrlGetElementos       = '{{ path('gestion_documentos_getElementos') }}';
+        var strUrlCreate             = '{{ path('gestion_documentos_create') }}';
+        var strUrlFileUpload         = '{{ path('gestion_documentos_fileUploadNfs') }}';
+        var strUrlResetFile          = '{{ path('gestion_documentos_resetFile') }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/GestionDocumentos/new.js?2') }}"></script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Documento</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' class='formulario'>            
+            <table  width="100%" border="0" class="box-section-content">		
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.nombreDocumento) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.nombreDocumento, { 'attr': {'style': 'width:500px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.mensaje) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.mensaje, { 'attr': {'style': 'width:500px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.modulo) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.modulo, { 'attr': {'style': 'width:200px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>		
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.tipoDocumentoGeneralId) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.tipoDocumentoGeneralId, { 'attr': {'style': 'width:200px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.tipoDocumentoId) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.tipoDocumentoId, { 'attr': {'style': 'width:200px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>	
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">
+			<div class='infomessage'>Referencia Comercial/Financiera</div>
+		    </td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Login :</label></td>
+		    <td width="10%"><div id="login"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>	
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Numero Documento:</label></td>
+		    <td width="10%"><input type="text" id="numeroDocumento" style="width:200px;"/></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>			 
+		<tr>	
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">
+			<div class='infomessage'>Referencia Tecnica</div>
+		    </td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="24%"><label>Tipo Elemento :</label></td>
+		    <td width="4%"><div id="tipoElemento"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Modelo Elemento :</label></td>
+		    <td width="10%"><div id="modeloElemento"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Elemento :</label></td>
+		    <td width="10%"><div id="elemento"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>	
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">
+			<div class='infomessage'>Referencia Tareas/Casos</div>
+		    </td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="24%"><label>Tipo :</label></td>
+		    <td width="4%"><div id="tipoCasoTarea"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Numero:</label></td>
+		    <td width="10%"><input type="text" id="numeroTareaCaso" style="width:200px;"/></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>		
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Archivo a subir: </label></td>
+		    <td width="75%">
+			<div id="fi-form"></div>
+		    </td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>	
+		    <td width="5%">&nbsp;</td>	
+		    <td width="5%">&nbsp;</td>	
+		    <td width="10%">
+			<div class='infomessage' id="msg" style="width:400px;float:left;"></div>
+		    </td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+            </table>
+            <input type="hidden" id="hiddenFile" value="" />
+            <input type="hidden" id="nameFile" value="" />
+            <input type="hidden" id="strModuloAdicional" value="{{ modulo }}" />
+            <div class="buttons">
+                <p>
+                    <input class="button-crud" value="Guardar" onclick="guardar();"/>
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        {% if( modulo == 'tecnico') %}
+                            <a class="cancel-crud" href="{{ path('visor_documentos_tecnico') }}">Cancelar</a>
+                        {% elseif( modulo == 'soporte' ) %}
+                            <a class="button-crud" href="{{ path('gestion_documentos') }}">Cancelar</a>
+                        {% elseif( modulo == 'comercial') %}
+                            <a class="button-crud" href="{{ path('visor_documentos_comercial') }}">Cancelar</a>
+                        {% elseif( modulo == 'financiero') %}
+                            <a class="button-crud" href="{{ path('visor_documentos_financiero') }}">Cancelar</a>
+                        {% endif %}
+                    </span>
+                </p>
+            </div>
+            
+        </form>
+    </div>
+{% endblock contenido_izq %}

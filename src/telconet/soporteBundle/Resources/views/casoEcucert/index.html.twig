@@ -1,0 +1,96 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/InfoCasoEcucert.css?2') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script>
+        var numArchivosSubidos              = 0;
+        var url_documentosCaso              = "{{path('infocaso_getDocumentosCaso_ecucert') }}";
+        var url_verifica_casos              = "{{path('infocaso_getDocumentosCasoEncontrados_ecucert') }}";
+        var url_multipleFileUpload          = "{{path('gestion_documentos_multipleFileUpload_ecucert') }}";
+        var url_cambiar_estado_notificacion = "{{path('casosEcucert_cambiarEstadoNotificacion') }}";
+        var url_buscar_opc_seguimiento      = "{{path('casosEcucert_buscarOpcionesSeguimientos') }}";
+        var url_eliminar_adjunto            = "{{path('gestion_documentos_eliminarDocumentoRegistroYArchivo_ecucert') }}";
+        var url_enviar_correo_cliente       = "{{path('casosEcucert_enviarCorreoCliente') }}";
+        var url_obtener_categoria           = "{{path('casosEcucert_obtenerCategoria')}}";
+        var url_subir_archivoCSV            = "{{path('casosEcucert_subirArchivoCSV')}}";
+        var url_guardar_categoria           = "{{path('casosEcucert_guardar_categoria')}}";
+        url_remover_categoria               = "{{path('casosEcucert_remover_categoria')}}";
+        url_redireccionar_plantilla         = "{{path('casosEcucert_redireccionar_plantilla')}}";
+        url_buscarCategInci                 = "{{path('casosEcucert_buscarCategoriaIncidencia')}}";     
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/Multiupload.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CasosEcucert/index.js?7') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CasosEcucert/funciones.js?8') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CasosEcucert/funciones2.js?5') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/CasosEcucert/AccionesRelacionadas.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	    <h1>Casos Ecucert</h1>
+	</div>
+	<div class="body_content_ecucert k-content">
+	    
+			<input type='hidden' name='hestadoIncidencia' id='hestadoIncidencia' value='' />
+	
+			<table width="50%" cellpadding="1" cellspacing='0'  border='0'>
+				<tr>
+					<td><div  id='filtro'></div></td>
+					<td><div id="div_fe_apertura" style="display:none;"></div></td>
+                    <td><div id="div_hora_apertura" style="display:none;"></div></td>
+				</tr>	
+				<tr>
+					<td><div id="grid"></div></td>
+				</tr>
+			</table> 
+		   
+	</div>
+        
+    <div id="map_canvasIncidente" style="width:500px; height:500px"></div>
+    <div id="map_canvasManga1" style="width:500px; height:500px"></div>
+    <div id="map_canvasManga2" style="width:500px; height:500px"></div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas" style="width:auto;">
+    <li>
+            <a class="button-nuevo-registro" href="#" onclick="generarReporte()">
+                <img src="{{ asset('public/images/images_crud/agenda.png')}}" width="15" height="15" />
+                &nbsp;Generar Reporte
+            </a>
+        </li>
+        <li>
+            &nbsp;
+        </li>
+        {% if is_granted('ROLE_434-8097') == true %}
+            <li>
+            <a class="button-nuevo-registro" href="#" onclick="agregarCategoria()">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Ver Categoria/Plantilla
+            </a>
+            </li>
+            <li>
+                &nbsp;
+            </li>
+        {% endif %}
+        {% if is_granted('ROLE_434-8117') == true %}
+            <li>
+                <a class="button-nuevo-registro" href="#" onclick="subirArchivoCSV()">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Subir archivo CSV
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}

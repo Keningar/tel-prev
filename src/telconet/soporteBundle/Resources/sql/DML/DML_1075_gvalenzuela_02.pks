@@ -1,0 +1,48 @@
+--PROCESO ANÓNIMO O BLOQUE ANÓNIMO PARA CONFIGURAR EL PROCESO Y USUARIO
+--ENCARGADO DE SOLICITAR TOKEN PARA EL SISTEMA SYS CLOUD CENTER
+SET SERVEROUTPUT ON
+SET DEFINE OFF
+DECLARE
+    Ln_Aplicacion_NCam_Id NUMBER;
+BEGIN
+    --Crear Aplicación
+    INSERT INTO DB_TOKENSECURITY.APPLICATION VALUES (
+        DB_TOKENSECURITY.SEQ_APPLICATION.NEXTVAL,
+        'APP.TELCOSYS',
+        'ACTIVO',
+         30
+    );
+
+    -- Obtener id de la aplicación
+    SELECT id_application INTO Ln_Aplicacion_NCam_Id
+        FROM DB_TOKENSECURITY.APPLICATION
+    WHERE name = 'APP.TELCOSYS';
+
+  --Configurar clase TecnicoWSController y relacionarlo con el APP.CLOUDFORM
+    INSERT INTO DB_TOKENSECURITY.WEB_SERVICE VALUES (
+       DB_TOKENSECURITY.SEQ_WEB_SERVICE.nextval,
+      'TelcoSysWSController',
+      'procesarAction',
+       1,
+      'ACTIVO',
+       Ln_Aplicacion_NCam_Id
+    );
+
+    --Configurar Usuario/Clave TELCOSYS/TELCOSYS(sha256)
+    INSERT INTO DB_TOKENSECURITY.USER_TOKEN VALUES (
+       DB_TOKENSECURITY.SEQ_USER_TOKEN.nextval,
+      'TELCOSYS',
+      '4FA77F56C91C755798DE9C321E9356FFA463B56974658AB41A5A4ACB276CE36B',
+      'Activo',
+       Ln_Aplicacion_NCam_Id
+    );
+
+    COMMIT;
+    SYS.DBMS_OUTPUT.PUT_LINE('Registros insertados Correctamente');
+
+EXCEPTION
+    WHEN OTHERS THEN
+        SYS.DBMS_OUTPUT.PUT_LINE('Error: '||SQLERRM);
+        ROLLBACK;
+END;
+/

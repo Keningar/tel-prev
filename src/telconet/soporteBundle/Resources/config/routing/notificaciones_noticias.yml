@@ -1,0 +1,52 @@
+noticias_principal:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:Noticias:index" }
+
+noticias_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "soporteBundle:Noticias:show" }
+
+noticias_new:
+    pattern:  /new
+    defaults: { _controller: "soporteBundle:Noticias:new" }
+
+noticias_create:
+    pattern:  /create
+    defaults: { _controller: "soporteBundle:Noticias:create" }
+    requirements: { _method: post }
+
+noticias_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "soporteBundle:Noticias:edit" }
+
+noticias_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "soporteBundle:Noticias:update" }
+    requirements: { _method: post }
+
+noticias_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "soporteBundle:Noticias:delete" }
+
+noticias_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "soporteBundle:Noticias:deleteAjax" }
+    requirements: { _method: post }
+
+noticias_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:Noticias:grid"}
+
+notificaciones_noticias_listarArchivos:
+    pattern:  /listarArchivos
+    defaults: { _controller: "soporteBundle:Noticias:listarArchivos"}
+    
+notificaciones_noticias_fileUpload:
+    pattern:  /fileUpload
+    defaults: { _controller: "soporteBundle:Noticias:fileUpload" }
+    requirements: { _method: post }
+      
+#cargar tipos de noticias
+notificaciones_noticias_getTipoNoticias:
+    pattern:  /getTipoNoticias
+    defaults: { _controller: "soporteBundle:Noticias:getTipoNoticias"}

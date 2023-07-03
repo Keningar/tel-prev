@@ -1,0 +1,79 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+    
+{% block javascripts%}
+    {{ parent() }}
+{% endblock %} 
+
+{% block contenido_central %}        
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ menu_imagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Dashboard</h1>
+    </div>
+
+    <div class="body_content k-content">
+        <table border="0" cellspacing="1" cellpadding="3" width="100%">
+            <tr>
+                <td>
+                    <div id="gridCasos"></div>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <form id="formCasosAsignados" name="formCasosAsignados" action="{{ path('infocaso_exportarConsulta') }}" method="post">
+                        <input type='hidden' name='hid_sltEstado' id='hid_sltEstado' value='' />
+                        <input type='hidden' name='hid_comboDepartamento' id='hid_comboDepartamento' value='' />
+                        <input type='hidden' name='hid_comboEmpleado' id='hid_comboEmpleado' value='' />
+                        <input type='hidden' name='feAperturaDesde' id='feAperturaDesde' value='' />
+                        <input type='hidden' name='feAperturaHasta' id='feAperturaHasta' value='' />
+                        
+                        <div id="gridCasosAsignados"></div>
+                        
+                    </form>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <div id="gridCasosDepartamento"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" height="30">&nbsp;</td>
+            </tr>
+            <tr>
+                <td>
+                    <div id="gridTareas"></div>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <form action="{{ path('tareas_exportarConsulta') }}" method="post">
+                        <input type='hidden' name='feSolicitadaDesde' id='feSolicitadaDesde' value='' />
+                        <input type='hidden' name='feSolicitadaHasta' id='feSolicitadaHasta' value='' />
+			<input type='hidden' name='hid_estado' id='hid_estado' value='' />
+			<input type='hidden' name='filtroUsuario' id='filtroUsuario' value='ByUsuario' />
+			
+			<div id="gridTareasAsignadas"></div>
+                        
+                    </form>
+                </td>
+                <td>&nbsp;</td>
+                <td>
+                    <div id="gridTareasDepartamento"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>			
+        <script>
+            var strUrlGraficoBarrasCasosDelMes  = '{{ path('infocaso_get_casos_dashboard', {'strFiltro': 'barras'}) }}';
+            var strUrlListadoCasosDelMes        = '{{ path('infocaso_get_casos_dashboard', {'strFiltro': 'listado'}) }}';
+            var strUrlGraficoPastelCasosDelMes  = '{{ path('infocaso_get_casos_dashboard', {'strFiltro': 'graficoPastel'}) }}';
+            var strUrlGraficoBarrasTareasDelMes = '{{ path('tareas_get_dashboard', {'strFiltro': 'barras'}) }}';
+            var strUrlListadoTareasDelMes       = '{{ path('tareas_get_dashboard', {'strFiltro': 'listado'}) }}';
+            var strUrlGraficoPastelTareasDelMes = '{{ path('tareas_get_dashboard', {'strFiltro': 'graficoPastel'}) }}';
+        </script>
+        <script type="text/javascript" src="{{ asset('./bundles/soporte/js/Dashboard/dashboard.js') }}"></script>		
+    </div>
+{% endblock contenido_central %}

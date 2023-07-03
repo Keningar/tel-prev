@@ -1,0 +1,2580 @@
+{% extends "::layout_completo.html.twig" %}
+{% set permiteIngresoTareaNuevaAsignacion = is_granted('ROLE_416-6057') %}
+{% set permiteVerOpcionTareas             = is_granted('ROLE_416-6397') %}
+{% set permiteVerAsignacionesDepNacional  = is_granted('ROLE_416-6077') %}
+{% set permiteVerOpcionAdministrador      = is_granted('ROLE_416-7297') %}
+{% set permiteVerNuevosCamposTareas       = is_granted('ROLE_416-8217') %}
+{% set permiteAccionesTareas              = is_granted('ROLE_197-38') %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/hint.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/daterangepicker.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/font-awesome-4.7.0/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/agente.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedHeader.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/daterangepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/push.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/howler.core.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Highcharts/highcharts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Highcharts/modules/drilldown.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Highcharts/modules/exporting.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/pdfmake.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/vfs_fonts.js') }}"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js"></script>
+
+    <script>
+        var url_icon_notificaciones_danger     = "{{ asset('public/images/delete3.png') }}";
+        var url_sound_notif_asig               = "{{ asset('public/sounds/definite.mp3') }}";
+        var url_sound_notif_seg                = "{{ asset('public/sounds/quite-impressed.mp3') }}";
+        var url_icon_notificaciones_asig       = "{{ asset('public/images/ico_reporte_buro.png') }}";
+        var url_icon_notificaciones_seg        = "{{ asset('public/images/comunicacion.png') }}";
+        var url_cabecera_asignaciones          = "{{ path('asignaciones_cabecera_grafico') }}";
+        var url_asignaciones                   = "{{ path('asignaciones_grid_grafico') }}";
+        var url_detalle_asignaciones           = "{{ path('asignaciones_grid') }}";
+        var url_asignaciones_cambio_turno      = "{{ path('asignaciones_grid_cambio_turno') }}";
+        var url_crea_asignacion                = "{{ path('asignaciones_ajax_crear_asignacion') }}";
+        var url_elimina_asignacion             = "{{ path('asignaciones_ajax_eliminar_asignacion') }}";
+        var url_total_asignaciones             = "{{ path('asignaciones_obtiene_total_asignaciones') }}";
+        var url_total_estado_asignaciones      = "{{ path('asignaciones_obtiene_total_estado_asignaciones') }}";
+        var url_total_seguimientos_usr         = "{{ path('asignaciones_obtiene_total_seguimientos_usr') }}"; 
+        var url_graba_numero_tarea             = "{{ path('asignaciones_ajax_graba_numero_tarea') }}";
+        var url_graba_cambio_turno             = "{{ path('asignaciones_ajax_graba_cambio_turno') }}";
+        var url_marcar_cambio_turno            = "{{ path('asignaciones_ajax_marcar_cambio_turno') }}";
+        var url_seleccionar_vista              = "{{path('seleccionar_vista', {'vista': vistaSoporte})}}";
+        var url_graba_asignar_seguimiento      = "{{ path('asignaciones_ajax_asignar_seguimiento') }}";
+        var url_asignaciones_pendientes        = "{{ path('asignaciones_ajax_busca_pendientes') }}";
+        var url_seguimientos_pendientes_usr    = "{{ path('asignaciones_seguimientos_pendientes_usr') }}";
+        var url_graba_resp_asignar_seg         = "{{ path('asignaciones_ajax_resp_asignar_seguimiento') }}";
+        var url_asignaciones_usuario           = "{{ path('asignaciones_grid_grafico_usr') }}";
+        var url_tipos_problema                 = "{{ path('asignaciones_obtener_tipos_problema')}}";
+        var url_detalle_seguimientos           = "{{ path('asignaciones_grid_seguimientos') }}";
+        var url_info_asignacion                = "{{ path('asignaciones_obtiene_info_asignacion') }}";
+        var url_info_tecnica_caso              = "{{ path('asignaciones_obtiene_info_tecnica_caso') }}";
+        var url_info_adicional_tarea           = "{{ path('asignaciones_obtiene_info_adicional_tarea')}}";
+        var url_info_tecnica_tarea             = "{{ path('asignaciones_obtiene_info_tecnica_tarea') }}";
+        var url_crea_seguimiento               = "{{ path('asignaciones_ajax_crear_seguimiento') }}";
+        var url_elimina_seguimiento            = "{{ path('asignaciones_ajax_eliminar_seguimiento') }}";
+        var url_detalle_historial              = "{{ path('asignaciones_grid_historial') }}";
+        var url_ver_ips                        = "{{path('servicio_verIps')}}";
+        var url_actualiza_estado_conexion      = "{{ path('asignaciones_actualiza_estado_conexion') }}";
+        var url_actualiza_extension            = "{{ path('asignaciones_actualiza_extension') }}";
+        var url_obtener_estado_conexion        = "{{ path('asignaciones_obtener_estado_conexion') }}";
+        var url_obtener_ultimo_asignado        = "{{ path('asignaciones_obtener_ultimo_agente_asignado') }}";
+        var url_tareas_grid                    = "{{ path('asignaciones_grid_tareas_pendientes_dep')}}";
+        var url_mis_tareas_grid                = "{{ path('tareas')}}";
+        var url_modificar_asignacion           = "{{ path('asignaciones_ajax_modificar_asignacion')}}";
+        var url_envia_reporte_pendientes       = "{{ path('asignaciones_ajax_envia_reporte_pendientes') }}";
+        var url_top_logins                     = "{{ path('asignaciones_obtiene_top_logins') }}";
+        var url_cambio_turno_automatico        = "{{ path('asignaciones_cambio_turno_automatico') }}";
+        var url_seguimientoAsignacion          = "{{ path('asignaciones_seguimientoAsignacion') }}";
+        var url_asignacion_hija_padre          = "{{ path('asignaciones_relaciona_Asignacion_Hija_Padre')}}";
+        var idParametroCabTipoProblema         = "{{idParametroCabTipoProblema}}";
+        var nombreDepartamento                 = "{{nombreDepartamento}}";
+        var idDepartamento                     = "{{idDepartamento}}";
+        var permiteVerOpcionTareas             = "{{permiteVerOpcionTareas}}";
+        var permiteVerAsignacionesDepNacional  = "{{permiteVerAsignacionesDepNacional}}";
+        var permiteVerOpcionAdministrador      = "{{permiteVerOpcionAdministrador}}";
+        var publicVapidKey                     = "{{publicVapidKey}}";
+        var fcmApiKey                          = "{{fcmApiKey}}";
+        var fcmAuthDomain                      = "{{fcmAuthDomain}}";
+        var fcmDatabaseUrl                     = "{{fcmDatabaseUrl}}";
+        var fcmProyectId                       = "{{fcmProyectId}}";
+        var fcmStorageBucket                   = "{{fcmStorageBucket}}";
+        var fcmMessagingSenderId               = "{{fcmMessagingSenderId}}";
+        var fcmAppId                           = "{{fcmAppId}}";
+        var fcmMeasurementId                   = "{{fcmMeasurementId}}";
+        var url_parametros                     = "{{ path('asignaciones_obtener_parametros')}}";
+        var url_actualiza_admi_parametro_det   = "{{ path('admiParametroCab_actualizaParametroDet') }}";
+        var url_crea_admi_parametro_det        = "{{ path('admiParametroCab_creaParametroDet') }}";
+        var url_eliminar_admi_parametro_det    = "{{ path('admiParametroCab_eliminarParametroDet') }}";
+        var url_total_asignaciones_sin_numero  = "{{ path('asignaciones_obtener_total_asignaciones_sin_numero') }}";
+        var url_historial_conexion_usr         = "{{ path('asignaciones_obtener_registros_conexion_usr') }}";
+        var url_poner_quitar_asig_standby      = "{{ path('asignaciones_poner_quitar_asignacion_standby')}}";
+        var imgNotificacionesSeguimiento       = "{{ asset('public/images/logo.png') }}";
+        var url_service_worker                 = "{{ asset('bundles/soporte/js/Agente/serviceWorkerTelcosAgente.js') }}";
+        var url_actualiza_caracteristica_agent = "{{ path('asignaciones_actualiza_caracteristica_agente') }}";
+        var permiteVerNuevosCamposTareas       = "{{permiteVerNuevosCamposTareas}}";
+        var url_getTareasAbiertas              = "{{path('tareas_getTareasAbiertas')}}";
+        var url_ejecutarPausarTareas           = "{{path('tareas_ejecutarPausarTareas')}}";
+        var url_motivosPausarTarea             = '{{path('infocaso_getMotivosPausarTarea')}}';
+        var url_obtenerFechaServer             = "{{path('tareas_obtenerHoraServer')}}";
+        var permiteAccionesTareas              = "{{permiteAccionesTareas}}";
+        var url_gridTarea                      = "{{path('admitarea_grid')}}";
+        var url_gridMotivosCategoriaTareas     = "{{path('tarea_getMotivosCategoriaTareas')}}";
+        var url_finalizarTarea                 = "{{path('tareas_finalizarTarea')}}";
+        var strPrefijoEmpresaSession          = '{{ strPrefijoEmpresaSession }}';
+        var strIdCantonUsrSession             = '{{ intIdCantonUsrSession }}';
+        var strIdDepartamentoUsrSession       = '{{ intIdDepartamentoUsrSession }}';
+        var url_empresaPorSistema             = "{{path('tarea_ajaxGetEmpresasHabilitadas')}}";
+        var url_ciudadPorEmpresa              = "{{path('infocaso_getCiudadesPorEmpresa')}}";
+        var url_departamentoPorEmpresaCiudad  = "{{path('infocaso_getDepartamentosPorEmpresaYCiudad')}}";
+        var url_empleadoPorDepartamentoCiudad = "{{path('infocaso_getEmpleadosPorDepartamentoCiudad')}}";
+        var url_datosRespuestaTarea           = "{{path('tareas_getDatosRespuestaAutomatica') }}";
+        var url_reasignarTarea                = "{{path('tareas_reasignarTarea') }}";
+        var url_multipleFileUpload            = "{{path('gestion_documentos_multipleFileUpload') }}";
+        var url_verifica_casos                = "{{path('infocaso_getDocumentosCasoEncontrados') }}";
+        var url_documentosCaso                = "{{path('infocaso_getDocumentosCaso') }}";
+        var url_eliminar_adjunto              = "{{ path('gestion_documentos_eliminarDocumentoRegistroYArchivo') }}";
+    </script>
+
+    <script src="{{ asset('./public/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('./public/js/jquery-ui.min.js') }}" type="text/javascript"></script>
+
+{% endblock %}
+
+{% block contenido_central %}
+
+{%if vistaSoporte is sameas('no seleccionada') %}
+
+    <script>window.location.href = url_seleccionar_vista;</script>
+    
+{%else%}
+
+        <!--TABS CON BOOTSTRAP-->
+        <div id="titulo_content">
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active">
+                            <div class="dropdown" id="dropDownEstadoUsr">
+                              <button class="btn btn-default navbar-btn dropdown-toggle"
+                                      type="button" data-toggle="dropdown" data-value="Disponible" title="Estado de conexión"
+                                         id="btnEstadoUsr">
+                              <span class="glyphicon glyphicon-user"></span><span class="caret"></span></button>
+                              <ul class="dropdown-menu"  id="ulDropDownEstadoUsr">
+                                <li><a href='#'><span class="glyphicon glyphicon-user" style="color:green"></span> Disponible</a></li>
+                                <li><a href='#'><span class="glyphicon glyphicon-user" style="color: brown"></span> Ausente</a></li>
+                                <li><a href='#'><span class="glyphicon glyphicon-user" style="color:orange"></span> Ocupado</a></li>
+                                <li><a href='#'><span class="glyphicon glyphicon-user" style="color:#01579b"></span> Almuerzo</a></li>
+                              </ul>
+                            </div>                
+                    </li>
+                    <li>
+                        &nbsp;
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-default navbar-btn btn-md" id='btnEditarExtension' title="Número de extensión">
+                          <span class="glyphicon glyphicon-earphone"></span>
+                        </button>
+                    </li>
+                    <li>
+                        &nbsp;
+                        &nbsp;
+                    </li>
+                    <li class="active">
+                            <div class="dropdown" id="dropDownVistaSoporte" style="display:none;" >
+                              <button class="btn btn-info navbar-btn dropdown-toggle" type="button" data-toggle="dropdown" 
+                                         id="vistaSoporte">Vista {{vistaSoporte}}
+                              <span class="caret"></span></button>
+                              <ul class="dropdown-menu"  id="ulDropDownVistaSoporte">
+                                <li><a href='{{ path('seleccionar_vista', {'vista': 'Administrador'}) }}'>Administrador</a></li>
+                                <li><a href='{{ path('seleccionar_vista', {'vista': 'Agente'}) }}'>Agente</a></li>
+                              </ul>
+                            </div>                
+                    </li>
+                    <li>
+                        &nbsp;
+                        &nbsp;
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li id="liAdmin">
+                        <a href="#" id="lnAdmin"><span class="glyphicon glyphicon-cog"></span> Administración</a>
+                    </li>
+                    <li id="liCuadro">
+                        <a href="#" id="lnCuadro"><span class="glyphicon glyphicon-equalizer"></span> Cuadro General</a>
+                    </li>
+                    <li id="liCuadroUsr">
+                        <a href="#" id="lnCuadroUsr"><span class="glyphicon glyphicon-equalizer"></span> Cuadro Agente</a>
+                    </li>
+                    <li id="liDetalles"><a href="#" id="lnDetalles"><span class="glyphicon glyphicon-list-alt"></span> Asignaciones</a></li>
+                    <li id="liDetallesIseg"><a href="#" id="lnDetallesIseg"><span class="glyphicon glyphicon-list-alt"></span> Incidencias Seg</a></li>
+                    <li id="liGrafico1"><a href="#" id="lnGrafico1"><span class="glyphicon glyphicon-stats"></span> Estad&iacute;sticas</a></li>
+                    <li id="liTareas">
+                        <a href="#" id="lnTareas"><span class="glyphicon glyphicon-list-alt"></span> Tareas</a>
+                    </li>
+                    <li id="liInfoAsignacion">
+                        <a href="#" id="lnInfoAsignacion"><span class="glyphicon glyphicon-list-alt"></span> Info Asignaci&oacute;n</a>
+                    </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                            <div class="dropdown" id="dropDownBuscaPendientes">
+
+                              <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown" 
+                                         id="btnPendientes"><span class="glyphicon glyphicon-unchecked"></span> Ver pendientes
+                                <span class="badge" id="badgeNotificacionesPendientes"  style="background-color: red"></span>
+                                <span class="caret"></span></button>
+                              <ul class="dropdown-menu"  id="ulDropDown"  style="width:450px;">
+                              </ul>
+                            </div>
+                    </li>
+                    <li>
+                        &nbsp;
+                    </li>
+                    <li>
+                        <button id="btnNuevaAsignacion" type="button" class="btn btn-primary navbar-btn btn-md" 
+                                data-toggle="modal" data-target="#modalNuevaAsignacion" title="Nueva asignación">
+                        <span class="glyphicon glyphicon-file"></span>
+                        </button>
+                    </li>
+                    <li>
+                        &nbsp;
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-warning navbar-btn btn-md" 
+                                id='btnCambioTurno' data-toggle="modal" data-target="#modalCambioTurno" title="Listado cambio turno">
+                          <span class="glyphicon glyphicon-pushpin"></span>
+                        </button>
+                    </li>
+                    <li>
+                        &nbsp;
+                    </li>
+                </ul>
+
+              </div>
+            </nav> 
+        </div>
+                                
+	<div class="body_content k-content" style="padding: 0px">
+            <div class="alert alert-danger" id="alertaErroresAplicacion" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <!-- CUADRO DE ASIGNACIONES -->
+            <div style="height:500px;width:100%;background-color:#ffffff" id="divCuadroAsignaciones">
+                <div id="divLegendaCuadroAsignaciones" style="display:none">
+                <table align='center' style="width:100%">
+                    <tr>
+                        <td align='right'>
+                            <img width="20px" height="20px" src="{{ asset('public/images/bookmarkCaso.png') }}">
+                        </td>
+                        <td>
+                            <h5>Caso</h5>
+                        </td>
+                        <td align='right'>
+                            <img  width="20px" height="20px" src="{{ asset('public/images/bookmarkTarea.png') }}">
+                        </td>
+                        <td>
+                            <h5>Tarea</h5>
+                        </td>
+                        <td align='right'>
+                            <img  width="20px" height="20px" src="{{ asset('public/images/bookmarkPendiente.png') }}">
+                        </td>
+                        <td>
+                            <h5>Pendiente</h5>
+                        </td>
+                        <td style="width: 1%">
+                            &nbsp;
+                        </td>
+                        <td>
+                            <div style="padding: 1px;background-color: #d8d8d8;width: 103%">
+                            <div class='row' style='background-color: #ffffff;padding: 4px;margin-right: 0px!important;margin-left: 0px!important;'>
+                            <div class='col-sm-2' style='text-align: right'>
+                            <div><b>Asignaciones:&nbsp;</b></div>
+                            </div>
+                            <div class='col-sm-4' style='text-align: right'>
+                            <div id='divTotalPendientes'>Total Abiertas:&nbsp;N/A</div>
+                            </div>
+                            <div class='col-sm-3'>
+                            <div id='divTotalPendientesHoy'>Abiertas hoy:&nbsp;N/A</div>
+                            </div>
+                            <div class='col-sm-3'>
+                            <div id='divTotalCerrados'>Cerradas hoy:&nbsp;N/A</div>
+                            </div>
+                            </div>
+                            </div>
+                        </td>
+                        <td style="width: 1%">
+                            &nbsp;
+                        </td>
+                        <td>
+                          <div class="row" id="divBusquedaCantonesCuadroGen"  style="padding-top:15px;">
+                              <div class="col-lg-2">
+                                  <label style="padding-top:15px;padding-left:25px;">Ciudad:</label>
+                              </div>
+                              <div class="col-lg-4">
+                                <div style="padding-left:10px;">
+                                  <div class="dropdown" id="dropDownCantonesCuadroGen" style="top:-7px">
+                                      <input type="hidden" id="txtIdBtnCantonesCuadroGen" value='' />
+                                      <button class="btn btn-default navbar-btn dropdown-toggle" type="button" 
+                                              data-toggle="dropdown" id="btnCantonesCuadroGen">
+                                          <span id="textBtnCantonesCuadroGen">TODAS&nbsp;&nbsp;&nbsp;</span><span class="caret"></span>
+                                      </button>
+                                      <ul class="dropdown-menu"  id="ulDropDownCantonesCuadroGen"  style="width:180px;"></ul>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div class="col-lg-1"  style="padding-left:14px">
+                                  <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Buscar">    
+                                      <button type="button" class="btn btn-primary btn-sm" id='btnBuscarCuadroGen'>
+                                          <span class="glyphicon glyphicon-search"></span>
+                                      </button>
+                                  </span>
+                              </div>
+
+                              <div class="col-lg-2"  style="padding-left:16px">
+                                  <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Limpiar">
+                                      <button type="button" class="btn btn-warning btn-sm" id='btnLimpiaBuscarCuadroGen'>
+                                          <span class="glyphicon glyphicon-erase"></span>
+                                      </button>                        
+                                  </span>
+                              </div>
+                              
+                          </div>
+                        </td>
+                        <td style="text-align: right">
+                            <b>Ordenar Por:&nbsp;</b>
+                            <button type="button" class="btn btn-primary navbar-btn btn-xs" 
+                                id='btnOrdenAgentesEstadoConex' title="Estado de Conexión">
+                            <span class="glyphicon glyphicon-resize-small"></span>
+                            </button>
+                            <button type="button" class="btn btn-primary navbar-btn btn-xs" 
+                                id='btnOrdenAgentesCantidad' title="Cantidad de Asignaciones">
+                            <span class="glyphicon glyphicon-sort-by-order"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                <div class="loader" id="divLoaderCuadroAsignaciones" style="display:none;z-index:3;"></div> 
+                <table id="asignaciones" class="table table-striped table-bordered compact" style="width:100%;  ">
+                    <thead id="columnasCabecera"></thead>
+                </table>
+            </div>
+
+            <!-- CUADRO DE ASIGNACIONES USUARIO-->
+            <div style="height:500px;background-color:#ffffff" id="divCuadroAsignacionesUsr">
+                <div class="loader" id="divLoaderCuadroAsignacionesUsr" style="display:none;"></div>
+                <div id="divLegendaCuadroAsignacionesUsr" style="display:none">
+                    <table align='center' style="width:100%">
+                        <tr>
+                            <td align='right'>
+                                <img src="{{ asset('public/images/bookmarkCaso.png') }}">
+                            </td>
+                            <td>
+                                <h4>Caso</h4>
+                            </td>
+                            <td align='right'>
+                                <img src="{{ asset('public/images/bookmarkTarea.png') }}">
+                            </td>
+                            <td>
+                                <h4>Tarea</h4>
+                            </td>
+                            <td align='right'>
+                                <img src="{{ asset('public/images/bookmarkPendiente.png') }}">
+                            </td>
+                            <td>
+                                <h4>Pendiente</h4>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                <div class="col-xs-1">
+                    <div class="row">
+                        <div class="col-lg-2"><h2></h2></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"><h2></h2></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2"><h2></h2></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><h6><b>TAREAS:</b></h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><h6><b>CASOS:</b></h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><h6><b>PENDIENTES:</b></h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><h6><b>SEGUIMIENTOS:</b></h6></div>
+                    </div>
+                </div>
+                <div class="col-lg-10" style="padding:0;">
+                <table id="asignacionesUsr" class="table table-striped table-bordered" style="width:100%">
+                    <thead id="columnasCabeceraUsr">
+                        <tr>
+                            {% for i in 0..24 %}
+                                <th> {{ i }} </th>
+                            {% endfor %}
+                        </tr>    
+                    </thead>
+                </table>
+                </div>
+                <div class="col-xs-1">
+                    <div class="row">
+                        <div class="col-lg-8"><h5><b>Totales</b></h5></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8"><h2></h2></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8"><h5 id="totalTareasUsr" style="text-align: center"></h5></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8"><h5 id="totalCasosUsr" style="text-align: center"></h5></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8"><h5 id="totalPendientesUsr" style="text-align: center"></h5></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8"><h5 id="totalSeguimientosUsr" style="text-align: center"></h5></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+            <!--LISTADO DE DETALLE DE ASIGNACIONES-->
+            <div id="divListadoAsignaciones" style="display: none;width: 94%">
+                <div class="row">
+                <div class="col-lg-12">    
+                <!--Buscar asignaciones por fechas-->
+                <table width = '100%'>
+                    <tr>
+                        <td align='right'>
+                            <div class="loaderDet" id="divLoaderDetalleAsignaciones" style="display:none;"></div>
+                        </td>
+                    </tr>
+                </table>
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-13">    
+                    <!--Listado de asignaciones-->
+                    <div class="buscarPorFechaDetallesAsig" id="barraOpcionesGridAsignaciones">
+                      <div class="row">
+                        <div class="col-lg-2">
+                            <label>Fecha Inicial:</label>
+                            <div class='input-group date' id='datetimepickerBuscaAsignacion'> 
+                                <input type='text' class='form-control' id='txtDatetimepickerBuscaAsignacion' value = ''/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <!--Campo para realizar la busqueda por rango de fechas-->
+                            <label>Fecha Final:</label>
+                            <div class='input-group date' id='datetimepickerBuscaAsignacionFin'>
+                                <input type='text' class='form-control' id='txtDatetimepickerBuscaAsignacionFin' value = ''/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2" id="divColumnCantones">
+                            <div id="divComboCantones">
+                            <label>Ciudad:</label>
+                            <div class="dropdown" id="dropDownCantones" style="top:-7px;">
+                              <input type="hidden" id="txtIdBtnCantones" style="width:20px;" value='' />
+                              <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown" id="btnCantones">
+                                 <span id="textBtnCantones">TODAS&nbsp;&nbsp;&nbsp;</span><span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu"  id="ulDropDownCantones"  style="width:180px;">
+                              </ul>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2" id="divColumnEstados">
+                            <div id="divComboEstado">
+                            <label>Estado:</label>
+                            <div class="dropdown" id="dropDownEstados" style="top:-7px;">
+                              <input type="hidden" id="txtIdBtnEstados" style="width:20px;" value='Abierto' />
+                              <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown" id="btnEstados">
+                                 <span id="textBtnEstados">ABIERTO&nbsp;&nbsp;</span><span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu"  id="ulDropDownEstados"  style="width:180px;">
+                              </ul>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="botonesBuscarPorFechaDetallesAsig">
+                              <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Buscar">    
+                                  <button type="button" class="btn btn-primary btn btn-md" id='btnBuscarPorFecha'>
+                                      <span class="glyphicon glyphicon-search"></span>
+                                  </button>
+                              </span>
+                              <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Limpiar">
+                                  <button type="button" class="btn btn-warning btn btn-md" id='btnLimpiaBuscarPorFecha'>
+                                      <span class="glyphicon glyphicon-erase"></span>
+                                  </button>                        
+                              </span>
+                          </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <div class="botonesDetallesAsig">
+                              <span class="hint--bottom-right hint--default hint--medium hint--rounded" 
+                                    aria-label="Enviar Correo de asignaciones pendientes">
+                                  <button type="button" class="btn btn-default btn btn-md" id='btnEnviarCorreoExcelDetalles'>
+                                      <span class="glyphicon glyphicon-envelope"></span>
+                                  </button>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-12" style="background-color: #ffffff;padding: 0;">    
+                <table id="detalleAsignaciones" class="table table-striped table-bordered compact" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th class="cabeceraGrid"></th>
+                            <th class="cabeceraGrid">numero</th>
+                            <th class="cabeceraGrid">casoTarea</th>
+                            <th class="cabeceraGrid">feCreacion</th>
+                            <th class="cabeceraGrid">referenciaCliente</th>
+                            <th class="cabeceraGrid">loginAfectado</th>
+                            <th class="cabeceraGrid">origen</th>
+                            <th class="cabeceraGrid">tipoAtencion</th>
+                            <th class="cabeceraGrid">tipoProblema</th>
+                            <th class="cabeceraGrid">criticidad</th>
+                            <th class="cabeceraGrid">usrAsignado</th>
+                            <th class="cabeceraGrid">asignado</th>
+                            <th class="cabeceraGrid">estadoCaso</th>
+                            <th class="cabeceraGrid">infoTareas</th>
+                            <th class="cabeceraGrid">estado</th>
+                            <th class="cabeceraGrid">cambioTurno</th>
+                            <th class="cabeceraGrid">acciones</th>
+                        </tr>
+                    </thead>
+                </table>
+                </div>
+                </div>
+            </div>
+            <!--LISTADO DE TAREAS DEL DEPARTAMENTO-->
+            <div id="divListadoTareas" style="display: none;width: 100%">
+                <div class="row">
+                <div class="col-lg-13" style="background-color: #ffffff;">    
+                            <div class="loaderDet" id="divLoaderDetalleTareas" style="display:none;"></div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-12" style="background-color: #ffffff;padding: 0; margin-bottom: 1%;">
+                  <div class="col-lg-12" style="background-color: #ffffff;">
+                    <button type="button" onClick='javascript:mostrarAsignacionTareaMasiva()' class="btn btn-success" id='btnAsignarMasivo' disabled>
+                    ASIGNAR MASIVO</button>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 2%">
+                  <div class="col-lg-12">
+                    <div class="buscarPorFechaDetallesAsig" id="barraOpcionesGridAsignaciones">
+                      <div class="row" id="rowFiltrosFecha">
+                        <div class="col-lg-2">
+                            <label>Fecha Inicial:</label>
+                            <div class='input-group date' id='datetimepickerBuscaAsignacionTarea'> 
+                                <input type='text' class='form-control' id='txtDatetimepickerBuscaAsignacionTarea' value = ''/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Fecha Final:</label>
+                            <div class='input-group date' id='datetimepickerBuscaAsignacionFinTarea'>
+                                <input type='text' class='form-control' id='txtDatetimepickerBuscaAsignacionFinTarea' value = ''/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                          <div class="botonesBuscarPorFechaDetallesAsig">
+                              <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Buscar por rango de fechas">
+                                  <button type="button" class="btn btn-primary btn btn-md" id='btnBuscarPorFechaTarea'>
+                                      <span class="glyphicon glyphicon-search"></span>
+                                  </button>
+                              </span>
+                              <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Limpiar filtro de fechas">
+                                  <button type="button" class="btn btn-warning btn btn-md" id='btnLimpiaBuscarPorFechaTarea'>
+                                      <span class="glyphicon glyphicon-erase"></span>
+                                  </button>
+                              </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-12" style="background-color: #ffffff;padding: 0;">    
+                <table id="detalleTareas" class="table table-striped table-bordered compact" style="width:100%;">
+                    <thead>
+                        <tr id="filterboxrow">
+                          <th class="cabeceraGrid">#</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>N&uacute;mero Tarea</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Fecha asignaci&oacute;n</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Login</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Nombre Tarea</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Asignado</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Dep. Asignado</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Estado tarea</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Usuario Creaci&oacute;n</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Dep. Creaci&oacute;n</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Nombre Proceso</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Trazabilidad Tarea</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Observaci&oacute;n Tarea</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Empresa Tarea</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'> &Uacute;ltimo dep. Asignado</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Sistema &Uacute;ltimo Usr Asignado</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Tiempo Transcurrido</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>detalle</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>personaEmpresaRol</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>detalleHist</th>
+                          <th class="cabeceraGrid" style='padding-left: 3px; padding-right: 3px'>Acciones</th>
+                        </tr>
+                        <tr>
+                            <th class="cabeceraGrid">numero</th>
+                            <th class="cabeceraGrid">numeroTarea</th>
+                            <th class="cabeceraGrid">feCreacion</th>
+                            <th class="cabeceraGrid">loginAfectado</th>
+                            <th class="cabeceraGrid">usrAsignado</th>
+                            <th class="cabeceraGrid">asignado</th>
+                            <th class="cabeceraGrid">nombreTarea</th>
+                            <th class="cabeceraGrid">estado</th>
+                            <th class="cabeceraGrid">usrCreacion</th>
+                            <th class="cabeceraGrid">departamentoCrea</th>
+                            <th class="cabeceraGrid">nombreProceso</th>
+                            <th class="cabeceraGrid">trazabilidadTareaCrea</th>
+                            <th class="cabeceraGrid">observacionTarea</th>
+                            <th class="cabeceraGrid">empresaTarea</th>
+                            <th class="cabeceraGrid">ultimoDeptoAsig</th>
+                            <th class="cabeceraGrid">sisUltimoUsrAsig</th>
+                            <th class="cabeceraGrid">Tiempo Transcurrido</th>
+                            <th class="cabeceraGrid">detalle</th>
+                            <th class="cabeceraGrid">personaEmpresaRol</th>
+                            <th class="cabeceraGrid">detalleHist</th>
+                            <th class="cabeceraGrid">acciones</th>
+                        </tr>
+                    </thead>
+                </table>
+                </div>
+                </div>
+            </div>
+
+            <!--Modulo admin-->
+            <div id="divAdmin" style="display: none;width: 94%">
+                <div class="row">
+                
+                    <div class="col-lg-3">
+                        <div class="row">
+                          <div class="col-lg-3" style="background-color: #ffffff;padding: 10;">
+                            <h5>Opciones</h5>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-9" style="background-color: #ffffff;padding: 10;">
+                              <nav class="navbar navbar-default">
+                                  <div class="container-fluid">
+                                      <ul class="nav navbar-nav navbar-left">
+                                        <li id="liUsuarios">
+                                          <a href="#" id="lnUsuarios"><span class="glyphicon glyphicon-user"></span> Usuarios</a>
+                                        </li>
+                                        <li id="liAdminTiposProblema">
+                                            <a href="#" id="lnAdminTiposProblema">
+                                            <span class="glyphicon glyphicon-menu-hamburger"></span> Tipos de Problema</a>
+                                        </li>
+                                      </ul>
+                                  </div>
+                              </nav>
+                          </div>
+                        </div>
+                    </div>
+                  
+                    <div class="col-lg-9">
+
+                      <!--LISTADO DE USUARIOS-->
+                      <div id="divListadoUsuarios" style="display: none;">
+                          <div class="row">
+                              <div class="col-lg-12" style="background-color: #ffffff;padding: 0;">
+                                  <table id="detalleUsuarios" class="table table-striped table-bordered compact" style="width:100%">
+                                      <thead>
+                                          <tr>
+                                              
+                                              <th class="cabeceraGrid">numero</th>
+                                              <th class="cabeceraGrid">usrAsignado</th>
+                                              <th class="cabeceraGrid">nombres</th>
+                                              <th class="cabeceraGrid">apellidos</th>
+                                              <th class="cabeceraGrid">estadoConexion</th>
+                                              <th class="cabeceraGrid">extension</th>
+                                              <th class="cabeceraGrid">acciones</th>
+                                          </tr>
+                                      </thead>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!--Admin - Tipos de problema-->
+                      <div id="divAdminTiposProblema" style="display: none;width: 100%">
+                          <div class="row">
+                            <div class="col-lg-12" style="background-color: #ffffff;padding: 0;">
+
+                                  <span class="hint--top-right hint--default hint--medium hint--rounded" 
+                                        aria-label="Crear nuevo tipo de problema">
+                                      <button type="button" class="btn btn-primary btn btn-md" id='btnNuevoTipoProblema'
+                                              data-toggle="modal" data-target="#modalAdminTipoProblema" 
+                                              style="left:10px;top:35px;position: relative;z-index: 6;">Nuevo
+                                          <span class="glyphicon glyphicon-plus"></span>
+                                      </button>
+                                  </span>
+
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12" style="background-color: #ffffff;padding: 0;">
+
+                            <table id="detalleTiposProblema" class="table table-striped table-bordered compact" style="width:100%;">
+                                <thead>
+                                    <tr>
+                                        <th class="cabeceraGrid"></th>
+                                        <th class="cabeceraGrid">valor2</th>
+                                        <th class="cabeceraGrid">acciones</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                            </div>
+                          </div>
+                      </div>
+
+                    </div>
+                
+                </div>
+            </div>
+
+
+            <!--Información de la asignación-->
+            <div id="divInfoAsignacion" style="display: none;">
+                 <div class="row">
+                     <div class="col-lg-12" style="background-color: #ffffff;">
+                        <table border="0" width="100%" height="320px" cellspacing="2" cellpadding="2">
+                        <tr>
+                            <td width="80%" rowspan="2">
+                                <div class="row" style="background-color: #ffffff">
+                                    <div class="col-lg-12">    
+                                        <div>
+                                            <input type="hidden" value="" id="idAsignacionInfo">
+                                        <div class="loader" id="divLoaderInfoAsignacionDiv" style="display:none;"></div>    
+                                        <div id='infoAsignacionDiv'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" style="height: 20px">
+                                    <div class="col-lg-12">    
+                                        
+                                    </div>
+                                </div>
+                                <div class="row" style="background-color: #ffffff">
+                                    <div class="col-lg-12">
+                                        <div class="loaderDet" id="divLoaderInfoAsignacionAdicDiv" style="display:none"></div>    
+                                        <div id='infoAsignacionAdicDiv'></div>
+                                    </div>
+                                </div>
+                                <div class="row" style="background-color: #ffffff">
+                                    <div class="col-lg-12">
+                                        <div class="loaderDet" id="divLoaderInfoAsignacionTecDiv" style="display:none"></div>    
+                                        <div id='infoAsignacionTecDiv'></div>
+                                    </div>
+                                </div>
+                                <div class="row" style="background-color: #ffffff">
+                                    <div class="col-lg-12">
+                                        <div class="loaderDet" id="divLoaderTareasCasoDiv" style="display:none"></div>    
+                                        <div id='tareasCasoDiv'></div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <table width="100%" height="110px">
+                                    <tr>
+                                        <td>
+                                            <div class="loaderTiempo" id="divLoaderInfoAsignacionTiemposRespDiv" style="display:none;"></div>    
+                                            <div id='infoAsignacionTiemposRespDiv' style="background-color:#ffffff;"></div>
+                                        </td>
+                                        <td>
+                                            <div class="loaderTiempo" id="divLoaderInfoAsignacionTiemposCierreDiv" style="display:none;"></div>    
+                                            <div id='infoAsignacionTiemposCierreDiv' style="background-color:#ffffff;"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: top">
+                                <table id="detalleHistorial" class="table table-striped table-bordered compact" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="cabeceraGrid">numero</th>
+                                            <th class="cabeceraGrid">feCreacion</th>
+                                            <th class="cabeceraGrid">usrAsignado</th>
+                                            <th class="cabeceraGrid">tipo</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </td>
+                        </tr>
+                        </table>
+                     </div>
+                </div>     
+                <div class="row">
+                    <div class="col">
+                        &nbsp;
+                    </div>
+                </div>
+                <div class="row" style="height: 50px;">
+                    <div class="col-lg-12 cabeceraGrid">    
+                        <h5><span class="glyphicon glyphicon-chevron-down" style="color:#ffffff"></span>
+                            <font color="white">Seguimientos</font>
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row">                
+                    <div class='col-lg-2'>
+                        <div id='numeroTareaDiv'></div>
+                        <input hidden="true" value="" id="idTareaCasoInfoAsignacion">
+                    </div>
+                    <div class='col-lg-10' style="text-align:right">
+                        <button type="button" id="btnNuevoSeguimiento" class="btn btn-primary btn-md" 
+                                data-toggle="modal" data-target="#modalIngresarSeguimiento" style="display: none;">
+                          Nuevo Seguimiento
+                        </button>
+                    </div>
+
+                </div>
+                
+
+                <div class="row">
+                     <div class="col-lg-12">
+                        <table width="95%" border="0" align="center">
+                            <tr>
+                                <td><h5><span class="label label-default"><span class="glyphicon glyphicon-flag"></span></span> Interno </h5></td>
+                                <td><h5><span class="label label-success"><span class="glyphicon glyphicon-flag"></span></span> Sincronizado </h5></td>
+                                <td><h5><span class="label label-primary"><span class="glyphicon glyphicon-flag"></span></span> Externo </h5></td>
+                            </tr>
+                        </table>
+                        
+                        <div class="loader" id="divLoaderSeguimientos" style="display:none;"></div>
+                        <table id="detalleSeguimientos" class="table table-striped table-bordered compact" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th class="cabeceraGrid">numero</th>
+                                    <th class="cabeceraGrid">feCreacion</th>
+                                    <th class="cabeceraGrid">usrCreacion</th>
+                                    <th class="cabeceraGrid">detalle</th>
+                                    <th class="cabeceraGrid">procedencia</th>
+                                    <th class="cabeceraGrid">acciones</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+  
+                </div>
+	</div>
+
+
+        <!-- Modal Ingresar Nuevo Seguimiento-->
+        <div class="modal fade" id="modalIngresarSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Nuevo Seguimiento</h4>
+              </div>
+              <div class="modal-body">
+                <form >
+                    <div class="alert alert-danger" id="alertaValidaNuevoSeguimiento" role="alert" style="display:none;" >
+                        <strong></strong>
+                    </div>
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <label for="txtaDetalle" class="control-label">Detalle:</label>
+                      <textarea class="form-control" id="txtaDetalleSeg"></textarea>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="checkbox" id="checkBoxReplicarTarea">
+                    <label><input type="checkbox" id="replicarTarea"> Replicar seguimiento a la tarea<span id="numeroTareaReplicaSpan"></span></label>
+                    </div>
+                  </div>
+                    <br/>
+                    <br/>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="btnGrabarSeguimiento">Grabar</button>
+                <button id="btnLoadingGrabarNuevoSeguimiento" class="btn btn-primary" style="display: none;">
+                    <i class="fa fa-spinner fa-spin"></i>Grabando
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Modal Confirmar Alerta Seguimiento-->
+  <div class="modal fade" id="modalConfirmarAlertaSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Mensaje del sistema</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+              
+            <div class="alert alert-danger" id="alertaConfirmaEliminarSeguimiento" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <input type="hidden" class="form-control" id="txtTipoAccionEliminar">
+            <input type="hidden" class="form-control" id="txtIdSeguimientoEliminar">
+            <div id="divMensajeConfirmarAlertaSeg">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="btnCancelaEliminarSeguimiento">No</button>
+          <button type="button" class="btn btn-danger" id="btnConfirmaEliminarSeguimiento">Si</button>
+          <button id="btnLoadingEliminarSeguimiento" class="btn btn-danger" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Eliminando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    
+    
+  <!-- Modal Asignación Masiva -->
+  <div class="modal fade" id="modalAsignacionLote" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Nueva Asignaci&oacute;n Lotes</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaNuevaAsignacionLote" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div  id="divCmbOrigenLote"  class="col-xs-6">
+                  <label for="recipient-name" class="control-label">Origen<font size="3" color="red">*</font>:</label>
+                    <select class="form-control" id="cmbOrigenLote">
+                        <option value='' selected>Seleccione...</option>
+                        <option value='LLAMADA'>LLAMADA</option>
+                        <option value='PROACTIVOS'>PROACTIVOS</option>
+                        <option value='TAREA INTERNA'>TAREA INTERNA</option>
+                        <option value='CORREO'>CORREO</option>
+                        <option value='WHATSAPP'>WHATSAPP</option>
+                    </select>
+                </div>
+                <div id="divCmbTipoAtencionLote" class="col-xs-6">
+                    <label for="recipient-name" class="control-label">Tipo Atenci&oacute;n<font size="3" color="red">*</font>:</label>
+                    <select class="form-control" id="cmbTipoAtencionLote">
+                        <option value='' selected>Seleccione...</option>
+                        <option value='TAREA'>TAREA</option>
+                        <option value='CASO'>CASO</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divCmbTipoProblemaLote" class="col-xs-6">
+                  <label for="recipient-name" class="control-label">Tipo Problema<font size="3" color="red">*</font>:</label>
+                    <select class="form-control" id="cmbTipoProblemaLote">
+                        <option value='' selected>Seleccione...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div  id="divCmbCriticidadLote" class="col-xs-6">
+                  <label for="recipient-name" class="control-label">Criticidad<font size="3" color="red">*</font>:</label>
+                    <select class="form-control" id="cmbCriticidadLote">
+                        <option value='' selected>Seleccione...</option>
+                        <option value='ALTA'>ALTA</option>
+                        <option value='MEDIA'>MEDIA</option>
+                        <option value='BAJA'>BAJA</option>
+                    </select>
+                </div>
+
+                <div id="divtxtAgenteLote" class="autocomplete col-xs-6">
+                  <label for="txtAgente" class="control-label">Agente<font size="3" color="red">*</font>:</label>
+                  <input id="txtAgenteLote" class="inputtxt" type="text" name="agente" placeholder="Agente" maxlength="50">
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtaDetalleLote" class="col-xs-12">
+                  <label for="txtaDetalle" class="control-label">Detalle<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtaDetalleLote" maxlength="500"></textarea>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <input type="text" class="form-control" id="tareasSeleccionadas" name ="tareasSeleccionadas" style="visibility: hidden;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarAsignacionLote">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarAsignacionLote">Grabar</button>
+          <button id="btnLoadingGrabarAsigLote" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalValidaTareasAbiertas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+           <h4 class="modal-title"> Mensaje </h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-info" role="alert">
+            <i class="fa fa-spinner fa-spin"></i> VALIDANDO TAREA...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalMensajeTareas" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="tittelMessage" > Mensaje </h4>
+        </div>
+        <div class="modal-body">
+          <div class="alert alert-danger" role="alert" style="display:none;" id="alertaMensajeTareasDiv">
+              <strong  id="alertaMensajeTareas"></strong>
+          </div>
+          <div class="alert alert-success"  role="alert" style="display:none;" id="successMensajeTareasDiv">
+              <strong id="successMensajeTareas"></strong>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarMensajeTarea">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalEjecucionTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="accionTareaTitle"></h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaEjecucionTarea" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+
+                <div id="divtxtTarea" class="col-md-6">
+                  <label for="txtTarea" class="control-label">Tarea:</label>
+                  <label id="txtTarea"></label>
+                  <input id="txtDetalleTarea" class="inputtxt" type="text" name="detalle" maxlength="50" hidden>
+                  <input id="txtTiempo" class="inputtxt" type="text" name="tiempo" maxlength="50" hidden>
+                  <input id="txtPersonaEmpresaRol" class="inputtxt" type="text" name="persona" maxlength="50" hidden>
+                  <input id="txtNumeroTarea" class="inputtxt" type="text" name="numeroTarea" maxlength="50" hidden>
+                  <input id="txtNombreProceso" class="inputtxt" type="text" name="nombreProceso" maxlength="50" hidden>
+                  <input id="txtUsrAsignado" class="inputtxt" type="text" name="usrAsignado" maxlength="50" hidden>
+                  <input id="txtDeptAsignado" class="inputtxt" type="text" name="deptAsignado" maxlength="50" hidden>
+                  <input id="txtDetalleHist" class="inputtxt" type="text" name="detalleHist" maxlength="50"hidden>
+                  <input id="txtOrigen" class="inputtxt" type="text" name="origen" maxlength="50" hidden>
+                  <input id="txtNombreUsrAsignado" class="inputtxt" type="text" name="nombre" maxlength="50" hidden>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtaMotivoPausa" class="col-xs-12">
+                  <label for="cmbMotivoPausa" class="control-label">Motivo Pausa<font size="3" color="red">*</font>:</label>
+                  <select class="form-control" id="cmbMotivoPausa">
+                      <option value='' selected>Seleccione...</option>
+                  </select>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <div id="divtxtaDetalleTarea" class="col-xs-12">
+                  <label for="txtaDetalleTarea" class="control-label">Observaci&oacute;n<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtObservacionTarea" maxlength="500"></textarea>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <input type="text" class="form-control" id="tareasSeleccionadas" name ="tareasSeleccionadas" style="visibility: hidden;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarEjecucionTarea">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarEjecucionTarea">Grabar</button>
+          <button id="btnLoadingGrabarAsigLote" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modalConfirmaTareaEjecucion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="accionTareaTitle">Alerta</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaNuevaAsignacionLote" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtTarea" class="col-md-6">
+                  <label for="txtTarea" class="control-label">Actualmente posee la tarea #<span aria-hidden="true" id="txtNumeroTareaConfirma"></span> en ejecución, ¿Desea pausarla?</label>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <input type="text" class="form-control" id="tareasSeleccionadas" name ="tareasSeleccionadas" style="visibility: hidden;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarConfirmaTareaEjecucion">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnConfirmaTareaEjecucion">Aceptar</button>
+          <button id="btnLoadingGrabarAsigLote" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalIngresoSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="">Ingreso Seguimiento</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaIngresoSeguimiento" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtTarea" class="col-md-6">
+                  <label for="txtTarea" class="control-label">Tarea:</label>
+                  <label id="txtTareaSeg"></label>
+                  <input id="txtDetalleTareaSeg" class="inputtxt" type="text" name="detalle" maxlength="50" hidden>
+                  <input id="txtTiempoSeg" class="inputtxt" type="text" name="tiempo" maxlength="50" hidden>
+                  <input id="txtPersonaEmpresaRolSeg" class="inputtxt" type="text" name="persona" maxlength="50" hidden>
+                  <input id="txtNumeroTareaSeg" class="inputtxt" type="text" name="numeroTarea" maxlength="50" hidden>
+                  <input id="txtNombreProcesoSeg" class="inputtxt" type="text" name="nombreProceso" maxlength="50" hidden>
+                  <input id="txtUsrAsignadoSeg" class="inputtxt" type="text" name="usrAsignado" maxlength="50" hidden>
+                  <input id="txtDeptAsignadoSeg" class="inputtxt" type="text" name="deptAsignado" maxlength="50" hidden>
+                  <input id="txtDetalleHistSeg" class="inputtxt" type="text" name="detalleHist" maxlength="50"hidden>
+                  <input id="txtOrigenSeg" class="inputtxt" type="text" name="origen" maxlength="50" hidden>
+                  <input id="txtNombreUsrAsignadoSeg" class="inputtxt" type="text" name="nombre" maxlength="50" hidden>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtaDetalleTarea" class="col-xs-12">
+                  <label for="" class="control-label">Seguimiento<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtSeguimientoTarea" maxlength="500"></textarea>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <div id="divtxtaRegistroInterno" class="col-xs-12">
+                  <label for="cmbRegistroInterno" class="control-label">Registro Interno<font size="3" color="red">*</font>:</label>
+                  <select class="form-control" id="cmbRegistroInterno">
+                      <option value='' selected>Seleccione...</option>
+                      <option value='S'>Si</option>
+                      <option value='N'>No</option>
+                  </select>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <input type="text" class="form-control" id="tareasSeleccionadas" name ="tareasSeleccionadas" style="visibility: hidden;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarIngresoSeguimiento">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnIngresoSeguimiento">Grabar</button>
+          <button id="btnLoadingIngresoSeguimiento" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalMostrarSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="accionTareaTitle">Seguimientos Tarea</h4>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th><strong>Observación</strong></th>
+                <th><strong>Ejecutante</strong></th>
+                <th><strong>Departamento</strong></th>
+                <th><strong>Fecha Observación</strong></th>
+              </tr>
+            </thead>
+            <tbody id="tbodyMostrarSeguimiento">
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <input type="text" class="form-control" id="tareasSeleccionadas" name ="tareasSeleccionadas" style="visibility: hidden;">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Nueva Asignación -->
+  <div class="modal fade" id="modalNuevaAsignacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Nueva Asignaci&oacute;n</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaNuevaAsignacion" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div  id="divCmbOrigen"  class="col-xs-6">
+                  <label for="recipient-name" class="control-label">Origen<font size="3" color="red">*</font>:</label>
+                    <select class="form-control" id="cmbOrigen">
+                        <option value='' selected>Seleccione...</option>
+                        <option value='LLAMADA'>LLAMADA</option>
+                        <option value='PROACTIVOS'>PROACTIVOS</option>
+                        <option value='TAREA INTERNA'>TAREA INTERNA</option>
+                        <option value='CORREO'>CORREO</option>
+                        <option value='WHATSAPP'>WHATSAPP</option>
+                    </select>
+                </div>
+                <div id="divCmbTipoAtencion" class="col-xs-6">
+                    <label for="recipient-name" class="control-label">Tipo Atenci&oacute;n<font size="3" color="red">*</font>:</label>
+                    <select class="form-control" id="cmbTipoAtencion">
+                        <option value='' selected>Seleccione...</option>
+                        <option value='TAREA'>TAREA</option>
+                        <option value='CASO'>CASO</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                <label for="txtLogin" class="control-label">Ruc / login:<font size="3" color="red">*</font></label> 
+                <input type="text" class="form-control" id="txtLogin" maxlength="50">
+                </div>
+
+                <div id="divCmbTipoProblema" class="col-xs-6">
+                  <label for="recipient-name" class="control-label">Tipo Problema<font size="3" color="red">*</font>:</label>
+                    <select class="form-control" id="cmbTipoProblema">
+                        <option value='' selected>Seleccione...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                  <label for="recipient-name" class="control-label">Contacto Reporta:</label>
+                  <input type="text" class="form-control" id="txtNombreReporta" maxlength="100">
+                </div>
+                <div class="col-xs-6">
+                  <label for="recipient-name" class="control-label">Contacto en Sitio:</label>
+                  <input type="text" class="form-control" id="txtNombreSitio" maxlength="100">
+                </div>
+            </div>
+            <div class="row">
+                <div  id="divCmbCriticidad" class="col-xs-6">
+                  <label for="recipient-name" class="control-label">Criticidad<font size="3" color="red">*</font>:</label>
+                    <select class="form-control" id="cmbCriticidad">
+                        <option value='' selected>Seleccione...</option>
+                        <option value='ALTA'>ALTA</option>
+                        <option value='MEDIA'>MEDIA</option>
+                        <option value='BAJA'>BAJA</option>
+                    </select>
+                </div>
+
+                <div id="divtxtAgente" class="autocomplete col-xs-6">
+                  <label for="txtAgente" class="control-label">Agente<font size="3" color="red">*</font>:</label>
+                  <input id="txtAgente" class="inputtxt" type="text" name="agente" placeholder="Agente" maxlength="50">
+                </div>
+            </div>
+            <div class="row">
+                <div id="divTxtNumeroTareaCasoNuevaAsig" class="col-xs-6">
+                    <label for="txtNumeroTareaCasoNuevaAsig" class="control-label">Nro. Tarea/Caso:</label>
+                    <input type="text" class="form-control" id="txtNumeroTareaCasoNuevaAsig" maxlength="25">
+                      <br/>
+                      <br/>
+                </div>
+              
+                <!--Boton para el llamado del modal de Asignaciones Proactivas-->
+                <div class="modal-footer">
+                    <button id="btnAsignacionProactiva" type="button" class="btn btn-default" 
+                                 title="Asignaciones Proactivas">Asig. Proactivas
+                    </button>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div id="divtxtaDetalle" class="col-xs-12">
+                  <label for="txtaDetalle" class="control-label">Detalle<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtaDetalle" maxlength="500"></textarea>
+                </div>
+                <br/>
+                <br/>
+            </div>
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarAsignacion">Grabar</button>
+          <button id="btnLoadingGrabarAsig" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <!-- Modal Asignaciones Hija -->
+  <style>
+      #asigProactiva{height:400px; overflow: hidden;}
+      #asigProactiva:hover{overflow-y:auto;}
+  </style>
+  
+  <div class="modal fade" id="modalAsignacionProactiva" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 60%">
+      <div class="modal-content">
+          
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Asignaciones Proactivas</h4>
+        </div>
+          
+        <div class="modal-body" id="asigProactiva">
+            <table id="detalleAsignacionesProactivas" class="table table-striped table-bordered compact" style="width:100%">
+                <thead>
+                    <tr>
+                        <th class="cabeceraGrid">#</th>
+                        <th class="cabeceraGrid">casoTarea</th>
+                        <th class="cabeceraGrid">feCreacion</th>
+                        <th class="cabeceraGrid">loginAfectado</th>
+                        <th class="cabeceraGrid">infoTareas</th>
+                        <th class="cabeceraGrid">acciones</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+          <input type="hidden" class="form-control" id="txtIdAsigPadre">
+        <div class="modal-footer">
+           <button type="button" class="btn btn-default" id="btnCancelarAsigProact">Cancelar</button>
+           <button type="button" class="btn btn-default" id="btnCancelarAsigProact_1">Cancelar</button>
+           <button type="button" class="btn btn-primary" id="btnAceptarAsigProact">Aceptar</button>
+           <button type="button" class="btn btn-primary" id="btnAceptarAsigProact_1">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="modal fade" id="modalAsignacionHija" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width:50%">
+      <div class="modal-content">
+          
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Asignaciones Relacionadas</h4>
+        </div>
+          
+        <div class="modal-body" id="asigHija">
+            <table id="detalleAsignacionesHijas" class="table table-striped table-bordered compact">
+                <thead>
+                    <tr>
+                        <th class="cabeceraGrid"></th>
+                        <th class="cabeceraGrid">casoTarea</th>
+                        <th class="cabeceraGrid">feCreacion</th>
+                        <th class="cabeceraGrid">loginAfectado</th>
+                        <th class="cabeceraGrid">infoTareas</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+          <input type="hidden" class="form-control" id="txtIdAsigPadre">
+        <div class="modal-footer">
+           <button type="button" class="btn btn-default" id="btnCerrarVistaHijas">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal Agregar Numero de Tarea / Caso -->
+  <div class="modal fade" id="modalAgregarNumeroTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Agregar Numero Tarea/Caso</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaNumeroTarea" role="alert" style="display:none;" >
+                <strong>Debe de ingresar n&uacute;mero de tarea/caso</strong>
+            </div>
+            <div class="row">
+                <input type="hidden" class="form-control" id="txtIdAsignacionEdit">
+                <div id="divCmbTipoAtencionEdit" class="col-xs-6">
+                <label for="recipient-name" class="control-label">Tipo Atenci&oacute;n:</label>
+                  <select class="form-control" id="cmbTipoAtencionEdit">
+                      <option value='' selected>Seleccione...</option>
+                      <option value='TAREA'>TAREA</option>
+                      <option value='CASO'>CASO</option>
+                  </select>
+                </div>
+                <div id="divCmbTipoProblemaEdit" class="col-xs-6">
+                <label for="recipient-name" class="control-label">Tipo Problema:</label>
+                    <select class="form-control" id="cmbTipoProblemaEdit">
+                        <option value='' selected>Seleccione...</option>
+                        <option value='CAIDA'>CAIDA</option>
+                        <option value='INTERMITENCIA'>INTERMITENCIA</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divTxtNumeroTareaCaso" class="col-xs-6">
+                    <label for="txtNumeroTareaCaso" class="control-label">Numero:</label>
+                    <input type="text" maxlength="25" class="form-control" id="txtNumeroTareaCaso">
+                      <br/>
+                      <br/>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarNumeroTareaCaso">Grabar</button>
+          <button id="btnLoadingGrabarNumeroTareaCaso" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal Reasignar por cambio de turno -->
+  <div class="modal fade" id="modalCambioTurno" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Cambio de turno</h4>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-danger" id="alertaCambioTurno" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row" id="divBusquedaCantonesCambioTurno">
+                <div class="col-lg-1">
+                    <label style='padding:15px;'>Ciudad:</label>
+                </div>
+                <div class="col-lg-2">
+                  <div>
+                    <div class="dropdown" id="dropDownCantones" style="top:-7px;">
+                        <input type="hidden" id="txtIdBtnCantonesCambioTurno" style="width:20px;" value='' />
+                        <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown" id="btnCantonesCambioTurno">
+                            <span id="textBtnCantonesCambioTurno">TODAS&nbsp;&nbsp;&nbsp;</span><span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu"  id="ulDropDownCantonesCambioTurno"  style="width:180px;"></ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="">
+                        <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Buscar">    
+                            <button type="button" class="btn btn-primary btn btn-md" id='btnBuscarCambioTurno'>
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                        <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Limpiar">
+                            <button type="button" class="btn btn-warning btn btn-md" id='btnLimpiaBuscarCambioTurno'>
+                                <span class="glyphicon glyphicon-erase"></span>
+                            </button>                        
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                </div>
+            </div>
+            <div class="loader" id="divLoaderCambioTurno" style="display:none;"></div>
+            <table id="detalleCambioTurno" class="table table-striped table-bordered compact" style="width:850px">
+                <thead>
+                    <tr>
+                        <th class="cabeceraGrid">numero</th>
+                        <th class="cabeceraGrid">casoTarea</th>
+                        <th class="cabeceraGrid">feCreacion</th>
+                        <th class="cabeceraGrid">referenciaCliente</th>
+                        <th class="cabeceraGrid">origen</th>
+                        <th class="cabeceraGrid">loginAfectado</th>
+                        <th class="cabeceraGrid">tipoAtencion</th>
+                        <th class="cabeceraGrid">tipoProblema</th>
+                        <th class="cabeceraGrid">usrAsignado</th>
+                        <th class="cabeceraGrid">estadoCaso</th>
+                        <th class="cabeceraGrid">estadoTarea</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarCambioTurno">Grabar</button>
+          <button id="btnLoadingGrabarCambioTurno" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Asignar Seguimientos -->
+  <div class="modal fade" id="modalAsignarSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Asignar Seguimiento</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaAsignarSeguimiento" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <input type="hidden" class="form-control" id="txtIdAsignacionAsigSeg">
+                <input type="hidden" class="form-control" id="txtIdRespuestaAsignacionAsigSeg">
+                <div id="divtxtAgenteAsigSeg" class="autocomplete col-xs-6">
+                  <label for="txtAgenteAsigSeg" class="control-label">Agente:</label>
+                  <input id="txtAgenteAsigSeg" class="inputtxt" type="text" name="txtAgenteAsigSeg" placeholder="Agente">
+                </div>
+            </div>
+            <div class="row">
+                <div id="divCmbTareaAsigSeg" class="col-xs-3">
+                    <label for="recipient-name" class="control-label">Tarea:</label>
+                    <select class="form-control" id="cmbTareaAsigSeg">
+                        <option value='' selected>Seleccione...</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtDetalleAsigSeg" class="col-xs-12">
+                  <label for="txtDetalleAsigSeg" class="control-label">Detalle:</label>
+                  <textarea class="form-control" id="txtDetalleAsigSeg"></textarea>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarAsignacionSeguimiento">Grabar</button>
+          <button id="btnLoadingGrabarAsignacionSeguimiento" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Respuesta Asignar seguimiento -->
+  <div class="modal fade" id="modalRespuestaAsignarSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Responder asignaci&oacute;n seguimiento</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaRespuestaAsignarSeguimiento" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtDetalleRespAsigSeg" class="col-xs-12">
+                  <input type="hidden" class="form-control" id="txtIdRespuestaAsigSeg">
+                  <input type="hidden" class="form-control" id="txtIdSeguimientoRespuestaAsigSeg">
+                  <label for="txtDetalleRespuestaAsigSeg" class="control-label">Detalle:</label>
+                  <textarea class="form-control" id="txtDetalleRespuestaAsigSeg"></textarea>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarRespuestaAsigSeg">Grabar</button>
+          <button id="btnLoadingGrabarRespuestaAsigSeg" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Modal Confirmar Alerta Asignacion -->
+  <div class="modal fade" id="modalConfirmarAlertaAsignacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Mensaje del sistema</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+              
+            <div class="alert alert-danger" id="alertaConfirmaEliminarAsignacion" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <input type="hidden" class="form-control" id="txtIdAsigSegEliminar">
+            <div id="divMensajeConfirmarAlertaAsig">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="cancelaEliminarAsignacion">No</button>
+          <button type="button" class="btn btn-danger" id="confirmaEliminarAsignacion">Si</button>
+          <button id="btnLoadingEliminarAsignacion" class="btn btn-danger" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Eliminando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Confirmar Alerta Asignacion -->
+  <div class="modal fade" id="modalConfirmarCerrarAsignacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Mensaje del sistema</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+              
+            <div class="alert alert-danger" id="alertaConfirmaCerrarAsignacion" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <input type="hidden" class="form-control" id="txtIdAsigCerrar">
+            <div id="divMensajeConfirmarCerrarAsig">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="cancelaCerrarAsignacion">No</button>
+          <button type="button" class="btn btn-danger" id="confirmaCerrarAsignacion">Si</button>
+          <button id="btnLoadingCerrarAsignacion" class="btn btn-danger" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Cerrando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Confirmar enviar reporte asignaciones pendientes -->
+  <div class="modal fade" id="modalConfirmarEnviarReporte" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Mensaje del sistema</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaConfirmaReporte" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div id="divMensajeConfirmarEnviarReporte"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="btnCancelaEnviarReporte">No</button>
+          <button type="button" class="btn btn-danger" id="btnConfirmaEnviarReporte">Si</button>
+          <button id="btnLoadingEnviarReporte" class="btn btn-danger" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Enviando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Confirmar grabar asignación -->
+  <div class="modal fade" id="modalConfirmarGrabarAsignacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" id="btnCerrarGrabarAsignacion" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Mensaje del sistema</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaConfirmaGrabarAsignacion" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div id="divMensajeConfirmarGrabarAsignacion"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="btnCancelaGrabarAsignacion">No</button>
+          <button type="button" class="btn btn-danger" id="btnConfirmaGrabarAsignacion">Si</button>
+          <button id="btnLoadingEnviarReporte" class="btn btn-danger" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Ingresar Seguimiento por cambio de turno-->
+  <div class="modal fade" id="modalIngresarSeguimientoCambioTurno" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <input type="hidden" class="form-control" id="txtIdAsignacionNuevoSegCambioTurno">
+          <input type="hidden" class="form-control" id="txtCambioTurno">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Nuevo Seguimiento por cambio de turno</h4>
+        </div>
+        <div class="modal-body">
+          <form >
+              <div class="alert alert-danger" id="alertaValidaNuevoSeguimientoCambioTurno" role="alert" style="display:none;" >
+                  <strong></strong>
+              </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <label for="txtaDetalleSegCambioTurno" class="control-label">Detalle:</label>
+                <textarea class="form-control" id="txtaDetalleSegCambioTurno"></textarea>
+              </div>
+            </div>
+                <br/>
+                <br/>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarSeguimientoCambioTurno">Grabar</button>
+          <button id="btnLoadingGrabarNuevoSeguimientoCambioTurno" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Alerta Error -->
+  <div class="modal fade" id="modalAlertaError" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Mensaje del sistema</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div id="divMensajeAlertaError">
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" id="cerrarAlertaError">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Editar número extensión -->
+  <div class="modal fade" id="modalEditarNumeroExtension" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Actualizar n&uacute;mero extensi&oacute;n</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaNumeroExtension" role="alert" style="display:none;" >
+                <strong>Debe de ingresar n&uacute;mero de extensi&oacute;n</strong>
+            </div>
+            <div class="row">
+                <input type="hidden" class="form-control" id="txtActualizarEstadoConexionEdit">
+            </div>
+            <div class="row">
+                <input type="hidden" class="form-control" id="txtEstadoConexionEdit">
+            </div>
+            <div class="row">
+                <input type="hidden" class="form-control" id="txtIdPersonaEmpresaRolEdit">
+            </div>
+            <div class="row">
+                <div id="divTxtNumeroExtension" class="col-xs-6">
+                    <label for="txtNumeroExtension" class="control-label">Extensi&oacuten:</label>
+                    <input maxlength="10" type="text" class="form-control" id="txtNumeroExtensionEdit">
+                      <br/>
+                      <br/>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarNumeroExtension">Grabar</button>
+          <button id="btnLoadingGrabarNumeroExtension" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal Mostrar tareas de un caso-->
+  <div class="modal fade" id="modalTareasCaso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 50%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabelTareasCaso">Listado de Tareas</h4>
+        </div>
+        <div class="modal-body" id="detalleTareasCasoDiv" style="width: 100%;margin-left:10%;">
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Modal Mostrar Historial conexión-->
+  <div class="modal fade" id="modalHistorialConexion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document" style="width: 50%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabelHistorialConexion">Historial de cambio de estado de conexión</h4>
+        </div>
+        <div class="modal-body" id="detalleHistorialConexionDiv" style="width: 100%;margin-left:5%;">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="loader" id="divLoaderHistorialConexion" style="display:none;"></div>
+                <input type="hidden" id="txtIdPerHistConexion" value='' />
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div id="divCmbAnioHistorialConexion" class="col-xs-6">
+                      <label for="recipient-name" class="control-label">A&ntilde;o:</label>
+                        <select class="form-control" id="cmbAnioHistorialConexion">
+                            <option value='' selected>Seleccione...</option>
+                            <option value='2020'>2020</option>
+                            <option value='2021'>2021</option>
+                            <option value='2022'>2022</option>
+                            <option value='2023'>2023</option>
+                            <option value='2024'>2024</option>
+                            <option value='2025'>2025</option>
+                            <option value='2026'>2026</option>
+                            <option value='2027'>2027</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div id="divCmbMesHistorialConexion" class="col-xs-6">
+                      <label for="recipient-name" class="control-label">Mes:</label>
+                        <select class="form-control" id="cmbMesHistorialConexion">
+                            <option value='' selected>Seleccione...</option>
+                            <option value='1'>Enero</option>
+                            <option value='2'>Febrero</option>
+                            <option value='3'>Marzo</option>
+                            <option value='4'>Abril</option>
+                            <option value='5'>Mayo</option>
+                            <option value='6'>Junio</option>
+                            <option value='7'>Julio</option>
+                            <option value='8'>Agosto</option>
+                            <option value='9'>Septiembre</option>
+                            <option value='10'>Octubre</option>
+                            <option value='11'>Noviembre</option>
+                            <option value='12'>Diciembre</option>
+                        </select>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <table id="detalleHistorialConexion" class="table table-striped table-bordered compact" style="width:520px;margin-left:0%;">
+                    <thead>
+                    <tr>
+                        <th class="cabeceraGrid"></th>
+                        <th class="cabeceraGrid">fecha</th>
+                        <th class="cabeceraGrid">estado</th>
+                        <th class="cabeceraGrid">extension</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>    
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Agregar/Editar Tipo Problema -->
+  <div class="modal fade" id="modalAdminTipoProblema" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Agregar Tipo Problema</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaAdminTipoProblema" role="alert" style="display:none;" >
+                <strong>Debe de ingresar n&uacute;mero de tarea/caso</strong>
+            </div>
+            <div class="row">
+                <input type="hidden" class="form-control" id="txtAccionAdminTipoProblema">
+                <input type="hidden" class="form-control" id="txtIdAdminTipoProblema">
+                <input type="hidden" class="form-control" id="txtDescripcionAdminTipoProblema">
+                <input type="hidden" class="form-control" id="txtDepartamentoAdminTipoProblema">
+            </div>
+            <div class="row">
+                <div id="divTxtDetalleAdminTipoProblema" class="col-xs-6">
+                    <label for="divTxtDetalleAdminTipoProblema" class="control-label">Descripci&oacute;n:</label>
+                    <input type="text" maxlength="25" class="form-control" id="txtDetalleAdminTipoProblema">
+                      <br/>
+                      <br/>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarAdminTipoProblema">Grabar</button>
+          <button id="btnLoadingGrabarAdminTipoProblema" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal Poner en Standby -->
+  <div class="modal fade" id="modalPonerStandby" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Poner en Standby</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaPonerStandby" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtFechaPonerStandby" class='col-lg-6'>
+                    <input type="hidden" class="form-control" id="txtIdAsignacionPonerStandby">
+                    <label for="recipient-name" class="control-label">Fecha:</label>
+                    <div class='input-group date' id='dpPonerStandby'>
+                      <input type='text' class="form-control" id="txtFechaPonerStandby" />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                      <br>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="divColumnHorasCambioTurno">
+                    <div id="divComboHorasCambioTurno">
+                    <label>Hora:</label>
+                    <div class="dropdown" id="dropDownHorasCambioTurno" style="top:-7px;">
+                      <input type="hidden" id="txtIdBtnHorasCambioTurno" style="width:20px;" value='' />
+                      <button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown" id="btnHorasCambioTurno">
+                          <span id="textBtnHorasCambioTurno">Seleccione...</span><span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu"  id="ulDropDownHorasCambioTurno"  style="width:180px;">
+                      </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtDetallePonerStandby" class="col-xs-12">
+                  <label for="txtDetallePonerStandby" class="control-label">Detalle:</label>
+                  <textarea class="form-control" id="txtDetallePonerStandby"></textarea>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarPonerStandby">Grabar</button>
+          <button id="btnLoadingGrabarPonerStandby" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Quitar de Standby -->
+  <div class="modal fade" id="modalQuitarStandby" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Quitar de Standby</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaQuitarStandby" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <input type="hidden" class="form-control" id="txtIdAsignacionQuitarStandby">
+                <div id="divtxtAgenteQuitarStandby" class="autocomplete col-xs-6">
+                  <label for="txtAgenteQuitarStandby" class="control-label">Agente:</label>
+                  <input id="txtAgenteQuitarStandby" class="inputtxt" type="text" name="txtAgenteQuitarStandby" placeholder="Agente">
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtDetalleQuitarStandby" class="col-xs-12">
+                  <label for="txtDetalleQuitarStandby" class="control-label">Detalle:</label>
+                  <textarea class="form-control" id="txtDetalleQuitarStandby"></textarea>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarQuitarStandby">Grabar</button>
+          <button id="btnLoadingGrabarQuitarStandby" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Grabando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Finalizar Tarea -->
+  <div class="modal fade" id="modalFinalizarTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="">Finalizar Tarea</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="alert alert-danger" id="alertaValidaFinalizaTarea" role="alert" style="display:none;" >
+                <strong></strong>
+            </div>
+            <div class="row">
+                <div id="divtxtTareaFinaliza" class="col-md-8">
+                  <label for="txtTareaInicial" class="control-label">Tarea Inicial:</label>
+                  <label id="txtTareaInicial"></label>
+                </div> 
+                <div id="divchxFinalTareaHereda" style="display: none;" class="col-md-4">
+                  <label>
+                    <input id="chxFinalTareaHereda" type="checkbox"> Hereda tarea anterior</input>
+                  </label>
+                </div> 
+            </div>
+            <div id="divcmbTareaFinal" class="row" >
+                <div class="divcmbTareaFinal col-xs-6" >
+                  <label for="cmbTareaFinal" class="control-label lbtoppadding">Tarea Final<font size="3" color="red">*</font>:</label>
+                  <select class="form-control" id="cmbTareaFinal">
+                      <option value='-1' selected>Seleccionar fin de tarea</option>
+                  </select>
+                </div>
+                <div class="col-xs-6"></div>
+            </div>
+            <div id="divtxtTareaFinalHereda" class="row" style="display: none;">
+                <div class="divtxtTareaFinalHereda col-xs-6">
+                 <label for="txtTareaFinalHereda" class="control-label lbtoppadding">Tarea Final:</label>
+                  <label id="txtTareaFinalHereda" class="lbtoppadding"></label>
+                  <input type="hidden" id="txtTareaFinalHereda-name">
+                  <input type="hidden" id="txtTareaFinalHereda-id" value="-1">
+                </div>
+            </div>
+
+            <div class="row" id="divIdArboltarea" style="display: none;">
+                <div id="divdrwTareaFinal" class="divdrwTareaFinal col-xs-6 dropdown">
+                    <label for="drwTareaFinal" class="control-label lbtoppadding">Tarea Final<font size="3" color="red">*</font>:</label>
+                    <button id="drwTareaFinal" class="btn btn-default btn-sm btn-block dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 7px 10px; text-align:left"><span id="spnTareaFinal">Seleccionar fin de tarea</span> &nbsp;&nbsp;<span style="float: right; margin-top: 7px;" class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" style="margin-left: 15px;" id="drwArbolTarea">
+                      <!-- load arbol de tarea -->
+                    </ul>
+                    <input type="hidden" id="drwArbolTarea-name">
+                    <input type="hidden" id="drwArbolTarea-namel1">
+                    <input type="hidden" id="drwArbolTarea-namel2">
+                    <input type="hidden" id="drwArbolTarea-id" value="-1">
+                    <input type="hidden" id="drwArbolTarea-RequiereMaterial" value="-1">
+                    <input type="hidden" id="drwArbolTarea-RequiereFibra" value="-1">
+                    <input type="hidden" id="drwArbolTarea-RequiereRutaFibra" value="-1">
+                    <input type="hidden" id="drwArbolTarea-RequiereEquipo" value="-1">
+                </div>
+                <div id="divcmbMotivoTareaFinal" class="divcmbMotivoTareaFinal col-xs-6">
+                  <label for="cmbMotivoTareaFinal" class="control-label lbtoppadding">Motivo<font size="3" color="red">*</font>:</label>
+                  <select class="form-control" id="cmbMotivoTareaFinal" disabled >
+                      <option value='-1' selected>Seleccione motivo</option>
+                  </select>
+                </div>
+            </div>           
+            <div class="row">
+                <div id="divtxtaObsTareaFinal" class="col-xs-12">
+                  <label for="txtaObsTareaFinal" class="control-label lbtoppadding">Observación<font size="3" color="red">*</font>:</label>
+                  <textarea class="form-control" id="txtaObsTareaFinal" maxlength="500"></textarea>
+                </div>
+            </div>
+            <div id="divrbObsTareaFinal" class="row" style="display: none;">
+              <div class="divrbObsTareaFinal col-xs-12">
+                <label for="txtaObsTareaFinal" class="control-label lbtoppadding">Es Solución<font size="3" color="red">*</font>:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                Si <input type="radio" name="esSolucion" id="radio1" value="S">&nbsp;&nbsp;
+                No <input type="radio" name="esSolucion" id="radio2" value="N">
+              </div>
+            </div>          
+            <div class="row">
+                <div id="divtxtFechaInicio" class="col-xs-6">
+                  <label for="txtFechaInicio" class="control-label lbtoppadding">Fecha De Inicio:</label> 
+                  <input type="text" class="form-control" id="txtFechaInicio" readonly maxlength="50">
+                </div>
+                <div id="divtxtHoraInicio" class="col-xs-6">
+                  <label for="txtHoraInicio" class="control-label lbtoppadding">Hora Inicial Tarea:</label> 
+                  <input type="text" class="form-control" id="txtHoraInicio" readonly maxlength="50">
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtFechCierre" class="col-xs-6">
+                  <label for="txtFechaCierre" class="control-label lbtoppadding">Fecha De Cierre:</label> 
+                  <input type="text" class="form-control" id="txtFechaCierre" readonly maxlength="50">
+                </div>
+                <div id="divtxtHoraCierre" class="col-xs-6">
+                  <label for="txtHoraCierre" class="control-label lbtoppadding">Hora De Cierre:</label> 
+                  <input type="text" class="form-control" id="txtHoraCierre" readonly maxlength="50">
+                </div>
+            </div>
+            <div class="row">
+                <div id="divtxtTiempoTotal" class="col-xs-6">
+                  <label for="txtTiempoTotal" class="control-label lbtoppadding">Tiempo Total Tarea (minutos) index:</label> 
+                  <input type="text" class="form-control" id="txtTiempoTotal" readonly maxlength="50">
+                </div>
+                <div class="col-xs-6"></div>
+            </div>
+            <div class="row">
+                <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" id="btnGrabarFinalizaTarea">Grabar</button>
+          <button id="btnLoadingGrabarFinalizaTarea" class="btn btn-primary" style="display: none;">
+              <i class="fa fa-spinner fa-spin"></i>Loading
+          </button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal Reasignar Tarea -->
+<div class="modal fade" id="modalReasignarTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="">Reasignar Tarea</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="alert alert-danger" id="alertaValidaReasignaTarea" role="alert" style="display:none;" >
+              <strong></strong>
+          </div>
+          <div class="row">
+              <div id="divtxtTareaReasigna" class="col-md-8">
+                <label for="txtTareaInicialReasigna" class="control-label">Tarea:</label>
+                <label id="txtTareaInicialReasigna"></label>
+              </div> 
+              <div id="divchxRespuestaInmediata" class="col-md-4">
+                <label>
+                  <input id="chxRespuestaInmediata" type="checkbox"> Respuesta Inmediata</input>
+                  <input type="hidden" value="" id="intIdDetalleReasigna">
+                </label>
+              </div> 
+          </div>
+          <div class="row" id="divIdArboltareaReasig" style="display: none;">
+              <div id="divdrwTareaFinalReasig" class="divdrwTareaFinalReasig col-xs-6 dropdown">
+                  <label for="drwTareaFinalReasig" class="control-label lbtoppadding">Tarea Final<font size="3" color="red">*</font>:</label>
+                  <button id="drwTareaFinalReasig" class="btn btn-default btn-sm btn-block dropdown-toggle form-control" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding: 7px 10px; text-align:left"><span id="spnTareaFinalReasig">Seleccionar fin de tarea</span> &nbsp;&nbsp;<span style="float: right; margin-top: 7px;" class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" style="margin-left: 15px;" id="drwArbolTareaReasig">
+                    <!-- load arbol de tarea -->
+                  </ul>
+                  <input type="hidden" id="drwArbolTareaReasig-name">
+                  <input type="hidden" id="drwArbolTareaReasig-namel1">
+                  <input type="hidden" id="drwArbolTareaReasig-namel2">
+                  <input type="hidden" id="drwArbolTareaReasig-id" value="-1">
+                  <input type="hidden" id="drwArbolTareaReasig-RequiereMaterial" value="-1">
+                  <input type="hidden" id="drwArbolTareaReasig-RequiereFibra" value="-1">
+                  <input type="hidden" id="drwArbolTareaReasig-RequiereRutaFibra" value="-1">
+                  <input type="hidden" id="drwArbolTareaReasig-RequiereEquipo" value="-1">
+              </div>
+              <div id="divcmbMotivoTareaFinalReasig" class="divcmbMotivoTareaFinalReasig col-xs-6">
+                <label for="cmbMotivoTareaFinalReasig" class="control-label lbtoppadding">Motivo<font size="3" color="red">*</font>:</label>
+                <select class="form-control" id="cmbMotivoTareaFinalReasig" disabled >
+                    <option value='-1' selected>Seleccione motivo</option>
+                </select>
+              </div>
+          </div> 
+          <div class="row" >
+              <div id="divcmbEmpresaReasigna" class="divcmbEmpresaReasigna col-xs-6" >
+                <label for="cmbEmpresaReasigna" class="control-label lbtoppadding">Empresa<font size="3" color="red">*</font>:</label>
+                <select class="form-control" id="cmbEmpresaReasigna">
+                    <option value='-1' selected>Seleccionar empresa</option>
+                </select>
+              </div>
+              <div id="divcmbCiudadReasigna" class="divcmbCiudadReasigna col-xs-6" >
+                <label for="cmbCiudadReasigna" class="control-label lbtoppadding">Ciudad<font size="3" color="red">*</font>:</label>
+                <select class="form-control" id="cmbCiudadReasigna" disabled>
+                    <option value='-1' selected>Seleccionar ciudad</option>
+                </select>
+              </div>
+          </div> 
+          <div class="row" >
+            <div id="divcmbDepartReasigna" class="divcmbDepartReasigna col-xs-6" >
+              <label for="cmbDepartReasigna" class="control-label lbtoppadding">Departamento<font size="3" color="red">*</font>:</label>
+              <select class="form-control" id="cmbDepartReasigna" disabled>
+                  <option value='-1' selected>Seleccionar departamento</option>
+              </select>
+            </div>
+            <div id="divcmbEmpleadoReasigna" class="divcmbEmpleadoReasigna col-xs-6" >
+              <label for="cmbEmpleadoReasigna" class="control-label lbtoppadding">Empleado<font size="3" color="red">*</font>:</label>
+              <select class="form-control" id="cmbEmpleadoReasigna" disabled>
+                  <option value='-1' selected>Seleccionar empleado</option>
+              </select>
+            </div>
+          </div>
+          <div class="row" >
+            <div id="divcmbdDateEjecReasigna" class="divdatetimepickerEjecReasigna col-xs-6">
+                <label for="datetimepickerEjecReasigna" class="control-label lbtoppadding">Fecha de ejecución<font size="3" color="red">*</font>:</label>
+                <div class='input-group date' id='datetimepickerEjecReasigna'> 
+                    <input type='text' class='form-control' id='txtDatetimepickerEjecReasigna' value = ''/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div id="divcmbHourEjecReasigna" class="divcmbHourEjecReasigna col-xs-6" >
+              <label for="cmbHourEjecReasigna" class="control-label lbtoppadding">Hora de ejecución<font size="3" color="red">*</font>:</label>
+              <select class="form-control" id="cmbHourEjecReasigna">
+                  <option value='-1' selected>Seleccionar hora de ejecución</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+              <div id="divtxtaObsTareaFinalReasigna" class="col-xs-12">
+                <label for="txtaObsTareaFinalReasigna" class="control-label lbtoppadding">Observación<font size="3" color="red">*</font>:</label>
+                <textarea class="form-control" id="txtaObsTareaFinalReasigna" maxlength="500"></textarea>
+              </div>
+          </div>
+          
+          <div class="row">
+              <p><font size="1" color="red">&nbsp;&nbsp;(*) Campos obligatorios</font></p>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" id="btnGrabarReasignaTarea">Grabar</button>
+        <button id="btnLoadingGrabarReasignaTarea" class="btn btn-primary" style="display: none;">
+            <i class="fa fa-spinner fa-spin"></i>Loading
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cargar Archivo Tarea -->
+<div class="modal fade" id="modalCagarArchivos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="">Subir Archivos Tareas</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" id="alertaValidaCargarArchivo" role="alert" style="display:none;" >
+          <strong></strong>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">Seleccionar Archivos</div>
+          <div class="panel-body">
+            <form id="formFileTarea">
+              <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                          <div id="divInputFiles" class="controls">
+                            <!-- Content input files-->
+                          </div>
+                    </div>
+                    <input id="IdTarea" name="IdTarea" value="" type="hidden">
+                    <input id="origenTarea" name="origenTarea" value="S" type="hidden">
+                    <input id="subirEnMsNfs" name="subirEnMsNfs" value="S" type="hidden">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="btnCargarArchivo">Subir</button>
+        <button id="btnLoadingCargarArchivo" class="btn btn-primary" style="display: none;">
+            <i class="fa fa-spinner fa-spin"></i>Loading
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Ver Archivo Tarea -->
+<div class="modal fade" id="modalVerArchivos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="accionTareaTitle">Documentos Cargados</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" id="alertaValidaEliminarArchivo" role="alert" style="display:none;" >
+          <strong></strong>
+        </div>
+        <table class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th style="width: 250px;"><strong>Nombre Archivo</strong></th>
+              <th><strong>Usr. Creación</strong></th>
+              <th><strong>Fecha de Carga</strong></th>
+              <th><strong>Acciones</strong></th>
+            </tr>
+          </thead>
+          <tbody id="tbodyMostrarArchivos">
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalFinTarea" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h4 class="modal-title" id="tittelMensajeFinTarea" > Mensaje </h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" role="alert" style="display:none;" id="alertaMensajeFinTareasDiv">
+            <strong  id="alertaMensajeFinTareas"></strong>
+        </div>
+        <div class="alert alert-success"  role="alert" style="display:none;" id="successMensajeFinTareasDiv">
+            <strong id="successMensajeFinTareas"></strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btnMensajeFinTarea">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para mensajes personalizados-->
+<div class="modal fade" id="modalSmsCustom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h4 class="modal-title" id="tittelSmsCustom" >Mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" role="alert" style="display:none;" id="alertaSmsCustomDiv">
+            <strong  id="alertaSmsCustom"></strong>
+        </div>
+        <div class="alert alert-success"  role="alert" style="display:none;" id="successSmsCustomDiv">
+            <strong id="successSmsCustom"></strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id= "btnSmsCustomCancel" style="display:none;">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnSmsCustomOk">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="divCharts">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 10px 18px; border: 1px solid #ccc; width: 80%">
+                <i class="fa fa-calendar"></i>&nbsp;
+                <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-caret-down"></i>
+            </div>
+        </div>
+        <div class="col-lg-1">
+            <label style="padding-top:15px;padding-left:25px;">Ciudad:</label>
+        </div>
+        <div class="col-lg-2">
+          <div style="padding-left:10px;">
+            <div class="dropdown" id="dropDownCantonesEstadisticas" style="top:-7px">
+                <input type="hidden" id="txtIdBtnCantonesEstadisticas" value='' />
+                <button class="btn btn-default navbar-btn dropdown-toggle" type="button" 
+                        data-toggle="dropdown" id="btnCantonesEstadisticas">
+                    <span id="textBtnCantonesEstadisticas">TODAS&nbsp;&nbsp;&nbsp;</span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu"  id="ulDropDownCantonesEstadisticas"  style="width:180px;"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-1">
+            <label style="padding-top:15px;padding-left:25px;">Estado:</label>
+        </div>
+        <div class="col-lg-2">
+            <div style="padding-left:10px;">
+              <div class="dropdown" id="dropDownEstadosEstadisticas" style="top:-7px;">
+                <input type="hidden" id="txtIdBtnEstadosEstadisticas" style="width:20px;" value='todos' />
+                <button class="btn btn-default navbar-btn dropdown-toggle" type="button" 
+                        data-toggle="dropdown" id="btnEstadosEstadisticas">
+                    <span id="textBtnEstadosEstadisticas">TODOS&nbsp;&nbsp;</span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu"  id="ulDropDownEstadosEstadisticas"  style="width:180px;">
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-1">
+              <button id="export">Download PDF</button>
+        </div>
+
+    </div>
+  </div>
+  <div id="divChartAsignaciones" style="width:100%; height:400px;"></div>
+  <canvas id="canvaChartAsignaciones" width="900" height="800" style="display:none"></canvas>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div id="divChartSeguimientos" style="width:100%; height:400px;"></div>
+  <canvas id="canvaChartSeguimientos" width="900" height="800" style="display:none"></canvas>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+      <div class="col-xs-6">
+            <div id="divChartTopLoginsTareas" style="width:100%; height:300px;"></div>
+            <canvas id="canvaChartTopLoginsTareas" width="900" height="800" style="display:none"></canvas>
+      </div>
+      <div class="col-xs-6">
+            <div id="divChartTopLoginsCasos" style="width:100%; height:300px;"></div>
+            <canvas id="canvaChartTopLoginsCasos" width="900" height="800" style="display:none"></canvas>
+      </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+      <div class="col-xs-6">
+            <div id="divChartTipoAtencion" style="width:100%; height:300px;"></div>
+            <canvas id="canvaChartTipoAtencion" width="900" height="800" style="display:none"></canvas>
+      </div>
+      <div class="col-xs-6">
+            <div id="divChartTipoProblema" style="width:100%; height:300px;"></div>
+            <canvas id="canvaChartTipoProblema" width="900" height="800" style="display:none"></canvas>
+      </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="row">
+      <div class="col-xs-6">
+            <div id="divChartOrigen" style="width:100%; height:300px;"></div>
+            <canvas id="canvaChartOrigen" width="900" height="800" style="display:none"></canvas>
+      </div>
+      <div class="col-xs-6">
+            <div id="divChartCiudad" style="width:100%; height:300px;"></div>
+            <canvas id="canvaChartCiudad" width="900" height="800" style="display:none"></canvas>
+      </div>
+  </div>
+  </div>
+  </div>
+ {%endif%}
+
+<script  type="text/javascript" src="{{ asset('bundles/soporte/js/Agente/autocompletar.js?1') }}"></script>
+<script  type="text/javascript" src="{{ asset('bundles/soporte/js/Agente/agente.js?23') }}"></script>
+<script  type="text/javascript" src="{{ asset('bundles/soporte/js/Agente/graficosAgente.js?7') }}"></script>
+    
+{% endblock contenido_central %}

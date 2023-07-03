@@ -1,0 +1,10 @@
+--PERMISOS PARA CONSULTAR LAS TABLAS DE SOPORTE
+
+grant select on  DB_SOPORTE.INFO_TAREA_CARACTERISTICA  to db_general;
+
+grant select on  DB_SOPORTE.ADMI_TAREA  to db_general;
+
+grant select on  DB_SOPORTE.INFO_TAREA_CARACTERISTICA  to db_general;
+
+grant select on  DB_SOPORTE.INFO_TAREA_CARACTERISTICA  to DB_COMERCIAL;
+/

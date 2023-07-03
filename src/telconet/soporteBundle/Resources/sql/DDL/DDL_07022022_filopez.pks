@@ -1,0 +1,12 @@
+/**
+ * DEBE EJECUTARSE EN DB_SOPORTE
+ * Script para crear el indice IDX_ID_SEG_ASIG_COM_ID en la talba INFO_SEGUIMIENTO_ASIGNACION
+ * @author Fernando López <filopez@telconet.ec>
+ * @version 1.0 07-02-2022 - Versión Inicial.
+ */
+--
+ CREATE INDEX DB_SOPORTE.IDX_ID_SEG_ASIG_COM_ID ON DB_SOPORTE.INFO_SEGUIMIENTO_ASIGNACION (COMUNICACION_ID,ID_SEGUIMIENTO_ASIGNACION);
+--
+--
+COMMIT;
+/

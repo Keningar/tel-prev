@@ -1,0 +1,78 @@
+gestion_documentos:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:GestionDocumentos:index" , modulo:soporte }    
+
+gestion_documentos_show:
+    pattern:  /{id}/{modulo}/show
+    defaults: { _controller: "soporteBundle:GestionDocumentos:show" }
+
+gestion_documentos_new:
+    pattern:  /new
+    defaults: { _controller: "soporteBundle:GestionDocumentos:new", modulo:soporte }
+
+gestion_documentos_create:
+    pattern:  /create
+    defaults: { _controller: "soporteBundle:GestionDocumentos:create" }
+    requirements: { _method: post }
+
+gestion_documentos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "soporteBundle:GestionDocumentos:edit" }
+
+gestion_documentos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "soporteBundle:GestionDocumentos:update" }
+    requirements: { _method: post }
+
+gestion_documentos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "soporteBundle:GestionDocumentos:delete" }   
+
+gestion_documentos_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "soporteBundle:GestionDocumentos:deleteAjax" }
+    requirements: { _method: post }
+
+gestion_documentos_grid:
+    pattern:  /grid
+    defaults: { _controller: "soporteBundle:GestionDocumentos:grid"}
+
+gestion_documentos_getModeloElementos:
+    pattern:  /getModeloElementos
+    defaults: { _controller: "soporteBundle:GestionDocumentos:getModeloElementos"}
+    
+gestion_documentos_getElementos:
+    pattern:  /getElementos
+    defaults: { _controller: "soporteBundle:GestionDocumentos:getElementos"}
+
+gestion_documentos_getTipoDocumentoGeneral:
+    pattern:  /getTipoDocumentoGeneral
+    defaults: { _controller: "soporteBundle:GestionDocumentos:getTipoDocumentoGeneral"}
+    
+gestion_documentos_getTipoDocumento:
+    pattern:  /getTipoDocumento
+    defaults: { _controller: "soporteBundle:GestionDocumentos:getTipoDocumento"}
+    
+gestion_documentos_fileUpload:
+    pattern:  /fileUpload
+    defaults: { _controller: "soporteBundle:GestionDocumentos:fileUpload"}
+
+gestion_documentos_fileUploadNfs:
+    pattern:  /fileUploadNfs
+    defaults: { _controller: "soporteBundle:GestionDocumentos:fileUploadNfs"}
+
+gestion_documentos_resetFile:
+    pattern:  /resetFile
+    defaults: { _controller: "soporteBundle:GestionDocumentos:resetFile"}
+    
+gestion_documentos_descargar:
+    pattern:  /{id}/descargarDocumento
+    defaults: { _controller: "soporteBundle:GestionDocumentos:descargarDocumento"}
+    
+gestion_documentos_multipleFileUpload:
+    pattern:  /multipleFileUpload
+    defaults: { _controller: "soporteBundle:GestionDocumentos:multipleFileUpload"}
+    
+gestion_documentos_eliminarDocumentoRegistroYArchivo:
+    pattern:  /eliminarDocumentoRegistroYArchivo
+    defaults: { _controller: "soporteBundle:GestionDocumentos:eliminarDocumentoRegistroYArchivo"}

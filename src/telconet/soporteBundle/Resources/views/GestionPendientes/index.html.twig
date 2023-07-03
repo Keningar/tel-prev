@@ -1,0 +1,1085 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/hint.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/daterangepicker.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/font-awesome-4.7.0/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/gestionPendientes.css') }}" type="text/css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/daterangepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/pdfmake.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('./public/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script  type="text/javascript" src="{{ asset('bundles/soporte/js/GestionPendientes/autocompletar.js?1') }}"></script>
+<script>
+        var idParametroCabTramo          = "{{idParametroCabTipoProblema}}";
+        var idParametroCabCircuito       = "{{idParametroCabCircuito}}";
+        var idDepartamento               = "{{idDepartamento}}";
+        var idEmpresa                    = "{{codEmpresa}}";
+
+        var url_detalle_asignaciones     = "{{ path('gestionPendientes_grid') }}";
+        var url_seguimientos             = "{{ path('gestionPendientes_grid_seguimientos') }}";
+        var url_crea_seguimiento_externo = "{{ path('infocaso_ingresarSeguimiento') }}";
+        var url_crea_seguimiento_interno = "{{ path('gestionPendientes_ajax_crear_seguimiento') }}";
+        var url_obtener_datos_tarea      = "{{ path('gestionPendientes_obtener_datos_tarea') }}";
+        var url_modificar_asignacion     = "{{ path('asignaciones_ajax_modificar_asignacion')}}";
+        var url_obtener_parametros       = "{{ path('gestionPendientes_obtener_parametros') }}";
+        var url_agregar_tramo            = "{{ path('gestionPendientes_ajax_agregar_tramo') }}";
+        var url_crea_admi_parametro_det  = "{{ path('admiParametroCab_creaParametroDet') }}";
+        var url_crear_tarea_informe      = "{{ path('gestionPendientes_ajax_crear_tarea_informe') }}";
+        var url_crear_envio_Notificacion = "{{ path('gestionPendientes_ajax_crear_envio_notificacion') }}";
+        var url_ciudades_empresa         = '{{ path("infocaso_getCiudadesPorEmpresa") }}';
+        var url_departamentos_emp_ciudad = '{{ path("infocaso_getDepartamentosPorEmpresaYCiudad") }}';
+        var url_enviar_listado_pendientes= "{{ path('gestionPendientes_ajax_enviar_listado_pendientes') }}";
+        var url_enviar_rep_lab_diarias   = "{{ path('gestionPendientes_ajax_enviar_reporte_labores_diarias') }}";
+        var url_empleado_departamento_ciudad      = "{{path('infocaso_getEmpleadosPorDepartamentoCiudad')}}"
+</script>
+{% endblock %}
+
+{% block contenido_central %}
+
+        <!--TABS CON BOOTSTRAP-->
+        <div id="titulo_content">
+
+            <ul class="nav nav-pills nav-fill">
+                <li id="liBackbone" >
+                    <a href="#" id="lnBackbone" class="linkMenu"><span class="glyphicon glyphicon-cog"></span> Backbone</a>
+                </li>
+                <li id="liRecorrido">
+                    <a href="#" id="lnRecorrido" class="linkMenu"><span class="glyphicon glyphicon-equalizer"></span> Recorridos</a>
+                </li>
+                <li id="liTelefonica">
+                    <a href="#" id="lnTelefonica" class="linkMenu"><span class="glyphicon glyphicon-equalizer"></span> Telefónica</a>
+                </li>
+                <li id="liMunicipio">
+                    <a href="#" id="lnMunicipio" class="linkMenu"><span class="glyphicon glyphicon-equalizer"></span> Municipio</a>
+                </li>
+            </ul>
+        </div>
+        
+
+
+    <div class="body_content k-content" style="padding: 0px">
+
+            <div>
+                <input type="hidden" id="txtModulo" value='' />
+            </div>
+
+            <!--LISTADO DE DETALLE DE ASIGNACIONES-->
+            <div id="divListadoBackbone" style="display: none;width: 94%">
+                <div class="row" style='padding-top:1rem;padding-bottom:2em;padding-left:3.5em;'>
+                    <div class="col-lg-1">
+                            <button type="button" class="btn btn-default btn btn-md btn-botones-submenu" id='btnGenerarReporteCsvBackbone'>
+                            <span class="glyphicon glyphicon-open-file"></span> Generar Reporte Csv
+                            </button>
+                    </div>
+                    <div class="col-lg-1">
+                    &nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-1">
+                            <button type="button" class="btn btn-default btn btn-md btn-botones-submenu" id='btnEnviarListadoPendientesBackbone'>
+                            <span class="glyphicon glyphicon-list-alt"></span> Enviar Listado Pendientes
+                            </button>
+                    </div>
+                    <div class="col-lg-1">
+                        &nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-3">
+                    &nbsp;
+                    &nbsp;
+                    </div>
+                    <div class="col-lg-4" style="background-color:#f8f8f8;">
+                        <div id="divLeyendas"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">    
+                    <!--Buscar asignaciones por fechas-->
+                    <table width = '100%'>
+                        <tr>
+                            <td align='right'>
+                                <div class="loaderDet" id="divLoaderDetalleAsignaciones" style="display:none;"></div>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-12">    
+                        <!--Listado de asignaciones-->
+                        <div class="buscarPorFechaDetallesAsig" id="barraOpcionesGridAsignaciones">
+                        <div class="row" style="padding-left:1em;padding-right:3em;">
+                            <div class="col-lg-2" id="divColumnEstados">
+                                <div id="divComboEstado">
+                                <label>Estado del Pendiente:</label>
+                                <div class="dropdown" id="dropDownEstados" style="top:-1rem;">
+                                <input type="hidden" id="txtIdBtnEstados" style="width:20px;" value='Abierto' />
+                                <button class="btn btn-default btn-md navbar-btn dropdown-toggle btn-botones-busqueda" 
+                                        type="button" data-toggle="dropdown" id="btnEstados">
+                                    <span id="textBtnEstados">ABIERTO</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu"  id="ulDropDownEstados"  style="width:9rem;"></ul>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2" id="divColumnCantones">
+                                <div id="divComboCantones">
+                                <label>Tipo:</label>
+                                <div class="dropdown" id="dropDownCantones" style="top:-1rem;">
+                                <input type="hidden" id="txtIdBtnTipoPendiente" value='' />
+                                <button class="btn btn-default btn-md navbar-btn dropdown-toggle btn-botones-busqueda" 
+                                        type="button" data-toggle="dropdown" id="btnTipoPendiente">
+                                    <span id="textBtnTipoPendiente">TODOS</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu"  id="ulDropDownTipoPendiente"  style="width:9rem;">
+                                </ul>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Fecha:</label>
+                                <div id="reportrange" style="background: #fff; cursor: pointer; padding: 10px 18px; border: 1px solid #ccc; width: 80%">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2" style="text-align:right;">
+                            <div class="botonesBuscarPorFechaDetallesAsig">
+                                <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Buscar">    
+                                    <button type="button" class="btn btn-primary btn btn-md" id='btnBuscarPorFecha'>
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                                <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Limpiar">
+                                    <button type="button" class="btn btn-warning btn btn-md" id='btnLimpiaBuscarPorFecha'>
+                                        <span class="glyphicon glyphicon-erase"></span>
+                                    </button>                        
+                                </span>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:2em;">
+                    <div class="col-lg-12" >    
+                    <table id="detalleAsignaciones" class="table table-striped table-bordered compact" style="width:100%;padding:0;">
+                        <thead>
+                            <tr>
+                                <th class="cabeceraGrid">numero</th>
+                                <th class="cabeceraGrid">tipo</th>
+                                <th class="cabeceraGrid">ticket</th>
+                                <th class="cabeceraGrid">estado</th>
+                                <th class="cabeceraGrid">fecha</th>
+                                <th class="cabeceraGrid">fechaFin</th>
+                                <th class="cabeceraGrid">versionInicial</th>
+                                <th class="cabeceraGrid">ult_seguimiento</th>
+                                <th class="cabeceraGrid">acciones</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                </div>
+            </div>
+
+            <!--LISTADO DE DETALLE DE ASIGNACIONES RECORRIDO-->
+            <div id="divListadoRecorrido" style="display: none;width: 94%">
+                <div class="row" style='padding-top:1rem;padding-bottom:2em;padding-left:3.5em;'>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-1">
+                    &nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-1">
+                        &nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-3">
+                    &nbsp;
+                    &nbsp;
+                    </div>
+                    <div class="col-lg-4" style="background-color:#f8f8f8;">
+                        <div id="divLeyendasRecorridos"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">    
+                    <!--Buscar asignaciones por fechas-->
+                    <table width = '100%'>
+                        <tr>
+                            <td align='right'>
+                                <div class="loaderDet" id="divLoaderDetalleAsignacionesRecorridos" style="display:none;"></div>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-12">    
+                        <!--Listado de asignaciones-->
+                        <div class="buscarPorFechaDetallesAsig" id="barraOpcionesGridAsignacionesRecorrido">
+                        <div class="row" style="padding-left:1em;padding-right:3em;">
+                            <div class="col-lg-2" id="divColumnEstados">
+                                <div id="divComboEstadoRecorrido">
+                                <label>Estado del Pendiente:</label>
+                                <div class="dropdown" id="dropDownEstadosRecorrido" style="top:-1rem;">
+                                <input type="hidden" id="txtIdBtnEstadosRecorrido" style="width:20px;" value='Abierto' />
+                                <button class="btn btn-default btn-md navbar-btn dropdown-toggle btn-botones-busqueda" 
+                                        type="button" data-toggle="dropdown" id="btnEstadosRecorrido">
+                                    <span id="textBtnEstadosRecorrido">ABIERTO</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu"  id="ulDropDownEstadosRecorrido"  style="width:9rem;"></ul>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2" >
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Fecha:</label>
+                                <div id="reportrangeRecorrido" style="background: #fff; cursor: pointer; padding: 10px 18px; border: 1px solid #ccc; width: 80%">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2" style="text-align:right;">
+                            <div class="botonesBuscarRecorridoPorFechaDetallesAsig">
+                                <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Buscar">    
+                                    <button type="button" class="btn btn-primary btn btn-md" id='btnBuscarRecorridoPorFecha'>
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                                <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Limpiar">
+                                    <button type="button" class="btn btn-warning btn btn-md" id='btnLimpiaBuscarRecorridoPorFecha'>
+                                        <span class="glyphicon glyphicon-erase"></span>
+                                    </button>                        
+                                </span>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:2em;">
+                    <div class="col-lg-12" >    
+                    <table id="detalleAsignacionesRecorridos" class="table table-striped table-bordered compact" style="width:100%;padding:0;">
+                        <thead>
+                            <tr>
+                                <th class="cabeceraGrid">numero</th>
+                                <th class="cabeceraGrid">tarea_informe_id</th>
+                                <th class="cabeceraGrid">ticket</th>
+                                <th class="cabeceraGrid">asig_tarea</th>
+                                <th class="cabeceraGrid">fecha_ini_tarea</th>
+                                <th class="cabeceraGrid">fecha_fin_tarea</th>
+                                <th class="cabeceraGrid">tramo</th>
+                                <th class="cabeceraGrid">ult_seguimiento</th>
+                                <th class="cabeceraGrid">acciones</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                </div>
+            </div>
+
+            <!--LISTADO DE DETALLE DE ASIGNACIONES TELEFONICA-->
+            <div id="divListadoTelefonica" style="display: none;width: 100%">
+                <div class="row" style='padding-top:1rem;padding-bottom:2em;padding-left:3.5em;'>
+                    <div class="col-lg-1">
+                            <button type="button" class="btn btn-default btn btn-md btn-botones-submenu" id='btnGenerarReporteCsvTelefonica'>
+                            <span class="glyphicon glyphicon-open-file"></span> Generar Reporte Csv
+                            </button>
+                    </div>
+                    <div class="col-lg-1">
+                    &nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-1">
+                            <button type="button" class="btn btn-default btn btn-md btn-botones-submenu" id='btnEnviarListadoPendientesTelefonica'>
+                            <span class="glyphicon glyphicon-list-alt"></span> Enviar Listado Pendientes
+                            </button>
+                    </div>
+                    <div class="col-lg-1">
+                        &nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-1">
+
+                    </div>
+                    <div class="col-lg-3">
+                    &nbsp;
+                    &nbsp;
+                    </div>
+                    <div class="col-lg-4" style="background-color:#f8f8f8;">
+                        <div id="divLeyendasTelefonica"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">    
+                    <!--Buscar asignaciones por fechas-->
+                    <table width = '100%'>
+                        <tr>
+                            <td align='right'>
+                                <div class="loaderDet" id="divLoaderDetalleAsignacionesTelefonica" style="display:none;"></div>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-12">    
+                        <!--Listado de asignaciones-->
+                        <div class="buscarPorFechaDetallesAsig" id="barraOpcionesGridAsignacionesTelefonica">
+                        <div class="row" style="padding-left:1em;padding-right:3em;">
+                            <div class="col-lg-2" id="divColumnEstadosTelefonica">
+                                <div id="divComboEstadoTelefonica">
+                                    <label>Estado del Pendiente:</label>
+                                    <div class="dropdown" id="dropDownEstadosTelefonica" style="top:-1rem;">
+                                    <input type="hidden" id="txtIdBtnEstadosTelefonica" style="width:20px;" value='Abierto' />
+                                    <button class="btn btn-default btn-md navbar-btn dropdown-toggle btn-botones-busqueda" 
+                                            type="button" data-toggle="dropdown" id="btnEstadosTelefonica">
+                                        <span id="textBtnEstadosTelefonica">ABIERTO</span>&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu"  id="ulDropDownEstadosTelefonica"  style="width:9rem;"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2" id="divColumnTipoTelefonica">
+                                <div id="divComboTipo">
+                                <label>Tipo:</label>
+                                <div class="dropdown" id="dropDownTipoTelefonica" style="top:-1rem;">
+                                <input type="hidden" id="txtIdBtnTipoPendienteTelefonica" value='' />
+                                <button class="btn btn-default btn-md navbar-btn dropdown-toggle btn-botones-busqueda" 
+                                        type="button" data-toggle="dropdown" id="btnTipoPendienteTelefonica">
+                                    <span id="textBtnTipoPendienteTelefonica">TODOS</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu"  id="ulDropDownTipoPendienteTelefonica"  style="width:9rem;">
+                                </ul>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Fecha:</label>
+                                <div id="reportrangeTelefonica" 
+                                     style="background: #fff; cursor: pointer; padding: 10px 18px; border: 1px solid #ccc; width: 80%">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2" style="text-align:right;">
+                            <div class="botonesBuscarTelefonicaPorFechaDetallesAsig">
+                                <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Buscar">    
+                                    <button type="button" class="btn btn-primary btn btn-md" id='btnBuscarTelefonicaPorFecha'>
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                                <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Limpiar">
+                                    <button type="button" class="btn btn-warning btn btn-md" id='btnLimpiaBuscarTelefonicaPorFecha'>
+                                        <span class="glyphicon glyphicon-erase"></span>
+                                    </button>                        
+                                </span>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:-1em;">
+                    <div class="col-lg-12" >    
+                    <table id="detalleAsignacionesTelefonica" class="table table-striped table-bordered compact" style="width:103%;padding:0;">
+                        <thead>
+                            <tr>
+                                <th class="cabeceraGrid">numero</th>
+                                <th class="cabeceraGrid">tipo</th>
+                                <th class="cabeceraGrid">ticket</th>
+                                <th class="cabeceraGrid">estado</th>
+                                <th class="cabeceraGrid">fecha</th>
+                                <th class="cabeceraGrid">fechaFin</th>
+                                <th class="cabeceraGrid">versionInicial</th>
+                                <th class="cabeceraGrid">ult_seguimiento</th>
+                                <th class="cabeceraGrid">notificacion</th>
+                                <th class="cabeceraGrid">tramo</th>
+                                <th class="cabeceraGrid">acciones</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                </div>
+            </div>
+
+            <!--LISTADO DE DETALLE DE ASIGNACIONES MUNICIPIO-->
+            <div id="divListadoMunicipio" style="display: none;width: 94%">
+                <div class="row" style='padding-top:1rem;padding-bottom:2em;padding-left:3.5em;'>
+                    <div class="col-lg-1">
+                            <button type="button" class="btn btn-default btn btn-md btn-botones-submenu" id='btnGenerarReporteCsvMunicipio'>
+                            <span class="glyphicon glyphicon-open-file"></span> Generar Reporte Csv
+                            </button>
+                    </div>
+                    <div class="col-lg-1">
+                    &nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-1">
+                            <button type="button" class="btn btn-default btn btn-md btn-botones-submenu" id='btnEnviarReporteLaboresMunicipio'>
+                                <span class="glyphicon glyphicon glyphicon-envelope"></span> Enviar Reporte Labores
+                            </button>
+                    </div>
+                    <div class="col-lg-1">
+                        &nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-3">
+                    &nbsp;
+                    &nbsp;
+                    </div>
+                    <div class="col-lg-4" style="background-color:#f8f8f8;">
+                        <div id="divLeyendasMunicipio"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">    
+                    <!--Buscar asignaciones por fechas-->
+                    <table width = '100%'>
+                        <tr>
+                            <td align='right'>
+                                <div class="loaderDet" id="divLoaderDetalleAsignacionesMunicipio" style="display:none;"></div>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-lg-12">    
+                        <!--Listado de asignaciones-->
+                        <div class="buscarPorFechaDetallesAsig" id="barraOpcionesGridAsignacionesMunicipio">
+                        <div class="row" style="padding-left:1em;padding-right:3em;">
+                            <div class="col-lg-2" id="divColumnEstadosMunicipio">
+                                <div id="divComboEstadoMunicipo">
+                                <label>Estado del Pendiente:</label>
+                                <div class="dropdown" id="dropDownEstadosMunicipio" style="top:-1rem;">
+                                <input type="hidden" id="txtIdBtnEstadosMunicipio" style="width:20px;" value='Abierto' />
+                                <button class="btn btn-default btn-md navbar-btn dropdown-toggle btn-botones-busqueda" 
+                                        type="button" data-toggle="dropdown" id="btnEstadosMunicipio">
+                                    <span id="textBtnEstadosMunicipio">ABIERTO</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu"  id="ulDropDownEstadosMunicipio"  style="width:16em;"></ul>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2" id="divColumnCantonesMunicipio">
+                                <div id="divComboTipoMunicipio">
+                                <label>Tipo:</label>
+                                <div class="dropdown" id="dropDownTipoMunicipio" style="top:-1em;">
+                                <input type="hidden" id="txtIdBtnTipoPendienteMunicipio" value='' />
+                                <button class="btn btn-default btn-md navbar-btn dropdown-toggle btn-botones-busqueda" 
+                                        type="button" data-toggle="dropdown" id="btnTipoPendienteMunicipio">
+                                    <span id="textBtnTipoPendienteMunicipio">TODOS</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu"  id="ulDropDownTipoPendienteMunicipio"  style="width:9rem;">
+                                </ul>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Fecha:</label>
+                                <div id="reportrangeMunicipio" 
+                                     style="background: #fff; cursor: pointer; padding: 10px 18px; border: 1px solid #ccc; width: 80%">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    <span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2" style="text-align:right;">
+                            <div class="botonesBuscarPorFechaDetallesAsig">
+                                <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Buscar">    
+                                    <button type="button" class="btn btn-primary btn btn-md" id='btnBuscarPorFechaMunicipio'>
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                                <span class="hint--bottom-right hint--default hint--small hint--rounded" aria-label="Limpiar">
+                                    <button type="button" class="btn btn-warning btn btn-md" id='btnLimpiaBuscarPorFechaMunicipio'>
+                                        <span class="glyphicon glyphicon-erase"></span>
+                                    </button>                        
+                                </span>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:1em;">
+                    <div class="col-lg-12" >    
+                    <table id="detalleAsignacionesMunicipio" class="table table-striped table-bordered compact" style="width:102%;padding:0;">
+                        <thead>
+                            <tr>
+                                <th class="cabeceraGrid">numero</th>
+                                <th class="cabeceraGrid">tipo</th>
+                                <th class="cabeceraGrid">ticket</th>
+                                <th class="cabeceraGrid">login_afectado</th>
+                                <th class="cabeceraGrid">estado</th>
+                                <th class="cabeceraGrid">fecha</th>
+                                <th class="cabeceraGrid">fechaFin</th>
+                                <th class="cabeceraGrid">ult_seguimiento</th>
+                                <th class="cabeceraGrid">acciones</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Confirmar Alerta -->
+            <div class="modal fade" id="modalConfirmarCerrarAsignacion" tabindex="-1" role="dialog" 
+                 aria-labelledby="myModalLabel" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del sistema</h4>
+                    </div>
+                    <div class="modal-body">
+                    <form>
+                        
+                        <div class="alert alert-danger" id="alertaConfirmaCerrarAsignacion" role="alert" style="display:none;" >
+                            <strong></strong>
+                        </div>
+                        <input type="hidden" class="form-control" id="txtIdAsigCerrar">
+                        <div id="divMensajeConfirmarCerrarAsig">
+                        </div>
+
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="cancelaCerrarAsignacion">No</button>
+                    <button type="button" class="btn btn-danger" id="confirmaCerrarAsignacion">Si</button>
+                    <button id="btnLoadingCerrarAsignacion" class="btn btn-danger" style="display: none;">
+                        <i class="fa fa-spinner fa-spin"></i>Procesando
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Modal Confirmar Problemas de Acceso -->
+            <div class="modal fade" id="modalConfirmarProblemasDeAcceso" tabindex="-1" role="dialog" 
+                 aria-labelledby="myModalLabelPa" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabelPa">Mensaje del sistema</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="alert alert-danger" id="alertaConfirmaProblemasDeAcceso" role="alert" style="display:none;" >
+                                <strong></strong>
+                            </div>
+                            <input type="hidden" class="form-control" id="txtIdPendienteProblemasDeAcceso">
+                            <div id="divMensajeConfirmarProblemasDeAcceso"></div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="cancelaProblemasDeAcceso">No</button>
+                        <button type="button" class="btn btn-danger" id="confirmaProblemasDeAcceso">Si</button>
+                        <button id="btnLoadingProblemasDeAcceso" class="btn btn-danger" style="display: none;">
+                            <i class="fa fa-spinner fa-spin"></i>Procesando
+                        </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Modal Confirmar enviar listado de pendientes-->
+            <div class="modal fade" id="modalConfirmarListadoPendientes" tabindex="-1" role="dialog" 
+                 aria-labelledby="myModalLabelPa" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabelPa">Mensaje del sistema</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="alert alert-danger" id="alertaConfirmaListadoPendientes" role="alert" style="display:none;" >
+                                <strong></strong>
+                            </div>
+                            <div id="divMensajeConfirmarListadoPendientes"></div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="cancelaEnviarListadoPendientes">No</button>
+                        <button type="button" class="btn btn-danger" id="confirmaEnviarListadoPendientes">Si</button>
+                        <button id="btnLoadingEnviarListadoPendientes" class="btn btn-danger" style="display: none;">
+                            <i class="fa fa-spinner fa-spin"></i>Procesando
+                        </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Modal Confirmar Notificación Inicial -->
+            <div class="modal fade" id="modalConfirmarNotificacionInicial" tabindex="-1" role="dialog" 
+                 aria-labelledby="myModalLabel" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mensaje del sistema</h4>
+                    </div>
+                    <div class="modal-body">
+                    <form>
+                        
+                        <div class="alert alert-danger" id="alertaConfirmaNotifInicial" role="alert" style="display:none;" >
+                            <strong></strong>
+                        </div>
+                        <input type="hidden" class="form-control" id="txtIdAsigNotifInicial">
+                        <div id="divMensajeConfirmarNotifInicial">
+                        </div>
+
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="cancelaNotifInicial">No</button>
+                    <button type="button" class="btn btn-danger" id="confirmaNotifInicial">Si</button>
+                    <button id="btnLoadingNotifInicial" class="btn btn-danger" style="display: none;">
+                        <i class="fa fa-spinner fa-spin"></i>Enviando
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Enviar Notificación Final-->
+            <div class="modal fade" id="modalEnviarNotifFinal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+                <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Enviar Notificación Final</h4>
+                    </div>
+                    <div class="modal-body">
+                    <form >
+                        <div class="alert alert-danger" id="alertaValidaIngresarNotifFinal" role="alert" style="display:none;" >
+                            <strong></strong>
+                        </div>
+                        <div class="row">
+                            <div id="divTxtFechaNotificacionFinal" class='col-lg-6'>
+                                <input type="hidden" class="form-control" id="txtIdAsigNotifFinal">
+                                <label for="recipient-name" class="control-label">Fecha y Hora:</label>
+                                <div class='input-group date' id='dpFechaNotificacionFinal'>
+                                <input type='text' class="form-control" id="txtFechaNotificacionFinal" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-xs-12">
+                            <label for="txtaDetalleNotifFinal" class="control-label">Detalle:</label>
+                            <textarea class="form-control" id="txtaDetalleNotifFinal"></textarea>
+                        </div>
+                        </div>
+                        <br/>
+                        <br/>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarEnviarNotifFinal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnGrabarEnviarNotifFinal">Grabar</button>
+                    <button id="btnLoadingEnviarNotifFinal" class="btn btn-primary" style="display: none;">
+                        <i class="fa fa-spinner fa-spin"></i>Enviando
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Ingresar Nuevo Seguimiento-->
+            <div class="modal fade" id="modalIngresarSeguimiento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Nuevo Seguimiento</h4>
+                    </div>
+                    <div class="modal-body">
+                    <form >
+                        <div class="alert alert-danger" id="alertaValidaNuevoSeguimiento" role="alert" style="display:none;" >
+                            <strong></strong>
+                        </div>
+                        <div class="row">
+                        <div class="col-xs-12">
+                            <label for="txtaDetalle" class="control-label">Detalle:</label>
+                            <textarea class="form-control" id="txtaDetalleSeg"></textarea>
+                        </div>
+                        </div>
+                        <br/>
+                        <br/>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarGrabarSeguimiento">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnGrabarSeguimiento">Grabar</button>
+                    <button id="btnLoadingGrabarNuevoSeguimiento" class="btn btn-primary" style="display: none;">
+                        <i class="fa fa-spinner fa-spin"></i>Grabando
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Ingresar Tramo-->
+            <div class="modal fade" id="modalIngresarTramo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+                <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Ingresar Tramo</h4>
+                    </div>
+                    <div class="modal-body">
+                    <form >
+                        <div class="alert alert-danger" id="alertaValidaAgregarTramo" role="alert" style="display:none;" >
+                            <strong></strong>
+                        </div>
+                        <div class="row" id="divCmbCircuito">
+                            <div class="col-xs-8">
+                            <label for="recipient-name" class="control-label">Circuito<font size="3" color="red">*</font>:</label>
+                            <input id="cmbCircuito" type="hidden" value="">
+                            <input id="txtCircuitoSelect" class="inputtxt" type="text" name="txtCircuitoSelect" placeholder="Buscar Circuito">
+                            </div>
+                            <div class="col-xs-1">
+                               <label for="recipient-name" class="control-label">&nbsp;</label>
+                                <button type="button" class="btn btn-primary btn-sm" id="btnNuevoCircuito">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row" id="divTxtIngresarNuevoCircuito" style="display:none;">
+                            <div id="divTxtCircuito" class="col-xs-8">
+                                <label for="recipient-name" class="control-label">Circuito<font size="3" color="red">*</font>:</label>
+                                <input type="text" class="form-control" id="txtCircuito" placeholder="Ingresar Nuevo Circuito" maxlength="50">
+                            </div>
+                            <div class="col-xs-1">
+                                <label for="recipient-name" class="control-label">&nbsp;</label>
+                                <button type='button' id='btnCancelarNuevoCircuito' class='btn btn-danger btn-sm' title='Cancelar'>
+                                       <span class='glyphicon glyphicon-floppy-remove'></span>
+                                </button>
+                            </div>
+                            <div class="col-xs-1">
+                                <label for="recipient-name" class="control-label">&nbsp;</label>
+                                <button type='button' id='btnGrabarNuevoCircuito' class='btn btn-primary btn-sm' title='Guardar'>
+                                       <span class='glyphicon glyphicon-floppy-saved'></span>
+                                </button>
+                                <button id="btnLoadingGrabarNuevoCircuito" class="btn btn-primary btn-sm" style="display: none;">
+                                    <i class="fa fa-spinner fa-spin"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row" id="divCmbTramoIngresarTramo" >
+                            <div id="divCmbTramo" class="col-xs-8">
+                                <input type="hidden" id="txtIdPendienteTramo" value='' />
+                                <input type="hidden" id="txtTipoPendienteTramo" value='' />
+                            <label for="recipient-name" class="control-label">Tramo<font size="3" color="red">*</font>:</label>
+                            <input id="cmbTramo" type="hidden" value="">
+                            <input id="txtTramoSelect" class="inputtxt" type="text" name="txtTramoSelect" placeholder="Buscar Tramo">
+                            </div>
+                            <div class="col-xs-1">
+                               <label for="recipient-name" class="control-label">&nbsp;</label>
+                                <button type="button" class="btn btn-primary btn-sm" id="btnNuevoTramo">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row" id="divTxtTramoIngresarTramo" style="display:none;">
+                            <div id="divCmbTramo" class="col-xs-8">
+                                <label for="recipient-name" class="control-label">Tramo<font size="3" color="red">*</font>:</label>
+                                <input type="text" class="form-control" id="txtTramo" placeholder="Ingresar Nuevo Tramo" maxlength="50">
+                            </div>
+                            <div class="col-xs-1">
+                                <label for="recipient-name" class="control-label">&nbsp;</label>
+                                <button type='button' id='btnCancelarNuevoTramo' class='btn btn-danger btn-sm' title='Cancelar'>
+                                       <span class='glyphicon glyphicon-floppy-remove'></span>
+                                </button>
+                            </div>
+                            <div class="col-xs-1">
+                                <label for="recipient-name" class="control-label">&nbsp;</label>
+                                <button type='button' id='btnGrabarNuevoTramo' class='btn btn-primary btn-sm' title='Guardar'>
+                                       <span class='glyphicon glyphicon-floppy-saved'></span>
+                                </button>
+                                <button id="btnLoadingGrabarNuevoTramo" class="btn btn-primary btn-sm" style="display: none;">
+                                    <i class="fa fa-spinner fa-spin"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div  id="divCmbHiloTelefonica"  class="col-xs-3">
+                                <label for="recipient-name" class="control-label">Hilo Telef&oacute;nica<font size="3" color="red">*</font>:</label>
+                                <select class="form-control" id="cmbHiloTelefonica">
+                                    <option value='' selected>Seleccione...</option>
+                                    <option value='S'>Si</option>
+                                    <option value='N'>No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div  id="divCmbCiudad" class="col-xs-8">
+                            <label for="recipient-name" class="control-label">Ciudad<font size="3" color="red">*</font>:</label>
+                            <input id="cmbCiudad" type="hidden" value="">
+                            <input autocomplete="off" id="txtCiudad" class="inputtxt" type="text" name="txtCiudad" placeholder="Buscar Ciudad">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="divCmbDepartamento" class="autocomplete col-xs-8">
+                            <label for="txtDepartamento" class="control-label">Departamento:</label>
+                            <input id="cmbDepartamento" type="hidden" value="">
+                            <input autocomplete="off" id="txtDepartamento" class="inputtxt" type="text" name="txtDepartamento" placeholder="Buscar Departamento" disabled>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarGrabarTramo">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnGrabarTramo">Grabar</button>
+                    <button id="btnLoadingGrabarTramo" class="btn btn-primary" style="display: none;">
+                        <i class="fa fa-spinner fa-spin"></i>Grabando
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Enviar reporte de labores diarias-->
+            <div class="modal fade" id="modalReporteLaboresDiarias" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+                <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Enviar reporte de labores diarias</h4>
+                    </div>
+                    <div class="modal-body">
+                    <form >
+                        <div class="alert alert-danger" id="alertaReporteLaboresDiarias" role="alert" style="display:none;" >
+                            <strong></strong>
+                        </div>
+                        <div class="row">
+                            <div  id="divCmbTurno" class="col-xs-8">
+                                <label for="recipient-name" class="control-label">Turno<font size="3" color="red">*</font>:</label>
+                                <select class="form-control" id="cmbTurno">
+                                    <option value='' selected>Seleccione...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarReporteLaboresDiarias">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnGrabarReporteLaboresDiarias">Enviar</button>
+                    <button id="btnLoadingGrabarReporteLaboresDiarias" class="btn btn-primary" style="display: none;">
+                        <i class="fa fa-spinner fa-spin"></i>Enviando
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Ingresar Tarea de Informe-->
+            <div class="modal fade" id="modalConfirmarCrearTareaInforme" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static">
+                <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Ingresar Encargado Tarea de Informe </h4>
+                    </div>
+                    <div class="modal-body">
+                    <form >
+                        <div class="alert alert-danger" id="alertaConfirmaCrearTareaInforme" role="alert" style="display:none;" >
+                            <strong></strong>
+                        </div>
+                        <input type="hidden" id="txtIdTareaTareaInforme" value='' >
+                        <input type="hidden" id="txtIdOrigenTareaInforme" value='' >
+                        <input type="hidden" id="txtIdClaseTareaInforme" value='' >
+                        <input type="hidden" id="txtIdProcesoTareaInforme" value='' >
+                        <input type="hidden" id="txtIdAdmiTareaTareaInforme" value='' >
+                        <input type="hidden" id="txtObservacionTareaInforme" value='' >
+                        <input type="hidden" id="txtFlagCrearTarea" value='' >
+                        
+                        <div class="row">
+                            <div  id="divCmbCity" class="col-xs-8">
+                                <label for="recipient-name" class="control-label">Ciudad<font size="3" color="red">*</font>:</label>
+                                <input id="cmbCity" type="hidden" value="">
+                                <input autocomplete="off" id="txtCity" class="inputtxt" type="text" name="txtCity" placeholder="Buscar Ciudad">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="divCmbDepartment" class="autocomplete col-xs-8">
+                                <label for="txtDepartment" class="control-label">Departamento<font size="3" color="red">*</font>:</label>
+                                <input id="cmbDepartment" type="hidden" value="">
+                                <input autocomplete="off" id="txtDepartment" class="inputtxt" type="text" name="txtDepartment" placeholder="Buscar Departamento" disabled>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="divCmbEncargado" class="autocomplete col-xs-8">
+                                <label for="txtEncargado" class="control-label">Encargado<font size="3" color="red">*</font>:</label>
+                                <input id="cmbEncargado" type="hidden" value="">
+                                <input autocomplete="off" id="txtEncargado" class="inputtxt" type="text" name="txtEncargado" placeholder="Buscar Encargado" disabled>
+                                <label id="lblMessageError" class="control-label" style="color: red; display:none"></label>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCerrarGrabarTareaInforme">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="confirmaCrearTareaInforme">Grabar</button>
+                    <button id="btnLoadingGrabarTareaInforme" class="btn btn-primary" style="display: none;">
+                        <i class="fa fa-spinner fa-spin"></i>Grabando
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!--Información del pendiente-->
+            <div id="divInfoPendiente" style="display: none;width: 100%">
+                <div class="row rowInfoPendientes" >
+                    <div class="col-lg-12" >
+                        <h4 class="titulo-info-gen" >Información del pendiente</h4>
+                        <input type="hidden" id="txtReferenciaId" value='' />
+                        <input type="hidden" id="txtTareaInformeId" value='' />
+                        <input type="hidden" id="txtEstado" value='' />
+                        <input type="hidden" id="txtTipo" value='' />
+                        <input type="hidden" id="txtIdAsignacion" value='' />
+                        <input type="hidden" id="txtIdDetalle" value='' />
+                        <input type="hidden" id="txtIdTarea" value='' />
+                        <input type="hidden" id="txtEstadoTarea" value='' />
+                        <input type="hidden" id="txtEstadoPendiente" value='' />
+                        <input type="hidden" id="txtIdPendienteCerrar" value='' />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div id="divTareasRecorrido"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12" style="margin-left:1em;width:97%" id = "divCabeceraInfoDetallada" >
+                    </div>
+                </div>
+                <div class="row rowInfoPendientes" >
+                    <div class="col-lg-12"><h4 class="titulo-info-gen">Seguimientos</h4></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7">
+                    </div>
+                    <div class="col-lg-5" style='text-align:right;'>
+                        <div id="divLeyendasInfoPendiente" ></div>
+                    </div>
+                </div>
+
+                <div class="row rowInfoPendientes" >
+                    <div class="col-lg-10">
+                        <div id="divTareasCaso"></div>
+                    </div>
+                    <div class="col-lg-1" style="text-align:right">
+                        <button type="button" id="btnNuevoSeguimiento" class="btn btn-primary btn-md" 
+                                data-toggle="modal" data-target="#modalIngresarSeguimiento" style="display:none;">
+                        Nuevo Seguimiento
+                        </button>
+                        <button type="button" id="btnNuevoSeguimientoInterno" class="btn btn-warning btn-md" 
+                                data-toggle="modal" data-target="#modalIngresarSeguimiento" style="display:none;">
+                        Nuevo Seguimiento
+                        </button>
+                    </div>
+                </div>
+                <div class="row" style="padding-left:2em;">
+                    <div class="col-lg-12" >
+                        <div id="divInfoTareaCaso"></div>
+                    </div>
+                <div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table width = '100%'>
+                            <tr>
+                                <td align='right'>
+                                    <br>
+                                    <div class="loaderDet" id="divLoaderDetalleSeguimientos" style="display:none;"></div>
+                                </td>
+                                <td>
+                                    <div id='divBtnActualizarSeguimientos' style='top:3em;left:23em; position: relative;z-index:1'>
+                                        <button type="button" id="btnActualizarSeguimientos" class="btn btn-default btn-md" >
+                                        <span class="glyphicon glyphicon-refresh"></span>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <table id="detalleSeguimientos" class="table table-striped table-bordered compact" style="width:98%;">
+                            <thead>
+                                <tr>
+                                    <th class="cabeceraGrid">numero</th>
+                                    <th class="cabeceraGrid">tipo</th>
+                                    <th class="cabeceraGrid">observacion</th>
+                                    <th class="cabeceraGrid">empleado</th>
+                                    <th class="cabeceraGrid">departamento</th>
+                                    <th class="cabeceraGrid">fecha</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                
+                
+            </div>
+
+
+
+    </div>
+
+
+<script  type="text/javascript" src="{{ asset('bundles/soporte/js/GestionPendientes/gestionPendientes.js?1') }}"></script>
+<script  type="text/javascript" src="{{ asset('bundles/soporte/js/GestionPendientes/gestionPendientesBackbone.js?3') }}"></script>
+<script  type="text/javascript" src="{{ asset('bundles/soporte/js/GestionPendientes/gestionPendientesRecorridos.js?4') }}"></script>
+<script  type="text/javascript" src="{{ asset('bundles/soporte/js/GestionPendientes/gestionPendientesTelefonica.js?3') }}"></script>
+<script  type="text/javascript" src="{{ asset('bundles/soporte/js/GestionPendientes/gestionPendientesMunicipio.js?2') }}"></script>
+
+{% endblock contenido_central %}

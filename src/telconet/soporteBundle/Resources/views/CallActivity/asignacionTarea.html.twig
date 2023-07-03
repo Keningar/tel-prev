@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+  </head>
+  <body>
+    <table align="center" width="100%" cellspacing="0" cellpadding="5">
+      <tr>
+        <td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">
+            <img alt=""  src="http://images.telconet.net/others/sit/notificaciones/logo.png"/>
+            {#<img alt=""  src="https://telcos.telconet.ec/public/images/logo.png"/>#}
+        </td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #6699CC;">
+          <table width="100%" cellspacing="0" cellpadding="5">
+            <tr>
+                <td colspan="2">Estimado personal,</td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                El presente correo es para indicarle que se asigno la siguiente TAREA: 
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                <strong>Actividad # {{ actividad.id }}</strong>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>    
+            <tr>
+                <td>
+                   <strong>Nombre Tarea:</strong>
+                </td>
+                <td>
+		    {{ nombreTarea }}
+                </td>
+            </tr>
+             <tr>
+              <td colspan="2">
+                <hr />
+              </td>
+            </tr>                        
+            <tr>
+              <td>
+                <strong>Fecha de asignacion:</strong>
+              </td>
+              <td>{{asignacion.feCreacion | date("d-M-Y") }} | {{ asignacion.feCreacion | date("H:i")  }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Usuario que asigna:</strong>
+              </td>
+              <td>{{ empleadoLogeado }}</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Asignado:</strong>
+              </td>
+              <td>{{asignacion.asignadoNombre }}{% if(asignacion.refAsignadoNombre!="")%}-{{asignacion.refAsignadoNombre}}{%endif%}</td>
+            </tr>            
+            <tr>
+              <td>
+                <strong>Observacion:</strong>
+              </td>
+              <td>{{ asignacion.motivo }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><br/></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+          <td>&nbsp;
+          </td>
+      </tr>
+      <tr>
+          <td>Por favor revisar la Actividad <a href="https://telcos.telconet.ec/soporte/call_activity/{{ actividad.id }}/show">{{ actividad.id }}</a>
+          </td>   
+      </tr>
+      <tr>
+	  {% if empresa == 'TTCO' %}
+          <td><strong><font size='2' face='Tahoma'>TransTelco S.A.</font></strong></p>
+          {% elseif empresa == 'MD' %}
+          <td><strong><font size='2' face='Tahoma'>MegaDatos S.A.</font></strong></p>
+          {% else %}
+          <td><strong><font size='2' face='Tahoma'>Telconet S.A.</font></strong></p>
+          {% endif %}
+          </td>   
+      </tr>  
+    </table>
+  </body>
+</html>

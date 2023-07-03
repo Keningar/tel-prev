@@ -1,0 +1,14 @@
+# RESTful Web Services: anidados en /rs/soporte/ws/rest
+
+#ws para procesar las peticiones del flujo de casos y tareas
+rs_soporte_procesar:
+  pattern:  /procesar
+  defaults: { _controller: telconet\soporteBundle\WebService\SoporteWSController::procesarAction }
+
+rs_soporte_telcoSys:
+  pattern:  /procesar/telcoSys
+  defaults: { _controller: telconet\soporteBundle\WebService\TelcoSysWSController::procesarAction }
+
+rs_soporte_procesos:
+  pattern:  /procesos
+  defaults: { _controller: telconet\soporteBundle\WebService\SoporteProcesosWSController::procesarAction }

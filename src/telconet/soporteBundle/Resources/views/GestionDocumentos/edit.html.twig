@@ -1,0 +1,171 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+   
+    <link href="{{ asset('public/js/ext-4.1.1/resources/css/ux-all.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('./bundles/soporte/css/chooser.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+     <script type="text/javascript" src="{{ asset('./bundles/soporte/js/GestionDocumentos/edit.js') }}"></script>     
+	
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>Modificar Documento</h1>
+	</div>
+	<span class="campos-requeridos">* Campos requeridos</span>
+	<div class="body_content">
+	    <form id='form_new_proceso' class='formulario'>            
+		<table  width="100%" border="0" class="box-section-content">	
+		
+		   <tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.nombreDocumento) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.nombreDocumento, { 'attr': {'style': 'width:500px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.mensaje) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.mensaje, { 'attr': {'style': 'width:500px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.modulo) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.modulo, { 'attr': {'style': 'width:200px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>		
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>*Tipo Documento :</label></td>
+		    <td width="10%"><div id="tipoDocumentoCmb"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formDocumento.tipoDocumentoId) }}</td>
+		    <td width="10%">{{ form_widget(formDocumento.tipoDocumentoId, { 'attr': {'style': 'width:200px;'} }) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>	
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">
+			<div class='infomessage'>Referencia Comercial/Financiera</div>
+		    </td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Login :</label></td>
+		    <td width="10%"><div id="login"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>	
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Numero Documento:</label></td>
+		    <td width="10%"><input type="text" id="numeroDocumento" value="{{numeroDoc}}" style="width:200px;"/></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>			 
+		<tr>	
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">
+			<div class='infomessage'>Referencia Tecnica</div>
+		    </td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="24%"><label>Tipo Elemento :</label></td>
+		    <td width="4%"><div id="tipoElemento"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Modelo Elemento :</label></td>
+		    <td width="10%"><div id="modeloElemento"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Elemento :</label></td>
+		    <td width="10%"><div id="elemento"></div></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>			
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Archivo a subir: </label></td>
+		    <td width="75%">
+			<div id="fi-form"></div>
+		    </td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>	
+		    <td width="5%">&nbsp;</td>	
+		    <td width="5%">&nbsp;</td>	
+		    <td width="10%">
+			<div class='infomessage' id="msg" style="width:400px;float:left;"></div>
+		    </td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		</table>
+		
+		<input type="hidden" id="hiddenFile" value="{{ubicacionFisicaDocumento}}" />
+		<input type="hidden" id="nameFile"   value="{{ubicacionLogicaDocumento}}" />
+		
+		<input type="hidden" id="id_tipoDocGeneral" value="{{tipoDocGeneral.id}}" />
+		<input type="hidden" id="nombre_tipoDocGeneral" value="{{tipoDocGeneral.descripcionTipoDocumento}}" />
+		
+		{%if(puntoCliente)%}
+		      <input type="hidden" id="id_punto" value="{{ puntoCliente.id }}" />
+		      <input type="hidden" id="login_punto" value="{{ puntoCliente.login }}" />
+		{% else %}
+		      <input type="hidden" id="id_punto" value="0" />
+		{% endif %}
+		
+		{%if(tipoElemento)%}
+		      <input type="hidden" id="id_tipoElemento" value="{{ tipoElemento.id }}" />
+		      <input type="hidden" id="nombre_tipoElemento" value="{{ tipoElemento.nombreTipoElemento }}" />
+		{% else %}
+		      <input type="hidden" id="id_tipoElemento" value="0" />
+		{% endif %}
+		
+		{%if(modeloElemento)%}
+		      <input type="hidden" id="id_modeloElemento" value="{{ modeloElemento.id }}" />
+		      <input type="hidden" id="nombre_modeloElemento" value="{{ modeloElemento.nombreModeloElemento }}" />
+		{% else %}
+		      <input type="hidden" id="id_modeloElemento" value="0" />
+		{% endif %}
+		
+		{%if(elemento)%}
+		      <input type="hidden" id="id_elemento" value="{{ elemento.id }}" />
+		      <input type="hidden" id="nombre_elemento" value="{{ elemento.nombreElemento }}" />
+		{% else %}
+		      <input type="hidden" id="id_elemento" value="0" />
+		{% endif %}
+		
+		<div class="buttons">
+		    <p>
+			<input class="button-crud" value="Guardar" onclick="guardar();"/>
+			<span class="height20px">
+			    &oacute;&nbsp;
+			    <a class="cancel-crud" href="{{ path('gestion_documentos') }}">Cancelar</a>
+			</span>
+		    </p>
+		</div>  
+		
+	    </form>
+	</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+	<div class="titulo-acciones-relacionadas">
+		Acciones Relacionadas
+	</div>
+	<ul class="listado_acciones_relacionadas">
+	</ul>
+{% endblock contenido_der %}

@@ -1,0 +1,48 @@
+-- Se creó la tarea "CONTROL DE FIBRA NO RETIRADA" para generar tarea automática al coordinador cuando  no se utiliza fibra.
+Insert into DB_SOPORTE.ADMI_TAREA (
+	ID_TAREA,
+	PROCESO_ID,ROL_AUTORIZA_ID,
+	TAREA_ANTERIOR_ID,
+	TAREA_SIGUIENTE_ID,
+	PESO,ES_APROBADA,
+	NOMBRE_TAREA,
+	DESCRIPCION_TAREA,
+	TIEMPO_MAX,
+	UNIDAD_MEDIDA_TIEMPO,
+	COSTO,PRECIO_PROMEDIO,
+	ESTADO,USR_CREACION,
+	FE_CREACION,
+	USR_ULT_MOD,
+	FE_ULT_MOD,
+	AUTOMATICA_WS,
+	CATEGORIA_TAREA_ID,
+	PRIORIDAD,REQUIERE_FIBRA,
+	VISUALIZAR_MOVIL
+) values (
+	DB_SOPORTE.SEQ_ADMI_TAREA.NEXTVAL,
+	'1089',
+	null,
+	null,
+	null,
+	'1',
+	'0',
+	'CONTROL DE FIBRA NO RETIRADA',
+	'CONTROL DE FIBRA NO RETIRADA',
+	'3',
+	'HORAS',
+	'0',
+	'0',
+	'Activo',
+	'nnaulal',
+	sysdate,
+	'nnaulal',
+	sysdate,
+	null,
+	null,
+	null,
+	'N',
+	'N'
+);
+
+commit;
+/

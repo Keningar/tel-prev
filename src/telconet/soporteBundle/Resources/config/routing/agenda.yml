@@ -1,0 +1,14 @@
+agenda:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:Agenda:index" }
+
+getTareas:
+    pattern:  /getTareasAgenda
+    defaults: { _controller: "soporteBundle:Agenda:getTareasAgenda" }
+agenda_getCriterios:
+    pattern:  /getCriteriosAgenda
+    defaults: { _controller: "soporteBundle:Agenda:getCriteriosAgenda" }
+    
+agenda_getAfectados:
+    pattern:  /getAfectadosAgenda
+    defaults: { _controller: "soporteBundle:Agenda:getAfectadosAgenda" }    

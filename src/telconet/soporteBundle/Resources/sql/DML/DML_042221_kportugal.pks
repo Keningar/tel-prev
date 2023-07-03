@@ -1,0 +1,1114 @@
+/**
+ * DEBE EJECUTARSE EN DB_SOPORTE
+ * Crea parametros
+ * @author Katherine Portugal <kportugal@telconet.ec>
+ * @version 1.0 22-04-2021 - Versión Inicial.
+ */
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PARAMETROS DE INDISPONIBILIDAD PARA NC',
+    'NOTA CREDITO POR INDISPONIBILIDAD',
+    'SOPORTE',
+    'NOTAS DE CREDITO',
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1'
+  );
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS DE INDISPONIBILIDAD PARA NC'),
+     'DIAS INDISPONIBILIDAD NC',
+     5,
+     NULL,
+     'T',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+  
+  --
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS DE INDISPONIBILIDAD PARA NC'),
+     'TIPO CASO',
+     'Tecnico',
+     1,
+     'C',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+
+--
+
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS DE INDISPONIBILIDAD PARA NC'),
+     'TIPO AFECTACION',
+     'CAIDA',
+     NULL,
+     'C',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+
+  
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS DE INDISPONIBILIDAD PARA NC'),
+     'PORCENTAJE INDISPONIBILIDAD',
+     2,
+     NULL,
+     'T',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+
+  
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS DE INDISPONIBILIDAD PARA NC'),
+     'TIPO DE PERIODO',
+     'MENSUAL',
+     NULL,
+     'C',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS DE INDISPONIBILIDAD PARA NC'),
+     'MOTIVO DE INDISPONIBILIDAD PARA NC',
+     'Atenuacion de UM',
+     116,
+     'C',
+     'S',
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    PROCESO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PARAMETROS_REPORTE_NC_INDISPONIBILIDAD',
+    'PARAMETROS PARA REPORTE DE NC CREADAS POR INDISPONIBILIDAD',
+    'SOPORTE',
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1'
+  );
+  
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS_REPORTE_NC_INDISPONIBILIDAD'),
+     'CORREO_REMITENTE',
+     'notificaciones_telcos@telconet.ec',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS_REPORTE_NC_INDISPONIBILIDAD'),
+     'CORREO_DESTINATARIO',
+     'facturacion@netlife.net.ec,',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS_REPORTE_NC_INDISPONIBILIDAD'),
+     'COMANDO_REPORTE',
+     'gzip',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS_REPORTE_NC_INDISPONIBILIDAD'),
+     'DIRECTORIO_REPORTES',
+     '/app/telcos/reportes/MD/soporte/casos/nc/',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS_REPORTE_NC_INDISPONIBILIDAD'),
+     'EXTENSION_REPORTE',
+     '.gz',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+     (SELECT ID_PARAMETRO FROM DB_GENERAL.ADMI_PARAMETRO_CAB WHERE NOMBRE_PARAMETRO = 'PARAMETROS_REPORTE_NC_INDISPONIBILIDAD'),
+     'PLANTILLA_NOTIFICACION_REPORTE_NC',
+     '<html><head><meta http-equiv=Content-Type content="text/html; charset=UTF-8"></head><body>                             
+        <table align="center" width="100%" cellspacing="0" cellpadding="5">                             
+        <tr><td align="center" style="border:1px solid #6699CC;background-color:#E5F2FF;">                              
+        <img alt=""  src="http://images.telconet.net/others/telcos/logo.png"/></td></tr><tr>                                     
+        <td style="border:1px solid #6699CC;">                              
+        <table width="100%" cellspacing="0" cellpadding="5">                                     
+        <tr><td colspan="2"><table cellspacing="0" cellpadding="2"><tr>                             
+        <td colspan="2">Estimado usuario,</td></tr>                             
+        <tr><td></td></tr><tr>                              
+        <td>Se ejecut&#243; con &#233;xito la generaci&#243;n y envio del Reporte de NC por Indisponibilidad : 
+        <<lv_nombre_archivo_comprimir>> , con fecha de                                 
+        ejecuci&#243;n de: <<pv_fecha_inicio>> </td></tr><tr>                             
+        <tr><td><br><br></td></tr>                             
+        <tr><td></td></tr>                             
+        <td colspan="2">Atentamente,</td></tr>                             
+        <tr><td></td></tr><tr>                             
+        <td colspan="2"><strong>Sistema TelcoS+</strong></td></tr>                             
+        </table></td></tr>                             
+        <tr><td colspan="2"><br></td></tr></table>                             
+        </td></tr><tr><td></td></tr>                             
+        <tr><td><strong><font size="2" face="Tahoma">Telconet S.A.</font></strong></p></td></tr>                             
+        </table></body></html>',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1',
+     NULL
+  );
+
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_CAB
+  (
+    ID_PARAMETRO,
+    NOMBRE_PARAMETRO,
+    DESCRIPCION,
+    MODULO,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION
+  )
+  VALUES
+  (
+     DB_GENERAL.SEQ_ADMI_PARAMETRO_CAB.NEXTVAL,
+    'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD',
+    'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD',
+    'SOPORTE',
+    'Activo',
+    'kportugal',
+     SYSDATE,
+    '127.0.0.1'
+  );
+
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'TIPO AFECTACION',
+    'CAIDA',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+
+INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'TIPO AFECTACION',
+    'INTERMITENCIA',
+     NULL,
+     NULL,
+     NULL,
+     NULL ,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'TIPO AFECTACION',
+    'SINAFECTACION',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PERIODOS',
+    'DIARIO',
+     '1',
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PERIODOS',
+    'SEMANAL',
+     '7',
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PERIODOS',
+    'MENSUAL',
+     '',
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PERIODOS',
+    'ANUAL',
+     '365',
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+ INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'TIPO CONSULTA HIPOTESIS',
+    'Por nivel',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  
+     INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'OBSERVACION NOTA CREDITO POR INDISPONIBILIDAD',
+    'NOTA CREDITO POR INDISPONIBILIDAD',
+     NULL,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+    INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'MOTIVO DE INDISPONIBILIDAD',
+    'Indisponibilidad del servicio',
+     931,
+     NULL,
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PARAMETROS DET MULTIPLES',
+    'MOTIVO DE INDISPONIBILIDAD PARA NC',
+     'S',
+     'C',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+    );
+    
+    
+      INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PARAMETROS DET MULTIPLES',
+    'TIPO CASO',
+     '',
+     'C',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PARAMETROS DET MULTIPLES',
+    'TIPO DE PERIODO',
+     '',
+     'C',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PARAMETROS DET MULTIPLES',
+    'TIPO AFECTACION',
+     '',
+     'C',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+    INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PARAMETROS DET MULTIPLES',
+    'DIAS INDISPONIBILIDAD NC',
+     '',
+     'T',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+  
+  INSERT INTO DB_GENERAL.ADMI_PARAMETRO_DET
+  (
+    ID_PARAMETRO_DET,
+    PARAMETRO_ID,
+    DESCRIPCION,
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    VALOR4,
+    VALOR5,
+    ESTADO,
+    USR_CREACION,
+    FE_CREACION,
+    IP_CREACION,
+    EMPRESA_COD
+  )
+  VALUES
+  (
+    DB_GENERAL.SEQ_ADMI_PARAMETRO_DET.NEXTVAL,
+    (
+      SELECT ID_PARAMETRO        
+      FROM DB_GENERAL.ADMI_PARAMETRO_CAB 
+      WHERE NOMBRE_PARAMETRO   = 'PARAMETROS GENERALES PARA NC INDISPONIBILIDAD' 
+      AND ESTADO      = 'Activo'
+    ),
+    'PARAMETROS DET MULTIPLES',
+    'PORCENTAJE INDISPONIBILIDAD',
+     '',
+     'T',
+     NULL,
+     NULL,
+    'Activo',
+    'kportugal',
+    SYSDATE,
+    '127.0.0.1',
+    18
+  );
+
+COMMIT;
+/

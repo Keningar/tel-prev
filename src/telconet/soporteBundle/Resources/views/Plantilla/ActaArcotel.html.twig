@@ -1,0 +1,196 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pagina</title>
+
+<style>
+.tr1 {
+    height: 80px; 
+}
+
+.tr11{
+	text-align: center;
+	height: 61px;
+}
+.tr2 {
+    height: 230px; 
+}
+
+.tr22 {
+	text-align: center;
+}
+
+.alineadoIzquierda {
+	text-align: left;
+}
+
+.tr221 {
+	font-size: 12px; 
+	font-family: sans-serif;
+}
+
+.tr3 {
+	height: 21px;
+}
+
+.firma {
+	width:300px;
+}
+</style>
+
+</head>
+
+
+{% block body %}
+	<table border=1 cellspacing=0 cellpadding=2 bordercolor="666633">
+		<tbody>
+			<tr class="tr1">
+				<td class="tr11" colspan="2">&nbsp;<img src="{{ urlImagen }}" alt="IMAGEN" width="100%" height="27" /></td>
+				<td class="tr11" colspan="5"><strong>&nbsp;INSPECCION DE TRABAJO SEGURO EN CAMPO</strong></td>
+				<td class="tr11" colspan="2">&nbsp;CODIGO: FOR SSA 09<br /> VER 07 02 2018<br />P&aacute;gina 1 de 1</td>
+			</tr>
+			
+			<tr class="tr2">
+				<th class="tr22" colspan="9">
+					<div class="tr221">DECISION 584 Instrumento Andino de Seguridad y Salud en el Trabajo:</div>
+					<div class="tr221">Inspecciones de seguridad:</div>
+					<div class="tr221">Velar por el adecuado y oportuno cumplimiento de las normas de prevenci&oacute;n de riesgos laborales, mediante la realizaci&oacute;n de inspecciones u</div>
+					<div class="tr221">otros mecanismos de evaluaci&oacute;n peri&oacute;dica, organizando, entre otros, grupos espec&iacute;ficos de inspecci&oacute;n, vigilancia y control dotados de herramientas t&eacute;cnicas y jur&iacute;dicas para</div>
+					<div class="tr221">su ejercicio eficaz</div>
+					<div class="tr221">DECISION 584 Instrumento Andino de Seguridad y Salud en el Trabajo.- Equipos de protecci&oacute;n personal:</div>
+					<div class="tr221">Los equipos espec&iacute;ficos destinados a ser utilizados</div>
+					<div class="tr221">adecuadamente por el trabajador para que le protejan de uno o varios riesgos que puedan amenazar su seguridad o salud en el trabajo .</div>
+					<div class="tr221">Reglamento Higiene y Seguridad Telconet Art.2 Obligaciones generales de los trabajadores. Numeral 1.</div>
+					<div class="tr221">- Velar por su propia seguridad, salud y la de sus compa&ntilde;eros,</div>
+					<div class="tr221">mediante el cumplimiento de las normas de seguridad impartidas por la empresa</div>
+				</th>	
+			</tr>
+			
+			<tr class="tr3">
+				<th colspan="6" class="alineadoIzquierda">&nbsp;COORDINADOR: {{ NombreCoordinador }}</th>
+				<th colspan="3" class="alineadoIzquierda">&nbsp;DEPARTAMENTO: {{ NombreDepartamento }}</th>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="3"><strong>&nbsp;NOMBRES:</strong></td>
+				<td colspan="3">&nbsp;<strong>CARGO:</strong></td>
+				<td colspan="3">&nbsp;<strong>DIRECCI&Oacute;N DE TRABAJO INSPECCIONADO:<br /></strong></td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="3"><strong>&nbsp;{{ NombreLider }}</strong></td>
+				<td colspan="3">&nbsp;{{ CargoLider }}</td>
+				<td colspan="3">&nbsp;</td>
+			</tr>
+			
+			<tr class="tr3">
+				<td  colspan="3"><strong>&nbsp;{{ NombreAyudante1 }}</strong></td>
+				<td  colspan="3">&nbsp;{{ CargoAyudante1 }}</td>
+				<td  colspan="3">&nbsp;</td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="3"><strong>&nbsp;{{ NombreAyudante2 }}</strong></td>
+				<td colspan="3">&nbsp;{{ CargoAyudante2 }}</td>
+				<td colspan="3">&nbsp;<strong>VEHICULO: {{ NombreVehiculo }}</strong></td>
+			</tr>
+			
+			<tr class="tr3">
+				<td  colspan="3">&nbsp;{{ NombreAyudante3 }}</td>
+				<td  colspan="3">&nbsp;{{ CargoAyudante3 }}</td>
+				<td  colspan="3"><strong>&nbsp;FECHA: {{ Fecha }}</strong></td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="2"><strong>&nbsp;<strong>LOGIN: {{ Login }}</strong></strong></td>
+				<td colspan="4">&nbsp;<strong>COORDENADAS: {{ Coordenadas }}</strong></td>
+				<td colspan="3">&nbsp;<strong>HORA: {{ Hora }}</strong></td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="1"><strong>IMPLEMENTOS DE SEGURIDAD</strong></td>
+				<td class="tr22" colspan="2"><strong>LIDER DE CUADRILLA</strong></td>
+				<td class="tr22" colspan="2">&nbsp;<strong>AYUDANTE 1</strong></td>
+				<td class="tr22" colspan="2">&nbsp;<strong>AYUDANTE 2</strong></td>
+				<td class="tr22" colspan="2">&nbsp;<strong>CHOFER</strong></td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="1">&nbsp;</td>
+				<td colspan="1">&nbsp;<strong>CUMPLE</strong></td>
+				<td colspan="1"><strong>&nbsp;NO CUMPLE</strong></td>
+				<td colspan="1">&nbsp;<strong>CUMPLE</strong></td>
+				<td colspan="1">&nbsp;<strong>&nbsp;NO CUMPLE</strong></td>
+				<td colspan="1">&nbsp;<strong>CUMPLE</strong></td>
+				<td colspan="1">&nbsp;<strong>&nbsp;NO CUMPLE</strong></td>
+				<td colspan="1">&nbsp;<strong>CUMPLE</strong></td>
+				<td colspan="1">&nbsp;<strong>&nbsp;NO CUMPLE</strong></td>
+			</tr>
+			
+			
+			{% for Materiales in material %}
+                <tr class="tr3">
+                    <td colspan="1">&nbsp;{{material.tipomaterial}}</td>
+                    <td colspan="1">&nbsp;{{material.cumplelider}}</td>
+                    <td colspan="1">&nbsp;{{material.nocumplelider}}</td>
+                    <td colspan="1">&nbsp;{{material.cumpleayudante1}}</td>
+                    <td colspan="1">&nbsp;{{material.nocumpleayudante1}}</td>
+                    <td colspan="1">&nbsp;{{material.cumpleayudante2}}</td>
+                    <td colspan="1">&nbsp;{{material.nocumpleayudante2}}</td>
+                    <td colspan="1">&nbsp;{{material.cumpleayudante3}}</td>
+                    <td colspan="1">&nbsp;{{material.nocumpleayudante3}}</td>
+                </tr>
+            {% endfor %}
+			
+		
+			<tr class="tr3">
+				<td colspan="1"><strong>ESTANDARES A CUMPLIR</strong></td>
+				<td class="tr22" colspan="6"><strong>PARAMETRO DE CUMPLIMIENTO</strong></td>
+				<td class="tr22" colspan="2"><strong>INDICADORES DE CUMPLIMIENTO</strong></td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="1">DELIMITACI&Oacute;N ADECUADA DEL &Aacute;REA DE TRABAJO</td>
+				<td class="tr22" colspan="6">El &aacute;rea debe tener m&iacute;nimo 3 conos en buen estado y que estos tengan su cinta reflectiva/Cinta o barrera de seguridad que cubra toda el area a intervenir</td>
+				<td class="tr22" colspan="2">Cumplir con el est&aacute;ndar</td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="1">USO DE EPP ́s</td>
+				<td class="tr22" colspan="6">Toda la cuadrilla debe tener sus EPP al iniciar la actividad y estos deben de estar en buen estador</td>
+				<td class="tr22" colspan="2">Cumplir con el est&aacute;ndar</td>
+				</tr>
+			
+			<tr class="tr3">
+				<td colspan="1">ESCALERAS</td>
+				<td class="tr22" colspan="6">La escalera debe utilizarse cumpliendo las recomendaciones t&eacute;cnicas dadas por el departamento T&eacute;cnico, y debe de estar en perfectas condiciones.</td>
+				<td class="tr22" colspan="2">Cumplir con el est&aacute;ndar</td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="1">CHECK LIST DEL VEH&Iacute;CULO</td>
+				<td class="tr22" colspan="6">Se debe realizar el Chek List, e indicar las observaciones si las hay</td>
+				<td class="tr22" colspan="2">Cumplir con el est&aacute;ndar</td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="1">LICENCIA DE CONDUCIR</td>
+				<td class="tr22" colspan="6">Conductor debe de tener su licencia original vigente, si esta a punto de caducar y/o tener pena por perdida totales de sus puntos, debe notificar</td>
+				<td class="tr22" colspan="2">Cumplir con el est&aacute;ndar</td>
+			</tr>
+			
+			<tr class="tr3">
+				<td colspan="1"><strong>EVIDENCIAS FOTOGRAFICAS DE USO DE EPPS/POSICIONAMIENTO DE ESCALERA Y ACORDONAMIENTO DEL AREA TRABAJO</strong></td>
+				<td class="tr22" colspan="8"> <img src="{{ firmaEvidenciaurl }}" alt="IMAGEN" width="100%" height="27" /></td>
+			</tr>
+			
+			<tr class="tr3">
+				<td class="firma" colspan="1"><strong>FIRMA JEFE CUADRILLA</strong></td>
+				<td class="tr22" colspan="6">&nbsp;  <img src="{{ firmaImagenurl }}" alt="IMAGEN" width="100%" height="27" /></td>
+				<td class="tr22" colspan="2"><strong>UNIDAD SEGURIDAD, SALUD Y AMBIENTE TELCONET S.A.</strong></td>
+			</tr>
+		</tbody>
+	</table>
+{% endblock body %}
+</html>

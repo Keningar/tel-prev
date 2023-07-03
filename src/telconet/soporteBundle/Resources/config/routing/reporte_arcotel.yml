@@ -1,0 +1,8 @@
+reporteArcotel:
+    pattern:  /
+    defaults: { _controller: "soporteBundle:ReporteArcotel:index" }
+    
+reporteArcotel_generar:
+    pattern:  /generar
+    defaults: { _controller: "soporteBundle:ReporteArcotel:generar" }
+    requirements: { _method: post }    

@@ -1,0 +1,93 @@
+{% extends "::layout_completo.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}    
+<script>
+    var intIdNotifMasiva            = "{{ arrayDataNotificacionMasiva.intIdNotifMasiva }}";
+    var strUrlVerLogsEjecucion      = "{{ path('estado_envios_masivos_logs') }}";
+    var strUrlVerLogsDetsEjecucion  = "{{ path('estado_envios_masivos_logs_dets') }}";
+    var strUrlEliminarEnvioMasivo   = "{{ path('estado_envios_masivos_eliminar') }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/soporte/js/EstadoEnviosMasivos/show.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/tools1.png') }}" class="imagen-titulo-content">
+    <h1>Ver Logs Env&iacute;o Masivo</h1>
+</div>
+<div class="body_content">
+    <table class="formulario" width='100%' cellpadding='10' cellspacing='10'>
+        <tbody >
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"><b> Notificaci&oacute;n:</b></th>
+                <td width="25%">{{ arrayDataNotificacionMasiva.strNombrePlantilla }}</td>  
+                <td width="1%">&nbsp;</td>
+                <th width="20%"><b> Tipo de Env&iacute;o</b></th>
+                <td width="25%">{{ arrayDataNotificacionMasiva.strTipoEnvio }}</td>
+            </tr>
+            <tr>
+                <td width="5%">&nbsp;</td>
+                <th width="20%"><b> Tipos de Contactos:</b></th>
+                <td width="25%">{{ arrayDataNotificacionMasiva.strTiposContactos |raw }}</td>  
+                <td width="1%">&nbsp;</td>
+                <th width="20%"><b> Configuraci&oacute;n de Env&iacute;o:</b></th>
+                <td width="25%">{{ arrayDataNotificacionMasiva.strInfoGeneral | raw }}</td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td width="8%">&nbsp;</td>        
+                <td colspan="6"><div id='divInfoFiltros'>{{ strObservacionFiltros | raw }}</div></td>
+                <td width="8%">&nbsp;</td> 
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td width="8%">&nbsp;</td>        
+                <td colspan="6"><div id='divLogsEnvioMasivo'></div></td>
+                <td width="8%">&nbsp;</td> 
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr><td>&nbsp;</td></tr>
+            <input type='hidden' id='idNotifMasivaLog' name='idNotifMasivaLog' value=''/>
+            <tr>
+                <td width="8%">&nbsp;</td>        
+                <td colspan="6"><div id='divFiltrosLogsDetsEnvioMasivo'></div></td>
+                <td width="8%">&nbsp;</td> 
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>        
+                <td colspan="6"><div id='divLogsDetsEnvioMasivo'></div></td>
+                <td width="8%">&nbsp;</td> 
+            </tr>
+        </tbody>
+
+
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('estado_envios_masivos') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" 
+                                                 hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                <th width="11%">Creador:</th>
+                <td width="34%" >{{ arrayDataNotificacionMasiva.strUsrCreacion }}</td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_central %}
