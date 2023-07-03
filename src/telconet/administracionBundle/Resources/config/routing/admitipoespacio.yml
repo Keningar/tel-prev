@@ -1,0 +1,42 @@
+admitipoespacio:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoEspacio:index" }
+
+admitipoespacio_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiTipoEspacio:getEncontrados }
+    
+admitipoespacio_getTiposEspacios:
+    pattern:  /getTiposEspacios
+    defaults: { _controller: administracionBundle:AdmiTipoEspacio:getTiposEspacios }
+
+admitipoespacio_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoEspacio:show" }
+
+admitipoespacio_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoEspacio:new" }
+
+admitipoespacio_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoEspacio:create" }
+    requirements: { _method: POST }
+    
+admitipoespacio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoEspacio:edit" }
+
+admitipoespacio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoEspacio:update" }
+    requirements: { _method: POST }
+    
+admitipoespacio_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoEspacio:deleteAjax" }
+    requirements: { _method: post }
+    
+admitipoespacio_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoEspacio:delete" }

@@ -1,0 +1,23 @@
+seguridadBundle_SeguPerfilPersona:
+  resource: "@seguridadBundle/Resources/config/routing/seguperfilpersona.yml"
+  prefix: /segu_perfil_persona
+
+seguridadBundle_SistAccion:
+  resource: "@seguridadBundle/Resources/config/routing/sistaccion.yml"
+  prefix: /sist_accion
+
+seguridadBundle_SistItemMenu:
+  resource: "@seguridadBundle/Resources/config/routing/sistitemmenu.yml"
+  prefix: /sist_item_menu
+  
+seguridadBundle_SistModulo:
+  resource: "@seguridadBundle/Resources/config/routing/sistmodulo.yml"
+  prefix: /sist_modulo
+  
+seguridadBundle_SistPerfil:
+  resource: "@seguridadBundle/Resources/config/routing/sistperfil.yml"
+  prefix: /sist_perfil
+
+administracionBundle_AdmiMotivo:
+  resource: "@administracionBundle/Resources/config/routing/admimotivo.yml"
+  prefix: /admi_motivo

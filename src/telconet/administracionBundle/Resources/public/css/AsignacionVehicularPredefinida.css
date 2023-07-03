@@ -1,0 +1,254 @@
+/* 
+    Document   : InfoCaso
+    Created on : 14/11/2012, 02:56:25 PM
+    Author     : manuel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.box-section-subcontent {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+}
+.titulo-secundario{
+    border-bottom: 1px dotted #D0D0D0;
+}
+.x-trigger-cell{
+    padding-top: 2px;
+}
+#div_fe_apertura, #div_hora_apertura{
+    padding-top: 4px;
+}
+.bold{
+    font-weight: bold;
+    color: #000;
+}
+.box-detalle {
+    background-color: #F0F0F0;
+    border: 1px solid #CCCCCC;
+    display: block;
+    margin: 2px;
+    padding: 2px;
+}
+
+.button-grid-agregarSintoma {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/agregar_sintoma.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-agregarHipotesis {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/agregar_hipotesis.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-agregarTarea {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/agregar_tarea.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-afectados {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/afectados.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+.button-grid-asignarResponsable {
+    background-color: #E3E3E3;
+    background-image: url("/telconet/web/bundles/soporte/images/iconos/16/asignar_responsable.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+
+.button-grid-btnMigracion
+{
+    background-color: #E3E3E3;
+    background-image: url("/public/images/btnMigracion.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.thumb-wrap
+{
+    height: 230px;
+    width: 230px;
+    border-style: double; 
+    border-width: 4px;
+    margin: 1%;        
+    border-color: #EEEEEE;
+}
+.thumb-wrap:hover { 
+    background-color: #EFEFEF;
+    border-color: #CCCCCC;
+    cursor: pointer;
+}
+.thumb
+{
+    position: relative;
+    top:10%;
+}
+
+.imageNodo
+{
+    border-style: double;
+    border-width: 2px;
+    border-color: #CCCCCC;
+}
+
+.details-info
+{
+/*    border-style: dotted;
+    border-color: #CCCCCC;
+    margin: 2%;
+    padding: 1%;
+    height: 170px;*/
+}
+
+.gridText
+{
+    background-color: #E3E3E3;
+    height: 15px;
+    width: 90px;
+}
+.gridText:hover
+{
+    background-color: #BDBDBD;
+}
+
+
+.btn-asignar-chofer
+{
+    background-color: #e3e3e3;
+    background-image: url("/public/images/ico_jefe.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #c5c5c5;
+    border-radius: 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2e2e2e;
+    font-size: 11px;
+    height: 25px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+    background-size: 20px;
+}
+
+.btn-asignar-chofer:hover {
+    background-color: #a99f9a;
+    border-color: #a99f9a;
+}
+
+.btn-eliminar-chofer
+{
+    background-image: url("/public/images/ico_deshabilitar_jefe.png");
+    background-color: #e3e3e3;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #c5c5c5;
+    border-radius: 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2e2e2e;
+    font-size: 11px;
+    height: 25px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+    background-size: 20px;
+}
+
+.btn-eliminar-chofer:hover {
+    background-color: #a99f9a;
+    border-color: #a99f9a;
+}
+
+.msg_floating
+{
+    position: absolute !important;
+    z-index: 10001 !important;
+}

@@ -1,0 +1,257 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlFormasContactoEmpresa = "{{ path('personalexterno_formas_contacto_grid') }}";
+    var personalexternoId = "{{personalexterno.id}}";
+    var urlShow = '{{ path('personalexterno_show', { 'id': personaEmpresaRol.id }) }}';
+    var urlEditarPersonalExterno = '{{ path('personalexterno_edit', { 'id': personaEmpresaRol.id }) }}';
+    var urlEliminarPersonalExterno = "{{ path('personalexterno_delete', { 'id': personaEmpresaRol.id }) }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/PersonalExterno/show.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Personal Externo</h1>
+</div>
+<div class="body_content">
+    <table class="record_properties" width='100%' border='0'>
+        <tbody>
+            <tr height="20px">
+                <td width="160px">
+                    <b>Tipo Identificación:</b>
+                </td>
+                <td width="450px">
+                {%if(personalexterno.tipoIdentificacion == 'CED')%}Cedula
+                {%elseif(personalexterno.tipoIdentificacion == 'RUC')%}Ruc
+                {%elseif(personalexterno.tipoIdentificacion == 'PAS')%}Pasaporte
+                {%endif%}
+                </td>
+            </tr>
+            <tr height="20px">
+                <td>
+                    <b>Identificación:</b>
+                </td>
+                <td>
+                    {{ personalexterno.identificacionCliente }}
+                </td>   
+                <td width="150px">
+                    <b>Estado Civil:</b>
+                </td>
+                <td>
+                {%if(personalexterno.estadoCivil == 'C')%}Casado(a)
+                {%elseif(personalexterno.estadoCivil == 'S')%}Soltero(a)
+                {%elseif(personalexterno.estadoCivil == 'D')%}Divorciado(a)
+                {%elseif(personalexterno.estadoCivil == 'V')%}Viudo(a)
+                {%elseif(personalexterno.estadoCivil == 'U')%}Uni&oacute;n Libre                         
+                {%endif%}
+                </td>
+            </tr>
+            <tr height="20px">
+                <td>
+                    <b>Nombre Personal Externo:</b>
+                </td>
+                <td>
+                    {{ personalexterno.nombres }} {{ personalexterno.apellidos }}
+                </td>
+                <td>
+                    <b>Nacionalidad:</b>
+                </td>
+                <td>
+                {%if(personalexterno.nacionalidad == 'NAC')%}Nacional
+                {%elseif(personalexterno.nacionalidad == 'EXT')%}Extranjera
+                {%endif%}
+                </td>
+            </tr>     
+            <tr height="20px">
+                <td>
+                    <b>Dirección:</b>
+                </td>
+                <td>
+                    {{ personalexterno.direccion }}
+                </td>
+                <td>
+                    <b>Género:</b>
+                </td>
+                <td>
+                {%if(personalexterno.genero == 'M')%}Masculino
+                {%elseif(personalexterno.genero == 'F')%}Femenino
+                {%endif%}
+                </td> 
+            </tr>
+            <tr height="20px">
+                <td>
+                    <b>Fecha Nacimiento:</b>
+                </td>
+                <td>
+                {% if(personalexterno.fechaNacimiento is not null)%}
+                   {{ personalexterno.fechaNacimiento|date('d-m-Y') }}
+                {% endif %}
+                </td>
+                <td>
+                    <b>Empresa Externa:</b>
+                </td>
+                <td>
+                    {{ empresaExterna }}
+                </td>
+            </tr>
+            <tr height="20px">
+                <td>
+                    <b>Estado:</b>
+                </td>
+                <td>
+                    {{ personaEmpresaRol.estado }}
+                    <input type="hidden" id="Estado" value="{{ personaEmpresaRol.estado }}" />
+                </td>
+                {% if strPrefijoEmpresa == "TN" %}
+                    <td>
+                        <b>Departamento:</b>
+                    </td>
+                    <td>
+                        {{ strDepartamentoEmpresaSession }}
+                    </td>
+                {% else %}
+                    <td colspan="2">&nbsp;</td>
+                {% endif %}
+            </tr>
+        </tbody>
+    </table>
+    <div align="center" id="gridFormasContacto"></div>
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="button-crud" href="{{ path('personalexterno') }}">Listado</a>
+            </span>
+        </p>
+    </div>
+    <br>
+    <br>
+    <table class="formulario">
+        <tbody>
+            <tr height="20px">
+                <td width="10%" rowspan="4" align="right">
+                    <img style="padding-right: 10px" src="{{ asset('public/images/images_crud/agregar_64.png')}}"/>
+                </td>
+                <th width="7%">
+                    Creador:
+                </th>
+                <td width="21%">
+                {% if(creacion is not null)%}  
+                    {{creacion.usrCreacion}}  
+                {% endif %}
+                </td>
+
+                {% if(ultMod is not null) %}
+                <td width="10%" rowspan="3" align="right">
+                    <img style="padding-right: 10px" src="{{ asset('public/images/images_crud/edit_64.png')}}"/>
+                </td>
+                <th width="7%">
+                    Ult. Mod.:
+                </th>
+                <td width="21%">
+                    {{ ultMod.usrCreacion }}
+                </td>
+                {% endif %}
+
+                {% if(eliminado is not null)%}
+                <td width="10%" rowspan="3" align="right">
+                    <img style="padding-right: 10px" src="{{ asset('public/images/images_crud/eliminar_64.png')}}"/>
+                </td>
+                <th width="7%">
+                    Eliminado:
+                </th>
+                <td width="21%">
+                    {{ eliminado.usrCreacion }}
+                </td>
+                {% endif %}
+            </tr>
+
+            <tr height="20px">
+                <th>
+                    Fecha:
+                </th>
+                <td>
+                    {% if(creacion is not null) %} {{ creacion.feCreacion | date("d M Y") }} {% endif %}
+                </td>
+
+                {% if(ultMod is not null) %}
+                <th>
+                    Fecha:
+                </th>
+                <td>
+                    {{ ultMod.feCreacion  | date("d M Y")}}
+                </td>
+                {% endif %}
+
+                {% if(eliminado is not null) %}
+                <th>
+                    Fecha:
+                </th>
+                <td>
+                    {{ eliminado.feCreacion | date("d M Y") }}
+                </td>
+                {% endif %}
+            </tr>
+
+            <tr height="20px">
+                <th>
+                    Hora:
+                </th>
+                <td>
+                    {% if(creacion is not null) %} {{ creacion.feCreacion | date("H:i:s") }} {%endif%}
+                </td>
+
+                {% if(ultMod is not null) %}
+                <th>
+                    Hora:
+                </th>
+                <td>
+                    {{ ultMod.feCreacion | date("H:i:s") }}
+                </td>
+                {% endif %}
+
+                {% if(eliminado is not null) %}
+                <th>
+                    Hora:
+                </th>
+                <td>
+                    {{ eliminado.feCreacion | date("H:i:s") }}
+                </td>
+                {% endif %}
+            </tr>
+
+            <tr height="20px">
+                <th>
+                    Ip:
+                </th>
+                <td>
+                    {% if(creacion is not null) %} {{ creacion.ipCreacion}} {%endif%}
+                </td>
+            </tr>   
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<ul class="form_actions" style="width:auto;">
+{% if is_granted('ROLE_182-2') %}
+    <li>
+        <a class="button-nuevo-registro" href="{{ path('personalexterno_new') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nuevo Personal Externo
+        </a>
+    </li>
+{% endif %}
+    <li>
+        &nbsp;
+    </li>
+</ul>
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul>
+    <div id="form_accionesPersonalExterno" />
+</ul>
+{% endblock contenido_der %}

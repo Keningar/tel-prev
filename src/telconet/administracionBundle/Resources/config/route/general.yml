@@ -1,0 +1,47 @@
+administracionBundle_AdmiPais:
+  resource: "@administracionBundle/Resources/config/routing/admipais.yml"
+  prefix: /admi_pais
+
+administracionBundle_AdmiRegion:
+  resource: "@administracionBundle/Resources/config/routing/admiregion.yml"
+  prefix: /admi_region
+
+administracionBundle_AdmiProvincia:
+  resource: "@administracionBundle/Resources/config/routing/admiprovincia.yml"
+  prefix: /admi_provincia
+
+administracionBundle_AdmiCanton:
+  resource: "@administracionBundle/Resources/config/routing/admicanton.yml"
+  prefix: /admi_canton
+
+administracionBundle_AdmiTipoParroquia:
+  resource: "@administracionBundle/Resources/config/routing/admitipoparroquia.yml"
+  prefix: /admi_tipo_parroquia
+
+administracionBundle_AdmiParroquia:
+  resource: "@administracionBundle/Resources/config/routing/admiparroquia.yml"
+  prefix: /admi_parroquia
+
+administracionBundle_AdmiCanalPagoLinea:
+  resource: "@administracionBundle/Resources/config/routing/admicanalpagolinea.yml"
+  prefix: /admi_canal_pagoLinea
+
+administracionBundle_AdmiSector:
+  resource: "@administracionBundle/Resources/config/routing/admisector.yml"
+  prefix: /admi_sector
+
+administracionBundle_AdmiParametroCab:
+  resource: "@administracionBundle/Resources/config/routing/admiparametrocab.yml"
+  prefix: /admiParametroCab
+
+administracionBundle_AdmiZona:
+  resource: "@administracionBundle/Resources/config/routing/admizona.yml"
+  prefix: /admi_zona
+
+administracionBundle_AdmiFeriados:
+  resource: "@administracionBundle/Resources/config/routing/admiferiados.yml"
+  prefix: /feriados
+
+administracionBundle_InfoFeriados:
+  resource: "@administracionBundle/Resources/config/routing/infoferiadosanuales.yml"
+  prefix: /feriados_anuales

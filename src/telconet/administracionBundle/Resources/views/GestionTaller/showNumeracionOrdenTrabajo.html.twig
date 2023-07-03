@@ -1,0 +1,34 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}   
+    <link href="{{ asset('./bundles/administracion/css/GestionTaller.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}    
+
+
+{% endblock %}
+
+{% block contenido_central %}
+
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Numeraci&oacute;n de Orden de Trabajo</h1>
+</div>
+<div class="body_content k-content">
+    <div>
+        <label>* Numeraci&oacute;n de Orden de Trabajo empieza desde:</label>
+        <label>{{ datosNumeracion.getSecuencia() }}</label>
+    </div>
+
+    <br/><br/>
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="button-crud" href="{{ path('gestiontaller') }}"> Regresar </a>                          
+            </span>
+        </p>
+    </div>
+</div>
+{% endblock contenido_central %}

@@ -1,0 +1,97 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Proveedor</h1>
+</div>                                         							 								 
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombre Filial:</th>
+                <td width="15%">{{ proveedor.empresaRolId.empresaCod.nombreEmpresa }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Razon Social:</th>
+                <td width="15%">{{ proveedor.personaId.razonSocial }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Tipo Empresa:</th>
+                <td width="15%">{{ proveedor.personaId.tipoEmpresa }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Representante Legal:</th>
+                <td width="15%">{{ proveedor.personaId.representanteLegal }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Tipo Identificacion:</th>
+                <td width="15%">{% if proveedor.personaId.tipoIdentificacion == "CED" %}C&eacute;dula{% else %}{{ proveedor.personaId.tipoIdentificacion }}{% endif %}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Identificacion:</th>
+                <td width="15%">{{ proveedor.personaId.identificacionCliente }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nacionalidad:</th>
+                <td width="15%">{% if proveedor.personaId.nacionalidad == "EXT" %}Extranjera{% elseif proveedor.personaId.nacionalidad == "NAC" %}NACIONAL{% else %}{{ proveedor.personaId.nacionalidad }}{% endif %}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Direccion:</th>
+                <td width="15%">{{ proveedor.personaId.direccion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ proveedor.personaId.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('personaproveedor') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ proveedor.personaId.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ proveedor.personaId.feCreacion | date("d M Y") }}</td>
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ proveedor.personaId.feCreacion | date("H:i:s") }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+{% endblock contenido_der %}

@@ -1,0 +1,3 @@
+jefestecnicos:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:Jefes:index", strNombreArea:Tecnico }

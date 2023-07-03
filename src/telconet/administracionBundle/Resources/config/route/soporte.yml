@@ -1,0 +1,47 @@
+administracionBundle_ajaxConsultarErrorLog:
+    pattern:  /consultarErrorLog
+    defaults: { _controller: administracionBundle:Default:ajaxConsultarErrorLog }
+
+administracionBundle_AdmiProceso:
+  resource: "@administracionBundle/Resources/config/routing/admiproceso.yml"
+  prefix: /admi_proceso
+  
+administracionBundle_AdmiEscalabilidadProceso:
+  resource: "@administracionBundle/Resources/config/routing/admiescalabilidadproceso.yml"
+  prefix: /admi_escalabilidad_proceso
+  
+administracionBundle_AdmiTarea:
+  resource: "@administracionBundle/Resources/config/routing/admitarea.yml"
+  prefix: /admi_tarea
+  
+administracionBundle_AdmiTareaMaterial:
+  resource: "@administracionBundle/Resources/config/routing/admitareamaterial.yml"
+  prefix: /admi_tarea_material
+  
+administracionBundle_AdmiHipotesis:
+  resource: "@administracionBundle/Resources/config/routing/admihipotesis.yml"
+  prefix: /admi_hipotesis
+
+administracionBundle_AdmiArbolHipotesis:
+  resource: "@administracionBundle/Resources/config/routing/admiarbolhipotesis.yml"
+  prefix: /admi_arbol_hipotesis
+
+administracionBundle_AdmiSintoma:
+  resource: "@administracionBundle/Resources/config/routing/admisintoma.yml"
+  prefix: /admi_sintoma
+  
+administracionBundle_AdmiTipoCaso:
+  resource: "@administracionBundle/Resources/config/routing/admitipocaso.yml"
+  prefix: /admi_tipo_caso
+  
+administracionBundle_AdmiTipoNotificacion:
+  resource: "@administracionBundle/Resources/config/routing/admitiponotificacion.yml"
+  prefix: /admi_tipo_notificacion
+  
+administracionBundle_AdmiNivelCriticidad:
+  resource: "@administracionBundle/Resources/config/routing/adminivelcriticidad.yml"
+  prefix: /admi_nivel_criticidad
+
+administracionBundle_AdmiIntervalo:
+  resource: "@administracionBundle/Resources/config/routing/admiintervalo.yml"
+  prefix: /admi_intervalo

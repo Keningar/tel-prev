@@ -1,0 +1,83 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiProceso/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Proceso</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('admiproceso_update', { 'id': proceso.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" onsubmit="return validarFormulario();">
+        <div>
+			<label>* Proceso Padre:</label>
+			<div id='combo_procesopadre' required="true"></div>
+		</div>
+		{{ form_widget(edit_form) }}
+		
+		<input type="hidden" name="escogido_procesopadre_id" id="escogido_procesopadre_id" value="{% if proceso.procesoPadreId %}{{ proceso.procesoPadreId.id }}{% else %}0{% endif %}" />
+			
+        <div class="buttons">
+            <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('admiproceso') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() { 
+            var nombreProceso = "{% if proceso.procesoPadreId %}{{ proceso.procesoPadreId.nombreProceso }}{% else %}{% endif %}";
+            var valIdProceso = "{% if proceso.procesoPadreId %}{{ proceso.procesoPadreId.id }}{% else %}{% endif %}";
+            var valIdProcesoActual = "{{ proceso.id }}";
+			
+			storeProcesos.proxy.extraParams = {idProcesoActual: valIdProcesoActual};
+			storeProcesos.load();
+            combo_procesos.setRawValue(nombreProceso);
+        });
+    </script>		
+{% endblock javascripts_footer%}

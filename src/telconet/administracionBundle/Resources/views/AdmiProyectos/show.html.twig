@@ -1,0 +1,67 @@
+<div class="container">
+    <h5>Detalles Generales del proyecto <i class="fa fa-info-circle"></i></h5>
+    <table class="table compact" width='80%' border='0'>
+        <tbody>
+            <tr>
+                <td><b>Nombre del Proyecto:</b></td>
+                <td>{{arrayProyectoDet.strNombre}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Responsable:</b></td>
+                <td>{{arrayProyectoDet.strNombrePer}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Tipo de Contabilidad:</b></td>
+                <td>{{arrayProyectoDet.strTipoContabilidad}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>ID cuenta:</b></td>
+                <td>{{arrayProyectoDet.intIdCuenta}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Fecha Inicio:</b></td>
+                <td>{{arrayProyectoDet.strFeInicio}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Fecha Fin:</b></td>
+                <td>{{arrayProyectoDet.strFeFin}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Estado:</b></td>
+                <td>{{arrayProyectoDet.strEstado}} </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="result_tr" style="display: none;">
+                <td id="intIdProyectoTd" >{{arrayProyectoDet.intIdProyecto}} </td>
+                <td id="strEstadoTd" >{{arrayProyectoDet.strEstado}} </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+   <table width='100%' border='0'>
+        <tbody>
+            <tr>
+                <td width="10%" rowspan="4">
+                <img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                <th width="11%">Creador:</th>
+                <td width="34%" >{{arrayProyectoDet.strUsrCreacion}}</td>
+            </tr>
+            <tr>
+                <th>Fecha:</th>
+                <td>{{arrayProyectoDet.strFeCreacion}}</td>
+            </tr>
+        </tbody>
+    </table> 

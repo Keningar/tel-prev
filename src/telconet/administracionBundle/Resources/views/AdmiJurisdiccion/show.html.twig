@@ -1,0 +1,149 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiJurisdiccion/show.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Jurisdiccion</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Nombre:</th>
+                <td width="15%">{{  jurisdiccion.nombreJurisdiccion }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Descripcion:</th>        
+                <td width="15%">{{ jurisdiccion.descripcionJurisdiccion }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Estado:</th>        
+                <td width="15%">{{ jurisdiccion.estado }}</td>
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"></th>        
+                <td width="15%"></td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <td colspan="6"><div id="grid"></div></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>	
+
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admijurisdiccion') }}">
+                    Regresar
+            </a>
+        </span>
+    </p>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ jurisdiccion.usrCreacion }}</td>
+
+              {% if(jurisdiccion.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ jurisdiccion.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(jurisdiccion.estado=="Eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ jurisdiccion.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ jurisdiccion.feCreacion | date("d M Y") }}</td>
+
+              {% if(jurisdiccion.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ jurisdiccion.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(jurisdiccion.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ jurisdiccion.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ jurisdiccion.feCreacion | date("H:i:s") }}</td>
+
+              {% if(jurisdiccion.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ jurisdiccion.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(jurisdiccion.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ jurisdiccion.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+		{% if is_granted('ROLE_117-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admijurisdiccion_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nueva Jurisdiccion
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_117-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admijurisdiccion_edit', { 'id': jurisdiccion.id }) }}">
+                
+                &nbsp;Editar Jurisdiccion
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_117-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admijurisdiccion_delete', { 'id': jurisdiccion.id }) }}">
+                
+                &nbsp;Eliminar Jurisdiccion
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

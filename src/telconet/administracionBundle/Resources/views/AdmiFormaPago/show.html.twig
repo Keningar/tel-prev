@@ -1,0 +1,152 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Forma de Pago</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Codigo Forma Pago:</th>
+                <td width="15%">{{ formapago.codigoFormaPago }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Descripcion Forma Pago:</th>
+                <td width="15%">{{ formapago.descripcionFormaPago }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Es Depositable:</th>
+                <td width="15%">{% if(formapago.esDepositable=="S") %}SI{% else %}NO{% endif %}</td>  
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Es Monetario:</th>
+                <td width="15%">{% if(formapago.esMonetario=="S") %}SI{% else %}NO{% endif %}</td>  
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Es Pago Para Contrato:</th>
+                <td width="15%">{% if(formapago.esPagoParaContrato=="S") %}SI{% else %}NO{% endif %}</td>  
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ formapago.estado }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Tipo Forma de Pago:</th>
+                <td width="15%">{{ formapago.tipoFormaPago }}</td>  
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>
+                <td>&nbsp;</td>        
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiformapago') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ formapago.usrCreacion }}</td>
+
+              {% if(formapago.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ formapago.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(formapago.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ formapago.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ formapago.feCreacion | date("d M Y") }}</td>
+
+              {% if(formapago.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ formapago.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(formapago.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ formapago.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ formapago.feCreacion | date("H:i:s") }}</td>
+
+              {% if(formapago.estado|lower=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ formapago.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(formapago.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ formapago.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_43-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiformapago_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nueva Forma de Pago
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_43-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admiformapago_edit', { 'id': formapago.id }) }}">
+                &nbsp;Editar Forma de Pago
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_43-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admiformapago_delete', { 'id': formapago.id }) }}">
+                &nbsp;Eliminar Forma de Pago
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

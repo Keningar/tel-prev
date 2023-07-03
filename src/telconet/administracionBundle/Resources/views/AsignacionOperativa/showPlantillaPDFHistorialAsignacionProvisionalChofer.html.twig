@@ -1,0 +1,248 @@
+<html>
+    <head>
+      <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+      <style>
+      .tamano_letra_direccion
+      {
+          font-size:9px;
+      }
+      .tamano_letra_detalles
+      {
+          font-size:11px;
+      }
+
+      .tablasAsignacionesProvisionales {
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+      .tablasAsignacionesProvisionales td, .tablasAsignacionesProvisionales th {
+        border: 1px solid black;
+      }
+      .tablasAsignacionesProvisionales tr:first-child th {
+        border-top: 0;
+      }
+      .tablasAsignacionesProvisionales tr:last-child td {
+        border-bottom: 0;
+      }
+      .tablasAsignacionesProvisionales tr td:first-child,
+      .tablasAsignacionesProvisionales tr th:first-child {
+        border-left: 0;
+      }
+      .tablasAsignacionesProvisionales tr td:last-child,
+      .tablasAsignacionesProvisionales tr th:last-child {
+        border-right: 0;
+      }
+      .tablasAsignacionesProvisionales thead tr{
+        font-family: Arial, monospace;
+        font-size: 14px;
+      }
+
+      .tablasAsignacionesProvisionales .celdaTitulo1{
+         background: white;
+      }
+      .tablasAsignacionesProvisionales .celdaTitulo2{
+         background: yellow;
+      }
+
+      .tablasAsignacionesProvisionales .celdaColumnaTitulo{
+         background: #7ec6e3;
+      }
+
+      .tablasAsignacionesProvisionales td{
+         padding: 4px 10px 3px 10px;
+      }
+
+      table tr {
+        font-family: arial, monospace;
+        color: black;
+        font-size:12px;
+        background-color: white;
+      }
+
+      table tr.odd {
+        background-color: #AAAAAA;
+      }
+
+      a:link{
+        font-family:arial, monospace;
+        text-decoration: none;
+        color: teal;
+      }
+
+      a:hover{
+        text-decoration: underline;
+      }
+
+      a:visited{
+        color:black;
+        text-decoration: none;
+      }
+
+      table thead tr{
+        font-family: Arial, monospace;
+        font-size: 14px;
+      }
+      </style>
+    </head>
+    <body>
+        <table  class="record_properties" width='100%' style>
+            <tr>
+            <td align="left" colspan='4' >
+                <img alt=""  width="150" height="40" src="https://telcos.telconet.ec/public/images/{{logoEmpresa}}"/>
+            </td>
+            </tr>
+            <tr>
+            <td class='tamano_letra_direccion'></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>
+            <table>
+            <tr><td class='tamano_letra_direccion'></td></tr>
+            </table>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+              <td colspan='4'>&nbsp;</td>
+            </tr>
+        </table>
+        <br/>        
+        <div align="center" > <h5>REPORTE DE ASIGNACIÓN PROVISIONAL DE CHOFERES  </h5></div>
+        <div style="position: absolute; left:0%; top:80px;width:50%; ">
+            <table align="center" style="font-size: 9px ; width: 100%">
+                {% if placa!='' %}
+                <tr>
+                    <td><b>Placa:</b></td>
+                    <td>{{placa}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                
+                {% if disco!='' %}
+                <tr>
+                    <td><b>Disco:</b></td>
+                    <td>{{disco}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                {% if strIdentificacionChoferAP!='' %}
+                <tr>
+                    <td><b>Identificaci&oacute;n Chofer:</b></td>
+                    <td>{{strIdentificacionChoferAP}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                {% if strNombresChoferAP!='' %}
+                <tr>
+                    <td><b>Nombres Chofer:</b></td>
+                    <td>{{strNombresChoferAP}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                {% if strApellidosChoferAP!='' %}
+                <tr>
+                    <td><b>Apellidos Chofer:</b></td>
+                    <td>{{strApellidosChoferAP}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+            </table>  
+        </div>
+        <div style="position: absolute; left:50%; top:70px;width:50%; ">
+            <table align="center" style="font-size: 9px ; width: 100%">
+                <tr>
+                    <td><b>Desde:</b></td>
+                    <td>{{fechaDesde}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><b>Hasta:</b></td>
+                    <td>{{fechaHasta}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                <tr>
+                    <td><b>N&uacute;mero de Asignaciones:</b></td>
+                    <td>{{total}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div> 
+
+        {% set contAsignaciones = 0 %}   
+        {%for detEncontrado in  encontrados %}
+            {% set contAsignaciones = contAsignaciones + 1 %}
+            <div align="center" >
+                <table class="tablasAsignacionesProvisionales">
+                <thead>
+                    <tr class="celdaTitulo1">
+                        <th colspan='2'>ASIGNACI&Oacute;N {{contAsignaciones}}.</th>
+                    </tr>
+                    <tr class="celdaTitulo2"> 
+                        <th colspan='2'>ASIGNACI&Oacute;N CONDUCTOR PROVISIONAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>DPTO / ZONA:</b></td>
+                        <td>{{ detEncontrado.strDptoZonaAsignacionProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>COORDINADOR:</b></td>
+                        <td>{{ detEncontrado.strCoordinadorAsignacionProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>VEHICULO:</b></td>
+                        <td>{{ detEncontrado.strModeloAsignacionProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>PLACA:</b></td>
+                        <td>{{ detEncontrado.strPlacaAsignacionProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>DISCO:</b></td>
+                        <td>{{ detEncontrado.strDiscoAsignacionProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>LIDER DE CUADRILLA:</b></td>
+                        <td>{{ detEncontrado.nombreLiderCuadrillaProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>CONDUCTOR A REEMPLAZAR:</b></td>
+                        <td>{{ detEncontrado.strConductorAReemplazarAsignacionProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>ASIGNACI&Oacute;N PROVISIONAL:</b></td>
+                        <td>{{ detEncontrado.strConductorReemplazoAsignacionProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>MOTIVO:</b></td>
+                        <td>{{ detEncontrado.strMotivoAsignacionProvisionalHisto }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>FECHA / HORA</b></td>
+                        <td>{{ detEncontrado.strFechaHoraAsignacionProvisionalHisto }}</td>
+                    </tr>
+                </tbody>       
+                </table> 
+            </div>
+            <br/><br/>
+        {%endfor%} 
+
+    </body>
+</html>
+

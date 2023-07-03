@@ -1,0 +1,217 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGridIntegrantes       = "{{ path('admicuadrilla_gridIntegrantes') }}";
+        var intIdCuadrilla              = "{{ cuadrilla.id }}";
+        var strNombreArea               = "{{ strNombreArea }}";
+        var strUrlEmpleadosDepartamento = "{{ path('jefes_getEmpleados') }}";
+        var intIdJefeSeleccionado       = "{{ intIdJefeSeleccionado }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCuadrilla/show.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Cuadrilla</h1>
+</div>
+<div class="body_content">
+    <table class="formulario" style="width: 100%">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Nombre Cuadrilla:</b></td>
+                <td width="15%">{{ cuadrilla.nombreCuadrilla }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Estado:</b></td>
+                <td>{{ strEstado }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            </tr>
+            {% if strHoraInicio!='' and strHoraFin!='' %}
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Hora de Inicio:</b></td>
+                <td width="15%">{{ strHoraInicio }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Hora de Fin:</b></td>
+                <td>{{ strHoraFin }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>{{ labelAPresentar }}</b></td>
+                <td>
+                    {% if labelAPresentar == "Zona:" %}
+                        {{ objetoAPresentar.nombreZona }}
+                    {% else %}
+                        {{ objetoAPresentar.nombreTarea }}
+                    {% endif %}
+                </td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Departamento:</b></td>        
+                <td width="15%">{{ departamento.nombreDepartamento }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Tipo de Activo Fijo Asignado:</b></td>
+                <td>{{ tipoActivoAsignado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Placa de Activo Fijo Asignado:</b></td>
+                <td width="15%">{{ activoAsignado }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Chofer Predefinido:</b></td>
+                <td>{{ choferPredefinido }}</td>        
+                <td width="1%"></td>
+                
+                <td width="8%">&nbsp;</td>
+                <td width="25%"><b>Chofer Provisional:</b></td>
+                <td width="15%">{{ choferProvisional }}</td>        
+                <td width="1%"></td>
+            </tr>
+            
+            <tr>
+                <td colspan="8" style="height:10px;">&nbsp;</td>
+            </tr>
+            {% if cuadrilla.estado == "Prestado" %}
+                <tr>
+                    <td width="8%">&nbsp;</td>
+                    <td width="25%"><b>Coordinador Principal:</b></td>
+                    <td>{{ coordinadorPrincipal }}</td>        
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <td width="25%"><b>Coordinador del Pr&eacute;stamo:</b></td>
+                    <td>{{ coordinadorPrestado }}</td>        
+                    <td width="1%"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:20px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="8%">&nbsp;</td>
+                    <td width="25%"><b>Fecha del Pr&eacute;stamo:</b></td>
+                    <td>{{ fechaPrestamo }}</td>        
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <td width="25%">&nbsp;</td>
+                    <td>&nbsp;</td>        
+                    <td width="1%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:20px;">&nbsp;</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><div align="center" id="gridIntegrantes"></div></td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admicuadrilla') }}">Ver listado de Cuadrillas</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ cuadrilla.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ cuadrilla.feCreacion | date("d M Y") }}</td>
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ cuadrilla.feCreacion | date("H:i:s") }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        {% if is_granted('ROLE_170-2') %}
+            <li>
+                <a class="button-nuevo-registro" href="{{ path('admicuadrilla_new') }}">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                    &nbsp;Nueva Cuadrilla
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            &nbsp;
+        </li>
+        {% if is_granted('ROLE_170-4') %}
+            {% if cuadrilla.estado == 'Activo' %}
+                <li>
+                    <a class="button-editar" href="{{ path('admicuadrilla_edit', { 'id': cuadrilla.id }) }}">
+                        &nbsp;Editar Cuadrilla
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}
+
+
+{% block javascripts_footer%}
+    <script> </script>
+{% endblock javascripts_footer%}

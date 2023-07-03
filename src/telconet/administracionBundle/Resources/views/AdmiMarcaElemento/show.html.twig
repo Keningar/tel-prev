@@ -1,0 +1,136 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Marca Elemento</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Nombre Marca:</th>
+                <td width="15%">{{ marcaelemento.nombreMarcaElemento }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Descripci&oacute;n Marca</th>        
+                <td width="15%">{{ marcaelemento.descripcionMarcaElemento }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Estado:</th>
+                <td width="15%">{{ marcaelemento.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"></th>        
+                <td width="15%"></td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admimarcaelemento') }}">
+                    Regresar
+            </a>
+        </span>
+    </p>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ marcaelemento.usrCreacion }}</td>
+
+              {% if(marcaelemento.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ marcaelemento.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(marcaelemento.estado=="Eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ marcaelemento.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ marcaelemento.feCreacion | date("d M Y") }}</td>
+
+              {% if(marcaelemento.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ marcaelemento.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(marcaelemento.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ marcaelemento.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ marcaelemento.feCreacion | date("H:i:s") }}</td>
+
+              {% if(marcaelemento.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ marcaelemento.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(marcaelemento.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ marcaelemento.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+		{% if is_granted('ROLE_118-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admimarcaelemento_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nueva Marca
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_118-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admimarcaelemento_edit', { 'id': marcaelemento.id }) }}">
+                
+                &nbsp;Editar Marca
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_118-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admimarcaelemento_delete', { 'id': marcaelemento.id }) }}">
+                
+                &nbsp;Eliminar Marca
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

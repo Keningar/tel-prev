@@ -1,0 +1,63 @@
+configuracionRutasBackbone:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:index" }
+
+configuracionRutasBackbone_agregarElemento:
+    pattern:  /agregarElemento
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:agregarElemento" }
+
+configuracionRutasBackbone_cargarInformacion:
+    pattern:  /cargarInformacion
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:cargarInformacion" }
+
+configuracionRutasBackbone_factibilidad:
+    pattern:  /factibilidad
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:factibilidad" }
+
+configuracionRutasBackbone_equipo:
+    pattern:  /equipo
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:equipo" }
+
+configuracionRutasBackbone_agregarManga:
+    pattern:  /agregarManga
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:agregarManga" }
+
+configuracionRutasBackbone__showEnlace:
+    pattern:  /showEnlace
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:showEnlace" }
+
+configuracionRutasBackbone__ExcelRutas:
+    pattern:  /ExcelRutas
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:ExcelRutas" }
+    
+configuracionRutasBackbone__ProcesarArchivo:
+    pattern:  /procesarArchivo
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:procesarArchivo" }
+
+configuracionRutasBackbone__getInterfaces:
+    pattern:  /buscarInterfacesPorElemento
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:buscarInterfacesPorElemento" }
+
+configuracionRutasBackbone__getTramos:
+    pattern:  /getTramos
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:getTramos" }
+
+configuracionRutasBackbone__getElementos:
+    pattern:  /getElementos
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:buscarElementoPorNombre" }
+
+configuracionRutasBackbone__getTramoSiguiente:
+    pattern:  /getTramoSiguiente
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:buscarTramoSiguiente" }
+
+configuracionRutasBackbone__getTipoRuta:
+    pattern:  /getTipoRuta
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:getTipoRuta" }
+
+configuracionRutasBackbone__actualizarHilo:
+    pattern:  /actualizarHilos
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:actualizarHilos" }
+
+configuracionRutasBackbone__ajaxGetEncontrados:
+    pattern:  /ajaxGetEncontrados
+    defaults: { _controller: "administracionBundle:ConfiguracionRutasBackbone:ajaxGetEncontrados" }

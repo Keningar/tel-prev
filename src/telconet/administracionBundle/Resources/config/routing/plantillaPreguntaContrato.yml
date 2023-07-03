@@ -1,0 +1,55 @@
+admi_plantillapregcontr:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiEnunciados:index" }
+
+
+admi_plantillapregcontr_guardarClausulas:
+    pattern:  /guardarClausulas
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:guardarClausulas"}
+    
+admi_plantillapregcontr_gridClausulas:
+    pattern:  /gridClausulas
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:gridClausulas"}
+
+admi_plantillapregcontr_editarClausulas:
+    pattern:  /editarClausulas/{intIdenunciado}
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:edit"}
+
+admi_plantillapregcontr_eliminarEnunciado:
+    pattern:  /eliminarEnunciado
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:eliminarEnunciado"}
+
+admi_plantillapregcontr_datosIniciales:
+    pattern:  /datosIniciales
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:datosIniciales"}
+
+admi_plantillapregcontr_actualizarEnunciado:
+    pattern:  /actualizarEnunciado
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:actualizarEnunciado"}
+
+
+
+
+
+
+
+
+
+admi_plantillapregcontr_guardar:
+    pattern:  /guardarEncBanc
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:guardarEncBanc"}
+
+
+admi_plantillapregcontr_actualizarEstadoClausula:
+    pattern:  /actualizarEstadoClausula
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:actualizarEstadoClausula"}
+
+
+admi_plantillapregcontr_getPreguntas:
+    pattern:  /getPreguntas
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:getPreguntas"}
+
+
+admi_plantillapregcontr_obtenerInformacionCliente:
+    pattern:  /obtenerInformacionCliente
+    defaults: { _controller: "administracionBundle:AdmiPreguntasContrato:obtenerInformacionCliente"}

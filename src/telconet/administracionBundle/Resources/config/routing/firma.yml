@@ -1,0 +1,17 @@
+firma:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:Firma:index" }
+
+firma_upload:
+    pattern: /upload
+    defaults: { _controller: "administracionBundle:Firma:upload" }
+    requirements: { _method: POST }
+
+firma_delete:
+    pattern:  /delete
+    defaults: { _controller: "administracionBundle:Firma:delete" }
+    
+firma_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:Firma:grid"}
+    

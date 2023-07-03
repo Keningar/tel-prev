@@ -1,0 +1,75 @@
+elementogateway:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:ElementoGateway:index" }
+
+elementogateway_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:ElementoGateway:show" }
+
+elementogateway_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:ElementoGateway:new" }
+
+elementogateway_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:ElementoGateway:create" }
+    requirements: { _method: POST}
+    
+elementogateway_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:ElementoGateway:edit" }
+
+elementogateway_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:ElementoGateway:update" }
+    requirements: { _method: POST }
+    
+elementogateway_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:ElementoGateway:delete" }
+
+elementogateway_habilitar:
+    pattern:  /habilitar
+    defaults: { _controller: "administracionBundle:ElementoGateway:habilitar" }
+    requirements: { _method: post }
+    
+elementogateway_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:ElementoGateway:deleteAjax" }
+    requirements: { _method: post }
+
+elementogateway_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:ElementoGateway:grid"}
+    
+elementogateway_gridSaldos:
+    pattern:  /gridSaldos
+    defaults: { _controller: "administracionBundle:ElementoGateway:gridSaldos"}
+    
+elementogateway_exportar:
+    pattern:  /exportar
+    defaults: { _controller: "administracionBundle:ElementoGateway:exportarConsulta"} 
+    
+elementogateway_exportarSaldos:
+    pattern:  /exportarSaldos
+    defaults: { _controller: "administracionBundle:ElementoGateway:exportarConsultaSaldos"}
+    
+elementogateway_enviarReporteSaldos:
+    pattern:  /enviarReporteSaldos
+    defaults: { _controller: "administracionBundle:ElementoGateway:enviarReporteSaldos"}    
+    
+elementogateway_getSaldos:
+    pattern:  /getSaldos
+    defaults: { _controller: "administracionBundle:ElementoGateway:getSaldos"}     
+
+elementogateway_getmarcaelemento:
+    pattern:  /getMarcaElemento
+    defaults: { _controller: "administracionBundle:ElementoGateway:getMarcaElemento"}
+    
+elementogateway_getnombreempresa:
+    pattern:  /getEmpresas
+    defaults: { _controller: "administracionBundle:ElementoGateway:getEmpresas"}
+    
+elementogateway_getinterfaceelemento:
+    pattern:  /{id}/getInterfaceElementos
+    defaults: { _controller: "administracionBundle:ElementoGateway:getInterfaceElementos"}

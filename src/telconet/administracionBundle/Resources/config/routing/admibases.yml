@@ -1,0 +1,47 @@
+com_admibases:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiBases:index" }
+
+com_admibases_show:
+    pattern:  /{intId}/show
+    defaults: { _controller: "administracionBundle:AdmiBases:show" }
+
+com_admibases_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiBases:new" }
+
+com_admibases_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiBases:create" }
+    requirements: { _method: POST }
+    
+com_admibases_edit:
+    pattern:  /{intId}/edit
+    defaults: { _controller: "administracionBundle:AdmiBases:edit" }
+
+com_admibases_update:
+    pattern:  /{intId}/update
+    defaults: { _controller: "administracionBundle:AdmiBases:update" }
+    requirements: { _method: POST }
+    
+com_admibases_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiBases:grid"}
+
+com_admibases_verificarBase:
+    pattern:  /verificarBase
+    defaults: { _controller: "administracionBundle:AdmiBases:verificarBase"}
+    
+com_admibases_delete:
+    pattern:  /{intId}/delete
+    defaults: { _controller: "administracionBundle:AdmiBases:delete" }
+    
+com_admibases_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiBases:deleteAjax" }
+    requirements: { _method: post }
+
+com_admibases_masivoAjax:
+    pattern:  /masivoAjax
+    defaults: { _controller: "administracionBundle:AdmiBases:masivoAjax" }
+    requirements: { _method: POST }

@@ -1,0 +1,105 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiMotivo/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Editar Motivo</h1>
+    </div>
+
+    <div class="body_content">
+        <form id='form_edit_proceso' action="{{ path('admimotivo_update', { 'id': motivo.id }) }}" method="post" 
+              class="formulario" onsubmit="return validarFormulario();">            
+
+            <div>
+                <label>* Modulo:</label>
+                <div id='combo_modulo' required="true">{% if relacionsistema.nombre_modulo %}{{ relacionsistema.nombre_modulo }}{% else %}&nbsp;&nbsp;&nbsp;{% endif %}</div>
+            </div>
+			<br/>
+            <div>
+                <label>* Item Menu:</label>
+                <div id='combo_item' required="true">{% if relacionsistema.nombre_itemmenu %}{{ relacionsistema.nombre_itemmenu }}{% else %}&nbsp;&nbsp;&nbsp;{% endif %}</div>
+            </div>
+			<br/>
+            <div>
+                <label>* Accion:</label>
+                <div id='combo_accion' required="true">{% if relacionsistema.nombre_accion %}{{ relacionsistema.nombre_accion }}{% else %}&nbsp;&nbsp;&nbsp;{% endif %}</div>
+            </div>
+            <br/><br/>
+
+            <div id="grid"></div>
+            <input type="hidden" name="motivos" id="motivos" value="" />
+            <input type="hidden" name="relacionsistema_id" id="relacionsistema_id" value="{{ relacionsistema.id_relacionsistema }}" />
+            <input type="hidden" name="escogido_modulo_id" id="escogido_modulo_id" value="{{ relacionsistema.id_modulo }}" />
+            <input type="hidden" name="escogido_itemmenu_id" id="escogido_itemmenu_id" value="{{ relacionsistema.id_itemmenu }}" />
+            <input type="hidden" name="escogido_accion_id" id="escogido_accion_id" value="{{ relacionsistema.id_accion }}" />
+            <input type="hidden" name="escogido_nombre_modulo" id="escogido_nombre_modulo" value="{{ relacionsistema.nombre_modulo }}" />
+            <input type="hidden" name="escogido_nombre_itemmenu" id="escogido_nombre_itemmenu" value="{{ relacionsistema.nombre_itemmenu }}" />
+            <input type="hidden" name="escogido_nombre_accion" id="escogido_nombre_accion" value="{{ relacionsistema.nombre_accion }}" />
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('admimotivo') }}">
+                            cancelar
+                        </a>
+                    </span>
+                </p>
+            </div>
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() {  
+            var modulo = {{ relacionsistema.id_modulo }};
+            var itemmenu = {{ relacionsistema.id_itemmenu }};
+            var accion = {{ relacionsistema.id_accion }};
+            
+            gridMotivos.down('#addButton').setDisabled(false);
+            storeMotivos.proxy.extraParams = { id_accion: accion, 
+                                                id_modulo: modulo, 
+                                                id_itemmenu: itemmenu
+                                             };
+            storeMotivos.load({params: {}});    
+        });
+    </script>	
+{% endblock javascripts_footer%}

@@ -1,0 +1,62 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+<link href="{{ asset('public/js/kendo2012_1/source/styles/kendo.common.css') }}" type="text/css" rel="stylesheet" />
+<link href="{{ asset('public/js/kendo2012_1/source/styles/kendo.default.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+<script src="{{ asset('public/js/kendo2012_1/js/jquery.min.js') }}" type="text/javascript"></script> 
+<script src="{{ asset('public/js/kendo2012_1/js/kendo.web.min.js') }}" type="text/javascript"></script> 
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Tipo Medio</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_tipo_medio' action="{{ path('admitipomedio_update', { 'id': tipo.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario">
+        {{ form_widget(edit_form) }}
+        <div class="buttons">
+            <p>
+                <button class="button-crud" type='button' onClick='grabar()' >Guardar</button>
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('admitipomedio') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+<script>
+    var validatable = $("#form_edit_tipo_medio").kendoValidator().data("kendoValidator");	
+    function grabar()
+    {
+        if (validatable.validate())
+        {
+            document.forms[0].submit();
+        }
+    }
+    </script>
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

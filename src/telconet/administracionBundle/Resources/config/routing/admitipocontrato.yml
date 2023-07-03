@@ -1,0 +1,38 @@
+admitipocontrato:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:index" }
+
+admitipocontrato_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:show" }
+
+admitipocontrato_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:new" }
+
+admitipocontrato_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:create" }
+    requirements: { _method: POST }
+    
+admitipocontrato_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:edit" }
+
+admitipocontrato_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:update" }
+    requirements: { _method: POST }
+    
+admitipocontrato_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:delete" }
+    
+admitipocontrato_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:deleteAjax" }
+    requirements: { _method: post }
+
+admitipocontrato_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoContrato:grid"}

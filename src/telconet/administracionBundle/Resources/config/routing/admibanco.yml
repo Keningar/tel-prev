@@ -1,0 +1,38 @@
+admibanco:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiBanco:index" }
+
+admibanco_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiBanco:show" }
+
+admibanco_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiBanco:new" }
+
+admibanco_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiBanco:create" }
+    requirements: { _method: POST }
+    
+admibanco_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiBanco:edit" }
+
+admibanco_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiBanco:update" }
+    requirements: { _method: POST }
+    
+admibanco_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiBanco:delete" }
+    
+admibanco_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiBanco:deleteAjax" }
+    requirements: { _method: post }
+
+admibanco_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiBanco:grid"}

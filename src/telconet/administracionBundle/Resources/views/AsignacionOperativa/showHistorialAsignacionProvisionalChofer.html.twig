@@ -1,0 +1,48 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/AsignacionVehicular.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGridHistorialAsignacionProvisionalChofer  = "{{ path('asignacionoperativa_gridHistorialAsignacionProvisionalChofer') }}";
+    </script>
+    <script type="text/javascript" src="{{asset('./bundles/administracion/js/AsignacionOperativa/showHistorialAsignacionProvisionalChofer.js?1')}}">
+    </script>
+{% endblock %}
+
+{% block contenido %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Asignaciones Provisionales de Chofer</h1>
+</div>
+<div class="body_content k-content">
+    <form id="formAsignacionesProvisionales" name="formAsignacionesProvisionales" 
+          action="{{ path('asignacionoperativa_exportPDFAsignacionProvisionalChofer') }}">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtro'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="grid"></div></td>
+            </tr>
+        </table>
+    </form>    
+    <br/><br/>
+    
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="cancel-crud" href="{{ path('asignacionoperativa') }}">Regresar</a>
+            </span>
+        </p>
+    </div>	
+</div>
+{% endblock contenido %}
+
+{% block contenido_der %}
+
+{% endblock contenido_der %}

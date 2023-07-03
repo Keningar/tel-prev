@@ -1,0 +1,11 @@
+admiintervalo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiIntervalo:index" }
+
+admiintervalo_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiIntervalo:grid"}
+
+admiintervalo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiIntervalo:deleteAjax" }

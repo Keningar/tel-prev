@@ -1,0 +1,154 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Proveedor Red</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Nombre Proveedor Red:</th>
+                <td width="15%">{{ proveedorRed.nombreProveedorRed }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Descripci&oacute;n Proveedor Red</th>        
+                <td width="15%">{{ proveedorRed.descripcionProveedorRed }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Route Map Ipv4:</th>
+                <td width="15%">{{ proveedorRed.routeMapIpv4 }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Route Map Ipv6</th>              
+                <td width="15%">{{ proveedorRed.routeMapIpv6 }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Ip Neighbor Ipv4:</th>
+                <td width="15%">{{ proveedorRed.ipNeighborIpv4 }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Ip Neighbor Ipv6:</th>
+                <td width="15%">{{ proveedorRed.ipNeighborIpv6 }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Tipo Red:</th>
+                <td width="15%">{{ proveedorRed.tipoRed }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td width="15%">{{ proveedorRed.estado }}</td>        
+                <td width="1%"></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiproveedorred') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ proveedorRed.usrCreacion }}</td>
+
+              {% if(proveedorRed.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ proveedorRed.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(proveedorRed.estado=="Eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ proveedorRed.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ proveedorRed.feCreacion | date("d M Y") }}</td>
+
+              {% if(proveedorRed.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ proveedorRed.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(proveedorRed.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ proveedorRed.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ proveedorRed.feCreacion | date("H:i:s") }}</td>
+
+              {% if(proveedorRed.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ proveedorRed.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(proveedorRed.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ proveedorRed.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+		{% if is_granted('ROLE_124-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiproveedorred_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Proveedor Red
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_124-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admiproveedorred_edit', { 'id': proveedorRed.id }) }}">                
+                &nbsp;Editar Proveedor Red
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_124-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admiproveedorred_delete', { 'id': proveedorRed.id }) }}">                
+                &nbsp;Eliminar Proveedor Red
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

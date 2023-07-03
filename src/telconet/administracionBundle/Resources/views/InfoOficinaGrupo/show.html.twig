@@ -1,0 +1,185 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Oficina</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombre Empresa:</th>
+                <td width="15%">{{ infooficinagrupo.empresaId.nombreEmpresa }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombre Canton:</th>
+                <td width="15%">{{ nombreCanton }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombre Oficina:</th>
+                <td width="15%">{{ infooficinagrupo.nombreOficina }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Direccion Oficina:</th>
+                <td width="15%">{{ infooficinagrupo.direccionOficina }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Telefono Fijo:</th>
+                <td>{{ infooficinagrupo.telefonoFijoOficina }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Extension:</th>
+                <td>{{ infooficinagrupo.extensionOficina }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Fax:</th>
+                <td>{{ infooficinagrupo.faxOficina }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Codigo Postal:</th>
+                <td>{{ infooficinagrupo.codigoPostalOfi }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Es Matriz:</th>
+                <td>{% if infooficinagrupo.esMatriz == 'S' %}SI{% else %}NO{% endif %}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Es Oficina Facturacion:</th>
+                <td>{% if infooficinagrupo.esOficinaFacturacion == 'S' %}SI{% else %}NO{% endif %}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Es Virtual:</th>
+                <td>{% if infooficinagrupo.esVirtual == 'S' %}SI{% else %}NO{% endif %}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Número Estab. SRI:</th>
+                <td>{{ infooficinagrupo.numEstabSri }}</td>       
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ infooficinagrupo.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Territorio:</th>
+                <td>{{ infooficinagrupo.territorio }}</td>  
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('infooficinagrupo') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ infooficinagrupo.usrCreacion }}</td>
+
+              {% if(infooficinagrupo.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ infooficinagrupo.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(infooficinagrupo.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ infooficinagrupo.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ infooficinagrupo.feCreacion | date("d M Y") }}</td>
+
+              {% if(infooficinagrupo.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ infooficinagrupo.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(infooficinagrupo.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ infooficinagrupo.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ infooficinagrupo.feCreacion | date("H:i:s") }}</td>
+
+              {% if(infooficinagrupo.estado=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ infooficinagrupo.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(infooficinagrupo.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ infooficinagrupo.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_39-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('infooficinagrupo_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Oficina
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_39-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('infooficinagrupo_edit', { 'id': infooficinagrupo.id }) }}">
+                &nbsp;Editar Oficina
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_39-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('infooficinagrupo_delete', { 'id': infooficinagrupo.id }) }}">
+                &nbsp;Eliminar Oficina
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

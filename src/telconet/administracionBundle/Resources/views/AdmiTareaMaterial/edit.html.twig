@@ -1,0 +1,112 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiTareaMaterial/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Tarea Material</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('admitareamaterial_update', { 'id': tareamaterial.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario">
+        {{ form_errors(edit_form) }}
+        <div>
+            <label>{{ form_label(edit_form.tareaId) }}</label>
+            <div required="true">{{ form_widget(edit_form.tareaId) }}</div>
+            <div>{{ form_errors(edit_form.tareaId) }}</div>
+        </div>
+
+        <div>
+            <label>* Material:</label>
+            <div id='combo_material' required="true"></div>
+        </div>
+        <input type="hidden" name="escogido_material" id="escogido_material" value="{{ tareamaterial.materialCod }}" />
+        <input type="hidden" name="idValueMaterial" id="idValueMaterial" value="{{ idValueMaterial }}" />
+
+        <div>
+            <label>{{ form_label(edit_form.unidadMedidaMaterial) }}</label>
+            <div required="true">{{ form_widget(edit_form.unidadMedidaMaterial) }}</div>
+            <div>{{ form_errors(edit_form.unidadMedidaMaterial) }}</div>
+        </div>
+
+        <div>
+            <label>{{ form_label(edit_form.costoMaterial) }}</label>
+            <div required="true">{{ form_widget(edit_form.costoMaterial) }}</div>
+            <div>{{ form_errors(edit_form.costoMaterial) }}</div>
+        </div>
+
+        <div>
+            <label>{{ form_label(edit_form.precioVentaMaterial) }}</label>
+            <div required="true">{{ form_widget(edit_form.precioVentaMaterial) }}</div>
+            <div>{{ form_errors(edit_form.precioVentaMaterial) }}</div>
+        </div>
+
+        <div>
+            <label>{{ form_label(edit_form.cantidadMaterial) }}</label>
+            <div required="true">{{ form_widget(edit_form.cantidadMaterial) }}</div>
+            <div>{{ form_errors(edit_form.cantidadMaterial) }}</div>
+        </div>
+
+        <div class="buttons">
+            <p>
+                <input type='submit' class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+					{% if tareaId %}	
+						<a class="cancel-crud" href="{{ path('admitarea_show',{'id' : tareaId }) }}">Cancelar</a>
+					{% else %}
+						<a class="cancel-crud" href="{{ path('admitareamaterial') }}">Cancelar</a>
+					{% endif %}	
+                </span>
+            </p>
+        </div>
+
+        {{ form_rest(edit_form) }}
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() {  
+            var idValueMaterial = "{{ idValueMaterial }}";
+            combo_materiales.setValue(idValueMaterial);
+        });
+    </script>	
+{% endblock javascripts_footer%}

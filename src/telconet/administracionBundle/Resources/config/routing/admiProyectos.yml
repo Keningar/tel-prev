@@ -1,0 +1,39 @@
+com_admiProyectos:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiProyectos:index" }
+    
+com_admiProyectos_show:
+    pattern:  /show/{intIdProyecto}/{strEstado}
+    defaults: { _controller: "administracionBundle:AdmiProyectos:show" }
+
+com_admiProyectos_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiProyectos:new" }
+    requirements: { _method: POST }
+    
+com_admiProyectos_edit:
+    pattern:  /{intIdProyecto}/edit
+    defaults: { _controller: "administracionBundle:AdmiProyectos:edit" }
+
+com_admiProyectos_update:
+    pattern:  /update
+    defaults: { _controller: "administracionBundle:AdmiProyectos:update" }
+    requirements: { _method: POST }
+    
+com_admiProyectos_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiProyectos:grid"}
+
+com_admiProyectos_delete:
+    pattern:  /{intId}/delete
+    defaults: { _controller: "administracionBundle:AdmiProyectos:delete" }
+    
+com_admiProyectos_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiProyectos:deleteAjax" }
+    requirements: { _method: post }
+    
+com_admiProyectos_responsables:
+    pattern:  /getResponsables
+    defaults: { _controller: "administracionBundle:AdmiProyectos:getResponsables" }
+ 

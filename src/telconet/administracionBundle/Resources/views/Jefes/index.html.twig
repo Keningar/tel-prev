@@ -1,0 +1,72 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/Jefes.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+    
+{% block contenido %}
+    {% if is_granted('ROLE_296-6220') %}
+        {% set boolPermiso = 'S' %}
+    {% else %}
+        {% set boolPermiso = 'N' %}
+    {% endif %}            
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/tools1.png') }}" class="imagen-titulo-content">
+        <h1>Listado del Personal</h1>
+    </div>
+    <div class="body_content k-content without-padding">
+        <div id="example" class="k-content">
+            <table cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='criteriosBusqueda'></div>
+                    </td>
+                </tr>	
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='jefes'></div>
+                    </td>
+                </tr>
+            </table>        
+
+            <script>
+                var strUrlGrid                        = "{{ path('jefes_gridListadoEmpleados') }}";
+                var strNombreArea                     = "{{ strNombreArea }}";
+                var strUrlGetJefes                    = "{{ path('jefes_getEmpleados') }}";
+                var strUrlGetCargos                   = "{{ path('jefes_getCargos') }}";
+                var strUrlCambioJefe                  = "{{ path('jefes_cambioJefe') }}";
+                var strAsignarCaracteristica          = "{{ path('jefes_asignarCaracteristica') }}";
+                var strAsignarCoordinadorGeneral      = "{{ path('jefes_asignarCoordinadorGeneral') }}";
+                var strUrlGetTurno                    = "{{ path('jefes_getTurno') }}";
+                var strUrlEliminarTurno               = "{{ path('jefes_deleteTurnoAjax') }}";
+                var strCaracteristicaCargo            = "{{ strCaracteristicaCargo }}";
+                var strCaracteristicaMetaBruta        = "{{ strCaracteristicaMetaBruta }}";
+                var strCaracteristicaMetaActiva       = "{{ strCaracteristicaMetaActiva }}";
+                var strUrlVerificarEmpleadosAEliminar = "{{ path('jefes_verificarEmpleadosAEliminar') }}";
+                var strPrefijoEmpresa                 = "{{ strPrefijoEmpresa }}";
+                var boolPermiso                       = "{{ boolPermiso }}";
+            </script>
+
+            {% if strNombreArea == 'Comercial' %}
+                <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/index.js?6') }}"></script>
+            {% elseif strNombreArea == 'Tecnico' %}
+                <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/indexJefesTecnico.js?4') }}"></script>
+            {% endif %}
+                
+            <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/funciones.js?2') }}"></script>
+            
+            <form method="post" action="{{ path('jefes_asignarEmpleados') }}" id="form-asignarEmpleados" name="form-asignarEmpleados">
+                <input type="hidden" name="itemStrCargo" id="itemStrCargo" />
+                <input type="hidden" name="itemStrCargoNaf" id="itemStrCargoNaf" />
+                <input type="hidden" name="itemStrMetaBruta" id="itemStrMetaBruta" />
+                <input type="hidden" name="itemStrMetaActiva" id="itemStrMetaActiva" />
+                <input type="hidden" name="itemIntIdCargoTelcos" id="itemIntIdCargoTelcos" />
+                <input type="hidden" name="itemIntMetaActivaValor" id="itemIntMetaActivaValor" />
+                <input type="hidden" name="itemIntIdPersonaEmpresaRol" id="itemIntIdPersonaEmpresaRol" />
+                <input type="hidden" name="itemStrNombreArea" id="itemStrNombreArea" value="{{ strNombreArea }}" />
+                <input type="hidden" name="itemStrEsAsistente" id="itemStrEsAsistente" />
+            </form>
+        </div>
+    </div>
+{% endblock contenido %}

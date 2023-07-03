@@ -1,0 +1,25 @@
+feriados:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiFeriados:index" }
+
+feriados_new:
+    pattern:  new
+    defaults: { _controller: "administracionBundle:AdmiFeriados:new" }
+
+feriados_gridFeriados:
+    pattern:  grid
+    defaults: { _controller: "administracionBundle:AdmiFeriados:grid" }
+
+feriados_save:
+    pattern:  save
+    defaults: { _controller: "administracionBundle:AdmiFeriados:save" }
+
+feriados_edit:
+    pattern:  /{intIdFeriados}/edit
+    defaults: { _controller: "administracionBundle:AdmiFeriados:edit" }
+
+feriados_show:
+    pattern:  /{intIdFeriados}/show
+    defaults: { _controller: "administracionBundle:AdmiFeriados:show" }
+
+

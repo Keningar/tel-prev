@@ -1,0 +1,3 @@
+admicantonjurisdiccion_getCantonesJurisdicciones:
+    pattern:  /{id}/getCantonesJurisdicciones
+    defaults: { _controller: administracionBundle:AdmiCantonJurisdiccion:getCantonesJurisdicciones }

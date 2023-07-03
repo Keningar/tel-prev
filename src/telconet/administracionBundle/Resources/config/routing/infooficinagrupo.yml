@@ -1,0 +1,50 @@
+infooficinagrupo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:index" }
+
+infooficinagrupo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:show" }
+
+infooficinagrupo_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:new" }
+
+infooficinagrupo_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:create" }
+    requirements: { _method: POST }
+    
+infooficinagrupo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:edit" }
+
+infooficinagrupo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:update" }
+    requirements: { _method: POST }
+    
+infooficinagrupo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:delete" }
+    
+infooficinagrupo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:deleteAjax" }
+    requirements: { _method: post }
+
+infooficinagrupo_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:grid"}
+
+infooficinagrupo_ajaxDatosEmpresa:
+    pattern:  /ajaxDatosEmpresa
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:ajaxDatosEmpresa"}
+
+infooficinagrupo_getOficinasByPrefijoEmpresaJson:
+    pattern:  /getOficinasByPrefijoEmpresa
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:getOficinasByPrefijoEmpresaJson"}
+
+infooficinagrupo_getOficinasPrincipalesByPrefijoEmpresaJson:
+    pattern:  /getOficinasPrincipalesByPrefijoEmpresa
+    defaults: { _controller: "administracionBundle:InfoOficinaGrupo:getOficinasPrincipalesByPrefijoEmpresaJson"}

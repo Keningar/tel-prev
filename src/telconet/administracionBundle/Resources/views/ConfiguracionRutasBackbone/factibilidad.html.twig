@@ -1,0 +1,261 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}
+	<script>
+		var strUrlGetTipoRuta           = '{{path('admitipoelemento_getTiposElementosRuta')}}';
+		var url_getEncontrados          = '{{path('elementoRutas_ajaxGetEncontrados')}}';   
+		var strUrlGetModelo             = '{{path('admimodeloelemento_getModelosElementosPorMarca')}}';
+
+		var urlTipoElementosRuta        = '{{path('elementoRutas_getTipoElementoRuta')}}';
+		
+		var url_claseTipoMedio          = '{{path('admiclasetipomedio_getEncontrados')}}';
+		var urlBuscarElemento           = '{{path('elementoRutas_ajaxBuscarElemento')}}';
+		var url_getElementoB            = '{{path('elementoposte_ajaxCargarElementos')}}';
+		var url_getTramos               = '{{path('elementoRutas_getTramos')}}';
+		var url_EditTramo               = '{{path('elementoRutas_ajaxEditTramo')}}';
+		var url_addTramo                = '{{path('elementoRutas_ajaxAddTramo')}}';
+	</script>
+
+	<script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    {# <script type="text/javascript" src="{{ asset('public/js/Datatables/editor/datatables.min.js') }}"></script> #}
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.buttons.min.js') }}"></script>
+    {# <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.editor.min.js') }}"></script> #}
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/buttons.html5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/jszip.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/pdfmake.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/vfs_fonts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}" ></script>  
+
+
+	<script type="text/javascript" src="{{ asset('./bundles/administracion/js/ConfiguracionRutasBackbone/index.js') }}"></script>
+   
+    
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" /> 
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img alt="titulo" src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Factibilidad</h1>
+</div>
+<div class="body_content k-content">
+	<form>
+		  <div class="row">
+            <div class="col-md">
+                <div>
+                    <br/>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <button type="button" class="btn btn-outline-info btn-sm collapsed" data-toggle="collapse" aria-expanded="false" 
+                                            data-target="#contenedor_busqueda">Criterios de Búsqueda <em class="fa fa-angle-down"></em></button>   
+                                </li>
+                                <li>&nbsp;&nbsp;</li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>                    
+                <div id="contenedor_busqueda" class="collapse">
+                    <form><br />
+						<div class="form-group row align-items-start">
+                            <div class="form-group col-sm-1">
+                              <label for="rutaAgregar" class="col-sm-2 col-form-label">Producto:</label>
+                            </div>                             
+                            <div class="form-group col-sm-5">                                
+                                <select class="form-control" id="rutaAgregar" required>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Campo Requerido
+                                </div>
+                            </div>                                                      
+                        </div>
+						<div class="form-group row align-items-start">
+                            <div class="form-group col-sm-1">
+                              <label for="banco_cuenta" class="col-sm-2 col-form-label">Tipo Elemento inicio:</label>
+                            </div>                             
+                            <div class="form-group col">                                
+                                <select class="form-control" id="tipoElementoPasivo" required>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Campo Requerido
+                                </div>
+                            </div> 
+                            <div class="form-group col-sm-1">
+                                <label for="fecha_desdecmb">Tipo Elemento fin:</label>
+                            </div>
+                            <div class="form-group col">
+                                <select class="form-control" id="tipoElementoActivo" required>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Campo Requerido
+                                </div>
+                            </div>                          
+                        </div>
+                        <div class="form-group row align-items-start">
+                            <div class="form-group col-sm-1">
+                              <label for="banco_cuenta" class="col-sm-2 col-form-label">Elemento Inicio:</label>
+                            </div>                             
+                            <div class="form-group col">                                
+                                <select class="form-control" id="tipoElementoPasivo" required>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Campo Requerido
+                                </div>
+                            </div> 
+                            <div class="form-group col-sm-1">
+                                <label for="fecha_desdecmb">Elemento Fin:</label>
+                            </div>
+                            <div class="form-group col">
+                                <select class="form-control" id="tipoElementoActivo" required>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Campo Requerido
+                                </div>
+                            </div>                          
+                        </div>
+                        <div class="form-group row align-items-start">
+                            <div class="form-group col-sm-1">
+                              <label for="banco_cuenta" class="col-sm-2 col-form-label">Cassete Inicio:</label>
+                            </div>                             
+                            <div class="form-group col">                                
+                                <select class="form-control" id="tipoElementoPasivo" required>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Campo Requerido
+                                </div>
+                            </div> 
+                            <div class="form-group col-sm-1">
+                                <label for="fecha_desdecmb">Cassete Final:</label>
+                            </div>
+                            <div class="form-group col">
+                                <select class="form-control" id="tipoElementoActivo" required>
+                                </select>
+                                <div class="invalid-feedback">
+                                  Campo Requerido
+                                </div>
+                            </div>                          
+                        </div>
+						<div class="row m-2">
+							<div class="col-md-4 offset-md-5">
+								<button type="button" class="btn btn-secondary btn-sm" id="limpiar_formulario">
+									<em class="fa fa-paint-brush"></em> Limpiar
+								</button>&nbsp;                                
+								<button type="button" class="btn btn-info btn-sm" id="buscar_pag_aut_det"><em class="fa fa-search"></em> Buscar</button>
+							</div>
+						</div>                                                 
+                    </form>              
+                </div>
+            </div>
+        </div>  
+	</form>
+	<div id="titulo_content">
+	    <h3>Enlaces</h3>
+    </div>
+	<div style = "height: 450px;"> 
+		<table class="table table-striped table-bordered compact" id="infoPagoDetPre" name="infoPagoDetPre" style="width:100%;">
+
+			<thead class="thead-light">
+
+				<th><strong>Hilo</strong></th>
+
+				<th><strong>Color</strong></th> 
+
+				<th ><strong>Elemento Inicio</strong></th>
+
+				<th ><strong>Puerto Elemento Inicio</strong></th>
+				
+				<th><strong>Elemento Fin</strong></th> 
+
+				<th><strong>Puerto Elemento Fin</strong></th>
+
+                <th><strong>Acciones</strong></th>  
+
+			</thead>
+		   <tbody class="infoPagoDetPre">
+		   </tbody>
+		   <tfoot>
+			     <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" id='datos' data-toggle="modal" data-target="#staticBackdrop">
+                            <em class="fa fa-eye"></em>
+                        </a>  
+                    </td> 
+                </tr>
+		   </tfoot>                  
+	   </table>                         
+	</div>  
+</div>
+  <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn" id='cerrar' data-dismiss="modal">
+                    <em class="fa fa-times"></em>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped table-bordered compact" id="infoPagoDetPre" name="infoPagoDetPre" style="width:100%;">
+
+                    <thead class="thead-light">
+
+                        <th><strong>Elementos</strong></th>
+
+                        <th><strong>PUERTO OUT</strong></th> 
+
+                        <th ><strong>PUERTO IN</strong></th>
+
+                        <th ><strong>Jurisdiccion</strong></th>
+                        
+                        <th><strong>BUFFER</strong></th> 
+
+                    </thead>
+                <tbody class="infoPagoDetPre">
+                </tbody>
+                <tfoot>
+                        <tr>
+                          
+                        </tr>
+                </tfoot>                  
+            </table>  
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+		<li>
+            <a href="{{ path('configuracionRutasBackbone_agregarElemento') }}">Agregar Elemento</a>
+        </li>
+		<li>
+            <a href="{{ path('configuracionRutasBackbone_cargarInformacion') }}">Cargar información</a>    
+        </li>
+        <li>
+            <a href="{{ path('configuracionRutasBackbone') }}">Consulta de hilos</a>    
+        </li>
+    </ul>
+{% endblock contenido_der %}

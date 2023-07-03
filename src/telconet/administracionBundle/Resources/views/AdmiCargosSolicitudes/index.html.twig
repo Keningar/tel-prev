@@ -1,0 +1,33 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./public/css/progressBar.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCargosSolicitudes/index.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./public/js/progressBar.js?1') }}"></script>
+            <script>
+                var strUrlSetRangos                  = "{{ path('com_admiCargosSolicitudes_setRangos') }}";
+                var strUrlEmpleadosDepartamentCiudad = '{{ path("infocaso_getEmpleadosPorDepartamentoCiudad") }}';
+                var strUrlNombresCompletos           = '{{ path("infocaso_getPersonaPorLogin") }}';
+                var strUrlSetPersonaAuxiliar         = '{{ path("com_admiCargosSolicitudes_setPersonaAuxiliar") }}';
+                var strUrlSetEliminarAuxiliar        = '{{ path("com_admiCargosSolicitudes_setEliminarAuxiliar") }}';
+            </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Administración de Cargos</h1>
+</div>
+<div class="body_content k-content">
+    <table width="800" cellpadding="1" cellspacing='0'  border='0'>
+        <tr bgcolor='#ffffff'>
+            <td bgcolor='#ffffff'><div id='grid'></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_izq %}

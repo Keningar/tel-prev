@@ -1,0 +1,3 @@
+admitecnologia_getTecnologias:
+    pattern:  /getTecnologias
+    defaults: { _controller: administracionBundle:AdmiTecnologia:getTecnologias }

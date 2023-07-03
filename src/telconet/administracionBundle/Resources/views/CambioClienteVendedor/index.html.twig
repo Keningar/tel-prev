@@ -1,0 +1,51 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+    <link href="{{ asset('./public/js/ext-4.1.1/examples/ux/css/ItemSelector.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        .button-cambiovendedor-guardar {
+            background-image: url('/public/images/icon_success.png');
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            height: 8px;
+            width: 8px;
+        }
+        .button-cambiovendedor-reset {
+            background-image: url('/public/images/icon_warning.png');
+            background-repeat: no-repeat !important;
+            background-position: -7px -8px !important;
+            height: 8px;
+            width: 8px;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+    <script>
+        var urlVendedores = '{{path('infopunto_ajax_lista_vendedores')}}';
+        var urlRazonSocial = '{{path('cambioClienteVendedor_getClientesPorVendedorAjax')}}';
+        var urlCrearSolicitudCambioVendedor = '{{path('cambioClienteVendedor_crearSolicitudCambioVendedorAjax')}}';
+    </script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/CambioClienteVendedor/index.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Cambio de vendedor masivo por cliente</h1>
+    </div>
+    <div class="body_content k-content" style="clear:both; overflow:auto;">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0' style="clear:both; overflow:auto;">
+            <tr>
+                <td>
+                    <div id="body_content" style="clear:both; overflow:auto;">
+                        <div id="itemselector" style="clear:both; overflow:auto;"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock contenido_izq %}

@@ -1,0 +1,67 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/Jefes.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block contenido %} 
+    <div id="titulo_content" class="titulo_interno">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Asignar Personal Externo</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+
+    <div class="body_content" style="margin:0px!important;">
+        
+        {% if error is defined %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form action="" method="post" id="formulario" class="formulario filtro-content"  onsubmit="return validarFormulario();">
+            <div>
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <div id = "divCmbCargosEmpleados"></div>
+                            <br/>
+                            <div id='filtroEmpleadosDepartamento'></div>
+                            <br/>
+                            <div id="gridEmpleadosDepartamento"></div>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <input name="btn1" type="button" value="Agregar" class="button-crud" id="agregar" onClick="asignarEmpleado();" 
+                                   style="width: 12em !important;"/>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td valign="top">
+                            <div id='filtroEmpleadosAsignados'></div>
+                            <br/>
+                            <div id="gridEmpleadosAsignaciones"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+{% endblock contenido %} 
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var strNombreArea                     = "{{ strNombreArea }}";
+        var strUrlGetCargos                   = "{{ path('jefes_getCargos') }}";
+        var strPrefijoEmpresa                 = "{{ strPrefijoEmpresa }}";
+        var strCaracteristicaCargo            = "{{ strCaracteristicaCargo }}";
+        var strAsignarCaracteristica          = "{{ path('jefes_asignarCaracteristica') }}";
+        var strUrlEmpleadosDepartamento       = "{{ path('jefes_getEmpleados') }}";
+        var strUrlVerificarEmpleadosAEliminar = "{{ path('jefes_verificarEmpleadosAEliminar') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/asignarPersonalExterno.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/funciones.js') }}"></script>
+{% endblock %}

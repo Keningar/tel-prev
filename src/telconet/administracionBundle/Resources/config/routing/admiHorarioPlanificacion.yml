@@ -1,0 +1,17 @@
+com_admiHorarioPla:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiHorPlaniComer:index" }
+
+com_admiHorarioPla_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiHorPlaniComer:grid"}
+
+
+com_admiHorarioPla_saveCalendario:
+    pattern:  /saveCalendario
+    defaults: { _controller: "administracionBundle:AdmiHorPlaniComer:saveCalendario"}
+
+
+com_admiHorarioPla_inactivarRegistro:
+    pattern:  /inactivarRegistro
+    defaults: { _controller: "administracionBundle:AdmiHorPlaniComer:inactivarRegistro"}    

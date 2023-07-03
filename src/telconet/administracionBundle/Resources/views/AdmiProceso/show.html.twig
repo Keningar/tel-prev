@@ -1,0 +1,166 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiProceso/show.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Proceso</h1>
+</div>
+<div class="body_content">
+    <table class="formulario" >
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"><b>Nombre Proceso Padre:</b></th>
+                <td width="15%">{% if proceso.procesoPadreId %}{{ proceso.procesoPadreId.nombreProceso }}{% else %}N/A{% endif %}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%"><b>Aplica Estado:</b></th>        
+                <td width="15%">{% if proceso.aplicaEstado %}{{ proceso.aplicaEstado }}{% else %}N/A{% endif %}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <td colspan="6"><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"><b>Nombre Proceso:</b></th>
+                <td width="15%">{{ proceso.nombreProceso }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%"><b>Descripci&oacute;n Proceso:</b></th>        
+                <td width="15%">{{ proceso.descripcionProceso }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <td colspan="6"><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> Estado:</b></th>
+                <td>{{ proceso.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> Es Visible:</b></th>
+                <td>{{ proceso.visible }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <td colspan="6"><br/><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <td colspan="6"><div id="grid"></div></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiproceso') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ proceso.usrCreacion }}</td>
+
+              {% if(proceso.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ proceso.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(proceso.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ proceso.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ proceso.feCreacion | date("d M Y") }}</td>
+
+              {% if(proceso.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ proceso.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(proceso.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ proceso.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ proceso.feCreacion | date("H:i:s") }}</td>
+
+              {% if(proceso.estado|lower=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ proceso.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(proceso.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ proceso.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_51-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiproceso_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Proceso
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_51-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admiproceso_edit', { 'id': proceso.id }) }}">
+                &nbsp;Editar Proceso
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_51-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admiproceso_delete', { 'id': proceso.id }) }}">
+                &nbsp;Eliminar Proceso
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

@@ -1,0 +1,65 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Oid</h1>
+    </div>
+    <div class="body_content">
+        <form id='form_new_oid' action="{{ path('admioid_create') }}" method="post" {{ form_enctype(form) }} class='formulario' 
+              onsubmit="return grabar();">
+            {{ form_widget(form) }}
+            
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('admioid') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        function grabar()
+        {
+            Ext.MessageBox.wait("Guardando los datos...");
+            
+            return true;
+        }
+        
+        function validarSoloNumerosYPuntos(e)
+        {
+            var k = (document.all) ? e.keyCode : e.which;
+
+            if (k==8 || k==0)
+            {
+                return true;
+            }
+
+            var patron = /[0-9.]/;
+            var n = String.fromCharCode(k);
+
+            return patron.test(n);
+        }
+    </script>	
+{% endblock javascripts_footer%}	

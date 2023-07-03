@@ -1,0 +1,92 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiNumeracion/edit.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Numeracion</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('adminumeracion_update', { 'id': numeracion.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" onsubmit="return validarFormulario();">
+        <div>
+            <label>* Empresa:</label>
+            <div id='combo_empresa' required="true"></div>
+        </div>
+
+        <div>
+            <label>* Oficina:</label>
+            <div id='combo_oficina' required="true"></div>
+        </div>
+
+        <input type="hidden" name="escogido_empresa_id" id="escogido_empresa_id" value="{{ numeracion.empresaId }}" />
+        <input type="hidden" name="escogido_oficina_id" id="escogido_oficina_id" value="{{ numeracion.oficinaId }}" />
+
+        {{ form_widget(edit_form) }}
+        <div class="buttons">
+            <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('adminumeracion') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() {  
+            var empresa = {{ numeracion.empresaId }};
+            var oficina = {{ numeracion.oficinaId }};
+            
+            combo_empresas.setValue(empresa);
+
+            storeOficina.proxy.extraParams = {id_empresa: empresa};
+            storeOficina.load({params: {}});
+
+            combo_oficinas.setValue(oficina);
+        });
+    </script>	
+{% endblock javascripts_footer%}

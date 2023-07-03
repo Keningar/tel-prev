@@ -1,0 +1,11 @@
+cambioClienteVendedor:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:CambioClienteVendedor:index", strNombreArea:Comercial }
+
+cambioClienteVendedor_getClientesPorVendedorAjax:
+    pattern:  /getClientesPorVendedorAjax
+    defaults: { _controller: "administracionBundle:CambioClienteVendedor:getClientesPorVendedorAjax" }
+
+cambioClienteVendedor_crearSolicitudCambioVendedorAjax:
+    pattern:  /crearSolicitudCambioVendedorAjax
+    defaults: { _controller: "administracionBundle:CambioClienteVendedor:crearSolicitudCambioVendedorAjax" }

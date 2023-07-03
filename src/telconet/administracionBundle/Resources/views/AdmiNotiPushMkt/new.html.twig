@@ -1,0 +1,193 @@
+<script type="text/javascript"
+  src="{{
+  asset(
+    './bundles/administracion/js/AdmiNotiPushMkt/new.js?1'
+  )
+  }}"></script>
+<script>
+  var url_pantallas = "{{ path('com_admiNotiPushMkt_pantallas') }}"; 
+  var url_save          = "{{ path('com_admiNotiPushMkt_save') }}";
+</script>
+
+<div class="container">
+  
+  <div class="text-center p-0 mt-0">
+                                <div class="card px-0 pt-0 pb-0 mt-0">
+                                    <div class="row" >
+                                        <div class="col-md-12 mx-0">
+                                            <h5>
+                                               <em class="fa fa-plus-circle"></em> Nueva Campaña
+                                            </h5>
+                                            <form id="msform" >
+                                                <!-- progressbar -->
+                                               <div class="margdiv">
+                                                    <ul id="progressbar" >
+                                                        <li class="active" id="admi"><span>Administración</span></li>
+                                                        <li id="program"><span>Programación</span></li> 
+                                                        <li id="opcAdic"><span>Opciones Adicionales</span></li>
+                                                    </ul>
+                                                </div>
+                                                  
+                                                <!-- fieldsets -->
+                                                <fieldset>
+                                                    <legend></legend>
+                                                    <div class="row overflow-auto" style="height:400px;">
+
+                                                        <div class="col-md-6">
+                                                            <div class="form-card">
+                                                                
+                                                                <div class="form-group">
+                                                                    <label for="tituloNoti">Título de la Notificación *</label>
+                                                                    <input type="text" class="form-control" id="tituloNoti" name="Título de la Notificación" maxlength="100">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="textoNoti">Texto de la Notificación *</label>
+                                                                    <textarea class="form-control" id="textoNoti" name="Texto de la Notificación" rows="2" maxlength="800"></textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="imgNoti">Imagen de la Notificación (opcional)</label>
+                                                                     <div class="input-group">
+                                                                        <input type="url" class="form-control" id="imgNoti" name="Imagen de Notificación">
+                                                                        <div class="input-group-text">
+                                                                            <em class="fa fa-link" aria-hidden="true"></em>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="NombreNoti">Nombre de la Notificación *</label>
+                                                                    <input type="text" class="form-control" id="NombreNoti" name="Nombre Notificacion" maxlength="200">
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="vencimientoNoti">Vencimiento</label>
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <select class="form-control" id="valNum" name="numeros"> </select>
+                                                                        </div >
+                                                                        <div class="col">
+                                                                            <select class="form-control" id="valTiempo" name="expTiempo">
+                                                                                <option selected>Hora</option>
+                                                                            </select>
+                                                                        </div >
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group">
+                                                                    <label for="strPantallas_crear">Notificación redirige a: *</label>
+                                                                    <div>
+                                                                        <select name="Notificación redirige" class="form-select form-control form-control-sm" id="strPantallas_crear" required placeholder="Seleccione"> 
+                                                                        </select>
+                                                                        <em class="fa fa-spinner fa-spin spinner_sect_responsables" ></em>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6" >
+                                                          <div class="form-card">
+                                                                    <div>
+                                                                        <ul class="nav nav-pills nav-fill">
+                                                                            <li class="nav-item ">
+                                                                                <a class="nav-link active" data-toggle="tab">Vista Previa</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                <div class="div_card">
+                                                                    <div class="row" style="margin: 10px;">
+                                                                        <div class="col-md-12" style="text-align: justify; padding-left: 5px;padding-right: 5px;">
+                                                                            <div >
+                                                                                <div id="titulo_view" class="card-text lbl_black_bold" style="width: 100%;"> 
+                                                                                   
+                                                                                </div>
+                                                                                <div id="texto_view" class="card-text" style="width: 100%;">
+                                                                                   
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-12" style="align-self: center; padding-top: 10px;">
+                                                                            <div style="align-self: center;">
+                                                                                <img id="img_view" alt="">
+                                                                             </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <input type="button" id="next1" class="next btn btn-primary" value="Siguiente"/>
+                                                    
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend></legend>
+                                                   <div class="form-card">
+                                                        <div class= "row">
+                                                          
+                                                           <div class="form-group col">
+                                                                <label for="fechaIniVigencia" class="col-sm-12 col-form-label">Fecha Inicio: *
+                                                                </label>
+                                                                <div class="input-group date col-sm-12" id="datetimepickerFechaIniVigencia">
+                                                                    <input type="text" class="form-control" name="Fecha de Inicio" placeholder="Seleccione Fecha"
+                                                                        id="fechaIniVigencia" value ="" required>
+                                                                    <span class="input-group-addon">
+                                                                        <button class="btnFechas btn-outline-secondary button-addon1" type="button" id="button-addon1">
+                                                                            <em class="fa fa-calendar" aria-hidden="true"></em>
+                                                                        </button>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+
+                                                             <div class="form-group col">
+                                                                <label for="hora_ini" class="col-sm-12 col-form-label">Hora Inicio: *</label>
+                                                                <div class="input-group date col-sm-12" id="fechaIniHora">
+                                                                    <input type="text" class="form-control" name="Hora de Inicio" placeholder="Seleccione Hora"
+                                                                        id="hora_ini" required>
+                                                                    <div class="input-group-addon">
+                                                                        <button class="btnFechas btn-outline-secondary" type="button" id="button-horaon1">
+                                                                            <em class="fa fa-clock-o" aria-hidden="true"></em>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
+                                                    <input type="button" name="previous" class="previous btn btn-secondary" value="Regresar"/>
+                                                    <input type="button" id="next2" class="next btn btn-primary" value="Siguiente"/>
+                                                </fieldset>
+                                                <fieldset>
+                                                    <legend></legend>
+                                                    <div class="form-card">
+                                                       <div class="form-group">
+                                                            <div class="check">
+                                                                <input class="styleCheck" type="checkbox" value="" id="checkEnvio"/>
+                                                                <label class="form-check-label" for="checkEnvio">
+                                                                Envío Segmentado
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group" style="margin-left: 1.25rem;" id="divCargaArchivoNew">
+                                                            <label class="form-check-label" for="defaultCheck1">
+                                                               <em class="fa fa-cog" aria-hidden="true"></em>
+                                                                CARGAR ARCHIVO
+                                                            </label> 
+                                                            <div class="alert alert-warning" role="alert" style="margin-top: 1rem;">
+                                                                Estimado usuario, recuerde que sólo puede subir archivos en formato csv
+                                                            </div>
+                                                            <div>
+                                                                <input type="file" class="form-control" id="file-selector" lang="es" accept=".csv"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="button" name="previous" class="previous btn btn-secondary" value="Regresar"/>
+                                                    <input type="button" id="btnSave" class="btn btn-primary" value="Guardar como borrador"/>
+                                                    <input type="button" id="btnPublicar" class="btn btn-success" value="Publicar"/>
+                                                </fieldset>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+</div>

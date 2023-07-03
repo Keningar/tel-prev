@@ -1,0 +1,109 @@
+gestiontaller:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:GestionTaller:index" }
+    
+gestiontaller_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:GestionTaller:grid"}
+    
+gestiontaller_getPlanesMantenimiento:
+    pattern:  /getPlanesMantenimiento
+    defaults: { _controller: "administracionBundle:GestionTaller:getPlanesMantenimiento"}
+
+gestiontaller_getMantenimientosByIdPlanMantenimiento:
+    pattern:  /getMantenimientosByIdPlanMantenimiento
+    defaults: { _controller: "administracionBundle:GestionTaller:getMantenimientosByIdPlanMantenimiento"}
+    
+gestiontaller_getPerAutorizacionOrdenTrabajoTransporte:
+    pattern:  /getPerAutorizacionOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getPerAutorizacionOrdenTrabajoTransporte"}
+    
+gestiontaller_getTareasMantenimientosOCasoTransporte:
+    pattern:  /getTareasMantenimientosOCasoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getTareasMantenimientosOCasoTransporte" }
+    
+gestiontaller_getTareasCasosMovilizacionTransporte:
+    pattern:  /getTareasCasosMovilizacionTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getTareasCasosMovilizacionTransporte" }
+    
+gestiontaller_getCategoriasTareasOTyMantenimientosTransporte:
+    pattern:  /getCategoriasTareasOTyMantenimientosTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getCategoriasTareasOTyMantenimientosTransporte"}
+    
+gestiontaller_getTiposMantenimientosTransporte:
+    pattern:  /getTiposMantenimientosTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getTiposMantenimientosTransporte"}
+    
+gestiontaller_getCasosXTransporte:
+    pattern:  /{id}/getCasosXTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getCasosXTransporte"}
+    
+gestiontaller_getChoferes:
+    pattern:  /getChoferes
+    defaults: { _controller: "administracionBundle:GestionTaller:getChoferes"}   
+    
+gestiontaller_newOrdenTrabajoTransporte:
+    pattern:  /{id}/newOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:newOrdenTrabajoTransporte" }
+    
+gestiontaller_createOrdenTrabajoTransporte:
+    pattern:  /{id}/createOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:createOrdenTrabajoTransporte" }
+    
+gestiontaller_showOrdenTrabajoTransporte:
+    pattern:  /{id}/showOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:showOrdenTrabajoTransporte"}
+
+gestiontaller_getOrdenesTrabajoXTransporte:
+    pattern:  /{id}/getOrdenesTrabajoXTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getOrdenesTrabajoXTransporte"}
+    
+gestiontaller_showOrdenesTrabajoXTransporte:
+    pattern:  /{id}/showOrdenesTrabajoXTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:showOrdenesTrabajoXTransporte"}
+    
+gestiontaller_newMantenimientoTransporte:
+    pattern:  /{id}/newMantenimientoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:newMantenimientoTransporte" }
+
+gestiontaller_createMantenimientoTransporte:
+    pattern:  /{id}/createMantenimientoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:createMantenimientoTransporte" }
+
+gestiontaller_showMantenimientosXOrdenTrabajoTransporte:
+    pattern:  /{id}/showMantenimientosXOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:showMantenimientosXOrdenTrabajoTransporte" }
+    
+gestiontaller_getMantenimientosXOrdenTrabajoTransporte:
+    pattern:  /{id}/getMantenimientosXOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getMantenimientosXOrdenTrabajoTransporte" }
+    
+gestiontaller_showMantenimientosTransporte:
+    pattern:  /{id}/showMantenimientosTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:showMantenimientosTransporte" }   
+    
+gestiontaller_getMantenimientosTransporte:
+    pattern:  /{id}/getMantenimientosTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getMantenimientosTransporte" } 
+    
+gestiontaller_getDetallesMantenimientoTransporte:
+    pattern:  /getDetallesMantenimientoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getDetallesMantenimientoTransporte"}
+    
+gestiontaller_getAdjuntosMantenimientoTransporte:
+    pattern:  /{id}/getAdjuntosMantenimientoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:getAdjuntosMantenimientoTransporte"}
+
+gestiontaller_newReinicioNumeracionOrdenTrabajoTransporte:
+    pattern:  /newReinicioNumeracionOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:newReinicioNumeracionOrdenTrabajoTransporte"}
+    
+gestiontaller_reiniciarNumeracionOrdenTrabajoTransporte:
+    pattern:  /reiniciarNumeracionOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:reiniciarNumeracionOrdenTrabajoTransporte"}
+
+gestiontaller_showNumeracionOrdenTrabajoTransporte:
+    pattern:  /{id}/showNumeracionOrdenTrabajoTransporte
+    defaults: { _controller: "administracionBundle:GestionTaller:showNumeracionOrdenTrabajoTransporte"}
+    
+    

@@ -1,0 +1,15 @@
+admiarbolhipotesis_adminArbolHipotesis:
+    pattern:  /adminArbolHipotesis
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:adminArbolHipotesis" }
+
+admiarbolhipotesis_crearHipotesisArbol:
+    pattern: /crearHipotesisArbol
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:crearHipotesisArbol" }
+
+admiarbolhipotesis_editarHipotesisArbol:
+    pattern: /editarHipotesisArbol
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:editarHipotesisArbol" }
+
+admiarbolhipotesis_eliminarHipotesisArbol:
+    pattern: /eliminarHipotesisArbol
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:eliminarHipotesisArbol" }

@@ -1,0 +1,46 @@
+admiplantilla:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:index" }
+
+admiplantilla_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:show" }
+
+admiplantilla_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:new" }
+
+admiplantilla_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:create" }
+    requirements: { _method: POST }
+    
+admiplantilla_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:edit" }
+
+admiplantilla_update:
+    pattern:  /update
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:update" }
+    requirements: { _method: POST }
+    
+admiplantilla_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:delete" }
+    
+admiplantilla_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:deleteAjax" }
+    requirements: { _method: post }
+
+admiplantilla_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:grid"}
+    
+admiplantilla_envioPrueba:
+    pattern:  /envioPrueba
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:envioPrueba"}
+    
+admiplantilla_getPlantillaAlias:
+    pattern:  /getPlantillaAlias
+    defaults: { _controller: "administracionBundle:AdmiPlantilla:getPlantillaAlias"}

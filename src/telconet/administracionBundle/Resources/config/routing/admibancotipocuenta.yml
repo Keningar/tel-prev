@@ -1,0 +1,38 @@
+admibancotipocuenta:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:index" }
+
+admibancotipocuenta_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:show" }
+
+admibancotipocuenta_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:new" }
+
+admibancotipocuenta_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:create" }
+    requirements: { _method: POST }
+    
+admibancotipocuenta_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:edit" }
+
+admibancotipocuenta_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:update" }
+    requirements: { _method: POST }
+    
+admibancotipocuenta_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:delete" }
+    
+admibancotipocuenta_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:deleteAjax" }
+    requirements: { _method: post }
+
+admibancotipocuenta_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiBancoTipoCuenta:grid"}

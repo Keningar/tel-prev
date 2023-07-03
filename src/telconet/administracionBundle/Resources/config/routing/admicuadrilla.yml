@@ -1,0 +1,153 @@
+admicuadrilla:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:index" }
+
+admicuadrilla_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:show" }
+
+admicuadrilla_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:new" }
+
+admicuadrilla_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:create" }
+    requirements: { _method: POST }
+    
+admicuadrilla_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:edit" }
+    
+admicuadrilla_getCuadrillasActivas:
+    pattern:  /getCuadrillasActivas
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:getCuadrillasActivas" }  
+
+admicuadrilla_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:update" }
+    requirements: { _method: POST }
+    
+admicuadrilla_delete:
+    pattern:  /delete
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:delete" }
+    
+admicuadrilla_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:deleteAjax" }
+    requirements: { _method: post }
+
+admicuadrilla_asignarAHal:
+    pattern:  /asignarAHal
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:asignarAHal" }
+
+admicuadrilla_getEmpleados2:
+    pattern:  /getEmpleados
+    defaults: { _controller: administracionBundle:AdmiCuadrilla:getEmpleados }
+
+admicuadrilla_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:grid"}
+
+admicuadrilla_gridIntegrantes:
+    pattern:  /gridIntegrantes
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:gridIntegrantes"}
+    
+admicuadrilla_cambioEstadoCuadrillas:
+    pattern:  /cambioEstadoCuadrillas
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:cambioEstadoCuadrillas" }
+    
+admicuadrilla_motivos:
+    pattern:  /motivos
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:motivos" }
+    
+admicuadrilla_estados:
+    pattern:  /estados
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:estados" }
+    
+admicuadrilla_cambioEstadoEmpleados:
+    pattern:  /cambioEstadoEmpleados
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:cambioEstadoEmpleados" }
+
+admicuadrilla_prestarEmpleados:
+    pattern: /prestarEmpleados
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:prestarEmpleados" }
+
+admicuadrilla_cambioCoordinadorEmpleado:
+    pattern: /cambioCoordinadorEmpleado
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:cambioCoordinadorEmpleado" }
+
+admicuadrilla_getElementos:
+    pattern: /getElementos
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:getElementos" }
+    
+admicuadrilla_getVehiculosDisponibles:
+    pattern: /getVehiculosDisponibles
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:getVehiculosDisponibles" }
+
+admicuadrilla_verificarIntegrantesCuadrilla:
+    pattern: /verificarIntegrantesCuadrilla
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:verificarIntegrantesCuadrilla" }
+
+admicuadrilla_asignarElemento:
+    pattern: /asignarElemento
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:asignarElemento" }
+    
+admicuadrilla_verificarVehiculoConNuevoHorario:
+    pattern: /{id}/verificarVehiculoConNuevoHorario
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:verificarVehiculoConNuevoHorario" }
+
+admicuadrilla_getVehiculosDisponibles:
+    pattern: /getVehiculosDisponibles
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:getVehiculosDisponibles" }
+
+admicuadrilla_asignarVehiculo:
+    pattern: /asignarVehiculo
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:asignarVehiculo" }
+
+admicuadrilla_eliminarAsignacionVehicular:
+    pattern: /eliminarAsignacionVehicular
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:eliminarAsignacionVehicular" }
+
+admicuadrilla_getChoferAsignacionVehicularPredefinida:
+    pattern: /getChoferAsignacionPredefinida
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:getChoferAsignacionVehicularPredefinida" }
+
+admicuadrilla_reactivarCuadrillaLibre:
+    pattern:  /reactivarCuadrillaLibre
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:reactivarCuadrillaLibre" }
+    requirements: { _method: POST }
+    
+admicuadrilla_liberarCuadrilla:
+    pattern:  /liberarCuadrilla
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:liberarCuadrilla" }
+    requirements: { _method: POST }
+    
+admicuadrilla_asignarASatelite:
+    pattern:  /asignarASatelite
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:asignarASatelite" }
+
+admicuadrilla_verificarPlanificacion:
+    pattern:  /verificarPlanificacion
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:verificarPlanificacion" }
+    requirements: { _method: POST }
+
+admicuadrilla_ajaxGetTipoHorario:
+    pattern:  /ajaxGetTipoHorario
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:ajaxGetTipoHorario" }
+
+admicuadrilla_ajaxGetDiasSemana:
+    pattern:  /ajaxGetDiasSemana
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:ajaxGetDiasSemana" }
+
+admicuadrilla_ajaxGetDiasSemanaCuadrilla:
+    pattern:  /ajaxGetDiasSemanaCuadrilla
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:ajaxGetDiasSemanaCuadrilla" }
+
+admicuadrilla_ajaxPlanificacionCuadrilla:
+    pattern:  /ajaxPlanificacionCuadrilla
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:ajaxPlanificacionCuadrilla" }
+
+admicuadrilla_ajaxVerificarPlanificacion:
+    pattern:  /ajaxVerificarPlanificacion
+    defaults: { _controller: "administracionBundle:AdmiCuadrilla:ajaxVerificarPlanificacion" }

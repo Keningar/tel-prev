@@ -1,0 +1,37 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var strUrlGetOpcionesSeleccionable = "{{ path('com_admicaracteristica_getOpcionesSeleccionable') }}";
+        var strUrlVerificaCaracteristica   = "{{ path('com_admicaracteristica_verificarCaracteristica') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCaracteristica/new.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Caracteristica</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <div style="width: 50%; margin: auto;">
+            <form id='form_new_proceso' action="{{ path('com_admicaracteristica_create') }}" method="post" {{ form_enctype(form) }}
+                  class='formulario'>
+                {{ form_widget(form) }}
+                <div id="gridSeleccionable"></div>
+                <input type="hidden" name="opciones" id="opciones" value="" />
+                <div class="buttons">
+                    <p>
+                        <input type='button' class="button-crud" onclick="validarFormulario();" value="Guardar" />
+                        <span class="height20px">
+                            &oacute;&nbsp;
+                            <a class="cancel-crud" href="{{ path('com_admicaracteristica') }}">Cancelar</a>
+                        </span>
+                    </p>
+                </div>	
+            </form>
+        </div>
+    </div>
+{% endblock contenido_izq %}	

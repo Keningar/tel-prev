@@ -1,0 +1,65 @@
+{% extends "::layout_completo.html.twig" %}
+
+
+
+{% block contenido_central %}        
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ menu_imagen | default('home.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Administracion</h1>
+    </div>
+    <div class="clearBoth"></div>
+    <div class="dashboard_content">
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+            <tbody>
+                <tr>
+                    <td width="47%" valign="top">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+	                {% set i = 0 %}
+	                {% for item in app.session.get('menu_dashboard') %}
+                    {% set i = i + 1 %}
+                                <tr>
+                                    <td class="titulo_body_content" align="left" height="30" colspan="2">
+                                        <b>{{ item.titulo }}</b>
+                                    </td>
+                                </tr>
+                            {% set j = 0 %}
+                                <tr>
+                            {% for item_menu in item.items %}
+                                {% set j = j + 1 %}
+                                    <td class="item_body_content" valign="top">
+                                        <a class="item-admin-menu" href="{{ item_menu.href  }}">
+                                            <img  src="{{ asset('public/images/arrow.jpg')}}" />
+                                            {{ item_menu.tituloHTML }}
+                                        </a>
+                                    </td>
+                                {% if j >= 2 %}
+                                {% set j = 0 %}
+                                </tr>
+                                <tr>
+                                {% endif %}
+                            {% endfor %}
+									
+                    {% if i >= app.session.get('limite_menu_admin') %}
+                        {% set i = 0 %}
+                            </tbody>	
+                        </table>
+                    </td>
+                    <td width="7%" valign="top">&nbsp;</td>
+                    <td width="46%" valign="top">
+                        <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                    {% else %}
+                                <tr>
+                                    <td height="30" colspan="2">&nbsp;</td>
+                                </tr>
+                    {% endif %} 
+                {% endfor %}
+                            </tbody>	
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock contenido_central %}

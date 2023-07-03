@@ -1,0 +1,78 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Empresa</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' action="{{ path('infoempresagrupo_create') }}" method="post" {{ form_enctype(form) }} class='formulario'>
+            {{ form_widget(form) }}
+            
+            <input type="hidden" name="repre" id="repre" value="" />
+            <input type="hidden" name="direccion" id="direccion" value="" />
+            <input type="hidden" name="telefono" id="telefono" value="" />
+            <input type="hidden" name="fax" id="fax" value="" />
+
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('infoempresagrupo') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        function ajaxCargaDatosEmpresa(cod_empresa)
+        {
+            $.ajax({
+                    url: "ajaxDatosEmpresa",
+                    data: "nocache=" + Math.random() + "&cod_empresa="+ cod_empresa,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(source){
+                        var data = source;
+                        var num = data['total'];
+
+                        if(num>0)   
+                        {
+                            var nombre_empresa = data['encontrados'][0]['nombre_empresa'];
+                            var nombre_largo = data['encontrados'][0]['nombre_largo'];
+                            var razon_social = data['encontrados'][0]['razon_social'];
+                            var ruc = data['encontrados'][0]['ruc'];
+                            var repre = data['encontrados'][0]['repre'];
+                            var direccion = data['encontrados'][0]['direccion'];
+                            var telefono = data['encontrados'][0]['telefono'];
+                            var fax = data['encontrados'][0]['fax'];
+
+                            $('#telconet_schemabundle_infogrupoempresatype_nombreEmpresa').val(nombre_empresa);
+                            $('#telconet_schemabundle_infogrupoempresatype_razonSocial').val(razon_social);
+                            $('#telconet_schemabundle_infogrupoempresatype_ruc').val(ruc);
+                            $('#repre').val(repre);
+                            $('#direccion').val(direccion);
+                            $('#telefono').val(telefono);
+                            $('#fax').val(fax);
+                        }
+                    },
+                    error: function(dato){
+                        alert("ERROR");
+                    }
+            });
+        }
+
+    </script>	
+{% endblock javascripts_footer%}	

@@ -1,0 +1,42 @@
+admitareamaterial:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:index" }
+
+admitareamaterial_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:show" }
+
+admitareamaterial_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:new" }
+
+admitareamaterial_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:create" }
+    requirements: { _method: POST }
+    
+admitareamaterial_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:edit" }
+
+admitareamaterial_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:update" }
+    requirements: { _method: POST }
+    
+admitareamaterial_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:delete" }
+    
+admitareamaterial_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:deleteAjax" }
+    requirements: { _method: post }
+
+admitareamaterial_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:grid"}
+
+admitareamaterial_getListadoMateriales:
+    pattern:  /getListadoMateriales
+    defaults: { _controller: "administracionBundle:AdmiTareaMaterial:getListadoMateriales"}

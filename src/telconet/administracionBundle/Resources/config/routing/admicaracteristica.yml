@@ -1,0 +1,50 @@
+com_admicaracteristica:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:index" }
+
+com_admicaracteristica_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:show" }
+
+com_admicaracteristica_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:new" }
+
+com_admicaracteristica_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:create" }
+    requirements: { _method: POST }
+    
+com_admicaracteristica_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:edit" }
+
+com_admicaracteristica_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:update" }
+    requirements: { _method: POST }
+    
+com_admicaracteristica_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:delete" }
+    
+com_admicaracteristica_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:deleteAjax" }
+    requirements: { _method: post }
+
+com_admicaracteristica_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:grid"}
+
+com_admicaracteristica_getOpcionesSeleccionable:
+    pattern:  /getOpcionesSeleccionable
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:getOpcionesSeleccionable"}
+
+com_admicaracteristica_verificarCaracteristica:
+    pattern:  /verificarCaracteristica
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:verificarCaracteristica"}
+    
+com_admicaracteristica_getValoresCaracteristicas:
+    pattern:  /getValoresCaracteristicas
+    defaults: { _controller: "administracionBundle:AdmiCaracteristica:getValoresCaracteristicas"}

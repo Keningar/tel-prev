@@ -1,0 +1,87 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    .x-grid-row-news
+    {
+        color:green;
+    }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var aliasGestionados            = '';
+        var strUrlUpdateCargosCuadrilla = '{{path('cargoscuadrilla_update')}}';
+        var strUrlGetCargos             = '{{path('cargoscuadrilla_getCargos')}}';
+        var strUrlGetCargosCuadrilla    = '{{path('cargoscuadrilla_getCargosCuadrilla')}}';
+        var strUrlIndexCargosCuadrillas = '{{path('cargoscuadrilla')}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/CargosCuadrilla/index.js') }}"></script>
+{% endblock %}
+
+{% block contenido %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Cargos de Cuadrillas</h1>
+</div>
+<div class="body_content k-content">
+    <div>
+        <p>*Una vez agregado o eliminado el cargo, debe guardar los cambios</p>
+        <table>
+            <tr>
+                <td valign="top">
+                    <div id='filtroPanelCargosExistentes'></div>
+                    <br/>
+                    <div id="gridCargosExistentes"></div>
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td valign="top">
+                    <div id='filtroPanelCargosCuadrillaActuales'></div>
+                    <br/>
+                    <div id="gridCargosCuadrillaActuales"></div>
+                </td>
+            </tr>
+        </table>
+        
+        
+        <div class="buttons">
+            <p>
+                <input style="width:100px; text-align:center;" class="button-crud" value="Guardar" onclick = 'guardarCargosCuadrillas();'/>
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('cargoscuadrilla') }}">
+                        Cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+        
+        
+        
+        
+        
+    </div>
+</div>
+{% endblock contenido %}
+
+{% block contenido_der %}
+
+{% endblock contenido_der %}

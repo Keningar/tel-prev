@@ -1,0 +1,57 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Nuevo Tipo de Comunicacion</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+	{% if error is defined %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+	<form action="{{ path('admitipocomunicacion_create') }}" method="post" {{ form_enctype(form) }} class="formulario">
+		{{ form_widget(form) }}
+            
+            <div class="buttons">
+                    <p>
+                            <button type="submit" class="button-crud">Guardar</button>
+                            <span class="height20px">
+                                    &oacute;&nbsp;
+                                    <a class="cancel-crud" href="{{ path('admitipocomunicacion') }}">
+                                            cancelar
+                                    </a>
+                            </span>
+                    </p>
+            </div>
+	</form>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+	Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 1
+        </a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 2
+        </a>
+    </li>
+    <li>
+        <a class="listado_ac_tablas" href="#">
+            opcion 3
+        </a>
+    </li>
+</ul>
+{% endblock contenido_der %}

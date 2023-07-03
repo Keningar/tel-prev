@@ -1,0 +1,47 @@
+admiconectorinterface:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:index" }
+
+admiconectorinterface_ajax_list_all:
+    pattern:  /ajax_list_all
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:ajaxListAll" }
+    requirements: { _method: post }
+
+admiconectorinterface_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiConectorInterface:getEncontrados }
+    
+admiconectorinterface_getConectoresInterfaces:
+    pattern:  /getConectoresInterfaces
+    defaults: { _controller: administracionBundle:AdmiConectorInterface:getConectoresInterfaces }
+
+admiconectorinterface_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:show" }
+
+admiconectorinterface_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:new" }
+
+admiconectorinterface_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:create" }
+    requirements: { _method: POST }
+    
+admiconectorinterface_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:edit" }
+
+admiconectorinterface_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:update" }
+    requirements: { _method: POST }
+    
+admiconectorinterface_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:deleteAjax" }
+    requirements: { _method: post }
+    
+admiconectorinterface_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiConectorInterface:delete" }

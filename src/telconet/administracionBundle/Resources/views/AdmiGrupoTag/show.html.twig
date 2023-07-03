@@ -1,0 +1,39 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+    
+    {% block javascripts%}
+  {{ parent() }}
+  <script src="{{ asset('public/js/kendo2012_1/js/jquery.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('public/js/kendo2012_1/js/kendo.web.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('public/js/kendo2012_1/js/kendo.dropdownlist.min.js') }}" type="text/javascript"></script>
+  <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiGrupoTag/show.js') }}"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('./bundles/administracion/css/AdmiGrupoTag.css') }}" />
+  <script>
+       var urlGetGrupoTag            = '{{ path('grupotag_getGrupoTagAjax') }}';
+       var tipoScope                   = '{{tipoScope}}';
+       var nombreTipoScope             = '{{nombreTipoScope}}';
+  </script>
+{% endblock %}
+
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Grupo de Tags</h1>
+</div>
+
+<div class="body_content">
+    <b>Tipo de Scope :</b>{{nombreTipoScope}}
+    <div class="mt-1" id="grupoTags"></div>
+</div>                   
+                    
+<div class="body_content">
+    <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="button-crud" href="{{ path('grupotag') }}">
+                        Regresar
+                </a>
+            </span>
+        </p>
+    </div>
+</div>
+{% endblock contenido_izq %}

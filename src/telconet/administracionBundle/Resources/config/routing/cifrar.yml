@@ -1,0 +1,13 @@
+cifrar:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:ProteccionDatosCifrar:index" }
+
+validar_identificacion_ajax:
+  pattern:  /validarIdentificacion
+  defaults: { _controller: "administracionBundle:ProteccionDatosCifrar:validarIdentificacion" }
+  requirements: { _method: post }
+
+cifrar_cliente_ajax:
+  pattern:  /cifrarCliente
+  defaults: { _controller: "administracionBundle:ProteccionDatosCifrar:cifrarCliente" }
+  requirements: { _method: post }

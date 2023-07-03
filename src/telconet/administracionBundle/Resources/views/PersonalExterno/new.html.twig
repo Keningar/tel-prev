@@ -1,0 +1,149 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%} {{ parent() }}    
+<script>
+    var url_getMaxLongitudIdentificacionAjax      = "{{ path('cliente_getMaxLongitudIdentificacion') }}";
+    var url_formas_contacto_persona               = "{{ path('personalexterno_formas_contacto_grid') }}";
+    var urlGuardarPersonalExterno                 = "{{ path('personalexterno_create') }}";
+    var url_formas_contacto                       = "{{ path('personalexterno_lista_formas_contacto') }}";
+    var personaid                                 = "";
+    var urlGetEmpresasExternas                    = "{{path('personalexterno_empresasExternas')}}";
+    var urlIndex                                  = "{{path('personalexterno')}}";
+    var urlBuscarPersonalExternoPorIdentificacion = "{{path('personalexterno_busca_personas_por_identificacion')}}";
+    var strUrlGetDepartamentosByEmpresaYNombre    = '{{ path('seguperfilpersona_getDepartamentosByEmpresaYNombre') }}';
+    var strPrefijoEmpresa                         = '{{ strPrefijoEmpresa }}';
+    var strUrlGetAreaByEmpresa                    = '{{ path('admiarea_getAreaByEmpresa') }}';
+    var strUrlGetDepartamentosByEmpresaYArea      = '{{ path('admidepartamento_getDepartamentoByEmpresaYAreaAction') }}';
+    var urlGetOficina                             = '{{ path('infooficinagrupo_getOficinasByPrefijoEmpresaJson') }}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/PersonalExterno/new.js?3') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Nuevo Personal Externo</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+{% if error is defined %}
+    <div class='errormessage'>{{ error }}</div>
+{% endif %}
+    <form id='form_new_personalexterno' action="{{ path('personalexterno_create') }}" method="post" {{ form_enctype(form) }} class='formulario'>
+
+        <input type="hidden" id="personalexternotype_personaid" name="personalexternotype[personaid]" value="" />
+        <div id="my-tabs">
+            <div id="tab1" class="x-hide-display">
+                <table border='0'>
+                    <tr><td colspan='4'>&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>                            
+                        <td  style="vertical-align: top;">
+                            <div>                        
+                                <div>{{ form_label(form.tipoIdentificacion) }} {{ form_widget(form.tipoIdentificacion) }}</div>
+                                <div>{{ form_label(form.identificacionCliente) }}{{ form_widget(form.identificacionCliente) }}</div>
+                                <div id="divTxtPrimerNombre"></div>
+                                <div id="divTxtSegundoNombre"></div>
+                                <div id="divTxtPrimerApellido"></div>
+                                <div id="divTxtSegundoApellido"></div>
+                                <div>{{ form_label(form.nacionalidad) }} {{ form_widget(form.nacionalidad) }}</div>
+                                <div>{{ form_label(form.genero) }} {{ form_widget(form.genero) }}</div>                                
+                                <div>{{ form_label(form.direccion) }} {{ form_widget(form.direccion) }}</div>
+                            </div>
+                            <div id='div_nombres_2'>                                
+                            </div>
+                            
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td style="vertical-align: top;">
+                            <div id='diverrorident' class='errormessage' style='display:none'></div>
+                            
+                            <div id='div_nombres'>                               
+                                <div>{{ form_label(form.estadoCivil) }} {{ form_widget(form.estadoCivil) }}</div>
+                                <div>{{ form_label(form.fechaNacimiento) }} {{ form_widget(form.fechaNacimiento) }}</div>
+                                <div>{{ form_label(form.tituloId) }} {{ form_widget(form.tituloId) }}</div>                                
+                                <div>{{ form_label(form.empresaExterna) }} {{ form_widget(form.empresaExterna) }}</div>
+                                <div id="divCmbAreaEmpresaSession"></div>
+                                <div id="divCmbDepartamentoEmpresaSession"></div>
+                                <div id="divCmbOficina"></div>
+                                <input type='text' style="display: none" id="personalexternotype_formas_contacto" required='required' 
+                                       name="personalexternotype[formas_contacto]"/>                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="tab2" class="x-hide-display">
+                <table border='0' align='center'>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr>
+                        <td>
+                            <div id='lista_formas_contacto_grid'></div>       
+                        </td>							
+                    </tr>   
+                </table>            
+            </div>
+        </div>
+        <div id="form_personal_externo_create" ></div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+<script>
+    function esRuc()
+    {
+        var strTipoIdentificacion        = $('#personalexternotype_tipoIdentificacion').val();
+        var intMaxLongitudIdentificacion = 0;
+        
+        Ext.Ajax.request({
+            url: url_getMaxLongitudIdentificacionAjax,
+            method: 'POST',
+            timeout: 99999,
+            async: false,
+            params: { strTipoIdentificacion : strTipoIdentificacion },
+            success: function(response){
+
+              var objRespuesta = Ext.JSON.decode(response.responseText);
+
+              if(objRespuesta.intMaxLongitudIdentificacion > 0)
+              {
+                  intMaxLongitudIdentificacion = objRespuesta.intMaxLongitudIdentificacion;
+              }
+              
+              $('#personalexternotype_identificacionCliente').removeAttr('maxlength');
+              $('#personalexternotype_identificacionCliente').attr('maxlength', intMaxLongitudIdentificacion);
+              $('#personalexternotype_identificacionCliente').val('');              
+            },
+            failure: function(response)
+            { 
+                Ext.Msg.alert('Error ','Error: ' + response.statusText);
+            }
+        });
+    }
+
+    $(function()
+    {
+        $("#personalexternotype_identificacionCliente").keydown(function(event)
+        {
+            if (!isNumeric(event))
+                return false;
+        });
+
+    });
+    function isNumeric(event)
+    {
+        return ((event.keyCode > 7 && event.keyCode < 10)
+            || (event.keyCode > 47 && event.keyCode < 60)
+            || (event.keyCode > 95 && event.keyCode < 106)
+            || event.keyCode == 17
+            || event.keyCode == 116);
+    }
+</script>          
+{% endblock %}

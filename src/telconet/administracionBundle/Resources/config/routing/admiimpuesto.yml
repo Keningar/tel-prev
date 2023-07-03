@@ -1,0 +1,38 @@
+admiimpuesto:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:index" }
+
+admiimpuesto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:show" }
+
+admiimpuesto_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:new" }
+
+admiimpuesto_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:create" }
+    requirements: { _method: POST }
+    
+admiimpuesto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:edit" }
+
+admiimpuesto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:update" }
+    requirements: { _method: POST }
+    
+admiimpuesto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:delete" }
+    
+admiimpuesto_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:deleteAjax" }
+    requirements: { _method: post }
+
+admiimpuesto_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiImpuesto:grid"}

@@ -1,0 +1,122 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Policy</h1>
+</div>
+<div class="body_content">
+    <table class="formulario" width='100%' >
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> Nombre Policy: </b></th>
+                <td width="15%">{{ policy.nombrePolicy }}</td>  
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> Lease Time:</b></th>
+                <td width="15%">{{ policy.leaseTime }}</td>                
+            </tr>
+             <tr>
+                <td width="8%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> Mascara:</b></th>
+                <td width="15%">{{ policy.mascara }}</td>                
+            </tr>
+             <tr>
+                <td width="8%">&nbsp;</td>
+            </tr>
+             <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> Gateway:</b></th>
+                <td width="15%">{{ policy.gateway }}</td>                
+            </tr>
+             <tr>
+                <td width="8%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> DNS Name:</b></th>
+                <td width="15%">{{ policy.dnsName }}</td>                
+            </tr>
+             <tr>
+                <td width="8%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> DNS Servers:</b></th>
+                <td>{{ policy.dnsServers }}</td>     
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admipolicy') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ policy.usrCreacion }}</td>             
+
+              {% if(policy.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ policy.usrCreacion }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ policy.feCreacion | date("d M Y") }}</td>            
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ policy.feCreacion | date("H:i:s") }}</td>             
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_277-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admipolicy_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Policy
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+				
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

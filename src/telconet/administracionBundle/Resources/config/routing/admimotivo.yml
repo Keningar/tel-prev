@@ -1,0 +1,54 @@
+admimotivo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiMotivo:index" }
+
+admimotivo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiMotivo:show" }
+
+admimotivo_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiMotivo:new" }
+
+admimotivo_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiMotivo:create" }
+    requirements: { _method: POST }
+    
+admimotivo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiMotivo:edit" }
+
+admimotivo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiMotivo:update" }
+    requirements: { _method: POST }
+    
+admimotivo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiMotivo:delete" }
+    
+admimotivo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiMotivo:deleteAjax" }
+    requirements: { _method: post }
+
+admimotivo_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiMotivo:grid"}
+
+admimotivo_getListadoModulos:
+    pattern:  /getListadoModulos
+    defaults: { _controller: "administracionBundle:AdmiMotivo:getListadoModulos"} 
+
+admimotivo_getListadoItemsMenu:
+    pattern:  /getListadoItemsMenu
+    defaults: { _controller: "administracionBundle:AdmiMotivo:getListadoItemsMenu"}
+
+admimotivo_getListadoAcciones:
+    pattern:  /getListadoAcciones
+    defaults: { _controller: "administracionBundle:AdmiMotivo:getListadoAcciones"}
+
+admimotivo_getListadoMotivos:
+    pattern:  /getListadoMotivos
+    defaults: { _controller: "administracionBundle:AdmiMotivo:getListadoMotivos"}

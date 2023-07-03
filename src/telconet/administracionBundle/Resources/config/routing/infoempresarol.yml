@@ -1,0 +1,38 @@
+infoempresarol:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:index" }
+
+infoempresarol_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:show" }
+
+infoempresarol_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:new" }
+
+infoempresarol_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:create" }
+    requirements: { _method: POST }
+    
+infoempresarol_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:edit" }
+
+infoempresarol_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:update" }
+    requirements: { _method: POST }
+    
+infoempresarol_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:delete" }
+    
+infoempresarol_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:deleteAjax" }
+    requirements: { _method: post }
+
+infoempresarol_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:InfoEmpresaRol:grid"}

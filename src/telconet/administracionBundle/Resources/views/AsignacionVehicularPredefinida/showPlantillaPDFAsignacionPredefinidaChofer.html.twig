@@ -1,0 +1,266 @@
+<html>
+    <head>
+      <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+      <style>
+      .tamano_letra_direccion
+      {
+          font-size:9px;
+      }
+      .tamano_letra_detalles
+      {
+          font-size:11px;
+      }
+
+      .tablasAsignacionesPredefinidas {
+        border-collapse: collapse;
+        border: 1px solid black;
+      }
+      .tablasAsignacionesPredefinidas td, .tablasAsignacionesPredefinidas th {
+        border: 1px solid black;
+      }
+      .tablasAsignacionesPredefinidas tr:first-child th {
+        border-top: 0;
+      }
+      .tablasAsignacionesPredefinidas tr:last-child td {
+        border-bottom: 0;
+      }
+      .tablasAsignacionesPredefinidas tr td:first-child,
+      .tablasAsignacionesPredefinidas tr th:first-child {
+        border-left: 0;
+      }
+      .tablasAsignacionesPredefinidas tr td:last-child,
+      .tablasAsignacionesPredefinidas tr th:last-child {
+        border-right: 0;
+      }
+      .tablasAsignacionesPredefinidas thead tr{
+        font-family: Arial, monospace;
+        font-size: 14px;
+      }
+
+      .tablasAsignacionesPredefinidas .celdaTitulo1{
+         background: white;
+      }
+      .tablasAsignacionesPredefinidas .celdaTitulo2{
+         background: yellow;
+      }
+
+      .tablasAsignacionesPredefinidas .celdaColumnaTitulo{
+         background: #7ec6e3;
+      }
+
+      .tablasAsignacionesPredefinidas td{
+         padding: 4px 10px 3px 10px;
+      }
+
+      table tr {
+        font-family: arial, monospace;
+        color: black;
+        font-size:12px;
+        background-color: white;
+      }
+
+      table tr.odd {
+        background-color: #AAAAAA;
+      }
+
+      a:link{
+        font-family:arial, monospace;
+        text-decoration: none;
+        color: teal;
+      }
+
+      a:hover{
+        text-decoration: underline;
+      }
+
+      a:visited{
+        color:black;
+        text-decoration: none;
+      }
+
+      table thead tr{
+        font-family: Arial, monospace;
+        font-size: 14px;
+      }
+      </style>
+    </head>
+    <body>
+        {% set contFiltrosIzq = 0 %} 
+        {% set contFiltrosDer = 1 %} 
+        <table class="record_properties" width='100%'>
+            <tr>
+            <td align="left" colspan='4' >
+                <img alt=""  width="150" height="40" src="{{logoEmpresa}}"/>
+            </td>
+            </tr>
+            <tr>
+            <td class='tamano_letra_direccion'></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+            <td>
+            <table>
+            <tr><td class='tamano_letra_direccion'></td></tr>
+            </table>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr>
+              <td colspan='4'>&nbsp;</td>
+            </tr>
+        </table>
+        <br/>        
+        
+        <div style="position: absolute; left:0%; top:80px;width:50%; ">
+            <table align="center" style="font-size: 9px ; width: 100%">
+                {% if placa!='' %}
+                {% set contFiltrosIzq = contFiltrosIzq + 1 %}
+                <tr>
+                    <td><b>Placa:</b></td>
+                    <td>{{placa}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                
+                {% if modelo!='' %}
+                {% set contFiltrosIzq = contFiltrosIzq + 1 %}
+                <tr>
+                    <td><b>Modelo:</b></td>
+                    <td>{{modelo}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                
+                {% if disco!='' %}
+                {% set contFiltrosIzq = contFiltrosIzq + 1 %}
+                <tr>
+                    <td><b>Disco:</b></td>
+                    <td>{{disco}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                {% if horario!='' %}
+                {% set contFiltrosIzq = contFiltrosIzq + 1 %}
+                <tr>
+                    <td><b>Horario:</b></td>
+                    <td>{{horario}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                
+                
+                
+            </table>  
+        </div>
+        <div style="position: absolute; left:50%; top:80px;width:50%; ">
+            <table align="center" style="font-size: 9px ; width:100%">
+                {% if strIdentificacionChoferAPredefinida!='' %}
+                {% set contFiltrosDer = contFiltrosDer + 1 %}
+                <tr>
+                    <td><b>Identificaci&oacute;n Chofer:</b></td>
+                    <td>{{strIdentificacionChoferAPredefinida}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                
+                {% if strNombresChoferAPredefinida!='' %}
+                {% set contFiltrosDer = contFiltrosDer + 1 %}
+                <tr>
+                    <td><b>Nombres Chofer:</b></td>
+                    <td>{{strNombresChoferAPredefinida}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                {% if strApellidosChoferAPredefinida!='' %}
+                {% set contFiltrosDer = contFiltrosDer + 1 %}
+                <tr>
+                    <td><b>Apellidos Chofer:</b></td>
+                    <td>{{strApellidosChoferAPredefinida}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}                
+                <tr>
+                    <td><b>N&uacute;mero de Asignaciones:</b></td>
+                    <td>{{total}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div align="center" {% if contFiltrosIzq>2 or contFiltrosDer>2 %} style="padding-top: 50px;" {% endif %}>
+            <h5>REPORTE DE ASIGNACIÓN PREDEFINIDA DE CHOFERES  </h5>
+        </div>
+        {% set contAsignaciones = 0 %}   
+        {%for detEncontrado in  encontrados %}
+            {% set contAsignaciones = contAsignaciones + 1 %}
+            <div align="center" >
+                <table class="tablasAsignacionesPredefinidas">
+                <thead>
+                    <tr class="celdaTitulo1">
+                        <th colspan='2'>ASIGNACI&Oacute;N {{contAsignaciones}}.</th>
+                    </tr>
+                    <tr class="celdaTitulo2"> 
+                        <th colspan='2'>ASIGNACI&Oacute;N CONDUCTOR PREDEFINIDO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>DISCO:</b></td>
+                        <td>{{ detEncontrado.discoElemento }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>PLACA:</b></td>
+                        <td>{{ detEncontrado.nombreElemento }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>MODELO:</b></td>
+                        <td>{{ detEncontrado.nombreModeloElemento }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>FECHA ASIGNACI&Oacute;N:</b></td>
+                        <td>{{ detEncontrado.fechaDesdeAsignacionPredefinida }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>DESDE:</b></td>
+                        <td>{{ detEncontrado.horaDesdeAsignacionPredefinida }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>HASTA:</b></td>
+                        <td>{{ detEncontrado.horaHastaAsignacionPredefinida }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>ZONA:</b></td>
+                        <td>{{ detEncontrado.zonaPredefinida }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>DEPARTAMENTO:</b></td>
+                        <td>{{ detEncontrado.departamentoPredefinido }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>IDENTIFICACI&Oacute;N CHOFER:</b></td>
+                        <td>{{ detEncontrado.identificacionChoferPredefinido }}</td>
+                    </tr>
+                    <tr>
+                        <td class="celdaColumnaTitulo"><b>CHOFER:</b></td>
+                        <td>{{ detEncontrado.nombresChoferPredefinido }} {{ detEncontrado.apellidosChoferPredefinido }}</td>
+                    </tr>
+                </tbody>       
+                </table> 
+            </div>
+            <br/><br/>
+        {%endfor%}
+    </body>
+</html>
+

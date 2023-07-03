@@ -1,0 +1,25 @@
+configuracionPerfilesFactibilidad:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:ConfiguracionPerfilesFactibilidad:index" }
+
+configuracionPerfilesFactibilidad_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:ConfiguracionPerfilesFactibilidad:grid"}    
+
+configuracionPerfilesFactibilidad_getJurisdicciones:
+    pattern: /getJurisdicciones
+    defaults: {_controller: "administracionBundle:ConfiguracionPerfilesFactibilidad:getJurisdicciones"}
+
+configuracionPerfilesFactibilidad_getDepartamentos:
+    pattern: /getDepartamentos
+    defaults: {_controller: "administracionBundle:ConfiguracionPerfilesFactibilidad:getDepartamentos"}
+configuracionPerfilesFactibilidad_getEmpleadosCiudadDepartamento:
+    pattern: /getEmpleadosCiudadDepartamento
+    defaults: {_controller: "administracionBundle:ConfiguracionPerfilesFactibilidad:getEmpleadosPorDepartamentoCiudad"}
+
+configuracionPerfilesFactibilidad_enviarABase:
+    pattern: /enviarABase
+    defaults: {_controller: "administracionBundle:ConfiguracionPerfilesFactibilidad:enviarABase"}
+configuracionPerfilesFactibilidad_obtenerTodos:
+    pattern: /obtenerTodos
+    defaults: {_controller: "administracionBundle:ConfiguracionPerfilesFactibilidad:listarAllCaracteristicas"}

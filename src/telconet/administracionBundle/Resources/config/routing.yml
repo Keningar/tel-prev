@@ -1,0 +1,47 @@
+administracionBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: administracionBundle:Default:index }
+  
+administracionBundle_opcion:
+    pattern:  /{opcion_menu}
+    defaults: { _controller: administracionBundle:Default:menu , opcion_menu: "menu"}
+
+administracionBundle_General:
+  resource: "@administracionBundle/Resources/config/route/general.yml"
+  prefix: /general
+  
+administracionBundle_Tecnico:
+  resource: "@administracionBundle/Resources/config/route/tecnico.yml"
+  prefix: /tecnico
+  
+administracionBundle_Corporacion:
+  resource: "@administracionBundle/Resources/config/route/corporacion.yml"
+  prefix: /corporacion
+  
+administracionBundle_Seguridad:
+  resource: "@administracionBundle/Resources/config/route/seguridad.yml"
+  prefix: /seguridad
+  
+administracionBundle_Soporte:
+  resource: "@administracionBundle/Resources/config/route/soporte.yml"
+  prefix: /soporte
+  
+administracionBundle_Comunicacion:
+  resource: "@administracionBundle/Resources/config/route/comunicacion.yml"
+  prefix: /comunicacion
+  
+administracionBundle_Financiero:
+  resource: "@administracionBundle/Resources/config/route/financiero.yml"
+  prefix: /financiero
+  
+administracionBundle_Comercial:
+  resource: "@administracionBundle/Resources/config/route/comercial.yml"
+  prefix: /comercial
+  
+administracionBundle_Personal:
+  resource: "@administracionBundle/Resources/config/route/personal.yml"
+  prefix: /personal
+
+administracionBundle_DerechosTitular:
+  resource: "@administracionBundle/Resources/config/route/derechostitular.yml"
+  prefix: /derechos_titular

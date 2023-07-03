@@ -1,0 +1,42 @@
+admiproveedorred:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiProveedorRed:index" }
+
+admiproveedorred_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiProveedorRed:getEncontrados }
+    
+admiproveedorred_getProveedoresRedes:
+    pattern:  /getProveedoresRedes
+    defaults: { _controller: administracionBundle:AdmiProveedorRed:getProveedoresRedes }
+
+admiproveedorred_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiProveedorRed:show" }
+
+admiproveedorred_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiProveedorRed:new" }
+
+admiproveedorred_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiProveedorRed:create" }
+    requirements: { _method: POST }
+    
+admiproveedorred_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiProveedorRed:edit" }
+
+admiproveedorred_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiProveedorRed:update" }
+    requirements: { _method: POST }
+    
+admiproveedorred_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiProveedorRed:deleteAjax" }
+    requirements: { _method: post }
+    
+admiproveedorred_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiProveedorRed:delete" }

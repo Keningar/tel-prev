@@ -1,0 +1,39 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/InfoFeriadosAnuales/new.js?3') }}"></script>
+    <script>
+        var strUrlSaveFeriado = '{{path('feriados_anuales_save')}}';
+        var strUrlIndex = '{{path('feriados_anuales')}}';
+        var strUrlgetCantones = '{{path('admicanton_getCantones')}}';
+        var strUrlGetFeriados = '{{ path("feriados_anuales_gridFeriados") }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/InfoFeriadosAnuales/ModelClass.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/InfoFeriadosAnuales/StoreClass.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/InfoFeriadosAnuales/StoreManuales.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/InfoFeriadosAnuales/ObjetosClass.js?1') }}"></script>
+
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        Creación de Feriados
+    </div>
+    <div id="Div_New_Feriados" class="div-center">
+    </div>
+
+
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+{% endblock javascripts_footer%}

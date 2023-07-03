@@ -1,0 +1,83 @@
+admimarcaelemento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:index" }
+
+admimarcaelemento_ajax_list_all:
+    pattern:  /ajax_list_all
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:ajaxListAll" }
+    requirements: { _method: post }
+
+admimarcaelemento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:show" }
+
+admimarcaelemento_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:new" }
+
+admimarcaelemento_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:create" }
+    requirements: { _method: POST }
+    
+admimarcaelemento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:edit" }
+
+admimarcaelemento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:update" }
+    requirements: { _method: POST }
+    
+admimarcaelemento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:deleteAjax" }
+    requirements: { _method: post }
+    
+admimarcaelemento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:delete" }
+    
+admimarcaelemento_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getEncontrados }
+    
+admimarcaelemento_getMarcasElementos:
+    pattern:  /getMarcasElementos
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementos }
+
+admimarcaelemento_getMarcasElementosDslam:
+    pattern:  /getMarcasElementosDslam
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementosDslam }
+    
+admimarcaelemento_getMarcasElementosRadio:
+    pattern:  /getMarcasElementosRadio
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementosRadio }
+    
+admimarcaelemento_getMarcasElementosPop:
+    pattern:  /getMarcasElementosPop
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementosPop }
+    
+admimarcaelemento_getMarcasElementosTipo:
+    pattern:  /getMarcasElementosTipo
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementosTipo }
+
+admimarcaelemento_getMarcasOltMigracion:
+    pattern:  /getMarcasOltMigracion
+    defaults: { _controller: "administracionBundle:AdmiMarcaElemento:getMarcasOltMigracion" }
+        
+admimarcaelemento_getMarcasElementosSplitter:
+    pattern:  /getMarcasElementosSplitter
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementosSplitter }
+    
+admimarcaelemento_getMarcasElementosCaja:
+    pattern:  /getMarcasElementosCaja
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementosCaja }
+    
+admimarcaelemento_getMarcasElementosCpe:
+    pattern:  /getMarcasElementosCpe
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementosCpe }
+    
+admimarcaelemento_getMarcasElementosServidor:
+    pattern:  /getMarcasElementosServidor
+    defaults: { _controller: administracionBundle:AdmiMarcaElemento:getMarcasElementosServidor }

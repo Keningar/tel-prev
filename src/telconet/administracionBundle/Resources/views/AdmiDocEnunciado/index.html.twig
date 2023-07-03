@@ -1,0 +1,74 @@
+{% extends "::layout_completo.html.twig" %}
+
+ 
+
+{% block javascripts %}
+    {{ parent() }}
+    <script> 
+        var  isShowEnunciadoIndex    ="{{ is_granted("ROLE_487-1") }}";
+        var  isShowEnunciadoNew      =1;//"{{ is_granted("ROLE_487-2") }}";
+        var  isShowEnunciadoCreate   =1;//"{{ is_granted("ROLE_487-3") }}";
+        var  isShowEnunciadoEdit     =1;//"{{ is_granted("ROLE_487-4") }}";
+        var  isShowEnunciadoDelete   =1;//"{{ is_granted("ROLE_487-8") }}";
+
+        var  isShowProcesoIndex    = "{{ is_granted("ROLE_490-1") }}";
+        var  isShowProcesoNew      = "{{ is_granted("ROLE_490-2") }}";
+        var  isShowProcesoCreate   = "{{ is_granted("ROLE_490-3") }}";
+        var  isShowProcesoEdit     = "{{ is_granted("ROLE_490-4") }}";
+        var  isShowProcesoDelete   = "{{ is_granted("ROLE_490-8") }}";
+
+        var  isShowDocumentoIndex    = "{{ is_granted("ROLE_491-1") }}";
+        var  isShowDocumentoNew      = "{{ is_granted("ROLE_491-2") }}";
+        var  isShowDocumentoCreate   = "{{ is_granted("ROLE_491-3") }}";
+        var  isShowDocumentoEdit     = "{{ is_granted("ROLE_491-4") }}";
+        var  isShowDocumentoDelete   = "{{ is_granted("ROLE_491-8") }}";
+
+        var  isShowRespuestaIndex    = "{{ is_granted("ROLE_492-1") }}";
+        var  isShowRespuestaNew      = "{{ is_granted("ROLE_492-2") }}";
+        var  isShowRespuestaCreate   = "{{ is_granted("ROLE_492-3") }}";
+        var  isShowRespuestaEdit     = "{{ is_granted("ROLE_492-4") }}";
+        var  isShowRespuestaDelete   = "{{ is_granted("ROLE_492-8") }}";
+
+        var  isShowTagPlantilla    =  "{{ is_granted("ROLE_489-8797") }}";
+        var  isShowSelectorProceso =  "{{ is_granted("ROLE_489-8817") }}";
+
+        var strListRespuestaUnica        = "{{ strListRespuestaUnica}}"; 
+        var urlManagerAdminProcesos      = "{{ path('admiDocEnunciado_managerAdminProcesos') }}";
+        var urlManagerAdminDocumentos    = "{{ path('admiDocEnunciado_managerAdminDocumentos') }}";
+        var urlManagerAdminRespuestas    = "{{ path('admiDocEnunciado_managerAdminRespuestas') }}";
+        var urlManagerAdminDocEnunciado  = "{{ path('admiDocEnunciado_managerAdminDocEnunciado') }}";
+        var urlgetGlobalListData         = "{{ path('admiDocEnunciado_getGlobalListData') }}";
+
+    </script>
+    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Utilitarios/componentManager.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiDocEnunciado/index.js?1') }}"></script>
+{% endblock %}
+
+
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}"  alt="" class="imagen-titulo-content">
+	<h1>{{item.nombreItemMenu}}</h1>
+</div> 
+<div class="body_content">   
+    <div id="my-tabs">
+        
+        <div id="tab1" class="x-hide-display">
+        
+        </div>
+
+        <div id="tab2" class="x-hide-display">
+        
+        </div>
+
+        <div id="tab3" class="x-hide-display"> 
+          <div id="msjAdmin" class='warningmessage'>No cuenta con los privilegios necesarios para utilizar esta función</div>
+        </div>
+    </div>
+</div>
+
+{% endblock contenido_central %}
+
+ 

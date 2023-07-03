@@ -1,0 +1,131 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlGetMotivos = '{{ path('admibines_getMotivosAnulacionBines') }}';
+    var urlEliminarBIN = '{{ path('admibines_eliminarBin') }}';
+    var urlShow = '{{ path('admibines_show', { 'id': entity.id }) }}';
+    var urlIndex = '{{ path('admibines') }}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiBines/delete.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    {% if entity is defined %}
+        {% if entity is not empty %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('adm-fin-bin.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver BIN</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Bin:</th>
+                <td width="15%">{{ entity.binNuevo }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%" ><input id='idBin' style="visibility: hidden" value='{{ entity.id }}'</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Descripcion:</th>
+                <td width="30%">{{ entity.descripcion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Banco:</th>
+                <td width="55%">{{ entity.banco }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Tarjeta:</th>
+                <td width="15%">{{ entity.tarjeta }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Estado:</th>
+                <td>{{ entity.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>	
+<div class="body_content" >
+    <form id='admibines_form'  method="post" {{ form_enctype(form) }} class="formulario">
+        <div>{{ form_label(form.motivo_id) }} {{ form_widget(form.motivo_id) }}</div>
+        <div>{{ form_label(form.motivo_descripcion) }} {{ form_widget(form.motivo_descripcion) }}</div>
+    </form>
+</div>
+<div class="body_content">
+    <div id="form_eliminarBin_twig_js" />
+</div>
+
+        {% else %}
+<div class="info-error">No esta definido un BIN</div>
+<div class="buttons">
+    <p>
+        <a class="cancel-crud" href="{{ path('admibines') }}">
+            Regresar
+        </a>
+    </p>
+</div>
+        {% endif %}
+    {% else %}
+<div class="info-error">No esta definido un BIN</div>
+<div class="buttons">
+    <p>
+        <a class="cancel-crud" href="{{ path('admibines') }}">
+            Regresar
+        </a>
+    </p>
+</div>
+    {% endif %}
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    {% if is_granted('ROLE_294-2797') %}
+    <li>
+        <a class="button-nuevo-registro" href="{{ path('admibines_new') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nuevo Bin
+        </a>
+    </li>
+    {% endif %}
+</ul>
+{% endblock contenido_der %}

@@ -1,0 +1,38 @@
+admitiponotificacion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:index" }
+
+admitiponotificacion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:show" }
+
+admitiponotificacion_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:new" }
+
+admitiponotificacion_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:create" }
+    requirements: { _method: POST }
+    
+admitiponotificacion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:edit" }
+
+admitiponotificacion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:update" }
+    requirements: { _method: POST }
+    
+admitiponotificacion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:delete" }
+    
+admitiponotificacion_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:deleteAjax" }
+    requirements: { _method: post }
+
+admitiponotificacion_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoNotificacion:grid"}

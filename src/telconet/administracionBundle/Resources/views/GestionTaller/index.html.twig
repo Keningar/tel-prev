@@ -1,0 +1,41 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}   
+    <link href="{{ asset('./bundles/administracion/css/GestionTaller.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}    
+<script>
+    var strUrlGetModelosMediosTransporte  = "{{ path('elementotransporte_getModelosMedioTransporte') }}";
+    var strUrlGridGestionTaller           = "{{ path('gestiontaller_grid') }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/GestionTaller/index.js') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Gesti&oacute;n de Talleres</h1>
+</div>
+<div class="body_content k-content">
+    {% if is_granted("ROLE_337-3877") %}
+    <div style="float:right;margin-bottom: 30px;">
+        <a class="button-nuevo-registro" href="{{ path('gestiontaller_newReinicioNumeracionOrdenTrabajoTransporte') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Renumerar Orden de Trabajo
+        </a>
+    </div>
+    {% endif %}
+    
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_central %}

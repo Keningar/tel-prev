@@ -1,0 +1,3 @@
+asignarPersonalExterno:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:Jefes:asignarPersonalExterno" }

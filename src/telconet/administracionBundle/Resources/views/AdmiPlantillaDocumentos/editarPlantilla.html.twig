@@ -1,0 +1,16 @@
+<div class="container">
+    <h5>Editar Plantilla <i class="fa fa-info-circle"></i></h5>
+    <div class="form-group">
+    <h6>Descripcion de actualización:</h6>
+        <div >
+            <input type="hidden" class="form-control input-sm" id="idPlantillaEditar" name="idPlantillaEditar" value = {{objPlantilla['objData'].id}} >
+            <input type="hidden" class="form-control input-sm" id="codigoPlantillaEditar" name="codigoPlantillaEditar" value = {{objPlantilla['objData'].codigoPlantilla}} >            
+            <textarea class="form-control rounded-0" id="descripcionTextAreaEditar" name="descripcionTextAreaEditar" rows="2" ></textarea>
+        </div>
+    </div> 
+
+    <h6>Plantila configurada:</h6>
+    <div class="form-group">
+    <textarea class="form-control rounded-0" id="plantillaTextAreaEditar" name="plantillaTextAreaEditar" rows="14" >{{objPlantilla['objData'].plantilla}}</textarea>
+    </div>     
+</div>

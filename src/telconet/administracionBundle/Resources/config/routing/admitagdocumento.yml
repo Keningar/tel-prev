@@ -1,0 +1,39 @@
+admitagdocumento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:index" }
+
+admitagdocumento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:show" }
+
+admitagdocumento_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:new" }
+
+admitagdocumento_create:
+    pattern:  /create
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:create" }
+    requirements: { _method: post }
+
+admitagdocumento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:edit" }
+
+admitagdocumento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:update" }
+    requirements: { _method: post }
+
+admitagdocumento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:delete" }
+    requirements: { _method: post }
+
+admitagdocumento_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:grid"}
+    
+admitagdocumento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTagDocumento:deleteAjax" }
+    requirements: { _method: post }

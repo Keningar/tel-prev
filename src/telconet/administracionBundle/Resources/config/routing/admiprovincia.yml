@@ -1,0 +1,50 @@
+admiprovincia:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiProvincia:index" }
+
+admiprovincia_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiProvincia:show" }
+
+admiprovincia_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiProvincia:new" }
+
+admiprovincia_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiProvincia:create" }
+    requirements: { _method: POST }
+    
+admiprovincia_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiProvincia:edit" }
+
+admiprovincia_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiProvincia:update" }
+    requirements: { _method: POST }
+    
+admiprovincia_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiProvincia:delete" }
+    
+admiprovincia_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiProvincia:deleteAjax" }
+    requirements: { _method: post }
+
+admiprovincia_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiProvincia:grid"}
+    
+admiprovincia_getPaises:
+    pattern:  /getPaises
+    defaults: { _controller: administracionBundle:AdmiProvincia:getPaises }
+    
+admiprovincia_ajaxGetProvinciasPorRegion:
+    pattern:  /ajaxGetProvinciasPorRegion
+    defaults: { _controller: administracionBundle:AdmiProvincia:ajaxGetProvinciasPorRegion }    
+    
+admiprovincia_getRegiones:
+    pattern:  /getRegiones
+    defaults: { _controller: administracionBundle:AdmiProvincia:getRegiones }

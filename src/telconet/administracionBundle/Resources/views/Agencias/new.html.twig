@@ -1,0 +1,147 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}  
+	
+	<script>var url_formas_contacto_persona = "{{ path('agencias_formas_contacto_grid') }}";</script>    
+	<script>var url_formas_contacto = "{{path('agencias_lista_formas_contacto')}}";</script>
+	<script>var personaid = "";</script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Agencia</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+		{% if error is defined %}
+	        <div class='errormessage'>{{ error }}</div>
+	    {% endif %}
+        <form id='form_new_agencia' action="{{ path('agencias_create') }}" onsubmit="return validaFormasContacto();" method="post" {{ form_enctype(form) }} class='formulario'>
+            <input type="hidden" id="agenciatype_personaid" name="agenciatype[personaid]" value="" />
+			<div id="my-tabs">
+				<div id="tab1" class="x-hide-display">
+					<table border='0'>
+						<tr><td colspan='4'>&nbsp;</td></tr>
+						<tr>
+							<td>
+								&nbsp;&nbsp;&nbsp;
+							</td>                            
+							<td  style="vertical-align: top;">
+								<div>                        
+									<div>{{ form_label(form.tipoIdentificacion) }} {{ form_widget(form.tipoIdentificacion) }}</div>
+									<div>{{ form_label(form.nacionalidad) }} {{ form_widget(form.nacionalidad) }}</div>
+									<div>{{ form_label(form.direccion) }} {{ form_widget(form.direccion) }}</div>
+								</div>
+								<div id='div_nombres_2'>
+									<div>{{ form_label(form.genero) }} {{ form_widget(form.genero) }}</div>
+									<div>{{ form_label(form.estadoCivil) }} {{ form_widget(form.estadoCivil) }}</div>
+								</div>
+							</td>
+							<td>
+								&nbsp;&nbsp;&nbsp;
+							</td>
+							<td style="vertical-align: top;">
+								<div>{{ form_label(form.identificacionCliente) }}{{ form_widget(form.identificacionCliente) }}</div>
+								<div id='div_nombres'>
+									<div>{{ form_label(form.nombres) }} {{ form_widget(form.nombres) }}</div>
+									<div>{{ form_label(form.apellidos) }} {{ form_widget(form.apellidos) }}</div>
+									<div>{{ form_label(form.fechaNacimiento) }} {{ form_widget(form.fechaNacimiento) }}</div>
+									<div>{{ form_label(form.tituloId) }} {{ form_widget(form.tituloId) }}</div>
+									<input type='text' style="display: none" id="agenciatype_formas_contacto" required='required' name="agenciatype[formas_contacto]"/>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div id="tab2" class="x-hide-display">
+					<table border='0' align='center'>
+						<tr><td>&nbsp;</td></tr>
+						<tr>
+							<td>
+								<div id='lista_formas_contacto_grid'></div>       
+							</td>							
+						</tr>   
+					</table>            
+				</div>
+			</div>
+			
+            <div class="buttons">
+                <p>
+					<button type="submit" class="button-crud" onclick="grabar('#agenciatype_formas_contacto');" class="button-crud">Guardar</button>
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('agencias') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Agencias/new_edit.js') }}"></script>
+	
+	<script>
+		function esEmpresa(){
+			mostrarDiv('div_nombres');
+			mostrarDiv('div_nombres2');
+			$('#agenciatype_nombres').attr('required','required');                    
+			$('#agenciatype_apellidos').attr('required','required');                    
+			$('#agenciatype_genero').attr('required','required');                    
+			$('#agenciatype_estadoCivil').attr('required','required');                    
+			$('#agenciatype_fechaNacimiento').attr('required','required');                    
+			$('#agenciatype_tituloId').attr('required','required');                                       
+		} 
+		
+		function esRuc(){
+			if ($('#agenciatype_tipoIdentificacion').val()=='RUC'){
+				$('#agenciatype_identificacionCliente').removeAttr('maxlength');
+				$('#agenciatype_identificacionCliente').attr('maxlength','13');
+				$('#agenciatype_identificacionCliente').val('');
+			}else
+			{
+                if ($('#agenciatype_tipoIdentificacion').val()=='CED')
+                {
+                    $('#agenciatype_identificacionCliente').removeAttr('maxlength');
+                    $('#agenciatype_identificacionCliente').attr('maxlength','10');
+                    $('#agenciatype_identificacionCliente').val('');
+                }
+                else
+                {
+                    $('#agenciatype_identificacionCliente').removeAttr('maxlength');
+                    $('#agenciatype_identificacionCliente').attr('maxlength','20');
+                    $('#agenciatype_identificacionCliente').val('');
+                }
+            }
+        }
+			
+		function mostrarDiv(div){
+			capa = document.getElementById(div);
+			capa.style.display = 'block';    
+		}
+		function ocultarDiv(div){
+			capa = document.getElementById(div);
+			capa.style.display = 'none';    
+		}
+	</script>
+
+	<script>
+		$(function(){    
+		    $("#agenciatype_identificacionCliente").keydown(function(event){
+		        if(!isNumeric(event)) return false;
+		    });    
+		    
+		});
+		function isNumeric(event){
+		    return (
+		        (event.keyCode > 7 && event.keyCode < 10)
+		        || (event.keyCode > 47 && event.keyCode < 60)
+		        || (event.keyCode > 95 && event.keyCode < 106)
+		        || event.keyCode == 17
+		        || event.keyCode == 116
+		    )
+		} 
+	</script>          
+{% endblock %}

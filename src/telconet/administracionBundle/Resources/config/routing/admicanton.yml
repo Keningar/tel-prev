@@ -1,0 +1,62 @@
+admicanton:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiCanton:index" }
+
+admicanton_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiCanton:show" }
+
+admicanton_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiCanton:new" }
+
+admicanton_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiCanton:create" }
+    requirements: { _method: POST }
+    
+admicanton_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiCanton:edit" }
+
+admicanton_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiCanton:update" }
+    requirements: { _method: POST }
+    
+admicanton_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiCanton:delete" }
+    
+admicanton_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiCanton:deleteAjax" }
+    requirements: { _method: post }
+
+admicanton_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiCanton:grid"}
+    
+admicanton_getCantones:
+    pattern:  /getCantones
+    defaults: { _controller: administracionBundle:AdmiCanton:getCantones }
+    
+admicanton_buscarCantones:
+    pattern:  /buscarCantones
+    defaults: { _controller: administracionBundle:AdmiCanton:buscarCantones }
+    
+admicanton_getPaises:
+    pattern:  /getPaises
+    defaults: { _controller: administracionBundle:AdmiCanton:getPaises }
+    
+admicanton_getRegiones:
+    pattern:  /getRegiones
+    defaults: { _controller: administracionBundle:AdmiCanton:getRegiones }
+    
+admicanton_ajaxBuscarCantonesPorProvincia:
+    pattern:  /ajaxBuscarCantonesPorProvincia
+    defaults: { _controller: administracionBundle:AdmiCanton:ajaxBuscarCantonesPorProvincia }    
+    
+admicanton_getProvincias:
+    pattern:  /getProvincias
+    defaults: { _controller: administracionBundle:AdmiCanton:getProvincias }

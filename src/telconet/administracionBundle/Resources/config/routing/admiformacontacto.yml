@@ -1,0 +1,50 @@
+admiformacontacto:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:index" }
+
+admiformacontacto_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:show" }
+
+admiformacontacto_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:new" }
+
+admiformacontacto_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:create" }
+    requirements: { _method: POST }
+    
+admiformacontacto_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:edit" }
+
+admiformacontacto_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:update" }
+    requirements: { _method: POST }
+    
+admiformacontacto_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:delete" }
+    
+admiformacontacto_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:deleteAjax" }
+    requirements: { _method: post }
+
+admiformacontacto_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:grid"}
+    
+admiformacontacto_getAdmiFormaContacto:
+    pattern:  /getAdmiFormaContacto
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:getAdmiFormaContacto"}
+    
+admiformacontacto_getEscalabilidadContacto:
+    pattern:  /getEscalabilidadContacto
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:getEscalabilidadContacto"}   
+    
+admihorariocontacto_getHorarioContacto:
+    pattern:  /getHorariosContacto
+    defaults: { _controller: "administracionBundle:AdmiFormaContacto:getHorariosContacto"}        

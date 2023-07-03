@@ -1,0 +1,153 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+    {% if tipocuenta is defined %}
+        {% if tipocuenta is not empty %}
+        <div id="titulo_content">
+            <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+            <h1>Ver Tipo de Cuenta</h1>
+        </div>
+        <div class="body_content">
+            <table class="formulario">
+                <tbody>
+                    <tr>
+                        <td width="8%">&nbsp;</td>
+                        <th width="25%"> Descripcion Tipo de Cuenta:</th>
+                        <td width="15%">{{ tipocuenta.descripcionCuenta }}</td>        
+                        <td width="1%"></td>
+
+                        <td width="8%">&nbsp;</td>
+                        <th width="25%">&nbsp;</th>        
+                        <td width="15%">&nbsp;</td>
+                        <td width="1%"></td>
+                    </tr>
+                    <tr>
+                        <td width="8%">&nbsp;</td>
+                        <th width="25%"> Estado:</th>
+                        <td>{{ tipocuenta.estado }}</td>        
+                        <td width="1%"></td>
+
+                        <td width="8%">&nbsp;</td>
+                        <th width="25%">&nbsp;</th>        
+                        <td width="15%">&nbsp;</td>
+                        <td width="1%"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>	
+        <div class="buttons">
+            <p>
+                <span class="height20px">
+                    <a class="button-crud" href="{{ path('admitipocuenta') }}">Regresar</a>
+                </span>
+            </p>
+        </div>
+        <div class="body_content">
+            <table class="formulario">
+                <tbody>
+                    <tr>
+                        <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                        <th width="11%">Creador:</th>
+                        <td width="34%" >{{ tipocuenta.usrCreacion }}</td>
+
+                      {% if(tipocuenta.estado|lower=="modificado") %}
+                        <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                        <th width="11%" >Ult. Mod.:</th>
+                        <td width="34%">{{ tipocuenta.usrUltMod }}</td>
+                      {% endif %}
+
+                      {% if(tipocuenta.estado|lower=="eliminado") %}
+                        <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                        <th width="6%">Eliminado:</th>
+                        <td width="34%">{{ tipocuenta.usrUltMod }}</td>
+                      {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Fecha:</th>
+                        <td >{{ tipocuenta.feCreacion | date("d M Y") }}</td>
+
+                      {% if(tipocuenta.estado|lower=="modificado") %}
+                        <th>Fecha:</th>
+                        <td >{{ tipocuenta.feUltMod  | date("d M Y")}}</td>
+                      {% endif %}
+
+                      {% if(tipocuenta.estado|lower=="eliminado") %}
+                        <th>Fecha:</th>
+                        <td>{{ tipocuenta.feUltMod | date("d M Y") }}</td>
+                      {% endif %}
+                    </tr>
+                    <tr>
+                        <th>Hora:</th>
+                        <td>{{ tipocuenta.feCreacion | date("H:i:s") }}</td>
+
+                      {% if(tipocuenta.estado|lower=="modificado") %}
+                        <th>Hora:</th>
+                        <td>{{ tipocuenta.feUltMod | date("H:i:s") }}</td>
+                      {% endif %}
+
+                      {% if(tipocuenta.estado|lower=="eliminado") %}
+                        <th>Hora:</th>
+                        <td>{{ tipocuenta.feUltMod | date("H:i:s") }}</td>
+                      {% endif %}
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <div class="info-error">No esta definido un tipo de cuenta</div>
+            <div class="buttons">
+                <p>
+                    <a class="cancel-crud" href="{{ path('admitipocuenta') }}">
+                        Regresar
+                    </a>
+                </p>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="info-error">No esta definido un tipo de cuenta</div>
+        <div class="buttons">
+            <p>
+                <a class="cancel-crud" href="{{ path('admitipocuenta') }}">
+                    Regresar
+                </a>
+            </p>
+        </div>
+    {% endif %}
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    {% if is_granted('ROLE_45-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admitipocuenta_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Tipo de Cuenta
+            </a>
+        </li>
+    {% endif %}
+    <li>
+        &nbsp;
+    </li>
+    {% if tipocuenta is defined %}
+        {% if tipocuenta is not empty %}
+            {% if is_granted('ROLE_45-4') and tipocuenta.estado | lower != "eliminado" %}
+                <li>
+                    <a class="button-editar" href="{{ path('admitipocuenta_edit', { 'id': tipocuenta.id }) }}">
+                        &nbsp;Editar Tipo de Cuenta
+                    </a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_45-8') and tipocuenta.estado | lower != "eliminado" %}
+                <li>
+                    <a class="button-eliminar" href="{{ path('admitipocuenta_delete', { 'id': tipocuenta.id }) }}">
+                        &nbsp;Eliminar Tipo de Cuenta
+                    </a>
+                </li>
+            {% endif %}
+         {% endif %}
+     {% endif %}
+</ul>
+{% endblock contenido_der %}

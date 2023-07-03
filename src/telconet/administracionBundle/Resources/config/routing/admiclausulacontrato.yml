@@ -1,0 +1,38 @@
+admiclausulacontrato:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:index" }
+
+admiclausulacontrato_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:show" }
+
+admiclausulacontrato_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:new" }
+
+admiclausulacontrato_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:create" }
+    requirements: { _method: POST }
+    
+admiclausulacontrato_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:edit" }
+
+admiclausulacontrato_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:update" }
+    requirements: { _method: POST }
+    
+admiclausulacontrato_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:delete" }
+    
+admiclausulacontrato_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:deleteAjax" }
+    requirements: { _method: post }
+
+admiclausulacontrato_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiClausulaContrato:grid"}

@@ -1,0 +1,223 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlFormasContactoEmpresa = "{{ path('admiempresaexterna_formas_contacto_grid') }}";
+    var personaempresaexternaId = "{{personaempresaexterna.id}}";
+    var urlShow = '{{ path('admiempresaexterna_show', { 'id': personaEmpresaRol.id }) }}';
+    var urlEditarEmpresaExterna = '{{ path('admiempresaexterna_edit', { 'id': personaEmpresaRol.id }) }}';
+    var urlEliminarEmpresaExterna = "{{ path('admiempresaexterna_delete', { 'id': personaEmpresaRol.id }  ) }}";
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiEmpresaExterna/show.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+	<div id="titulo_content">
+	    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	    <h1>Ver Empresa Externa</h1>
+	</div>
+	<div class="body_content">
+            <table class="record_properties" width='100%' border='0'>
+			<tbody>
+		        <tr height="20px">
+                    <td width="160px">
+                        <b>Nombre Empresa Externa:<b>
+                    </td>
+					<td width="450px">
+                        {{ personaempresaexterna.nombres }}
+                    </td>
+		            <td width="70px">
+                        <b>RUC:</b>
+                    </td>
+		            <td>
+                        {{ personaempresaexterna.identificacionCliente }}
+                    </td>  
+		        </tr>
+		        <tr height="20px">
+                    <td>
+                        <b>Razón Social:<b>
+                    </td>
+					<td>
+                        {{ personaempresaexterna.razonSocial }}
+                    </td>
+		            <td>
+                        <b>Origen:<b>
+                    </td>
+		            <td>
+						{%if(personaempresaexterna.nacionalidad == 'NAC')%}Nacional
+						{%elseif(personaempresaexterna.nacionalidad == 'EXT')%}Extranjera
+						{%endif%}
+					</td>
+		        </tr>     
+		        <tr height="20px">
+                    <td>
+                        <b>Fecha Institución:</b>
+                    </td>
+		            <td>
+                        {% if(personaempresaexterna.fechaNacimiento is not null)%}
+                            {{ personaempresaexterna.fechaNacimiento|date('d-m-Y') }}
+                        {% endif %}
+                    </td>
+		            <td>
+                        <b>Dirección:</b>
+                    </td>
+		            <td>
+                        {{ personaempresaexterna.direccion }}
+                    </td>
+		        </tr>
+		        <tr height="20px">
+		            <td>
+                        <b>Estado:</b>
+                    </td>
+		            <td>
+                        {{ personaEmpresaRol.estado }}
+                        <input type="hidden" id="Estado" value="{{ personaEmpresaRol.estado }}" />
+                    </td>
+		        </tr>
+            <tbody>
+        </table>
+        <div align="center" id="gridFormasContacto"></div>
+        <table class="record_properties" width='100%' border='0'>
+            <tr>
+                <td>
+                    <div id="form_eliminarEmpresaExterna" />
+                </td>
+            </tr>
+        </table>
+        <div class="buttons">
+        <p>
+            <span class="height20px">
+                <a class="button-crud" href="{{ path('admiempresaexterna') }}">Listado</a>
+            </span>
+        </p>
+        </div>
+        <br>
+        <br>
+    <table class="formulario">
+        <tbody>
+            <tr height="20px">
+                <td width="10%" rowspan="4" align="right">
+                    <img style="padding-right: 10px" src="{{ asset('public/images/images_crud/agregar_64.png')}}"/>
+                </td>
+                <th width="7%">
+                    Creador:
+                </th>
+                <td width="21%">
+                    {% if(personaEmpresaRol is not null)%}
+                        {{personaEmpresaRol.usrCreacion}}
+                    {% endif %}
+                </td>
+
+                {% if(ultMod is not null) %}
+                <td width="10%" rowspan="3" align="right">
+                    <img style="padding-right: 10px" src="{{ asset('public/images/images_crud/edit_64.png')}}"/>
+                </td>
+                <th width="7%">
+                    Ult. Mod.:
+                </th>
+                <td width="21%">
+                    {{ ultMod.usrCreacion }}
+                </td>
+                {% endif %}
+
+                {% if(eliminado is not null)%}
+                <td width="10%" rowspan="3" align="right">
+                    <img style="padding-right: 10px" src="{{ asset('public/images/images_crud/eliminar_64.png')}}"/>
+                </td>
+                <th width="7%">
+                    Eliminado:
+                </th>
+                <td width="21%">
+                    {{ eliminado.usrCreacion }}
+                </td>
+                {% endif %}
+            </tr>
+
+            <tr height="20px">
+                <th>
+                    Fecha:
+                </th>
+                <td>
+                    {% if(creacion is not null) %}{{ creacion.feCreacion | date("d M Y") }} {% endif %}
+                </td>
+
+                {% if(ultMod is not null) %}
+                <th>
+                    Fecha:
+                </th>
+                <td>
+                    {{ ultMod.feCreacion  | date("d M Y")}}
+                </td>
+                {% endif %}
+
+                {% if(eliminado is not null) %}
+                <th>
+                    Fecha:
+                </th>
+                <td>
+                    {{ eliminado.feCreacion | date("d M Y") }}
+                </td>
+                {% endif %}
+            </tr>
+
+            <tr height="20px">
+                <th>
+                    Hora:
+                </th>
+                <td>
+                    {% if(creacion is not null) %} {{ creacion.feCreacion | date("H:i:s") }} {%endif%}
+                </td>
+
+                {% if(ultMod is not null) %}
+                <th>
+                    Hora:
+                </th>
+                <td>
+                    {{ ultMod.feCreacion | date("H:i:s") }}
+                </td>
+                {% endif %}
+
+                {% if(eliminado is not null) %}
+                <th>
+                    Hora:
+                </th>
+                <td>
+                    {{ eliminado.feCreacion | date("H:i:s") }}
+                </td>
+                {% endif %}
+            </tr>
+
+            <tr height="20px">
+                <th>
+                    Ip:
+                </th>
+                <td>
+                    {% if(creacion is not null) %} {{ creacion.ipCreacion}} {%endif%}
+                </td>
+            </tr>   
+        </tbody>
+    </table>
+</div>	
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+	{% if is_granted('ROLE_298-2897') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiempresaexterna_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp; Nueva Empresa Externa
+            </a>
+        </li>
+	{% endif %}
+        <li>
+            &nbsp;
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul>
+        <div id="form_accionesEmpresaExterna" />
+    </ul>
+{% endblock contenido_der %}
+                    

@@ -1,0 +1,38 @@
+admitag:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTag:index" }
+
+admitag_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiTag:getEncontrados }
+
+admitag_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTag:show" }
+
+admitag_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTag:new" }
+
+admitag_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTag:create" }
+    requirements: { _method: POST }
+    
+admitag_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTag:edit" }
+
+admitag_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTag:update" }
+    requirements: { _method: POST }
+    
+admitag_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTag:deleteAjax" }
+    requirements: { _method: post }
+
+admitag_ajaxGetElementoServidor:
+    pattern:  /getElementoServidor
+    defaults: { _controller: "administracionBundle:AdmiTag:getElementoServidor" }

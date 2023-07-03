@@ -1,0 +1,39 @@
+admiParametroCab:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:index" }
+
+admiParametroCab_getListadoParametrosCabJson:
+    pattern:  /getListadoParametrosCabJson
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:getListadoParametrosCabAjax" }
+
+admiParametroCab_getListadoParametrosDetJson:
+    pattern:  /getListadoParametrosDetJson
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:getListadoParametrosDetAjax" }
+
+admiParametroCab_creaParametroCab:
+    pattern:  /creaParametroCab
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:creaParametroCabAjax" }
+
+admiParametroCab_creaParametroDet:
+    pattern:  /creaParametroDet
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:creaParametroDetAjax" }
+
+admiParametroCab_actualizaParametroCab:
+    pattern:  /actualizaParametroCab
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:actualizaParametroCabAjax" }
+
+admiParametroCab_actualizaParametroDet:
+    pattern:  /actualizaParametroDet
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:actualizaParametroDetAjax" }
+
+admiParametroCab_eliminarParametroCab:
+    pattern:  /eliminarParametroCab
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:eliminarParametroCabAjax" }
+
+admiParametroCab_eliminarParametroDet:
+    pattern:  /eliminarParametroDet
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:eliminarParametroDetAjax" }
+
+admiParametroCab_validarDisponibilidadOpcionPorHoraAjax:
+    pattern:  /validarDisponibilidadOpcionPorHoraAjax
+    defaults: { _controller: "administracionBundle:AdmiParametroCab:validarDisponibilidadOpcionPorHoraAjax" }

@@ -1,0 +1,283 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}   
+    <link href="{{ asset('./bundles/administracion/css/GestionTaller.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}    
+    
+<script>
+    var strUrlGetOrdenesTrabajoVehiculo = "{{ path('gestiontaller_getOrdenesTrabajoXTransporte', { 'id': medioTransporte.id } ) }}";
+    
+    var permisoVerOrdenTrabajo          = '{{ is_granted("ROLE_337-3558") }}';
+    var boolPermisoVerOrdenTrabajo      = (typeof permisoVerOrdenTrabajo === 'undefined') ? false : (permisoVerOrdenTrabajo ? true : false);
+    
+    var permisoNuevoMantenimiento       = '{{ is_granted("ROLE_337-4377") }}';
+    var boolPermisoNuevoMantenimiento   = (typeof permisoNuevoMantenimiento === 'undefined') ? false : (permisoNuevoMantenimiento ? true : false);
+    
+    var permisoVerMantenimientosXOrdenTrabajo       = '{{ is_granted("ROLE_337-4397") }}';
+    var boolPermisoVerMantenimientosXOrdenTrabajo   = (typeof permisoVerMantenimientosXOrdenTrabajo === 'undefined') ? 
+                                                        false : (permisoVerMantenimientosXOrdenTrabajo ? true : false);
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/GestionTaller/showOrdenesTrabajoXTransporte.js') }}"></script>
+{% endblock %}
+
+{% block contenido %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>&Oacute;rdenes de Trabajo Por Veh&iacute;culo</h1>
+</div>
+<div class="body_content k-content">
+    <fieldset style="border-width: 1px;" class="x-fieldset x-fieldset-default">
+        <div class="x-fieldset-body" style="">
+            <fieldset style="border-width: 1px; " class="x-fieldset x-fieldset-with-title x-fieldset-with-legend x-fieldset-default">
+                <legend class="x-fieldset-header x-fieldset-header-default">
+                    <div class="x-component x-fieldset-header-text x-component-default">Información del Veh&iacute;culo</div>
+                </legend>
+                <div class="x-fieldset-body" id="fieldset-1011-body" style="">
+                    <div style="padding: 5px 0px; " class="x-panel x-panel-default">
+                        <div class="x-panel-body x-panel-body-default x-panel-body-default x-table-layout-ct x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" style="left: 0px; top: 0px; ">
+                            <table style="width:100%" cellspacing="0" class="x-table-layout" role="presentation">
+                                <tr>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            <b>Empresa</b>:
+                                        </label>
+                                    </td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            {{ empresa }}
+                                        </label>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            <b>Estado</b>:
+                                        </label>
+                                    </td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            {{ medioTransporte.estado }}
+                                        </label>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            <b>A&ntilde;o</b>:
+                                        </label>
+                                    </td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            {{ detalles.ANIO }}
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height:10px;" colspan="8">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            <b>Modelo</b>:
+                                        </label>
+                                    </td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            {{ medioTransporte.modeloElementoId.nombreModeloElemento }}
+                                        </label>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                        <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                            <b>Placa</b>:
+                                        </label>
+                                    </td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                        <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                            {{ medioTransporte.nombreElemento }}
+                                        </label>
+                                    </td>
+                                    <td style="width:5%"></td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                        <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                            <b>Disco</b>:
+                                        </label>
+                                    </td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                        <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                            {{ detalles.DISCO }}
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="height:10px;" colspan="8">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            <b>Chofer Predefinido</b>:
+                                        </label>
+                                    </td>
+                                    <td colspan="2" valign="top" class="x-field-label-cell" halign="left" style="">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            {{ detalles.strNombreApellidoChoferPredefinido }}
+                                        </label>
+                                    </td>
+                                    <td >&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="height:10px;" colspan="8">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            <b>Tipo de Veh&iacute;culo</b>:
+                                        </label>
+                                    </td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="">
+                                        <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                            {% if detalles.TIPO_VEHICULO=='' %}N/A{% else %}{{ detalles.TIPO_VEHICULO }}{% endif %}
+                                        </label>
+                                    </td>
+                                    <td colspan="2">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="height:10px;" colspan="8">&nbsp;</td>
+                                </tr>
+                            </table>
+                            <div id="bloqueDinamico">
+                                {% for flashMessage in app.session.flashbag.get('notice') %}
+                                <div class="errormessage">
+                                    {{ flashMessage }}
+                                </div>
+                                {% endfor %} 
+                                {% if detalles.TIPO_VEHICULO == 'EMPRESA' %}
+                                    <div id="tituloPorTipoVehiculo" class="secHead">Ficha T&eacute;cnica</div>
+                                    <div id="datosFichaTecnica">
+                                        <table cellspacing="0" class="x-table-layout" role="presentation">
+                                        <tbody>
+                                            <tr>
+                                                <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                    <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                                        <b>Regi&oacute;n:</b>
+                                                    </label>
+                                                </td>
+                                                <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                    <label style="font-weight:normal;margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                                        {% if detalles.REGION=='' %}N/A{% else %}{{ detalles.REGION }}{% endif %}
+                                                    </label>
+                                                </td>
+                                                <td style="width:5%"></td>
+                                                <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                                        <b>Plan de Mantenimiento:</b>
+                                                    </label>
+                                                </td>
+                                                <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                    <label style="font-weight:normal;" class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                                        {{ planMantenimiento.nombreProceso }}
+                                                    </label>
+                                                </td>
+                                                <td style="width:5%"></td>
+                                                <td valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                                        <b>Umbral de Alerta(KM):</b>
+                                                    </label>
+                                                </td>
+                                                <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                    <label style="font-weight:normal;" class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                                        {% if detalles.ALERTA_KM=='' %}N/A{% else %}{{ detalles.ALERTA_KM }}{% endif %}
+                                                    </label>
+                                                </td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                {%elseif detalles.TIPO_VEHICULO == 'SUBCONTRATADO'%}
+                                    {% if contrato is not empty %}
+                                    <div id="tituloPorTipoVehiculo" class="secHead">Pertenece a</div>
+                                    <div id="datosContrato" >
+                                            <table cellspacing="0" class="x-table-layout" role="presentation">
+                                                <tbody>
+                                                    <tr>
+                                                        <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                            <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                                                <b>Contratista:</b>
+                                                            </label>
+                                                        </td>
+                                                        <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                            <label style="font-weight:normal;margin-right:5px;" class="x-form-item-label x-form-item-label-left">
+                                                                {% if contrato.personaEmpresaRolId.personaId.nombres != "" 
+                                                                    and contrato.personaEmpresaRolId.personaId.apellidos != "" %}
+                                                                    {{ contrato.personaEmpresaRolId.personaId.nombres }} {{ contrato.personaEmpresaRolId.personaId.apellidos }}
+                                                                {% else %}
+                                                                    {{ contrato.personaEmpresaRolId.personaId.razonSocial }}
+                                                                {% endif %}
+                                                            </label>
+                                                        </td>
+                                                        <td style="width:5%"></td>
+                                                        <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                            <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                                                <b>Fecha de Inicio de Contrato:</b>
+                                                            </label>
+                                                        </td>
+                                                        <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                            <label style="font-weight:normal;" class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                                                {% if contrato.feAprobacion %}{{ contrato.feAprobacion | date("d M Y") }}{% endif %}
+                                                            </label>
+                                                        </td>
+                                                        <td style="width:5%"></td>
+                                                        <td valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                            <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                                                <b>Fecha de Fin de Contrato:</b>
+                                                            </label>
+                                                        </td>
+                                                        <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                            <label style="font-weight:normal;" class="x-form-item-label x-form-item-label-left label_detalles_elemento" >
+                                                                {% if contrato.feFinContrato %}{{ contrato.feFinContrato | date("d M Y") }}{% endif %}
+                                                            </label>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                  {%endif%}     
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <table cellpadding="1" cellspacing='0'  border='0'>
+                <tr>
+                    <td><div id='filtro'></div></td>
+                </tr>	
+                <tr>
+                    <td><div id="grid_ordenes_trabajo_vehiculo"></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="buttons">
+            <p>
+            {% if is_granted('ROLE_337-3557') %}
+            
+                <span class="height20px">
+                    <a class="button-crud" 
+                       href="{{ path('gestiontaller_newOrdenTrabajoTransporte',{'id': medioTransporte.id }) }}">Nueva Orden de Trabajo</a>
+                </span>
+            
+            {% endif %}
+                <span class="height20px" style="margin-left: 10px;margin-right: 10px;">&oacute;&nbsp;</span>
+                
+                <span class="height20px">
+                    <a class="cancel-crud" href="{{ path('gestiontaller') }}">
+                            Cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </fieldset>
+</div>
+{% endblock contenido %}

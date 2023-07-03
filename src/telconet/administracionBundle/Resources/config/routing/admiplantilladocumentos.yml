@@ -1,0 +1,46 @@
+admiplantilladocumentos:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:index" }
+
+plantilla_grid_documentos:
+    pattern:  /gridPlantillas
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:gridPlantillas"}
+
+plantilla_detalle:
+    pattern:  /detalle/{strCodigoPlantilla}
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:detalle" }
+
+plantilla_editar:
+    pattern:  /editar/{strCodigoPlantilla}
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:editar" }
+
+plantilla_eliminar:
+    pattern:  /eliminar/{strCodigoPlantilla}
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:eliminar" }
+
+plantilla_descargar:
+    pattern:  /descargar/{strCodigoPlantilla}
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:descargar" }
+        
+plantilla_nueva:
+    pattern:  /crear
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:crear" }
+
+plantilla_crear_accion:
+    pattern:  /crear_accion
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:crearPlantilla" }
+
+plantilla_editar_accion:
+    pattern:  /editar_accion
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:editarPlantilla" }
+
+plantilla_descargar_accion:
+    pattern:  /descargar_accion
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:descargarPlantilla" }
+    
+plantilla_eliminar_accion:
+    pattern:  /eliminar_accion
+    defaults: { _controller: "administracionBundle:AdmiPlantillaDocumentos:eliminarPlantilla" }
+
+
+

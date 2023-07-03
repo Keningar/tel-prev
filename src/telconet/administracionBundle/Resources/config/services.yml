@@ -1,0 +1,75 @@
+parameters:
+#
+services:
+    administracion.JefesComercial:
+        class: telconet\administracionBundle\Service\JefesComercialService       
+        calls:
+            - [setDependencies, [@service_container]] 
+
+    administracion.JefesTecnico:
+        class: telconet\administracionBundle\Service\JefesTecnicoService       
+        calls:
+            - [setDependencies, [@service_container]] 
+
+    administracion.Utilidades:
+        class: telconet\administracionBundle\Service\UtilidadesService       
+        calls:
+            - [setDependencies, [@service_container]]         
+
+    administracion.PersonaEmpleado:
+        class: telconet\administracionBundle\Service\PersonaEmpleadoService       
+        calls:
+            - [setDependencies, [@service_container]]
+
+    administracion.AsignacionVehicularPredefinida:
+        class: telconet\administracionBundle\Service\AsignacionVehicularPredefinidaService       
+        calls:
+            - [setDependencies, [@service_container]]
+            
+    administracion.GestionTaller:
+        class: telconet\administracionBundle\Service\GestionTallerService
+        calls: 
+            - [setDependencies, [@service_container]]
+        arguments: ['@service_container']
+
+    administracion.InfoCoordinadorTurno:
+        class: telconet\administracionBundle\Service\InfoCoordinadorTurnoService
+        calls: 
+            - [setDependencies, [@service_container]]
+        arguments: ['@service_container']
+
+    administracion.PersonalExterno:
+        class: telconet\administracionBundle\Service\PersonalExternoService
+        calls: 
+            - [setDependencies, [@service_container]]
+        arguments: ['@service_container']
+    
+    administracion.EjecucionJar:
+        class: telconet\administracionBundle\Service\EjecucionJarService
+        calls: 
+            - [setDependencies, [@service_container]]
+        arguments: ['@service_container']
+        
+    administracion.PuntoAtencion:
+        class: telconet\administracionBundle\Service\PuntoAtencionService
+        calls: 
+            - [setDependencies, [@service_container]]
+        arguments: ['@service_container']
+
+    administracion.Plantilla:
+        class: telconet\administracionBundle\Service\PlantillaService
+        calls: 
+            - [setDependencies, [@service_container]]
+        arguments: ['@service_container']
+    
+    administracion.DerechoTitular:
+        class: telconet\administracionBundle\Service\DerechoTitularService
+        calls: 
+            - [setDependencies, [@service_container]]
+        arguments: ['@service_container']
+        
+    administracion.CampaingNotiPush:
+        class: telconet\administracionBundle\Service\CampaniasNotiPushService
+        calls: 
+            - [setDependencies, [@service_container]]
+        arguments: ['@service_container']

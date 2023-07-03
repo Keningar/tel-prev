@@ -1,0 +1,3 @@
+asignarGerenteProducto:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:Jefes:asignarGerenteProducto" }

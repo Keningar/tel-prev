@@ -1,0 +1,48 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiHolding/new.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Holding</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <div style="width: 50%; margin: auto;">
+
+            <form id='form_new_proceso' action="{{ path('com_admiholding_create') }}" method="post" {{ form_enctype(form) }}
+                  class='formulario'>
+                <table>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor1) }}</td>
+                        <td width="10%">{{ form_widget(form.valor1) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor2) }}</td>
+                        <td width="10%">{{ form_widget(form.valor2) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                   <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor3) }}</td>
+                        <td width="10%">{{ form_widget(form.valor3) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%"><input type='button' class="button-crud" onclick="validarFormulario();" value="Guardar" /></td>
+                        <td width="10%"><input type='button' class="button-crud" onclick="window.location.href='{{ path('com_admiholding') }}'" value="Cancelar" /></td>                       
+                        <td width="5%">&nbsp;</td>
+                    </tr>                    
+                </table>           
+            </form>
+        </div>
+    </div>
+{% endblock contenido_izq %}	

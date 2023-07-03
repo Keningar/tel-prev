@@ -1,0 +1,72 @@
+administracionBundle_AdmiArea:
+  resource: "@administracionBundle/Resources/config/routing/admiarea.yml"
+  prefix: /admi_area
+  
+administracionBundle_AdmiDepartamento:
+  resource: "@administracionBundle/Resources/config/routing/admidepartamento.yml"
+  prefix: /admi_departamento
+  
+administracionBundle_AdmiRol:
+  resource: "@administracionBundle/Resources/config/routing/admirol.yml"
+  prefix: /admi_rol
+  
+administracionBundle_AdmiTipoRol:
+  resource: "@administracionBundle/Resources/config/routing/admitiporol.yml"
+  prefix: /admi_tipo_rol
+  
+administracionBundle_AdmiFuncion:
+  resource: "@administracionBundle/Resources/config/routing/admifuncion.yml"
+  prefix: /admi_funcion
+
+administracionBundle_PersonaEmpleado:
+  resource: "@administracionBundle/Resources/config/routing/personaempleado.yml"
+  prefix: /persona_empleado
+  
+administracionBundle_PersonaProveedor:
+  resource: "@administracionBundle/Resources/config/routing/personaproveedor.yml"
+  prefix: /persona_proveedor
+  
+administracionBundle_AdmiCuadrilla:
+  resource: "@administracionBundle/Resources/config/routing/admicuadrilla.yml"
+  prefix: /admi_cuadrilla
+  
+administracionBundle_PersonalExterno:
+  resource: "@administracionBundle/Resources/config/routing/personalexterno.yml"
+  prefix: /personal_externo
+  
+administracionBundle_Agencias:
+  resource: "@administracionBundle/Resources/config/routing/agencias.yml"
+  prefix: /agencias
+
+administracionBundle_JefesTecnicos:
+  resource: "@administracionBundle/Resources/config/routing/jefes_tecnicos.yml"
+  prefix: /jefes_tecnicos
+
+administracionBundle_AdmiEmpresaExterna:
+  resource: "@administracionBundle/Resources/config/routing/admiempresaexterna.yml"
+  prefix: /admi_empresa_externa
+
+administracionBundle_AsignacionVehicular:
+  resource: "@administracionBundle/Resources/config/routing/asignacionvehicular.yml"
+  prefix: /asignacion_vehicular
+
+administracionBundle_AsignacionVehicularPredefinida:
+  resource: "@administracionBundle/Resources/config/routing/asignacionvehicularpredefinida.yml"
+  prefix: /asignacion_vehicular_predefinida
+
+administracionBundle_AsignacionOperativa:
+  resource: "@administracionBundle/Resources/config/routing/asignacionoperativa.yml"
+  prefix: /asignacion_operativa
+  
+administracionBundle_GestionTaller:
+  resource: "@administracionBundle/Resources/config/routing/gestiontaller.yml"
+  prefix: /gestion_taller
+  
+administracionBundle_Firma:
+  resource: "@administracionBundle/Resources/config/routing/firma.yml"
+  prefix: /firma
+  
+administracionBundle_CargosCuadrilla:
+  resource: "@administracionBundle/Resources/config/routing/cargoscuadrilla.yml"
+  prefix: /cargos_cuadrilla
+

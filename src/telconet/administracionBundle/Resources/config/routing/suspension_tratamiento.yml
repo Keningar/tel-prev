@@ -1,0 +1,6 @@
+suspension_tratamiento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:SuspensionTratamiento:index" }
+
+    
+    

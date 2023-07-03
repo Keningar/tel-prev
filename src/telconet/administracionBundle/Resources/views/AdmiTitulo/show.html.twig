@@ -1,0 +1,141 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Titulo</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Descripcion:</th>
+                <td width="15%">{{ titulo.descripcionTitulo }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Codigo:</th>
+                <td width="15%">{{ titulo.codigoTitulo }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Genero:</th>
+                <td width="15%">{{ titulo.genero }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ titulo.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admititulo') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ titulo.usrCreacion }}</td>
+
+              {% if(titulo.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ titulo.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(titulo.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ titulo.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ titulo.feCreacion | date("d M Y") }}</td>
+
+              {% if(titulo.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ titulo.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(titulo.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ titulo.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ titulo.feCreacion | date("H:i:s") }}</td>
+
+              {% if(titulo.estado=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ titulo.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(titulo.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ titulo.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_36-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admititulo_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Titulo
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_36-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admititulo_edit', { 'id': titulo.id }) }}">
+                &nbsp;Editar Titulo
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_36-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admititulo_delete', { 'id': titulo.id }) }}">
+                &nbsp;Eliminar Titulo
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

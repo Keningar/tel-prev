@@ -1,0 +1,23 @@
+admizona:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiZona:index" }
+
+admizona_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiZona:grid"}
+
+admizona_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiZona:deleteAjax" }
+
+admizona_updateAjax:
+    pattern:  /updateAjax
+    defaults: { _controller: "administracionBundle:AdmiZona:updateAjax" }
+
+admizona_ingresarAjax:
+    pattern:  /ingresarAjax
+    defaults: { _controller: "administracionBundle:AdmiZona:ingresarAjax" }
+
+asignarResponsableAjax:
+    pattern:  /asignarResponsableAjax
+    defaults: { _controller: "administracionBundle:AdmiZona:asignarResponsableAjax" }

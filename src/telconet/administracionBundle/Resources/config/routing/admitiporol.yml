@@ -1,0 +1,42 @@
+admitiporol:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:index" }
+
+admitiporol_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:show" }
+
+admitiporol_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:new" }
+
+admitiporol_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:create" }
+    requirements: { _method: POST }
+    
+admitiporol_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:edit" }
+
+admitiporol_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:update" }
+    requirements: { _method: POST }
+    
+admitiporol_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:delete" }
+    
+admitiporol_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:deleteAjax" }
+    requirements: { _method: post }
+
+admitiporol_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:grid"}
+
+admitiporol_getAdmiRolbyTipoRol:
+    pattern:  /getAdmiRolbyTipoRol
+    defaults: { _controller: "administracionBundle:AdmiTipoRol:getAdmiRolbyTipoRol" }

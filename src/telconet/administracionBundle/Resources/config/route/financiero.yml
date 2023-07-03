@@ -1,0 +1,28 @@
+administracionBundle_AdmiBanco:
+  resource: "@administracionBundle/Resources/config/routing/admibanco.yml"
+  prefix: /admi_banco
+  
+administracionBundle_AdmiFormaPago:
+  resource: "@administracionBundle/Resources/config/routing/admiformapago.yml"
+  prefix: /admi_forma_pago
+  
+administracionBundle_AdmiImpuesto:
+  resource: "@administracionBundle/Resources/config/routing/admiimpuesto.yml"
+  prefix: /admi_impuesto
+  
+administracionBundle_AdmiTipoCuenta:
+  resource: "@administracionBundle/Resources/config/routing/admitipocuenta.yml"
+  prefix: /admi_tipo_cuenta
+  
+administracionBundle_AdmiBancoTipoCuenta:
+  resource: "@administracionBundle/Resources/config/routing/admibancotipocuenta.yml"
+  prefix: /admi_banco_tipo_cuenta
+  
+administracionBundle_AdmiBines:
+  resource: "@administracionBundle/Resources/config/routing/admibines.yml"
+  prefix: /admi_bines
+  
+administracionBundle_ArchivoConsumo:
+  resource: "@administracionBundle/Resources/config/routing/archivoconsumo.yml"
+  prefix: /archivo_consumo
+  

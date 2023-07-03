@@ -1,0 +1,104 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}        
+     <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiPolicy/new.js?1') }}"></script>
+     <script>
+         var errorMsg = '{{error}}';
+     </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Policy</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    
+    <div class="body_content">
+        
+        <form id='form_new_proceso' action="{{ path('admipolicy_create') }}" method="post" {{ form_enctype(form) }} 
+              class='formulario' novalidate="novalidate" onsubmit="if (validarFormulario()) 
+                                                                { 	
+                                                                    Ext.MessageBox.wait('Grabando Datos...', 'Por favor espere'); 	
+                                                                    document.forms[0].submit(); 	
+                                                                    return true; 	
+                                                                }
+                                                                else return false;">
+            
+            <table>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.nombrePolicy) }}</td>
+                    <td width="10%">{{ form_widget(form.nombrePolicy) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>	
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%"><label>Se ejecuta</label></td>
+                    <td width="10%">
+                        <select id="seEjecuta" name="seEjecuta">
+                            <option id="Seleccione">Seleccione</option>
+                            <option id="SI">SI</option>
+                            <option id="NO">NO</option>
+                        </select>
+                    </td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.elementoId) }}</td>
+                    <td width="10%">{{ form_widget(form.elementoId) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.leaseTime) }}</td>
+                    <td width="10%">{{ form_widget(form.leaseTime) }}<span>horas</span></td>		    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.mascara) }}</td>
+                    <td width="10%">{{ form_widget(form.mascara) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.gateway) }}</td>
+                    <td width="10%">{{ form_widget(form.gateway) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.dnsName) }}</td>
+                    <td width="10%">{{ form_widget(form.dnsName) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>                                
+            </table>
+            <br />
+            <table border='0' align='center'>
+                <tr>
+                    <td>
+                        <div id="dns_servers"></div>
+                        <input type="hidden" name="dns-servers" id="dns-servers"/>
+                    </td>  
+                </tr>
+            </table>
+
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('admipolicy') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>		
+        </form>
+    </div>
+{% endblock contenido_izq %}
+	

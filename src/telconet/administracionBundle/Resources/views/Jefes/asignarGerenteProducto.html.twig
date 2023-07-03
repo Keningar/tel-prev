@@ -1,0 +1,69 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/Jefes.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var strNombreArea                     = "{{ strNombreArea }}";
+        var strPrefijoEmpresa                 = "{{ strPrefijoEmpresa }}";
+        var strCaracteristicaCargo            = "{{ strCaracteristicaCargo }}";
+        var strUrlGetGruposProducto           = "{{ path('admiproducto_ajax_get_grupos') }}";
+        var strAsignarCaracteristica          = "{{ path('jefes_asignarCaracteristica') }}";
+        var intIdCargoGerenteProducto         = "{{ intIdCargoGerenteProducto }}";
+        var strUrlEmpleadosDepartamento       = "{{ path('jefes_getEmpleados') }}";
+        var strCaracteristicaCargoProducto    = "{{ strCaracteristicaCargoProducto }}";
+        var strUrlVerificarEmpleadosAEliminar = "{{ path('jefes_verificarEmpleadosAEliminar') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/asignarGerenteProducto.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/funciones.js') }}"></script>
+{% endblock %}
+
+{% block contenido %} 
+    <div id="titulo_content" class="titulo_interno">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Asignar Gerente de Producto</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+
+    <div class="body_content" style="margin:0px!important;">
+        
+        {% if error is defined %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form action="" method="post" id="formulario" class="formulario filtro-content"  onsubmit="return validarFormulario();">
+            <div>
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <div id = "divCmbProductos"></div>
+                            <br/>
+                            <div id='filtroEmpleadosDepartamento'></div>
+                            <br/>
+                            <div id="gridEmpleadosDepartamento"></div>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <input name="btn1" type="button" value="Agregar" class="button-crud" id="agregar" style="width: 12em !important;"
+                                   onClick="asignarEliminarEmpleadoSeleccionados('asignarGerenteProducto');" />
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td valign="top">
+                            <div id='filtroEmpleadosAsignados'></div>
+                            <br/>
+                            <div id="gridEmpleadosAsignaciones"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+{% endblock contenido %}

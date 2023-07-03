@@ -1,0 +1,38 @@
+admipais:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiPais:index" }
+
+admipais_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiPais:show" }
+
+admipais_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiPais:new" }
+
+admipais_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiPais:create" }
+    requirements: { _method: POST }
+    
+admipais_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiPais:edit" }
+
+admipais_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiPais:update" }
+    requirements: { _method: POST }
+    
+admipais_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiPais:delete" }
+    
+admipais_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiPais:deleteAjax" }
+    requirements: { _method: post }
+
+admipais_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiPais:grid"}

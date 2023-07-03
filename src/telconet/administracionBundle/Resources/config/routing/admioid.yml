@@ -1,0 +1,42 @@
+admioid:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiOid:index" }
+
+admioid_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiOid:getEncontrados }
+    
+admioid_getOids:
+    pattern:  /getOids
+    defaults: { _controller: administracionBundle:AdmiOid:getOids }
+
+admioid_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiOid:show" }
+
+admioid_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiOid:new" }
+
+admioid_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiOid:create" }
+    requirements: { _method: POST }
+    
+admioid_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiOid:edit" }
+
+admioid_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiOid:update" }
+    requirements: { _method: POST }
+    
+admioid_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiOid:deleteAjax" }
+    requirements: { _method: post }
+    
+admioid_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiOid:delete" }

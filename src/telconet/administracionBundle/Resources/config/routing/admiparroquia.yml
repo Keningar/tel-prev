@@ -1,0 +1,62 @@
+admiparroquia:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiParroquia:index" }
+
+admiparroquia_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiParroquia:show" }
+
+admiparroquia_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiParroquia:new" }
+
+admiparroquia_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiParroquia:create" }
+    requirements: { _method: POST }
+    
+admiparroquia_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiParroquia:edit" }
+
+admiparroquia_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiParroquia:update" }
+    requirements: { _method: POST }
+    
+admiparroquia_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiParroquia:delete" }
+    
+admiparroquia_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiParroquia:deleteAjax" }
+    requirements: { _method: post }
+
+admiparroquia_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiParroquia:grid"}
+    
+admiparroquia_buscarParroquias:
+    pattern:  /buscarParroquias
+    defaults: { _controller: administracionBundle:AdmiParroquia:buscarParroquias }
+    
+admiparroquia_getPaises:
+    pattern:  /getPaises
+    defaults: { _controller: administracionBundle:AdmiParroquia:getPaises }
+    
+admiparroquia_getRegiones:
+    pattern:  /getRegiones
+    defaults: { _controller: administracionBundle:AdmiParroquia:getRegiones }
+    
+admiparroquia_getProvincias:
+    pattern:  /getProvincias
+    defaults: { _controller: administracionBundle:AdmiParroquia:getProvincias }
+    
+admiparroquia_getCantones:
+    pattern:  /getCantones
+    defaults: { _controller: administracionBundle:AdmiParroquia:getCantones }
+    
+admiparroquia_getTiposParroquia:
+    pattern:  /getTiposParroquia
+    defaults: { _controller: administracionBundle:AdmiParroquia:getTiposParroquia }

@@ -1,0 +1,143 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Prefijo</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%">Proveedor Red:</th>
+                <td width="15%">{{ prefijo.proveedorRedId }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Cliente</th>        
+                <td width="15%">{{ prefijo.cliente }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Nombre Ipv4:</th>
+                <td width="15%">{{ prefijo.nombreIpv4 }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Nombre Ipv6</th>              
+                <td width="15%">{{ prefijo.nombreIpv6 }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Descripci&oacute;n Prefijo:</th>
+                <td width="15%">{{ prefijo.descripcionPrefijo }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Estado:</th>
+                <td width="15%">{{ prefijo.estado }}</td>        
+                <td width="1%"></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiproveedorred') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ prefijo.usrCreacion }}</td>
+
+              {% if(prefijo.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ prefijo.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(prefijo.estado=="Eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ prefijo.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ prefijo.feCreacion | date("d M Y") }}</td>
+
+              {% if(prefijo.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ prefijo.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(prefijo.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ prefijo.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ prefijo.feCreacion | date("H:i:s") }}</td>
+
+              {% if(prefijo.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ prefijo.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(prefijo.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ prefijo.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+		{% if is_granted('ROLE_121-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiprefijo_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Prefijo
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_121-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admiprefijo_edit', { 'id': prefijo.id }) }}">                
+                &nbsp;Editar Prefijo
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_121-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admiprefijo_delete', { 'id': prefijo.id }) }}">                
+                &nbsp;Eliminar Prefijo
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

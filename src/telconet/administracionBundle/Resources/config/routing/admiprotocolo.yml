@@ -1,0 +1,42 @@
+admiprotocolo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiProtocolo:index" }
+
+admiprotocolo_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiProtocolo:getEncontrados }
+
+admiprotocolo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiProtocolo:show" }
+
+admiprotocolo_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiProtocolo:new" }
+
+admiprotocolo_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiProtocolo:create" }
+    requirements: { _method: POST }
+    
+admiprotocolo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiProtocolo:edit" }
+
+admiprotocolo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiProtocolo:update" }
+    requirements: { _method: POST }
+    
+admiprotocolo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiProtocolo:deleteAjax" }
+    requirements: { _method: post }
+    
+admiprotocolo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiProtocolo:delete" }
+    
+admiprotocolo_getProtocolos:
+    pattern:  /getProtocolos
+    defaults: { _controller: administracionBundle:AdmiProtocolo:getProtocolos }

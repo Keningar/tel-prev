@@ -1,0 +1,42 @@
+admiregion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiRegion:index" }
+
+admiregion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiRegion:show" }
+
+admiregion_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiRegion:new" }
+
+admiregion_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiRegion:create" }
+    requirements: { _method: POST }
+    
+admiregion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiRegion:edit" }
+
+admiregion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiRegion:update" }
+    requirements: { _method: POST }
+    
+admiregion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiRegion:delete" }
+    
+admiregion_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiRegion:deleteAjax" }
+    requirements: { _method: post }
+
+admiregion_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiRegion:grid"}
+    
+admiregion_getPaises:
+    pattern:  /getPaises
+    defaults: { _controller: administracionBundle:AdmiRegion:getPaises }

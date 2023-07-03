@@ -1,0 +1,170 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}    
+    <script>
+	  var idPlantilla = '{{plantilla.id}}';	  	  
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiPlantilla/show.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Plantilla Notificacion</h1>
+</div>
+<div class="body_content">
+    <table class="formulario" width='100%' cellpadding='10' cellspacing='10'>
+        <tbody >
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> Nombre Plantilla:</b></th>
+                <td width="15%">{{ plantilla.nombrePlantilla }}</td>  
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b> Codigo Plantilla:</b></th>
+                <td width="15%">{{ plantilla.codigo }}</td>
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Estado:</b></th>
+                <td width="15%">{{ plantilla.estado }}</td>     
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>   
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Modulo:</b></th>
+                <td width="15%">{% if(plantilla.modulo) %}{{ plantilla.modulo }}{%else%}N/A{%endif%} </td>     
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>  
+            <tr>	
+		<td width="8%">&nbsp;</td>
+		<th width="25%"><b> Ver Plantilla:</b></th>
+		<td width="15%"><a href='#' onclick='verPlantilla();'>Ver Plantilla</a></td>
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+	    </tr>
+        <tr><td>&nbsp;</td></tr>
+	    <tr>
+		<td width="8%">&nbsp;</td>        
+		<td colspan="2"><div id='aliases'></div></td>
+	    </tr>	    
+        </tbody>
+        
+        <input type='hidden' value='{{plantilla.plantilla}}' id='plantilla_hd'/>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiplantilla') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ plantilla.usrCreacion }}</td>
+
+              {% if(plantilla.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ plantilla.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(plantilla.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ plantilla.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ plantilla.feCreacion | date("d M Y") }}</td>
+
+              {% if(plantilla.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ plantilla.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(plantilla.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ plantilla.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ plantilla.feCreacion | date("H:i:s") }}</td>
+
+              {% if(plantilla.estado=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ plantilla.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(plantilla.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ plantilla.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_237-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiplantilla_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nueva Plantilla
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_237-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admiplantilla_edit', { 'id': plantilla.id }) }}">
+                &nbsp;Editar Plantilla
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_237-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admiplantilla_delete', { 'id': plantilla.id }) }}">
+                &nbsp;Eliminar Plantilla
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

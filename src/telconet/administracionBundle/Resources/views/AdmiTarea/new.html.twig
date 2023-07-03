@@ -1,0 +1,129 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiTarea/new.js') }}"></script>
+    <script>
+         var getTiposElementos='{{path('admitipoelemento_getEncontrados')}}';
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Tarea</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+		{% if error is defined %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form id='form_new_proceso' action="{{ path('admitarea_create') }}" method="post" {{ form_enctype(form) }} class='formulario' onsubmit="return validarFormulario();">
+            <table width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.rolAutorizaId) }}</td>
+                    <td colspan="4">{{ form_widget(form.rolAutorizaId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">* Proceso:</td>
+                    <td colspan="4"><div id='combo_proceso' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">Tarea Anterior:</td>
+                    <td colspan="4"><div id='combo_tarea_ant' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">Tarea Siguiente:</td>
+                    <td colspan="4"><div id='combo_tarea_sig' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.nombreTarea) }}</td>
+                    <td colspan="4">{{ form_widget(form.nombreTarea) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.descripcionTarea) }}</td>
+                    <td colspan="4">{{ form_widget(form.descripcionTarea) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.peso) }}</td>
+                    <td width="10%">{{ form_widget(form.peso) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.esAprobada) }}</td>
+                    <td width="10%">{{ form_widget(form.esAprobada) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.tiempoMax) }}</td>
+                    <td width="10%">{{ form_widget(form.tiempoMax) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.unidadMedidaTiempo) }}</td>
+                    <td width="10%">{{ form_widget(form.unidadMedidaTiempo) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.costo) }}</td>
+                    <td width="10%">{{ form_widget(form.costo) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%">{{ form_label(form.precioPromedio) }}</td>
+                    <td width="10%">{{ form_widget(form.precioPromedio) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="24%"></td>
+                    <td colspan="4">{{ form_widget(form.tareasInterfacesModelosTramos) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td colspan="5"><br/></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td colspan="5"><div id="grid"></div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+            </table> 
+			
+            <input type="hidden" name="escogido_proceso_id" id="escogido_proceso_id" value="0" />
+            <input type="hidden" name="escogido_tarea_ant_id" id="escogido_tarea_ant_id" value="0" />
+            <input type="hidden" name="escogido_tarea_sig_id" id="escogido_tarea_sig_id" value="0" />
+             
+            <div class="buttons"> 
+                <p>
+                    <input type='submit' class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('admitarea') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+            {{ form_widget(form._token) }}
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        /* -- */
+    </script>	
+{% endblock javascripts_footer%}	

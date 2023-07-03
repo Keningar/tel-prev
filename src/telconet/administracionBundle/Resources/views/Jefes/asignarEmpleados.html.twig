@@ -1,0 +1,174 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/Jefes.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block contenido %} 
+    <div id="titulo_content" class="titulo_interno">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Asignar Vendedores</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+
+    <div class="body_content" style="margin:0px!important;">
+        
+        {% if error is defined %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form action="" method="post" id="formulario" class="formulario filtro-content"  onsubmit="return validarFormulario();">
+            <div style="clear: both;">
+                <label class="required" for="telconet_schemaBundle_seguperfilpersonatype_personaNombre" 
+                       style="width: 10%;">
+                    Nombre:
+                </label>
+                <label style="color:black; font-weight:normal; width: 90%;" >
+                    {{ nombreJefe }}
+                </label>
+            </div>
+            {% if strNombreArea == 'Comercial' %}
+                <div style="clear: both;">
+                    <label class="required" for="telconet_schemaBundle_seguperfilpersonatype_personaNombre" 
+                           style="width: 10%;">
+                        Cargo NAF:
+                    </label>
+                    <label style="color:black; font-weight:normal; width: 90%;" >
+                        {{ strCargoNaf }}
+                    </label>
+                </div>
+                <div style="clear: both;">
+                    <label class="required" for="telconet_schemaBundle_seguperfilpersonatype_personaNombre" 
+                           style="width: 10%;">
+                        Cargo Telcos:
+                    </label>
+                    <label style="color:black; font-weight:normal; width: 90%;" >
+                        {{ nombreCargo }}
+                    </label>
+                </div>
+            {% else %}
+                <div style="clear: both;">
+                    <label class="required" for="telconet_schemaBundle_seguperfilpersonatype_personaNombre" 
+                           style="width: 10%;">
+                        Cargo:
+                    </label>
+                    <label style="color:black; font-weight:normal; width: 90%;" >
+                        {{ nombreCargo }}
+                    </label>
+                </div>
+            {% endif %}
+            <div style="clear: both;">
+                <label class="required" for="telconet_schemaBundle_seguperfilpersonatype_personaNombre"
+                       style="width: 10%;">
+                    Reporta A:
+                </label>
+                <label style="color:black; font-weight:normal; width: 90%;">
+                    {{ nombreReportaA }}
+                </label>
+            </div>
+            {% if strNombreArea == 'Comercial' and strPrefijoEmpresa == 'MD' %}
+                <div style="clear: both;">
+                    <label class="required" for="telconet_schemaBundle_seguperfilpersonatype_personaNombre"
+                           style="width: 10%;">
+                        Meta Bruta:
+                    </label>
+                    <label style="color:black; font-weight:normal; width: 90%;">
+                        {{ metaBruta }}
+                    </label>
+                </div>
+                <div style="clear: both;">
+                    <label class="required" for="telconet_schemaBundle_seguperfilpersonatype_personaNombre"
+                           style="width: 10%;">
+                        Meta Activa:
+                    </label>
+                    <label style="color:black; font-weight:normal; width: 90%;">
+                        {{ metaActivaValor }}&nbsp;&nbsp;({{ metaActiva }}%)
+                    </label>
+                </div>
+            {% endif %}
+                
+            <br/><br/><br/>
+            
+            <div>
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <div id='filtroEmpleadosDepartamento'></div>
+                            <br/>
+                            <div id="gridEmpleadosDepartamento"></div>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            {% if strEsAsistente == 'S' %}
+                                <input name="btn1" type="button" value="Agregar" class="button-crud" id="agregar" 
+                                       onClick="asignarVendedor('asignar_vendedor')" style="width: 12em !important;"/>
+                            {% else %}
+                                <input name="btn1" type="button" value="Agregar" class="button-crud" id="agregar" 
+                                       onClick="asignarEmpleado()" style="width: 12em !important;"/>                                
+                            {% endif %}
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td valign="top">
+                            <div id='filtroEmpleadosAsignados'></div>
+                            <br/>
+                            <div id="gridEmpleadosAsignaciones"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="buttons" style="width: 905px">
+                <p>
+                    <span class="height20px">
+                        {% if strNombreArea == 'Comercial' %}
+                        <a class="button-crud" href="{{ path('jefes') }}">
+                        {% elseif strNombreArea == 'Tecnico' %}
+                        <a class="button-crud" href="{{ path('jefestecnicos') }}">    
+                        {% endif %}
+                            Regresar
+                        </a>
+                    </span>
+                </p>
+            </div>
+            <div id="resultP"></div>
+
+            <input type="hidden" name="perfiles_asignados" id="perfiles_asignados" value="" />
+        </form>
+    </div>
+{% endblock contenido %} 
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var strCargo                          = "{{ nombreCargo }}";
+        var strNombreArea                     = "{{ strNombreArea }}";
+        var strUrlGetCargos                   = "{{ path('jefes_getCargos') }}";
+        var intIdCargoTelcos                  = "{{ intIdCargoTelcos }}";
+        var strUrlCambioJefe                  = "{{ path('jefes_cambioJefe') }}";
+        var strUrlCambioVendedor              = "{{ path('asistente_getCambioVendedor') }}";
+        var strUrlAsignacionVendedor          = "{{ path('asistente_getAsignacionVendedor') }}";
+        var strPrefijoEmpresa                 = "{{ strPrefijoEmpresa }}";
+        var intIdJefeSeleccionado             = "{{ intIdJefeSeleccionado }}";
+        var strAsignarCaracteristica          = "{{ path('jefes_asignarCaracteristica') }}";
+        var strCaracteristicaMetaBruta        = "{{ strCaracteristicaMetaBruta }}";
+        var strCaracteristicaMetaActiva       = "{{ strCaracteristicaMetaActiva }}";
+        var strUrlEmpleadosDepartamento       = "{{ path('jefes_getEmpleados') }}";
+        var strUrlVendedoresDepartamento      = "{{ path('asistente_getVendedores') }}";
+        var strUrlVerificarEmpleadosAEliminar = "{{ path('jefes_verificarEmpleadosAEliminar') }}";
+        var intIdCargoSeleccionado            = "{{ intIdCargoVendedor }}";
+        var strEsAsistente                    = "{{ strEsAsistente }}";
+    </script>
+            
+    {% if strNombreArea == 'Comercial' %}
+        <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/asignarEmpleados.js?4') }}"></script>
+    {% elseif strNombreArea == 'Tecnico' %}
+        <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/asignarEmpleadosJefesTecnicos.js?2') }}"></script>
+    {% endif %}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/funciones.js?2') }}"></script>
+{% endblock %}

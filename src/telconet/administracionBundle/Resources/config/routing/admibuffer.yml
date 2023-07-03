@@ -1,0 +1,54 @@
+admibuffer:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiBuffer:index" }
+
+admibuffer_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiBuffer:getEncontrados }
+    
+admibuffer_getBufferes:
+    pattern:  /getBufferes
+    defaults: { _controller: administracionBundle:AdmiBuffer:getBufferes }
+    
+admibuffer_getBuffersHilos:
+    pattern:  /{id}/getBuffersHilos
+    defaults: { _controller: administracionBundle:AdmiBuffer:getBuffersHilos }
+    
+admibuffer_getClaseTipoMedioPorBuffer:
+    pattern:  /{id}/getClaseTipoMedioPorBuffer
+    defaults: { _controller: administracionBundle:AdmiBuffer:getClaseTipoMedioPorBuffer }
+
+admibuffer_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiBuffer:show" }
+
+admibuffer_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiBuffer:new" }
+
+admibuffer_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiBuffer:create" }
+    requirements: { _method: POST }
+    
+admibuffer_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiBuffer:edit" }
+
+admibuffer_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiBuffer:update" }
+    requirements: { _method: POST }
+    
+admibuffer_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiBuffer:deleteAjax" }
+    requirements: { _method: post }
+    
+admibuffer_ajaxGetBuffersPorTipoMedio:
+    pattern:  /ajaxGetBuffersPorTipoMedio
+    defaults: { _controller: administracionBundle:AdmiBuffer:ajaxGetBuffersPorTipoMedio }    
+    
+admibuffer_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiBuffer:delete" }

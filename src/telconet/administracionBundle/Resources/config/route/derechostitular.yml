@@ -1,0 +1,29 @@
+administracionBundle_Portabilidad:
+  resource: "@administracionBundle/Resources/config/routing/portabilidad.yml"
+  prefix: /portabilidad
+
+administracionBundle_Oposicion:
+  resource: "@administracionBundle/Resources/config/routing/oposicion.yml"
+  prefix: /oposicion
+
+administracionBundle_SuspensionDeTratamiento:
+  resource: "@administracionBundle/Resources/config/routing/suspension_tratamiento.yml"
+  prefix: /suspension_tratamiento
+
+administracionBundle_DetencionSuspensionTratamiento:
+  resource: "@administracionBundle/Resources/config/routing/detencion_suspension_tratamiento.yml"
+  prefix: /detencion_suspension_tratamiento
+  
+administracionBundle_Eliminacion:
+  resource: "@administracionBundle/Resources/config/routing/cifrar.yml"
+  prefix: /cifrar
+
+administracionBundle_Eliminacion_Descifrar:
+  resource: "@administracionBundle/Resources/config/routing/descifrar.yml"
+  prefix: /descifrar
+
+
+
+
+
+

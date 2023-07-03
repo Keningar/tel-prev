@@ -1,0 +1,39 @@
+admiclasedocumento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:index" }
+
+admiclasedocumento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:show" }
+
+admiclasedocumento_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:new" }
+
+admiclasedocumento_create:
+    pattern:  /create
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:create" }
+    requirements: { _method: post }
+
+admiclasedocumento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:edit" }
+
+admiclasedocumento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:update" }
+    requirements: { _method: post }
+
+admiclasedocumento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:delete" }
+    requirements: { _method: post }
+
+admiclasedocumento_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:grid"}
+    
+admiclasedocumento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiClaseDocumento:deleteAjax" }
+    requirements: { _method: post }

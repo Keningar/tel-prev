@@ -1,0 +1,62 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+	<script type="text/javascript">
+            var url_admiTipoCasoGrid       = '{{path('admitipocaso_grid')}}';
+		    var url_admiHipotesisArbolGrid = '{{path('admihipotesis_grid')}}';
+            var url_creaHipotesis          = '{{path('admiarbolhipotesis_crearHipotesisArbol')}}';
+            var url_editarHipotesis        = '{{path('admiarbolhipotesis_editarHipotesisArbol')}}';
+            var url_eliminarHipotesis      = '{{path('admiarbolhipotesis_eliminarHipotesisArbol')}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiHipotesis/adminArbolHipotesis.js') }}"></script>
+{% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Administración de árbol de Hipótesis</h1>
+</div>
+<div class="body_content k-content">
+{% if consultaArbol == "S" %}
+<table>
+    <tr>
+        <td>
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr>
+                    <td><div id='filtroNivel1'></div></td>
+                </tr>
+                <tr>
+                    <td><div id="gridNivel1"></div></td>
+                </tr>
+            </table>
+        </td>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td>
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr>
+                    <td><div id='filtroNivel2'></div></td>
+                </tr>
+                <tr>
+                    <td><div id="gridNivel2"></div></td>
+                </tr>
+            </table>
+        </td>
+        <td>&nbsp;&nbsp;&nbsp;</td>
+        <td>
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr>
+                    <td><div id='filtroNivel3'></div></td>
+                </tr>
+                <tr>
+                    <td><div id="gridNivel3"></div></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+{% else %}
+<div style=''>La empresa que se encuentra en sesión no usa árbol de hipótesis</div>
+{% endif %}
+</div>
+{% endblock contenido_central %}

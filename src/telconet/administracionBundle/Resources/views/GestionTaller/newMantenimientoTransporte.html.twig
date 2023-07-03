@@ -1,0 +1,447 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+    {{ parent() }} 
+    <script>
+        var strUrlGetCategoriasTareasOTyMantenimientosTransporte    = "{{ path('gestiontaller_getCategoriasTareasOTyMantenimientosTransporte') }}";
+        var numArchivosSubidos                                      = 0;
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/GestionTaller/newMantenimientoTransporte.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/soporte/js/InfoCaso/Multiupload.js') }}"></script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/GestionTaller.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Nuevo Mantenimiento al Veh&iacute;culo</h1>
+</div>
+<div class="body_content">
+    <div  class="x-panel x-panel-default">
+        <div style="padding: 5px; width: 947px; left: 0px; top: 0px; " class="x-panel-body x-panel-body-default x-panel-body-default">
+            <form action="{{ path('gestiontaller_createMantenimientoTransporte', { 'id': idOrdenTrabajoTransporte })  }}" method="post"            
+              enctype="multipart/form-data" onsubmit='if (validarFormulario()) {
+                                      Ext.MessageBox.wait("Grabando Datos...", "Por favor espere");
+                                      document.forms[0].submit();
+                                      return true;
+                                  }
+                                  else {
+                                      return false;
+                                  }'>
+                <fieldset style="border-width: 1px; width: 935px;" class="x-fieldset x-fieldset-default">
+                    <div class="x-fieldset-body" style="width: 913px;">
+                        <fieldset style="border-width: 1px; width: 913px;" class="x-fieldset x-fieldset-with-title x-fieldset-with-legend x-fieldset-default">
+                            <legend class="x-fieldset-header x-fieldset-header-default">
+                                <div class="x-component x-fieldset-header-text x-component-default">Información del Veh&iacute;culo</div>
+                            </legend>
+                            <div class="x-fieldset-body" id="fieldset-1011-body" style="width: 891px;">
+                                <div style="padding: 5px 0px; width: 891px;" class="x-panel x-panel-default">
+                                    <div class="x-panel-body x-panel-body-default x-panel-body-default x-table-layout-ct x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" style="width: 891px; left: 0px; top: 0px; ">
+                                        <table cellspacing="0" class="x-table-layout" role="presentation">
+                                            <tr>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        <b>Empresa</b>:
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        {{ empresa }}
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        <b>Estado</b>:
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        {{ medioTransporte.estado }}
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height:10px;" colspan="8">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        <b>Modelo</b>:
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        {{ medioTransporte.modeloElementoId.nombreModeloElemento }}
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        <b>A&ntilde;o</b>:
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        {{ detalles.ANIO }}
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height:10px;" colspan="8">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                {% if detalles.CHASIS is defined %}
+                                                    {% if detalles.CHASIS  %}
+                                                        <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                            <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                                <b>Chasis</b>:
+                                                            </label>
+                                                        </td>
+                                                        <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                            <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                                {{ detalles.CHASIS }}
+                                                            </label>
+                                                        </td>
+
+                                                    {% else %}
+                                                        <td colspan="2">&nbsp;</td>
+                                                    {% endif %}
+                                                {% endif %}
+
+                                                {% if detalles.MOTOR is defined %}
+                                                    {% if detalles.MOTOR  %}
+                                                        <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                            <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                <b>Motor</b>:
+                                                            </label>
+                                                        </td>
+                                                        <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                            <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                {{ detalles.MOTOR }}
+                                                            </label>
+                                                        </td>
+                                                    {% else %}
+                                                        <td colspan="2">&nbsp;</td>
+                                                    {% endif %}
+                                                {% endif %}
+                                            </tr>
+                                            <tr>
+                                                <td style="height:10px;" colspan="8">&nbsp;</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                        <b>Placa</b>:
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                        {{ medioTransporte.nombreElemento }}
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                        <b>Disco</b>:
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                        {{ detalles.DISCO }}
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        <b></b>
+                                                    </label>
+                                                </td>
+                                                <td colspan="2" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                    </label>
+                                                </td>
+                                                <td >&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        <b>Tipo de Veh&iacute;culo</b>:
+                                                    </label>
+                                                </td>
+                                                <td width="205" valign="top" class="x-field-label-cell" halign="left" style="">
+                                                    <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                        {% if detalles.TIPO_VEHICULO=='' %}N/A{% else %}{{ detalles.TIPO_VEHICULO }}{% endif %}
+                                                    </label>
+                                                </td>
+                                                <td colspan="2">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height:10px;" colspan="8">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                        <div id="bloqueDinamico">
+                                            {% for flashMessage in app.session.flashbag.get('notice') %}
+                                            <div class="errormessage">
+                                                {{ flashMessage }}
+                                            </div>
+                                            {% endfor %}
+                                            <div id="tituloPorTipoVehiculo" class="secHead">Información de la Orden de Trabajo</div>
+                                                <div id="datosFichaTecnica">
+                                                    <table cellspacing="0" class="x-table-layout" role="presentation">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>Numeraci&oacute;n:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ numeroOrdenTrabajo }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                                <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                                    <b>Usuario de Creaci&oacute;n:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                                <label style="font-weight:normal;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                                    {{ usrCreacion }}
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>Fecha Inicio</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ fechaInicioOrdenTrabajo }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                            
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>Fecha Fin</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ fechaFinOrdenTrabajo }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="height:10px;"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>TIPO DE MANTENIMIENTO:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ tipoMantenimientoOT }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                            </td>
+                                                            
+                                                            <td style="width:5%"></td>
+                                                        </tr>
+                                                        
+                                                        {% if tipoMantenimientoOT=='PREVENTIVO' %}
+                                                        <tr>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>Plan de Mantenimiento:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ nombrePlanMantenimiento }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>Mantenimiento:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ nombreMantenimiento }}
+                                                                </label>
+                                                            </td>
+                                                            
+                                                            <td style="width:5%"></td>
+                                                        </tr>
+                                                        {% else %}
+                                                        <tr>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>N&uacute;mero de Caso:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ numeroCaso }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                            </td>
+                                                            
+                                                            <td style="width:5%"></td>
+                                                        </tr>
+
+                                                        {% endif %}
+
+                                                        <tr>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                                <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                                    <b>KM:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                                <label style="font-weight:normal;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                                    {{ km }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                                <label style="margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                                    <b>Conductor:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%">
+                                                                <label style="font-weight:normal;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento ">
+                                                                    {{ nombrePerConductor }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>Taller:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ nombrePerAsignadoOrden }}
+                                                                </label>
+                                                            </td>
+                                                            <td style="width:5%"></td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="" >
+                                                                <label  class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    <b>Autorizado Por:</b>
+                                                                </label>
+                                                            </td>
+                                                            <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                                                <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                                                    {{ nombreAutorizadoPor }}
+                                                                </label>
+                                                            </td>
+                                                            
+                                                            <td style="width:5%"></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div id="bloqueFormMantenimiento" style="margin:0px;"></div>
+                        <div id="detalle_categorias_mantenimiento_transporte" style="margin-bottom:5px;"></div>
+                        <div id="divValoresTotalChange" style="margin-bottom:30px;">
+                            <table cellspacing="0" class="x-table-layout" role="presentation">
+                            <tbody>
+                                <tr>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                        <label style="float:right;text-align: right; padding-right: 10px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                            <b> Suma de valores:</b>
+                                        </label>
+                                    </td>
+                                    <td valign="top" class="x-field-label-cell" halign="left" style="width:15%" >
+                                        <label style="font-weight:normal;width:200px;margin-right:5px;" class="x-form-item-label x-form-item-label-left label_detalles_elemento " >
+                                            <input type="text" name="sumaTotalValoresChange" id="sumaTotalValoresChange" value="0" style="width:110px;" readonly/>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                                
+                        <fieldset style="border-width: 1px; width: 913px;" class="x-fieldset x-fieldset-with-title x-fieldset-with-legend x-fieldset-default">
+                            <legend class="x-fieldset-header x-fieldset-header-default">
+                                <div class="x-component x-fieldset-header-text x-component-default">Subida de Archivos</div>
+                            </legend>
+                            <div class="x-fieldset-body" id="fieldset-1011-body" style="width: 891px;">
+                                <div style="padding: 5px 0px; width: 891px;" class="x-panel x-panel-default">
+                                    <div class="x-panel-body x-panel-body-default x-panel-body-default x-table-layout-ct x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" style="width: 891px; left: 0px; top: 0px; ">
+                                        <table cellspacing="0" class="x-table-layout" role="presentation">
+                                            <tr>
+                                                <td>
+                                                    <div id="div_archivos_subir" name="div_archivos_subir"></div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="buttons">
+                        <p>
+                            <button type="submit" class="button-crud">Guardar</button>
+                            <span class="height20px">
+                                &oacute;&nbsp;
+                                <a class="cancel-crud" href="{{ path('gestiontaller_showOrdenesTrabajoXTransporte',{ 'id': medioTransporte.id } ) }}">
+                                        Cancelar
+                                </a>
+                            </span>
+                        </p>
+                    </div>
+                </fieldset>
+                
+                <input type="hidden" name="idElemento" id="idElemento" value="{{medioTransporte.id}}" />
+                <input type="hidden" name="json_valores_categorias_mantenimientos" id="json_valores_categorias_mantenimientos" value="" />
+            </form>
+        </div>
+    </div>
+    <br/><br/>
+</div>
+{% endblock contenido_izq %}    
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        {% if is_granted('ROLE_337-4397') %}
+            <li>		
+                <a style="background-image: url('/public/images/images_crud/search.png');padding-left: 15px;" 
+                   class="button-editar" href="{{ path('gestiontaller_showMantenimientosTransporte', { 'id': medioTransporte.id }) }}">
+                    &nbsp;Ver Listado de Mantenimientos al Veh&iacute;culo
+                </a>		
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}
+
+
+    

@@ -1,0 +1,46 @@
+admitipomedidor:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoMedidor:index" }
+
+admitipomedidor_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiTipoMedidor:getEncontrados }
+    
+admitipomedidor_getTiposMedidores:
+    pattern:  /getTiposMedidores
+    defaults: { _controller: administracionBundle:AdmiTipoMedidor:getTiposMedidores }
+    
+admitipomedidor_getMedidoresElectricos:
+    pattern:  /getMedidoresElectricos
+    defaults: { _controller: administracionBundle:AdmiTipoMedidor:getMedidoresElectricos }    
+
+admitipomedidor_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoMedidor:show" }
+
+admitipomedidor_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoMedidor:new" }
+
+admitipomedidor_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoMedidor:create" }
+    requirements: { _method: POST }
+    
+admitipomedidor_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoMedidor:edit" }
+
+admitipomedidor_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoMedidor:update" }
+    requirements: { _method: POST }
+    
+admitipomedidor_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoMedidor:deleteAjax" }
+    requirements: { _method: post }
+    
+admitipomedidor_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoMedidor:delete" }

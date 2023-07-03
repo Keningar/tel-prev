@@ -1,0 +1,95 @@
+personaempleado:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:index" }
+    
+personaempleado_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:show" }
+    
+personaempleado_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:edit" }
+
+personaempleado_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:update" }
+    requirements: { _method: POST }
+
+personaempleado_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:delete" }
+    
+personaempleado_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:deleteAjax" }
+    requirements: { _method: post } 
+    
+personaempleado_actualizarUserTacacs:
+    pattern:  /actualizarUserTacacs
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:actualizarUserTacacs" }
+    
+personaempleado_consultarUserTacacs:
+    pattern:  /consultarUserTacacs
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:consultarUserTacacs" }    
+    
+personaempleado_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:grid"}
+    
+personaempleado_departamentos:
+    pattern:  /departamentos
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:departamentos" }
+    
+personaempleado_cantones:
+    pattern:  /cantones
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:getCantones" }
+    
+personaempleado_lista_formas_contacto:
+    pattern:  /listaformascontacto
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:formasContactoAjax"}
+
+personaempleado_formas_contacto_grid:
+    pattern:  /formascontactogrid
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:formasContactoGrid"}
+
+
+personaempleado_busca_personas_por_identificacion:
+    pattern:  /buscarPersonaPorIdentificacionAjax
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:buscarPersonaPorIdentificacionAjax"}
+    
+personaempleado_newArchivoDigital:
+    pattern:  /{id}/newArchivoDigital
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:newArchivoDigital" }
+    
+personaempleado_eliminarDocumentoAjax:
+    pattern:  /eliminarDocumentoAjax
+    defaults: { _controller: administracionBundle:PersonaEmpleado:eliminarDocumentoAjax } 
+
+personaempleado_showDocumentosEmpleado:
+    pattern:  /{id}/showDocumentosEmpleado
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:showDocumentosEmpleado" } 
+
+personaempleado_descargarDocumento:
+    pattern:  /descargarDocumento/{id}
+    defaults: { _controller: administracionBundle:PersonaEmpleado:descargarDocumento }
+    
+personaempleado_guardarArchivoDigital:
+    pattern:  /{id}/guardarArchivoDigital
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:guardarArchivoDigital" }
+    requirements: { _method: post }
+    
+personaempleado_validar_documentos_obligatorios:
+    pattern:  /validarDocumentosObligatoriosAjax
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:validarDocumentosObligatoriosAjax"}
+
+    
+personaempleado_verDiferenciaFechas:
+    pattern:  /verDiferenciaFechas
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:verDiferenciaFechas"}
+    
+personaempleado_cargarArchivosCaducados:
+    pattern:  /{id}/getArchivosCaducados
+    defaults: { _controller: "administracionBundle:PersonaEmpleado:getArchivosCaducados"}
+    
+    
+

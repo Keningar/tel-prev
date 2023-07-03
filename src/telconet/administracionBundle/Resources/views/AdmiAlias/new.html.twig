@@ -1,0 +1,62 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}        
+     <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiAlias/new.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Alias Notificaciones</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' class='formulario'>           
+            
+            <table>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(form.valor) }}</td>
+		    <td width="10%">{{ form_widget(form.valor) }}</td>			    
+		    <td width="5%">&nbsp;</td>
+		</tr>		
+		<tr>	
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>* Empresa a Asignar:</label></td>
+		    <td><div id='empresas'></div></td>
+		</tr>
+		<!--<tr>	
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Jurisdiccion:</label></td>
+		    <td><div id='jurisdicciones'></div></td>
+		</tr>-->
+		<tr>	
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Ciudad:</label></td>
+		    <td><div id='ciudades'></div></td>
+		</tr>
+		<tr>	
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%"><label>Departamento:</label></td>
+		    <td><div id='departamentos'></div></td>
+		</tr>
+            </table>
+            
+            
+            <div class="buttons">
+                <p>
+                    <input  class="button-crud" value="Guardar" onclick="guardar();" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('admialias') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+	

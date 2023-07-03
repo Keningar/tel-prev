@@ -1,0 +1,256 @@
+.box-section-subcontent {
+    background-color: #FFFFFF;
+    border: 1px solid #D0D0D0;
+}
+.titulo-secundario{
+    border-bottom: 1px dotted #D0D0D0;
+}
+.x-trigger-cell{
+    padding-top: 2px;
+}
+#div_fe_apertura, #div_hora_apertura{
+    padding-top: 4px;
+}
+.bold{
+    font-weight: bold;
+    color: #000;
+}
+.box-detalle {
+    background-color: #F0F0F0;
+    border: 1px solid #CCCCCC;
+    display: block;
+    margin: 2px;
+    padding: 2px;
+}
+
+#dashboard{
+    width: 1110px;
+}
+.formulario input {
+    border: 1px solid #ACD2E7 !important;
+    margin-bottom: 0.3em;
+    margin-left: 0.2em;
+    width: 10em;
+}
+.x-form-item-body{
+    float: none;
+}
+
+.btn-acciones
+{
+    background-color: #E3E3E3;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.btn-acciones:hover
+{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.btn-agregar-orden-trabajo
+{
+    background-image: url("/public/images/agregarDetallesModelo.png");
+    background-size: 16px;
+}
+
+.btn-consultar-ordenes-trabajo
+{
+    background-image: url("/public/images/address_book.png");
+    background-size: 16px;
+}
+
+.tablas_orden_trabajo  .boldContent
+{
+    font-weight: bold;
+}
+
+.tablas_orden_trabajo .redContent
+{
+    color: red;
+}
+
+.tablas_orden_trabajo .italicContent
+{
+    font-style: italic;
+}
+
+.tablas_orden_trabajo .alignCenter
+{
+    text-align:center;
+}
+.tablas_orden_trabajo .alignRight
+{
+    text-align:right;
+}
+.tablas_orden_trabajo .alignJustify
+{
+    text-align:justify;
+}
+.tablas_orden_trabajo .celdaIzq
+{
+    width:3%;
+}
+.tablas_orden_trabajo .titulosPrincipales
+{
+    font-size: 14px;
+    font-weight: bold;
+}
+.tablas_orden_trabajo .titulosCategorias
+{
+    font-weight: bold;
+    font-size: 14px;
+    width:25%;
+    text-align:center;
+}
+
+.tablas_orden_trabajo .imgsOrdenTrabajo
+{
+    margin:0 auto;
+    width:100%;
+}
+
+.tablas_orden_trabajo .whiteSpaceNormal
+{
+    white-space: normal;
+}
+
+.tablas_orden_trabajo .tdSinBorde>.celdasAutorizacion
+{
+    border-right: 0px;
+    border-bottom: 0px;
+    border-left: 0px;
+}
+
+.tablas_orden_trabajo .rayasFirma
+{
+    border-bottom: 1px solid black;
+}
+
+.button-grid-agregarOrdenTrabajo:hover {
+    background-color: #a99f9a;
+    border-color: #a99f9a;
+}
+
+.button-grid-agregarOrdenTrabajo {
+    background-color: #E3E3E3;
+    background-image: url("/public/images/agregarDetallesModelo.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    margin-left: 5px;
+    margin-top: 0;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+
+.button-grid-agregarMantenimiento:hover {
+    background-color: #a99f9a;
+    border-color: #a99f9a;
+}
+
+.button-grid-agregarMantenimiento {
+    background-color: #E3E3E3;
+    background-image: url("/public/images/agregarDetallesModelo.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    margin-left: 5px;
+    margin-top: 0;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+
+
+.button-grid-verMantenimientosTransporte:hover {
+    background-color: #a99f9a;
+    border-color: #a99f9a;
+}
+
+.button-grid-verMantenimientosTransporte {
+    background-color: #e3e3e3;
+    background-image: url("/public/images/task.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #c5c5c5;
+    border-radius: 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2e2e2e;
+    font-size: 11px;
+    height: 25px;
+    margin-left: 5px;
+    margin-top: 0;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+
+.alineando 
+{
+    left: 42em;
+    position: absolute;
+    top: 44em;
+}
+
+.formulario label{
+    margin: 0px !important;
+    width: 155px !important;
+}
+.contenido{
+    background-color: #F9F9F9;
+    border: 2px solid #F9F9F9;
+    border-radius: 13px 13px 13px 13px;
+    padding: 13px;
+}
+
+.formulario .label_ficha_contrato{
+    margin: 0px !important;
+    width: 220px !important;
+    text-align: right!important;
+    margin-right: 10px!important;
+    padding-top: 8px!important;
+}
+
+.label_detalles_elemento
+{
+    width:200px;
+    margin-right:5px;
+}

@@ -1,0 +1,101 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+     <script type="text/javascript" src="{{ asset('./bundles/administracion/js/ElementoGateway/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Gateway</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_new_proceso' class='formulario'>
+            <input type="hidden" id="id_elemento" name="id_elemento" value='{{id}}' />
+            <table>		
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formMarca.nombreMarcaElemento) }}</td>
+		    <td width="10%">{{ form_widget(formMarca.nombreMarcaElemento) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(form.nombreElemento) }}</td>
+		    <td width="10%">{{ form_widget(form.nombreElemento) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(form.descripcionElemento) }}</td>
+		    <td width="10%">{{ form_widget(form.descripcionElemento) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formIp.ip) }}</td>
+		    <td width="10%">{{ form_widget(formIp.ip) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formIp.mascara) }}</td>
+		    <td width="10%">{{ form_widget(formIp.mascara) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formIp.gateway) }}</td>
+		    <td width="10%">{{ form_widget(formIp.gateway) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<!--<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formUser.nombreUsuarioAcceso) }}</td>
+		    <td width="10%">{{ form_widget(formUser.nombreUsuarioAcceso) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>-->
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formPass.contrasena) }}</td>
+		    <td width="10%">{{ form_widget(formPass.contrasena) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td width="15%">{{ form_label(formEmpresa.nombreEmpresa) }}</td>
+		    <td width="10%">{{ form_widget(formEmpresa.nombreEmpresa) }}</td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td colspan="6"><br/><br/></td>
+		    <td width="5%">&nbsp;</td>
+		</tr>
+		<tr>
+		    <td width="5%">&nbsp;</td>
+		    <td colspan="5">
+			<div id="interfacesElementos"></div>
+			<input type="hidden" id="interfaces_escogidas" name="interfaces_escogidas" value="" />
+		    </td>
+		</tr>		           
+            </table>
+            
+            <div class="buttons">
+                <p>
+                    <input class="button-crud" value="Guardar" onclick="guardar();"/>
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('elementogateway') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+        </form>
+</div>
+{% endblock contenido_izq %}
+

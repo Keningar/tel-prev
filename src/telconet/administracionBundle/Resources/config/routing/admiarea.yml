@@ -1,0 +1,42 @@
+admiarea:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiArea:index" }
+
+admiarea_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiArea:show" }
+
+admiarea_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiArea:new" }
+
+admiarea_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiArea:create" }
+    requirements: { _method: POST }
+    
+admiarea_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiArea:edit" }
+
+admiarea_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiArea:update" }
+    requirements: { _method: POST }
+    
+admiarea_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiArea:delete" }
+    
+admiarea_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiArea:deleteAjax" }
+    requirements: { _method: post }
+
+admiarea_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiArea:grid"}
+    
+admiarea_getAreaByEmpresa:
+    pattern:  /getAreaByEmpresa
+    defaults: { _controller: "administracionBundle:AdmiArea:getAreaByEmpresa"}

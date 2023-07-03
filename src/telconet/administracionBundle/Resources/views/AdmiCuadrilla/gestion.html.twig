@@ -1,0 +1,78 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/Cuadrillas.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlLiberarCuadrilla              = "{{ path('admicuadrilla_liberarCuadrilla') }}";
+        var strUrlReactivarCuadrillaLibre       = "{{ path('admicuadrilla_reactivarCuadrillaLibre') }}";
+        var strCargo                            = "{{ strCargo }}";
+        var strNombreArea                       = "{{ strNombreArea }}";
+        var strCategoriaTransporte              = "{{ strCategoriaTransporte }}";
+        var strUrlEliminar                      = "{{ path('admicuadrilla_delete') }}";
+        var strUrlGetJefes                      = "{{ path('jefes_getEmpleados') }}";
+        var strUrlEliminarAjax                  = "{{ path('admicuadrilla_deleteAjax') }}";
+        var url_AsignaAHal                      = "{{ path('admicuadrilla_asignarAHal') }}";
+        var url_AsignaASatelite                 = "{{ path('admicuadrilla_asignarASatelite') }}";
+        var strUrlCambioEstado                  = "{{ path('admicuadrilla_cambioEstadoCuadrillas') }}";
+        var strUrlGridCuadrillas                = "{{ path('admicuadrilla_grid') }}";
+        var strUrlConsultarPreferencias         = "{{ path('planificacionhal_ajaxGetPreferenciasCuadrillasHal') }}";
+        var intIdPersonaEmpresaRol              = "{{ intIdPersonaEmpresaRol }}";
+        var strUrlEstadosCuadrillas             = "{{ path('admicuadrilla_estados') }}";
+        var strUrlVerificarIntegrantesCuadrilla = "{{ path('admicuadrilla_verificarIntegrantesCuadrilla') }}";
+        var strUrlGetModelosMediosTransporte                    = "{{ path('elementotransporte_getModelosMedioTransporte') }}";
+        var strUrlGetMediosTransporteDisponibles                = "{{ path('admicuadrilla_getVehiculosDisponibles') }}";
+        var strUrlGetChoferAsignacionPredefinida                = "{{ path('admicuadrilla_getChoferAsignacionVehicularPredefinida') }}";
+        var strUrlAsignarMedioTransporte                        = "{{ path('admicuadrilla_asignarVehiculo') }}";
+        var strUrlEliminarAsignacionVehicular                   = "{{ path('admicuadrilla_eliminarAsignacionVehicular') }}";
+        var strUrlVerificarPlanifiacion  = "{{ path('admicuadrilla_verificarPlanificacion') }}";
+        var strUrlZonas                 = "{{path('zonaElemento_getZonasAjax') }}";
+        var strNombreDepartamento = "{{ strNombreDepartamento }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCuadrilla/gestion.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCuadrilla/funciones.js?3') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content" alt="Image">
+    <h1>Gestion de Cuadrillas</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        {% if is_granted('ROLE_170-2') %}
+            <li>
+                <a class="button-nuevo-registro" href="{{ path('admicuadrilla_new') }}">
+                    <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" alt="Image"/>
+                    &nbsp;Nueva Cuadrilla
+                </a>
+            </li>
+        {% endif %}
+        <li>
+            &nbsp;
+        </li>
+        {% if is_granted('ROLE_170-4') %}
+            <li>
+                <a class="button-lista-cuadrillas" href="{{ path('admicuadrilla') }}">
+                    &nbsp; Listado de cuadrillas
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}

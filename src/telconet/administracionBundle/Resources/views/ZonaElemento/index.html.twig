@@ -1,0 +1,34 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+    
+<script>
+    
+    var url_zonas             = "{{path('zonaElemento_getZonasAjax') }}";
+    var url_zonificarElemento = "{{path('zonaElemento_updateZonaAjax') }}";
+    var url_gridElementos     = "{{path('zonaElemento_grid') }}";
+    var url_TiposElementos    = "{{path('elementocpe_getTiposElementos') }}";
+    var url_ModelosElementos  = "{{path('elementocpe_getModelosElementos') }}";
+</script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/ZonaElemento/index.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Zonificacion de Elementos</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_izq %}

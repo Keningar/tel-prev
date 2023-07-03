@@ -1,0 +1,62 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Tipo de Contrato</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('admitipocontrato_update', { 'id': tipocontrato.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" onSubmit="return validarFormulario();">
+        {{ form_widget(edit_form) }}
+        <div class="buttons">
+            <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('admitipocontrato') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>	
+		function validarFormulario()
+		{
+			var tiempoFinalizacion = $('#telconet_schemabundle_admitipocontratotype_tiempoFinalizacion').val();
+			var tiempoAlertaFinalizacion = $('#telconet_schemabundle_admitipocontratotype_tiempoAlertaFinalizacion').val();
+			var numberFormat = /^\d+$/;
+
+			if (!numberFormat.test(tiempoFinalizacion))
+			{
+				alert("Introduzca el formato correcto, para el Tiempo de Finalizacion");
+				return false;
+			}
+
+			if (!numberFormat.test(tiempoAlertaFinalizacion))
+			{
+				alert("Introduzca el formato correcto, para el Tiempo de Alerta de Finalizacion");
+				return false;
+			}
+			
+			return true;
+		}
+    </script>		
+{% endblock javascripts_footer%}

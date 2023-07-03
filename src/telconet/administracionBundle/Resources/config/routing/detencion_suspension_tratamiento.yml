@@ -1,0 +1,4 @@
+detencion_suspension_tratamiento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:DetencionSuspTratamiento:index" }
+    

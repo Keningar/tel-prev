@@ -1,0 +1,11 @@
+personaproveedor:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:PersonaProveedor:index" }
+
+personaproveedor_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:PersonaProveedor:show" }
+
+personaproveedor_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:PersonaProveedor:grid"}

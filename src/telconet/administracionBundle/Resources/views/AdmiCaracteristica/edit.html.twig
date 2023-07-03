@@ -1,0 +1,42 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Caracteristica</h1>
+</div>
+
+<div class="body_content">
+    <div style="width: 50%; margin: auto;">
+        <form id='form_edit_proceso' action="{{ path('com_admicaracteristica_update', { 'id': caracteristica.id }) }}" 
+              method="post" {{ form_enctype(edit_form) }} class="formulario">
+            {{ form_widget(edit_form) }}
+            <div id="gridSeleccionable"></div>
+            <input type="hidden" name="opciones" id="opciones" value="" />
+            <div class="buttons">
+                <p>
+                    <input type='button' class="button-crud" onclick="validarFormulario();" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('com_admicaracteristica') }}">
+                            Cancelar
+                        </a>
+                    </span>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var strUrlGetOpcionesSeleccionable = "{{ path('com_admicaracteristica_getOpcionesSeleccionable') }}";
+        var strUrlVerificaCaracteristica   = "{{ path('com_admicaracteristica_verificarCaracteristica') }}";
+        var intIdParametroCab              = "{{ intIdParametroCab }}";
+        var intIdCaracteristica            = "{{ caracteristica.id }}";
+        var strTipoIngreso                 = "{{ caracteristica.tipoIngreso }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCaracteristica/edit.js') }}"></script>
+{% endblock %}

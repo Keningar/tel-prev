@@ -1,0 +1,46 @@
+admiusuarioacceso:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiUsuarioAcceso:index" }
+
+admiusuarioacceso_getUsuarios:
+    pattern:  /getUsuarios
+    defaults: { _controller: administracionBundle:AdmiUsuarioAcceso:getUsuarios }
+    
+admiusuarioacceso_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiUsuarioAcceso:getEncontrados }
+
+admiusuarioacceso_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiUsuarioAcceso:show" }
+
+admiusuarioacceso_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiUsuarioAcceso:new" }
+
+admiusuarioacceso_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiUsuarioAcceso:create" }
+    requirements: { _method: POST }
+
+admiusuarioacceso_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiUsuarioAcceso:edit" }
+
+admiusuarioacceso_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiUsuarioAcceso:update" }
+    requirements: { _method: POST }
+
+admiusuarioacceso_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiUsuarioAcceso:deleteAjax" }
+    requirements: { _method: post }
+    
+admiusuarioacceso_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiUsuarioAcceso:delete" }
+    
+admiusuarioacceso_getRelacionUsuarioModelo:
+    pattern:  /getRelacionUsuarioModelo
+    defaults: { _controller: administracionBundle:AdmiUsuarioAcceso:getRelacionUsuarioModelo }

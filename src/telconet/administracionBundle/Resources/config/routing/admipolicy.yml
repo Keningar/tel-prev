@@ -1,0 +1,33 @@
+admipolicy:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiPolicy:index" }
+
+admipolicy_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiPolicy:show" }
+
+admipolicy_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiPolicy:new" }
+
+admipolicy_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiPolicy:create" }
+    requirements: { _method: POST }    
+    
+admipolicy_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiPolicy:delete" }
+    
+admipolicy_ajaxDelete:
+    pattern:  /ajaxDelete
+    defaults: { _controller: "administracionBundle:AdmiPolicy:ajaxDelete" }
+    requirements: { _method: post }
+    
+admipolicy_ajaxGetElementoServidor:
+    pattern:  /ajaxGetElementoServidor
+    defaults: { _controller: "administracionBundle:AdmiPolicy:ajaxGetElementoServidor" }    
+
+admipolicy_ajaxGrid:
+    pattern:  /ajaxGrid
+    defaults: { _controller: "administracionBundle:AdmiPolicy:ajaxGrid"}

@@ -1,0 +1,138 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}    
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiMotivo/show.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Motivo</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Modulo:</th>
+                <td width="15%">{{ relacionsistema.nombre_modulo }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Modulo:</th>
+                <td width="15%">{{ relacionsistema.nombre_itemmenu }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Accion:</th>
+                <td width="15%">{{ relacionsistema.nombre_accion }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><div id="grid"></div></td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="hidden" name="relacionsistema_id" id="relacionsistema_id" value="{{ relacionsistema.id_relacionsistema }}" />
+    <input type="hidden" name="escogido_modulo_id" id="escogido_modulo_id" value="{{ relacionsistema.id_modulo }}" />
+    <input type="hidden" name="escogido_itemmenu_id" id="escogido_itemmenu_id" value="{{ relacionsistema.id_itemmenu }}" />
+    <input type="hidden" name="escogido_accion_id" id="escogido_accion_id" value="{{ relacionsistema.id_accion }}" />
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admimotivo') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<br>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_21-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admimotivo_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Motivo
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_21-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admimotivo_edit', { 'id': relacionsistema.id_relacionsistema }) }}">
+                &nbsp;Editar Motivo
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_21-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admimotivo_delete', { 'id': motivo.id }) }}">
+                &nbsp;Eliminar Motivo
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() {  
+            var modulo = {{ relacionsistema.id_modulo }};
+            var itemmenu = {{ relacionsistema.id_itemmenu }};
+            var accion = {{ relacionsistema.id_accion }};
+            
+            storeMotivos.proxy.extraParams = { id_accion: accion, 
+                                                id_modulo: modulo, 
+                                                id_itemmenu: itemmenu
+                                             };
+            storeMotivos.load({params: {}});    
+        });
+    </script>	
+{% endblock javascripts_footer%}

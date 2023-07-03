@@ -1,0 +1,73 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiSector/new.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Sector</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' action="{{ path('admisector_create') }}" method="post" {{ form_enctype(form) }} class='formulario' onsubmit="return validarFormulario();">
+            <div>
+                <label>* Provincia:</label>
+                <div id='combo_provincias' required="true"></div>
+            </div>
+
+            <div>
+                <label>* Canton:</label>
+                <div id='combo_cantones' required="true"></div>
+            </div>
+
+            <div>
+                <label>* Parroquia:</label>
+                <div id='combo_parroquias' required="true"></div>
+            </div>
+			{{ form_widget(form) }}
+            
+            <input type="hidden" name="escogido_provincia_id" id="escogido_provincia_id" value="0" />
+            <input type="hidden" name="escogido_canton_id" id="escogido_canton_id" value="0" />
+            <input type="hidden" name="escogido_parroquia_id" id="escogido_parroquia_id" value="0" />
+			
+            <div class="buttons">
+                <p>
+					<button class="button-crud" type="submit">Guardar</button>
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('admisector') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        /* -- */
+    </script>	
+{% endblock javascripts_footer%}	

@@ -1,0 +1,304 @@
+<html>
+    <head>
+        <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+        <style>
+            html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, 
+            legend, input, textarea, p, blockquote, th, td {
+                margin: 0;
+                padding: 0;
+            }
+            table {
+                border-spacing: 0;
+            }
+            table, tr, td, th, tbody, thead, tfoot,img, blockquote {
+                page-break-inside: avoid !important;
+            }
+            .x-body {
+                color: black;
+                font-family: tahoma,arial,verdana,sans-serif;
+                font-size: 12px;
+                margin: 5px;
+            }
+            .tablas_orden_trabajo  .boldContent
+            {
+                font-weight: bold;
+            }
+
+            .tablas_orden_trabajo .redContent
+            {
+                color: red;
+            }
+
+            .tablas_orden_trabajo .italicContent
+            {
+                font-style: italic;
+            }
+
+            .tablas_orden_trabajo .alignCenter
+            {
+                text-align:center;
+            }
+            .tablas_orden_trabajo .alignRight
+            {
+                text-align:right;
+            }
+            .tablas_orden_trabajo .alignJustify
+            {
+                text-align:justify;
+            }
+            .tablas_orden_trabajo .celdaIzq
+            {
+                width:3%;
+            }
+            .tablas_orden_trabajo .titulosPrincipales
+            {
+                font-size: 14px;
+                font-weight: bold;
+            }
+            .tablas_orden_trabajo .titulosCategorias
+            {
+                font-weight: bold;
+                font-size: 14px;
+                width:25%;
+                text-align:center;
+            }
+
+            .tablas_orden_trabajo .imgsOrdenTrabajo
+            {
+                margin:0 auto;
+                width:100%;
+            }
+
+            .tablas_orden_trabajo .whiteSpaceNormal
+            {
+                white-space: normal;
+            }
+
+            .tablas_orden_trabajo .tdSinBorde>.celdasAutorizacion
+            {
+                border-right: 0px;
+                border-bottom: 0px;
+                border-left: 0px;
+            }
+
+            .tablas_orden_trabajo .rayasFirma
+            {
+                border-bottom: 1px solid black;
+            }
+            
+            .x-grid-table {
+                table-layout: fixed;
+            }
+            
+            .x-border-box, .x-border-box * {
+                box-sizing: border-box;
+            }
+            
+            .x-grid-cell-inner {
+                overflow: visible;
+                padding: 2px 6px 3px;
+                white-space: normal;
+                font-size: 14px;
+            }
+        </style>
+    </head>
+    
+    <body class="x-body">
+        <div class="body_content k-content">
+                <table id="tabla_orden_trabajo_detalles" name="tabla_orden_trabajo_detalles" width="92%" cellpadding="1" cellspacing='0'  border='1' 
+                       style="margin-left: auto;margin-right: auto;" class="tablas_orden_trabajo x-grid-table x-grid-table-resizer">
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="5" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter boldContent titulosPrincipales">MANTENIMIENTO VEH&Iacute;CULOS</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="5" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter boldContent titulosPrincipales">
+                                ORDEN DE TRABAJO {% if OTConNumeracionActual=="SI" %}<span class="redContent">N&deg; {{numeroOrdenTrabajo}}</span>{% endif %}
+                            </div></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" rowspan="3" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter">
+                                {% if idEmpresaSession==10 %}
+                                <img style="width:66%" class="imgsOrdenTrabajo" src="{{rutaimagenCabecera}}" 
+                                     class="imagen-titulo-content"/>
+                                {% else %}
+                                <img class="imgsOrdenTrabajo" src="{{rutaimagenCabecera}}" class="imagen-titulo-content"/>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="2" rowspan="2" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter titulosPrincipales">
+                                <span style="font-size:20px;" class="redContent boldContent italicContent">{{kmActual}} KM</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignCenter"></div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignCenter"></div></td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignCenter italicContent">FECHA INICIO&#58; </div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignCenter">
+                                <span class=" italicContent">{{ fechaInicio }}</span>
+                            </div>
+                        </td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignCenter italicContent">FECHA FIN&#58; </div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignCenter">
+                                <span class=" italicContent">{{ fechaFin }}</span>
+                            </div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="5" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter boldContent titulosPrincipales">MANTENIMIENTO {{tipoMantenimientoOT}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignRight italicContent">NOMBRE TALLER&#58;</div></td>
+                        <td colspan="2" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter">
+                                <span class="whiteSpaceNormal redContent italicContent">{{nombrePerAsignadoOrden}}
+                                </span>
+                            </div>
+                        </td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignRight italicContent">A&Ntilde;O&#58;</div></td>
+                        <td colspan="1" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter">
+                                <span class="redContent italicContent">{{ detallesElemento.ANIO }}</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignRight italicContent">PLACA&#58;</div></td>
+                        <td colspan="2" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter">
+                                <span class="redContent italicContent">{{placa}}</span>
+                            </div>
+                        </td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignRight italicContent">MODELO&#58;</div></td>
+                        <td colspan="1" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter">
+                                <span class="whiteSpaceNormal redContent italicContent">{{ modeloElemento }}</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignRight italicContent">VEH&Iacute;CULO &#35;&#58;</div></td>
+                        <td colspan="2" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter">
+                                <span class="redContent italicContent">{{detallesElemento.DISCO}}</span>
+                            </div>
+                        </td>
+                        <td colspan="1" class="x-grid-cell"><div class="x-grid-cell-inner alignRight italicContent">CONDUCTOR&#58;</div></td>
+                        <td colspan="1" class="x-grid-cell">
+                            <div class="x-grid-cell-inner alignCenter">
+                                <span class="whiteSpaceNormal redContent italicContent">{{nombrePerConductor}}</span>
+                            </div>
+                        </td>
+                    </tr>
+                    {% set maxRowsCategoria = 4 %}
+                    {% set rowspanCategoria = 0 %}
+                    {% set rowsVacias = 0 %}
+
+                    {% for ordenTrabajoDet in ordenTrabajoDets %}
+                        {% if ordenTrabajoDet|length > maxRowsCategoria %}
+                            {% set rowspanCategoria = ordenTrabajoDet|length %}
+                            {% set rowsVacias = 0 %}
+                        {% else %}
+                            {% set rowsVacias = maxRowsCategoria - ordenTrabajoDet|length %}
+                            {% set rowspanCategoria = maxRowsCategoria %}
+                        {% endif %}
+
+                        {% for item in ordenTrabajoDet %}
+                        <tr>
+                            <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                            {% if loop.first %}
+                                <td class="x-grid-cell titulosCategorias" colspan="1" rowspan="{{ rowspanCategoria }}">
+                                    <div class="whiteSpaceNormal x-grid-cell-inner italicContent boldContent">{{item.nombreCategoriaTarea}}</div>
+                                </td>
+                            {% endif %}
+                            <td colspan="4" class="x-grid-cell">
+                                <div class="whiteSpaceNormal x-grid-cell-inner alignJustify">{{item.nombreTarea}}</div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% if rowsVacias > 0 %}
+                            {% for i in 1..rowsVacias %}
+                            <tr>
+                                <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                                <td colspan="4" class="x-grid-cell">
+                                    <div class="whiteSpaceNormal x-grid-cell-inner"></div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+
+                </table>
+                <br/><br/>
+                <table width="92%" cellpadding="1" cellspacing='0'  border='0' 
+                       style="margin-left: auto;margin-right: auto;" class="tablas_orden_trabajo x-grid-table x-grid-table-resizer">
+                    <tr class="tdSinBorde">
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell celdasAutorizacion"><div class="x-grid-cell-inner">OBSERVACI&Oacute;N&#58;</div></td>
+
+                        <td colspan="4" class="x-grid-cell celdasAutorizacion" >
+                            <div class="whiteSpaceNormal x-grid-cell-inner" style="margin-left:2px;">{{observacion}}</div>
+                        </td>
+                    </tr>
+                    <tr class="tdSinBorde"><td colspan="7" class="x-grid-cell"><div class="x-grid-cell-inner">&nbsp;</div></td></tr>
+                    <tr class="tdSinBorde">
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell celdasAutorizacion"><div class="x-grid-cell-inner">AUTORIZADO POR&#58;</div></td>
+
+                        <td colspan="2" class="x-grid-cell celdasAutorizacion" >
+                            <div class="whiteSpaceNormal x-grid-cell-inner" style="margin-left:2px;">{{nombreAutorizadoPor}}</div>
+                        </td>
+                        <td colspan="1" class="x-grid-cell celdasAutorizacion"><div class="x-grid-cell-inner alignRight">FIRMA</div></td>
+                        <td colspan="2" class="x-grid-cell celdasAutorizacion">
+                            <div class="x-grid-cell-inner">
+                                {% if rutaFirmaAutorizadoPor != '' %}
+                                <img style="width:250px;height:130px;" class="imgsOrdenTrabajo" src="{{rutaFirmaAutorizadoPor}}" class="imagen-titulo-content"/>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="tdSinBorde"><td colspan="7" class="x-grid-cell"><div class="x-grid-cell-inner">&nbsp;</div></td></tr>
+                    <tr class="tdSinBorde">
+                        <td colspan="1" class="x-grid-cell celdaIzq"><div class="x-grid-cell-inner">&nbsp;</div></td>
+                        <td colspan="1" class="x-grid-cell celdasAutorizacion">
+                            <div class="whiteSpaceNormal x-grid-cell-inner">CHOFER RESPONSABLE&#58;</div>
+                        </td>
+                        <td colspan="2" class="x-grid-cell celdasAutorizacion">
+                            <div class="whiteSpaceNormal x-grid-cell-inner" style="margin-left:2px;">{{nombrePerConductor}}</div>
+                        </td>
+                        <td colspan="1" class="x-grid-cell celdasAutorizacion"><div class="x-grid-cell-inner alignRight">FIRMA</div></td>
+                        <td colspan="2" class="x-grid-cell celdasAutorizacion">
+                            <div class="x-grid-cell-inner">
+                                {% if rutaFirmaChofer != '' %}
+                                <img style="width:250px;height:130px;" class="imgsOrdenTrabajo" src="{{rutaFirmaChofer}}" class="imagen-titulo-content"/>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,140 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Oid</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="15%"><b>Marca Elemento</b></th>
+                <td width="15%">{{ oid.marcaElementoId }}</td>
+                <td width="15%">&nbsp;</td>
+                <th width="15%"><b>Nombre Oid</b></th>        
+                <td width="15%">{{ oid.nombreOid }}</td>
+            </tr>
+            <tr>
+                <td colspan="6" style="height: 10px">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="15%"><b>Oid</b></th>
+                <td width="15%">{{ oid.oid }}</td>  
+                <td width="15%">&nbsp;</td>
+                <th width="15%"><b>Descripci&oacute;n Oid</b></th>              
+                <td width="15%">{{ oid.descripcionOid }}</td>
+            </tr>
+            <tr>
+                <td colspan="6" style="height: 10px">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="15%"><b>Estado</b></th>
+                <td width="15%">{{ oid.estado }}</td>
+                <td width="15%">&nbsp;</td>
+                <th width="15%"></th>
+                <td width="15%"></td>  
+            </tr>
+
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admioid') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ oid.usrCreacion }}</td>
+
+              {% if(oid.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ oid.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(oid.estado=="Eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ oid.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ oid.feCreacion | date("d M Y") }}</td>
+
+              {% if(oid.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ oid.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(oid.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ oid.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ oid.feCreacion | date("H:i:s") }}</td>
+
+              {% if(oid.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ oid.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(oid.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ oid.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+		{% if is_granted('ROLE_120-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admioid_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Oid
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_120-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admioid_edit', { 'id': oid.id }) }}">                
+                &nbsp;Editar Oid
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_120-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admioid_delete', { 'id': oid.id }) }}">                
+                &nbsp;Eliminar Oid
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

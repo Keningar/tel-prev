@@ -1,0 +1,27 @@
+admipuntoatencion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiPuntoAtencion:index" }
+
+admipuntoatencion_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiPuntoAtencion:new" }
+
+admipuntoatencion_ajaxGuardarPuntoAtencion:
+    pattern:  /ajaxGuardarPuntoAtencion
+    defaults: { _controller: "administracionBundle:AdmiPuntoAtencion:ajaxGuardarPuntoAtencion" }
+    
+admipuntoatencion_edit:
+    pattern:  /{intIdPuntoAtencion}/edit
+    defaults: { _controller: "administracionBundle:AdmiPuntoAtencion:edit" }
+    
+admipuntoatencion_delete:
+    pattern:  /delete
+    defaults: { _controller: "administracionBundle:AdmiPuntoAtencion:delete" }
+    
+admipuntoatencion_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiPuntoAtencion:grid"}
+    
+admipuntoatencion_ajaxEditarPuntoAtencion:
+    pattern:  /ajaxEditarPuntoAtencion
+    defaults: { _controller: "administracionBundle:AdmiPuntoAtencion:ajaxEditarPuntoAtencion" }

@@ -1,0 +1,42 @@
+admiformapago:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:index" }
+
+admiformapago_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:show" }
+
+admiformapago_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:new" }
+
+admiformapago_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:create" }
+    requirements: { _method: POST }
+    
+admiformapago_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:edit" }
+
+admiformapago_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:update" }
+    requirements: { _method: POST }
+    
+admiformapago_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:delete" }
+    
+admiformapago_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:deleteAjax" }
+    requirements: { _method: post }
+
+admiformapago_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:grid"}
+
+admiformapago_getFormaPagojson:
+    pattern:  /getFormaPagojson
+    defaults: { _controller: "administracionBundle:AdmiFormaPago:getFormaPagoJson"}

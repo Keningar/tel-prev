@@ -1,0 +1,76 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link href="{{ asset('public/js/kendo2012_1/source/styles/kendo.common.css') }}" type="text/css" rel="stylesheet"/>
+  <link href="{{ asset('public/js/kendo2012_1/source/styles/kendo.default.css') }}" type="text/css" rel="stylesheet"/>
+  <style scoped="scoped">
+    .alineando {
+      left: 42em;
+      position: absolute;
+      top: 44em;
+    }
+  </style>
+{% endblock %}
+
+{% block javascripts%}
+  {{ parent() }}
+  <script src="{{ asset('public/js/kendo2012_1/js/jquery.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('public/js/kendo2012_1/js/kendo.web.min.js') }}" type="text/javascript"></script>
+  <script src="{{ asset('public/js/kendo2012_1/js/kendo.dropdownlist.min.js') }}" type="text/javascript"></script>
+  <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiGrupoTag/edit.js') }}"></script>
+  <script>
+       var urlGetTags                  = '{{ path('elementoolt_getTagsAjax') }}';
+       var urlGetGrupoTag              = '{{ path('grupotag_getGrupoTagAjax') }}';
+       var urlEditarGrupoTag           = '{{ path('grupotag_editarGrupoTagAjax') }}';
+       var tipoScope                   = '{{tipoScope}}';
+       var nombreTipoScope             = '{{nombreTipoScope}}';
+  </script>
+{% endblock %}
+
+{% block contenido_izq %}
+  <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Grupo Tag</h1>    
+
+  </div>
+  <div class="body_content">
+    <div>
+
+      <form>
+      {# <form id='form_edit_proceso' action="{{ path('admifuncion_update', { 'id': funcion.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" >#}
+
+      <div width="100%" style="display:flex;justify-content:flex-start">
+      <input type='hidden' id='inputTipoScope' name='inputTipoScope' value={{tipoScope}}></input>
+        <h1>Tipo de Scope: <b>{{nombreTipoScope}}</b></h1>
+      </div>
+
+      <br>
+
+      <div width="5%">&nbsp;</div>
+
+      <div width="100%" style="display:flex;justify-content:flex-start">
+        <label width="24%"></label>
+        <div id="gridGrupoTag" width="10%" style="margin-left:-3%;margin-top:0"></div>
+      </div>
+
+      <div width="5%">&nbsp;</div>
+
+      <div class="buttons">
+        <p>
+          <input type='button' id="inputGuardar" class="button-crud" value="Guardar"/>
+          <span class="height20px">
+            &oacute;&nbsp;
+            <a class="button-crud" href="{{ path('grupotag') }}">Cancelar</a>
+          </span>
+        </p>
+      </div>
+      </form>
+
+    </div>
+  </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+  <script></script>
+{% endblock javascripts_footer%}

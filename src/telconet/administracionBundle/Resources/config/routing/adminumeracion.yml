@@ -1,0 +1,58 @@
+adminumeracion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:index" }
+
+adminumeracion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:show" }
+
+adminumeracion_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:new" }
+
+adminumeracion_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:create" }
+    requirements: { _method: POST }
+    
+adminumeracion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:edit" }
+
+adminumeracion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:update" }
+    requirements: { _method: POST }
+    
+adminumeracion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:delete" }
+    
+adminumeracion_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:deleteAjax" }
+    requirements: { _method: post }
+
+adminumeracion_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:grid"}
+
+adminumeracion_getListadoEmpresas:
+    pattern:  /getListadoEmpresas
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:getListadoEmpresas"}
+
+adminumeracion_getListadoOficinas:
+    pattern:  /getListadoOficinas
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:getListadoOficinas"}
+
+adminumeracion_getNumeroEstablecimientoPorOficina:
+    pattern:  /getNumeroEstablecimientoPorOficina
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:getNumeroEstablecimientoPorOficina"}
+
+adminumeracion_verificarNumeracionPorOficina:
+    pattern:  /verificarNumeracionPorOficina
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:verificarNumeracionPorOficina"}
+
+adminumeracion_getTipoComprobantes:
+    pattern:  /getTipoComprobantes
+    defaults: { _controller: "administracionBundle:AdmiNumeracion:getTipoComprobantes"}

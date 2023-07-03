@@ -1,0 +1,80 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        .alineando 
+        {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        
+        .formulario label
+        {
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        
+        .contenido
+        {
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGetListadoOficinas                 = "{{ path('adminumeracion_getListadoOficinas') }}";
+        var strUrlVerificarNumeracion                = "{{ path('adminumeracion_verificarNumeracionPorOficina') }}";
+        var strUrlGetTipoComprobantes                = "{{ path('adminumeracion_getTipoComprobantes') }}";
+        var strUrlGetNumeroEstablecimientoPorOficina = "{{ path('adminumeracion_getNumeroEstablecimientoPorOficina') }}";
+        var strMostrarSecuenciales                   = "{{ strMostrarSecuenciales }}";
+        var strMostrarNumeroAutorizacion             = "{{ strMostrarNumeroAutorizacion }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiNumeracion/new.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Numeracion</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <div style="width: 480px; margin: auto;">
+            <form id='form_new_proceso' action="{{ path('adminumeracion_create') }}" method="post" {{ form_enctype(form) }} class='formulario' >
+                
+                <div>
+                    <label>* Tipo de Comprobante:</label>
+                    <div id='tipo_comprobante' required="true"></div>
+                    <input type="hidden" id="strCodigoComprobanteSeleccionado" name="strCodigoComprobanteSeleccionado" />
+                </div>
+                
+                <div>
+                    <label>* Oficina:</label>
+                    <div id='combo_oficina' required="true"></div>
+                    <input type="hidden" id="intIdOficinaSeleccionado" name="intIdOficinaSeleccionado" />
+                </div>
+
+                <input type="hidden" name="escogido_oficina_id" id="escogido_oficina_id" value="0" />
+
+                {{ form_widget(form) }}
+
+                <div class="buttons">
+                    <p>
+                        <input type='button'class="button-crud" value="Guardar" onclick="validarFormulario();" />
+                        <span class="height20px">
+                            &oacute;&nbsp;
+                            <a class="cancel-crud" href="{{ path('adminumeracion') }}">Cancelar</a>
+                        </span>
+                    </p>
+                </div>	
+            </form>
+        </div>
+    </div>
+{% endblock contenido_izq %}

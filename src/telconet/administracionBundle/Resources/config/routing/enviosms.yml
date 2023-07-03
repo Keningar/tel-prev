@@ -1,0 +1,12 @@
+enviosms:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:EnvioSms:index" }
+
+enviosms_update:
+    pattern:  /update
+    defaults: { _controller: "administracionBundle:EnvioSms:update" }
+    requirements: { _method: POST }
+
+enviosms_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:EnvioSms:grid"}

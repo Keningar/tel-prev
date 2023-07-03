@@ -1,0 +1,137 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Clase de Documento</h1>
+</div>
+<div class="body_content">
+	<table class="record_properties">
+            <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Nombre Clase de Documento:</th>
+                <td width="15%">{{ entity.nombreClaseDocumento }}</td>        
+                <td width="1%"></td>
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Estado</th>        
+                <td width="15%">{{ entity.estado }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Descripcion Clase de Documento:</th>
+                <td width="15%">{{ entity.descripcionClaseDocumento }}</td>        
+                <td width="1%"></td>
+                <td width="9%"></td>
+                <th width="25%"></th>        
+                <td width="15%"></td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Es Visible:</th>
+                <td width="15%">{{ entity.visible }}</td>        
+                <td width="1%"></td>
+                <td width="9%"></td>
+                <th width="25%"></th>        
+                <td width="15%"></td>
+                <td width="1%"></td>
+            </tr>
+            </tbody>
+	</table>
+</div>
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiclasedocumento') }}">
+                    Regresar
+            </a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="4%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Creador:</th>
+              <td width="34%" >{{ entity.usrCreacion }}</td>
+
+              {% if(entity.estado=="Modificado") %}
+              <td width="4%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Eliminado") %}
+              <td width="4%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ entity.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ entity.feCreacion | date("d M Y") }}</td>
+
+              {% if(entity.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ entity.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ entity.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+
+              {% if(entity.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(entity.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+	<div class="acciones_relacionadas">
+	{% if is_granted('ROLE_159-2') %}
+		<a href="{{ path('admiclasedocumento_new') }}" class="button-nuevo-registro">
+			<img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="11" height="11" />
+			&nbsp;Nueva Clase Documento
+		</a>
+	</div>
+	{% endif %}
+	<br />
+	{% if (entity.estado != "Eliminado") %}
+		<ul class="form_actions">
+			{% if is_granted('ROLE_159-4') %}
+			<li>
+				<a class="button-editar" href="{{ path('admiclasedocumento_edit', { 'id': entity.id }) }}">
+					Editar
+				</a>
+			</li>
+			{% endif %}
+			{% if is_granted('ROLE_159-8') %}
+			<li>
+				<form action="{{ path('admiclasedocumento_delete', { 'id': entity.id }) }}" method="post" name="delete_form">
+					{{ form_widget(delete_form) }}
+					<a class="button-eliminar" href="javascript:document.delete_form.submit();">
+					Eliminar
+					</a>
+				</form>
+			</li>
+			{% endif %}
+		</ul>		
+	{% endif %}
+{% endblock contenido_der %}

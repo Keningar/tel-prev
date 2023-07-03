@@ -1,0 +1,38 @@
+admifuncion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiFuncion:index" }
+
+admifuncion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiFuncion:show" }
+
+admifuncion_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiFuncion:new" }
+
+admifuncion_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiFuncion:create" }
+    requirements: { _method: POST }
+    
+admifuncion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiFuncion:edit" }
+
+admifuncion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiFuncion:update" }
+    requirements: { _method: POST }
+    
+admifuncion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiFuncion:delete" }
+    
+admifuncion_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiFuncion:deleteAjax" }
+    requirements: { _method: post }
+
+admifuncion_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiFuncion:grid"}

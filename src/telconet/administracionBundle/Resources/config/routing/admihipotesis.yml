@@ -1,0 +1,38 @@
+admihipotesis:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:index" }
+
+admihipotesis_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:show" }
+
+admihipotesis_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:new" }
+
+admihipotesis_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:create" }
+    requirements: { _method: POST }
+    
+admihipotesis_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:edit" }
+
+admihipotesis_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:update" }
+    requirements: { _method: POST }
+    
+admihipotesis_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:delete" }
+    
+admihipotesis_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:deleteAjax" }
+    requirements: { _method: post }
+
+admihipotesis_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiHipotesis:grid"}

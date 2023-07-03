@@ -1,0 +1,37 @@
+{% extends "::layout_completo.html.twig" %}
+
+
+{% block javascripts%}
+     {{ parent() }}
+    
+<script>
+       
+        var strUrlDepartamentosEmpleados      = "{{ path('personaempleado_departamentos') }}";
+        var strUrlCantonesEmpleados           = "{{ path('personaempleado_cantones') }}";
+        var urlDeleteAjax                     = "{{ path('personaempleado_deleteAjax') }}";
+        var urlHabilitarDesabilidarUserTacacs = '{{ path('personaempleado_actualizarUserTacacs')}}';
+        var urlConsultarUserTacacs            = '{{ path('personaempleado_consultarUserTacacs')}}';
+        
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/PersonaEmpleado/index.js?2') }}"></script>
+ {% endblock %}
+
+{% block contenido_central %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Empleados</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+    <input type="hidden" id="idDepartamentoSesion" name="idDepartamentoSesion" value='{{departamentoIdSesion}}'/>
+    <input type="hidden" id="nombreDepartamentoSesion" name="nombreDepartamentoSesion" value='{{departamentoSesion}}'/>
+    <input type="hidden" id="codigoEmpresa" name="codigoEmpresa" value='{{codigoEmpresa}}'/>
+</div>
+{% endblock contenido_central %}

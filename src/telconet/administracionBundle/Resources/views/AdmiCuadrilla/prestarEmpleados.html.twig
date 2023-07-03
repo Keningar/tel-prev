@@ -1,0 +1,48 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/Cuadrillas.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+    
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/tools1.png') }}" class="imagen-titulo-content">
+        <h1>Listado del Personal Asignado</h1>
+    </div>
+    <div class="body_content k-content without-padding">
+        <div id="example" class="k-content">
+            <table cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='criteriosBusqueda'></div>
+                    </td>
+                </tr>	
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='empleadosAsignados'></div>
+                    </td>
+                </tr>
+            </table>
+            <div class="buttons">
+                <p>
+                    <a href="{{ path('admicuadrilla') }}" class="button-crud">
+                        Regresar al Listado de Cuadrillas
+                    </a>
+                </p>
+            </div>        
+
+            <script>
+                var strCargo                        = "{{ strCargo }}";
+                var strUrlGrid                      = "{{ path('jefes_getEmpleados') }}";
+                var strNombreArea                   = "{{ strNombreArea }}";
+                var strUrlGetJefes                  = "{{ path('jefes_getEmpleados') }}";
+                var intIdPersonaEmpresaRol          = "{{ intIdPersonaEmpresaRol }}";
+                var strUrlCambioCoordinadorEmpleado = "{{ path('admicuadrilla_cambioCoordinadorEmpleado') }}";
+                var strNombreDepartamento           = "{{ strNombreDepartamento }}";
+            </script>
+            <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCuadrilla/prestarEmpleados.js?2') }}"></script>
+            <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Jefes/funciones.js?1') }}"></script>
+        </div>
+    </div>
+{% endblock contenido_izq %}

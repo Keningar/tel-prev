@@ -1,0 +1,81 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+                left: 42em;
+                position: absolute;
+                top: 44em;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/InfoElementoContrasena/new.js') }}"></script>
+    <script>
+        var getElementosPorModelo   = '{{ path('admimodeloelemento_buscarElementoPorModeloElemento') }}';
+        var getUsuariosPorModelo    = '{{ path('admimodeloelemento_buscarUsuariosPorModelo') }}';
+        var getModeloPorTipo        = '{{ path('admimodeloelemento_buscarModeloPorTipoElemento') }}';
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Contrasena</h1>
+    </div>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    <div class="body_content">
+        <form id='form_new_elemento_dslam' action="{{ path('infoelementocontrasena_create') }}" method="post" {{ form_enctype(form) }} 
+              class='formulario' novalidate="novalidate" onsubmit="return validarFormulario();">
+            <table width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.tipoElementoId) }}</td>
+                    <td width="5%">{{ form_widget(form.tipoElementoId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.modeloElementoId) }}</td>
+                    <td width="5%">{{ form_widget(form.modeloElementoId) }}</td>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.elementoId) }}</td>
+                    <td width="5%"><div id='comboElemento' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="5%">{{ form_widget(form.elemento) }}</div></td>
+                    <td width="5%">{{ form_widget(form.usuario) }}</div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>   
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.usuarioId) }}</td>
+                    <td width="5%"><div id='comboUsuarios' required="true"></div></td>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(form.contrasena) }}</td>
+                    <td width="5%">{{ form_widget(form.contrasena) }}</div></td>
+                    <td width="5%">&nbsp;</td>
+                </tr>                
+            </table>
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="button-crud" href="{{ path('infoelementocontrasena') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+            {{ form_widget(form._token) }}
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+{% endblock javascripts_footer%}	

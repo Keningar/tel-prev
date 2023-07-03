@@ -1,0 +1,17 @@
+oposicion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:Oposicion:index" }
+    
+oposicion_ajax_ejecuta_oposicion:
+    pattern: /ajaxEjecutaOposicion
+    defaults: { _controller: "administracionBundle:Oposicion:ajaxEjecutaOposicion"}
+    requirements: { _method: post }
+
+oposicion_ajax_getPoliticas:
+    pattern:  /ajaxGetPoliticas
+    defaults: { _controller: "administracionBundle:Oposicion:ajaxGetPoliticas"}
+
+guardarRespPoliticaClausula:
+    pattern: /ajaxGuardarRespPoliticaClausula
+    defaults: { _controller: "administracionBundle:Oposicion:ajaxGuardarRespPoliticaClausula"}
+    requirements: { _method: post }

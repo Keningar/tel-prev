@@ -1,0 +1,44 @@
+admibines:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiBines:index" }
+
+admibines_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiBines:show" }
+
+admibines_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiBines:new" }
+
+admibines_create:
+    pattern:  /create
+    defaults: { _controller: "administracionBundle:AdmiBines:create" }
+    requirements: { _method: post }
+    
+admibines_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiBines:getListaBines" }
+    
+admibines_eliminarBin:
+    pattern:  /eliminarBin
+    defaults: { _controller: "administracionBundle:AdmiBines:delete" }
+    
+admibines_delete_view:
+    pattern:  /{id}/eliminar
+    defaults: { _controller: "administracionBundle:AdmiBines:deleteView" }
+    
+admibines_getTipoCuentaTarjeta:
+    pattern:  /getTipoCuentaTarjeta
+    defaults: { _controller: "administracionBundle:AdmiBines:getTipoCuentaTarjeta" }
+        
+admibines_getBancosAsociadosPorTipoCuenta:
+    pattern:  /getBancosAsociadosPorTipoCuenta
+    defaults: { _controller: "administracionBundle:AdmiBines:getBancosAsociadosPorTipoCuenta" }
+        
+admibines_getMotivosAnulacionBines:
+    pattern:  /getMotivosAnulacionBines
+    defaults: { _controller: "administracionBundle:AdmiBines:getMotivosAnulacionBines" }
+        
+admibines_exportarAsociados:
+    pattern:  /exportarAsociados
+    defaults: { _controller: "administracionBundle:AdmiBines:exportarAsociados" }

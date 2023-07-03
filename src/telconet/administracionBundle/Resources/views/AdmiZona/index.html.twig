@@ -1,0 +1,44 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/Jefes.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    
+<script>
+    var url_eliminarZonas                = "{{path('admizona_deleteAjax') }}";
+    var url_asignarResponsableAjax       = "{{path('asignarResponsableAjax') }}";
+    var url_actualizarZonas              = "{{path('admizona_updateAjax') }}";
+    var url_ingresarZonas                = "{{path('admizona_ingresarAjax') }}";
+    var strUrlEmpresaPorSistema          = '{{ path('infocaso_ajaxGetEmpresasPorSistema') }}';
+    var strUrlCiudadesEmpresa            = '{{ path("infocaso_getCiudadesPorEmpresa") }}';
+    var strUrlDepartamentosEmpresaCiudad = '{{ path("infocaso_getDepartamentosPorEmpresaYCiudad") }}';
+    var strUrlEmpleadosDepartamentCiudad = '{{ path("infocaso_getEmpleadosPorDepartamentoCiudad") }}';
+    var strPrefijoEmpresaSession         = '{{ strPrefijoEmpresaSession }}';
+    var strIdCantonUsrSession            = '{{ intIdCantonUsrSession }}';
+    var strIdDepartamentoUsrSession      = '{{ intIdDepartamentoUsrSession }}';
+</script>
+
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiZona/index.js?2') }}"></script>
+
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Listado de Zonas</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_izq %}

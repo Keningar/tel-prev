@@ -1,0 +1,92 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+        
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        Ext.onReady(function () {
+            var f = new Date();
+            fecha=((f.getFullYear() +1)+"-"+ (f.getMonth()+1) +"-"+f.getDate());
+            fechaHoy=((f.getFullYear())+"-"+ (f.getMonth()+1) +"-"+f.getDate());
+            fechaBD = (({{ impuesto.fechaVigenciaImpuesto | date("Y")  }}) +"-"+ ({{ impuesto.fechaVigenciaImpuesto | date("m") }}) +"-"+ ({{ impuesto.fechaVigenciaImpuesto | date("d") }}));
+
+            var maintenance_date = new Ext.form.DateField({
+                name: 'feVigenciaImpuestoPost',
+                allowBlank: false,
+                format: 'Y-m-d',
+                editable: false,
+                renderTo: 'feVigenciaImpuesto',
+                value: fechaBD
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Impuesto</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('admiimpuesto_update', { 'id': impuesto.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario">
+        {{ form_widget(edit_form) }}
+
+        <div>
+            <label>* Fecha Vigencia Impuesto:</label>
+            <div id='feVigenciaImpuesto' required="true"></div>
+            <input type='hidden' value='' id='feVigenciaImpuesto'/> 
+        </div>
+
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('admiimpuesto') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        /* -- */
+    </script>	
+{% endblock javascripts_footer%}

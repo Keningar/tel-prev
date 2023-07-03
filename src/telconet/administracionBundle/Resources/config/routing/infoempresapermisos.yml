@@ -1,0 +1,42 @@
+infoempresapermisos:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:index" }
+
+infoempresapermisos_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:show" }
+
+infoempresapermisos_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:new" }
+
+infoempresapermisos_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:create" }
+    requirements: { _method: POST }
+    
+infoempresapermisos_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:edit" }
+
+infoempresapermisos_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:update" }
+    requirements: { _method: POST }
+    
+infoempresapermisos_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:delete" }
+    
+infoempresapermisos_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:deleteAjax" }
+    requirements: { _method: post }
+
+infoempresapermisos_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:grid"}
+
+infoempresapermisos_ajaxDatosEmpresa:
+    pattern:  /ajaxDatosEmpresa
+    defaults: { _controller: "administracionBundle:InfoEmpresaPermisos:ajaxDatosEmpresa"} 

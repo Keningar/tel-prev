@@ -1,0 +1,42 @@
+admitipocuenta:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:index" }
+
+admitipocuenta_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:show" }
+
+admitipocuenta_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:new" }
+
+admitipocuenta_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:create" }
+    requirements: { _method: POST }
+    
+admitipocuenta_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:edit" }
+
+admitipocuenta_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:update" }
+    requirements: { _method: POST }
+    
+admitipocuenta_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:delete" }
+    
+admitipocuenta_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:deleteAjax" }
+    requirements: { _method: post }
+
+admitipocuenta_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:grid"}
+
+admitipocuenta_getTipoCuentaJson:
+    pattern:  /getTipoCuentaJson
+    defaults: { _controller: "administracionBundle:AdmiTipoCuenta:getTipoCuentaJson"}

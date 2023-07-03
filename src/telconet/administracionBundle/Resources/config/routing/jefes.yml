@@ -1,0 +1,63 @@
+jefes:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:Jefes:index", strNombreArea:Comercial }
+
+jefes_gridListadoEmpleados:
+    pattern:  /gridListadoEmpleados
+    defaults: { _controller: "administracionBundle:Jefes:gridListadoEmpleados"}
+
+jefes_getEmpleados:
+    pattern:  /getEmpleados
+    defaults: { _controller: "administracionBundle:Jefes:getEmpleados"}
+
+asistente_getVendedores:
+    pattern:  /getVendedores
+    defaults: { _controller: "administracionBundle:Jefes:getVendedores"}
+
+asistente_getAsignacionVendedor:
+    pattern:  /getAsignacionVendedor
+    defaults: { _controller: "administracionBundle:Jefes:getAsignacionVendedor" }
+    requirements: { _method: POST }
+
+asistente_getCambioVendedor:
+    pattern:  /getCambioVendedor
+    defaults: { _controller: "administracionBundle:Jefes:getCambioVendedor" }
+    requirements: { _method: POST }
+    
+jefes_cambioJefe:
+    pattern:  /cambioJefe
+    defaults: { _controller: "administracionBundle:Jefes:cambioJefe" }
+    requirements: { _method: POST }
+    
+jefes_asignarEmpleados:
+    pattern:  /asignarEmpleados
+    defaults: { _controller: "administracionBundle:Jefes:asignarEmpleados" }
+    
+jefes_getCargos:
+    pattern:  /getCargosEmpleados
+    defaults: { _controller: "administracionBundle:Jefes:getCargosEmpleados" }
+    
+jefes_asignarCaracteristica:
+    pattern:  /asignarCaracteristica
+    defaults: { _controller: "administracionBundle:Jefes:asignarCaracteristica" }
+    requirements: { _method: POST }
+
+jefes_asignarCoordinadorGeneral:
+    pattern:  /asignarCoordinadorGeneral
+    defaults: { _controller: "administracionBundle:Jefes:asignarCoordinadorGeneral" }
+    requirements: { _method: POST }
+
+jefes_getTurno:
+    pattern:  /getTurno
+    defaults: { _controller: "administracionBundle:Jefes:getTurno" }
+    requirements: { _method: POST }
+
+jefes_deleteTurnoAjax:
+    pattern:  /deleteTurnoAjax
+    defaults: { _controller: "administracionBundle:Jefes:deleteTurnoAjax" }
+    requirements: { _method: post }
+
+jefes_verificarEmpleadosAEliminar:
+    pattern:  /verificarEmpleadosAEliminar
+    defaults: { _controller: "administracionBundle:Jefes:verificarEmpleadosAEliminar" }
+    requirements: { _method: POST }

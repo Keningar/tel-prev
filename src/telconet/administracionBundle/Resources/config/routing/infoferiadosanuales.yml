@@ -1,0 +1,25 @@
+feriados_anuales:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:InfoFeriadosAnuales:index" }
+
+feriados_anuales_new:
+    pattern:  new
+    defaults: { _controller: "administracionBundle:InfoFeriadosAnuales:new" }
+
+feriados_anuales_gridFeriados:
+    pattern:  grid
+    defaults: { _controller: "administracionBundle:InfoFeriadosAnuales:grid" }
+
+feriados_anuales_save:
+    pattern:  save
+    defaults: { _controller: "administracionBundle:InfoFeriadosAnuales:save" }
+
+feriados_anuales_edit:
+    pattern:  /{intIdFeriados}/edit
+    defaults: { _controller: "administracionBundle:InfoFeriadosAnuales:edit" }
+
+feriados_anuales_show:
+    pattern:  /{intIdFeriados}/show
+    defaults: { _controller: "administracionBundle:InfoFeriadosAnuales:show" }
+
+

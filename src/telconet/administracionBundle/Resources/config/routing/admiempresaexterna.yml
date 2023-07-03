@@ -1,0 +1,55 @@
+admiempresaexterna:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:index" }
+
+admiempresaexterna_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:show" }
+
+admiempresaexterna_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:new" }
+
+admiempresaexterna_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:edit" }
+
+admiempresaexterna_saveOrUpdate:
+    pattern: /saveOrUpdate
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:saveOrUpdate" }
+    requirements: { _method: POST }
+    
+admiempresaexterna_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:update" }
+    requirements: { _method: POST }
+    
+admiempresaexterna_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:delete" }
+    
+admiempresaexterna_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:deleteAjax" }
+    requirements: { _method: post }
+
+admiempresaexterna_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:getListaEmpresasExternas"}
+
+admiempresaexterna_lista_formas_contacto:
+    pattern:  /listaformascontacto
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:formasContactoAjax"}
+
+admiempresaexterna_formas_contacto_grid:
+    pattern:  /formascontactogrid
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:formasContactoGrid"}
+
+admiempresaexterna_busca_empresas_por_identificacion:
+    pattern:  /buscarEmpresaPorIdentificacionAjax
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:buscarEmpresaPorIdentificacionAjax"}
+
+admiempresaexterna_asignarCaracteristica:
+    pattern:  /asignarCaracteristica
+    defaults: { _controller: "administracionBundle:AdmiEmpresaExterna:asignarCaracteristica"}
+    

@@ -1,0 +1,92 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+        
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        Ext.onReady(function () {
+            var f = new Date();
+            fecha=((f.getFullYear() +1)+"-"+ (f.getMonth()+1) +"-"+f.getDate());
+            fechaHoy=((f.getFullYear())+"-"+ (f.getMonth()+1) +"-"+f.getDate());
+            fechaBD = (({{ infoempresapermisos.fechaVigencia | date("Y")  }}) +"-"+ ({{ infoempresapermisos.fechaVigencia | date("m") }}) +"-"+ ({{ infoempresapermisos.fechaVigencia | date("d") }}));
+
+            var maintenance_date = new Ext.form.DateField({
+                name: 'feVigenciaPost',
+                allowBlank: false,
+                format: 'Y-m-d',
+                editable: false,
+                renderTo: 'feVigencia',
+                value: fechaBD
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Permiso de Empresa</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('infoempresapermisos_update', { 'id': infoempresapermisos.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario">
+        {{ form_widget(edit_form) }}
+
+        <div>
+            <label>* Fecha Vigencia :</label>
+            <div id='feVigencia' required="true"></div>
+            <input type='hidden' value='' id='feVigencia'/> 
+        </div>
+
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('infoempresapermisos') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        /* -- */
+    </script>	
+{% endblock javascripts_footer%}

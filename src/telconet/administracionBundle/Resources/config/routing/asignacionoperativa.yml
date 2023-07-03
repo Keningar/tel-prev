@@ -1,0 +1,66 @@
+asignacionoperativa:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:index" }
+
+asignacionoperativa_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:grid"}
+
+asignacionoperativa_gridChoferesDisponibles:
+    pattern: /gridChoferesDisponibles
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:gridChoferesDisponibles" }
+
+asignacionoperativa_asignarChoferProvisionalAVehiculo:
+    pattern: /asignarChoferProvisionalAVehiculo
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:asignarChoferProvisionalAVehiculo" }
+
+asignacionoperativa_asignarChoferAVehiculo:
+    pattern: /asignarChoferAVehiculo
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:asignarChoferAVehiculo" }
+
+asignacionoperativa_eliminarAsignacionChoferAVehiculoProvisional:
+    pattern: /eliminarAsignacionChoferAVehiculoProvisional
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:eliminarAsignacionChoferAVehiculoProvisional" }
+
+asignacionoperativa_motivos:
+    pattern:  /motivos
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:motivos" }
+
+asignacionoperativa_showHistorialAsignacionesXVehiculo:
+    pattern: /{id}/showHistorialAsignacionesXVehiculo
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:showHistorialAsignacionesXVehiculo" }
+
+asignacionoperativa_showHistorialAsignacionVehicularXVehiculo:
+    pattern: /showHistorialAsignacionVehicularXVehiculo
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:showHistorialAsignacionVehicularXVehiculo" }
+
+asignacionoperativa_showHistorialAsignacionProvisionalXVehiculo:
+    pattern: /showHistorialAsignacionProvisionalXVehiculo
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:showHistorialAsignacionProvisionalXVehiculo" }
+    
+asignacionoperativa_showHistorialAsignacionProvisionalChofer:
+    pattern: /showHistorialAsignacionProvisionalChofer
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:showHistorialAsignacionProvisionalChofer" }
+    
+asignacionoperativa_gridHistorialAsignacionProvisionalChofer:
+    pattern: /gridHistorialAsignacionProvisionalChofer
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:gridHistorialAsignacionProvisionalChofer" }
+    
+asignacionoperativa_exportPDFAsignacionProvisionalChofer:
+    pattern: /exportPDFAsignacionProvisionalChofer
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:exportPDFAsignacionProvisionalChofer" }
+
+asignacionoperativa_getDepartamentos:
+    pattern:  /getDepartamentos
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:getDepartamentos" }
+
+asignacionoperativa_getZonas:
+    pattern:  /getZonas
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:getZonas" }
+    
+asignacionoperativa_getTareas:
+    pattern:  /getTareas
+    defaults: { _controller: "administracionBundle:AsignacionOperativa:getTareas" }
+    
+    
+    

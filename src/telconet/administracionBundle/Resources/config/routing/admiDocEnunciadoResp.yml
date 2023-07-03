@@ -1,0 +1,7 @@
+admiDocEnunciadoResp:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiDocEnunciadoResp:index" }
+ 
+admiDocEnunciadoResp_managerAdminDocEnunciadoResp:
+    pattern:  /managerAdminDocEnunciadoResp
+    defaults: { _controller: "administracionBundle:AdmiDocEnunciadoResp:managerAdminDocEnunciadoResp"}

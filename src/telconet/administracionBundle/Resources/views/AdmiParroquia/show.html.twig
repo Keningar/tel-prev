@@ -1,0 +1,130 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Parroquia</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%">Nombre Canton:</th>   
+                <td width="15%">{{ parroquia.cantonId.nombreCanton }}</td>   
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Nombre Tipo Parroquia:</th>        
+                <td width="15%">{{ parroquia.tipoParroquiaId.nombreTipoParroquia }}</td>  
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombre Parroquia:</th>
+                <td>{{ parroquia.nombreParroquia }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ parroquia.estado }}</td>        
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiparroquia') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ parroquia.usrCreacion }}</td>
+
+              {% if(parroquia.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ parroquia.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(parroquia.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ parroquia.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ parroquia.feCreacion | date("d M Y") }}</td>
+
+              {% if(parroquia.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ parroquia.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(parroquia.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ parroquia.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ parroquia.feCreacion | date("H:i:s") }}</td>
+
+              {% if(parroquia.estado|lower=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ parroquia.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(parroquia.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ parroquia.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_27-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiparroquia_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Parroquia
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_27-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admiparroquia_edit', { 'id': parroquia.id }) }}">
+                &nbsp;Editar Parroquia
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_27-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admiparroquia_delete', { 'id': parroquia.id }) }}">
+                &nbsp;Eliminar Parroquia
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

@@ -1,0 +1,19 @@
+com_admiCargosSolicitudes:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiCargosSolicitudes:index" }
+
+com_admiCargosSolicitudes_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiCargosSolicitudes:grid"}
+
+com_admiCargosSolicitudes_setRangos:
+    pattern:  /setRangos
+    defaults: { _controller: "administracionBundle:AdmiCargosSolicitudes:setRangos"}
+
+com_admiCargosSolicitudes_setPersonaAuxiliar:
+    pattern:  /setPersonaAuxiliar
+    defaults: { _controller: "administracionBundle:AdmiCargosSolicitudes:setPersonaAuxiliar"}
+
+com_admiCargosSolicitudes_setEliminarAuxiliar:
+    pattern:  /setEliminarAuxiliar
+    defaults: { _controller: "administracionBundle:AdmiCargosSolicitudes:setEliminarAuxiliar"}

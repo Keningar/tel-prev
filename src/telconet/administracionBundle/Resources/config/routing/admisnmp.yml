@@ -1,0 +1,42 @@
+admisnmp:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiSnmp:index" }
+
+admisnmp_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiSnmp:getEncontrados }
+    
+admisnmp_getSnmps:
+    pattern:  /getSnmps
+    defaults: { _controller: administracionBundle:AdmiSnmp:getSnmps }
+
+admisnmp_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiSnmp:show" }
+
+admisnmp_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiSnmp:new" }
+
+admisnmp_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiSnmp:create" }
+    requirements: { _method: POST }
+    
+admisnmp_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiSnmp:edit" }
+
+admisnmp_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiSnmp:update" }
+    requirements: { _method: POST }
+    
+admisnmp_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiSnmp:deleteAjax" }
+    requirements: { _method: post }
+    
+admisnmp_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiSnmp:delete" }

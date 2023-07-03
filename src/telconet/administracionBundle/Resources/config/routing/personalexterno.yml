@@ -1,0 +1,71 @@
+personalexterno:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:PersonalExterno:index" }
+
+personalexterno_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:PersonalExterno:show" }
+
+personalexterno_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:PersonalExterno:new" }
+
+personalexterno_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:PersonalExterno:create" }
+    requirements: { _method: POST }
+    
+personalexterno_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:PersonalExterno:edit" }
+
+personalexterno_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:PersonalExterno:update" }
+    requirements: { _method: POST }
+    
+personalexterno_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:PersonalExterno:delete" }
+    
+personalexterno_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:PersonalExterno:deleteAjax" }
+    requirements: { _method: post }
+
+personalexterno_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:PersonalExterno:grid"}
+
+personalexterno_lista_formas_contacto:
+    pattern:  /listaformascontacto
+    defaults: { _controller: "administracionBundle:PersonalExterno:formasContactoAjax"}
+
+personalexterno_formas_contacto_grid:
+    pattern:  /formascontactogrid
+    defaults: { _controller: "administracionBundle:PersonalExterno:formasContactoGrid"}
+
+personalexterno_busca_personas_por_identificacion:
+    pattern:  /buscarPersonaPorIdentificacionAjax
+    defaults: { _controller: "administracionBundle:PersonalExterno:buscarPersonaPorIdentificacionAjax"}
+
+personalexterno_buscarPersonalExternoPorIdentificacion:
+    pattern: /{id} /buscarPersonaPorIdentificacionAjax
+    defaults: { _controller: "administracionBundle:PersonalExterno:buscarPersonaPorIdentificacionAjax"}
+
+personalexterno_activarTacacs:
+    pattern:  /activarTacacs
+    defaults: { _controller: "administracionBundle:PersonalExterno:activarTacacs"}
+
+personalexterno_crearCorreo:
+    pattern:  /crearCorreo
+    defaults: { _controller: "administracionBundle:PersonalExterno:crearCorreo"}
+
+personalexterno_empresasExternas:
+    pattern:  /empresasExternas
+    defaults: { _controller: "administracionBundle:PersonalExterno:getEmpresasExternas"}
+    
+personalexterno_asignarCaracteristica:
+    pattern:  /asignarCaracteristica
+    defaults: { _controller: "administracionBundle:PersonalExterno:asignarCaracteristica"}
+    

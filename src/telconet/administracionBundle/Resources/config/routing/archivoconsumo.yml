@@ -1,0 +1,27 @@
+archivo_consumo_index:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:ArchivoConsumo:index" }
+
+archivo_consumo_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:ArchivoConsumo:gridConsumoCloud" }
+
+archivo_consumo_get_estados:
+    pattern:  /estados
+    defaults: { _controller: "administracionBundle:ArchivoConsumo:getEstados" }
+
+archivo_consumo_get_logins:
+    pattern:  /logins
+    defaults: { _controller: "administracionBundle:ArchivoConsumo:getLogins" }
+
+archivo_consumo_get_meses:
+    pattern:  /meses
+    defaults: { _controller: "administracionBundle:ArchivoConsumo:getMeses" }
+
+archivo_consumo_subir_archivo:
+    pattern:  /subirArchivo
+    defaults: { _controller: "administracionBundle:ArchivoConsumo:subirArchivo" }
+
+archivo_consumo_anula_consumos:
+    pattern:  /anulaConsumos
+    defaults: { _controller: "administracionBundle:ArchivoConsumo:anulaConsumos" }

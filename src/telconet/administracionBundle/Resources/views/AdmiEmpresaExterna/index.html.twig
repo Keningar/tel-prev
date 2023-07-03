@@ -1,0 +1,36 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlGridEmpresasExternas = '{{path('admiempresaexterna_grid')}}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiEmpresaExterna/index.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Listado de Empresas Externas</h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtroEmpresasExternas'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="gridEmpresasExternas"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="acciones_relacionadas">
+{% if is_granted('ROLE_182-2') %}
+    <a class="button-nuevo-registro" href="{{ path('admiempresaexterna_new') }}">
+        <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+        &nbsp;Nueva Empresa Externa
+    </a>
+{% endif %}
+</div>
+{% endblock contenido_der %}

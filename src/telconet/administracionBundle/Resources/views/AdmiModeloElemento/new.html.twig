@@ -1,0 +1,154 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiModeloElemento/new.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+		<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nuevo Modelo</h1> 
+    </div>
+    <div class="body_content">
+        <form id='form_new_modelo_elemento' action="{{ path('admimodeloelemento_create') }}" method="post" {{ form_enctype(form) }} class='formularioModelo' novalidate="novalidate" onsubmit="return validarFormulario();">
+            
+                <table width="100%" border="0" class="box-section-content">
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.marcaElementoId) }}</td>
+                        <td width="10%">{{ form_widget(form.marcaElementoId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.tipoElementoId) }}</td>
+                        <td style="width:10%" onchange="selecionarTipoElemento()">{{ form_widget(form.tipoElementoId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.nombreModeloElemento) }}</td>
+                        <td width="10%">{{ form_widget(form.nombreModeloElemento) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.descripcionModeloElemento) }}</td>
+                        <td width="10%">{{ form_widget(form.descripcionModeloElemento) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr id = "opcionesCamara" style = "display:none">
+                        <td style="width:5%">&nbsp;</td>
+                        <td style="width:24%"><label >* Tipo Camara: </label></td>
+                        <td style="width:10%">
+                            <select id = "tipoCamara" name = "tipoCamara"/>
+                        </td>
+                        <td style="width:5%">&nbsp;</td>
+                        <td style="width:24%"><label >* Resolucion Camara: </label></td> 
+                        <td style="width:10%"">
+                            <select  id = "resolucionCamara" name = "resolucionCamara">
+                        </td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>                    
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.mttr) }}</td>
+                        <td width="10%">{{ form_widget(form.mttr) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadMedidaMttr) }}</td>
+                        
+                        <td width="1%">{{ form_label(form.mtbf) }}</td>
+                        <td width="10%">{{ form_widget(form.mtbf) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadMedidaMtbf) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.anchoModelo) }}</td>
+                        <td width="10%">{{ form_widget(form.anchoModelo) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadMedidaAncho) }}</td>
+                        
+                        <td width="1%">{{ form_label(form.altoModelo) }}</td>
+                        <td width="10%">{{ form_widget(form.altoModelo) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadMedidaAlto) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.largoModelo) }}</td>
+                        <td width="10%">{{ form_widget(form.largoModelo) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadMedidaLargo) }}</td>
+                        
+                        <td width="1%">{{ form_label(form.pesoModelo) }}</td>
+                        <td width="10%">{{ form_widget(form.pesoModelo) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadMedidaPeso) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.capacidadEntrada) }}</td>
+                        <td width="10%">{{ form_widget(form.capacidadEntrada) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadMedidaEntrada) }}</td>
+                        
+                        <td width="1%">{{ form_label(form.capacidadSalida) }}</td>
+                        <td width="10%">{{ form_widget(form.capacidadSalida) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadMedidaSalida) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.capacidadVaFabrica) }}</td>
+                        <td width="10%">{{ form_widget(form.capacidadVaFabrica) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadVaFabrica) }}</td>
+                        
+                        <td width="1%">{{ form_label(form.capacidadVaPromedio) }}</td>
+                        <td width="10%">{{ form_widget(form.capacidadVaPromedio) }}</td>
+                        <td width="10%">{{ form_widget(form.unidadVaPromedio) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.precioPromedio) }}</td>
+                        <td width="10%">{{ form_widget(form.precioPromedio) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(form.uRack) }}</td>
+                        <td width="10%">{{ form_widget(form.uRack) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_widget(form.interfacesModelos) }}</td>
+                        <td width="10%">{{ form_widget(form.usuariosAcceso) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_widget(form.protocolos) }}</td>
+                        <td width="24%">{{ form_widget(form.tecnologias) }}</td>
+                        <td width="10%">{{ form_widget(form.detallesModelo) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                </table>
+            <div id="grid"></div>
+            <br>
+            <div style="float: left;" id="gridUsuarios"></div>
+            <div id="gridProtocolos"></div>
+            <div style="float: left;" id="gridDetallesModelo"></div>
+            <div id="gridTecnologias"></div>
+            
+            <div class="buttons">
+                <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('admimodeloelemento') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+            {{ form_widget(form._token) }}
+        </form>
+            
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        
+        function grabar(){
+            return true;
+        }
+     </script>	
+{% endblock javascripts_footer%}	

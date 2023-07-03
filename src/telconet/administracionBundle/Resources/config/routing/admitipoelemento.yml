@@ -1,0 +1,79 @@
+admitipoelemento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:index" }
+
+admitipoelemento_ajax_list_all:
+    pattern:  /ajax_list_all
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:ajaxListAll" }
+    requirements: { _method: post }
+
+admitipoelemento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:show" }
+
+admitipoelemento_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:new" }
+
+admitipoelemento_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:create" }
+    requirements: { _method: POST }
+    
+admitipoelemento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:edit" }
+
+admitipoelemento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:update" }
+    requirements: { _method: POST }
+    
+admitipoelemento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:delete" }
+    
+admitipoelemento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoElemento:deleteAjax" }
+    requirements: { _method: post }
+    
+admitipoelemento_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getEncontrados }
+    
+admitipoelemento_getTiposElementos:
+    pattern:  /getTiposElementos
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getTiposElementos }
+    
+admitipoelemento_getTiposElementosBackbone:
+    pattern:  /getTiposElementosBackbone
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getTiposElementosBackbone }
+
+admitipoelemento_getDatosTipoElemento:
+    pattern:  /{id}/getDatosTipoElemento
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getDatosTipoElemento }
+    
+admitipoelemento_getTiposElementosNodos:
+    pattern:  /getTiposElementosNodos
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getTiposElementosNodos }
+    
+admitipoelemento_getNivelesElementos:
+    pattern:  /getNivelesElementos
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getNivelesElementos }
+    
+admitipoelemento_getPadresElementosNodos:
+    pattern:  /getPadresElementosNodos
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getPadresElementosNodos }
+    
+admitipoelemento_getTiposElementosRuta:
+    pattern:  /getTiposElementosRuta
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getTiposElementosRuta }    
+
+admitipoelemento_getElementosConClase:
+    pattern:  /getElementosConClase
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getElementosConClase }    
+
+admitipoelemento_getContenedoresNodo:
+    pattern:  /getContenedoresNodo
+    defaults: { _controller: administracionBundle:AdmiTipoElemento:getContenedoresNodo }       

@@ -1,0 +1,199 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}           
+        
+    <script>
+        var urlManagerAdminDocEnunciadoResp = "{{ path('admiDocEnunciadoResp_managerAdminDocEnunciadoResp') }}";
+        var url_GuardarRespPoliticaClausula = "{{ path('guardarRespPoliticaClausula') }}";
+        url_getPoliticas                    = "{{ path('oposicion_ajax_getPoliticas') }}";
+        url_valida_correo                   ="{{ path('portabilidad_ajax_valida_correo') }}";
+        url_ejecuta_derechos_titular        ="{{ path('oposicion_ajax_ejecuta_oposicion') }}";
+        url_valida_identificacion           ="{{ path('cliente_ajax_valida_identificacion') }}";
+        url_validar_identificacion_tipo     ="{{ path('cliente_ajax_validar_identificacion_tipo') }}";
+        var url_getMaxLongitudIdentificacionAjax = "{{ path('cliente_getMaxLongitudIdentificacion') }}";
+        url_img_loader="{{ asset('public/images/images_crud/ajax-loader.gif') }}";
+        url_img_check="{{ asset('public/images/check.png') }}";
+        url_img_delete="{{ asset('public/images/delete.png') }}";
+        strOpcion="{{ opcion }}";
+        input='#clientetype_identificacionCliente';
+        inputTipo='#clientetype_tipoIdentificacion';
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+	<div id="titulo_content">
+		<img alt="imagen-titulo-content" src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+		<h1>{{ opcion }}</h1>
+	</div>
+	<span class="campos-requeridos">* Campos requeridos</span>
+	<div class="body_content">
+        <div id="tabDerechosTitular">
+            {% if error is defined %}
+                <div class='errormessage'>{{ error }}</div>
+            {% endif %}
+            <form id='cliente_form' action="" onsubmit="" method="post" {{ form_enctype(form) }} class="formulario">
+                <div id="tabsDatosPrincipales" style = "height: 250px; overflow: auto;">
+                    <table border='0' id="infoPortabilidad">
+                    <tbody class="infoPortabilidadDetalle">                           
+                        <tr>                                                      
+                            <td  style="vertical-align: top;">
+                                <div id='datos'>  
+                                    <div><label class="campo-obligatorio required" for="clientetype_tipoIdentificacion">* Tipo Identificación:</label> 
+                                            {{ form_widget(form.tipoIdentificacion) }}</div>
+                                    <div id='divroles' class='infomessage' style='display:none'></div>
+                                    <div id='dividentificacion' class='warningmessage' style='display:none'></div>
+                                    <div id='diverrorident' class='errormessage' style='display:none'></div>
+                                    <div><label class="campo-obligatorio required" for="clientetype_identificacionCliente">* Identificación:</label>
+                                            {{ form_widget(form.identificacionCliente) }}
+                                        <img alt="img-valida-identificacion" id="img-valida-identificacion" src="{{ asset('public/images/check.png') }}" 
+                                            title="login correcto" width="25" height="25"/>
+                                    </div>                              
+                                    <div id='divcorreo_0' class='warningmessage' style='display:none'></div>
+                                    <div id='correo_0'>
+                                        <label class="campo-obligatorio required" for="clientetype_correo_electronico">* Correo Electrónico:</label>
+                                        <input type="text" id="clientetype_correo_electronico_0" name="clientetype_correo_electronico_0" required="required" class="campo-obligatorio" onchange=validaCorreo(0)>
+                                        <img alt="img-valida-correo-0" id="img-valida-correo-0" src="{{ asset('public/images/check.png') }}" 
+                                        title="correo valido" width="25" height="25"/>
+                                        <button type="submit" id="agregar" class="addDetalle btn btn-outline-dark btn-sm" onclick="" title="Agregar correo">
+                                            <em class="fa fa-plus-circle"></em>
+                                        </button>  
+                                        &nbsp;     
+                                    </div> 
+                                </div>                               
+                            </td>                              
+                        </tr>
+                        <tr>       
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+            {#{ form_widget(form) }#}	
+        </div>
+        <div id="tabPoliticas_Clausulas">
+                <div id="divPoliticas_Clausulas" class="x-hide-display">
+            </div>
+        </div>
+		<div class="buttons">
+			<p>		    
+                <button type="button" id='Guardar' onclick="guardar()" class="button-crud">Guardar</button>                                      
+			</p>
+		</div>                
+		</form>
+	</div>
+   
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+
+<script>formname='clientetype';</script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Utilitarios/componentManager.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Oposicion/index.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('./bundles/administracion/js/Portabilidad/identificacion.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Portabilidad/funcionesGenerales.js?') }}"></script>
+	<script>
+           
+                function esRuc(){
+                    if ($('#clientetype_tipoIdentificacion').val()=='RUC'){
+                        $('#clientetype_identificacionCliente').removeAttr('maxlength');
+                        $('#clientetype_identificacionCliente').attr('maxlength','13');
+                        $('#clientetype_identificacionCliente').val('');
+                    }else
+                    {
+                        $('#clientetype_identificacionCliente').removeAttr('maxlength');
+                        $('#clientetype_identificacionCliente').attr('maxlength','10');
+                        $('#clientetype_identificacionCliente').val('');
+                    }
+                }
+                
+                function mostrarDiv(div){
+                    capa = document.getElementById(div);
+                    capa.style.display = 'block';    
+                }
+                function ocultarDiv(div){
+                    capa = document.getElementById(div);
+                    capa.style.display = 'none';    
+                }
+	</script>
+
+	<script>
+
+		function isNumeric(event){
+		    return (
+		        (event.keyCode > 7 && event.keyCode < 10)
+		        || (event.keyCode > 47 && event.keyCode < 60)
+		        || (event.keyCode > 95 && event.keyCode < 106)
+		        || event.keyCode == 17
+		        || event.keyCode == 116
+		    )
+		} 
+
+        $('#clientetype_identificacionCliente').keypress(
+        function()
+        {
+            if($('#clientetype_tipoIdentificacion').val()==='Seleccione...' || $('#clientetype_tipoIdentificacion').val()==='')
+            {
+                mostrarDiv('dividentificacion');
+                $("#dividentificacion").html("Antes de ingresar identificacion seleccione tipo de identificacion");  
+                $('#clientetype_identificacionCliente').attr('readonly','readonly');       
+            }
+            else
+            {
+                ocultarDiv('dividentificacion');
+            }
+        }
+        );
+
+        $('#clientetype_tipoIdentificacion').change(function()
+        {
+            $('#clientetype_identificacionCliente').removeAttr('onkeypress');
+            $('#clientetype_identificacionCliente').removeAttr('readonly');  
+            ocultarDiv('dividentificacion');           
+            $('#clientetype_identificacionCliente').removeAttr('maxlength');  
+            $('#clientetype_identificacionCliente').val("");
+            if(global.panel !== null)
+            {   document.getElementById('tabPoliticas_Clausulas').style.display = 'none';
+                limpiaCamposCambiaTipoIden(numCorreoAgregado);
+                location.reload();           
+            }
+
+            
+            var strTipoIdentificacion = $('#clientetype_tipoIdentificacion').val();
+            if (strTipoIdentificacion === 'Seleccione...' || strTipoIdentificacion === '')
+            {
+                mostrarDiv('dividentificacion');   
+                $("#dividentificacion").html("Antes de ingresar identificación seleccione tipo de identificación");
+                $("#clientetype_identificacionCliente").attr('maxlength','10');
+                $("#clientetype_identificacionCliente").attr('readonly','readonly');
+            }
+            else
+            {
+
+                var intMaxLongitudIdentificacion = 0;
+
+                Ext.Ajax.request({
+                    url: url_getMaxLongitudIdentificacionAjax,
+                    method: 'POST',
+                    timeout: 99999,
+                    async: false,
+                    params: { strTipoIdentificacion : strTipoIdentificacion },
+                    success: function(response){
+
+                    var objRespuesta = Ext.JSON.decode(response.responseText);
+
+                    if(objRespuesta.intMaxLongitudIdentificacion > 0)
+                    {                    
+                        intMaxLongitudIdentificacion = objRespuesta.intMaxLongitudIdentificacion;
+                    }
+                        $('#clientetype_identificacionCliente').removeAttr('maxlength');
+                        $('#clientetype_identificacionCliente').attr('maxlength',intMaxLongitudIdentificacion);         
+                    },
+                    failure: function(response)
+                    { 
+                        Ext.Msg.alert('Error ','Error: ' + response.statusText);
+                    }
+                });
+            }
+        });
+	</script>          
+{% endblock %}

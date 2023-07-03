@@ -1,0 +1,101 @@
+
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiProyectos/edit.js?1') }}"></script>
+
+<script>
+        var url_responsables     = "{{ path('com_admiProyectos_responsables') }}";
+        var url_edit             = "{{ path('com_admiProyectos_update') }}";
+        
+    </script>
+<div class="container">
+    <h5>Editar proyecto <i class="fa fa-edit"></i></h5>
+    <table class="table compact" width='80%' border='0'>
+        <tbody>
+            <tr>
+                <td><b>Nombre del Proyecto:</b></td>
+                <td> 
+                     <input type="text" class="form-control" step="any" min="0" name="strNombreProyecto_editar"
+                                            id="strNombreProyecto_editar" required rows="3" value="{{arrayProyectoDet.strNombre}}">
+                     
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Responsable:</b></td>
+                <td>
+                    <select class="form-select form-control form-control-sm" id="strResponsable_editar" required placeholder="Seleccione"> 
+                        <option value="{{arrayProyectoDet.intIdResponsable}}"> {{arrayProyectoDet.strNombrePer}}</option>
+                    </select>
+                    <i class="fa fa-spinner fa-spin spinner_sect_responsablesEdit" ></i>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Tipo de Contabilidad:</b></td>
+                <td>
+                    <select class="form-control" id="strTipoContabilidad_editar" name="strTipoContabilidad_editar" >
+                                        <option value='Individual' {% if arrayProyectoDet.strTipoContabilidad == 'Individual' %}
+                                                                    selected
+                                                                   {% endif %}>Individual</option>
+                                        <option value='Detallado'  {% if arrayProyectoDet.strTipoContabilidad == 'Detallado' %}
+                                                                    selected
+                                                                   {% endif %}>Detallado</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td><b>Fecha Inicio:</b></td>
+                
+                <td>
+                    <input type="text" class="form-control" id="strFechaInicioEditar" name="strFechaInicioEditar" value="{{arrayProyectoDet.strFeInicio}}" 
+                                       placeholder="YYYY/MM/DD">
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Fecha Fin:</b></td>
+                <td>
+                    <input type="text" class="form-control" id="strFechaFinEditar" name="strFechaFinEditar" value="{{arrayProyectoDet.strFeFin}}" 
+                                       placeholder="YYYY/MM/DD">
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+            <tr>
+                <td><b>Estado:</b></td>
+                <td> 
+                    <select class="form-control" id="strEstado_editar" name="strEstado_editar" >
+                        <option value='Activo' {% if arrayProyectoDet.strEstado == 'Activo' %}
+                                                    selected
+                                                {% endif %}>Activo</option>
+                        <option value='Inactivo'  {% if arrayProyectoDet.strEstado == 'Inactivo' %}
+                                                      selected
+                                                  {% endif %}>Inactivo</option>
+                        <option value='Finalizado'  {% if arrayProyectoDet.strEstado == 'Finalizado' %}
+                                                       selected
+                                                    {% endif %}>Finalizado</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> 
+                     <input type="hidden" class="form-control" step="any" min="0" name="intIdProyecto"
+                                            id="intIdProyecto" required rows="3" value="{{arrayProyectoDet.intIdProyecto}}">
+                     
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+  

@@ -1,0 +1,35 @@
+{% extends "::layout_completo.html.twig" %}
+
+ 
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+      var strPrefijoEmpresa            = "{{strPrefijoEmpresa}}";
+      var strListFormaContacto         = "{{strListFormaContacto}}"; 
+      var strIdentificacionCliente     = "{{strIdentificacionCliente}}"; 
+      var urlManagerAdminDocEnunciadoResp = "{{ path('admiDocEnunciadoResp_managerAdminDocEnunciadoResp') }}";  
+    </script>
+     <script type="text/javascript" src="{{ asset('./bundles/administracion/js/Utilitarios/componentManager.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiDocEnunciadoResp/index.js?1') }}"></script>
+
+{% endblock %}
+
+
+
+{% block contenido_central %}
+<div id="titulo_content">
+	<img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}"  alt="" class="imagen-titulo-content">
+	<h1>{{item.nombreItemMenu}}</h1>
+</div> 
+<div class="body_content">   
+    <div id="my-tabs">        
+        <div id="tab1" class="x-hide-display">
+        
+        </div>       
+    </div>
+</div>
+
+{% endblock contenido_central %}
+
+ 

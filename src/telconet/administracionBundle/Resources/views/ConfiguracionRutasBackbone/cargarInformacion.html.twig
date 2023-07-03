@@ -1,0 +1,142 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}
+    <script>
+
+    var strUrlGetTipoRuta            = '{{path('admitipoelemento_getTiposElementosRuta')}}';
+		var url_claseTipoMedio           = '{{path('admiclasetipomedio_getEncontrados')}}';
+        var urlTipoElementos             = '{{path('elementoredpasivo_getTipoElementoPasivo')}}'; 
+        var getTiposElementosBackbone    = '{{path('admitipoelemento_getTiposElementosBackbone')}}';
+        
+        var enlaceElementoGetEncontrados = '{{path('enlace_elemento_getEnlaceEncontrados')}}';
+        var enlaceElementoGetEncontrado  = '{{path('enlace_elemento_getEnlace')}}';
+    
+        var url_getEncontrados           = '{{path('elementoRutas_ajaxGetEncontrados')}}';
+        var url_getEncontradosPostes     = '{{path('elementoredpasivo_ajaxGetEncontrados')}}';
+        var getElementosPorTipo          = '{{path('servicio_getElementosPorTipo') }}';
+        var getHilos                     = '{{path('admihilo_getHilosPorEstado') }}';
+        var url_hilosPorBuffer           = '{{path('admihilo_getHilosPorBuffer')}}';
+        var getHilosDisponibles          = '{{path('asignarred_ajaxGetHilosDisponibles')}}';
+
+        var showEnlace                   = '{{path('configuracionRutasBackbone__showEnlace')}}';
+
+        var getTiposElementos            ='{{path('admitipoelemento_getEncontrados')}}';
+
+
+        var url_bufferHiloTipoMedio     =  '{{path('admibuffer_ajaxGetBuffersPorTipoMedio')}}';
+
+        var url_getTramos               = '{{path('elementoRutas_getTramos')}}';
+        //archivo
+		var url_uploadFile            = '{{path('configuracionRutasBackbone__ProcesarArchivo')}}';
+
+	</script>
+	<script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    {# <script type="text/javascript" src="{{ asset('public/js/Datatables/editor/datatables.min.js') }}"></script> #}
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.buttons.min.js') }}"></script>
+    {# <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.editor.min.js') }}"></script> #}
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/buttons.html5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/jszip.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/pdfmake.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/vfs_fonts.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script> 
+    <script type="text/javascript" src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}" ></script>  
+
+
+	<script type="text/javascript" src="{{ asset('./bundles/administracion/js/ConfiguracionRutasBackbone/cargarInformacion.js') }}"></script>
+   
+    
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" /> 
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img alt="titulo" src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Cargar Información</h1>
+</div>
+<div class="body_content k-content">
+		  <div class="row">
+            <div class="col-md">
+                <div>
+                    <br/>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <button type="button" class="btn btn-outline-info btn-sm collapsed" data-toggle="collapse" aria-expanded="false" 
+                                            data-target="#contenedor_busqueda">Criterios de Búsqueda <em class="fa fa-angle-down"></em></button>   
+                                </li>
+                                <li>&nbsp;&nbsp;</li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>                    
+                <div id="contenedor_busqueda" class="collapse">
+                 <form class="formSubirArchivo" id="formSubirArchivo" novalidate onsubmit="return false;" method="POST" enctype="multipart/form-data">
+                        <br/>
+                        <div class="form-group row">
+                            <div class="form-group col-md-2">
+                              <label class="control-label col-sm-12">Cargar Archivo:</label>
+                            </div>                             
+                            <div class="form-group col-md-8">
+                                <input type="file" class="file"  id="archivo_abu"  name="archivo_abu" required/>
+                                <div class="invalid-feedback">
+                                  Campo Requerido
+                                </div>                                
+                            </div> 
+                            <div class="form-group col-md-2">
+                              <label> </label>
+                            </div>                             
+                        </div>
+                                              
+                        <div class="row justify-content-center">                          
+                           <div class="col-md-3 offset-1">  
+                               <em class="fa fa-spinner fa-spin spinner_subirArchivo" ></em>                               
+                               <button type="submit" class="btn btn-primary btn-sm" id="btnSubirArchivo">Cargar</button>    
+                            </div>
+                        </div>                        
+                    </form> 
+                </div>
+            </div>
+        </div>  
+
+<div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mensaje del Sistema</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+	    <li>
+            <a href="{{ path('configuracionRutasBackbone_agregarElemento') }}">Agregar Elemento</a>
+        </li>
+        <li>
+            <a href="{{ path('configuracionRutasBackbone') }}">Consulta de hilos</a>    
+        </li>
+    </ul>
+{% endblock contenido_der %}

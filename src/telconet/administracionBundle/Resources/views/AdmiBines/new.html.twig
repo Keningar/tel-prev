@@ -1,0 +1,35 @@
+{% extends "::layout.html.twig" %}
+{% block stylesheets %}
+	{{ parent() }}
+
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+<script>
+    var urlGetTipoCuenta = '{{ path('admitipocuenta_getTipoCuentaJson') }}';
+    var urlGetBanco = '{{ path('admibines_getBancosAsociadosPorTipoCuenta') }}';
+    var urlGuardarBIN = '{{ path('admibines_create') }}';
+    var urlIndex = '{{ path('admibines') }}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiBines/new.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('adm-fin-bin.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ingreso de Nuevo BIN</h1>
+    {% if error is defined %}
+    <h3 style="color:red">{{ error }}</h3>
+    {% endif %}
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content" >
+    <form id='admibines_form'  method="post" {{ form_enctype(form) }} class="formulario">
+        <div>{{ form_label(form.bin_nuevo) }} {{ form_widget(form.bin_nuevo) }}</div>
+        <div>{{ form_label(form.descripcion) }} {{ form_widget(form.descripcion) }}</div>
+        <div>{{ form_label(form.tarjeta) }} {{ form_widget(form.tarjeta) }}</div>
+        <div>{{ form_label(form.banco) }} {{ form_widget(form.banco) }}</div>
+    </form>
+    <div id="form_dataTipoCuenta_twig_js" ></div>
+</div>
+{% endblock contenido_izq %}

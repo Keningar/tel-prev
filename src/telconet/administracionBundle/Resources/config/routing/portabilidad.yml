@@ -1,0 +1,13 @@
+portabilidad:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:Portabilidad:index" }
+
+portabilidad_ajax_valida_correo:
+    pattern: /ajaxValidaCorreo
+    defaults: { _controller: "administracionBundle:Portabilidad:ajaxValidaCorreo"}
+    requirements: { _method: post }
+    
+portabilidad_ajax_ejecuta_portabilidad:
+    pattern: /ajaxEjecutaPortabilidad
+    defaults: { _controller: "administracionBundle:Portabilidad:ajaxEjecutaPortabilidad"}
+    requirements: { _method: post }

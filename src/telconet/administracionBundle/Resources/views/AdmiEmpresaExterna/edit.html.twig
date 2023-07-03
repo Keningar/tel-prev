@@ -1,0 +1,106 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%} {{ parent() }}
+<script>
+    var url_formas_contacto_empresa = "{{ path('admiempresaexterna_formas_contacto_grid') }}";
+    var url_formas_contacto = "{{path('admiempresaexterna_lista_formas_contacto')}}";
+    var urlGuardarActualizarEmpresaExterna = "{{path('admiempresaexterna_saveOrUpdate')}}";
+    var urlIndex = '{{ path('admiempresaexterna') }}';
+    var urlBuscarEmpresaExternaPorIdentificacion = '{{ path('admiempresaexterna_busca_empresas_por_identificacion') }}';
+    var urlShow = '{{ path('admiempresaexterna_show', { 'id': empresaexterna }) }}';
+    var urlEliminarEmpresaExterna = "{{ path('admiempresaexterna_delete', { 'id': empresaexterna }  ) }}";
+    var urlGetOficina = '{{ path('infooficinagrupo_getOficinasByPrefijoEmpresaJson') }}';
+</script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiEmpresaExterna/new_edit.js?1') }}"></script>
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiEmpresaExterna/accion.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Empresa Externa</h1>
+</div>
+<span class="campos-requeridos">* Campos requeridos</span>
+<div class="body_content">
+{% if error is defined %}
+    <div class="error">{{ error }}</div>
+{% endif %}
+    <form id='form_edit_admiempresaexterna' method="post" {{ form_enctype(edit_form) }} class="formulario" 
+          action="{{ path('admiempresaexterna_show', { 'id': empresaexterna }) }}" >
+        <input type="hidden" id="admiempresaexternatype_personaempresaexternaId" value="{{personaempresaexterna}}" />
+        <input type="hidden" id="admiempresaexternatype_admiempresaexternaId" value="{{empresaexterna}}" />
+        <input type="hidden" id="Estado" value="{{estado}}" />
+        <div id="my-tabs">
+            <div id="tab1" class="x-hide-display" style="padding-right: 40px">
+                <table border='0'>
+                    <tr>
+                        <td width="50px"></td>
+                        <div id="divCmbCategoriaEmpresaExterna" style="display: none"></div>
+                        <div id="divCmbOficina" style="display: none"></div>
+                        <td  style="vertical-align: top; padding-top: 20px; padding-right: 40px">
+                            <div>{{ form_label(edit_form.identificacionCliente) }}{{ form_widget(edit_form.identificacionCliente) }}</div>
+                            <div>{{ form_label(edit_form.nacionalidad) }} {{ form_widget(edit_form.nacionalidad) }}</div>
+                            <div>{{ form_label(edit_form.fechaNacimiento) }} {{ form_widget(edit_form.fechaNacimiento) }}</div>
+                        </td>
+                        <td style="vertical-align: top; padding-top: 20px">
+                            <div>{{ form_label(edit_form.nombres) }} {{ form_widget(edit_form.nombres) }}</div>
+                            <div>{{ form_label(edit_form.razonSocial) }} {{ form_widget(edit_form.razonSocial) }}</div>
+                            <div>{{ form_label(edit_form.direccion) }} {{ form_widget(edit_form.direccion) }}</div>
+                            <input type='text' style="display: none" id="admiempresaexternatype_formas_contacto" required='required' 
+                                   name="admiempresaexternatype[formas_contacto]"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="tab2" class="x-hide-display">
+                <table border='0' align='center'>
+                    <tr>
+                        <td>
+                            <div id='lista_formas_contacto_grid'></div>       
+                        </td>							
+                    </tr>   
+                </table>            
+            </div>
+        </div>
+    </form>
+    <div id="form_empresa_externa_save" ></div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<ul class="form_actions">
+    <li>
+    </li>
+</ul>
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul>
+    <div id="form_accionesEmpresaExterna" />
+</ul>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+<script>
+    $("#admiempresaexternatype_identificacionCliente").attr('readonly', true);
+    $("#admiempresaexternatype_identificacionCliente").attr('style', 'color:gray; font-weight:bold');
+
+    $(function()
+    {
+        $("#admiempresaexternatype_identificacionCliente").keydown(function(event)
+        {
+            if (!isNumeric(event))
+                return false;
+        });
+
+    });
+
+    function isNumeric(event)
+    {
+        return ((event.keyCode > 7 && event.keyCode < 10)
+            || (event.keyCode > 47 && event.keyCode < 60)
+            || (event.keyCode > 95 && event.keyCode < 106)
+            || event.keyCode == 17
+            || event.keyCode == 116);
+    }
+</script>          
+{% endblock %}

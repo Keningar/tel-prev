@@ -1,0 +1,56 @@
+com_admiNotiPushMkt:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:index" }
+    
+com_admiNotiPushMkt_show:
+    pattern:  /show
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:show" }
+
+com_admiNotiPushMkt_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:new" }
+    requirements: { _method: POST }
+
+com_admiNotiPushMkt_save:
+    pattern:  /save
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:save" }
+    requirements: { _method: POST }
+    
+com_admiNotiPushMkt_edit:
+    pattern:  /edit
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:edit" }
+
+com_admiNotiPushMkt_update:
+    pattern:  /update
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:update" }
+    requirements: { _method: POST }
+    
+com_admiNotiPushMkt_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:grid"}
+
+com_admiNotiPushMkt_delete:
+    pattern:  /{intIdCampania}/deleteItem
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:deleteItem" }
+
+com_admiNotiPushMkt_detener:
+    pattern:  /{intIdCampania}/{strEstado}/detenerItem
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:actualizaEstadoItem" }
+    
+com_admiNotiPushMkt_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:deleteAjax" }
+    requirements: { _method: post }
+    
+com_admiNotiPushMkt_pantallas:
+    pattern:  /getPantallasApp
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:getPantallasApp" }
+
+com_admiNotiPushMkt_clon:
+    pattern:  /ajaxClonarCampanias
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:ajaxClonarCampanias" }
+    requirements: { _method: POST }
+
+com_admiNotiPushMkt_reini:
+    pattern:  /{intIdCampania}/{strEstado}/reiniItem
+    defaults: { _controller: "administracionBundle:AdmiNotiPushMkt:actualizaEstadoItem" }

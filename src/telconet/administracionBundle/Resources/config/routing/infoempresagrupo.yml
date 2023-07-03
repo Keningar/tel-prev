@@ -1,0 +1,42 @@
+infoempresagrupo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:index" }
+
+infoempresagrupo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:show" }
+
+infoempresagrupo_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:new" }
+
+infoempresagrupo_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:create" }
+    requirements: { _method: POST }
+    
+infoempresagrupo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:edit" }
+
+infoempresagrupo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:update" }
+    requirements: { _method: POST }
+    
+infoempresagrupo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:delete" }
+    
+infoempresagrupo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:deleteAjax" }
+    requirements: { _method: post }
+
+infoempresagrupo_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:grid"}
+
+infoempresagrupo_ajaxDatosEmpresa:
+    pattern:  /ajaxDatosEmpresa
+    defaults: { _controller: "administracionBundle:InfoEmpresaGrupo:ajaxDatosEmpresa"}

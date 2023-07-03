@@ -1,0 +1,38 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}   
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}    
+    <script>
+        var strUrlGridEnvioSMSPorProducto       = '{{path('enviosms_grid')}}';
+        var strUrlActualizaEnvioSMSPorProducto  = '{{path('enviosms_update')}}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/EnvioSms/index.js?2') }}"></script>
+    
+{% endblock %}
+
+{% block contenido_izq %}
+
+<div id="titulo_content">
+    <img src="{{ asset('public/images/envioSms.png') }}" class="imagen-titulo-content">
+    <h1>Activar/Desactivar envío SMS por Producto</h1>
+</div>
+<div class="body_content k-content">
+     <div class="body_content k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtro'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="grid"></div></td>
+            </tr>
+        </table> 
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+{% endblock contenido_der %}

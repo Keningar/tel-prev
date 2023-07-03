@@ -1,0 +1,144 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+<script type="text/javascript" src="{{ asset('./bundles/administracion/js/InfoOficinaGrupo/validaciones.js') }}"></script>            
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Oficina</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('infooficinagrupo_update', { 'id': infooficinagrupo.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario">
+        {{ form_widget(edit_form) }}
+        
+        <input type="hidden" name="direccion" id="direccion" value="" />
+        <input type="hidden" name="telefono" id="telefono" value="" />
+        <input type="hidden" name="fax" id="fax" value="" />
+
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('infooficinagrupo') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        function ajaxCargaDatosEmpresa(cod_empresa)
+        {
+            $.ajax({
+                    url: "../ajaxDatosEmpresa",
+                    data: "nocache=" + Math.random() + "&cod_empresa="+ cod_empresa,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(source){
+                        var data = source;
+                        var num = data['total'];
+
+                        if(num>0)   
+                        {
+                            var direccion = data['encontrados'][0]['direccion'];
+                            var telefono = data['encontrados'][0]['telefono'];
+                            var fax = data['encontrados'][0]['fax'];
+
+                            $('#direccion').val(direccion);
+                            $('#telefono').val(telefono);
+                            $('#fax').val(fax);
+
+                            var esMatriz = $('#telconet_schemabundle_infooficinagrupotype_esMatriz').val();
+                            ajaxEsMatriz(esMatriz);
+                        }
+                    },
+                    error: function(dato){
+                        alert("ERROR");
+                    }
+            });
+        }
+
+
+        function ajaxEsMatriz(boolMatriz)
+        {
+            if(boolMatriz == 'S')
+            {
+                if($('#direccion').val() != "" && $('#telefono').val()!="")
+                {
+                    $('#telconet_schemabundle_infooficinagrupotype_direccionOficina').val($('#direccion').val());
+                    $('#telconet_schemabundle_infooficinagrupotype_telefonoFijoOficina').val($('#telefono').val());
+                    $('#telconet_schemabundle_infooficinagrupotype_faxOficina').val($('#fax').val());
+                }
+                
+                ActivarReadOnly(true);
+            }
+            else
+            {
+                ActivarReadOnly(false);
+            }
+        }
+
+        function ActivarReadOnly(boolE)
+        {
+            if(boolE)
+            {
+                $('#telconet_schemabundle_infooficinagrupotype_direccionOficina').attr("readonly", true);
+                $('#telconet_schemabundle_infooficinagrupotype_telefonoFijoOficina').attr("readonly", true);
+                $('#telconet_schemabundle_infooficinagrupotype_faxOficina').attr("readonly", true);
+            }
+            else
+            {
+                $('#telconet_schemabundle_infooficinagrupotype_direccionOficina').removeAttr("readonly");
+                $('#telconet_schemabundle_infooficinagrupotype_telefonoFijoOficina').removeAttr("readonly");
+                $('#telconet_schemabundle_infooficinagrupotype_faxOficina').removeAttr("readonly");
+            }
+        }
+
+
+        Ext.onReady(function() { 
+            var esMatriz = $('#telconet_schemabundle_infooficinagrupotype_esMatriz').val();
+            ajaxEsMatriz(esMatriz);
+        });
+    </script>	
+{% endblock javascripts_footer%}

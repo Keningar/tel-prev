@@ -1,0 +1,107 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/ElementoGateway/show.js') }}"></script>   
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Gateway</h1>
+</div>
+<div class="body_content">
+    <table class="formulario" width='100%' >
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Marca Gateway:</th>
+                <td width="15%">{{ vista.nombreMarcaElemento }}</td>  
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Modelo Gateway:</th>
+                <td width="15%">{{ vista.nombreModeloElemento}}</td> 
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombre Elemento:</th>
+                <td width="15%">{{ vista.nombreElemento}}</td> 
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> IP Elemento:</th>
+                <td width="15%">{{ vista.ip}}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Usuario de Acceso:</th>
+                <td>{{ vista.nombreUsuarioAcceso }}</td>     
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Password de Acceso:</th>
+                <td>{{ vista.contrasena }}</td> 
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ vista.estado }}</td>     
+                <td width="10%">&nbsp;</td>   
+                <th width="25%"> Empresa Asignada:</th>
+                <td>{{ empresa }}</td> 
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <td colspan="6"><br/><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+             <tr>
+                <td width="10%">&nbsp;</td>
+                <td colspan="6"><div id="grid"></div></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('elementogateway') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_46-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('elementogateway_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Gateway
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_46-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('elementogateway_edit', { 'id': vista.id }) }}">
+                &nbsp;Editar Gateway
+            </a>
+        </li>
+		{% endif %}					
+		
+		{% if is_granted('ROLE_46-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('elementogateway_delete', { 'id': vista.id }) }}">
+                &nbsp;Eliminar Gateway
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

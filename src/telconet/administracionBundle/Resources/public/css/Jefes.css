@@ -1,0 +1,79 @@
+.btn-acciones
+{
+    background-color: #E3E3E3;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2E2E2E;
+    font-size: 11px;
+    height: 25px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+    margin-right: 5px;
+}
+
+.btn-acciones:hover
+{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.btn-asignar-empleados
+{
+    background-image: url("/public/images/ico_asignar_empleados.png");
+    background-size: 20px;
+}
+
+.btn-asignar-coordinador-general
+{
+    background-image: url("/public/images/plan-planificar.png");
+    background-size: 20px;    
+}
+
+.btn-ver-asignacion-coordinador-general
+{
+    background-image: url("/public/images/plan_instalacion.png");
+    background-size: 20px;    
+}
+
+.btn-asignar-jefe
+{
+    background-image: url("/public/images/ico_asignar_jefe.png");
+    background-size: 20px;
+}
+
+.btn-habilitar-jefe
+{
+    background-image: url("/public/images/ico_habilitar_jefe.png");
+    background-size: 20px;
+}
+
+.btn-asignar-meta
+{
+    background-image: url("/public/images/ico_asignar_meta.png");
+    background-size: 20px;
+}
+
+.btn-deshabilitar-jefe
+{
+    background-image: url("/public/images/ico_deshabilitar_jefe.png");
+    background-size: 20px;
+}
+
+.btn-cambiar-asignacion-jefe
+{
+    background-image: url("/public/images/ico_cambiar_asignacion_jefe.png");
+    background-size: 20px;
+}
+
+.btn-asignar-vendedor
+{
+    background-image: url("/public/images/responsable.png");
+    background-size: 20px;
+}

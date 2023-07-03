@@ -1,0 +1,146 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Banco Tipo Cuenta</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Descripcion Banco:</th>
+                <td width="15%">{{ bancotipocuenta.bancoId.descripcionBanco }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Descripcion Tipo Cuenta:</th>
+                <td width="15%">{{ bancotipocuenta.tipoCuentaId.descripcionTipoCuenta }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Total Caracteres:</th>
+                <td width="15%">{% if(bancotipocuenta.totalCaracteres) %}{{ bancotipocuenta.totalCaracteres }}{% else %}0{% endif %}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Total Cod Seguridad:</th>
+                <td width="15%">{% if(bancotipocuenta.totalCodseguridad) %}{{ bancotipocuenta.totalCodseguridad }}{% else %}0{% endif %}</td>   
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Caracter Empieza:</th>
+                <td width="15%">{% if(bancotipocuenta.caracterEmpieza) %}{{ bancotipocuenta.caracterEmpieza }}{% else %}0{% endif %}</td>
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Es Tarjeta:</th>
+                <td width="15%">{% if(bancotipocuenta.esTarjeta=="S") %}SI{% else %}NO{% endif %}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ bancotipocuenta.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admibancotipocuenta') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ bancotipocuenta.usrCreacion }}</td>
+
+              {% if(bancotipocuenta.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ bancotipocuenta.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(bancotipocuenta.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ bancotipocuenta.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ bancotipocuenta.feCreacion | date("d M Y") }}</td>
+
+              {% if(bancotipocuenta.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ bancotipocuenta.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(bancotipocuenta.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ bancotipocuenta.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ bancotipocuenta.feCreacion | date("H:i:s") }}</td>
+
+              {% if(bancotipocuenta.estado|lower=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ bancotipocuenta.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(bancotipocuenta.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ bancotipocuenta.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admibancotipocuenta_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Banco Tipo Cuenta
+            </a>
+        </li>
+        <li>
+            &nbsp;
+        </li>
+        <li>
+            <a class="button-editar" href="{{ path('admibancotipocuenta_edit', { 'id': bancotipocuenta.id }) }}">
+                &nbsp;Editar Banco Tipo Cuenta
+            </a>
+        </li>
+        <li>
+            <a class="button-eliminar" href="{{ path('admibancotipocuenta_delete', { 'id': bancotipocuenta.id }) }}">
+                &nbsp;Eliminar Banco Tipo Cuenta
+            </a>
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

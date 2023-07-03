@@ -1,0 +1,136 @@
+administracionBundle_AdmiTag:
+  resource: "@administracionBundle/Resources/config/routing/admitag.yml"
+  prefix: /tag_cnr
+  
+administracionBundle_AdmiJurisdiccion:
+  resource: "@administracionBundle/Resources/config/routing/admijurisdiccion.yml"
+  prefix: /admi_jurisdiccion
+
+administracionBundle_AdmiTipoEspacio:
+  resource: "@administracionBundle/Resources/config/routing/admitipoespacio.yml"
+  prefix: /admi_tipo_espacio
+
+administracionBundle_AdmiClaseMedidor:
+  resource: "@administracionBundle/Resources/config/routing/admiclasemedidor.yml"
+  prefix: /admi_clase_medidor
+
+administracionBundle_AdmiTipoMedidor:
+  resource: "@administracionBundle/Resources/config/routing/admitipomedidor.yml"
+  prefix: /admi_tipo_medidor
+  
+administracionBundle_AdmiPrefijo:
+  resource: "@administracionBundle/Resources/config/routing/admiprefijo.yml"
+  prefix: /admi_prefijo
+
+administracionBundle_AdmiProveedorMedidor:
+  resource: "@administracionBundle/Resources/config/routing/admiproveedormedidor.yml"
+  prefix: /admi_proveedor_medidor
+
+administracionBundle_AdmiProveedorRed:
+  resource: "@administracionBundle/Resources/config/routing/admiproveedorred.yml"
+  prefix: /admi_proveedor_red
+
+administracionBundle_AdmiOid:
+  resource: "@administracionBundle/Resources/config/routing/admioid.yml"
+  prefix: /admi_oid
+
+administracionBundle_AdmiHilo:
+  resource: "@administracionBundle/Resources/config/routing/admihilo.yml"
+  prefix: /admi_hilo
+
+administracionBundle_AdmiSnmp:
+  resource: "@administracionBundle/Resources/config/routing/admisnmp.yml"
+  prefix: /admi_snmp
+  
+administracionBundle_AdmiBuffer:
+  resource: "@administracionBundle/Resources/config/routing/admibuffer.yml"
+  prefix: /admi_buffer
+  
+administracionBundle_AdmiTipoMedio:
+  resource: "@administracionBundle/Resources/config/routing/admitipomedio.yml"
+  prefix: /admi_tipo_medio
+  
+administracionBundle_AdmiTipoConexion:
+  resource: "@administracionBundle/Resources/config/routing/admitipoconexion.yml"
+  prefix: /admi_tipo_conexion
+
+administracionBundle_AdmiConectorInterface:
+  resource: "@administracionBundle/Resources/config/routing/admiconectorinterface.yml"
+  prefix: /admi_conector_interface
+  
+administracionBundle_AdmiTipoInterface:
+  resource: "@administracionBundle/Resources/config/routing/admitipointerface.yml"
+  prefix: /admi_tipo_interface
+  
+administracionBundle_AdmiMarcaElemento:
+  resource: "@administracionBundle/Resources/config/routing/admimarcaelemento.yml"
+  prefix: /admi_marca_elemento
+  
+administracionBundle_AdmiTipoElemento:
+  resource: "@administracionBundle/Resources/config/routing/admitipoelemento.yml"
+  prefix: /admi_tipo_elemento
+  
+administracionBundle_AdmiModeloElemento:
+  resource: "@administracionBundle/Resources/config/routing/admimodeloelemento.yml"
+  prefix: /admi_modelo_elemento
+  
+administracionBundle_AdmiInterfaceModelo:
+  resource: "@administracionBundle/Resources/config/routing/admiinterfacemodelo.yml"
+  prefix: /admi_interface_modelo
+  
+administracionBundle_AdmiDetalle:
+  resource: "@administracionBundle/Resources/config/routing/admidetalle.yml"
+  prefix: /admi_detalle
+  
+administracionBundle_AdmiUsuarioAcceso:
+  resource: "@administracionBundle/Resources/config/routing/admiusuarioacceso.yml"
+  prefix: /admi_usuario_acceso
+  
+administracionBundle_AdmiProtocolo:
+  resource: "@administracionBundle/Resources/config/routing/admiprotocolo.yml"
+  prefix: /admi_protocolo
+
+administracionBundle_AdmiTecnologia:
+  resource: "@administracionBundle/Resources/config/routing/admitecnologia.yml"
+  prefix: /admi_tecnologia
+  
+administracionBundle_InfoElementoContrasena:
+  resource: "@administracionBundle/Resources/config/routing/infoelementocontrasena.yml"
+  prefix: /info_elemento_contrasena
+  
+administracionBundle_AdmiClaseTipoMedio:
+  resource: "@administracionBundle/Resources/config/routing/admiclasetipomedio.yml"
+  prefix: /admi_clase_tipo_medio
+  
+administracionBundle_AdmiPolicy:
+  resource: "@administracionBundle/Resources/config/routing/admipolicy.yml"
+  prefix: /policy
+
+administracionBundle_ZonaElemento:
+  resource: "@administracionBundle/Resources/config/routing/zonaElemento.yml"
+  prefix: /zona_elemento
+
+##################### CREAR GATEWAY ######################
+administracionBundle_CrearGateway:
+  resource: "@administracionBundle/Resources/config/routing/elementogateway.yml"
+  prefix: /crear_gateway
+  
+administracionBundle_grupotags:
+  resource: "@administracionBundle/Resources/config/routing/grupotag.yml"
+  prefix: /grupos_tag
+
+administracionBundle_configuracionRutasBackbone:
+  resource: "@administracionBundle/Resources/config/routing/configuracionRutasBackbone.yml"
+  prefix: /configuracionRutasBackbone
+  
+################### NUEVO ELEMENTO ASIGNACION ZONA #######################
+#administracionBundle_NuevoElemento:
+#  resource: "@administracionBundle/Resources/config/routing/asignacionZona.yml"
+#  prefix: /AsignacionZona
+
+
+################# CONFIGURACION PERFILES FACTIBILIDAD#################
+administracionBundle_ConfiguracionPerfilesFactibilidad:
+  resource: "@administracionBundle/Resources/config/routing/configuracionPerfilesFactibilidad.yml"
+  prefix: /configuracionPerfilFactibilidad
+

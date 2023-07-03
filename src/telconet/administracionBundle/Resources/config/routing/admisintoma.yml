@@ -1,0 +1,38 @@
+admisintoma:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiSintoma:index" }
+
+admisintoma_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiSintoma:show" }
+
+admisintoma_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiSintoma:new" }
+
+admisintoma_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiSintoma:create" }
+    requirements: { _method: POST }
+    
+admisintoma_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiSintoma:edit" }
+
+admisintoma_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiSintoma:update" }
+    requirements: { _method: POST }
+    
+admisintoma_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiSintoma:delete" }
+    
+admisintoma_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiSintoma:deleteAjax" }
+    requirements: { _method: post }
+
+admisintoma_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiSintoma:grid"}

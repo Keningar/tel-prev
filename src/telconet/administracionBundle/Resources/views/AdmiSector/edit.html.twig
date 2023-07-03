@@ -1,0 +1,106 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiSector/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Sector</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('admisector_update', { 'id': sector.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario"  onsubmit="return validarFormulario();">		
+	<div>
+			<label>* Provincia:</label>
+			<div id='combo_provincias' required="true"></div>
+		</div>
+
+		<div>
+			<label>* Canton:</label>
+			<div id='combo_cantones' required="true"></div>
+		</div>
+
+		<div>
+			<label>* Parroquia:</label>
+			<div id='combo_parroquias' required="true"></div>
+		</div>
+		{{ form_widget(edit_form) }}
+		
+		<input type="hidden" name="escogido_provincia_id" id="escogido_provincia_id" value="{{ sector.parroquiaId.cantonId.provinciaId.id }}" />
+		<input type="hidden" name="escogido_canton_id" id="escogido_canton_id" value="{{ sector.parroquiaId.cantonId.id }}" />
+		<input type="hidden" name="escogido_parroquia_id" id="escogido_parroquia_id" value="{{ sector.parroquiaId.id }}" />
+		
+        <div class="buttons">
+            <p>
+				<button class="button-crud" type="submit">Guardar</button>
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('admisector') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() {  
+            var nombreProvincia = "{{ sector.parroquiaId.cantonId.provinciaId.nombreProvincia }}";
+            var nombreCanton = "{{ sector.parroquiaId.cantonId.nombreCanton }}";
+            var nombreParroquia = "{{ sector.parroquiaId.nombreParroquia }}";
+			
+            var valIdProvincia = "{{ sector.parroquiaId.cantonId.provinciaId.id }}";
+            var valIdCanton = "{{ sector.parroquiaId.cantonId.id}}";
+            var valIdParroquia = "{{ sector.parroquiaId.id }}";
+			
+			storeProvincias.load();
+            combo_provincias.setRawValue(nombreProvincia);
+			  
+			storeCantones.proxy.extraParams = {idProvincia: valIdProvincia};
+			storeCantones.load();		
+            combo_cantones.setRawValue(nombreCanton);	
+			
+			storeParroquias.proxy.extraParams = { idCanton: valIdCanton, idProvincia: valIdProvincia };
+			storeParroquias.load();
+            combo_parroquias.setRawValue(nombreParroquia);
+        });
+    </script>	
+{% endblock javascripts_footer%}

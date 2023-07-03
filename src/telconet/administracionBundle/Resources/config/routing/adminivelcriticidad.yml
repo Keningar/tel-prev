@@ -1,0 +1,38 @@
+adminivelcriticidad:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:index" }
+
+adminivelcriticidad_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:show" }
+
+adminivelcriticidad_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:new" }
+
+adminivelcriticidad_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:create" }
+    requirements: { _method: POST }
+    
+adminivelcriticidad_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:edit" }
+
+adminivelcriticidad_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:update" }
+    requirements: { _method: POST }
+    
+adminivelcriticidad_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:delete" }
+    
+adminivelcriticidad_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:deleteAjax" }
+    requirements: { _method: post }
+
+adminivelcriticidad_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiNivelCriticidad:grid"}

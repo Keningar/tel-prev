@@ -1,0 +1,39 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiFeriados/new.js?3') }}"></script>
+    <script>
+        var strUrlSaveFeriado = '{{path('feriados_save')}}';
+        var strUrlIndex = '{{path('feriados')}}';
+        var strUrlgetCantones = '{{path('admicanton_getCantones')}}';
+
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiFeriados/ModelClass.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiFeriados/StoreClass.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiFeriados/StoreManuales.js?1') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiFeriados/ObjetosClass.js?1') }}"></script>
+
+{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        Creación de Feriados
+    </div>
+    <div id="Div_New_Feriados" class="div-center">
+    </div>
+
+
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+{% endblock javascripts_footer%}

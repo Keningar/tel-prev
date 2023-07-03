@@ -1,0 +1,62 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Sintoma</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('admisintoma_update', { 'id': sintoma.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario">
+            <input type="hidden" name="TipoCaso" id="TipoCaso" value='{{ sintoma.tipoCasoId }}' />
+            <input type="hidden" name="editTipoCaso" id="editTipoCaso" value='' />
+            <input type="hidden" name="formulario" id="formulario" value='sintoma' />
+            <div>
+                <label class="required" for="tipoCaso">Relacion:</label>
+                <input type="radio" name="radioTipoCaso" value="varios"  {% if not sintoma.tipoCasoId %} checked="checked" {% endif %}/> Todos
+                <input type="radio" name="radioTipoCaso" value="uno" {% if sintoma.tipoCasoId %} checked="checked" {% endif %}/> Uno
+            </div>
+            <div id="campoTodos" style="display: none">
+
+            </div>
+            <div id="campoUno" style="display: none">
+                {{ form_row(edit_form.tipoCasoId) }}
+            </div>
+        {{ form_widget(edit_form) }}
+        <div class="buttons">
+            <p>
+                    <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('admisintoma') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiSintoma/funcionesGenerales.js') }}"></script>
+{% endblock javascripts_footer%}

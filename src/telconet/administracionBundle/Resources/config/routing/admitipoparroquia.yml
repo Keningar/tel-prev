@@ -1,0 +1,38 @@
+admitipoparroquia:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:index" }
+
+admitipoparroquia_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:show" }
+
+admitipoparroquia_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:new" }
+
+admitipoparroquia_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:create" }
+    requirements: { _method: POST }
+    
+admitipoparroquia_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:edit" }
+
+admitipoparroquia_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:update" }
+    requirements: { _method: POST }
+    
+admitipoparroquia_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:delete" }
+    
+admitipoparroquia_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:deleteAjax" }
+    requirements: { _method: post }
+
+admitipoparroquia_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoParroquia:grid"}

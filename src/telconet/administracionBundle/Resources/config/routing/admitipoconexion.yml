@@ -1,0 +1,42 @@
+admitipoconexion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoConexion:index" }
+
+admitipoconexion_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiTipoConexion:getEncontrados }
+    
+admitipoconexion_getTiposConexiones:
+    pattern:  /getTiposConexiones
+    defaults: { _controller: administracionBundle:AdmiTipoConexion:getTiposConexiones }
+
+admitipoconexion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoConexion:show" }
+
+admitipoconexion_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoConexion:new" }
+
+admitipoconexion_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoConexion:create" }
+    requirements: { _method: POST }
+    
+admitipoconexion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoConexion:edit" }
+
+admitipoconexion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoConexion:update" }
+    requirements: { _method: POST }
+    
+admitipoconexion_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoConexion:deleteAjax" }
+    requirements: { _method: post }
+    
+admitipoconexion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoConexion:delete" }

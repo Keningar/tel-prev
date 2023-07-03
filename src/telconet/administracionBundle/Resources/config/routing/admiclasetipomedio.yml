@@ -1,0 +1,38 @@
+admiclasetipomedio:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiClaseTipoMedio:index" }
+
+admiclasetipomedio_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiClaseTipoMedio:getEncontrados }
+    
+admiclasetipomedio_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiClaseTipoMedio:show" }
+
+admiclasetipomedio_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiClaseTipoMedio:new" }
+
+admiclasetipomedio_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiClaseTipoMedio:create" }
+    requirements: { _method: POST }
+    
+admiclasetipomedio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiClaseTipoMedio:edit" }
+
+admiclasetipomedio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiClaseTipoMedio:update" }
+    requirements: { _method: POST }
+    
+admiclasetipomedio_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiClaseTipoMedio:deleteAjax" }
+    requirements: { _method: post }
+    
+admiclasetipomedio_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiClaseTipoMedio:delete" }

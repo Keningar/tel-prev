@@ -1,0 +1,130 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Region</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%">Nombre Pais:</th>   
+                <td width="15%">{{ region.paisId.nombrePais }}</td>   
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Nombre Region:</th>        
+                <td width="15%">{{ region.nombreRegion }}</td>  
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ region.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiregion') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ region.usrCreacion }}</td>
+
+              {% if(region.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ region.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(region.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ region.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ region.feCreacion | date("d M Y") }}</td>
+
+              {% if(region.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ region.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(region.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ region.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ region.feCreacion | date("H:i:s") }}</td>
+
+              {% if(region.estado|lower=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ region.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(region.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ region.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_23-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiregion_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Region
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_23-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admiregion_edit', { 'id': region.id }) }}">
+                &nbsp;Editar Region
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_23-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admiregion_delete', { 'id': region.id }) }}">
+                &nbsp;Eliminar Region
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

@@ -1,0 +1,247 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    <style>
+            #modalDetalleDet
+            {
+                width: 45% !important;
+                max-width: 45% !important;
+            }
+            
+            #modalEditDet
+            {
+                width: 45% !important;
+                max-width: 45% !important;
+            }
+            
+            #modalCrearP
+            {
+                width: 45% !important;
+                max-width: 45% !important;
+            }
+    </style>
+    {{ parent() }}
+    <link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/bootstrap-v4.3/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/select2-v4.0/select2.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/select2-v4.0/select2.js') }}"></script>
+    <script>
+        var url_new              = "{{ path('com_admiProyectos_new') }}";
+        var url_grid             = "{{ path('com_admiProyectos_grid') }}";
+        var url_responsables     = "{{ path('com_admiProyectos_responsables') }}";
+        var boolCrear            = '{{ is_granted("ROLE_466-1") }}';
+        var boolEditar            = '{{ is_granted("ROLE_466-4") }}';
+    </script>
+
+    <script src="{{ asset('public/js/bootstrap-v4.3/bootstrap.min.js') }}" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiProyectos/index.js?1') }}"></script>
+
+{% endblock %}
+
+{% block contenido_central %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md">
+                <div>
+                    <br/>
+                    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <button type="button" class="btn btn-outline-info btn-sm collapsed" data-toggle="collapse" aria-expanded="false" 
+                                            data-target="#contenedor_busqueda">Criterios de Búsqueda <i class="fa fa-angle-down"></i></button>   
+                                </li>
+                                <li>&nbsp;&nbsp;</li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div id="contenedor_busqueda" class="collapse">
+                    <form><br />
+                        <div class="form-group row">
+                            <div class="form-group col-md-4">
+                                <label for="strNombreProyecto">Nombre Proyecto:</label>
+                                <input type="text" class="form-control form-control-sm" id="strNombreProyecto_buscar" name="strNombreProyecto_buscar" 
+                                       placeholder="Nombre del proyecto">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="strEstado">Estado:</label>
+                                <select class="form-control" id="strEstadoBuscar" name="strEstadoBuscar" >
+                                    <option value=''>Seleccionar</option>
+                                    <option value='Activo'>Activo</option>
+                                    <option value='Inactivo'>Inactivo</option>
+                                    <option value='Finalizado'>Finalizado</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="form-group col-md-4">
+                                <label for="strFechaInicio">Fecha inicio de proyecto:</label>
+                                <input type="text" class="form-control" id="strFechaInicioBuscar" name="strFechaInicioBuscar" 
+                                       placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="strFechaFin">Fecha fin de proyecto:</label>
+                                <input type="text" class="form-control" id="strFechaFinBuscar" name="strFechaFinBuscar" 
+                                       placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="form-group col-md-4" style="margin-top: 1.5rem">
+                                <button type="button" class="btn btn-secondary btn-sm" id="limpiar">
+                                    <i class="fa fa-paint-brush"></i> Limpiar
+                                </button>&nbsp;
+                                <button type="button" class="btn btn-info btn-sm" id="buscar"><i class="fa fa-search"></i> Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="body_content k-content">
+                    <h6>Listado de proyectos</h6><br />
+                    <table class="table table-striped table-bordered compact" id="tabla" class="display" style="width:100%">
+                        <thead class="thead-light"> 
+                            <tr>
+                                <th><input name="select_all" value="1" id="objListado-select-all"  type="checkbox"></th>
+                                <th>Nombre</th>
+                                <th>Responsable</th>
+                                <th>Tipo Contabilidad</th>
+                                <th>Id CUenta</th>
+                                <th>Fecha Inicio</th>
+                                <th>Fecha Fin</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalDetalle" role="dialog">
+            <div class="modal-dialog" id="modalDetalleDet">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalEdit" role="dialog">
+            <div class="modal-dialog" id="modalEditDet">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" id="btnEditar" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalCrear" role="dialog">
+            <div class="modal-dialog" id="modalCrearP">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Para crear un proyecto, llene los siguientes campos.</h5>
+                        <br/>
+                        <form>
+                            <div class="form-group row">
+                                <label for="strNombreProyecto_crear" class="col-sm-3 col-form-label">Nombre de Proyecto</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" step="any" min="0" value="" name="strNombreProyecto_crear"
+                                            id="strNombreProyecto_crear" required rows="3">
+                                    <div class="invalid-feedback">
+                                        Campo requerido.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="strTipoContabilidad_crear" class="col-sm-3 col-form-label">Tipo de Contabilidad</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control" id="strTipoContabilidad_crear" name="strTipoContabilidad_crear" >
+                                        <option value=''>Seleccionar</option>
+                                        <option value='Individual'>Individual</option>
+                                        <option value='Detallado'>Detallado</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label for="strResponsable_crear" class="col-sm-3 col-form-label">Responsable</label>
+                                <div class="col-sm-9">
+                                    <select class="form-select form-control form-control-sm" id="strResponsable_crear" required placeholder="Seleccione"> 
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Campo requerido.
+                                    </div>
+                                    <i class="fa fa-spinner fa-spin spinner_sect_responsables" ></i>
+                                </div>
+                            </div>
+
+                            
+                            <div class="form-group row">
+                                <label for="strFechaInicioCrear" class="col-sm-3 col-form-label">Fecha inicio:</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" id="strFechaInicioCrear" name="strFechaInicioCrear" 
+                                       placeholder="YYYY/MM/DD">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="strFechaFinCrear" class="col-sm-3 col-form-label">Fecha fin:</label>
+                                <div class="col-sm-9">
+                                <input type="text" class="form-control" id="strFechaFinCrear" name="strFechaFinCrear" 
+                                       placeholder="YYYY/MM/DD">
+                                </div>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnCrear" class="btn btn-info btn-sm" data-dismiss="modal">Aceptar</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalMensajes" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">¡Alerta!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido_central %}

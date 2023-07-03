@@ -1,0 +1,48 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/AsignacionOperativa.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGridAsignacionOperativa                       = "{{ path('asignacionoperativa_grid') }}";
+        var strUrlGetModelosMediosTransporte                    = "{{ path('elementotransporte_getModelosMedioTransporte') }}";
+        var strUrlGetChoferesDisponibles                        = "{{ path('asignacionoperativa_gridChoferesDisponibles') }}";
+        var strUrlAsignacionProvisionalChoferVehiculo           = "{{ path('asignacionoperativa_asignarChoferProvisionalAVehiculo') }}";
+        var strUrlEliminarAsignacionProvisionalChoferVehiculo   = "{{ path('asignacionoperativa_eliminarAsignacionChoferAVehiculoProvisional') }}";
+        var strUrlMotivosAsignacionProvisional                  = "{{ path('asignacionoperativa_motivos') }}";
+        var strUrlShowHistorialAsignacionVehicularXVehiculo     = "{{ path('asignacionoperativa_showHistorialAsignacionVehicularXVehiculo') }}";
+        
+        var strUrlZonasAsignacionProvisionalChofer           = "{{ path('asignacionoperativa_getZonas') }}";
+        var strUrlTareasAsignacionProvisionalChofer          = "{{ path('asignacionoperativa_getTareas') }}";
+        var strUrlDepartamentosAsignacionProvisionalChofer   = "{{ path('asignacionoperativa_getDepartamentos') }}";
+        var strUrlValidarHorarioAsignacionPredefinida        = "{{ path('asignacionvehicularpredefinida_validarHorarioAsignacionPredefinida') }}";
+        
+        
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AsignacionOperativa/index.js?6') }}"></script>
+{% endblock %}
+
+{% block contenido %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Asignación Provisional - Listado de Veh&iacute;culos </h1>
+</div>
+<div class="body_content k-content">
+    <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+        <tr>
+            <td><div id='filtro'></div></td>
+        </tr>	
+        <tr>
+            <td><div id="grid"></div></td>
+        </tr>
+    </table> 
+</div>
+{% endblock contenido %}
+
+{% block contenido_der %}
+
+{% endblock contenido_der %}

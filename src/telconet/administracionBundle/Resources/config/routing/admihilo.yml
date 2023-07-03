@@ -1,0 +1,47 @@
+admihilo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiHilo:index" }
+
+admihilo_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiHilo:getEncontrados }
+    
+admihilo_getHilosPorEstado:
+    pattern:  /getHilosPorEstado
+    defaults: { _controller: administracionBundle:AdmiHilo:getHilosPorEstado }
+
+admihilo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiHilo:show" }
+
+admihilo_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiHilo:new" }
+
+admihilo_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiHilo:create" }
+    requirements: { _method: POST }
+    
+admihilo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiHilo:edit" }
+
+admihilo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiHilo:update" }
+    requirements: { _method: POST }
+    
+admihilo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiHilo:deleteAjax" }
+    requirements: { _method: post }
+    
+admihilo_getHilosPorBuffer:
+    pattern:  /getHilosPorBuffer
+    defaults: { _controller: "administracionBundle:AdmiHilo:getHilosPorBuffer" }
+    requirements: { _method: post }    
+    
+admihilo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiHilo:delete" }

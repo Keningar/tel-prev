@@ -1,0 +1,42 @@
+admiclasemedidor:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiClaseMedidor:index" }
+
+admiclasemedidor_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiClaseMedidor:getEncontrados }
+    
+admiclasemedidor_getClasesMedidores:
+    pattern:  /getClasesMedidores
+    defaults: { _controller: administracionBundle:AdmiClaseMedidor:getClasesMedidores }
+
+admiclasemedidor_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiClaseMedidor:show" }
+
+admiclasemedidor_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiClaseMedidor:new" }
+
+admiclasemedidor_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiClaseMedidor:create" }
+    requirements: { _method: POST }
+    
+admiclasemedidor_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiClaseMedidor:edit" }
+
+admiclasemedidor_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiClaseMedidor:update" }
+    requirements: { _method: POST }
+    
+admiclasemedidor_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiClaseMedidor:deleteAjax" }
+    requirements: { _method: post }
+    
+admiclasemedidor_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiClaseMedidor:delete" }

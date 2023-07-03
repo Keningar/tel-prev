@@ -1,0 +1,143 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Interface Modelo</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Modelo:</th>
+                <td width="15%">{{  interfaceModelo.modeloElementoId }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Tipo Interface:</th>        
+                <td width="15%">{{ interfaceModelo.tipoInterfaceId }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Clase Interface:</th>
+                <td>{{ interfaceModelo.claseInterface }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Estado:</th>        
+                <td width="15%">{{ interfaceModelo.estado }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Formato:</th>
+                <td>{{ interfaceModelo.formatoInterface }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Cantidad Interfaces:</th>        
+                <td width="15%">{{ interfaceModelo.cantidadInterface }}</td>
+                <td width="1%"></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>	
+
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiinterfacemodelo') }}">
+                    Regresar
+            </a>
+        </span>
+    </p>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ interfaceModelo.usrCreacion }}</td>
+
+              {% if(interfaceModelo.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ interfaceModelo.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(interfaceModelo.estado=="Eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ interfaceModelo.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ interfaceModelo.feCreacion | date("d M Y") }}</td>
+
+              {% if(interfaceModelo.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ interfaceModelo.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(interfaceModelo.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ interfaceModelo.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ interfaceModelo.feCreacion | date("H:i:s") }}</td>
+
+              {% if(interfaceModelo.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ interfaceModelo.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(interfaceModelo.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ interfaceModelo.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiinterfacemodelo_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Interface Modelo
+            </a>
+        </li>
+        <li>
+            &nbsp;
+        </li>
+        <li>
+            <a class="button-editar" href="{{ path('admiinterfacemodelo_edit', { 'id': interfaceModelo.id }) }}">
+                
+                &nbsp;Editar Interface Modelo
+            </a>
+        </li>
+        <li>
+            <a class="button-eliminar" href="{{ path('admiinterfacemodelo_delete', { 'id': interfaceModelo.id }) }}">
+                
+                &nbsp;Eliminar Interface Modelo
+            </a>
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

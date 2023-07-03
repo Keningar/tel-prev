@@ -1,0 +1,26 @@
+com_admiholding:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiHolding:index" }
+    
+com_admiholding_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiHolding:new" }
+
+com_admiholding_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiHolding:create" }
+    requirements: { _method: POST }
+    
+com_admiholding_edit:
+    pattern:  /edit
+    defaults: { _controller: "administracionBundle:AdmiHolding:edit" }
+    
+com_admiholding_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiHolding:grid"}
+
+com_admiholding_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiHolding:deleteAjax" }
+    requirements: { _method: post }
+    

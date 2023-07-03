@@ -1,0 +1,25 @@
+asignacionvehicular:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AsignacionVehicular:index" }
+
+asignacionvehicular_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AsignacionVehicular:grid"}
+
+asignacionvehicular_getElementos:
+    pattern: /getElementos
+    defaults: { _controller: "administracionBundle:AsignacionVehicular:getElementos" }
+
+asignacionvehicular_getVehiculosDisponibles:
+    pattern: /getVehiculosDisponibles
+    defaults: { _controller: "administracionBundle:AsignacionVehicular:getVehiculosDisponibles" }
+
+asignacionvehicular_showHistorialAsignacionVehicularXCuadrilla:
+    pattern: /showHistorialAsignacionVehicularXCuadrilla
+    defaults: { _controller: "administracionBundle:AsignacionVehicular:showHistorialAsignacionVehicularXCuadrilla" }
+
+asignacionvehicular_departamentos:
+    pattern: /departamentos
+    defaults: { _controller: "administracionBundle:AsignacionVehicular:departamentos" }
+
+

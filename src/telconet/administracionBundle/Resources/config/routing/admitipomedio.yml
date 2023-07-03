@@ -1,0 +1,42 @@
+admitipomedio:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoMedio:index" }
+
+admitipomedio_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiTipoMedio:getEncontrados }
+    
+admitipomedio_getTiposMedios:
+    pattern:  /getTiposMedios
+    defaults: { _controller: administracionBundle:AdmiTipoMedio:getTiposMedios }
+
+admitipomedio_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoMedio:show" }
+
+admitipomedio_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoMedio:new" }
+
+admitipomedio_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoMedio:create" }
+    requirements: { _method: POST }
+    
+admitipomedio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoMedio:edit" }
+
+admitipomedio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoMedio:update" }
+    requirements: { _method: POST }
+    
+admitipomedio_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoMedio:deleteAjax" }
+    requirements: { _method: post }
+    
+admitipomedio_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoMedio:delete" }

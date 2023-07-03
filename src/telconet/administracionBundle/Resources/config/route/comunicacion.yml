@@ -1,0 +1,45 @@
+administracionBundle_AdmiTipoComunicacion:
+  resource: "@administracionBundle/Resources/config/routing/admitipocomunicacion.yml"
+  prefix: /admi_tipo_comunicacion
+  
+administracionBundle_AdmiTipoDocumento:
+  resource: "@administracionBundle/Resources/config/routing/admitipodocumento.yml"
+  prefix: /admi_tipo_documento
+
+administracionBundle_AdmiTagDocumento:
+  resource: "@administracionBundle/Resources/config/routing/admitagdocumento.yml"
+  prefix: /admi_tag_documento
+  
+administracionBundle_AdmiClaseDocumento:
+  resource: "@administracionBundle/Resources/config/routing/admiclasedocumento.yml"
+  prefix: /admi_clase_documento
+  
+administracionBundle_AdmiAlias:
+  resource: "@administracionBundle/Resources/config/routing/admialias.yml"
+  prefix: /admi_alias
+  
+administracionBundle_AdmiPlantilla:
+  resource: "@administracionBundle/Resources/config/routing/admiplantilla.yml"
+  prefix: /admi_plantilla
+
+administracionBundle_EnvioSms:
+  resource: "@administracionBundle/Resources/config/routing/enviosms.yml"
+  prefix: /envios_sms
+
+administracionBundle_CorreoFormularioSoporte:
+  resource: "@administracionBundle/Resources/config/routing/correoFormularioSoporte.yml"
+  prefix: /correoFormularioSoporte
+
+administracionBundle_AdmiPlantillaDocumentos:
+  resource: "@administracionBundle/Resources/config/routing/admiplantilladocumentos.yml"
+  prefix: /plantillas/admi_plantilla
+
+administracionBundle_PlantillaPreguntaContrato:
+  resource: "@administracionBundle/Resources/config/routing/plantillaPreguntaContrato.yml"
+  prefix: /plantilla_pregunta_contrato
+
+
+administracionBundle_AdmiDocEnunciado:
+  resource: "@administracionBundle/Resources/config/routing/admiDocEnunciado.yml"
+  prefix: /documento_enunciado
+ 

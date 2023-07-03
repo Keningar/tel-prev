@@ -1,0 +1,54 @@
+admialias:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiAlias:index" }
+
+admialias_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiAlias:show" }
+
+admialias_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiAlias:new" }
+
+admialias_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiAlias:create" }
+    requirements: { _method: POST }
+    
+admialias_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiAlias:edit" }
+
+admialias_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiAlias:update" }
+    requirements: { _method: POST }
+    
+admialias_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiAlias:delete" }
+    
+admialias_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiAlias:deleteAjax" }
+    requirements: { _method: post }
+
+admialias_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiAlias:grid"}
+
+admialias_getEmpresas:
+    pattern:  /getEmpresas
+    defaults: { _controller: "administracionBundle:AdmiAlias:getEmpresas"}
+    
+admialias_getJurisdiccionXEmpresa:
+    pattern:  /getJurisdiccionXEmpresa
+    defaults: { _controller: "administracionBundle:AdmiAlias:getJurisdiccionXEmpresa"}
+
+admialias_getCiudadesPorEmpresa:
+    pattern:  /getCiudadesPorEmpresa
+    defaults: { _controller: "administracionBundle:AdmiAlias:getCiudadesPorEmpresa"}
+
+admialias_getDepartamentosPorEmpresaYCiudad:
+    pattern:  /getDepartamentosPorEmpresaYCiudad
+    defaults: { _controller: "administracionBundle:AdmiAlias:getDepartamentosPorEmpresaYCiudad"}

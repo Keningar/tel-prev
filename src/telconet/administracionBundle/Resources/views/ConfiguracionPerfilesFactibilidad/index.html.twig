@@ -1,0 +1,54 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+	{{ parent() }}
+
+	<script>
+        var url_gridElementos = "{{ path('configuracionPerfilesFactibilidad_grid') }}";
+        var url_Depart = '{{ path("infocaso_getDepartamentos") }}';
+        var url_empl = '{{ path("infocaso_getEmpleadosXDepartamento") }}';
+        var strUrlCiudadesEmpresa = '{{ path("infocaso_getCiudadesPorEmpresa") }}';
+        var strUrlEmpresaPorSistema = '{{ path("tarea_ajaxGetEmpresasHabilitadas") }}';
+        var url_Areas = '{{ path("infocaso_getAreas") }}';
+        var url_empl = '{{ path("callactivity_getEmpleadosXDepartamento") }}';
+        var url_empresasDiferentes = '{{ path("callactivity_getEmpresasDiferente") }}';
+        var strUrlDepartamentosEmpresaCiudad = '{{ path("infocaso_getDepartamentosPorEmpresaYCiudad") }}';
+        var strUrlEmpleadosDepartamentCiudad = '{{ path("configuracionPerfilesFactibilidad_getEmpleadosCiudadDepartamento") }}';
+        var strUrlComboJurisdiccion = '{{ path("configuracionPerfilesFactibilidad_getJurisdicciones") }}';
+        var strUrlComboDepartamento = '{{ path("configuracionPerfilesFactibilidad_getDepartamentos") }}'
+        var codEmpresa = '{{codEmpresa}}'
+        var enviarABase = '{{ path("configuracionPerfilesFactibilidad_enviarABase") }}'
+        var obtenerDeBase = '{{ path("configuracionPerfilesFactibilidad_obtenerTodos") }}'
+        
+	</script>
+
+	<script type="text/javascript" src="{{ asset('./bundles/administracion/js/ConfiguracionPerfilesFactibilidad/index.js') }}"></script>
+   
+    
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+	<img alt="titulo" src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Configuración Perfiles Factibilidad</h1>
+</div>
+<div class="body_content k-content">
+	<table border='0'>
+		<tr>
+			<td>
+				<div id='filtro'></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="grid"></div>
+			</td>
+		</tr>
+        <tr>
+            <td>
+                <br/>
+                <div id='button-guardar' style='text-align:center'></div>
+            </td>
+        </tr>
+	</table>
+</div>{% endblock contenido_izq %}

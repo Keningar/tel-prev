@@ -1,0 +1,252 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiTarea/show.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+<script>
+	var tareaId = '{{ idTarea }}';
+</script>
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Tarea</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="20%"><b>Nombre Proceso:</b></th>
+                <td width="20%">{{ tarea.procesoId.nombreProceso }}</td>        
+                <td width="1%"></td>
+
+                <td width="11%">&nbsp;</td>
+                <th width="20%"><b>Nombre Rol:</b></th>        
+                <td width="20%">{{ nombreRol }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="20%"><b>Tarea Anterior:</b></th>
+                <td width="20%">{% if tarea.tareaAnteriorId %}<a href="{{ path('admitarea_show', { 'id': tarea.tareaAnteriorId.id }) }}">{{ tarea.tareaAnteriorId.nombreTarea }}</a>{% else %}N/A{% endif %}</td>        
+                <td width="1%"></td>
+
+                <td width="11%">&nbsp;</td>
+                <th width="20%"><b>Tarea Siguiente:</b></th>        
+                <td width="20%">{% if tarea.tareaSiguienteId %}<a href="{{ path('admitarea_show', { 'id': tarea.tareaSiguienteId.id }) }}">{{ tarea.tareaSiguienteId.nombreTarea }}</a>{% else %}N/A{% endif %}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="20%"><b>Nombre Tarea:</b></th>
+                <td width="20%">{{ tarea.nombreTarea }}</td>        
+                <td width="1%"></td>
+
+                <td width="11%">&nbsp;</td>
+                <th width="20%"><b>Descripci&oacute;n Tarea:</b></th>        
+                <td width="20%">{{ tarea.descripcionTarea }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="20%"><b>Es Aprobada:</b></th>
+                <td width="20%">{{ tarea.esAprobada }}</td>        
+                <td width="1%"></td>
+
+                <td width="11%">&nbsp;</td>
+                <th width="20%"><b>Tiempo Max:</b></th>        
+                <td width="20%">{{ tarea.tiempoMax }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="20%"><b>Costo:</b></th>
+                <td width="20%">{{ tarea.costo }}</td>        
+                <td width="1%"></td>
+
+                <td width="11%">&nbsp;</td>
+                <th width="20%"><b>Precio Promedio:</b></th>        
+                <td width="20%">{{ tarea.precioPromedio }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="20%"><b>Peso:</b></th>
+                <td width="20%">{{ tarea.peso }}</td>        
+                <td width="1%"></td>
+
+                <td width="11%">&nbsp;</td>
+                <th width="20%"><b>Unidad Medida Tiempo:</b></th>        
+                <td width="20%">{{ tarea.unidadMedidaTiempo }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="20%"><b>Estado:</b></th>
+                <td>{{ tarea.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="20%">&nbsp;</th>        
+                <td width="20%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><br/><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><div id="grid"></div></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+			<tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><br/><br/></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+			<tr>
+                <td width="8%">&nbsp;</td>
+                <td colspan="6"><div id="gridMateriales"></div></td>
+                <td width="1%">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admitarea') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ tarea.usrCreacion }}</td>
+
+              {% if(tarea.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ tarea.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(tarea.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ tarea.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ tarea.feCreacion | date("d M Y") }}</td>
+
+              {% if(tarea.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ tarea.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(tarea.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ tarea.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ tarea.feCreacion | date("H:i:s") }}</td>
+
+              {% if(tarea.estado|lower=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ tarea.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(tarea.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ tarea.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_53-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admitarea_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="20" height="20" />
+                &nbsp;Nuevo Tarea
+            </a>
+        </li>
+		{% endif %}
+		<li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_53-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admitarea_edit', { 'id': tarea.id }) }}">
+                &nbsp;Editar Tarea
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_53-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admitarea_delete', { 'id': tarea.id }) }}">
+                &nbsp;Eliminar Tarea
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+		{% if is_granted('ROLE_54-2') %}
+        <li>
+            <a class="listado_ac_tablas" href="{{ path('admitareamaterial_new',{ 'tareaId': idTarea }) }}">
+                Agregar Material 
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+{% endblock contenido_der %}

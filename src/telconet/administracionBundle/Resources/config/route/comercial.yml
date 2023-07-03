@@ -1,0 +1,108 @@
+administracionBundle_AdmiClausulaContrato:
+  resource: "@administracionBundle/Resources/config/routing/admiclausulacontrato.yml"
+  prefix: /admi_clausula_contrato
+  
+administracionBundle_AdmiTipoContrato:
+  resource: "@administracionBundle/Resources/config/routing/admitipocontrato.yml"
+  prefix: /admi_tipo_contrato
+  
+administracionBundle_AdmiFormaContacto:
+  resource: "@administracionBundle/Resources/config/routing/admiformacontacto.yml"
+  prefix: /admi_forma_contacto
+  
+administracionBundle_AdmiCaracteristica:
+  resource: "@administracionBundle/Resources/config/routing/admicaracteristica.yml"
+  prefix: /admi_caracteristica
+  
+administracionBundle_AdmiNumeracion:
+  resource: "@administracionBundle/Resources/config/routing/adminumeracion.yml"
+  prefix: /admi_numeracion
+  
+administracionBundle_AdmiTipoNegocio:
+  resource: "@administracionBundle/Resources/config/routing/admitiponegocio.yml"
+  prefix: /admi_tipo_negocio
+  
+administracionBundle_AdmiTipoSolicitud:
+  resource: "@administracionBundle/Resources/config/routing/admitiposolicitud.yml"
+  prefix: /admi_tipo_solicitud
+  
+administracionBundle_AdmiTitulo:
+  resource: "@administracionBundle/Resources/config/routing/admititulo.yml"
+  prefix: /admi_titulo
+ 
+administracionBundle_InfoEmpresaGrupo:
+  resource: "@administracionBundle/Resources/config/routing/infoempresagrupo.yml"
+  prefix: /info_empresa_grupo
+  
+administracionBundle_InfoOficinaGrupo:
+  resource: "@administracionBundle/Resources/config/routing/infooficinagrupo.yml"
+  prefix: /info_oficina_grupo
+  
+administracionBundle_InfoEmpresaRol:
+  resource: "@administracionBundle/Resources/config/routing/infoempresarol.yml"
+  prefix: /info_empresa_rol
+  
+administracionBundle_InfoEmpresaPermisos:
+  resource: "@administracionBundle/Resources/config/routing/infoempresapermisos.yml"
+  prefix: /info_empresa_permisos
+
+catalogoBundle_AdmiProducto:
+  resource: "@catalogoBundle/Resources/config/routing/admiproducto.yml"
+  prefix: /catalogo/admi_producto
+  
+administracionBundle_Jefes:
+  resource: "@administracionBundle/Resources/config/routing/jefes.yml"
+  prefix: /jefes
+  
+administracionBundle_asignarGerenteProducto:
+  resource: "@administracionBundle/Resources/config/routing/asignarGerenteProducto.yml"
+  prefix: /asignarGerenteProducto
+  
+administracionBundle_asignarPersonalExterno:
+  resource: "@administracionBundle/Resources/config/routing/asignarPersonalExterno.yml"
+  prefix: /asignarPersonalExterno
+
+administracionBundle_AdmiBases:
+  resource: "@administracionBundle/Resources/config/routing/admibases.yml"
+  prefix: /admibases
+
+administracionBundle_AdmiMetas:
+  resource: "@administracionBundle/Resources/config/routing/admimetas.yml"
+  prefix: /admimetas
+
+administracionBundle_CambioClienteVendedor:
+  resource: "@administracionBundle/Resources/config/routing/cambioClienteVendedor.yml"
+  prefix: /cambioClienteVendedor
+
+administracionBundle_AdmiHolding:
+    resource: "@administracionBundle/Resources/config/routing/admiholding.yml"
+    prefix: /admiholding
+    
+administracionBundle_AdmiPuntoAtencion:
+    resource: "@administracionBundle/Resources/config/routing/admiPuntoAtencion.yml"
+    prefix: /punto_atencion
+
+administracionBundle_AdmiCargosSolicitudes:
+  resource: "@administracionBundle/Resources/config/routing/admiCargosSolicitudes.yml"
+  prefix: /admiCargosSolicitudes
+  
+administracionBundle_AdmiProyectos:
+  resource: "@administracionBundle/Resources/config/routing/admiProyectos.yml"
+  prefix: /admiProyectos
+  
+administracionBundle_AdmiProdCaracComp:
+    resource: "@administracionBundle/Resources/config/routing/admiprodcaraccomp.yml"
+    prefix: /admi_prod_carac_comportamiento
+
+administracionBundle_AdmiDocEnunciadoResp:
+  resource: "@administracionBundle/Resources/config/routing/admiDocEnunciadoResp.yml"
+  prefix: /documento_enunciado_respuesta
+ 
+administracionBundle_AdmiHorarioPlanificacion:
+    resource: "@administracionBundle/Resources/config/routing/admiHorarioPlanificacion.yml"
+    prefix: /horarioPlanificacionComercial
+
+administracionBundle_AdmiNotiPushMkt:
+  resource: "@administracionBundle/Resources/config/routing/admiNotiPushMkt.yml"
+  prefix: /notifPushMkt
+

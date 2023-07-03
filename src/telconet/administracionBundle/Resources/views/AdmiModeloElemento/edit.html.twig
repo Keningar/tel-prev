@@ -1,0 +1,164 @@
+{% extends "::layout.html.twig" %}
+
+
+
+{% block javascripts%}
+	{{ parent() }}
+	
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiModeloElemento/edit.js?2') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Modelo</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_modelo_elemento' action="{{ path('admimodeloelemento_update', { 'id': modelo.id }) }}" method="post" {{ form_enctype(edit_form) }}
+          class="formularioModelo" novalidate="novalidate" onsubmit="return validarFormulario();">
+        <table width="100%" border="0" class="box-section-content">
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.marcaElementoId) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.marcaElementoId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.tipoElementoId) }}</td>
+                        <td style="width:10%" onSelect="selecionarTipoElemento()">{{ form_widget(edit_form.tipoElementoId) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.nombreModeloElemento) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.nombreModeloElemento) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.descripcionModeloElemento) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.descripcionModeloElemento) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr id = "opcionesCamara">
+                        <td style="width:5%">&nbsp;</td>
+                        <td style="width:24%"><label >* Tipo Camara: </label></td>
+                        <td style="width:10%">
+                            <select id = "tipoCamara" name = "tipoCamara"/>
+                        </td>
+                        <td style="width:5%">&nbsp;</td>
+                        <td style="width:24%"><label >* Resolucion Camara: </label></td> 
+                        <td style="width:10%">
+                            <select  id = "resolucionCamara" name = "resolucionCamara">
+                        </td>
+                        <td style="width:5%">&nbsp;</td>
+                    </tr>  
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.mttr) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.mttr) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadMedidaMttr) }}</td>
+                        
+                        <td width="1%">{{ form_label(edit_form.mtbf) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.mtbf) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadMedidaMtbf) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.anchoModelo) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.anchoModelo) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadMedidaAncho) }}</td>
+                        
+                        <td width="1%">{{ form_label(edit_form.altoModelo) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.altoModelo) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadMedidaAlto) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.largoModelo) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.largoModelo) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadMedidaLargo) }}</td>
+                        
+                        <td width="1%">{{ form_label(edit_form.pesoModelo) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.pesoModelo) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadMedidaPeso) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.capacidadEntrada) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.capacidadEntrada) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadMedidaEntrada) }}</td>
+                        
+                        <td width="1%">{{ form_label(edit_form.capacidadSalida) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.capacidadSalida) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadMedidaSalida) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.capacidadVaFabrica) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.capacidadVaFabrica) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadVaFabrica) }}</td>
+                        
+                        <td width="1%">{{ form_label(edit_form.capacidadVaPromedio) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.capacidadVaPromedio) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.unidadVaPromedio) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.precioPromedio) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.precioPromedio) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_label(edit_form.uRack) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.uRack) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_widget(edit_form.interfacesModelos) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.usuariosAcceso) }}</td>
+                        <td width="5%">&nbsp;</td>
+                        <td width="24%">{{ form_widget(edit_form.protocolos) }}</td>
+                        <td width="24%">{{ form_widget(edit_form.tecnologias) }}</td>
+                        <td width="10%">{{ form_widget(edit_form.detallesModelo) }}</td>
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                </table>
+            <div id="grid"></div>
+            <br>
+            <div style="float: left;" id="gridUsuarios"></div>
+            <div id="gridProtocolos"></div>
+            <div style="float: left;" id="gridDetallesModelo"></div>
+            <div id="gridTecnologias"></div>
+        <div class="buttons">
+            <p>
+                <input type='submit' class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('admimodeloelemento') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+            {{ form_widget(edit_form._token) }}
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+    </script>
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

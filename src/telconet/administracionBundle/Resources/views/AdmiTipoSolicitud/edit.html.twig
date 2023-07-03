@@ -1,0 +1,118 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+  
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiTipoSolicitud/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Tipo de Solicitud</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('admitiposolicitud_update', { 'id': tiposolicitud.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario"  onsubmit="return validarFormulario();">
+        {{ form_widget(edit_form) }}
+
+        <div>
+            <label>* Proceso:</label>
+            <div id='combo_proceso' required="true"></div>
+        </div>
+
+        <div>
+            <label>* Tarea:</label>
+            <div id='combo_tarea' required="true"></div>
+        </div>
+
+        <div>
+            <label>* Item Menu:</label>
+            <div id='combo_item' required="true"></div>
+        </div>
+        <br/><br/>
+
+        <input type="hidden" name="escogido_proceso_id" id="escogido_proceso_id" value="{{ tiposolicitud.procesoId }}" />
+        <input type="hidden" name="escogido_tarea_id" id="escogido_tarea_id" value="{{ tiposolicitud.tareaId }}" />
+        <input type="hidden" name="escogido_itemmenu_id" id="escogido_itemmenu_id" value="{{ tiposolicitud.itemMenuId }}" />
+
+        <div class="buttons">
+            <p>
+                <input type='submit'class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('admitiposolicitud') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() {  
+            var proceso = "{{ tiposolicitud.procesoId }}";
+            var nombreProceso = "{{ nombreProceso }}";
+            var tarea = "{{ tiposolicitud.tareaId }}";
+            var nombreTarea = "{{ nombreTarea }}";
+            var itemmenu = "{{ tiposolicitud.itemMenuId }}";
+            var nombreItemMenu = "{{ nombreItemMenu }}";
+
+            if(proceso && proceso!="")
+            {
+                combo_procesos.setRawValue(nombreProceso);
+
+                Ext.getCmp('cmb_tarea').reset();   
+
+                storeTareas.proxy.extraParams = {id_proceso: proceso};
+                storeTareas.load({params: {}});
+            }
+
+            if(tarea && tarea!="")
+            {
+                combo_tareas.setRawValue(nombreTarea);
+            }
+
+            if(itemmenu && itemmenu!="")
+            {
+                combo_itemmenu.setRawValue(nombreItemMenu);
+            }
+        });
+    </script>	
+{% endblock javascripts_footer%}

@@ -1,0 +1,50 @@
+agencias:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:Agencias:index" }
+
+agencias_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:Agencias:show" }
+
+agencias_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:Agencias:new" }
+
+agencias_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:Agencias:create" }
+    requirements: { _method: POST }
+    
+agencias_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:Agencias:edit" }
+
+agencias_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:Agencias:update" }
+    requirements: { _method: POST }
+    
+agencias_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:Agencias:delete" }
+    
+agencias_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:Agencias:deleteAjax" }
+    requirements: { _method: post }
+
+agencias_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:Agencias:grid"}
+
+agencias_lista_formas_contacto:
+    pattern:  /listaformascontacto
+    defaults: { _controller: "administracionBundle:Agencias:formasContactoAjax"}
+
+agencias_formas_contacto_grid:
+    pattern:  /formascontactogrid
+    defaults: { _controller: "administracionBundle:Agencias:formasContactoGrid"}
+
+agencias_busca_personas_por_identificacion:
+    pattern:  /buscarPersonaPorIdentificacionAjax
+    defaults: { _controller: "administracionBundle:Agencias:buscarPersonaPorIdentificacionAjax"}

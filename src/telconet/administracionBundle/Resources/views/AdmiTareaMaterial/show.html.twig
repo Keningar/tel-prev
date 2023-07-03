@@ -1,0 +1,167 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Tarea Material</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%">Nombre Tarea:</th>
+                <td width="15%">{{ tareamaterial.tareaId.nombreTarea }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Nombre Material:</th>        
+                <td width="15%">{{ nombreMaterial }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%">Unidad Medida:</th>
+                <td width="15%">{{ tareamaterial.unidadMedidaMaterial }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Costo:</th>        
+                <td width="15%">{{ tareamaterial.costoMaterial }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%">Precio Venta:</th>
+                <td width="15%">{{ tareamaterial.precioVentaMaterial }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Cantidad:</th>        
+                <td width="15%">{{ tareamaterial.cantidadMaterial }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ tareamaterial.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="buttons">
+    <p>
+        <span class="height20px">
+			{% if tareaId %}	
+				<a class="button-crud" href="{{ path('admitarea_show',{'id' : tareaId }) }}">Regresar</a>
+			{% else %}
+				<a class="button-crud" href="{{ path('admitareamaterial') }}">Regresar</a>
+			{% endif %}	
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ tareamaterial.usrCreacion }}</td>
+
+              {% if(tareamaterial.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ tareamaterial.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(tareamaterial.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ tareamaterial.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ tareamaterial.feCreacion | date("d M Y") }}</td>
+
+              {% if(tareamaterial.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ tareamaterial.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(tareamaterial.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ tareamaterial.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ tareamaterial.feCreacion | date("H:i:s") }}</td>
+
+              {% if(tareamaterial.estado|lower=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ tareamaterial.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(tareamaterial.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ tareamaterial.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{#
+		{% if is_granted('ROLE_54-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admitareamaterial_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Tarea Material
+            </a>
+        </li>
+		{% endif %}
+		#}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_54-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admitareamaterial_edit', { 'id': tareamaterial.id }) }}">
+                &nbsp;Editar Tarea Material
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_54-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admitareamaterial_delete', { 'id': tareamaterial.id }) }}">
+                &nbsp;Eliminar Tarea Material
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div><br/><br/>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

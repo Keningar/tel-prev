@@ -1,0 +1,38 @@
+admirol:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiRol:index" }
+
+admirol_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiRol:show" }
+
+admirol_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiRol:new" }
+
+admirol_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiRol:create" }
+    requirements: { _method: POST }
+    
+admirol_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiRol:edit" }
+
+admirol_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiRol:update" }
+    requirements: { _method: POST }
+    
+admirol_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiRol:delete" }
+    
+admirol_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiRol:deleteAjax" }
+    requirements: { _method: post }
+
+admirol_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiRol:grid"}

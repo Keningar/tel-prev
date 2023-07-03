@@ -1,0 +1,156 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+
+    <script>
+        var intIdElemento                                       = "{{ medioTransporte.id }}";
+        var strUrlShowHistorialAsignacionVehicularXVehiculo     = "{{ path('asignacionoperativa_showHistorialAsignacionVehicularXVehiculo') }}";
+        var strUrlShowHistorialAsignacionProvisionalXVehiculo   = "{{ path('asignacionoperativa_showHistorialAsignacionProvisionalXVehiculo') }}";
+
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AsignacionOperativa/showAsignacionesXVehiculo.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Asignaciones Vehiculares Y Provisionales por Vehículo</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+            <table class="formulario" style="width: 75%" align="center">
+            <tbody>
+                <tr>
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>Empresa:</b></td>
+                    <td width="28%">{{ empresa }}</td>        
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <td width="10%"><b>Estado:</b></td>
+                    <td width="30%">{{ medioTransporte.estado }}</td>        
+                    <td width="1%"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>Modelo:</b></td>
+                    <td width="28%">{{ medioTransporte.modeloElementoId.nombreModeloElemento }}</td>        
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>A&ntilde;o:</b></td>
+                    <td width="28%">{{ detalles.ANIO }}</td>        
+                    <td width="1%"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    {% if detalles.CHASIS is defined %}
+                        {% if detalles.CHASIS  %}
+                            <td width="8%">&nbsp;</td>
+                            <td width="12%"><b>Chasis:</b></td>
+                            <td width="28%">{{ detalles.CHASIS }}</td>        
+                            <td width="1%">&nbsp;</td>
+                        {% else %}
+                            <td colspan="4">&nbsp;</td>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if detalles.MOTOR is defined %}
+                        {% if detalles.MOTOR  %}
+                            <td width="8%">&nbsp;</td>
+                            <td width="12%"><b>Motor:</b></td>
+                            <td width="28%">{{ detalles.MOTOR }}</td>        
+                            <td width="1%">&nbsp;</td>
+                        {% else %}
+                            <td colspan="4">&nbsp;</td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>Placa:</b></td>
+                    <td width="28%">{{ medioTransporte.nombreElemento }}</td>        
+                    <td width="1%"></td>
+
+                    <td width="8%">&nbsp;</td>
+                    <td width="12%"><b>Disco:</b></td>
+                    <td width="28%">{{ detalles.DISCO }}</td>        
+                    <td width="1%"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    {% if detalles.GPS is defined %}
+                        {% if detalles.GPS  %}
+                            <td width="8%">&nbsp;</td>
+                            <td width="12%"><b>Serie GPS:</b></td>
+                            <td width="28%">{{ detalles.GPS }}</td>        
+                            <td width="1%">&nbsp;</td>
+                        {% else %}
+                            <td colspan="4">&nbsp;</td>
+                        {% endif %}
+                    {% endif %}
+
+                    <td colspan="4">&nbsp;</td>
+                </tr>          
+            </tbody>
+            </table>
+
+
+
+            <br/>
+            <div>
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <div id='filtroAsignacionesVehiculares'></div>
+                            <br/>
+                            <div id="gridAsignacionesVehiculares"></div>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <input type="hidden" style="width: 12em !important;"/>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td valign="top">
+                            <div id='filtroAsignacionesProvisionales'></div>
+                            <br/>
+                            <div id="gridAsignacionesProvisionales"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>	
+            <br/><br/>
+
+            <div class="buttons">
+                <p>
+                    <span class="height20px">
+                        <a class="cancel-crud" href="{{ path('asignacionoperativa') }}">Regresar</a>
+                    </span>
+                </p>
+            </div>	
+
+    </div>
+{% endblock contenido %}
+
+{% block javascripts_footer%}
+
+{% endblock javascripts_footer%}	

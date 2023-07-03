@@ -1,0 +1,56 @@
+asignacionvehicularpredefinida:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:index" }
+
+asignacionvehicularpredefinida_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:grid"}
+
+asignacionvehicularpredefinida_gridChoferesPredefinidosDisponibles:
+    pattern: /gridChoferesPredefinidosDisponibles
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:gridChoferesPredefinidosDisponibles" }
+    
+asignacionvehicularpredefinida_crearAsignacionVehicularPredefinida:
+    pattern: /crearAsignacionVehicularPredefinida
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:crearAsignacionVehicularPredefinida" } 
+
+asignacionvehicularpredefinida_getDepartamentos:
+    pattern:  /getDepartamentos
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:getDepartamentos" }
+
+asignacionvehicularpredefinida_getZonas:
+    pattern:  /getZonas
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:getZonas" }
+    
+asignacionvehicularpredefinida_getTareas:
+    pattern:  /getTareas
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:getTareas" }
+    
+asignacionvehicularpredefinida_editarAsignacionVehicularPredefinida:
+    pattern: /editarAsignacionVehicularPredefinida
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:editarAsignacionVehicularPredefinida" } 
+
+asignacionvehicularpredefinida_eliminarAsignacionVehicularPredefinida:
+    pattern: /eliminarAsignacionVehicularPredefinida
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:eliminarAsignacionVehicularPredefinida" } 
+       
+asignacionvehicularpredefinida_verificarCuadrillasConAsignacionVehicularPredefinida:
+    pattern: /verificarCuadrillasConAsignacionVehicularPredefinida
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:verificarCuadrillasConAsignacionVehicularPredefinida" } 
+
+asignacionvehicularpredefinida_getMotivosAVPredefinida:
+    pattern:  /getMotivosAVPredefinida
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:getMotivosAVPredefinida" }
+    
+asignacionvehicularpredefinida_validarHorarioAsignacionPredefinida:
+    pattern:  /validarHorarioAsignacionPredefinida
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:validarHorarioAsignacionPredefinida" }
+    
+asignacionvehicularpredefinida_getHorariosAsignacionPredefinida:
+    pattern:  /getHorariosAsignacionPredefinida
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:getHorariosAsignacionPredefinida"}
+    
+asignacionvehicularpredefinida_exportPDFAsignacionPredefinida:
+    pattern:  /exportPDFAsignacionPredefinida
+    defaults: { _controller: "administracionBundle:AsignacionVehicularPredefinida:exportPDFAsignacionPredefinida"}
+    

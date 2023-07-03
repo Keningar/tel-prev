@@ -1,0 +1,118 @@
+{% extends "::layout.html.twig" %}
+{% block javascripts%}
+    {{ parent() }} 
+    <script>
+        var url_showDocumentosCaducadosPersonaEmpleado = "{{ path('personaempleado_cargarArchivosCaducados', { 'id': empleado.id }) }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/PersonaEmpleado/show.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Empleado</h1>
+</div>									 								 
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombre Filial:</th>
+                <td width="15%">{{ empleado.empresaRolId.empresaCod.nombreEmpresa }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombres Empleado:</th>
+                <td width="15%">{{ empleado.personaId.nombres }} {{ empleado.personaId.apellidos }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Tipo Identificacion:</th>
+                <td width="15%">
+                    {% if empleado.personaId.tipoIdentificacion == "CED" %}
+                        C&eacute;dula
+                    {% else %}
+                        {{ empleado.personaId.tipoIdentificacion }}
+                    {% endif %}
+                </td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Identificacion:</th>
+                <td width="15%">{{ empleado.personaId.identificacionCliente }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nacionalidad:</th>
+                <td width="15%">
+                    {% if empleado.personaId.nacionalidad == "EXT" %}
+                        Extranjera
+                    {% elseif empleado.personaId.nacionalidad == "NAC" %}
+                        NACIONAL
+                    {% else %}
+                        {{ empleado.personaId.nacionalidad }}
+                    {% endif %}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Direccion:</th>
+                <td width="15%">{{ empleado.personaId.direccion }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ empleado.personaId.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('personaempleado') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" 
+                                               align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ empleado.personaId.usrCreacion }}</td>
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ empleado.personaId.feCreacion | date("d M Y") }}</td>
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ empleado.personaId.feCreacion | date("H:i:s") }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+        {% if is_granted('ROLE_171-3998') or is_granted('ROLE_171-3999') %}
+            <li>		
+                <a class="button-editar" href="{{ path('personaempleado_newArchivoDigital', { 'id': empleado.id }) }}">
+                    &nbsp;Agregar/Eliminar Archivos Digitales
+                </a>		
+            </li>
+        {% endif %}
+    </ul>
+{% endblock contenido_der %}

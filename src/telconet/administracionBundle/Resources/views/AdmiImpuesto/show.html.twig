@@ -1,0 +1,152 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Impuesto</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Descripcion Impuesto:</th>
+                <td width="15%">{{ impuesto.descripcionImpuesto }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Codigo SRI:</th>
+                <td width="15%">{{ impuesto.codigoSri }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Porcentaje Impuesto:</th>
+                <td width="15%">{{ impuesto.porcentajeImpuesto }} %</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Fecha Vigencia Impuesto:</th>
+                <td width="15%">{{ impuesto.fechaVigenciaImpuesto | date("d M Y") }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Tipo Impuesto:</th>
+                <td width="15%">{{ impuesto.tipoImpuesto }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Cuenta Contable:</th>
+                <td width="15%">{{ impuesto.cuentaContable }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ impuesto.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admiimpuesto') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ impuesto.usrCreacion }}</td>
+
+              {% if(impuesto.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ impuesto.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(impuesto.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ impuesto.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ impuesto.feCreacion | date("d M Y") }}</td>
+
+              {% if(impuesto.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ impuesto.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(impuesto.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ impuesto.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ impuesto.feCreacion | date("H:i:s") }}</td>
+
+              {% if(impuesto.estado|lower=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ impuesto.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(impuesto.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ impuesto.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_44-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admiimpuesto_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Impuesto
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_44-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admiimpuesto_edit', { 'id': impuesto.id }) }}">
+                &nbsp;Editar Impuesto
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_44-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admiimpuesto_delete', { 'id': impuesto.id }) }}">
+                &nbsp;Eliminar Impuesto
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

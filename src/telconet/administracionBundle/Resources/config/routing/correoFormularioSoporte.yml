@@ -1,0 +1,16 @@
+correoFormularioSoporte:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:CorreoFormularioSoporte:index" }
+
+correoFormularioSoporte_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:CorreoFormularioSoporte:grid"}
+
+correoFormularioSoporte_gridCorreo:
+    pattern:  /gridCorreo
+    defaults: { _controller: "administracionBundle:CorreoFormularioSoporte:gridCorreo"}
+
+registrarCorreo:
+    pattern:  /registrarCorreo
+    defaults: { _controller: "administracionBundle:CorreoFormularioSoporte:registrarCorreo"}
+    requirements: { _method: POST }

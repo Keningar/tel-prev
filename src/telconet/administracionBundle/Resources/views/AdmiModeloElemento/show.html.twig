@@ -1,0 +1,296 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiModeloElemento/show.js') }}"></script>
+{% endblock %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Ver Modelo</h1>
+</div>
+
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="10%">&nbsp;</td>
+                <th width="25%"> Marca:</th>
+                <td width="15%">{{ modeloelemento.marcaElementoId }}</td>        
+                <td width="1%"></td>
+
+                <td width="9%">&nbsp;</td>
+                <th width="25%">Tipo Modelo:</th>        
+                <td style="width:15%" id="tipoElemento">{{ modeloelemento.tipoElementoId }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Nombre Modelo:</th>
+                <td style="width:15%" id="modeloElemento">{{ modeloelemento.nombreModeloElemento }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Descripci&oacute;n Marca</th>        
+                <td width="15%">{{ modeloelemento.descripcionModeloElemento }}</td>
+                <td width="1%"></td>
+            </tr>
+             <tr id="opcionesCamara">
+                <td style="width:8%">&nbsp;</td>
+                <th style="width:25%">Tipo Camara:</th>
+                <td style="width:15%" id="tipoCamara"></td>        
+                <td style="width:1%"></td>
+
+                <td style="width:8%">&nbsp;</td>
+                <th style="width:25%">Resolucion Camara:</th>        
+                <td style="width:15%" id="resolucionCamara"></td>
+                <td style="width:1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">MTTR</th>
+                <td width="15%">{{ modeloelemento.mttr }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida MTTR</th>        
+                <td width="15%">{{ modeloelemento.unidadMedidaMttr }}</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">MTBF</th>                    
+                <td width="15%">{{ modeloelemento.mtbf }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida MTBF</th>                    
+                <td width="15%">{{ modeloelemento.unidadMedidaMtbf }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Ancho Modelo</th>                    
+                <td width="15%">{{ modeloelemento.anchoModelo }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida Ancho</th>                    
+                <td width="15%">{{ modeloelemento.unidadMedidaAncho }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Alto Modelo</th>                    
+                <td width="15%">{{ modeloelemento.altoModelo }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida Alto</th>                    
+                <td width="15%">{{ modeloelemento.unidadMedidaAlto }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Largo Modelo</th>                    
+                <td width="15%">{{ modeloelemento.largoModelo }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida Largo</th>                    
+                <td width="15%">{{ modeloelemento.unidadMedidaLargo }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Peso Modelo</th>                    
+                <td width="15%">{{ modeloelemento.pesoModelo }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida Peso</th>                    
+                <td width="15%">{{ modeloelemento.unidadMedidaPeso }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Capacidad Entrada</th>                    
+                <td width="15%">{{ modeloelemento.capacidadEntrada }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida Entrada</th>                    
+                <td width="15%">{{ modeloelemento.unidadMedidaEntrada }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Capacidad Salida</th>                    
+                <td width="15%">{{ modeloelemento.capacidadSalida }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida Salida</th>                    
+                <td width="15%">{{ modeloelemento.unidadMedidaSalida }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Capacidad VA Fabrica</th>                    
+                <td width="15%">{{ modeloelemento.capacidadVaFabrica }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida VA Fabrica</th>                    
+                <td width="15%">{{ modeloelemento.unidadVaFabrica }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Capacidad VA Promedio</th>                    
+                <td width="15%">{{ modeloelemento.capacidadVaPromedio }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidad Medida VA Promedio</th>                    
+                <td width="15%">{{ modeloelemento.unidadVaPromedio }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Precio Promedio</th>                    
+                <td width="15%">{{ modeloelemento.precioPromedio }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Unidades Rack</th>                    
+                <td width="15%">{{ modeloelemento.uRack }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%">Estado</th>                             
+                <td width="15%">{{ modeloelemento.estado }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"></th>        
+                <td width="15%"></td>
+                <td width="1%"></td>
+            </tr>
+
+        </tbody>
+    </table>
+        <br>
+        <div  id="grid"></div>
+        <br>
+        <div style="float: left;" id="gridUsuarios"></div>
+        <div id="gridProtocolos"></div>
+        <div style="clear: both"></div>
+        <div style="float: left;" id="gridDetallesModelo"></div>
+        <div id="gridTecnologias"></div>
+        <div style="clear: both"></div>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admimodeloelemento') }}">
+                    Regresar
+            </a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ modeloelemento.usrCreacion }}</td>
+
+              {% if(modeloelemento.estado=="Modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ modeloelemento.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(modeloelemento.estado=="Eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ modeloelemento.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ modeloelemento.feCreacion | date("d M Y") }}</td>
+
+              {% if(modeloelemento.estado=="Modificado") %}
+              <th>Fecha:</th>
+              <td >{{ modeloelemento.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(modeloelemento.estado=="Eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ modeloelemento.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ modeloelemento.feCreacion | date("H:i:s") }}</td>
+
+              {% if(modeloelemento.estado=="Modificado") %}
+              <th>Hora:</th>
+              <td>{{ modeloelemento.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(modeloelemento.estado=="Eliminado") %}
+              <th>Hora:</th>
+              <td>{{ modeloelemento.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock contenido_izq %}
+{% block contenido_der %}
+    <ul class="form_actions">
+		{% if is_granted('ROLE_119-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admimodeloelemento_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Modelo
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_119-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admimodeloelemento_edit', { 'id': modeloelemento.id }) }}">
+                
+                &nbsp;Editar Modelo 
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_119-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admimodeloelemento_delete', { 'id': modeloelemento.id }) }}">
+                
+                &nbsp;Eliminar Modelo
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+

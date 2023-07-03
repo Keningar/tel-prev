@@ -1,0 +1,58 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('./bundles/administracion/css/AsignacionVehicularPredefinida.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strUrlGridAsignacionVehicularPredefinida            = "{{ path('asignacionvehicularpredefinida_grid') }}";
+        var strUrlGetModelosMediosTransporte                    = "{{ path('elementotransporte_getModelosMedioTransporte') }}";
+        var strUrlGetHorariosAsignacionVehicularPredefinida     = "{{ path('asignacionvehicularpredefinida_getHorariosAsignacionPredefinida') }}";
+        var strUrlValidarHorarioAsignacionPredefinida           = "{{ path('asignacionvehicularpredefinida_validarHorarioAsignacionPredefinida') }}";
+        var strUrlCrearAsignacionVehicularPredefinida           = "{{ path('asignacionvehicularpredefinida_crearAsignacionVehicularPredefinida') }}";
+        var strUrlGetChoferesPredefinidosDisponibles            = "{{ path('asignacionvehicularpredefinida_gridChoferesPredefinidosDisponibles') }}";
+        var strUrlZonasAsignacionVehicularPredefinida           = "{{ path('asignacionvehicularpredefinida_getZonas') }}";
+        var strUrlTareasAsignacionVehicularPredefinida          = "{{ path('asignacionvehicularpredefinida_getTareas') }}";
+        var strUrlDepartamentosAsignacionVehicularPredefinida   = "{{ path('asignacionvehicularpredefinida_getDepartamentos') }}";
+        var strUrlEliminarAsignacionVehicularPredefinida        = "{{ path('asignacionvehicularpredefinida_eliminarAsignacionVehicularPredefinida') }}";
+        var strUrlEditarAsignacionVehicularPredefinida          = "{{ path('asignacionvehicularpredefinida_editarAsignacionVehicularPredefinida') }}";
+        
+    
+        var strUrlVerificarCuadrillasConAsignacionVehicularPredefinida  = 
+            "{{ path('asignacionvehicularpredefinida_verificarCuadrillasConAsignacionVehicularPredefinida') }}";
+        var strUrlMotivosAVPredefinida                       = "{{ path('asignacionvehicularpredefinida_getMotivosAVPredefinida') }}";
+        
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AsignacionVehicularPredefinida/index.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AsignacionVehicularPredefinida/funcionesGenerales.js') }}"></script>
+{% endblock %}
+
+{% block contenido %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Asignaci&oacute;n Vehicular Predefinida</h1>
+</div>
+<div class="body_content k-content">
+    <form id="formAsignacionesPredefinidas" name="formAsignacionesPredefinidas" 
+          action="{{ path('asignacionvehicularpredefinida_exportPDFAsignacionPredefinida') }}">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtro'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="grid"></div></td>
+            </tr>
+        </table>
+        <input type="hidden" id="idModeloMedioTransporte" name="idModeloMedioTransporte" value=""/>
+        <input type="hidden" id="idHorarioPredefinido" name="idHorarioPredefinido" value=""/>
+    </form>    
+    <br/><br/>
+</div>
+{% endblock contenido %}
+
+{% block contenido_der %}
+
+{% endblock contenido_der %}

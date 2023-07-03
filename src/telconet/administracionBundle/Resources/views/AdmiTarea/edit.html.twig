@@ -1,0 +1,158 @@
+{% extends "::layout.html.twig" %}
+
+
+{% block javascripts%}
+	{{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiTarea/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Tarea</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' action="{{ path('admitarea_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" onsubmit="return validarFormulario();">
+        <table width="100%" border="0" class="box-section-content">
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.rolAutorizaId) }}</td>
+				<td colspan="4">{{ form_widget(edit_form.rolAutorizaId) }}</td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">* Proceso:</td>
+				<td colspan="4"><div id='combo_proceso' required="true"></div></td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">Tarea Anterior:</td>
+				<td colspan="4"><div id='combo_tarea_ant' required="true"></div></td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">Tarea Siguiente:</td>
+				<td colspan="4"><div id='combo_tarea_sig' required="true"></div></td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.nombreTarea) }}</td>
+				<td colspan="4">{{ form_widget(edit_form.nombreTarea) }}</td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.descripcionTarea) }}</td>
+				<td colspan="4">{{ form_widget(edit_form.descripcionTarea) }}</td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.peso) }}</td>
+				<td width="10%">{{ form_widget(edit_form.peso) }}</td>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.esAprobada) }}</td>
+				<td width="10%">{{ form_widget(edit_form.esAprobada) }}</td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.tiempoMax) }}</td>
+				<td width="10%">{{ form_widget(edit_form.tiempoMax) }}</td>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.unidadMedidaTiempo) }}</td>
+				<td width="10%">{{ form_widget(edit_form.unidadMedidaTiempo) }}</td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.costo) }}</td>
+				<td width="10%">{{ form_widget(edit_form.costo) }}</td>
+				<td width="5%">&nbsp;</td>
+				<td width="24%">{{ form_label(edit_form.precioPromedio) }}</td>
+				<td width="10%">{{ form_widget(edit_form.precioPromedio) }}</td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td width="24%"></td>
+				<td colspan="4">{{ form_widget(edit_form.tareasInterfacesModelosTramos) }}</td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td colspan="5"><br/></td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="5%">&nbsp;</td>
+				<td colspan="5"><div id="grid"></div></td>
+				<td width="5%">&nbsp;</td>
+			</tr>
+		</table> 		
+			
+		<input type="hidden" name="escogido_proceso_id" id="escogido_proceso_id" value="{% if entity.procesoId %}{{ entity.procesoId.id }}{% else %}0{% endif %}" />
+		<input type="hidden" name="escogido_tarea_ant_id" id="escogido_tarea_ant_id" value="{% if entity.tareaAnteriorId %}{{ entity.tareaAnteriorId.id }}{% else %}0{% endif %}" />
+		<input type="hidden" name="escogido_tarea_sig_id" id="escogido_tarea_sig_id" value="{% if entity.tareaSiguienteId %}{{ entity.tareaSiguienteId.id }}{% else %}0{% endif %}" />
+			
+        <div class="buttons">
+            <p>
+                <input type='submit' class="button-crud" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" href="{{ path('admitarea') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+		{{ form_widget(edit_form._token) }}
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+    <script>
+        Ext.onReady(function() { 
+            var nombreProceso = "{% if entity.procesoId %}{{ entity.procesoId.nombreProceso }}{% else %}{% endif %}";
+            var valIdProceso = "{% if entity.procesoId %}{{ entity.procesoId.id }}{% else %}{% endif %}"; 
+			
+            var nombreTareaAnterior = "{% if entity.tareaAnteriorId %}{{ entity.tareaAnteriorId.nombreTarea }}{% else %}{% endif %}";
+            var valIdTareaAnterior = "{% if entity.tareaAnteriorId %}{{ entity.tareaAnteriorId.id }}{% else %}{% endif %}";
+			
+            var nombreTareaSiguiente = "{% if entity.tareaSiguienteId %}{{ entity.tareaSiguienteId.nombreTarea }}{% else %}{% endif %}";
+            var valIdTareaSiguiente = "{% if entity.tareaSiguienteId %}{{ entity.tareaSiguienteId.id }}{% else %}{% endif %}";
+			
+            var valIdTareaActual = "{{ entity.id }}";
+			
+			storeProcesos.load();
+            combo_procesos.setRawValue(nombreProceso);		
+			
+			storeTareasAnt.proxy.extraParams = {idTareaActual: valIdTareaActual};
+			storeTareasAnt.load();
+            combo_tareas_ant.setRawValue(nombreTareaAnterior);
+			
+			storeTareasSig.proxy.extraParams = {idTareaActual: valIdTareaActual};
+			storeTareasSig.load();
+            combo_tareas_sig.setRawValue(nombreTareaSiguiente);
+        });
+    </script>		
+{% endblock javascripts_footer%}

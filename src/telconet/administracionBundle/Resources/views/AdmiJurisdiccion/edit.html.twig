@@ -1,0 +1,52 @@
+{% extends "::layout.html.twig" %}
+
+
+
+{% block javascripts%}
+	{{ parent() }}
+	
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiJurisdiccion/edit.js?1') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar Jurisdiccion</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_jurisdiccion' action="{{ path('admijurisdiccion_update', { 'id': jurisdiccion.id }) }}" method="post" {{ form_enctype(edit_form) }} class="formulario" onsubmit="return validarFormulario();">
+        {{ form_widget(edit_form) }}
+            <div id="grid"></div>
+            <input type="hidden" name="relaciones" id="relaciones" value="" />
+        <div class="buttons">
+            <p>
+                <button type="submit" class="button-crud">Editar</button>
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="button-crud" href="{{ path('admijurisdiccion') }}">
+                        cancelar
+                    </a>
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+<script>
+    </script>
+{% endblock javascripts_footer%}
+
+{% block contenido_der %}
+    <ul class="form_actions">
+        <li>
+            
+        </li>
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}

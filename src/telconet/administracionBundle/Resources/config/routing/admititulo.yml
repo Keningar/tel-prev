@@ -1,0 +1,42 @@
+admititulo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTitulo:index" }
+
+admititulo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTitulo:show" }
+
+admititulo_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTitulo:new" }
+
+admititulo_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTitulo:create" }
+    requirements: { _method: POST }
+    
+admititulo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTitulo:edit" }
+
+admititulo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTitulo:update" }
+    requirements: { _method: POST }
+    
+admititulo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTitulo:delete" }
+    
+admititulo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTitulo:deleteAjax" }
+    requirements: { _method: post }
+
+admititulo_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTitulo:grid"}
+
+admititulo_getAdmiTitulo:
+    pattern:  /getAdmiTitulo
+    defaults: { _controller: "administracionBundle:AdmiTitulo:getAdmiTitulo" }

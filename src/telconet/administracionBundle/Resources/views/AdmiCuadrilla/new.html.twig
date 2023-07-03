@@ -1,0 +1,140 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        } 
+    </style>
+    <style>
+        #turnoInicio > div {
+            display: inline-block !important;
+            margin-right: 15px !important;
+        }
+        
+        #turnoFin > div {
+            display: inline-block !important;
+            margin-right: 15px !important;
+        }
+    </style>
+    <link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var strCargo                    = '{{ strCargo }}';
+        var strNombreArea               = '{{ strNombreArea }}';
+        var strUrlEliminar              = "{{ path('admicuadrilla_delete') }}";
+        var strUrlGetCargos             = "{{ path('jefes_getCargos') }}";
+        var strUrlCambioJefe            = '{{ path('jefes_cambioJefe') }}';
+        var intIdJefeSeleccionado       = "{{ intIdJefeSeleccionado }}";
+        var strUrlEmpleadosDepartamento = '{{ path('jefes_getEmpleados') }}';
+        var urlDiasSemana               = "{{ path('admicuadrilla_ajaxGetDiasSemana') }}";
+        var boolDepConfigHE             = "{{ boolDepConfigHE }}";
+    </script>
+{% endblock %}
+
+{% block contenido %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Cuadrilla</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' action="{{ path('admicuadrilla_create') }}" method="post" {{ form_enctype(form) }} class='formulario'
+              onsubmit="return validarFormulario();" >
+            {{ form_row(form.nombreCuadrilla) }}
+            <div>
+                <label class="required" for="tipoCuadrilla">* Tipo:</label>
+                <input type="radio" name="tipoCuadrilla" value="zona" checked="checked" /> Zona
+                <input type="radio" name="tipoCuadrilla" value="tarea" /> Tarea
+            </div>
+            <div id="campozona">
+                {{ form_row(form.zonaId) }}
+            </div>
+            <div id="campotarea" style="display: none">
+                {{ form_row(form.tareaId) }}
+            </div>
+            
+            {{ form_widget(form) }}
+            {% if boolDepConfigHE == true %}
+                <div style="display:block">
+                <div id="divComboDiaSemana" style="display:inline-block;width:50px;"></div>
+                </div>
+                <div style="display:block">
+                    <div id="divFechaInicio" style="display:inline-block;" ></div>
+                    <div style="display:inline-block;width:50px;" ></div>
+                    <div id="divFechaFin" style="display:inline-block;" ></div>
+                </div>
+            {% endif %}
+            
+            {{ form_widget(form) }}
+            <div style="display:block">
+                <div id="divHoraInicioTurno" style="display:inline-block;" ></div>
+                <div style="display:inline-block;width:50px;" ></div>
+                <div id="divHoraFinTurno" style="display:inline-block;" ></div>
+            </div>
+            <input type="hidden" id="fechaInicioTurnoCuadrilla" name="fechaInicioTurnoCuadrilla" value=""/>
+            <input type="hidden" id="fechaFinTurnoCuadrilla" name="fechaFinTurnoCuadrilla" value=""/>
+            <input type="hidden" id="horaInicioTurnoCuadrilla" name="horaInicioTurnoCuadrilla" value=""/>
+            <input type="hidden" id="horaFinTurnoCuadrilla" name="horaFinTurnoCuadrilla" value=""/>
+            <input type="hidden" id="diasSemana" name="diasSemana[]" value="">;
+            <br/>
+            <div>
+                <table>
+                    <tr>
+                        <td valign="top">
+                            <div id='filtroEmpleadosDepartamento'></div>
+                            <br/>
+                            <div id="gridEmpleadosDepartamento"></div>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td>
+                            <input name="btn1" type="button" value="Agregar" class="button-crud" id="agregar" 
+                                   onClick="agregarEmpleadoCuadrilla();" style="width: 12em !important;"/>
+                        </td>
+                        <td>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </td>
+                        <td valign="top">
+                            <div id='filtroEmpleadosAsignados'></div>
+                            <br/>
+                            <div id="gridEmpleadosAsignaciones"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>	
+            <br/><br/>
+            <input type="hidden" name="empleados_integrantes" id="empleados_integrantes" value="" />	
+            <div class="buttons">
+                <p>
+                    <input type='submit' class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        <a class="cancel-crud" href="{{ path('admicuadrilla') }}">Cancelar</a>
+                    </span>
+                </p>
+            </div>	
+        </form>
+    </div>
+{% endblock contenido %}
+
+{% block javascripts_footer%}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCuadrilla/new.js?4') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCuadrilla/funcionesGenerales.js') }}"></script>		
+{% endblock javascripts_footer%}	

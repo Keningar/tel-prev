@@ -1,0 +1,72 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+    .x-grid-row-news
+    {
+        color:green;
+    }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script>
+        var idPlantilla         = '{{ plantilla.id }}';
+        var aliasGestionados    = '';
+        var urlUpdate           = '{{path('admiplantilla_update')}}';
+        var urlGridAlias        = '{{path('admialias_grid')}}';
+        var urlGetPlantillaAlias= '{{path('admiplantilla_getPlantillaAlias')}}';
+    </script>   
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiPlantilla/edit.js?3') }}"></script>    
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiPlantilla/escogerAliasesEdit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Plantilla Notificacion</h1>
+</div>
+
+<div class="body_content">
+    <form id='form_edit_proceso' class="formulario" {{ form_enctype(form) }}>
+        
+        {{ form_widget(form) }}
+        
+         <table>
+		<tr>
+		    <td><div id='plantilla_mail' ></div></d>
+		</tr>
+		<br />
+		<tr>		    
+		    <td colspan="5">
+			<div id="aliases"></div>			
+		    </td>
+		</tr>			
+            </table>  
+            <input type = 'hidden' id='plantilla_hd' value='{{plantilla.plantilla}}' /> 
+            <input type = 'hidden' id='id_plantilla_hd' value='{{plantilla.id}}' /> 
+        <div class="buttons">
+            <p>
+                <input  class="button-crud" value="Guardar" onclick = "guardar({{banderaEcucert}},'{{path('casosEcucert')}}');"/>
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    {% if banderaEcucert == 1 %}
+                        <a class="cancel-crud" href="{{ path('casosEcucert') }}">Cancelar</a>
+                    {% else %}
+                        <a class="cancel-crud" href="{{ path('admiplantilla') }}">Cancelar</a>
+                    {% endif %}
+                </span>
+            </p>
+        </div>
+    </form>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <div class="titulo-acciones-relacionadas">
+            Acciones Relacionadas
+    </div>
+
+{% endblock contenido_der %}
+

@@ -1,0 +1,149 @@
+{% extends "::layout_completo.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style scoped="scoped">
+        .category-label
+        {
+            vertical-align: middle;
+            padding-right: .5em;
+        }
+        #category
+        {
+            vertical-align: middle;
+        }
+        .toolbar {
+            float: right;
+            margin-right: .8em;
+        }
+        .icon_search {
+            background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+        }
+        .icon_limpiar {
+            background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+        } 
+        .icon_add {
+            background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+        } 
+        .icon_delete {
+            background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+        }                 
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('bundles/administracion/js/ArchivoConsumo/index.js') }}"></script>
+    <script>
+        var strUrlGridConsumoCloud = "{{ path('archivo_consumo_grid') }}";
+        var strUrlGetEstadosConsumoCloud = "{{ path('archivo_consumo_get_estados') }}";
+        var strUrlGetLoginsConsumoCloud = "{{ path('archivo_consumo_get_logins') }}";
+        var strUrlGetMesesConsumoCloud = "{{ path('archivo_consumo_get_meses') }}";
+        var strUrlAnulaConsumos = "{{ path('archivo_consumo_anula_consumos') }}";
+        var intArchivos = 0;
+    </script>         
+{% endblock %}
+
+
+{% block contenido_central %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    {% for flashMessageSubida in app.session.flashbag.get('subida') %}
+        <div class="successmessage">
+            {{flashMessageSubida}}
+        </div>
+    {% endfor %}
+
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Ingreso Archivos de Consumo</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+
+        {% if error is defined %}
+            <div class='errormessage'>{{ error }}</div>
+        {% endif %}
+
+        <form name='form_consumo' action="{{ path('archivo_consumo_subir_archivo') }}" method="post" enctype="multipart/form-data" >
+            <table  width="100%" border="0" class="box-section-content">
+                <tr>
+                    <td width="5%">&nbsp;</td>			    
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>	
+                    <td colspan="3">
+                        <div class='infomessage' id="msg2" style="width:400px;float:left;">Se recuerda que sólo se aceptan archivos con extensión CSV</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%"><label for="file_consumo[0]">Archivo a Cargar(*): </label></td>
+                    <td><input id="file_consumo[0]" name="file_consumo[0]" accept='.csv' type="file" required="true">
+                        <b><a href="#" id="agregar_archivo">Agregar archivo</a></b>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td id="listaArchivos">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td><label for="fechaConsumo">Fecha de consumo (*)</label></td>
+                    <td><input id="fechaConsumo" name="feConsumo" type="date" format="DD/MM/YYYY" required="required"> </td>	
+                    <td width="5%">&nbsp;</td>
+
+                    <td width="5%">&nbsp;</td>
+                </tr>
+
+            </table>
+
+            <div class="buttons">
+                <p>
+                    <input type="submit" class="button-crud" value="Guardar"  onclick="guardar();"/>
+                    <input type="button" class="button-crud" value="Cancelar" onclick="cancelar();"/>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <div class="dashboard_content k-content">
+        <div id="example" class="k-content">
+            <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='filtroDocumentosFinancieros'></div>
+                    </td>
+                </tr>	
+                <tr bgcolor='#ffffff'>
+                    <td bgcolor='#ffffff'>
+                        <div id='gridDocumentosFinancieros'></div>
+                    </td>
+                </tr>
+            </table>      
+        </div>
+    </div>
+{% endblock contenido_central %}

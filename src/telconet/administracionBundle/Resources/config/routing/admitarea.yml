@@ -1,0 +1,94 @@
+admitarea:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTarea:index" }
+
+admitarea_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTarea:show" }
+
+admitarea_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTarea:new" }
+
+admitarea_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTarea:create" }
+    requirements: { _method: POST }
+    
+admitarea_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTarea:edit" }
+
+admitarea_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTarea:update" }
+    requirements: { _method: POST }
+    
+admitarea_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTarea:delete" }
+    
+admitarea_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTarea:deleteAjax" }
+    requirements: { _method: post }
+
+admitarea_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTarea:grid"}
+    
+admitarea_getProcesos:
+    pattern:  /getProcesos
+    defaults: { _controller: "administracionBundle:AdmiTarea:getProcesos"}
+    
+admitarea_getTareas:
+    pattern:  /getTareas
+    defaults: { _controller: "administracionBundle:AdmiTarea:getTareas"}
+    
+admitarea_getJsonPorOpcion:
+    pattern:  /getJsonPorOpcion
+    defaults: { _controller: "administracionBundle:AdmiTarea:getJsonPorOpcion"}
+    
+admitarea_getDatosTareaInterfaceModeloTramo:
+    pattern:  /{id}/getDatosTareaInterfaceModeloTramo
+    defaults: { _controller: "administracionBundle:AdmiTarea:getDatosTareaInterfaceModeloTramo"}
+
+admitarea_getEmpresaIndisponibilidad:
+    pattern:  /getEmpresaIndisponibilidad
+    defaults: { _controller: "administracionBundle:AdmiTarea:getEmpresaIndisponibilidad"}
+
+admitarea_getElementosPorTipo:
+    pattern:  /getElementosPorTipo
+    defaults: { _controller: "administracionBundle:AdmiTarea:getElementosPorTipo"}
+
+admitarea_getInterfacesPorElemento:
+    pattern:  /getInterfacesPorElemento
+    defaults: { _controller: "administracionBundle:AdmiTarea:getInterfacesPorElemento"}
+
+admitarea_getElementosContenedoresPorPuerto:
+    pattern:  /getElementosContenedoresPorPuerto
+    defaults: { _controller: "administracionBundle:AdmiTarea:getElementosContenedoresPorPuerto"}
+
+admitarea_getElementosConectorPorElementoContenedor:
+    pattern:  /getElementosConectorPorElementoContenedor
+    defaults: { _controller: "administracionBundle:AdmiTarea:getElementosConectorPorElementoContenedor"}
+
+admitarea_getTiempoAfectacionIndisponibilidadTarea:
+    pattern:  /getTiempoAfectacionIndisponibilidadTarea
+    defaults: { _controller: "administracionBundle:AdmiTarea:getTiempoAfectacionIndisponibilidadTarea"}
+
+admitarea_verificarRolTap:
+    pattern:  /verificarRolTap
+    defaults: { _controller: "administracionBundle:AdmiTarea:verificarRolTap"}
+
+admitarea_getClientesAfectados:
+    pattern:  /getClientesAfectados
+    defaults: { _controller: "administracionBundle:AdmiTarea:getClientesAfectados"}
+
+admitarea_getTiempoAfectacionIndisponibilidadCaso:
+    pattern:  /getTiempoAfectacionIndisponibilidadCaso
+    defaults: { _controller: "administracionBundle:AdmiTarea:getTiempoAfectacionIndisponibilidadCaso"}
+
+admitarea_getArbolHipotesis:
+    pattern:  /getArbolHipotesis
+    defaults: { _controller: "administracionBundle:AdmiTarea:getArbolHipotesis"}

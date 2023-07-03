@@ -1,0 +1,33 @@
+infoelementocontrasena:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:InfoElementoContrasena:index" }
+
+infoelementocontrasena_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:InfoElementoContrasena:getEncontrados }
+    
+infoelementocontrasena_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:InfoElementoContrasena:show" }
+
+infoelementocontrasena_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:InfoElementoContrasena:new" }
+
+infoelementocontrasena_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:InfoElementoContrasena:create" }
+    requirements: { _method: POST }
+    
+infoelementocontrasena_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:InfoElementoContrasena:deleteAjax" }
+    requirements: { _method: post }
+    
+infoelementocontrasena_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:InfoElementoContrasena:delete" }
+    
+infoelementocontrasena_verContrasenaEncriptada:
+    pattern:  /verContrasenaEncriptada
+    defaults: { _controller: administracionBundle:InfoElementoContrasena:verContrasenaEncriptada }

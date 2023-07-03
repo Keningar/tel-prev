@@ -1,0 +1,66 @@
+admisector:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiSector:index" }
+
+admisector_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiSector:show" }
+
+admisector_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiSector:new" }
+
+admisector_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiSector:create" }
+    requirements: { _method: POST }
+    
+admisector_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiSector:edit" }
+
+admisector_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiSector:update" }
+    requirements: { _method: POST }
+    
+admisector_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiSector:delete" }
+    
+admisector_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiSector:deleteAjax" }
+    requirements: { _method: post }
+
+admisector_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiSector:grid"}
+    
+admisector_buscarSectores:
+    pattern:  /buscarSectores
+    defaults: { _controller: administracionBundle:AdmiSector:buscarSectores }
+    
+admisector_getPaises:
+    pattern:  /getPaises
+    defaults: { _controller: administracionBundle:AdmiSector:getPaises }
+    
+admisector_getRegiones:
+    pattern:  /getRegiones
+    defaults: { _controller: administracionBundle:AdmiSector:getRegiones }
+    
+admisector_getProvincias:
+    pattern:  /getProvincias
+    defaults: { _controller: administracionBundle:AdmiSector:getProvincias }
+    
+admisector_getCantones:
+    pattern:  /getCantones
+    defaults: { _controller: administracionBundle:AdmiSector:getCantones }
+    
+admisector_getTiposParroquia:
+    pattern:  /getTiposParroquia
+    defaults: { _controller: administracionBundle:AdmiSector:getTiposParroquia }
+    
+admisector_getParroquias:
+    pattern:  /getParroquias
+    defaults: { _controller: administracionBundle:AdmiSector:getParroquias }

@@ -1,0 +1,8 @@
+descifrar:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:ProteccionDatosDesCifrar:index" }
+
+descifrar_cliente_ajax:
+  pattern:  /descifrarCliente
+  defaults: { _controller: "administracionBundle:ProteccionDatosDesCifrar:descifrarCliente" }
+  requirements: { _method: post }

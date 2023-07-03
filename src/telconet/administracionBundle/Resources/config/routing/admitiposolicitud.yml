@@ -1,0 +1,58 @@
+admitiposolicitud:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:index" }
+
+admitiposolicitud_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:show" }
+
+admitiposolicitud_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:new" }
+
+admitiposolicitud_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:create" }
+    requirements: { _method: POST }
+    
+admitiposolicitud_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:edit" }
+
+admitiposolicitud_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:update" }
+    requirements: { _method: POST }
+    
+admitiposolicitud_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:delete" }
+    
+admitiposolicitud_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:deleteAjax" }
+    requirements: { _method: post }
+
+admitiposolicitud_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:grid"}
+    
+admitiposolicitud_getListadoProcesos:
+    pattern:  /getListadoProcesos
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:getListadoProcesos"} 
+
+admitiposolicitud_getListadoTareas:
+    pattern:  /getListadoTareas
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:getListadoTareas"}
+
+admitiposolicitud_getListadoItemsMenu:
+    pattern:  /getListadoItemsMenu
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:getListadoItemsMenu"}
+
+admitiposolicitud_getTipoSolicitudJson:
+    pattern:  /getTipoSolicitudJson
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:getTipoSolicitudJson"}
+
+admitiposolicitud_getEstdsTipoSolJson:
+    pattern:  /getEstdsTipoSolJson
+    defaults: { _controller: "administracionBundle:AdmiTipoSolicitud:getEstadosTipoSolicitudesJson"}

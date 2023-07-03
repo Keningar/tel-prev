@@ -1,0 +1,63 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiPlantilla/new.js?2') }}"></script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiPlantilla/general.js') }}"></script>
+     <script>
+        var numArchivosSubidos              = 0;
+        var url_documentosCaso              = "{{path('infocaso_getDocumentosCaso_ecucert') }}";
+        var array_alias                     = JSON.parse('{{ alias | json_encode | raw }}');
+        var str_banderaEcucert              = "{{banderaEcucert}}"
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Plantilla</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <form id='form_new_proceso' {{ form_enctype(form) }} class='formulario'>
+           
+           {{ form_widget(form) }}
+            <table>
+		<tr>
+		    <td><div id='plantilla_mail' ></div></d>
+		</tr>
+		<br />
+		<tr>		    
+		    <td colspan="5">
+                <div id="aliases">      
+                </div>			
+		    </td>
+		</tr>			
+            </table>             
+            <input type="hidden" id="aliases" name="aliases" value="" />            
+            {% if banderaEcucert == 1 and plantillaBase is not null %}
+                <input type = 'hidden' id='plantilla_hd' 
+                value='{{ plantillaBase.valor1 |replace({'strNombreCategoria': nombreCategoria, 'strCorreo': correo, 'strEmpresa': empresa}) }}' /> 
+            {% else %}
+                <input type = 'hidden' id='plantilla_hd' value=''>
+            {% endif %}
+            <div class="buttons">
+                <p>
+                    <input  class="button-crud" value="Guardar" onclick = "guardar({{banderaEcucert}},'{{path('casosEcucert')}}');"/>
+                    <span class="height20px">
+                        &oacute;&nbsp;
+                        {% if banderaEcucert == 1 %}
+                            <a class="cancel-crud" href="{{ path('casosEcucert') }}">Cancelar</a>
+                        {% else %}
+                            <a class="cancel-crud" href="{{ path('admiplantilla') }}">Cancelar</a>
+                        {% endif %}
+                    </span>
+                </p>
+            </div>	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+	

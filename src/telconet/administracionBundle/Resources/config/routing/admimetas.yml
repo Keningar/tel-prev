@@ -1,0 +1,47 @@
+com_admimetas:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiMetas:index" }
+
+com_admimetas_show:
+    pattern:  /{intId}/show
+    defaults: { _controller: "administracionBundle:AdmiMetas:show" }
+
+com_admimetas_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiMetas:new" }
+
+com_admimetas_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiMetas:create" }
+    requirements: { _method: POST }
+    
+com_admimetas_edit:
+    pattern:  /{intId}/edit
+    defaults: { _controller: "administracionBundle:AdmiMetas:edit" }
+
+com_admimetas_update:
+    pattern:  /{intId}/update
+    defaults: { _controller: "administracionBundle:AdmiMetas:update" }
+    requirements: { _method: POST }
+    
+com_admimetas_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiMetas:grid"}
+
+com_admimetas_verificarMeta:
+    pattern:  /verificarMeta
+    defaults: { _controller: "administracionBundle:AdmiMetas:verificarMeta"}
+    
+com_admimetas_delete:
+    pattern:  /{intId}/delete
+    defaults: { _controller: "administracionBundle:AdmiMetas:delete" }
+    
+com_admimetas_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiMetas:deleteAjax" }
+    requirements: { _method: post }
+
+com_admimetas_masivoAjax:
+    pattern:  /masivoAjax
+    defaults: { _controller: "administracionBundle:AdmiMetas:masivoAjax" }
+    requirements: { _method: POST }

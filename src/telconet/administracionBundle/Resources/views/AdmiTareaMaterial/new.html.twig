@@ -1,0 +1,103 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style scoped="scoped">
+        .alineando {
+            left: 42em;
+            position: absolute;
+            top: 44em;
+        }
+        .formulario label{
+            margin: 0px !important;
+            width: 155px !important;
+        }
+        .contenido{
+            background-color: #F9F9F9;
+            border: 2px solid #F9F9F9;
+            border-radius: 13px 13px 13px 13px;
+            padding: 13px;
+        }
+    </style>
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiTareaMaterial/new.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva Tarea Material</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+	{% if error is defined %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form id='form_new_proceso' action="{{ path('admitareamaterial_create') }}" method="post" {{ form_enctype(form) }} class='formulario' onsubmit="return validarFormulario();">
+            {{ form_errors(form) }}
+            <div>
+                <label>{{ form_label(form.tareaId) }}</label>
+                <div required="true">{{ form_widget(form.tareaId) }}</div>
+                <div>{{ form_errors(form.tareaId) }}</div>
+            </div>
+
+            <div>
+                <label>* Material:</label>
+                <div id='combo_material' required="true"></div>
+            </div>
+            <input type="hidden" name="escogido_material" id="escogido_material" value="0" />
+
+            <div>
+                <label>{{ form_label(form.unidadMedidaMaterial) }}</label>
+                <div required="true">{{ form_widget(form.unidadMedidaMaterial) }}</div>
+                <div>{{ form_errors(form.unidadMedidaMaterial) }}</div>
+            </div>
+
+            <div>
+                <label>{{ form_label(form.costoMaterial) }}</label>
+                <div required="true">{{ form_widget(form.costoMaterial) }}</div>
+                <div>{{ form_errors(form.costoMaterial) }}</div>
+            </div>
+
+            <div>
+                <label>{{ form_label(form.precioVentaMaterial) }}</label>
+                <div required="true">{{ form_widget(form.precioVentaMaterial) }}</div>
+                <div>{{ form_errors(form.precioVentaMaterial) }}</div>
+            </div>
+
+            <div>
+                <label>{{ form_label(form.cantidadMaterial) }}</label>
+                <div required="true">{{ form_widget(form.cantidadMaterial) }}</div>
+                <div>{{ form_errors(form.cantidadMaterial) }}</div>
+            </div>
+
+			{% if tareaId %}
+				<input type="hidden" name="tareaId" id="tareaId" value="{{ tareaId }}" />
+			{% endif %}
+            <div class="buttons">
+                <p>
+                    <input type='submit' class="button-crud" value="Guardar" />
+                    <span class="height20px">
+                        &oacute;&nbsp;
+						{% if tareaId %}	
+							<a class="cancel-crud" href="{{ path('admitarea_show',{'id' : tareaId }) }}">Cancelar</a>
+						{% else %}
+							<a class="cancel-crud" href="{{ path('admitareamaterial') }}">Cancelar</a>
+						{% endif %}	
+                    </span>
+                </p>
+            </div>
+
+            {{ form_rest(form) }}	
+        </form>
+    </div>
+{% endblock contenido_izq %}
+
+{% block javascripts_footer%}
+    <script>
+        /* -- */
+    </script>	
+{% endblock javascripts_footer%}	

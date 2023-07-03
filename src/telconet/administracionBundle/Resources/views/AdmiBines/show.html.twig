@@ -1,0 +1,143 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+    {% if entity is defined %}
+        {% if entity is not empty %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('adm-fin-bin.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver BIN</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Bin:</th>
+                <td width="15%">{{ entity.binNuevo }}</td>        
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Descripcion:</th>
+                <td width="30%">{{ entity.descripcion }}</td>        
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Banco:</th>
+                <td width="55%">{{ entity.banco }}</td>        
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Tarjeta:</th>
+                <td width="15%">{{ entity.tarjeta }}</td>        
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Estado:</th>
+                <td>{{ entity.estado }}</td>        
+
+            </tr>
+            {% if(entity.estado|lower=="eliminado") %}
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="8%"> Motivo:</th>
+                <td>{{ entity.motivoId.nombreMotivo }}</td>        
+            </tr>
+            <tr height='20px'>
+                <td width="8%">&nbsp;</td>
+                <th width="12%"> Descripción motivo :</th>
+                <td>{{ entity.motivoDescripcion }}</td>        
+            </tr>
+             {% endif %}
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admibines') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr height='20px'>
+                <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                <th width="11%">Creador:</th>
+                <td width="34%" >{{ entity.usrCreacion }}</td>
+
+                      {% if(entity.estado|lower=="eliminado") %}
+                <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+                <th width="11%" >Ult. Mod.:</th>
+                <td width="34%">{{ entity.usrUltMod }}</td>
+                      {% endif %}
+            </tr>
+            <tr height='20px'>
+                <th>Fecha:</th>
+                <td >{{ entity.feCreacion | date("d M Y") }}</td>
+                {% if(entity.estado|lower=="eliminado") %}
+                <th>Fecha:</th>
+                <td >{{ entity.feUltMod | date("d M Y") }}</td>
+                 {% endif %}
+            </tr>
+            <tr height='20px'>
+                <th>Hora:</th>
+                <td>{{ entity.feCreacion | date("H:i:s") }}</td>
+                {% if(entity.estado|lower=="eliminado") %}
+                <th>Hora:</th>
+                <td>{{ entity.feUltMod | date("H:i:s") }}</td>
+                 {% endif %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+        {% else %}
+<div class="info-error">No esta definido un BIN</div>
+<div class="buttons">
+    <p>
+        <a class="button-crud" href="{{ path('admibines') }}">
+            Regresar
+        </a>
+    </p>
+</div>
+        {% endif %}
+    {% else %}
+<div class="info-error">No esta definido un BIN</div>
+<div class="buttons">
+    <p>
+        <a class="button-crud" href="{{ path('admibines') }}">
+            Regresar
+        </a>
+    </p>
+</div>
+    {% endif %}
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+<div class="titulo-acciones-relacionadas">
+    Acciones Relacionadas
+</div>
+<ul class="listado_acciones_relacionadas">
+    {% if is_granted('ROLE_294-2797') %}
+    <li>
+        <a class="button-nuevo-registro" href="{{ path('admibines_new') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nuevo Bin
+        </a>
+    </li>
+    {% endif %}
+    <li>
+        &nbsp;
+    </li>
+    {% if entity is defined %}
+        {% if entity is not empty %}
+            {% if is_granted('ROLE_294-2798') and entity.estado | lower != "eliminado" %}
+    <li>
+        <a class="button-eliminar" href="{{ path('admibines_delete_view', { 'id': entity.id }) }}">
+            &nbsp;Eliminar Bin
+        </a>
+    </li>
+            {% endif %}
+         {% endif %}
+     {% endif %}
+</ul>
+{% endblock contenido_der %}

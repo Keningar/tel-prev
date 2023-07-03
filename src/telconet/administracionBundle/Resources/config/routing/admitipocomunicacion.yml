@@ -1,0 +1,39 @@
+admitipocomunicacion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:index" }
+
+admitipocomunicacion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:show" }
+
+admitipocomunicacion_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:new" }
+
+admitipocomunicacion_create:
+    pattern:  /create
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:create" }
+    requirements: { _method: post }
+
+admitipocomunicacion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:edit" }
+
+admitipocomunicacion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:update" }
+    requirements: { _method: post }
+
+admitipocomunicacion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:delete" }
+    requirements: { _method: post }
+
+admitipocomunicacion_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:grid"}
+    
+admitipocomunicacion_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoComunicacion:deleteAjax" }
+    requirements: { _method: post }

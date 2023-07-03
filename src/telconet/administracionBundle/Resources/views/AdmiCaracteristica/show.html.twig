@@ -1,0 +1,157 @@
+{% extends "::layout.html.twig" %}
+    
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Caracteristica</h1>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Descripcion Caracteristica:</b></th>
+                <td width="15%">{{ caracteristica.descripcionCaracteristica }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Tipo:</b></th>
+                <td width="15%">{{ caracteristica.tipo }}</td>        
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td colspan="8" style="height: 10px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Tipo de Ingreso:</b></th>
+                <td width="15%">{{ strTipoIngreso }}</td>        
+                <td width="1%"></td>
+
+                <td width="8%">&nbsp;</td>
+                <th width="25%"><b>Estado:</b></th>
+                <td>{{ caracteristica.estado }}</td>        
+                <td width="1%"></td>      
+            </tr>
+            <tr>
+                <td colspan="8" style="height: 10px;">&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="width: 50%; margin: 10px auto;">
+        <div id="gridSeleccionable"></div>      
+    </div>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('com_admicaracteristica') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" 
+                                               vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ caracteristica.usrCreacion }}</td>
+
+              {% if(caracteristica.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" 
+                                               vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ caracteristica.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(caracteristica.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3"
+                                               vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ caracteristica.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ caracteristica.feCreacion | date("d M Y") }}</td>
+
+              {% if(caracteristica.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ caracteristica.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(caracteristica.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ caracteristica.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ caracteristica.feCreacion | date("H:i:s") }}</td>
+
+              {% if(caracteristica.estado=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ caracteristica.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(caracteristica.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ caracteristica.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_32-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('com_admicaracteristica_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nueva Caracteristica
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+        {% if is_granted('ROLE_32-4') %}
+            {% if(caracteristica.estado|lower!="eliminado") %}
+                <li>
+                    <a class="button-editar" href="{{ path('com_admicaracteristica_edit', { 'id': caracteristica.id }) }}">
+                        &nbsp;Editar Caracteristica
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+        {% if is_granted('ROLE_32-8') %}
+            {% if(caracteristica.estado|lower!="eliminado") %}
+                <li>
+                    <a class="button-eliminar" href="{{ path('com_admicaracteristica_delete', { 'id': caracteristica.id }) }}">
+                        &nbsp;Eliminar Caracteristica
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">
+        var strUrlGetOpcionesSeleccionable = "{{ path('com_admicaracteristica_getOpcionesSeleccionable') }}";
+        var strTipoIngreso                 = "{{ strTipoIngreso }}";
+        var intIdParametroCab              = "{{ intIdParametroCab }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiCaracteristica/show.js') }}"></script>
+{% endblock %}

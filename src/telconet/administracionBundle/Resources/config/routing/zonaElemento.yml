@@ -1,0 +1,15 @@
+zonaElemento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:ZonaElemento:index" }
+
+zonaElemento_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:ZonaElemento:grid"}
+
+zonaElemento_updateZonaAjax:
+    pattern:  /updateZonaAjax
+    defaults: { _controller: "administracionBundle:ZonaElemento:updateZonaAjax" }
+
+zonaElemento_getZonasAjax:
+    pattern:  /getZonasAjax
+    defaults: { _controller: "administracionBundle:ZonaElemento:getZonasAjax" }    

@@ -1,0 +1,51 @@
+admijurisdiccion:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiJurisdiccion:index" }
+
+admijurisdiccion_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiJurisdiccion:getEncontrados }
+
+admijurisdiccion_getJurisdicciones:
+    pattern:  /getJurisdicciones
+    defaults: { _controller: administracionBundle:AdmiJurisdiccion:getJurisdicciones }
+
+admijurisdiccion_getCantonesJurisdicciones:
+    pattern:  /{id}/getCantonesJurisdicciones
+    defaults: { _controller: administracionBundle:AdmiJurisdiccion:getCantonesJurisdicciones }
+
+admijurisdiccion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiJurisdiccion:show" }
+
+admijurisdiccion_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiJurisdiccion:new" }
+
+admijurisdiccion_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiJurisdiccion:create" }
+    requirements: { _method: POST }
+
+admijurisdiccion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiJurisdiccion:edit" }
+
+admijurisdiccion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiJurisdiccion:update" }
+    requirements: { _method: POST }
+
+admijurisdiccion_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiJurisdiccion:deleteAjax" }
+    requirements: { _method: post }
+
+admijurisdiccion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiJurisdiccion:delete" }
+
+admijurisdiccion_getJurisdiccionesPorNombre:
+    pattern:  /getJurisdiccionesPorNombre
+    defaults: { _controller: administracionBundle:AdmiJurisdiccion:getJurisdiccionesPorNombre }
+

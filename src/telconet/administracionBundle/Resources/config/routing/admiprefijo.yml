@@ -1,0 +1,42 @@
+admiprefijo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiPrefijo:index" }
+
+admiprefijo_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiPrefijo:getEncontrados }
+    
+admiprefijo_getPrefijos:
+    pattern:  /getPrefijos
+    defaults: { _controller: administracionBundle:AdmiPrefijo:getPrefijos }
+
+admiprefijo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiPrefijo:show" }
+
+admiprefijo_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiPrefijo:new" }
+
+admiprefijo_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiPrefijo:create" }
+    requirements: { _method: POST }
+    
+admiprefijo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiPrefijo:edit" }
+
+admiprefijo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiPrefijo:update" }
+    requirements: { _method: POST }
+    
+admiprefijo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiPrefijo:deleteAjax" }
+    requirements: { _method: post }
+    
+admiprefijo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiPrefijo:delete" }

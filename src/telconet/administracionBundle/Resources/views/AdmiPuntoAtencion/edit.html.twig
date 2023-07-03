@@ -1,0 +1,56 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+{% block javascripts%}
+    {{ parent() }}
+    
+    <script>
+        var urlEditarPuntoAtencion  = '{{ path('admipuntoatencion_ajaxEditarPuntoAtencion') }}';
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiPuntoAtencion/edit.js') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Editar Punto Atención</h1>
+</div>
+
+<div class="body_content">
+    
+    <div class="form-group">
+            <table>
+                <tr  id="bloquePuntoAtencion">
+                    <td width="5%"></td>
+                    <td width="14%"><label style="margin-top: 30px">Nombre Punto Atención:</label></td>
+                    <td width="20%">
+                        <input type="hidden" id="intIdPuntoAtencion" value="{{ intIdPuntoAtencion }}">
+                        <input type="text" class="form-control" id="strNombrePuntoAtencion" value="{{ strNombrePuntoAtencion }}">
+                    </td>
+                    <td width="2%"></td>
+                    <td width="14%"></td>
+                    <td width="20%"></td>
+                    <td width="5%"></td>
+                </tr>
+                
+            </table>
+
+
+        </div>
+
+        <div class="buttons">
+            <p>
+                <input type='submit' class="button-crud" id="btnEditar" value="Guardar" />
+                <span class="height20px">
+                    &oacute;&nbsp;
+                    <a class="cancel-crud" id="btnCancelar" href="{{ path('admipuntoatencion') }}">Cancelar</a>
+                </span>
+            </p>
+        </div>
+    
+</div>
+{% endblock contenido_izq %}
+
+

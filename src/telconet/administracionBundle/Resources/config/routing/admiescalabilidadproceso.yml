@@ -1,0 +1,38 @@
+admiescalabilidadproceso:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:index" }
+
+admiescalabilidadproceso_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:show" }
+
+admiescalabilidadproceso_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:new" }
+
+admiescalabilidadproceso_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:create" }
+    requirements: { _method: POST }
+    
+admiescalabilidadproceso_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:edit" }
+
+admiescalabilidadproceso_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:update" }
+    requirements: { _method: POST }
+    
+admiescalabilidadproceso_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:delete" }
+    
+admiescalabilidadproceso_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:deleteAjax" }
+    requirements: { _method: post }
+
+admiescalabilidadproceso_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiEscalabilidadProceso:grid"}

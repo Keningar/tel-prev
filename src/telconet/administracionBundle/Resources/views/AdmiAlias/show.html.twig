@@ -1,0 +1,141 @@
+{% extends "::layout.html.twig" %}
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+    <h1>Ver Alias Notificaciones</h1>
+</div>
+<div class="body_content">
+    <table class="formulario" width='100%' >
+        <tbody>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Nombre Alias:</th>
+                <td width="15%">{{ alias.valor }}</td>  
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Empresa:</th>
+                <td width="15%">{% if EmpresaGrupo %}{{ EmpresaGrupo }}{% else %}N/A{% endif %}</td>                
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Ciudad:</th>
+                <td width="15%">{% if Jurisdiccion %}{{ Jurisdiccion }}{% else %}N/A{% endif %}</td>                
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Departamento:</th>
+                <td width="15%">{% if departamento %}{{ departamento }}{% else %}N/A{% endif %}</td>                
+            </tr>
+            <tr>
+                <td width="8%">&nbsp;</td>
+                <th width="25%"> Estado:</th>
+                <td>{{ alias.estado }}</td>     
+                <td width="10%">&nbsp;</td>
+                <th width="25%">&nbsp;</th>        
+                <td width="15%">&nbsp;</td>
+                <td width="1%"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>	
+<div class="buttons">
+    <p>
+        <span class="height20px">
+            <a class="button-crud" href="{{ path('admialias') }}">Regresar</a>
+        </span>
+    </p>
+</div>
+<div class="body_content">
+    <table class="formulario">
+        <tbody>
+            <tr>
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/agregar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%">Creador:</th>
+              <td width="34%" >{{ alias.usrCreacion }}</td>
+
+              {% if(alias.estado|lower=="modificado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/edit_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="11%" >Ult. Mod.:</th>
+              <td width="34%">{{ alias.usrUltMod }}</td>
+              {% endif %}
+
+              {% if(alias.estado|lower=="eliminado") %}
+              <td width="10%" rowspan="3"><img src="{{ asset('public/images/images_crud/eliminar_64.png')}}" hspace="3" vspace="3" alt="" border="0" align="absmiddle" /></td>
+              <th width="6%">Eliminado:</th>
+              <td width="34%">{{ alias.usrUltMod }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Fecha:</th>
+              <td >{{ alias.feCreacion | date("d M Y") }}</td>
+
+              {% if(alias.estado|lower=="modificado") %}
+              <th>Fecha:</th>
+              <td >{{ alias.feUltMod  | date("d M Y")}}</td>
+              {% endif %}
+
+              {% if(alias.estado|lower=="eliminado") %}
+              <th>Fecha:</th>
+              <td>{{ alias.feUltMod | date("d M Y") }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              <th>Hora:</th>
+              <td>{{ alias.feCreacion | date("H:i:s") }}</td>
+
+              {% if(alias.estado=="modificado") %}
+              <th>Hora:</th>
+              <td>{{ alias.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+
+              {% if(alias.estado|lower=="eliminado") %}
+              <th>Hora:</th>
+              <td>{{ alias.feUltMod | date("H:i:s") }}</td>
+              {% endif %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+    <ul class="form_actions" style="width:auto;">
+		{% if is_granted('ROLE_236-2') %}
+        <li>
+            <a class="button-nuevo-registro" href="{{ path('admialias_new') }}">
+                <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+                &nbsp;Nuevo Alias
+            </a>
+        </li>
+		{% endif %}
+        <li>
+            &nbsp;
+        </li>
+		{% if is_granted('ROLE_236-4') %}
+        <li>
+            <a class="button-editar" href="{{ path('admialias_edit', { 'id': alias.id }) }}">
+                &nbsp;Editar Alias
+            </a>
+        </li>
+		{% endif %}
+		{% if is_granted('ROLE_236-8') %}
+        <li>
+            <a class="button-eliminar" href="{{ path('admialias_delete', { 'id': alias.id }) }}">
+                &nbsp;Eliminar Alias
+            </a>
+        </li>
+		{% endif %}
+    </ul>
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+    <ul class="listado_acciones_relacionadas">
+
+    </ul>
+{% endblock contenido_der %}

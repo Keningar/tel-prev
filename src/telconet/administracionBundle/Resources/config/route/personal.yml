@@ -1,0 +1,4 @@
+administracionBundle_PersonaEmpleado:
+  resource: "@administracionBundle/Resources/config/routing/personaempleado.yml"
+  prefix: /persona_empleado
+

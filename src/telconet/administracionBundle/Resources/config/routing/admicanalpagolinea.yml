@@ -1,0 +1,3 @@
+admiCanalPagoLinea_getListadoCanalPagosLineaAjax:
+    pattern:  /getListadoCanalPagosLineaAjax
+    defaults: { _controller: "administracionBundle:AdmiCanalPagoLinea:getListadoCanalPagosLineaAjax"}

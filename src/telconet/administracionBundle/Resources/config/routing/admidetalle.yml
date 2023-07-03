@@ -1,0 +1,42 @@
+admidetalle:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiDetalle:index" }
+
+admidetalle_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiDetalle:getEncontrados }
+    
+admidetalle_getDetalles:
+    pattern:  /getDetalles
+    defaults: { _controller: administracionBundle:AdmiDetalle:getDetalles }
+
+admidetalle_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiDetalle:show" }
+
+admidetalle_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiDetalle:new" }
+
+admidetalle_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiDetalle:create" }
+    requirements: { _method: POST }
+    
+admidetalle_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiDetalle:edit" }
+
+admidetalle_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiDetalle:update" }
+    requirements: { _method: POST }
+    
+admidetalle_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiDetalle:deleteAjax" }
+    requirements: { _method: post }
+    
+admidetalle_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiDetalle:delete" }

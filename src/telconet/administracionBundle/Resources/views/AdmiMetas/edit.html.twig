@@ -1,0 +1,77 @@
+{% extends "::layout.html.twig" %}
+
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Editar base</h1>
+</div>
+
+<div class="body_content">
+    <div style="width: 50%; margin: auto;">
+        
+        <form id='form_edit_proceso' action="{{ path('com_admimetas_update', { 'intId': caracteristica.id }) }}" 
+              method="post" {{ form_enctype(edit_form) }} class="formulario">
+            <table>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(edit_form.valor5) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.valor5, { 'disabled':'disabled' })}}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(edit_form.valor6) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.valor6) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(edit_form.valor7) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.valor7) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(edit_form.valor3) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.valor3) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(edit_form.valor4) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.valor4) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(edit_form.valor1) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.valor1, { 'disabled':'disabled' }) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%">{{ form_label(edit_form.valor2) }}</td>
+                    <td width="10%">{{ form_widget(edit_form.valor2, { 'disabled':'disabled' }) }}</td>			    
+                    <td width="5%">&nbsp;</td>
+                </tr>                
+                <tr>
+                    <td width="5%">&nbsp;</td>
+                    <td width="15%"><input type='button' class="button-crud" onclick="validarFormulario();" value="Guardar" /></td>
+                    <td width="10%"><input type='button' class="button-crud" onclick="window.location.href='{{ path('com_admimetas') }}'" value="Cancelar" /></td>                       
+                    <td width="5%">&nbsp;</td>
+                </tr>                    
+            </table> 
+            
+        
+        </form>
+    </div>
+</div>
+{% endblock contenido_izq %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">                
+        var strUrlVerificaBase   = "{{ path('com_admibases_verificarBase') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiMetas/edit.js?3') }}"></script>
+{% endblock %}

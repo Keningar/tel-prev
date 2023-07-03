@@ -1,0 +1,47 @@
+admiinterfacemodelo:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:index" }
+
+admiinterfacemodelo_ajax_list_all:
+    pattern:  /ajax_list_all
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:ajaxListAll" }
+    requirements: { _method: post }
+
+admiinterfacemodelo_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:show" }
+
+admiinterfacemodelo_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:new" }
+
+admiinterfacemodelo_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:create" }
+    requirements: { _method: POST }
+    
+admiinterfacemodelo_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:edit" }
+
+admiinterfacemodelo_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:update" }
+    requirements: { _method: POST }
+    
+admiinterfacemodelo_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:deleteAjax" }
+    requirements: { _method: post }
+    
+admiinterfacemodelo_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiInterfaceModelo:delete" }
+    
+admiinterfacemodelo_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiInterfaceModelo:getEncontrados }
+    
+admiinterfacemodelo_getInterfaceModelo:
+    pattern:  /getInterfaceModelo
+    defaults: { _controller: administracionBundle:AdmiInterfaceModelo:getInterfaceModelo }

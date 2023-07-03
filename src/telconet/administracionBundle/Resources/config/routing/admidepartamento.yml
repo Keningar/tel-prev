@@ -1,0 +1,42 @@
+admidepartamento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:index" }
+
+admidepartamento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:show" }
+
+admidepartamento_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:new" }
+
+admidepartamento_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:create" }
+    requirements: { _method: POST }
+    
+admidepartamento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:edit" }
+
+admidepartamento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:update" }
+    requirements: { _method: POST }
+    
+admidepartamento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:delete" }
+    
+admidepartamento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:deleteAjax" }
+    requirements: { _method: post }
+
+admidepartamento_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:grid"}
+
+admidepartamento_getDepartamentoByEmpresaYAreaAction:
+    pattern:  /getDepartamentoByEmpresaYAreaAction
+    defaults: { _controller: "administracionBundle:AdmiDepartamento:getDepartamentoByEmpresaYArea"}

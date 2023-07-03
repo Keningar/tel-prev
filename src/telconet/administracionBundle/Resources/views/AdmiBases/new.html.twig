@@ -1,0 +1,69 @@
+{% extends "::layout.html.twig" %}
+
+{% block javascripts%}
+    {{ parent() }}
+    <script type="text/javascript">    
+        var strUrlVerificaBase   = "{{ path('com_admibases_verificarBase') }}";
+    </script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiBases/new.js?3') }}"></script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Nueva base</h1>
+    </div>
+    <span class="campos-requeridos">* Campos requeridos</span>
+    <div class="body_content">
+        <div style="width: 50%; margin: auto;">
+
+            <form id='form_new_proceso' action="{{ path('com_admibases_create') }}" method="post" {{ form_enctype(form) }}
+                  class='formulario'>
+                <table>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor5) }}</td>
+                        <td width="10%">{{ form_widget(form.valor5) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor1) }}</td>
+                        <td width="10%">{{ form_widget(form.valor1) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor2) }}</td>
+                        <td width="10%">{{ form_widget(form.valor2) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor6) }}</td>
+                        <td width="10%">{{ form_widget(form.valor6) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor7) }}</td>
+                        <td width="10%">{{ form_widget(form.valor7) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%">{{ form_label(form.valor3) }}</td>
+                        <td width="10%">{{ form_widget(form.valor3) }}</td>			    
+                        <td width="5%">&nbsp;</td>
+                    </tr>                    
+                    <tr>
+                        <td width="5%">&nbsp;</td>
+                        <td width="15%"><input type='button' class="button-crud" onclick="validarFormulario();" value="Guardar" /></td>
+                        <td width="10%"><input type='button' class="button-crud" onclick="window.location.href='{{ path('com_admibases') }}'" value="Cancelar" /></td>                       
+                        <td width="5%">&nbsp;</td>
+                    </tr>                    
+                </table>           
+            </form>
+        </div>
+    </div>
+{% endblock contenido_izq %}	

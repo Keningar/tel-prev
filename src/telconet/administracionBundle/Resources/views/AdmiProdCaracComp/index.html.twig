@@ -1,0 +1,76 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+       <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('public/js/ext-4.1.1/resources/css/CheckHeader.css') }}" />
+	<style scoped="scoped">
+		.category-label
+		{
+			vertical-align: middle;
+			padding-right: .5em;
+		}
+		#category
+		{
+			vertical-align: middle;
+		}
+		.toolbar {
+			float: right;
+			margin-right: .8em;
+		}
+		.icon_search {
+			background-image:url('{{ asset('public/images/images_crud/ver.png') }}') !important;
+                }
+		.icon_limpiar {
+			background-image:url('{{ asset('public/images/images_crud/edit-clear.png') }}') !important;
+                } 
+		.icon_add {
+			background-image:url('{{ asset('public/images/images_crud/plus.png') }}') !important;
+                } 
+		.icon_delete {
+			background-image:url('{{ asset('public/images/images_crud/trash.png') }}') !important;
+                }                 
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+	
+	<script>
+		var url_store_grid       = "{{ path('admiprodcaraccomp_ajax_list_all') }}";
+		var url_store_grid_comp  = "{{ path('admiprodcaraccomp_gridCaracteristicaComp') }}";
+		var urlGuardarCaracComp  = "{{ path('admiprodcaraccomp_updateCaracteristicaComp') }}";
+		var url_estados          = "{{path('admiproducto_lista_estados')}}";
+		var url_eliminar         = "{{path('admiproducto_delete_ajax')}}";
+                var url_grupo           = "{{path('admiproducto_lista_grupos')}}"
+        var url_nombres_tecnicos = "{{path('admiproducto_ajax_get_nombresTecnicosIndex')}}";
+        var strPrefijoEmpresa    = "{{strPrefijoEmpresa}}";
+	</script>
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiProdCaracComp/index.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/ext-4.1.1/src/ux/CheckColumn.js') }}"></script>
+{% endblock %}
+        
+{% block contenido_izq %}
+<div id="titulo_content">
+    <img src="{{ asset('public/images/'~ item.urlImagen | default('catalog.png') ~ '') }}" class="imagen-titulo-content">
+	<h1>Comportamiento Caracteristica</h1>
+</div>
+<div class="dashboard_content k-content">
+    <div id="example" class="k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+                <tr bgcolor='#ffffff'>
+                         <td bgcolor='#ffffff'><div id='filtro_prospectos'></div></td>
+                </tr>	
+                <tr bgcolor='#ffffff'>
+                         <td bgcolor='#ffffff'><div id='lista_prospectos'></div></td>
+                </tr>
+
+        </table>      
+    </div>
+</div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+
+         
+{% endblock contenido_der %}

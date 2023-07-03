@@ -1,0 +1,39 @@
+admitipodocumento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:index" }
+
+admitipodocumento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:show" }
+
+admitipodocumento_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:new" }
+
+admitipodocumento_create:
+    pattern:  /create
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:create" }
+    requirements: { _method: post }
+
+admitipodocumento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:edit" }
+
+admitipodocumento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:update" }
+    requirements: { _method: post }
+
+admitipodocumento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:delete" }
+    requirements: { _method: post }
+
+admitipodocumento_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:grid"}
+    
+admitipodocumento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoDocumento:deleteAjax" }
+    requirements: { _method: post }

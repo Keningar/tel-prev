@@ -1,0 +1,16 @@
+admiprodcaraccomp:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiProdCaracComp:index" }
+
+admiprodcaraccomp_gridCaracteristicaComp:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiProdCaracComp:gridCaracteristicaComp"}
+
+admiprodcaraccomp_ajax_list_all:
+    pattern:  /ajax_list_all
+    defaults: { _controller: "administracionBundle:AdmiProdCaracComp:ajaxListAll" }
+
+admiprodcaraccomp_updateCaracteristicaComp:
+    pattern:  /updateCaractComp
+    requirements: { _method: post, _format: json }
+    defaults: { _controller: "administracionBundle:AdmiProdCaracComp:updateCaracteristicaComp" }

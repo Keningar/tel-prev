@@ -1,0 +1,38 @@
+admitiponegocio:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:index" }
+
+admitiponegocio_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:show" }
+
+admitiponegocio_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:new" }
+
+admitiponegocio_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:create" }
+    requirements: { _method: POST }
+    
+admitiponegocio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:edit" }
+
+admitiponegocio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:update" }
+    requirements: { _method: POST }
+    
+admitiponegocio_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:delete" }
+    
+admitiponegocio_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:deleteAjax" }
+    requirements: { _method: post }
+
+admitiponegocio_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiTipoNegocio:grid"}

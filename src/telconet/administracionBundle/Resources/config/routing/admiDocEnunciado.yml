@@ -1,0 +1,30 @@
+admiDocEnunciado:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiDocEnunciado:index" }
+
+
+admiDocEnunciado_managerAdminProcesos:
+    pattern:  /managerAdminProcesos
+    defaults: { _controller: "administracionBundle:AdmiDocEnunciado:managerAdminProcesos"}
+
+admiDocEnunciado_managerAdminDocumentos:
+    pattern:  /managerAdminDocumentos
+    defaults: { _controller: "administracionBundle:AdmiDocEnunciado:managerAdminDocumentos"}
+
+admiDocEnunciado_managerAdminRespuestas:
+    pattern:  /managerAdminRespuestas
+    defaults: { _controller: "administracionBundle:AdmiDocEnunciado:managerAdminRespuestas"}
+
+
+admiDocEnunciado_managerAdminDocEnunciado:
+    pattern:  /managerAdminDocEnunciado
+    defaults: { _controller: "administracionBundle:AdmiDocEnunciado:managerAdminDocEnunciado"}
+
+
+admiDocEnunciado_getGlobalListData:
+    pattern:  /getGlobalListData
+    defaults: { _controller: "administracionBundle:AdmiDocEnunciado:getGlobalListData"}
+
+
+   
+ 

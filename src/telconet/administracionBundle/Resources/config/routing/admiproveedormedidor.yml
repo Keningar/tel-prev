@@ -1,0 +1,42 @@
+admiproveedormedidor:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiProveedorMedidor:index" }
+
+admiproveedormedidor_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiProveedorMedidor:getEncontrados }
+    
+admiproveedormedidor_getProveedoresMedidores:
+    pattern:  /getProveedoresMedidores
+    defaults: { _controller: administracionBundle:AdmiProveedorMedidor:getProveedoresMedidores }
+
+admiproveedormedidor_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiProveedorMedidor:show" }
+
+admiproveedormedidor_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiProveedorMedidor:new" }
+
+admiproveedormedidor_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiProveedorMedidor:create" }
+    requirements: { _method: POST }
+    
+admiproveedormedidor_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiProveedorMedidor:edit" }
+
+admiproveedormedidor_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiProveedorMedidor:update" }
+    requirements: { _method: POST }
+    
+admiproveedormedidor_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiProveedorMedidor:deleteAjax" }
+    requirements: { _method: post }
+    
+admiproveedormedidor_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiProveedorMedidor:delete" }

@@ -1,0 +1,47 @@
+admitipointerface:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:index" }
+
+admitipointerface_ajax_list_all:
+    pattern:  /ajax_list_all
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:ajaxListAll" }
+    requirements: { _method: post }
+
+admitipointerface_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:show" }
+
+admitipointerface_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:new" }
+
+admitipointerface_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:create" }
+    requirements: { _method: POST }
+    
+admitipointerface_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:edit" }
+
+admitipointerface_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:update" }
+    requirements: { _method: POST }
+    
+admitipointerface_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:delete" }
+    
+admitipointerface_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiTipoInterface:deleteAjax" }
+    requirements: { _method: post }
+    
+admitipointerface_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiTipoInterface:getEncontrados }
+    
+admitipointerface_getTiposInterfaces:
+    pattern:  /getTiposInterfaces
+    defaults: { _controller: administracionBundle:AdmiTipoInterface:getTiposInterfaces }

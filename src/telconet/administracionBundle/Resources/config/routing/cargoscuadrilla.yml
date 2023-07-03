@@ -1,0 +1,16 @@
+cargoscuadrilla:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:CargosCuadrilla:index" }  
+
+cargoscuadrilla_update:
+    pattern:  /update
+    defaults: { _controller: "administracionBundle:CargosCuadrilla:update" }
+    requirements: { _method: POST }
+    
+cargoscuadrilla_getCargos:
+    pattern:  /getCargos
+    defaults: { _controller: "administracionBundle:CargosCuadrilla:getCargos" }
+    
+cargoscuadrilla_getCargosCuadrilla:
+    pattern:  /getCargosCuadrilla
+    defaults: { _controller: "administracionBundle:CargosCuadrilla:getCargosCuadrilla" }

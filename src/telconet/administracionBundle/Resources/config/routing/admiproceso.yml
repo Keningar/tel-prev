@@ -1,0 +1,46 @@
+admiproceso:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiProceso:index" }
+
+admiproceso_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiProceso:show" }
+
+admiproceso_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiProceso:new" }
+
+admiproceso_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiProceso:create" }
+    requirements: { _method: POST }
+    
+admiproceso_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiProceso:edit" }
+
+admiproceso_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiProceso:update" }
+    requirements: { _method: POST }
+    
+admiproceso_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiProceso:delete" }
+    
+admiproceso_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiProceso:deleteAjax" }
+    requirements: { _method: post }
+
+admiproceso_grid:
+    pattern:  /grid
+    defaults: { _controller: "administracionBundle:AdmiProceso:grid"}
+    
+admiproceso_getTareas:
+    pattern:  /{id}/getTareas
+    defaults: { _controller: "administracionBundle:AdmiProceso:getTareas"}
+    
+admiproceso_getProcesos:
+    pattern:  /getProcesos
+    defaults: { _controller: administracionBundle:AdmiProceso:getProcesos }

@@ -1,0 +1,139 @@
+admimodeloelemento:
+    pattern:  /
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:index" }
+
+admimodeloelemento_ajax_list_all:
+    pattern:  /ajax_list_all
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:ajaxListAll" }
+    requirements: { _method: post }
+
+admimodeloelemento_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:show" }
+
+admimodeloelemento_new:
+    pattern:  /new
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:new" }
+
+admimodeloelemento_create:
+    pattern: /create
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:create" }
+    requirements: { _method: POST }
+    
+admimodeloelemento_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:edit" }
+
+admimodeloelemento_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:update" }
+    requirements: { _method: POST }
+    
+admimodeloelemento_deleteAjax:
+    pattern:  /deleteAjax
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:deleteAjax" }
+    requirements: { _method: post }
+    
+admimodeloelemento_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:delete" }
+    
+admimodeloelemento_getEncontrados:
+    pattern:  /getEncontrados
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getEncontrados }
+    
+admimodeloelemento_getModelosElementos:
+    pattern:  /getModelosElementos
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getModelosElementos }
+    
+admimodeloelemento_getModelosElementosPorMarca:
+    pattern:  /getModelosElementosPorMarca
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getModelosElementosPorMarca }
+    
+admimodeloelemento_getModelosElementosDslam:
+    pattern:  /getModelosElementosDslam
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getModelosElementosDslam }
+    
+admimodeloelemento_getModelosElementosNodo:
+    pattern:  /getModelosElementosNodo
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getModelosElementosNodo }
+    
+admimodeloelemento_getInterfacesModelo:
+    pattern:  /{id}/getInterfacesModelo
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:getInterfacesModelo" }
+    
+admimodeloelemento_getModeloUsuariosAcceso:
+    pattern:  /{id}/getModeloUsuariosAcceso
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:getModeloUsuariosAcceso" }
+    
+admimodeloelemento_getModeloProtocolos:
+    pattern:  /{id}/getModeloProtocolos
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:getModeloProtocolos" }
+    
+admimodeloelemento_getModeloTecnologias:
+    pattern:  /{id}/getModeloTecnologias
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:getModeloTecnologias" }
+    
+admimodeloelemento_getDetallesModelo:
+    pattern:  /{id}/getDetallesModelo
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:getDetallesModelo" }
+    
+admimodeloelemento_getAllDetalles:
+    pattern:  /getAllDetalles
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:getAllDetalles" }
+    
+admimodeloelemento_getInterfacesParaCpe:
+    pattern:  /getInterfacesParaCpe
+    defaults: { _controller: "administracionBundle:AdmiModeloElemento:getInterfacesParaCpe" }
+
+admimodeloelemento_getModelosElementosCpe:
+    pattern:  /getModelosElementosCpe
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getModelosElementosCpe }
+    
+admimodeloelemento_buscarElementoPorModeloElemento:
+    pattern:  /buscarElementoPorModeloElemento
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:buscarElementoPorModeloElemento }
+    
+admimodeloelemento_buscarModeloPorTipoElemento:
+    pattern:  /buscarModeloPorTipoElemento
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:buscarModeloPorTipoElemento }
+    
+admimodeloelemento_buscarUsuariosPorModelo:
+    pattern:  /buscarUsuariosPorModelo
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:buscarUsuariosPorModelo }
+    
+admimodeloelemento_getModelosPorTipoElemento:
+    pattern:  /getModelosPorTipoElemento
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getModelosPorTipoElemento }
+
+admimodeloelemento_getTiposCamara:
+    pattern: /{id}/getTiposCamara
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getTiposCamara }
+
+admimodeloelemento_getResolucionCamara:
+    pattern: /{id}/getResolucionCamara
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getResolucionCamara }
+
+admimodeloelemento_getParametrosDetCamaras:
+    pattern: /{id}/getParametrosDetCamaras
+    defaults: {_controller: administracionBundle:AdmiModeloElemento:getParametrosDetCamara  }
+
+admimodeloelemento_getCamarasValidasSafecity:
+    pattern: /{id}/getCamarasValidasSafecity
+    defaults: {_controller: administracionBundle:AdmiModeloElemento:getCamarasValidasSafecity }
+
+admimodeloelemento_getTiposCamaras:
+    pattern: /getTiposCamara
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getTiposCamara }
+
+admimodeloelemento_getResolucionCamaras:
+    pattern: /getResolucionCamara
+    defaults: { _controller: administracionBundle:AdmiModeloElemento:getResolucionCamara }
+
+admimodeloelemento_getParametrosDetCamara:
+    pattern: /getParametrosDetCamara
+    defaults: {_controller: administracionBundle:AdmiModeloElemento:getParametrosDetCamara  }
+
+admimodeloelemento_getCamaraValidasSafecity:
+    pattern: /getCamarasValidasSafecity
+    defaults: {_controller: administracionBundle:AdmiModeloElemento:getCamarasValidasSafecity }

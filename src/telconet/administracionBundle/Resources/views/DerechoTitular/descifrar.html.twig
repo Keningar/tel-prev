@@ -1,0 +1,219 @@
+{% extends "::layout_completo.html.twig" %}
+{# {% set permiteIngresoTareaNuevaAsignacion = is_granted('ROLE_416-6057') %} #}
+{% block stylesheets %}
+	{{ parent() }}
+
+	<link href="{{ asset('public/css/Datatables/jquery.dataTables.min.css') }}" type="text/css" rel="stylesheet"/>
+	<link href="{{ asset('public/css/Datatables/dataTables.bootstrap4.min.css') }}" type="text/css" rel="stylesheet"/>
+	<link href="{{ asset('public/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
+	<link href="{{ asset('public/css/hint.min.css') }}" type="text/css" rel="stylesheet"/>
+	<link href="{{ asset('public/css/jquery-ui.css') }}" type="text/css" rel="stylesheet"/>
+	<link href="{{ asset('public/css/bootstrap-datetimepicker.min.css') }}" type="text/css" rel="stylesheet"/>
+	<link href="{{ asset('public/css/daterangepicker.css') }}" type="text/css" rel="stylesheet"/
+	<link href="{{ asset('public/css/font-awesome-4.7.0/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet"/>
+
+	<link href="{{ asset('./bundles/soporte/css/InfoCaso.css') }}" type="text/css" rel="stylesheet"/>
+	<link href="{{ asset('./public/css/multiSelectCombo.css') }}" rel="stylesheet" type="text/css"/>
+
+	<link href="{{ asset('public/css/tareas.css') }}" type="text/css" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts%}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('public/js/jquery-3.2.1/jquery-3.2.1.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/jquery-ui.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/Datatables/datatables.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.bootstrap4.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedColumns.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/Datatables/dataTables.fixedHeader.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/moment.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/bootstrap-datetimepicker.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/daterangepicker.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/push.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/howler.core.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('public/js/vfs_fonts.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/soporte/js/GestionPendientes/autocompletar.js') }}"></script>
+
+	<script src="{{ asset('./public/js/bootstrap.min.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('./public/js/jquery-ui.min.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+{% block contenido_central %}
+    <form style="text-align: center !important;">
+		<br/>
+		<br/>
+		Descifrar Cliente
+		<br/>
+		<br/>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: end !important;">
+					Tipo Identificación:
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: start !important;" >
+					<select id="tipoIdentificacion">
+						<option>ESCOJA UN TIPO</option>
+						<option>CEDULA DE IDENTIDAD</option>
+						<option>PASAPORTE</option>
+						<option>RUC</option>
+					</select>
+				</div>
+				<br/>
+				<br/>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align: end !important;">
+					Identificación:
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="text-align: start !important;" >
+					<input id="identificacion" />
+				</div>
+				<br/>
+				<br/>
+			</div>
+			<br/>
+			<div class="row">
+				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"></div>
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+					<a id="btnGuardar" disabled="true" class="btn btn-success" href="#" role="button">Grabar</a>
+				</div>
+			</div>
+			<br/>
+		</div>
+	</form>
+	<!-- Modal para mensajes personalizados-->
+	<div class="modal fade" id="modalCustom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="tittelSmsCustom" ><div id="tituloMensaje">Mensaje</div></h4>
+			</div>
+			<div class="modal-body" style="padding: 0px 15px">
+				<div style="padding-top:10px;padding-bottom:10px;">
+					<div id="cuerpoMensaje" ></div>
+				</div>
+				<div class="alert " role="alert" style="display:none;" id="alertaSmsCustomDiv">
+					<strong  id="alertaSmsCustom"></strong>
+				</div>
+			</div>
+			<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id= "btnModalGenCancel" style="display:none;"><span class="text-btn">Cerrar</span></button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id="btnModalGenOk"><span class="text-btn">OK</span></button>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal para mensajes correctos-->
+	<div class="modal fade" id="modalCorrecto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="tittelSmsCustom" ><div id="tituloMensajeCorrecto">Mensaje</div></h4>
+			</div>
+			<div class="modal-body" style="padding: 0px 15px">
+				<div style="padding-top:10px;padding-bottom:10px;">
+					<div id="cuerpoMensajeCorrecto" ></div>
+				</div>
+				<div class="alert " role="alert" style="display:none;" id="alertaSmsCustomDiv">
+					<strong  id="alertaSmsCustom"></strong>
+				</div>
+			</div>
+			<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id = "btnModalCorrectoCancel" style="display:none;"><span class="text-btn">Cerrar</span></button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id = "btnModalCorrectoOk"><span class="text-btn">OK</span></button>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal para errores-->
+	<div class="modal fade" id="modalErrores" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="tittelModalErrores" ><div id="tituloMensajeErrores">Mensaje</div></h4>
+			</div>
+			<div class="modal-body" style="padding: 0px 15px">
+				<div style="padding-top:10px;padding-bottom:10px;">
+					<div id="cuerpoMensajeErrores" ></div>
+				</div>
+				<div class="alert " role="alert" style="display:none;" id="alertaSmsCustomDiv">
+					<strong  id="alertaSmsCustom"></strong>
+				</div>
+			</div>
+			<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal" id = "btnModalGenCancel" style="display:none;"><span class="text-btn">Cerrar</span></button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal" id = "btnModalErroresOk"><span class="text-btn">OK</span></button>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal para mensajes de Guardado-->
+	<div class="modal fade" id="modalSave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="tittelSmsCustom" ><div id="tituloMensajeSave">Mensaje</div></h4>
+            </div>
+            <div class="modal-body" style="padding: 0px 15px">
+                <div style="padding-top:10px;padding-bottom:10px;">
+                    <div id="cuerpoMensajeSave" ></div>
+                </div>
+                <div class="alert " role="alert" style="display:none;" id="alertaSmsCustomDiv">
+                    <strong  id="alertaSmsCustom"></strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id= "btnModalSaveCancel"><span class="text-btn">Cerrar</span></button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="btnGurdarxii"><span class="text-btn">Guardar</span></button>
+            </div>
+            </div>
+        </div>
+	</div>
+	<script>
+		$('#tipoIdentificacion').change(function () {
+			if ($('#tipoIdentificacion').val() != 'ESCOJA UN TIPO') {
+				$('#btnGuardar').removeAttr('disabled');
+			}else{
+				$('#tituloMensaje').html('Información');
+				$('#cuerpoMensaje').html('Tipo de identificación no valido');
+				$('#modalCustom').modal('show');
+				$('#btnGuardar').attr('disabled','disabled');
+			}
+		});
+
+		$('#btnGuardar').click( function (){
+			if($('#identificacion').val()!=undefined && $('#identificacion').val().length>1){
+			let mensaje = '¿Está seguro de ejecutar la desencriptación del titular '+$('#identificacion').val()+'?';
+			$('#tituloMensajeSave').html('Información');
+			$('#cuerpoMensajeSave').html(mensaje);
+			$('#modalSave').modal('show');
+			}else{
+				$('#tituloMensaje').html('Información');
+				$('#cuerpoMensaje').html('Campo identificacion vacio');
+				$('#modalCustom').modal('show');
+			}
+		} );
+
+		$('#btnGurdarxii').click(function (){
+			let data = {
+				tipoIdentificacion: $('#tipoIdentificacion').val(),
+				identificacion : $('#identificacion').val()
+			}
+			$('#btnGuardar').attr('disabled','disabled');
+			$.ajax({
+			type: 'POST',
+			url: "{{ path('descifrar_cliente_ajax') }}",
+			data: data,
+			success: function (response) {
+				$('#tituloMensaje').html('Información');
+				$('#cuerpoMensaje').html(response.mensaje);
+				$('#modalCustom').modal('show');
+				$('#identificacion').val('');
+				$('#tipoIdentificacion').val('ESCOJA UN TIPO');
+				$('#correoElectronico').val('');
+				$('#btnGuardar').attr('disabled','disabled');
+			}
+			});
+		});
+	</script>
+{% endblock contenido_central %}

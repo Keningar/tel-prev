@@ -1,0 +1,73 @@
+{% extends "::layout.html.twig" %}
+
+{% block stylesheets %}
+	{{ parent() }}
+
+    <style scoped="scoped">
+        .category-label
+        {
+            vertical-align: middle;
+            padding-right: .5em;
+        }
+        #category
+        {
+            vertical-align: middle;
+        }
+        .toolbar {
+            float: right;
+            margin-right: .8em;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts%}
+    {{ parent() }}
+
+    <script type="text/javascript" src="{{ asset('./bundles/administracion/js/AdmiUsuarioAcceso/index.js') }}"></script>
+    <script>
+        var getTiposElementos           = '{{ path('admitipoelemento_getTiposElementos') }}';
+        var getModelosElementos         = '{{ path('admimodeloelemento_getModelosElementosPorMarca') }}';
+        var getRelacionUsuarioModelo    = '{{ path('admiusuarioacceso_getRelacionUsuarioModelo') }}';
+    </script>
+{% endblock %}
+
+{% block contenido_izq %}
+    <div id="titulo_content">
+        <img src="{{ asset('public/images/'~ item.urlImagen | default('tools1.png') ~ '') }}" class="imagen-titulo-content">
+        <h1>Listado de Usuarios</h1>
+    </div>
+    
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="errormessage">
+            {{ flashMessage }}
+        </div>
+    {% endfor %}
+    
+    <div class="dashboard_content k-content">
+        <table width="100%" cellpadding="1" cellspacing='0'  border='0'>
+            <tr>
+                <td><div id='filtro'></div></td>
+            </tr>	
+            <tr>
+                <td><div id="grid"></div></td>
+            </tr>
+        </table> 
+    </div>
+
+{% endblock contenido_izq %}
+
+{% block contenido_der %}
+	{% if is_granted('ROLE_132-2') %}
+        <a class="button-nuevo-registro" href="{{ path('admiusuarioacceso_new') }}">
+            <img src="{{ asset('public/images/images_crud/new_plus.png')}}" width="15" height="15" />
+            &nbsp;Nuevo Usuario Acceso
+        </a>
+	{% endif %}
+    <div class="titulo-acciones-relacionadas">
+        Acciones Relacionadas
+    </div>
+{% endblock contenido_der %}
+
+{% block javascripts_footer%}
+
+{% endblock %}
