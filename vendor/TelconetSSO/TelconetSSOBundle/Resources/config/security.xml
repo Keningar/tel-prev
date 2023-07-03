@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="fos_telconet.auth" class="TelconetSSO\TelconetSSOBundle\Security\Authentication\Provider\TelconetSSOProvider" public="false">
+            
+        </service>
+        
+        
+
+  <service id="fos_telconet.security.authentication.listener"
+                 class="TelconetSSO\TelconetSSOBundle\Security\Firewall\TelconetSSOListener"
+                 parent="security.authentication.listener.abstract"
+                 abstract="true">
+        </service>
+
+        <service id="fos_telconet.security.authentication.entry_point" class="TelconetSSO\TelconetSSOBundle\Security\EntryPoint\TelconetSSOAuthenticationEntryPoint" public="false" abstract="true">
+                      
+        </service>
+
+    </services>
+</container>
