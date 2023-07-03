@@ -1,0 +1,204 @@
+/*crud nuevo*/
+
+.titulo_interno
+{
+	margin: 0;
+	/*background: #F7F7F7;*/
+	background: #FFFFFF;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+	padding: 10px;
+	display: block;
+	margin-bottom: 20px;
+}
+
+/*titulo*/
+
+.escrito_interno
+{
+    font-size: 17px !important;
+    color:  #6f6f6f;
+    margin-top: 5px;
+    font-size: 21px;
+    color: #3F3F38;
+    font-weight:bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+	padding: 0;
+	text-align: left;
+}
+
+/*contenedor ext izq*/
+
+#dashboard {
+    /*margin: -4px -14px 0;*/
+    margin: 0px 11px 3px;
+    /*padding: 15px;*/
+    -moz-border-radius: 0 4px 0 0;
+    border: 1px solid #DDDDDD;
+    /*background-color: #FFFFFF;*/
+    background-color: #F9F9F9;
+	width: 975px;
+	min-height: 10em;
+}
+
+/*contenedor ext der*/
+
+#listado_opciones {
+    /*margin: -4px -14px 0;*/
+    /*margin: -233px 11px 3px;*/
+    padding: 10px;
+    -moz-border-radius: 0 4px 0 0;
+    border: 0px solid #DDDDDD;
+    background-color: #FFFFFF;
+    min-width: 200px;
+    float:right;
+    display: block;
+	argin-right: 30px;
+}
+
+/*acciones relacionadas titulo*/
+
+#acciones_relacionadas
+{
+	background-color: #F9F9F9;
+	font-weight:bold;
+}
+
+ul.listado_acciones_relacionadas
+{ 
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+a.listado_ac_relacionadas
+{ 
+	color: #AFAFAF !important;
+}
+
+
+/*formulario*/
+
+#formulario  textarea, #formulario  input[type='text'], #formulario  input[type='radio'], #formulario  select, #formulario ul#urlForm {
+-moz-border-radius-bottomleft:4px;
+-moz-border-radius-bottomright:4px;
+-moz-border-radius-topleft:4px;
+-moz-border-radius-topright:4px;
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#FBFBFB none repeat scroll 0 0;
+border:1px solid #E5E5E5;
+font-size:14px;
+margin-bottom:11px;
+margin-right:6px;
+margin-top:2px;
+padding:3px;
+}
+
+#formulario .adapta{
+    width: 90%;
+}
+
+
+#formulario input[type='radio']{
+    width: 5%;
+}
+
+/*butons*/
+
+
+.button-small {
+    display: inline-block;
+    float: none;
+    font-size: 11px;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 15px !important;
+}
+
+/*fondo del formulario*/
+
+#formulario_interno
+{
+	background-color: #F7F7F7;
+	margin: 0;
+	padding: 0 10px 20px;
+	_padding: 0 10px 15px;
+	margin-bottom: 25px;
+	border-top: 1px solid #ECECEC;
+	border-bottom: 1px solid #ECECEC;
+	margin-top:10px;
+	width:953px;
+}
+
+label
+{
+	/*font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+	padding: 5px 10px 5px 10px;
+	white-space: nowrap;
+	color: #666;
+	width: 152px;
+	vertical-align: top;
+	display: block;
+	margin: .5em 0 0 0;
+	margin-bottom:0.3em;
+	float:right;*/
+	/*font-weight: bold;*/
+	color: #9C0000;
+	float:left;
+	width:130px;
+	text-align:left;
+	margin: .5em 0 0 0;
+	margin-bottom:0.3em;
+	
+}
+
+
+input
+{
+	float:left;
+	border:1px solid;
+	margin-left:0.2em;
+	margin-bottom:0.3em;
+	/*width:290px;*/
+	width:298px;
+	border: 1px solid #ACD2E7 !important;
+}
+
+#formulario_fechaHoraCreacion ,
+#formulario_fechaHoraModificacion,
+#formulario_fechaVigenciaImpuesto
+{
+	float:left;
+	border:1px solid;
+	margin-left:0.2em;
+	margin-bottom:0.3em;
+	width:290px;
+	border: 1px solid #ACD2E7 !important;
+}
+
+select
+{
+	width:298px;
+	border:1px solid;
+	margin-left:0.2em;
+	margin-bottom:0.3em;
+	border: 1px solid #ACD2E7 !important;
+}
+/*tabla del show*/
+
+th
+{
+	color: #9C0000;
+	font-weight: bold;
+}
+
+.error 
+{
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('/images/error-msj.png');
+}

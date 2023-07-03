@@ -1,0 +1,7899 @@
+informacionTecnica#tabla-listado thead tr {
+    height: 21px;
+}
+
+#tabla-listado tbody tr {
+    height: 30px;
+}
+
+#tabla-listado th {
+    height: 15px;
+    font-size: 11px;
+    color: #777777;
+    font-weight: bold;
+    text-align: left;
+}
+
+#tabla-listado td {
+    height: 15px;
+    font-size: 12px;
+}
+
+.tablenav .displaying-num {
+    font-family: Georfia, "Times New Roman", "Bitstream Charter", Times, serif;
+    font-size: 12px;
+    font-style: italic;
+    margin-right: 10px;
+}
+
+.tablenav .tablenav-pages a {
+    background: url("../images/images_crud/menu-bits.gif") repeat-x scroll left -379px #E3E3E3;
+    border-color: #E3E3E3;
+}
+
+.tablenav .tablenav-pages a,
+.tablenav-pages span.current {
+    -moz-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid;
+    padding: 3px 6px;
+    text-decoration: none;
+}
+
+.tablenav .tablenav-pages a:hover {
+    /*border-color: #D54321;*/
+    /*color: #D54E21;*/
+}
+
+.tablenav .tablenav-pages .current {
+    background: none repeat scroll 0 0 #DFDFDF;
+    border-color: #D3D3D3;
+}
+
+.tablenav .actions {
+    padding: 2px 8px 0 0;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+.tablenav select[name="action"],
+.tablenav select[name="action2"] {
+    width: 130px;
+}
+
+.tablenav select {
+    font-size: 11px;
+}
+
+.acciones span a {
+    /*color: #455856;*/
+}
+
+.tr-even {
+    background-color: #F9F9F9;
+}
+
+.tr-odd {
+    background-color: #FFFFFF;
+}
+
+.tr-over {
+    background-color: #f0f0f0;
+}
+
+.table.fixed {
+    table-layout: fixed;
+}
+
+.listado {
+    background-color: #FFFFFF;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #DFDFDF;
+    margin: 15px 0 0;
+    width: 99%;
+}
+
+.listado th {
+    line-height: 1.3em;
+}
+
+.listado td,
+.listado th {
+    border-color: #DFDFDF;
+    overflow: hidden;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    font-size: 13px;
+    vertical-align: text-top;
+}
+
+
+/*formulario*/
+
+.formularioModelo textarea,
+.formularioModelo input[type='file'],
+.formularioModelo input[type='text'],
+.formularioModelo input[type='radio'],
+.formularioModelo select,
+.formularioModelo ul#urlForm {
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    border: 1px solid #E5E5E5;
+    font-size: 14px;
+    margin-bottom: 11px;
+    margin-right: 6px;
+    margin-top: 2px;
+    padding: 3px;
+    color: black;
+}
+
+.formulario textarea,
+.formulario input[type='file'],
+.formulario input[type='text'],
+.formulario input[type='radio'],
+.formulario select,
+.formulario ul#urlForm {
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    border: 1px solid #E5E5E5;
+    font-size: 14px;
+    margin-bottom: 11px;
+    margin-right: 6px;
+    margin-top: 2px;
+    padding: 3px;
+    color: black;
+}
+
+.formulario-float textarea,
+.formulario-float input[type='file'],
+.formulario-float input[type='text'],
+.formulario-float input[type='radio'],
+.formulario-float select,
+.formulario-float ul#urlForm {
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -moz-background-clip: border;
+    -moz-background-inline-policy: continuous;
+    -moz-background-origin: padding;
+    border: 1px solid #E5E5E5;
+    font-size: 14px;
+    margin-bottom: 11px;
+    margin-right: 6px;
+    margin-top: 2px;
+    padding: 3px;
+    color: black;
+}
+
+.formulario .adapta {
+    width: 90%;
+}
+
+.formulario input[type='radio'] {
+    width: 5%;
+}
+
+.formularioModelo .adapta {
+    width: 90%;
+}
+
+.formularioModelo input[type='radio'] {
+    width: 5%;
+}
+
+
+/*.formulario label {
+    color: #9C0000;
+    float: left;
+    margin: 0.5em 0 0.3em;
+    text-align: left;
+    margin-right:15px;
+}*/
+
+.formulario-show {}
+
+
+/*form actions*/
+
+.form_actions {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 210px;
+}
+
+
+/*butons*/
+
+.buttons {
+    margin-top: 15px;
+}
+
+.buttons p {
+    text-align: center;
+}
+
+.button-crud {
+    border-color: #CFCECE #CFCECE #B5B4B4;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    color: #444444;
+    font: bold 11px Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 5px 15px;
+    text-shadow: 0 2px 0 #F9F9F9;
+    background-color: #F1F1F1;
+    cursor: pointer;
+}
+
+.button-crud:hover {
+    background-color: #F9F9F9;
+    box-shadow: 1px 1px rgba( 0, 0, 0, 0.1);
+}
+
+.button-eliminar {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/trash.png") no-repeat;
+}
+
+.button-add {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/plus.png") no-repeat;
+}
+
+.button-addPesrsona {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/contacto.png") no-repeat;
+}
+
+.button-addBook {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/addBook.png") no-repeat;
+}
+
+.button-addPlusPesrsona {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/nuevo_contacto.png") no-repeat;
+}
+
+.button-editar {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/pencil.gif") no-repeat;
+}
+
+.button-reporte {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/chart.png") no-repeat;
+}
+
+.button-editar-grid {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/edit.png") no-repeat;
+}
+
+.button-grid-editUser {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/editUsuario.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+}
+
+.button-grid-edit {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/pencil.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-edit:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+
+.button-grid-add {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/save.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-add:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+
+/* button */
+
+.button-grid-edit-perfiles {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/import.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-edit-perfiles:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-add-protocolo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/chart_organisation_add.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-add-protocolo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-protocolos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/chart_organisation.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-protocolos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-administracionEnrutamiento {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-image: url(/public/images/images_crud/tuerca.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-administracionEnrutamiento:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambioSubredes {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-image: url(/public/images/network_ip.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-cambioSubredes:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-solicitarFactibilidad {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tuerca.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-solicitarFactibilidad:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-telefonia {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/contact.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-telefonia:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-camara {
+    background-color: #e3e3e3;
+    background-image: url("/public/images/images_crud/camara.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #c5c5c5;
+    border-radius: 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2e2e2e;
+    font-size: 11px;
+    height: 25px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.button-grid-camara:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-sms {
+    background-color: #e3e3e3;
+    background-image: url("/public/images/images_crud/SMS.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #c5c5c5;
+    border-radius: 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2e2e2e;
+    font-size: 11px;
+    height: 25px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.button-grid-sms:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-grabacion {
+    background-color: #e3e3e3;
+    background-image: url("/public/images/images_crud/grabacion.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-color: #c5c5c5;
+    border-radius: 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #2e2e2e;
+    font-size: 11px;
+    height: 25px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    text-align: center;
+    text-decoration: none;
+    width: 25px;
+}
+
+.button-grid-grabacion:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-enlazarConcentrador {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/cambioCpe.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-enlazarConcentrador:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-crearBackup {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/interface.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+    cursor: pointer;
+}
+
+.button-grid-crearBackup:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-ver-resumen-nodo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/verInfoNodo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-ver-resumen-nodo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-eliminarServicio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/trash_c.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-eliminarServicio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verLogsServicio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/logs.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-verLogsServicio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reingreso{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image:  url(/public/images/delante.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-reingreso:hover{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-editarCaracteristicas{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/editarPerfil.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-editarCaracteristicas:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ingresoCamara{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/camara.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-ingresoCamara:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+
+.button-grid-actualizarIdPlan {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambioVelocidad.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-actualizarIdPlan:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reintentoMonitoreTg {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambioVelocidad.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-reintentoMonitoreTg:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verCuartoTi-com {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/server.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-verCuartoTi-com:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-poolRecursos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/poolRecursos.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-poolRecursos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reintentoMcAfee {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/reintentoMcAfee.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-reintentoMcAfee:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reintentoNuevoAntivirus {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/reintentoKaspersky.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-reintentoNuevoAntivirus:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reintentoPromocionBW {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/reintentoPromoBW.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-reintentoPromocionBW:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambiar-frec-fact {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/frecuencia_fact.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-cambiar-frec-fact:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-asociar-mascarilla-camara {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 1px 1px 1px 1px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/busqueda_servicios.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-asociar-mascarilla-camara:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambiar-desc-fact {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/pencil.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-cambiar-desc-fact:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambioCpe {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/cambioCpe.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-cambioCpe:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambioDataTecnicaCpe {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambioDataTecnica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-cambioDataTecnicaCpe:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-dataTecnicaCompleta {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/dataTecnicaCompleta.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-dataTecnicaCompleta:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-adminstrarMaquinaVirtual {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/server_configuration.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.button-grid-adminstrarMaquinaVirtual:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-suspensionTemporal {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/suspensionTemporal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-suspensionTemporal:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-pdf {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/pdf.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-pdf:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-pdf-2 {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/pdf.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-pdf-2:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-clonar-factura {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/clonar_factura.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 0px;
+}
+
+
+.button-grid-show {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/search.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 0px;
+}
+
+.button-grid-show:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-show-2 {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/search.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-show-2:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-lens-show {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 7px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/search.png);
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 25px;
+    width: 40px;
+}
+
+.button-clean-field {
+    width: 157px;
+    height: 57px;
+    background: url(/public/images/clean.png);
+    overflow: hidden;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+
+.button-grid-addPlusPersona {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/nuevo_contacto.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-addPlusPersona:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-lookBook {
+    border-spacing: 0;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 5px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/lookBook.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-lookBook:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-agenda {
+    border-spacing: 0;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 5px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/agenda.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-agenda:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-editBook {
+    border-spacing: 0;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 5px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/editBook.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-editBook:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.iconEditBook {
+    background-image: url("/public/images/images_crud/editBook.png");
+}
+
+.button-deleteBook {
+    border-spacing: 0;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 5px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/deleteBook.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-deleteBook:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.iconDeleteBook {
+    background-image: url("/public/images/images_crud/deleteBook.png");
+}
+
+.button-grid-agregarFacturacionElectronica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/activarFacturacion.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-agregarFacturacionElectronica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-quitarFacturacionElectronica-without-border {
+    background-image: url(/public/images/images_crud/cross_circle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-quitarFacturacionElectronica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/cross_circle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-quitarFacturacionElectronica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-quitarRed{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/TrashRed.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+
+}
+
+.button-grid-quitarRed:hover{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-crearSolicitud{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    margin-left: 5px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/add.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-crearSolicitud-without-border {
+    background-image: url(/public/images/images_crud/add.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-crearSolicitud:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-recibopago {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/print.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-recibopago:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-excel {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/excel.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-excel:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-excel-small {
+    background-image: url(/public/images/images_crud/excel_green.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 15px;
+    width: 15px;
+}
+
+.button-grid-excel-small:hover {
+    cursor: pointer;
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-excel-red {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/excel_red.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-excel-red:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-excel-green {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/excel_green.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-excel-green:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-process {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/kwallet.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-process:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-delete {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/trash_c.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-delete:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ipReserva {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/ip_reserva.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-ipReserva:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambioClave:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambioClave {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/pencil.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-updowngrade:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-updowngrade {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    cursor: pointer;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambioEstadoEnvio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-editarCambioUpDown {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/editarCambioUpDown.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.button-grid-editarCambioUpDown:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-puntoCliente {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/busqueda_user.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-puntoCliente:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verDslam:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verInterfacesPorPuerto:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verInterfacesPorPuerto {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/interfaces.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 0px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-solicitarPlanificacion {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/calendario1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-solicitarPlanificacion:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Gmaps {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/gmaps.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Gmaps:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-RutaMaps {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/ruta-google.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-RutaMaps:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Foto {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/foto.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verTarea:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verTarea {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tarea1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Foto:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarSeguimiento {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url("/bundles/soporte/images/iconos/16/agregar_seguimiento.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarSeguimiento:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-BigDelete,
+.button-grid-Pausa {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/Bigdelete.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-BigDelete:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Pausa {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/boton_de_pausa.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Pausa:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Anular {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/boton_de_anular.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Anular:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Check {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/check.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Check:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-plus {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/add.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-plus:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Tuerca {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tuerca.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Tuerca:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Fact-Anticipada {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/factAnticipada.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Fact-Anticipada:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-PassWordTg {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url("/public/images/images_crud/password.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-PassWordTg:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-monitoreoTg {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url("/public/images/btnMigracion.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-monitoreoTg:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Tuerca-2 {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tuerca.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-Tuerca-2:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-CheckList {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/checklist.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-CheckList:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Import {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/import.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Import:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Time2 {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/time2.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Time2:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Retime {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/Retime.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Retime:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-contactos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/contacto.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-contactos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-admincontactos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/nuevo_contacto.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-admincontactos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarDetalleModelo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarDetalleModelo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarDetallesModelo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-crearClienteLdap:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-crearClienteLdap {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarDetallesModelo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-reconfigurarLdap {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tuerca.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-reconfigurarLdap:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verInterfaces:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verInterfaces {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/puertosTodos.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verDslam:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verDslam {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/dslam.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-setearSdWan {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tick1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarScript:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarScript {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarScript1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarCaracteristica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarCaracteristica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarCaracteristica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-seleccionarBackup:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-seleccionarBackup {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-decoration: none;
+    background-image: url(/public/images/backup.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 25px;
+    width: 85px;
+    margin-left: 5px;
+}
+
+.button-grid-servicioPrincipal:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-servicioPrincipal {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/principal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-invisible {
+    display: none;
+}
+
+.button-search-grid img {
+    margin-left: 10px;
+}
+
+
+/*.button-eliminar:hover{
+        background-color: #C53727;
+        border: 1px solid #B0281A;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}*/
+
+.button-grid-cruzar {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/pay.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-cruzar:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cruzar2 {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/pay.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-cruzar2:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-gr id-datosEnvio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/pay.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-datosEnvio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+
+/**/
+
+.blue-button {
+    background-color: #4D90FE;
+    border: 1px solid #3079ED;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    font: bold 11px Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 5px 15px;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.blue-button:hover {
+    background-color: #357AE8;
+    border: 1px solid #2F5BB7;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.red-button {
+    border-radius: 5px 5px 5px 5px;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+    font: bold 11px Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 5px 15px;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    background-color: #D14836;
+    cursor: pointer;
+}
+
+.red-button:hover {
+    background-color: #C53727;
+    border: 1px solid #B0281A;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+/**/
+
+.cancel-crud {
+    color: red;
+    text-decoration: underline;
+}
+
+.cancel-crud:hover {
+    text-decoration: underline;
+}
+
+.height20px {
+    height: 20px;
+    position: relative;
+    top: 1px;
+}
+
+.button-small {
+    display: inline-block;
+    float: none;
+    font-size: 11px;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 15px;
+}
+
+
+/*titulo*/
+
+h1 {
+    font-size: 17px;
+    color: #6f6f6f;
+    margin-top: 5px;
+    font-size: 18px;
+    color: #3F3F38;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+    padding-top: 10px;
+}
+
+
+/*contenedor ext izq*/
+
+
+/*contenedor ext der*/
+
+#listado_opciones {
+    /*margin: -4px -14px 0;*/
+    /*margin: -233px 11px 3px;*/
+    padding: 10px;
+    -moz-border-radius: 0 4px 0 0;
+    border-radius: 0 4px 0 0;
+    border: 0px solid #DDDDDD;
+    background-color: #FFFFFF;
+    min-width: 200px;
+    float: right;
+    display: block;
+    /*margin-right: 30px;*/
+}
+
+
+/*acciones relacionadas titulo*/
+
+.titulo-acciones-relacionadas {
+    border-bottom: 1px solid #C7C7C7;
+    margin-top: 2em;
+    color: #4F4F4E;
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 12px;
+    padding: 15px 0 3px;
+    width: 200px;
+    clear: both;
+    font-family: verdana, arial;
+}
+
+.button-nuevo-registro {
+    background-color: #F9F9F9;
+    font-size: 14px;
+    padding: 8px 15px;
+    text-align: center;
+    border-color: #DFDFDF;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    color: #00309E;
+}
+
+.button-nuevo-registro:hover {
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px rgba( 0, 0, 0, 0.1);
+}
+
+
+/*.acciones_relacionadas:hover
+{
+border-color: #2D2D2D;
+}*/
+
+.nuevo_registro a {
+    color: #2D2D2D;
+}
+
+ul.listado_acciones_relacionadas {
+    list-style: none;
+    margin: 0;
+    margin-top: 20px;
+    padding-left: 22px;
+}
+
+ul.listado_acciones_relacionadas li a {
+    color: #3E3E3E;
+    font-size: 13px;
+}
+
+a.listado_ac_relacionadas {
+    color: #AFAFAF;
+}
+
+
+/*en tabla*/
+
+a.listado_a_tablas {
+    color: #5493B1;
+}
+
+.ver {
+    background: url("/public/images/search.png") no-repeat;
+}
+
+img.editar {
+    background: url("/public/images/images_crud/edit.png") no-repeat;
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
+}
+
+img.new {
+    background: url("/public/images/images_crud/new_paper.png") no-repeat;
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin-top: 4px;
+}
+
+ul.listado_acciones_tablas {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.formularioModelo input {
+    border: 1px solid;
+    margin-left: 0.2em;
+    margin-bottom: 0.3em;
+    /*width:290px;*/
+    width: 10em;
+    border: 1px solid #ACD2E7;
+}
+
+.formularioModelo textarea,
+select {
+    border: 1px solid #ACD2E7;
+}
+
+.formularioModelo label {
+    color: #777777;
+    float: left;
+    width: 130px;
+    text-align: left;
+    margin: .5em 0 0 0;
+    margin-bottom: 0.3em;
+    font-weight: bold;
+}
+
+.formulario input {
+    border: 1px solid;
+    margin-left: 0.2em;
+    margin-bottom: 0.3em;
+    /*width:290px;*/
+    width: 18em;
+    border: 1px solid #ACD2E7;
+}
+
+.formulario textarea,
+select {
+    border: 1px solid #ACD2E7;
+}
+
+.formulario label {
+    color: #777777;
+    float: left;
+    width: 130px;
+    text-align: left;
+    margin: .5em 0 0 0;
+    margin-bottom: 0.3em;
+    font-weight: bold;
+}
+
+.formularioAdministracion input {
+    border: 1px solid;
+    margin-left: 0.2em;
+    margin-bottom: 0.3em;
+    /*width:290px;*/
+    width: 40em;
+    border: 1px solid #ACD2E7;
+}
+
+.campo-oculto {
+    display: none;
+}
+
+.campo-filtro {
+    font-size: 1.2em;
+    color: #2E2E2E;
+    font-weight: normal;
+    padding-top: 1em;
+    margin: 0;
+}
+
+.campo-filtro-tabla {
+    font-size: 1.2em;
+    color: #2E2E2E;
+    font-weight: normal;
+    padding-top: 1em;
+    margin: 0;
+    width: 12em;
+}
+
+.filtro-content {
+    margin: 3em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.campo-obligatorio {
+    color: #9C0000;
+}
+
+.campo-obligatorio-select {
+    color: #9C0000;
+    margin-top: 0.3em;
+}
+
+.campo-obligatorio label {
+    width: 130px;
+    text-align: left;
+    margin: .5em 0 0 0;
+    margin-bottom: 0.3em;
+    float: none;
+    font-weight: bold;
+}
+
+.campos-requeridos {
+    color: #9C0000;
+    float: right;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.campo-radio label {
+    width: 130px;
+    text-align: left;
+    margin: .5em 0 0 0;
+    margin-bottom: 0.3em;
+    float: none;
+    font-weight: bold;
+}
+
+.coordenadas-field {
+    width: 2em !important;
+}
+
+.coordenadas-field-mili {
+    width: 2.5em !important;
+}
+
+.formulario-float label {
+    color: #777777;
+    float: left;
+    width: 130px;
+    text-align: left;
+    margin: .5em 0 0 0;
+    margin-bottom: 0.3em;
+    font-weight: bold;
+}
+
+.formulario-float input {
+    float: left;
+    border: 1px solid;
+    margin-left: 0.2em;
+    margin-bottom: 0.3em;
+    /*width:290px;*/
+    width: 280px;
+    border: 1px solid #ACD2E7;
+}
+
+.formulario-float textarea,
+select {
+    border: 1px solid #ACD2E7;
+}
+
+.formulario-float select {
+    width: 280px;
+    border: 1px solid;
+    margin-left: 0.2em;
+    margin-bottom: 0.3em;
+    border: 1px solid #ACD2E7;
+    /*float: left;*/
+    width: 287px;
+    clear: both;
+}
+
+
+/*divison de formulario*/
+
+.secHead {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #999;
+    border-bottom: 1px solid #F1F0F5;
+    font-weight: normal;
+    clear: both;
+}
+
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('/public/images/images_crud/error.png');
+    width: 10px;
+    height: 10px;
+}
+
+.info-error {
+    background-color: #FFBABA;
+    border: 1px solid #D8000C;
+    margin: 15px;
+    padding: 15px 15px 0 15px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+
+.info-success {
+    background-color: #D0F5A9;
+    border: 1px solid #6C9D31;
+    margin: 15px;
+    padding: 15px 15px 0 15px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+
+.info-error p,
+.info-success p {
+    font-size: 1.2em;
+}
+
+.info-error p label,
+.info-success p label {
+    font-weight: bold;
+}
+
+#ventordenserviciocab_ordenDetalle_ {
+    background-color: #F1F0F5;
+    border: 1px solid #F1F0F5;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 50px;
+}
+
+.img-grid {
+    width: 20px;
+    height: 20px;
+    padding-top: 6px;
+}
+
+.icon_upload {
+    background-image: url("/public/images/images_crud/upload.png");
+}
+
+.icon_edit {
+    background-image: url("/public/images/images_crud/edit.png");
+}
+
+.icon_refresh {
+    background-image: url("/public/images/images_crud/refresh.png");
+}
+.icon_save {
+    background-image: url("/public/images/images_crud/disk-icon.png");
+}
+
+.icon_search {
+    background-image: url("/public/images/images_crud/ver.png");
+}
+
+.icon_limpiar {
+    background-image: url("/public/images/images_crud/edit-clear.png");
+}
+
+.icon_add {
+    background-image: url("/public/images/images_crud/plus.png");
+}
+
+.icon_check {
+    background-image: url("/public/images/images_crud/check.png");
+}
+
+.icon_delete {
+    background-image: url("/public/images/images_crud/trash.png");
+}
+
+.icon_zonificar {
+    background-image: url("/public/images/images_crud/gmaps.png");
+}
+
+.icon_solicitud {
+    background-image: url("/public/images/images_crud/task.png");
+}
+
+.icon_exportar {
+    background-image: url("/public/images/images_crud/excel.gif");
+}
+
+.icon_descargar {
+    background-image: url("/public/images/exdown.png");
+    background-size: 15px 15px;
+}
+
+.icon_ingresarTrazabilidad {
+    background-image: url("/public/images/scm-anadir.png");
+    background-size: 15px 15px;
+}
+
+.icon_cambiarEstado {
+    background-image: url("/public/images/cambioVelocidad.png");
+    background-size: 15px 15px;
+}
+
+.icon_calculador {
+    background-image: url("/public/images/calculador.png");
+    background-size: 20px 20px;
+}
+
+.icon-porcentaje {
+    background-image: url("/public/images/porcentaje.png");
+    background-size: 20px 20px;
+}
+
+.icon-password {
+    background-image: url("/public/images/password.png");
+    background-size: 20px 20px;
+}
+
+.icon-fox {
+    background-image: url("/public/images/fox.png");
+    background-size: 20px 20px;
+}
+
+.icon-paramount {
+    background-image: url("/public/images/paramount.png") ;
+    background-size: 20px 20px;
+}
+
+.icon-noggin {
+    background-image: url("/public/images/noggin.png") ;
+    background-size: 20px 20px;
+}
+.icon-ingresarCorreo {
+    background-image: url("/public/images/ingresarCorreo.png") ;
+    background-size: 20px 20px;
+}
+
+.icon_asignarHal {
+    background-image: url("/public/images/check.png");
+    background-size: 20px 20px;
+}
+
+.icon_cerrar {
+    background-image: url("/public/images/images_crud/cross_circle.png");
+}
+
+.icon_informacionTecnica {
+    background-image: url("/public/images/informacionTecnica.png");
+}
+
+.iconSave {
+    background-image: url("/public/images/images_crud/save.png");
+}
+
+.icon_ejecutarScript {
+    background-image: url("/public/images/agregarScript1.png");
+}
+
+.icon_cambiarSubred {
+    background-image: url(/public/images/images_crud/cambioCpe.png);
+}
+
+.icon_generacionIpPorSubred {
+    background-image: url(/public/images/network_ip.png);
+}
+
+.addBook {
+    background-image: url("/public/images/images_crud/addBook.png");
+}
+
+.icon_regresar {
+    background-image: url("/public/images/regresar.ico");
+    background-size: 20px 20px;
+}
+
+.icon_saldos {
+    background-image: url("/public/images/canales.png");
+    background-size: 20px 20px;
+}
+
+.icon_exportar_pdf {
+    background-image: url(/public/images/images_crud/pdf.gif);
+}
+
+.icon_vip {
+    width: 25px!important;
+    height: 25px!important;
+    background-image: url("/public/images/vip.png") !important;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+}
+
+.icon_data_fact_edit {
+    width: 25px!important;
+    height: 25px!important;
+    background-image: url(/public/images/money_bag_dollar.png) !important;
+    background-repeat: no-repeat;
+    background-size: 23px 23px;
+}
+
+.icon_fecha_fin_contrato {
+    width: 25px!important;
+    height: 25px!important;
+    background-image: url(/public/images/images_crud/edit.png) !important;
+    background-repeat: no-repeat;
+    background-size: 23px 23px;
+}
+
+.icon_vip_log {
+    width: 25px!important;
+    height: 25px!important;
+    background-image: url("/public/images/vip_log.png") !important;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+}
+
+.icon_cliente_log {
+    width: 25px!important;
+    height: 25px!important;
+    background-image: url(/public/images/cliente_log.png) !important;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+}
+
+.icon_ver_ing_vip {
+    width: 25px!important;
+    height: 25px!important;
+    background-image: url("/public/images/images_crud/verDetalle.png") !important;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+}
+
+.icon_cambiar_marca_vip_tecnico {
+    width: 25px!important;
+    height: 25px!important;
+    background-image: url("/public/images/frecuencia_fact.png") !important;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+}
+
+.greenTextGrid {
+    background-color: white;
+    color: #2D7F0F;
+    cursor: pointer;
+}
+
+.blackTextGrid {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.grisTextGrid {
+    background-color: white;
+    color: #686868;
+    cursor: pointer;
+}
+
+.inhabilitarRawGrid {
+    text-decoration: line-through;
+    color: #686868;
+    cursor: default;
+}
+
+.blueTextGrid {
+    background-color: white;
+    color: blue;
+    cursor: pointer;
+}
+
+.redTextGrid {
+    background-color: white;
+    color: red;
+    cursor: pointer;
+}
+
+.infomessage,
+.successmessage,
+.warningmessage,
+.errormessage,
+.leyendamessage,
+.infomessage1 {
+    border: 1px solid;
+    margin: 3px 0px;
+    padding: 2px 15px 2px 30px;
+    /*width: 500px;*/
+    font: bold 10px verdana;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    text-shadow: 2px 2px 2px #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.infomessage {
+    color: #00529B;
+    background: #BDE5F8 url('/public/images/images_crud/info.png') no-repeat 10px center;
+}
+
+.infomessage1 {
+    color: #00529B;
+    background: #BDE5F8 url('/public/images/images_crud/info.png') no-repeat 6px center;
+}
+
+.successmessage {
+    color: #4F8A10;
+    /*background: #DFF2BF url('http://mydomain.com/images/icon-tick.png') no-repeat 10px center;*/
+}
+
+.warningmessage {
+    color: #9F6000;
+    background: #FEEFB3 url('/public/images/images_crud/dialog-warning16x16.png') no-repeat 10px center;
+}
+
+.errormessage {
+    color: #D8000C;
+    background: #FFBABA url('/public/images/images_crud/cross_circle.png') no-repeat 10px center;
+    white-space: pre-line;
+}
+
+.leyendamessage {
+    color: #00529B;
+    background: #BDE5F8 url('/public/images/images_crud/info.png') no-repeat 10px top;
+}
+
+.button-grid-verMacs:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verMacs {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verMac.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-consultarEnlaces:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-consultarEnlaces {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/enlaces.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verRendimiento:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verRendimiento {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verRendimiento.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-cacti:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cacti {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verRendimiento.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-verTemperatura:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verTemperatura {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verTemperatura.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verVelocidadReal:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verVelocidadReal {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/velocidadReal.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-inventario:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-inventario {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/inventario.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verTareaNodo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verTareaNodo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/task.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-agregarTareaNodo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarTareaNodo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/bundles/soporte/images/iconos/16/agregar_tarea.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verImagenNodo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verImagenNodo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/camera_16.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verSenalCerca:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verSenalCerca {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/senalCerca.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verSenalLejos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verSenalLejos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/senalLejos.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verCircuitoVirtual:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verCircuitoVirtual {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/circuitoVirtual.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verReversoSolicitudMigracion:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verReversoSolicitudMigracion {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/regresar.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verConfiguracionBridge:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verConfiguracionBridge {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/configuracionBridge.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verContadores:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verContadores {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/contador.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verRendimientoPuertoDiario:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verRendimientoPuertoDiario {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/rendimientoPuertoDiario.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verRendimientoPuertoIntervalo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verRendimientoPuertoIntervalo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/rendimientoPuertoIntervalo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verMacPuerto:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verMacPuerto {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verMac.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verLogs:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verLogs {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/log.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verInterface:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verInterface {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/interface.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verVelocidadSeteada:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verVelocidadSeteada {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/velocidadSeteada.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-verMonitorearPuerto:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verMonitorearPuerto {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/monitorear.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-informacionTecnica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-informacionTecnica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/informacionTecnica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 0px;
+}
+
+.button-grid-ipv4Publica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ipv4Publica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/ipv4_publica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-oss:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-oss {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/net.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-reconfigurarPuerto:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reconfigurarPuerto {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/informacionTecnica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-seleccionar:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-seleccionar {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/seleccionarCheck.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 0px;
+}
+
+.button-grid-formulario_soporte:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-formulario_soporte {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/task.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 0px;
+}
+
+.button-grid-activarCliente:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-activarCliente {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/activarCliente.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarMac:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarMac {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verMac.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-confirmarActivacion:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-confirmarActivacion {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/confirmarActivacion.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-cambioVelocidad:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambioVelocidad {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambioVelocidad.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verNombrePuerto:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verNombrePuerto {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/interfaces.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 0px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-cancelarCliente:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cancelarCliente {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cancelarCliente.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-administraTarjeta:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-administraTarjeta {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tarjeta.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-direccionUp:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-direccionUp {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/direction_up.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-direccionDown:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-direccionDown {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/direction_down.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verDetalle:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verDetalle {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/verDetalle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-cortarCliente:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cortarCliente {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/corteMasivo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-logs:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-logs {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/logs.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-detalle-hsop:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-detalle-hsop {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/detalle-horas-soporte.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-paquete-hsop:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-paquete-hsop {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/paquete-horas-soporte.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-recargapaquete:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-recargapaquete {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/recarga_soporte.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+.button-grid-logs2 {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/logs.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-logs2:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ver-ldap:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ver-ldap {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/contacto.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-verDominio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verDominio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/dominio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-actualizarIndiceCliente:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-actualizarIndiceCliente {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/indiceCliente.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-verCorreo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verCorreo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/correo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-ActulizarCorreo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ActulizarCorreo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/actualizacionCorreo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-reenvio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reenvio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/reenvio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-xml:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-xml {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/xml.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-black-xml:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-black-xml {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/xml_black.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-mail:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-mail {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/mail.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verIpPublica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verIpPublica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verIp.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-eliminarIpPublica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-conectarInterface {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-image: url(/public/images/ico_connected_opt.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-conectarInterface:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-desconectarInterface {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/ico_disconnected_opt.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-desconectarInterface:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-eliminarIpPublica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verIp.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-administrarScopes:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-administrarScopes {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/circuitoVirtual.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarCorreo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarCorreo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/correoAgregar.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarDominio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarDominio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarDominio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarIpPublica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarIpPublica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarIp.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-cambiarPuerto:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambiarPuerto {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambioPuerto.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-migrarPseudoPe:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-migrarPseudoPe {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/building_go.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.button-grid-regulaInfoRadio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-regulaInfoRadio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/error_data.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-cambiarUmAnillo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambiarUmAnillo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambioUmAnillo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-migracionVlan:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-migracionVlan {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/reload_data_store.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-solicitudCambioUM:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-solicitudCambioUM {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/interfaces.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-grabarHistorial:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-grabarHistorial {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/grabarHistorial.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verParametrosIniciales:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verParametrosIniciales {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/verParametrosIniciales.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-verCuartoTi:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verCuartoTi {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background-image: url(/public/images/server.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-cambiarEstado:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambiarEstado {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambiarEstado.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-reconectarCliente:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reconectarCliente {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/reactivacionMasiva.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-interfaceVirtual1:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-interfaceVirtual1 {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/eth1Virtual.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: -20px;
+}
+
+.button-grid-interfaceVirtual2:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-interfaceVirtual2 {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/eth1Virtual.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-editarPerfil:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-editarPerfil {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/editarPerfil.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.icon_corteMasivo {
+    background-image: url("/public/images/corteMasivo.png");
+}
+
+.icon_reactivacionMasiva {
+    background-image: url("/public/images/reactivacionMasiva.png");
+}
+
+.button-grid-administrarPuertos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-administrarPuertos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/administracionPuertos.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-asignarCaso:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-asignarCaso {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/bundles/soporte/images/iconos/16/asignar_responsable.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarHipotesis:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarHipotesis {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/bundles/soporte/images/iconos/16/agregar_hipotesis.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-editarDireccion:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-editarDireccion {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/editar_direccion.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-datosEnvio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-datosEnvio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/datos_envio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-datosEnvio_pto {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/datos_envio_pto.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-comercial {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    margin-right: 5px;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/shopping_cart.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-comercial:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-financiera {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/profit.png);
+    background-size: 20px 20px;
+    margin-right: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-financiera:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-tecnica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    margin-right: 5px;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/network.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+
+/*
+ * <arsuarez@telconet.ec> V 1.0 21-07-2014
+ * Icono de acceso directo al modulo de soporte
+ * en la busqueda avanzada
+ */
+
+.button-grid-soporte {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    margin-right: 5px;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/control_panel.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-soporte:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-tecnica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-zip:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-zip {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 0px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/zip.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-debitos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-debitos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/credit_card.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-log {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/log.png") no-repeat;
+}
+
+.button-grid-clonar {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/plus.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+
+.button-grid-clonar:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-clonar {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/plus.png") no-repeat;
+}
+
+.button-agregarCaracteristica {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/agregarCaracteristica.png") no-repeat;
+}
+
+.button-grid-agregarCondiciones {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarDetallesModelo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarArchivoCaso {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarDetallesModelo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-agregarCondiciones:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-agregarCondiciones {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/agregarDetallesModelo.png") no-repeat;
+}
+
+.button-delete {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/trash.png") no-repeat;
+}
+
+.button-grid-aprobar {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tick1.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-aprobar:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-aprobar {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/tick1.png") no-repeat;
+}
+
+.button-grid-eliminar:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-eliminar {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 0px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/trash.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-tuerca {
+    color: #3E3E3E;
+    font-size: 13px;
+    padding-left: 25px;
+    text-decoration: none;
+    white-space: nowrap;
+    background: url("/public/images/images_crud/tuerca.png") no-repeat;
+}
+
+#table-3 {
+    border: 1px solid #DFDFDF;
+    background-color: #F9F9F9;
+    width: 100%;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+#table-3 td,
+#table-3 th {
+    border-top-color: white;
+    border-bottom: 1px solid #DFDFDF;
+}
+
+#table-3 th {
+    font-weight: normal;
+    padding: 7px 7px 8px;
+    text-align: left;
+    line-height: 1.3em;
+    font-size: 14px;
+}
+
+#table-3 td {
+    font-size: 12px;
+    padding: 4px 7px 2px;
+    vertical-align: top;
+}
+
+.button-grid-upload {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/upload.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-upload:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-encuesta {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/encuesta.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-grid-encuesta:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambioEstadoEnvio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 0px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/cambioEstadoEnvio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+}
+
+.button-grid-cambioEstadoEnvio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-gastoAdministrativo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-gastoAdministrativo {
+    background-image: url(/public/images/distribuidor.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-add-ruta {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/add_ruta.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-add-ruta:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-rutas {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/ruta/show.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-rutas:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ruta-automatica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/rutaAutomatica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-ruta-automatica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ruta-automatica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/rutaAutomatica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-ruta-automatica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ruta-estatica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/ruta/estatica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    float: left;
+}
+
+.button-grid-ruta-estatica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ruta-automatica {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/ruta/automatica.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-ruta-automatica:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-gastoAdministrativoNot:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-gastoAdministrativoNot {
+    background-image: url(/public/images/noMoney.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-reversar:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-reversar {
+    background-image: url(/public/images/images_crud/reversar.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-bajarContrato:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-bajarContrato {
+    background-image: url(/public/images/images_crud/bajarContrato.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-uploadContrato {
+    background-image: url(/public/images/images_crud/upload.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-uploadContrato:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-descargar {
+    background-image: url(/public/images/images_crud/descargar.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-descargar:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-habilitar {
+    background-image: url(/public/images/images_crud/check48.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-habilitar:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-renovarContrato:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-renovarContrato {
+    background-image: url(/public/images/renovcontrato.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.icon_anadir {
+    background-image: url("/public/images/scm-anadir.png");
+}
+
+.icon_remover {
+    background-image: url("/public/images/scm-remover.png");
+}
+
+.icon_aprobar {
+    background-image: url("/public/images/scm-aprobar.png");
+}
+
+.icon_rechazar {
+    background-image: url("/public/images/scm-rechazar.png");
+}
+
+.icon_subir {
+    background-image: url("/public/images/scm-subir.png");
+}
+
+.icon_bajar {
+    background-image: url("/public/images/scm-bajar.png");
+}
+
+.icon_ejecutar {
+    background-image: url("/public/images/scm-ejecutar.png");
+}
+
+.icon_file_alert {
+    background-image: url("/public/images/scm-file-alert.png");
+}
+
+.icon_alert {
+    background-image: url("/public/images/scm-alert.png");
+}
+
+.icon_circle_alert {
+    background-image: url("/public/images/scm-circle-alert.png");
+}
+
+.icon_autorizar {
+    background-image: url("/public/images/checkCross.png");
+}
+
+.button-grid {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-agregarArchivo {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarDetallesModelo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-agregarArchivo:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-verAnexoTecnico {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/search.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-verAnexoTecnico:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.closeMessage {
+    text-align: right;
+    position: relative;
+    padding-bottom: 0px;
+    font-weight: bolder;
+    margin-left: 850px;
+    font-size: 10px;
+}
+
+.closeMessage a {
+    color: blueviolet;
+}
+
+.button-grid-ActivarWiFi {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/wifi.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-ActivarWiFi:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-ActivarSmartWiFi {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/smartWifi.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-CrearSolXSoporte:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-CrearSolXSoporte {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/new_sol_soporte.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-ActivarSmartWiFi:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-RecuperarClaveWiFi {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/wifi_recovery.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-RecuperarClaveWiFi:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-editar-forma-pago-facturacion {
+    cursor: pointer;
+    padding: 5px 12px;
+    background-image: url(/public/images/btn-editar-telcos.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 25px;
+}
+
+.button-editar-forma-pago-facturacion:hover {
+    background-size: 28px;
+}
+
+.button-editar-coordenada-punto {
+    cursor: pointer;
+    padding: 5px 12px;
+    background-image: url(/public/images/sectores.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 25px;
+}
+
+.button-editar-forma-coordenada-punto:hover {
+    background-size: 28px;
+}
+
+.label-coordenada {
+    font-weight: bold;
+    text-align: center;
+}
+
+.button-grid-editarTipoEmpresaTributario:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-editarTipoEmpresaTributario {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/editBook.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-reactivarCliente:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-reactivarCliente{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/icono_reactivar_cliente.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+textarea {
+    resize: none!important;
+}
+
+.button-grid-agregarPlantillaComision {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/agregarDetallesModelo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-editarPlantillaComisionista {
+    background-color: #E3E3E3;
+    background-size: 20px;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/ico_editar_plantilla_comisionista.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-editarPlantillaComisionista:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-setearPeHsrp {
+    background-color: #E3E3E3;
+    background-size: 20px;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/backbone.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-setearPeHsrp:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.msg_floating {
+    position: absolute !important;
+    z-index: 500001 !important;
+}
+
+.button-grid-asignarCuadrilla {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/coordinar_instalacion.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-asignarCuadrilla:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+
+/* Color rojo para un simbolo de requerido */
+
+.required-dot {
+    color: #C53727;
+}
+
+
+/* Le da estilo a elemento span que contiene texto de ayuda para el checkbox de instalación simultánea */
+
+.ins-sim-helper {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #999;
+    font-weight: normal;
+    clear: both;
+}
+
+.alert {
+    margin-top: 2rem;
+}
+
+.telcos-btn {
+    font-size: unset;
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    padding: 2px;
+    color: dimgray;
+    text-align: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.telcos-btn :hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-telcos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    margin-top: 0px;
+    float: left;
+}
+
+.button-grid-telcos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.button-grid-contrato {
+    background-image: url(/public/images/icon_precio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    float: none;
+}
+
+.wifi-router {
+    background-image: url(/public/images/images_crud/wifi_router.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.register {
+    background-image: url(/public/images/images_crud/register.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 17px;
+}
+
+.search-file {
+    background-image: url(/public/images/images_crud/search-file.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 17px;
+}
+
+.inspection-upload {
+    background-image: url(/public/images/images_crud/inspection-upload.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+}
+
+.inspection-file {
+    background-image: url(/public/images/images_crud/inspection-file.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 15px;
+}
+
+.detalle-tecnico {
+    background-image: url(/public/images/images_crud/detalle_tecnico.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+}
+
+.detalle-tecnico-sim {
+    background-image: url(/public/images/images_crud/search_data.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+}
+
+.details-disabled {
+    background-color: #F0F2F2 !important;
+    background-image: none !important;
+}
+
+.details-disabled:hover {
+    cursor: default;
+}
+
+.green-text {
+    color: #72BE80;
+}
+
+.blue-text {
+    color: steelblue;
+}
+
+.red-text {
+    color: red;
+}
+
+.button-grid-mantenimientoTorre:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-mantenimientoTorre {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/tuerca.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: max-content;
+    float: left;
+}
+
+.button-docked-items-custom {
+    border-style: solid !important;
+    border-color: #bbb !important;
+    background-color: #f8f8f8 !important;
+    padding: 1px !important;
+}
+
+.button-grid-deleteRecord {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 3px 18px 15px 0px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/cross_circle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 20px;
+    width: 20px;
+}
+
+.button-grid-deleteRecord:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-infoTelcoGraph {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/info.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-infoTelcoGraph:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-cambiarUsuaTelcoGraph {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/responsable.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    background-size: 100% 100%;
+}
+
+.button-grid-cambiarUsuaTelcoGraph:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-validador {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/validador.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    background-size: 100% 100%;
+}
+
+.button-grid-validador:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-add-maintenance-period {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    margin-left: 5px;
+    background-image: url(/public/images/images_crud/manteinance-date.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+    height: 25px;
+    width: 25px;
+    margin-top: 0px;
+}
+
+.button-grid-add-maintenance-period:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+    cursor: pointer;
+}
+
+.custom-text-msg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.35rem;
+}
+
+.custom-icon-msg--ok {
+    display: inline-block !important;
+    vertical-align: middle;
+    font-size: 3.5rem !important;
+    background: url("/public/images/images_crud/checkbox-icon.png") no-repeat center;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-size: contain;
+}
+
+.custom-icon-msg--error {
+    display: inline-block !important;
+    vertical-align: middle;
+    font-size: 3.5rem !important;
+    background: url("/public/images/images_crud/error-icon.png") no-repeat center;
+    height: 3.5rem;
+    width: 3.5rem;
+    background-size: contain;
+}
+
+.custom-icon-msg--question {
+    display: inline-block !important;
+    vertical-align: middle;
+    font-size: 3.5rem !important;
+    background: url("/public/images/images_crud/question-icon.png") no-repeat center;
+    height: 3rem;
+    width: 3rem;
+    background-size: contain;
+}
+
+.button-grid-reseteoClave {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url("/public/images/inicio/clave.png");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-reseteoClave:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Tracing {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/ver.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Tracing:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-Pedidos {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/checklist.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-Pedidos:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-confirmarIpServicio {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/bundles/soporte/images/iconos/16/ping_console.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-validarEnlace {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/bundles/soporte/images/iconos/16/validate_enlace.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-permitir-crear-KML {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/ic_permite_crear_kml.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-confirmarIpServicio:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+
+.button-grid-seguridadSDWAN:hover{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-seguridadSDWAN{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/dominio.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+
+.form_new_select
+{
+    color: #777777!important;
+    float:left;
+    width:94%;
+    text-align:left;
+    margin-top: 2em;
+    margin-bottom:2em;
+    font-weight:bold;
+    padding: 0.3em;
+}
+
+
+.form_new_textarea
+{
+    color: #777777!important;
+    float:left;
+    width:100%;
+    text-align:left;
+    margin-top: 2em;
+    margin-bottom:2em;
+    font-weight:bold;
+}
+
+.form_new_label
+{
+    color: #777777;
+    float:left;
+    width:11em;
+    text-align:left;
+    margin-bottom:0.9em;
+    font-weight:bold;
+    margin-top: 1.5em;
+    font-size: 14px;
+}
+
+.form_new_input_radio_check
+{
+    color: #777777;
+    width:7em;
+    text-align:left;
+    margin-bottom:1em;
+    margin-top: 1.5em;
+    margin-left: -2em;
+}
+
+
+.table-form{
+    margin-top: 3em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.table-form td{
+    padding-top: 1px;
+}
+
+.button-grid-activarEnvioSms:hover
+{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-activarEnvioSms
+{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/OK.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+.button-grid-desactivarEnvioSms:hover
+{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-desactivarEnvioSms
+{
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/darBaja.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+}
+
+
+.button-grid-showDataTecnicaNGF:hover
+{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-showDataTecnicaNGF {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/showDataTecnicaNGF.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    background-size: 12px;
+}
+
+
+
+
+.button-grid-editDataTecnicaNGF:hover
+{
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+}
+
+.button-grid-editDataTecnicaNGF {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/editDataTecnicaNGF.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    background-size: 12px;
+}
+
+.button-grid-excel-debitoNfs {
+    background-color: #E3E3E3;
+    border-color: #C5C5C5;
+    border-radius: 5px 5px 5px 5px;
+    border-spacing: 0;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 14px;
+    padding: 2px 15px 0 5px;
+    color: #2E2E2E;
+    font-size: 11px;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(/public/images/images_crud/excelDebitoNfs.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100px;
+    width: 100px;
+}
+
+.button-grid-excel-debitoNfs:hover {
+    background-color: #A99F9A;
+    border-color: #A99F9A;
+} 
+.img-align-button {
+    margin-bottom: -9px;
+}

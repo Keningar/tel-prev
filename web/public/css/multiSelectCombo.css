@@ -1,0 +1,26 @@
+/* 
+    Created on : Jun 9, 2016, 3:44:19 PM
+    Author     : awsamaniegop
+*/
+.icon_add {
+    background-image:url('../images/images_crud/plus.png') !important;
+} 
+.icon_delete {
+    background-image:url('../images/images_crud/trash.png') !important;
+}
+.uncheckedChkbox {
+    height: 13px;
+    width: 13px;
+    background: url('../images/images_crud/unchecked.png') no-repeat -1px -2px;
+    float: left;
+    margin: 0 5px 0 0;
+}
+.x-boundlist-selected .uncheckedChkbox {
+    background: url('../images/images_crud/checked.png') no-repeat -1px -2px;
+}
+.sel-all {
+    padding: 3px;
+    padding-left: 10px;
+    cursor: pointer;
+    border: 1px solid gray;
+}

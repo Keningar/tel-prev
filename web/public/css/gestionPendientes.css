@@ -1,0 +1,427 @@
+* { box-sizing: border-box; }
+body {
+  font: 16px Arial;
+}
+.autocomplete {
+  /*the container must be positioned relative:*/
+  position: relative;
+  display: inline-block;
+}
+
+.form-control-dpicker {
+  display: block;
+  width: 70%;
+  height:3rem;
+}
+.btn-botones-submenu {
+  border: 1px solid #ced4da!important;
+  border-radius: 0.25rem!important;
+}
+
+.btn-botones-busqueda {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.columnas-list {
+  padding:1.5rem!important;
+}
+
+.cabeceraGrid {
+  background-color:#337ab7;
+  color:#ffffff;
+  font-size: 14px;
+ }
+
+
+.label-info-gen {
+  background-color:#b3e5fc;
+  width:23%;
+  margin: 0.5em;
+  padding:0.5em;
+}
+
+.label-info-first {
+  background-color:#b3e5fc; 
+  margin-left:1.5em;
+  width:23%;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+  padding:0.5em;
+}
+.text-label-info-gen {
+  background-color:#eff8f7;
+  width:23%;
+  margin: 0.5em;
+  padding:0.5em;
+}
+.titulo-info-gen{
+  background-color:#337ab7;
+  padding:1rem;
+  color:#ffff;
+}
+.rowInfoPendientes{
+  padding-top:0.5rem;
+  padding-left:1em;
+  padding-right:2.5rem;  
+}
+
+.linkMenu{
+  background-color:#eee;
+  margin:3px;
+}
+
+
+.ticket-resaltado{
+  font-size: 14px;
+  font-weight: bold;
+
+}
+
+
+
+
+
+.inputtxt {
+  border: 1px solid transparent;
+  border-color: #c1c1c1;
+  background-color: #ffffff;
+  padding: 6px;
+  font-size: 16px;
+  color: #525151;
+}
+.inputtxt[type=text] {
+  background-color: #ffffff;
+  width: 100%;
+}
+.inputtxt[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  border-bottom: 1px solid #d4d4d4;
+  color:#7c7979;
+}
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: #e9e9e9;
+}
+.autocomplete-active {
+  /*when navigating through the items using the arrow keys:*/
+  background-color: DodgerBlue !important;
+  color: #ffffff;
+}
+.modal-open{ position: relative; }
+/* Style the input field */
+#txtBuscaPendiente {
+padding: 20px;
+margin-top: -6px;
+border: 0;
+border-radius: 0;
+background: #f1f1f1;
+}
+
+
+
+.buttonload {
+background-color: #4CAF50; /* Green background */
+border: none; /* Remove borders */
+color: white; /* White text */
+padding: 12px 24px; /* Some padding */
+font-size: 16px; /* Set a font-size */
+}
+
+/* Add a right margin to each icon */
+.fa {
+margin-left: -12px;
+margin-right: 8px;
+}
+
+
+
+.verticalAlignCellDt{
+    vertical-align:middle !important;
+}
+
+
+
+
+.verticaltext{
+    transform: rotate(285deg);
+    width:1px;
+    font-family: monospace; 
+    font-size: 9px;
+    white-space: nowrap;
+    height: 1px;
+    z-index: 2;
+}
+
+
+.labelTituloInfo{
+background-color:#e9e9e9;
+height:45px;
+margin:1px;
+width: 138px;
+text-align:left;
+padding:10px;
+font-weight: bold;
+}
+
+
+
+.labelTituloRespInfo{
+background-color:#b2dfdb;
+height:45px;
+margin:1px;
+width: 138px;
+text-align:left;
+padding:10px;
+font-weight: bold;
+}
+
+.labelTituloTecInfo{
+background-color:#d8d8d8;
+height:45px;
+margin:2px;
+width: 145px;
+text-align:left;
+padding:10px;
+font-weight: bold;
+}
+
+
+.labelDetalleInfo{
+background-color:#fafafa;
+height:45px;
+width: 13%;
+margin:2px;
+text-align:left;
+vertical-align: middle;
+padding:3px;
+font-weight: normal;
+}
+
+
+.labelDetalleTextInfo{
+background-color:#fafafa;
+height:45px;
+width: 46%;
+margin:5px;
+text-align:left;
+vertical-align: top;
+padding:5px;
+font-weight: normal;
+}
+
+
+
+
+
+
+
+
+.loader {
+position: absolute;
+left: 50%;
+top: 50%;
+z-index: 1;
+border: 16px solid #f3f3f3;
+border-radius: 50%;
+border-top: 16px solid #3498db;
+width: 120px;
+height: 120px;
+-webkit-animation: spin 2s linear infinite; /* Safari */
+animation: spin 2s linear infinite;
+}
+
+.loaderDet {
+position: absolute;
+left: 50%;
+top: 40%;
+z-index: 7;
+border: 5px solid #f3f3f3;
+border-radius: 50%;
+border-top: 5px solid #3498db;
+width: 60px;
+height: 60px;
+-webkit-animation: spin 2s linear infinite; /* Safari */
+animation: spin 2s linear infinite;
+}
+
+.loaderTiempo {
+position: absolute;
+/*left: 10%;
+top: 10%;*/
+z-index: 1;
+border: 5px solid #f3f3f3;
+border-radius: 50%;
+border-top: 5px solid #3498db;
+width: 60px;
+height: 60px;
+-webkit-animation: spin 2s linear infinite; /* Safari */
+animation: spin 2s linear infinite;
+}
+
+
+.cantidadAsignacionesAgente 
+{
+    background-color:#f8f8f8;
+    position        : relative;
+    left            : 0px;
+    top             : -80px;
+    padding         : 1px;
+    width           : 23px;
+    font-size       : 9px;
+    z-index         : 1;
+    color           : #333333;
+}
+
+.fechaConexionCuadroGeneral 
+{
+    font-size       :80%!important;
+    background-color:#f8f8f8!important;
+    padding         :0px;
+    color           : #333333;
+}
+.anchoComboCantones
+{
+  width: 2px;
+}
+.buscarPorFechaDetallesAsig 
+{
+    position: relative;
+    left: 2%;
+    top: 2px;
+    width: 100%;
+    height: 8rem;
+    padding: 0px;
+    z-index: 6;
+}
+
+.buscarPorFechaDetallesAsigSinCantones
+{
+    position: relative;
+    left: 2%;
+    top: 30px;
+    width: 65%;
+    padding: 0px;
+    z-index: 6;
+}
+
+.botonesBuscarPorFechaDetallesAsig 
+{
+    position: relative;
+    top: 15px;
+    z-index: 6;
+}
+
+.botonesDetallesAsig 
+{
+    position: relative;
+    left: 50%;
+    top: 15px;
+    width: 20%;
+    padding: 0px;
+    z-index: 6;
+}
+
+.cabeceraGridCompleto {
+    background-color:#37474f;
+    color:#ffffff;
+    font-size: 11px;
+    height: 25px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 1px;
+}
+
+
+.detalleGridCompleto {
+    color:#000000;
+    font-size: 11px;
+    height: 30px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 1px;
+    background: #f8f8f8;
+    padding: 4px;
+}
+
+.btn.circular {
+    border-radius : 50%;
+}
+
+.btn.xss {
+    padding  : 1px 3px;
+    font-size: 8px;
+}
+
+.cardTarea{
+    padding       : 1px;
+    margin        : 3px;
+    background    : #d8d8d8;
+    border-radius : 1px 15px;
+}
+
+.cardTareaCapaSuperior{
+    background : #ffffff;
+    padding    : 1px;
+    border-radius : 1px 15px;
+}
+.cardTareaNumero{
+    padding    :1px;
+    background :#f8f8f8;
+    color      :#263238;
+    border-radius : 1px 15px;
+}
+.cardTareaDepartamento{
+    background: #ffffff;
+    padding:4px;
+    font-size:11px;
+}
+.label.xs{
+    font-size:12px;
+}
+.btn.xssAdj{
+    padding:3px 10px;
+    white-space:normal;
+    font-size:11px;
+    text-align: left;
+}
+.detalleAsignacionRowRed {
+  background-color:#ffddab !important;
+}
+
+.detalleAsignacionRowBlue {
+  background-color:#acc9c4 !important;
+}
+/* Safari */
+@-webkit-keyframes spin {
+0% { -webkit-transform: rotate(0deg); }
+100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+input::placeholder {
+  color: #525151;
+  font-size: small;
+}
