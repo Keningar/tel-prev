@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+/*html							{ margin: 0px; padding: 0px; font-family: "Lucida Sans Unicode"; font-size: 14px; line-height: 21px; color: #f1f1f1;  }
+body							{ margin: 0px; padding: 0px; position: relative; }
+p								{ color: #616161; }
+a								{ color: #f1f1f1; }
+img.tTip						{ margin: 8px 15px 8px 0px; float: left; }
+h1								{ text-align: center; line-height: 15px; padding: 0px 0px 20px 0px; letter-spacing: -2px; }
+h1.massive						{ font-size: 72px; line-height: 10px; padding: 0px; letter-spacing: -6px; color: #f4c20a; }
+#demo_wrapper					{ width: 600px; margin: 30px auto 0px auto; }
+*/
+
+
+#tinytip						{ position: absolute; top: 0px; left: 0px; display: block; z-index: 50; }
+#tinytip #tipcontent			{ padding: 1px 6px 1px 6px; border: 4px solid #e2e2e2; max-width: 400px; background: #ffffff; color: #000000; font-size: 12px; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; }
+#tinytip #tiparrow				{ width: 0px; height: 0px; position: absolute; top: 0px; left: 0px; z-index: 100; font: 0px/0px sans-serif; border-color: #e2e2e2 transparent transparent transparent; border-style: solid; border-width: 7px; }
+
+/*.lightTip						{ position: relative; }
+.lightTip .content				{ max-width: 500px; padding: 10px; border: 6px solid #e2e2e2; -moz-border-radius: 5px; -webkit-border-radius: 5px; background: #ffffff; color: #020202; }
+.lightTip .notch				{ width: 0px; height: 0px; position: absolute; top: 0px; left: 0px; z-index: 100; font: 0px/0px sans-serif; border-color: #e2e2e2 transparent transparent transparent; border-style: solid; border-width: 8px; }*/
