@@ -1,0 +1,515 @@
+variables:
+  GIT_SSL_NO_VERIFY: "true"
+
+stages:
+ - VALIDPUSH
+ - VALIDATION
+ - DEV
+ - QA
+ - PROD
+
+0 VALIDATE-PUSHMASTER:
+   stage: VALIDPUSH 
+   script:
+     - validaPushMaster
+   tags:
+     - shell
+   except:
+     - master
+     - test
+
+0 VALIDATE-EXTENSION:
+   stage: VALIDATION 
+   script:
+     - validaExtension
+   tags:
+     - shell
+   except:
+     - master
+     - test
+ 
+ 
+1 sonar-scanner:
+   stage: DEV
+   image:
+     name: registry.gitlab.telconet.ec/docker/images/sonar-cli:1.0
+     entrypoint: [ "" ]
+   variables:   
+    SONAR_PROJECT_NAME: "$CI_PROJECT_NAME"
+    SONAR_PROJECT_VERSION: "$CI_BUILD_ID"
+    gitlabSourceRepoName: "$CI_PROJECT_NAME"
+    gitlabSourceBranch: "$CI_BUILD_REF_NAME"
+    gitlabMergeRequestIid: "$CI_COMMIT_SHA"
+   script:
+     - git config --global user.name "gitlab-runner"
+     - git config --global user.email "sistemas-devops@telconet.ec"
+     - /sonar/scanner-cli.sh
+   tags:
+     - sis-docker-sonar-1
+     - sis-docker-sonar-2
+     - sis-docker-sonar-3
+   except:
+     - master
+     - test
+
+0 SCRIPTS-BD-TEST:
+   image: registry.gitlab.telconet.ec/docker/images/ejecucionbd:1.0
+   stage: QA
+   variables:
+    ROL: "qa"
+   script:
+      - git config --global user.name "gitlab-runner"
+      - git config --global user.email "sistemas-devops@telconet.ec"
+      - canDeploy
+      - executeBDDocker
+   when: manual
+   tags:
+     - docker-global
+     - docker-global2
+   except:
+     - master
+     - test
+          
+1 DEPLOY-TEST:
+   stage: QA
+   variables:
+    ROL: "qa"
+   script:
+      - git config --global user.name "gitlab-runner"
+      - git config --global user.email "sistemas-devops@telconet.ec"
+      - canDeploy
+      - mergeToTest
+   when: manual
+   tags:
+     - ssh-telcos-grupo
+   except:
+     - master
+     - test
+     
+2 DEPLOY-TEST-blade3:
+   stage: QA
+   variables:
+    ROL: "qa"
+    SERVER: "b3"
+   script:
+      - git config --global user.name "gitlab-runner"
+      - git config --global user.email "sistemas-devops@telconet.ec"
+      - canDeploy      
+      - executeParameter
+      - mergeToTestBlade3
+   when: manual
+   tags:
+     - ssh-test-blade3
+   except:
+     - master
+     - test
+
+3 DEPLOY-TEST-blade6:
+   stage: QA
+   variables:
+    ROL: "qa"
+    SERVER: "b3"
+   script:
+      - git config --global user.name "gitlab-runner"
+      - git config --global user.email "sistemas-devops@telconet.ec"
+      - canDeploy      
+      - mergeToTestBlade3
+   when: manual
+   tags:
+     - ssh-test-blade6
+   except:
+     - master
+     - test
+
+
+0 VALIDATE-PUSHPRODMASTER:
+   stage: PROD
+   variables:
+    ROL: "devops"
+   script:
+     - canDeploy
+     - validaPushMaster
+   when: manual
+   tags:
+     - shell
+   except:
+     - master
+     - test
+
+1 SCRIPTS-BD-PROD:
+   image: registry.gitlab.telconet.ec/docker/images/ejecucionbd:1.0
+   stage: PROD
+   variables:
+    ROL: "devops"
+   script:
+      - git config --global user.name "gitlab-runner"
+      - git config --global user.email "sistemas-devops@telconet.ec"
+      - canDeploy
+      - executeBDDocker
+   when: manual
+   tags:
+     - docker-global
+     - docker-global2
+   except:
+     - master
+     - test
+
+2 DEPLOY-PROD:
+   stage: PROD
+   variables: 
+    ROL: "devops"
+   script:
+      - git config --global user.name "gitlab-runner"
+      - git config --global user.email "sistemas-devops@telconet.ec"
+      - canDeploy
+      - executeParameter
+      - mergeToProd
+   when: manual
+   tags:
+     - ssh-telcos-prod
+   except:
+     - master
+     - test
+
+# ---------------------------------------------------------------------#
+.devops: &devops |
+
+  function validaPushMaster()
+  {  
+     cd "$CI_PROJECT_DIR"
+     git fetch
+     git checkout origin/$CI_BUILD_REF_NAME
+     valida=$(git merge origin/master)
+     
+     if [ "$valida" != "Already up to date." ];then 
+        echo "Diferencias con master"
+        echo $valida
+        git reset --hard origin/master
+       /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Por favor realizar el procedimiento definido para los push. Rama no se encuentra actualizada con master \n"
+        exit 1
+     fi 
+
+     vmaster=$(git checkout origin/master)
+     vfetch=$(git fetch)
+     vreset=$(git reset --hard origin/master)
+     commit=`git rev-list --no-merges --count HEAD ^origin/$CI_BUILD_REF_NAME`
+     if [ "$commit" -ge "1" ]
+     then
+    /usr/bin/printf "\e[1;31m \xE2\x9D\x8C De acuerdo a los estandares definidos, solo se acepta 1 commit por rama, favor corregir tiene [ $commit ] commits \n"
+       exit 1
+     fi
+     git merge origin/$CI_BUILD_REF_NAME
+  }
+
+  function validaExtension()
+  {
+     cd "$CI_PROJECT_DIR"
+     git config --global user.name "gitlab-runner"
+     git config --global user.email "sistemas-devops@telconet.ec"
+     git checkout origin/master
+     git reset --hard origin/master
+     git merge --no-commit --no-ff origin/$CI_BUILD_REF_NAME
+     archivopks=$(git diff --name-only --no-renames --diff-filter=ACMTUXB HEAD | paste -sd ",")
+     if [ -n "$archivopks" ]
+     then
+       for archivo in $(echo $archivopks | tr "," "\n")
+       do
+         exten=$(awk -F\. '{print $NF}' <<< $archivo)
+         NOMBRE=$(redis-cli -h redis-prod -p 6379 -a $PASSWORD_PROD HGET extensiones $exten)             
+         boolpermiso="F"
+         if [ "$exten" != "$NOMBRE" ]
+         then
+           /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Estimado Su usuario la extension $archivo del archivo no corresponde a una extension valida \n"
+           exit 1
+           break
+         fi          
+       done
+     fi
+  }
+
+  function canDeploy() 
+  {
+     if [ $ROL = "qa" ]
+     then
+       REDIS=$REDIS_TEST;
+     elif [ $ROL = "devops" ]
+     then
+       REDIS=$REDIS_PROD;
+     else
+       /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Rol no se encuentra bien configurado en el trigger del CI-CD \n"
+       exit 1;
+     fi
+
+     if [ $SERVER = "b3" ]
+     then
+       TAMANO_LISTA=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS_RED_14 -p 6379 -a $PASSWORD_PROD LLEN $ROL")
+     else
+       TAMANO_LISTA=$(redis-cli -h redis-prod -p 6379 -a $PASSWORD_PROD LLEN $ROL)
+     fi
+     for (( i=0; i < $TAMANO_LISTA; ++i ))
+     do
+       if [ $SERVER = "b3" ]
+       then
+         NOMBRE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS_RED_14 -p 6379 -a $PASSWORD_PROD LINDEX $ROL $i")
+       else
+         NOMBRE=$(redis-cli -h redis-prod -p 6379 -a $PASSWORD_PROD LINDEX $ROL $i)
+       fi       
+       boolpermiso="F"
+       if [ "$GITLAB_USER_NAME" == "$NOMBRE" ]
+       then
+           boolpermiso="S"
+           break
+       fi
+     done
+
+     if [ "$boolpermiso" == "F" ]
+     then
+        /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Estimado Su usuario no tiene permiso para la ejecución \n"
+        exit 1
+     fi
+  }
+
+  function mergeToTest() 
+  {
+      VALUE=$(redis-cli -h $REDIS_RED_14 -p 6379 -a $PASSWORD_PROD HGET config-redis-instance $GITLAB_USER_LOGIN)       
+      NOMBRE_CONTAINER=$(echo "$VALUE" | cut -d "," -f 1)       
+      PUERTO_REDIS=$(echo "$VALUE" | cut -d "," -f 2)       
+      PASSWORD_REDIS=$(echo "$VALUE" | cut -d "," -f 3) 
+       
+      NOMBRE_AMBIENTE=$(redis-cli -h $REDIS_RED_14 -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-$CI_BUILD_REF_NAME ambiente)
+      NOMBRE_AMBIENTE=$(echo "$NOMBRE_AMBIENTE" | cut -d "," -f 1)
+      if [ -z "$NOMBRE_AMBIENTE" ]
+      then
+         /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Estimado debe configurar la variable NOMBRE_AMBIENTE \n"
+         exit 1
+      fi
+      DIR_AMBIENTE=$(redis-cli -h $REDIS_RED_14 -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET ambientestest $NOMBRE_AMBIENTE)
+     /usr/bin/printf "\e[1;32m &#x27A4 Iniciando merge con ambiente $NOMBRE_AMBIENTE en la ruta $DIR_AMBIENTE \n"
+     cd $DIR_AMBIENTE
+     /usr/bin/printf "\e[1;32m &#x27A4 Descargando cambios \n"
+     git fetch
+     /usr/bin/printf "\e[1;32m &#x27A4 Ejecuntando reset a master \n"
+     git reset --hard origin/master
+     /usr/bin/printf "\e[1;32m &#x27A4 Ejecutando merge con rama $CI_BUILD_REF_NAME \n"
+     git merge origin/$CI_BUILD_REF_NAME
+  }
+  
+  function executeBDDocker() 
+  {
+    if [ $ROL = "qa" ]
+     then
+       REDIS=$REDIS_TEST;       
+       VALUE=$(redis-cli -h redis-prod -p 6379 -a $PASSWORD_PROD HGET config-redis-instance $GITLAB_USER_LOGIN)       
+       NOMBRE_CONTAINER=$(echo "$VALUE" | cut -d "," -f 1)       
+       PUERTO_REDIS=$(echo "$VALUE" | cut -d "," -f 2)       
+       PASSWORD_REDIS=$(echo "$VALUE" | cut -d "," -f 3)       
+     elif [ $ROL = "devops" ]
+     then
+       REDIS=$REDIS_PROD;
+       VALUE=$(redis-cli -h redis-prod -p 6379 -a $PASSWORD_PROD HGET config-redis-instance PRODUCCION )
+       NOMBRE_CONTAINER=$(echo "$VALUE" | cut -d "," -f 1)
+       PUERTO_REDIS=$(echo "$VALUE" | cut -d "," -f 2)
+       PASSWORD_REDIS=$(echo "$VALUE" | cut -d "," -f 3)
+     else
+       /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Rol no se encuentra bien configurado en el trigger del CI-CD \n"
+       exit 1;
+     fi
+    cd "$CI_PROJECT_DIR"
+    /usr/bin/printf "\e[1;32m &#x261B Checkout a Rama Remota Master \e[0m \n"
+    git checkout origin/master
+    /usr/bin/printf "\e[1;32m &#x261B Reset a Rama Remota Master \e[0m \n"
+    git reset --hard origin/master
+    /usr/bin/printf "\e[1;32m &#x261B Merge a Rama Remota Master \e[0m \n"
+    git merge --no-commit --no-ff origin/$CI_BUILD_REF_NAME
+    archivopks=$(git diff --name-only --no-renames --diff-filter=ACMTUXB HEAD | grep "pks$\|sql$" | grep -v -i "ROLLBACK" | paste -sd ",")
+    /usr/bin/printf "\e[0;33m Datos redis 222 $NOMBRE_CONTAINER - $PUERTO_REDIS - $PASSWORD_REDIS  \n"    
+    TAMANO_LISTA=$(redis-cli -h $NOMBRE_CONTAINER -p 6379 -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" ejecuciones-base)
+    config_bd=$(redis-cli -h $NOMBRE_CONTAINER -p 6379 -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" base)
+    SERVICIO_BD=$(redis-cli -h $NOMBRE_CONTAINER -p 6379 -a $PASSWORD_REDIS HGET $config_bd servicename)
+    PUERTO_BD=$(redis-cli -h $NOMBRE_CONTAINER -p 6379 -a $PASSWORD_REDIS HGET $config_bd puerto)
+    IP_BD=$(redis-cli -h $NOMBRE_CONTAINER -p 6379 -a $PASSWORD_REDIS HGET $config_bd ip)
+    USUARIO_BD=$(redis-cli -h $NOMBRE_CONTAINER -p 6379 -a $PASSWORD_REDIS HGET $config_bd usuario)
+    PASSWORD_BD=$(redis-cli -h $NOMBRE_CONTAINER -p 6379 -a $PASSWORD_REDIS HGET $config_bd password)
+    numero_pks_mod=$(echo $archivopks | tr "," "\n" | wc -l)
+    if [ $numero_pks_mod -ne $TAMANO_LISTA ]
+     then
+       /usr/bin/printf "\e[0;31m &#x261B El numero de archivos pks modificados en el merge no coinciden con el configurado en el redis \e[0m \n"
+       exit 1;
+     fi
+    export NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+    for (( i=1; i <= $TAMANO_LISTA; ++i ))
+    do
+       cd "$CI_PROJECT_DIR"
+       NOMBRE=$(redis-cli -h $NOMBRE_CONTAINER -p 6379 -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" $i)
+       /usr/bin/printf "\e[1;32m &#x261B ejecutando $NOMBRE \e[0m \n"
+       DIR=$(dirname "${NOMBRE}")       
+       cd $DIR       
+       /usr/bin/printf "\e[0;33m Dir $DIR \n"
+       NOMBRE="$(basename -- $NOMBRE)"  
+       /usr/bin/printf "\e[0;33m archivo: $NOMBRE \n"
+       /usr/bin/printf "\e[0;33m dns: (DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$IP_BD)(PORT=$PUERTO_BD))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=$SERVICIO_BD))) \n"
+       output=`sqlplus -S "$USUARIO_BD/$PASSWORD_BD@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$IP_BD)(PORT=$PUERTO_BD))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=$SERVICIO_BD)))" << -EOF
+        SET ECHO OFF
+        SET HEADING OFF
+        alter session set NLS_LANGUAGE ='AMERICAN';
+        alter session set NLS_TERRITORY ='AMERICA';
+        alter session set NLS_CURRENCY ='$';
+        alter session set NLS_ISO_CURRENCY ='AMERICA';
+        alter session set NLS_NUMERIC_CHARACTERS ='.,';
+        alter session set NLS_CALENDAR ='GREGORIAN';
+        alter session set NLS_DATE_FORMAT ='DD/MM/RR';
+        alter session set NLS_DATE_LANGUAGE ='AMERICAN';
+        alter session set NLS_SORT ='BINARY';
+        alter session set NLS_TIME_FORMAT ='HH.MI.SSXFF AM';
+        alter session set NLS_TIMESTAMP_FORMAT ='DD-MON-RR HH.MI.SSXFF AM';
+        alter session set NLS_TIME_TZ_FORMAT ='HH.MI.SSXFF AM TZR';
+        alter session set NLS_TIMESTAMP_TZ_FORMAT ='DD-MON-RR HH.MI.SSXFF AM TZR';
+        alter session set NLS_DUAL_CURRENCY ='$';
+        alter session set NLS_COMP ='BINARY';
+        alter session set NLS_LENGTH_SEMANTICS ='BYTE';
+        alter session set NLS_NCHAR_CONV_EXCP ='FALSE';
+        @$NOMBRE;
+    EOF`
+        echo $output > $PWD/salida.log  
+        cat $PWD/salida.log
+        if [ "`grep -c -i 'Package body created' $PWD/salida.log`" -lt "1" ] && [ "`grep -c -i 'Package created' $PWD/salida.log`" -lt "1" ] && ["`grep -c -i 'Commit complete' $PWD/salida.log`" -lt "1"] && ["`grep -c -i 'PL/SQL procedure successfully completed' $PWD/salida.log`" -lt "1"] && ["`grep -c -i 'Table created' $PWD/salida.log`" -lt "1"] && ["`grep -c -i 'Comment created' $PWD/salida.log`" -lt "1"] && ["`grep -c -i 'Sequence created' $PWD/salida.log`" -lt "1"] && ["`grep -c -i 'Grant succeeded' $PWD/salida.log`" -lt "1"]
+          then
+            /usr/bin/printf "\e[0;31m &#x261B Error en la Ejecucion del archivo $NOMBRE no se a ejecutado ninguna transaccion \e[0m \n"
+            exit 1;
+        fi              
+         
+        if [ "`grep -c -i ERROR $PWD/salida.log`" -ge "1" ]
+          then
+            /usr/bin/printf "\e[0;31m &#x261B Error en la Ejecucion del archivo $NOMBRE\e[0m \n"
+            exit 1;
+        fi
+        if [ "`grep -c -i errors $PWD/salida.log`" -ge "1" ]
+          then
+            /usr/bin/printf "\e[0;31m &#x261B Error en la Ejecucion del archivo $NOMBRE\e[0m \n"
+            exit 1;
+        fi
+        if [ "`grep -c -i Warning $PWD/salida.log`" -ge "1"]
+          then
+            /usr/bin/printf "\e[0;31m &#x261B Error en la Ejecucion del archivo $NOMBRE\e[0m \n"
+            exit 1;
+        fi
+        if [ "`grep -c -i 'Enter value for nbsp' $PWD/salida.log`" -ge "1"]
+          then
+            /usr/bin/printf "\e[0;31m &#x261B Error en la Ejecucion del archivo $NOMBRE\e[0m \n"
+            exit 1;
+        fi
+     done
+    
+  }
+  
+  function executeParameter() 
+   { 
+     if [ $ROL = "qa" ];
+     then
+       REDIS=$REDIS_RED_14;
+       VALUE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS_RED_14 -p 6379 -a $PASSWORD_PROD HGET config-redis-instance $GITLAB_USER_LOGIN")       
+       NOMBRE_CONTAINER=$(echo "$VALUE" | cut -d "," -f 1)       
+       PUERTO_REDIS=$(echo "$VALUE" | cut -d "," -f 2)       
+       PASSWORD_REDIS=$(echo "$VALUE" | cut -d "," -f 3)       
+     elif [ $ROL = "devops" ];
+     then
+       REDIS=$REDIS_RED_15;
+       VALUE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS_RED_15 -p 6379 -a $PASSWORD_PROD HGET config-redis-instance $GITLAB_USER_LOGIN")       
+       NOMBRE_CONTAINER=$(echo "$VALUE" | cut -d "," -f 1)       
+       PUERTO_REDIS=$(echo "$VALUE" | cut -d "," -f 2)       
+       PASSWORD_REDIS=$(echo "$VALUE" | cut -d "," -f 3) 
+     else
+       /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Rol no se encuentra bien configurado en el trigger del CI-CD \n"
+       exit 1;
+     fi
+     BOO_PARAMETER=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" modifica-parameter")
+     /usr/bin/printf "\e[1;32m &#x261B Validando si modifica el parameter $BOO_PARAMETER \e[0m \n"
+     if [ $BOO_PARAMETER = "n" ]
+     then
+        /usr/bin/printf "\e[1;32m &#x261B El Merge No requiere Modificacion de Parameter.yml \n"
+     else     
+        NOMBRE_AMBIENTE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" ambiente")
+        NOMBRE_AMBIENTE=$(echo "$NOMBRE_AMBIENTE" | cut -d "," -f 1)
+        if [ -z "$NOMBRE_AMBIENTE" ]
+        then
+            /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Estimado debe configurar la variable NOMBRE_AMBIENTE \n"
+            exit 1;
+        fi
+        DIR_AMBIENTE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET ambientestest $NOMBRE_AMBIENTE")
+        /usr/bin/printf "\e[1;32m &#x261B dicrectotio ambiente $DIR_AMBIENTE \e[0m \n"
+        NUM_PARAMETER=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" numero-parameter")
+        for (( i=1; i <= $NUM_PARAMETER; ++i ))
+        do
+            NOMBRE_PARAMETER=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" parameter-$i")
+            NOMBRE=$(echo "$NOMBRE_PARAMETER" | cut -d "," -f 1)
+            TIPO=$(echo "$NOMBRE_PARAMETER" | cut -d "," -f 2)
+            VALOR=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" $NOMBRE") 
+            /usr/bin/printf "\e[1;32m &#x261B parametro $i: nombre_parametro=$NOMBRE; valor_parametro=$VALOR; tipo_parametro=$TIPO \e[0m \n"
+            if [ $TIPO = "string" ]
+            then
+            docker run -i -v $DIR_AMBIENTE/app/config/parameters.yml:/workdir/parameters.yml  registry.gitlab.telconet.ec/docker/images/yq:1.0 yq w -i parameters.yml parameters.$NOMBRE "$VALOR"
+            elif [ $TIPO = "array" ]
+            then
+            docker run -i -v $DIR_AMBIENTE/app/config/parameters.yml:/workdir/parameters.yml  registry.gitlab.telconet.ec/docker/images/yq:1.0 yq w -i parameters.yml "parameters.$NOMBRE[+]" "$VALOR"
+            else
+            /usr/bin/printf "\e[1;31m \xE2\x9D\x8C El tipo de parametro no esta configurado \n"
+            exit 1;
+            fi
+        done
+     fi
+   }
+
+  function mergeToTestBlade3() 
+  {
+      REDIS=$REDIS_RED_14;
+      VALUE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS_RED_14 -p 6379 -a $PASSWORD_PROD HGET config-redis-instance $GITLAB_USER_LOGIN")       
+      NOMBRE_CONTAINER=$(echo "$VALUE" | cut -d "," -f 1)       
+      PUERTO_REDIS=$(echo "$VALUE" | cut -d "," -f 2)       
+      PASSWORD_REDIS=$(echo "$VALUE" | cut -d "," -f 3)
+       
+      NOMBRE_AMBIENTE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" ambiente")
+      NOMBRE_AMBIENTE=$(echo "$NOMBRE_AMBIENTE" | cut -d "," -f 1)
+      if [ -z "$NOMBRE_AMBIENTE" ]
+      then
+         /usr/bin/printf "\e[1;31m \xE2\x9D\x8C Estimado debe configurar la variable NOMBRE_AMBIENTE \n"
+         exit 1
+      fi
+      DIR_AMBIENTE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET ambientestest $NOMBRE_AMBIENTE")
+     /usr/bin/printf "\e[1;32m &#x27A4 Iniciando merge con ambiente $NOMBRE_AMBIENTE en la ruta $DIR_AMBIENTE \n"
+     cd $DIR_AMBIENTE
+     /usr/bin/printf "\e[1;32m &#x27A4 Descargando cambios \n"
+     git fetch
+     /usr/bin/printf "\e[1;32m &#x27A4 Ejecuntando reset a master \n"
+     git reset --hard origin/master
+     NUMERO_MERGE=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" numero-merge")
+     if [ $NUMERO_MERGE -gt 1 ]
+     then
+       for (( i=1; i <= NUMERO_MERGE; ++i ))
+       do
+         NOMBRE_RAMA=$(docker run --rm $IMAGE_REDIS bash -c "redis-cli -h $REDIS -p $PUERTO_REDIS -a $PASSWORD_REDIS HGET Telcos-Config-"$CI_BUILD_REF_NAME" mr-$i")
+         /usr/bin/printf "\e[1;32m &#x27A4 Ejecutando2 merge con rama $NOMBRE_RAMA \n"
+         git merge origin/$NOMBRE_RAMA 
+       done
+     else
+       /usr/bin/printf "\e[1;32m &#x27A4 Ejecutando1 merge con rama $CI_BUILD_REF_NAME \n"
+       git merge origin/$CI_BUILD_REF_NAME       
+     fi
+     
+  }
+
+  function mergeToProd() 
+  {
+     /usr/bin/printf "\e[1;32m &#x27A4 Iniciando merge \n"
+     cd /home/telcos
+     /usr/bin/printf "\e[1;32m &#x27A4 Descargando cambios \n"
+     git fetch
+     /usr/bin/printf "\e[1;32m &#x27A4 Ejecutando merge con rama $CI_BUILD_REF_NAME \n"
+     git merge gitlab/$CI_BUILD_REF_NAME
+     /usr/bin/printf "\e[1;32m &#x27A4 Ejecutando rsyncnodos $CI_BUILD_REF_NAME \n"
+     git rsyncnodos
+     /usr/bin/printf "\e[1;32m &#x27A4 Ejecutando push $CI_BUILD_REF_NAME \n"
+     git p
+  }
+
+before_script:
+  - *devops
