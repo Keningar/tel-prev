@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-xs-12">
+        <!-- TABLE: SEGUIMIENTO TAREAS -->
+        <div class="box box-warning">
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                            <tr>
+                                <th><strong>Observación</strong></th>
+                                <th><b>Ejecutante</b></th>
+                                <th><b>Departamento</b></th>
+                                <th><strong>Fecha Observación</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set counter = 0 %}
+                            {% for resultado in resultados %}
+                                {% set counter = counter + 1 %}
+                                <tr>
+                                    <td>{{ resultado.observacion }}</td>
+                                    <td>{{ resultado.departamento }}</td>
+                                    <td>{{ resultado.empleado }}</td>
+                                    <td>{{ resultado.fecha }}</td>
+                                </tr>
+                            {% endfor %}
+
+                            {% if counter == 0 %}
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        No se encontraron datos para mostrar.
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div><!-- /.table-responsive -->
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+</div>
